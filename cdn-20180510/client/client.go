@@ -1823,8 +1823,6 @@ func (client *Client) DeleteCdnDomain(request *DeleteCdnDomainRequest) (_result 
 //
 // >  You can call this API operation up to three times per second per account.
 //
-// @param request - DeleteCdnSubTaskRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCdnSubTaskResponse
@@ -4472,8 +4470,6 @@ func (client *Client) DescribeCdnService(request *DescribeCdnServiceRequest) (_r
 //	  By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
 //
 //		- You can call this operation up to three times per second per account.
-//
-// @param request - DescribeCdnSubListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -11034,8 +11030,6 @@ func (client *Client) DescribeRefreshTasks(request *DescribeRefreshTasksRequest)
 //
 // >The maximum number of times that each user can call this operation per second is 30.
 //
-// @param request - DescribeStagingIpRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStagingIpResponse
@@ -11319,8 +11313,6 @@ func (client *Client) DescribeUserCdnStatus(request *DescribeUserCdnStatusReques
 //
 // > You can call this operation up to 100 times per second per account.
 //
-// @param request - DescribeUserCertificateExpireCountRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserCertificateExpireCountResponse
@@ -11573,8 +11565,6 @@ func (client *Client) DescribeUserDomains(request *DescribeUserDomainsRequest) (
 // Description:
 //
 // > You can call this operation up to 100 times per second per account.
-//
-// @param request - DescribeUserTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12035,6 +12025,68 @@ func (client *Client) EnableRealtimeLogDelivery(request *EnableRealtimeLogDelive
 
 // Summary:
 //
+// Generates a link to the detection tool based on the access URL.
+//
+// @param request - GenerateCdnDiagnoseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateCdnDiagnoseResponse
+func (client *Client) GenerateCdnDiagnoseWithOptions(request *GenerateCdnDiagnoseRequest, runtime *dara.RuntimeOptions) (_result *GenerateCdnDiagnoseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateCdnDiagnose"),
+		Version:     dara.String("2018-05-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateCdnDiagnoseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates a link to the detection tool based on the access URL.
+//
+// @param request - GenerateCdnDiagnoseRequest
+//
+// @return GenerateCdnDiagnoseResponse
+func (client *Client) GenerateCdnDiagnose(request *GenerateCdnDiagnoseRequest) (_result *GenerateCdnDiagnoseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateCdnDiagnoseResponse{}
+	_body, _err := client.GenerateCdnDiagnoseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the canary release configurations, such as canary release status and progress, by domain name and function name.
 //
 // @param request - GetGrayDomainFunctionRequest
@@ -12235,8 +12287,6 @@ func (client *Client) ListFCTrigger(request *ListFCTriggerRequest) (_result *Lis
 //
 // Queries all real-time log delivery tasks within your Alibaba Cloud account.
 //
-// @param request - ListRealtimeLogDeliveryRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRealtimeLogDeliveryResponse
@@ -12351,8 +12401,6 @@ func (client *Client) ListRealtimeLogDeliveryDomains(request *ListRealtimeLogDel
 // Description:
 //
 // > You can call this operation up to 100 times per second per account.
-//
-// @param request - ListRealtimeLogDeliveryInfosRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12488,8 +12536,6 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // Description:
 //
 // > You can call this operation up to 100 times per second per account.
-//
-// @param request - ListUserCustomLogConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
