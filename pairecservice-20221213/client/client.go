@@ -2661,6 +2661,10 @@ func (client *Client) CreateRecallManagementServiceVersionWithOptions(RecallMana
 		body["Configs"] = request.Configs
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.SourceRecallManagementServiceVersionId) {
 		body["SourceRecallManagementServiceVersionId"] = request.SourceRecallManagementServiceVersionId
 	}
@@ -4111,6 +4115,10 @@ func (client *Client) DeleteEngineConfigWithOptions(EngineConfigId *string, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteAll) {
+		query["DeleteAll"] = request.DeleteAll
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

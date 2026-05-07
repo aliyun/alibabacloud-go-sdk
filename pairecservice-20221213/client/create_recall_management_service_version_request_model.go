@@ -11,12 +11,18 @@ type iCreateRecallManagementServiceVersionRequest interface {
 	GoString() string
 	SetConfigs(v *CreateRecallManagementServiceVersionRequestConfigs) *CreateRecallManagementServiceVersionRequest
 	GetConfigs() *CreateRecallManagementServiceVersionRequestConfigs
+	SetInstanceId(v string) *CreateRecallManagementServiceVersionRequest
+	GetInstanceId() *string
 	SetSourceRecallManagementServiceVersionId(v string) *CreateRecallManagementServiceVersionRequest
 	GetSourceRecallManagementServiceVersionId() *string
 }
 
 type CreateRecallManagementServiceVersionRequest struct {
 	Configs *CreateRecallManagementServiceVersionRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
+	// example:
+	//
+	// learn-pairec-xxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
 	// 4
@@ -35,12 +41,21 @@ func (s *CreateRecallManagementServiceVersionRequest) GetConfigs() *CreateRecall
 	return s.Configs
 }
 
+func (s *CreateRecallManagementServiceVersionRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *CreateRecallManagementServiceVersionRequest) GetSourceRecallManagementServiceVersionId() *string {
 	return s.SourceRecallManagementServiceVersionId
 }
 
 func (s *CreateRecallManagementServiceVersionRequest) SetConfigs(v *CreateRecallManagementServiceVersionRequestConfigs) *CreateRecallManagementServiceVersionRequest {
 	s.Configs = v
+	return s
+}
+
+func (s *CreateRecallManagementServiceVersionRequest) SetInstanceId(v string) *CreateRecallManagementServiceVersionRequest {
+	s.InstanceId = &v
 	return s
 }
 

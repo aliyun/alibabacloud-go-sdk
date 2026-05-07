@@ -2061,6 +2061,10 @@ func (client *Client) CreateRecallManagementServiceVersionWithContext(ctx contex
 		body["Configs"] = request.Configs
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.SourceRecallManagementServiceVersionId) {
 		body["SourceRecallManagementServiceVersionId"] = request.SourceRecallManagementServiceVersionId
 	}
@@ -3207,6 +3211,10 @@ func (client *Client) DeleteEngineConfigWithContext(ctx context.Context, EngineC
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteAll) {
+		query["DeleteAll"] = request.DeleteAll
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

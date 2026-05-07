@@ -86,8 +86,16 @@ type GetRecallManagementConfigResponseBodyNetworkConfigs struct {
 	PrivateLinkAddress *string `json:"PrivateLinkAddress,omitempty" xml:"PrivateLinkAddress,omitempty"`
 	// example:
 	//
+	// ""
+	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	// example:
+	//
 	// Connecting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ""
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// example:
 	//
 	// vpc-xxx
@@ -107,8 +115,16 @@ func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) GetPrivateLinkAddr
 	return s.PrivateLinkAddress
 }
 
+func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) GetPublicEndpoint() *string {
+	return s.PublicEndpoint
+}
+
 func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) GetToken() *string {
+	return s.Token
 }
 
 func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) GetVpcId() *string {
@@ -124,8 +140,18 @@ func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) SetPrivateLinkAddr
 	return s
 }
 
+func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) SetPublicEndpoint(v string) *GetRecallManagementConfigResponseBodyNetworkConfigs {
+	s.PublicEndpoint = &v
+	return s
+}
+
 func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) SetStatus(v string) *GetRecallManagementConfigResponseBodyNetworkConfigs {
 	s.Status = &v
+	return s
+}
+
+func (s *GetRecallManagementConfigResponseBodyNetworkConfigs) SetToken(v string) *GetRecallManagementConfigResponseBodyNetworkConfigs {
+	s.Token = &v
 	return s
 }
 
