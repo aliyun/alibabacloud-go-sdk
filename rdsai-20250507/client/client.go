@@ -2477,6 +2477,76 @@ func (client *Client) EnableAgentRuntime(request *EnableAgentRuntimeRequest) (_r
 
 // Summary:
 //
+// # GetAvailableLLMModels
+//
+// @param request - GetAvailableLLMModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAvailableLLMModelsResponse
+func (client *Client) GetAvailableLLMModelsWithOptions(request *GetAvailableLLMModelsRequest, runtime *dara.RuntimeOptions) (_result *GetAvailableLLMModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAvailableLLMModels"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAvailableLLMModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetAvailableLLMModels
+//
+// @param request - GetAvailableLLMModelsRequest
+//
+// @return GetAvailableLLMModelsResponse
+func (client *Client) GetAvailableLLMModels(request *GetAvailableLLMModelsRequest) (_result *GetAvailableLLMModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAvailableLLMModelsResponse{}
+	_body, _err := client.GetAvailableLLMModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the history conversations of a user.
 //
 // @param request - GetConversationsRequest
@@ -3276,6 +3346,84 @@ func (client *Client) ListCustomAgentTools() (_result *ListCustomAgentToolsRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCustomAgentToolsResponse{}
 	_body, _err := client.ListCustomAgentToolsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListLLMTokenUsage
+//
+// @param request - ListLLMTokenUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLLMTokenUsageResponse
+func (client *Client) ListLLMTokenUsageWithOptions(request *ListLLMTokenUsageRequest, runtime *dara.RuntimeOptions) (_result *ListLLMTokenUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLLMTokenUsage"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLLMTokenUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListLLMTokenUsage
+//
+// @param request - ListLLMTokenUsageRequest
+//
+// @return ListLLMTokenUsageResponse
+func (client *Client) ListLLMTokenUsage(request *ListLLMTokenUsageRequest) (_result *ListLLMTokenUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLLMTokenUsageResponse{}
+	_body, _err := client.ListLLMTokenUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
