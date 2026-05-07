@@ -282,6 +282,10 @@ type GetYikeStoryboardJobResponseBodyJobResult struct {
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
 	// example:
 	//
+	// https://bucket.oss-cn-shanghai.aliyuncs.com/test/110412818/6bf24c75285142f395464d4b9c2bcf07.srt?Expires=1778220836&OSSAccessKeyId=*******&Signature=*******
+	SrtFileUrl *string `json:"SrtFileUrl,omitempty" xml:"SrtFileUrl,omitempty"`
+	// example:
+	//
 	// [{\\"storyboardId\\":\\"st_1541525214\\",\\"title\\":\\"test_1\\",\\"status\\":\\"Produced\\",\\"subStatus\\":\\"ProduceSucc\\"},{\\"storyboardId\\":\\"st_1633435355\\",\\"title\\":\\"test_2\\",\\"status\\":\\"Produced\\",\\"subStatus\\":\\"ProduceSucc\\"}]
 	StoryboardInfoList *string `json:"StoryboardInfoList,omitempty" xml:"StoryboardInfoList,omitempty"`
 	// example:
@@ -314,6 +318,10 @@ func (s *GetYikeStoryboardJobResponseBodyJobResult) GetOutputUrl() *string {
 	return s.OutputUrl
 }
 
+func (s *GetYikeStoryboardJobResponseBodyJobResult) GetSrtFileUrl() *string {
+	return s.SrtFileUrl
+}
+
 func (s *GetYikeStoryboardJobResponseBodyJobResult) GetStoryboardInfoList() *string {
 	return s.StoryboardInfoList
 }
@@ -338,6 +346,11 @@ func (s *GetYikeStoryboardJobResponseBodyJobResult) SetFailureShotList(v string)
 
 func (s *GetYikeStoryboardJobResponseBodyJobResult) SetOutputUrl(v string) *GetYikeStoryboardJobResponseBodyJobResult {
 	s.OutputUrl = &v
+	return s
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobResult) SetSrtFileUrl(v string) *GetYikeStoryboardJobResponseBodyJobResult {
+	s.SrtFileUrl = &v
 	return s
 }
 
