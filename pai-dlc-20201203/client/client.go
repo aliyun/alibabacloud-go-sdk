@@ -273,6 +273,92 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
+// 创建任务模板
+//
+// @param request - CreateJobTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateJobTemplateResponse
+func (client *Client) CreateJobTemplateWithOptions(request *CreateJobTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Constraints) {
+		body["Constraints"] = request.Constraints
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Metadata) {
+		body["Metadata"] = request.Metadata
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateJobTemplate"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobtemplates"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建任务模板
+//
+// @param request - CreateJobTemplateRequest
+//
+// @return CreateJobTemplateResponse
+func (client *Client) CreateJobTemplate(request *CreateJobTemplateRequest) (_result *CreateJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateJobTemplateResponse{}
+	_body, _err := client.CreateJobTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a TensorBoard by using a job or specifying a data source configuration.
 //
 // @param request - CreateTensorboardRequest
@@ -466,6 +552,66 @@ func (client *Client) DeleteJob(JobId *string, request *DeleteJobRequest) (_resu
 	headers := make(map[string]*string)
 	_result = &DeleteJobResponse{}
 	_body, _err := client.DeleteJobWithOptions(JobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除任务模板
+//
+// @param request - DeleteJobTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJobTemplateResponse
+func (client *Client) DeleteJobTemplateWithOptions(TemplateId *string, request *DeleteJobTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteJobTemplate"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobtemplates/" + dara.PercentEncode(dara.StringValue(TemplateId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除任务模板
+//
+// @param request - DeleteJobTemplateRequest
+//
+// @return DeleteJobTemplateResponse
+func (client *Client) DeleteJobTemplate(TemplateId *string, request *DeleteJobTemplateRequest) (_result *DeleteJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteJobTemplateResponse{}
+	_body, _err := client.DeleteJobTemplateWithOptions(TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -906,6 +1052,72 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 	headers := make(map[string]*string)
 	_result = &GetJobSanityCheckResultResponse{}
 	_body, _err := client.GetJobSanityCheckResultWithOptions(JobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务模板详情
+//
+// @param request - GetJobTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobTemplateResponse
+func (client *Client) GetJobTemplateWithOptions(TemplateId *string, request *GetJobTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetJobTemplate"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobtemplates/" + dara.PercentEncode(dara.StringValue(TemplateId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务模板详情
+//
+// @param request - GetJobTemplateRequest
+//
+// @return GetJobTemplateResponse
+func (client *Client) GetJobTemplate(TemplateId *string, request *GetJobTemplateRequest) (_result *GetJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetJobTemplateResponse{}
+	_body, _err := client.GetJobTemplateWithOptions(TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1593,6 +1805,100 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 
 // Summary:
 //
+// 列出任务模板
+//
+// @param request - ListJobTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobTemplatesResponse
+func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListJobTemplates"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobtemplates"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListJobTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出任务模板
+//
+// @param request - ListJobTemplatesRequest
+//
+// @return ListJobTemplatesResponse
+func (client *Client) ListJobTemplates(request *ListJobTemplatesRequest) (_result *ListJobTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobTemplatesResponse{}
+	_body, _err := client.ListJobTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
 //
 // @param tmpReq - ListJobsRequest
@@ -1947,6 +2253,72 @@ func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_resul
 
 // Summary:
 //
+// 设置任务模板默认版本
+//
+// @param request - SetJobTemplateDefaultVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetJobTemplateDefaultVersionResponse
+func (client *Client) SetJobTemplateDefaultVersionWithOptions(TemplateId *string, request *SetJobTemplateDefaultVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetJobTemplateDefaultVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		body["Version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetJobTemplateDefaultVersion"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobtemplates/" + dara.PercentEncode(dara.StringValue(TemplateId)) + "/defaultversion"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetJobTemplateDefaultVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置任务模板默认版本
+//
+// @param request - SetJobTemplateDefaultVersionRequest
+//
+// @return SetJobTemplateDefaultVersionResponse
+func (client *Client) SetJobTemplateDefaultVersion(TemplateId *string, request *SetJobTemplateDefaultVersionRequest) (_result *SetJobTemplateDefaultVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetJobTemplateDefaultVersionResponse{}
+	_body, _err := client.SetJobTemplateDefaultVersionWithOptions(TemplateId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a TensorBoard instance.
 //
 // @param request - StartTensorboardRequest
@@ -2208,6 +2580,96 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 	headers := make(map[string]*string)
 	_result = &UpdateJobResponse{}
 	_body, _err := client.UpdateJobWithOptions(JobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务模板
+//
+// @param request - UpdateJobTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobTemplateResponse
+func (client *Client) UpdateJobTemplateWithOptions(TemplateId *string, request *UpdateJobTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Constraints) {
+		body["Constraints"] = request.Constraints
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Metadata) {
+		body["Metadata"] = request.Metadata
+	}
+
+	if !dara.IsNil(request.SetAsDefault) {
+		body["SetAsDefault"] = request.SetAsDefault
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateJobTemplate"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobtemplates/" + dara.PercentEncode(dara.StringValue(TemplateId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务模板
+//
+// @param request - UpdateJobTemplateRequest
+//
+// @return UpdateJobTemplateResponse
+func (client *Client) UpdateJobTemplate(TemplateId *string, request *UpdateJobTemplateRequest) (_result *UpdateJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateJobTemplateResponse{}
+	_body, _err := client.UpdateJobTemplateWithOptions(TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
