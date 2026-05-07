@@ -231,7 +231,8 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	// example:
 	//
 	// space for test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
 	// example:
 	//
 	// 1765961516
@@ -278,6 +279,10 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetDescription() *string
 	return s.Description
 }
 
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetIsSessionShareEnabled() *bool {
+	return s.IsSessionShareEnabled
+}
+
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetModifyTime() *int64 {
 	return s.ModifyTime
 }
@@ -314,6 +319,11 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCreator(v string) *Li
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetDescription(v string) *ListDataAgentWorkspaceResponseBodyDataContent {
 	s.Description = &v
+	return s
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetIsSessionShareEnabled(v bool) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.IsSessionShareEnabled = &v
 	return s
 }
 

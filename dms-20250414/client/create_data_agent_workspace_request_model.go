@@ -11,6 +11,8 @@ type iCreateDataAgentWorkspaceRequest interface {
 	GoString() string
 	SetDMSUnit(v string) *CreateDataAgentWorkspaceRequest
 	GetDMSUnit() *string
+	SetIsSessionShareEnabled(v bool) *CreateDataAgentWorkspaceRequest
+	GetIsSessionShareEnabled() *bool
 	SetWorkspaceDesc(v string) *CreateDataAgentWorkspaceRequest
 	GetWorkspaceDesc() *string
 	SetWorkspaceName(v string) *CreateDataAgentWorkspaceRequest
@@ -21,7 +23,8 @@ type CreateDataAgentWorkspaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	DMSUnit               *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
 	// example:
 	//
 	// Space for test
@@ -44,6 +47,10 @@ func (s *CreateDataAgentWorkspaceRequest) GetDMSUnit() *string {
 	return s.DMSUnit
 }
 
+func (s *CreateDataAgentWorkspaceRequest) GetIsSessionShareEnabled() *bool {
+	return s.IsSessionShareEnabled
+}
+
 func (s *CreateDataAgentWorkspaceRequest) GetWorkspaceDesc() *string {
 	return s.WorkspaceDesc
 }
@@ -54,6 +61,11 @@ func (s *CreateDataAgentWorkspaceRequest) GetWorkspaceName() *string {
 
 func (s *CreateDataAgentWorkspaceRequest) SetDMSUnit(v string) *CreateDataAgentWorkspaceRequest {
 	s.DMSUnit = &v
+	return s
+}
+
+func (s *CreateDataAgentWorkspaceRequest) SetIsSessionShareEnabled(v bool) *CreateDataAgentWorkspaceRequest {
+	s.IsSessionShareEnabled = &v
 	return s
 }
 

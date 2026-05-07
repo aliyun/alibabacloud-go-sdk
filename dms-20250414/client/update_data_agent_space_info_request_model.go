@@ -11,6 +11,8 @@ type iUpdateDataAgentSpaceInfoRequest interface {
 	GoString() string
 	SetDMSUnit(v string) *UpdateDataAgentSpaceInfoRequest
 	GetDMSUnit() *string
+	SetIsSessionShareEnabled(v bool) *UpdateDataAgentSpaceInfoRequest
+	GetIsSessionShareEnabled() *bool
 	SetWorkspaceDesc(v string) *UpdateDataAgentSpaceInfoRequest
 	GetWorkspaceDesc() *string
 	SetWorkspaceId(v string) *UpdateDataAgentSpaceInfoRequest
@@ -23,7 +25,8 @@ type UpdateDataAgentSpaceInfoRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	DMSUnit               *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
 	// example:
 	//
 	// space for test new
@@ -50,6 +53,10 @@ func (s *UpdateDataAgentSpaceInfoRequest) GetDMSUnit() *string {
 	return s.DMSUnit
 }
 
+func (s *UpdateDataAgentSpaceInfoRequest) GetIsSessionShareEnabled() *bool {
+	return s.IsSessionShareEnabled
+}
+
 func (s *UpdateDataAgentSpaceInfoRequest) GetWorkspaceDesc() *string {
 	return s.WorkspaceDesc
 }
@@ -64,6 +71,11 @@ func (s *UpdateDataAgentSpaceInfoRequest) GetWorkspaceName() *string {
 
 func (s *UpdateDataAgentSpaceInfoRequest) SetDMSUnit(v string) *UpdateDataAgentSpaceInfoRequest {
 	s.DMSUnit = &v
+	return s
+}
+
+func (s *UpdateDataAgentSpaceInfoRequest) SetIsSessionShareEnabled(v bool) *UpdateDataAgentSpaceInfoRequest {
+	s.IsSessionShareEnabled = &v
 	return s
 }
 

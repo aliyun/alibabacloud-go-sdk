@@ -111,7 +111,8 @@ type GetDataAgentWorkspaceInfoResponseBodyData struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
 	// example:
 	//
 	// 1765961516
@@ -158,6 +159,10 @@ func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetCreator() *string {
 	return s.Creator
 }
 
+func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetIsSessionShareEnabled() *bool {
+	return s.IsSessionShareEnabled
+}
+
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetModifyTime() *string {
 	return s.ModifyTime
 }
@@ -193,6 +198,11 @@ func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetCreateTime(v string) *Get
 
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetCreator(v string) *GetDataAgentWorkspaceInfoResponseBodyData {
 	s.Creator = &v
+	return s
+}
+
+func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetIsSessionShareEnabled(v bool) *GetDataAgentWorkspaceInfoResponseBodyData {
+	s.IsSessionShareEnabled = &v
 	return s
 }
 

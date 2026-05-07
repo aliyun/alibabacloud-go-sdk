@@ -821,6 +821,10 @@ func (client *Client) CreateDataAgentWorkspaceWithOptions(request *CreateDataAge
 		query["DMSUnit"] = request.DMSUnit
 	}
 
+	if !dara.IsNil(request.IsSessionShareEnabled) {
+		query["IsSessionShareEnabled"] = request.IsSessionShareEnabled
+	}
+
 	if !dara.IsNil(request.WorkspaceDesc) {
 		query["WorkspaceDesc"] = request.WorkspaceDesc
 	}
@@ -5022,6 +5026,10 @@ func (client *Client) UpdateDataAgentSpaceInfoWithOptions(request *UpdateDataAge
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DMSUnit) {
 		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.IsSessionShareEnabled) {
+		query["IsSessionShareEnabled"] = request.IsSessionShareEnabled
 	}
 
 	if !dara.IsNil(request.WorkspaceDesc) {

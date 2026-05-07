@@ -115,7 +115,8 @@ type UpdateDataAgentSpaceInfoResponseBodyData struct {
 	// example:
 	//
 	// space for test new
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
 	// example:
 	//
 	// 1765962516
@@ -162,6 +163,10 @@ func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetIsSessionShareEnabled() *bool {
+	return s.IsSessionShareEnabled
+}
+
 func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetModifyTime() *string {
 	return s.ModifyTime
 }
@@ -198,6 +203,11 @@ func (s *UpdateDataAgentSpaceInfoResponseBodyData) SetCreator(v string) *UpdateD
 
 func (s *UpdateDataAgentSpaceInfoResponseBodyData) SetDescription(v string) *UpdateDataAgentSpaceInfoResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataAgentSpaceInfoResponseBodyData) SetIsSessionShareEnabled(v bool) *UpdateDataAgentSpaceInfoResponseBodyData {
+	s.IsSessionShareEnabled = &v
 	return s
 }
 
