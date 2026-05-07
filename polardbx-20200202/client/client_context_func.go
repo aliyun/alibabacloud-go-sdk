@@ -6773,6 +6773,174 @@ func (client *Client) RestartDataImportTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 克隆PolarDB-X实例
+//
+// Description:
+//
+// ***
+//
+// @param request - RestoreDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreDBInstanceResponse
+func (client *Client) RestoreDBInstanceWithContext(ctx context.Context, request *RestoreDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestoreDBInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BackupSetId) {
+		query["BackupSetId"] = request.BackupSetId
+	}
+
+	if !dara.IsNil(request.BackupSetRegion) {
+		query["BackupSetRegion"] = request.BackupSetRegion
+	}
+
+	if !dara.IsNil(request.CNNodeCount) {
+		query["CNNodeCount"] = request.CNNodeCount
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloneInstanceName) {
+		query["CloneInstanceName"] = request.CloneInstanceName
+	}
+
+	if !dara.IsNil(request.CnClass) {
+		query["CnClass"] = request.CnClass
+	}
+
+	if !dara.IsNil(request.DBNodeClass) {
+		query["DBNodeClass"] = request.DBNodeClass
+	}
+
+	if !dara.IsNil(request.DBNodeCount) {
+		query["DBNodeCount"] = request.DBNodeCount
+	}
+
+	if !dara.IsNil(request.DNNodeCount) {
+		query["DNNodeCount"] = request.DNNodeCount
+	}
+
+	if !dara.IsNil(request.DnClass) {
+		query["DnClass"] = request.DnClass
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.GdnRole) {
+		query["GdnRole"] = request.GdnRole
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PrimaryZone) {
+		query["PrimaryZone"] = request.PrimaryZone
+	}
+
+	if !dara.IsNil(request.RecoveryTypeCode) {
+		query["RecoveryTypeCode"] = request.RecoveryTypeCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.RestoreTime) {
+		query["RestoreTime"] = request.RestoreTime
+	}
+
+	if !dara.IsNil(request.SecondaryZone) {
+		query["SecondaryZone"] = request.SecondaryZone
+	}
+
+	if !dara.IsNil(request.Series) {
+		query["Series"] = request.Series
+	}
+
+	if !dara.IsNil(request.SourceInstanceRegion) {
+		query["SourceInstanceRegion"] = request.SourceInstanceRegion
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.TertiaryZone) {
+		query["TertiaryZone"] = request.TertiaryZone
+	}
+
+	if !dara.IsNil(request.TopologyType) {
+		query["TopologyType"] = request.TopologyType
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestoreDBInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestoreDBInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 跳过评估迁移的当前步骤
 //
 // @param request - SkipCurrentStepRequest
