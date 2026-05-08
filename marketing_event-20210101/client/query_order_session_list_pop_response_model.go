@@ -59,5 +59,10 @@ func (s *QueryOrderSessionListPopResponse) SetBody(v *QueryOrderSessionListPopRe
 }
 
 func (s *QueryOrderSessionListPopResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

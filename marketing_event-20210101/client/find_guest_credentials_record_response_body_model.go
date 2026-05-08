@@ -95,7 +95,16 @@ func (s *FindGuestCredentialsRecordResponseBody) SetSuccess(v bool) *FindGuestCr
 }
 
 func (s *FindGuestCredentialsRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FindGuestCredentialsRecordResponseBodyData struct {
@@ -225,7 +234,12 @@ func (s *FindGuestCredentialsRecordResponseBodyData) SetStatus(v int32) *FindGue
 }
 
 func (s *FindGuestCredentialsRecordResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelLevelInfo != nil {
+		if err := s.ChannelLevelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FindGuestCredentialsRecordResponseBodyDataChannelLevelInfo struct {
@@ -323,7 +337,34 @@ func (s *FindGuestCredentialsRecordResponseBodyDataChannelLevelInfo) SetLevelTwo
 }
 
 func (s *FindGuestCredentialsRecordResponseBodyDataChannelLevelInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LevelOneOwner != nil {
+		for _, item := range s.LevelOneOwner {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LevelThreeOwner != nil {
+		for _, item := range s.LevelThreeOwner {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LevelTwoOwner != nil {
+		for _, item := range s.LevelTwoOwner {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FindGuestCredentialsRecordResponseBodyDataChannelLevelInfoLevelOneOwner struct {

@@ -128,7 +128,16 @@ func (s *QuerySignInRecordPopResponseBody) SetSuccess(v bool) *QuerySignInRecord
 }
 
 func (s *QuerySignInRecordPopResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QuerySignInRecordPopResponseBodyData struct {

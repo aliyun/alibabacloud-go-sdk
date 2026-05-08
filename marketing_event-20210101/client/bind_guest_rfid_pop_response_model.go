@@ -59,5 +59,10 @@ func (s *BindGuestRfidPopResponse) SetBody(v *BindGuestRfidPopResponseBody) *Bin
 }
 
 func (s *BindGuestRfidPopResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

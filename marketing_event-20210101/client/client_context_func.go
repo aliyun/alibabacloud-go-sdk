@@ -13,9 +13,11 @@ import (
 //
 // @return AddSumRecordFlowPopResponse
 func (client *Client) AddSumRecordFlowPopWithContext(ctx context.Context, request *AddSumRecordFlowPopRequest, runtime *dara.RuntimeOptions) (_result *AddSumRecordFlowPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -79,9 +81,11 @@ func (client *Client) AddSumRecordFlowPopWithContext(ctx context.Context, reques
 //
 // @return BindExhibitorRfidPopResponse
 func (client *Client) BindExhibitorRfidPopWithContext(ctx context.Context, request *BindExhibitorRfidPopRequest, runtime *dara.RuntimeOptions) (_result *BindExhibitorRfidPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -145,9 +149,11 @@ func (client *Client) BindExhibitorRfidPopWithContext(ctx context.Context, reque
 //
 // @return BindGuestRfidPopResponse
 func (client *Client) BindGuestRfidPopWithContext(ctx context.Context, request *BindGuestRfidPopRequest, runtime *dara.RuntimeOptions) (_result *BindGuestRfidPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -211,9 +217,11 @@ func (client *Client) BindGuestRfidPopWithContext(ctx context.Context, request *
 //
 // @return CheckNFCBindPopResponse
 func (client *Client) CheckNFCBindPopWithContext(ctx context.Context, request *CheckNFCBindPopRequest, runtime *dara.RuntimeOptions) (_result *CheckNFCBindPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -257,9 +265,11 @@ func (client *Client) CheckNFCBindPopWithContext(ctx context.Context, request *C
 //
 // @return FindGuestCredentialsRecordResponse
 func (client *Client) FindGuestCredentialsRecordWithContext(ctx context.Context, request *FindGuestCredentialsRecordRequest, runtime *dara.RuntimeOptions) (_result *FindGuestCredentialsRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -311,9 +321,11 @@ func (client *Client) FindGuestCredentialsRecordWithContext(ctx context.Context,
 //
 // @return FindGuestTicketRecordResponse
 func (client *Client) FindGuestTicketRecordWithContext(ctx context.Context, request *FindGuestTicketRecordRequest, runtime *dara.RuntimeOptions) (_result *FindGuestTicketRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -361,9 +373,11 @@ func (client *Client) FindGuestTicketRecordWithContext(ctx context.Context, requ
 //
 // @return QueryAllActivityInfoResponse
 func (client *Client) QueryAllActivityInfoWithContext(ctx context.Context, request *QueryAllActivityInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAllActivityInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -395,9 +409,11 @@ func (client *Client) QueryAllActivityInfoWithContext(ctx context.Context, reque
 //
 // @return QueryOrderSessionListPopResponse
 func (client *Client) QueryOrderSessionListPopWithContext(ctx context.Context, request *QueryOrderSessionListPopRequest, runtime *dara.RuntimeOptions) (_result *QueryOrderSessionListPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -431,15 +447,105 @@ func (client *Client) QueryOrderSessionListPopWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询新加坡千问大会票证信息
+//
+// @param request - QueryQwenConferenceSgTicketPopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryQwenConferenceSgTicketPopResponse
+func (client *Client) QueryQwenConferenceSgTicketPopWithContext(ctx context.Context, request *QueryQwenConferenceSgTicketPopRequest, runtime *dara.RuntimeOptions) (_result *QueryQwenConferenceSgTicketPopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TicketToken) {
+		query["TicketToken"] = request.TicketToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryQwenConferenceSgTicketPop"),
+		Version:     dara.String("2021-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryQwenConferenceSgTicketPopResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 千问大会搜索票据信息
+//
+// @param request - QueryQwenConferenceSgTicketSearchPopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryQwenConferenceSgTicketSearchPopResponse
+func (client *Client) QueryQwenConferenceSgTicketSearchPopWithContext(ctx context.Context, request *QueryQwenConferenceSgTicketSearchPopRequest, runtime *dara.RuntimeOptions) (_result *QueryQwenConferenceSgTicketSearchPopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryQwenConferenceSgTicketSearchPop"),
+		Version:     dara.String("2021-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryQwenConferenceSgTicketSearchPopResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - QuerySessionByActivityIdPopRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySessionByActivityIdPopResponse
 func (client *Client) QuerySessionByActivityIdPopWithContext(ctx context.Context, request *QuerySessionByActivityIdPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionByActivityIdPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -475,9 +581,11 @@ func (client *Client) QuerySessionByActivityIdPopWithContext(ctx context.Context
 //
 // @return QuerySessionListPopResponse
 func (client *Client) QuerySessionListPopWithContext(ctx context.Context, request *QuerySessionListPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionListPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -517,9 +625,11 @@ func (client *Client) QuerySessionListPopWithContext(ctx context.Context, reques
 //
 // @return QuerySignInRecordPopResponse
 func (client *Client) QuerySignInRecordPopWithContext(ctx context.Context, request *QuerySignInRecordPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySignInRecordPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -571,9 +681,11 @@ func (client *Client) QuerySignInRecordPopWithContext(ctx context.Context, reque
 //
 // @return QuerySingleActivityInfoResponse
 func (client *Client) QuerySingleActivityInfoWithContext(ctx context.Context, request *QuerySingleActivityInfoRequest, runtime *dara.RuntimeOptions) (_result *QuerySingleActivityInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -605,9 +717,11 @@ func (client *Client) QuerySingleActivityInfoWithContext(ctx context.Context, re
 //
 // @return SyncSignInInfoResponse
 func (client *Client) SyncSignInInfoWithContext(ctx context.Context, request *SyncSignInInfoRequest, runtime *dara.RuntimeOptions) (_result *SyncSignInInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -639,9 +753,11 @@ func (client *Client) SyncSignInInfoWithContext(ctx context.Context, request *Sy
 //
 // @return TicketOrCredentialsSignInPopResponse
 func (client *Client) TicketOrCredentialsSignInPopWithContext(ctx context.Context, request *TicketOrCredentialsSignInPopRequest, runtime *dara.RuntimeOptions) (_result *TicketOrCredentialsSignInPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActivityId) {
@@ -705,9 +821,11 @@ func (client *Client) TicketOrCredentialsSignInPopWithContext(ctx context.Contex
 //
 // @return UpdateCredentialsStatusPopResponse
 func (client *Client) UpdateCredentialsStatusPopWithContext(ctx context.Context, request *UpdateCredentialsStatusPopRequest, runtime *dara.RuntimeOptions) (_result *UpdateCredentialsStatusPopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
@@ -759,9 +877,11 @@ func (client *Client) UpdateCredentialsStatusPopWithContext(ctx context.Context,
 //
 // @return UpdateTicketRecordByticketCodePopResponse
 func (client *Client) UpdateTicketRecordByticketCodePopWithContext(ctx context.Context, request *UpdateTicketRecordByticketCodePopRequest, runtime *dara.RuntimeOptions) (_result *UpdateTicketRecordByticketCodePopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgendaId) {
