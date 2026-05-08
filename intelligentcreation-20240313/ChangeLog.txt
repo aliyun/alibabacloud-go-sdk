@@ -1,3 +1,24 @@
+2026-05-08 Version: v2.15.0
+- Support API BatchDeletePracticeTask.
+- Support API BuildAICoachScriptRecord.
+- Support API CreateAICoachTaskReport.
+- Support API CreateAgent.
+- Support API DeleteAICoachScript.
+- Support API DeleteAgent.
+- Support API GetAICoachTaskSessionResourceUsage.
+- Support API OfflineAICoachScript.
+- Support API ReleaseAgent.
+- Support API UpdateAgent.
+- Update API GetAICoachScript: add response parameters Body.agentId.
+- Update API GetAICoachScript: add response parameters Body.customReplyRules.
+- Update API GetAICoachScript: add response parameters Body.voiceId.
+- Update API GetAICoachScript: add response parameters Body.voiceLanguage.
+- Update API GetAICoachScript: add response parameters Body.weights.customReplyRuleEnabled.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.customReplyRules.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.weights.customReplyRuleEnabled.
+- Update API ListAICoachTaskPage: add response parameters Body.total.
+
+
 2025-05-21 Version: v2.14.2
 - Update API GetAICoachScript: add response parameters Body.scoreConfig.levelEnabled.
 - Update API GetAICoachScript: add response parameters Body.scoreConfig.levels.
