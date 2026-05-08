@@ -110,6 +110,77 @@ func (client *Client) AddHDMInstanceWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
+// # DAS大模型能力异步逻辑接口
+//
+// @param request - ChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatResponse
+func (client *Client) ChatWithSSECtx(ctx context.Context, request *ChatRequest, runtime *dara.RuntimeOptions, _yield chan *ChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.chatWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// # DAS大模型能力异步逻辑接口
+//
+// @param request - ChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatResponse
+func (client *Client) ChatWithContext(ctx context.Context, request *ChatRequest, runtime *dara.RuntimeOptions) (_result *ChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Message) {
+		query["Message"] = request.Message
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Summary) {
+		query["Summary"] = request.Summary
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Chat"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChatResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a cache analysis task.
 //
 // Description:
@@ -4383,74 +4454,6 @@ func (client *Client) GetDeadlockHistogramWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
-// @param request - GetEndpointSwitchTaskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetEndpointSwitchTaskResponse
-func (client *Client) GetEndpointSwitchTaskWithContext(ctx context.Context, request *GetEndpointSwitchTaskRequest, runtime *dara.RuntimeOptions) (_result *GetEndpointSwitchTaskResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.TaskId) {
-		query["TaskId"] = request.TaskId
-	}
-
-	if !dara.IsNil(request.Uid) {
-		query["Uid"] = request.Uid
-	}
-
-	if !dara.IsNil(request.UserId) {
-		query["UserId"] = request.UserId
-	}
-
-	if !dara.IsNil(request.Context) {
-		query["__context"] = request.Context
-	}
-
-	if !dara.IsNil(request.AccessKey) {
-		query["accessKey"] = request.AccessKey
-	}
-
-	if !dara.IsNil(request.Signature) {
-		query["signature"] = request.Signature
-	}
-
-	if !dara.IsNil(request.SkipAuth) {
-		query["skipAuth"] = request.SkipAuth
-	}
-
-	if !dara.IsNil(request.Timestamp) {
-		query["timestamp"] = request.Timestamp
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetEndpointSwitchTask"),
-		Version:     dara.String("2020-01-16"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetEndpointSwitchTaskResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
 // Summary:
 //
 // Asynchronously queries information about failed SQL queries in SQL Explorer data. You can query up to 20 failed SQL queries within the specific time range.
@@ -4847,138 +4850,6 @@ func (client *Client) GetFullRequestStatResultByInstanceIdWithContext(ctx contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFullRequestStatResultByInstanceIdResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetHDMAliyunResourceSyncResultRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetHDMAliyunResourceSyncResultResponse
-func (client *Client) GetHDMAliyunResourceSyncResultWithContext(ctx context.Context, request *GetHDMAliyunResourceSyncResultRequest, runtime *dara.RuntimeOptions) (_result *GetHDMAliyunResourceSyncResultResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.TaskId) {
-		query["TaskId"] = request.TaskId
-	}
-
-	if !dara.IsNil(request.Uid) {
-		query["Uid"] = request.Uid
-	}
-
-	if !dara.IsNil(request.UserId) {
-		query["UserId"] = request.UserId
-	}
-
-	if !dara.IsNil(request.Context) {
-		query["__context"] = request.Context
-	}
-
-	if !dara.IsNil(request.AccessKey) {
-		query["accessKey"] = request.AccessKey
-	}
-
-	if !dara.IsNil(request.Signature) {
-		query["signature"] = request.Signature
-	}
-
-	if !dara.IsNil(request.SkipAuth) {
-		query["skipAuth"] = request.SkipAuth
-	}
-
-	if !dara.IsNil(request.Timestamp) {
-		query["timestamp"] = request.Timestamp
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetHDMAliyunResourceSyncResult"),
-		Version:     dara.String("2020-01-16"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetHDMAliyunResourceSyncResultResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetHDMLastAliyunResourceSyncResultRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetHDMLastAliyunResourceSyncResultResponse
-func (client *Client) GetHDMLastAliyunResourceSyncResultWithContext(ctx context.Context, request *GetHDMLastAliyunResourceSyncResultRequest, runtime *dara.RuntimeOptions) (_result *GetHDMLastAliyunResourceSyncResultResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Uid) {
-		query["Uid"] = request.Uid
-	}
-
-	if !dara.IsNil(request.UserId) {
-		query["UserId"] = request.UserId
-	}
-
-	if !dara.IsNil(request.Context) {
-		query["__context"] = request.Context
-	}
-
-	if !dara.IsNil(request.AccessKey) {
-		query["accessKey"] = request.AccessKey
-	}
-
-	if !dara.IsNil(request.Signature) {
-		query["signature"] = request.Signature
-	}
-
-	if !dara.IsNil(request.SkipAuth) {
-		query["skipAuth"] = request.SkipAuth
-	}
-
-	if !dara.IsNil(request.Timestamp) {
-		query["timestamp"] = request.Timestamp
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetHDMLastAliyunResourceSyncResult"),
-		Version:     dara.String("2020-01-16"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetHDMLastAliyunResourceSyncResultResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7794,6 +7665,66 @@ func (client *Client) UpdateAutoThrottleRulesAsyncWithContext(ctx context.Contex
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) chatWithSSECtx_opYieldFunc(_yield chan *ChatResponse, _yieldErr chan error, ctx context.Context, request *ChatRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Message) {
+		query["Message"] = request.Message
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Summary) {
+		query["Summary"] = request.Summary
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Chat"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
 
 func (client *Client) getDasAgentSSEWithSSECtx_opYieldFunc(_yield chan *GetDasAgentSSEResponse, _yieldErr chan error, ctx context.Context, request *GetDasAgentSSERequest, runtime *dara.RuntimeOptions) {

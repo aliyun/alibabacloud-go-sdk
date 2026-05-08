@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/das-20200116/v3
+module github.com/alibabacloud-go/das-20200116/v4
 
 go 1.14
 
