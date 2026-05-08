@@ -1681,6 +1681,10 @@ func (client *Client) CreateAIDBClusterWithContext(ctx context.Context, request 
 		query["AutoUseCoupon"] = request.AutoUseCoupon
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DBClusterDescription) {
 		query["DBClusterDescription"] = request.DBClusterDescription
 	}

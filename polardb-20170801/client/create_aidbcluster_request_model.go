@@ -15,6 +15,8 @@ type iCreateAIDBClusterRequest interface {
 	GetAutoRenew() *string
 	SetAutoUseCoupon(v bool) *CreateAIDBClusterRequest
 	GetAutoUseCoupon() *bool
+	SetClientToken(v string) *CreateAIDBClusterRequest
+	GetClientToken() *string
 	SetDBClusterDescription(v string) *CreateAIDBClusterRequest
 	GetDBClusterDescription() *string
 	SetDBClusterId(v string) *CreateAIDBClusterRequest
@@ -87,7 +89,8 @@ type CreateAIDBClusterRequest struct {
 	// example:
 	//
 	// false
-	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// example:
 	//
 	// test
@@ -168,8 +171,6 @@ type CreateAIDBClusterRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// sg-bp**************
@@ -225,6 +226,10 @@ func (s *CreateAIDBClusterRequest) GetAutoRenew() *string {
 
 func (s *CreateAIDBClusterRequest) GetAutoUseCoupon() *bool {
 	return s.AutoUseCoupon
+}
+
+func (s *CreateAIDBClusterRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateAIDBClusterRequest) GetDBClusterDescription() *string {
@@ -355,6 +360,11 @@ func (s *CreateAIDBClusterRequest) SetAutoRenew(v string) *CreateAIDBClusterRequ
 
 func (s *CreateAIDBClusterRequest) SetAutoUseCoupon(v bool) *CreateAIDBClusterRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateAIDBClusterRequest) SetClientToken(v string) *CreateAIDBClusterRequest {
+	s.ClientToken = &v
 	return s
 }
 

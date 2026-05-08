@@ -13,6 +13,8 @@ type iDescribeGatewayAttributeResponseBody interface {
 	GetClassCode() *string
 	SetCreateTime(v string) *DescribeGatewayAttributeResponseBody
 	GetCreateTime() *string
+	SetCurrentVersion(v string) *DescribeGatewayAttributeResponseBody
+	GetCurrentVersion() *string
 	SetDbType(v string) *DescribeGatewayAttributeResponseBody
 	GetDbType() *string
 	SetEndpoints(v []*DescribeGatewayAttributeResponseBodyEndpoints) *DescribeGatewayAttributeResponseBody
@@ -25,6 +27,8 @@ type iDescribeGatewayAttributeResponseBody interface {
 	GetGwClusterId() *string
 	SetGwDescription(v string) *DescribeGatewayAttributeResponseBody
 	GetGwDescription() *string
+	SetLatestVersion(v string) *DescribeGatewayAttributeResponseBody
+	GetLatestVersion() *string
 	SetModifyTime(v string) *DescribeGatewayAttributeResponseBody
 	GetModifyTime() *string
 	SetPayType(v string) *DescribeGatewayAttributeResponseBody
@@ -33,6 +37,8 @@ type iDescribeGatewayAttributeResponseBody interface {
 	GetRegionId() *string
 	SetRequestId(v string) *DescribeGatewayAttributeResponseBody
 	GetRequestId() *string
+	SetRunningVersion(v string) *DescribeGatewayAttributeResponseBody
+	GetRunningVersion() *string
 	SetSecurityIPArrays(v []*DescribeGatewayAttributeResponseBodySecurityIPArrays) *DescribeGatewayAttributeResponseBody
 	GetSecurityIPArrays() []*DescribeGatewayAttributeResponseBodySecurityIPArrays
 	SetStatus(v string) *DescribeGatewayAttributeResponseBody
@@ -51,7 +57,8 @@ type DescribeGatewayAttributeResponseBody struct {
 	// example:
 	//
 	// 2020-02-24T11:57:54Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
 	// example:
 	//
 	// MySQL
@@ -67,6 +74,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// xxx
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// example:
 	//
 	// 2025-10-07T02:19:55Z
@@ -85,6 +93,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunningVersion   *string                                                 `json:"RunningVersion,omitempty" xml:"RunningVersion,omitempty"`
 	SecurityIPArrays []*DescribeGatewayAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -116,6 +125,10 @@ func (s *DescribeGatewayAttributeResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *DescribeGatewayAttributeResponseBody) GetCurrentVersion() *string {
+	return s.CurrentVersion
+}
+
 func (s *DescribeGatewayAttributeResponseBody) GetDbType() *string {
 	return s.DbType
 }
@@ -140,6 +153,10 @@ func (s *DescribeGatewayAttributeResponseBody) GetGwDescription() *string {
 	return s.GwDescription
 }
 
+func (s *DescribeGatewayAttributeResponseBody) GetLatestVersion() *string {
+	return s.LatestVersion
+}
+
 func (s *DescribeGatewayAttributeResponseBody) GetModifyTime() *string {
 	return s.ModifyTime
 }
@@ -154,6 +171,10 @@ func (s *DescribeGatewayAttributeResponseBody) GetRegionId() *string {
 
 func (s *DescribeGatewayAttributeResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeGatewayAttributeResponseBody) GetRunningVersion() *string {
+	return s.RunningVersion
 }
 
 func (s *DescribeGatewayAttributeResponseBody) GetSecurityIPArrays() []*DescribeGatewayAttributeResponseBodySecurityIPArrays {
@@ -179,6 +200,11 @@ func (s *DescribeGatewayAttributeResponseBody) SetClassCode(v string) *DescribeG
 
 func (s *DescribeGatewayAttributeResponseBody) SetCreateTime(v string) *DescribeGatewayAttributeResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGatewayAttributeResponseBody) SetCurrentVersion(v string) *DescribeGatewayAttributeResponseBody {
+	s.CurrentVersion = &v
 	return s
 }
 
@@ -212,6 +238,11 @@ func (s *DescribeGatewayAttributeResponseBody) SetGwDescription(v string) *Descr
 	return s
 }
 
+func (s *DescribeGatewayAttributeResponseBody) SetLatestVersion(v string) *DescribeGatewayAttributeResponseBody {
+	s.LatestVersion = &v
+	return s
+}
+
 func (s *DescribeGatewayAttributeResponseBody) SetModifyTime(v string) *DescribeGatewayAttributeResponseBody {
 	s.ModifyTime = &v
 	return s
@@ -229,6 +260,11 @@ func (s *DescribeGatewayAttributeResponseBody) SetRegionId(v string) *DescribeGa
 
 func (s *DescribeGatewayAttributeResponseBody) SetRequestId(v string) *DescribeGatewayAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGatewayAttributeResponseBody) SetRunningVersion(v string) *DescribeGatewayAttributeResponseBody {
+	s.RunningVersion = &v
 	return s
 }
 
