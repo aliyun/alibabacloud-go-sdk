@@ -1,3 +1,7 @@
+2026-05-08 Version: v6.0.10
+- Update API DescribeSQLPatterns: add request parameters SqlPatternHash.
+
+
 2025-11-04 Version: v6.0.9
 - Generated golang 2019-03-15 for adb.
 

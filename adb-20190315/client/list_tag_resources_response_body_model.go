@@ -29,8 +29,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// 184DE106-CB2C-4DD2-B57F-396652E6C8F8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are added to clusters.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -113,30 +112,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// am-bp1l20nxxxxxxxxxx
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. A value of cluster indicates an AnalyticDB for MySQL cluster.
-	//
-	// example:
-	//
-	// cluster
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
-	//
-	// example:
-	//
-	// testkey1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// testvalue1
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

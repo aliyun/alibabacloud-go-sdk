@@ -16,7 +16,6 @@ type iDescribeColumnsResponseBody interface {
 }
 
 type DescribeColumnsResponseBody struct {
-	// The queried columns.
 	Items *DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,48 +95,13 @@ func (s *DescribeColumnsResponseBodyItems) Validate() error {
 }
 
 type DescribeColumnsResponseBodyItemsColumn struct {
-	// Indicates whether the column is auto-incremented.
-	//
-	// example:
-	//
-	// true
-	AutoIncrementColumn *bool `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
-	// The name of the column.
-	//
-	// example:
-	//
-	// id
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The cluster ID.
-	//
-	// example:
-	//
-	// am-bp1xxxxxxxx47
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the column is a primary key column.
-	//
-	// example:
-	//
-	// false
-	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The data type of the column.
-	//
-	// example:
-	//
-	// bigint
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeColumnsResponseBodyItemsColumn) String() string {

@@ -16,7 +16,6 @@ type iDescribeSchemasResponseBody interface {
 }
 
 type DescribeSchemasResponseBody struct {
-	// The queried databases.
 	Items *DescribeSchemasResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeSchemasResponseBodyItems) Validate() error {
 }
 
 type DescribeSchemasResponseBodyItemsSchema struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// am-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeSchemasResponseBodyItemsSchema) String() string {

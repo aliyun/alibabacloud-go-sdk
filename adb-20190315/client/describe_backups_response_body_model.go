@@ -31,9 +31,8 @@ type DescribeBackupsResponseBody struct {
 	// example:
 	//
 	// 0
-	FreeBackupSize *int64 `json:"FreeBackupSize,omitempty" xml:"FreeBackupSize,omitempty"`
-	// The queried backup sets.
-	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	FreeBackupSize *int64                            `json:"FreeBackupSize,omitempty" xml:"FreeBackupSize,omitempty"`
+	Items          *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
@@ -181,59 +180,15 @@ func (s *DescribeBackupsResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItemsBackup struct {
-	// The end time of the backup.
-	//
-	// example:
-	//
-	// 2022-06-02T16:00Z
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The expiration time of the backup set.
-	//
-	// example:
-	//
-	// 2022-07-02T16:00Z
+	BackupEndTime     *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	BackupExpiredTime *string `json:"BackupExpiredTime,omitempty" xml:"BackupExpiredTime,omitempty"`
-	// The backup set ID.
-	//
-	// example:
-	//
-	// 32732****
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Only Snapshot is returned.
-	//
-	// example:
-	//
-	// Snapshot
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The size of the backup set. Unit: bytes.
-	//
-	// example:
-	//
-	// 2167808
-	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup.
-	//
-	// example:
-	//
-	// 2022-06-01T16:00Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupStatus    *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type. Valid values:
-	//
-	// 	- **FullBackup**
-	//
-	// 	- **IncrementalBackup**
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
-	//
-	// example:
-	//
-	// am-bp18934i73vb5****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	BackupId          *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod      *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupSize        *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime   *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus      *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType        *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyItemsBackup) String() string {

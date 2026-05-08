@@ -16,7 +16,6 @@ type iDescribeLogStoreKeysResponseBody interface {
 }
 
 type DescribeLogStoreKeysResponseBody struct {
-	// The queried log keywords.
 	LogStoreKeys *DescribeLogStoreKeysResponseBodyLogStoreKeys `json:"LogStoreKeys,omitempty" xml:"LogStoreKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//

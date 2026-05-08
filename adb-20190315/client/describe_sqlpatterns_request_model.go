@@ -25,6 +25,8 @@ type iDescribeSQLPatternsRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *DescribeSQLPatternsRequest
 	GetRegionId() *string
+	SetSqlPatternHash(v int64) *DescribeSQLPatternsRequest
+	GetSqlPatternHash() *int64
 	SetStartTime(v string) *DescribeSQLPatternsRequest
 	GetStartTime() *string
 	SetUserName(v string) *DescribeSQLPatternsRequest
@@ -141,7 +143,8 @@ type DescribeSQLPatternsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SqlPatternHash *int64  `json:"SqlPatternHash,omitempty" xml:"SqlPatternHash,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
 	//
 	// >
@@ -199,6 +202,10 @@ func (s *DescribeSQLPatternsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeSQLPatternsRequest) GetSqlPatternHash() *int64 {
+	return s.SqlPatternHash
+}
+
 func (s *DescribeSQLPatternsRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -244,6 +251,11 @@ func (s *DescribeSQLPatternsRequest) SetPageSize(v int32) *DescribeSQLPatternsRe
 
 func (s *DescribeSQLPatternsRequest) SetRegionId(v string) *DescribeSQLPatternsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSQLPatternsRequest) SetSqlPatternHash(v int64) *DescribeSQLPatternsRequest {
+	s.SqlPatternHash = &v
 	return s
 }
 

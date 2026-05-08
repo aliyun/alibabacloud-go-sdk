@@ -186,7 +186,7 @@ func (client *Client) AllocateClusterPublicConnection(request *AllocateClusterPu
 
 // Summary:
 //
-// # ApplyAdviceById
+// Applies an optimization suggestion.
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -250,7 +250,7 @@ func (client *Client) ApplyAdviceByIdWithOptions(request *ApplyAdviceByIdRequest
 
 // Summary:
 //
-// # ApplyAdviceById
+// Applies an optimization suggestion.
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -354,7 +354,7 @@ func (client *Client) AttachUserENI(request *AttachUserENIRequest) (_result *Att
 
 // Summary:
 //
-// # BatchApplyAdviceByIdList
+// Applies multiple optimization suggestions at a time.
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -418,7 +418,7 @@ func (client *Client) BatchApplyAdviceByIdListWithOptions(request *BatchApplyAdv
 
 // Summary:
 //
-// # BatchApplyAdviceByIdList
+// Applies multiple optimization suggestions at a time.
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -542,7 +542,7 @@ func (client *Client) BindDBResourceGroupWithUser(request *BindDBResourceGroupWi
 
 // Summary:
 //
-// 绑定资源组用户
+// Associates a resource group with a database account. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -620,7 +620,7 @@ func (client *Client) BindDBResourcePoolWithUserWithOptions(request *BindDBResou
 
 // Summary:
 //
-// 绑定资源组用户
+// Associates a resource group with a database account. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -644,7 +644,7 @@ func (client *Client) BindDBResourcePoolWithUser(request *BindDBResourcePoolWith
 
 // Summary:
 //
-// Cancels O\\&M events.
+// Cancels O\\\\\\&M events.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -712,7 +712,7 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// Cancels O\\&M events.
+// Cancels O\\\\\\&M events.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -1944,7 +1944,7 @@ func (client *Client) DeleteDBResourceGroup(request *DeleteDBResourceGroupReques
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -2016,7 +2016,7 @@ func (client *Client) DeleteDBResourcePoolWithOptions(request *DeleteDBResourceP
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -2308,7 +2308,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// Queries the configuration information about O\\&M tasks.
+// Queries the configuration information about O\\\\\\&M tasks.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2380,7 +2380,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 
 // Summary:
 //
-// Queries the configuration information about O\\&M tasks.
+// Queries the configuration information about O\\\\\\&M tasks.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -3366,7 +3366,7 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 
 // Summary:
 //
-// 查看备份策略
+// Queries the backup settings of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3426,7 +3426,7 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 
 // Summary:
 //
-// 查看备份策略
+// Queries the backup settings of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -4168,7 +4168,7 @@ func (client *Client) DescribeDBClusterAttribute(request *DescribeDBClusterAttri
 
 // Summary:
 //
-// 查询集群健康检查状态
+// Queries the health status of an AnalyticDB for MySQL Data Warehouse Edition cluster.
 //
 // @param request - DescribeDBClusterHealthStatusRequest
 //
@@ -4216,7 +4216,7 @@ func (client *Client) DescribeDBClusterHealthStatusWithOptions(request *Describe
 
 // Summary:
 //
-// 查询集群健康检查状态
+// Queries the health status of an AnalyticDB for MySQL Data Warehouse Edition cluster.
 //
 // @param request - DescribeDBClusterHealthStatusRequest
 //
@@ -5056,7 +5056,7 @@ func (client *Client) DescribeDBResourceGroup(request *DescribeDBResourceGroupRe
 
 // Summary:
 //
-// 查询资源组详情
+// Queries the information about resource groups of an AnalyticDB for MySQL cluster. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -5124,7 +5124,7 @@ func (client *Client) DescribeDBResourcePoolWithOptions(request *DescribeDBResou
 
 // Summary:
 //
-// 查询资源组详情
+// Queries the information about resource groups of an AnalyticDB for MySQL cluster. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -6994,7 +6994,7 @@ func (client *Client) DescribeLoghubDetail(request *DescribeLoghubDetailRequest)
 
 // Summary:
 //
-// Queries the information about O&M events.
+// Queries the information about O\\&M events.
 //
 // @param request - DescribeMaintenanceActionRequest
 //
@@ -7074,7 +7074,7 @@ func (client *Client) DescribeMaintenanceActionWithOptions(request *DescribeMain
 
 // Summary:
 //
-// Queries the information about O&M events.
+// Queries the information about O\\&M events.
 //
 // @param request - DescribeMaintenanceActionRequest
 //
@@ -7812,7 +7812,7 @@ func (client *Client) DescribeResubmitConfig(request *DescribeResubmitConfigRequ
 
 // Summary:
 //
-// 查询SQA状态
+// Queries the short query acceleration (SQA) configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeSQAConfigRequest
 //
@@ -7884,7 +7884,7 @@ func (client *Client) DescribeSQAConfigWithOptions(request *DescribeSQAConfigReq
 
 // Summary:
 //
-// 查询SQA状态
+// Queries the short query acceleration (SQA) configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeSQAConfigRequest
 //
@@ -7947,6 +7947,10 @@ func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPattern
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SqlPatternHash) {
+		query["SqlPatternHash"] = request.SqlPatternHash
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -8736,7 +8740,7 @@ func (client *Client) DescribeTableAccessCount(request *DescribeTableAccessCount
 
 // Summary:
 //
-// 查询表详情
+// Queries the distribution of data in a table among partitions.
 //
 // @param request - DescribeTableDetailRequest
 //
@@ -8808,7 +8812,7 @@ func (client *Client) DescribeTableDetailWithOptions(request *DescribeTableDetai
 
 // Summary:
 //
-// 查询表详情
+// Queries the distribution of data in a table among partitions.
 //
 // @param request - DescribeTableDetailRequest
 //
@@ -9566,7 +9570,7 @@ func (client *Client) DescribeWorkerDetection(request *DescribeWorkerDetectionRe
 
 // Summary:
 //
-// 关闭用户ENI
+// Detaches an elastic network interface (ENI) from an AnalyticDB for MySQL Data Warehouse Edition cluster.
 //
 // Description:
 //
@@ -9630,7 +9634,7 @@ func (client *Client) DetachUserENIWithOptions(request *DetachUserENIRequest, ru
 
 // Summary:
 //
-// 关闭用户ENI
+// Detaches an elastic network interface (ENI) from an AnalyticDB for MySQL Data Warehouse Edition cluster.
 //
 // Description:
 //
@@ -9836,7 +9840,7 @@ func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecords
 
 // Summary:
 //
-// 开通建议服务
+// Enables the suggestion feature.
 //
 // @param request - EnableAdviceServiceRequest
 //
@@ -9884,7 +9888,7 @@ func (client *Client) EnableAdviceServiceWithOptions(request *EnableAdviceServic
 
 // Summary:
 //
-// 开通建议服务
+// Enables the suggestion feature.
 //
 // @param request - EnableAdviceServiceRequest
 //
@@ -10274,7 +10278,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
+// Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition or Enterprise Edition cluster in AnalyticDB for MySQL.
 //
 // @param request - MigrateDBClusterRequest
 //
@@ -10378,7 +10382,7 @@ func (client *Client) MigrateDBClusterWithOptions(request *MigrateDBClusterReque
 
 // Summary:
 //
-// Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
+// Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition or Enterprise Edition cluster in AnalyticDB for MySQL.
 //
 // @param request - MigrateDBClusterRequest
 //
@@ -10482,7 +10486,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Changes the time configuration of O\\&M events.
+// Changes the time configuration of O\\\\\\&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -10566,7 +10570,7 @@ func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *Modi
 
 // Summary:
 //
-// Changes the time configuration of O\\&M events.
+// Changes the time configuration of O\\\\\\&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -10584,7 +10588,7 @@ func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOpe
 
 // Summary:
 //
-// Changes the execution time of O&M events.
+// Changes the execution time of O\\&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -10660,7 +10664,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// Changes the execution time of O&M events.
+// Changes the execution time of O\\&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -10858,7 +10862,7 @@ func (client *Client) ModifyAutoRenewAttribute(request *ModifyAutoRenewAttribute
 
 // Summary:
 //
-// 修改全量备份策略
+// Modifies the backup policy of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -10938,7 +10942,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 // Summary:
 //
-// 修改全量备份策略
+// Modifies the backup policy of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -11270,7 +11274,7 @@ func (client *Client) ModifyDBClusterAccessWhiteList(request *ModifyDBClusterAcc
 
 // Summary:
 //
-// 修改备注
+// Modifies the description of an AnalyticDB for MySQL cluster to facilitate the maintenance and management of the cluster.
 //
 // @param request - ModifyDBClusterDescriptionRequest
 //
@@ -11334,7 +11338,7 @@ func (client *Client) ModifyDBClusterDescriptionWithOptions(request *ModifyDBClu
 
 // Summary:
 //
-// 修改备注
+// Modifies the description of an AnalyticDB for MySQL cluster to facilitate the maintenance and management of the cluster.
 //
 // @param request - ModifyDBClusterDescriptionRequest
 //
@@ -12464,7 +12468,7 @@ func (client *Client) ModifyLogHubStatus(request *ModifyLogHubStatusRequest) (_r
 
 // Summary:
 //
-// Changes the switchover time of O&M events.
+// Changes the switchover time of O\\&M events.
 //
 // @param request - ModifyMaintenanceActionRequest
 //
@@ -12536,7 +12540,7 @@ func (client *Client) ModifyMaintenanceActionWithOptions(request *ModifyMaintena
 
 // Summary:
 //
-// Changes the switchover time of O&M events.
+// Changes the switchover time of O\\&M events.
 //
 // @param request - ModifyMaintenanceActionRequest
 //
@@ -13124,7 +13128,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// 取消服务帐号授权
+// Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
 //
 // @param request - RevokeOperatorPermissionRequest
 //
@@ -13184,7 +13188,7 @@ func (client *Client) RevokeOperatorPermissionWithOptions(request *RevokeOperato
 
 // Summary:
 //
-// 取消服务帐号授权
+// Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
 //
 // @param request - RevokeOperatorPermissionRequest
 //

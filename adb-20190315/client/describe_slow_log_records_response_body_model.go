@@ -29,9 +29,8 @@ type DescribeSlowLogRecordsResponseBody struct {
 	// example:
 	//
 	// am-bp1rqvm70uh2****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Details of the slow query logs.
-	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBClusterId *string                                  `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Items       *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -164,114 +163,24 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsSlowLogRecord struct {
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the execution started. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-05-27T08:04:43Z
+	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
-	// The IP address of the client that is used to connect to the database.
-	//
-	// example:
-	//
-	// ``172.16.**.**``
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The amount of output data in the task. Unit: bytes.
-	//
-	// example:
-	//
-	// 0.009
-	OutputSize *string `json:"OutputSize,omitempty" xml:"OutputSize,omitempty"`
-	// The number of rows parsed by the SQL statement.
-	//
-	// example:
-	//
-	// 0
-	ParseRowCounts *int64 `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	// The maximum memory usage when the SQL statement is executed. Unit: KB.
-	//
-	// example:
-	//
-	// 431.447
-	PeakMemoryUsage *string `json:"PeakMemoryUsage,omitempty" xml:"PeakMemoryUsage,omitempty"`
-	// The amount of time consumed to generate execution plans. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 12
-	PlanningTime *int64 `json:"PlanningTime,omitempty" xml:"PlanningTime,omitempty"`
-	// The ID of the process.
-	//
-	// example:
-	//
-	// 2021052716044317201616624903453******
-	ProcessID *string `json:"ProcessID,omitempty" xml:"ProcessID,omitempty"`
-	// The time consumed to execute the SQL statement. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 2344
-	QueryTime *int64 `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The queuing duration before the query is executed. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 0
-	QueueTime *int64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
-	// The number of rows returned by the SQL statement.
-	//
-	// example:
-	//
-	// 1
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// Details of the SQL statement.
-	//
-	// example:
-	//
-	// INSERT OVERWRITE INTO hdfs_import_external\\nSELECT *\\nFROM adb_hdfs_import_source
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The number of rows scanned from a data source in the task.
-	//
-	// example:
-	//
-	// 3
-	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	// The amount of scanned data. Unit: KB.
-	//
-	// example:
-	//
-	// 0.035
-	ScanSize *string `json:"ScanSize,omitempty" xml:"ScanSize,omitempty"`
-	// The total amount of time consumed to scan data. It is an accumulated value collected from multiple TableScanNode nodes. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 10
-	ScanTime *int64 `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
-	// The execution state of the SQL statement.
-	//
-	// example:
-	//
-	// SUCCESSED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The username.
-	//
-	// example:
-	//
-	// test
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The accumulated CPU Time value of all operators collected from all nodes. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 6100
-	WallTime *int64 `json:"WallTime,omitempty" xml:"WallTime,omitempty"`
+	HostAddress        *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	OutputSize         *string `json:"OutputSize,omitempty" xml:"OutputSize,omitempty"`
+	ParseRowCounts     *int64  `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
+	PeakMemoryUsage    *string `json:"PeakMemoryUsage,omitempty" xml:"PeakMemoryUsage,omitempty"`
+	PlanningTime       *int64  `json:"PlanningTime,omitempty" xml:"PlanningTime,omitempty"`
+	ProcessID          *string `json:"ProcessID,omitempty" xml:"ProcessID,omitempty"`
+	QueryTime          *int64  `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	QueueTime          *int64  `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	ReturnRowCounts    *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	SQLText            *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	ScanRows           *int64  `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	ScanSize           *string `json:"ScanSize,omitempty" xml:"ScanSize,omitempty"`
+	ScanTime           *int64  `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
+	State              *string `json:"State,omitempty" xml:"State,omitempty"`
+	UserName           *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WallTime           *int64  `json:"WallTime,omitempty" xml:"WallTime,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsResponseBodyItemsSlowLogRecord) String() string {

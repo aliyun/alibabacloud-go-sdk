@@ -28,6 +28,8 @@ type DescribeDownloadRecordsRequest struct {
 	//
 	// am-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Deprecated
+	//
 	// The language of file titles and error messages. Valid values:
 	//
 	// 	- **zh*	- (default): simplified Chinese.

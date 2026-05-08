@@ -23,9 +23,8 @@ type DescribeDBClusterNetInfoResponseBody struct {
 	// example:
 	//
 	// VPC
-	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// The queried network information about the cluster.
-	Items *DescribeDBClusterNetInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ClusterNetworkType *string                                    `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
+	Items              *DescribeDBClusterNetInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -113,56 +112,13 @@ func (s *DescribeDBClusterNetInfoResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClusterNetInfoResponseBodyItemsAddress struct {
-	// The endpoint of the cluster.
-	//
-	// example:
-	//
-	// am-bpxxxxxxxx.ads.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The prefix of the cluster endpoint.
-	//
-	// example:
-	//
-	// am-bpxxxxxxxx89k51380
+	ConnectionString       *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 192.168.x.x
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The network type of the cluster. Valid values:
-	//
-	// 	- **Public**: public endpoint.
-	//
-	// 	- **VPC**: Virtual Private Cloud (VPC) endpoint.
-	//
-	// example:
-	//
-	// VPC
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port number that is used to connect to the cluster.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The VPC ID.
-	//
-	// >  If NetType is set to Public, an empty string is returned for this parameter.
-	//
-	// example:
-	//
-	// vpc-xxxxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID.
-	//
-	// >  If NetType is set to Public, an empty string is returned for this parameter.
-	//
-	// example:
-	//
-	// vsw-xxxxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	IPAddress              *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NetType                *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Port                   *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId                  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeDBClusterNetInfoResponseBodyItemsAddress) String() string {

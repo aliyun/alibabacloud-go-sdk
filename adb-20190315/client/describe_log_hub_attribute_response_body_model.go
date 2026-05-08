@@ -103,9 +103,8 @@ type DescribeLogHubAttributeResponseBodyLoghubInfo struct {
 	// example:
 	//
 	// true
-	FilterDirtyData *bool `json:"FilterDirtyData,omitempty" xml:"FilterDirtyData,omitempty"`
-	// The names of the Logstores.
-	LogHubStores *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores `json:"LogHubStores,omitempty" xml:"LogHubStores,omitempty" type:"Struct"`
+	FilterDirtyData *bool                                                      `json:"FilterDirtyData,omitempty" xml:"FilterDirtyData,omitempty"`
+	LogHubStores    *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores `json:"LogHubStores,omitempty" xml:"LogHubStores,omitempty" type:"Struct"`
 	// The name of the Logstore.
 	//
 	// example:
@@ -367,18 +366,8 @@ func (s *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores) Validate() e
 }
 
 type DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore struct {
-	// The value of the log keyword.
-	//
-	// example:
-	//
-	// 255311
 	FieldKey *string `json:"FieldKey,omitempty" xml:"FieldKey,omitempty"`
-	// The log keyword.
-	//
-	// example:
-	//
-	// taskid
-	LogKey *string `json:"LogKey,omitempty" xml:"LogKey,omitempty"`
+	LogKey   *string `json:"LogKey,omitempty" xml:"LogKey,omitempty"`
 }
 
 func (s DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore) String() string {

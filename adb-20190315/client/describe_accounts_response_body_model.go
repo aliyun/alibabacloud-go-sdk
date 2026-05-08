@@ -16,7 +16,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The queried database accounts.
 	AccountList *DescribeAccountsResponseBodyAccountList `json:"AccountList,omitempty" xml:"AccountList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,41 +95,11 @@ func (s *DescribeAccountsResponseBodyAccountList) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountListDBAccount struct {
-	// The description of the database account.
-	//
-	// example:
-	//
-	// C@test
-	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account.
-	//
-	// example:
-	//
-	// test1
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The state of the database account. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Available**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Available
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The type of the database account. Valid values:
-	//
-	// 	- **Normal**: standard account.
-	//
-	// 	- **Super**: privileged account.
-	//
-	// example:
-	//
-	// Normal
-	AccountType *string                                               `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Tags        *DescribeAccountsResponseBodyAccountListDBAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AccountDescription *string                                               `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	AccountName        *string                                               `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string                                               `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType        *string                                               `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Tags               *DescribeAccountsResponseBodyAccountListDBAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccountsResponseBodyAccountListDBAccount) String() string {

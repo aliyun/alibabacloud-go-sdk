@@ -32,15 +32,15 @@ type ModifyDBClusterPayTypeResponseBody struct {
 	//
 	// 2023532****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The billing method. Valid values:
+	// The billing method of the cluster. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// 	- **Postpaid**: pay-as-you-go
 	//
-	// 	- **Prepaid**: subscription.
+	// 	- **Prepaid**: subscription
 	//
 	// example:
 	//
-	// Prepaid
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The request ID.
 	//

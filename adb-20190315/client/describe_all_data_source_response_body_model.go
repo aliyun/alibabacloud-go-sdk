@@ -20,18 +20,15 @@ type iDescribeAllDataSourceResponseBody interface {
 }
 
 type DescribeAllDataSourceResponseBody struct {
-	// The queried columns.
 	Columns *DescribeAllDataSourceResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried databases.
-	Schemas *DescribeAllDataSourceResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
-	// The queried tables.
-	Tables *DescribeAllDataSourceResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   *DescribeAllDataSourceResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	Tables    *DescribeAllDataSourceResponseBodyTables  `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeAllDataSourceResponseBody) String() string {
@@ -132,56 +129,13 @@ func (s *DescribeAllDataSourceResponseBodyColumns) Validate() error {
 }
 
 type DescribeAllDataSourceResponseBodyColumnsColumn struct {
-	// Indicates whether the column is an auto-increment column. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	AutoIncrementColumn *bool `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
-	// The name of the column.
-	//
-	// example:
-	//
-	// id
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
-	//
-	// example:
-	//
-	// am-bp1xxxxxxxx47
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the column is the primary key of the table. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The data type of the column.
-	//
-	// example:
-	//
-	// bigint
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAllDataSourceResponseBodyColumnsColumn) String() string {
@@ -294,18 +248,8 @@ func (s *DescribeAllDataSourceResponseBodySchemas) Validate() error {
 }
 
 type DescribeAllDataSourceResponseBodySchemasSchema struct {
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
-	//
-	// example:
-	//
-	// am-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeAllDataSourceResponseBodySchemasSchema) String() string {
@@ -373,24 +317,9 @@ func (s *DescribeAllDataSourceResponseBodyTables) Validate() error {
 }
 
 type DescribeAllDataSourceResponseBodyTablesTable struct {
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
-	//
-	// example:
-	//
-	// am-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeAllDataSourceResponseBodyTablesTable) String() string {

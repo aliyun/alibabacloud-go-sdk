@@ -22,7 +22,6 @@ type iDescribeAutoRenewAttributeResponseBody interface {
 }
 
 type DescribeAutoRenewAttributeResponseBody struct {
-	// The renewal information of the cluster.
 	Items *DescribeAutoRenewAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,56 +146,12 @@ func (s *DescribeAutoRenewAttributeResponseBodyItems) Validate() error {
 }
 
 type DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute struct {
-	// Indicates whether auto-renewal is enabled for the cluster. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The cluster ID.
-	//
-	// example:
-	//
-	// am-bp11q28kvl688****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The renewal duration.
-	//
-	// example:
-	//
-	// 1
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The unit of the renewal duration. Valid values:
-	//
-	// 	- **Year**
-	//
-	// 	- **Month**
-	//
-	// example:
-	//
-	// Year
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID of the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The renewal status of the cluster. Valid values:
-	//
-	// 	- **AutoRenewal**: The cluster is automatically renewed.
-	//
-	// 	- **Normal**: The cluster is manually renewed. Before the cluster expires, the system sends you a reminder by SMS message.
-	//
-	// 	- **NotRenewal**: The cluster is not renewed. Three days before the cluster expires, the system sends you a reminder by SMS message to remind you that the cluster is not renewed. However, the system does not send you a reminder when the cluster expires.
-	//
-	// example:
-	//
-	// AutoRenewal
-	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	AutoRenewEnabled *bool   `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RenewalStatus    *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 }
 
 func (s DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute) String() string {

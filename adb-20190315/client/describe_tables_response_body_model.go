@@ -16,7 +16,6 @@ type iDescribeTablesResponseBody interface {
 }
 
 type DescribeTablesResponseBody struct {
-	// The queried tables.
 	Items *DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,9 @@ func (s *DescribeTablesResponseBodyItems) Validate() error {
 }
 
 type DescribeTablesResponseBodyItemsTable struct {
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
-	//
-	// example:
-	//
-	// am-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeTablesResponseBodyItemsTable) String() string {

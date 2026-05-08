@@ -16,7 +16,6 @@ type iDescribeRegionsMixedResponseBody interface {
 }
 
 type DescribeRegionsMixedResponseBody struct {
-	// The queried regions.
 	Regions *DescribeRegionsMixedResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,8 @@ func (s *DescribeRegionsMixedResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsMixedResponseBodyRegionsRegion struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The version of the cluster.
-	//
-	// Valid values:
-	//
-	// 	- 2.0
-	//
-	// 	- 3.0
-	//
-	// example:
-	//
-	// 3.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version  *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeRegionsMixedResponseBodyRegionsRegion) String() string {

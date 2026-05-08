@@ -16,7 +16,6 @@ type iDescribeKmsKeysResponseBody interface {
 }
 
 type DescribeKmsKeysResponseBody struct {
-	// The queried KMS keys.
 	KmsKeys *DescribeKmsKeysResponseBodyKmsKeys `json:"KmsKeys,omitempty" xml:"KmsKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeKmsKeysResponseBodyKmsKeys) Validate() error {
 }
 
 type DescribeKmsKeysResponseBodyKmsKeysKmsKey struct {
-	// The alias of the key.
-	//
-	// example:
-	//
-	// mykey
 	KeyAlias *string `json:"KeyAlias,omitempty" xml:"KeyAlias,omitempty"`
-	// The ID of the key.
-	//
-	// example:
-	//
-	// 2e81355b-f8e7-4090-8082-a8f8124a621c
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyId    *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s DescribeKmsKeysResponseBodyKmsKeysKmsKey) String() string {

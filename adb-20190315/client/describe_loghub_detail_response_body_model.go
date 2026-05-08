@@ -103,9 +103,8 @@ type DescribeLoghubDetailResponseBodyLoghubInfo struct {
 	// example:
 	//
 	// true
-	FilterDirtyData *bool `json:"FilterDirtyData,omitempty" xml:"FilterDirtyData,omitempty"`
-	// The log keywords.
-	LogHubStores *DescribeLoghubDetailResponseBodyLoghubInfoLogHubStores `json:"LogHubStores,omitempty" xml:"LogHubStores,omitempty" type:"Struct"`
+	FilterDirtyData *bool                                                   `json:"FilterDirtyData,omitempty" xml:"FilterDirtyData,omitempty"`
+	LogHubStores    *DescribeLoghubDetailResponseBodyLoghubInfoLogHubStores `json:"LogHubStores,omitempty" xml:"LogHubStores,omitempty" type:"Struct"`
 	// The name of the Logstore.
 	//
 	// example:
@@ -337,18 +336,8 @@ func (s *DescribeLoghubDetailResponseBodyLoghubInfoLogHubStores) Validate() erro
 }
 
 type DescribeLoghubDetailResponseBodyLoghubInfoLogHubStoresLogHubStore struct {
-	// The value of the log keyword.
-	//
-	// example:
-	//
-	// channel_id
 	FieldKey *string `json:"FieldKey,omitempty" xml:"FieldKey,omitempty"`
-	// The log keyword.
-	//
-	// example:
-	//
-	// put_request
-	LogKey *string `json:"LogKey,omitempty" xml:"LogKey,omitempty"`
+	LogKey   *string `json:"LogKey,omitempty" xml:"LogKey,omitempty"`
 }
 
 func (s DescribeLoghubDetailResponseBodyLoghubInfoLogHubStoresLogHubStore) String() string {

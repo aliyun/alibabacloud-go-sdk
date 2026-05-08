@@ -26,23 +26,17 @@ type iDescribeRdsAnalysisResourceQuotasResponseBody interface {
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBody struct {
-	// The editions of the MySQL analytic instances.
 	DBNodeCategoryList *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList `json:"DBNodeCategoryList,omitempty" xml:"DBNodeCategoryList,omitempty" type:"Struct"`
-	// The instance types of the MySQL analytic instances.
-	DBNodeClassList *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList `json:"DBNodeClassList,omitempty" xml:"DBNodeClassList,omitempty" type:"Struct"`
-	// The storage sizes of the MySQL analytic instances.
-	DBNodeStorageList *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList `json:"DBNodeStorageList,omitempty" xml:"DBNodeStorageList,omitempty" type:"Struct"`
-	// The versions of the MySQL analytic instances.
-	EngineVersionList *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList `json:"EngineVersionList,omitempty" xml:"EngineVersionList,omitempty" type:"Struct"`
-	// The modes of the MySQL analytic instances.
-	ModeList *DescribeRdsAnalysisResourceQuotasResponseBodyModeList `json:"ModeList,omitempty" xml:"ModeList,omitempty" type:"Struct"`
+	DBNodeClassList    *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList    `json:"DBNodeClassList,omitempty" xml:"DBNodeClassList,omitempty" type:"Struct"`
+	DBNodeStorageList  *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList  `json:"DBNodeStorageList,omitempty" xml:"DBNodeStorageList,omitempty" type:"Struct"`
+	EngineVersionList  *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList  `json:"EngineVersionList,omitempty" xml:"EngineVersionList,omitempty" type:"Struct"`
+	ModeList           *DescribeRdsAnalysisResourceQuotasResponseBodyModeList           `json:"ModeList,omitempty" xml:"ModeList,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 1A31D7FA-1826-5843-8807-D2F715E70CB0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The storage types of the MySQL analytic instances.
+	RequestId       *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StorageTypeList *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Struct"`
 }
 
@@ -186,17 +180,7 @@ func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList) Valida
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory struct {
-	// The display value.
-	//
-	// example:
-	//
-	// mixed_storage
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The real value.
-	//
-	// example:
-	//
-	// mixed_storage
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -265,17 +249,7 @@ func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList) Validate(
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass struct {
-	// The display value.
-	//
-	// example:
-	//
-	// E32
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The real value.
-	//
-	// example:
-	//
-	// E32
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -344,17 +318,7 @@ func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList) Validat
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage struct {
-	// The display value.
-	//
-	// example:
-	//
-	// 100
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The real value.
-	//
-	// example:
-	//
-	// 100
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -423,17 +387,7 @@ func (s *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList) Validat
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion struct {
-	// The display value.
-	//
-	// example:
-	//
-	// 3.0
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The real value.
-	//
-	// example:
-	//
-	// 3.0
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -502,17 +456,7 @@ func (s *DescribeRdsAnalysisResourceQuotasResponseBodyModeList) Validate() error
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode struct {
-	// The display value.
-	//
-	// example:
-	//
-	// flexible
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The real value.
-	//
-	// example:
-	//
-	// flexible
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -581,17 +525,7 @@ func (s *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList) Validate(
 }
 
 type DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType struct {
-	// The display value.
-	//
-	// example:
-	//
-	// cloud_essd
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The real value.
-	//
-	// example:
-	//
-	// cloud_essd
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -73,7 +73,7 @@ func (client *Client) AllocateClusterPublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// # ApplyAdviceById
+// Applies an optimization suggestion.
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -201,7 +201,7 @@ func (client *Client) AttachUserENIWithContext(ctx context.Context, request *Att
 
 // Summary:
 //
-// # BatchApplyAdviceByIdList
+// Applies multiple optimization suggestions at a time.
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -345,7 +345,7 @@ func (client *Client) BindDBResourceGroupWithUserWithContext(ctx context.Context
 
 // Summary:
 //
-// 绑定资源组用户
+// Associates a resource group with a database account. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -423,7 +423,7 @@ func (client *Client) BindDBResourcePoolWithUserWithContext(ctx context.Context,
 
 // Summary:
 //
-// Cancels O\\&M events.
+// Cancels O\\\\\\&M events.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -1457,7 +1457,7 @@ func (client *Client) DeleteDBResourceGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -1741,7 +1741,7 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the configuration information about O\\&M tasks.
+// Queries the configuration information about O\\\\\\&M tasks.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2595,7 +2595,7 @@ func (client *Client) DescribeAvailableResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查看备份策略
+// Queries the backup settings of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3235,7 +3235,7 @@ func (client *Client) DescribeDBClusterAttributeWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询集群健康检查状态
+// Queries the health status of an AnalyticDB for MySQL Data Warehouse Edition cluster.
 //
 // @param request - DescribeDBClusterHealthStatusRequest
 //
@@ -3923,7 +3923,7 @@ func (client *Client) DescribeDBResourceGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询资源组详情
+// Queries the information about resource groups of an AnalyticDB for MySQL cluster. You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition clusters in elastic mode for Cluster Edition.
 //
 // Description:
 //
@@ -5461,7 +5461,7 @@ func (client *Client) DescribeLoghubDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about O&M events.
+// Queries the information about O\\&M events.
 //
 // @param request - DescribeMaintenanceActionRequest
 //
@@ -6117,7 +6117,7 @@ func (client *Client) DescribeResubmitConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询SQA状态
+// Queries the short query acceleration (SQA) configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeSQAConfigRequest
 //
@@ -6234,6 +6234,10 @@ func (client *Client) DescribeSQLPatternsWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SqlPatternHash) {
+		query["SqlPatternHash"] = request.SqlPatternHash
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -6861,7 +6865,7 @@ func (client *Client) DescribeTableAccessCountWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询表详情
+// Queries the distribution of data in a table among partitions.
 //
 // @param request - DescribeTableDetailRequest
 //
@@ -7529,7 +7533,7 @@ func (client *Client) DescribeWorkerDetectionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 关闭用户ENI
+// Detaches an elastic network interface (ENI) from an AnalyticDB for MySQL Data Warehouse Edition cluster.
 //
 // Description:
 //
@@ -7741,7 +7745,7 @@ func (client *Client) DownloadDiagnosisRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 开通建议服务
+// Enables the suggestion feature.
 //
 // @param request - EnableAdviceServiceRequest
 //
@@ -8079,7 +8083,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster in AnalyticDB for MySQL.
+// Migrates data from a Data Warehouse Edition cluster to a Data Lakehouse Edition or Enterprise Edition cluster in AnalyticDB for MySQL.
 //
 // @param request - MigrateDBClusterRequest
 //
@@ -8251,7 +8255,7 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Changes the time configuration of O\\&M events.
+// Changes the time configuration of O\\\\\\&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -8335,7 +8339,7 @@ func (client *Client) ModifyActiveOperationMaintainConfWithContext(ctx context.C
 
 // Summary:
 //
-// Changes the execution time of O&M events.
+// Changes the execution time of O\\&M events.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -8555,7 +8559,7 @@ func (client *Client) ModifyAutoRenewAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改全量备份策略
+// Modifies the backup policy of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -8895,7 +8899,7 @@ func (client *Client) ModifyDBClusterAccessWhiteListWithContext(ctx context.Cont
 
 // Summary:
 //
-// 修改备注
+// Modifies the description of an AnalyticDB for MySQL cluster to facilitate the maintenance and management of the cluster.
 //
 // @param request - ModifyDBClusterDescriptionRequest
 //
@@ -9845,7 +9849,7 @@ func (client *Client) ModifyLogHubStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the switchover time of O&M events.
+// Changes the switchover time of O\\&M events.
 //
 // @param request - ModifyMaintenanceActionRequest
 //
@@ -10379,7 +10383,7 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 取消服务帐号授权
+// Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
 //
 // @param request - RevokeOperatorPermissionRequest
 //

@@ -24,9 +24,9 @@ type DescribeTableDetailResponseBody struct {
 	//
 	// 0
 	AvgSize *int64 `json:"AvgSize,omitempty" xml:"AvgSize,omitempty"`
-	// The list of partitions.
+	// The queried shard.
 	Items *DescribeTableDetailResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,6 +79,7 @@ func (s *DescribeTableDetailResponseBody) Validate() error {
 }
 
 type DescribeTableDetailResponseBodyItems struct {
+	// The queried shards.
 	Shard []*DescribeTableDetailResponseBodyItemsShard `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
 }
 
@@ -113,7 +114,17 @@ func (s *DescribeTableDetailResponseBodyItems) Validate() error {
 }
 
 type DescribeTableDetailResponseBodyItemsShard struct {
-	Id   *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The partition ID. Only the numeric part of the partition name is returned.
+	//
+	// example:
+	//
+	// 1
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of rows in the partition.
+	//
+	// example:
+	//
+	// 0
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
