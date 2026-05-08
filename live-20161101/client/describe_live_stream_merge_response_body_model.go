@@ -110,6 +110,7 @@ type DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge struc
 	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StreamName        *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 	StreamUsing       *string `json:"StreamUsing,omitempty" xml:"StreamUsing,omitempty"`
+	SwitchMode        *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 
 func (s DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) String() string {
@@ -178,6 +179,10 @@ func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) 
 
 func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) GetStreamUsing() *string {
 	return s.StreamUsing
+}
+
+func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) GetSwitchMode() *string {
+	return s.SwitchMode
 }
 
 func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) SetAppName(v string) *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge {
@@ -252,6 +257,11 @@ func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) 
 
 func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) SetStreamUsing(v string) *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge {
 	s.StreamUsing = &v
+	return s
+}
+
+func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) SetSwitchMode(v string) *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge {
+	s.SwitchMode = &v
 	return s
 }
 

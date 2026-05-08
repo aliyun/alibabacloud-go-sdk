@@ -3240,12 +3240,24 @@ func (client *Client) AddLiveStreamMergeWithOptions(request *AddLiveStreamMergeR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.SelectAppName) {
+		query["SelectAppName"] = request.SelectAppName
+	}
+
+	if !dara.IsNil(request.SelectStreamName) {
+		query["SelectStreamName"] = request.SelectStreamName
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
 
 	if !dara.IsNil(request.StreamName) {
 		query["StreamName"] = request.StreamName
+	}
+
+	if !dara.IsNil(request.SwitchMode) {
+		query["SwitchMode"] = request.SwitchMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -33,10 +33,16 @@ type iAddLiveStreamMergeRequest interface {
 	GetProtocol() *string
 	SetRegionId(v string) *AddLiveStreamMergeRequest
 	GetRegionId() *string
+	SetSelectAppName(v string) *AddLiveStreamMergeRequest
+	GetSelectAppName() *string
+	SetSelectStreamName(v string) *AddLiveStreamMergeRequest
+	GetSelectStreamName() *string
 	SetStartTime(v string) *AddLiveStreamMergeRequest
 	GetStartTime() *string
 	SetStreamName(v string) *AddLiveStreamMergeRequest
 	GetStreamName() *string
+	SetSwitchMode(v string) *AddLiveStreamMergeRequest
+	GetSwitchMode() *string
 }
 
 type AddLiveStreamMergeRequest struct {
@@ -112,8 +118,10 @@ type AddLiveStreamMergeRequest struct {
 	// example:
 	//
 	// rtmp
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SelectAppName    *string `json:"SelectAppName,omitempty" xml:"SelectAppName,omitempty"`
+	SelectStreamName *string `json:"SelectStreamName,omitempty" xml:"SelectStreamName,omitempty"`
 	// The start time of the stream mixing.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -132,6 +140,7 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// StreamName
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 
 func (s AddLiveStreamMergeRequest) String() string {
@@ -190,12 +199,24 @@ func (s *AddLiveStreamMergeRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *AddLiveStreamMergeRequest) GetSelectAppName() *string {
+	return s.SelectAppName
+}
+
+func (s *AddLiveStreamMergeRequest) GetSelectStreamName() *string {
+	return s.SelectStreamName
+}
+
 func (s *AddLiveStreamMergeRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
 func (s *AddLiveStreamMergeRequest) GetStreamName() *string {
 	return s.StreamName
+}
+
+func (s *AddLiveStreamMergeRequest) GetSwitchMode() *string {
+	return s.SwitchMode
 }
 
 func (s *AddLiveStreamMergeRequest) SetAppName(v string) *AddLiveStreamMergeRequest {
@@ -258,6 +279,16 @@ func (s *AddLiveStreamMergeRequest) SetRegionId(v string) *AddLiveStreamMergeReq
 	return s
 }
 
+func (s *AddLiveStreamMergeRequest) SetSelectAppName(v string) *AddLiveStreamMergeRequest {
+	s.SelectAppName = &v
+	return s
+}
+
+func (s *AddLiveStreamMergeRequest) SetSelectStreamName(v string) *AddLiveStreamMergeRequest {
+	s.SelectStreamName = &v
+	return s
+}
+
 func (s *AddLiveStreamMergeRequest) SetStartTime(v string) *AddLiveStreamMergeRequest {
 	s.StartTime = &v
 	return s
@@ -265,6 +296,11 @@ func (s *AddLiveStreamMergeRequest) SetStartTime(v string) *AddLiveStreamMergeRe
 
 func (s *AddLiveStreamMergeRequest) SetStreamName(v string) *AddLiveStreamMergeRequest {
 	s.StreamName = &v
+	return s
+}
+
+func (s *AddLiveStreamMergeRequest) SetSwitchMode(v string) *AddLiveStreamMergeRequest {
+	s.SwitchMode = &v
 	return s
 }
 
