@@ -16,7 +16,9 @@ type iListClusterAddonInstanceResourcesResponseBody interface {
 }
 
 type ListClusterAddonInstanceResourcesResponseBody struct {
-	HelmRelease       *ListClusterAddonInstanceResourcesResponseBodyHelmRelease         `json:"helm_release,omitempty" xml:"helm_release,omitempty" type:"Struct"`
+	// Information about the Helm release instance corresponding to the add-on.
+	HelmRelease *ListClusterAddonInstanceResourcesResponseBodyHelmRelease `json:"helm_release,omitempty" xml:"helm_release,omitempty" type:"Struct"`
+	// A list of Kubernetes objects associated with the add-on.
 	KubernetesObjects []*ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects `json:"kubernetes_objects,omitempty" xml:"kubernetes_objects,omitempty" type:"Repeated"`
 }
 
@@ -65,18 +67,26 @@ func (s *ListClusterAddonInstanceResourcesResponseBody) Validate() error {
 }
 
 type ListClusterAddonInstanceResourcesResponseBodyHelmRelease struct {
+	// The name of the Helm chart.
+	//
 	// example:
 	//
 	// ack-node-problem-detector
 	ChartName *string `json:"chart_name,omitempty" xml:"chart_name,omitempty"`
+	// The version of the Helm chart.
+	//
 	// example:
 	//
 	// 1.2.28
 	ChartVersion *string `json:"chart_version,omitempty" xml:"chart_version,omitempty"`
+	// The namespace where the Helm release is located.
+	//
 	// example:
 	//
 	// kube-system
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The name of the Helm release instance.
+	//
 	// example:
 	//
 	// ack-node-problem-detector
@@ -132,22 +142,32 @@ func (s *ListClusterAddonInstanceResourcesResponseBodyHelmRelease) Validate() er
 }
 
 type ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects struct {
+	// The Kubernetes API group to which the object belongs.
+	//
 	// example:
 	//
 	// rbac.authorization.k8s.io
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The Kubernetes API type to which the object belongs.
+	//
 	// example:
 	//
 	// ClusterRole
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The name of the Kubernetes object.
+	//
 	// example:
 	//
 	// terway-pod-reader
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace to which the object belongs.
+	//
 	// example:
 	//
 	// kube-system
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The Kubernetes API version to which the object belongs.
+	//
 	// example:
 	//
 	// v1

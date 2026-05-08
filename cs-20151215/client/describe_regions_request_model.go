@@ -18,14 +18,44 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
+	// The language in which the results are returned.
+	//
+	// Valid values:
+	//
+	// 	- zh-CN
+	//
+	// 	- en-US
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+	// The type of the cluster.
+	//
+	// Valid values:
+	//
+	// 	- ExternalKubernetes: registered clusters.
+	//
+	// 	- ManagedKubernetes: managed clusters.
+	//
+	// 	- Kubernetes: dedicated clusters.
+	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	// The subtype of the managed cluster.
+	//
+	// Valid values:
+	//
+	// 	- Lingjun: ACK Lingjun clusters.
+	//
+	// 	- Serverless: ACK serverless clusters.
+	//
+	// 	- Default: ACK managed clusters.
+	//
+	// 	- Edge: ACK Edge clusters.
+	//
 	// example:
 	//
 	// Default

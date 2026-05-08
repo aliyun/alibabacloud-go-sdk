@@ -18,7 +18,7 @@ type CreateTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// ba1fe77b-b01e-4640-b77e-8f1b80e3e3cf
+	// ba1fe77b-b01e-4640-b77e-8f1b80******
 	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
 }
 

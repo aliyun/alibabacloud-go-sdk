@@ -11,6 +11,10 @@ type iDescribeEventsRequest interface {
 	GoString() string
 	SetClusterId(v string) *DescribeEventsRequest
 	GetClusterId() *string
+	SetMaxResults(v int32) *DescribeEventsRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *DescribeEventsRequest
+	GetNextToken() *string
 	SetPageNumber(v int64) *DescribeEventsRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *DescribeEventsRequest
@@ -25,7 +29,9 @@ type DescribeEventsRequest struct {
 	// example:
 	//
 	// cf62854ac2130470897be7a27ed1f****
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ClusterId  *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -90,6 +96,14 @@ func (s *DescribeEventsRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DescribeEventsRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *DescribeEventsRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeEventsRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -104,6 +118,16 @@ func (s *DescribeEventsRequest) GetType() *string {
 
 func (s *DescribeEventsRequest) SetClusterId(v string) *DescribeEventsRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetMaxResults(v int32) *DescribeEventsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetNextToken(v string) *DescribeEventsRequest {
+	s.NextToken = &v
 	return s
 }
 

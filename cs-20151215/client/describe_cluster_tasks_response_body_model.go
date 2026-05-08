@@ -9,6 +9,8 @@ type iDescribeClusterTasksResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNextToken(v string) *DescribeClusterTasksResponseBody
+	GetNextToken() *string
 	SetPageInfo(v *DescribeClusterTasksResponseBodyPageInfo) *DescribeClusterTasksResponseBody
 	GetPageInfo() *DescribeClusterTasksResponseBodyPageInfo
 	SetRequestId(v string) *DescribeClusterTasksResponseBody
@@ -18,6 +20,7 @@ type iDescribeClusterTasksResponseBody interface {
 }
 
 type DescribeClusterTasksResponseBody struct {
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeClusterTasksResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 	// The request ID.
@@ -38,6 +41,10 @@ func (s DescribeClusterTasksResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterTasksResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeClusterTasksResponseBody) GetPageInfo() *DescribeClusterTasksResponseBodyPageInfo {
 	return s.PageInfo
 }
@@ -48,6 +55,11 @@ func (s *DescribeClusterTasksResponseBody) GetRequestId() *string {
 
 func (s *DescribeClusterTasksResponseBody) GetTasks() []*DescribeClusterTasksResponseBodyTasks {
 	return s.Tasks
+}
+
+func (s *DescribeClusterTasksResponseBody) SetNextToken(v string) *DescribeClusterTasksResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *DescribeClusterTasksResponseBody) SetPageInfo(v *DescribeClusterTasksResponseBodyPageInfo) *DescribeClusterTasksResponseBody {

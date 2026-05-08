@@ -18,8 +18,11 @@ type iInstallNodePoolComponentsRequest interface {
 }
 
 type InstallNodePoolComponentsRequest struct {
-	Components    []*InstallNodePoolComponentsRequestComponents  `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	NodeNames     []*string                                      `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
+	// A list of node components to be installed.
+	Components []*InstallNodePoolComponentsRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	// A list of specific node names where the component should be installed. If not specified, the component will be installed on all nodes in the node pool.
+	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
+	// Configuration for the rolling update process.
 	RollingPolicy *InstallNodePoolComponentsRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 }
 
@@ -77,13 +80,18 @@ func (s *InstallNodePoolComponentsRequest) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestComponents struct {
+	// The configuration details for the component.
 	Config *InstallNodePoolComponentsRequestComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The name of the component.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version of the component.
+	//
 	// example:
 	//
 	// 1.28.9-aliyun.1
@@ -135,6 +143,7 @@ func (s *InstallNodePoolComponentsRequestComponents) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestComponentsConfig struct {
+	// Custom parameters for the component.
 	CustomConfig map[string]*string `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 }
 
@@ -160,14 +169,20 @@ func (s *InstallNodePoolComponentsRequestComponentsConfig) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestRollingPolicy struct {
+	// The time interval between update batches, in seconds.
+	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
+	// The maximum number of nodes that can be updated concurrently in each batch. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"maxParallelism,omitempty" xml:"maxParallelism,omitempty"`
+	// The strategy for automatic pausing during the update process. Valid values: NotPause, FirstBatchPause, EveryBatchPause.
+	//
 	// example:
 	//
 	// NotPause

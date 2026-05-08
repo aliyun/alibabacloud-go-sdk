@@ -28,7 +28,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// E368C761-F8F6-4A36-9B58-BD53D5CD0CEB
+	// E368C761-F8F6-4A36-9B58-BD53D5******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The details of the queried labels and resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"tag_resources,omitempty" xml:"tag_resources,omitempty" type:"Struct"`
@@ -118,13 +118,13 @@ type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	//
 	// example:
 	//
-	// i-xxx
+	// c2e39566adf23481fa1164ed510****
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
 	// The type of the resource. For more information, see [Labels](https://help.aliyun.com/document_detail/110425.html).
 	//
 	// example:
 	//
-	// CLUSTER
+	// ALIYUN::CS::CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
 	// The key of the label.
 	//

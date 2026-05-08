@@ -11,13 +11,16 @@ type iDescribeClusterEventsResponseBody interface {
 	GoString() string
 	SetEvents(v []*DescribeClusterEventsResponseBodyEvents) *DescribeClusterEventsResponseBody
 	GetEvents() []*DescribeClusterEventsResponseBodyEvents
+	SetNextToken(v string) *DescribeClusterEventsResponseBody
+	GetNextToken() *string
 	SetPageInfo(v *DescribeClusterEventsResponseBodyPageInfo) *DescribeClusterEventsResponseBody
 	GetPageInfo() *DescribeClusterEventsResponseBodyPageInfo
 }
 
 type DescribeClusterEventsResponseBody struct {
 	// The list of events.
-	Events []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	Events    []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	NextToken *string                                    `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeClusterEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -34,12 +37,21 @@ func (s *DescribeClusterEventsResponseBody) GetEvents() []*DescribeClusterEvents
 	return s.Events
 }
 
+func (s *DescribeClusterEventsResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeClusterEventsResponseBody) GetPageInfo() *DescribeClusterEventsResponseBodyPageInfo {
 	return s.PageInfo
 }
 
 func (s *DescribeClusterEventsResponseBody) SetEvents(v []*DescribeClusterEventsResponseBodyEvents) *DescribeClusterEventsResponseBody {
 	s.Events = v
+	return s
+}
+
+func (s *DescribeClusterEventsResponseBody) SetNextToken(v string) *DescribeClusterEventsResponseBody {
+	s.NextToken = &v
 	return s
 }
 

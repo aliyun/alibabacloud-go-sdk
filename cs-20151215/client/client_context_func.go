@@ -501,7 +501,7 @@ func (client *Client) CleanUserPermissionsWithContext(ctx context.Context, Uid *
 
 // Summary:
 //
-// 查询自愈规则
+// Creates an auto-repair policy.
 //
 // @param request - CreateAutoRepairPolicyRequest
 //
@@ -2611,6 +2611,14 @@ func (client *Client) DescribeClusterEventsWithContext(ctx context.Context, Clus
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["page_number"] = request.PageNumber
 	}
@@ -2889,6 +2897,14 @@ func (client *Client) DescribeClusterTasksWithContext(ctx context.Context, clust
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["page_number"] = request.PageNumber
 	}
@@ -3068,7 +3084,7 @@ func (client *Client) DescribeClusterVulsWithContext(ctx context.Context, cluste
 //
 // Summary:
 //
-// Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+// Queries all existing clusters in ACK, including Kubernetes clusters and Swarm clusters.
 //
 // @param request - DescribeClustersRequest
 //
@@ -3290,6 +3306,14 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 		query["cluster_id"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["page_number"] = request.PageNumber
 	}
@@ -3347,6 +3371,14 @@ func (client *Client) DescribeEventsForRegionWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
 		query["cluster_id"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -3741,7 +3773,7 @@ func (client *Client) DescribePolicyInstancesStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询地域列表
+// Queries the list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -4753,7 +4785,7 @@ func (client *Client) InstallClusterAddonsWithContext(ctx context.Context, Clust
 
 // Summary:
 //
-// 为ACK集群节点池安装节点组件
+// Installs components onto the nodes within a specified node pool. This API supports custom configurations and allows you to target specific nodes for the installation.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
@@ -4875,7 +4907,7 @@ func (client *Client) ListAddonsWithContext(ctx context.Context, request *ListAd
 
 // Summary:
 //
-// 查询自愈规则
+// List auto-repair policies.
 //
 // @param headers - map
 //
@@ -4908,7 +4940,7 @@ func (client *Client) ListAutoRepairPoliciesWithContext(ctx context.Context, clu
 
 // Summary:
 //
-// 获取集群组件实例的资源列表
+// Queries the list of resources associated with installed cluster add-ons, including Kubernetes resources and Helm release information.
 //
 // @param headers - map
 //
@@ -6843,7 +6875,7 @@ func (client *Client) SyncClusterNodePoolWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -7302,7 +7334,7 @@ func (client *Client) UpdateK8sClusterUserConfigExpireWithContext(ctx context.Co
 
 // Summary:
 //
-// 更新 Secret 落盘加密配置
+// Updates the Secret encryption at rest configuration for a specified cluster by cluster ID.
 //
 // @param request - UpdateKMSEncryptionRequest
 //
@@ -7353,7 +7385,7 @@ func (client *Client) UpdateKMSEncryptionWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// 更新节点组件
+// Updates a specific component within a node pool, such as the kubelet.
 //
 // @param request - UpdateNodePoolComponentRequest
 //
@@ -7671,7 +7703,7 @@ func (client *Client) UpgradeClusterWithContext(ctx context.Context, ClusterId *
 
 // Summary:
 //
-// Updates cluster add-ons to newer versions for enhanced functionality.
+// Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
 //
 // @param request - UpgradeClusterAddonsRequest
 //

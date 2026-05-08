@@ -11,13 +11,16 @@ type iDescribeEventsForRegionResponseBody interface {
 	GoString() string
 	SetEvents(v []*DescribeEventsForRegionResponseBodyEvents) *DescribeEventsForRegionResponseBody
 	GetEvents() []*DescribeEventsForRegionResponseBodyEvents
+	SetNextToken(v string) *DescribeEventsForRegionResponseBody
+	GetNextToken() *string
 	SetPageInfo(v *DescribeEventsForRegionResponseBodyPageInfo) *DescribeEventsForRegionResponseBody
 	GetPageInfo() *DescribeEventsForRegionResponseBodyPageInfo
 }
 
 type DescribeEventsForRegionResponseBody struct {
 	// The events.
-	Events []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	Events    []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	NextToken *string                                      `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination details.
 	PageInfo *DescribeEventsForRegionResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -34,12 +37,21 @@ func (s *DescribeEventsForRegionResponseBody) GetEvents() []*DescribeEventsForRe
 	return s.Events
 }
 
+func (s *DescribeEventsForRegionResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeEventsForRegionResponseBody) GetPageInfo() *DescribeEventsForRegionResponseBodyPageInfo {
 	return s.PageInfo
 }
 
 func (s *DescribeEventsForRegionResponseBody) SetEvents(v []*DescribeEventsForRegionResponseBodyEvents) *DescribeEventsForRegionResponseBody {
 	s.Events = v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBody) SetNextToken(v string) *DescribeEventsForRegionResponseBody {
+	s.NextToken = &v
 	return s
 }
 

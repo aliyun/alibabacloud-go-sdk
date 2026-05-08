@@ -9,6 +9,10 @@ type iDescribeClusterEventsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetMaxResults(v int32) *DescribeClusterEventsRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *DescribeClusterEventsRequest
+	GetNextToken() *string
 	SetPageNumber(v int64) *DescribeClusterEventsRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *DescribeClusterEventsRequest
@@ -18,6 +22,8 @@ type iDescribeClusterEventsRequest interface {
 }
 
 type DescribeClusterEventsRequest struct {
+	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The number of the page to return.
 	//
 	// example:
@@ -46,6 +52,14 @@ func (s DescribeClusterEventsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterEventsRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *DescribeClusterEventsRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeClusterEventsRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -56,6 +70,16 @@ func (s *DescribeClusterEventsRequest) GetPageSize() *int64 {
 
 func (s *DescribeClusterEventsRequest) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *DescribeClusterEventsRequest) SetMaxResults(v int32) *DescribeClusterEventsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeClusterEventsRequest) SetNextToken(v string) *DescribeClusterEventsRequest {
+	s.NextToken = &v
+	return s
 }
 
 func (s *DescribeClusterEventsRequest) SetPageNumber(v int64) *DescribeClusterEventsRequest {

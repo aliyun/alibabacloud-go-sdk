@@ -786,7 +786,7 @@ func (client *Client) CleanUserPermissions(Uid *string, request *CleanUserPermis
 
 // Summary:
 //
-// 查询自愈规则
+// Creates an auto-repair policy.
 //
 // @param request - CreateAutoRepairPolicyRequest
 //
@@ -845,7 +845,7 @@ func (client *Client) CreateAutoRepairPolicyWithOptions(clusterId *string, reque
 
 // Summary:
 //
-// 查询自愈规则
+// Creates an auto-repair policy.
 //
 // @param request - CreateAutoRepairPolicyRequest
 //
@@ -3533,6 +3533,14 @@ func (client *Client) DescribeClusterEventsWithOptions(ClusterId *string, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["page_number"] = request.PageNumber
 	}
@@ -3921,6 +3929,14 @@ func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["page_number"] = request.PageNumber
 	}
@@ -4183,7 +4199,7 @@ func (client *Client) DescribeClusterVuls(clusterId *string) (_result *DescribeC
 //
 // Summary:
 //
-// Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+// Queries all existing clusters in ACK, including Kubernetes clusters and Swarm clusters.
 //
 // @param request - DescribeClustersRequest
 //
@@ -4240,7 +4256,7 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 //
 // Summary:
 //
-// Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+// Queries all existing clusters in ACK, including Kubernetes clusters and Swarm clusters.
 //
 // @param request - DescribeClustersRequest
 //
@@ -4465,6 +4481,14 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 		query["cluster_id"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["page_number"] = request.PageNumber
 	}
@@ -4541,6 +4565,14 @@ func (client *Client) DescribeEventsForRegionWithOptions(regionId *string, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
 		query["cluster_id"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -5105,7 +5137,7 @@ func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result 
 
 // Summary:
 //
-// 查询地域列表
+// Queries the list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -5160,7 +5192,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 查询地域列表
+// Queries the list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -6549,7 +6581,7 @@ func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallCl
 
 // Summary:
 //
-// 为ACK集群节点池安装节点组件
+// Installs components onto the nodes within a specified node pool. This API supports custom configurations and allows you to target specific nodes for the installation.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
@@ -6604,7 +6636,7 @@ func (client *Client) InstallNodePoolComponentsWithOptions(clusterId *string, no
 
 // Summary:
 //
-// 为ACK集群节点池安装节点组件
+// Installs components onto the nodes within a specified node pool. This API supports custom configurations and allows you to target specific nodes for the installation.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
@@ -6709,7 +6741,7 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 
 // Summary:
 //
-// 查询自愈规则
+// List auto-repair policies.
 //
 // @param headers - map
 //
@@ -6742,7 +6774,7 @@ func (client *Client) ListAutoRepairPoliciesWithOptions(clusterId *string, heade
 
 // Summary:
 //
-// 查询自愈规则
+// List auto-repair policies.
 //
 // @return ListAutoRepairPoliciesResponse
 func (client *Client) ListAutoRepairPolicies(clusterId *string) (_result *ListAutoRepairPoliciesResponse, _err error) {
@@ -6759,7 +6791,7 @@ func (client *Client) ListAutoRepairPolicies(clusterId *string) (_result *ListAu
 
 // Summary:
 //
-// 获取集群组件实例的资源列表
+// Queries the list of resources associated with installed cluster add-ons, including Kubernetes resources and Helm release information.
 //
 // @param headers - map
 //
@@ -6792,7 +6824,7 @@ func (client *Client) ListClusterAddonInstanceResourcesWithOptions(clusterId *st
 
 // Summary:
 //
-// 获取集群组件实例的资源列表
+// Queries the list of resources associated with installed cluster add-ons, including Kubernetes resources and Helm release information.
 //
 // @return ListClusterAddonInstanceResourcesResponse
 func (client *Client) ListClusterAddonInstanceResources(clusterId *string, instanceName *string) (_result *ListClusterAddonInstanceResourcesResponse, _err error) {
@@ -9431,7 +9463,7 @@ func (client *Client) SyncClusterNodePool(ClusterId *string) (_result *SyncClust
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -9490,7 +9522,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
+// You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -10052,7 +10084,7 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, reques
 
 // Summary:
 //
-// 更新 Secret 落盘加密配置
+// Updates the Secret encryption at rest configuration for a specified cluster by cluster ID.
 //
 // @param request - UpdateKMSEncryptionRequest
 //
@@ -10103,7 +10135,7 @@ func (client *Client) UpdateKMSEncryptionWithOptions(ClusterId *string, request 
 
 // Summary:
 //
-// 更新 Secret 落盘加密配置
+// Updates the Secret encryption at rest configuration for a specified cluster by cluster ID.
 //
 // @param request - UpdateKMSEncryptionRequest
 //
@@ -10122,7 +10154,7 @@ func (client *Client) UpdateKMSEncryption(ClusterId *string, request *UpdateKMSE
 
 // Summary:
 //
-// 更新节点组件
+// Updates a specific component within a node pool, such as the kubelet.
 //
 // @param request - UpdateNodePoolComponentRequest
 //
@@ -10189,7 +10221,7 @@ func (client *Client) UpdateNodePoolComponentWithOptions(clusterId *string, node
 
 // Summary:
 //
-// 更新节点组件
+// Updates a specific component within a node pool, such as the kubelet.
 //
 // @param request - UpdateNodePoolComponentRequest
 //
@@ -10553,7 +10585,7 @@ func (client *Client) UpgradeCluster(ClusterId *string, request *UpgradeClusterR
 
 // Summary:
 //
-// Updates cluster add-ons to newer versions for enhanced functionality.
+// Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
 //
 // @param request - UpgradeClusterAddonsRequest
 //
@@ -10595,7 +10627,7 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 
 // Summary:
 //
-// Updates cluster add-ons to newer versions for enhanced functionality.
+// Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
 //
 // @param request - UpgradeClusterAddonsRequest
 //

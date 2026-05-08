@@ -11,13 +11,16 @@ type iDescribeEventsResponseBody interface {
 	GoString() string
 	SetEvents(v []*DescribeEventsResponseBodyEvents) *DescribeEventsResponseBody
 	GetEvents() []*DescribeEventsResponseBodyEvents
+	SetNextToken(v string) *DescribeEventsResponseBody
+	GetNextToken() *string
 	SetPageInfo(v *DescribeEventsResponseBodyPageInfo) *DescribeEventsResponseBody
 	GetPageInfo() *DescribeEventsResponseBodyPageInfo
 }
 
 type DescribeEventsResponseBody struct {
 	// The details of the events.
-	Events []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	Events    []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	NextToken *string                             `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -34,12 +37,21 @@ func (s *DescribeEventsResponseBody) GetEvents() []*DescribeEventsResponseBodyEv
 	return s.Events
 }
 
+func (s *DescribeEventsResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeEventsResponseBody) GetPageInfo() *DescribeEventsResponseBodyPageInfo {
 	return s.PageInfo
 }
 
 func (s *DescribeEventsResponseBody) SetEvents(v []*DescribeEventsResponseBodyEvents) *DescribeEventsResponseBody {
 	s.Events = v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetNextToken(v string) *DescribeEventsResponseBody {
+	s.NextToken = &v
 	return s
 }
 
@@ -71,7 +83,7 @@ type DescribeEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// cluster-id
+	// cf62854ac2130470897be7a27ed1f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The description of the event.
 	Data *DescribeEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -79,21 +91,25 @@ type DescribeEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// A234-1234-1234
+	// e-dba703c8-953b-40d8-82e8-cb713590****
 	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
 	// The source of the event.
+	//
+	// example:
+	//
+	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The subject of the event.
 	//
 	// example:
 	//
-	// nodePool-id
+	// np6a5c86f4ecae436f8f4a3dc034a7****
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
 	// The time when the event started.
 	//
 	// example:
 	//
-	// 2022-11-23T20:48:01+08:00
+	// 2025-04-23T20:48:01+08:00
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//

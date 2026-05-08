@@ -18,7 +18,7 @@ type UntagResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// 2D69A58F-345C-4FDE-88E4-BF51894XXXXX
+	// 2D69A58F-345C-4FDE-88E4-BF51894******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
