@@ -1217,7 +1217,7 @@ func (client *Client) SubmitYikeAIAppJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 提交一刻故事板任务
+// 提交一刻故事板全链路编排任务
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -1238,6 +1238,10 @@ func (client *Client) SubmitYikeStoryboardJobWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.ExecMode) {
 		query["ExecMode"] = request.ExecMode
+	}
+
+	if !dara.IsNil(request.KeepOriginDialogue) {
+		query["KeepOriginDialogue"] = request.KeepOriginDialogue
 	}
 
 	if !dara.IsNil(request.ModelParams) {

@@ -15,6 +15,8 @@ type iSubmitYikeStoryboardJobRequest interface {
 	GetExecMode() *string
 	SetFileURL(v string) *SubmitYikeStoryboardJobRequest
 	GetFileURL() *string
+	SetKeepOriginDialogue(v bool) *SubmitYikeStoryboardJobRequest
+	GetKeepOriginDialogue() *bool
 	SetModelParams(v string) *SubmitYikeStoryboardJobRequest
 	GetModelParams() *string
 	SetNarrationVoiceId(v string) *SubmitYikeStoryboardJobRequest
@@ -51,7 +53,8 @@ type SubmitYikeStoryboardJobRequest struct {
 	// example:
 	//
 	// http://test.oss-cn-shanghai.aliyuncs.com/test.mp4
-	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	FileURL            *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	KeepOriginDialogue *bool   `json:"KeepOriginDialogue,omitempty" xml:"KeepOriginDialogue,omitempty"`
 	// example:
 	//
 	// {
@@ -126,6 +129,10 @@ func (s *SubmitYikeStoryboardJobRequest) GetFileURL() *string {
 	return s.FileURL
 }
 
+func (s *SubmitYikeStoryboardJobRequest) GetKeepOriginDialogue() *bool {
+	return s.KeepOriginDialogue
+}
+
 func (s *SubmitYikeStoryboardJobRequest) GetModelParams() *string {
 	return s.ModelParams
 }
@@ -182,6 +189,11 @@ func (s *SubmitYikeStoryboardJobRequest) SetExecMode(v string) *SubmitYikeStoryb
 
 func (s *SubmitYikeStoryboardJobRequest) SetFileURL(v string) *SubmitYikeStoryboardJobRequest {
 	s.FileURL = &v
+	return s
+}
+
+func (s *SubmitYikeStoryboardJobRequest) SetKeepOriginDialogue(v bool) *SubmitYikeStoryboardJobRequest {
+	s.KeepOriginDialogue = &v
 	return s
 }
 

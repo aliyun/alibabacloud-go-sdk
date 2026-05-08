@@ -1716,7 +1716,7 @@ func (client *Client) SubmitYikeAIAppJob(request *SubmitYikeAIAppJobRequest) (_r
 
 // Summary:
 //
-// 提交一刻故事板任务
+// 提交一刻故事板全链路编排任务
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -1737,6 +1737,10 @@ func (client *Client) SubmitYikeStoryboardJobWithOptions(request *SubmitYikeStor
 
 	if !dara.IsNil(request.ExecMode) {
 		query["ExecMode"] = request.ExecMode
+	}
+
+	if !dara.IsNil(request.KeepOriginDialogue) {
+		query["KeepOriginDialogue"] = request.KeepOriginDialogue
 	}
 
 	if !dara.IsNil(request.ModelParams) {
@@ -1814,7 +1818,7 @@ func (client *Client) SubmitYikeStoryboardJobWithOptions(request *SubmitYikeStor
 
 // Summary:
 //
-// 提交一刻故事板任务
+// 提交一刻故事板全链路编排任务
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
