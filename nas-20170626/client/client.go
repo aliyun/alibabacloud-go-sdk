@@ -6269,7 +6269,7 @@ func (client *Client) DescribeLifecyclePolicies(request *DescribeLifecyclePolici
 
 // Summary:
 //
-// 查询生命周期策略日志
+// Queries the operational logs of a lifecycle policy. You can query up to 1000 log entries in the last 90 days. Only CPFS for Lingjun supports this operation.
 //
 // @param request - DescribeLifecyclePolicyLogsRequest
 //
@@ -6325,7 +6325,7 @@ func (client *Client) DescribeLifecyclePolicyLogsWithOptions(request *DescribeLi
 
 // Summary:
 //
-// 查询生命周期策略日志
+// Queries the operational logs of a lifecycle policy. You can query up to 1000 log entries in the last 90 days. Only CPFS for Lingjun supports this operation.
 //
 // @param request - DescribeLifecyclePolicyLogsRequest
 //
@@ -9373,6 +9373,10 @@ func (client *Client) ModifyMountTargetWithOptions(request *ModifyMountTargetReq
 		query["AccessGroupName"] = request.AccessGroupName
 	}
 
+	if !dara.IsNil(request.AccessPointAccessOnly) {
+		query["AccessPointAccessOnly"] = request.AccessPointAccessOnly
+	}
+
 	if !dara.IsNil(request.DualStackMountTargetDomain) {
 		query["DualStackMountTargetDomain"] = request.DualStackMountTargetDomain
 	}
@@ -9699,8 +9703,6 @@ func (client *Client) ModifySmbAcl(request *ModifySmbAclRequest) (_result *Modif
 // Summary:
 //
 // Activates File Storage NAS.
-//
-// @param request - OpenNASServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -10290,7 +10292,7 @@ func (client *Client) StartDataFlow(request *StartDataFlowRequest) (_result *Sta
 
 // Summary:
 //
-// 启动生命周期策略运行
+// Starts the execution of lifecycle policies.
 //
 // @param request - StartLifecyclePolicyExecutionRequest
 //
@@ -10338,7 +10340,7 @@ func (client *Client) StartLifecyclePolicyExecutionWithOptions(request *StartLif
 
 // Summary:
 //
-// 启动生命周期策略运行
+// Starts the execution of lifecycle policies.
 //
 // @param request - StartLifecyclePolicyExecutionRequest
 //
@@ -10458,7 +10460,7 @@ func (client *Client) StopDataFlow(request *StopDataFlowRequest) (_result *StopD
 
 // Summary:
 //
-// 停止生命周期策略运行
+// Stops the execution of lifecycle policies.
 //
 // @param request - StopLifecyclePolicyExecutionRequest
 //
@@ -10506,7 +10508,7 @@ func (client *Client) StopLifecyclePolicyExecutionWithOptions(request *StopLifec
 
 // Summary:
 //
-// 停止生命周期策略运行
+// Stops the execution of lifecycle policies.
 //
 // @param request - StopLifecyclePolicyExecutionRequest
 //
@@ -10668,7 +10670,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新生命周期策略
+// Updates a rule of a lifecycle management policy. Only CPFS for Lingjun supports this operation. The UpdateLifecyclePolicy specifies the overwriting semantics. If you do not specify an optional parameter, the corresponding field is deleted. If you want to configure a new lifecycle rule for a bucket, call the DescribeLifecyclePolicies operation to query the configurations of the existing lifecycle rule, add new lifecycle rules, and then call the UpdateLifecyclePolicy operation to update the configurations.
 //
 // @param request - UpdateLifecyclePolicyRequest
 //
@@ -10736,7 +10738,7 @@ func (client *Client) UpdateLifecyclePolicyWithOptions(request *UpdateLifecycleP
 
 // Summary:
 //
-// 更新生命周期策略
+// Updates a rule of a lifecycle management policy. Only CPFS for Lingjun supports this operation. The UpdateLifecyclePolicy specifies the overwriting semantics. If you do not specify an optional parameter, the corresponding field is deleted. If you want to configure a new lifecycle rule for a bucket, call the DescribeLifecyclePolicies operation to query the configurations of the existing lifecycle rule, add new lifecycle rules, and then call the UpdateLifecyclePolicy operation to update the configurations.
 //
 // @param request - UpdateLifecyclePolicyRequest
 //

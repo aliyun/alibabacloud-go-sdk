@@ -886,8 +886,9 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTa
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions struct {
-	EnableABE    *bool `json:"EnableABE,omitempty" xml:"EnableABE,omitempty"`
-	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
+	EnableABE                *bool `json:"EnableABE,omitempty" xml:"EnableABE,omitempty"`
+	EnableOplock             *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
+	VscAccessPointAccessOnly *bool `json:"VscAccessPointAccessOnly,omitempty" xml:"VscAccessPointAccessOnly,omitempty"`
 }
 
 func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) String() string {
@@ -906,6 +907,10 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetEnableO
 	return s.EnableOplock
 }
 
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GetVscAccessPointAccessOnly() *bool {
+	return s.VscAccessPointAccessOnly
+}
+
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableABE(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
 	s.EnableABE = &v
 	return s
@@ -913,6 +918,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableA
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableOplock(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
 	s.EnableOplock = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetVscAccessPointAccessOnly(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
+	s.VscAccessPointAccessOnly = &v
 	return s
 }
 

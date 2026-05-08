@@ -107,7 +107,8 @@ type ModifyFileSystemRequestOptions struct {
 	// example:
 	//
 	// true
-	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
+	EnableOplock             *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
+	VscAccessPointAccessOnly *bool `json:"VscAccessPointAccessOnly,omitempty" xml:"VscAccessPointAccessOnly,omitempty"`
 }
 
 func (s ModifyFileSystemRequestOptions) String() string {
@@ -126,6 +127,10 @@ func (s *ModifyFileSystemRequestOptions) GetEnableOplock() *bool {
 	return s.EnableOplock
 }
 
+func (s *ModifyFileSystemRequestOptions) GetVscAccessPointAccessOnly() *bool {
+	return s.VscAccessPointAccessOnly
+}
+
 func (s *ModifyFileSystemRequestOptions) SetEnableABE(v bool) *ModifyFileSystemRequestOptions {
 	s.EnableABE = &v
 	return s
@@ -133,6 +138,11 @@ func (s *ModifyFileSystemRequestOptions) SetEnableABE(v bool) *ModifyFileSystemR
 
 func (s *ModifyFileSystemRequestOptions) SetEnableOplock(v bool) *ModifyFileSystemRequestOptions {
 	s.EnableOplock = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequestOptions) SetVscAccessPointAccessOnly(v bool) *ModifyFileSystemRequestOptions {
+	s.VscAccessPointAccessOnly = &v
 	return s
 }
 

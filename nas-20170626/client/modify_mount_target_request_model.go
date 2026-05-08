@@ -11,6 +11,8 @@ type iModifyMountTargetRequest interface {
 	GoString() string
 	SetAccessGroupName(v string) *ModifyMountTargetRequest
 	GetAccessGroupName() *string
+	SetAccessPointAccessOnly(v bool) *ModifyMountTargetRequest
+	GetAccessPointAccessOnly() *bool
 	SetDualStackMountTargetDomain(v string) *ModifyMountTargetRequest
 	GetDualStackMountTargetDomain() *string
 	SetFileSystemId(v string) *ModifyMountTargetRequest
@@ -27,7 +29,8 @@ type ModifyMountTargetRequest struct {
 	// example:
 	//
 	// classic-test
-	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
+	AccessGroupName       *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
+	AccessPointAccessOnly *bool   `json:"AccessPointAccessOnly,omitempty" xml:"AccessPointAccessOnly,omitempty"`
 	// The dual-stack (IPv4 and IPv6) domain name of the mount target.
 	//
 	// >  Only Extreme NAS file systems that reside in the Chinese mainland support IPv6.
@@ -82,6 +85,10 @@ func (s *ModifyMountTargetRequest) GetAccessGroupName() *string {
 	return s.AccessGroupName
 }
 
+func (s *ModifyMountTargetRequest) GetAccessPointAccessOnly() *bool {
+	return s.AccessPointAccessOnly
+}
+
 func (s *ModifyMountTargetRequest) GetDualStackMountTargetDomain() *string {
 	return s.DualStackMountTargetDomain
 }
@@ -100,6 +107,11 @@ func (s *ModifyMountTargetRequest) GetStatus() *string {
 
 func (s *ModifyMountTargetRequest) SetAccessGroupName(v string) *ModifyMountTargetRequest {
 	s.AccessGroupName = &v
+	return s
+}
+
+func (s *ModifyMountTargetRequest) SetAccessPointAccessOnly(v bool) *ModifyMountTargetRequest {
+	s.AccessPointAccessOnly = &v
 	return s
 }
 

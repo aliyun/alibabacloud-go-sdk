@@ -147,6 +147,7 @@ func (s *DescribeMountTargetsResponseBodyMountTargets) Validate() error {
 
 type DescribeMountTargetsResponseBodyMountTargetsMountTarget struct {
 	AccessGroup                *string                                                                   `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	AccessPointAccessOnly      *bool                                                                     `json:"AccessPointAccessOnly,omitempty" xml:"AccessPointAccessOnly,omitempty"`
 	ClientMasterNodes          *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes `json:"ClientMasterNodes,omitempty" xml:"ClientMasterNodes,omitempty" type:"Struct"`
 	DualStackMountTargetDomain *string                                                                   `json:"DualStackMountTargetDomain,omitempty" xml:"DualStackMountTargetDomain,omitempty"`
 	IPVersion                  *string                                                                   `json:"IPVersion,omitempty" xml:"IPVersion,omitempty"`
@@ -168,6 +169,10 @@ func (s DescribeMountTargetsResponseBodyMountTargetsMountTarget) GoString() stri
 
 func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) GetAccessGroup() *string {
 	return s.AccessGroup
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) GetAccessPointAccessOnly() *bool {
+	return s.AccessPointAccessOnly
 }
 
 func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) GetClientMasterNodes() *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes {
@@ -208,6 +213,11 @@ func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) GetVswId() *st
 
 func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetAccessGroup(v string) *DescribeMountTargetsResponseBodyMountTargetsMountTarget {
 	s.AccessGroup = &v
+	return s
+}
+
+func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetAccessPointAccessOnly(v bool) *DescribeMountTargetsResponseBodyMountTargetsMountTarget {
+	s.AccessPointAccessOnly = &v
 	return s
 }
 
