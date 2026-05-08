@@ -17,6 +17,8 @@ type iSinkApiDestinationParameters interface {
 	GetName() *string
 	SetQueryStringParameters(v *SinkApiDestinationParametersQueryStringParameters) *SinkApiDestinationParameters
 	GetQueryStringParameters() *SinkApiDestinationParametersQueryStringParameters
+	SetTimeout(v int32) *SinkApiDestinationParameters
+	GetTimeout() *int32
 }
 
 type SinkApiDestinationParameters struct {
@@ -24,6 +26,7 @@ type SinkApiDestinationParameters struct {
 	HeaderParameters      *SinkApiDestinationParametersHeaderParameters      `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Struct"`
 	Name                  *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	QueryStringParameters *SinkApiDestinationParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Struct"`
+	Timeout               *int32                                             `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SinkApiDestinationParameters) String() string {
@@ -50,6 +53,10 @@ func (s *SinkApiDestinationParameters) GetQueryStringParameters() *SinkApiDestin
 	return s.QueryStringParameters
 }
 
+func (s *SinkApiDestinationParameters) GetTimeout() *int32 {
+	return s.Timeout
+}
+
 func (s *SinkApiDestinationParameters) SetBodyParameters(v *SinkApiDestinationParametersBodyParameters) *SinkApiDestinationParameters {
 	s.BodyParameters = v
 	return s
@@ -67,6 +74,11 @@ func (s *SinkApiDestinationParameters) SetName(v string) *SinkApiDestinationPara
 
 func (s *SinkApiDestinationParameters) SetQueryStringParameters(v *SinkApiDestinationParametersQueryStringParameters) *SinkApiDestinationParameters {
 	s.QueryStringParameters = v
+	return s
+}
+
+func (s *SinkApiDestinationParameters) SetTimeout(v int32) *SinkApiDestinationParameters {
+	s.Timeout = &v
 	return s
 }
 
