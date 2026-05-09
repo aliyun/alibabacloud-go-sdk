@@ -11,6 +11,8 @@ type iDescribeSpecRequest interface {
 	GoString() string
 	SetBizRegionId(v string) *DescribeSpecRequest
 	GetBizRegionId() *string
+	SetChargeType(v string) *DescribeSpecRequest
+	GetChargeType() *string
 	SetMatrixSpec(v string) *DescribeSpecRequest
 	GetMatrixSpec() *string
 	SetMaxResults(v int32) *DescribeSpecRequest
@@ -32,6 +34,7 @@ type DescribeSpecRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The matrix specification.
 	//
 	// Valid values:
@@ -94,6 +97,10 @@ func (s *DescribeSpecRequest) GetBizRegionId() *string {
 	return s.BizRegionId
 }
 
+func (s *DescribeSpecRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *DescribeSpecRequest) GetMatrixSpec() *string {
 	return s.MatrixSpec
 }
@@ -124,6 +131,11 @@ func (s *DescribeSpecRequest) GetSpecType() *string {
 
 func (s *DescribeSpecRequest) SetBizRegionId(v string) *DescribeSpecRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *DescribeSpecRequest) SetChargeType(v string) *DescribeSpecRequest {
+	s.ChargeType = &v
 	return s
 }
 

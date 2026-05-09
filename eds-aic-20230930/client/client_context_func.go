@@ -2880,6 +2880,10 @@ func (client *Client) DescribeSpecWithContext(ctx context.Context, request *Desc
 		query["BizRegionId"] = request.BizRegionId
 	}
 
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
 	if !dara.IsNil(request.MatrixSpec) {
 		query["MatrixSpec"] = request.MatrixSpec
 	}

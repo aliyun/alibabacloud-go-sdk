@@ -3749,6 +3749,10 @@ func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runt
 		query["BizRegionId"] = request.BizRegionId
 	}
 
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
 	if !dara.IsNil(request.MatrixSpec) {
 		query["MatrixSpec"] = request.MatrixSpec
 	}
