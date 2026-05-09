@@ -9,6 +9,50 @@ import (
 
 // Summary:
 //
+// 查询当前任务的并发数
+//
+// @param request - QueryTaskConcurrencyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskConcurrencyResponse
+func (client *Client) QueryTaskConcurrencyWithContext(ctx context.Context, request *QueryTaskConcurrencyRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskConcurrencyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryTaskConcurrency"),
+		Version:     dara.String("2025-11-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryTaskConcurrencyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 外呼任务通话列表查询
 //
 // @param tmpReq - ReadOutboundTaskCallListRequest
