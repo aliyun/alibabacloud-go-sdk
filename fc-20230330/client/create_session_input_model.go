@@ -11,6 +11,8 @@ type iCreateSessionInput interface {
 	GoString() string
 	SetDisableSessionIdReuse(v bool) *CreateSessionInput
 	GetDisableSessionIdReuse() *bool
+	SetJuiceFsConfig(v *JuiceFsConfig) *CreateSessionInput
+	GetJuiceFsConfig() *JuiceFsConfig
 	SetNasConfig(v *NASConfig) *CreateSessionInput
 	GetNasConfig() *NASConfig
 	SetOssMountConfig(v *OSSMountConfig) *CreateSessionInput
@@ -27,6 +29,7 @@ type iCreateSessionInput interface {
 
 type CreateSessionInput struct {
 	DisableSessionIdReuse *bool           `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	JuiceFsConfig         *JuiceFsConfig  `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	NasConfig             *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig        *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
 	PolarFsConfig         *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
@@ -56,6 +59,10 @@ func (s *CreateSessionInput) GetDisableSessionIdReuse() *bool {
 	return s.DisableSessionIdReuse
 }
 
+func (s *CreateSessionInput) GetJuiceFsConfig() *JuiceFsConfig {
+	return s.JuiceFsConfig
+}
+
 func (s *CreateSessionInput) GetNasConfig() *NASConfig {
 	return s.NasConfig
 }
@@ -82,6 +89,11 @@ func (s *CreateSessionInput) GetSessionTTLInSeconds() *int64 {
 
 func (s *CreateSessionInput) SetDisableSessionIdReuse(v bool) *CreateSessionInput {
 	s.DisableSessionIdReuse = &v
+	return s
+}
+
+func (s *CreateSessionInput) SetJuiceFsConfig(v *JuiceFsConfig) *CreateSessionInput {
+	s.JuiceFsConfig = v
 	return s
 }
 
@@ -116,6 +128,11 @@ func (s *CreateSessionInput) SetSessionTTLInSeconds(v int64) *CreateSessionInput
 }
 
 func (s *CreateSessionInput) Validate() error {
+	if s.JuiceFsConfig != nil {
+		if err := s.JuiceFsConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
 			return err

@@ -57,6 +57,8 @@ type iFunction interface {
 	GetInternetAccess() *bool
 	SetInvocationRestriction(v *FunctionRestriction) *Function
 	GetInvocationRestriction() *FunctionRestriction
+	SetJuiceFsConfig(v *JuiceFsConfig) *Function
+	GetJuiceFsConfig() *JuiceFsConfig
 	SetLastModifiedTime(v string) *Function
 	GetLastModifiedTime() *string
 	SetLastUpdateStatus(v string) *Function
@@ -201,6 +203,7 @@ type Function struct {
 	// true
 	InternetAccess        *bool                `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	InvocationRestriction *FunctionRestriction `json:"invocationRestriction,omitempty" xml:"invocationRestriction,omitempty"`
+	JuiceFsConfig         *JuiceFsConfig       `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	// The last time the function was updated.
 	//
 	// example:
@@ -396,6 +399,10 @@ func (s *Function) GetInternetAccess() *bool {
 
 func (s *Function) GetInvocationRestriction() *FunctionRestriction {
 	return s.InvocationRestriction
+}
+
+func (s *Function) GetJuiceFsConfig() *JuiceFsConfig {
+	return s.JuiceFsConfig
 }
 
 func (s *Function) GetLastModifiedTime() *string {
@@ -610,6 +617,11 @@ func (s *Function) SetInvocationRestriction(v *FunctionRestriction) *Function {
 	return s
 }
 
+func (s *Function) SetJuiceFsConfig(v *JuiceFsConfig) *Function {
+	s.JuiceFsConfig = v
+	return s
+}
+
 func (s *Function) SetLastModifiedTime(v string) *Function {
 	s.LastModifiedTime = &v
 	return s
@@ -753,6 +765,11 @@ func (s *Function) Validate() error {
 	}
 	if s.InvocationRestriction != nil {
 		if err := s.InvocationRestriction.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JuiceFsConfig != nil {
+		if err := s.JuiceFsConfig.Validate(); err != nil {
 			return err
 		}
 	}

@@ -17,6 +17,8 @@ type iSession interface {
 	GetDisableSessionIdReuse() *bool
 	SetFunctionName(v string) *Session
 	GetFunctionName() *string
+	SetJuiceFsConfig(v *JuiceFsConfig) *Session
+	GetJuiceFsConfig() *JuiceFsConfig
 	SetLastModifiedTime(v string) *Session
 	GetLastModifiedTime() *string
 	SetNasConfig(v *NASConfig) *Session
@@ -58,7 +60,8 @@ type Session struct {
 	// example:
 	//
 	// functionName1
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName  *string        `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	// The time when the session was last updated.
 	//
 	// example:
@@ -131,6 +134,10 @@ func (s *Session) GetFunctionName() *string {
 	return s.FunctionName
 }
 
+func (s *Session) GetJuiceFsConfig() *JuiceFsConfig {
+	return s.JuiceFsConfig
+}
+
 func (s *Session) GetLastModifiedTime() *string {
 	return s.LastModifiedTime
 }
@@ -191,6 +198,11 @@ func (s *Session) SetFunctionName(v string) *Session {
 	return s
 }
 
+func (s *Session) SetJuiceFsConfig(v *JuiceFsConfig) *Session {
+	s.JuiceFsConfig = v
+	return s
+}
+
 func (s *Session) SetLastModifiedTime(v string) *Session {
 	s.LastModifiedTime = &v
 	return s
@@ -242,6 +254,11 @@ func (s *Session) SetSessionTTLInSeconds(v int64) *Session {
 }
 
 func (s *Session) Validate() error {
+	if s.JuiceFsConfig != nil {
+		if err := s.JuiceFsConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
 			return err
