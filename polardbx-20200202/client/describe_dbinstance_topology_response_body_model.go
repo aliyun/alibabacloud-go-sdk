@@ -457,7 +457,8 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	// example:
 	//
 	// 5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
 	// example:
 	//
 	// 0
@@ -478,6 +479,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	// polarx.x4.large.2e
 	NodeClass       *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
 	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
+	ReadType        *string `json:"ReadType,omitempty" xml:"ReadType,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -565,6 +567,10 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) G
 	return s.EngineVersion
 }
 
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) GetInstanceClusterName() *string {
+	return s.InstanceClusterName
+}
+
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) GetLockMode() *int32 {
 	return s.LockMode
 }
@@ -595,6 +601,10 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) G
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) GetPhyInstanceName() *string {
 	return s.PhyInstanceName
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) GetReadType() *string {
+	return s.ReadType
 }
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) GetRegion() *string {
@@ -692,6 +702,11 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) S
 	return s
 }
 
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetInstanceClusterName(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.InstanceClusterName = &v
+	return s
+}
+
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetLockMode(v int32) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
 	s.LockMode = &v
 	return s
@@ -729,6 +744,11 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) S
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetPhyInstanceName(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
 	s.PhyInstanceName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetReadType(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.ReadType = &v
 	return s
 }
 

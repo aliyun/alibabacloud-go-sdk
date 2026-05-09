@@ -11,6 +11,8 @@ type iModifyDBInstanceVipRequest interface {
 	GoString() string
 	SetDBInstanceName(v string) *ModifyDBInstanceVipRequest
 	GetDBInstanceName() *string
+	SetInstanceClusterName(v string) *ModifyDBInstanceVipRequest
+	GetInstanceClusterName() *string
 	SetRegionId(v string) *ModifyDBInstanceVipRequest
 	GetRegionId() *string
 	SetVSwitchId(v string) *ModifyDBInstanceVipRequest
@@ -25,7 +27,8 @@ type ModifyDBInstanceVipRequest struct {
 	// example:
 	//
 	// pxc-********
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -58,6 +61,10 @@ func (s *ModifyDBInstanceVipRequest) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
 
+func (s *ModifyDBInstanceVipRequest) GetInstanceClusterName() *string {
+	return s.InstanceClusterName
+}
+
 func (s *ModifyDBInstanceVipRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -72,6 +79,11 @@ func (s *ModifyDBInstanceVipRequest) GetVpcId() *string {
 
 func (s *ModifyDBInstanceVipRequest) SetDBInstanceName(v string) *ModifyDBInstanceVipRequest {
 	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyDBInstanceVipRequest) SetInstanceClusterName(v string) *ModifyDBInstanceVipRequest {
+	s.InstanceClusterName = &v
 	return s
 }
 

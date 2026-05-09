@@ -36,16 +36,25 @@ type CreateGdnInstanceRequest struct {
 	//
 	// FASTJSON 2.0.x has been released, faster and more secure, recommend you upgrade.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GdnMode     *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
+	// example:
+	//
+	// gdn_mode_master_slave, gdn_mode_bidirectional
+	GdnMode *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// DIRECT_OVERWRITE, OVERWRITE, IGNORE, INTERRUPT
 	RplConflictStrategy *string `json:"RplConflictStrategy,omitempty" xml:"RplConflictStrategy,omitempty"`
-	RplDmlStrategy      *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
-	RplSyncDdl          *bool   `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
+	// example:
+	//
+	// MERGE,  SERIAL, TRANSACTION, SPLIT
+	RplDmlStrategy *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
+	RplSyncDdl     *bool   `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
 }
 
 func (s CreateGdnInstanceRequest) String() string {

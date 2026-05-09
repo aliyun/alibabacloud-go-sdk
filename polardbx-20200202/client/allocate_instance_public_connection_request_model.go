@@ -13,6 +13,8 @@ type iAllocateInstancePublicConnectionRequest interface {
 	GetConnectionStringPrefix() *string
 	SetDBInstanceName(v string) *AllocateInstancePublicConnectionRequest
 	GetDBInstanceName() *string
+	SetInstanceClusterName(v string) *AllocateInstancePublicConnectionRequest
+	GetInstanceClusterName() *string
 	SetOwnerAccount(v string) *AllocateInstancePublicConnectionRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *AllocateInstancePublicConnectionRequest
@@ -40,8 +42,12 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// default
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -70,6 +76,10 @@ func (s *AllocateInstancePublicConnectionRequest) GetConnectionStringPrefix() *s
 
 func (s *AllocateInstancePublicConnectionRequest) GetDBInstanceName() *string {
 	return s.DBInstanceName
+}
+
+func (s *AllocateInstancePublicConnectionRequest) GetInstanceClusterName() *string {
+	return s.InstanceClusterName
 }
 
 func (s *AllocateInstancePublicConnectionRequest) GetOwnerAccount() *string {
@@ -103,6 +113,11 @@ func (s *AllocateInstancePublicConnectionRequest) SetConnectionStringPrefix(v st
 
 func (s *AllocateInstancePublicConnectionRequest) SetDBInstanceName(v string) *AllocateInstancePublicConnectionRequest {
 	s.DBInstanceName = &v
+	return s
+}
+
+func (s *AllocateInstancePublicConnectionRequest) SetInstanceClusterName(v string) *AllocateInstancePublicConnectionRequest {
+	s.InstanceClusterName = &v
 	return s
 }
 
