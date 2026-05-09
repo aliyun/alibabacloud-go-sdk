@@ -3519,6 +3519,90 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
+// 创建批量任务
+//
+// @param tmpReq - CreateBatchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBatchTaskResponse
+func (client *Client) CreateBatchTaskWithOptions(tmpReq *CreateBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateBatchTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateBatchTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.Param) {
+		query["Param"] = request.Param
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBatchTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBatchTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建批量任务
+//
+// @param request - CreateBatchTaskRequest
+//
+// @return CreateBatchTaskResponse
+func (client *Client) CreateBatchTask(request *CreateBatchTaskRequest) (_result *CreateBatchTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBatchTaskResponse{}
+	_body, _err := client.CreateBatchTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建预算策略
 //
 // @param request - CreateBudgetPolicyRequest
@@ -12786,6 +12870,156 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
 	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询批量任务状态详情
+//
+// @param request - DescribeBatchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBatchTaskResponse
+func (client *Client) DescribeBatchTaskWithOptions(request *DescribeBatchTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeBatchTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchId) {
+		query["BatchId"] = request.BatchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBatchTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBatchTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询批量任务状态详情
+//
+// @param request - DescribeBatchTaskRequest
+//
+// @return DescribeBatchTaskResponse
+func (client *Client) DescribeBatchTask(request *DescribeBatchTaskRequest) (_result *DescribeBatchTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBatchTaskResponse{}
+	_body, _err := client.DescribeBatchTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询批量任务状态
+//
+// @param tmpReq - DescribeBatchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBatchTasksResponse
+func (client *Client) DescribeBatchTasksWithOptions(tmpReq *DescribeBatchTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeBatchTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeBatchTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Status) {
+		request.StatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Status, dara.String("Status"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatusShrink) {
+		query["Status"] = request.StatusShrink
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBatchTasks"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBatchTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询批量任务状态
+//
+// @param request - DescribeBatchTasksRequest
+//
+// @return DescribeBatchTasksResponse
+func (client *Client) DescribeBatchTasks(request *DescribeBatchTasksRequest) (_result *DescribeBatchTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBatchTasksResponse{}
+	_body, _err := client.DescribeBatchTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
