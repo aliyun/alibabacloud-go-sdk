@@ -159,7 +159,8 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	// example:
 	//
 	// code-interpreter
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Replicas *int64  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// example:
 	//
 	// code-interpreter-asdxxxx
@@ -194,6 +195,10 @@ func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetName() *string
 	return s.Name
 }
 
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetReplicas() *int64 {
+	return s.Replicas
+}
+
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetTemplateId() *string {
 	return s.TemplateId
 }
@@ -220,6 +225,11 @@ func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetEnableVpcAcces
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetName(v string) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetReplicas(v int64) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
+	s.Replicas = &v
 	return s
 }
 
