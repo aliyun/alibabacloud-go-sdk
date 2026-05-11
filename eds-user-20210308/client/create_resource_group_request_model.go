@@ -17,6 +17,8 @@ type iCreateResourceGroupRequest interface {
 	GetIsResourceGroupWithOfficeSite() *int64
 	SetPlatform(v string) *CreateResourceGroupRequest
 	GetPlatform() *string
+	SetResourceClassification(v string) *CreateResourceGroupRequest
+	GetResourceClassification() *string
 	SetResourceGroupName(v string) *CreateResourceGroupRequest
 	GetResourceGroupName() *string
 }
@@ -40,7 +42,8 @@ type CreateResourceGroupRequest struct {
 	// example:
 	//
 	// AliyunConsole
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
 	// The name of the resource group.
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
@@ -69,6 +72,10 @@ func (s *CreateResourceGroupRequest) GetPlatform() *string {
 	return s.Platform
 }
 
+func (s *CreateResourceGroupRequest) GetResourceClassification() *string {
+	return s.ResourceClassification
+}
+
 func (s *CreateResourceGroupRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
 }
@@ -90,6 +97,11 @@ func (s *CreateResourceGroupRequest) SetIsResourceGroupWithOfficeSite(v int64) *
 
 func (s *CreateResourceGroupRequest) SetPlatform(v string) *CreateResourceGroupRequest {
 	s.Platform = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetResourceClassification(v string) *CreateResourceGroupRequest {
+	s.ResourceClassification = &v
 	return s
 }
 

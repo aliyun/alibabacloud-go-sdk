@@ -603,6 +603,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 		query["Platform"] = request.Platform
 	}
 
+	if !dara.IsNil(request.ResourceClassification) {
+		query["ResourceClassification"] = request.ResourceClassification
+	}
+
 	if !dara.IsNil(request.ResourceGroupName) {
 		query["ResourceGroupName"] = request.ResourceGroupName
 	}
@@ -1375,6 +1379,10 @@ func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourc
 
 	if !dara.IsNil(request.Platform) {
 		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ResourceClassification) {
+		query["ResourceClassification"] = request.ResourceClassification
 	}
 
 	if !dara.IsNil(request.ResourceGroupIds) {

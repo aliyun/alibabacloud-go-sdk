@@ -21,6 +21,8 @@ type iDescribeResourceGroupsRequest interface {
 	GetPageSize() *int32
 	SetPlatform(v string) *DescribeResourceGroupsRequest
 	GetPlatform() *string
+	SetResourceClassification(v string) *DescribeResourceGroupsRequest
+	GetResourceClassification() *string
 	SetResourceGroupIds(v []*string) *DescribeResourceGroupsRequest
 	GetResourceGroupIds() []*string
 	SetResourceGroupName(v string) *DescribeResourceGroupsRequest
@@ -58,7 +60,8 @@ type DescribeResourceGroupsRequest struct {
 	// example:
 	//
 	// AliyunConsole
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
 	// The IDs of the resource groups that you want to query.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 	// The name of the resource group.
@@ -97,6 +100,10 @@ func (s *DescribeResourceGroupsRequest) GetPlatform() *string {
 	return s.Platform
 }
 
+func (s *DescribeResourceGroupsRequest) GetResourceClassification() *string {
+	return s.ResourceClassification
+}
+
 func (s *DescribeResourceGroupsRequest) GetResourceGroupIds() []*string {
 	return s.ResourceGroupIds
 }
@@ -132,6 +139,11 @@ func (s *DescribeResourceGroupsRequest) SetPageSize(v int32) *DescribeResourceGr
 
 func (s *DescribeResourceGroupsRequest) SetPlatform(v string) *DescribeResourceGroupsRequest {
 	s.Platform = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetResourceClassification(v string) *DescribeResourceGroupsRequest {
+	s.ResourceClassification = &v
 	return s
 }
 

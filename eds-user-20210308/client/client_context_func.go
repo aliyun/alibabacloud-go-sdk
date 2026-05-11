@@ -420,6 +420,10 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 		query["Platform"] = request.Platform
 	}
 
+	if !dara.IsNil(request.ResourceClassification) {
+		query["ResourceClassification"] = request.ResourceClassification
+	}
+
 	if !dara.IsNil(request.ResourceGroupName) {
 		query["ResourceGroupName"] = request.ResourceGroupName
 	}
@@ -1018,6 +1022,10 @@ func (client *Client) DescribeResourceGroupsWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.Platform) {
 		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ResourceClassification) {
+		query["ResourceClassification"] = request.ResourceClassification
 	}
 
 	if !dara.IsNil(request.ResourceGroupIds) {
