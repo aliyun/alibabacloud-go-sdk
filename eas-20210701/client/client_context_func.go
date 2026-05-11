@@ -1076,6 +1076,77 @@ func (client *Client) CreateServiceMirrorWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
+// 创建服务更新计划
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **策略互斥**：`Partition`（分区发布）和`Batch`（批量发布）两种策略只能选择其中一种，不能同时使用。
+//
+// - **请求速率限制**：每秒最多100次请求。
+//
+// - **授权信息**：需要具备`eas:CreateServiceRollout`权限才能调用此接口。
+//
+// - **资源ARN**：`acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}`。
+//
+// - **暂停发布**：通过设置`Paused`参数为`true`可以暂停发布流程，之后可通过`UpdateServiceRollout`接口恢复或取消发布。
+//
+// - **监控与回滚**：在发布过程中建议持续监控服务指标，以便及时发现并处理问题；如需回滚，可以通过调整`Partition`值或删除发布策略来实现。
+//
+// @param request - CreateServiceRolloutRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceRolloutResponse
+func (client *Client) CreateServiceRolloutWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *CreateServiceRolloutRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceRolloutResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Batch) {
+		body["Batch"] = request.Batch
+	}
+
+	if !dara.IsNil(request.Partition) {
+		body["Partition"] = request.Partition
+	}
+
+	if !dara.IsNil(request.Paused) {
+		body["Paused"] = request.Paused
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceRollout"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/rollout"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceRolloutResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a virtual resource group.
 //
 // @param request - CreateVirtualResourceRequest
@@ -2003,6 +2074,65 @@ func (client *Client) DeleteServiceMirrorWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
+// 删除服务更新计划
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **不可恢复**：删除操作不可撤销，请谨慎操作。
+//
+// - **不自动回退**：删除策略不会回退已更新的副本。
+//
+// - **停止发布**：正在进行的发布会立即停止。
+//
+// - **状态保留**：已更新的副本保持新版本，未更新的保持旧版本。
+//
+// - 删除后，后续服务更新将采用默认的滚动更新方式。
+//
+// - 在删除前，请确认要删除的服务名称和地域，并了解当前发布状态（可以通过调用`DescribeServiceRollout`接口获取）。
+//
+// - 如果需要回退版本，请在删除策略后通过重新创建策略或直接更新服务镜像来实现。
+//
+// @param request - DeleteServiceRolloutRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceRolloutResponse
+func (client *Client) DeleteServiceRolloutWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DeleteServiceRolloutRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceRolloutResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceRollout"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/rollout"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceRolloutResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a virtual resource group that contains no resources or instances.
 //
 // @param request - DeleteVirtualResourceRequest
@@ -2895,6 +3025,63 @@ func (client *Client) DescribeServiceMirrorWithContext(ctx context.Context, Clus
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServiceMirrorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看服务更新计划
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于查询特定服务的发布策略（Rollout）配置和当前执行状态。
+//
+// - 返回的信息包括但不限于发布策略的具体参数、当前发布进度等。
+//
+// - 请求时需提供`ClusterId`和服务名称`ServiceName`作为路径参数。
+//
+// - 注意，请求速率限制为每秒最多100次。
+//
+// - 如果服务不存在或未创建发布策略，调用此接口将返回错误。
+//
+// - 返回的状态是实时查询的结果，可能会随时间而变化，请根据实际需要调整轮询间隔。
+//
+// @param request - DescribeServiceRolloutRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceRolloutResponse
+func (client *Client) DescribeServiceRolloutWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *DescribeServiceRolloutRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceRolloutResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeServiceRollout"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/rollout"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeServiceRolloutResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5655,6 +5842,75 @@ func (client *Client) UpdateServiceMirrorWithContext(ctx context.Context, Cluste
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateServiceMirrorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新服务发布计划
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **至少提供一个参数**：必须在请求中指定`Partition`、`Batch`或`Paused`中的至少一个参数。
+//
+// - **互斥策略**：不能同时提供`Partition`和`Batch`配置。
+//
+// - **实时生效**：更新将立即生效，影响正在进行的服务发布过程。
+//
+// - **回退操作**：通过增加`Partition`值可以实现版本回退，但不会自动触发，需要手动更新服务镜像。
+//
+// - **暂停不影响参数**：暂停发布不会改变已设置的`Partition`或`Batch`参数，仅暂停执行当前策略。
+//
+// @param request - UpdateServiceRolloutRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceRolloutResponse
+func (client *Client) UpdateServiceRolloutWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *UpdateServiceRolloutRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceRolloutResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Batch) {
+		body["Batch"] = request.Batch
+	}
+
+	if !dara.IsNil(request.Partition) {
+		body["Partition"] = request.Partition
+	}
+
+	if !dara.IsNil(request.Paused) {
+		body["Paused"] = request.Paused
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateServiceRollout"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/rollout"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServiceRolloutResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

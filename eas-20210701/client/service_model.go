@@ -111,6 +111,8 @@ type iService interface {
 	GetUpdateTime() *string
 	SetWeight(v int32) *Service
 	GetWeight() *int32
+	SetWorkloadType(v string) *Service
+	GetWorkloadType() *string
 	SetWorkspaceId(v string) *Service
 	GetWorkspaceId() *string
 }
@@ -431,7 +433,8 @@ type Service struct {
 	// example:
 	//
 	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
 	// The ID of the workspace to which the service belongs.
 	//
 	// example:
@@ -650,6 +653,10 @@ func (s *Service) GetUpdateTime() *string {
 
 func (s *Service) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *Service) GetWorkloadType() *string {
+	return s.WorkloadType
 }
 
 func (s *Service) GetWorkspaceId() *string {
@@ -908,6 +915,11 @@ func (s *Service) SetUpdateTime(v string) *Service {
 
 func (s *Service) SetWeight(v int32) *Service {
 	s.Weight = &v
+	return s
+}
+
+func (s *Service) SetWorkloadType(v string) *Service {
+	s.WorkloadType = &v
 	return s
 }
 
