@@ -11,13 +11,16 @@ type iAutoscalingMetricSpec interface {
 	GoString() string
 	SetMetricName(v string) *AutoscalingMetricSpec
 	GetMetricName() *string
+	SetStabilizationWindowSeconds(v int32) *AutoscalingMetricSpec
+	GetStabilizationWindowSeconds() *int32
 	SetTargetValue(v int32) *AutoscalingMetricSpec
 	GetTargetValue() *int32
 }
 
 type AutoscalingMetricSpec struct {
-	MetricName  *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	TargetValue *int32  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	MetricName                 *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	StabilizationWindowSeconds *int32  `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	TargetValue                *int32  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 }
 
 func (s AutoscalingMetricSpec) String() string {
@@ -32,12 +35,21 @@ func (s *AutoscalingMetricSpec) GetMetricName() *string {
 	return s.MetricName
 }
 
+func (s *AutoscalingMetricSpec) GetStabilizationWindowSeconds() *int32 {
+	return s.StabilizationWindowSeconds
+}
+
 func (s *AutoscalingMetricSpec) GetTargetValue() *int32 {
 	return s.TargetValue
 }
 
 func (s *AutoscalingMetricSpec) SetMetricName(v string) *AutoscalingMetricSpec {
 	s.MetricName = &v
+	return s
+}
+
+func (s *AutoscalingMetricSpec) SetStabilizationWindowSeconds(v int32) *AutoscalingMetricSpec {
+	s.StabilizationWindowSeconds = &v
 	return s
 }
 

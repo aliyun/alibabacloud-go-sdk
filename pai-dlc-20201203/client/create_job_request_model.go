@@ -41,6 +41,8 @@ type iCreateJobRequest interface {
 	GetPriority() *int32
 	SetResourceId(v string) *CreateJobRequest
 	GetResourceId() *string
+	SetSchedulingStrategy(v string) *CreateJobRequest
+	GetSchedulingStrategy() *string
 	SetSettings(v *JobSettings) *CreateJobRequest
 	GetSettings() *JobSettings
 	SetSuccessPolicy(v string) *CreateJobRequest
@@ -182,6 +184,10 @@ type CreateJobRequest struct {
 	//
 	// rs-xxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Auto
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
 	// The additional parameter configurations of the job.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// The policy that is used to check whether a distributed multi-node job is successful. Only TensorFlow distributed multi-node jobs are supported.
@@ -304,6 +310,10 @@ func (s *CreateJobRequest) GetResourceId() *string {
 	return s.ResourceId
 }
 
+func (s *CreateJobRequest) GetSchedulingStrategy() *string {
+	return s.SchedulingStrategy
+}
+
 func (s *CreateJobRequest) GetSettings() *JobSettings {
 	return s.Settings
 }
@@ -417,6 +427,11 @@ func (s *CreateJobRequest) SetPriority(v int32) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetResourceId(v string) *CreateJobRequest {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetSchedulingStrategy(v string) *CreateJobRequest {
+	s.SchedulingStrategy = &v
 	return s
 }
 

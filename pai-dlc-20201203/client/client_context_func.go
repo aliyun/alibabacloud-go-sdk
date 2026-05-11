@@ -94,6 +94,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 		body["ResourceId"] = request.ResourceId
 	}
 
+	if !dara.IsNil(request.SchedulingStrategy) {
+		body["SchedulingStrategy"] = request.SchedulingStrategy
+	}
+
 	if !dara.IsNil(request.Settings) {
 		body["Settings"] = request.Settings
 	}
@@ -156,7 +160,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 // Summary:
 //
-// 创建任务模板
+// # Create a Job Template
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -387,7 +391,7 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, r
 
 // Summary:
 //
-// 删除任务模板
+// Delete an unused job template. If the template is already used by a job, you cannot delete it.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -750,7 +754,7 @@ func (client *Client) GetJobSanityCheckResultWithContext(ctx context.Context, Jo
 
 // Summary:
 //
-// 获取任务模板详情
+// Obtains the details of a job template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1300,7 +1304,7 @@ func (client *Client) ListJobSanityCheckResultsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 列出任务模板
+// List job templates by workspace. Support paging and sorting. Filter by creator, TemplateId, or TemplateName.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -1691,7 +1695,7 @@ func (client *Client) ListTensorboardsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 设置任务模板默认版本
+// Sets the default version of the template.
 //
 // @param request - SetJobTemplateDefaultVersionRequest
 //
@@ -1932,7 +1936,7 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, r
 
 // Summary:
 //
-// 更新任务模板
+// # Update a Job template
 //
 // @param request - UpdateJobTemplateRequest
 //

@@ -77,6 +77,8 @@ type iGetJobResponseBody interface {
 	GetRestartTimes() *string
 	SetRoleSystemEnvs(v map[string]map[string]interface{}) *GetJobResponseBody
 	GetRoleSystemEnvs() map[string]map[string]interface{}
+	SetSchedulingStrategy(v string) *GetJobResponseBody
+	GetSchedulingStrategy() *string
 	SetSettings(v *JobSettings) *GetJobResponseBody
 	GetSettings() *JobSettings
 	SetStatus(v string) *GetJobResponseBody
@@ -259,6 +261,10 @@ type GetJobResponseBody struct {
 	// 0/10
 	RestartTimes   *string                           `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
 	RoleSystemEnvs map[string]map[string]interface{} `json:"RoleSystemEnvs,omitempty" xml:"RoleSystemEnvs,omitempty"`
+	// example:
+	//
+	// Auto
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
 	// The additional parameter configurations of the job.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// The status of the job. Valid values:
@@ -487,6 +493,10 @@ func (s *GetJobResponseBody) GetRoleSystemEnvs() map[string]map[string]interface
 	return s.RoleSystemEnvs
 }
 
+func (s *GetJobResponseBody) GetSchedulingStrategy() *string {
+	return s.SchedulingStrategy
+}
+
 func (s *GetJobResponseBody) GetSettings() *JobSettings {
 	return s.Settings
 }
@@ -702,6 +712,11 @@ func (s *GetJobResponseBody) SetRestartTimes(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetRoleSystemEnvs(v map[string]map[string]interface{}) *GetJobResponseBody {
 	s.RoleSystemEnvs = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetSchedulingStrategy(v string) *GetJobResponseBody {
+	s.SchedulingStrategy = &v
 	return s
 }
 

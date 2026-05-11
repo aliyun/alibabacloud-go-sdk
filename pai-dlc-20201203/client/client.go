@@ -188,6 +188,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["ResourceId"] = request.ResourceId
 	}
 
+	if !dara.IsNil(request.SchedulingStrategy) {
+		body["SchedulingStrategy"] = request.SchedulingStrategy
+	}
+
 	if !dara.IsNil(request.Settings) {
 		body["Settings"] = request.Settings
 	}
@@ -273,7 +277,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// 创建任务模板
+// # Create a Job Template
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -340,7 +344,7 @@ func (client *Client) CreateJobTemplateWithOptions(request *CreateJobTemplateReq
 
 // Summary:
 //
-// 创建任务模板
+// # Create a Job Template
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -561,7 +565,7 @@ func (client *Client) DeleteJob(JobId *string, request *DeleteJobRequest) (_resu
 
 // Summary:
 //
-// 删除任务模板
+// Delete an unused job template. If the template is already used by a job, you cannot delete it.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -602,7 +606,7 @@ func (client *Client) DeleteJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// 删除任务模板
+// Delete an unused job template. If the template is already used by a job, you cannot delete it.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -1061,7 +1065,7 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 
 // Summary:
 //
-// 获取任务模板详情
+// Obtains the details of a job template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1108,7 +1112,7 @@ func (client *Client) GetJobTemplateWithOptions(TemplateId *string, request *Get
 
 // Summary:
 //
-// 获取任务模板详情
+// Obtains the details of a job template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1805,7 +1809,7 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 
 // Summary:
 //
-// 列出任务模板
+// List job templates by workspace. Support paging and sorting. Filter by creator, TemplateId, or TemplateName.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -1880,7 +1884,7 @@ func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesReque
 
 // Summary:
 //
-// 列出任务模板
+// List job templates by workspace. Support paging and sorting. Filter by creator, TemplateId, or TemplateName.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -2253,7 +2257,7 @@ func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_resul
 
 // Summary:
 //
-// 设置任务模板默认版本
+// Sets the default version of the template.
 //
 // @param request - SetJobTemplateDefaultVersionRequest
 //
@@ -2300,7 +2304,7 @@ func (client *Client) SetJobTemplateDefaultVersionWithOptions(TemplateId *string
 
 // Summary:
 //
-// 设置任务模板默认版本
+// Sets the default version of the template.
 //
 // @param request - SetJobTemplateDefaultVersionRequest
 //
@@ -2589,7 +2593,7 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 
 // Summary:
 //
-// 更新任务模板
+// # Update a Job template
 //
 // @param request - UpdateJobTemplateRequest
 //
@@ -2660,7 +2664,7 @@ func (client *Client) UpdateJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// 更新任务模板
+// # Update a Job template
 //
 // @param request - UpdateJobTemplateRequest
 //

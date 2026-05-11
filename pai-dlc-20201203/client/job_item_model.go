@@ -89,6 +89,8 @@ type iJobItem interface {
 	GetResourceType() *string
 	SetRestartTimes(v string) *JobItem
 	GetRestartTimes() *string
+	SetSchedulingStrategy(v string) *JobItem
+	GetSchedulingStrategy() *string
 	SetSettings(v *JobSettings) *JobItem
 	GetSettings() *JobSettings
 	SetStatus(v string) *JobItem
@@ -354,7 +356,8 @@ type JobItem struct {
 	// example:
 	//
 	// 1
-	RestartTimes *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	RestartTimes       *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
 	// The extra parameters of the job.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// The job status. Valid values:
@@ -615,6 +618,10 @@ func (s *JobItem) GetResourceType() *string {
 
 func (s *JobItem) GetRestartTimes() *string {
 	return s.RestartTimes
+}
+
+func (s *JobItem) GetSchedulingStrategy() *string {
+	return s.SchedulingStrategy
 }
 
 func (s *JobItem) GetSettings() *JobSettings {
@@ -890,6 +897,11 @@ func (s *JobItem) SetResourceType(v string) *JobItem {
 
 func (s *JobItem) SetRestartTimes(v string) *JobItem {
 	s.RestartTimes = &v
+	return s
+}
+
+func (s *JobItem) SetSchedulingStrategy(v string) *JobItem {
+	s.SchedulingStrategy = &v
 	return s
 }
 
