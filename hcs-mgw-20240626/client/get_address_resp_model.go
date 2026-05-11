@@ -32,39 +32,57 @@ type iGetAddressResp interface {
 }
 
 type GetAddressResp struct {
+	// The details of the data address.
 	AddressDetail *AddressDetail `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
+	// The time when the data address was created.
+	//
 	// example:
 	//
 	// 2024-05-01 12:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the data address was last modified.
+	//
 	// example:
 	//
 	// 2024-05-01 12:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the data address.
+	//
 	// example:
 	//
-	// <your-address-name>
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the data address.
+	//
 	// example:
 	//
-	// 1***90**87***53*
+	// test_owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The state of the data address.
+	//
 	// example:
 	//
 	// avaliable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	//
 	// example:
 	//
 	// K1:V1,K2:V2
-	Tags         *string     `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The verification result of the data address.
 	VerifyResult *VerifyResp `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// The time when the data address was verified.
+	//
 	// example:
 	//
 	// 2024-05-01 12:00:00
 	VerifyTime *string `json:"VerifyTime,omitempty" xml:"VerifyTime,omitempty"`
+	// The ID of the data address.
+	//
 	// example:
 	//
-	// ****sf-****-0078-****-drfg****df1334
+	// test_id
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

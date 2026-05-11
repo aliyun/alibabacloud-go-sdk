@@ -16,10 +16,13 @@ type iUpdateTunnelInfo interface {
 }
 
 type UpdateTunnelInfo struct {
+	// The tags.
+	//
 	// example:
 	//
-	// k1=v1;k2=v2
-	Tags      *string    `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// K1:V1,K2:V2
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The throttling settings of the tunnel.
 	TunnelQos *TunnelQos `json:"TunnelQos,omitempty" xml:"TunnelQos,omitempty"`
 }
 

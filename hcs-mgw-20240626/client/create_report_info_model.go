@@ -18,17 +18,23 @@ type iCreateReportInfo interface {
 }
 
 type CreateReportInfo struct {
+	// The task name.
+	//
 	// example:
 	//
-	// <your-job-name>
+	// test_job_name
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The execution ID of the task.
+	//
 	// example:
 	//
 	// 1
 	RuntimeId *int32 `json:"RuntimeId,omitempty" xml:"RuntimeId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// <your-job-version>
+	// test_job_id
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

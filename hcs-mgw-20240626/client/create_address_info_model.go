@@ -18,14 +18,24 @@ type iCreateAddressInfo interface {
 }
 
 type CreateAddressInfo struct {
+	// The details of the data address.
+	//
 	// This parameter is required.
 	AddressDetail *AddressDetail `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
+	// The name of the data address.\\
+	//
+	// The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name must be 3 to 63 characters in length. The name is case-sensitive and encoded in UTF-8. The name cannot start with a hyphen (-) or an underscore (_). You must specify a name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// <your-address-name>
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tags in the key:value format.\\
+	//
+	// The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
+	//
 	// example:
 	//
 	// K1:V1,K2:V2

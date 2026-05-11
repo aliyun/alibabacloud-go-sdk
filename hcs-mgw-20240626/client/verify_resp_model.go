@@ -18,8 +18,20 @@ type iVerifyResp interface {
 }
 
 type VerifyResp struct {
+	// The error code.
+	//
+	// example:
+	//
+	// InvalidArgument
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Invalid argument.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200

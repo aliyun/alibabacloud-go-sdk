@@ -18,11 +18,16 @@ type iListAgentResp interface {
 }
 
 type ListAgentResp struct {
+	// The agents.
 	ImportAgent []*GetAgentResp `json:"ImportAgent,omitempty" xml:"ImportAgent,omitempty" type:"Repeated"`
+	// The position from which the next list operation starts.
+	//
 	// example:
 	//
-	// <your-next-agent-name>
+	// test_next_marker
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// Indicates whether the queried results are truncated.
+	//
 	// example:
 	//
 	// true

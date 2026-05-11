@@ -51,51 +51,79 @@ type CreateJobInfo struct {
 	// example:
 	//
 	// false
-	AppendableToNormal *bool  `json:"AppendableToNormal,omitempty" xml:"AppendableToNormal,omitempty"`
-	Audit              *Audit `json:"Audit,omitempty" xml:"Audit,omitempty"`
+	AppendableToNormal *bool `json:"AppendableToNormal,omitempty" xml:"AppendableToNormal,omitempty"`
+	// The audit method.
+	Audit *Audit `json:"Audit,omitempty" xml:"Audit,omitempty"`
+	// Indicates whether the Target attribute value of the symbolic links at the source data address is converted. You can convert the Target attribute value of the symbolic links at the source data address in one of the following scenarios: The source data address is an Object Storage Service (OSS) data address and the destination data address is a local data address. The source data address is a local data address and the destination data address is an OSS data address. The source data address is a local data address and the destination data address is another local data address. This ensures that the symbolic links at the destination data address can point to their objects as expected.
+	//
 	// example:
 	//
 	// false
 	ConvertSymlinkTarget *bool `json:"ConvertSymlinkTarget,omitempty" xml:"ConvertSymlinkTarget,omitempty"`
+	// Specifies whether to create a migration report.
+	//
 	// example:
 	//
-	// false
+	// true
 	CreateReport *bool `json:"CreateReport,omitempty" xml:"CreateReport,omitempty"`
+	// The name of the destination data address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// <your-dest-address-name>
+	// test_dest_address
 	DestAddress *string `json:"DestAddress,omitempty" xml:"DestAddress,omitempty"`
+	// Specifies whether to enable multi-version migration. Multi-version migration is not supported.
+	//
 	// example:
 	//
 	// false
-	EnableMultiVersioning *bool       `json:"EnableMultiVersioning,omitempty" xml:"EnableMultiVersioning,omitempty"`
-	FilterRule            *FilterRule `json:"FilterRule,omitempty" xml:"FilterRule,omitempty"`
-	ImportQos             *ImportQos  `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
+	EnableMultiVersioning *bool `json:"EnableMultiVersioning,omitempty" xml:"EnableMultiVersioning,omitempty"`
+	// The filtering rule.
+	FilterRule *FilterRule `json:"FilterRule,omitempty" xml:"FilterRule,omitempty"`
+	// The throttling settings of the task.
+	ImportQos *ImportQos `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
+	// The task name.\\
+	//
+	// The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name must be 3 to 63 characters in length. The name is case-sensitive and encoded in UTF-8. The name cannot start with a hyphen (-) or an underscore (_). You must specify a name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// <your-job-name>
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The file overwriting mode.\\
+	//
+	// Valid values: never and always.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// always
 	OverwriteMode *string `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
+	// The ID of the parent task. When you create a subtask to migrate a file that failed to be migrated, you can specify the ID of the parent task.
+	//
 	// example:
 	//
-	// <your-parent-version>
-	ParentVersion *string       `json:"ParentVersion,omitempty" xml:"ParentVersion,omitempty"`
-	ScheduleRule  *ScheduleRule `json:"ScheduleRule,omitempty" xml:"ScheduleRule,omitempty"`
+	// 6af62558-970d-4f44-8663-4e297170fd6a
+	ParentVersion *string `json:"ParentVersion,omitempty" xml:"ParentVersion,omitempty"`
+	// The scheduling rule.
+	ScheduleRule *ScheduleRule `json:"ScheduleRule,omitempty" xml:"ScheduleRule,omitempty"`
+	// The name of the source data address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// <your-src-address-name>
+	// test_src_address
 	SrcAddress *string `json:"SrcAddress,omitempty" xml:"SrcAddress,omitempty"`
+	// The tags in the key:value format.\\
+	//
+	// The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
+	//
 	// example:
 	//
 	// K1:V1,K2:V2
@@ -104,6 +132,18 @@ type CreateJobInfo struct {
 	//
 	// Standard
 	TargetStorageClass *string `json:"TargetStorageClass,omitempty" xml:"TargetStorageClass,omitempty"`
+	// The file transfer mode.\\
+	//
+	// Valid values: all and lastmodified. all: transfers the full data of files. lastmodified: transfers the incremental data of files.\\
+	//
+	// Valid values if OverwriteMode and TransferMode are used together:
+	//
+	// 	- A combination of always and all indicates that all files are forcefully overwritten.
+	//
+	// 	- A combination of always and lastmodified indicates that files are overwritten based on the last modification time.
+	//
+	// 	- A combination of never and all indicates that the files with the same name are not overwritten.
+	//
 	// This parameter is required.
 	//
 	// example:

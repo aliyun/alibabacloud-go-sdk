@@ -16,10 +16,14 @@ type iImportQos interface {
 }
 
 type ImportQos struct {
+	// The maximum bandwidth. Unit: bit/s.
+	//
 	// example:
 	//
 	// 1073741824
 	MaxBandWidth *int64 `json:"MaxBandWidth,omitempty" xml:"MaxBandWidth,omitempty"`
+	// The number of files that are migrated per second.
+	//
 	// example:
 	//
 	// 1000

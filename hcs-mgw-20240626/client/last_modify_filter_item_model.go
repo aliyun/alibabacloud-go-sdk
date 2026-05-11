@@ -14,6 +14,7 @@ type iLastModifyFilterItem interface {
 }
 
 type LastModifyFilterItem struct {
+	// The time filters.
 	TimeFilter []*TimeFilter `json:"TimeFilter,omitempty" xml:"TimeFilter,omitempty" type:"Repeated"`
 }
 

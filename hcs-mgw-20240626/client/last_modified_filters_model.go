@@ -16,7 +16,9 @@ type iLastModifiedFilters interface {
 }
 
 type LastModifiedFilters struct {
+	// The excluded file modification time.
 	Excludes *LastModifyFilterItem `json:"Excludes,omitempty" xml:"Excludes,omitempty"`
+	// The included file modification time.
 	Includes *LastModifyFilterItem `json:"Includes,omitempty" xml:"Includes,omitempty"`
 }
 

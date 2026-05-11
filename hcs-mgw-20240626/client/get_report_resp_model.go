@@ -40,49 +40,91 @@ type iGetReportResp interface {
 }
 
 type GetReportResp struct {
+	// The number of files that are migrated.
+	//
 	// example:
 	//
 	// 800
-	CopiedCount  *int64  `json:"CopiedCount,omitempty" xml:"CopiedCount,omitempty"`
+	CopiedCount *int64 `json:"CopiedCount,omitempty" xml:"CopiedCount,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// test error msg.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The number of files that failed to be migrated.
+	//
 	// example:
 	//
 	// 100
-	FailedCount      *int64  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The path of files that failed to be migrated.
+	//
+	// example:
+	//
+	// test_failed_prefix/
 	FailedListPrefix *string `json:"FailedListPrefix,omitempty" xml:"FailedListPrefix,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
-	// 1754445355
+	// 2024-05-01 12:00:00
 	JobCreateTime *string `json:"JobCreateTime,omitempty" xml:"JobCreateTime,omitempty"`
+	// The time when the task ended.
+	//
 	// example:
 	//
-	// 1754445355
+	// 2024-05-01 12:00:00
 	JobEndTime *string `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
+	// The task duration.
+	//
 	// example:
 	//
 	// 1000
 	JobExecuteTime *string `json:"JobExecuteTime,omitempty" xml:"JobExecuteTime,omitempty"`
+	// The time when the migration report was created.
+	//
 	// example:
 	//
-	// 1748232558
+	// 2024-05-01 12:00:00
 	ReportCreateTime *string `json:"ReportCreateTime,omitempty" xml:"ReportCreateTime,omitempty"`
+	// The time when the migration report was generated.
+	//
 	// example:
 	//
-	// 1748232845
+	// 2024-05-01 12:00:00
 	ReportEndTime *string `json:"ReportEndTime,omitempty" xml:"ReportEndTime,omitempty"`
+	// The number of files that are skipped.
+	//
 	// example:
 	//
 	// 100
-	SkippedCount      *int64  `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
-	SkippedListPrefix *string `json:"SkippedListPrefix,omitempty" xml:"SkippedListPrefix,omitempty"`
+	SkippedCount *int64 `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
+	// The path of files that are skipped.
+	//
 	// example:
 	//
-	// Finished
+	// test_skipped_prefix/
+	SkippedListPrefix *string `json:"SkippedListPrefix,omitempty" xml:"SkippedListPrefix,omitempty"`
+	// The state of the migration report.\\
+	//
+	// Valid values: Running, NotExist, Finished, and Failed.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of files.
+	//
 	// example:
 	//
 	// 1000
-	TotalCount      *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The path of files.
+	//
+	// example:
+	//
+	// test_total_prefix/
 	TotalListPrefix *string `json:"TotalListPrefix,omitempty" xml:"TotalListPrefix,omitempty"`
 }
 

@@ -63,63 +63,113 @@ type GetJobResp struct {
 	// example:
 	//
 	// true
-	AppendableToNormal *bool  `json:"AppendableToNormal,omitempty" xml:"AppendableToNormal,omitempty"`
-	Audit              *Audit `json:"Audit,omitempty" xml:"Audit,omitempty"`
+	AppendableToNormal *bool `json:"AppendableToNormal,omitempty" xml:"AppendableToNormal,omitempty"`
+	// The audit method.
+	Audit *Audit `json:"Audit,omitempty" xml:"Audit,omitempty"`
+	// Indicates whether the Target attribute value of the symbolic links at the source data address is converted.
+	//
 	// example:
 	//
 	// false
 	ConvertSymlinkTarget *bool `json:"ConvertSymlinkTarget,omitempty" xml:"ConvertSymlinkTarget,omitempty"`
+	// Indicates whether a migration report is created.
+	//
 	// example:
 	//
 	// false
 	CreateReport *bool `json:"CreateReport,omitempty" xml:"CreateReport,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
-	// 2025-07-04T06:02:21.000Z
+	// 2024-05-01 12:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the destination data address.
+	//
 	// example:
 	//
-	// <your-dest-address-name>
+	// test_dest_address
 	DestAddress *string `json:"DestAddress,omitempty" xml:"DestAddress,omitempty"`
+	// Indicates whether multi-version migration is enabled.
+	//
 	// example:
 	//
 	// false
-	EnableMultiVersioning *bool       `json:"EnableMultiVersioning,omitempty" xml:"EnableMultiVersioning,omitempty"`
-	FilterRule            *FilterRule `json:"FilterRule,omitempty" xml:"FilterRule,omitempty"`
-	ImportQos             *ImportQos  `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
+	EnableMultiVersioning *bool `json:"EnableMultiVersioning,omitempty" xml:"EnableMultiVersioning,omitempty"`
+	// The filtering rule.
+	FilterRule *FilterRule `json:"FilterRule,omitempty" xml:"FilterRule,omitempty"`
+	// The throttling settings of the task.
+	ImportQos *ImportQos `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
+	// The time when the task was modified.
+	//
 	// example:
 	//
-	// 2025-07-05T06:02:22.000Z
+	// 2024-05-01 12:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
-	// <your-job-name>
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The file overwriting mode.
+	//
 	// example:
 	//
 	// always
 	OverwriteMode *string `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
+	// The task owner.
+	//
 	// example:
 	//
-	// 11***9*38***34**
+	// test_owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the parent task.
+	//
 	// example:
 	//
-	// <your-parent-job-name>
+	// test_parent_name
 	ParentName *string `json:"ParentName,omitempty" xml:"ParentName,omitempty"`
+	// The ID of the parent task.
+	//
 	// example:
 	//
-	// 3***1a7f-18**-41d9-****-21591***49**
-	ParentVersion *string       `json:"ParentVersion,omitempty" xml:"ParentVersion,omitempty"`
-	ScheduleRule  *ScheduleRule `json:"ScheduleRule,omitempty" xml:"ScheduleRule,omitempty"`
+	// 7db93837-a5ee-4e3a-b3c8-800e7947dabc
+	ParentVersion *string `json:"ParentVersion,omitempty" xml:"ParentVersion,omitempty"`
+	// The scheduling rule.
+	ScheduleRule *ScheduleRule `json:"ScheduleRule,omitempty" xml:"ScheduleRule,omitempty"`
+	// The name of the source data address.
+	//
 	// example:
 	//
-	// <your-src-address-name>
+	// test_src_address
 	SrcAddress *string `json:"SrcAddress,omitempty" xml:"SrcAddress,omitempty"`
+	// The task state. Valid values:
+	//
+	// IMPORT_JOB_BEGIN: The task is created.
+	//
+	// IMPORT_JOB_LAUNCHING: The task is being started.
+	//
+	// IMPORT_JOB_PREPARING: The system is preparing for the task.
+	//
+	// IMPORT_JOB_DOING: The task is running.
+	//
+	// IMPORT_JOB_SUSPEND: The task is paused.
+	//
+	// IMPORT_JOB_CLOSING: The task is being closed.
+	//
+	// IMPORT_JOB_FINISHED: The task is complete.
+	//
+	// IMPORT_JOB_INTERRUPTED: The task is abnormally interrupted.
+	//
+	// IMPORT_JOB_CONFIRMED: The task is complete and the user has confirmed the data integrity and consistency.
+	//
 	// example:
 	//
 	// IMPORT_JOB_DOING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	//
 	// example:
 	//
 	// K1:V1,K2:V2
@@ -128,13 +178,17 @@ type GetJobResp struct {
 	//
 	// Standard
 	TargetStorageClass *string `json:"TargetStorageClass,omitempty" xml:"TargetStorageClass,omitempty"`
+	// The file transfer mode.
+	//
 	// example:
 	//
 	// all
 	TransferMode *string `json:"TransferMode,omitempty" xml:"TransferMode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// 31***a7f-188f-****-b266-215***8e49d7
+	// test_id
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// example:
 	//

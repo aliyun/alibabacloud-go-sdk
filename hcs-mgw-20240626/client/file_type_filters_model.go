@@ -16,10 +16,14 @@ type iFileTypeFilters interface {
 }
 
 type FileTypeFilters struct {
+	// Specifies whether to filter out files in directories.
+	//
 	// example:
 	//
 	// fasle
 	ExcludeDir *bool `json:"ExcludeDir,omitempty" xml:"ExcludeDir,omitempty"`
+	// Specifies whether to filter out symbolic links.
+	//
 	// example:
 	//
 	// fasle

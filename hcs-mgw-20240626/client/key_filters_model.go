@@ -16,7 +16,9 @@ type iKeyFilters interface {
 }
 
 type KeyFilters struct {
+	// The excluded file name.
 	Excludes *KeyFilterItem `json:"Excludes,omitempty" xml:"Excludes,omitempty"`
+	// The included file name.
 	Includes *KeyFilterItem `json:"Includes,omitempty" xml:"Includes,omitempty"`
 }
 

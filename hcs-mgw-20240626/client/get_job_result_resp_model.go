@@ -46,50 +46,76 @@ type iGetJobResultResp interface {
 }
 
 type GetJobResultResp struct {
+	// The type of the data address created based on the files that failed to be migrated. This parameter is required if you create a data address.
+	//
 	// example:
 	//
 	// ossinv
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The number of files that are migrated. The number includes the number of files that are successfully migrated and the number of files that are skipped.
+	//
 	// example:
 	//
 	// 800
 	CopiedObjectCount *int64 `json:"CopiedObjectCount,omitempty" xml:"CopiedObjectCount,omitempty"`
+	// The data size of files that are migrated.
+	//
 	// example:
 	//
 	// 800
 	CopiedObjectSize *int64 `json:"CopiedObjectSize,omitempty" xml:"CopiedObjectSize,omitempty"`
+	// The number of files that failed to be migrated.
+	//
 	// example:
 	//
 	// 200
 	FailedObjectCount *int64 `json:"FailedObjectCount,omitempty" xml:"FailedObjectCount,omitempty"`
+	// The AccessKey ID that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	//
 	// example:
 	//
-	// **********************
+	// test_access_id
 	InvAccessId *string `json:"InvAccessId,omitempty" xml:"InvAccessId,omitempty"`
+	// The AccessKey secret that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	//
 	// example:
 	//
-	// *************************
+	// test_secret_key
 	InvAccessSecret *string `json:"InvAccessSecret,omitempty" xml:"InvAccessSecret,omitempty"`
+	// The name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	//
 	// example:
 	//
-	// <your-bucket-name>
+	// test_sys_bucket
 	InvBucket *string `json:"InvBucket,omitempty" xml:"InvBucket,omitempty"`
+	// The domain name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	//
 	// example:
 	//
-	// oss-cn-hangzhou.aliyuncs.com
+	// test_domain
 	InvDomain *string `json:"InvDomain,omitempty" xml:"InvDomain,omitempty"`
+	// The type of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	//
 	// example:
 	//
 	// oss
 	InvLocation *string `json:"InvLocation,omitempty" xml:"InvLocation,omitempty"`
+	// The inventory list of files that failed to be migrated. This parameter is required if you create a data address.
+	//
 	// example:
 	//
-	// dir/mainfest.json
+	// mainfest.json
 	InvPath *string `json:"InvPath,omitempty" xml:"InvPath,omitempty"`
+	// The region ID of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	//
 	// example:
 	//
-	// oss-cn-hangzhou
+	// test_region_id
 	InvRegionId *string `json:"InvRegionId,omitempty" xml:"InvRegionId,omitempty"`
+	// Indicates whether the files that failed to be migrated can be migrated again.\\
+	//
+	// Valid values: NoNeed, Ready, and NotReady.
+	//
 	// example:
 	//
 	// Ready
@@ -102,17 +128,23 @@ type GetJobResultResp struct {
 	//
 	// 1000000
 	SkippedObjectSize *int64 `json:"SkippedObjectSize,omitempty" xml:"SkippedObjectSize,omitempty"`
+	// The total number of files.
+	//
 	// example:
 	//
 	// 1000
 	TotalObjectCount *int64 `json:"TotalObjectCount,omitempty" xml:"TotalObjectCount,omitempty"`
+	// The total data size of files.
+	//
 	// example:
 	//
 	// 1000
 	TotalObjectSize *int64 `json:"TotalObjectSize,omitempty" xml:"TotalObjectSize,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// ******-188f-41d9-b266-******
+	// test_job_id
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

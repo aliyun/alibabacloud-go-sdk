@@ -18,9 +18,26 @@ type iListTunnelResp interface {
 }
 
 type ListTunnelResp struct {
+	// The queried tunnels.
 	ImportTunnel []*GetTunnelResp `json:"ImportTunnel,omitempty" xml:"ImportTunnel,omitempty" type:"Repeated"`
-	NextMarker   *string          `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
-	Truncated    *bool            `json:"Truncated,omitempty" xml:"Truncated,omitempty"`
+	// The position from which the next list operation starts.
+	//
+	// example:
+	//
+	// test_marker
+	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// Indicates whether the queried results are truncated.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Truncated *bool `json:"Truncated,omitempty" xml:"Truncated,omitempty"`
 }
 
 func (s ListTunnelResp) String() string {

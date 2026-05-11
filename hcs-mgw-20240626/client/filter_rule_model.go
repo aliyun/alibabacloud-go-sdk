@@ -18,8 +18,11 @@ type iFilterRule interface {
 }
 
 type FilterRule struct {
-	FileTypeFilters     *FileTypeFilters     `json:"FileTypeFilters,omitempty" xml:"FileTypeFilters,omitempty"`
-	KeyFilters          *KeyFilters          `json:"KeyFilters,omitempty" xml:"KeyFilters,omitempty"`
+	// The filter based on the file type.
+	FileTypeFilters *FileTypeFilters `json:"FileTypeFilters,omitempty" xml:"FileTypeFilters,omitempty"`
+	// The filter based on the file name.
+	KeyFilters *KeyFilters `json:"KeyFilters,omitempty" xml:"KeyFilters,omitempty"`
+	// The filter based on the file modification time.
 	LastModifiedFilters *LastModifiedFilters `json:"LastModifiedFilters,omitempty" xml:"LastModifiedFilters,omitempty"`
 }
 

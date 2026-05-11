@@ -26,6 +26,10 @@ type GetAgentStatusResp struct {
 	//
 	// 1.5.0
 	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
+	// The agent state.\\
+	//
+	// Valid values: OK, Disconnected, and NoResponse.
+	//
 	// example:
 	//
 	// OK

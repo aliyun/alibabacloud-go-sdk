@@ -18,11 +18,16 @@ type iListJobHistoryResp interface {
 }
 
 type ListJobHistoryResp struct {
+	// The execution history of migration tasks.
 	JobHistory []*JobHistory `json:"JobHistory,omitempty" xml:"JobHistory,omitempty" type:"Repeated"`
+	// The position from which the next list operation starts.
+	//
 	// example:
 	//
-	// 1#3
+	// test_next_marker
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// Indicates whether the queried results are truncated.
+	//
 	// example:
 	//
 	// true

@@ -16,10 +16,15 @@ type iCreateTunnelInfo interface {
 }
 
 type CreateTunnelInfo struct {
+	// The tags in the key:value format.\\
+	//
+	// The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
+	//
 	// example:
 	//
-	// K1:V1,K2:V2
-	Tags      *string    `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// a:a
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The throttling settings of the tunnel.
 	TunnelQos *TunnelQos `json:"TunnelQos,omitempty" xml:"TunnelQos,omitempty"`
 }
 

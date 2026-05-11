@@ -48,47 +48,80 @@ type iJobHistory interface {
 }
 
 type JobHistory struct {
+	// The ID of the task status change.
+	//
 	// example:
 	//
 	// 2
 	CommitId *string `json:"CommitId,omitempty" xml:"CommitId,omitempty"`
+	// The number of files that are migrated. The number includes the number of files that are successfully migrated and the number of files that are skipped.
+	//
 	// example:
 	//
 	// 900
 	CopiedCount *int64 `json:"CopiedCount,omitempty" xml:"CopiedCount,omitempty"`
+	// The data size of files that are migrated. Unit: bytes.
+	//
 	// example:
 	//
 	// 1000
 	CopiedSize *int64 `json:"CopiedSize,omitempty" xml:"CopiedSize,omitempty"`
+	// The time when the current state ended.
+	//
 	// example:
 	//
-	// 2025-07-04T08:09:26.000Z
+	// 2024-05-01 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of files that failed to be migrated.
+	//
 	// example:
 	//
 	// 100
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// ****-188f-***-b266-****
+	// test_id
 	JobVersion *string `json:"JobVersion,omitempty" xml:"JobVersion,omitempty"`
+	// The state of data listing.\\
+	//
+	// Valid values: Listing and Finished.
+	//
 	// example:
 	//
 	// Listing
 	ListStatus *string `json:"ListStatus,omitempty" xml:"ListStatus,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// <your-job-name>
+	// test error msg.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operator.\\
+	//
+	// Valid values: user and system.
+	//
 	// example:
 	//
 	// user
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The execution ID of the task.
+	//
 	// example:
 	//
 	// 1
 	RuntimeId *string `json:"RuntimeId,omitempty" xml:"RuntimeId,omitempty"`
+	// The runtime state.\\
+	//
+	// Valid values: Normal and Interrupt.
+	//
 	// example:
 	//
 	// Normal
@@ -101,18 +134,26 @@ type JobHistory struct {
 	//
 	// 100000
 	SkippedSize *int64 `json:"SkippedSize,omitempty" xml:"SkippedSize,omitempty"`
+	// The time when the current state started.
+	//
 	// example:
 	//
-	// 2025-07-04T07:09:26.000Z
+	// 2024-05-01 12:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task state.
+	//
 	// example:
 	//
 	// IMPORT_JOB_DOING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of files.
+	//
 	// example:
 	//
 	// 1000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total data size of files. Unit: bytes.
+	//
 	// example:
 	//
 	// 1000

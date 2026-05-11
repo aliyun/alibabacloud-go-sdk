@@ -14,6 +14,7 @@ type iKeyFilterItem interface {
 }
 
 type KeyFilterItem struct {
+	// The regular expressions.
 	Regex []*string `json:"Regex,omitempty" xml:"Regex,omitempty" type:"Repeated"`
 }
 

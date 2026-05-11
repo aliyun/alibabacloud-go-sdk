@@ -18,11 +18,16 @@ type iListAddressResp interface {
 }
 
 type ListAddressResp struct {
+	// The data addresses.
 	ImportAddress []*GetAddressResp `json:"ImportAddress,omitempty" xml:"ImportAddress,omitempty" type:"Repeated"`
+	// The position from which the next list operation starts.
+	//
 	// example:
 	//
-	// <your-next-address-name>
+	// test_marker
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// Indicates whether the queried results are truncated.
+	//
 	// example:
 	//
 	// true

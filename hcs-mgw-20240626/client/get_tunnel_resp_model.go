@@ -24,26 +24,37 @@ type iGetTunnelResp interface {
 }
 
 type GetTunnelResp struct {
+	// The time when the tunnel was created.
+	//
 	// example:
 	//
-	// 2025-08-03T07:09:25.000Z
+	// 2024-05-01 12:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the tunnel was last modified.
+	//
 	// example:
 	//
-	// 2025-08-04T07:09:26.000Z
+	// 2024-05-01 12:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The tunnel owner.
+	//
 	// example:
 	//
-	// 1*5******7**43*
+	// test_owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The tags.
+	//
 	// example:
 	//
-	// K1:V1,K2:V2
+	// key1:value1,key2:value2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tunnel ID.
+	//
 	// example:
 	//
-	// ****33f-****-4740-****-bc4f****332b3
-	TunnelId  *string    `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	// test_tunnel_id
+	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	// The throttling settings of the tunnel.
 	TunnelQos *TunnelQos `json:"TunnelQos,omitempty" xml:"TunnelQos,omitempty"`
 }
 

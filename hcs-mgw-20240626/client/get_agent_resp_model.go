@@ -32,42 +32,65 @@ type iGetAgentResp interface {
 }
 
 type GetAgentResp struct {
+	// The security code of the agent.
+	//
+	// example:
+	//
+	// 6af62558-970d-4f44-8663-4e297170fd6a
 	ActivationKey *string `json:"ActivationKey,omitempty" xml:"ActivationKey,omitempty"`
+	// The method that is used to access the agent.
+	//
 	// example:
 	//
 	// vpc
 	AgentEndpoint *string `json:"AgentEndpoint,omitempty" xml:"AgentEndpoint,omitempty"`
+	// The time when the agent was created.
+	//
 	// example:
 	//
-	// 2024-05-01 12:00:00
+	// 2024-05-01T12:00:00.000Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deployment mode of the agent.
+	//
 	// example:
 	//
 	// default
 	DeployMethod *string `json:"DeployMethod,omitempty" xml:"DeployMethod,omitempty"`
+	// The time when the agent was last modified.
+	//
 	// example:
 	//
-	// 2024-05-01 12:00:00
+	// 2024-05-01T12:00:00.000Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The agent name.
+	//
 	// example:
 	//
-	// <your-agent-name>
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The agent owner.
+	//
 	// example:
 	//
-	// 1***90**87***53*
+	// test_owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The tags.
+	//
 	// example:
 	//
 	// K1:V1,K2:V2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tunnel ID.
+	//
 	// example:
 	//
-	// ****13f-****-0567-****-af8d****446665
+	// test_tunnel_id
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
-	// ****33f-****-4740-****-bc4f****332b3
+	// test_agent_id
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

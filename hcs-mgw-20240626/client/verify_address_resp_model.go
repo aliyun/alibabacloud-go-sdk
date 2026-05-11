@@ -20,15 +20,29 @@ type iVerifyAddressResp interface {
 }
 
 type VerifyAddressResp struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Data verification error code.
+	//
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Data validation error message.
+	//
+	// example:
+	//
+	// Invalid argument.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The status of the data address verification.
+	//
 	// example:
 	//
 	// avaliable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the data address is verified.
+	//
 	// example:
 	//
-	// 2024-05-01 12:00:00
+	// 2024-05-01T12:00:00.000Z
 	VerifyTime *string `json:"VerifyTime,omitempty" xml:"VerifyTime,omitempty"`
 }
 

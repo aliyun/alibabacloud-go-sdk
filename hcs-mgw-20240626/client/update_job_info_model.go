@@ -16,7 +16,12 @@ type iUpdateJobInfo interface {
 }
 
 type UpdateJobInfo struct {
+	// The throttling settings of the task.
 	ImportQos *ImportQos `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
+	// The task state.\\
+	//
+	// Valid values: IMPORT_JOB_LAUNCHING, IMPORT_JOB_SUSPEND, and IMPORT_JOB_CLOSING.
+	//
 	// example:
 	//
 	// IMPORT_JOB_LAUNCHING

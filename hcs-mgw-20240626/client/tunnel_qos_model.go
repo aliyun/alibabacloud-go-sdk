@@ -16,10 +16,18 @@ type iTunnelQos interface {
 }
 
 type TunnelQos struct {
+	// The maximum bandwidth of the tunnel. Unit: byte/s.\\
+	//
+	// Valid values: values greater than or equal to 10485760. Default value: 0. The default value indicates that the bandwidth of the tunnel is not limited.
+	//
 	// example:
 	//
 	// 1073741824
 	MaxBandwidth *int64 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
+	// The maximum queries per second (QPS) of the tunnel.\\
+	//
+	// Valid values: values greater than or equal to 0. Default value: 0. The default value indicates that the QPS of the tunnel is not limited.
+	//
 	// example:
 	//
 	// 100

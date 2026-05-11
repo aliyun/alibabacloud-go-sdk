@@ -18,11 +18,16 @@ type iListJobInfo interface {
 }
 
 type ListJobInfo struct {
+	// The tasks.
 	ImportJob []*CreateJobInfo `json:"ImportJob,omitempty" xml:"ImportJob,omitempty" type:"Repeated"`
+	// The position from which the next list operation starts.
+	//
 	// example:
 	//
-	// <your-next-job-name>
+	// test_next_marker
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// Indicates whether the queried results are truncated.
+	//
 	// example:
 	//
 	// true

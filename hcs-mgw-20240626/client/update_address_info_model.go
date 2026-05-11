@@ -14,6 +14,11 @@ type iUpdateAddressInfo interface {
 }
 
 type UpdateAddressInfo struct {
+	// The agents.
+	//
+	// example:
+	//
+	// agent1,agent2,agent3
 	AgentList *string `json:"AgentList,omitempty" xml:"AgentList,omitempty"`
 }
 
