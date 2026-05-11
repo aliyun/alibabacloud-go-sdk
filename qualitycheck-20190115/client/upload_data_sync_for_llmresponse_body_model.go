@@ -222,6 +222,7 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRules) Validate() error {
 type UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo struct {
 	ConditionInfo *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo `json:"ConditionInfo,omitempty" xml:"ConditionInfo,omitempty" type:"Struct"`
 	Hit           *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit           `json:"Hit,omitempty" xml:"Hit,omitempty" type:"Struct"`
+	LlmResponse   *string                                                                      `json:"LlmResponse,omitempty" xml:"LlmResponse,omitempty"`
 	Rid           *string                                                                      `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	Tid           *string                                                                      `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -242,6 +243,10 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetHit(
 	return s.Hit
 }
 
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetLlmResponse() *string {
+	return s.LlmResponse
+}
+
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetRid() *string {
 	return s.Rid
 }
@@ -257,6 +262,11 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetCond
 
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetHit(v *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo {
 	s.Hit = v
+	return s
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetLlmResponse(v string) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo {
+	s.LlmResponse = &v
 	return s
 }
 
@@ -497,11 +507,13 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitCondit
 }
 
 type UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord struct {
-	From *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	Pid  *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Tid  *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	To   *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Val  *string `json:"Val,omitempty" xml:"Val,omitempty"`
+	CustomizeCode *string `json:"CustomizeCode,omitempty" xml:"CustomizeCode,omitempty"`
+	From          *int32  `json:"From,omitempty" xml:"From,omitempty"`
+	IsMatch       *bool   `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
+	Pid           *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Tid           *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	To            *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	Val           *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
 func (s UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) String() string {
@@ -512,8 +524,16 @@ func (s UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditi
 	return s.String()
 }
 
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetCustomizeCode() *string {
+	return s.CustomizeCode
+}
+
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetFrom() *int32 {
 	return s.From
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetIsMatch() *bool {
+	return s.IsMatch
 }
 
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetPid() *int32 {
@@ -532,8 +552,18 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitCondit
 	return s.Val
 }
 
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) SetCustomizeCode(v string) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord {
+	s.CustomizeCode = &v
+	return s
+}
+
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) SetFrom(v int32) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord {
 	s.From = &v
+	return s
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) SetIsMatch(v bool) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord {
+	s.IsMatch = &v
 	return s
 }
 

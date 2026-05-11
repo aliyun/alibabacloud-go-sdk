@@ -332,38 +332,17 @@ func (s *GetResultToReviewResponseBodyDataDialogues) Validate() error {
 }
 
 type GetResultToReviewResponseBodyDataDialoguesDialogue struct {
-	// example:
-	//
-	// 72000
-	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// example:
-	//
-	// 2019-10-01 11:12:01
-	BeginTime   *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	BeginTimeMs *int64  `json:"BeginTimeMs,omitempty" xml:"BeginTimeMs,omitempty"`
-	// example:
-	//
-	// 7
-	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	// example:
-	//
-	// 80000
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// example:
-	//
-	// 00:08
-	HourMinSec *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Identity   *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// example:
-	//
-	// 1
-	SilenceDuration *int32 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	// example:
-	//
-	// 200
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words      *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	Begin           *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	BeginTime       *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	BeginTimeMs     *int64  `json:"BeginTimeMs,omitempty" xml:"BeginTimeMs,omitempty"`
+	EmotionValue    *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	End             *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	HourMinSec      *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
+	Identity        *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SilenceDuration *int32  `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	SpeechRate      *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Words           *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataDialoguesDialogue) String() string {
@@ -512,40 +491,19 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoList) Validate() erro
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo struct {
-	// example:
-	//
-	// 1
-	AutoReview        *int32                                                                                    `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
-	ComplainHistories *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistories `json:"ComplainHistories,omitempty" xml:"ComplainHistories,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
+	AutoReview           *int32                                                                                       `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
+	ComplainHistories    *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistories    `json:"ComplainHistories,omitempty" xml:"ComplainHistories,omitempty" type:"Struct"`
 	Complainable         *bool                                                                                        `json:"Complainable,omitempty" xml:"Complainable,omitempty"`
 	ConditionHitInfoList *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList `json:"ConditionHitInfoList,omitempty" xml:"ConditionHitInfoList,omitempty" type:"Struct"`
 	MachineHitResult     *int32                                                                                       `json:"MachineHitResult,omitempty" xml:"MachineHitResult,omitempty"`
 	ReviewHitResult      *int32                                                                                       `json:"ReviewHitResult,omitempty" xml:"ReviewHitResult,omitempty"`
 	ReviewInfo           *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo           `json:"ReviewInfo,omitempty" xml:"ReviewInfo,omitempty" type:"Struct"`
-	// example:
-	//
-	// 451
-	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// example:
-	//
-	// xxx
-	ScoreId *int64 `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	// example:
-	//
-	// -10
-	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	// example:
-	//
-	// xxx
-	ScoreSubId *int64 `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	// example:
-	//
-	// xxx
-	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
+	Rid                  *int64                                                                                       `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	RuleName             *string                                                                                      `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ScoreId              *int64                                                                                       `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
+	ScoreNum             *int32                                                                                       `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	ScoreSubId           *int64                                                                                       `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
+	ScoreSubName         *string                                                                                      `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) String() string {
@@ -727,20 +685,11 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistoriesComplainHistories struct {
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// example:
-	//
-	// 2020-10-16T11:13Z
+	Comments      *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
-	// example:
-	//
-	// 5
-	OperationType *int32 `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// example:
-	//
-	// 123456
-	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	OperationType *int32  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	Operator      *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OperatorName  *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoComplainHistoriesComplainHistories) String() string {
@@ -954,32 +903,14 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord struct {
-	// example:
-	//
-	// 2000
-	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	// example:
-	//
-	// xxx
+	Cid           *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
 	CustomizeCode *string `json:"CustomizeCode,omitempty" xml:"CustomizeCode,omitempty"`
-	// example:
-	//
-	// 1
-	From    *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	IsMatch *bool  `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
-	// example:
-	//
-	// 2
-	Pid *int32 `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// example:
-	//
-	// 6fa76916-3ce6-45d8-ac64-01b7f31c7295
-	Tid *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// example:
-	//
-	// 3
-	To  *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Val *string `json:"Val,omitempty" xml:"Val,omitempty"`
+	From          *int32  `json:"From,omitempty" xml:"From,omitempty"`
+	IsMatch       *bool   `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
+	Pid           *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Tid           *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	To            *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	Val           *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) String() string {
@@ -1067,25 +998,13 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase struct {
-	// example:
-	//
-	// 72000
-	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// example:
-	//
-	// 7
-	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	// example:
-	//
-	// 80000
-	End      *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	// example:
-	//
-	// 3
-	Pid   *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Role  *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Pid          *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) String() string {
@@ -1164,26 +1083,11 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 }
 
 type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo struct {
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// example:
-	//
-	// 013c68142fec4f0899fa6ee0exxx
-	HitId *string `json:"HitId,omitempty" xml:"HitId,omitempty"`
-	// example:
-	//
-	// 1
-	ReviewResult *int32 `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
-	// example:
-	//
-	// 2019-10-12 17:06:00
-	ReviewTime *string `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
-	// example:
-	//
-	// 123
-	Reviewer *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	// example:
-	//
-	// 451
+	Comment               *string                                                                                                 `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	HitId                 *string                                                                                                 `json:"HitId,omitempty" xml:"HitId,omitempty"`
+	ReviewResult          *int32                                                                                                  `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
+	ReviewTime            *string                                                                                                 `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
+	Reviewer              *string                                                                                                 `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
 	Rid                   *int64                                                                                                  `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	SentenceReviewResults *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults `json:"SentenceReviewResults,omitempty" xml:"SentenceReviewResults,omitempty" type:"Struct"`
 }
@@ -1480,23 +1384,11 @@ func (s *GetResultToReviewResponseBodyDataManualScoreInfoList) Validate() error 
 
 type GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo struct {
 	ComplainHistories *GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistories `json:"ComplainHistories,omitempty" xml:"ComplainHistories,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	Complainable *bool `json:"Complainable,omitempty" xml:"Complainable,omitempty"`
-	// example:
-	//
-	// xxx
-	ScoreId *int64 `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	// example:
-	//
-	// -10
-	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	// example:
-	//
-	// xxx
-	ScoreSubId   *int64  `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
+	Complainable      *bool                                                                                 `json:"Complainable,omitempty" xml:"Complainable,omitempty"`
+	ScoreId           *int64                                                                                `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
+	ScoreNum          *int32                                                                                `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	ScoreSubId        *int64                                                                                `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
+	ScoreSubName      *string                                                                               `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo) String() string {
@@ -1605,20 +1497,11 @@ func (s *GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComp
 }
 
 type GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistoriesComplainHistories struct {
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// example:
-	//
-	// 2020-10-16T11:13Z
+	Comments      *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
-	// example:
-	//
-	// 5
-	OperationType *int32 `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// example:
-	//
-	// 123456
-	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	OperationType *int32  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	Operator      *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OperatorName  *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistoriesComplainHistories) String() string {
@@ -1713,36 +1596,18 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryList) Validate() error {
 }
 
 type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory struct {
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// example:
-	//
-	// 1
-	ComplainResult *int32 `json:"ComplainResult,omitempty" xml:"ComplainResult,omitempty"`
-	// example:
-	//
-	// 90
-	OldScore          *int32  `json:"OldScore,omitempty" xml:"OldScore,omitempty"`
-	Operator          *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorName      *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	ReviewManagerType *string `json:"ReviewManagerType,omitempty" xml:"ReviewManagerType,omitempty"`
-	// example:
-	//
-	// 1
-	ReviewResult    *int32                                                                          `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
-	ReviewRightRule *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule `json:"ReviewRightRule,omitempty" xml:"ReviewRightRule,omitempty" type:"Struct"`
-	// example:
-	//
-	// 95
-	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// example:
-	//
-	// 2019-10-28 15:21:00
-	TimeStr *string `json:"TimeStr,omitempty" xml:"TimeStr,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Comments          *string                                                                         `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	ComplainResult    *int32                                                                          `json:"ComplainResult,omitempty" xml:"ComplainResult,omitempty"`
+	OldScore          *int32                                                                          `json:"OldScore,omitempty" xml:"OldScore,omitempty"`
+	Operator          *int64                                                                          `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OperatorName      *string                                                                         `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	ReviewManagerType *string                                                                         `json:"ReviewManagerType,omitempty" xml:"ReviewManagerType,omitempty"`
+	ReviewResult      *int32                                                                          `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
+	ReviewRightRule   *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule `json:"ReviewRightRule,omitempty" xml:"ReviewRightRule,omitempty" type:"Struct"`
+	Score             *int32                                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Time              *int64                                                                          `json:"Time,omitempty" xml:"Time,omitempty"`
+	TimeStr           *string                                                                         `json:"TimeStr,omitempty" xml:"TimeStr,omitempty"`
+	Type              *int32                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) String() string {

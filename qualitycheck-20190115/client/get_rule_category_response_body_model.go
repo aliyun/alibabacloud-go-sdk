@@ -138,13 +138,7 @@ func (s *GetRuleCategoryResponseBodyData) Validate() error {
 }
 
 type GetRuleCategoryResponseBodyDataRuleCountInfo struct {
-	// example:
-	//
-	// false
-	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
-	// example:
-	//
-	// 22
+	Select   *bool   `json:"Select,omitempty" xml:"Select,omitempty"`
 	Type     *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }

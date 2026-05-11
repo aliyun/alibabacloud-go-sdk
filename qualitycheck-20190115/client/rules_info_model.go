@@ -27,13 +27,22 @@ type RulesInfo struct {
 	// if can be null:
 	// true
 	Conditions []*ConditionBasicInfo `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Count      *int32                `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 100
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// if can be null:
 	// true
-	Dialogues  []*RuleTestDialogue `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
-	PageNumber *int32              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rules      []*RuleInfo         `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Dialogues []*RuleTestDialogue `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Rules    []*RuleInfo `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s RulesInfo) String() string {

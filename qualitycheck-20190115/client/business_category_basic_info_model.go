@@ -20,10 +20,11 @@ type iBusinessCategoryBasicInfo interface {
 }
 
 type BusinessCategoryBasicInfo struct {
-	Bid         *int32  `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OriginalId  *int64  `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
-	ServiceType *int32  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Bid  *int32  `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// originalId
+	OriginalId  *int64 `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
+	ServiceType *int32 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s BusinessCategoryBasicInfo) String() string {

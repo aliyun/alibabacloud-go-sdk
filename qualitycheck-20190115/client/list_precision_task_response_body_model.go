@@ -183,49 +183,19 @@ func (s *ListPrecisionTaskResponseBodyData) Validate() error {
 }
 
 type ListPrecisionTaskResponseBodyDataPrecisionTask struct {
-	// example:
-	//
-	// 2020-03-10 20:26:29
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1212
-	DataSetId   *int64  `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// example:
-	//
-	// 331311
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// example:
-	//
-	// 32
+	CreateTime     *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSetId      *int64                                                    `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	DataSetName    *string                                                   `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	Duration       *int32                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	IncorrectWords *int32                                                    `json:"IncorrectWords,omitempty" xml:"IncorrectWords,omitempty"`
 	Name           *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Precisions     *ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisions `json:"Precisions,omitempty" xml:"Precisions,omitempty" type:"Struct"`
-	// example:
-	//
-	// 3
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 7C1DEF5F-2C18-4D36-99C6-8C276F781796
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// example:
-	//
-	// 21
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// example:
-	//
-	// 2020-03-10 20:26:29
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 3
-	VerifiedCount *int32 `json:"VerifiedCount,omitempty" xml:"VerifiedCount,omitempty"`
+	Source         *int32                                                    `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status         *int32                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId         *string                                                   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TotalCount     *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UpdateTime     *string                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VerifiedCount  *int32                                                    `json:"VerifiedCount,omitempty" xml:"VerifiedCount,omitempty"`
 }
 
 func (s ListPrecisionTaskResponseBodyDataPrecisionTask) String() string {
@@ -397,27 +367,12 @@ func (s *ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisions) Validate() er
 }
 
 type ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisionsPrecision struct {
-	// example:
-	//
-	// 2020-03-10 20:26:29
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 2321
-	ModelId   *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// example:
-	//
-	// 0.98
-	Precision *float32 `json:"Precision,omitempty" xml:"Precision,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 7C1DEF5F-2C18-4D36-99C6-8C276F781796
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModelId    *int64   `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName  *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Precision  *float32 `json:"Precision,omitempty" xml:"Precision,omitempty"`
+	Status     *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisionsPrecision) String() string {

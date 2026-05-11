@@ -417,13 +417,7 @@ func (s *GetSkillGroupConfigResponseBodyDataAllRuleList) Validate() error {
 }
 
 type GetSkillGroupConfigResponseBodyDataAllRuleListRuleNameInfo struct {
-	// example:
-	//
-	// 12
-	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// test
+	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -492,13 +486,7 @@ func (s *GetSkillGroupConfigResponseBodyDataRuleList) Validate() error {
 }
 
 type GetSkillGroupConfigResponseBodyDataRuleListRuleNameInfo struct {
-	// example:
-	//
-	// 222
-	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// test
+	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

@@ -138,28 +138,13 @@ func (s *GetCustomizationConfigListResponseBodyData) Validate() error {
 }
 
 type GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo struct {
-	AsrVersion *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
-	// example:
-	//
-	// 2019-01-08
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// cdae396590bb479a9ec40f3476e274fc
+	AsrVersion          *int32  `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ModeCustomizationId *string `json:"ModeCustomizationId,omitempty" xml:"ModeCustomizationId,omitempty"`
-	// example:
-	//
-	// 1
-	ModelId   *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// example:
-	//
-	// 5
-	ModelStatus *int32 `json:"ModelStatus,omitempty" xml:"ModelStatus,omitempty"`
-	// example:
-	//
-	// 1
-	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	ModelId             *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName           *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelStatus         *int32  `json:"ModelStatus,omitempty" xml:"ModelStatus,omitempty"`
+	TaskType            *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo) String() string {

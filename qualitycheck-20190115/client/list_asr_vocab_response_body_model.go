@@ -138,25 +138,13 @@ func (s *ListAsrVocabResponseBodyData) Validate() error {
 }
 
 type ListAsrVocabResponseBodyDataAsrVocab struct {
-	AsrVersion *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
-	// example:
-	//
-	// 2019-04-15T14:57Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 18
+	AsrVersion           *int32  `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Id                   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ModelCustomizationId *string `json:"ModelCustomizationId,omitempty" xml:"ModelCustomizationId,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 2019-04-15T14:57Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// a01daaaxxxxxxxxx
-	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VocabularyId         *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
 }
 
 func (s ListAsrVocabResponseBodyDataAsrVocab) String() string {

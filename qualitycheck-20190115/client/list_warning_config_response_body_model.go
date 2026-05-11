@@ -138,26 +138,14 @@ func (s *ListWarningConfigResponseBodyData) Validate() error {
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfo struct {
-	Channels *ListWarningConfigResponseBodyDataWarningConfigInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
-	// example:
-	//
-	// 32
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// example:
-	//
-	// 2019-10-29T15:30Z
+	Channels   *ListWarningConfigResponseBodyDataWarningConfigInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
+	ConfigId   *int64                                                      `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigName *string                                                     `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
 	CreateTime *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	RidList    *ListWarningConfigResponseBodyDataWarningConfigInfoRidList  `json:"RidList,omitempty" xml:"RidList,omitempty" type:"Struct"`
 	RuleList   *ListWarningConfigResponseBodyDataWarningConfigInfoRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 2019-10-29T17:24Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Status     *int32                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime *string                                                     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListWarningConfigResponseBodyDataWarningConfigInfo) String() string {
@@ -294,14 +282,8 @@ func (s *ListWarningConfigResponseBodyDataWarningConfigInfoChannels) Validate() 
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfoChannelsChannel struct {
-	// example:
-	//
-	// 0
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// oapi.dingtalk.com/robot/send?access_token=c55628f700eb9ad2a3ca
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Type *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListWarningConfigResponseBodyDataWarningConfigInfoChannelsChannel) String() string {
@@ -394,9 +376,6 @@ func (s *ListWarningConfigResponseBodyDataWarningConfigInfoRuleList) Validate() 
 }
 
 type ListWarningConfigResponseBodyDataWarningConfigInfoRuleListWarningRule struct {
-	// example:
-	//
-	// 33452
 	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }

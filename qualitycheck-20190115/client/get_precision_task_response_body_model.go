@@ -305,23 +305,11 @@ func (s *GetPrecisionTaskResponseBodyDataPrecisions) Validate() error {
 }
 
 type GetPrecisionTaskResponseBodyDataPrecisionsPrecision struct {
-	// example:
-	//
-	// 2311
-	ModelId   *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// example:
-	//
-	// 0.98
+	ModelId   *int64   `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	Precision *float32 `json:"Precision,omitempty" xml:"Precision,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 593A04C0-E6E9-4CDC-8C99-B120C******
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Status    *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId    *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetPrecisionTaskResponseBodyDataPrecisionsPrecision) String() string {

@@ -257,93 +257,33 @@ func (s *ListSchemeTaskConfigResponseBodyData) Validate() error {
 }
 
 type ListSchemeTaskConfigResponseBodyDataData struct {
-	// example:
-	//
-	// 2
-	AsrTaskPriority *int32 `json:"AsrTaskPriority,omitempty" xml:"AsrTaskPriority,omitempty"`
-	AsrVersion      *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
-	// example:
-	//
-	// 0
-	AssignType *int32 `json:"AssignType,omitempty" xml:"AssignType,omitempty"`
-	// example:
-	//
-	// 1650418039000
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1
-	CreateUser *int64                                              `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	DataConfig *ListSchemeTaskConfigResponseBodyDataDataDataConfig `json:"DataConfig,omitempty" xml:"DataConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// 100
-	FinishRate *float64 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
-	// example:
-	//
-	// 123
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 0
-	ManualReview *int32 `json:"ManualReview,omitempty" xml:"ManualReview,omitempty"`
-	// example:
-	//
-	// cdae396590b*****ec40f3476e274fc
-	ModeCustomizationId *string `json:"ModeCustomizationId,omitempty" xml:"ModeCustomizationId,omitempty"`
-	ModelName           *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
-	NumberExecuting *int32 `json:"NumberExecuting,omitempty" xml:"NumberExecuting,omitempty"`
-	// example:
-	//
-	// 0
-	NumberFail *int32 `json:"NumberFail,omitempty" xml:"NumberFail,omitempty"`
-	// example:
-	//
-	// 1000
-	NumberSuccess *int32 `json:"NumberSuccess,omitempty" xml:"NumberSuccess,omitempty"`
-	// example:
-	//
-	// 1000
-	NumberSum    *int32                                                `json:"NumberSum,omitempty" xml:"NumberSum,omitempty"`
-	SchemeIdList *ListSchemeTaskConfigResponseBodyDataDataSchemeIdList `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Struct"`
-	SchemeList   *ListSchemeTaskConfigResponseBodyDataDataSchemeList   `json:"SchemeList,omitempty" xml:"SchemeList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 123
-	SchemeTaskConfigId *int64 `json:"SchemeTaskConfigId,omitempty" xml:"SchemeTaskConfigId,omitempty"`
-	// example:
-	//
-	// 2
-	SourceDataType *int32 `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 0
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 1650418039000
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 1
-	UpdateUser *int64 `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
-	// example:
-	//
-	// 1
-	UserGroup *string `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
-	// example:
-	//
-	// 9f90b3efa2****0a49acec226eafc17
-	VocabId   *string `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
-	VocabName *string `json:"VocabName,omitempty" xml:"VocabName,omitempty"`
+	AsrTaskPriority     *int32                                                `json:"AsrTaskPriority,omitempty" xml:"AsrTaskPriority,omitempty"`
+	AsrVersion          *int32                                                `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
+	AssignType          *int32                                                `json:"AssignType,omitempty" xml:"AssignType,omitempty"`
+	CreateTime          *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser          *int64                                                `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataConfig          *ListSchemeTaskConfigResponseBodyDataDataDataConfig   `json:"DataConfig,omitempty" xml:"DataConfig,omitempty" type:"Struct"`
+	FinishRate          *float64                                              `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
+	Id                  *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	ManualReview        *int32                                                `json:"ManualReview,omitempty" xml:"ManualReview,omitempty"`
+	ModeCustomizationId *string                                               `json:"ModeCustomizationId,omitempty" xml:"ModeCustomizationId,omitempty"`
+	ModelName           *string                                               `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Name                *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	NumberExecuting     *int32                                                `json:"NumberExecuting,omitempty" xml:"NumberExecuting,omitempty"`
+	NumberFail          *int32                                                `json:"NumberFail,omitempty" xml:"NumberFail,omitempty"`
+	NumberSuccess       *int32                                                `json:"NumberSuccess,omitempty" xml:"NumberSuccess,omitempty"`
+	NumberSum           *int32                                                `json:"NumberSum,omitempty" xml:"NumberSum,omitempty"`
+	SchemeIdList        *ListSchemeTaskConfigResponseBodyDataDataSchemeIdList `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Struct"`
+	SchemeList          *ListSchemeTaskConfigResponseBodyDataDataSchemeList   `json:"SchemeList,omitempty" xml:"SchemeList,omitempty" type:"Struct"`
+	SchemeTaskConfigId  *int64                                                `json:"SchemeTaskConfigId,omitempty" xml:"SchemeTaskConfigId,omitempty"`
+	SourceDataType      *int32                                                `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+	Status              *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *int32                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime          *string                                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateUser          *int64                                                `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	UserGroup           *string                                               `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
+	VocabId             *string                                               `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
+	VocabName           *string                                               `json:"VocabName,omitempty" xml:"VocabName,omitempty"`
 }
 
 func (s ListSchemeTaskConfigResponseBodyDataData) String() string {
@@ -618,18 +558,9 @@ func (s *ListSchemeTaskConfigResponseBodyDataData) Validate() error {
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfig struct {
 	AssignConfigs *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigs `json:"AssignConfigs,omitempty" xml:"AssignConfigs,omitempty" type:"Struct"`
-	// example:
-	//
-	// []
-	DataSets *string `json:"DataSets,omitempty" xml:"DataSets,omitempty"`
-	// example:
-	//
-	// 0
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// example:
-	//
-	// {}
-	ResultParam *string `json:"ResultParam,omitempty" xml:"ResultParam,omitempty"`
+	DataSets      *string                                                          `json:"DataSets,omitempty" xml:"DataSets,omitempty"`
+	Index         *int32                                                           `json:"Index,omitempty" xml:"Index,omitempty"`
+	ResultParam   *string                                                          `json:"ResultParam,omitempty" xml:"ResultParam,omitempty"`
 }
 
 func (s ListSchemeTaskConfigResponseBodyDataDataDataConfig) String() string {
@@ -784,23 +715,11 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignCo
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContestsAssignConfigContest struct {
-	// example:
-	//
-	// 3
 	DataType   *int32                                                                                                                        `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	ListObject *ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContestsAssignConfigContestListObject `json:"ListObject,omitempty" xml:"ListObject,omitempty" type:"Struct"`
-	// example:
-	//
-	// callStartTime
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 4
-	Symbol *int32 `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	// example:
-	//
-	// {\\"start\\":\\"2022-09-01 00:00:00\\",\\"end\\":\\"2022-09-30 00:00:00\\"}
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name       *string                                                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Symbol     *int32                                                                                                                        `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	Value      *string                                                                                                                       `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListSchemeTaskConfigResponseBodyDataDataDataConfigAssignConfigsAssignConfigAssignConfigContestsAssignConfigContest) String() string {
@@ -950,11 +869,8 @@ func (s *ListSchemeTaskConfigResponseBodyDataDataSchemeList) Validate() error {
 }
 
 type ListSchemeTaskConfigResponseBodyDataDataSchemeListSchemeList struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 158
-	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SchemeId *int64  `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
 }
 
 func (s ListSchemeTaskConfigResponseBodyDataDataSchemeListSchemeList) String() string {

@@ -138,9 +138,6 @@ func (s *GetScoreInfoResponseBodyData) Validate() error {
 }
 
 type GetScoreInfoResponseBodyDataScorePo struct {
-	// example:
-	//
-	// 34
 	ScoreId    *int32                                         `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
 	ScoreInfos *GetScoreInfoResponseBodyDataScorePoScoreInfos `json:"ScoreInfos,omitempty" xml:"ScoreInfos,omitempty" type:"Struct"`
 	ScoreName  *string                                        `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
@@ -225,19 +222,10 @@ func (s *GetScoreInfoResponseBodyDataScorePoScoreInfos) Validate() error {
 }
 
 type GetScoreInfoResponseBodyDataScorePoScoreInfosScoreParam struct {
-	// example:
-	//
-	// 32
-	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	// example:
-	//
-	// 3422
+	ScoreNum     *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
 	ScoreSubId   *int32  `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
 	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
-	// example:
-	//
-	// 1
-	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	ScoreType    *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
 }
 
 func (s GetScoreInfoResponseBodyDataScorePoScoreInfosScoreParam) String() string {

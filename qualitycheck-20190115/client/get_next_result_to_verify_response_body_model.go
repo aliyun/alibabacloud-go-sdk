@@ -337,44 +337,20 @@ func (s *GetNextResultToVerifyResponseBodyDataDialogues) Validate() error {
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogue struct {
-	// example:
-	//
-	// 980
-	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// example:
-	//
-	// XXX
-	BeginTime *string                                                       `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	Deltas    *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas `json:"Deltas,omitempty" xml:"Deltas,omitempty" type:"Struct"`
-	// example:
-	//
-	// 6
-	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	// example:
-	//
-	// 3422
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// example:
-	//
-	// 00:00:07
-	HourMinSec *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Identity   *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	// example:
-	//
-	// 2
-	IncorrectWords *int32  `json:"IncorrectWords,omitempty" xml:"IncorrectWords,omitempty"`
-	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// example:
-	//
-	// 1
-	SilenceDuration *int32  `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	SourceRole      *string `json:"SourceRole,omitempty" xml:"SourceRole,omitempty"`
-	SourceWords     *string `json:"SourceWords,omitempty" xml:"SourceWords,omitempty"`
-	// example:
-	//
-	// 332
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words      *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	Begin           *int64                                                        `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	BeginTime       *string                                                       `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	Deltas          *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas `json:"Deltas,omitempty" xml:"Deltas,omitempty" type:"Struct"`
+	EmotionValue    *int32                                                        `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	End             *int64                                                        `json:"End,omitempty" xml:"End,omitempty"`
+	HourMinSec      *string                                                       `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
+	Identity        *string                                                       `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	IncorrectWords  *int32                                                        `json:"IncorrectWords,omitempty" xml:"IncorrectWords,omitempty"`
+	Role            *string                                                       `json:"Role,omitempty" xml:"Role,omitempty"`
+	SilenceDuration *int32                                                        `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	SourceRole      *string                                                       `json:"SourceRole,omitempty" xml:"SourceRole,omitempty"`
+	SourceWords     *string                                                       `json:"SourceWords,omitempty" xml:"SourceWords,omitempty"`
+	SpeechRate      *int32                                                        `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Words           *string                                                       `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetNextResultToVerifyResponseBodyDataDialoguesDialogue) String() string {
@@ -557,10 +533,7 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas) Validate(
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta struct {
 	Source *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 	Target *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// example:
-	//
-	// CHANGE
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta) String() string {
@@ -613,11 +586,8 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta) Vali
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource struct {
-	Line *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSourceLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
-	// example:
-	//
-	// 5
-	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	Line     *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSourceLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
+	Position *int32                                                                       `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource) String() string {
@@ -681,11 +651,8 @@ func (s *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource
 }
 
 type GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTarget struct {
-	Line *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTargetLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
-	// example:
-	//
-	// 5
-	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	Line     *GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTargetLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
+	Position *int32                                                                       `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTarget) String() string {

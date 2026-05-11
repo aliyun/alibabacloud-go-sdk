@@ -138,85 +138,28 @@ func (s *ListSkillGroupConfigResponseBodyData) Validate() error {
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfig struct {
-	// example:
-	//
-	// 1
-	AllContentQualityCheck *int32 `json:"AllContentQualityCheck,omitempty" xml:"AllContentQualityCheck,omitempty"`
-	// example:
-	//
-	// 223
-	AllRids     *string                                                          `json:"AllRids,omitempty" xml:"AllRids,omitempty"`
-	AllRuleList *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList `json:"AllRuleList,omitempty" xml:"AllRuleList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2020-12-01T15:12Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 221
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// xxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 211
-	ModelId *int64 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// example:
-	//
-	// xxx
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// example:
-	//
-	// xxx
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
-	QualityCheckType *int32 `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
-	// example:
-	//
-	// 2221
-	Rid      *string                                                       `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleList *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	ScreenSwitch *bool `json:"ScreenSwitch,omitempty" xml:"ScreenSwitch,omitempty"`
-	// example:
-	//
-	// 0
-	SkillGroupFrom *int32 `json:"SkillGroupFrom,omitempty" xml:"SkillGroupFrom,omitempty"`
-	// example:
-	//
-	// 123
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	// example:
-	//
-	// xxx
-	SkillGroupName    *string                                                                `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
-	SkillGroupScreens *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens `json:"SkillGroupScreens,omitempty" xml:"SkillGroupScreens,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 2020-12-01T19:28Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 323
-	VocabId *int64 `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
-	// example:
-	//
-	// xxx
-	VocabName *string `json:"VocabName,omitempty" xml:"VocabName,omitempty"`
+	AllContentQualityCheck *int32                                                                 `json:"AllContentQualityCheck,omitempty" xml:"AllContentQualityCheck,omitempty"`
+	AllRids                *string                                                                `json:"AllRids,omitempty" xml:"AllRids,omitempty"`
+	AllRuleList            *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList       `json:"AllRuleList,omitempty" xml:"AllRuleList,omitempty" type:"Struct"`
+	CreateTime             *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Id                     *int64                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId             *string                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModelId                *int64                                                                 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName              *string                                                                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Name                   *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	QualityCheckType       *int32                                                                 `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
+	Rid                    *string                                                                `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	RuleList               *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList          `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
+	ScreenSwitch           *bool                                                                  `json:"ScreenSwitch,omitempty" xml:"ScreenSwitch,omitempty"`
+	SkillGroupFrom         *int32                                                                 `json:"SkillGroupFrom,omitempty" xml:"SkillGroupFrom,omitempty"`
+	SkillGroupId           *string                                                                `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	SkillGroupName         *string                                                                `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	SkillGroupScreens      *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens `json:"SkillGroupScreens,omitempty" xml:"SkillGroupScreens,omitempty" type:"Struct"`
+	Status                 *int32                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                   *int32                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime             *string                                                                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VocabId                *int64                                                                 `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
+	VocabName              *string                                                                `json:"VocabName,omitempty" xml:"VocabName,omitempty"`
 }
 
 func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfig) String() string {
@@ -479,13 +422,7 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList) Valida
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleListRuleNameInfo struct {
-	// example:
-	//
-	// 221
-	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// test
+	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -554,13 +491,7 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList) Validate(
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleListRuleNameInfo struct {
-	// example:
-	//
-	// 2221
-	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// x\\"x\\"x
+	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -629,19 +560,10 @@ func (s *ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens) 
 }
 
 type ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen struct {
-	// example:
-	//
-	// 0
-	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// example:
-	//
-	// customerName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 1
-	Symbol *int32  `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	DataType *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Symbol   *int32  `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen) String() string {

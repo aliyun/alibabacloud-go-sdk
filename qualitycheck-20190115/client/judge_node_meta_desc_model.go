@@ -26,13 +26,31 @@ type iJudgeNodeMetaDesc interface {
 }
 
 type JudgeNodeMetaDesc struct {
-	ActualValue        *string                              `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
+	// example:
+	//
+	// xx
+	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
+	// example:
+	//
+	// 1
 	DataType           *int32                               `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	ExpressionMetaDesc *JudgeNodeMetaDescExpressionMetaDesc `json:"ExpressionMetaDesc,omitempty" xml:"ExpressionMetaDesc,omitempty" type:"Struct"`
-	Field              *string                              `json:"Field,omitempty" xml:"Field,omitempty"`
-	FieldType          *int32                               `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	Symbol             *int32                               `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	Value              *string                              `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// remark1
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// 1
+	FieldType *int32 `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	// example:
+	//
+	// 1
+	Symbol *int32 `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	// example:
+	//
+	// xxx
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s JudgeNodeMetaDesc) String() string {

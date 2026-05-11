@@ -183,42 +183,15 @@ func (s *ListUsersResponseBodyData) Validate() error {
 }
 
 type ListUsersResponseBodyDataUser struct {
-	// example:
-	//
-	// 2951869706989****
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// example:
-	//
-	// 2020-03-11T16:54Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// XXX
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// xxx
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 2
-	LoginUserType *int32 `json:"LoginUserType,omitempty" xml:"LoginUserType,omitempty"`
-	// example:
-	//
-	// AGENT
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// 2020-03-11T16:54Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// xxx
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LoginUserType *int32  `json:"LoginUserType,omitempty" xml:"LoginUserType,omitempty"`
+	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersResponseBodyDataUser) String() string {

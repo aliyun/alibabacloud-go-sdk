@@ -185,10 +185,7 @@ func (s *VerifySentenceResponseBodyData) Validate() error {
 type VerifySentenceResponseBodyDataDelta struct {
 	Source *VerifySentenceResponseBodyDataDeltaSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 	Target *VerifySentenceResponseBodyDataDeltaTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// example:
-	//
-	// CHANGE
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s VerifySentenceResponseBodyDataDelta) String() string {
@@ -241,11 +238,8 @@ func (s *VerifySentenceResponseBodyDataDelta) Validate() error {
 }
 
 type VerifySentenceResponseBodyDataDeltaSource struct {
-	Line *VerifySentenceResponseBodyDataDeltaSourceLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	Line     *VerifySentenceResponseBodyDataDeltaSourceLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
+	Position *int32                                         `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s VerifySentenceResponseBodyDataDeltaSource) String() string {
@@ -309,11 +303,8 @@ func (s *VerifySentenceResponseBodyDataDeltaSourceLine) Validate() error {
 }
 
 type VerifySentenceResponseBodyDataDeltaTarget struct {
-	Line *VerifySentenceResponseBodyDataDeltaTargetLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	Line     *VerifySentenceResponseBodyDataDeltaTargetLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
+	Position *int32                                         `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s VerifySentenceResponseBodyDataDeltaTarget) String() string {

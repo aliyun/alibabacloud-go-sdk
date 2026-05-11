@@ -168,82 +168,28 @@ func (s *GetRuleResponseBodyDataRules) Validate() error {
 }
 
 type GetRuleResponseBodyDataRulesRuleInfo struct {
-	// example:
-	//
-	// 1
 	AutoReview               *int32                                                        `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
 	BusinessCategoryNameList *GetRuleResponseBodyDataRulesRuleInfoBusinessCategoryNameList `json:"BusinessCategoryNameList,omitempty" xml:"BusinessCategoryNameList,omitempty" type:"Struct"`
 	Comments                 *string                                                       `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// example:
-	//
-	// 123
-	CreateEmpid *string `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
-	// example:
-	//
-	// 2016-08-05 10:37:10
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 2016-08-05 10:37:10
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 0
-	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	// example:
-	//
-	// 1
-	IsOnline *int32 `json:"IsOnline,omitempty" xml:"IsOnline,omitempty"`
-	// example:
-	//
-	// 123
-	LastUpdateEmpid *string `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
-	// example:
-	//
-	// 2019-10-28 14:23:28
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// example:
-	//
-	// demo
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 4
-	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// a && b
-	RuleLambda *string `json:"RuleLambda,omitempty" xml:"RuleLambda,omitempty"`
-	// example:
-	//
-	// 1
-	RuleScoreType *int32 `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	// example:
-	//
-	// 123
-	ScoreId   *int32  `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreName *string `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
-	// example:
-	//
-	// 22
-	ScoreSubId   *int32  `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
-	// example:
-	//
-	// 2016-08-05 10:37:10
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 1
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	CreateEmpid              *string                                                       `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
+	CreateTime               *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime                  *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsDelete                 *int32                                                        `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	IsOnline                 *int32                                                        `json:"IsOnline,omitempty" xml:"IsOnline,omitempty"`
+	LastUpdateEmpid          *string                                                       `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
+	LastUpdateTime           *string                                                       `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	Name                     *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Rid                      *string                                                       `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	RuleLambda               *string                                                       `json:"RuleLambda,omitempty" xml:"RuleLambda,omitempty"`
+	RuleScoreType            *int32                                                        `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
+	ScoreId                  *int32                                                        `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
+	ScoreName                *string                                                       `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
+	ScoreSubId               *int32                                                        `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
+	ScoreSubName             *string                                                       `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
+	StartTime                *string                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                   *int32                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                     *int32                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight                   *string                                                       `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s GetRuleResponseBodyDataRulesRuleInfo) String() string {

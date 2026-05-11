@@ -138,15 +138,9 @@ func (s *GetBusinessCategoryListResponseBodyData) Validate() error {
 }
 
 type GetBusinessCategoryListResponseBodyDataBusinessCategoryBasicInfo struct {
-	// example:
-	//
-	// 0
 	Bid          *int32  `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	// example:
-	//
-	// 0
-	ServiceType *int32 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceType  *int32  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s GetBusinessCategoryListResponseBodyDataBusinessCategoryBasicInfo) String() string {

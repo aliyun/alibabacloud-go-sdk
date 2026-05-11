@@ -183,64 +183,25 @@ func (s *ListTaskAssignRulesResponseBodyData) Validate() error {
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfo struct {
-	Agents *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Struct"`
-	// example:
-	//
-	// XX
-	AgentsStr *string `json:"AgentsStr,omitempty" xml:"AgentsStr,omitempty"`
-	// example:
-	//
-	// 0
-	AssignmentType *int32 `json:"AssignmentType,omitempty" xml:"AssignmentType,omitempty"`
-	// example:
-	//
-	// 39600
-	CallTimeEnd *int64 `json:"CallTimeEnd,omitempty" xml:"CallTimeEnd,omitempty"`
-	// example:
-	//
-	// 39600
-	CallTimeStart *int64 `json:"CallTimeStart,omitempty" xml:"CallTimeStart,omitempty"`
-	// example:
-	//
-	// 1
-	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	// example:
-	//
-	// 2019-07-12T14:47Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 400
-	DurationMax *int32 `json:"DurationMax,omitempty" xml:"DurationMax,omitempty"`
-	// example:
-	//
-	// 100
-	DurationMin *int32 `json:"DurationMin,omitempty" xml:"DurationMin,omitempty"`
-	// example:
-	//
-	// 1
-	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// example:
-	//
-	// 1
-	Priority  *int32                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Reviewers *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewers `json:"Reviewers,omitempty" xml:"Reviewers,omitempty" type:"Struct"`
-	// example:
-	//
-	// 23
-	RuleId       *int64                                                             `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName     *string                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Rules        *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	SamplingMode *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingMode `json:"SamplingMode,omitempty" xml:"SamplingMode,omitempty" type:"Struct"`
-	SkillGroups  *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroups  `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty" type:"Struct"`
-	// example:
-	//
-	// XX
-	SkillGroupsStr *string `json:"SkillGroupsStr,omitempty" xml:"SkillGroupsStr,omitempty"`
-	// example:
-	//
-	// 2019-07-12T14:47Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Agents         *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents       `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Struct"`
+	AgentsStr      *string                                                            `json:"AgentsStr,omitempty" xml:"AgentsStr,omitempty"`
+	AssignmentType *int32                                                             `json:"AssignmentType,omitempty" xml:"AssignmentType,omitempty"`
+	CallTimeEnd    *int64                                                             `json:"CallTimeEnd,omitempty" xml:"CallTimeEnd,omitempty"`
+	CallTimeStart  *int64                                                             `json:"CallTimeStart,omitempty" xml:"CallTimeStart,omitempty"`
+	CallType       *int32                                                             `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CreateTime     *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DurationMax    *int32                                                             `json:"DurationMax,omitempty" xml:"DurationMax,omitempty"`
+	DurationMin    *int32                                                             `json:"DurationMin,omitempty" xml:"DurationMin,omitempty"`
+	Enabled        *int32                                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Priority       *int32                                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Reviewers      *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewers    `json:"Reviewers,omitempty" xml:"Reviewers,omitempty" type:"Struct"`
+	RuleId         *int64                                                             `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName       *string                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Rules          *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	SamplingMode   *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingMode `json:"SamplingMode,omitempty" xml:"SamplingMode,omitempty" type:"Struct"`
+	SkillGroups    *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroups  `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty" type:"Struct"`
+	SkillGroupsStr *string                                                            `json:"SkillGroupsStr,omitempty" xml:"SkillGroupsStr,omitempty"`
+	UpdateTime     *string                                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfo) String() string {
@@ -486,13 +447,7 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents) Validate()
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgentsAgent struct {
-	// example:
-	//
-	// 202526561358712105
-	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// example:
-	//
-	// agent
+	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 }
 
@@ -561,9 +516,6 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewers) Validat
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewersReviewer struct {
-	// example:
-	//
-	// 2337235457340978
 	ReviewerId   *string `json:"ReviewerId,omitempty" xml:"ReviewerId,omitempty"`
 	ReviewerName *string `json:"ReviewerName,omitempty" xml:"ReviewerName,omitempty"`
 }
@@ -634,10 +586,7 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRules) Validate() 
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRulesRuleBasicInfo struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 2312
-	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Rid  *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
 }
 
 func (s ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRulesRuleBasicInfo) String() string {
@@ -671,33 +620,12 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRulesRuleBasicInfo
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingMode struct {
-	// example:
-	//
-	// 60
-	AnyNumberOfDraws *int32 `json:"AnyNumberOfDraws,omitempty" xml:"AnyNumberOfDraws,omitempty"`
-	// example:
-	//
-	// true
-	Designated *bool `json:"Designated,omitempty" xml:"Designated,omitempty"`
-	// example:
-	//
-	// 0
-	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// example:
-	//
-	// 30
-	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// example:
-	//
-	// 20
-	NumberOfDraws *int32 `json:"NumberOfDraws,omitempty" xml:"NumberOfDraws,omitempty"`
-	// example:
-	//
-	// 0.1
-	Proportion *float32 `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	// example:
-	//
-	// 5
+	AnyNumberOfDraws       *int32                                                                               `json:"AnyNumberOfDraws,omitempty" xml:"AnyNumberOfDraws,omitempty"`
+	Designated             *bool                                                                                `json:"Designated,omitempty" xml:"Designated,omitempty"`
+	Dimension              *int32                                                                               `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	Limit                  *int32                                                                               `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	NumberOfDraws          *int32                                                                               `json:"NumberOfDraws,omitempty" xml:"NumberOfDraws,omitempty"`
+	Proportion             *float32                                                                             `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
 	RandomInspectionNumber *int32                                                                               `json:"RandomInspectionNumber,omitempty" xml:"RandomInspectionNumber,omitempty"`
 	SamplingModeAgents     *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSamplingModeAgents `json:"SamplingModeAgents,omitempty" xml:"SamplingModeAgents,omitempty" type:"Struct"`
 }
@@ -826,13 +754,7 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSampli
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSamplingModeSamplingModeAgentsSamplingModeAgent struct {
-	// example:
-	//
-	// 123
-	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// example:
-	//
-	// zhangsan
+	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 }
 
@@ -901,9 +823,6 @@ func (s *ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroups) Valid
 }
 
 type ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroupsSkillGroup struct {
-	// example:
-	//
-	// XXX
 	SkillId   *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 }

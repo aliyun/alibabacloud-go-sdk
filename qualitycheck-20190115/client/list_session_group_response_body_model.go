@@ -257,54 +257,24 @@ func (s *ListSessionGroupResponseBodyData) Validate() error {
 }
 
 type ListSessionGroupResponseBodyDataData struct {
-	// example:
-	//
-	// 1
-	AssignStatus *int32 `json:"AssignStatus,omitempty" xml:"AssignStatus,omitempty"`
-	// example:
-	//
-	// 2022-09-26 10:09:14
-	CallStartTime           *string                                                      `json:"CallStartTime,omitempty" xml:"CallStartTime,omitempty"`
-	CallerList              *ListSessionGroupResponseBodyDataDataCallerList              `json:"CallerList,omitempty" xml:"CallerList,omitempty" type:"Struct"`
-	CustomerIdList          *ListSessionGroupResponseBodyDataDataCustomerIdList          `json:"CustomerIdList,omitempty" xml:"CustomerIdList,omitempty" type:"Struct"`
-	CustomerNameList        *ListSessionGroupResponseBodyDataDataCustomerNameList        `json:"CustomerNameList,omitempty" xml:"CustomerNameList,omitempty" type:"Struct"`
-	CustomerServiceIdList   *ListSessionGroupResponseBodyDataDataCustomerServiceIdList   `json:"CustomerServiceIdList,omitempty" xml:"CustomerServiceIdList,omitempty" type:"Struct"`
-	CustomerServiceNameList *ListSessionGroupResponseBodyDataDataCustomerServiceNameList `json:"CustomerServiceNameList,omitempty" xml:"CustomerServiceNameList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	HitSessionCount *int32 `json:"HitSessionCount,omitempty" xml:"HitSessionCount,omitempty"`
-	// example:
-	//
-	// 4498420@a_z@93EAADF1-01D3-44BD-8AC9-F57F447EFCE8_1614*****
-	LastDataId *string `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
-	// example:
-	//
-	// 1
-	ReviewStatus *int32                                            `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
-	ReviewerList *ListSessionGroupResponseBodyDataDataReviewerList `json:"ReviewerList,omitempty" xml:"ReviewerList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 123
-	SchemeTaskConfigId   *int64  `json:"SchemeTaskConfigId,omitempty" xml:"SchemeTaskConfigId,omitempty"`
-	SchemeTaskConfigName *string `json:"SchemeTaskConfigName,omitempty" xml:"SchemeTaskConfigName,omitempty"`
-	// example:
-	//
-	// 100
-	Score *int64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// example:
-	//
-	// 1
-	SessionCount *int32 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// example:
-	//
-	// SessionGroupA
-	SessionGroupId *string `json:"SessionGroupId,omitempty" xml:"SessionGroupId,omitempty"`
-	// example:
-	//
-	// true
-	SessionGroupReviewedOrComplained *bool                                                   `json:"SessionGroupReviewedOrComplained,omitempty" xml:"SessionGroupReviewedOrComplained,omitempty"`
-	SkillGroupNameList               *ListSessionGroupResponseBodyDataDataSkillGroupNameList `json:"SkillGroupNameList,omitempty" xml:"SkillGroupNameList,omitempty" type:"Struct"`
+	AssignStatus                     *int32                                                       `json:"AssignStatus,omitempty" xml:"AssignStatus,omitempty"`
+	CallStartTime                    *string                                                      `json:"CallStartTime,omitempty" xml:"CallStartTime,omitempty"`
+	CallerList                       *ListSessionGroupResponseBodyDataDataCallerList              `json:"CallerList,omitempty" xml:"CallerList,omitempty" type:"Struct"`
+	CustomerIdList                   *ListSessionGroupResponseBodyDataDataCustomerIdList          `json:"CustomerIdList,omitempty" xml:"CustomerIdList,omitempty" type:"Struct"`
+	CustomerNameList                 *ListSessionGroupResponseBodyDataDataCustomerNameList        `json:"CustomerNameList,omitempty" xml:"CustomerNameList,omitempty" type:"Struct"`
+	CustomerServiceIdList            *ListSessionGroupResponseBodyDataDataCustomerServiceIdList   `json:"CustomerServiceIdList,omitempty" xml:"CustomerServiceIdList,omitempty" type:"Struct"`
+	CustomerServiceNameList          *ListSessionGroupResponseBodyDataDataCustomerServiceNameList `json:"CustomerServiceNameList,omitempty" xml:"CustomerServiceNameList,omitempty" type:"Struct"`
+	HitSessionCount                  *int32                                                       `json:"HitSessionCount,omitempty" xml:"HitSessionCount,omitempty"`
+	LastDataId                       *string                                                      `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
+	ReviewStatus                     *int32                                                       `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
+	ReviewerList                     *ListSessionGroupResponseBodyDataDataReviewerList            `json:"ReviewerList,omitempty" xml:"ReviewerList,omitempty" type:"Struct"`
+	SchemeTaskConfigId               *int64                                                       `json:"SchemeTaskConfigId,omitempty" xml:"SchemeTaskConfigId,omitempty"`
+	SchemeTaskConfigName             *string                                                      `json:"SchemeTaskConfigName,omitempty" xml:"SchemeTaskConfigName,omitempty"`
+	Score                            *int64                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	SessionCount                     *int32                                                       `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	SessionGroupId                   *string                                                      `json:"SessionGroupId,omitempty" xml:"SessionGroupId,omitempty"`
+	SessionGroupReviewedOrComplained *bool                                                        `json:"SessionGroupReviewedOrComplained,omitempty" xml:"SessionGroupReviewedOrComplained,omitempty"`
+	SkillGroupNameList               *ListSessionGroupResponseBodyDataDataSkillGroupNameList      `json:"SkillGroupNameList,omitempty" xml:"SkillGroupNameList,omitempty" type:"Struct"`
 }
 
 func (s ListSessionGroupResponseBodyDataData) String() string {

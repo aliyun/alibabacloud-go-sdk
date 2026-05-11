@@ -222,16 +222,10 @@ func (s *GetRuleDetailResponseBodyDataConditions) Validate() error {
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfo struct {
-	CheckRange *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange `json:"CheckRange,omitempty" xml:"CheckRange,omitempty" type:"Struct"`
-	// example:
-	//
-	// 7
-	ConditionInfoCid *string `json:"ConditionInfoCid,omitempty" xml:"ConditionInfoCid,omitempty"`
-	// example:
-	//
-	// 7
-	OperLambda *string                                                             `json:"OperLambda,omitempty" xml:"OperLambda,omitempty"`
-	Operators  *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Struct"`
+	CheckRange       *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange `json:"CheckRange,omitempty" xml:"CheckRange,omitempty" type:"Struct"`
+	ConditionInfoCid *string                                                              `json:"ConditionInfoCid,omitempty" xml:"ConditionInfoCid,omitempty"`
+	OperLambda       *string                                                              `json:"OperLambda,omitempty" xml:"OperLambda,omitempty"`
+	Operators        *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperators  `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Struct"`
 }
 
 func (s GetRuleDetailResponseBodyDataConditionsConditionBasicInfo) String() string {
@@ -293,9 +287,6 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfo) Validate() e
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange struct {
-	// example:
-	//
-	// true
 	Absolute *bool                                                                      `json:"Absolute,omitempty" xml:"Absolute,omitempty"`
 	Anchor   *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeAnchor `json:"Anchor,omitempty" xml:"Anchor,omitempty" type:"Struct"`
 	Range    *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeRange  `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
@@ -361,18 +352,9 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange) Va
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeAnchor struct {
-	// example:
-	//
-	// 7
 	AnchorCid *string `json:"AnchorCid,omitempty" xml:"AnchorCid,omitempty"`
-	// example:
-	//
-	// 1
-	HitTime *int32 `json:"HitTime,omitempty" xml:"HitTime,omitempty"`
-	// example:
-	//
-	// AFTER
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	HitTime   *int32  `json:"HitTime,omitempty" xml:"HitTime,omitempty"`
+	Location  *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeAnchor) String() string {
@@ -415,14 +397,8 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeAnch
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeRange struct {
-	// example:
-	//
-	// 1
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// example:
-	//
-	// 10
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	To   *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeRange) String() string {
@@ -490,19 +466,10 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperators) Val
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfo struct {
-	// example:
-	//
-	// 8
-	Oid *string `json:"Oid,omitempty" xml:"Oid,omitempty"`
-	// example:
-	//
-	// operator demo
+	Oid      *string                                                                                   `json:"Oid,omitempty" xml:"Oid,omitempty"`
 	OperName *string                                                                                   `json:"OperName,omitempty" xml:"OperName,omitempty"`
 	Param    *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	// example:
-	//
-	// REGULAR_EXPRESSION
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type     *string                                                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfo) String() string {
@@ -559,103 +526,37 @@ func (s *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOpera
 }
 
 type GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam struct {
-	AntModelInfo *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamAntModelInfo `json:"AntModelInfo,omitempty" xml:"AntModelInfo,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	Average *bool `json:"Average,omitempty" xml:"Average,omitempty"`
-	// example:
-	//
-	// DIALOGUE
-	BeginType *string `json:"BeginType,omitempty" xml:"BeginType,omitempty"`
-	// example:
-	//
-	// 1
-	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// example:
-	//
-	// gt
-	CompareOperator *string `json:"CompareOperator,omitempty" xml:"CompareOperator,omitempty"`
-	// example:
-	//
-	// true
-	ContextChatMatch *bool `json:"ContextChatMatch,omitempty" xml:"ContextChatMatch,omitempty"`
-	// example:
-	//
-	// 1000
-	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// example:
-	//
-	// true
-	DifferentRole *bool                                                                                             `json:"DifferentRole,omitempty" xml:"DifferentRole,omitempty"`
-	Excludes      *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamExcludes `json:"Excludes,omitempty" xml:"Excludes,omitempty" type:"Struct"`
-	// example:
-	//
-	// 3
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// example:
-	//
-	// true
-	FromEnd *bool `json:"FromEnd,omitempty" xml:"FromEnd,omitempty"`
-	// example:
-	//
-	// 1
-	HitTime *int32 `json:"HitTime,omitempty" xml:"HitTime,omitempty"`
-	// example:
-	//
-	// true
-	InSentence *bool `json:"InSentence,omitempty" xml:"InSentence,omitempty"`
-	// example:
-	//
-	// 5000
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// example:
-	//
-	// true
-	KeywordExtension *bool `json:"KeywordExtension,omitempty" xml:"KeywordExtension,omitempty"`
-	// example:
-	//
-	// 3
-	KeywordMatchSize *int32 `json:"KeywordMatchSize,omitempty" xml:"KeywordMatchSize,omitempty"`
-	// example:
-	//
-	// 8
-	MaxEmotionChangeValue *int32 `json:"MaxEmotionChangeValue,omitempty" xml:"MaxEmotionChangeValue,omitempty"`
-	// example:
-	//
-	// 4
-	MinWordSize  *int32                                                                                                `json:"MinWordSize,omitempty" xml:"MinWordSize,omitempty"`
-	NotRegex     *string                                                                                               `json:"NotRegex,omitempty" xml:"NotRegex,omitempty"`
-	OperKeyWords *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamOperKeyWords `json:"OperKeyWords,omitempty" xml:"OperKeyWords,omitempty" type:"Struct"`
-	// example:
-	//
-	// xxx
-	Phrase     *string                                                                                             `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
-	Pvalues    *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamPvalues    `json:"Pvalues,omitempty" xml:"Pvalues,omitempty" type:"Struct"`
-	References *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
-	Regex      *string                                                                                             `json:"Regex,omitempty" xml:"Regex,omitempty"`
-	// example:
-	//
-	// 80
-	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// example:
-	//
-	// 90
-	SimilarityThreshold *float32                                                                                                    `json:"Similarity_threshold,omitempty" xml:"Similarity_threshold,omitempty"`
-	SimilarlySentences  *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamSimilarlySentences `json:"SimilarlySentences,omitempty" xml:"SimilarlySentences,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Target     *int32  `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetRole *string `json:"TargetRole,omitempty" xml:"TargetRole,omitempty"`
-	// example:
-	//
-	// 4
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// example:
-	//
-	// 280
-	VelocityInMint *int32 `json:"VelocityInMint,omitempty" xml:"VelocityInMint,omitempty"`
+	AntModelInfo          *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamAntModelInfo       `json:"AntModelInfo,omitempty" xml:"AntModelInfo,omitempty" type:"Struct"`
+	Average               *bool                                                                                                       `json:"Average,omitempty" xml:"Average,omitempty"`
+	BeginType             *string                                                                                                     `json:"BeginType,omitempty" xml:"BeginType,omitempty"`
+	CheckType             *int32                                                                                                      `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	CompareOperator       *string                                                                                                     `json:"CompareOperator,omitempty" xml:"CompareOperator,omitempty"`
+	ContextChatMatch      *bool                                                                                                       `json:"ContextChatMatch,omitempty" xml:"ContextChatMatch,omitempty"`
+	DelayTime             *int32                                                                                                      `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DifferentRole         *bool                                                                                                       `json:"DifferentRole,omitempty" xml:"DifferentRole,omitempty"`
+	Excludes              *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamExcludes           `json:"Excludes,omitempty" xml:"Excludes,omitempty" type:"Struct"`
+	From                  *int32                                                                                                      `json:"From,omitempty" xml:"From,omitempty"`
+	FromEnd               *bool                                                                                                       `json:"FromEnd,omitempty" xml:"FromEnd,omitempty"`
+	HitTime               *int32                                                                                                      `json:"HitTime,omitempty" xml:"HitTime,omitempty"`
+	InSentence            *bool                                                                                                       `json:"InSentence,omitempty" xml:"InSentence,omitempty"`
+	Interval              *int32                                                                                                      `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	KeywordExtension      *bool                                                                                                       `json:"KeywordExtension,omitempty" xml:"KeywordExtension,omitempty"`
+	KeywordMatchSize      *int32                                                                                                      `json:"KeywordMatchSize,omitempty" xml:"KeywordMatchSize,omitempty"`
+	MaxEmotionChangeValue *int32                                                                                                      `json:"MaxEmotionChangeValue,omitempty" xml:"MaxEmotionChangeValue,omitempty"`
+	MinWordSize           *int32                                                                                                      `json:"MinWordSize,omitempty" xml:"MinWordSize,omitempty"`
+	NotRegex              *string                                                                                                     `json:"NotRegex,omitempty" xml:"NotRegex,omitempty"`
+	OperKeyWords          *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamOperKeyWords       `json:"OperKeyWords,omitempty" xml:"OperKeyWords,omitempty" type:"Struct"`
+	Phrase                *string                                                                                                     `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+	Pvalues               *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamPvalues            `json:"Pvalues,omitempty" xml:"Pvalues,omitempty" type:"Struct"`
+	References            *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamReferences         `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
+	Regex                 *string                                                                                                     `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	Score                 *int32                                                                                                      `json:"Score,omitempty" xml:"Score,omitempty"`
+	SimilarityThreshold   *float32                                                                                                    `json:"Similarity_threshold,omitempty" xml:"Similarity_threshold,omitempty"`
+	SimilarlySentences    *GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamSimilarlySentences `json:"SimilarlySentences,omitempty" xml:"SimilarlySentences,omitempty" type:"Struct"`
+	Target                *int32                                                                                                      `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetRole            *string                                                                                                     `json:"TargetRole,omitempty" xml:"TargetRole,omitempty"`
+	Threshold             *float32                                                                                                    `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	VelocityInMint        *int32                                                                                                      `json:"VelocityInMint,omitempty" xml:"VelocityInMint,omitempty"`
 }
 
 func (s GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) String() string {
@@ -1165,15 +1066,9 @@ func (s *GetRuleDetailResponseBodyDataRules) Validate() error {
 
 type GetRuleDetailResponseBodyDataRulesRuleBasicInfo struct {
 	BusinessCategories *GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategories `json:"BusinessCategories,omitempty" xml:"BusinessCategories,omitempty" type:"Struct"`
-	// example:
-	//
-	// 4
-	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// 7&&!8
-	RuleLambda *string                                                  `json:"RuleLambda,omitempty" xml:"RuleLambda,omitempty"`
-	Triggers   *GetRuleDetailResponseBodyDataRulesRuleBasicInfoTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Struct"`
+	Rid                *string                                                            `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	RuleLambda         *string                                                            `json:"RuleLambda,omitempty" xml:"RuleLambda,omitempty"`
+	Triggers           *GetRuleDetailResponseBodyDataRulesRuleBasicInfoTriggers           `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Struct"`
 }
 
 func (s GetRuleDetailResponseBodyDataRulesRuleBasicInfo) String() string {
@@ -1269,15 +1164,9 @@ func (s *GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategories) Vali
 }
 
 type GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategoriesBusinessCategoryBasicInfo struct {
-	// example:
-	//
-	// 264971810
 	Bid          *int32  `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	// example:
-	//
-	// 1
-	ServiceType *int32 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceType  *int32  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategoriesBusinessCategoryBasicInfo) String() string {

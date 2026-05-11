@@ -201,9 +201,6 @@ func (s *GetAsrVocabResponseBodyDataWords) Validate() error {
 }
 
 type GetAsrVocabResponseBodyDataWordsWord struct {
-	// example:
-	//
-	// 0
 	Weight *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	Word   *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }

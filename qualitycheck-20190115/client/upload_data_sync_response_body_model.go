@@ -140,12 +140,9 @@ func (s *UploadDataSyncResponseBodyData) Validate() error {
 type UploadDataSyncResponseBodyDataResultInfo struct {
 	HandScoreIdList *UploadDataSyncResponseBodyDataResultInfoHandScoreIdList `json:"HandScoreIdList,omitempty" xml:"HandScoreIdList,omitempty" type:"Struct"`
 	Rules           *UploadDataSyncResponseBodyDataResultInfoRules           `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// example:
-	//
-	// 100
-	Score          *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
-	TyxmPlusCount  *string `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
-	TyxmTurboCount *string `json:"TyxmTurboCount,omitempty" xml:"TyxmTurboCount,omitempty"`
+	Score           *int32                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	TyxmPlusCount   *string                                                  `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
+	TyxmTurboCount  *string                                                  `json:"TyxmTurboCount,omitempty" xml:"TyxmTurboCount,omitempty"`
 }
 
 func (s UploadDataSyncResponseBodyDataResultInfo) String() string {
@@ -277,14 +274,9 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRules) Validate() error {
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo struct {
 	ConditionInfo *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo `json:"ConditionInfo,omitempty" xml:"ConditionInfo,omitempty" type:"Struct"`
 	Hit           *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit           `json:"Hit,omitempty" xml:"Hit,omitempty" type:"Struct"`
-	// example:
-	//
-	// 801
-	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// 88888888
-	Tid *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	LlmResponse   *string                                                                `json:"LlmResponse,omitempty" xml:"LlmResponse,omitempty"`
+	Rid           *string                                                                `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Tid           *string                                                                `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) String() string {
@@ -303,6 +295,10 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) GetHit() *Upl
 	return s.Hit
 }
 
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) GetLlmResponse() *string {
+	return s.LlmResponse
+}
+
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) GetRid() *string {
 	return s.Rid
 }
@@ -318,6 +314,11 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetConditionI
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetHit(v *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo {
 	s.Hit = v
+	return s
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetLlmResponse(v string) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo {
+	s.LlmResponse = &v
 	return s
 }
 
@@ -380,9 +381,6 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo) 
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfoConditionBasicInfo struct {
-	// example:
-	//
-	// xxx
 	ConditionInfoCid *string `json:"ConditionInfoCid,omitempty" xml:"ConditionInfoCid,omitempty"`
 }
 
@@ -561,23 +559,13 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHit
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord struct {
-	// example:
-	//
-	// 1
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// example:
-	//
-	// 1
-	Pid *int32 `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// example:
-	//
-	// 1
-	Tid *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// example:
-	//
-	// 1
-	To  *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Val *string `json:"Val,omitempty" xml:"Val,omitempty"`
+	CustomizeCode *string `json:"CustomizeCode,omitempty" xml:"CustomizeCode,omitempty"`
+	From          *int32  `json:"From,omitempty" xml:"From,omitempty"`
+	IsMatch       *string `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
+	Pid           *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Tid           *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	To            *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	Val           *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
 func (s UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) String() string {
@@ -588,8 +576,16 @@ func (s UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitI
 	return s.String()
 }
 
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetCustomizeCode() *string {
+	return s.CustomizeCode
+}
+
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetFrom() *int32 {
 	return s.From
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetIsMatch() *string {
+	return s.IsMatch
 }
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) GetPid() *int32 {
@@ -608,8 +604,18 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHit
 	return s.Val
 }
 
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) SetCustomizeCode(v string) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord {
+	s.CustomizeCode = &v
+	return s
+}
+
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) SetFrom(v int32) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord {
 	s.From = &v
+	return s
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord) SetIsMatch(v string) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoHitKeyWordsHitKeyWord {
+	s.IsMatch = &v
 	return s
 }
 
@@ -638,24 +644,12 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHit
 }
 
 type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoPhrase struct {
-	// example:
-	//
-	// 0
-	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// example:
-	//
-	// 1564574
+	Begin     *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// example:
-	//
-	// 2090
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// example:
-	//
-	// 1
-	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Words    *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	End       *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	Identity  *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Role      *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Words     *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInfoPhrase) String() string {

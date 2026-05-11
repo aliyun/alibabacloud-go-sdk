@@ -198,84 +198,33 @@ func (s *GetResultResponseBodyData) Validate() error {
 }
 
 type GetResultResponseBodyDataResultInfo struct {
-	Agent     *GetResultResponseBodyDataResultInfoAgent     `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
-	AsrResult *GetResultResponseBodyDataResultInfoAsrResult `json:"AsrResult,omitempty" xml:"AsrResult,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2021-03-02T14:37Z
-	AssignmentTime *string `json:"AssignmentTime,omitempty" xml:"AssignmentTime,omitempty"`
-	// example:
-	//
-	// xx
-	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// example:
-	//
-	// 2019-07-24T19:31Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1602743090
-	CreateTimeLong *string `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
-	// example:
-	//
-	// xxx
-	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HitResult    *GetResultResponseBodyDataResultInfoHitResult `json:"HitResult,omitempty" xml:"HitResult,omitempty" type:"Struct"`
-	HitScore     *GetResultResponseBodyDataResultInfoHitScore  `json:"HitScore,omitempty" xml:"HitScore,omitempty" type:"Struct"`
-	// example:
-	//
-	// 4498420@a_z@93EAADF1-01D3-44BD-8AC9-F57F447EFCE8_1614*****
-	LastDataId *string                                       `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
-	Recording  *GetResultResponseBodyDataResultInfoRecording `json:"Recording,omitempty" xml:"Recording,omitempty" type:"Struct"`
-	// example:
-	//
-	// XXX
+	Agent             *GetResultResponseBodyDataResultInfoAgent             `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
+	AsrResult         *GetResultResponseBodyDataResultInfoAsrResult         `json:"AsrResult,omitempty" xml:"AsrResult,omitempty" type:"Struct"`
+	AssignmentTime    *string                                               `json:"AssignmentTime,omitempty" xml:"AssignmentTime,omitempty"`
+	Comments          *string                                               `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateTime        *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimeLong    *string                                               `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	ErrorMessage      *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HitResult         *GetResultResponseBodyDataResultInfoHitResult         `json:"HitResult,omitempty" xml:"HitResult,omitempty" type:"Struct"`
+	HitScore          *GetResultResponseBodyDataResultInfoHitScore          `json:"HitScore,omitempty" xml:"HitScore,omitempty" type:"Struct"`
+	LastDataId        *string                                               `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
+	Recording         *GetResultResponseBodyDataResultInfoRecording         `json:"Recording,omitempty" xml:"Recording,omitempty" type:"Struct"`
 	Resolver          *string                                               `json:"Resolver,omitempty" xml:"Resolver,omitempty"`
 	ReviewHistoryList *GetResultResponseBodyDataResultInfoReviewHistoryList `json:"ReviewHistoryList,omitempty" xml:"ReviewHistoryList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0
-	ReviewResult *int32 `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
-	// example:
-	//
-	// 1
-	ReviewStatus *int32 `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
-	// example:
-	//
-	// 2019-07-24T19:31Z
-	ReviewTime *string `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
-	// example:
-	//
-	// 1602743090
-	ReviewTimeLong *string `json:"ReviewTimeLong,omitempty" xml:"ReviewTimeLong,omitempty"`
-	// example:
-	//
-	// 1
-	ReviewType       *int32                                               `json:"ReviewType,omitempty" xml:"ReviewType,omitempty"`
-	ReviewTypeIdList *GetResultResponseBodyDataResultInfoReviewTypeIdList `json:"ReviewTypeIdList,omitempty" xml:"ReviewTypeIdList,omitempty" type:"Struct"`
-	// example:
-	//
-	// xxx
-	Reviewer       *string                                            `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	SchemeIdList   *GetResultResponseBodyDataResultInfoSchemeIdList   `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Struct"`
-	SchemeNameList *GetResultResponseBodyDataResultInfoSchemeNameList `json:"SchemeNameList,omitempty" xml:"SchemeNameList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 100
-	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// A6BEC8D-9A5B-4BE5-8432-4F635E***
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// example:
-	//
-	// test
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	Vid      *string `json:"Vid,omitempty" xml:"Vid,omitempty"`
+	ReviewResult      *int32                                                `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
+	ReviewStatus      *int32                                                `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
+	ReviewTime        *string                                               `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
+	ReviewTimeLong    *string                                               `json:"ReviewTimeLong,omitempty" xml:"ReviewTimeLong,omitempty"`
+	ReviewType        *int32                                                `json:"ReviewType,omitempty" xml:"ReviewType,omitempty"`
+	ReviewTypeIdList  *GetResultResponseBodyDataResultInfoReviewTypeIdList  `json:"ReviewTypeIdList,omitempty" xml:"ReviewTypeIdList,omitempty" type:"Struct"`
+	Reviewer          *string                                               `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	SchemeIdList      *GetResultResponseBodyDataResultInfoSchemeIdList      `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Struct"`
+	SchemeNameList    *GetResultResponseBodyDataResultInfoSchemeNameList    `json:"SchemeNameList,omitempty" xml:"SchemeNameList,omitempty" type:"Struct"`
+	Score             *int32                                                `json:"Score,omitempty" xml:"Score,omitempty"`
+	Status            *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId            *string                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName          *string                                               `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Vid               *string                                               `json:"Vid,omitempty" xml:"Vid,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfo) String() string {
@@ -579,9 +528,6 @@ func (s *GetResultResponseBodyDataResultInfo) Validate() error {
 }
 
 type GetResultResponseBodyDataResultInfoAgent struct {
-	// example:
-	//
-	// 28240****15643
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillGroup *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
@@ -661,28 +607,13 @@ func (s *GetResultResponseBodyDataResultInfoAsrResult) Validate() error {
 }
 
 type GetResultResponseBodyDataResultInfoAsrResultAsrResult struct {
-	// example:
-	//
-	// 10000
-	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// example:
-	//
-	// 1
-	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	// example:
-	//
-	// 0
-	End      *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// example:
-	//
-	// 50
-	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	// example:
-	//
-	// xx
-	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpeechRate   *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoAsrResultAsrResult) String() string {
@@ -810,24 +741,12 @@ type GetResultResponseBodyDataResultInfoHitResultHitResult struct {
 	// 1
 	MachineHitResult *string `json:"MachineHitResult,omitempty" xml:"MachineHitResult,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
-	ReviewResult *int32 `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
-	// example:
-	//
-	// 1276
-	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// example:
-	//
-	// 123xx
-	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
-	// example:
-	//
-	// 11xx
-	SchemeVersion *int64  `json:"SchemeVersion,omitempty" xml:"SchemeVersion,omitempty"`
-	Score         *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ReviewResult     *int32  `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
+	Rid              *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	SchemeId         *int64  `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	SchemeVersion    *int64  `json:"SchemeVersion,omitempty" xml:"SchemeVersion,omitempty"`
+	Score            *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResult) String() string {
@@ -995,20 +914,13 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditions) Valida
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditions struct {
-	// 检测范围
 	CheckRange *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRange `json:"Check_range,omitempty" xml:"Check_range,omitempty" type:"Struct"`
-	// 条件id，可能是db中的主键，也可能是转换成的a, b, c
-	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	// 排除
-	Exclusion *int32 `json:"Exclusion,omitempty" xml:"Exclusion,omitempty"`
-	// 在db中的主键
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Lambda表达式：例如:a&&b
-	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	// 算子列表
-	Operators *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Struct"`
-	// 条件所属的规则id
-	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Cid        *string                                                                              `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	Exclusion  *int32                                                                               `json:"Exclusion,omitempty" xml:"Exclusion,omitempty"`
+	Id         *int64                                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Lambda     *string                                                                              `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
+	Operators  *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperators  `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Struct"`
+	Rid        *string                                                                              `json:"Rid,omitempty" xml:"Rid,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditions) String() string {
@@ -1097,19 +1009,13 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRange struct {
-	// false: 相对位置; 会结合anchor以及角色来决定句子位置
-	Absolute *bool `json:"Absolute,omitempty" xml:"Absolute,omitempty"`
-	// true: 每句话都必须满足条件；
-	AllSentencesSatisfy *bool `json:"AllSentencesSatisfy,omitempty" xml:"AllSentencesSatisfy,omitempty"`
-	// 前置后置条件
-	Anchor *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeAnchor `json:"Anchor,omitempty" xml:"Anchor,omitempty" type:"Struct"`
-	// 相对范围
-	Range *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
-	// 对应 RoleType.type
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 对应 RoleType.id
-	RoleId    *int32                                                                                        `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	TimeRange *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
+	Absolute            *bool                                                                                         `json:"Absolute,omitempty" xml:"Absolute,omitempty"`
+	AllSentencesSatisfy *bool                                                                                         `json:"AllSentencesSatisfy,omitempty" xml:"AllSentencesSatisfy,omitempty"`
+	Anchor              *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeAnchor    `json:"Anchor,omitempty" xml:"Anchor,omitempty" type:"Struct"`
+	Range               *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange     `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
+	Role                *string                                                                                       `json:"Role,omitempty" xml:"Role,omitempty"`
+	RoleId              *int32                                                                                        `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	TimeRange           *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeTimeRange `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Struct"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRange) String() string {
@@ -1203,11 +1109,8 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeAnchor struct {
-	// 条件ID
-	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	// 命中次数
-	HitTime *int32 `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
-	// 位置
+	Cid      *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	HitTime  *int32  `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
@@ -1251,10 +1154,8 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange struct {
-	// 对话开始索引
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// 对话结束索引
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	To   *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsCheckRangeRange) String() string {
@@ -1357,16 +1258,11 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperator struct {
-	// 主键id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 算子名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 可能是主键id，也可能是前端生成的id
-	Oid *string `json:"Oid,omitempty" xml:"Oid,omitempty"`
-	// 算子参数
+	Id    *int64                                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name  *string                                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Oid   *string                                                                                          `json:"Oid,omitempty" xml:"Oid,omitempty"`
 	Param *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	// 算子类别
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string                                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperator) String() string {
@@ -1432,64 +1328,35 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam struct {
-	// 语速检测，是否计算整个对话平均语速，默认false
-	Average *bool `json:"Average,omitempty" xml:"Average,omitempty"`
-	// 时长算子，时长计算开始类型，录音开始，还是某句对话开始
-	BeginType *string `json:"BeginType,omitempty" xml:"BeginType,omitempty"`
-	// 区分大小写
-	CaseSensitive *bool `json:"Case_sensitive,omitempty" xml:"Case_sensitive,omitempty"`
-	// 静音检测：要不要检测第一句话
-	CheckFirstSentence *bool `json:"CheckFirstSentence,omitempty" xml:"CheckFirstSentence,omitempty"`
-	// 检测方式，1 相邻句能量波动 2 最大能量跨度 默认1
-	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// 大于，还是小于，gt/lt
-	CompareOperator *string `json:"CompareOperator,omitempty" xml:"CompareOperator,omitempty"`
-	// 是否单句话匹配；
-	ContextChatMatch *bool `json:"ContextChatMatch,omitempty" xml:"ContextChatMatch,omitempty"`
-	// 抢话算子 延时时长
-	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// 时长算子，时长计算结束类型，录音结束，还是某句对话结束
-	EndType *string `json:"EndType,omitempty" xml:"EndType,omitempty"`
-	// 上下文重复算子：排除掉某些对话
-	Excludes *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamExcludes `json:"Excludes,omitempty" xml:"Excludes,omitempty" type:"Struct"`
-	// 流程节点前置条件参数
+	Average                   *bool                                                                                                                     `json:"Average,omitempty" xml:"Average,omitempty"`
+	BeginType                 *string                                                                                                                   `json:"BeginType,omitempty" xml:"BeginType,omitempty"`
+	CaseSensitive             *bool                                                                                                                     `json:"Case_sensitive,omitempty" xml:"Case_sensitive,omitempty"`
+	CheckFirstSentence        *bool                                                                                                                     `json:"CheckFirstSentence,omitempty" xml:"CheckFirstSentence,omitempty"`
+	CheckType                 *int32                                                                                                                    `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	CompareOperator           *string                                                                                                                   `json:"CompareOperator,omitempty" xml:"CompareOperator,omitempty"`
+	ContextChatMatch          *bool                                                                                                                     `json:"ContextChatMatch,omitempty" xml:"ContextChatMatch,omitempty"`
+	DelayTime                 *int32                                                                                                                    `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	EndType                   *string                                                                                                                   `json:"EndType,omitempty" xml:"EndType,omitempty"`
+	Excludes                  *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamExcludes                  `json:"Excludes,omitempty" xml:"Excludes,omitempty" type:"Struct"`
 	FlowNodePrerequisiteParam *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamFlowNodePrerequisiteParam `json:"FlowNodePrerequisiteParam,omitempty" xml:"FlowNodePrerequisiteParam,omitempty" type:"Struct"`
-	// 上下文重复算子：检测当前句的前from句是否有重复；0表示前面的所有句
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// from_end
-	FromEnd *bool `json:"From_end,omitempty" xml:"From_end,omitempty"`
-	// 上下文重复算子：重复几次
-	HitTime *int32 `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
-	// 生效句子， true单个句子，false多个句子
-	InSentence *bool `json:"In_sentence,omitempty" xml:"In_sentence,omitempty"`
-	// 意图模型检查参数
-	IntentModelCheckParm *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm `json:"IntentModelCheckParm,omitempty" xml:"IntentModelCheckParm,omitempty" type:"Struct"`
-	// interval代表区间范围开始
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// intervalEnd 代表区间范围结束
-	IntervalEnd *int32 `json:"IntervalEnd,omitempty" xml:"IntervalEnd,omitempty"`
-	// 关键字扩展
-	KeywordExtension *int32 `json:"KeywordExtension,omitempty" xml:"KeywordExtension,omitempty"`
-	// 匹配到的关键字数量
-	KeywordMatchSize *int32 `json:"KeywordMatchSize,omitempty" xml:"KeywordMatchSize,omitempty"`
-	// 关键词
-	Keywords *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
-	// 能量值变化，默认3, 1~9
-	MaxEmotionChangeValue *int32 `json:"MaxEmotionChangeValue,omitempty" xml:"MaxEmotionChangeValue,omitempty"`
-	// 句子中最少字数，小于此字数的句子不检查
-	MinWordSize *int32 `json:"MinWordSize,omitempty" xml:"MinWordSize,omitempty"`
-	// true表示取不同角色相邻的两句话，false表示取不同角色的第一句话比较响应时间（默认）
-	NearDialogue *bool `json:"Near_dialogue,omitempty" xml:"Near_dialogue,omitempty"`
-	// 排除的正则表达式
-	NotRegex *string `json:"NotRegex,omitempty" xml:"NotRegex,omitempty"`
-	// 语句
-	Phrase *string `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
-	// 正则表达式
-	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
-	// target
-	Target *int32 `json:"Target,omitempty" xml:"Target,omitempty"`
-	// 阈值
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	From                      *int32                                                                                                                    `json:"From,omitempty" xml:"From,omitempty"`
+	FromEnd                   *bool                                                                                                                     `json:"From_end,omitempty" xml:"From_end,omitempty"`
+	HitTime                   *int32                                                                                                                    `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
+	InSentence                *bool                                                                                                                     `json:"In_sentence,omitempty" xml:"In_sentence,omitempty"`
+	IntentModelCheckParm      *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm      `json:"IntentModelCheckParm,omitempty" xml:"IntentModelCheckParm,omitempty" type:"Struct"`
+	Interval                  *int32                                                                                                                    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IntervalEnd               *int32                                                                                                                    `json:"IntervalEnd,omitempty" xml:"IntervalEnd,omitempty"`
+	KeywordExtension          *int32                                                                                                                    `json:"KeywordExtension,omitempty" xml:"KeywordExtension,omitempty"`
+	KeywordMatchSize          *int32                                                                                                                    `json:"KeywordMatchSize,omitempty" xml:"KeywordMatchSize,omitempty"`
+	Keywords                  *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamKeywords                  `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
+	MaxEmotionChangeValue     *int32                                                                                                                    `json:"MaxEmotionChangeValue,omitempty" xml:"MaxEmotionChangeValue,omitempty"`
+	MinWordSize               *int32                                                                                                                    `json:"MinWordSize,omitempty" xml:"MinWordSize,omitempty"`
+	NearDialogue              *bool                                                                                                                     `json:"Near_dialogue,omitempty" xml:"Near_dialogue,omitempty"`
+	NotRegex                  *string                                                                                                                   `json:"NotRegex,omitempty" xml:"NotRegex,omitempty"`
+	Phrase                    *string                                                                                                                   `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+	Regex                     *string                                                                                                                   `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	Target                    *int32                                                                                                                    `json:"Target,omitempty" xml:"Target,omitempty"`
+	Threshold                 *float32                                                                                                                  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParam) String() string {
@@ -1811,12 +1678,9 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamFlowNodePrerequisiteParam struct {
-	// 节点id
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点匹配状态。
-	NodeMatchStatus *int32 `json:"NodeMatchStatus,omitempty" xml:"NodeMatchStatus,omitempty"`
-	// 冗余的节点名称
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeId          *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeMatchStatus *int32  `json:"NodeMatchStatus,omitempty" xml:"NodeMatchStatus,omitempty"`
+	NodeName        *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamFlowNodePrerequisiteParam) String() string {
@@ -1859,10 +1723,8 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm struct {
-	// 引用的意图模型
-	Intents *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Struct"`
-	// 模型应用的场景 AGENT:客户场景、CUSTOMER:客服场景 (CUSTOMER: 客户场景, AGENT: 坐席场景)
-	ModelScene *string `json:"ModelScene,omitempty" xml:"ModelScene,omitempty"`
+	Intents    *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Struct"`
+	ModelScene *string                                                                                                                     `json:"ModelScene,omitempty" xml:"ModelScene,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParm) String() string {
@@ -1935,9 +1797,7 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditio
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultConditionsConditionsOperatorsOperatorParamIntentModelCheckParmIntentsIntent struct {
-	// 意图模型ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 意图模型名称
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2150,22 +2010,10 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitKeyWords) V
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitKeyWordsKeyWord struct {
-	// example:
-	//
-	// xxxx
-	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	// example:
-	//
-	// 1
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// example:
-	//
-	// 2
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
-	// example:
-	//
-	// test
-	Val *string `json:"Val,omitempty" xml:"Val,omitempty"`
+	Cid  *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	From *int32  `json:"From,omitempty" xml:"From,omitempty"`
+	To   *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	Val  *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitKeyWordsKeyWord) String() string {
@@ -2217,23 +2065,11 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitKeyWordsKey
 }
 
 type GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitPhrase struct {
-	// example:
-	//
-	// 300
-	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// example:
-	//
-	// 0
-	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	// example:
-	//
-	// 300
-	End  *int32  `json:"End,omitempty" xml:"End,omitempty"`
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// example:
-	//
-	// xxx
-	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	End          *int32  `json:"End,omitempty" xml:"End,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitPhrase) String() string {
@@ -2328,18 +2164,9 @@ func (s *GetResultResponseBodyDataResultInfoHitScore) Validate() error {
 }
 
 type GetResultResponseBodyDataResultInfoHitScoreHitScore struct {
-	// example:
-	//
-	// 123
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// example:
-	//
-	// 123456
-	ScoreId   *string `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreName *string `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
-	// example:
-	//
-	// -20
+	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	ScoreId     *string `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
+	ScoreName   *string `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
 	ScoreNumber *string `json:"ScoreNumber,omitempty" xml:"ScoreNumber,omitempty"`
 }
 
@@ -2392,110 +2219,35 @@ func (s *GetResultResponseBodyDataResultInfoHitScoreHitScore) Validate() error {
 }
 
 type GetResultResponseBodyDataResultInfoRecording struct {
-	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	// example:
-	//
-	// XXXX
-	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// example:
-	//
-	// 1563967699000
-	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	// example:
-	//
-	// 1
-	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	// example:
-	//
-	// 1888888****
-	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	// example:
-	//
-	// 0108888****
-	Caller       *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	// example:
-	//
-	// XXXX
-	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// example:
-	//
-	// 32
-	DialogueSize *int32 `json:"DialogueSize,omitempty" xml:"DialogueSize,omitempty"`
-	// example:
-	//
-	// 60
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// example:
-	//
-	// XXXXX
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 123456.mkv
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 3437500
-	PrimaryId *string `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark1 *string `json:"Remark1,omitempty" xml:"Remark1,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark10 *string `json:"Remark10,omitempty" xml:"Remark10,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark11 *string `json:"Remark11,omitempty" xml:"Remark11,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark12 *string `json:"Remark12,omitempty" xml:"Remark12,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark13 *string `json:"Remark13,omitempty" xml:"Remark13,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark2 *string `json:"Remark2,omitempty" xml:"Remark2,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark3 *string `json:"Remark3,omitempty" xml:"Remark3,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark4 *string `json:"Remark4,omitempty" xml:"Remark4,omitempty"`
-	// example:
-	//
-	// 1232
-	Remark5 *int64 `json:"Remark5,omitempty" xml:"Remark5,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark6 *string `json:"Remark6,omitempty" xml:"Remark6,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark7 *string `json:"Remark7,omitempty" xml:"Remark7,omitempty"`
-	// example:
-	//
-	// XXX
-	Remark8 *string `json:"Remark8,omitempty" xml:"Remark8,omitempty"`
-	// example:
-	//
-	// XXX
+	Business       *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	CallId         *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CallTime       *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	CallType       *int32  `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	Callee         *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	Caller         *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	CustomerName   *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	DataSetName    *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	DialogueSize   *int32  `json:"DialogueSize,omitempty" xml:"DialogueSize,omitempty"`
+	Duration       *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrimaryId      *string `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	Remark1        *string `json:"Remark1,omitempty" xml:"Remark1,omitempty"`
+	Remark10       *string `json:"Remark10,omitempty" xml:"Remark10,omitempty"`
+	Remark11       *string `json:"Remark11,omitempty" xml:"Remark11,omitempty"`
+	Remark12       *string `json:"Remark12,omitempty" xml:"Remark12,omitempty"`
+	Remark13       *string `json:"Remark13,omitempty" xml:"Remark13,omitempty"`
+	Remark2        *string `json:"Remark2,omitempty" xml:"Remark2,omitempty"`
+	Remark3        *string `json:"Remark3,omitempty" xml:"Remark3,omitempty"`
+	Remark4        *string `json:"Remark4,omitempty" xml:"Remark4,omitempty"`
+	Remark5        *int64  `json:"Remark5,omitempty" xml:"Remark5,omitempty"`
+	Remark6        *string `json:"Remark6,omitempty" xml:"Remark6,omitempty"`
+	Remark7        *string `json:"Remark7,omitempty" xml:"Remark7,omitempty"`
+	Remark8        *string `json:"Remark8,omitempty" xml:"Remark8,omitempty"`
 	Remark9        *string `json:"Remark9,omitempty" xml:"Remark9,omitempty"`
 	TaskConfigId   *int64  `json:"TaskConfigId,omitempty" xml:"TaskConfigId,omitempty"`
 	TaskConfigName *string `json:"TaskConfigName,omitempty" xml:"TaskConfigName,omitempty"`
-	// example:
-	//
-	// http://aliyun.com/audio.wav
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfoRecording) String() string {

@@ -32,16 +32,36 @@ type iGraphFlowNode interface {
 }
 
 type GraphFlowNode struct {
-	Conditions    []*ConditionBasicInfo     `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Content       *string                   `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id            *int64                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Index         *int32                    `json:"Index,omitempty" xml:"Index,omitempty"`
-	Name          *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextNodes     []*GraphFlowNodeNextNodes `json:"NextNodes,omitempty" xml:"NextNodes,omitempty" type:"Repeated"`
-	NodeType      *string                   `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Properties    *GraphFlowNodeProperties  `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	Rid           *int64                    `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	UseConditions *bool                     `json:"UseConditions,omitempty" xml:"UseConditions,omitempty"`
+	Conditions []*ConditionBasicInfo `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// index
+	//
+	// example:
+	//
+	// 1
+	Index     *int32                    `json:"Index,omitempty" xml:"Index,omitempty"`
+	Name      *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextNodes []*GraphFlowNodeNextNodes `json:"NextNodes,omitempty" xml:"NextNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// startNode
+	NodeType   *string                  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Properties *GraphFlowNodeProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// example:
+	//
+	// true
+	UseConditions *bool `json:"UseConditions,omitempty" xml:"UseConditions,omitempty"`
 }
 
 func (s GraphFlowNode) String() string {
@@ -170,10 +190,25 @@ func (s *GraphFlowNode) Validate() error {
 }
 
 type GraphFlowNodeNextNodes struct {
-	CheckType  *int32    `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	Index      *int32    `json:"Index,omitempty" xml:"Index,omitempty"`
-	Lambda     *string   `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// a
+	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
+	// example:
+	//
+	// a
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 31533
 	NextNodeId *int64    `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
 	Triggers   []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
@@ -245,20 +280,53 @@ func (s *GraphFlowNodeNextNodes) Validate() error {
 }
 
 type GraphFlowNodeProperties struct {
-	AutoReview       *int32    `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
-	BranchJudge      *bool     `json:"BranchJudge,omitempty" xml:"BranchJudge,omitempty"`
-	CheckMoreSize    *int32    `json:"CheckMoreSize,omitempty" xml:"CheckMoreSize,omitempty"`
-	CheckType        *int32    `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	Lambda           *string   `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Role             *string   `json:"Role,omitempty" xml:"Role,omitempty"`
-	RuleScoreType    *int32    `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	SayType          *string   `json:"SayType,omitempty" xml:"SayType,omitempty"`
-	ScoreNum         *int32    `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	ScoreNumType     *int32    `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
-	ScoreRuleHitType *int32    `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
-	ScoreType        *int32    `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	Triggers         []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
-	Type             *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1
+	AutoReview *int32 `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
+	// example:
+	//
+	// true
+	BranchJudge *bool `json:"BranchJudge,omitempty" xml:"BranchJudge,omitempty"`
+	// example:
+	//
+	// 1
+	CheckMoreSize *int32 `json:"CheckMoreSize,omitempty" xml:"CheckMoreSize,omitempty"`
+	// example:
+	//
+	// 1
+	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// example:
+	//
+	// a
+	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
+	Role   *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 1
+	RuleScoreType *int32  `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
+	SayType       *string `json:"SayType,omitempty" xml:"SayType,omitempty"`
+	// example:
+	//
+	// 1
+	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	// example:
+	//
+	// 1
+	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	// example:
+	//
+	// 0
+	ScoreRuleHitType *int32 `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
+	// example:
+	//
+	// 1
+	ScoreType *int32    `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	Triggers  []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GraphFlowNodeProperties) String() string {

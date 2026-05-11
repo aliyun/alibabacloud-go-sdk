@@ -230,95 +230,29 @@ func (s *ListDataSetResponseBodyData) Validate() error {
 }
 
 type ListDataSetResponseBodyDataData struct {
-	// example:
-	//
-	// 1
-	AutoTranscoding *int32 `json:"AutoTranscoding,omitempty" xml:"AutoTranscoding,omitempty"`
-	// example:
-	//
-	// 0
-	ChannelId0 *int32 `json:"ChannelId0,omitempty" xml:"ChannelId0,omitempty"`
-	// example:
-	//
-	// 1
-	ChannelId1 *int32 `json:"ChannelId1,omitempty" xml:"ChannelId1,omitempty"`
-	// example:
-	//
-	// 1
-	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// example:
-	//
-	// 2019-06-20T17:33Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 0
-	CreateType *int32 `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
-	// example:
-	//
-	// 3
-	DataSetType *int32 `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
-	// example:
-	//
-	// 0
-	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	// example:
-	//
-	// filesFromLocal/ef7ff45c147a4a5e882c925f9a75ac43
-	RoleConfigProp *string `json:"RoleConfigProp,omitempty" xml:"RoleConfigProp,omitempty"`
-	// example:
-	//
-	// 1
-	RoleConfigStatus *int32 `json:"RoleConfigStatus,omitempty" xml:"RoleConfigStatus,omitempty"`
-	// example:
-	//
-	// xx
-	RoleConfigTask *string `json:"RoleConfigTask,omitempty" xml:"RoleConfigTask,omitempty"`
-	// example:
-	//
-	// “”
-	SetBucketName *string `json:"SetBucketName,omitempty" xml:"SetBucketName,omitempty"`
-	// example:
-	//
-	// “”
-	SetDomain *string `json:"SetDomain,omitempty" xml:"SetDomain,omitempty"`
-	// example:
-	//
-	// “”
-	SetFolderName *string `json:"SetFolderName,omitempty" xml:"SetFolderName,omitempty"`
-	// example:
-	//
-	// 1
-	SetId   *int64  `json:"SetId,omitempty" xml:"SetId,omitempty"`
-	SetName *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
-	// example:
-	//
-	// 1
-	SetNumber *int32 `json:"SetNumber,omitempty" xml:"SetNumber,omitempty"`
-	// example:
-	//
-	// “”
-	SetRoleArn *string `json:"SetRoleArn,omitempty" xml:"SetRoleArn,omitempty"`
-	// example:
-	//
-	// 1
-	SetType *int32 `json:"SetType,omitempty" xml:"SetType,omitempty"`
-	// example:
-	//
-	// 11
-	SourceDataType *int32 `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
-	// example:
-	//
-	// xx
-	SubDir *string `json:"SubDir,omitempty" xml:"SubDir,omitempty"`
-	// example:
-	//
-	// 2022-05-10T10:34Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 1
-	UserGroup *string `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
+	AutoTranscoding  *int32  `json:"AutoTranscoding,omitempty" xml:"AutoTranscoding,omitempty"`
+	ChannelId0       *int32  `json:"ChannelId0,omitempty" xml:"ChannelId0,omitempty"`
+	ChannelId1       *int32  `json:"ChannelId1,omitempty" xml:"ChannelId1,omitempty"`
+	ChannelType      *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateType       *int32  `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
+	DataSetType      *int32  `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
+	IsDelete         *int32  `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	RoleConfigProp   *string `json:"RoleConfigProp,omitempty" xml:"RoleConfigProp,omitempty"`
+	RoleConfigStatus *int32  `json:"RoleConfigStatus,omitempty" xml:"RoleConfigStatus,omitempty"`
+	RoleConfigTask   *string `json:"RoleConfigTask,omitempty" xml:"RoleConfigTask,omitempty"`
+	SetBucketName    *string `json:"SetBucketName,omitempty" xml:"SetBucketName,omitempty"`
+	SetDomain        *string `json:"SetDomain,omitempty" xml:"SetDomain,omitempty"`
+	SetFolderName    *string `json:"SetFolderName,omitempty" xml:"SetFolderName,omitempty"`
+	SetId            *int64  `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	SetName          *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
+	SetNumber        *int32  `json:"SetNumber,omitempty" xml:"SetNumber,omitempty"`
+	SetRoleArn       *string `json:"SetRoleArn,omitempty" xml:"SetRoleArn,omitempty"`
+	SetType          *int32  `json:"SetType,omitempty" xml:"SetType,omitempty"`
+	SourceDataType   *int32  `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+	SubDir           *string `json:"SubDir,omitempty" xml:"SubDir,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserGroup        *string `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
 }
 
 func (s ListDataSetResponseBodyDataData) String() string {

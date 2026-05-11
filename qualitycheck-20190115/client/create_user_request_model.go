@@ -16,6 +16,7 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
+	// baseMeAgentId
 	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	JsonStr       *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
