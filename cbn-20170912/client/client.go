@@ -3683,6 +3683,10 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(tmpReq *Create
 	}
 	request := &CreateTransitRouterVpcAttachmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("Options"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.TransitRouterVPCAttachmentOptions) {
 		request.TransitRouterVPCAttachmentOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransitRouterVPCAttachmentOptions, dara.String("TransitRouterVPCAttachmentOptions"), dara.String("json"))
 	}
@@ -3706,6 +3710,10 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(tmpReq *Create
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		query["Options"] = request.OptionsShrink
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -17074,6 +17082,10 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(tmpRe
 	}
 	request := &UpdateTransitRouterVpcAttachmentAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Options) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("Options"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.TransitRouterVPCAttachmentOptions) {
 		request.TransitRouterVPCAttachmentOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransitRouterVPCAttachmentOptions, dara.String("TransitRouterVPCAttachmentOptions"), dara.String("json"))
 	}
@@ -17089,6 +17101,10 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(tmpRe
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.OptionsShrink) {
+		query["Options"] = request.OptionsShrink
 	}
 
 	if !dara.IsNil(request.OrderType) {

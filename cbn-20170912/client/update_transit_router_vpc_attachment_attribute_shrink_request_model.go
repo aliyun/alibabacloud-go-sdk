@@ -15,6 +15,8 @@ type iUpdateTransitRouterVpcAttachmentAttributeShrinkRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest
 	GetDryRun() *bool
+	SetOptionsShrink(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest
+	GetOptionsShrink() *string
 	SetOrderType(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest
 	GetOrderType() *string
 	SetOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest
@@ -65,7 +67,8 @@ type UpdateTransitRouterVpcAttachmentAttributeShrinkRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// example:
 	//
 	// PayByCenOwner
@@ -122,6 +125,10 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) GetDryRun() *bo
 	return s.DryRun
 }
 
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) GetOptionsShrink() *string {
+	return s.OptionsShrink
+}
+
 func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) GetOrderType() *string {
 	return s.OrderType
 }
@@ -170,6 +177,11 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetClientToken(
 
 func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest) SetOptionsShrink(v string) *UpdateTransitRouterVpcAttachmentAttributeShrinkRequest {
+	s.OptionsShrink = &v
 	return s
 }
 

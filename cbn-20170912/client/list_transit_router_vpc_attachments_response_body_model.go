@@ -152,8 +152,9 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	// example:
 	//
 	// 2021-06-15T02:14Z
-	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
+	CreationTime   *string                                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ManagedService *string                                                                     `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
+	Options        *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// 	- **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
@@ -262,6 +263,10 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Ge
 	return s.ManagedService
 }
 
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) GetOptions() *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions {
+	return s.Options
+}
+
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) GetOrderType() *string {
 	return s.OrderType
 }
@@ -339,6 +344,11 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Se
 	return s
 }
 
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetOptions(v *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
+	s.Options = v
+	return s
+}
+
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetOrderType(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
 	s.OrderType = &v
 	return s
@@ -405,6 +415,11 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Se
 }
 
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Validate() error {
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -424,6 +439,41 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Va
 		}
 	}
 	return nil
+}
+
+type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions struct {
+	ApplianceModeSupport *string `json:"ApplianceModeSupport,omitempty" xml:"ApplianceModeSupport,omitempty"`
+	Ipv6Support          *string `json:"Ipv6Support,omitempty" xml:"Ipv6Support,omitempty"`
+}
+
+func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) GetApplianceModeSupport() *string {
+	return s.ApplianceModeSupport
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) GetIpv6Support() *string {
+	return s.Ipv6Support
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) SetApplianceModeSupport(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions {
+	s.ApplianceModeSupport = &v
+	return s
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) SetIpv6Support(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions {
+	s.Ipv6Support = &v
+	return s
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags struct {

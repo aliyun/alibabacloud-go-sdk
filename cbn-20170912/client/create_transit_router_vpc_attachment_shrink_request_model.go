@@ -19,6 +19,8 @@ type iCreateTransitRouterVpcAttachmentShrinkRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *CreateTransitRouterVpcAttachmentShrinkRequest
 	GetDryRun() *bool
+	SetOptionsShrink(v string) *CreateTransitRouterVpcAttachmentShrinkRequest
+	GetOptionsShrink() *string
 	SetOwnerAccount(v string) *CreateTransitRouterVpcAttachmentShrinkRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreateTransitRouterVpcAttachmentShrinkRequest
@@ -89,9 +91,10 @@ type CreateTransitRouterVpcAttachmentShrinkRequest struct {
 	// example:
 	//
 	// false
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the VPC is deployed.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
@@ -182,6 +185,10 @@ func (s *CreateTransitRouterVpcAttachmentShrinkRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) GetOptionsShrink() *string {
+	return s.OptionsShrink
+}
+
 func (s *CreateTransitRouterVpcAttachmentShrinkRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -256,6 +263,11 @@ func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetClientToken(v string)
 
 func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetDryRun(v bool) *CreateTransitRouterVpcAttachmentShrinkRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentShrinkRequest) SetOptionsShrink(v string) *CreateTransitRouterVpcAttachmentShrinkRequest {
+	s.OptionsShrink = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iCreateTransitRouterVpcAttachmentRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *CreateTransitRouterVpcAttachmentRequest
 	GetDryRun() *bool
+	SetOptions(v *CreateTransitRouterVpcAttachmentRequestOptions) *CreateTransitRouterVpcAttachmentRequest
+	GetOptions() *CreateTransitRouterVpcAttachmentRequestOptions
 	SetOwnerAccount(v string) *CreateTransitRouterVpcAttachmentRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreateTransitRouterVpcAttachmentRequest
@@ -89,9 +91,10 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	// example:
 	//
 	// false
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DryRun       *bool                                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Options      *CreateTransitRouterVpcAttachmentRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	OwnerAccount *string                                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the VPC is deployed.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
@@ -182,6 +185,10 @@ func (s *CreateTransitRouterVpcAttachmentRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *CreateTransitRouterVpcAttachmentRequest) GetOptions() *CreateTransitRouterVpcAttachmentRequestOptions {
+	return s.Options
+}
+
 func (s *CreateTransitRouterVpcAttachmentRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -259,6 +266,11 @@ func (s *CreateTransitRouterVpcAttachmentRequest) SetDryRun(v bool) *CreateTrans
 	return s
 }
 
+func (s *CreateTransitRouterVpcAttachmentRequest) SetOptions(v *CreateTransitRouterVpcAttachmentRequestOptions) *CreateTransitRouterVpcAttachmentRequest {
+	s.Options = v
+	return s
+}
+
 func (s *CreateTransitRouterVpcAttachmentRequest) SetOwnerAccount(v string) *CreateTransitRouterVpcAttachmentRequest {
 	s.OwnerAccount = &v
 	return s
@@ -325,6 +337,11 @@ func (s *CreateTransitRouterVpcAttachmentRequest) SetZoneMappings(v []*CreateTra
 }
 
 func (s *CreateTransitRouterVpcAttachmentRequest) Validate() error {
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tag != nil {
 		for _, item := range s.Tag {
 			if item != nil {
@@ -344,6 +361,41 @@ func (s *CreateTransitRouterVpcAttachmentRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateTransitRouterVpcAttachmentRequestOptions struct {
+	ApplianceModeSupport *string `json:"ApplianceModeSupport,omitempty" xml:"ApplianceModeSupport,omitempty"`
+	Ipv6Support          *string `json:"Ipv6Support,omitempty" xml:"Ipv6Support,omitempty"`
+}
+
+func (s CreateTransitRouterVpcAttachmentRequestOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateTransitRouterVpcAttachmentRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterVpcAttachmentRequestOptions) GetApplianceModeSupport() *string {
+	return s.ApplianceModeSupport
+}
+
+func (s *CreateTransitRouterVpcAttachmentRequestOptions) GetIpv6Support() *string {
+	return s.Ipv6Support
+}
+
+func (s *CreateTransitRouterVpcAttachmentRequestOptions) SetApplianceModeSupport(v string) *CreateTransitRouterVpcAttachmentRequestOptions {
+	s.ApplianceModeSupport = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentRequestOptions) SetIpv6Support(v string) *CreateTransitRouterVpcAttachmentRequestOptions {
+	s.Ipv6Support = &v
+	return s
+}
+
+func (s *CreateTransitRouterVpcAttachmentRequestOptions) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateTransitRouterVpcAttachmentRequestTag struct {

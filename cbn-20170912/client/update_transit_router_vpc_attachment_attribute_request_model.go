@@ -15,6 +15,8 @@ type iUpdateTransitRouterVpcAttachmentAttributeRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentAttributeRequest
 	GetDryRun() *bool
+	SetOptions(v *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) *UpdateTransitRouterVpcAttachmentAttributeRequest
+	GetOptions() *UpdateTransitRouterVpcAttachmentAttributeRequestOptions
 	SetOrderType(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest
 	GetOrderType() *string
 	SetOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest
@@ -65,7 +67,8 @@ type UpdateTransitRouterVpcAttachmentAttributeRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun  *bool                                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Options *UpdateTransitRouterVpcAttachmentAttributeRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	// example:
 	//
 	// PayByCenOwner
@@ -122,6 +125,10 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) GetOptions() *UpdateTransitRouterVpcAttachmentAttributeRequestOptions {
+	return s.Options
+}
+
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) GetOrderType() *string {
 	return s.OrderType
 }
@@ -173,6 +180,11 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetDryRun(v bool) *Up
 	return s
 }
 
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetOptions(v *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) *UpdateTransitRouterVpcAttachmentAttributeRequest {
+	s.Options = v
+	return s
+}
+
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetOrderType(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest {
 	s.OrderType = &v
 	return s
@@ -219,5 +231,45 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetTransitRouterVPCAt
 }
 
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) Validate() error {
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateTransitRouterVpcAttachmentAttributeRequestOptions struct {
+	ApplianceModeSupport *string `json:"ApplianceModeSupport,omitempty" xml:"ApplianceModeSupport,omitempty"`
+	Ipv6Support          *string `json:"Ipv6Support,omitempty" xml:"Ipv6Support,omitempty"`
+}
+
+func (s UpdateTransitRouterVpcAttachmentAttributeRequestOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateTransitRouterVpcAttachmentAttributeRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) GetApplianceModeSupport() *string {
+	return s.ApplianceModeSupport
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) GetIpv6Support() *string {
+	return s.Ipv6Support
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) SetApplianceModeSupport(v string) *UpdateTransitRouterVpcAttachmentAttributeRequestOptions {
+	s.ApplianceModeSupport = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) SetIpv6Support(v string) *UpdateTransitRouterVpcAttachmentAttributeRequestOptions {
+	s.Ipv6Support = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequestOptions) Validate() error {
 	return dara.Validate(s)
 }
