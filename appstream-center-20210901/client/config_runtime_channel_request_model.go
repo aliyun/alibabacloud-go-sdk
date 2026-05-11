@@ -17,6 +17,8 @@ type iConfigRuntimeChannelRequest interface {
 	GetCode() *string
 	SetConfig(v string) *ConfigRuntimeChannelRequest
 	GetConfig() *string
+	SetConfigMode(v string) *ConfigRuntimeChannelRequest
+	GetConfigMode() *string
 	SetName(v string) *ConfigRuntimeChannelRequest
 	GetName() *string
 	SetRuntimeIds(v []*string) *ConfigRuntimeChannelRequest
@@ -54,7 +56,14 @@ type ConfigRuntimeChannelRequest struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Simple
+	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// example:
+	//
+	// 钉钉
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	RuntimeIds []*string `json:"RuntimeIds,omitempty" xml:"RuntimeIds,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -89,6 +98,10 @@ func (s *ConfigRuntimeChannelRequest) GetConfig() *string {
 	return s.Config
 }
 
+func (s *ConfigRuntimeChannelRequest) GetConfigMode() *string {
+	return s.ConfigMode
+}
+
 func (s *ConfigRuntimeChannelRequest) GetName() *string {
 	return s.Name
 }
@@ -118,6 +131,11 @@ func (s *ConfigRuntimeChannelRequest) SetCode(v string) *ConfigRuntimeChannelReq
 
 func (s *ConfigRuntimeChannelRequest) SetConfig(v string) *ConfigRuntimeChannelRequest {
 	s.Config = &v
+	return s
+}
+
+func (s *ConfigRuntimeChannelRequest) SetConfigMode(v string) *ConfigRuntimeChannelRequest {
+	s.ConfigMode = &v
 	return s
 }
 

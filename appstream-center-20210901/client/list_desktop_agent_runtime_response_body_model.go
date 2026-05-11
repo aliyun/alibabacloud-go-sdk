@@ -135,7 +135,9 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	// example:
 	//
 	// true
-	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
+	ModelConfigure        *bool     `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
+	OsType                *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	QrCodeConfiguringList []*string `json:"QrCodeConfiguringList,omitempty" xml:"QrCodeConfiguringList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cn-hangzhou
@@ -194,6 +196,14 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) GetHasAuthUser() *bool {
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetModelConfigure() *bool {
 	return s.ModelConfigure
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) GetOsType() *string {
+	return s.OsType
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) GetQrCodeConfiguringList() []*string {
+	return s.QrCodeConfiguringList
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetRegionId() *string {
@@ -259,6 +269,16 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) SetHasAuthUser(v bool) *ListDe
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) SetModelConfigure(v bool) *ListDesktopAgentRuntimeResponseBodyData {
 	s.ModelConfigure = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) SetOsType(v string) *ListDesktopAgentRuntimeResponseBodyData {
+	s.OsType = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) SetQrCodeConfiguringList(v []*string) *ListDesktopAgentRuntimeResponseBodyData {
+	s.QrCodeConfiguringList = v
 	return s
 }
 

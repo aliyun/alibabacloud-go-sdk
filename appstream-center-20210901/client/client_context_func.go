@@ -268,12 +268,11 @@ func (client *Client) ConfigRuntimeChannelWithContext(ctx context.Context, reque
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentPlatform) {
-		query["AgentPlatform"] = request.AgentPlatform
+		body["AgentPlatform"] = request.AgentPlatform
 	}
 
-	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentProvider) {
 		body["AgentProvider"] = request.AgentProvider
 	}
@@ -284,6 +283,10 @@ func (client *Client) ConfigRuntimeChannelWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.Config) {
 		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ConfigMode) {
+		body["ConfigMode"] = request.ConfigMode
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -299,8 +302,7 @@ func (client *Client) ConfigRuntimeChannelWithContext(ctx context.Context, reque
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ConfigRuntimeChannel"),
@@ -2324,6 +2326,10 @@ func (client *Client) ListDesktopAgentRuntimeWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceIds) {
+		query["ResourceIds"] = request.ResourceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{

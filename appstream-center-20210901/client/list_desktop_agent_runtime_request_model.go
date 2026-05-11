@@ -47,6 +47,8 @@ type iListDesktopAgentRuntimeRequest interface {
 	GetPageSize() *int32
 	SetResourceGroupId(v string) *ListDesktopAgentRuntimeRequest
 	GetResourceGroupId() *string
+	SetResourceIds(v []*string) *ListDesktopAgentRuntimeRequest
+	GetResourceIds() []*string
 }
 
 type ListDesktopAgentRuntimeRequest struct {
@@ -109,7 +111,8 @@ type ListDesktopAgentRuntimeRequest struct {
 	// example:
 	//
 	// rg-xxxx
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceIds     []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 
 func (s ListDesktopAgentRuntimeRequest) String() string {
@@ -194,6 +197,10 @@ func (s *ListDesktopAgentRuntimeRequest) GetPageSize() *int32 {
 
 func (s *ListDesktopAgentRuntimeRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *ListDesktopAgentRuntimeRequest) GetResourceIds() []*string {
+	return s.ResourceIds
 }
 
 func (s *ListDesktopAgentRuntimeRequest) SetAgentInstanceStatuses(v []*string) *ListDesktopAgentRuntimeRequest {
@@ -288,6 +295,11 @@ func (s *ListDesktopAgentRuntimeRequest) SetPageSize(v int32) *ListDesktopAgentR
 
 func (s *ListDesktopAgentRuntimeRequest) SetResourceGroupId(v string) *ListDesktopAgentRuntimeRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeRequest) SetResourceIds(v []*string) *ListDesktopAgentRuntimeRequest {
+	s.ResourceIds = v
 	return s
 }
 

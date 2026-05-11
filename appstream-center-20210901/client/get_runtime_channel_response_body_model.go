@@ -78,6 +78,7 @@ func (s *GetRuntimeChannelResponseBody) Validate() error {
 }
 
 type GetRuntimeChannelResponseBodyData struct {
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	// example:
 	//
 	// dingtalk-connector
@@ -91,7 +92,10 @@ type GetRuntimeChannelResponseBodyData struct {
 	//     "appSecret": "efg"
 	//
 	// }
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ConfigMode      *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	QrCodeNotifyUrl *string `json:"QrCodeNotifyUrl,omitempty" xml:"QrCodeNotifyUrl,omitempty"`
+	QrCodeStatus    *string `json:"QrCodeStatus,omitempty" xml:"QrCodeStatus,omitempty"`
 	// example:
 	//
 	// Normal
@@ -110,12 +114,28 @@ func (s GetRuntimeChannelResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetRuntimeChannelResponseBodyData) GetAvatarUrl() *string {
+	return s.AvatarUrl
+}
+
 func (s *GetRuntimeChannelResponseBodyData) GetCode() *string {
 	return s.Code
 }
 
 func (s *GetRuntimeChannelResponseBodyData) GetConfig() *string {
 	return s.Config
+}
+
+func (s *GetRuntimeChannelResponseBodyData) GetConfigMode() *string {
+	return s.ConfigMode
+}
+
+func (s *GetRuntimeChannelResponseBodyData) GetQrCodeNotifyUrl() *string {
+	return s.QrCodeNotifyUrl
+}
+
+func (s *GetRuntimeChannelResponseBodyData) GetQrCodeStatus() *string {
+	return s.QrCodeStatus
 }
 
 func (s *GetRuntimeChannelResponseBodyData) GetRiskType() *string {
@@ -126,6 +146,11 @@ func (s *GetRuntimeChannelResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
+func (s *GetRuntimeChannelResponseBodyData) SetAvatarUrl(v string) *GetRuntimeChannelResponseBodyData {
+	s.AvatarUrl = &v
+	return s
+}
+
 func (s *GetRuntimeChannelResponseBodyData) SetCode(v string) *GetRuntimeChannelResponseBodyData {
 	s.Code = &v
 	return s
@@ -133,6 +158,21 @@ func (s *GetRuntimeChannelResponseBodyData) SetCode(v string) *GetRuntimeChannel
 
 func (s *GetRuntimeChannelResponseBodyData) SetConfig(v string) *GetRuntimeChannelResponseBodyData {
 	s.Config = &v
+	return s
+}
+
+func (s *GetRuntimeChannelResponseBodyData) SetConfigMode(v string) *GetRuntimeChannelResponseBodyData {
+	s.ConfigMode = &v
+	return s
+}
+
+func (s *GetRuntimeChannelResponseBodyData) SetQrCodeNotifyUrl(v string) *GetRuntimeChannelResponseBodyData {
+	s.QrCodeNotifyUrl = &v
+	return s
+}
+
+func (s *GetRuntimeChannelResponseBodyData) SetQrCodeStatus(v string) *GetRuntimeChannelResponseBodyData {
+	s.QrCodeStatus = &v
 	return s
 }
 
