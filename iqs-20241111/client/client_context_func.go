@@ -90,6 +90,48 @@ func (client *Client) AiSearchWithContext(ctx context.Context, request *AiSearch
 
 // Summary:
 //
+// 自然语言通用查询
+//
+// @param request - CommonQueryBySceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommonQueryBySceneResponse
+func (client *Client) CommonQueryBySceneWithContext(ctx context.Context, request *CommonQueryBySceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CommonQueryBySceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CommonQueryByScene"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/amap-function-call-agent/iqs-agent-service/v2/nl/common"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CommonQueryBySceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 增强版通用搜索
 //
 // @param request - GenericAdvancedSearchRequest
