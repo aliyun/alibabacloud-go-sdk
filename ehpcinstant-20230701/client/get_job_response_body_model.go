@@ -389,6 +389,10 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The network configuration information.
 	Network *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// example:
+	//
+	// testpool
+	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
 	// The list of job tags.
 	Tags []*GetJobResponseBodyJobInfoDeploymentPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -413,6 +417,10 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) GetNetwork() *GetJobResponse
 	return s.Network
 }
 
+func (s *GetJobResponseBodyJobInfoDeploymentPolicy) GetPool() *string {
+	return s.Pool
+}
+
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) GetTags() []*GetJobResponseBodyJobInfoDeploymentPolicyTags {
 	return s.Tags
 }
@@ -429,6 +437,11 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetLevel(v string) *GetJobRe
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetNetwork(v *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) *GetJobResponseBodyJobInfoDeploymentPolicy {
 	s.Network = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetPool(v string) *GetJobResponseBodyJobInfoDeploymentPolicy {
+	s.Pool = &v
 	return s
 }
 

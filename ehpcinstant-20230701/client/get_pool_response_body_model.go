@@ -67,13 +67,8 @@ type GetPoolResponseBodyPoolInfo struct {
 	// example:
 	//
 	// 2024-12-01 20:00:00
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The usage of execution nodes that are running in a resource pool.
-	//
-	// example:
-	//
-	// 1
-	ExectorUsage *int32 `json:"ExectorUsage,omitempty" xml:"ExectorUsage,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExecutorUsage *int32  `json:"ExecutorUsage,omitempty" xml:"ExecutorUsage,omitempty"`
 	// Indices whether the resource pool is the default resource pool. Valid values:
 	//
 	// 	- **true**
@@ -83,13 +78,8 @@ type GetPoolResponseBodyPoolInfo struct {
 	// example:
 	//
 	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The maximum number of execution nodes that can run concurrently in a resource pool.
-	//
-	// example:
-	//
-	// 2000
-	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	IsDefault      *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	MaxExecutorNum *int32 `json:"MaxExecutorNum,omitempty" xml:"MaxExecutorNum,omitempty"`
 	// The name of the resource group.
 	//
 	// 	- The value can be up to 15 characters in length.
@@ -116,6 +106,10 @@ type GetPoolResponseBodyPoolInfo struct {
 	//
 	// Fails to **	- pool: ***.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// policy-xxx
+	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
 	// The status of the resource pool. Valid values:
 	//
 	// 	- Creating: The resource pool is being created.
@@ -152,16 +146,16 @@ func (s *GetPoolResponseBodyPoolInfo) GetCreateTime() *string {
 	return s.CreateTime
 }
 
-func (s *GetPoolResponseBodyPoolInfo) GetExectorUsage() *int32 {
-	return s.ExectorUsage
+func (s *GetPoolResponseBodyPoolInfo) GetExecutorUsage() *int32 {
+	return s.ExecutorUsage
 }
 
 func (s *GetPoolResponseBodyPoolInfo) GetIsDefault() *bool {
 	return s.IsDefault
 }
 
-func (s *GetPoolResponseBodyPoolInfo) GetMaxExectorNum() *int32 {
-	return s.MaxExectorNum
+func (s *GetPoolResponseBodyPoolInfo) GetMaxExecutorNum() *int32 {
+	return s.MaxExecutorNum
 }
 
 func (s *GetPoolResponseBodyPoolInfo) GetPoolName() *string {
@@ -174,6 +168,10 @@ func (s *GetPoolResponseBodyPoolInfo) GetPriority() *int32 {
 
 func (s *GetPoolResponseBodyPoolInfo) GetReason() *string {
 	return s.Reason
+}
+
+func (s *GetPoolResponseBodyPoolInfo) GetSchedulingPolicyId() *string {
+	return s.SchedulingPolicyId
 }
 
 func (s *GetPoolResponseBodyPoolInfo) GetStatus() *string {
@@ -189,8 +187,8 @@ func (s *GetPoolResponseBodyPoolInfo) SetCreateTime(v string) *GetPoolResponseBo
 	return s
 }
 
-func (s *GetPoolResponseBodyPoolInfo) SetExectorUsage(v int32) *GetPoolResponseBodyPoolInfo {
-	s.ExectorUsage = &v
+func (s *GetPoolResponseBodyPoolInfo) SetExecutorUsage(v int32) *GetPoolResponseBodyPoolInfo {
+	s.ExecutorUsage = &v
 	return s
 }
 
@@ -199,8 +197,8 @@ func (s *GetPoolResponseBodyPoolInfo) SetIsDefault(v bool) *GetPoolResponseBodyP
 	return s
 }
 
-func (s *GetPoolResponseBodyPoolInfo) SetMaxExectorNum(v int32) *GetPoolResponseBodyPoolInfo {
-	s.MaxExectorNum = &v
+func (s *GetPoolResponseBodyPoolInfo) SetMaxExecutorNum(v int32) *GetPoolResponseBodyPoolInfo {
+	s.MaxExecutorNum = &v
 	return s
 }
 
@@ -216,6 +214,11 @@ func (s *GetPoolResponseBodyPoolInfo) SetPriority(v int32) *GetPoolResponseBodyP
 
 func (s *GetPoolResponseBodyPoolInfo) SetReason(v string) *GetPoolResponseBodyPoolInfo {
 	s.Reason = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetSchedulingPolicyId(v string) *GetPoolResponseBodyPoolInfo {
+	s.SchedulingPolicyId = &v
 	return s
 }
 

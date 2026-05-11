@@ -407,6 +407,10 @@ func (client *Client) CreatePoolWithOptions(tmpReq *CreatePoolRequest, runtime *
 		query["ResourceLimits"] = request.ResourceLimitsShrink
 	}
 
+	if !dara.IsNil(request.SchedulingPolicyId) {
+		query["SchedulingPolicyId"] = request.SchedulingPolicyId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1245,6 +1249,61 @@ func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetJobResponse{}
 	_body, _err := client.GetJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询作业保留时长
+//
+// @param request - GetJobRecordDurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobRecordDurationResponse
+func (client *Client) GetJobRecordDurationWithOptions(request *GetJobRecordDurationRequest, runtime *dara.RuntimeOptions) (_result *GetJobRecordDurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetJobRecordDuration"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetJobRecordDurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询作业保留时长
+//
+// @param request - GetJobRecordDurationRequest
+//
+// @return GetJobRecordDurationResponse
+func (client *Client) GetJobRecordDuration(request *GetJobRecordDurationRequest) (_result *GetJobRecordDurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetJobRecordDurationResponse{}
+	_body, _err := client.GetJobRecordDurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2394,6 +2453,68 @@ func (client *Client) UpdateActionPlan(request *UpdateActionPlanRequest) (_resul
 
 // Summary:
 //
+// 更新作业保留时长
+//
+// @param request - UpdateJobRecordDurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobRecordDurationResponse
+func (client *Client) UpdateJobRecordDurationWithOptions(request *UpdateJobRecordDurationRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobRecordDurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobRecordDuration) {
+		query["JobRecordDuration"] = request.JobRecordDuration
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateJobRecordDuration"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateJobRecordDurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新作业保留时长
+//
+// @param request - UpdateJobRecordDurationRequest
+//
+// @return UpdateJobRecordDurationResponse
+func (client *Client) UpdateJobRecordDuration(request *UpdateJobRecordDurationRequest) (_result *UpdateJobRecordDurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateJobRecordDurationResponse{}
+	_body, _err := client.UpdateJobRecordDurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Update the resource pool configuration.
 //
 // @param tmpReq - UpdatePoolRequest
@@ -2425,6 +2546,10 @@ func (client *Client) UpdatePoolWithOptions(tmpReq *UpdatePoolRequest, runtime *
 
 	if !dara.IsNil(request.ResourceLimitsShrink) {
 		query["ResourceLimits"] = request.ResourceLimitsShrink
+	}
+
+	if !dara.IsNil(request.SchedulingPolicyId) {
+		query["SchedulingPolicyId"] = request.SchedulingPolicyId
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -117,6 +117,10 @@ func (s *ListPoolsResponseBody) Validate() error {
 }
 
 type ListPoolsResponseBodyPoolList struct {
+	// example:
+	//
+	// 2026-04-20 11:09:59
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indices whether the resource pool is the default resource pool. Valid values:
 	//
 	// 	- **true**
@@ -126,13 +130,8 @@ type ListPoolsResponseBodyPoolList struct {
 	// example:
 	//
 	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The maximum number of execution nodes that can run concurrently in a resource pool.
-	//
-	// example:
-	//
-	// 2000
-	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	IsDefault      *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	MaxExecutorNum *int32 `json:"MaxExecutorNum,omitempty" xml:"MaxExecutorNum,omitempty"`
 	// The name of the resource pool.
 	//
 	// 	- The value can be up to 15 characters in length.
@@ -153,6 +152,10 @@ type ListPoolsResponseBodyPoolList struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// policy-xxx
+	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
 	// The status of the resource pool. Valid values:
 	//
 	// 	- Creating: The resource pool is being created.
@@ -169,6 +172,10 @@ type ListPoolsResponseBodyPoolList struct {
 	//
 	// Working
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2026-04-20 11:09:59
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListPoolsResponseBodyPoolList) String() string {
@@ -179,12 +186,16 @@ func (s ListPoolsResponseBodyPoolList) GoString() string {
 	return s.String()
 }
 
+func (s *ListPoolsResponseBodyPoolList) GetCreateTime() *string {
+	return s.CreateTime
+}
+
 func (s *ListPoolsResponseBodyPoolList) GetIsDefault() *bool {
 	return s.IsDefault
 }
 
-func (s *ListPoolsResponseBodyPoolList) GetMaxExectorNum() *int32 {
-	return s.MaxExectorNum
+func (s *ListPoolsResponseBodyPoolList) GetMaxExecutorNum() *int32 {
+	return s.MaxExecutorNum
 }
 
 func (s *ListPoolsResponseBodyPoolList) GetPoolName() *string {
@@ -195,8 +206,21 @@ func (s *ListPoolsResponseBodyPoolList) GetPriority() *int32 {
 	return s.Priority
 }
 
+func (s *ListPoolsResponseBodyPoolList) GetSchedulingPolicyId() *string {
+	return s.SchedulingPolicyId
+}
+
 func (s *ListPoolsResponseBodyPoolList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListPoolsResponseBodyPoolList) GetUpdateTime() *string {
+	return s.UpdateTime
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetCreateTime(v string) *ListPoolsResponseBodyPoolList {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *ListPoolsResponseBodyPoolList) SetIsDefault(v bool) *ListPoolsResponseBodyPoolList {
@@ -204,8 +228,8 @@ func (s *ListPoolsResponseBodyPoolList) SetIsDefault(v bool) *ListPoolsResponseB
 	return s
 }
 
-func (s *ListPoolsResponseBodyPoolList) SetMaxExectorNum(v int32) *ListPoolsResponseBodyPoolList {
-	s.MaxExectorNum = &v
+func (s *ListPoolsResponseBodyPoolList) SetMaxExecutorNum(v int32) *ListPoolsResponseBodyPoolList {
+	s.MaxExecutorNum = &v
 	return s
 }
 
@@ -219,8 +243,18 @@ func (s *ListPoolsResponseBodyPoolList) SetPriority(v int32) *ListPoolsResponseB
 	return s
 }
 
+func (s *ListPoolsResponseBodyPoolList) SetSchedulingPolicyId(v string) *ListPoolsResponseBodyPoolList {
+	s.SchedulingPolicyId = &v
+	return s
+}
+
 func (s *ListPoolsResponseBodyPoolList) SetStatus(v string) *ListPoolsResponseBodyPoolList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetUpdateTime(v string) *ListPoolsResponseBodyPoolList {
+	s.UpdateTime = &v
 	return s
 }
 

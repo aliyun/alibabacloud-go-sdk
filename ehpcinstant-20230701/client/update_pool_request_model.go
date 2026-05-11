@@ -15,6 +15,8 @@ type iUpdatePoolRequest interface {
 	GetPriority() *int32
 	SetResourceLimits(v *UpdatePoolRequestResourceLimits) *UpdatePoolRequest
 	GetResourceLimits() *UpdatePoolRequestResourceLimits
+	SetSchedulingPolicyId(v string) *UpdatePoolRequest
+	GetSchedulingPolicyId() *string
 }
 
 type UpdatePoolRequest struct {
@@ -42,6 +44,10 @@ type UpdatePoolRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The quota of resources that users are allowed to concurrently use in a resource pool.
 	ResourceLimits *UpdatePoolRequestResourceLimits `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty" type:"Struct"`
+	// example:
+	//
+	// policy-xxxx
+	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
 }
 
 func (s UpdatePoolRequest) String() string {
@@ -64,6 +70,10 @@ func (s *UpdatePoolRequest) GetResourceLimits() *UpdatePoolRequestResourceLimits
 	return s.ResourceLimits
 }
 
+func (s *UpdatePoolRequest) GetSchedulingPolicyId() *string {
+	return s.SchedulingPolicyId
+}
+
 func (s *UpdatePoolRequest) SetPoolName(v string) *UpdatePoolRequest {
 	s.PoolName = &v
 	return s
@@ -79,6 +89,11 @@ func (s *UpdatePoolRequest) SetResourceLimits(v *UpdatePoolRequestResourceLimits
 	return s
 }
 
+func (s *UpdatePoolRequest) SetSchedulingPolicyId(v string) *UpdatePoolRequest {
+	s.SchedulingPolicyId = &v
+	return s
+}
+
 func (s *UpdatePoolRequest) Validate() error {
 	if s.ResourceLimits != nil {
 		if err := s.ResourceLimits.Validate(); err != nil {
@@ -89,12 +104,7 @@ func (s *UpdatePoolRequest) Validate() error {
 }
 
 type UpdatePoolRequestResourceLimits struct {
-	// The maximum number of concurrent execution nodes in a resource pool.
-	//
-	// example:
-	//
-	// 2000
-	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	MaxExecutorNum *int32 `json:"MaxExecutorNum,omitempty" xml:"MaxExecutorNum,omitempty"`
 }
 
 func (s UpdatePoolRequestResourceLimits) String() string {
@@ -105,12 +115,12 @@ func (s UpdatePoolRequestResourceLimits) GoString() string {
 	return s.String()
 }
 
-func (s *UpdatePoolRequestResourceLimits) GetMaxExectorNum() *int32 {
-	return s.MaxExectorNum
+func (s *UpdatePoolRequestResourceLimits) GetMaxExecutorNum() *int32 {
+	return s.MaxExecutorNum
 }
 
-func (s *UpdatePoolRequestResourceLimits) SetMaxExectorNum(v int32) *UpdatePoolRequestResourceLimits {
-	s.MaxExectorNum = &v
+func (s *UpdatePoolRequestResourceLimits) SetMaxExecutorNum(v int32) *UpdatePoolRequestResourceLimits {
+	s.MaxExecutorNum = &v
 	return s
 }
 

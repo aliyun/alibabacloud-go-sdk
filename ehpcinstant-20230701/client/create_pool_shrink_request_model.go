@@ -15,6 +15,8 @@ type iCreatePoolShrinkRequest interface {
 	GetPriority() *int32
 	SetResourceLimitsShrink(v string) *CreatePoolShrinkRequest
 	GetResourceLimitsShrink() *string
+	SetSchedulingPolicyId(v string) *CreatePoolShrinkRequest
+	GetSchedulingPolicyId() *string
 }
 
 type CreatePoolShrinkRequest struct {
@@ -42,6 +44,10 @@ type CreatePoolShrinkRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The quota of resources that users are allowed to concurrently use in a resource pool.
 	ResourceLimitsShrink *string `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
+	// example:
+	//
+	// policy-xxx
+	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
 }
 
 func (s CreatePoolShrinkRequest) String() string {
@@ -64,6 +70,10 @@ func (s *CreatePoolShrinkRequest) GetResourceLimitsShrink() *string {
 	return s.ResourceLimitsShrink
 }
 
+func (s *CreatePoolShrinkRequest) GetSchedulingPolicyId() *string {
+	return s.SchedulingPolicyId
+}
+
 func (s *CreatePoolShrinkRequest) SetPoolName(v string) *CreatePoolShrinkRequest {
 	s.PoolName = &v
 	return s
@@ -76,6 +86,11 @@ func (s *CreatePoolShrinkRequest) SetPriority(v int32) *CreatePoolShrinkRequest 
 
 func (s *CreatePoolShrinkRequest) SetResourceLimitsShrink(v string) *CreatePoolShrinkRequest {
 	s.ResourceLimitsShrink = &v
+	return s
+}
+
+func (s *CreatePoolShrinkRequest) SetSchedulingPolicyId(v string) *CreatePoolShrinkRequest {
+	s.SchedulingPolicyId = &v
 	return s
 }
 
