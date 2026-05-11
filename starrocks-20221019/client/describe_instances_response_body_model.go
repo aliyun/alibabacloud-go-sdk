@@ -141,7 +141,8 @@ type DescribeInstancesResponseBodyData struct {
 	// example:
 	//
 	// acl-bp1xc6b9vs013jjtp****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AiFunctionInstanceId *string `json:"AiFunctionInstanceId,omitempty" xml:"AiFunctionInstanceId,omitempty"`
 	// example:
 	//
 	// onECS
@@ -266,6 +267,10 @@ func (s *DescribeInstancesResponseBodyData) GetAclId() *string {
 	return s.AclId
 }
 
+func (s *DescribeInstancesResponseBodyData) GetAiFunctionInstanceId() *string {
+	return s.AiFunctionInstanceId
+}
+
 func (s *DescribeInstancesResponseBodyData) GetArchitecture() *string {
 	return s.Architecture
 }
@@ -388,6 +393,11 @@ func (s *DescribeInstancesResponseBodyData) GetVpcId() *string {
 
 func (s *DescribeInstancesResponseBodyData) SetAclId(v string) *DescribeInstancesResponseBodyData {
 	s.AclId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyData) SetAiFunctionInstanceId(v string) *DescribeInstancesResponseBodyData {
+	s.AiFunctionInstanceId = &v
 	return s
 }
 

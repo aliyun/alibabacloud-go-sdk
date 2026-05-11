@@ -225,6 +225,12 @@ type GetInstanceFeatureGateResponseBodyData struct {
 	// true
 	UseComputeNode           *bool `json:"UseComputeNode,omitempty" xml:"UseComputeNode,omitempty"`
 	SupportCompactionService *bool `json:"supportCompactionService,omitempty" xml:"supportCompactionService,omitempty"`
+	// 是否支持Compaction Service白名单功能
+	//
+	// example:
+	//
+	// true
+	SupportCompactionServiceWhiteList *bool `json:"supportCompactionServiceWhiteList,omitempty" xml:"supportCompactionServiceWhiteList,omitempty"`
 }
 
 func (s GetInstanceFeatureGateResponseBodyData) String() string {
@@ -313,6 +319,10 @@ func (s *GetInstanceFeatureGateResponseBodyData) GetUseComputeNode() *bool {
 
 func (s *GetInstanceFeatureGateResponseBodyData) GetSupportCompactionService() *bool {
 	return s.SupportCompactionService
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) GetSupportCompactionServiceWhiteList() *bool {
+	return s.SupportCompactionServiceWhiteList
 }
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetConsoleControlRestart(v bool) *GetInstanceFeatureGateResponseBodyData {
@@ -412,6 +422,11 @@ func (s *GetInstanceFeatureGateResponseBodyData) SetUseComputeNode(v bool) *GetI
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetSupportCompactionService(v bool) *GetInstanceFeatureGateResponseBodyData {
 	s.SupportCompactionService = &v
+	return s
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) SetSupportCompactionServiceWhiteList(v bool) *GetInstanceFeatureGateResponseBodyData {
+	s.SupportCompactionServiceWhiteList = &v
 	return s
 }
 
