@@ -897,7 +897,7 @@ func (client *Client) AllocatePublicIpAddress(request *AllocatePublicIpAddressRe
 
 // Summary:
 //
-// Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
+// Applies an automatic snapshot policy to one or more disks.
 //
 // Description:
 //
@@ -985,7 +985,7 @@ func (client *Client) ApplyAutoSnapshotPolicyWithOptions(request *ApplyAutoSnaps
 
 // Summary:
 //
-// Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
+// Applies an automatic snapshot policy to one or more disks.
 //
 // Description:
 //
@@ -2791,7 +2791,7 @@ func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGro
 
 // Summary:
 //
-// Disables an automatic snapshot policy for one or more cloud disks.
+// Disables automatic snapshot policies for one or more disks.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -2855,7 +2855,7 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSna
 
 // Summary:
 //
-// Disables an automatic snapshot policy for one or more cloud disks.
+// Disables automatic snapshot policies for one or more disks.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -4168,6 +4168,10 @@ func (client *Client) CreateAutoProvisioningGroupWithOptions(tmpReq *CreateAutoP
 
 	if !dara.IsNil(request.AutoProvisioningGroupType) {
 		query["AutoProvisioningGroupType"] = request.AutoProvisioningGroupType
+	}
+
+	if !dara.IsNil(request.CandidateOptions) {
+		query["CandidateOptions"] = request.CandidateOptions
 	}
 
 	if !dara.IsNil(request.ClientToken) {
@@ -13940,7 +13944,7 @@ func (client *Client) DescribeActivations(request *DescribeActivationsRequest) (
 
 // Summary:
 //
-// Queries the scheduling tasks of an auto provisioning group.
+// Call DescribeAutoProvisioningGroupHistory to query the schedule job info of an auto provisioning group.
 //
 // @param request - DescribeAutoProvisioningGroupHistoryRequest
 //
@@ -14020,7 +14024,7 @@ func (client *Client) DescribeAutoProvisioningGroupHistoryWithOptions(request *D
 
 // Summary:
 //
-// Queries the scheduling tasks of an auto provisioning group.
+// Call DescribeAutoProvisioningGroupHistory to query the schedule job info of an auto provisioning group.
 //
 // @param request - DescribeAutoProvisioningGroupHistoryRequest
 //
@@ -14153,6 +14157,10 @@ func (client *Client) DescribeAutoProvisioningGroupsWithOptions(request *Describ
 
 	if !dara.IsNil(request.AutoProvisioningGroupStatus) {
 		query["AutoProvisioningGroupStatus"] = request.AutoProvisioningGroupStatus
+	}
+
+	if !dara.IsNil(request.AutoProvisioningGroupTypes) {
+		query["AutoProvisioningGroupTypes"] = request.AutoProvisioningGroupTypes
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {

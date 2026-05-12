@@ -625,7 +625,7 @@ func (client *Client) AllocatePublicIpAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
+// Applies an automatic snapshot policy to one or more disks.
 //
 // Description:
 //
@@ -1987,7 +1987,7 @@ func (client *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Contex
 
 // Summary:
 //
-// Disables an automatic snapshot policy for one or more cloud disks.
+// Disables automatic snapshot policies for one or more disks.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -3054,6 +3054,10 @@ func (client *Client) CreateAutoProvisioningGroupWithContext(ctx context.Context
 
 	if !dara.IsNil(request.AutoProvisioningGroupType) {
 		query["AutoProvisioningGroupType"] = request.AutoProvisioningGroupType
+	}
+
+	if !dara.IsNil(request.CandidateOptions) {
+		query["CandidateOptions"] = request.CandidateOptions
 	}
 
 	if !dara.IsNil(request.ClientToken) {
@@ -10773,7 +10777,7 @@ func (client *Client) DescribeActivationsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the scheduling tasks of an auto provisioning group.
+// Call DescribeAutoProvisioningGroupHistory to query the schedule job info of an auto provisioning group.
 //
 // @param request - DescribeAutoProvisioningGroupHistoryRequest
 //
@@ -10950,6 +10954,10 @@ func (client *Client) DescribeAutoProvisioningGroupsWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.AutoProvisioningGroupStatus) {
 		query["AutoProvisioningGroupStatus"] = request.AutoProvisioningGroupStatus
+	}
+
+	if !dara.IsNil(request.AutoProvisioningGroupTypes) {
+		query["AutoProvisioningGroupTypes"] = request.AutoProvisioningGroupTypes
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {

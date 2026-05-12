@@ -112,13 +112,17 @@ func (s *CreateAutoProvisioningGroupResponseBodyLaunchResults) Validate() error 
 }
 
 type CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult struct {
-	Amount       *int32                                                                       `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	ErrorCode    *string                                                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg     *string                                                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	InstanceIds  *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResultInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	InstanceType *string                                                                      `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	SpotStrategy *string                                                                      `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	ZoneId       *string                                                                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// Low
+	CandidateEvaluateLevel *string                                                                      `json:"CandidateEvaluateLevel,omitempty" xml:"CandidateEvaluateLevel,omitempty"`
+	ErrorCode              *string                                                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg               *string                                                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	InstanceIds            *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResultInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	InstanceType           *string                                                                      `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotStrategy           *string                                                                      `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	ZoneId                 *string                                                                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) String() string {
@@ -131,6 +135,10 @@ func (s CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) GoStri
 
 func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) GetAmount() *int32 {
 	return s.Amount
+}
+
+func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) GetCandidateEvaluateLevel() *string {
+	return s.CandidateEvaluateLevel
 }
 
 func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) GetErrorCode() *string {
@@ -159,6 +167,11 @@ func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) GetZo
 
 func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) SetAmount(v int32) *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult {
 	s.Amount = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult) SetCandidateEvaluateLevel(v string) *CreateAutoProvisioningGroupResponseBodyLaunchResultsLaunchResult {
+	s.CandidateEvaluateLevel = &v
 	return s
 }
 

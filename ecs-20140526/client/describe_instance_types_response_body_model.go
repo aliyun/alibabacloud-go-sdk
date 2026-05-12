@@ -706,11 +706,12 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeClock) Valida
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions struct {
-	Core                     *int32                                                                                      `json:"Core,omitempty" xml:"Core,omitempty"`
-	CoreFactor               *int32                                                                                      `json:"CoreFactor,omitempty" xml:"CoreFactor,omitempty"`
-	HyperThreadingAdjustable *bool                                                                                       `json:"HyperThreadingAdjustable,omitempty" xml:"HyperThreadingAdjustable,omitempty"`
-	SupportedTopologyTypes   *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes `json:"SupportedTopologyTypes,omitempty" xml:"SupportedTopologyTypes,omitempty" type:"Struct"`
-	ThreadsPerCore           *int32                                                                                      `json:"ThreadsPerCore,omitempty" xml:"ThreadsPerCore,omitempty"`
+	Core                        *int32                                                                                      `json:"Core,omitempty" xml:"Core,omitempty"`
+	CoreFactor                  *int32                                                                                      `json:"CoreFactor,omitempty" xml:"CoreFactor,omitempty"`
+	HyperThreadingAdjustable    *bool                                                                                       `json:"HyperThreadingAdjustable,omitempty" xml:"HyperThreadingAdjustable,omitempty"`
+	NestedVirtualizationSupport *string                                                                                     `json:"NestedVirtualizationSupport,omitempty" xml:"NestedVirtualizationSupport,omitempty"`
+	SupportedTopologyTypes      *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes `json:"SupportedTopologyTypes,omitempty" xml:"SupportedTopologyTypes,omitempty" type:"Struct"`
+	ThreadsPerCore              *int32                                                                                      `json:"ThreadsPerCore,omitempty" xml:"ThreadsPerCore,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) String() string {
@@ -733,6 +734,10 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) G
 	return s.HyperThreadingAdjustable
 }
 
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) GetNestedVirtualizationSupport() *string {
+	return s.NestedVirtualizationSupport
+}
+
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) GetSupportedTopologyTypes() *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptionsSupportedTopologyTypes {
 	return s.SupportedTopologyTypes
 }
@@ -753,6 +758,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) S
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) SetHyperThreadingAdjustable(v bool) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions {
 	s.HyperThreadingAdjustable = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions) SetNestedVirtualizationSupport(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeCpuOptions {
+	s.NestedVirtualizationSupport = &v
 	return s
 }
 

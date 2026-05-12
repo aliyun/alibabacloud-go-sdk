@@ -149,6 +149,8 @@ type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisi
 	AutoProvisioningGroupId          *string                                                                                                           `json:"AutoProvisioningGroupId,omitempty" xml:"AutoProvisioningGroupId,omitempty"`
 	AutoProvisioningGroupName        *string                                                                                                           `json:"AutoProvisioningGroupName,omitempty" xml:"AutoProvisioningGroupName,omitempty"`
 	AutoProvisioningGroupType        *string                                                                                                           `json:"AutoProvisioningGroupType,omitempty" xml:"AutoProvisioningGroupType,omitempty"`
+	CandidateOptions                 *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions            `json:"CandidateOptions,omitempty" xml:"CandidateOptions,omitempty" type:"Struct"`
+	CapacitySpecification            *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification       `json:"CapacitySpecification,omitempty" xml:"CapacitySpecification,omitempty" type:"Struct"`
 	CreationTime                     *string                                                                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	ExcessCapacityTerminationPolicy  *string                                                                                                           `json:"ExcessCapacityTerminationPolicy,omitempty" xml:"ExcessCapacityTerminationPolicy,omitempty"`
 	LaunchTemplateConfigs            *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs       `json:"LaunchTemplateConfigs,omitempty" xml:"LaunchTemplateConfigs,omitempty" type:"Struct"`
@@ -161,6 +163,7 @@ type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisi
 	SpotOptions                      *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSpotOptions                 `json:"SpotOptions,omitempty" xml:"SpotOptions,omitempty" type:"Struct"`
 	State                            *string                                                                                                           `json:"State,omitempty" xml:"State,omitempty"`
 	Status                           *string                                                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuspendedProcesses               *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses          `json:"SuspendedProcesses,omitempty" xml:"SuspendedProcesses,omitempty" type:"Struct"`
 	Tags                             *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTags                        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TargetCapacitySpecification      *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTargetCapacitySpecification `json:"TargetCapacitySpecification,omitempty" xml:"TargetCapacitySpecification,omitempty" type:"Struct"`
 	TerminateInstances               *bool                                                                                                             `json:"TerminateInstances,omitempty" xml:"TerminateInstances,omitempty"`
@@ -187,6 +190,14 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) GetAutoProvisioningGroupType() *string {
 	return s.AutoProvisioningGroupType
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) GetCandidateOptions() *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions {
+	return s.CandidateOptions
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) GetCapacitySpecification() *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification {
+	return s.CapacitySpecification
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) GetCreationTime() *string {
@@ -237,6 +248,10 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 	return s.Status
 }
 
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) GetSuspendedProcesses() *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses {
+	return s.SuspendedProcesses
+}
+
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) GetTags() *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTags {
 	return s.Tags
 }
@@ -273,6 +288,16 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) SetAutoProvisioningGroupType(v string) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup {
 	s.AutoProvisioningGroupType = &v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) SetCandidateOptions(v *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup {
+	s.CandidateOptions = v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) SetCapacitySpecification(v *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup {
+	s.CapacitySpecification = v
 	return s
 }
 
@@ -336,6 +361,11 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 	return s
 }
 
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) SetSuspendedProcesses(v *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup {
+	s.SuspendedProcesses = v
+	return s
+}
+
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) SetTags(v *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupTags) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup {
 	s.Tags = v
 	return s
@@ -367,6 +397,16 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroup) Validate() error {
+	if s.CandidateOptions != nil {
+		if err := s.CandidateOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CapacitySpecification != nil {
+		if err := s.CapacitySpecification.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.LaunchTemplateConfigs != nil {
 		if err := s.LaunchTemplateConfigs.Validate(); err != nil {
 			return err
@@ -382,6 +422,11 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 			return err
 		}
 	}
+	if s.SuspendedProcesses != nil {
+		if err := s.SuspendedProcesses.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		if err := s.Tags.Validate(); err != nil {
 			return err
@@ -393,6 +438,101 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 		}
 	}
 	return nil
+}
+
+type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions struct {
+	// example:
+	//
+	// 60
+	TimeoutMinutes *int32 `json:"TimeoutMinutes,omitempty" xml:"TimeoutMinutes,omitempty"`
+}
+
+func (s DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions) GetTimeoutMinutes() *int32 {
+	return s.TimeoutMinutes
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions) SetTimeoutMinutes(v int32) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions {
+	s.TimeoutMinutes = &v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCandidateOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification struct {
+	// example:
+	//
+	// 2
+	PayAsYouGoCapacity *float32 `json:"PayAsYouGoCapacity,omitempty" xml:"PayAsYouGoCapacity,omitempty"`
+	// example:
+	//
+	// 0
+	PrePaidCapacity *float32 `json:"PrePaidCapacity,omitempty" xml:"PrePaidCapacity,omitempty"`
+	// example:
+	//
+	// 3
+	SpotCapacity *float32 `json:"SpotCapacity,omitempty" xml:"SpotCapacity,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCapacity *float32 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+}
+
+func (s DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) GetPayAsYouGoCapacity() *float32 {
+	return s.PayAsYouGoCapacity
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) GetPrePaidCapacity() *float32 {
+	return s.PrePaidCapacity
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) GetSpotCapacity() *float32 {
+	return s.SpotCapacity
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) GetTotalCapacity() *float32 {
+	return s.TotalCapacity
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) SetPayAsYouGoCapacity(v float32) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification {
+	s.PayAsYouGoCapacity = &v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) SetPrePaidCapacity(v float32) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification {
+	s.PrePaidCapacity = &v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) SetSpotCapacity(v float32) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification {
+	s.SpotCapacity = &v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) SetTotalCapacity(v float32) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification {
+	s.TotalCapacity = &v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupCapacitySpecification) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs struct {
@@ -561,6 +701,31 @@ func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoPro
 }
 
 func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSpotOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses struct {
+	SuspendedProcess []*string `json:"SuspendedProcess,omitempty" xml:"SuspendedProcess,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses) GetSuspendedProcess() []*string {
+	return s.SuspendedProcess
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses) SetSuspendedProcess(v []*string) *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses {
+	s.SuspendedProcess = v
+	return s
+}
+
+func (s *DescribeAutoProvisioningGroupsResponseBodyAutoProvisioningGroupsAutoProvisioningGroupSuspendedProcesses) Validate() error {
 	return dara.Validate(s)
 }
 
