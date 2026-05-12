@@ -1414,6 +1414,10 @@ func (client *Client) DescribeMOTokenUsageDetailWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		query["ApiKey"] = request.ApiKey
+	}
+
 	if !dara.IsNil(request.ConsumerName) {
 		query["ConsumerName"] = request.ConsumerName
 	}

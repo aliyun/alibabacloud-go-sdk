@@ -116,12 +116,20 @@ type DescribeMOTokenUsageDetailResponseBodyRecords struct {
 	ConsumerName *string `json:"ConsumerName,omitempty" xml:"ConsumerName,omitempty"`
 	// example:
 	//
+	// 10000
+	InputTokens *float64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
 	// qwen-flash
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 10000
+	OutputTokens *float64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -148,12 +156,20 @@ func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetConsumerName() *strin
 	return s.ConsumerName
 }
 
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetInputTokens() *float64 {
+	return s.InputTokens
+}
+
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetModel() *string {
 	return s.Model
+}
+
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetOutputTokens() *float64 {
+	return s.OutputTokens
 }
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetRegion() *string {
@@ -173,6 +189,11 @@ func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetConsumerName(v string
 	return s
 }
 
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetInputTokens(v float64) *DescribeMOTokenUsageDetailResponseBodyRecords {
+	s.InputTokens = &v
+	return s
+}
+
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetInstanceId(v string) *DescribeMOTokenUsageDetailResponseBodyRecords {
 	s.InstanceId = &v
 	return s
@@ -180,6 +201,11 @@ func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetInstanceId(v string) 
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetModel(v string) *DescribeMOTokenUsageDetailResponseBodyRecords {
 	s.Model = &v
+	return s
+}
+
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetOutputTokens(v float64) *DescribeMOTokenUsageDetailResponseBodyRecords {
+	s.OutputTokens = &v
 	return s
 }
 

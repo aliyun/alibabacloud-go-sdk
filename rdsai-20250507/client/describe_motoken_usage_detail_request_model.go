@@ -9,6 +9,8 @@ type iDescribeMOTokenUsageDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKey(v string) *DescribeMOTokenUsageDetailRequest
+	GetApiKey() *string
 	SetConsumerName(v string) *DescribeMOTokenUsageDetailRequest
 	GetConsumerName() *string
 	SetEndTime(v string) *DescribeMOTokenUsageDetailRequest
@@ -28,6 +30,7 @@ type iDescribeMOTokenUsageDetailRequest interface {
 }
 
 type DescribeMOTokenUsageDetailRequest struct {
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// example:
 	//
 	// 16******4_rds_copilot****_public_cn-4****02
@@ -72,6 +75,10 @@ func (s DescribeMOTokenUsageDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMOTokenUsageDetailRequest) GetApiKey() *string {
+	return s.ApiKey
+}
+
 func (s *DescribeMOTokenUsageDetailRequest) GetConsumerName() *string {
 	return s.ConsumerName
 }
@@ -102,6 +109,11 @@ func (s *DescribeMOTokenUsageDetailRequest) GetRegion() *string {
 
 func (s *DescribeMOTokenUsageDetailRequest) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *DescribeMOTokenUsageDetailRequest) SetApiKey(v string) *DescribeMOTokenUsageDetailRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *DescribeMOTokenUsageDetailRequest) SetConsumerName(v string) *DescribeMOTokenUsageDetailRequest {
