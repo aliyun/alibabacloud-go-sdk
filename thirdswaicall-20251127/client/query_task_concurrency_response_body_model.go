@@ -139,7 +139,15 @@ type QueryTaskConcurrencyResponseBodyData struct {
 	// example:
 	//
 	// 5
+	AvailableConcurrency *int64 `json:"AvailableConcurrency,omitempty" xml:"AvailableConcurrency,omitempty"`
+	// example:
+	//
+	// 5
 	CurrentConcurrency *int64 `json:"CurrentConcurrency,omitempty" xml:"CurrentConcurrency,omitempty"`
+	// example:
+	//
+	// 5
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 }
 
 func (s QueryTaskConcurrencyResponseBodyData) String() string {
@@ -150,12 +158,30 @@ func (s QueryTaskConcurrencyResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *QueryTaskConcurrencyResponseBodyData) GetAvailableConcurrency() *int64 {
+	return s.AvailableConcurrency
+}
+
 func (s *QueryTaskConcurrencyResponseBodyData) GetCurrentConcurrency() *int64 {
 	return s.CurrentConcurrency
 }
 
+func (s *QueryTaskConcurrencyResponseBodyData) GetMaxConcurrency() *int64 {
+	return s.MaxConcurrency
+}
+
+func (s *QueryTaskConcurrencyResponseBodyData) SetAvailableConcurrency(v int64) *QueryTaskConcurrencyResponseBodyData {
+	s.AvailableConcurrency = &v
+	return s
+}
+
 func (s *QueryTaskConcurrencyResponseBodyData) SetCurrentConcurrency(v int64) *QueryTaskConcurrencyResponseBodyData {
 	s.CurrentConcurrency = &v
+	return s
+}
+
+func (s *QueryTaskConcurrencyResponseBodyData) SetMaxConcurrency(v int64) *QueryTaskConcurrencyResponseBodyData {
+	s.MaxConcurrency = &v
 	return s
 }
 
