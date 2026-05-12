@@ -9,6 +9,10 @@ type iGetImageTransformResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoAvif(v string) *GetImageTransformResponseBody
+	GetAutoAvif() *string
+	SetAutoWebp(v string) *GetImageTransformResponseBody
+	GetAutoWebp() *string
 	SetConfigId(v int64) *GetImageTransformResponseBody
 	GetConfigId() *int64
 	SetConfigType(v string) *GetImageTransformResponseBody
@@ -30,6 +34,14 @@ type iGetImageTransformResponseBody interface {
 }
 
 type GetImageTransformResponseBody struct {
+	// example:
+	//
+	// on
+	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
+	// example:
+	//
+	// on
+	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
 	// Configuration ID.
 	//
 	// example:
@@ -110,6 +122,14 @@ func (s GetImageTransformResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetImageTransformResponseBody) GetAutoAvif() *string {
+	return s.AutoAvif
+}
+
+func (s *GetImageTransformResponseBody) GetAutoWebp() *string {
+	return s.AutoWebp
+}
+
 func (s *GetImageTransformResponseBody) GetConfigId() *int64 {
 	return s.ConfigId
 }
@@ -144,6 +164,16 @@ func (s *GetImageTransformResponseBody) GetSequence() *int32 {
 
 func (s *GetImageTransformResponseBody) GetSiteVersion() *int32 {
 	return s.SiteVersion
+}
+
+func (s *GetImageTransformResponseBody) SetAutoAvif(v string) *GetImageTransformResponseBody {
+	s.AutoAvif = &v
+	return s
+}
+
+func (s *GetImageTransformResponseBody) SetAutoWebp(v string) *GetImageTransformResponseBody {
+	s.AutoWebp = &v
+	return s
 }
 
 func (s *GetImageTransformResponseBody) SetConfigId(v int64) *GetImageTransformResponseBody {

@@ -3519,6 +3519,14 @@ func (client *Client) CreateImageTransformWithOptions(request *CreateImageTransf
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoAvif) {
+		query["AutoAvif"] = request.AutoAvif
+	}
+
+	if !dara.IsNil(request.AutoWebp) {
+		query["AutoWebp"] = request.AutoWebp
+	}
+
 	if !dara.IsNil(request.Enable) {
 		query["Enable"] = request.Enable
 	}
@@ -26437,6 +26445,14 @@ func (client *Client) UpdateImageTransformWithOptions(request *UpdateImageTransf
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoAvif) {
+		query["AutoAvif"] = request.AutoAvif
+	}
+
+	if !dara.IsNil(request.AutoWebp) {
+		query["AutoWebp"] = request.AutoWebp
+	}
+
 	if !dara.IsNil(request.ConfigId) {
 		query["ConfigId"] = request.ConfigId
 	}

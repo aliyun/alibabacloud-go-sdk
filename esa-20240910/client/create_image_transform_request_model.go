@@ -9,6 +9,10 @@ type iCreateImageTransformRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoAvif(v string) *CreateImageTransformRequest
+	GetAutoAvif() *string
+	SetAutoWebp(v string) *CreateImageTransformRequest
+	GetAutoWebp() *string
 	SetEnable(v string) *CreateImageTransformRequest
 	GetEnable() *string
 	SetRule(v string) *CreateImageTransformRequest
@@ -26,6 +30,14 @@ type iCreateImageTransformRequest interface {
 }
 
 type CreateImageTransformRequest struct {
+	// example:
+	//
+	// on
+	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
+	// example:
+	//
+	// on
+	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
 	// Indicates whether image transformation is enabled. Possible values:
 	//
 	// - on: Enabled.
@@ -87,6 +99,14 @@ func (s CreateImageTransformRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateImageTransformRequest) GetAutoAvif() *string {
+	return s.AutoAvif
+}
+
+func (s *CreateImageTransformRequest) GetAutoWebp() *string {
+	return s.AutoWebp
+}
+
 func (s *CreateImageTransformRequest) GetEnable() *string {
 	return s.Enable
 }
@@ -113,6 +133,16 @@ func (s *CreateImageTransformRequest) GetSiteId() *int64 {
 
 func (s *CreateImageTransformRequest) GetSiteVersion() *int32 {
 	return s.SiteVersion
+}
+
+func (s *CreateImageTransformRequest) SetAutoAvif(v string) *CreateImageTransformRequest {
+	s.AutoAvif = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetAutoWebp(v string) *CreateImageTransformRequest {
+	s.AutoWebp = &v
+	return s
 }
 
 func (s *CreateImageTransformRequest) SetEnable(v string) *CreateImageTransformRequest {

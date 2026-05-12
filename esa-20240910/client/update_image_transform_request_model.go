@@ -9,6 +9,10 @@ type iUpdateImageTransformRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoAvif(v string) *UpdateImageTransformRequest
+	GetAutoAvif() *string
+	SetAutoWebp(v string) *UpdateImageTransformRequest
+	GetAutoWebp() *string
 	SetConfigId(v int64) *UpdateImageTransformRequest
 	GetConfigId() *int64
 	SetEnable(v string) *UpdateImageTransformRequest
@@ -26,6 +30,14 @@ type iUpdateImageTransformRequest interface {
 }
 
 type UpdateImageTransformRequest struct {
+	// example:
+	//
+	// on
+	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
+	// example:
+	//
+	// on
+	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
 	// Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
 	//
 	// This parameter is required.
@@ -89,6 +101,14 @@ func (s UpdateImageTransformRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateImageTransformRequest) GetAutoAvif() *string {
+	return s.AutoAvif
+}
+
+func (s *UpdateImageTransformRequest) GetAutoWebp() *string {
+	return s.AutoWebp
+}
+
 func (s *UpdateImageTransformRequest) GetConfigId() *int64 {
 	return s.ConfigId
 }
@@ -115,6 +135,16 @@ func (s *UpdateImageTransformRequest) GetSequence() *int32 {
 
 func (s *UpdateImageTransformRequest) GetSiteId() *int64 {
 	return s.SiteId
+}
+
+func (s *UpdateImageTransformRequest) SetAutoAvif(v string) *UpdateImageTransformRequest {
+	s.AutoAvif = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetAutoWebp(v string) *UpdateImageTransformRequest {
+	s.AutoWebp = &v
+	return s
 }
 
 func (s *UpdateImageTransformRequest) SetConfigId(v int64) *UpdateImageTransformRequest {

@@ -134,6 +134,14 @@ func (s *ListImageTransformsResponseBody) Validate() error {
 }
 
 type ListImageTransformsResponseBodyConfigs struct {
+	// example:
+	//
+	// on
+	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
+	// example:
+	//
+	// on
+	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
 	// Configuration ID.
 	//
 	// example:
@@ -208,6 +216,14 @@ func (s ListImageTransformsResponseBodyConfigs) GoString() string {
 	return s.String()
 }
 
+func (s *ListImageTransformsResponseBodyConfigs) GetAutoAvif() *string {
+	return s.AutoAvif
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) GetAutoWebp() *string {
+	return s.AutoWebp
+}
+
 func (s *ListImageTransformsResponseBodyConfigs) GetConfigId() *int64 {
 	return s.ConfigId
 }
@@ -238,6 +254,16 @@ func (s *ListImageTransformsResponseBodyConfigs) GetSequence() *int32 {
 
 func (s *ListImageTransformsResponseBodyConfigs) GetSiteVersion() *int32 {
 	return s.SiteVersion
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetAutoAvif(v string) *ListImageTransformsResponseBodyConfigs {
+	s.AutoAvif = &v
+	return s
+}
+
+func (s *ListImageTransformsResponseBodyConfigs) SetAutoWebp(v string) *ListImageTransformsResponseBodyConfigs {
+	s.AutoWebp = &v
+	return s
 }
 
 func (s *ListImageTransformsResponseBodyConfigs) SetConfigId(v int64) *ListImageTransformsResponseBodyConfigs {
