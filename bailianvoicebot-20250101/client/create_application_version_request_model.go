@@ -385,6 +385,8 @@ func (s *CreateApplicationVersionRequestScriptProfileAgentProfile) Validate() er
 }
 
 type CreateApplicationVersionRequestSynthesizerConfig struct {
+	Model            *string                                                           `json:"Model,omitempty" xml:"Model,omitempty"`
+	NlsAccessProfile *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
 	// example:
 	//
 	// MANAGED
@@ -396,7 +398,8 @@ type CreateApplicationVersionRequestSynthesizerConfig struct {
 	// example:
 	//
 	// 50
-	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	PitchRate *int32                                                       `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	PronRules []*CreateApplicationVersionRequestSynthesizerConfigPronRules `json:"PronRules,omitempty" xml:"PronRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// -156
@@ -419,6 +422,14 @@ func (s CreateApplicationVersionRequestSynthesizerConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateApplicationVersionRequestSynthesizerConfig) GetModel() *string {
+	return s.Model
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfig) GetNlsAccessProfile() *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile {
+	return s.NlsAccessProfile
+}
+
 func (s *CreateApplicationVersionRequestSynthesizerConfig) GetNlsAccessType() *string {
 	return s.NlsAccessType
 }
@@ -429,6 +440,10 @@ func (s *CreateApplicationVersionRequestSynthesizerConfig) GetNlsEngine() *strin
 
 func (s *CreateApplicationVersionRequestSynthesizerConfig) GetPitchRate() *int32 {
 	return s.PitchRate
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfig) GetPronRules() []*CreateApplicationVersionRequestSynthesizerConfigPronRules {
+	return s.PronRules
 }
 
 func (s *CreateApplicationVersionRequestSynthesizerConfig) GetSpeechRate() *int32 {
@@ -443,6 +458,16 @@ func (s *CreateApplicationVersionRequestSynthesizerConfig) GetVolume() *int32 {
 	return s.Volume
 }
 
+func (s *CreateApplicationVersionRequestSynthesizerConfig) SetModel(v string) *CreateApplicationVersionRequestSynthesizerConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfig) SetNlsAccessProfile(v *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile) *CreateApplicationVersionRequestSynthesizerConfig {
+	s.NlsAccessProfile = v
+	return s
+}
+
 func (s *CreateApplicationVersionRequestSynthesizerConfig) SetNlsAccessType(v string) *CreateApplicationVersionRequestSynthesizerConfig {
 	s.NlsAccessType = &v
 	return s
@@ -455,6 +480,11 @@ func (s *CreateApplicationVersionRequestSynthesizerConfig) SetNlsEngine(v string
 
 func (s *CreateApplicationVersionRequestSynthesizerConfig) SetPitchRate(v int32) *CreateApplicationVersionRequestSynthesizerConfig {
 	s.PitchRate = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfig) SetPronRules(v []*CreateApplicationVersionRequestSynthesizerConfigPronRules) *CreateApplicationVersionRequestSynthesizerConfig {
+	s.PronRules = v
 	return s
 }
 
@@ -474,6 +504,80 @@ func (s *CreateApplicationVersionRequestSynthesizerConfig) SetVolume(v int32) *C
 }
 
 func (s *CreateApplicationVersionRequestSynthesizerConfig) Validate() error {
+	if s.NlsAccessProfile != nil {
+		if err := s.NlsAccessProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PronRules != nil {
+		for _, item := range s.PronRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile struct {
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+}
+
+func (s CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile) GetAccessProfileId() *string {
+	return s.AccessProfileId
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile) SetAccessProfileId(v string) *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile {
+	s.AccessProfileId = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigNlsAccessProfile) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationVersionRequestSynthesizerConfigPronRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s CreateApplicationVersionRequestSynthesizerConfigPronRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationVersionRequestSynthesizerConfigPronRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) SetPattern(v string) *CreateApplicationVersionRequestSynthesizerConfigPronRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) SetReplacement(v string) *CreateApplicationVersionRequestSynthesizerConfigPronRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) Validate() error {
 	return dara.Validate(s)
 }
 

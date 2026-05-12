@@ -603,6 +603,8 @@ func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) Va
 }
 
 type GetApplicationResponseBodyDataDraftVersionSynthesizerConfig struct {
+	Model            *string                                                                      `json:"Model,omitempty" xml:"Model,omitempty"`
+	NlsAccessProfile *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
 	// example:
 	//
 	// MANAGED
@@ -614,7 +616,8 @@ type GetApplicationResponseBodyDataDraftVersionSynthesizerConfig struct {
 	// example:
 	//
 	// 5
-	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	PitchRate *int32                                                                  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	PronRules []*GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules `json:"PronRules,omitempty" xml:"PronRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -637,6 +640,14 @@ func (s GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GoString() 
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetModel() *string {
+	return s.Model
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetNlsAccessProfile() *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile {
+	return s.NlsAccessProfile
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetNlsAccessType() *string {
 	return s.NlsAccessType
 }
@@ -647,6 +658,10 @@ func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetNlsEngi
 
 func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetPitchRate() *int32 {
 	return s.PitchRate
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetPronRules() []*GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules {
+	return s.PronRules
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetSpeechRate() *int32 {
@@ -661,6 +676,16 @@ func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) GetVolume(
 	return s.Volume
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetModel(v string) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetNlsAccessProfile(v *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig {
+	s.NlsAccessProfile = v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetNlsAccessType(v string) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig {
 	s.NlsAccessType = &v
 	return s
@@ -673,6 +698,11 @@ func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetNlsEngi
 
 func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetPitchRate(v int32) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig {
 	s.PitchRate = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetPronRules(v []*GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig {
+	s.PronRules = v
 	return s
 }
 
@@ -692,6 +722,80 @@ func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) SetVolume(
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) Validate() error {
+	if s.NlsAccessProfile != nil {
+		if err := s.NlsAccessProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PronRules != nil {
+		for _, item := range s.PronRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile struct {
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile) GetAccessProfileId() *string {
+	return s.AccessProfileId
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile) SetAccessProfileId(v string) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile {
+	s.AccessProfileId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) SetPattern(v string) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) SetReplacement(v string) *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1093,6 +1197,8 @@ func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile
 }
 
 type GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig struct {
+	Model            *string                                                                          `json:"Model,omitempty" xml:"Model,omitempty"`
+	NlsAccessProfile *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
 	// example:
 	//
 	// MANAGED
@@ -1104,7 +1210,8 @@ type GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig struct {
 	// example:
 	//
 	// 3
-	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	PitchRate *int32                                                                      `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	PronRules []*GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules `json:"PronRules,omitempty" xml:"PronRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// -20
@@ -1127,6 +1234,14 @@ func (s GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GoStrin
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetModel() *string {
+	return s.Model
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetNlsAccessProfile() *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile {
+	return s.NlsAccessProfile
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetNlsAccessType() *string {
 	return s.NlsAccessType
 }
@@ -1137,6 +1252,10 @@ func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetNls
 
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetPitchRate() *int32 {
 	return s.PitchRate
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetPronRules() []*GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules {
+	return s.PronRules
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetSpeechRate() *int32 {
@@ -1151,6 +1270,16 @@ func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) GetVol
 	return s.Volume
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetModel(v string) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetNlsAccessProfile(v *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig {
+	s.NlsAccessProfile = v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetNlsAccessType(v string) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig {
 	s.NlsAccessType = &v
 	return s
@@ -1163,6 +1292,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetNls
 
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetPitchRate(v int32) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig {
 	s.PitchRate = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetPronRules(v []*GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig {
+	s.PronRules = v
 	return s
 }
 
@@ -1182,6 +1316,80 @@ func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) SetVol
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) Validate() error {
+	if s.NlsAccessProfile != nil {
+		if err := s.NlsAccessProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PronRules != nil {
+		for _, item := range s.PronRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile struct {
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile) GetAccessProfileId() *string {
+	return s.AccessProfileId
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile) SetAccessProfileId(v string) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile {
+	s.AccessProfileId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) SetPattern(v string) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) SetReplacement(v string) *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) Validate() error {
 	return dara.Validate(s)
 }
 
