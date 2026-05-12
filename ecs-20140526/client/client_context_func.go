@@ -15242,12 +15242,32 @@ func (client *Client) DescribeInstanceModificationPriceWithContext(ctx context.C
 		query["DataDisk"] = request.DataDisk
 	}
 
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.ISP) {
+		query["ISP"] = request.ISP
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
 	if !dara.IsNil(request.InstanceType) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.InternetChargeType) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !dara.IsNil(request.InternetMaxBandwidthOut) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -15268,6 +15288,10 @@ func (client *Client) DescribeInstanceModificationPriceWithContext(ctx context.C
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !dara.IsNil(request.SystemDisk) {

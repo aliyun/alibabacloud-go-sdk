@@ -63,8 +63,9 @@ func (s *DescribeInstanceModificationPriceResponseBody) Validate() error {
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfo struct {
 	// The price.
-	Price *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	Rules *DescribeInstanceModificationPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Price        *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice        `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	RelatedPrice *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
+	Rules        *DescribeInstanceModificationPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceModificationPriceResponseBodyPriceInfo) String() string {
@@ -79,12 +80,21 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) GetPrice() *Des
 	return s.Price
 }
 
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) GetRelatedPrice() *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice {
+	return s.RelatedPrice
+}
+
 func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) GetRules() *DescribeInstanceModificationPriceResponseBodyPriceInfoRules {
 	return s.Rules
 }
 
 func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) SetPrice(v *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice) *DescribeInstanceModificationPriceResponseBodyPriceInfo {
 	s.Price = v
+	return s
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) SetRelatedPrice(v *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) *DescribeInstanceModificationPriceResponseBodyPriceInfo {
+	s.RelatedPrice = v
 	return s
 }
 
@@ -96,6 +106,11 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) SetRules(v *Des
 func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) Validate() error {
 	if s.Price != nil {
 		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RelatedPrice != nil {
+		if err := s.RelatedPrice.Validate(); err != nil {
 			return err
 		}
 	}
@@ -371,6 +386,103 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfosD
 }
 
 func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRulesRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice struct {
+	MarketplaceImagePrice *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice `json:"MarketplaceImagePrice,omitempty" xml:"MarketplaceImagePrice,omitempty" type:"Struct"`
+}
+
+func (s DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) GetMarketplaceImagePrice() *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	return s.MarketplaceImagePrice
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) SetMarketplaceImagePrice(v *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice {
+	s.MarketplaceImagePrice = v
+	return s
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) Validate() error {
+	if s.MarketplaceImagePrice != nil {
+		if err := s.MarketplaceImagePrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 100
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// 100
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetDiscountPrice() *float32 {
+	return s.DiscountPrice
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetOriginalPrice() *float32 {
+	return s.OriginalPrice
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetTradePrice() *float32 {
+	return s.TradePrice
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetCurrency(v string) *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetDiscountPrice(v float32) *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetOriginalPrice(v float32) *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetTradePrice(v float32) *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.TradePrice = &v
+	return s
+}
+
+func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) Validate() error {
 	return dara.Validate(s)
 }
 
