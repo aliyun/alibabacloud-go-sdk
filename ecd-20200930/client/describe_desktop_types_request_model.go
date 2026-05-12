@@ -19,6 +19,8 @@ type iDescribeDesktopTypesRequest interface {
 	GetDesktopGroupIdForModify() *string
 	SetDesktopIdForModify(v string) *DescribeDesktopTypesRequest
 	GetDesktopIdForModify() *string
+	SetDesktopScenario(v string) *DescribeDesktopTypesRequest
+	GetDesktopScenario() *string
 	SetDesktopTypeId(v string) *DescribeDesktopTypesRequest
 	GetDesktopTypeId() *string
 	SetDesktopTypeIdList(v []*string) *DescribeDesktopTypesRequest
@@ -79,6 +81,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopIdForModify *string `json:"DesktopIdForModify,omitempty" xml:"DesktopIdForModify,omitempty"`
+	DesktopScenario    *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
 	// The specification ID.
 	//
 	// >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all cloud computer specifications will be queried.
@@ -291,6 +294,10 @@ func (s *DescribeDesktopTypesRequest) GetDesktopIdForModify() *string {
 	return s.DesktopIdForModify
 }
 
+func (s *DescribeDesktopTypesRequest) GetDesktopScenario() *string {
+	return s.DesktopScenario
+}
+
 func (s *DescribeDesktopTypesRequest) GetDesktopTypeId() *string {
 	return s.DesktopTypeId
 }
@@ -377,6 +384,11 @@ func (s *DescribeDesktopTypesRequest) SetDesktopGroupIdForModify(v string) *Desc
 
 func (s *DescribeDesktopTypesRequest) SetDesktopIdForModify(v string) *DescribeDesktopTypesRequest {
 	s.DesktopIdForModify = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetDesktopScenario(v string) *DescribeDesktopTypesRequest {
+	s.DesktopScenario = &v
 	return s
 }
 

@@ -8767,6 +8767,10 @@ func (client *Client) DescribeDesktopTypesWithContext(ctx context.Context, reque
 		query["DesktopIdForModify"] = request.DesktopIdForModify
 	}
 
+	if !dara.IsNil(request.DesktopScenario) {
+		query["DesktopScenario"] = request.DesktopScenario
+	}
+
 	if !dara.IsNil(request.DesktopTypeId) {
 		query["DesktopTypeId"] = request.DesktopTypeId
 	}
