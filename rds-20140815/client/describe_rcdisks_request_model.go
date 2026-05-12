@@ -11,6 +11,8 @@ type iDescribeRCDisksRequest interface {
 	GoString() string
 	SetDiskIds(v string) *DescribeRCDisksRequest
 	GetDiskIds() *string
+	SetDiskType(v string) *DescribeRCDisksRequest
+	GetDiskType() *string
 	SetInstanceId(v string) *DescribeRCDisksRequest
 	GetInstanceId() *string
 	SetPageNumber(v int64) *DescribeRCDisksRequest
@@ -32,6 +34,10 @@ type DescribeRCDisksRequest struct {
 	//
 	// ["rcd-bp67acfmxazb4p****", "rcd-bp67acfmxazb4g****", … "rcd-bp67acfmxazb4d****"]
 	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// example:
+	//
+	// data
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -78,6 +84,10 @@ func (s *DescribeRCDisksRequest) GetDiskIds() *string {
 	return s.DiskIds
 }
 
+func (s *DescribeRCDisksRequest) GetDiskType() *string {
+	return s.DiskType
+}
+
 func (s *DescribeRCDisksRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -104,6 +114,11 @@ func (s *DescribeRCDisksRequest) GetTag() []*DescribeRCDisksRequestTag {
 
 func (s *DescribeRCDisksRequest) SetDiskIds(v string) *DescribeRCDisksRequest {
 	s.DiskIds = &v
+	return s
+}
+
+func (s *DescribeRCDisksRequest) SetDiskType(v string) *DescribeRCDisksRequest {
+	s.DiskType = &v
 	return s
 }
 
