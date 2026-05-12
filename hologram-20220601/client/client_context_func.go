@@ -909,6 +909,10 @@ func (client *Client) GrantTablePermissionWithContext(ctx context.Context, insta
 		body["allTable"] = request.AllTable
 	}
 
+	if !dara.IsNil(request.ColumnNames) {
+		body["columnNames"] = request.ColumnNames
+	}
+
 	if !dara.IsNil(request.DatabaseName) {
 		body["databaseName"] = request.DatabaseName
 	}
@@ -1626,6 +1630,10 @@ func (client *Client) RevokeTablePermissionWithContext(ctx context.Context, inst
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllTable) {
 		body["allTable"] = request.AllTable
+	}
+
+	if !dara.IsNil(request.ColumnNames) {
+		body["columnNames"] = request.ColumnNames
 	}
 
 	if !dara.IsNil(request.DatabaseName) {

@@ -11,6 +11,8 @@ type iGrantTablePermissionRequest interface {
 	GoString() string
 	SetAllTable(v bool) *GrantTablePermissionRequest
 	GetAllTable() *bool
+	SetColumnNames(v []*string) *GrantTablePermissionRequest
+	GetColumnNames() []*string
 	SetDatabaseName(v string) *GrantTablePermissionRequest
 	GetDatabaseName() *string
 	SetPrivileges(v []*string) *GrantTablePermissionRequest
@@ -27,7 +29,8 @@ type GrantTablePermissionRequest struct {
 	// example:
 	//
 	// true
-	AllTable *bool `json:"allTable,omitempty" xml:"allTable,omitempty"`
+	AllTable    *bool     `json:"allTable,omitempty" xml:"allTable,omitempty"`
+	ColumnNames []*string `json:"columnNames,omitempty" xml:"columnNames,omitempty" type:"Repeated"`
 	// example:
 	//
 	// my_db
@@ -59,6 +62,10 @@ func (s *GrantTablePermissionRequest) GetAllTable() *bool {
 	return s.AllTable
 }
 
+func (s *GrantTablePermissionRequest) GetColumnNames() []*string {
+	return s.ColumnNames
+}
+
 func (s *GrantTablePermissionRequest) GetDatabaseName() *string {
 	return s.DatabaseName
 }
@@ -81,6 +88,11 @@ func (s *GrantTablePermissionRequest) GetUserName() *string {
 
 func (s *GrantTablePermissionRequest) SetAllTable(v bool) *GrantTablePermissionRequest {
 	s.AllTable = &v
+	return s
+}
+
+func (s *GrantTablePermissionRequest) SetColumnNames(v []*string) *GrantTablePermissionRequest {
+	s.ColumnNames = v
 	return s
 }
 

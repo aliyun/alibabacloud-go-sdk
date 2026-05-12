@@ -1317,6 +1317,10 @@ func (client *Client) GrantTablePermissionWithOptions(instanceId *string, reques
 		body["allTable"] = request.AllTable
 	}
 
+	if !dara.IsNil(request.ColumnNames) {
+		body["columnNames"] = request.ColumnNames
+	}
+
 	if !dara.IsNil(request.DatabaseName) {
 		body["databaseName"] = request.DatabaseName
 	}
@@ -2321,6 +2325,10 @@ func (client *Client) RevokeTablePermissionWithOptions(instanceId *string, reque
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllTable) {
 		body["allTable"] = request.AllTable
+	}
+
+	if !dara.IsNil(request.ColumnNames) {
+		body["columnNames"] = request.ColumnNames
 	}
 
 	if !dara.IsNil(request.DatabaseName) {

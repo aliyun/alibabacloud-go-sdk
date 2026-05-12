@@ -11,6 +11,8 @@ type iRevokeTablePermissionRequest interface {
 	GoString() string
 	SetAllTable(v bool) *RevokeTablePermissionRequest
 	GetAllTable() *bool
+	SetColumnNames(v []*string) *RevokeTablePermissionRequest
+	GetColumnNames() []*string
 	SetDatabaseName(v string) *RevokeTablePermissionRequest
 	GetDatabaseName() *string
 	SetPrivileges(v []*string) *RevokeTablePermissionRequest
@@ -27,7 +29,8 @@ type RevokeTablePermissionRequest struct {
 	// example:
 	//
 	// false
-	AllTable *bool `json:"allTable,omitempty" xml:"allTable,omitempty"`
+	AllTable    *bool     `json:"allTable,omitempty" xml:"allTable,omitempty"`
+	ColumnNames []*string `json:"columnNames,omitempty" xml:"columnNames,omitempty" type:"Repeated"`
 	// example:
 	//
 	// test_db
@@ -59,6 +62,10 @@ func (s *RevokeTablePermissionRequest) GetAllTable() *bool {
 	return s.AllTable
 }
 
+func (s *RevokeTablePermissionRequest) GetColumnNames() []*string {
+	return s.ColumnNames
+}
+
 func (s *RevokeTablePermissionRequest) GetDatabaseName() *string {
 	return s.DatabaseName
 }
@@ -81,6 +88,11 @@ func (s *RevokeTablePermissionRequest) GetUserName() *string {
 
 func (s *RevokeTablePermissionRequest) SetAllTable(v bool) *RevokeTablePermissionRequest {
 	s.AllTable = &v
+	return s
+}
+
+func (s *RevokeTablePermissionRequest) SetColumnNames(v []*string) *RevokeTablePermissionRequest {
+	s.ColumnNames = v
 	return s
 }
 
