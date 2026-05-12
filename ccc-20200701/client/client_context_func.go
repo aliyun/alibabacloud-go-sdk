@@ -898,6 +898,10 @@ func (client *Client) AssignUsersWithContext(ctx context.Context, request *Assig
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Async) {
+		query["Async"] = request.Async
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -5523,6 +5527,10 @@ func (client *Client) HoldCallWithContext(ctx context.Context, request *HoldCall
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入管理员
+//
 // @param request - ImportAdminsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10583,6 +10591,10 @@ func (client *Client) ModifyCustomCallTaggingWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例
+//
 // @param request - ModifyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

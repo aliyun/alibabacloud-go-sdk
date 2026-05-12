@@ -1243,6 +1243,10 @@ func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Async) {
+		query["Async"] = request.Async
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -7343,6 +7347,10 @@ func (client *Client) HoldCall(request *HoldCallRequest) (_result *HoldCallRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入管理员
+//
 // @param request - ImportAdminsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7387,6 +7395,10 @@ func (client *Client) ImportAdminsWithOptions(request *ImportAdminsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入管理员
+//
 // @param request - ImportAdminsRequest
 //
 // @return ImportAdminsResponse
@@ -13865,6 +13877,10 @@ func (client *Client) ModifyCustomCallTagging(request *ModifyCustomCallTaggingRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例
+//
 // @param request - ModifyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13909,6 +13925,10 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例
+//
 // @param request - ModifyInstanceRequest
 //
 // @return ModifyInstanceResponse

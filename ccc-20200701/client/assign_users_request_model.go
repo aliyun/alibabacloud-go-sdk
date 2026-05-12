@@ -9,6 +9,8 @@ type iAssignUsersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAsync(v bool) *AssignUsersRequest
+	GetAsync() *bool
 	SetInstanceId(v string) *AssignUsersRequest
 	GetInstanceId() *string
 	SetRamIdList(v string) *AssignUsersRequest
@@ -22,6 +24,7 @@ type iAssignUsersRequest interface {
 }
 
 type AssignUsersRequest struct {
+	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -60,6 +63,10 @@ func (s AssignUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AssignUsersRequest) GetAsync() *bool {
+	return s.Async
+}
+
 func (s *AssignUsersRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -78,6 +85,11 @@ func (s *AssignUsersRequest) GetSkillLevelList() *string {
 
 func (s *AssignUsersRequest) GetWorkMode() *string {
 	return s.WorkMode
+}
+
+func (s *AssignUsersRequest) SetAsync(v bool) *AssignUsersRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *AssignUsersRequest) SetInstanceId(v string) *AssignUsersRequest {
