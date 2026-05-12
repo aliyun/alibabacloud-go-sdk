@@ -11,6 +11,8 @@ type iCreateRepoSyncRuleRequest interface {
 	GoString() string
 	SetInstanceId(v string) *CreateRepoSyncRuleRequest
 	GetInstanceId() *string
+	SetLinkId(v string) *CreateRepoSyncRuleRequest
+	GetLinkId() *string
 	SetNamespaceName(v string) *CreateRepoSyncRuleRequest
 	GetNamespaceName() *string
 	SetRepoName(v string) *CreateRepoSyncRuleRequest
@@ -46,6 +48,7 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LinkId     *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	// The namespace name of the source instance.
 	//
 	// This parameter is required.
@@ -158,6 +161,10 @@ func (s *CreateRepoSyncRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateRepoSyncRuleRequest) GetLinkId() *string {
+	return s.LinkId
+}
+
 func (s *CreateRepoSyncRuleRequest) GetNamespaceName() *string {
 	return s.NamespaceName
 }
@@ -208,6 +215,11 @@ func (s *CreateRepoSyncRuleRequest) GetTargetUserId() *string {
 
 func (s *CreateRepoSyncRuleRequest) SetInstanceId(v string) *CreateRepoSyncRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoSyncRuleRequest) SetLinkId(v string) *CreateRepoSyncRuleRequest {
+	s.LinkId = &v
 	return s
 }
 

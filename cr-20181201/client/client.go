@@ -124,7 +124,7 @@ func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRe
 
 // Summary:
 //
-// Cancels an image building task of a repository.
+// Cancels a repository building record.
 //
 // @param request - CancelRepoBuildRecordRequest
 //
@@ -176,7 +176,7 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 
 // Summary:
 //
-// Cancels an image building task of a repository.
+// Cancels a repository building record.
 //
 // @param request - CancelRepoBuildRecordRequest
 //
@@ -1517,6 +1517,10 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
 	if !dara.IsNil(request.NamespaceName) {
 		query["NamespaceName"] = request.NamespaceName
 	}
@@ -1606,6 +1610,10 @@ func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually creates an image synchronization task.
+//
 // @param request - CreateRepoSyncTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1682,6 +1690,10 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually creates an image synchronization task.
+//
 // @param request - CreateRepoSyncTaskRequest
 //
 // @return CreateRepoSyncTaskResponse
@@ -2420,7 +2432,7 @@ func (client *Client) DeleteArtifactSubscriptionRule(request *DeleteArtifactSubs
 
 // Summary:
 //
-// Deletes a delivery pipeline.
+// Deletes a delivery chain.
 //
 // @param request - DeleteChainRequest
 //
@@ -2468,7 +2480,7 @@ func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtim
 
 // Summary:
 //
-// Deletes a delivery pipeline.
+// Deletes a delivery chain.
 //
 // @param request - DeleteChainRequest
 //
@@ -3500,6 +3512,10 @@ func (client *Client) DeleteStorageDomainRoutingRule(request *DeleteStorageDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an artifact building rule.
+//
 // @param request - GetArtifactBuildRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3536,6 +3552,10 @@ func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an artifact building rule.
+//
 // @param request - GetArtifactBuildRuleRequest
 //
 // @return GetArtifactBuildRuleResponse
@@ -3924,7 +3944,7 @@ func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenReques
 
 // Summary:
 //
-// 获取交付链
+// Obtains the information of a delivery chain to understand the node execution sequence of the delivery chain.
 //
 // @param request - GetChainRequest
 //
@@ -3972,7 +3992,7 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *dar
 
 // Summary:
 //
-// 获取交付链
+// Obtains the information of a delivery chain to understand the node execution sequence of the delivery chain.
 //
 // @param request - GetChainRequest
 //
@@ -4190,8 +4210,6 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 //
 // Queries the number of instances.
 //
-// @param request - GetInstanceCountRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceCountResponse
@@ -4235,7 +4253,7 @@ func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _er
 
 // Summary:
 //
-// Queries the endpoint of an instance.
+// Queries an endpoint of an instance.
 //
 // @param request - GetInstanceEndpointRequest
 //
@@ -4287,7 +4305,7 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 
 // Summary:
 //
-// Queries the endpoint of an instance.
+// Queries an endpoint of an instance.
 //
 // @param request - GetInstanceEndpointRequest
 //
@@ -4779,7 +4797,7 @@ func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result 
 
 // Summary:
 //
-// The version of the repository.
+// Queries the information about an image tag.
 //
 // @param request - GetRepoTagRequest
 //
@@ -4819,7 +4837,7 @@ func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime 
 
 // Summary:
 //
-// The version of the repository.
+// Queries the information about an image tag.
 //
 // @param request - GetRepoTagRequest
 //
@@ -4917,6 +4935,10 @@ func (client *Client) GetRepoTagScanStatus(request *GetRepoTagScanStatusRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of vulnerabilities for each severity level. These vulnerabilities are detected in a security scan that is created for an image version.
+//
 // @param request - GetRepoTagScanSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4973,6 +4995,10 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of vulnerabilities for each severity level. These vulnerabilities are detected in a security scan that is created for an image version.
+//
 // @param request - GetRepoTagScanSummaryRequest
 //
 // @return GetRepoTagScanSummaryResponse
@@ -5063,7 +5089,7 @@ func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *Get
 
 // Summary:
 //
-// Obtains a scan rule.
+// Queries a scan rule.
 //
 // Description:
 //
@@ -5115,7 +5141,7 @@ func (client *Client) GetScanRuleWithOptions(request *GetScanRuleRequest, runtim
 
 // Summary:
 //
-// Obtains a scan rule.
+// Queries a scan rule.
 //
 // Description:
 //
@@ -5521,7 +5547,7 @@ func (client *Client) ListChain(request *ListChainRequest) (_result *ListChainRe
 
 // Summary:
 //
-// The response code.
+// Queries execution records of delivery chains.
 //
 // @param request - ListChainInstanceRequest
 //
@@ -5581,7 +5607,7 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 
 // Summary:
 //
-// The response code.
+// Queries execution records of delivery chains.
 //
 // @param request - ListChainInstanceRequest
 //
@@ -5899,7 +5925,7 @@ func (client *Client) ListEventCenterRecord(request *ListEventCenterRecordReques
 
 // Summary:
 //
-// Queries the names of event notification rules.
+// Queries the name of an event rule.
 //
 // @param request - ListEventCenterRuleNameRequest
 //
@@ -5939,7 +5965,7 @@ func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCente
 
 // Summary:
 //
-// Queries the names of event notification rules.
+// Queries the name of an event rule.
 //
 // @param request - ListEventCenterRuleNameRequest
 //
@@ -7895,7 +7921,7 @@ func (client *Client) UpdateChartRepository(request *UpdateChartRepositoryReques
 
 // Summary:
 //
-// Updates an event notification rule.
+// Updates an event rule.
 //
 // @param tmpReq - UpdateEventCenterRuleRequest
 //
@@ -7985,7 +8011,7 @@ func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenter
 
 // Summary:
 //
-// Updates an event notification rule.
+// Updates an event rule.
 //
 // @param request - UpdateEventCenterRuleRequest
 //

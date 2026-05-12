@@ -168,7 +168,8 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	// example:
 	//
 	// true
-	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	CrossUser *bool   `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	LinkId    *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	// The ID of the source instance.
 	//
 	// example:
@@ -297,6 +298,10 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) GetCrossUser() *bool {
 	return s.CrossUser
 }
 
+func (s *ListRepoSyncRuleResponseBodySyncRules) GetLinkId() *string {
+	return s.LinkId
+}
+
 func (s *ListRepoSyncRuleResponseBodySyncRules) GetLocalInstanceId() *string {
 	return s.LocalInstanceId
 }
@@ -368,6 +373,11 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) SetCreateTime(v int64) *ListRepo
 
 func (s *ListRepoSyncRuleResponseBodySyncRules) SetCrossUser(v bool) *ListRepoSyncRuleResponseBodySyncRules {
 	s.CrossUser = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBodySyncRules) SetLinkId(v string) *ListRepoSyncRuleResponseBodySyncRules {
+	s.LinkId = &v
 	return s
 }
 

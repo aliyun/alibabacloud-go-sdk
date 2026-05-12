@@ -57,7 +57,7 @@ func (client *Client) CancelArtifactBuildTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Cancels an image building task of a repository.
+// Cancels a repository building record.
 //
 // @param request - CancelRepoBuildRecordRequest
 //
@@ -1134,6 +1134,10 @@ func (client *Client) CreateRepoSyncRuleWithContext(ctx context.Context, request
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
 	if !dara.IsNil(request.NamespaceName) {
 		query["NamespaceName"] = request.NamespaceName
 	}
@@ -1205,6 +1209,10 @@ func (client *Client) CreateRepoSyncRuleWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually creates an image synchronization task.
+//
 // @param request - CreateRepoSyncTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1835,7 +1843,7 @@ func (client *Client) DeleteArtifactSubscriptionRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes a delivery pipeline.
+// Deletes a delivery chain.
 //
 // @param request - DeleteChainRequest
 //
@@ -2625,6 +2633,10 @@ func (client *Client) DeleteStorageDomainRoutingRuleWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an artifact building rule.
+//
 // @param request - GetArtifactBuildRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2917,7 +2929,7 @@ func (client *Client) GetAuthorizationTokenWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取交付链
+// Obtains the information of a delivery chain to understand the node execution sequence of the delivery chain.
 //
 // @param request - GetChainRequest
 //
@@ -3109,7 +3121,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
-// Queries the endpoint of an instance.
+// Queries an endpoint of an instance.
 //
 // @param request - GetInstanceEndpointRequest
 //
@@ -3505,7 +3517,7 @@ func (client *Client) GetRepoSyncTaskWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// The version of the repository.
+// Queries the information about an image tag.
 //
 // @param request - GetRepoTagRequest
 //
@@ -3607,6 +3619,10 @@ func (client *Client) GetRepoTagScanStatusWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of vulnerabilities for each severity level. These vulnerabilities are detected in a security scan that is created for an image version.
+//
 // @param request - GetRepoTagScanSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3721,7 +3737,7 @@ func (client *Client) GetRepositoryWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Obtains a scan rule.
+// Queries a scan rule.
 //
 // Description:
 //
@@ -4045,7 +4061,7 @@ func (client *Client) ListChainWithContext(ctx context.Context, request *ListCha
 
 // Summary:
 //
-// The response code.
+// Queries execution records of delivery chains.
 //
 // @param request - ListChainInstanceRequest
 //
@@ -4333,7 +4349,7 @@ func (client *Client) ListEventCenterRecordWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the names of event notification rules.
+// Queries the name of an event rule.
 //
 // @param request - ListEventCenterRuleNameRequest
 //
@@ -5849,7 +5865,7 @@ func (client *Client) UpdateChartRepositoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates an event notification rule.
+// Updates an event rule.
 //
 // @param tmpReq - UpdateEventCenterRuleRequest
 //

@@ -179,12 +179,16 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	ImageFrom *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
 	// The information about the destination image.
 	ImageTo *ListRepoSyncTaskResponseBodySyncTasksImageTo `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	LinkId  *string                                       `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// Deprecated
+	//
 	// The time when the synchronization task was last modified.
 	//
 	// example:
 	//
 	// 1572839133000
-	ModifedTime *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	ModifedTime  *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The ID of the image synchronization batch tasks, which is the same as the value of SyncRecordId in the request.
 	//
 	// >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
@@ -281,8 +285,16 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) GetImageTo() *ListRepoSyncTaskRe
 	return s.ImageTo
 }
 
+func (s *ListRepoSyncTaskResponseBodySyncTasks) GetLinkId() *string {
+	return s.LinkId
+}
+
 func (s *ListRepoSyncTaskResponseBodySyncTasks) GetModifedTime() *int64 {
 	return s.ModifedTime
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasks) GetModifiedTime() *int64 {
+	return s.ModifiedTime
 }
 
 func (s *ListRepoSyncTaskResponseBodySyncTasks) GetSyncBatchTaskId() *string {
@@ -338,8 +350,18 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetImageTo(v *ListRepoSyncTaskRe
 	return s
 }
 
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetLinkId(v string) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.LinkId = &v
+	return s
+}
+
 func (s *ListRepoSyncTaskResponseBodySyncTasks) SetModifedTime(v int64) *ListRepoSyncTaskResponseBodySyncTasks {
 	s.ModifedTime = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetModifiedTime(v int64) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.ModifiedTime = &v
 	return s
 }
 
