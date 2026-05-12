@@ -11,6 +11,8 @@ type iListThreadsRequest interface {
 	GoString() string
 	SetFilter(v []*ListThreadsRequestFilter) *ListThreadsRequest
 	GetFilter() []*ListThreadsRequestFilter
+	SetIncludeMission(v bool) *ListThreadsRequest
+	GetIncludeMission() *bool
 	SetMaxResults(v int64) *ListThreadsRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListThreadsRequest
@@ -22,7 +24,8 @@ type iListThreadsRequest interface {
 }
 
 type ListThreadsRequest struct {
-	Filter []*ListThreadsRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Repeated"`
+	Filter         []*ListThreadsRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Repeated"`
+	IncludeMission *bool                       `json:"includeMission,omitempty" xml:"includeMission,omitempty"`
 	// example:
 	//
 	// 20
@@ -53,6 +56,10 @@ func (s *ListThreadsRequest) GetFilter() []*ListThreadsRequestFilter {
 	return s.Filter
 }
 
+func (s *ListThreadsRequest) GetIncludeMission() *bool {
+	return s.IncludeMission
+}
+
 func (s *ListThreadsRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -71,6 +78,11 @@ func (s *ListThreadsRequest) GetThreadId() *string {
 
 func (s *ListThreadsRequest) SetFilter(v []*ListThreadsRequestFilter) *ListThreadsRequest {
 	s.Filter = v
+	return s
+}
+
+func (s *ListThreadsRequest) SetIncludeMission(v bool) *ListThreadsRequest {
+	s.IncludeMission = &v
 	return s
 }
 

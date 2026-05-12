@@ -11,6 +11,8 @@ type iListThreadsShrinkRequest interface {
 	GoString() string
 	SetFilterShrink(v string) *ListThreadsShrinkRequest
 	GetFilterShrink() *string
+	SetIncludeMission(v bool) *ListThreadsShrinkRequest
+	GetIncludeMission() *bool
 	SetMaxResults(v int64) *ListThreadsShrinkRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListThreadsShrinkRequest
@@ -22,7 +24,8 @@ type iListThreadsShrinkRequest interface {
 }
 
 type ListThreadsShrinkRequest struct {
-	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	FilterShrink   *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	IncludeMission *bool   `json:"includeMission,omitempty" xml:"includeMission,omitempty"`
 	// example:
 	//
 	// 20
@@ -53,6 +56,10 @@ func (s *ListThreadsShrinkRequest) GetFilterShrink() *string {
 	return s.FilterShrink
 }
 
+func (s *ListThreadsShrinkRequest) GetIncludeMission() *bool {
+	return s.IncludeMission
+}
+
 func (s *ListThreadsShrinkRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -71,6 +78,11 @@ func (s *ListThreadsShrinkRequest) GetThreadId() *string {
 
 func (s *ListThreadsShrinkRequest) SetFilterShrink(v string) *ListThreadsShrinkRequest {
 	s.FilterShrink = &v
+	return s
+}
+
+func (s *ListThreadsShrinkRequest) SetIncludeMission(v bool) *ListThreadsShrinkRequest {
+	s.IncludeMission = &v
 	return s
 }
 

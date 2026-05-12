@@ -960,6 +960,10 @@ func (client *Client) ListThreadsWithContext(ctx context.Context, name *string, 
 		query["filter"] = request.FilterShrink
 	}
 
+	if !dara.IsNil(request.IncludeMission) {
+		query["includeMission"] = request.IncludeMission
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}

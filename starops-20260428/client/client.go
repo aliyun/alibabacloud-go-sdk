@@ -1331,6 +1331,10 @@ func (client *Client) ListThreadsWithOptions(name *string, tmpReq *ListThreadsRe
 		query["filter"] = request.FilterShrink
 	}
 
+	if !dara.IsNil(request.IncludeMission) {
+		query["includeMission"] = request.IncludeMission
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}
