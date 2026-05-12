@@ -140,7 +140,8 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	// example:
 	//
 	// 2021-06-15T15:20Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// 	- **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
@@ -245,6 +246,10 @@ func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) Ge
 	return s.CreationTime
 }
 
+func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) GetManagedService() *string {
+	return s.ManagedService
+}
+
 func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) GetOrderType() *string {
 	return s.OrderType
 }
@@ -301,6 +306,11 @@ func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) Se
 
 func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) SetCreationTime(v string) *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments) SetManagedService(v string) *ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments {
+	s.ManagedService = &v
 	return s
 }
 
