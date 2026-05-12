@@ -1786,6 +1786,91 @@ func (client *Client) DeleteWuyingServer(request *DeleteWuyingServerRequest) (_r
 
 // Summary:
 //
+// 配置SLS日志投递
+//
+// @param request - DeliverToUserSlsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeliverToUserSlsResponse
+func (client *Client) DeliverToUserSlsWithOptions(request *DeliverToUserSlsRequest, runtime *dara.RuntimeOptions) (_result *DeliverToUserSlsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DeliveryScopes) {
+		bodyFlat["DeliveryScopes"] = request.DeliveryScopes
+	}
+
+	if !dara.IsNil(request.ExistedProjectName) {
+		body["ExistedProjectName"] = request.ExistedProjectName
+	}
+
+	if !dara.IsNil(request.LogStoreName) {
+		body["LogStoreName"] = request.LogStoreName
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.SlsRegionId) {
+		body["SlsRegionId"] = request.SlsRegionId
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		body["Ttl"] = request.Ttl
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeliverToUserSls"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeliverToUserSlsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置SLS日志投递
+//
+// @param request - DeliverToUserSlsRequest
+//
+// @return DeliverToUserSlsResponse
+func (client *Client) DeliverToUserSls(request *DeliverToUserSlsRequest) (_result *DeliverToUserSlsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeliverToUserSlsResponse{}
+	_body, _err := client.DeliverToUserSlsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the Elastic IP Addresses (EIPs) of workstations.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
