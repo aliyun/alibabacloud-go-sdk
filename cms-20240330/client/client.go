@@ -3651,6 +3651,10 @@ func (client *Client) DescribeMetricMetaListWithOptions(tmpReq *DescribeMetricMe
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keywords) {
+		query["keywords"] = request.Keywords
+	}
+
 	if !dara.IsNil(request.LabelsShrink) {
 		query["labels"] = request.LabelsShrink
 	}

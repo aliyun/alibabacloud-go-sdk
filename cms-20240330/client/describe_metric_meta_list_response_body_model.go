@@ -114,6 +114,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	DimensionDescription []*DescribeMetricMetaListResponseBodyResourcesDimensionDescription `json:"dimensionDescription,omitempty" xml:"dimensionDescription,omitempty" type:"Repeated"`
 	Dimensions           []*string                                                          `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
 	Labels               map[string]*string                                                 `json:"labels,omitempty" xml:"labels,omitempty"`
+	MetaFormat           *string                                                            `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
 	MetricName           *string                                                            `json:"metricName,omitempty" xml:"metricName,omitempty"`
 	Namespace            *string                                                            `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	Periods              *string                                                            `json:"periods,omitempty" xml:"periods,omitempty"`
@@ -144,6 +145,10 @@ func (s *DescribeMetricMetaListResponseBodyResources) GetDimensions() []*string 
 
 func (s *DescribeMetricMetaListResponseBodyResources) GetLabels() map[string]*string {
 	return s.Labels
+}
+
+func (s *DescribeMetricMetaListResponseBodyResources) GetMetaFormat() *string {
+	return s.MetaFormat
 }
 
 func (s *DescribeMetricMetaListResponseBodyResources) GetMetricName() *string {
@@ -187,6 +192,11 @@ func (s *DescribeMetricMetaListResponseBodyResources) SetDimensions(v []*string)
 
 func (s *DescribeMetricMetaListResponseBodyResources) SetLabels(v map[string]*string) *DescribeMetricMetaListResponseBodyResources {
 	s.Labels = v
+	return s
+}
+
+func (s *DescribeMetricMetaListResponseBodyResources) SetMetaFormat(v string) *DescribeMetricMetaListResponseBodyResources {
+	s.MetaFormat = &v
 	return s
 }
 

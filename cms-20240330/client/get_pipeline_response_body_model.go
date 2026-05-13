@@ -564,6 +564,7 @@ type GetPipelineResponseBodySourceLogstore struct {
 	//
 	// test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	Query   *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s GetPipelineResponseBodySourceLogstore) String() string {
@@ -582,6 +583,10 @@ func (s *GetPipelineResponseBodySourceLogstore) GetProject() *string {
 	return s.Project
 }
 
+func (s *GetPipelineResponseBodySourceLogstore) GetQuery() *string {
+	return s.Query
+}
+
 func (s *GetPipelineResponseBodySourceLogstore) SetLogstore(v string) *GetPipelineResponseBodySourceLogstore {
 	s.Logstore = &v
 	return s
@@ -589,6 +594,11 @@ func (s *GetPipelineResponseBodySourceLogstore) SetLogstore(v string) *GetPipeli
 
 func (s *GetPipelineResponseBodySourceLogstore) SetProject(v string) *GetPipelineResponseBodySourceLogstore {
 	s.Project = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySourceLogstore) SetQuery(v string) *GetPipelineResponseBodySourceLogstore {
+	s.Query = &v
 	return s
 }
 

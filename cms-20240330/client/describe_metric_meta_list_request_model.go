@@ -9,6 +9,8 @@ type iDescribeMetricMetaListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetKeywords(v string) *DescribeMetricMetaListRequest
+	GetKeywords() *string
 	SetLabels(v []*DescribeMetricMetaListRequestLabels) *DescribeMetricMetaListRequest
 	GetLabels() []*DescribeMetricMetaListRequestLabels
 	SetMetaFormat(v string) *DescribeMetricMetaListRequest
@@ -24,7 +26,8 @@ type iDescribeMetricMetaListRequest interface {
 }
 
 type DescribeMetricMetaListRequest struct {
-	Labels []*DescribeMetricMetaListRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Keywords *string                                `json:"keywords,omitempty" xml:"keywords,omitempty"`
+	Labels   []*DescribeMetricMetaListRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// example:
 	//
 	// CMS
@@ -55,6 +58,10 @@ func (s DescribeMetricMetaListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMetricMetaListRequest) GetKeywords() *string {
+	return s.Keywords
+}
+
 func (s *DescribeMetricMetaListRequest) GetLabels() []*DescribeMetricMetaListRequestLabels {
 	return s.Labels
 }
@@ -77,6 +84,11 @@ func (s *DescribeMetricMetaListRequest) GetPageNumber() *int32 {
 
 func (s *DescribeMetricMetaListRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeMetricMetaListRequest) SetKeywords(v string) *DescribeMetricMetaListRequest {
+	s.Keywords = &v
+	return s
 }
 
 func (s *DescribeMetricMetaListRequest) SetLabels(v []*DescribeMetricMetaListRequestLabels) *DescribeMetricMetaListRequest {

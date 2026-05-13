@@ -9,6 +9,8 @@ type iDescribeMetricMetaListShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetKeywords(v string) *DescribeMetricMetaListShrinkRequest
+	GetKeywords() *string
 	SetLabelsShrink(v string) *DescribeMetricMetaListShrinkRequest
 	GetLabelsShrink() *string
 	SetMetaFormat(v string) *DescribeMetricMetaListShrinkRequest
@@ -24,6 +26,7 @@ type iDescribeMetricMetaListShrinkRequest interface {
 }
 
 type DescribeMetricMetaListShrinkRequest struct {
+	Keywords     *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
 	LabelsShrink *string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// example:
 	//
@@ -55,6 +58,10 @@ func (s DescribeMetricMetaListShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMetricMetaListShrinkRequest) GetKeywords() *string {
+	return s.Keywords
+}
+
 func (s *DescribeMetricMetaListShrinkRequest) GetLabelsShrink() *string {
 	return s.LabelsShrink
 }
@@ -77,6 +84,11 @@ func (s *DescribeMetricMetaListShrinkRequest) GetPageNumber() *int32 {
 
 func (s *DescribeMetricMetaListShrinkRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeMetricMetaListShrinkRequest) SetKeywords(v string) *DescribeMetricMetaListShrinkRequest {
+	s.Keywords = &v
+	return s
 }
 
 func (s *DescribeMetricMetaListShrinkRequest) SetLabelsShrink(v string) *DescribeMetricMetaListShrinkRequest {
