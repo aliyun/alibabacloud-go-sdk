@@ -2501,6 +2501,10 @@ func (client *Client) CreateCredentialWithOptions(request *CreateCredentialReque
 		query["CredentialContent"] = request.CredentialContent
 	}
 
+	if !dara.IsNil(request.CredentialExternalId) {
+		query["CredentialExternalId"] = request.CredentialExternalId
+	}
+
 	if !dara.IsNil(request.CredentialIdentifier) {
 		query["CredentialIdentifier"] = request.CredentialIdentifier
 	}
@@ -15741,6 +15745,10 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialExternalIds) {
+		query["CredentialExternalIds"] = request.CredentialExternalIds
+	}
+
 	if !dara.IsNil(request.CredentialIds) {
 		query["CredentialIds"] = request.CredentialIds
 	}

@@ -73,6 +73,7 @@ type GetCredentialResponseBodyCredential struct {
 	//
 	// user_custom
 	CredentialCreationType *string `json:"CredentialCreationType,omitempty" xml:"CredentialCreationType,omitempty"`
+	CredentialExternalId   *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
 	// 凭据ID。
 	//
 	// example:
@@ -163,6 +164,10 @@ func (s *GetCredentialResponseBodyCredential) GetCredentialCreationType() *strin
 	return s.CredentialCreationType
 }
 
+func (s *GetCredentialResponseBodyCredential) GetCredentialExternalId() *string {
+	return s.CredentialExternalId
+}
+
 func (s *GetCredentialResponseBodyCredential) GetCredentialId() *string {
 	return s.CredentialId
 }
@@ -227,6 +232,11 @@ func (s *GetCredentialResponseBodyCredential) SetCredentialContent(v *GetCredent
 
 func (s *GetCredentialResponseBodyCredential) SetCredentialCreationType(v string) *GetCredentialResponseBodyCredential {
 	s.CredentialCreationType = &v
+	return s
+}
+
+func (s *GetCredentialResponseBodyCredential) SetCredentialExternalId(v string) *GetCredentialResponseBodyCredential {
+	s.CredentialExternalId = &v
 	return s
 }
 

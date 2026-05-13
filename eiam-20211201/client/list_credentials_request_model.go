@@ -9,6 +9,8 @@ type iListCredentialsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCredentialExternalIds(v []*string) *ListCredentialsRequest
+	GetCredentialExternalIds() []*string
 	SetCredentialIds(v []*string) *ListCredentialsRequest
 	GetCredentialIds() []*string
 	SetCredentialSharingScopes(v []*string) *ListCredentialsRequest
@@ -28,6 +30,7 @@ type iListCredentialsRequest interface {
 }
 
 type ListCredentialsRequest struct {
+	CredentialExternalIds   []*string                       `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
 	CredentialIds           []*string                       `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
 	CredentialSharingScopes []*string                       `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
 	CredentialTypes         []*string                       `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
@@ -63,6 +66,10 @@ func (s ListCredentialsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListCredentialsRequest) GetCredentialExternalIds() []*string {
+	return s.CredentialExternalIds
+}
+
 func (s *ListCredentialsRequest) GetCredentialIds() []*string {
 	return s.CredentialIds
 }
@@ -93,6 +100,11 @@ func (s *ListCredentialsRequest) GetNextToken() *string {
 
 func (s *ListCredentialsRequest) GetStatuses() []*string {
 	return s.Statuses
+}
+
+func (s *ListCredentialsRequest) SetCredentialExternalIds(v []*string) *ListCredentialsRequest {
+	s.CredentialExternalIds = v
+	return s
 }
 
 func (s *ListCredentialsRequest) SetCredentialIds(v []*string) *ListCredentialsRequest {

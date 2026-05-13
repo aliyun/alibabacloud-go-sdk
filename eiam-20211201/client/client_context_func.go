@@ -1886,6 +1886,10 @@ func (client *Client) CreateCredentialWithContext(ctx context.Context, request *
 		query["CredentialContent"] = request.CredentialContent
 	}
 
+	if !dara.IsNil(request.CredentialExternalId) {
+		query["CredentialExternalId"] = request.CredentialExternalId
+	}
+
 	if !dara.IsNil(request.CredentialIdentifier) {
 		query["CredentialIdentifier"] = request.CredentialIdentifier
 	}
@@ -11698,6 +11702,10 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialExternalIds) {
+		query["CredentialExternalIds"] = request.CredentialExternalIds
+	}
+
 	if !dara.IsNil(request.CredentialIds) {
 		query["CredentialIds"] = request.CredentialIds
 	}

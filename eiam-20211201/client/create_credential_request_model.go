@@ -13,6 +13,8 @@ type iCreateCredentialRequest interface {
 	GetClientToken() *string
 	SetCredentialContent(v *CreateCredentialRequestCredentialContent) *CreateCredentialRequest
 	GetCredentialContent() *CreateCredentialRequestCredentialContent
+	SetCredentialExternalId(v string) *CreateCredentialRequest
+	GetCredentialExternalId() *string
 	SetCredentialIdentifier(v string) *CreateCredentialRequest
 	GetCredentialIdentifier() *string
 	SetCredentialName(v string) *CreateCredentialRequest
@@ -47,7 +49,8 @@ type CreateCredentialRequest struct {
 	// 凭据的内容。
 	//
 	// This parameter is required.
-	CredentialContent *CreateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
+	CredentialContent    *CreateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
+	CredentialExternalId *string                                   `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
 	// 凭据标识。
 	//
 	// This parameter is required.
@@ -124,6 +127,10 @@ func (s *CreateCredentialRequest) GetCredentialContent() *CreateCredentialReques
 	return s.CredentialContent
 }
 
+func (s *CreateCredentialRequest) GetCredentialExternalId() *string {
+	return s.CredentialExternalId
+}
+
 func (s *CreateCredentialRequest) GetCredentialIdentifier() *string {
 	return s.CredentialIdentifier
 }
@@ -171,6 +178,11 @@ func (s *CreateCredentialRequest) SetClientToken(v string) *CreateCredentialRequ
 
 func (s *CreateCredentialRequest) SetCredentialContent(v *CreateCredentialRequestCredentialContent) *CreateCredentialRequest {
 	s.CredentialContent = v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetCredentialExternalId(v string) *CreateCredentialRequest {
+	s.CredentialExternalId = &v
 	return s
 }
 
