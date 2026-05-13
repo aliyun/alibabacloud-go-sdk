@@ -2937,6 +2937,68 @@ func (client *Client) GetNotebookTaskStatus(request *GetNotebookTaskStatusReques
 
 // Summary:
 //
+// 获取工作空间发布配置
+//
+// @param request - GetWorkspaceCodePublishSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceCodePublishSettingResponse
+func (client *Client) GetWorkspaceCodePublishSettingWithOptions(request *GetWorkspaceCodePublishSettingRequest, runtime *dara.RuntimeOptions) (_result *GetWorkspaceCodePublishSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceCodePublishSetting"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceCodePublishSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间发布配置
+//
+// @param request - GetWorkspaceCodePublishSettingRequest
+//
+// @return GetWorkspaceCodePublishSettingResponse
+func (client *Client) GetWorkspaceCodePublishSetting(request *GetWorkspaceCodePublishSettingRequest) (_result *GetWorkspaceCodePublishSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkspaceCodePublishSettingResponse{}
+	_body, _err := client.GetWorkspaceCodePublishSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出资源Airflow
 //
 // @param request - ListAirflowsRequest
@@ -4911,6 +4973,74 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 
 // Summary:
 //
+// 设置工作空间代码发布配置
+//
+// @param request - SetWorkspaceCodePublishSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWorkspaceCodePublishSettingResponse
+func (client *Client) SetWorkspaceCodePublishSettingWithOptions(request *SetWorkspaceCodePublishSettingRequest, runtime *dara.RuntimeOptions) (_result *SetWorkspaceCodePublishSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetWorkspaceCodePublishSetting"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetWorkspaceCodePublishSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置工作空间代码发布配置
+//
+// @param request - SetWorkspaceCodePublishSettingRequest
+//
+// @return SetWorkspaceCodePublishSettingResponse
+func (client *Client) SetWorkspaceCodePublishSetting(request *SetWorkspaceCodePublishSettingRequest) (_result *SetWorkspaceCodePublishSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetWorkspaceCodePublishSettingResponse{}
+	_body, _err := client.SetWorkspaceCodePublishSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新UpdateAirflow
 //
 // @param request - UpdateAirflowRequest
@@ -5518,6 +5648,206 @@ func (client *Client) UpdateDataLakeTable(request *UpdateDataLakeTableRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataLakeTableResponse{}
 	_body, _err := client.UpdateDataLakeTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间异步操作日志查询接口
+//
+// @param request - WorkspaceActionLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WorkspaceActionLogResponse
+func (client *Client) WorkspaceActionLogWithOptions(request *WorkspaceActionLogRequest, runtime *dara.RuntimeOptions) (_result *WorkspaceActionLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("WorkspaceActionLog"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &WorkspaceActionLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间异步操作日志查询接口
+//
+// @param request - WorkspaceActionLogRequest
+//
+// @return WorkspaceActionLogResponse
+func (client *Client) WorkspaceActionLog(request *WorkspaceActionLogRequest) (_result *WorkspaceActionLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &WorkspaceActionLogResponse{}
+	_body, _err := client.WorkspaceActionLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间异步操作状态查询接口
+//
+// @param request - WorkspaceActionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WorkspaceActionStatusResponse
+func (client *Client) WorkspaceActionStatusWithOptions(request *WorkspaceActionStatusRequest, runtime *dara.RuntimeOptions) (_result *WorkspaceActionStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("WorkspaceActionStatus"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &WorkspaceActionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间异步操作状态查询接口
+//
+// @param request - WorkspaceActionStatusRequest
+//
+// @return WorkspaceActionStatusResponse
+func (client *Client) WorkspaceActionStatus(request *WorkspaceActionStatusRequest) (_result *WorkspaceActionStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &WorkspaceActionStatusResponse{}
+	_body, _err := client.WorkspaceActionStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间代码发布。这是个异步接口，请求返回一个key，请根据key查询 WorkspaceActionStatus接口获取状态
+//
+// @param request - WorkspaceCodePublishRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WorkspaceCodePublishResponse
+func (client *Client) WorkspaceCodePublishWithOptions(request *WorkspaceCodePublishRequest, runtime *dara.RuntimeOptions) (_result *WorkspaceCodePublishResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("WorkspaceCodePublish"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &WorkspaceCodePublishResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间代码发布。这是个异步接口，请求返回一个key，请根据key查询 WorkspaceActionStatus接口获取状态
+//
+// @param request - WorkspaceCodePublishRequest
+//
+// @return WorkspaceCodePublishResponse
+func (client *Client) WorkspaceCodePublish(request *WorkspaceCodePublishRequest) (_result *WorkspaceCodePublishResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &WorkspaceCodePublishResponse{}
+	_body, _err := client.WorkspaceCodePublishWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
