@@ -298,6 +298,61 @@ func (client *Client) CreateAlertStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 创建集群Vpc端点连接
+//
+// @param request - CreateClusterVpcEndpointConnectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClusterVpcEndpointConnectionResponse
+func (client *Client) CreateClusterVpcEndpointConnectionWithContext(ctx context.Context, request *CreateClusterVpcEndpointConnectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateClusterVpcEndpointConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["clusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateClusterVpcEndpointConnection"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/k8sProxy/access/createClusterVpcEndpointConnection"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateClusterVpcEndpointConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建实例巡检
 //
 // @param request - CreateInstanceInspectionRequest
