@@ -2508,7 +2508,8 @@ func (s *CreateScalingConfigurationRequestNetworkInterfaces) Validate() error {
 
 type CreateScalingConfigurationRequestResourcePoolOptions struct {
 	// The IDs of private pools. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation that is associated with the private pool. You can specify the IDs of only targeted private pools for this parameter.
-	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
+	PrivatePoolIds  []*string                                                              `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
+	PrivatePoolTags []*CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags `json:"PrivatePoolTags,omitempty" xml:"PrivatePoolTags,omitempty" type:"Repeated"`
 	// The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
 	//
 	// 	- PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
@@ -2537,6 +2538,10 @@ func (s *CreateScalingConfigurationRequestResourcePoolOptions) GetPrivatePoolIds
 	return s.PrivatePoolIds
 }
 
+func (s *CreateScalingConfigurationRequestResourcePoolOptions) GetPrivatePoolTags() []*CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags {
+	return s.PrivatePoolTags
+}
+
 func (s *CreateScalingConfigurationRequestResourcePoolOptions) GetStrategy() *string {
 	return s.Strategy
 }
@@ -2546,12 +2551,61 @@ func (s *CreateScalingConfigurationRequestResourcePoolOptions) SetPrivatePoolIds
 	return s
 }
 
+func (s *CreateScalingConfigurationRequestResourcePoolOptions) SetPrivatePoolTags(v []*CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) *CreateScalingConfigurationRequestResourcePoolOptions {
+	s.PrivatePoolTags = v
+	return s
+}
+
 func (s *CreateScalingConfigurationRequestResourcePoolOptions) SetStrategy(v string) *CreateScalingConfigurationRequestResourcePoolOptions {
 	s.Strategy = &v
 	return s
 }
 
 func (s *CreateScalingConfigurationRequestResourcePoolOptions) Validate() error {
+	if s.PrivatePoolTags != nil {
+		for _, item := range s.PrivatePoolTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) SetKey(v string) *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) SetValue(v string) *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags) Validate() error {
 	return dara.Validate(s)
 }
 
