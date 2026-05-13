@@ -2613,6 +2613,10 @@ func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstance
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.DomainKeyword) {
+		query["DomainKeyword"] = request.DomainKeyword
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}

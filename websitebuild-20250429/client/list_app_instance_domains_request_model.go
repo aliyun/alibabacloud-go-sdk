@@ -11,6 +11,8 @@ type iListAppInstanceDomainsRequest interface {
 	GoString() string
 	SetBizId(v string) *ListAppInstanceDomainsRequest
 	GetBizId() *string
+	SetDomainKeyword(v string) *ListAppInstanceDomainsRequest
+	GetDomainKeyword() *string
 	SetMaxResults(v int32) *ListAppInstanceDomainsRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListAppInstanceDomainsRequest
@@ -31,7 +33,8 @@ type ListAppInstanceDomainsRequest struct {
 	// example:
 	//
 	// WD20250718165839000001
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DomainKeyword *string `json:"DomainKeyword,omitempty" xml:"DomainKeyword,omitempty"`
 	// Number of results per query.
 	//
 	// Range: 10~100. Default value: 20.
@@ -84,6 +87,10 @@ func (s *ListAppInstanceDomainsRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *ListAppInstanceDomainsRequest) GetDomainKeyword() *string {
+	return s.DomainKeyword
+}
+
 func (s *ListAppInstanceDomainsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -110,6 +117,11 @@ func (s *ListAppInstanceDomainsRequest) GetPageSize() *int32 {
 
 func (s *ListAppInstanceDomainsRequest) SetBizId(v string) *ListAppInstanceDomainsRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsRequest) SetDomainKeyword(v string) *ListAppInstanceDomainsRequest {
+	s.DomainKeyword = &v
 	return s
 }
 
