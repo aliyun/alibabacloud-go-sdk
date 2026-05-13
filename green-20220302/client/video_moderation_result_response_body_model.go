@@ -978,7 +978,8 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
 	// tonalityImprove
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// The information about the text hit in the image is returned.
-	TextInImage map[string]interface{} `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
+	TextInImage map[string]interface{}                                                  `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
+	VlContent   *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) String() string {
@@ -1013,6 +1014,10 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) GetTextI
 	return s.TextInImage
 }
 
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) GetVlContent() *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent {
+	return s.VlContent
+}
+
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetCustomImage(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
 	s.CustomImage = v
 	return s
@@ -1040,6 +1045,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetServi
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetTextInImage(v map[string]interface{}) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
 	s.TextInImage = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetVlContent(v *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.VlContent = v
 	return s
 }
 
@@ -1078,6 +1088,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) Validate
 					return err
 				}
 			}
+		}
+	}
+	if s.VlContent != nil {
+		if err := s.VlContent.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -1485,5 +1500,30 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) Se
 }
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent struct {
+	OutputText *string `json:"OutputText,omitempty" xml:"OutputText,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent) GetOutputText() *string {
+	return s.OutputText
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent) SetOutputText(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent {
+	s.OutputText = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent) Validate() error {
 	return dara.Validate(s)
 }
