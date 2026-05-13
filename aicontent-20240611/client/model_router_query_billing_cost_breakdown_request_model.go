@@ -9,12 +9,18 @@ type iModelRouterQueryBillingCostBreakdownRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientId(v int64) *ModelRouterQueryBillingCostBreakdownRequest
+	GetClientId() *int64
 	SetEndTime(v int64) *ModelRouterQueryBillingCostBreakdownRequest
 	GetEndTime() *int64
 	SetGranularity(v string) *ModelRouterQueryBillingCostBreakdownRequest
 	GetGranularity() *string
 	SetMaxResults(v int32) *ModelRouterQueryBillingCostBreakdownRequest
 	GetMaxResults() *int32
+	SetModelId(v int64) *ModelRouterQueryBillingCostBreakdownRequest
+	GetModelId() *int64
+	SetModelTypes(v string) *ModelRouterQueryBillingCostBreakdownRequest
+	GetModelTypes() *string
 	SetNextToken(v string) *ModelRouterQueryBillingCostBreakdownRequest
 	GetNextToken() *string
 	SetPage(v int32) *ModelRouterQueryBillingCostBreakdownRequest
@@ -26,6 +32,10 @@ type iModelRouterQueryBillingCostBreakdownRequest interface {
 }
 
 type ModelRouterQueryBillingCostBreakdownRequest struct {
+	// example:
+	//
+	// 5
+	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42,6 +52,14 @@ type ModelRouterQueryBillingCostBreakdownRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 12
+	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// Chat
+	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
 	// example:
 	//
 	// xxxx-xxx-xxxxx
@@ -70,6 +88,10 @@ func (s ModelRouterQueryBillingCostBreakdownRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryBillingCostBreakdownRequest) GetClientId() *int64 {
+	return s.ClientId
+}
+
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -80,6 +102,14 @@ func (s *ModelRouterQueryBillingCostBreakdownRequest) GetGranularity() *string {
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) GetModelId() *int64 {
+	return s.ModelId
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) GetModelTypes() *string {
+	return s.ModelTypes
 }
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetNextToken() *string {
@@ -98,6 +128,11 @@ func (s *ModelRouterQueryBillingCostBreakdownRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *ModelRouterQueryBillingCostBreakdownRequest) SetClientId(v int64) *ModelRouterQueryBillingCostBreakdownRequest {
+	s.ClientId = &v
+	return s
+}
+
 func (s *ModelRouterQueryBillingCostBreakdownRequest) SetEndTime(v int64) *ModelRouterQueryBillingCostBreakdownRequest {
 	s.EndTime = &v
 	return s
@@ -110,6 +145,16 @@ func (s *ModelRouterQueryBillingCostBreakdownRequest) SetGranularity(v string) *
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) SetMaxResults(v int32) *ModelRouterQueryBillingCostBreakdownRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) SetModelId(v int64) *ModelRouterQueryBillingCostBreakdownRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) SetModelTypes(v string) *ModelRouterQueryBillingCostBreakdownRequest {
+	s.ModelTypes = &v
 	return s
 }
 

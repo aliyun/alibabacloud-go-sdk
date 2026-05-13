@@ -9,6 +9,8 @@ type iBillingCostBreakdownRespDTO interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetColumns(v []*MetricDefRespDTO) *BillingCostBreakdownRespDTO
+	GetColumns() []*MetricDefRespDTO
 	SetGranularity(v string) *BillingCostBreakdownRespDTO
 	GetGranularity() *string
 	SetPage(v int32) *BillingCostBreakdownRespDTO
@@ -22,6 +24,10 @@ type iBillingCostBreakdownRespDTO interface {
 }
 
 type BillingCostBreakdownRespDTO struct {
+	// example:
+	//
+	// []
+	Columns []*MetricDefRespDTO `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
 	// example:
 	//
 	// hourly
@@ -52,6 +58,10 @@ func (s BillingCostBreakdownRespDTO) GoString() string {
 	return s.String()
 }
 
+func (s *BillingCostBreakdownRespDTO) GetColumns() []*MetricDefRespDTO {
+	return s.Columns
+}
+
 func (s *BillingCostBreakdownRespDTO) GetGranularity() *string {
 	return s.Granularity
 }
@@ -70,6 +80,11 @@ func (s *BillingCostBreakdownRespDTO) GetRows() []*BillingCostBreakdownRowDTO {
 
 func (s *BillingCostBreakdownRespDTO) GetTotal() *int64 {
 	return s.Total
+}
+
+func (s *BillingCostBreakdownRespDTO) SetColumns(v []*MetricDefRespDTO) *BillingCostBreakdownRespDTO {
+	s.Columns = v
+	return s
 }
 
 func (s *BillingCostBreakdownRespDTO) SetGranularity(v string) *BillingCostBreakdownRespDTO {
@@ -98,6 +113,15 @@ func (s *BillingCostBreakdownRespDTO) SetTotal(v int64) *BillingCostBreakdownRes
 }
 
 func (s *BillingCostBreakdownRespDTO) Validate() error {
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Rows != nil {
 		for _, item := range s.Rows {
 			if item != nil {

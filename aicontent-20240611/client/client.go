@@ -4308,6 +4308,10 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *M
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
 	}
@@ -4318,6 +4322,14 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *M
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelTypes) {
+		query["modelTypes"] = request.ModelTypes
 	}
 
 	if !dara.IsNil(request.NextToken) {
