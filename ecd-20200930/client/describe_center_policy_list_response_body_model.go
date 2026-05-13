@@ -91,7 +91,10 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// deny
-	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminAccess               *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminKeyboardOnFullScreen *string `json:"AdminKeyboardOnFullScreen,omitempty" xml:"AdminKeyboardOnFullScreen,omitempty"`
+	AdminKeyboardOnWindows    *string `json:"AdminKeyboardOnWindows,omitempty" xml:"AdminKeyboardOnWindows,omitempty"`
+	AdminMonitor              *int32  `json:"AdminMonitor,omitempty" xml:"AdminMonitor,omitempty"`
 	// Indicates whether anti-screenshot is enabled.
 	//
 	// example:
@@ -107,11 +110,12 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// on
-	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
-	ClientHibernate   *string `json:"ClientHibernate,omitempty" xml:"ClientHibernate,omitempty"`
-	ClientRestart     *string `json:"ClientRestart,omitempty" xml:"ClientRestart,omitempty"`
-	ClientShutdown    *string `json:"ClientShutdown,omitempty" xml:"ClientShutdown,omitempty"`
+	CameraRedirect       *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu    *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	ClientCreateSnapshot *string `json:"ClientCreateSnapshot,omitempty" xml:"ClientCreateSnapshot,omitempty"`
+	ClientHibernate      *string `json:"ClientHibernate,omitempty" xml:"ClientHibernate,omitempty"`
+	ClientRestart        *string `json:"ClientRestart,omitempty" xml:"ClientRestart,omitempty"`
+	ClientShutdown       *string `json:"ClientShutdown,omitempty" xml:"ClientShutdown,omitempty"`
 	// The logon method control rules.
 	ClientTypes []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The read/write permissions on the clipboard.
@@ -132,7 +136,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 30
-	CpuDownGradeDuration *int32 `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuDownGradeDuration *int32  `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuOverload          *string `json:"CpuOverload,omitempty" xml:"CpuOverload,omitempty"`
 	// The CPU processors.
 	CpuProcessors []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
 	// The CPU spike protection policy.
@@ -190,7 +195,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 120
-	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	DisconnectKeepSessionTime *int32  `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	DiskOverload              *string `json:"DiskOverload,omitempty" xml:"DiskOverload,omitempty"`
 	// The display mode.
 	//
 	// example:
@@ -217,12 +223,14 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
+	EndUserCount                *string `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
 	// Indicates whether end users in the same office network can share cloud computers.
 	//
 	// example:
 	//
 	// off
 	EndUserGroupCoordinate    *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	ExternalDrive             *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
 	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
 	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
 	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
@@ -255,6 +263,9 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// tcp
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
 	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
+	KeyboardControl               *string `json:"KeyboardControl,omitempty" xml:"KeyboardControl,omitempty"`
+	KmsServer                     *string `json:"KmsServer,omitempty" xml:"KmsServer,omitempty"`
+	KmsServerConfig               *string `json:"KmsServerConfig,omitempty" xml:"KmsServerConfig,omitempty"`
 	// The read/write permissions on the on-premises drive.
 	//
 	// example:
@@ -272,7 +283,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 30
-	MemoryDownGradeDuration *int32 `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryDownGradeDuration *int32  `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryOverload          *string `json:"MemoryOverload,omitempty" xml:"MemoryOverload,omitempty"`
 	// The memory processors.
 	MemoryProcessors []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
 	// The memory spike protection policy.
@@ -338,6 +350,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// >  This parameter is in private preview and only available to specific users.
 	NetRedirectRule []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	NetworkPrinter  *string                                                                    `json:"NetworkPrinter,omitempty" xml:"NetworkPrinter,omitempty"`
 	// Indicates whether a disconnection is enforced upon inactivity.
 	//
 	// >  This parameter applies only to cloud application policies.
@@ -353,7 +366,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 120
-	NoOperationDisconnectTime *int32 `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
+	NoOperationDisconnectTime *int32  `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
+	OrganizationCount         *string `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
 	// The policy ID.
 	//
 	// example:
@@ -678,6 +692,18 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAdminAcces
 	return s.AdminAccess
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAdminKeyboardOnFullScreen() *string {
+	return s.AdminKeyboardOnFullScreen
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAdminKeyboardOnWindows() *string {
+	return s.AdminKeyboardOnWindows
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAdminMonitor() *int32 {
+	return s.AdminMonitor
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetAppContentProtection() *string {
 	return s.AppContentProtection
 }
@@ -696,6 +722,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetCameraRedi
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientControlMenu() *string {
 	return s.ClientControlMenu
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientCreateSnapshot() *string {
+	return s.ClientCreateSnapshot
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetClientHibernate() *string {
@@ -728,6 +758,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetCpdDriveCl
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetCpuDownGradeDuration() *int32 {
 	return s.CpuDownGradeDuration
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetCpuOverload() *string {
+	return s.CpuOverload
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetCpuProcessors() []*string {
@@ -774,6 +808,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetDisconnect
 	return s.DisconnectKeepSessionTime
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetDiskOverload() *string {
+	return s.DiskOverload
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetDisplayMode() *string {
 	return s.DisplayMode
 }
@@ -794,8 +832,16 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetEndUserApp
 	return s.EndUserApplyAdminCoordinate
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetEndUserCount() *string {
+	return s.EndUserCount
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetEndUserGroupCoordinate() *string {
 	return s.EndUserGroupCoordinate
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetExternalDrive() *string {
+	return s.ExternalDrive
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferAddress() *string {
@@ -846,6 +892,18 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetInternetPr
 	return s.InternetPrinter
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetKeyboardControl() *string {
+	return s.KeyboardControl
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetKmsServer() *string {
+	return s.KmsServer
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetKmsServerConfig() *string {
+	return s.KmsServerConfig
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetLocalDrive() *string {
 	return s.LocalDrive
 }
@@ -856,6 +914,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMaxReconne
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMemoryDownGradeDuration() *int32 {
 	return s.MemoryDownGradeDuration
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMemoryOverload() *string {
+	return s.MemoryOverload
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetMemoryProcessors() []*string {
@@ -918,12 +980,20 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetNetRedirec
 	return s.NetRedirectRule
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetNetworkPrinter() *string {
+	return s.NetworkPrinter
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetNoOperationDisconnect() *string {
 	return s.NoOperationDisconnect
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetNoOperationDisconnectTime() *int32 {
 	return s.NoOperationDisconnectTime
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetOrganizationCount() *string {
+	return s.OrganizationCount
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetPolicyGroupId() *string {
@@ -1172,6 +1242,21 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAdminAcces
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAdminKeyboardOnFullScreen(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AdminKeyboardOnFullScreen = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAdminKeyboardOnWindows(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AdminKeyboardOnWindows = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAdminMonitor(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AdminMonitor = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAppContentProtection(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.AppContentProtection = &v
 	return s
@@ -1194,6 +1279,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCameraRedi
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientControlMenu(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.ClientControlMenu = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientCreateSnapshot(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ClientCreateSnapshot = &v
 	return s
 }
 
@@ -1234,6 +1324,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpdDriveCl
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuDownGradeDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.CpuDownGradeDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuOverload(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuOverload = &v
 	return s
 }
 
@@ -1292,6 +1387,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDisconnect
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDiskOverload(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DiskOverload = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDisplayMode(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.DisplayMode = &v
 	return s
@@ -1317,8 +1417,18 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserApp
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserCount(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.EndUserCount = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserGroupCoordinate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetExternalDrive(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ExternalDrive = &v
 	return s
 }
 
@@ -1382,6 +1492,21 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetInternetPr
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetKeyboardControl(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.KeyboardControl = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetKmsServer(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.KmsServer = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetKmsServerConfig(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.KmsServerConfig = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetLocalDrive(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.LocalDrive = &v
 	return s
@@ -1394,6 +1519,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMaxReconne
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemoryDownGradeDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.MemoryDownGradeDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemoryOverload(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemoryOverload = &v
 	return s
 }
 
@@ -1472,6 +1602,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNetRedirec
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNetworkPrinter(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.NetworkPrinter = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNoOperationDisconnect(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.NoOperationDisconnect = &v
 	return s
@@ -1479,6 +1614,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNoOperatio
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNoOperationDisconnectTime(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.NoOperationDisconnectTime = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetOrganizationCount(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.OrganizationCount = &v
 	return s
 }
 
