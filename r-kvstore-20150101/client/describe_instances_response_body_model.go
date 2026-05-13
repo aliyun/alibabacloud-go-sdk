@@ -189,6 +189,7 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	UserName            *string                                                    `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	VSwitchId           *string                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId               *string                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WorkspaceId         *string                                                    `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	ZoneId              *string                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -370,6 +371,10 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetVSwitchId() *
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetZoneId() *string {
@@ -588,6 +593,11 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetVSwitchId(v s
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetVpcId(v string) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
 	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetWorkspaceId(v string) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.WorkspaceId = &v
 	return s
 }
 

@@ -2253,6 +2253,238 @@ func (client *Client) CreateTairKVCacheVNode(request *CreateTairKVCacheVNodeRequ
 
 // Summary:
 //
+// 创建Tair Serverless 类型实例的Workspace
+//
+// @param request - CreateTairSkvDdbTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTairSkvDdbTableResponse
+func (client *Client) CreateTairSkvDdbTableWithOptions(request *CreateTairSkvDdbTableRequest, runtime *dara.RuntimeOptions) (_result *CreateTairSkvDdbTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Schema) {
+		query["Schema"] = request.Schema
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SrcDBInstanceId) {
+		query["SrcDBInstanceId"] = request.SrcDBInstanceId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.TtlSpec) {
+		query["TtlSpec"] = request.TtlSpec
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTairSkvDdbTable"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTairSkvDdbTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Tair Serverless 类型实例的Workspace
+//
+// @param request - CreateTairSkvDdbTableRequest
+//
+// @return CreateTairSkvDdbTableResponse
+func (client *Client) CreateTairSkvDdbTable(request *CreateTairSkvDdbTableRequest) (_result *CreateTairSkvDdbTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTairSkvDdbTableResponse{}
+	_body, _err := client.CreateTairSkvDdbTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Tair Serverless 类型实例的Workspace
+//
+// @param request - CreateTairSkvDdbWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTairSkvDdbWorkspaceResponse
+func (client *Client) CreateTairSkvDdbWorkspaceWithOptions(request *CreateTairSkvDdbWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateTairSkvDdbWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTairSkvDdbWorkspace"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTairSkvDdbWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Tair Serverless 类型实例的Workspace
+//
+// @param request - CreateTairSkvDdbWorkspaceRequest
+//
+// @return CreateTairSkvDdbWorkspaceResponse
+func (client *Client) CreateTairSkvDdbWorkspace(request *CreateTairSkvDdbWorkspaceRequest) (_result *CreateTairSkvDdbWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTairSkvDdbWorkspaceResponse{}
+	_body, _err := client.CreateTairSkvDdbWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an account from a Tair (Redis OSS-compatible) instance.
 //
 // Description:
@@ -8928,6 +9160,240 @@ func (client *Client) DescribeTairKVCacheInferInstances(request *DescribeTairKVC
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeTairKVCacheInferInstancesResponse{}
 	_body, _err := client.DescribeTairKVCacheInferInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Tair Serverless KV DDB实例的table
+//
+// @param request - DescribeTairSkvDdbTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairSkvDdbTableResponse
+func (client *Client) DescribeTairSkvDdbTableWithOptions(request *DescribeTairSkvDdbTableRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairSkvDdbTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTairSkvDdbTable"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTairSkvDdbTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Tair Serverless KV DDB实例的table
+//
+// @param request - DescribeTairSkvDdbTableRequest
+//
+// @return DescribeTairSkvDdbTableResponse
+func (client *Client) DescribeTairSkvDdbTable(request *DescribeTairSkvDdbTableRequest) (_result *DescribeTairSkvDdbTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeTairSkvDdbTableResponse{}
+	_body, _err := client.DescribeTairSkvDdbTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Tair Serverless KV DDB实例的table schema
+//
+// @param request - DescribeTairSkvDdbTableSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairSkvDdbTableSchemaResponse
+func (client *Client) DescribeTairSkvDdbTableSchemaWithOptions(request *DescribeTairSkvDdbTableSchemaRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairSkvDdbTableSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTairSkvDdbTableSchema"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTairSkvDdbTableSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Tair Serverless KV DDB实例的table schema
+//
+// @param request - DescribeTairSkvDdbTableSchemaRequest
+//
+// @return DescribeTairSkvDdbTableSchemaResponse
+func (client *Client) DescribeTairSkvDdbTableSchema(request *DescribeTairSkvDdbTableSchemaRequest) (_result *DescribeTairSkvDdbTableSchemaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeTairSkvDdbTableSchemaResponse{}
+	_body, _err := client.DescribeTairSkvDdbTableSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务详情
+//
+// @param request - DescribeTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTaskDetailResponse
+func (client *Client) DescribeTaskDetailWithOptions(request *DescribeTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTaskDetail"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTaskDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务详情
+//
+// @param request - DescribeTaskDetailRequest
+//
+// @return DescribeTaskDetailResponse
+func (client *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (_result *DescribeTaskDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeTaskDetailResponse{}
+	_body, _err := client.DescribeTaskDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
