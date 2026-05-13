@@ -3446,6 +3446,10 @@ func (client *Client) ListFileUploadWithContext(ctx context.Context, request *Li
 		query["DmsUnit"] = request.DmsUnit
 	}
 
+	if !dara.IsNil(request.DownloadLinkExpire) {
+		query["DownloadLinkExpire"] = request.DownloadLinkExpire
+	}
+
 	if !dara.IsNil(request.FileCategory) {
 		query["FileCategory"] = request.FileCategory
 	}

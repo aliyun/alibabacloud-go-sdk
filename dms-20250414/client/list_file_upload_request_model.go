@@ -13,6 +13,8 @@ type iListFileUploadRequest interface {
 	GetCallFrom() *string
 	SetDmsUnit(v string) *ListFileUploadRequest
 	GetDmsUnit() *string
+	SetDownloadLinkExpire(v int32) *ListFileUploadRequest
+	GetDownloadLinkExpire() *int32
 	SetFileCategory(v string) *ListFileUploadRequest
 	GetFileCategory() *string
 	SetFileFrom(v string) *ListFileUploadRequest
@@ -32,7 +34,8 @@ type ListFileUploadRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	DmsUnit            *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	DownloadLinkExpire *int32  `json:"DownloadLinkExpire,omitempty" xml:"DownloadLinkExpire,omitempty"`
 	// example:
 	//
 	// TextReport
@@ -75,6 +78,10 @@ func (s *ListFileUploadRequest) GetDmsUnit() *string {
 	return s.DmsUnit
 }
 
+func (s *ListFileUploadRequest) GetDownloadLinkExpire() *int32 {
+	return s.DownloadLinkExpire
+}
+
 func (s *ListFileUploadRequest) GetFileCategory() *string {
 	return s.FileCategory
 }
@@ -106,6 +113,11 @@ func (s *ListFileUploadRequest) SetCallFrom(v string) *ListFileUploadRequest {
 
 func (s *ListFileUploadRequest) SetDmsUnit(v string) *ListFileUploadRequest {
 	s.DmsUnit = &v
+	return s
+}
+
+func (s *ListFileUploadRequest) SetDownloadLinkExpire(v int32) *ListFileUploadRequest {
+	s.DownloadLinkExpire = &v
 	return s
 }
 
