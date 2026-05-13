@@ -518,6 +518,10 @@ func (client *Client) CreateUserExclusiveCredentialWithOptions(instanceId *strin
 		body["credentialContent"] = request.CredentialContent
 	}
 
+	if !dara.IsNil(request.CredentialExternalId) {
+		body["credentialExternalId"] = request.CredentialExternalId
+	}
+
 	if !dara.IsNil(request.CredentialIdentifier) {
 		body["credentialIdentifier"] = request.CredentialIdentifier
 	}

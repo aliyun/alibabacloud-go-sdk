@@ -11,6 +11,8 @@ type iCreateUserExclusiveCredentialRequest interface {
 	GoString() string
 	SetCredentialContent(v *CreateUserExclusiveCredentialRequestCredentialContent) *CreateUserExclusiveCredentialRequest
 	GetCredentialContent() *CreateUserExclusiveCredentialRequestCredentialContent
+	SetCredentialExternalId(v string) *CreateUserExclusiveCredentialRequest
+	GetCredentialExternalId() *string
 	SetCredentialIdentifier(v string) *CreateUserExclusiveCredentialRequest
 	GetCredentialIdentifier() *string
 	SetCredentialName(v string) *CreateUserExclusiveCredentialRequest
@@ -25,7 +27,8 @@ type iCreateUserExclusiveCredentialRequest interface {
 
 type CreateUserExclusiveCredentialRequest struct {
 	// This parameter is required.
-	CredentialContent *CreateUserExclusiveCredentialRequestCredentialContent `json:"credentialContent,omitempty" xml:"credentialContent,omitempty" type:"Struct"`
+	CredentialContent    *CreateUserExclusiveCredentialRequestCredentialContent `json:"credentialContent,omitempty" xml:"credentialContent,omitempty" type:"Struct"`
+	CredentialExternalId *string                                                `json:"credentialExternalId,omitempty" xml:"credentialExternalId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -66,6 +69,10 @@ func (s *CreateUserExclusiveCredentialRequest) GetCredentialContent() *CreateUse
 	return s.CredentialContent
 }
 
+func (s *CreateUserExclusiveCredentialRequest) GetCredentialExternalId() *string {
+	return s.CredentialExternalId
+}
+
 func (s *CreateUserExclusiveCredentialRequest) GetCredentialIdentifier() *string {
 	return s.CredentialIdentifier
 }
@@ -88,6 +95,11 @@ func (s *CreateUserExclusiveCredentialRequest) GetDescription() *string {
 
 func (s *CreateUserExclusiveCredentialRequest) SetCredentialContent(v *CreateUserExclusiveCredentialRequestCredentialContent) *CreateUserExclusiveCredentialRequest {
 	s.CredentialContent = v
+	return s
+}
+
+func (s *CreateUserExclusiveCredentialRequest) SetCredentialExternalId(v string) *CreateUserExclusiveCredentialRequest {
+	s.CredentialExternalId = &v
 	return s
 }
 
