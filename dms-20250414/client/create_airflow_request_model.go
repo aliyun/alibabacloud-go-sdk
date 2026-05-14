@@ -11,14 +11,22 @@ type iCreateAirflowRequest interface {
 	GoString() string
 	SetAirflowName(v string) *CreateAirflowRequest
 	GetAirflowName() *string
+	SetAirflowVersion(v string) *CreateAirflowRequest
+	GetAirflowVersion() *string
 	SetAppSpec(v string) *CreateAirflowRequest
 	GetAppSpec() *string
 	SetClientToken(v string) *CreateAirflowRequest
 	GetClientToken() *string
 	SetDagsDir(v string) *CreateAirflowRequest
 	GetDagsDir() *string
+	SetDataMountInfoList(v []*DataMountInfo) *CreateAirflowRequest
+	GetDataMountInfoList() []*DataMountInfo
 	SetDescription(v string) *CreateAirflowRequest
 	GetDescription() *string
+	SetEnableServerless(v bool) *CreateAirflowRequest
+	GetEnableServerless() *bool
+	SetGracefulShutdownTimeout(v int32) *CreateAirflowRequest
+	GetGracefulShutdownTimeout() *int32
 	SetOssBucketName(v string) *CreateAirflowRequest
 	GetOssBucketName() *string
 	SetOssPath(v string) *CreateAirflowRequest
@@ -50,6 +58,10 @@ type CreateAirflowRequest struct {
 	//
 	// testairflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
+	// example:
+	//
+	// 3.1
+	AirflowVersion *string `json:"AirflowVersion,omitempty" xml:"AirflowVersion,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -63,13 +75,17 @@ type CreateAirflowRequest struct {
 	// example:
 	//
 	// default/dags
-	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
-	// This parameter is required.
-	//
+	DagsDir           *string          `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// order scheduler
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	// example:
+	//
+	// 60
+	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -126,8 +142,6 @@ type CreateAirflowRequest struct {
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -146,6 +160,10 @@ func (s *CreateAirflowRequest) GetAirflowName() *string {
 	return s.AirflowName
 }
 
+func (s *CreateAirflowRequest) GetAirflowVersion() *string {
+	return s.AirflowVersion
+}
+
 func (s *CreateAirflowRequest) GetAppSpec() *string {
 	return s.AppSpec
 }
@@ -158,8 +176,20 @@ func (s *CreateAirflowRequest) GetDagsDir() *string {
 	return s.DagsDir
 }
 
+func (s *CreateAirflowRequest) GetDataMountInfoList() []*DataMountInfo {
+	return s.DataMountInfoList
+}
+
 func (s *CreateAirflowRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateAirflowRequest) GetEnableServerless() *bool {
+	return s.EnableServerless
+}
+
+func (s *CreateAirflowRequest) GetGracefulShutdownTimeout() *int32 {
+	return s.GracefulShutdownTimeout
 }
 
 func (s *CreateAirflowRequest) GetOssBucketName() *string {
@@ -211,6 +241,11 @@ func (s *CreateAirflowRequest) SetAirflowName(v string) *CreateAirflowRequest {
 	return s
 }
 
+func (s *CreateAirflowRequest) SetAirflowVersion(v string) *CreateAirflowRequest {
+	s.AirflowVersion = &v
+	return s
+}
+
 func (s *CreateAirflowRequest) SetAppSpec(v string) *CreateAirflowRequest {
 	s.AppSpec = &v
 	return s
@@ -226,8 +261,23 @@ func (s *CreateAirflowRequest) SetDagsDir(v string) *CreateAirflowRequest {
 	return s
 }
 
+func (s *CreateAirflowRequest) SetDataMountInfoList(v []*DataMountInfo) *CreateAirflowRequest {
+	s.DataMountInfoList = v
+	return s
+}
+
 func (s *CreateAirflowRequest) SetDescription(v string) *CreateAirflowRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAirflowRequest) SetEnableServerless(v bool) *CreateAirflowRequest {
+	s.EnableServerless = &v
+	return s
+}
+
+func (s *CreateAirflowRequest) SetGracefulShutdownTimeout(v int32) *CreateAirflowRequest {
+	s.GracefulShutdownTimeout = &v
 	return s
 }
 
@@ -287,5 +337,14 @@ func (s *CreateAirflowRequest) SetZoneId(v string) *CreateAirflowRequest {
 }
 
 func (s *CreateAirflowRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataMountInfoList != nil {
+		for _, item := range s.DataMountInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

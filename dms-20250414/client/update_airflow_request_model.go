@@ -19,8 +19,14 @@ type iUpdateAirflowRequest interface {
 	GetClientToken() *string
 	SetDagsDir(v string) *UpdateAirflowRequest
 	GetDagsDir() *string
+	SetDataMountInfoList(v []*DataMountInfo) *UpdateAirflowRequest
+	GetDataMountInfoList() []*DataMountInfo
 	SetDescription(v string) *UpdateAirflowRequest
 	GetDescription() *string
+	SetEnableServerless(v bool) *UpdateAirflowRequest
+	GetEnableServerless() *bool
+	SetGracefulShutdownTimeout(v int32) *UpdateAirflowRequest
+	GetGracefulShutdownTimeout() *int32
 	SetPluginsDir(v string) *UpdateAirflowRequest
 	GetPluginsDir() *string
 	SetRequirementFile(v string) *UpdateAirflowRequest
@@ -55,11 +61,17 @@ type UpdateAirflowRequest struct {
 	// example:
 	//
 	// default/dags
-	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DagsDir           *string          `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// test airflow
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	// example:
+	//
+	// 60
+	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
 	// example:
 	//
 	// default/plugins
@@ -112,8 +124,20 @@ func (s *UpdateAirflowRequest) GetDagsDir() *string {
 	return s.DagsDir
 }
 
+func (s *UpdateAirflowRequest) GetDataMountInfoList() []*DataMountInfo {
+	return s.DataMountInfoList
+}
+
 func (s *UpdateAirflowRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdateAirflowRequest) GetEnableServerless() *bool {
+	return s.EnableServerless
+}
+
+func (s *UpdateAirflowRequest) GetGracefulShutdownTimeout() *int32 {
+	return s.GracefulShutdownTimeout
 }
 
 func (s *UpdateAirflowRequest) GetPluginsDir() *string {
@@ -161,8 +185,23 @@ func (s *UpdateAirflowRequest) SetDagsDir(v string) *UpdateAirflowRequest {
 	return s
 }
 
+func (s *UpdateAirflowRequest) SetDataMountInfoList(v []*DataMountInfo) *UpdateAirflowRequest {
+	s.DataMountInfoList = v
+	return s
+}
+
 func (s *UpdateAirflowRequest) SetDescription(v string) *UpdateAirflowRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAirflowRequest) SetEnableServerless(v bool) *UpdateAirflowRequest {
+	s.EnableServerless = &v
+	return s
+}
+
+func (s *UpdateAirflowRequest) SetGracefulShutdownTimeout(v int32) *UpdateAirflowRequest {
+	s.GracefulShutdownTimeout = &v
 	return s
 }
 
@@ -192,5 +231,14 @@ func (s *UpdateAirflowRequest) SetWorkspaceId(v string) *UpdateAirflowRequest {
 }
 
 func (s *UpdateAirflowRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataMountInfoList != nil {
+		for _, item := range s.DataMountInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

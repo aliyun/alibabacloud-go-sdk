@@ -288,21 +288,31 @@ func (client *Client) BatchUpdateDataLakePartitionsWithContext(ctx context.Conte
 //
 // 创建Airflow
 //
-// @param request - CreateAirflowRequest
+// @param tmpReq - CreateAirflowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAirflowResponse
-func (client *Client) CreateAirflowWithContext(ctx context.Context, request *CreateAirflowRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowResponse, _err error) {
+func (client *Client) CreateAirflowWithContext(ctx context.Context, tmpReq *CreateAirflowRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateAirflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataMountInfoList) {
+		request.DataMountInfoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataMountInfoList, dara.String("DataMountInfoList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowName) {
 		query["AirflowName"] = request.AirflowName
+	}
+
+	if !dara.IsNil(request.AirflowVersion) {
+		query["AirflowVersion"] = request.AirflowVersion
 	}
 
 	if !dara.IsNil(request.AppSpec) {
@@ -317,8 +327,20 @@ func (client *Client) CreateAirflowWithContext(ctx context.Context, request *Cre
 		query["DagsDir"] = request.DagsDir
 	}
 
+	if !dara.IsNil(request.DataMountInfoListShrink) {
+		query["DataMountInfoList"] = request.DataMountInfoListShrink
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableServerless) {
+		query["EnableServerless"] = request.EnableServerless
+	}
+
+	if !dara.IsNil(request.GracefulShutdownTimeout) {
+		query["GracefulShutdownTimeout"] = request.GracefulShutdownTimeout
 	}
 
 	if !dara.IsNil(request.OssBucketName) {
@@ -3915,18 +3937,24 @@ func (client *Client) SetWorkspaceCodePublishSettingWithContext(ctx context.Cont
 //
 // 更新UpdateAirflow
 //
-// @param request - UpdateAirflowRequest
+// @param tmpReq - UpdateAirflowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAirflowResponse
-func (client *Client) UpdateAirflowWithContext(ctx context.Context, request *UpdateAirflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateAirflowResponse, _err error) {
+func (client *Client) UpdateAirflowWithContext(ctx context.Context, tmpReq *UpdateAirflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateAirflowResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateAirflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataMountInfoList) {
+		request.DataMountInfoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataMountInfoList, dara.String("DataMountInfoList"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AirflowId) {
 		query["AirflowId"] = request.AirflowId
@@ -3948,8 +3976,20 @@ func (client *Client) UpdateAirflowWithContext(ctx context.Context, request *Upd
 		query["DagsDir"] = request.DagsDir
 	}
 
+	if !dara.IsNil(request.DataMountInfoListShrink) {
+		query["DataMountInfoList"] = request.DataMountInfoListShrink
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableServerless) {
+		query["EnableServerless"] = request.EnableServerless
+	}
+
+	if !dara.IsNil(request.GracefulShutdownTimeout) {
+		query["GracefulShutdownTimeout"] = request.GracefulShutdownTimeout
 	}
 
 	if !dara.IsNil(request.PluginsDir) {

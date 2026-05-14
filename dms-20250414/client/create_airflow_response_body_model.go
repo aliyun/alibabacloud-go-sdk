@@ -144,16 +144,22 @@ type CreateAirflowResponseBodyRoot struct {
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
 	// example:
 	//
+	// 3.1
+	AirflowVersion *string `json:"AirflowVersion,omitempty" xml:"AirflowVersion,omitempty"`
+	// example:
+	//
 	// SMALL
 	AppSpec *string `json:"AppSpec,omitempty" xml:"AppSpec,omitempty"`
 	// example:
 	//
 	// airflow
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType          *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
 	// example:
 	//
 	// default/dags
-	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DagsDir           *string          `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vpc not found
@@ -161,11 +167,16 @@ type CreateAirflowResponseBodyRoot struct {
 	// example:
 	//
 	// order scheduler
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// example:
 	//
 	// 2025-08-12T05:46:01.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 60
+	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
 	// example:
 	//
 	// oss-test
@@ -234,6 +245,10 @@ func (s *CreateAirflowResponseBodyRoot) GetAirflowName() *string {
 	return s.AirflowName
 }
 
+func (s *CreateAirflowResponseBodyRoot) GetAirflowVersion() *string {
+	return s.AirflowVersion
+}
+
 func (s *CreateAirflowResponseBodyRoot) GetAppSpec() *string {
 	return s.AppSpec
 }
@@ -242,8 +257,16 @@ func (s *CreateAirflowResponseBodyRoot) GetAppType() *string {
 	return s.AppType
 }
 
+func (s *CreateAirflowResponseBodyRoot) GetCustomAirflowCfg() []*string {
+	return s.CustomAirflowCfg
+}
+
 func (s *CreateAirflowResponseBodyRoot) GetDagsDir() *string {
 	return s.DagsDir
+}
+
+func (s *CreateAirflowResponseBodyRoot) GetDataMountInfoList() []*DataMountInfo {
+	return s.DataMountInfoList
 }
 
 func (s *CreateAirflowResponseBodyRoot) GetDeployErrorMsg() *string {
@@ -254,8 +277,16 @@ func (s *CreateAirflowResponseBodyRoot) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateAirflowResponseBodyRoot) GetEnableServerless() *bool {
+	return s.EnableServerless
+}
+
 func (s *CreateAirflowResponseBodyRoot) GetGmtCreated() *string {
 	return s.GmtCreated
+}
+
+func (s *CreateAirflowResponseBodyRoot) GetGracefulShutdownTimeout() *int32 {
+	return s.GracefulShutdownTimeout
 }
 
 func (s *CreateAirflowResponseBodyRoot) GetOssBucketName() *string {
@@ -316,6 +347,11 @@ func (s *CreateAirflowResponseBodyRoot) SetAirflowName(v string) *CreateAirflowR
 	return s
 }
 
+func (s *CreateAirflowResponseBodyRoot) SetAirflowVersion(v string) *CreateAirflowResponseBodyRoot {
+	s.AirflowVersion = &v
+	return s
+}
+
 func (s *CreateAirflowResponseBodyRoot) SetAppSpec(v string) *CreateAirflowResponseBodyRoot {
 	s.AppSpec = &v
 	return s
@@ -326,8 +362,18 @@ func (s *CreateAirflowResponseBodyRoot) SetAppType(v string) *CreateAirflowRespo
 	return s
 }
 
+func (s *CreateAirflowResponseBodyRoot) SetCustomAirflowCfg(v []*string) *CreateAirflowResponseBodyRoot {
+	s.CustomAirflowCfg = v
+	return s
+}
+
 func (s *CreateAirflowResponseBodyRoot) SetDagsDir(v string) *CreateAirflowResponseBodyRoot {
 	s.DagsDir = &v
+	return s
+}
+
+func (s *CreateAirflowResponseBodyRoot) SetDataMountInfoList(v []*DataMountInfo) *CreateAirflowResponseBodyRoot {
+	s.DataMountInfoList = v
 	return s
 }
 
@@ -341,8 +387,18 @@ func (s *CreateAirflowResponseBodyRoot) SetDescription(v string) *CreateAirflowR
 	return s
 }
 
+func (s *CreateAirflowResponseBodyRoot) SetEnableServerless(v bool) *CreateAirflowResponseBodyRoot {
+	s.EnableServerless = &v
+	return s
+}
+
 func (s *CreateAirflowResponseBodyRoot) SetGmtCreated(v string) *CreateAirflowResponseBodyRoot {
 	s.GmtCreated = &v
+	return s
+}
+
+func (s *CreateAirflowResponseBodyRoot) SetGracefulShutdownTimeout(v int32) *CreateAirflowResponseBodyRoot {
+	s.GracefulShutdownTimeout = &v
 	return s
 }
 
@@ -407,5 +463,14 @@ func (s *CreateAirflowResponseBodyRoot) SetZoneId(v string) *CreateAirflowRespon
 }
 
 func (s *CreateAirflowResponseBodyRoot) Validate() error {
-	return dara.Validate(s)
+	if s.DataMountInfoList != nil {
+		for _, item := range s.DataMountInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
