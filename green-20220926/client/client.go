@@ -5253,6 +5253,10 @@ func (client *Client) ListServiceConfigsWithOptions(request *ListServiceConfigsR
 		query["Classify"] = request.Classify
 	}
 
+	if !dara.IsNil(request.ProtectionType) {
+		query["ProtectionType"] = request.ProtectionType
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}

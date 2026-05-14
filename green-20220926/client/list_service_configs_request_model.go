@@ -11,6 +11,8 @@ type iListServiceConfigsRequest interface {
 	GoString() string
 	SetClassify(v string) *ListServiceConfigsRequest
 	GetClassify() *string
+	SetProtectionType(v string) *ListServiceConfigsRequest
+	GetProtectionType() *string
 	SetRegionId(v string) *ListServiceConfigsRequest
 	GetRegionId() *string
 	SetResourceType(v string) *ListServiceConfigsRequest
@@ -25,7 +27,8 @@ type ListServiceConfigsRequest struct {
 	// example:
 	//
 	// guard-scene
-	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	Classify       *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	ProtectionType *string `json:"ProtectionType,omitempty" xml:"ProtectionType,omitempty"`
 	// Region ID.
 	//
 	// example:
@@ -58,6 +61,10 @@ func (s *ListServiceConfigsRequest) GetClassify() *string {
 	return s.Classify
 }
 
+func (s *ListServiceConfigsRequest) GetProtectionType() *string {
+	return s.ProtectionType
+}
+
 func (s *ListServiceConfigsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -72,6 +79,11 @@ func (s *ListServiceConfigsRequest) GetUseStatus() *string {
 
 func (s *ListServiceConfigsRequest) SetClassify(v string) *ListServiceConfigsRequest {
 	s.Classify = &v
+	return s
+}
+
+func (s *ListServiceConfigsRequest) SetProtectionType(v string) *ListServiceConfigsRequest {
+	s.ProtectionType = &v
 	return s
 }
 
