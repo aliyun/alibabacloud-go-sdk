@@ -9,6 +9,8 @@ type iListHttpApiRoutesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBackendServiceName(v string) *ListHttpApiRoutesRequest
+	GetBackendServiceName() *string
 	SetConsumerAuthorizationRuleId(v string) *ListHttpApiRoutesRequest
 	GetConsumerAuthorizationRuleId() *string
 	SetDeployStatuses(v string) *ListHttpApiRoutesRequest
@@ -40,6 +42,10 @@ type iListHttpApiRoutesRequest interface {
 }
 
 type ListHttpApiRoutesRequest struct {
+	// example:
+	//
+	// test-svc
+	BackendServiceName *string `json:"backendServiceName,omitempty" xml:"backendServiceName,omitempty"`
 	// The string that is used to filter routes based on consumer authentication rules. Only authorized APIs are returned.
 	//
 	// example:
@@ -150,6 +156,10 @@ func (s ListHttpApiRoutesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListHttpApiRoutesRequest) GetBackendServiceName() *string {
+	return s.BackendServiceName
+}
+
 func (s *ListHttpApiRoutesRequest) GetConsumerAuthorizationRuleId() *string {
 	return s.ConsumerAuthorizationRuleId
 }
@@ -204,6 +214,11 @@ func (s *ListHttpApiRoutesRequest) GetWithConsumerInfoById() *string {
 
 func (s *ListHttpApiRoutesRequest) GetWithPluginAttachmentByPluginId() *string {
 	return s.WithPluginAttachmentByPluginId
+}
+
+func (s *ListHttpApiRoutesRequest) SetBackendServiceName(v string) *ListHttpApiRoutesRequest {
+	s.BackendServiceName = &v
+	return s
 }
 
 func (s *ListHttpApiRoutesRequest) SetConsumerAuthorizationRuleId(v string) *ListHttpApiRoutesRequest {

@@ -3626,6 +3626,10 @@ func (client *Client) ListHttpApiRoutesWithContext(ctx context.Context, httpApiI
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackendServiceName) {
+		query["backendServiceName"] = request.BackendServiceName
+	}
+
 	if !dara.IsNil(request.ConsumerAuthorizationRuleId) {
 		query["consumerAuthorizationRuleId"] = request.ConsumerAuthorizationRuleId
 	}
