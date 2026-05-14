@@ -21,6 +21,8 @@ type iUploadPartInfo interface {
 	GetPartNumber() *int32
 	SetPartSize(v int64) *UploadPartInfo
 	GetPartSize() *int64
+	SetUploadFormInfo(v *UploadFormInfo) *UploadPartInfo
+	GetUploadFormInfo() *UploadFormInfo
 	SetUploadUrl(v string) *UploadPartInfo
 	GetUploadUrl() *string
 }
@@ -55,7 +57,8 @@ type UploadPartInfo struct {
 	// example:
 	//
 	// 1024
-	PartSize *int64 `json:"part_size,omitempty" xml:"part_size,omitempty"`
+	PartSize       *int64          `json:"part_size,omitempty" xml:"part_size,omitempty"`
+	UploadFormInfo *UploadFormInfo `json:"upload_form_info,omitempty" xml:"upload_form_info,omitempty"`
 	// The upload URL. By default, the validity period of the URL is 15 minutes. If the URL expires, you must call the GetUploadUrl operation to obtain another URL. If the intelligent domain name feature is enabled, the internal_upload_url value is returned within the parameter based on the request.
 	//
 	// This parameter is required.
@@ -98,6 +101,10 @@ func (s *UploadPartInfo) GetPartSize() *int64 {
 	return s.PartSize
 }
 
+func (s *UploadPartInfo) GetUploadFormInfo() *UploadFormInfo {
+	return s.UploadFormInfo
+}
+
 func (s *UploadPartInfo) GetUploadUrl() *string {
 	return s.UploadUrl
 }
@@ -132,6 +139,11 @@ func (s *UploadPartInfo) SetPartSize(v int64) *UploadPartInfo {
 	return s
 }
 
+func (s *UploadPartInfo) SetUploadFormInfo(v *UploadFormInfo) *UploadPartInfo {
+	s.UploadFormInfo = v
+	return s
+}
+
 func (s *UploadPartInfo) SetUploadUrl(v string) *UploadPartInfo {
 	s.UploadUrl = &v
 	return s
@@ -145,6 +157,11 @@ func (s *UploadPartInfo) Validate() error {
 	}
 	if s.ParallelSha256Ctx != nil {
 		if err := s.ParallelSha256Ctx.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UploadFormInfo != nil {
+		if err := s.UploadFormInfo.Validate(); err != nil {
 			return err
 		}
 	}

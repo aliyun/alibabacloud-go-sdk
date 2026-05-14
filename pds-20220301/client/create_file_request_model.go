@@ -45,6 +45,8 @@ type iCreateFileRequest interface {
 	GetSize() *int64
 	SetType(v string) *CreateFileRequest
 	GetType() *string
+	SetUploadType(v string) *CreateFileRequest
+	GetUploadType() *string
 	SetUserTags(v []*UserTag) *CreateFileRequest
 	GetUserTags() []*UserTag
 }
@@ -212,6 +214,10 @@ type CreateFileRequest struct {
 	//
 	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// multipart
+	UploadType *string `json:"upload_type,omitempty" xml:"upload_type,omitempty"`
 	// The custom tags. You can specify up to 1,000 tags.
 	UserTags []*UserTag `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
 }
@@ -294,6 +300,10 @@ func (s *CreateFileRequest) GetSize() *int64 {
 
 func (s *CreateFileRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateFileRequest) GetUploadType() *string {
+	return s.UploadType
 }
 
 func (s *CreateFileRequest) GetUserTags() []*UserTag {
@@ -387,6 +397,11 @@ func (s *CreateFileRequest) SetSize(v int64) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetType(v string) *CreateFileRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetUploadType(v string) *CreateFileRequest {
+	s.UploadType = &v
 	return s
 }
 

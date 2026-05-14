@@ -1368,6 +1368,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers 
 		body["type"] = request.Type
 	}
 
+	if !dara.IsNil(request.UploadType) {
+		body["upload_type"] = request.UploadType
+	}
+
 	if !dara.IsNil(request.UserTags) {
 		body["user_tags"] = request.UserTags
 	}
