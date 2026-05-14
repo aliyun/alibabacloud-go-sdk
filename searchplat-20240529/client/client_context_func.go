@@ -876,6 +876,53 @@ func (client *Client) GetImageObjectDetectionWithContext(ctx context.Context, wo
 
 // Summary:
 //
+// 获取JinaAiReader解析结果
+//
+// @param request - GetJinaAiReaderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJinaAiReaderResponse
+func (client *Client) GetJinaAiReaderWithContext(ctx context.Context, workspaceName *string, serviceId *string, request *GetJinaAiReaderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJinaAiReaderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		body["url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetJinaAiReader"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/jina-ai-reader/" + dara.StringValue(serviceId)),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetJinaAiReaderResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看memory详情
 //
 // @param request - GetMemoryRequest
