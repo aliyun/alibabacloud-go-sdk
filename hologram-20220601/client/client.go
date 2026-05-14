@@ -128,6 +128,158 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
+// 创建db
+//
+// @param request - CreateDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabaseWithOptions(instanceId *string, request *CreateDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.PermissionModel) {
+		body["permissionModel"] = request.PermissionModel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatabase"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/createDatabase"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建db
+//
+// @param request - CreateDatabaseRequest
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabase(instanceId *string, request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CreateDatabaseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部db
+//
+// @param request - CreateExternalDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExternalDatabaseResponse
+func (client *Client) CreateExternalDatabaseWithOptions(instanceId *string, request *CreateExternalDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExternalDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		body["databaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.DefaultUserMapping) {
+		body["defaultUserMapping"] = request.DefaultUserMapping
+	}
+
+	if !dara.IsNil(request.ExternalConfig) {
+		body["externalConfig"] = request.ExternalConfig
+	}
+
+	if !dara.IsNil(request.MetastoreType) {
+		body["metastoreType"] = request.MetastoreType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExternalDatabase"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/createExternalDatabase"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExternalDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部db
+//
+// @param request - CreateExternalDatabaseRequest
+//
+// @return CreateExternalDatabaseResponse
+func (client *Client) CreateExternalDatabase(instanceId *string, request *CreateExternalDatabaseRequest) (_result *CreateExternalDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateExternalDatabaseResponse{}
+	_body, _err := client.CreateExternalDatabaseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a virtual warehouse.
 //
 // @param request - CreateHoloWarehouseRequest
@@ -424,6 +576,112 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
+// 创建模型服务
+//
+// @param request - CreateModelServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelServiceResponse
+func (client *Client) CreateModelServiceWithOptions(instanceId *string, request *CreateModelServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["apiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.Cpu) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !dara.IsNil(request.Gpu) {
+		body["gpu"] = request.Gpu
+	}
+
+	if !dara.IsNil(request.GpuMemory) {
+		body["gpuMemory"] = request.GpuMemory
+	}
+
+	if !dara.IsNil(request.Memory) {
+		body["memory"] = request.Memory
+	}
+
+	if !dara.IsNil(request.ModelParams) {
+		body["modelParams"] = request.ModelParams
+	}
+
+	if !dara.IsNil(request.ModelServiceName) {
+		body["modelServiceName"] = request.ModelServiceName
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		body["modelType"] = request.ModelType
+	}
+
+	if !dara.IsNil(request.Provider) {
+		body["provider"] = request.Provider
+	}
+
+	if !dara.IsNil(request.ServiceCount) {
+		body["serviceCount"] = request.ServiceCount
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["taskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelService"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/createModelService"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - CreateModelServiceRequest
+//
+// @return CreateModelServiceResponse
+func (client *Client) CreateModelService(instanceId *string, request *CreateModelServiceRequest) (_result *CreateModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelServiceResponse{}
+	_body, _err := client.CreateModelServiceWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加用户
 //
 // @param request - CreateUserRequest
@@ -485,6 +743,168 @@ func (client *Client) CreateUser(instanceId *string, request *CreateUserRequest)
 	headers := make(map[string]*string)
 	_result = &CreateUserResponse{}
 	_body, _err := client.CreateUserWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建warehouse
+//
+// @param request - CreateWarehouseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWarehouseResponse
+func (client *Client) CreateWarehouseWithOptions(instanceId *string, request *CreateWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Cpu) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !dara.IsNil(request.WarehouseName) {
+		body["warehouseName"] = request.WarehouseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWarehouse"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/warehouse/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建warehouse
+//
+// @param request - CreateWarehouseRequest
+//
+// @return CreateWarehouseResponse
+func (client *Client) CreateWarehouse(instanceId *string, request *CreateWarehouseRequest) (_result *CreateWarehouseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWarehouseResponse{}
+	_body, _err := client.CreateWarehouseWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分时弹性计划
+//
+// @param request - CreateWarehouseScheduleTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWarehouseScheduleTaskResponse
+func (client *Client) CreateWarehouseScheduleTaskWithOptions(instanceId *string, request *CreateWarehouseScheduleTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWarehouseScheduleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ElasticCu) {
+		body["elasticCu"] = request.ElasticCu
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		body["warehouseId"] = request.WarehouseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWarehouseScheduleTask"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/createWarehouseScheduleTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWarehouseScheduleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分时弹性计划
+//
+// @param request - CreateWarehouseScheduleTaskRequest
+//
+// @return CreateWarehouseScheduleTaskResponse
+func (client *Client) CreateWarehouseScheduleTask(instanceId *string, request *CreateWarehouseScheduleTaskRequest) (_result *CreateWarehouseScheduleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWarehouseScheduleTaskResponse{}
+	_body, _err := client.CreateWarehouseScheduleTaskWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -642,6 +1062,208 @@ func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstance
 
 // Summary:
 //
+// 删除模型资源
+//
+// @param request - DeleteModelResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelResourceResponse
+func (client *Client) DeleteModelResourceWithOptions(instanceId *string, request *DeleteModelResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AiInstanceId) {
+		query["aiInstanceId"] = request.AiInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelResource"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/deleteModelResource"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型资源
+//
+// @param request - DeleteModelResourceRequest
+//
+// @return DeleteModelResourceResponse
+func (client *Client) DeleteModelResource(instanceId *string, request *DeleteModelResourceRequest) (_result *DeleteModelResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelResourceResponse{}
+	_body, _err := client.DeleteModelResourceWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - DeleteModelServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelServiceResponse
+func (client *Client) DeleteModelServiceWithOptions(instanceId *string, request *DeleteModelServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelServiceName) {
+		query["modelServiceName"] = request.ModelServiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelService"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/deleteModelService"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - DeleteModelServiceRequest
+//
+// @return DeleteModelServiceResponse
+func (client *Client) DeleteModelService(instanceId *string, request *DeleteModelServiceRequest) (_result *DeleteModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelServiceResponse{}
+	_body, _err := client.DeleteModelServiceWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除计算组弹性计划
+//
+// @param request - DeleteWarehouseScheduleTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWarehouseScheduleTaskResponse
+func (client *Client) DeleteWarehouseScheduleTaskWithOptions(instanceId *string, request *DeleteWarehouseScheduleTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWarehouseScheduleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["id"] = request.Id
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		body["warehouseId"] = request.WarehouseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWarehouseScheduleTask"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/deleteWarehouseScheduleTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWarehouseScheduleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除计算组弹性计划
+//
+// @param request - DeleteWarehouseScheduleTaskRequest
+//
+// @return DeleteWarehouseScheduleTaskResponse
+func (client *Client) DeleteWarehouseScheduleTask(instanceId *string, request *DeleteWarehouseScheduleTaskRequest) (_result *DeleteWarehouseScheduleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWarehouseScheduleTaskResponse{}
+	_body, _err := client.DeleteWarehouseScheduleTaskWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables data lake acceleration.
 //
 // @param request - DisableHiveAccessRequest
@@ -749,6 +1371,72 @@ func (client *Client) DisableSSL(instanceId *string) (_result *DisableSSLRespons
 	headers := make(map[string]*string)
 	_result = &DisableSSLResponse{}
 	_body, _err := client.DisableSSLWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭自动弹性
+//
+// @param request - DisableWarehouseAutoScaleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableWarehouseAutoScaleResponse
+func (client *Client) DisableWarehouseAutoScaleWithOptions(instanceId *string, request *DisableWarehouseAutoScaleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableWarehouseAutoScaleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableWarehouseAutoScale"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/disableWarehouseAutoScale"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableWarehouseAutoScaleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭自动弹性
+//
+// @param request - DisableWarehouseAutoScaleRequest
+//
+// @return DisableWarehouseAutoScaleResponse
+func (client *Client) DisableWarehouseAutoScale(instanceId *string, request *DisableWarehouseAutoScaleRequest) (_result *DisableWarehouseAutoScaleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableWarehouseAutoScaleResponse{}
+	_body, _err := client.DisableWarehouseAutoScaleWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -944,6 +1632,76 @@ func (client *Client) EnableSSL(instanceId *string) (_result *EnableSSLResponse,
 
 // Summary:
 //
+// 开启自动弹性
+//
+// @param request - EnableWarehouseAutoScaleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableWarehouseAutoScaleResponse
+func (client *Client) EnableWarehouseAutoScaleWithOptions(instanceId *string, request *EnableWarehouseAutoScaleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableWarehouseAutoScaleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxClusterCount) {
+		body["maxClusterCount"] = request.MaxClusterCount
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableWarehouseAutoScale"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/enableWarehouseAutoScale"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableWarehouseAutoScaleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启自动弹性
+//
+// @param request - EnableWarehouseAutoScaleRequest
+//
+// @return EnableWarehouseAutoScaleResponse
+func (client *Client) EnableWarehouseAutoScale(instanceId *string, request *EnableWarehouseAutoScaleRequest) (_result *EnableWarehouseAutoScaleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableWarehouseAutoScaleResponse{}
+	_body, _err := client.EnableWarehouseAutoScaleWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获得证书信息
 //
 // @param headers - map
@@ -1035,6 +1793,66 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 	headers := make(map[string]*string)
 	_result = &GetInstanceResponse{}
 	_body, _err := client.GetInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 模型信息
+//
+// @param request - GetInstanceModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceModelResponse
+func (client *Client) GetInstanceModelWithOptions(instanceId *string, request *GetInstanceModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceModel"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/getInstanceModel"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 模型信息
+//
+// @param request - GetInstanceModelRequest
+//
+// @return GetInstanceModelResponse
+func (client *Client) GetInstanceModel(instanceId *string, request *GetInstanceModelRequest) (_result *GetInstanceModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceModelResponse{}
+	_body, _err := client.GetInstanceModelWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1522,6 +2340,66 @@ func (client *Client) ListDatabases(instanceId *string, request *ListDatabasesRe
 
 // Summary:
 //
+// # AI资源列表
+//
+// @param request - ListInstanceModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceModelResponse
+func (client *Client) ListInstanceModelWithOptions(request *ListInstanceModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceModel"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/rpc/listInstanceModel"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AI资源列表
+//
+// @param request - ListInstanceModelRequest
+//
+// @return ListInstanceModelResponse
+func (client *Client) ListInstanceModel(request *ListInstanceModelRequest) (_result *ListInstanceModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceModelResponse{}
+	_body, _err := client.ListInstanceModelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of instances.
 //
 // @param request - ListInstancesRequest
@@ -1587,6 +2465,218 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	headers := make(map[string]*string)
 	_result = &ListInstancesResponse{}
 	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出模型列表
+//
+// @param request - ListModelCatalogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelCatalogResponse
+func (client *Client) ListModelCatalogWithOptions(instanceId *string, request *ListModelCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelCatalog"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/listModelCatalog"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出模型列表
+//
+// @param request - ListModelCatalogRequest
+//
+// @return ListModelCatalogResponse
+func (client *Client) ListModelCatalog(instanceId *string, request *ListModelCatalogRequest) (_result *ListModelCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelCatalogResponse{}
+	_body, _err := client.ListModelCatalogWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分时弹性日志
+//
+// @param request - ListWarehouseScheduleEventRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWarehouseScheduleEventResponse
+func (client *Client) ListWarehouseScheduleEventWithOptions(instanceId *string, request *ListWarehouseScheduleEventRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWarehouseScheduleEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ElasticType) {
+		body["elasticType"] = request.ElasticType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWarehouseScheduleEvent"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/listWarehouseScheduleEvent"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWarehouseScheduleEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分时弹性日志
+//
+// @param request - ListWarehouseScheduleEventRequest
+//
+// @return ListWarehouseScheduleEventResponse
+func (client *Client) ListWarehouseScheduleEvent(instanceId *string, request *ListWarehouseScheduleEventRequest) (_result *ListWarehouseScheduleEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWarehouseScheduleEventResponse{}
+	_body, _err := client.ListWarehouseScheduleEventWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计算分时弹性计划列表
+//
+// @param request - ListWarehouseScheduleTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWarehouseScheduleTaskResponse
+func (client *Client) ListWarehouseScheduleTaskWithOptions(instanceId *string, request *ListWarehouseScheduleTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWarehouseScheduleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWarehouseScheduleTask"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/listWarehouseScheduleTask"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWarehouseScheduleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计算分时弹性计划列表
+//
+// @param request - ListWarehouseScheduleTaskRequest
+//
+// @return ListWarehouseScheduleTaskResponse
+func (client *Client) ListWarehouseScheduleTask(instanceId *string, request *ListWarehouseScheduleTaskRequest) (_result *ListWarehouseScheduleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWarehouseScheduleTaskResponse{}
+	_body, _err := client.ListWarehouseScheduleTaskWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2831,6 +3921,174 @@ func (client *Client) UpdateInstanceNetworkType(instanceId *string, request *Upd
 	headers := make(map[string]*string)
 	_result = &UpdateInstanceNetworkTypeResponse{}
 	_body, _err := client.UpdateInstanceNetworkTypeWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - UpdateModelServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelServiceResponse
+func (client *Client) UpdateModelServiceWithOptions(instanceId *string, request *UpdateModelServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cpu) {
+		body["cpu"] = request.Cpu
+	}
+
+	if !dara.IsNil(request.Gpu) {
+		body["gpu"] = request.Gpu
+	}
+
+	if !dara.IsNil(request.Memory) {
+		body["memory"] = request.Memory
+	}
+
+	if !dara.IsNil(request.ModelServiceName) {
+		body["modelServiceName"] = request.ModelServiceName
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		body["modelType"] = request.ModelType
+	}
+
+	if !dara.IsNil(request.ServiceCount) {
+		body["serviceCount"] = request.ServiceCount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelService"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/updateModelService"),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - UpdateModelServiceRequest
+//
+// @return UpdateModelServiceResponse
+func (client *Client) UpdateModelService(instanceId *string, request *UpdateModelServiceRequest) (_result *UpdateModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelServiceResponse{}
+	_body, _err := client.UpdateModelServiceWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分时弹性计划
+//
+// @param request - UpdateWarehouseScheduleTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWarehouseScheduleTaskResponse
+func (client *Client) UpdateWarehouseScheduleTaskWithOptions(instanceId *string, request *UpdateWarehouseScheduleTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWarehouseScheduleTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ElasticCu) {
+		body["elasticCu"] = request.ElasticCu
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["id"] = request.Id
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		body["warehouseId"] = request.WarehouseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWarehouseScheduleTask"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/updateWarehouseScheduleTask"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWarehouseScheduleTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分时弹性计划
+//
+// @param request - UpdateWarehouseScheduleTaskRequest
+//
+// @return UpdateWarehouseScheduleTaskResponse
+func (client *Client) UpdateWarehouseScheduleTask(instanceId *string, request *UpdateWarehouseScheduleTaskRequest) (_result *UpdateWarehouseScheduleTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWarehouseScheduleTaskResponse{}
+	_body, _err := client.UpdateWarehouseScheduleTaskWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
