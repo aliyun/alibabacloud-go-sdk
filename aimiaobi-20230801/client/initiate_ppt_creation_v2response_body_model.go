@@ -123,6 +123,10 @@ func (s *InitiatePptCreationV2ResponseBody) Validate() error {
 type InitiatePptCreationV2ResponseBodyData struct {
 	// example:
 	//
+	// 本月版本内的配送额度已经用尽，超额使用将走按量后付费，下个月配送额度将重新下发；请知晓
+	Alert *string `json:"Alert,omitempty" xml:"Alert,omitempty"`
+	// example:
+	//
 	// S1X5ecouBztZelaQ
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// example:
@@ -155,6 +159,10 @@ func (s InitiatePptCreationV2ResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *InitiatePptCreationV2ResponseBodyData) GetAlert() *string {
+	return s.Alert
+}
+
 func (s *InitiatePptCreationV2ResponseBodyData) GetAppKey() *string {
 	return s.AppKey
 }
@@ -177,6 +185,11 @@ func (s *InitiatePptCreationV2ResponseBodyData) GetPptProcessId() *string {
 
 func (s *InitiatePptCreationV2ResponseBodyData) GetSignature() *string {
 	return s.Signature
+}
+
+func (s *InitiatePptCreationV2ResponseBodyData) SetAlert(v string) *InitiatePptCreationV2ResponseBodyData {
+	s.Alert = &v
+	return s
 }
 
 func (s *InitiatePptCreationV2ResponseBodyData) SetAppKey(v string) *InitiatePptCreationV2ResponseBodyData {

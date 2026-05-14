@@ -19,6 +19,8 @@ type iInitiatePptCreationV2Request interface {
 	GetPptTemplateId() *int32
 	SetPptTemplateType(v int32) *InitiatePptCreationV2Request
 	GetPptTemplateType() *int32
+	SetPptTitle(v string) *InitiatePptCreationV2Request
+	GetPptTitle() *string
 	SetProcessType(v int32) *InitiatePptCreationV2Request
 	GetProcessType() *int32
 	SetTaskId(v string) *InitiatePptCreationV2Request
@@ -45,6 +47,10 @@ type InitiatePptCreationV2Request struct {
 	//
 	// 1
 	PptTemplateType *int32 `json:"PptTemplateType,omitempty" xml:"PptTemplateType,omitempty"`
+	// example:
+	//
+	// 中国传统文化艺术的魅力
+	PptTitle *string `json:"PptTitle,omitempty" xml:"PptTitle,omitempty"`
 	// example:
 	//
 	// 1
@@ -89,6 +95,10 @@ func (s *InitiatePptCreationV2Request) GetPptTemplateType() *int32 {
 	return s.PptTemplateType
 }
 
+func (s *InitiatePptCreationV2Request) GetPptTitle() *string {
+	return s.PptTitle
+}
+
 func (s *InitiatePptCreationV2Request) GetProcessType() *int32 {
 	return s.ProcessType
 }
@@ -123,6 +133,11 @@ func (s *InitiatePptCreationV2Request) SetPptTemplateId(v int32) *InitiatePptCre
 
 func (s *InitiatePptCreationV2Request) SetPptTemplateType(v int32) *InitiatePptCreationV2Request {
 	s.PptTemplateType = &v
+	return s
+}
+
+func (s *InitiatePptCreationV2Request) SetPptTitle(v string) *InitiatePptCreationV2Request {
+	s.PptTitle = &v
 	return s
 }
 
