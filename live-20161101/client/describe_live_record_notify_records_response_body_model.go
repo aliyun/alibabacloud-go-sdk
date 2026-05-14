@@ -235,7 +235,8 @@ type DescribeLiveRecordNotifyRecordsResponseBodyCallbackList struct {
 	// example:
 	//
 	// http://learn.aliyundoc.com/examplecallback.action
-	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	NotifyUrl   *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The name of the live stream.
 	//
 	// example:
@@ -292,6 +293,10 @@ func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) GetNotifyUrl()
 	return s.NotifyUrl
 }
 
+func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) GetStreamName() *string {
 	return s.StreamName
 }
@@ -343,6 +348,11 @@ func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) SetNotifyType(
 
 func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) SetNotifyUrl(v string) *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList {
 	s.NotifyUrl = &v
+	return s
+}
+
+func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) SetStorageType(v string) *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList {
+	s.StorageType = &v
 	return s
 }
 

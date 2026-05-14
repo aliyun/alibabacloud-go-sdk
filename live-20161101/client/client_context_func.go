@@ -15142,6 +15142,10 @@ func (client *Client) DescribeLiveRecordNotifyRecordsWithContext(ctx context.Con
 		query["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
 	if !dara.IsNil(request.StreamName) {
 		query["StreamName"] = request.StreamName
 	}

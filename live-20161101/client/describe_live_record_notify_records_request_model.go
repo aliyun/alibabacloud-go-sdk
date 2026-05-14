@@ -27,6 +27,8 @@ type iDescribeLiveRecordNotifyRecordsRequest interface {
 	GetStartTime() *string
 	SetStatus(v string) *DescribeLiveRecordNotifyRecordsRequest
 	GetStatus() *string
+	SetStorageType(v string) *DescribeLiveRecordNotifyRecordsRequest
+	GetStorageType() *string
 	SetStreamName(v string) *DescribeLiveRecordNotifyRecordsRequest
 	GetStreamName() *string
 }
@@ -91,7 +93,8 @@ type DescribeLiveRecordNotifyRecordsRequest struct {
 	// example:
 	//
 	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The name of the live stream.
 	//
 	// example:
@@ -144,6 +147,10 @@ func (s *DescribeLiveRecordNotifyRecordsRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *DescribeLiveRecordNotifyRecordsRequest) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *DescribeLiveRecordNotifyRecordsRequest) GetStreamName() *string {
 	return s.StreamName
 }
@@ -190,6 +197,11 @@ func (s *DescribeLiveRecordNotifyRecordsRequest) SetStartTime(v string) *Describ
 
 func (s *DescribeLiveRecordNotifyRecordsRequest) SetStatus(v string) *DescribeLiveRecordNotifyRecordsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeLiveRecordNotifyRecordsRequest) SetStorageType(v string) *DescribeLiveRecordNotifyRecordsRequest {
+	s.StorageType = &v
 	return s
 }
 
