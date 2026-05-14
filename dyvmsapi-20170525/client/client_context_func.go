@@ -449,6 +449,2768 @@ func (client *Client) ChangeMediaTypeWithContext(ctx context.Context, request *C
 
 // Summary:
 //
+// Agent status monitoring.
+//
+// @param request - ClinkAgentStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkAgentStatusResponse
+func (client *Client) ClinkAgentStatusWithContext(ctx context.Context, request *ClinkAgentStatusRequest, runtime *dara.RuntimeOptions) (_result *ClinkAgentStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkAgentStatus"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkAgentStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status details of an agent.
+//
+// @param request - ClinkAgentStatusDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkAgentStatusDetailResponse
+func (client *Client) ClinkAgentStatusDetailWithContext(ctx context.Context, request *ClinkAgentStatusDetailRequest, runtime *dara.RuntimeOptions) (_result *ClinkAgentStatusDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkAgentStatusDetail"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkAgentStatusDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Attach an agent phone.
+//
+// @param request - ClinkBindClientTelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkBindClientTelResponse
+func (client *Client) ClinkBindClientTelWithContext(ctx context.Context, request *ClinkBindClientTelRequest, runtime *dara.RuntimeOptions) (_result *ClinkBindClientTelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.IsBind) {
+		query["IsBind"] = request.IsBind
+	}
+
+	if !dara.IsNil(request.IsReserveTel) {
+		query["IsReserveTel"] = request.IsReserveTel
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Tel) {
+		query["Tel"] = request.Tel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkBindClientTel"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkBindClientTelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an outbound call record.
+//
+// @param request - ClinkCdrObDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkCdrObDetailsResponse
+func (client *Client) ClinkCdrObDetailsWithContext(ctx context.Context, request *ClinkCdrObDetailsRequest, runtime *dara.RuntimeOptions) (_result *ClinkCdrObDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkCdrObDetails"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkCdrObDetailsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Add an agent.
+//
+// @param tmpReq - ClinkCreateClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkCreateClientResponse
+func (client *Client) ClinkCreateClientWithContext(ctx context.Context, tmpReq *ClinkCreateClientRequest, runtime *dara.RuntimeOptions) (_result *ClinkCreateClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ClinkCreateClientShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Clid) {
+		request.ClidShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Clid, dara.String("Clid"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ClidArea) {
+		request.ClidAreaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClidArea, dara.String("ClidArea"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ClidDefault) {
+		request.ClidDefaultShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClidDefault, dara.String("ClidDefault"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CloudNumberModes) {
+		request.CloudNumberModesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CloudNumberModes, dara.String("CloudNumberModes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Permission) {
+		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permission, dara.String("Permission"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Qnos) {
+		request.QnosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Qnos, dara.String("Qnos"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ServeArea) {
+		request.ServeAreaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServeArea, dara.String("ServeArea"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Active) {
+		query["Active"] = request.Active
+	}
+
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.AssignType) {
+		query["AssignType"] = request.AssignType
+	}
+
+	if !dara.IsNil(request.ClidShrink) {
+		query["Clid"] = request.ClidShrink
+	}
+
+	if !dara.IsNil(request.ClidAreaShrink) {
+		query["ClidArea"] = request.ClidAreaShrink
+	}
+
+	if !dara.IsNil(request.ClidDefaultShrink) {
+		query["ClidDefault"] = request.ClidDefaultShrink
+	}
+
+	if !dara.IsNil(request.ClidRule) {
+		query["ClidRule"] = request.ClidRule
+	}
+
+	if !dara.IsNil(request.ClidType) {
+		query["ClidType"] = request.ClidType
+	}
+
+	if !dara.IsNil(request.CloudNumberEnabled) {
+		query["CloudNumberEnabled"] = request.CloudNumberEnabled
+	}
+
+	if !dara.IsNil(request.CloudNumberModesShrink) {
+		query["CloudNumberModes"] = request.CloudNumberModesShrink
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CrmId) {
+		query["CrmId"] = request.CrmId
+	}
+
+	if !dara.IsNil(request.DynamicTelGroupIdDefault) {
+		query["DynamicTelGroupIdDefault"] = request.DynamicTelGroupIdDefault
+	}
+
+	if !dara.IsNil(request.DynamicTelGroupName) {
+		query["DynamicTelGroupName"] = request.DynamicTelGroupName
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenTel) {
+		query["HiddenTel"] = request.HiddenTel
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ObClidDefaultType) {
+		query["ObClidDefaultType"] = request.ObClidDefaultType
+	}
+
+	if !dara.IsNil(request.ObHangupSms) {
+		query["ObHangupSms"] = request.ObHangupSms
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.PauseLogin) {
+		query["PauseLogin"] = request.PauseLogin
+	}
+
+	if !dara.IsNil(request.PermissionShrink) {
+		query["Permission"] = request.PermissionShrink
+	}
+
+	if !dara.IsNil(request.QnosShrink) {
+		query["Qnos"] = request.QnosShrink
+	}
+
+	if !dara.IsNil(request.RecurrentselectionType) {
+		query["RecurrentselectionType"] = request.RecurrentselectionType
+	}
+
+	if !dara.IsNil(request.RecurrentselectionValue) {
+		query["RecurrentselectionValue"] = request.RecurrentselectionValue
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.ServeAreaShrink) {
+		query["ServeArea"] = request.ServeAreaShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WechatMiniProgramRtc) {
+		query["WechatMiniProgramRtc"] = request.WechatMiniProgramRtc
+	}
+
+	if !dara.IsNil(request.WrapupTime) {
+		query["WrapupTime"] = request.WrapupTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkCreateClient"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkCreateClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Add a busy status.
+//
+// @param request - ClinkCreateEnterprisePauseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkCreateEnterprisePauseResponse
+func (client *Client) ClinkCreateEnterprisePauseWithContext(ctx context.Context, request *ClinkCreateEnterprisePauseRequest, runtime *dara.RuntimeOptions) (_result *ClinkCreateEnterprisePauseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !dara.IsNil(request.IsRest) {
+		query["IsRest"] = request.IsRest
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PauseStatus) {
+		query["PauseStatus"] = request.PauseStatus
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkCreateEnterprisePause"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkCreateEnterprisePauseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Add a phone.
+//
+// @param request - ClinkCreateExtenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkCreateExtenResponse
+func (client *Client) ClinkCreateExtenWithContext(ctx context.Context, request *ClinkCreateExtenRequest, runtime *dara.RuntimeOptions) (_result *ClinkCreateExtenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Allow) {
+		query["Allow"] = request.Allow
+	}
+
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.ExtenNumber) {
+		query["ExtenNumber"] = request.ExtenNumber
+	}
+
+	if !dara.IsNil(request.IsDirect) {
+		query["IsDirect"] = request.IsDirect
+	}
+
+	if !dara.IsNil(request.JittBuffer) {
+		query["JittBuffer"] = request.JittBuffer
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkCreateExten"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkCreateExtenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Add a queue.
+//
+// @param tmpReq - ClinkCreateQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkCreateQueueResponse
+func (client *Client) ClinkCreateQueueWithContext(ctx context.Context, tmpReq *ClinkCreateQueueRequest, runtime *dara.RuntimeOptions) (_result *ClinkCreateQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ClinkCreateQueueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.QueueMembers) {
+		request.QueueMembersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueueMembers, dara.String("QueueMembers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChatLocation) {
+		query["ChatLocation"] = request.ChatLocation
+	}
+
+	if !dara.IsNil(request.ChatMaxWait) {
+		query["ChatMaxWait"] = request.ChatMaxWait
+	}
+
+	if !dara.IsNil(request.ChatStrategy) {
+		query["ChatStrategy"] = request.ChatStrategy
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.IbAllowed) {
+		query["IbAllowed"] = request.IbAllowed
+	}
+
+	if !dara.IsNil(request.JoinEmpty) {
+		query["JoinEmpty"] = request.JoinEmpty
+	}
+
+	if !dara.IsNil(request.MaxPauseClientFlag) {
+		query["MaxPauseClientFlag"] = request.MaxPauseClientFlag
+	}
+
+	if !dara.IsNil(request.MaxPauseClientType) {
+		query["MaxPauseClientType"] = request.MaxPauseClientType
+	}
+
+	if !dara.IsNil(request.MaxPauseClientValue) {
+		query["MaxPauseClientValue"] = request.MaxPauseClientValue
+	}
+
+	if !dara.IsNil(request.MaxWait) {
+		query["MaxWait"] = request.MaxWait
+	}
+
+	if !dara.IsNil(request.MemberTimeout) {
+		query["MemberTimeout"] = request.MemberTimeout
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.QueueMembersShrink) {
+		query["QueueMembers"] = request.QueueMembersShrink
+	}
+
+	if !dara.IsNil(request.QueueTimeout) {
+		query["QueueTimeout"] = request.QueueTimeout
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SayCno) {
+		query["SayCno"] = request.SayCno
+	}
+
+	if !dara.IsNil(request.ServiceLevel) {
+		query["ServiceLevel"] = request.ServiceLevel
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		query["Strategy"] = request.Strategy
+	}
+
+	if !dara.IsNil(request.VipSupport) {
+		query["VipSupport"] = request.VipSupport
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	if !dara.IsNil(request.WrapupTime) {
+		query["WrapupTime"] = request.WrapupTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkCreateQueue"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkCreateQueueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an agent.
+//
+// @param request - ClinkDeleteClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDeleteClientResponse
+func (client *Client) ClinkDeleteClientWithContext(ctx context.Context, request *ClinkDeleteClientRequest, runtime *dara.RuntimeOptions) (_result *ClinkDeleteClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDeleteClient"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDeleteClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the phone.
+//
+// @param request - ClinkDeleteExtenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDeleteExtenResponse
+func (client *Client) ClinkDeleteExtenWithContext(ctx context.Context, request *ClinkDeleteExtenRequest, runtime *dara.RuntimeOptions) (_result *ClinkDeleteExtenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.ExtenNumber) {
+		query["ExtenNumber"] = request.ExtenNumber
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDeleteExten"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDeleteExtenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View incoming call records.
+//
+// @param request - ClinkDescribeCdrIbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeCdrIbResponse
+func (client *Client) ClinkDescribeCdrIbWithContext(ctx context.Context, request *ClinkDescribeCdrIbRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeCdrIbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeCdrIb"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeCdrIbResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View incoming call record details.
+//
+// @param request - ClinkDescribeCdrIbDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeCdrIbDetailsResponse
+func (client *Client) ClinkDescribeCdrIbDetailsWithContext(ctx context.Context, request *ClinkDescribeCdrIbDetailsRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeCdrIbDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeCdrIbDetails"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeCdrIbDetailsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View outbound call records.
+//
+// @param request - ClinkDescribeCdrObRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeCdrObResponse
+func (client *Client) ClinkDescribeCdrObWithContext(ctx context.Context, request *ClinkDescribeCdrObRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeCdrObResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeCdrOb"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeCdrObResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View outbound call record details.
+//
+// @param request - ClinkDescribeCdrObDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeCdrObDetailsResponse
+func (client *Client) ClinkDescribeCdrObDetailsWithContext(ctx context.Context, request *ClinkDescribeCdrObDetailsRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeCdrObDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeCdrObDetails"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeCdrObDetailsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View the agent details.
+//
+// @param request - ClinkDescribeClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeClientResponse
+func (client *Client) ClinkDescribeClientWithContext(ctx context.Context, request *ClinkDescribeClientRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeClient"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View queue details.
+//
+// @param request - ClinkDescribeQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeQueueResponse
+func (client *Client) ClinkDescribeQueueWithContext(ctx context.Context, request *ClinkDescribeQueueRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeQueue"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeQueueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// View call recording address.
+//
+// @param request - ClinkDescribeRecordFileUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDescribeRecordFileUrlResponse
+func (client *Client) ClinkDescribeRecordFileUrlWithContext(ctx context.Context, request *ClinkDescribeRecordFileUrlRequest, runtime *dara.RuntimeOptions) (_result *ClinkDescribeRecordFileUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Download) {
+		query["Download"] = request.Download
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RecordSide) {
+		query["RecordSide"] = request.RecordSide
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		query["RecordType"] = request.RecordType
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDescribeRecordFileUrl"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDescribeRecordFileUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the details of customer call records.
+//
+// @param request - ClinkDetailCdrIbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkDetailCdrIbResponse
+func (client *Client) ClinkDetailCdrIbWithContext(ctx context.Context, request *ClinkDetailCdrIbRequest, runtime *dara.RuntimeOptions) (_result *ClinkDetailCdrIbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkDetailCdrIb"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkDetailCdrIbResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the customer call record list.
+//
+// @param request - ClinkListCdrIbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListCdrIbResponse
+func (client *Client) ClinkListCdrIbWithContext(ctx context.Context, request *ClinkListCdrIbRequest, runtime *dara.RuntimeOptions) (_result *ClinkListCdrIbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeDuration) {
+		query["BridgeDuration"] = request.BridgeDuration
+	}
+
+	if !dara.IsNil(request.BridgeDurationEnd) {
+		query["BridgeDurationEnd"] = request.BridgeDurationEnd
+	}
+
+	if !dara.IsNil(request.BridgeTime) {
+		query["BridgeTime"] = request.BridgeTime
+	}
+
+	if !dara.IsNil(request.BridgeTimeEnd) {
+		query["BridgeTimeEnd"] = request.BridgeTimeEnd
+	}
+
+	if !dara.IsNil(request.ClientNumber) {
+		query["ClientNumber"] = request.ClientNumber
+	}
+
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EndTimeEnd) {
+		query["EndTimeEnd"] = request.EndTimeEnd
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.FirstCallCno) {
+		query["FirstCallCno"] = request.FirstCallCno
+	}
+
+	if !dara.IsNil(request.FirstCallNumber) {
+		query["FirstCallNumber"] = request.FirstCallNumber
+	}
+
+	if !dara.IsNil(request.FirstCallQno) {
+		query["FirstCallQno"] = request.FirstCallQno
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qnos) {
+		query["Qnos"] = request.Qnos
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ScrollId) {
+		query["ScrollId"] = request.ScrollId
+	}
+
+	if !dara.IsNil(request.ScrollSearch) {
+		query["ScrollSearch"] = request.ScrollSearch
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeEnd) {
+		query["StartTimeEnd"] = request.StartTimeEnd
+	}
+
+	if !dara.IsNil(request.Statuses) {
+		query["Statuses"] = request.Statuses
+	}
+
+	if !dara.IsNil(request.TotalDuration) {
+		query["TotalDuration"] = request.TotalDuration
+	}
+
+	if !dara.IsNil(request.TotalDurationEnd) {
+		query["TotalDurationEnd"] = request.TotalDurationEnd
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListCdrIb"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListCdrIbResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of agent answering records.
+//
+// @param request - ClinkListCdrIbAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListCdrIbAgentResponse
+func (client *Client) ClinkListCdrIbAgentWithContext(ctx context.Context, request *ClinkListCdrIbAgentRequest, runtime *dara.RuntimeOptions) (_result *ClinkListCdrIbAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentAnswerInTime) {
+		query["AgentAnswerInTime"] = request.AgentAnswerInTime
+	}
+
+	if !dara.IsNil(request.BridgeDuration) {
+		query["BridgeDuration"] = request.BridgeDuration
+	}
+
+	if !dara.IsNil(request.BridgeDurationEnd) {
+		query["BridgeDurationEnd"] = request.BridgeDurationEnd
+	}
+
+	if !dara.IsNil(request.BridgeTime) {
+		query["BridgeTime"] = request.BridgeTime
+	}
+
+	if !dara.IsNil(request.BridgeTimeEnd) {
+		query["BridgeTimeEnd"] = request.BridgeTimeEnd
+	}
+
+	if !dara.IsNil(request.ClientNumber) {
+		query["ClientNumber"] = request.ClientNumber
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EndTimeEnd) {
+		query["EndTimeEnd"] = request.EndTimeEnd
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.HotlineName) {
+		query["HotlineName"] = request.HotlineName
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ScrollId) {
+		query["ScrollId"] = request.ScrollId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeEnd) {
+		query["StartTimeEnd"] = request.StartTimeEnd
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListCdrIbAgent"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListCdrIbAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the list of inbound call records.
+//
+// @param request - ClinkListCdrIbsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListCdrIbsResponse
+func (client *Client) ClinkListCdrIbsWithContext(ctx context.Context, request *ClinkListCdrIbsRequest, runtime *dara.RuntimeOptions) (_result *ClinkListCdrIbsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientNumber) {
+		query["ClientNumber"] = request.ClientNumber
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.QueueAnswerInTime) {
+		query["QueueAnswerInTime"] = request.QueueAnswerInTime
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListCdrIbs"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListCdrIbsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of outbound call records.
+//
+// @param request - ClinkListCdrObRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListCdrObResponse
+func (client *Client) ClinkListCdrObWithContext(ctx context.Context, request *ClinkListCdrObRequest, runtime *dara.RuntimeOptions) (_result *ClinkListCdrObResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeDuration) {
+		query["BridgeDuration"] = request.BridgeDuration
+	}
+
+	if !dara.IsNil(request.BridgeDurationEnd) {
+		query["BridgeDurationEnd"] = request.BridgeDurationEnd
+	}
+
+	if !dara.IsNil(request.BridgeTime) {
+		query["BridgeTime"] = request.BridgeTime
+	}
+
+	if !dara.IsNil(request.BridgeTimeEnd) {
+		query["BridgeTimeEnd"] = request.BridgeTimeEnd
+	}
+
+	if !dara.IsNil(request.CallType) {
+		query["CallType"] = request.CallType
+	}
+
+	if !dara.IsNil(request.ClientNumber) {
+		query["ClientNumber"] = request.ClientNumber
+	}
+
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EndTimeEnd) {
+		query["EndTimeEnd"] = request.EndTimeEnd
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.LeftClid) {
+		query["LeftClid"] = request.LeftClid
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qnos) {
+		query["Qnos"] = request.Qnos
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ScrollId) {
+		query["ScrollId"] = request.ScrollId
+	}
+
+	if !dara.IsNil(request.ScrollSearch) {
+		query["ScrollSearch"] = request.ScrollSearch
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeEnd) {
+		query["StartTimeEnd"] = request.StartTimeEnd
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.TotalDuration) {
+		query["TotalDuration"] = request.TotalDuration
+	}
+
+	if !dara.IsNil(request.TotalDurationEnd) {
+		query["TotalDurationEnd"] = request.TotalDurationEnd
+	}
+
+	if !dara.IsNil(request.Xnumber) {
+		query["Xnumber"] = request.Xnumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListCdrOb"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListCdrObResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the outbound call record list.
+//
+// @param request - ClinkListCdrObsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListCdrObsResponse
+func (client *Client) ClinkListCdrObsWithContext(ctx context.Context, request *ClinkListCdrObsRequest, runtime *dara.RuntimeOptions) (_result *ClinkListCdrObsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssociatedId) {
+		query["AssociatedId"] = request.AssociatedId
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.ClientNumber) {
+		query["ClientNumber"] = request.ClientNumber
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Evaluation) {
+		query["Evaluation"] = request.Evaluation
+	}
+
+	if !dara.IsNil(request.HiddenType) {
+		query["HiddenType"] = request.HiddenType
+	}
+
+	if !dara.IsNil(request.Hotline) {
+		query["Hotline"] = request.Hotline
+	}
+
+	if !dara.IsNil(request.IdType) {
+		query["IdType"] = request.IdType
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.Mark) {
+		query["Mark"] = request.Mark
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	if !dara.IsNil(request.QueueAnswerInTime) {
+		query["QueueAnswerInTime"] = request.QueueAnswerInTime
+	}
+
+	if !dara.IsNil(request.RequestUniqueId) {
+		query["RequestUniqueId"] = request.RequestUniqueId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListCdrObs"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListCdrObsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of agents.
+//
+// @param request - ClinkListClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListClientsResponse
+func (client *Client) ClinkListClientsWithContext(ctx context.Context, request *ClinkListClientsRequest, runtime *dara.RuntimeOptions) (_result *ClinkListClientsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Active) {
+		query["Active"] = request.Active
+	}
+
+	if !dara.IsNil(request.BindTel) {
+		query["BindTel"] = request.BindTel
+	}
+
+	if !dara.IsNil(request.Clid) {
+		query["Clid"] = request.Clid
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UpdateEndTime) {
+		query["UpdateEndTime"] = request.UpdateEndTime
+	}
+
+	if !dara.IsNil(request.UpdateStartTime) {
+		query["UpdateStartTime"] = request.UpdateStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListClients"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListClientsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the busy status list.
+//
+// @param request - ClinkListEnterprisePausesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListEnterprisePausesResponse
+func (client *Client) ClinkListEnterprisePausesWithContext(ctx context.Context, request *ClinkListEnterprisePausesRequest, runtime *dara.RuntimeOptions) (_result *ClinkListEnterprisePausesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListEnterprisePauses"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListEnterprisePausesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the phone list.
+//
+// @param request - ClinkListExtensRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListExtensResponse
+func (client *Client) ClinkListExtensWithContext(ctx context.Context, request *ClinkListExtensRequest, runtime *dara.RuntimeOptions) (_result *ClinkListExtensResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListExtens"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListExtensResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the voice navigation edge zone list.
+//
+// @param request - ClinkListIvrNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListIvrNodesResponse
+func (client *Client) ClinkListIvrNodesWithContext(ctx context.Context, request *ClinkListIvrNodesRequest, runtime *dara.RuntimeOptions) (_result *ClinkListIvrNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.IvrName) {
+		query["IvrName"] = request.IvrName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListIvrNodes"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListIvrNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the voice navigation list.
+//
+// @param request - ClinkListIvrsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListIvrsResponse
+func (client *Client) ClinkListIvrsWithContext(ctx context.Context, request *ClinkListIvrsRequest, runtime *dara.RuntimeOptions) (_result *ClinkListIvrsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListIvrs"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListIvrsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the queue list.
+//
+// @param request - ClinkListQueuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkListQueuesResponse
+func (client *Client) ClinkListQueuesWithContext(ctx context.Context, request *ClinkListQueuesRequest, runtime *dara.RuntimeOptions) (_result *ClinkListQueuesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkListQueues"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkListQueuesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Inbound report - call statistics.
+//
+// @param request - ClinkStatIbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkStatIbResponse
+func (client *Client) ClinkStatIbWithContext(ctx context.Context, request *ClinkStatIbRequest, runtime *dara.RuntimeOptions) (_result *ClinkStatIbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["Date"] = request.Date
+	}
+
+	if !dara.IsNil(request.DateEnd) {
+		query["DateEnd"] = request.DateEnd
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		query["EndHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.EndMinute) {
+		query["EndMinute"] = request.EndMinute
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Fields) {
+		query["Fields"] = request.Fields
+	}
+
+	if !dara.IsNil(request.Hotlines) {
+		query["Hotlines"] = request.Hotlines
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		query["StartHour"] = request.StartHour
+	}
+
+	if !dara.IsNil(request.StartMinute) {
+		query["StartMinute"] = request.StartMinute
+	}
+
+	if !dara.IsNil(request.StatisticMethod) {
+		query["StatisticMethod"] = request.StatisticMethod
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkStatIb"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkStatIbResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Update an agent.
+//
+// @param tmpReq - ClinkUpdateClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClinkUpdateClientResponse
+func (client *Client) ClinkUpdateClientWithContext(ctx context.Context, tmpReq *ClinkUpdateClientRequest, runtime *dara.RuntimeOptions) (_result *ClinkUpdateClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ClinkUpdateClientShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Clid) {
+		request.ClidShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Clid, dara.String("Clid"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ClidArea) {
+		request.ClidAreaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClidArea, dara.String("ClidArea"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ClidDefault) {
+		request.ClidDefaultShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClidDefault, dara.String("ClidDefault"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CloudNumberModes) {
+		request.CloudNumberModesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CloudNumberModes, dara.String("CloudNumberModes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Permission) {
+		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permission, dara.String("Permission"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Qnos) {
+		request.QnosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Qnos, dara.String("Qnos"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ServeArea) {
+		request.ServeAreaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServeArea, dara.String("ServeArea"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Active) {
+		query["Active"] = request.Active
+	}
+
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.AssignType) {
+		query["AssignType"] = request.AssignType
+	}
+
+	if !dara.IsNil(request.ClidShrink) {
+		query["Clid"] = request.ClidShrink
+	}
+
+	if !dara.IsNil(request.ClidAreaShrink) {
+		query["ClidArea"] = request.ClidAreaShrink
+	}
+
+	if !dara.IsNil(request.ClidDefaultShrink) {
+		query["ClidDefault"] = request.ClidDefaultShrink
+	}
+
+	if !dara.IsNil(request.ClidRule) {
+		query["ClidRule"] = request.ClidRule
+	}
+
+	if !dara.IsNil(request.ClidType) {
+		query["ClidType"] = request.ClidType
+	}
+
+	if !dara.IsNil(request.CloudNumberEnabled) {
+		query["CloudNumberEnabled"] = request.CloudNumberEnabled
+	}
+
+	if !dara.IsNil(request.CloudNumberModesShrink) {
+		query["CloudNumberModes"] = request.CloudNumberModesShrink
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CrmId) {
+		query["CrmId"] = request.CrmId
+	}
+
+	if !dara.IsNil(request.DynamicTelGroupIdDefault) {
+		query["DynamicTelGroupIdDefault"] = request.DynamicTelGroupIdDefault
+	}
+
+	if !dara.IsNil(request.DynamicTelGroupName) {
+		query["DynamicTelGroupName"] = request.DynamicTelGroupName
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.HiddenTel) {
+		query["HiddenTel"] = request.HiddenTel
+	}
+
+	if !dara.IsNil(request.IbWrapupTime) {
+		query["IbWrapupTime"] = request.IbWrapupTime
+	}
+
+	if !dara.IsNil(request.IbWrapupType) {
+		query["IbWrapupType"] = request.IbWrapupType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ObClidDefaultType) {
+		query["ObClidDefaultType"] = request.ObClidDefaultType
+	}
+
+	if !dara.IsNil(request.ObHangupSms) {
+		query["ObHangupSms"] = request.ObHangupSms
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.PauseLogin) {
+		query["PauseLogin"] = request.PauseLogin
+	}
+
+	if !dara.IsNil(request.PermissionShrink) {
+		query["Permission"] = request.PermissionShrink
+	}
+
+	if !dara.IsNil(request.QnosShrink) {
+		query["Qnos"] = request.QnosShrink
+	}
+
+	if !dara.IsNil(request.RecurrentselectionType) {
+		query["RecurrentselectionType"] = request.RecurrentselectionType
+	}
+
+	if !dara.IsNil(request.RecurrentselectionValue) {
+		query["RecurrentselectionValue"] = request.RecurrentselectionValue
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.ServeAreaShrink) {
+		query["ServeArea"] = request.ServeAreaShrink
+	}
+
+	if !dara.IsNil(request.WechatMiniProgramRtc) {
+		query["WechatMiniProgramRtc"] = request.WechatMiniProgramRtc
+	}
+
+	if !dara.IsNil(request.WrapupTime) {
+		query["WrapupTime"] = request.WrapupTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClinkUpdateClient"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClinkUpdateClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Publish the agent online through this interface.
 //
 // @param request - CloudAgentLoginRequest
@@ -573,7 +3335,7 @@ func (client *Client) CloudAgentLogoutWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 座席实时统计
+// Real-time statistics on agent call data.
 //
 // @param request - CloudAgentMonitorStatisticsRequest
 //
@@ -769,7 +3531,7 @@ func (client *Client) CloudAgentUnlinkWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取座席工作量报表数据
+// Gets agent workload report data.
 //
 // @param request - CloudAgentWorkloadReportRequest
 //
@@ -921,7 +3683,7 @@ func (client *Client) CloudAssignAgentGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 批量新增座席,单次批量创建不能超过100个
+// Batch add agents. You can create up to 100 agents in a single batch.
 //
 // @param request - CloudBatchCreateAgentRequest
 //
@@ -1117,7 +3879,7 @@ func (client *Client) CloudBatchGetAgentStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 批量更新座席基本信息，不包含座席绑定的技能信息的更新
+// Batch update the basic info of agents, excluding the update of skill info attached to agents.
 //
 // @param request - CloudBatchUpdateAgentRequest
 //
@@ -1257,7 +4019,7 @@ func (client *Client) CloudBatchUpdateAgentWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 座席新增
+// Creates an agent.
 //
 // @param request - CloudCreateAgentRequest
 //
@@ -1537,7 +4299,7 @@ func (client *Client) CloudCreateAsrWithContext(ctx context.Context, request *Cl
 
 // Summary:
 //
-// 新增时间条件设置
+// Adds a time condition configuration.
 //
 // @param request - CloudCreateEnterpriseTimeRequest
 //
@@ -1629,7 +4391,7 @@ func (client *Client) CloudCreateEnterpriseTimeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 新增分机
+// Add an extension through this interface.
 //
 // @param request - CloudCreateExtenRequest
 //
@@ -1741,7 +4503,7 @@ func (client *Client) CloudCreateExtenWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 新增队列
+// Add a queue through this interface.
 //
 // @param tmpReq - CloudCreateQueueRequest
 //
@@ -1947,7 +4709,7 @@ func (client *Client) CloudCreateSkillWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 新增任务
+// Creates an outbound call job.
 //
 // @param request - CloudCreateTaskRequest
 //
@@ -2835,7 +5597,7 @@ func (client *Client) CloudDeleteTaskTelWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 座席详细信息获取
+// Queries the details of an agent.
 //
 // @param request - CloudGetAgentRequest
 //
@@ -3003,7 +5765,7 @@ func (client *Client) CloudGetAreaCodeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # ASR数据获取
+// Query ASR job task results and obtain data.
 //
 // @param request - CloudGetAsrRequest
 //
@@ -3119,7 +5881,7 @@ func (client *Client) CloudGetExtenWithContext(ctx context.Context, request *Clo
 
 // Summary:
 //
-// 获取座席外呼通话记录详情
+// Queries the details of outbound call records of a specified agent based on the unique phone identity.
 //
 // @param request - CloudGetObCdrRequest
 //
@@ -3167,7 +5929,7 @@ func (client *Client) CloudGetObCdrWithContext(ctx context.Context, request *Clo
 
 // Summary:
 //
-// 获取队列信息
+// Query queue info.
 //
 // @param request - CloudGetQueueRequest
 //
@@ -3227,7 +5989,7 @@ func (client *Client) CloudGetQueueWithContext(ctx context.Context, request *Clo
 
 // Summary:
 //
-// 获取通话录音地址
+// Obtains the audition or download URL of a recording based on the recording file name.
 //
 // @param request - CloudGetRecordUrlRequest
 //
@@ -3295,7 +6057,7 @@ func (client *Client) CloudGetRecordUrlWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取任务信息
+// Obtains the configuration info of a single job based on the job ID.
 //
 // @param request - CloudGetTaskRequest
 //
@@ -3355,7 +6117,7 @@ func (client *Client) CloudGetTaskWithContext(ctx context.Context, request *Clou
 
 // Summary:
 //
-// 任务号码导入
+// Imports phone numbers for the outbound call task.
 //
 // @param tmpReq - CloudImportTaskTelRequest
 //
@@ -3717,7 +6479,7 @@ func (client *Client) CloudListAssignedAgentGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// 推送日志查询
+// Queries user push logs.
 //
 // @param request - CloudListCurlLogRequest
 //
@@ -3793,7 +6555,7 @@ func (client *Client) CloudListCurlLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取时间条件设置列表
+// Queries the list of time condition settings.
 //
 // @param request - CloudListEnterpriseTimeRequest
 //
@@ -3861,7 +6623,7 @@ func (client *Client) CloudListEnterpriseTimeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取分机列表
+// Queries the extension info list.
 //
 // @param request - CloudListExtenRequest
 //
@@ -4017,7 +6779,7 @@ func (client *Client) CloudListFreeAgentWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 在线座席信息
+// Queries the list of online agent info.
 //
 // @param request - CloudListOnlineAgentRequest
 //
@@ -4093,7 +6855,7 @@ func (client *Client) CloudListOnlineAgentWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取队列列表
+// Queries the queue info list.
 //
 // @param request - CloudListQueueRequest
 //
@@ -4393,7 +7155,7 @@ func (client *Client) CloudListTaskFileWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 任务监控
+// Call job monitoring.
 //
 // @param request - CloudMonitorTaskRequest
 //
@@ -4453,7 +7215,7 @@ func (client *Client) CloudMonitorTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取预览外呼主叫号码报表
+// Obtains preview outbound caller report data.
 //
 // @param request - CloudOutboundObClidReportRequest
 //
@@ -4533,7 +7295,7 @@ func (client *Client) CloudOutboundObClidReportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取预览外呼报表
+// Obtains a preview outbound report.
 //
 // @param request - CloudOutboundPreviewObReportRequest
 //
@@ -4677,7 +7439,7 @@ func (client *Client) CloudPauseTaskWithContext(ctx context.Context, request *Cl
 
 // Summary:
 //
-// 座席外呼
+// When the agent is online, make a call through this interface.
 //
 // @param request - CloudPreviewoutcallRequest
 //
@@ -4777,7 +7539,7 @@ func (client *Client) CloudPreviewoutcallWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 座席详细信息列表获取
+// Queries the list of agent details.
 //
 // @param request - CloudQueryAgentRequest
 //
@@ -5065,7 +7827,7 @@ func (client *Client) CloudQueryAgentSkillWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 来电通话记录
+// Query incoming call records based on specified conditions.
 //
 // @param request - CloudQueryIbCdrRequest
 //
@@ -5181,7 +7943,7 @@ func (client *Client) CloudQueryIbCdrWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 获取座席外呼通话记录
+// Query agent outbound call records based on conditions.
 //
 // @param request - CloudQueryObCdrRequest
 //
@@ -5321,7 +8083,7 @@ func (client *Client) CloudQueryObCdrWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 预测式外呼通话记录
+// Query the call record info of predictive outbound calls.
 //
 // @param request - CloudQueryPredictiveCallCdrRequest
 //
@@ -5501,7 +8263,7 @@ func (client *Client) CloudQueryRasrEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取任务列表
+// Queries call jobs. Supports conditional query.
 //
 // @param request - CloudQueryTaskRequest
 //
@@ -5597,7 +8359,7 @@ func (client *Client) CloudQueryTaskWithContext(ctx context.Context, request *Cl
 
 // Summary:
 //
-// webcall通话记录
+// Query webCall call record info through this interface.
 //
 // @param request - CloudQueryWebcallCdrRequest
 //
@@ -5729,7 +8491,7 @@ func (client *Client) CloudQueryWebcallCdrWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 任务启动
+// Starts an outbound call task.
 //
 // @param request - CloudStartTaskRequest
 //
@@ -5853,7 +8615,7 @@ func (client *Client) CloudUnassignAgentGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 座席更新
+// Update agent basic info.
 //
 // @param request - CloudUpdateAgentRequest
 //
@@ -6001,7 +8763,7 @@ func (client *Client) CloudUpdateAgentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新任务
+// Modifies the basic information of an outbound call job.
 //
 // @param request - CloudUpdateTaskRequest
 //
@@ -6245,7 +9007,7 @@ func (client *Client) CloudUpdateTaskWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// webcall
+// Through this interface, a third-party platform can send a call request to a hosted call center. The system calls the customer first and then the agent, and connects both parties.
 //
 // @param request - CloudWebcallRequest
 //
