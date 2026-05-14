@@ -15,8 +15,6 @@ type iWebSearchResponseBody interface {
 	GetData() *WebSearchResponseBodyData
 	SetMessage(v string) *WebSearchResponseBody
 	GetMessage() *string
-	SetTraceId(v string) *WebSearchResponseBody
-	GetTraceId() *string
 }
 
 type WebSearchResponseBody struct {
@@ -29,12 +27,6 @@ type WebSearchResponseBody struct {
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 3b5215d417623961959166934d009a
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s WebSearchResponseBody) String() string {
@@ -57,10 +49,6 @@ func (s *WebSearchResponseBody) GetMessage() *string {
 	return s.Message
 }
 
-func (s *WebSearchResponseBody) GetTraceId() *string {
-	return s.TraceId
-}
-
 func (s *WebSearchResponseBody) SetCode(v int32) *WebSearchResponseBody {
 	s.Code = &v
 	return s
@@ -73,11 +61,6 @@ func (s *WebSearchResponseBody) SetData(v *WebSearchResponseBodyData) *WebSearch
 
 func (s *WebSearchResponseBody) SetMessage(v string) *WebSearchResponseBody {
 	s.Message = &v
-	return s
-}
-
-func (s *WebSearchResponseBody) SetTraceId(v string) *WebSearchResponseBody {
-	s.TraceId = &v
 	return s
 }
 
@@ -138,7 +121,15 @@ func (s *WebSearchResponseBodyData) Validate() error {
 }
 
 type WebSearchResponseBodyDataResult struct {
-	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	// example:
+	//
+	// 1990-01-01 12:00:00
+	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// example:
+	//
+	// snippet
+	Snippet *string                                `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Source  *WebSearchResponseBodyDataResultSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 	// example:
 	//
 	// 4567
@@ -157,8 +148,16 @@ func (s WebSearchResponseBodyDataResult) GoString() string {
 	return s.String()
 }
 
+func (s *WebSearchResponseBodyDataResult) GetDate() *string {
+	return s.Date
+}
+
 func (s *WebSearchResponseBodyDataResult) GetSnippet() *string {
 	return s.Snippet
+}
+
+func (s *WebSearchResponseBodyDataResult) GetSource() *WebSearchResponseBodyDataResultSource {
+	return s.Source
 }
 
 func (s *WebSearchResponseBodyDataResult) GetTitle() *string {
@@ -169,8 +168,18 @@ func (s *WebSearchResponseBodyDataResult) GetUrl() *string {
 	return s.Url
 }
 
+func (s *WebSearchResponseBodyDataResult) SetDate(v string) *WebSearchResponseBodyDataResult {
+	s.Date = &v
+	return s
+}
+
 func (s *WebSearchResponseBodyDataResult) SetSnippet(v string) *WebSearchResponseBodyDataResult {
 	s.Snippet = &v
+	return s
+}
+
+func (s *WebSearchResponseBodyDataResult) SetSource(v *WebSearchResponseBodyDataResultSource) *WebSearchResponseBodyDataResult {
+	s.Source = v
 	return s
 }
 
@@ -185,5 +194,64 @@ func (s *WebSearchResponseBodyDataResult) SetUrl(v string) *WebSearchResponseBod
 }
 
 func (s *WebSearchResponseBodyDataResult) Validate() error {
+	if s.Source != nil {
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type WebSearchResponseBodyDataResultSource struct {
+	// example:
+	//
+	// domain
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// example:
+	//
+	// favicon
+	Favicon *string `json:"favicon,omitempty" xml:"favicon,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s WebSearchResponseBodyDataResultSource) String() string {
+	return dara.Prettify(s)
+}
+
+func (s WebSearchResponseBodyDataResultSource) GoString() string {
+	return s.String()
+}
+
+func (s *WebSearchResponseBodyDataResultSource) GetDomain() *string {
+	return s.Domain
+}
+
+func (s *WebSearchResponseBodyDataResultSource) GetFavicon() *string {
+	return s.Favicon
+}
+
+func (s *WebSearchResponseBodyDataResultSource) GetName() *string {
+	return s.Name
+}
+
+func (s *WebSearchResponseBodyDataResultSource) SetDomain(v string) *WebSearchResponseBodyDataResultSource {
+	s.Domain = &v
+	return s
+}
+
+func (s *WebSearchResponseBodyDataResultSource) SetFavicon(v string) *WebSearchResponseBodyDataResultSource {
+	s.Favicon = &v
+	return s
+}
+
+func (s *WebSearchResponseBodyDataResultSource) SetName(v string) *WebSearchResponseBodyDataResultSource {
+	s.Name = &v
+	return s
+}
+
+func (s *WebSearchResponseBodyDataResultSource) Validate() error {
 	return dara.Validate(s)
 }
