@@ -142,6 +142,10 @@ type ListProjectsResponseBodyProjects struct {
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 35523
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListProjectsResponseBodyProjects) String() string {
@@ -214,6 +218,10 @@ func (s *ListProjectsResponseBodyProjects) GetOwner() *string {
 
 func (s *ListProjectsResponseBodyProjects) GetProjectId() *string {
 	return s.ProjectId
+}
+
+func (s *ListProjectsResponseBodyProjects) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ListProjectsResponseBodyProjects) SetDescription(v string) *ListProjectsResponseBodyProjects {
@@ -293,6 +301,11 @@ func (s *ListProjectsResponseBodyProjects) SetOwner(v string) *ListProjectsRespo
 
 func (s *ListProjectsResponseBodyProjects) SetProjectId(v string) *ListProjectsResponseBodyProjects {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetWorkspaceId(v string) *ListProjectsResponseBodyProjects {
+	s.WorkspaceId = &v
 	return s
 }
 

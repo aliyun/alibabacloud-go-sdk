@@ -1802,6 +1802,10 @@ func (client *Client) ListFeatureViewOnlineFeaturesWithContext(ctx context.Conte
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
 	if !dara.IsNil(request.JoinIdsShrink) {
 		query["JoinIds"] = request.JoinIdsShrink
 	}

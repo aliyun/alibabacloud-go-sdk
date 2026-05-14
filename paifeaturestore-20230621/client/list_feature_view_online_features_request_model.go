@@ -9,11 +9,17 @@ type iListFeatureViewOnlineFeaturesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfig(v string) *ListFeatureViewOnlineFeaturesRequest
+	GetConfig() *string
 	SetJoinIds(v []*string) *ListFeatureViewOnlineFeaturesRequest
 	GetJoinIds() []*string
 }
 
 type ListFeatureViewOnlineFeaturesRequest struct {
+	// example:
+	//
+	// {"dlrm_hstu": true}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// This parameter is required.
 	JoinIds []*string `json:"JoinIds,omitempty" xml:"JoinIds,omitempty" type:"Repeated"`
 }
@@ -26,8 +32,17 @@ func (s ListFeatureViewOnlineFeaturesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListFeatureViewOnlineFeaturesRequest) GetConfig() *string {
+	return s.Config
+}
+
 func (s *ListFeatureViewOnlineFeaturesRequest) GetJoinIds() []*string {
 	return s.JoinIds
+}
+
+func (s *ListFeatureViewOnlineFeaturesRequest) SetConfig(v string) *ListFeatureViewOnlineFeaturesRequest {
+	s.Config = &v
+	return s
 }
 
 func (s *ListFeatureViewOnlineFeaturesRequest) SetJoinIds(v []*string) *ListFeatureViewOnlineFeaturesRequest {

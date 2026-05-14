@@ -41,6 +41,8 @@ type iGetProjectResponseBody interface {
 	GetOwner() *string
 	SetRequestId(v string) *GetProjectResponseBody
 	GetRequestId() *string
+	SetWorkspaceId(v string) *GetProjectResponseBody
+	GetWorkspaceId() *string
 }
 
 type GetProjectResponseBody struct {
@@ -108,6 +110,10 @@ type GetProjectResponseBody struct {
 	//
 	// C33E160C-BFCA-5719-B958-942850E949F6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 35523
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetProjectResponseBody) String() string {
@@ -180,6 +186,10 @@ func (s *GetProjectResponseBody) GetOwner() *string {
 
 func (s *GetProjectResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetProjectResponseBody) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *GetProjectResponseBody) SetDescription(v string) *GetProjectResponseBody {
@@ -259,6 +269,11 @@ func (s *GetProjectResponseBody) SetOwner(v string) *GetProjectResponseBody {
 
 func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetWorkspaceId(v string) *GetProjectResponseBody {
+	s.WorkspaceId = &v
 	return s
 }
 
