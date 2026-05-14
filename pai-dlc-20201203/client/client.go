@@ -277,7 +277,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// # Create a Job Template
+// Create a job template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -344,7 +344,7 @@ func (client *Client) CreateJobTemplateWithOptions(request *CreateJobTemplateReq
 
 // Summary:
 //
-// # Create a Job Template
+// Create a job template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -565,7 +565,7 @@ func (client *Client) DeleteJob(JobId *string, request *DeleteJobRequest) (_resu
 
 // Summary:
 //
-// Delete an unused job template. If the template is already used by a job, you cannot delete it.
+// Deletes an unused job template. Templates that are used by jobs cannot be deleted.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -606,7 +606,7 @@ func (client *Client) DeleteJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// Delete an unused job template. If the template is already used by a job, you cannot delete it.
+// Deletes an unused job template. Templates that are used by jobs cannot be deleted.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -2593,7 +2593,7 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 
 // Summary:
 //
-// # Update a Job template
+// Updates a job template.
 //
 // @param request - UpdateJobTemplateRequest
 //
@@ -2664,7 +2664,7 @@ func (client *Client) UpdateJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// # Update a Job template
+// Updates a job template.
 //
 // @param request - UpdateJobTemplateRequest
 //

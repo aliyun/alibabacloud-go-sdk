@@ -1506,6 +1506,7 @@ type GetJobResponseBodyRestartRecord struct {
 	Reason               *string                                               `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	RestartDurationInSec *int64                                                `json:"RestartDurationInSec,omitempty" xml:"RestartDurationInSec,omitempty"`
 	RestartFailReason    *string                                               `json:"RestartFailReason,omitempty" xml:"RestartFailReason,omitempty"`
+	RestartLevelType     *string                                               `json:"RestartLevelType,omitempty" xml:"RestartLevelType,omitempty"`
 	RestartStatus        *string                                               `json:"RestartStatus,omitempty" xml:"RestartStatus,omitempty"`
 	TriggerID            *string                                               `json:"TriggerID,omitempty" xml:"TriggerID,omitempty"`
 }
@@ -1544,6 +1545,10 @@ func (s *GetJobResponseBodyRestartRecord) GetRestartDurationInSec() *int64 {
 
 func (s *GetJobResponseBodyRestartRecord) GetRestartFailReason() *string {
 	return s.RestartFailReason
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetRestartLevelType() *string {
+	return s.RestartLevelType
 }
 
 func (s *GetJobResponseBodyRestartRecord) GetRestartStatus() *string {
@@ -1586,6 +1591,11 @@ func (s *GetJobResponseBodyRestartRecord) SetRestartDurationInSec(v int64) *GetJ
 
 func (s *GetJobResponseBodyRestartRecord) SetRestartFailReason(v string) *GetJobResponseBodyRestartRecord {
 	s.RestartFailReason = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetRestartLevelType(v string) *GetJobResponseBodyRestartRecord {
+	s.RestartLevelType = &v
 	return s
 }
 

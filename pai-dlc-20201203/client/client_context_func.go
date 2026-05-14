@@ -160,7 +160,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 // Summary:
 //
-// # Create a Job Template
+// Create a job template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -391,7 +391,7 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, r
 
 // Summary:
 //
-// Delete an unused job template. If the template is already used by a job, you cannot delete it.
+// Deletes an unused job template. Templates that are used by jobs cannot be deleted.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -1936,7 +1936,7 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, r
 
 // Summary:
 //
-// # Update a Job template
+// Updates a job template.
 //
 // @param request - UpdateJobTemplateRequest
 //
