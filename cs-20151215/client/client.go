@@ -7608,6 +7608,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		body["cluster_name"] = request.ClusterName
 	}
 
+	if !dara.IsNil(request.ClusterSpec) {
+		body["cluster_spec"] = request.ClusterSpec
+	}
+
 	if !dara.IsNil(request.ControlPlaneConfig) {
 		body["control_plane_config"] = request.ControlPlaneConfig
 	}

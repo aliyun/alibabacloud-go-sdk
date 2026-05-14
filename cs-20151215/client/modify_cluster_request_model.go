@@ -19,6 +19,8 @@ type iModifyClusterRequest interface {
 	GetApiServerEipId() *string
 	SetClusterName(v string) *ModifyClusterRequest
 	GetClusterName() *string
+	SetClusterSpec(v string) *ModifyClusterRequest
+	GetClusterSpec() *string
 	SetControlPlaneConfig(v *ModifyClusterRequestControlPlaneConfig) *ModifyClusterRequest
 	GetControlPlaneConfig() *ModifyClusterRequestControlPlaneConfig
 	SetControlPlaneEndpointsConfig(v *ModifyClusterRequestControlPlaneEndpointsConfig) *ModifyClusterRequest
@@ -80,6 +82,7 @@ type ModifyClusterRequest struct {
 	//
 	// cluster-new-name
 	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
+	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
 	// The control plane configurations of an ACK dedicated cluster.
 	ControlPlaneConfig          *ModifyClusterRequestControlPlaneConfig          `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
 	ControlPlaneEndpointsConfig *ModifyClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
@@ -239,6 +242,10 @@ func (s *ModifyClusterRequest) GetClusterName() *string {
 	return s.ClusterName
 }
 
+func (s *ModifyClusterRequest) GetClusterSpec() *string {
+	return s.ClusterSpec
+}
+
 func (s *ModifyClusterRequest) GetControlPlaneConfig() *ModifyClusterRequestControlPlaneConfig {
 	return s.ControlPlaneConfig
 }
@@ -317,6 +324,11 @@ func (s *ModifyClusterRequest) SetApiServerEipId(v string) *ModifyClusterRequest
 
 func (s *ModifyClusterRequest) SetClusterName(v string) *ModifyClusterRequest {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetClusterSpec(v string) *ModifyClusterRequest {
+	s.ClusterSpec = &v
 	return s
 }
 

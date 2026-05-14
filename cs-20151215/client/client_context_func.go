@@ -5542,6 +5542,10 @@ func (client *Client) ModifyClusterWithContext(ctx context.Context, ClusterId *s
 		body["cluster_name"] = request.ClusterName
 	}
 
+	if !dara.IsNil(request.ClusterSpec) {
+		body["cluster_spec"] = request.ClusterSpec
+	}
+
 	if !dara.IsNil(request.ControlPlaneConfig) {
 		body["control_plane_config"] = request.ControlPlaneConfig
 	}
