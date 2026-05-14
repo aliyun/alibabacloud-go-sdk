@@ -459,6 +459,7 @@ type DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy stru
 	RetentionValue          *string `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
 	SrcRegion               *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 	SrcType                 *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	StorageClass            *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy) String() string {
@@ -527,6 +528,10 @@ func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy)
 
 func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy) GetSrcType() *string {
 	return s.SrcType
+}
+
+func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy) GetStorageClass() *string {
+	return s.StorageClass
 }
 
 func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy) SetAutoCreated(v bool) *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy {
@@ -601,6 +606,11 @@ func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy)
 
 func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy) SetSrcType(v string) *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy {
 	s.SrcType = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy) SetStorageClass(v string) *DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy {
+	s.StorageClass = &v
 	return s
 }
 

@@ -506,6 +506,54 @@ func (client *Client) ApplyApplicationPromptsWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// 批准PolarClaw设备配对
+//
+// @param request - ApprovePolarClawDevicePairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApprovePolarClawDevicePairResponse
+func (client *Client) ApprovePolarClawDevicePairWithContext(ctx context.Context, request *ApprovePolarClawDevicePairRequest, runtime *dara.RuntimeOptions) (_result *ApprovePolarClawDevicePairResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PairRequestId) {
+		query["PairRequestId"] = request.PairRequestId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApprovePolarClawDevicePair"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApprovePolarClawDevicePairResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 挂载PolarFS到PolarDB应用
 //
 // @param request - AttachApplicationPolarFSRequest
@@ -9438,6 +9486,78 @@ func (client *Client) DescribeApplicationParametersWithContext(ctx context.Conte
 
 // Summary:
 //
+// 查询PolarDB AI应用性能
+//
+// @param request - DescribeApplicationPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationPerformanceResponse
+func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Context, request *DescribeApplicationPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationPerformanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Consumer) {
+		query["Consumer"] = request.Consumer
+	}
+
+	if !dara.IsNil(request.ConsumerGroup) {
+		query["ConsumerGroup"] = request.ConsumerGroup
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.ModelService) {
+		query["ModelService"] = request.ModelService
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationPerformance"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationPerformanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询当前应用下所有的应用提示词策略列表
 //
 // @param request - DescribeApplicationPromptsRequest
@@ -16136,6 +16256,54 @@ func (client *Client) DescribePolarClawPluginsWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查询PolarClaw异步任务状态
+//
+// @param request - DescribePolarClawTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawTaskResponse
+func (client *Client) DescribePolarClawTaskWithContext(ctx context.Context, request *DescribePolarClawTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取PolarFS实例详情
 //
 // @param request - DescribePolarFsAttributeRequest
@@ -19197,6 +19365,50 @@ func (client *Client) ListPolarClawBindingsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// 列出PolarClaw设备配对
+//
+// @param request - ListPolarClawDevicePairsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolarClawDevicePairsResponse
+func (client *Client) ListPolarClawDevicePairsWithContext(ctx context.Context, request *ListPolarClawDevicePairsRequest, runtime *dara.RuntimeOptions) (_result *ListPolarClawDevicePairsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPolarClawDevicePairs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPolarClawDevicePairsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
 //
 // @param request - ListTagResourcesRequest
@@ -19327,6 +19539,54 @@ func (client *Client) ListTagResourcesForRegionWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesForRegionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 登录PolarClaw Channel
+//
+// @param request - LoginPolarClawChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoginPolarClawChannelResponse
+func (client *Client) LoginPolarClawChannelWithContext(ctx context.Context, request *LoginPolarClawChannelRequest, runtime *dara.RuntimeOptions) (_result *LoginPolarClawChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LoginPolarClawChannel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LoginPolarClawChannelResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24987,6 +25247,54 @@ func (client *Client) RefreshDBClusterStorageUsageWithContext(ctx context.Contex
 
 // Summary:
 //
+// 拒绝PolarClaw设备配对
+//
+// @param request - RejectPolarClawDevicePairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectPolarClawDevicePairResponse
+func (client *Client) RejectPolarClawDevicePairWithContext(ctx context.Context, request *RejectPolarClawDevicePairRequest, runtime *dara.RuntimeOptions) (_result *RejectPolarClawDevicePairResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PairRequestId) {
+		query["PairRequestId"] = request.PairRequestId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RejectPolarClawDevicePair"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RejectPolarClawDevicePairResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除应用环境变量
 //
 // @param tmpReq - RemoveApplicationEnvironmentVariablesRequest
@@ -25115,6 +25423,54 @@ func (client *Client) RemoveDBClusterFromGDNWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveDBClusterFromGDNResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除PolarClaw已配对设备
+//
+// @param request - RemovePolarClawDevicePairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemovePolarClawDevicePairResponse
+func (client *Client) RemovePolarClawDevicePairWithContext(ctx context.Context, request *RemovePolarClawDevicePairRequest, runtime *dara.RuntimeOptions) (_result *RemovePolarClawDevicePairResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemovePolarClawDevicePair"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemovePolarClawDevicePairResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

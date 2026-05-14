@@ -461,6 +461,7 @@ type ModifyBackupPolicyRequestAdvancedDataPolicies struct {
 	RetentionValue          *string `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
 	SrcRegion               *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 	SrcType                 *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	StorageClass            *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequestAdvancedDataPolicies) String() string {
@@ -533,6 +534,10 @@ func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetSrcRegion() *string {
 
 func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetSrcType() *string {
 	return s.SrcType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetStorageClass() *string {
+	return s.StorageClass
 }
 
 func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetActionType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
@@ -612,6 +617,11 @@ func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetSrcRegion(v string) *
 
 func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetSrcType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
 	s.SrcType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetStorageClass(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.StorageClass = &v
 	return s
 }
 
