@@ -9,6 +9,8 @@ type iCreateDigitalEmployeeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributes(v map[string]*string) *CreateDigitalEmployeeRequest
+	GetAttributes() map[string]*string
 	SetDefaultRule(v string) *CreateDigitalEmployeeRequest
 	GetDefaultRule() *string
 	SetDescription(v string) *CreateDigitalEmployeeRequest
@@ -28,6 +30,7 @@ type iCreateDigitalEmployeeRequest interface {
 }
 
 type CreateDigitalEmployeeRequest struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// example:
 	//
 	// test
@@ -68,6 +71,10 @@ func (s CreateDigitalEmployeeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDigitalEmployeeRequest) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *CreateDigitalEmployeeRequest) GetDefaultRule() *string {
 	return s.DefaultRule
 }
@@ -98,6 +105,11 @@ func (s *CreateDigitalEmployeeRequest) GetRoleArn() *string {
 
 func (s *CreateDigitalEmployeeRequest) GetTags() []*Tag {
 	return s.Tags
+}
+
+func (s *CreateDigitalEmployeeRequest) SetAttributes(v map[string]*string) *CreateDigitalEmployeeRequest {
+	s.Attributes = v
+	return s
 }
 
 func (s *CreateDigitalEmployeeRequest) SetDefaultRule(v string) *CreateDigitalEmployeeRequest {

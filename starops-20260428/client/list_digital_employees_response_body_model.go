@@ -108,6 +108,7 @@ func (s *ListDigitalEmployeesResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -160,6 +161,10 @@ func (s ListDigitalEmployeesResponseBodyDigitalEmployees) GoString() string {
 	return s.String()
 }
 
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -202,6 +207,11 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetTags() []*Tag {
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetAttributes(v map[string]*string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
+	s.Attributes = v
+	return s
 }
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetCreateTime(v string) *ListDigitalEmployeesResponseBodyDigitalEmployees {

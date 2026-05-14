@@ -107,6 +107,10 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.DefaultRule) {
 		body["defaultRule"] = request.DefaultRule
 	}
@@ -1023,6 +1027,10 @@ func (client *Client) UpdateDigitalEmployeeWithContext(ctx context.Context, name
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.DefaultRule) {
 		body["defaultRule"] = request.DefaultRule
 	}

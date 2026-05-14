@@ -174,6 +174,10 @@ func (client *Client) CreateDigitalEmployeeWithOptions(request *CreateDigitalEmp
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.DefaultRule) {
 		body["defaultRule"] = request.DefaultRule
 	}
@@ -1413,6 +1417,10 @@ func (client *Client) UpdateDigitalEmployeeWithOptions(name *string, request *Up
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attributes) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !dara.IsNil(request.DefaultRule) {
 		body["defaultRule"] = request.DefaultRule
 	}

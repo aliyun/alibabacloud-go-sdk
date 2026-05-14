@@ -9,6 +9,8 @@ type iGetDigitalEmployeeResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributes(v map[string]*string) *GetDigitalEmployeeResponseBody
+	GetAttributes() map[string]*string
 	SetCreateTime(v string) *GetDigitalEmployeeResponseBody
 	GetCreateTime() *string
 	SetDefaultRule(v string) *GetDigitalEmployeeResponseBody
@@ -38,6 +40,7 @@ type iGetDigitalEmployeeResponseBody interface {
 }
 
 type GetDigitalEmployeeResponseBody struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -98,6 +101,10 @@ func (s GetDigitalEmployeeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetDigitalEmployeeResponseBody) GetAttributes() map[string]*string {
+	return s.Attributes
+}
+
 func (s *GetDigitalEmployeeResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -148,6 +155,11 @@ func (s *GetDigitalEmployeeResponseBody) GetTags() []*Tag {
 
 func (s *GetDigitalEmployeeResponseBody) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *GetDigitalEmployeeResponseBody) SetAttributes(v map[string]*string) *GetDigitalEmployeeResponseBody {
+	s.Attributes = v
+	return s
 }
 
 func (s *GetDigitalEmployeeResponseBody) SetCreateTime(v string) *GetDigitalEmployeeResponseBody {
