@@ -426,6 +426,208 @@ func (client *Client) CheckAccountExist(request *CheckAccountExistRequest) (_res
 
 // Summary:
 //
+// 检测budgetName是否存在
+//
+// @param request - CheckBudgetNameExistsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckBudgetNameExistsResponse
+func (client *Client) CheckBudgetNameExistsWithOptions(request *CheckBudgetNameExistsRequest, runtime *dara.RuntimeOptions) (_result *CheckBudgetNameExistsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetName) {
+		body["BudgetName"] = request.BudgetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckBudgetNameExists"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckBudgetNameExistsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检测budgetName是否存在
+//
+// @param request - CheckBudgetNameExistsRequest
+//
+// @return CheckBudgetNameExistsResponse
+func (client *Client) CheckBudgetNameExists(request *CheckBudgetNameExistsRequest) (_result *CheckBudgetNameExistsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckBudgetNameExistsResponse{}
+	_body, _err := client.CheckBudgetNameExistsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预算
+//
+// @param tmpReq - CreateBudgetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBudgetResponse
+func (client *Client) CreateBudgetWithOptions(tmpReq *CreateBudgetRequest, runtime *dara.RuntimeOptions) (_result *CreateBudgetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateBudgetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CycleQuota) {
+		request.CycleQuotaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CycleQuota, dara.String("CycleQuota"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EcIdAccountIds) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.QueryFilter) {
+		request.QueryFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryFilter, dara.String("QueryFilter"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WarnConfs) {
+		request.WarnConfsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarnConfs, dara.String("WarnConfs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetName) {
+		body["BudgetName"] = request.BudgetName
+	}
+
+	if !dara.IsNil(request.BudgetType) {
+		body["BudgetType"] = request.BudgetType
+	}
+
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.CycleEndPeriod) {
+		body["CycleEndPeriod"] = request.CycleEndPeriod
+	}
+
+	if !dara.IsNil(request.CycleQuotaShrink) {
+		body["CycleQuota"] = request.CycleQuotaShrink
+	}
+
+	if !dara.IsNil(request.CycleStartPeriod) {
+		body["CycleStartPeriod"] = request.CycleStartPeriod
+	}
+
+	if !dara.IsNil(request.CycleType) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !dara.IsNil(request.Metric) {
+		body["Metric"] = request.Metric
+	}
+
+	if !dara.IsNil(request.QueryFilterShrink) {
+		body["QueryFilter"] = request.QueryFilterShrink
+	}
+
+	if !dara.IsNil(request.Quota) {
+		body["Quota"] = request.Quota
+	}
+
+	if !dara.IsNil(request.QuotaType) {
+		body["QuotaType"] = request.QuotaType
+	}
+
+	if !dara.IsNil(request.WarnConfsShrink) {
+		body["WarnConfs"] = request.WarnConfsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBudget"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBudgetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预算
+//
+// @param request - CreateBudgetRequest
+//
+// @return CreateBudgetResponse
+func (client *Client) CreateBudget(request *CreateBudgetRequest) (_result *CreateBudgetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBudgetResponse{}
+	_body, _err := client.CreateBudgetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建财务单元
 //
 // @param tmpReq - CreateCostCenterRequest
@@ -1249,6 +1451,158 @@ func (client *Client) DeleteReportDefinition(request *DeleteReportDefinitionRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteReportDefinitionResponse{}
 	_body, _err := client.DeleteReportDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个Budget
+//
+// @param request - DescribeBudgetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBudgetResponse
+func (client *Client) DescribeBudgetWithOptions(request *DescribeBudgetRequest, runtime *dara.RuntimeOptions) (_result *DescribeBudgetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetName) {
+		body["BudgetName"] = request.BudgetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBudget"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBudgetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个Budget
+//
+// @param request - DescribeBudgetRequest
+//
+// @return DescribeBudgetResponse
+func (client *Client) DescribeBudget(request *DescribeBudgetRequest) (_result *DescribeBudgetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBudgetResponse{}
+	_body, _err := client.DescribeBudgetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算列表
+//
+// @param request - DescribeBudgetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBudgetsResponse
+func (client *Client) DescribeBudgetsWithOptions(request *DescribeBudgetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBudgetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetName) {
+		body["BudgetName"] = request.BudgetName
+	}
+
+	if !dara.IsNil(request.BudgetType) {
+		body["BudgetType"] = request.BudgetType
+	}
+
+	if !dara.IsNil(request.ExpireStatus) {
+		body["ExpireStatus"] = request.ExpireStatus
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBudgets"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBudgetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算列表
+//
+// @param request - DescribeBudgetsRequest
+//
+// @return DescribeBudgetsResponse
+func (client *Client) DescribeBudgets(request *DescribeBudgetsRequest) (_result *DescribeBudgetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBudgetsResponse{}
+	_body, _err := client.DescribeBudgetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3794,6 +4148,144 @@ func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDedu
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetSavingPlanUserDeductRuleResponse{}
 	_body, _err := client.SetSavingPlanUserDeductRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新预算
+//
+// @param tmpReq - UpdateBudgetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBudgetResponse
+func (client *Client) UpdateBudgetWithOptions(tmpReq *UpdateBudgetRequest, runtime *dara.RuntimeOptions) (_result *UpdateBudgetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateBudgetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CycleQuota) {
+		request.CycleQuotaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CycleQuota, dara.String("CycleQuota"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EcIdAccountIds) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.QueryFilter) {
+		request.QueryFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryFilter, dara.String("QueryFilter"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WarnConfs) {
+		request.WarnConfsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarnConfs, dara.String("WarnConfs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetName) {
+		body["BudgetName"] = request.BudgetName
+	}
+
+	if !dara.IsNil(request.BudgetType) {
+		body["BudgetType"] = request.BudgetType
+	}
+
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.CycleEndPeriod) {
+		body["CycleEndPeriod"] = request.CycleEndPeriod
+	}
+
+	if !dara.IsNil(request.CycleQuotaShrink) {
+		body["CycleQuota"] = request.CycleQuotaShrink
+	}
+
+	if !dara.IsNil(request.CycleStartPeriod) {
+		body["CycleStartPeriod"] = request.CycleStartPeriod
+	}
+
+	if !dara.IsNil(request.CycleType) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !dara.IsNil(request.Metric) {
+		body["Metric"] = request.Metric
+	}
+
+	if !dara.IsNil(request.OriginalBudgetName) {
+		body["OriginalBudgetName"] = request.OriginalBudgetName
+	}
+
+	if !dara.IsNil(request.QueryFilterShrink) {
+		body["QueryFilter"] = request.QueryFilterShrink
+	}
+
+	if !dara.IsNil(request.Quota) {
+		body["Quota"] = request.Quota
+	}
+
+	if !dara.IsNil(request.QuotaType) {
+		body["QuotaType"] = request.QuotaType
+	}
+
+	if !dara.IsNil(request.WarnConfsShrink) {
+		body["WarnConfs"] = request.WarnConfsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBudget"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBudgetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新预算
+//
+// @param request - UpdateBudgetRequest
+//
+// @return UpdateBudgetResponse
+func (client *Client) UpdateBudget(request *UpdateBudgetRequest) (_result *UpdateBudgetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateBudgetResponse{}
+	_body, _err := client.UpdateBudgetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
