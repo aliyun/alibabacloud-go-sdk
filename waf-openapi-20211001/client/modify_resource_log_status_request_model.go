@@ -19,6 +19,10 @@ type iModifyResourceLogStatusRequest interface {
 	GetResourceManagerResourceGroupId() *string
 	SetStatus(v bool) *ModifyResourceLogStatusRequest
 	GetStatus() *bool
+	SetTraceConfig(v *ModifyResourceLogStatusRequestTraceConfig) *ModifyResourceLogStatusRequest
+	GetTraceConfig() *ModifyResourceLogStatusRequestTraceConfig
+	SetTraceStatus(v bool) *ModifyResourceLogStatusRequest
+	GetTraceStatus() *bool
 }
 
 type ModifyResourceLogStatusRequest struct {
@@ -67,7 +71,9 @@ type ModifyResourceLogStatusRequest struct {
 	// example:
 	//
 	// true
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *bool                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TraceConfig *ModifyResourceLogStatusRequestTraceConfig `json:"TraceConfig,omitempty" xml:"TraceConfig,omitempty" type:"Struct"`
+	TraceStatus *bool                                      `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
 }
 
 func (s ModifyResourceLogStatusRequest) String() string {
@@ -98,6 +104,14 @@ func (s *ModifyResourceLogStatusRequest) GetStatus() *bool {
 	return s.Status
 }
 
+func (s *ModifyResourceLogStatusRequest) GetTraceConfig() *ModifyResourceLogStatusRequestTraceConfig {
+	return s.TraceConfig
+}
+
+func (s *ModifyResourceLogStatusRequest) GetTraceStatus() *bool {
+	return s.TraceStatus
+}
+
 func (s *ModifyResourceLogStatusRequest) SetInstanceId(v string) *ModifyResourceLogStatusRequest {
 	s.InstanceId = &v
 	return s
@@ -123,6 +137,62 @@ func (s *ModifyResourceLogStatusRequest) SetStatus(v bool) *ModifyResourceLogSta
 	return s
 }
 
+func (s *ModifyResourceLogStatusRequest) SetTraceConfig(v *ModifyResourceLogStatusRequestTraceConfig) *ModifyResourceLogStatusRequest {
+	s.TraceConfig = v
+	return s
+}
+
+func (s *ModifyResourceLogStatusRequest) SetTraceStatus(v bool) *ModifyResourceLogStatusRequest {
+	s.TraceStatus = &v
+	return s
+}
+
 func (s *ModifyResourceLogStatusRequest) Validate() error {
+	if s.TraceConfig != nil {
+		if err := s.TraceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModifyResourceLogStatusRequestTraceConfig struct {
+	// example:
+	//
+	// 0
+	RatePerMille *int32 `json:"RatePerMille,omitempty" xml:"RatePerMille,omitempty"`
+	// example:
+	//
+	// cms-test
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+}
+
+func (s ModifyResourceLogStatusRequestTraceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyResourceLogStatusRequestTraceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResourceLogStatusRequestTraceConfig) GetRatePerMille() *int32 {
+	return s.RatePerMille
+}
+
+func (s *ModifyResourceLogStatusRequestTraceConfig) GetWorkspace() *string {
+	return s.Workspace
+}
+
+func (s *ModifyResourceLogStatusRequestTraceConfig) SetRatePerMille(v int32) *ModifyResourceLogStatusRequestTraceConfig {
+	s.RatePerMille = &v
+	return s
+}
+
+func (s *ModifyResourceLogStatusRequestTraceConfig) SetWorkspace(v string) *ModifyResourceLogStatusRequestTraceConfig {
+	s.Workspace = &v
+	return s
+}
+
+func (s *ModifyResourceLogStatusRequestTraceConfig) Validate() error {
 	return dara.Validate(s)
 }

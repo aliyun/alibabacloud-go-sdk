@@ -19384,18 +19384,24 @@ func (client *Client) ModifyResourceLogFieldConfig(request *ModifyResourceLogFie
 //
 // Enables or disables the log collection feature for a protected object.
 //
-// @param request - ModifyResourceLogStatusRequest
+// @param tmpReq - ModifyResourceLogStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyResourceLogStatusResponse
-func (client *Client) ModifyResourceLogStatusWithOptions(request *ModifyResourceLogStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyResourceLogStatusResponse, _err error) {
+func (client *Client) ModifyResourceLogStatusWithOptions(tmpReq *ModifyResourceLogStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyResourceLogStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyResourceLogStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TraceConfig) {
+		request.TraceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TraceConfig, dara.String("TraceConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
@@ -19415,6 +19421,14 @@ func (client *Client) ModifyResourceLogStatusWithOptions(request *ModifyResource
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TraceConfigShrink) {
+		query["TraceConfig"] = request.TraceConfigShrink
+	}
+
+	if !dara.IsNil(request.TraceStatus) {
+		query["TraceStatus"] = request.TraceStatus
 	}
 
 	req := &openapiutil.OpenApiRequest{

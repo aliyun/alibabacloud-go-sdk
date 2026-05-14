@@ -81,7 +81,9 @@ type DescribeResourceLogStatusResponseBodyResult struct {
 	// example:
 	//
 	// true
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *bool                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TraceConfig *DescribeResourceLogStatusResponseBodyResultTraceConfig `json:"TraceConfig,omitempty" xml:"TraceConfig,omitempty" type:"Struct"`
+	TraceStatus *bool                                                   `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
 }
 
 func (s DescribeResourceLogStatusResponseBodyResult) String() string {
@@ -100,6 +102,14 @@ func (s *DescribeResourceLogStatusResponseBodyResult) GetStatus() *bool {
 	return s.Status
 }
 
+func (s *DescribeResourceLogStatusResponseBodyResult) GetTraceConfig() *DescribeResourceLogStatusResponseBodyResultTraceConfig {
+	return s.TraceConfig
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResult) GetTraceStatus() *bool {
+	return s.TraceStatus
+}
+
 func (s *DescribeResourceLogStatusResponseBodyResult) SetResource(v string) *DescribeResourceLogStatusResponseBodyResult {
 	s.Resource = &v
 	return s
@@ -110,6 +120,56 @@ func (s *DescribeResourceLogStatusResponseBodyResult) SetStatus(v bool) *Describ
 	return s
 }
 
+func (s *DescribeResourceLogStatusResponseBodyResult) SetTraceConfig(v *DescribeResourceLogStatusResponseBodyResultTraceConfig) *DescribeResourceLogStatusResponseBodyResult {
+	s.TraceConfig = v
+	return s
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResult) SetTraceStatus(v bool) *DescribeResourceLogStatusResponseBodyResult {
+	s.TraceStatus = &v
+	return s
+}
+
 func (s *DescribeResourceLogStatusResponseBodyResult) Validate() error {
+	if s.TraceConfig != nil {
+		if err := s.TraceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeResourceLogStatusResponseBodyResultTraceConfig struct {
+	RatePerMille *int32  `json:"RatePerMille,omitempty" xml:"RatePerMille,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+}
+
+func (s DescribeResourceLogStatusResponseBodyResultTraceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeResourceLogStatusResponseBodyResultTraceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResultTraceConfig) GetRatePerMille() *int32 {
+	return s.RatePerMille
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResultTraceConfig) GetWorkspace() *string {
+	return s.Workspace
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResultTraceConfig) SetRatePerMille(v int32) *DescribeResourceLogStatusResponseBodyResultTraceConfig {
+	s.RatePerMille = &v
+	return s
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResultTraceConfig) SetWorkspace(v string) *DescribeResourceLogStatusResponseBodyResultTraceConfig {
+	s.Workspace = &v
+	return s
+}
+
+func (s *DescribeResourceLogStatusResponseBodyResultTraceConfig) Validate() error {
 	return dara.Validate(s)
 }
