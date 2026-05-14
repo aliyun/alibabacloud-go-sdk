@@ -147,7 +147,8 @@ type ListProjectRolesResponseBodyPagingInfoProjectRoles struct {
 	// example:
 	//
 	// role_project_guest
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code              *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ModulePermissions []*ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
 	// The name of the role.
 	//
 	// example:
@@ -180,6 +181,10 @@ func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) GetCode() *string {
 	return s.Code
 }
 
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) GetModulePermissions() []*ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions {
+	return s.ModulePermissions
+}
+
 func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) GetName() *string {
 	return s.Name
 }
@@ -194,6 +199,11 @@ func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) GetType() *string {
 
 func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) SetCode(v string) *ListProjectRolesResponseBodyPagingInfoProjectRoles {
 	s.Code = &v
+	return s
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) SetModulePermissions(v []*ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) *ListProjectRolesResponseBodyPagingInfoProjectRoles {
+	s.ModulePermissions = v
 	return s
 }
 
@@ -213,5 +223,68 @@ func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) SetType(v string) *
 }
 
 func (s *ListProjectRolesResponseBodyPagingInfoProjectRoles) Validate() error {
+	if s.ModulePermissions != nil {
+		for _, item := range s.ModulePermissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions struct {
+	// example:
+	//
+	// 2
+	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// example:
+	//
+	// HoloStudio
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// example:
+	//
+	// Read
+	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
+}
+
+func (s ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) GetModuleId() *int64 {
+	return s.ModuleId
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) GetModuleName() *string {
+	return s.ModuleName
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) GetPermissionType() *string {
+	return s.PermissionType
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) SetModuleId(v int64) *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) SetModuleName(v string) *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) SetPermissionType(v string) *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions {
+	s.PermissionType = &v
+	return s
+}
+
+func (s *ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions) Validate() error {
 	return dara.Validate(s)
 }

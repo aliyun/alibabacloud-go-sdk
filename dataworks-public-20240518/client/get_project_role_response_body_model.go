@@ -67,7 +67,8 @@ type GetProjectRoleResponseBodyProjectRole struct {
 	// example:
 	//
 	// role_project_guest
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code              *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	ModulePermissions []*GetProjectRoleResponseBodyProjectRoleModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
 	// The name of the role in the DataWorks workspace.
 	//
 	// example:
@@ -104,6 +105,10 @@ func (s *GetProjectRoleResponseBodyProjectRole) GetCode() *string {
 	return s.Code
 }
 
+func (s *GetProjectRoleResponseBodyProjectRole) GetModulePermissions() []*GetProjectRoleResponseBodyProjectRoleModulePermissions {
+	return s.ModulePermissions
+}
+
 func (s *GetProjectRoleResponseBodyProjectRole) GetName() *string {
 	return s.Name
 }
@@ -118,6 +123,11 @@ func (s *GetProjectRoleResponseBodyProjectRole) GetType() *string {
 
 func (s *GetProjectRoleResponseBodyProjectRole) SetCode(v string) *GetProjectRoleResponseBodyProjectRole {
 	s.Code = &v
+	return s
+}
+
+func (s *GetProjectRoleResponseBodyProjectRole) SetModulePermissions(v []*GetProjectRoleResponseBodyProjectRoleModulePermissions) *GetProjectRoleResponseBodyProjectRole {
+	s.ModulePermissions = v
 	return s
 }
 
@@ -137,5 +147,68 @@ func (s *GetProjectRoleResponseBodyProjectRole) SetType(v string) *GetProjectRol
 }
 
 func (s *GetProjectRoleResponseBodyProjectRole) Validate() error {
+	if s.ModulePermissions != nil {
+		for _, item := range s.ModulePermissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetProjectRoleResponseBodyProjectRoleModulePermissions struct {
+	// example:
+	//
+	// 2
+	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// example:
+	//
+	// HoloStudio
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// example:
+	//
+	// Read
+	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
+}
+
+func (s GetProjectRoleResponseBodyProjectRoleModulePermissions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetProjectRoleResponseBodyProjectRoleModulePermissions) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) GetModuleId() *int64 {
+	return s.ModuleId
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) GetModuleName() *string {
+	return s.ModuleName
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) GetPermissionType() *string {
+	return s.PermissionType
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) SetModuleId(v int64) *GetProjectRoleResponseBodyProjectRoleModulePermissions {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) SetModuleName(v string) *GetProjectRoleResponseBodyProjectRoleModulePermissions {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) SetPermissionType(v string) *GetProjectRoleResponseBodyProjectRoleModulePermissions {
+	s.PermissionType = &v
+	return s
+}
+
+func (s *GetProjectRoleResponseBodyProjectRoleModulePermissions) Validate() error {
 	return dara.Validate(s)
 }
