@@ -17,16 +17,24 @@ type iUpdateLiveRecordVodConfigRequest interface {
 	GetComposeVodTranscodeGroupId() *string
 	SetCycleDuration(v int32) *UpdateLiveRecordVodConfigRequest
 	GetCycleDuration() *int32
+	SetDelayTime(v int32) *UpdateLiveRecordVodConfigRequest
+	GetDelayTime() *int32
 	SetDomainName(v string) *UpdateLiveRecordVodConfigRequest
 	GetDomainName() *string
+	SetFormatConfig(v bool) *UpdateLiveRecordVodConfigRequest
+	GetFormatConfig() *bool
 	SetOnDemand(v int32) *UpdateLiveRecordVodConfigRequest
 	GetOnDemand() *int32
 	SetOwnerId(v int64) *UpdateLiveRecordVodConfigRequest
 	GetOwnerId() *int64
+	SetRecordFormat(v []*UpdateLiveRecordVodConfigRequestRecordFormat) *UpdateLiveRecordVodConfigRequest
+	GetRecordFormat() []*UpdateLiveRecordVodConfigRequestRecordFormat
 	SetRegionId(v string) *UpdateLiveRecordVodConfigRequest
 	GetRegionId() *string
 	SetStreamName(v string) *UpdateLiveRecordVodConfigRequest
 	GetStreamName() *string
+	SetTranscodeTemplates(v []*string) *UpdateLiveRecordVodConfigRequest
+	GetTranscodeTemplates() []*string
 	SetVodTranscodeGroupId(v string) *UpdateLiveRecordVodConfigRequest
 	GetVodTranscodeGroupId() *string
 }
@@ -64,6 +72,7 @@ type UpdateLiveRecordVodConfigRequest struct {
 	//
 	// 300
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	DelayTime     *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 	// The main streaming domain.
 	//
 	// This parameter is required.
@@ -71,7 +80,8 @@ type UpdateLiveRecordVodConfigRequest struct {
 	// example:
 	//
 	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FormatConfig *bool   `json:"FormatConfig,omitempty" xml:"FormatConfig,omitempty"`
 	// Specifies whether to enable on-demand recording. Valid values:
 	//
 	// 	- **0*	- (default): disables on-demand recording.
@@ -81,18 +91,18 @@ type UpdateLiveRecordVodConfigRequest struct {
 	// example:
 	//
 	// 0
-	OnDemand *int32  `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	OnDemand     *int32                                          `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
+	OwnerId      *int64                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecordFormat []*UpdateLiveRecordVodConfigRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
+	RegionId     *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
 	//
 	// example:
 	//
 	// stream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StreamName         *string   `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	TranscodeTemplates []*string `json:"TranscodeTemplates,omitempty" xml:"TranscodeTemplates,omitempty" type:"Repeated"`
 	// The ID of the transcoding template group in ApsaraVideo VOD.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -124,8 +134,16 @@ func (s *UpdateLiveRecordVodConfigRequest) GetCycleDuration() *int32 {
 	return s.CycleDuration
 }
 
+func (s *UpdateLiveRecordVodConfigRequest) GetDelayTime() *int32 {
+	return s.DelayTime
+}
+
 func (s *UpdateLiveRecordVodConfigRequest) GetDomainName() *string {
 	return s.DomainName
+}
+
+func (s *UpdateLiveRecordVodConfigRequest) GetFormatConfig() *bool {
+	return s.FormatConfig
 }
 
 func (s *UpdateLiveRecordVodConfigRequest) GetOnDemand() *int32 {
@@ -136,12 +154,20 @@ func (s *UpdateLiveRecordVodConfigRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *UpdateLiveRecordVodConfigRequest) GetRecordFormat() []*UpdateLiveRecordVodConfigRequestRecordFormat {
+	return s.RecordFormat
+}
+
 func (s *UpdateLiveRecordVodConfigRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *UpdateLiveRecordVodConfigRequest) GetStreamName() *string {
 	return s.StreamName
+}
+
+func (s *UpdateLiveRecordVodConfigRequest) GetTranscodeTemplates() []*string {
+	return s.TranscodeTemplates
 }
 
 func (s *UpdateLiveRecordVodConfigRequest) GetVodTranscodeGroupId() *string {
@@ -168,8 +194,18 @@ func (s *UpdateLiveRecordVodConfigRequest) SetCycleDuration(v int32) *UpdateLive
 	return s
 }
 
+func (s *UpdateLiveRecordVodConfigRequest) SetDelayTime(v int32) *UpdateLiveRecordVodConfigRequest {
+	s.DelayTime = &v
+	return s
+}
+
 func (s *UpdateLiveRecordVodConfigRequest) SetDomainName(v string) *UpdateLiveRecordVodConfigRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequest) SetFormatConfig(v bool) *UpdateLiveRecordVodConfigRequest {
+	s.FormatConfig = &v
 	return s
 }
 
@@ -183,6 +219,11 @@ func (s *UpdateLiveRecordVodConfigRequest) SetOwnerId(v int64) *UpdateLiveRecord
 	return s
 }
 
+func (s *UpdateLiveRecordVodConfigRequest) SetRecordFormat(v []*UpdateLiveRecordVodConfigRequestRecordFormat) *UpdateLiveRecordVodConfigRequest {
+	s.RecordFormat = v
+	return s
+}
+
 func (s *UpdateLiveRecordVodConfigRequest) SetRegionId(v string) *UpdateLiveRecordVodConfigRequest {
 	s.RegionId = &v
 	return s
@@ -193,11 +234,110 @@ func (s *UpdateLiveRecordVodConfigRequest) SetStreamName(v string) *UpdateLiveRe
 	return s
 }
 
+func (s *UpdateLiveRecordVodConfigRequest) SetTranscodeTemplates(v []*string) *UpdateLiveRecordVodConfigRequest {
+	s.TranscodeTemplates = v
+	return s
+}
+
 func (s *UpdateLiveRecordVodConfigRequest) SetVodTranscodeGroupId(v string) *UpdateLiveRecordVodConfigRequest {
 	s.VodTranscodeGroupId = &v
 	return s
 }
 
 func (s *UpdateLiveRecordVodConfigRequest) Validate() error {
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateLiveRecordVodConfigRequestRecordFormat struct {
+	AutoCompose       *string `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
+	Format            *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	ProcessMethod     *string `json:"ProcessMethod,omitempty" xml:"ProcessMethod,omitempty"`
+	ProcessTemplateId *string `json:"ProcessTemplateId,omitempty" xml:"ProcessTemplateId,omitempty"`
+	SliceDuration     *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	Tags              *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	VideoProcess      *string `json:"VideoProcess,omitempty" xml:"VideoProcess,omitempty"`
+}
+
+func (s UpdateLiveRecordVodConfigRequestRecordFormat) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateLiveRecordVodConfigRequestRecordFormat) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetAutoCompose() *string {
+	return s.AutoCompose
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetFormat() *string {
+	return s.Format
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetProcessMethod() *string {
+	return s.ProcessMethod
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetProcessTemplateId() *string {
+	return s.ProcessTemplateId
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetSliceDuration() *int32 {
+	return s.SliceDuration
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetTags() *string {
+	return s.Tags
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) GetVideoProcess() *string {
+	return s.VideoProcess
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetAutoCompose(v string) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.AutoCompose = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetFormat(v string) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.Format = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetProcessMethod(v string) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.ProcessMethod = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetProcessTemplateId(v string) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.ProcessTemplateId = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetSliceDuration(v int32) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.SliceDuration = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetTags(v string) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.Tags = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) SetVideoProcess(v string) *UpdateLiveRecordVodConfigRequestRecordFormat {
+	s.VideoProcess = &v
+	return s
+}
+
+func (s *UpdateLiveRecordVodConfigRequestRecordFormat) Validate() error {
 	return dara.Validate(s)
 }

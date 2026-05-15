@@ -146,16 +146,22 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigs) Validate(
 }
 
 type DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig struct {
-	AppName                    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AutoCompose                *string `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
-	ComposeVodTranscodeGroupId *string `json:"ComposeVodTranscodeGroupId,omitempty" xml:"ComposeVodTranscodeGroupId,omitempty"`
-	CreateTime                 *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CycleDuration              *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	DomainName                 *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OnDemand                   *int32  `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
-	StorageLocation            *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	StreamName                 *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	VodTranscodeGroupId        *string `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
+	AppName                    *string                                                                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AutoCompose                *string                                                                                          `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
+	ComposeVodTranscodeGroupId *string                                                                                          `json:"ComposeVodTranscodeGroupId,omitempty" xml:"ComposeVodTranscodeGroupId,omitempty"`
+	CreateTime                 *string                                                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CycleDuration              *int32                                                                                           `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	DelayTime                  *int32                                                                                           `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DomainName                 *string                                                                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FormatConfig               *bool                                                                                            `json:"FormatConfig,omitempty" xml:"FormatConfig,omitempty"`
+	OnDemand                   *int32                                                                                           `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
+	RecordContent              *string                                                                                          `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
+	RecordFormatList           *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Struct"`
+	SpaceId                    *string                                                                                          `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	StorageLocation            *string                                                                                          `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	StreamName                 *string                                                                                          `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	TranscodeTemplates         *string                                                                                          `json:"TranscodeTemplates,omitempty" xml:"TranscodeTemplates,omitempty"`
+	VodTranscodeGroupId        *string                                                                                          `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
 }
 
 func (s DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) String() string {
@@ -186,12 +192,32 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordV
 	return s.CycleDuration
 }
 
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetDelayTime() *int32 {
+	return s.DelayTime
+}
+
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetFormatConfig() *bool {
+	return s.FormatConfig
+}
+
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetOnDemand() *int32 {
 	return s.OnDemand
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetRecordContent() *string {
+	return s.RecordContent
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetRecordFormatList() *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList {
+	return s.RecordFormatList
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetSpaceId() *string {
+	return s.SpaceId
 }
 
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetStorageLocation() *string {
@@ -200,6 +226,10 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordV
 
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetStreamName() *string {
 	return s.StreamName
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetTranscodeTemplates() *string {
+	return s.TranscodeTemplates
 }
 
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) GetVodTranscodeGroupId() *string {
@@ -231,13 +261,38 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordV
 	return s
 }
 
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetDelayTime(v int32) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
+	s.DelayTime = &v
+	return s
+}
+
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetDomainName(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
 	s.DomainName = &v
 	return s
 }
 
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetFormatConfig(v bool) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
+	s.FormatConfig = &v
+	return s
+}
+
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetOnDemand(v int32) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
 	s.OnDemand = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetRecordContent(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
+	s.RecordContent = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetRecordFormatList(v *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
+	s.RecordFormatList = v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetSpaceId(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
+	s.SpaceId = &v
 	return s
 }
 
@@ -251,11 +306,140 @@ func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordV
 	return s
 }
 
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetTranscodeTemplates(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
+	s.TranscodeTemplates = &v
+	return s
+}
+
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) SetVodTranscodeGroupId(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig {
 	s.VodTranscodeGroupId = &v
 	return s
 }
 
 func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfig) Validate() error {
+	if s.RecordFormatList != nil {
+		if err := s.RecordFormatList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList struct {
+	RecordFormat []*DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList) GetRecordFormat() []*DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	return s.RecordFormat
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList) SetRecordFormat(v []*DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList {
+	s.RecordFormat = v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatList) Validate() error {
+	if s.RecordFormat != nil {
+		for _, item := range s.RecordFormat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat struct {
+	AutoCompose       *string `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
+	Format            *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	ProcessMethod     *string `json:"ProcessMethod,omitempty" xml:"ProcessMethod,omitempty"`
+	ProcessTemplateId *string `json:"ProcessTemplateId,omitempty" xml:"ProcessTemplateId,omitempty"`
+	SliceDuration     *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	Tags              *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	VideoProcess      *string `json:"VideoProcess,omitempty" xml:"VideoProcess,omitempty"`
+}
+
+func (s DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetAutoCompose() *string {
+	return s.AutoCompose
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetFormat() *string {
+	return s.Format
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetProcessMethod() *string {
+	return s.ProcessMethod
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetProcessTemplateId() *string {
+	return s.ProcessTemplateId
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetSliceDuration() *int32 {
+	return s.SliceDuration
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetTags() *string {
+	return s.Tags
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) GetVideoProcess() *string {
+	return s.VideoProcess
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetAutoCompose(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.AutoCompose = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetFormat(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.Format = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetProcessMethod(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.ProcessMethod = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetProcessTemplateId(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.ProcessTemplateId = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetSliceDuration(v int32) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.SliceDuration = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetTags(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.Tags = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) SetVideoProcess(v string) *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat {
+	s.VideoProcess = &v
+	return s
+}
+
+func (s *DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodConfigRecordFormatListRecordFormat) Validate() error {
 	return dara.Validate(s)
 }

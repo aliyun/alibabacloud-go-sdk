@@ -2884,8 +2884,16 @@ func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVo
 		query["CycleDuration"] = request.CycleDuration
 	}
 
+	if !dara.IsNil(request.DelayTime) {
+		query["DelayTime"] = request.DelayTime
+	}
+
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.FormatConfig) {
+		query["FormatConfig"] = request.FormatConfig
 	}
 
 	if !dara.IsNil(request.OnDemand) {
@@ -2896,8 +2904,20 @@ func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVo
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.RecordContent) {
+		query["RecordContent"] = request.RecordContent
+	}
+
+	if !dara.IsNil(request.RecordFormat) {
+		query["RecordFormat"] = request.RecordFormat
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SpaceId) {
+		query["SpaceId"] = request.SpaceId
 	}
 
 	if !dara.IsNil(request.StorageLocation) {
@@ -2906,6 +2926,10 @@ func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVo
 
 	if !dara.IsNil(request.StreamName) {
 		query["StreamName"] = request.StreamName
+	}
+
+	if !dara.IsNil(request.TranscodeTemplates) {
+		query["TranscodeTemplates"] = request.TranscodeTemplates
 	}
 
 	if !dara.IsNil(request.VodTranscodeGroupId) {
@@ -41632,8 +41656,16 @@ func (client *Client) UpdateLiveRecordVodConfigWithOptions(request *UpdateLiveRe
 		query["CycleDuration"] = request.CycleDuration
 	}
 
+	if !dara.IsNil(request.DelayTime) {
+		query["DelayTime"] = request.DelayTime
+	}
+
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.FormatConfig) {
+		query["FormatConfig"] = request.FormatConfig
 	}
 
 	if !dara.IsNil(request.OnDemand) {
@@ -41644,12 +41676,20 @@ func (client *Client) UpdateLiveRecordVodConfigWithOptions(request *UpdateLiveRe
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.RecordFormat) {
+		query["RecordFormat"] = request.RecordFormat
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
 	if !dara.IsNil(request.StreamName) {
 		query["StreamName"] = request.StreamName
+	}
+
+	if !dara.IsNil(request.TranscodeTemplates) {
+		query["TranscodeTemplates"] = request.TranscodeTemplates
 	}
 
 	if !dara.IsNil(request.VodTranscodeGroupId) {
