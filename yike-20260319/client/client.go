@@ -780,6 +780,68 @@ func (client *Client) GetYikeAssetMediaInfo(request *GetYikeAssetMediaInfoReques
 
 // Summary:
 //
+// 查询一刻提示词扩写和音频修复视频生成任务
+//
+// @param request - GetYikePromptExpansionVoiceFixJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikePromptExpansionVoiceFixJobResponse
+func (client *Client) GetYikePromptExpansionVoiceFixJobWithOptions(request *GetYikePromptExpansionVoiceFixJobRequest, runtime *dara.RuntimeOptions) (_result *GetYikePromptExpansionVoiceFixJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikePromptExpansionVoiceFixJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikePromptExpansionVoiceFixJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一刻提示词扩写和音频修复视频生成任务
+//
+// @param request - GetYikePromptExpansionVoiceFixJobRequest
+//
+// @return GetYikePromptExpansionVoiceFixJobResponse
+func (client *Client) GetYikePromptExpansionVoiceFixJob(request *GetYikePromptExpansionVoiceFixJobRequest) (_result *GetYikePromptExpansionVoiceFixJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikePromptExpansionVoiceFixJobResponse{}
+	_body, _err := client.GetYikePromptExpansionVoiceFixJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取一刻故事板任务
 //
 // @param request - GetYikeStoryboardJobRequest
@@ -1707,6 +1769,72 @@ func (client *Client) SubmitYikeAIAppJob(request *SubmitYikeAIAppJobRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitYikeAIAppJobResponse{}
 	_body, _err := client.SubmitYikeAIAppJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻提示词扩写和音频修复视频生成任务
+//
+// @param request - SubmitYikePromptExpansionVoiceFixJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikePromptExpansionVoiceFixJobResponse
+func (client *Client) SubmitYikePromptExpansionVoiceFixJobWithOptions(request *SubmitYikePromptExpansionVoiceFixJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikePromptExpansionVoiceFixJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobParams) {
+		body["JobParams"] = request.JobParams
+	}
+
+	if !dara.IsNil(request.UserData) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikePromptExpansionVoiceFixJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikePromptExpansionVoiceFixJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻提示词扩写和音频修复视频生成任务
+//
+// @param request - SubmitYikePromptExpansionVoiceFixJobRequest
+//
+// @return SubmitYikePromptExpansionVoiceFixJobResponse
+func (client *Client) SubmitYikePromptExpansionVoiceFixJob(request *SubmitYikePromptExpansionVoiceFixJobRequest) (_result *SubmitYikePromptExpansionVoiceFixJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitYikePromptExpansionVoiceFixJobResponse{}
+	_body, _err := client.SubmitYikePromptExpansionVoiceFixJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
