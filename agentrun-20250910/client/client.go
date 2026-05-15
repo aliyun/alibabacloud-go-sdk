@@ -733,6 +733,75 @@ func (client *Client) CreateFlowEndpoint(flowName *string, request *CreateFlowEn
 
 // Summary:
 //
+// 创建 IM Bot
+//
+// Description:
+//
+// POST /2025-09-10/agents/im-bots；成功 HTTP 201；请求体无 status（创建后恒为 running）；Body 标准包装，data 为 IMBotInfo
+//
+// @param request - CreateIMBotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIMBotResponse
+func (client *Client) CreateIMBotWithOptions(request *CreateIMBotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateIMBotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateIMBot"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/im-bots"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateIMBotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 IM Bot
+//
+// Description:
+//
+// POST /2025-09-10/agents/im-bots；成功 HTTP 201；请求体无 status（创建后恒为 running）；Body 标准包装，data 为 IMBotInfo
+//
+// @param request - CreateIMBotRequest
+//
+// @return CreateIMBotResponse
+func (client *Client) CreateIMBot(request *CreateIMBotRequest) (_result *CreateIMBotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateIMBotResponse{}
+	_body, _err := client.CreateIMBotWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建知识库
 //
 // @param request - CreateKnowledgeBaseRequest
@@ -1772,6 +1841,74 @@ func (client *Client) DeleteFlowVersion(flowName *string, flowVersion *string, r
 	headers := make(map[string]*string)
 	_result = &DeleteFlowVersionResponse{}
 	_body, _err := client.DeleteFlowVersionWithOptions(flowName, flowVersion, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除 IM Bot
+//
+// Description:
+//
+// DELETE /2025-09-10/agents/im-bots/{imBotId}；成功为 HTTP 204 No Content，无 JSON 响应体
+//
+// @param request - DeleteIMBotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIMBotResponse
+func (client *Client) DeleteIMBotWithOptions(imBotId *string, request *DeleteIMBotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIMBotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteIMBot"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/im-bots/" + dara.PercentEncode(dara.StringValue(imBotId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteIMBotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除 IM Bot
+//
+// Description:
+//
+// DELETE /2025-09-10/agents/im-bots/{imBotId}；成功为 HTTP 204 No Content，无 JSON 响应体
+//
+// @param request - DeleteIMBotRequest
+//
+// @return DeleteIMBotResponse
+func (client *Client) DeleteIMBot(imBotId *string, request *DeleteIMBotRequest) (_result *DeleteIMBotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIMBotResponse{}
+	_body, _err := client.DeleteIMBotWithOptions(imBotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2882,6 +3019,74 @@ func (client *Client) GetFlowVersion(flowName *string, flowVersion *string, requ
 	headers := make(map[string]*string)
 	_result = &GetFlowVersionResponse{}
 	_body, _err := client.GetFlowVersionWithOptions(flowName, flowVersion, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 IM Bot
+//
+// Description:
+//
+// GET /2025-09-10/agents/im-bots/{imBotId}；200 OK，Body 标准包装，data 为 IMBotInfo
+//
+// @param request - GetIMBotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIMBotResponse
+func (client *Client) GetIMBotWithOptions(imBotId *string, request *GetIMBotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIMBotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIMBot"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/im-bots/" + dara.PercentEncode(dara.StringValue(imBotId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIMBotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 IM Bot
+//
+// Description:
+//
+// GET /2025-09-10/agents/im-bots/{imBotId}；200 OK，Body 标准包装，data 为 IMBotInfo
+//
+// @param request - GetIMBotRequest
+//
+// @return GetIMBotResponse
+func (client *Client) GetIMBot(imBotId *string, request *GetIMBotRequest) (_result *GetIMBotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIMBotResponse{}
+	_body, _err := client.GetIMBotWithOptions(imBotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4228,6 +4433,100 @@ func (client *Client) ListFlows(request *ListFlowsRequest) (_result *ListFlowsRe
 	headers := make(map[string]*string)
 	_result = &ListFlowsResponse{}
 	_body, _err := client.ListFlowsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列举 IM Bots
+//
+// Description:
+//
+// GET /2025-09-10/agents/im-bots；200 OK；data 含 items、pageNumber、pageSize、total；pageNumber 默认 1、pageSize 默认 20、上限 100；可按 botName（子串忽略大小写）、agentRuntimeId、botBizType、status 筛选
+//
+// @param request - ListIMBotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIMBotsResponse
+func (client *Client) ListIMBotsWithOptions(request *ListIMBotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIMBotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRuntimeId) {
+		query["agentRuntimeId"] = request.AgentRuntimeId
+	}
+
+	if !dara.IsNil(request.BotBizType) {
+		query["botBizType"] = request.BotBizType
+	}
+
+	if !dara.IsNil(request.BotName) {
+		query["botName"] = request.BotName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIMBots"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/im-bots"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIMBotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列举 IM Bots
+//
+// Description:
+//
+// GET /2025-09-10/agents/im-bots；200 OK；data 含 items、pageNumber、pageSize、total；pageNumber 默认 1、pageSize 默认 20、上限 100；可按 botName（子串忽略大小写）、agentRuntimeId、botBizType、status 筛选
+//
+// @param request - ListIMBotsRequest
+//
+// @return ListIMBotsResponse
+func (client *Client) ListIMBots(request *ListIMBotsRequest) (_result *ListIMBotsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIMBotsResponse{}
+	_body, _err := client.ListIMBotsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5843,6 +6142,75 @@ func (client *Client) UpdateFlowEndpoint(flowName *string, flowEndpointName *str
 	headers := make(map[string]*string)
 	_result = &UpdateFlowEndpointResponse{}
 	_body, _err := client.UpdateFlowEndpointWithOptions(flowName, flowEndpointName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 IM Bot
+//
+// Description:
+//
+// PUT /2025-09-10/agents/im-bots/{imBotId}；成功建议 HTTP 202，Body 标准包装，data 为更新后 IMBotInfo
+//
+// @param request - UpdateIMBotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIMBotResponse
+func (client *Client) UpdateIMBotWithOptions(imBotId *string, request *UpdateIMBotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateIMBotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateIMBot"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/im-bots/" + dara.PercentEncode(dara.StringValue(imBotId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateIMBotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 IM Bot
+//
+// Description:
+//
+// PUT /2025-09-10/agents/im-bots/{imBotId}；成功建议 HTTP 202，Body 标准包装，data 为更新后 IMBotInfo
+//
+// @param request - UpdateIMBotRequest
+//
+// @return UpdateIMBotResponse
+func (client *Client) UpdateIMBot(imBotId *string, request *UpdateIMBotRequest) (_result *UpdateIMBotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateIMBotResponse{}
+	_body, _err := client.UpdateIMBotWithOptions(imBotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

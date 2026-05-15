@@ -105,8 +105,6 @@ type CreateTemplateInput struct {
 	//
 	// 1800
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	// Deprecated
-	//
 	// 沙箱存活时间（秒）
 	//
 	// example:

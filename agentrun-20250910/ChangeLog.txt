@@ -1,3 +1,11 @@
+2026-05-15 Version: v5.8.0
+- Support API CreateIMBot.
+- Support API DeleteIMBot.
+- Support API GetIMBot.
+- Support API ListIMBots.
+- Support API UpdateIMBot.
+
+
 2026-04-24 Version: v5.7.4
 - Generated golang 2025-09-10 for AgentRun.
 

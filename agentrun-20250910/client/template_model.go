@@ -90,19 +90,18 @@ type Template struct {
 	McpOptions              *TemplateMcpOptions      `json:"mcpOptions,omitempty" xml:"mcpOptions,omitempty" type:"Struct"`
 	McpState                *TemplateMcpState        `json:"mcpState,omitempty" xml:"mcpState,omitempty" type:"Struct"`
 	// This parameter is required.
-	Memory                      *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
-	NasConfig                   *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	NetworkConfiguration        *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration            []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
-	ResourceName                *string               `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	SandboxIdleTimeoutInSeconds *string               `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	// Deprecated
-	SandboxTTLInSeconds   *string                `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
-	ScalingStatus         *ScalingStatus         `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
-	Status                *string                `json:"status,omitempty" xml:"status,omitempty"`
-	StatusReason          *string                `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	TemplateArn           *string                `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
-	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
+	Memory                      *int32                 `json:"memory,omitempty" xml:"memory,omitempty"`
+	NasConfig                   *NASConfig             `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	NetworkConfiguration        *NetworkConfiguration  `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	OssConfiguration            []*OssConfiguration    `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	ResourceName                *string                `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	SandboxIdleTimeoutInSeconds *string                `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
+	SandboxTTLInSeconds         *string                `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
+	ScalingStatus               *ScalingStatus         `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
+	Status                      *string                `json:"status,omitempty" xml:"status,omitempty"`
+	StatusReason                *string                `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	TemplateArn                 *string                `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
+	TemplateConfiguration       map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
 	// This parameter is required.
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 	// This parameter is required.

@@ -134,9 +134,10 @@ type ConvertFlowDSLInputOptions struct {
 	// example:
 	//
 	// true
-	CompatibilityCheck *bool   `json:"compatibilityCheck,omitempty" xml:"compatibilityCheck,omitempty"`
-	CredentialName     *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	FlowName           *string `json:"flowName,omitempty" xml:"flowName,omitempty"`
+	CompatibilityCheck *bool `json:"compatibilityCheck,omitempty" xml:"compatibilityCheck,omitempty"`
+	// 调用方指定的 AgentRun 凭证资源名称。转换后会替换模型相关节点访问凭证
+	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	FlowName       *string `json:"flowName,omitempty" xml:"flowName,omitempty"`
 	// 全局VPC端点名称，对所有节点统一生效。如果指定了vpcEndpoints映射，则映射中的节点优先使用映射值
 	VpcEndpointName *string `json:"vpcEndpointName,omitempty" xml:"vpcEndpointName,omitempty"`
 	// 按节点名称指定VPC端点，key为节点名称(stateName)，value为该节点使用的VPC端点名称。优先级高于vpcEndpointName
