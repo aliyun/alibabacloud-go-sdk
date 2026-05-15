@@ -901,6 +901,47 @@ func (client *Client) DeleteWarehouseScheduleTaskWithContext(ctx context.Context
 
 // Summary:
 //
+// 关闭OpenAPI执行SQL功能
+//
+// @param request - DisableExecuteStatementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableExecuteStatementResponse
+func (client *Client) DisableExecuteStatementWithContext(ctx context.Context, instanceId *string, request *DisableExecuteStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableExecuteStatementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableExecuteStatement"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/disableExecuteStatement"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableExecuteStatementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables data lake acceleration.
 //
 // @param request - DisableHiveAccessRequest
@@ -1079,6 +1120,47 @@ func (client *Client) DropUserWithContext(ctx context.Context, instanceId *strin
 
 // Summary:
 //
+// 开启或关闭OpenAPI执行SQL功能
+//
+// @param request - EnableExecuteStatementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableExecuteStatementResponse
+func (client *Client) EnableExecuteStatementWithContext(ctx context.Context, instanceId *string, request *EnableExecuteStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableExecuteStatementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableExecuteStatement"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/enableExecuteStatement"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableExecuteStatementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables data lake acceleration.
 //
 // @param request - EnableHiveAccessRequest
@@ -1210,6 +1292,73 @@ func (client *Client) EnableWarehouseAutoScaleWithContext(ctx context.Context, i
 
 // Summary:
 //
+// # SQL执行
+//
+// @param request - ExecuteStatementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteStatementResponse
+func (client *Client) ExecuteStatementWithContext(ctx context.Context, instanceId *string, request *ExecuteStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteStatementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DbName) {
+		body["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.MaxBytes) {
+		body["maxBytes"] = request.MaxBytes
+	}
+
+	if !dara.IsNil(request.MaxRows) {
+		body["maxRows"] = request.MaxRows
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.QueryTimeout) {
+		body["queryTimeout"] = request.QueryTimeout
+	}
+
+	if !dara.IsNil(request.Sql) {
+		body["sql"] = request.Sql
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteStatement"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/executeStatement"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteStatementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获得证书信息
 //
 // @param headers - map
@@ -1233,6 +1382,47 @@ func (client *Client) GetCertificateAttributeWithContext(ctx context.Context, in
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCertificateAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例是否已开启OpenAPI执行SQL功能
+//
+// @param request - GetExecuteStatementEnabledRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExecuteStatementEnabledResponse
+func (client *Client) GetExecuteStatementEnabledWithContext(ctx context.Context, instanceId *string, request *GetExecuteStatementEnabledRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExecuteStatementEnabledResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetExecuteStatementEnabled"),
+		Version:     dara.String("2022-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/executeStatementEnabled"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetExecuteStatementEnabledResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
