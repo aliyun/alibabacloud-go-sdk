@@ -123,7 +123,10 @@ type GetDocInfoResponseBodyData struct {
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	DocName    *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// 電視廣播2020年報
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	// example:
 	//
 	// pdf
@@ -131,11 +134,15 @@ type GetDocInfoResponseBodyData struct {
 	// example:
 	//
 	// http://xxx/xxx.pdf
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl  *string                             `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	PageInfo *GetDocInfoResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 0
-	Status        *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 导入成功
 	StatusMessage *string   `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	VideoContents []*string `json:"VideoContents,omitempty" xml:"VideoContents,omitempty" type:"Repeated"`
 }
@@ -162,6 +169,10 @@ func (s *GetDocInfoResponseBodyData) GetDocType() *string {
 
 func (s *GetDocInfoResponseBodyData) GetFileUrl() *string {
 	return s.FileUrl
+}
+
+func (s *GetDocInfoResponseBodyData) GetPageInfo() *GetDocInfoResponseBodyDataPageInfo {
+	return s.PageInfo
 }
 
 func (s *GetDocInfoResponseBodyData) GetStatus() *int32 {
@@ -196,6 +207,11 @@ func (s *GetDocInfoResponseBodyData) SetFileUrl(v string) *GetDocInfoResponseBod
 	return s
 }
 
+func (s *GetDocInfoResponseBodyData) SetPageInfo(v *GetDocInfoResponseBodyDataPageInfo) *GetDocInfoResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
 func (s *GetDocInfoResponseBodyData) SetStatus(v int32) *GetDocInfoResponseBodyData {
 	s.Status = &v
 	return s
@@ -212,5 +228,51 @@ func (s *GetDocInfoResponseBodyData) SetVideoContents(v []*string) *GetDocInfoRe
 }
 
 func (s *GetDocInfoResponseBodyData) Validate() error {
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetDocInfoResponseBodyDataPageInfo struct {
+	// example:
+	//
+	// 200
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 100
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetDocInfoResponseBodyDataPageInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDocInfoResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocInfoResponseBodyDataPageInfo) GetHeight() *int32 {
+	return s.Height
+}
+
+func (s *GetDocInfoResponseBodyDataPageInfo) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *GetDocInfoResponseBodyDataPageInfo) SetHeight(v int32) *GetDocInfoResponseBodyDataPageInfo {
+	s.Height = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyDataPageInfo) SetWidth(v int32) *GetDocInfoResponseBodyDataPageInfo {
+	s.Width = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyDataPageInfo) Validate() error {
 	return dara.Validate(s)
 }
