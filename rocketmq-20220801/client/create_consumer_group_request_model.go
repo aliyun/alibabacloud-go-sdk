@@ -13,6 +13,8 @@ type iCreateConsumerGroupRequest interface {
 	GetConsumeRetryPolicy() *CreateConsumerGroupRequestConsumeRetryPolicy
 	SetDeliveryOrderType(v string) *CreateConsumerGroupRequest
 	GetDeliveryOrderType() *string
+	SetExclusive(v bool) *CreateConsumerGroupRequest
+	GetExclusive() *bool
 	SetMaxReceiveTps(v int64) *CreateConsumerGroupRequest
 	GetMaxReceiveTps() *int64
 	SetMessageModel(v string) *CreateConsumerGroupRequest
@@ -42,6 +44,7 @@ type CreateConsumerGroupRequest struct {
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	Exclusive         *bool   `json:"exclusive,omitempty" xml:"exclusive,omitempty"`
 	// The maximum number of messages that can be processed by consumers per second.
 	//
 	// example:
@@ -80,6 +83,10 @@ func (s *CreateConsumerGroupRequest) GetDeliveryOrderType() *string {
 	return s.DeliveryOrderType
 }
 
+func (s *CreateConsumerGroupRequest) GetExclusive() *bool {
+	return s.Exclusive
+}
+
 func (s *CreateConsumerGroupRequest) GetMaxReceiveTps() *int64 {
 	return s.MaxReceiveTps
 }
@@ -103,6 +110,11 @@ func (s *CreateConsumerGroupRequest) SetConsumeRetryPolicy(v *CreateConsumerGrou
 
 func (s *CreateConsumerGroupRequest) SetDeliveryOrderType(v string) *CreateConsumerGroupRequest {
 	s.DeliveryOrderType = &v
+	return s
+}
+
+func (s *CreateConsumerGroupRequest) SetExclusive(v bool) *CreateConsumerGroupRequest {
+	s.Exclusive = &v
 	return s
 }
 

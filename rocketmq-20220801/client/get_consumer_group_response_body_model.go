@@ -190,6 +190,7 @@ type GetConsumerGroupResponseBodyData struct {
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	Exclusive         *bool   `json:"exclusive,omitempty" xml:"exclusive,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -266,6 +267,10 @@ func (s *GetConsumerGroupResponseBodyData) GetDeliveryOrderType() *string {
 	return s.DeliveryOrderType
 }
 
+func (s *GetConsumerGroupResponseBodyData) GetExclusive() *bool {
+	return s.Exclusive
+}
+
 func (s *GetConsumerGroupResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -315,6 +320,11 @@ func (s *GetConsumerGroupResponseBodyData) SetCreateTime(v string) *GetConsumerG
 
 func (s *GetConsumerGroupResponseBodyData) SetDeliveryOrderType(v string) *GetConsumerGroupResponseBodyData {
 	s.DeliveryOrderType = &v
+	return s
+}
+
+func (s *GetConsumerGroupResponseBodyData) SetExclusive(v bool) *GetConsumerGroupResponseBodyData {
+	s.Exclusive = &v
 	return s
 }
 

@@ -239,6 +239,10 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 		body["deliveryOrderType"] = request.DeliveryOrderType
 	}
 
+	if !dara.IsNil(request.Exclusive) {
+		body["exclusive"] = request.Exclusive
+	}
+
 	if !dara.IsNil(request.MaxReceiveTps) {
 		body["maxReceiveTps"] = request.MaxReceiveTps
 	}
