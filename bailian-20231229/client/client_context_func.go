@@ -110,6 +110,10 @@ func (client *Client) AddFileWithContext(ctx context.Context, WorkspaceId *strin
 	}
 	request := &AddFileShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ParserConfig) {
+		request.ParserConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParserConfig, dara.String("ParserConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tags) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
@@ -133,6 +137,10 @@ func (client *Client) AddFileWithContext(ctx context.Context, WorkspaceId *strin
 
 	if !dara.IsNil(request.Parser) {
 		body["Parser"] = request.Parser
+	}
+
+	if !dara.IsNil(request.ParserConfigShrink) {
+		body["ParserConfig"] = request.ParserConfigShrink
 	}
 
 	if !dara.IsNil(request.TagsShrink) {
@@ -425,6 +433,63 @@ func (client *Client) ApplyTempStorageLeaseWithContext(ctx context.Context, Work
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyTempStorageLeaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量更新文档Tag
+//
+// @param tmpReq - BatchUpdateFileTagRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateFileTagResponse
+func (client *Client) BatchUpdateFileTagWithContext(ctx context.Context, WorkspaceId *string, tmpReq *BatchUpdateFileTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchUpdateFileTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchUpdateFileTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FileInfos) {
+		request.FileInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileInfos, dara.String("FileInfos"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileInfosShrink) {
+		body["FileInfos"] = request.FileInfosShrink
+	}
+
+	if !dara.IsNil(request.UpdateMode) {
+		body["UpdateMode"] = request.UpdateMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchUpdateFileTag"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/batchupdatetag"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchUpdateFileTagResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

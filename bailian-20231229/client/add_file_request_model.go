@@ -19,6 +19,8 @@ type iAddFileRequest interface {
 	GetOriginalFileUrl() *string
 	SetParser(v string) *AddFileRequest
 	GetParser() *string
+	SetParserConfig(v *AddFileRequestParserConfig) *AddFileRequest
+	GetParserConfig() *AddFileRequestParserConfig
 	SetTags(v []*string) *AddFileRequest
 	GetTags() []*string
 }
@@ -63,7 +65,8 @@ type AddFileRequest struct {
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
-	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	Parser       *string                     `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	ParserConfig *AddFileRequestParserConfig `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty" type:"Struct"`
 	// A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -96,6 +99,10 @@ func (s *AddFileRequest) GetParser() *string {
 	return s.Parser
 }
 
+func (s *AddFileRequest) GetParserConfig() *AddFileRequestParserConfig {
+	return s.ParserConfig
+}
+
 func (s *AddFileRequest) GetTags() []*string {
 	return s.Tags
 }
@@ -125,11 +132,62 @@ func (s *AddFileRequest) SetParser(v string) *AddFileRequest {
 	return s
 }
 
+func (s *AddFileRequest) SetParserConfig(v *AddFileRequestParserConfig) *AddFileRequest {
+	s.ParserConfig = v
+	return s
+}
+
 func (s *AddFileRequest) SetTags(v []*string) *AddFileRequest {
 	s.Tags = v
 	return s
 }
 
 func (s *AddFileRequest) Validate() error {
+	if s.ParserConfig != nil {
+		if err := s.ParserConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AddFileRequestParserConfig struct {
+	// example:
+	//
+	// qwen-vl-max
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// #角色 你是一个专业的图片内容标注人员，擅长识别并描述出图片中的内容。 # 任务目标 请结合输入图片，详细描述图片中的内容。
+	ModelPrompt *string `json:"ModelPrompt,omitempty" xml:"ModelPrompt,omitempty"`
+}
+
+func (s AddFileRequestParserConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddFileRequestParserConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AddFileRequestParserConfig) GetModelName() *string {
+	return s.ModelName
+}
+
+func (s *AddFileRequestParserConfig) GetModelPrompt() *string {
+	return s.ModelPrompt
+}
+
+func (s *AddFileRequestParserConfig) SetModelName(v string) *AddFileRequestParserConfig {
+	s.ModelName = &v
+	return s
+}
+
+func (s *AddFileRequestParserConfig) SetModelPrompt(v string) *AddFileRequestParserConfig {
+	s.ModelPrompt = &v
+	return s
+}
+
+func (s *AddFileRequestParserConfig) Validate() error {
 	return dara.Validate(s)
 }

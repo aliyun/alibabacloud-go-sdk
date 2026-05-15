@@ -19,6 +19,8 @@ type iAddFileShrinkRequest interface {
 	GetOriginalFileUrl() *string
 	SetParser(v string) *AddFileShrinkRequest
 	GetParser() *string
+	SetParserConfigShrink(v string) *AddFileShrinkRequest
+	GetParserConfigShrink() *string
 	SetTagsShrink(v string) *AddFileShrinkRequest
 	GetTagsShrink() *string
 }
@@ -63,7 +65,8 @@ type AddFileShrinkRequest struct {
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
-	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	Parser             *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	ParserConfigShrink *string `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty"`
 	// A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -96,6 +99,10 @@ func (s *AddFileShrinkRequest) GetParser() *string {
 	return s.Parser
 }
 
+func (s *AddFileShrinkRequest) GetParserConfigShrink() *string {
+	return s.ParserConfigShrink
+}
+
 func (s *AddFileShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
 }
@@ -122,6 +129,11 @@ func (s *AddFileShrinkRequest) SetOriginalFileUrl(v string) *AddFileShrinkReques
 
 func (s *AddFileShrinkRequest) SetParser(v string) *AddFileShrinkRequest {
 	s.Parser = &v
+	return s
+}
+
+func (s *AddFileShrinkRequest) SetParserConfigShrink(v string) *AddFileShrinkRequest {
+	s.ParserConfigShrink = &v
 	return s
 }
 
