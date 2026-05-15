@@ -9,6 +9,8 @@ type iArtifact interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCdcYamlArtifact(v *CdcYamlArtifact) *Artifact
+	GetCdcYamlArtifact() *CdcYamlArtifact
 	SetJarArtifact(v *JarArtifact) *Artifact
 	GetJarArtifact() *JarArtifact
 	SetKind(v string) *Artifact
@@ -20,6 +22,7 @@ type iArtifact interface {
 }
 
 type Artifact struct {
+	CdcYamlArtifact *CdcYamlArtifact `json:"cdcYamlArtifact,omitempty" xml:"cdcYamlArtifact,omitempty"`
 	// The information required for the SQL deployment.
 	JarArtifact *JarArtifact `json:"jarArtifact,omitempty" xml:"jarArtifact,omitempty"`
 	// The type of the deployment. This parameter is required and cannot be modified after the deployment is created.
@@ -48,6 +51,10 @@ func (s Artifact) GoString() string {
 	return s.String()
 }
 
+func (s *Artifact) GetCdcYamlArtifact() *CdcYamlArtifact {
+	return s.CdcYamlArtifact
+}
+
 func (s *Artifact) GetJarArtifact() *JarArtifact {
 	return s.JarArtifact
 }
@@ -62,6 +69,11 @@ func (s *Artifact) GetPythonArtifact() *PythonArtifact {
 
 func (s *Artifact) GetSqlArtifact() *SqlArtifact {
 	return s.SqlArtifact
+}
+
+func (s *Artifact) SetCdcYamlArtifact(v *CdcYamlArtifact) *Artifact {
+	s.CdcYamlArtifact = v
+	return s
 }
 
 func (s *Artifact) SetJarArtifact(v *JarArtifact) *Artifact {
@@ -85,6 +97,11 @@ func (s *Artifact) SetSqlArtifact(v *SqlArtifact) *Artifact {
 }
 
 func (s *Artifact) Validate() error {
+	if s.CdcYamlArtifact != nil {
+		if err := s.CdcYamlArtifact.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.JarArtifact != nil {
 		if err := s.JarArtifact.Validate(); err != nil {
 			return err
