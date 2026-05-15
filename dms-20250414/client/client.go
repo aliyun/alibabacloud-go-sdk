@@ -406,6 +406,82 @@ func (client *Client) BatchUpdateDataLakePartitions(request *BatchUpdateDataLake
 
 // Summary:
 //
+// 更新Airflow实例的自定义配置
+//
+// @param tmpReq - ConfigAirflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigAirflowResponse
+func (client *Client) ConfigAirflowWithOptions(tmpReq *ConfigAirflowRequest, runtime *dara.RuntimeOptions) (_result *ConfigAirflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ConfigAirflowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CustomAirflowCfg) {
+		request.CustomAirflowCfgShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomAirflowCfg, dara.String("CustomAirflowCfg"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AirflowId) {
+		query["AirflowId"] = request.AirflowId
+	}
+
+	if !dara.IsNil(request.CustomAirflowCfgShrink) {
+		query["CustomAirflowCfg"] = request.CustomAirflowCfgShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigAirflow"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigAirflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Airflow实例的自定义配置
+//
+// @param request - ConfigAirflowRequest
+//
+// @return ConfigAirflowResponse
+func (client *Client) ConfigAirflow(request *ConfigAirflowRequest) (_result *ConfigAirflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigAirflowResponse{}
+	_body, _err := client.ConfigAirflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建Airflow
 //
 // @param tmpReq - CreateAirflowRequest
@@ -731,6 +807,84 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateCustomAgentResponse{}
 	_body, _err := client.CreateCustomAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateDataAgentKnowledgeBase
+//
+// @param request - CreateDataAgentKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAgentKnowledgeBaseResponse
+func (client *Client) CreateDataAgentKnowledgeBaseWithOptions(request *CreateDataAgentKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDataAgentKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FromKbUuid) {
+		query["FromKbUuid"] = request.FromKbUuid
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataAgentKnowledgeBase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataAgentKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateDataAgentKnowledgeBase
+//
+// @param request - CreateDataAgentKnowledgeBaseRequest
+//
+// @return CreateDataAgentKnowledgeBaseResponse
+func (client *Client) CreateDataAgentKnowledgeBase(request *CreateDataAgentKnowledgeBaseRequest) (_result *CreateDataAgentKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataAgentKnowledgeBaseResponse{}
+	_body, _err := client.CreateDataAgentKnowledgeBaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1396,6 +1550,76 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 
 // Summary:
 //
+// # DeleteDataAgentKnowledgeBase
+//
+// @param request - DeleteDataAgentKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentKnowledgeBaseResponse
+func (client *Client) DeleteDataAgentKnowledgeBaseWithOptions(request *DeleteDataAgentKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		query["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgentKnowledgeBase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteDataAgentKnowledgeBase
+//
+// @param request - DeleteDataAgentKnowledgeBaseRequest
+//
+// @return DeleteDataAgentKnowledgeBaseResponse
+func (client *Client) DeleteDataAgentKnowledgeBase(request *DeleteDataAgentKnowledgeBaseRequest) (_result *DeleteDataAgentKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataAgentKnowledgeBaseResponse{}
+	_body, _err := client.DeleteDataAgentKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除DataAgent工作空间
 //
 // @param request - DeleteDataAgentWorkspaceRequest
@@ -2047,6 +2271,68 @@ func (client *Client) DescribeFileUploadSignature(request *DescribeFileUploadSig
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeFileUploadSignatureResponse{}
 	_body, _err := client.DescribeFileUploadSignatureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取onemeta3.0的知识库统计信息
+//
+// @param request - DescribeKnowledgeBaseStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBaseStatsResponse
+func (client *Client) DescribeKnowledgeBaseStatsWithOptions(request *DescribeKnowledgeBaseStatsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBaseStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KbUuid) {
+		query["KbUuid"] = request.KbUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBaseStats"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBaseStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取onemeta3.0的知识库统计信息
+//
+// @param request - DescribeKnowledgeBaseStatsRequest
+//
+// @return DescribeKnowledgeBaseStatsResponse
+func (client *Client) DescribeKnowledgeBaseStats(request *DescribeKnowledgeBaseStatsRequest) (_result *DescribeKnowledgeBaseStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeKnowledgeBaseStatsResponse{}
+	_body, _err := client.DescribeKnowledgeBaseStatsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3012,6 +3298,130 @@ func (client *Client) GetWorkspaceCodePublishSetting(request *GetWorkspaceCodePu
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetWorkspaceCodePublishSettingResponse{}
 	_body, _err := client.GetWorkspaceCodePublishSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间配额
+//
+// @param request - GetWorkspaceQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceQuotaResponse
+func (client *Client) GetWorkspaceQuotaWithOptions(request *GetWorkspaceQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetWorkspaceQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceQuota"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作空间配额
+//
+// @param request - GetWorkspaceQuotaRequest
+//
+// @return GetWorkspaceQuotaResponse
+func (client *Client) GetWorkspaceQuota(request *GetWorkspaceQuotaRequest) (_result *GetWorkspaceQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkspaceQuotaResponse{}
+	_body, _err := client.GetWorkspaceQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取可用的Airflow版本列表
+//
+// @param request - ListAirflowVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAirflowVersionsResponse
+func (client *Client) ListAirflowVersionsWithOptions(request *ListAirflowVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListAirflowVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAirflowVersions"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAirflowVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取可用的Airflow版本列表
+//
+// @param request - ListAirflowVersionsRequest
+//
+// @return ListAirflowVersionsResponse
+func (client *Client) ListAirflowVersions(request *ListAirflowVersionsRequest) (_result *ListAirflowVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAirflowVersionsResponse{}
+	_body, _err := client.ListAirflowVersionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4805,6 +5215,72 @@ func (client *Client) OperateCustomAgent(request *OperateCustomAgentRequest) (_r
 
 // Summary:
 //
+// 重新部署Airflow实例
+//
+// @param request - RedeployAirflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RedeployAirflowResponse
+func (client *Client) RedeployAirflowWithOptions(request *RedeployAirflowRequest, runtime *dara.RuntimeOptions) (_result *RedeployAirflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AirflowId) {
+		query["AirflowId"] = request.AirflowId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RedeployAirflow"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RedeployAirflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新部署Airflow实例
+//
+// @param request - RedeployAirflowRequest
+//
+// @return RedeployAirflowResponse
+func (client *Client) RedeployAirflow(request *RedeployAirflowRequest) (_result *RedeployAirflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RedeployAirflowResponse{}
+	_body, _err := client.RedeployAirflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 从空间中移除用户
 //
 // @param request - RemoveUserToDataAgentWorkspaceRequest
@@ -5054,6 +5530,84 @@ func (client *Client) SetWorkspaceCodePublishSetting(request *SetWorkspaceCodePu
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetWorkspaceCodePublishSettingResponse{}
 	_body, _err := client.SetWorkspaceCodePublishSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置工作空间配额
+//
+// @param request - SetWorkspaceQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWorkspaceQuotaResponse
+func (client *Client) SetWorkspaceQuotaWithOptions(request *SetWorkspaceQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetWorkspaceQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CuQuota) {
+		query["CuQuota"] = request.CuQuota
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetWorkspaceQuota"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetWorkspaceQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置工作空间配额
+//
+// @param request - SetWorkspaceQuotaRequest
+//
+// @return SetWorkspaceQuotaResponse
+func (client *Client) SetWorkspaceQuota(request *SetWorkspaceQuotaRequest) (_result *SetWorkspaceQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetWorkspaceQuotaResponse{}
+	_body, _err := client.SetWorkspaceQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
