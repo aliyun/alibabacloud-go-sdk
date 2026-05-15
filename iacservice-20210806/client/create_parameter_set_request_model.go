@@ -101,6 +101,10 @@ type CreateParameterSetRequestParameters struct {
 	//
 	// test1121
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// example:
+	//
+	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
@@ -124,6 +128,10 @@ func (s *CreateParameterSetRequestParameters) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateParameterSetRequestParameters) GetSecret() *bool {
+	return s.Secret
+}
+
 func (s *CreateParameterSetRequestParameters) GetStatus() *string {
 	return s.Status
 }
@@ -138,6 +146,11 @@ func (s *CreateParameterSetRequestParameters) GetValue() *string {
 
 func (s *CreateParameterSetRequestParameters) SetName(v string) *CreateParameterSetRequestParameters {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateParameterSetRequestParameters) SetSecret(v bool) *CreateParameterSetRequestParameters {
+	s.Secret = &v
 	return s
 }
 

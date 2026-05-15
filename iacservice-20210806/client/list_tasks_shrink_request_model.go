@@ -13,6 +13,8 @@ type iListTasksShrinkRequest interface {
 	GetGroupId() *string
 	SetKeyword(v string) *ListTasksShrinkRequest
 	GetKeyword() *string
+	SetKmsKeyId(v string) *ListTasksShrinkRequest
+	GetKmsKeyId() *string
 	SetModuleId(v string) *ListTasksShrinkRequest
 	GetModuleId() *string
 	SetPageNumber(v int32) *ListTasksShrinkRequest
@@ -38,6 +40,10 @@ type ListTasksShrinkRequest struct {
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// example:
+	//
+	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
+	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
 	// example:
 	//
 	// mod-1525e992f1b62139d1c437d64ae
@@ -78,6 +84,10 @@ func (s *ListTasksShrinkRequest) GetKeyword() *string {
 	return s.Keyword
 }
 
+func (s *ListTasksShrinkRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *ListTasksShrinkRequest) GetModuleId() *string {
 	return s.ModuleId
 }
@@ -113,6 +123,11 @@ func (s *ListTasksShrinkRequest) SetGroupId(v string) *ListTasksShrinkRequest {
 
 func (s *ListTasksShrinkRequest) SetKeyword(v string) *ListTasksShrinkRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetKmsKeyId(v string) *ListTasksShrinkRequest {
+	s.KmsKeyId = &v
 	return s
 }
 

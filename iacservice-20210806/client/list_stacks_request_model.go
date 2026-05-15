@@ -11,6 +11,8 @@ type iListStacksRequest interface {
 	GoString() string
 	SetKeyword(v string) *ListStacksRequest
 	GetKeyword() *string
+	SetKmsKeyId(v string) *ListStacksRequest
+	GetKmsKeyId() *string
 	SetMaxResults(v int32) *ListStacksRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListStacksRequest
@@ -28,6 +30,10 @@ type ListStacksRequest struct {
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// example:
+	//
+	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
+	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
 	// example:
 	//
 	// 20
@@ -62,6 +68,10 @@ func (s *ListStacksRequest) GetKeyword() *string {
 	return s.Keyword
 }
 
+func (s *ListStacksRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *ListStacksRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -84,6 +94,11 @@ func (s *ListStacksRequest) GetStatus() *string {
 
 func (s *ListStacksRequest) SetKeyword(v string) *ListStacksRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListStacksRequest) SetKmsKeyId(v string) *ListStacksRequest {
+	s.KmsKeyId = &v
 	return s
 }
 

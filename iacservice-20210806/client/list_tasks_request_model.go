@@ -13,6 +13,8 @@ type iListTasksRequest interface {
 	GetGroupId() *string
 	SetKeyword(v string) *ListTasksRequest
 	GetKeyword() *string
+	SetKmsKeyId(v string) *ListTasksRequest
+	GetKmsKeyId() *string
 	SetModuleId(v string) *ListTasksRequest
 	GetModuleId() *string
 	SetPageNumber(v int32) *ListTasksRequest
@@ -38,6 +40,10 @@ type ListTasksRequest struct {
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// example:
+	//
+	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
+	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
 	// example:
 	//
 	// mod-1525e992f1b62139d1c437d64ae
@@ -78,6 +84,10 @@ func (s *ListTasksRequest) GetKeyword() *string {
 	return s.Keyword
 }
 
+func (s *ListTasksRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *ListTasksRequest) GetModuleId() *string {
 	return s.ModuleId
 }
@@ -113,6 +123,11 @@ func (s *ListTasksRequest) SetGroupId(v string) *ListTasksRequest {
 
 func (s *ListTasksRequest) SetKeyword(v string) *ListTasksRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetKmsKeyId(v string) *ListTasksRequest {
+	s.KmsKeyId = &v
 	return s
 }
 

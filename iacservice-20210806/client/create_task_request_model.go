@@ -27,6 +27,8 @@ type iCreateTaskRequest interface {
 	GetModuleVersion() *string
 	SetName(v string) *CreateTaskRequest
 	GetName() *string
+	SetParameterSetIds(v []*string) *CreateTaskRequest
+	GetParameterSetIds() []*string
 	SetProtectionStrategy(v []*string) *CreateTaskRequest
 	GetProtectionStrategy() []*string
 	SetRamRole(v string) *CreateTaskRequest
@@ -82,6 +84,7 @@ type CreateTaskRequest struct {
 	//
 	// test
 	Name               *string   `json:"name,omitempty" xml:"name,omitempty"`
+	ParameterSetIds    []*string `json:"parameterSetIds,omitempty" xml:"parameterSetIds,omitempty" type:"Repeated"`
 	ProtectionStrategy []*string `json:"protectionStrategy,omitempty" xml:"protectionStrategy,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -142,6 +145,10 @@ func (s *CreateTaskRequest) GetModuleVersion() *string {
 
 func (s *CreateTaskRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateTaskRequest) GetParameterSetIds() []*string {
+	return s.ParameterSetIds
 }
 
 func (s *CreateTaskRequest) GetProtectionStrategy() []*string {
@@ -214,6 +221,11 @@ func (s *CreateTaskRequest) SetModuleVersion(v string) *CreateTaskRequest {
 
 func (s *CreateTaskRequest) SetName(v string) *CreateTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetParameterSetIds(v []*string) *CreateTaskRequest {
+	s.ParameterSetIds = v
 	return s
 }
 

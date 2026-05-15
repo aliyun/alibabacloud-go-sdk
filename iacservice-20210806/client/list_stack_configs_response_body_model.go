@@ -408,7 +408,8 @@ type ListStackConfigsResponseBodyConfigsComponentConfigVariable struct {
 	// example:
 	//
 	// region
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	Sensitive *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
 	// example:
 	//
 	// string
@@ -435,6 +436,10 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) GetName() *
 	return s.Name
 }
 
+func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) GetSensitive() *bool {
+	return s.Sensitive
+}
+
 func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) GetType() *string {
 	return s.Type
 }
@@ -451,6 +456,11 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) SetDescript
 
 func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) SetName(v string) *ListStackConfigsResponseBodyConfigsComponentConfigVariable {
 	s.Name = &v
+	return s
+}
+
+func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) SetSensitive(v bool) *ListStackConfigsResponseBodyConfigsComponentConfigVariable {
+	s.Sensitive = &v
 	return s
 }
 

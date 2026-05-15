@@ -59,6 +59,7 @@ func (s *GetJobResponseBody) Validate() error {
 }
 
 type GetJobResponseBodyJob struct {
+	AllParameters     []*GetJobResponseBodyJobAllParameters     `json:"allParameters,omitempty" xml:"allParameters,omitempty" type:"Repeated"`
 	AssertCheckDetail []*GetJobResponseBodyJobAssertCheckDetail `json:"assertCheckDetail,omitempty" xml:"assertCheckDetail,omitempty" type:"Repeated"`
 	Config            *GetJobResponseBodyJobConfig              `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
@@ -110,6 +111,10 @@ func (s GetJobResponseBodyJob) String() string {
 
 func (s GetJobResponseBodyJob) GoString() string {
 	return s.String()
+}
+
+func (s *GetJobResponseBodyJob) GetAllParameters() []*GetJobResponseBodyJobAllParameters {
+	return s.AllParameters
 }
 
 func (s *GetJobResponseBodyJob) GetAssertCheckDetail() []*GetJobResponseBodyJobAssertCheckDetail {
@@ -186,6 +191,11 @@ func (s *GetJobResponseBodyJob) GetTaskType() *string {
 
 func (s *GetJobResponseBodyJob) GetTerraformProviderVersion() *string {
 	return s.TerraformProviderVersion
+}
+
+func (s *GetJobResponseBodyJob) SetAllParameters(v []*GetJobResponseBodyJobAllParameters) *GetJobResponseBodyJob {
+	s.AllParameters = v
+	return s
 }
 
 func (s *GetJobResponseBodyJob) SetAssertCheckDetail(v []*GetJobResponseBodyJobAssertCheckDetail) *GetJobResponseBodyJob {
@@ -284,6 +294,15 @@ func (s *GetJobResponseBodyJob) SetTerraformProviderVersion(v string) *GetJobRes
 }
 
 func (s *GetJobResponseBodyJob) Validate() error {
+	if s.AllParameters != nil {
+		for _, item := range s.AllParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.AssertCheckDetail != nil {
 		for _, item := range s.AssertCheckDetail {
 			if item != nil {
@@ -299,6 +318,60 @@ func (s *GetJobResponseBodyJob) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetJobResponseBodyJobAllParameters struct {
+	// example:
+	//
+	// regionId
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// false
+	Secret *bool `json:"secret,omitempty" xml:"secret,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetJobResponseBodyJobAllParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobAllParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobAllParameters) GetName() *string {
+	return s.Name
+}
+
+func (s *GetJobResponseBodyJobAllParameters) GetSecret() *bool {
+	return s.Secret
+}
+
+func (s *GetJobResponseBodyJobAllParameters) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetJobResponseBodyJobAllParameters) SetName(v string) *GetJobResponseBodyJobAllParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobAllParameters) SetSecret(v bool) *GetJobResponseBodyJobAllParameters {
+	s.Secret = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobAllParameters) SetValue(v string) *GetJobResponseBodyJobAllParameters {
+	s.Value = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobAllParameters) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetJobResponseBodyJobAssertCheckDetail struct {

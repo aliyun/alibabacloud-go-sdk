@@ -1103,6 +1103,10 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, request *Create
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.ParameterSetIds) {
+		body["parameterSetIds"] = request.ParameterSetIds
+	}
+
 	if !dara.IsNil(request.ProtectionStrategy) {
 		body["protectionStrategy"] = request.ProtectionStrategy
 	}
@@ -3601,6 +3605,10 @@ func (client *Client) ListParameterSetsWithContext(ctx context.Context, request 
 		query["keyword"] = request.Keyword
 	}
 
+	if !dara.IsNil(request.KmsKeyId) {
+		query["kmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -4314,6 +4322,10 @@ func (client *Client) ListStacksWithContext(ctx context.Context, request *ListSt
 		query["keyword"] = request.Keyword
 	}
 
+	if !dara.IsNil(request.KmsKeyId) {
+		query["kmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}
@@ -4389,6 +4401,10 @@ func (client *Client) ListTasksWithContext(ctx context.Context, tmpReq *ListTask
 
 	if !dara.IsNil(request.Keyword) {
 		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["kmsKeyId"] = request.KmsKeyId
 	}
 
 	if !dara.IsNil(request.ModuleId) {

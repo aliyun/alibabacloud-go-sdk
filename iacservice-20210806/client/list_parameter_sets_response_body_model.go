@@ -111,8 +111,11 @@ type ListParameterSetsResponseBodyParameterSets struct {
 	// example:
 	//
 	// 2022-05-14T10:05:19Z
-	CreateTime         *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DeletionProtection *bool   `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
 	// example:
 	//
 	// OK
@@ -223,7 +226,14 @@ func (s *ListParameterSetsResponseBodyParameterSets) Validate() error {
 }
 
 type ListParameterSetsResponseBodyParameterSetsParameters struct {
+	// example:
+	//
+	// region
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// example:
+	//
+	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
@@ -247,6 +257,10 @@ func (s *ListParameterSetsResponseBodyParameterSetsParameters) GetName() *string
 	return s.Name
 }
 
+func (s *ListParameterSetsResponseBodyParameterSetsParameters) GetSecret() *bool {
+	return s.Secret
+}
+
 func (s *ListParameterSetsResponseBodyParameterSetsParameters) GetStatus() *string {
 	return s.Status
 }
@@ -261,6 +275,11 @@ func (s *ListParameterSetsResponseBodyParameterSetsParameters) GetValue() interf
 
 func (s *ListParameterSetsResponseBodyParameterSetsParameters) SetName(v string) *ListParameterSetsResponseBodyParameterSetsParameters {
 	s.Name = &v
+	return s
+}
+
+func (s *ListParameterSetsResponseBodyParameterSetsParameters) SetSecret(v bool) *ListParameterSetsResponseBodyParameterSetsParameters {
+	s.Secret = &v
 	return s
 }
 

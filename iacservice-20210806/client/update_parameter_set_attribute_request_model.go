@@ -84,6 +84,10 @@ type UpdateParameterSetAttributeRequestParameters struct {
 	//
 	// t
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// example:
+	//
+	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
@@ -107,6 +111,10 @@ func (s *UpdateParameterSetAttributeRequestParameters) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateParameterSetAttributeRequestParameters) GetSecret() *bool {
+	return s.Secret
+}
+
 func (s *UpdateParameterSetAttributeRequestParameters) GetStatus() *string {
 	return s.Status
 }
@@ -121,6 +129,11 @@ func (s *UpdateParameterSetAttributeRequestParameters) GetValue() *string {
 
 func (s *UpdateParameterSetAttributeRequestParameters) SetName(v string) *UpdateParameterSetAttributeRequestParameters {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateParameterSetAttributeRequestParameters) SetSecret(v bool) *UpdateParameterSetAttributeRequestParameters {
+	s.Secret = &v
 	return s
 }
 

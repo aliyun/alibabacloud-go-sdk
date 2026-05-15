@@ -442,7 +442,8 @@ type GetStackDeploymentsResponseBodyDeploymentsParameters struct {
 	// example:
 	//
 	// region
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	Sensitive *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
 	// example:
 	//
 	// string
@@ -473,6 +474,10 @@ func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) GetName() *string
 	return s.Name
 }
 
+func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) GetSensitive() *bool {
+	return s.Sensitive
+}
+
 func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) GetType() *string {
 	return s.Type
 }
@@ -493,6 +498,11 @@ func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) SetDescription(v 
 
 func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) SetName(v string) *GetStackDeploymentsResponseBodyDeploymentsParameters {
 	s.Name = &v
+	return s
+}
+
+func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) SetSensitive(v bool) *GetStackDeploymentsResponseBodyDeploymentsParameters {
+	s.Sensitive = &v
 	return s
 }
 

@@ -168,6 +168,10 @@ type GetParameterSetResponseBodyParameterSetParameters struct {
 	//
 	// test1121
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// example:
+	//
+	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
@@ -191,6 +195,10 @@ func (s *GetParameterSetResponseBodyParameterSetParameters) GetName() *string {
 	return s.Name
 }
 
+func (s *GetParameterSetResponseBodyParameterSetParameters) GetSecret() *bool {
+	return s.Secret
+}
+
 func (s *GetParameterSetResponseBodyParameterSetParameters) GetStatus() *string {
 	return s.Status
 }
@@ -205,6 +213,11 @@ func (s *GetParameterSetResponseBodyParameterSetParameters) GetValue() interface
 
 func (s *GetParameterSetResponseBodyParameterSetParameters) SetName(v string) *GetParameterSetResponseBodyParameterSetParameters {
 	s.Name = &v
+	return s
+}
+
+func (s *GetParameterSetResponseBodyParameterSetParameters) SetSecret(v bool) *GetParameterSetResponseBodyParameterSetParameters {
+	s.Secret = &v
 	return s
 }
 
