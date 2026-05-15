@@ -13,6 +13,8 @@ type iModifyDBClusterShardNumberRequest interface {
 	GetDBClusterId() *string
 	SetDryRun(v bool) *ModifyDBClusterShardNumberRequest
 	GetDryRun() *bool
+	SetIsRollback(v bool) *ModifyDBClusterShardNumberRequest
+	GetIsRollback() *bool
 	SetNewShardNumber(v int64) *ModifyDBClusterShardNumberRequest
 	GetNewShardNumber() *int64
 	SetOwnerAccount(v string) *ModifyDBClusterShardNumberRequest
@@ -51,7 +53,8 @@ type ModifyDBClusterShardNumberRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun     *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IsRollback *bool `json:"IsRollback,omitempty" xml:"IsRollback,omitempty"`
 	// The desired number of shards.
 	//
 	// example:
@@ -106,6 +109,10 @@ func (s *ModifyDBClusterShardNumberRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *ModifyDBClusterShardNumberRequest) GetIsRollback() *bool {
+	return s.IsRollback
+}
+
 func (s *ModifyDBClusterShardNumberRequest) GetNewShardNumber() *int64 {
 	return s.NewShardNumber
 }
@@ -145,6 +152,11 @@ func (s *ModifyDBClusterShardNumberRequest) SetDBClusterId(v string) *ModifyDBCl
 
 func (s *ModifyDBClusterShardNumberRequest) SetDryRun(v bool) *ModifyDBClusterShardNumberRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyDBClusterShardNumberRequest) SetIsRollback(v bool) *ModifyDBClusterShardNumberRequest {
+	s.IsRollback = &v
 	return s
 }
 

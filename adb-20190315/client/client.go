@@ -11715,6 +11715,10 @@ func (client *Client) ModifyDBClusterShardNumberWithOptions(request *ModifyDBClu
 		query["DryRun"] = request.DryRun
 	}
 
+	if !dara.IsNil(request.IsRollback) {
+		query["IsRollback"] = request.IsRollback
+	}
+
 	if !dara.IsNil(request.NewShardNumber) {
 		query["NewShardNumber"] = request.NewShardNumber
 	}
