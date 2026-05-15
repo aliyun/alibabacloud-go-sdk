@@ -9,6 +9,8 @@ type iCreateInstanceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthModel(v string) *CreateInstanceShrinkRequest
+	GetAuthModel() *string
 	SetAutoRenew(v bool) *CreateInstanceShrinkRequest
 	GetAutoRenew() *bool
 	SetAutoRenewPeriod(v int32) *CreateInstanceShrinkRequest
@@ -25,6 +27,8 @@ type iCreateInstanceShrinkRequest interface {
 	GetInstanceType() *string
 	SetKmsKeyId(v string) *CreateInstanceShrinkRequest
 	GetKmsKeyId() *string
+	SetListenerMode(v string) *CreateInstanceShrinkRequest
+	GetListenerMode() *string
 	SetMaxConnections(v int32) *CreateInstanceShrinkRequest
 	GetMaxConnections() *int32
 	SetMaxEipTps(v int64) *CreateInstanceShrinkRequest
@@ -47,8 +51,12 @@ type iCreateInstanceShrinkRequest interface {
 	GetRenewalDurationUnit() *string
 	SetResourceGroupId(v string) *CreateInstanceShrinkRequest
 	GetResourceGroupId() *string
+	SetSecurityGroupId(v string) *CreateInstanceShrinkRequest
+	GetSecurityGroupId() *string
 	SetServerlessChargeType(v string) *CreateInstanceShrinkRequest
 	GetServerlessChargeType() *string
+	SetServerlessSwitch(v bool) *CreateInstanceShrinkRequest
+	GetServerlessSwitch() *bool
 	SetStorageSize(v int32) *CreateInstanceShrinkRequest
 	GetStorageSize() *int32
 	SetSupportEip(v bool) *CreateInstanceShrinkRequest
@@ -59,9 +67,17 @@ type iCreateInstanceShrinkRequest interface {
 	GetTagsShrink() *string
 	SetTracingStorageTime(v int32) *CreateInstanceShrinkRequest
 	GetTracingStorageTime() *int32
+	SetVpcId(v string) *CreateInstanceShrinkRequest
+	GetVpcId() *string
+	SetVswitchIdsShrink(v string) *CreateInstanceShrinkRequest
+	GetVswitchIdsShrink() *string
 }
 
 type CreateInstanceShrinkRequest struct {
+	// example:
+	//
+	// ram openSource
+	AuthModel *string `json:"AuthModel,omitempty" xml:"AuthModel,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
 	// 	- true: enables auto-renewal.
@@ -129,6 +145,10 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// key-xxx
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// example:
+	//
+	// tcp_and_ssl
+	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
 	// The maximum number of connections that can be established to the instance.
 	//
 	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
@@ -220,6 +240,12 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// rg-acfmvvajg5qkxhi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-xxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The billing method of the serverless instance. Valid value:
 	//
 	// 	- onDemand: You are charged based on your actual usage.
@@ -228,6 +254,7 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// onDemand
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
+	ServerlessSwitch     *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
 	// The storage capacity. Unit: GB. Valid values:
 	//
 	// 	- Professional Edition and Enterprise Edition instances: Set the value to 0.
@@ -281,6 +308,14 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// 3
 	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	VswitchIdsShrink *string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty"`
 }
 
 func (s CreateInstanceShrinkRequest) String() string {
@@ -289,6 +324,10 @@ func (s CreateInstanceShrinkRequest) String() string {
 
 func (s CreateInstanceShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceShrinkRequest) GetAuthModel() *string {
+	return s.AuthModel
 }
 
 func (s *CreateInstanceShrinkRequest) GetAutoRenew() *bool {
@@ -321,6 +360,10 @@ func (s *CreateInstanceShrinkRequest) GetInstanceType() *string {
 
 func (s *CreateInstanceShrinkRequest) GetKmsKeyId() *string {
 	return s.KmsKeyId
+}
+
+func (s *CreateInstanceShrinkRequest) GetListenerMode() *string {
+	return s.ListenerMode
 }
 
 func (s *CreateInstanceShrinkRequest) GetMaxConnections() *int32 {
@@ -367,8 +410,16 @@ func (s *CreateInstanceShrinkRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *CreateInstanceShrinkRequest) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
 func (s *CreateInstanceShrinkRequest) GetServerlessChargeType() *string {
 	return s.ServerlessChargeType
+}
+
+func (s *CreateInstanceShrinkRequest) GetServerlessSwitch() *bool {
+	return s.ServerlessSwitch
 }
 
 func (s *CreateInstanceShrinkRequest) GetStorageSize() *int32 {
@@ -389,6 +440,19 @@ func (s *CreateInstanceShrinkRequest) GetTagsShrink() *string {
 
 func (s *CreateInstanceShrinkRequest) GetTracingStorageTime() *int32 {
 	return s.TracingStorageTime
+}
+
+func (s *CreateInstanceShrinkRequest) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *CreateInstanceShrinkRequest) GetVswitchIdsShrink() *string {
+	return s.VswitchIdsShrink
+}
+
+func (s *CreateInstanceShrinkRequest) SetAuthModel(v string) *CreateInstanceShrinkRequest {
+	s.AuthModel = &v
+	return s
 }
 
 func (s *CreateInstanceShrinkRequest) SetAutoRenew(v bool) *CreateInstanceShrinkRequest {
@@ -428,6 +492,11 @@ func (s *CreateInstanceShrinkRequest) SetInstanceType(v string) *CreateInstanceS
 
 func (s *CreateInstanceShrinkRequest) SetKmsKeyId(v string) *CreateInstanceShrinkRequest {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetListenerMode(v string) *CreateInstanceShrinkRequest {
+	s.ListenerMode = &v
 	return s
 }
 
@@ -486,8 +555,18 @@ func (s *CreateInstanceShrinkRequest) SetResourceGroupId(v string) *CreateInstan
 	return s
 }
 
+func (s *CreateInstanceShrinkRequest) SetSecurityGroupId(v string) *CreateInstanceShrinkRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *CreateInstanceShrinkRequest) SetServerlessChargeType(v string) *CreateInstanceShrinkRequest {
 	s.ServerlessChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetServerlessSwitch(v bool) *CreateInstanceShrinkRequest {
+	s.ServerlessSwitch = &v
 	return s
 }
 
@@ -513,6 +592,16 @@ func (s *CreateInstanceShrinkRequest) SetTagsShrink(v string) *CreateInstanceShr
 
 func (s *CreateInstanceShrinkRequest) SetTracingStorageTime(v int32) *CreateInstanceShrinkRequest {
 	s.TracingStorageTime = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetVpcId(v string) *CreateInstanceShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetVswitchIdsShrink(v string) *CreateInstanceShrinkRequest {
+	s.VswitchIdsShrink = &v
 	return s
 }
 

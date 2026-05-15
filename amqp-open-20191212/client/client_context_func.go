@@ -241,7 +241,15 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VswitchIds) {
+		request.VswitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VswitchIds, dara.String("VswitchIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthModel) {
+		query["AuthModel"] = request.AuthModel
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
 	}
@@ -272,6 +280,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 
 	if !dara.IsNil(request.KmsKeyId) {
 		query["KmsKeyId"] = request.KmsKeyId
+	}
+
+	if !dara.IsNil(request.ListenerMode) {
+		query["ListenerMode"] = request.ListenerMode
 	}
 
 	if !dara.IsNil(request.MaxConnections) {
@@ -318,8 +330,16 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	if !dara.IsNil(request.ServerlessChargeType) {
 		query["ServerlessChargeType"] = request.ServerlessChargeType
+	}
+
+	if !dara.IsNil(request.ServerlessSwitch) {
+		query["ServerlessSwitch"] = request.ServerlessSwitch
 	}
 
 	if !dara.IsNil(request.StorageSize) {
@@ -340,6 +360,14 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 
 	if !dara.IsNil(request.TracingStorageTime) {
 		query["TracingStorageTime"] = request.TracingStorageTime
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VswitchIdsShrink) {
+		query["VswitchIds"] = request.VswitchIdsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

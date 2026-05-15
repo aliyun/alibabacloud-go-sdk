@@ -182,6 +182,10 @@ type ListInstancesResponseBodyDataInstances struct {
 	//
 	// key-bjj66c2a893vmhawtq5fd
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// example:
+	//
+	// tcp_and_ssl
+	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
 	// The maximum number of Internet-based transactions per second (TPS) for the instance.
 	//
 	// example:
@@ -241,6 +245,11 @@ type ListInstancesResponseBodyDataInstances struct {
 	//
 	// rg-aek3axfj2w4czrq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// sg-xxx
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServerlessSwitch *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
 	// The instance status. Valid values:
 	//
 	// 	- DEPLOYING: The instance is being deployed.
@@ -271,6 +280,11 @@ type ListInstancesResponseBodyDataInstances struct {
 	SupportEIP *bool `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
 	// The tags that are added to the instance.
 	Tags []*ListInstancesResponseBodyDataInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-xxx
+	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesResponseBodyDataInstances) String() string {
@@ -317,6 +331,10 @@ func (s *ListInstancesResponseBodyDataInstances) GetKmsKeyId() *string {
 	return s.KmsKeyId
 }
 
+func (s *ListInstancesResponseBodyDataInstances) GetListenerMode() *string {
+	return s.ListenerMode
+}
+
 func (s *ListInstancesResponseBodyDataInstances) GetMaxEipTps() *int32 {
 	return s.MaxEipTps
 }
@@ -357,6 +375,14 @@ func (s *ListInstancesResponseBodyDataInstances) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *ListInstancesResponseBodyDataInstances) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
+func (s *ListInstancesResponseBodyDataInstances) GetServerlessSwitch() *bool {
+	return s.ServerlessSwitch
+}
+
 func (s *ListInstancesResponseBodyDataInstances) GetStatus() *string {
 	return s.Status
 }
@@ -371,6 +397,14 @@ func (s *ListInstancesResponseBodyDataInstances) GetSupportEIP() *bool {
 
 func (s *ListInstancesResponseBodyDataInstances) GetTags() []*ListInstancesResponseBodyDataInstancesTags {
 	return s.Tags
+}
+
+func (s *ListInstancesResponseBodyDataInstances) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *ListInstancesResponseBodyDataInstances) GetVswitchIds() []*string {
+	return s.VswitchIds
 }
 
 func (s *ListInstancesResponseBodyDataInstances) SetAutoRenewInstance(v bool) *ListInstancesResponseBodyDataInstances {
@@ -415,6 +449,11 @@ func (s *ListInstancesResponseBodyDataInstances) SetInstanceType(v string) *List
 
 func (s *ListInstancesResponseBodyDataInstances) SetKmsKeyId(v string) *ListInstancesResponseBodyDataInstances {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetListenerMode(v string) *ListInstancesResponseBodyDataInstances {
+	s.ListenerMode = &v
 	return s
 }
 
@@ -468,6 +507,16 @@ func (s *ListInstancesResponseBodyDataInstances) SetResourceGroupId(v string) *L
 	return s
 }
 
+func (s *ListInstancesResponseBodyDataInstances) SetSecurityGroupId(v string) *ListInstancesResponseBodyDataInstances {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetServerlessSwitch(v bool) *ListInstancesResponseBodyDataInstances {
+	s.ServerlessSwitch = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyDataInstances) SetStatus(v string) *ListInstancesResponseBodyDataInstances {
 	s.Status = &v
 	return s
@@ -485,6 +534,16 @@ func (s *ListInstancesResponseBodyDataInstances) SetSupportEIP(v bool) *ListInst
 
 func (s *ListInstancesResponseBodyDataInstances) SetTags(v []*ListInstancesResponseBodyDataInstancesTags) *ListInstancesResponseBodyDataInstances {
 	s.Tags = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetVpcId(v string) *ListInstancesResponseBodyDataInstances {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetVswitchIds(v []*string) *ListInstancesResponseBodyDataInstances {
+	s.VswitchIds = v
 	return s
 }
 

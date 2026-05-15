@@ -9,6 +9,8 @@ type iCreateInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthModel(v string) *CreateInstanceRequest
+	GetAuthModel() *string
 	SetAutoRenew(v bool) *CreateInstanceRequest
 	GetAutoRenew() *bool
 	SetAutoRenewPeriod(v int32) *CreateInstanceRequest
@@ -25,6 +27,8 @@ type iCreateInstanceRequest interface {
 	GetInstanceType() *string
 	SetKmsKeyId(v string) *CreateInstanceRequest
 	GetKmsKeyId() *string
+	SetListenerMode(v string) *CreateInstanceRequest
+	GetListenerMode() *string
 	SetMaxConnections(v int32) *CreateInstanceRequest
 	GetMaxConnections() *int32
 	SetMaxEipTps(v int64) *CreateInstanceRequest
@@ -47,8 +51,12 @@ type iCreateInstanceRequest interface {
 	GetRenewalDurationUnit() *string
 	SetResourceGroupId(v string) *CreateInstanceRequest
 	GetResourceGroupId() *string
+	SetSecurityGroupId(v string) *CreateInstanceRequest
+	GetSecurityGroupId() *string
 	SetServerlessChargeType(v string) *CreateInstanceRequest
 	GetServerlessChargeType() *string
+	SetServerlessSwitch(v bool) *CreateInstanceRequest
+	GetServerlessSwitch() *bool
 	SetStorageSize(v int32) *CreateInstanceRequest
 	GetStorageSize() *int32
 	SetSupportEip(v bool) *CreateInstanceRequest
@@ -59,9 +67,17 @@ type iCreateInstanceRequest interface {
 	GetTags() []*CreateInstanceRequestTags
 	SetTracingStorageTime(v int32) *CreateInstanceRequest
 	GetTracingStorageTime() *int32
+	SetVpcId(v string) *CreateInstanceRequest
+	GetVpcId() *string
+	SetVswitchIds(v []*string) *CreateInstanceRequest
+	GetVswitchIds() []*string
 }
 
 type CreateInstanceRequest struct {
+	// example:
+	//
+	// ram openSource
+	AuthModel *string `json:"AuthModel,omitempty" xml:"AuthModel,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
 	// 	- true: enables auto-renewal.
@@ -129,6 +145,10 @@ type CreateInstanceRequest struct {
 	//
 	// key-xxx
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// example:
+	//
+	// tcp_and_ssl
+	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
 	// The maximum number of connections that can be established to the instance.
 	//
 	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
@@ -220,6 +240,12 @@ type CreateInstanceRequest struct {
 	//
 	// rg-acfmvvajg5qkxhi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-xxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The billing method of the serverless instance. Valid value:
 	//
 	// 	- onDemand: You are charged based on your actual usage.
@@ -228,6 +254,7 @@ type CreateInstanceRequest struct {
 	//
 	// onDemand
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
+	ServerlessSwitch     *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
 	// The storage capacity. Unit: GB. Valid values:
 	//
 	// 	- Professional Edition and Enterprise Edition instances: Set the value to 0.
@@ -281,6 +308,14 @@ type CreateInstanceRequest struct {
 	//
 	// 3
 	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -289,6 +324,10 @@ func (s CreateInstanceRequest) String() string {
 
 func (s CreateInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequest) GetAuthModel() *string {
+	return s.AuthModel
 }
 
 func (s *CreateInstanceRequest) GetAutoRenew() *bool {
@@ -321,6 +360,10 @@ func (s *CreateInstanceRequest) GetInstanceType() *string {
 
 func (s *CreateInstanceRequest) GetKmsKeyId() *string {
 	return s.KmsKeyId
+}
+
+func (s *CreateInstanceRequest) GetListenerMode() *string {
+	return s.ListenerMode
 }
 
 func (s *CreateInstanceRequest) GetMaxConnections() *int32 {
@@ -367,8 +410,16 @@ func (s *CreateInstanceRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *CreateInstanceRequest) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
 func (s *CreateInstanceRequest) GetServerlessChargeType() *string {
 	return s.ServerlessChargeType
+}
+
+func (s *CreateInstanceRequest) GetServerlessSwitch() *bool {
+	return s.ServerlessSwitch
 }
 
 func (s *CreateInstanceRequest) GetStorageSize() *int32 {
@@ -389,6 +440,19 @@ func (s *CreateInstanceRequest) GetTags() []*CreateInstanceRequestTags {
 
 func (s *CreateInstanceRequest) GetTracingStorageTime() *int32 {
 	return s.TracingStorageTime
+}
+
+func (s *CreateInstanceRequest) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *CreateInstanceRequest) GetVswitchIds() []*string {
+	return s.VswitchIds
+}
+
+func (s *CreateInstanceRequest) SetAuthModel(v string) *CreateInstanceRequest {
+	s.AuthModel = &v
+	return s
 }
 
 func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
@@ -428,6 +492,11 @@ func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetKmsKeyId(v string) *CreateInstanceRequest {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetListenerMode(v string) *CreateInstanceRequest {
+	s.ListenerMode = &v
 	return s
 }
 
@@ -486,8 +555,18 @@ func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequ
 	return s
 }
 
+func (s *CreateInstanceRequest) SetSecurityGroupId(v string) *CreateInstanceRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetServerlessChargeType(v string) *CreateInstanceRequest {
 	s.ServerlessChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetServerlessSwitch(v bool) *CreateInstanceRequest {
+	s.ServerlessSwitch = &v
 	return s
 }
 
@@ -513,6 +592,16 @@ func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateI
 
 func (s *CreateInstanceRequest) SetTracingStorageTime(v int32) *CreateInstanceRequest {
 	s.TracingStorageTime = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetVpcId(v string) *CreateInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetVswitchIds(v []*string) *CreateInstanceRequest {
+	s.VswitchIds = v
 	return s
 }
 

@@ -88,6 +88,10 @@ type GetInstanceResponseBodyData struct {
 	KmsKeyId     *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// example:
 	//
+	// tcp_and_ssl
+	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
+	// example:
+	//
 	// 1500
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// example:
@@ -126,6 +130,11 @@ type GetInstanceResponseBodyData struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
+	// sg-xxx
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServerlessSwitch *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
+	// example:
+	//
 	// SERVING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
@@ -145,6 +154,11 @@ type GetInstanceResponseBodyData struct {
 	//
 	// 15
 	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	// example:
+	//
+	// vpc-xxx
+	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBodyData) String() string {
@@ -191,6 +205,10 @@ func (s *GetInstanceResponseBodyData) GetKmsKeyId() *string {
 	return s.KmsKeyId
 }
 
+func (s *GetInstanceResponseBodyData) GetListenerMode() *string {
+	return s.ListenerMode
+}
+
 func (s *GetInstanceResponseBodyData) GetMaxConnections() *int32 {
 	return s.MaxConnections
 }
@@ -235,6 +253,14 @@ func (s *GetInstanceResponseBodyData) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *GetInstanceResponseBodyData) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
+func (s *GetInstanceResponseBodyData) GetServerlessSwitch() *bool {
+	return s.ServerlessSwitch
+}
+
 func (s *GetInstanceResponseBodyData) GetStatus() *string {
 	return s.Status
 }
@@ -257,6 +283,14 @@ func (s *GetInstanceResponseBodyData) GetTags() []*GetInstanceResponseBodyDataTa
 
 func (s *GetInstanceResponseBodyData) GetTracingStorageTime() *int32 {
 	return s.TracingStorageTime
+}
+
+func (s *GetInstanceResponseBodyData) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *GetInstanceResponseBodyData) GetVswitchIds() []*string {
+	return s.VswitchIds
 }
 
 func (s *GetInstanceResponseBodyData) SetAutoRenewInstance(v bool) *GetInstanceResponseBodyData {
@@ -301,6 +335,11 @@ func (s *GetInstanceResponseBodyData) SetInstanceType(v string) *GetInstanceResp
 
 func (s *GetInstanceResponseBodyData) SetKmsKeyId(v string) *GetInstanceResponseBodyData {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetListenerMode(v string) *GetInstanceResponseBodyData {
+	s.ListenerMode = &v
 	return s
 }
 
@@ -359,6 +398,16 @@ func (s *GetInstanceResponseBodyData) SetResourceGroupId(v string) *GetInstanceR
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetSecurityGroupId(v string) *GetInstanceResponseBodyData {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetServerlessSwitch(v bool) *GetInstanceResponseBodyData {
+	s.ServerlessSwitch = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetStatus(v string) *GetInstanceResponseBodyData {
 	s.Status = &v
 	return s
@@ -386,6 +435,16 @@ func (s *GetInstanceResponseBodyData) SetTags(v []*GetInstanceResponseBodyDataTa
 
 func (s *GetInstanceResponseBodyData) SetTracingStorageTime(v int32) *GetInstanceResponseBodyData {
 	s.TracingStorageTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetVpcId(v string) *GetInstanceResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetVswitchIds(v []*string) *GetInstanceResponseBodyData {
+	s.VswitchIds = v
 	return s
 }
 
