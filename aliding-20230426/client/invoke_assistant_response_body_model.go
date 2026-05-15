@@ -202,6 +202,7 @@ func (s *InvokeAssistantResponseBodyMessages) Validate() error {
 }
 
 type InvokeAssistantResponseBodyMessagesContent struct {
+	AguiContent  *InvokeAssistantResponseBodyMessagesContentAguiContent  `json:"aguiContent,omitempty" xml:"aguiContent,omitempty" type:"Struct"`
 	CardCallback *InvokeAssistantResponseBodyMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
 	DingCard     *InvokeAssistantResponseBodyMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
 	// example:
@@ -225,6 +226,10 @@ func (s InvokeAssistantResponseBodyMessagesContent) String() string {
 
 func (s InvokeAssistantResponseBodyMessagesContent) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContent) GetAguiContent() *InvokeAssistantResponseBodyMessagesContentAguiContent {
+	return s.AguiContent
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) GetCardCallback() *InvokeAssistantResponseBodyMessagesContentCardCallback {
@@ -253,6 +258,11 @@ func (s *InvokeAssistantResponseBodyMessagesContent) GetText() *InvokeAssistantR
 
 func (s *InvokeAssistantResponseBodyMessagesContent) GetType() *string {
 	return s.Type
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContent) SetAguiContent(v *InvokeAssistantResponseBodyMessagesContentAguiContent) *InvokeAssistantResponseBodyMessagesContent {
+	s.AguiContent = v
+	return s
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) SetCardCallback(v *InvokeAssistantResponseBodyMessagesContentCardCallback) *InvokeAssistantResponseBodyMessagesContent {
@@ -291,6 +301,11 @@ func (s *InvokeAssistantResponseBodyMessagesContent) SetType(v string) *InvokeAs
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) Validate() error {
+	if s.AguiContent != nil {
+		if err := s.AguiContent.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CardCallback != nil {
 		if err := s.CardCallback.Validate(); err != nil {
 			return err
@@ -322,6 +337,115 @@ func (s *InvokeAssistantResponseBodyMessagesContent) Validate() error {
 		}
 	}
 	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentAguiContent struct {
+	AguiEventList []*InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList `json:"aguiEventList,omitempty" xml:"aguiEventList,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentAguiContent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentAguiContent) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContent) GetAguiEventList() []*InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	return s.AguiEventList
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContent) SetAguiEventList(v []*InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) *InvokeAssistantResponseBodyMessagesContentAguiContent {
+	s.AguiEventList = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContent) Validate() error {
+	if s.AguiEventList != nil {
+		for _, item := range s.AguiEventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList struct {
+	ActivityType *string     `json:"activityType,omitempty" xml:"activityType,omitempty"`
+	Content      interface{} `json:"content,omitempty" xml:"content,omitempty"`
+	MessageId    *string     `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	Replace      *bool       `json:"replace,omitempty" xml:"replace,omitempty"`
+	Timestamp    *int64      `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Type         *string     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GetActivityType() *string {
+	return s.ActivityType
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GetContent() interface{} {
+	return s.Content
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GetMessageId() *string {
+	return s.MessageId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GetReplace() *bool {
+	return s.Replace
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GetTimestamp() *int64 {
+	return s.Timestamp
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) GetType() *string {
+	return s.Type
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) SetActivityType(v string) *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	s.ActivityType = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) SetContent(v interface{}) *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	s.Content = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) SetMessageId(v string) *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	s.MessageId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) SetReplace(v bool) *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	s.Replace = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) SetTimestamp(v int64) *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) SetType(v string) *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList {
+	s.Type = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList) Validate() error {
+	return dara.Validate(s)
 }
 
 type InvokeAssistantResponseBodyMessagesContentCardCallback struct {

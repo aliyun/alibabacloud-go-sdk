@@ -19512,6 +19512,299 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
+// 按会议 conferenceId 聚合查询实时听记
+//
+// @param tmpReq - MeetingFlashMinutesRequest
+//
+// @param tmpHeader - MeetingFlashMinutesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MeetingFlashMinutesResponse
+func (client *Client) MeetingFlashMinutesWithOptions(tmpReq *MeetingFlashMinutesRequest, tmpHeader *MeetingFlashMinutesHeaders, runtime *dara.RuntimeOptions) (_result *MeetingFlashMinutesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MeetingFlashMinutesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &MeetingFlashMinutesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MeetingFlashMinutes"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/minutes/meetingFlashMinutes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MeetingFlashMinutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按会议 conferenceId 聚合查询实时听记
+//
+// @param request - MeetingFlashMinutesRequest
+//
+// @return MeetingFlashMinutesResponse
+func (client *Client) MeetingFlashMinutes(request *MeetingFlashMinutesRequest) (_result *MeetingFlashMinutesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &MeetingFlashMinutesHeaders{}
+	_result = &MeetingFlashMinutesResponse{}
+	_body, _err := client.MeetingFlashMinutesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 全员静音或全员取消静音
+//
+// @param tmpReq - MuteAllRequest
+//
+// @param tmpHeader - MuteAllHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MuteAllResponse
+func (client *Client) MuteAllWithOptions(tmpReq *MuteAllRequest, tmpHeader *MuteAllHeaders, runtime *dara.RuntimeOptions) (_result *MuteAllResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MuteAllShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &MuteAllShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ForceMute) {
+		body["ForceMute"] = request.ForceMute
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !dara.IsNil(request.MuteAction) {
+		body["muteAction"] = request.MuteAction
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MuteAll"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/muteAll"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MuteAllResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 全员静音或全员取消静音
+//
+// @param request - MuteAllRequest
+//
+// @return MuteAllResponse
+func (client *Client) MuteAll(request *MuteAllRequest) (_result *MuteAllResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &MuteAllHeaders{}
+	_result = &MuteAllResponse{}
+	_body, _err := client.MuteAllWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 指定人员静音或取消静音
+//
+// @param tmpReq - MuteMembersRequest
+//
+// @param tmpHeader - MuteMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MuteMembersResponse
+func (client *Client) MuteMembersWithOptions(tmpReq *MuteMembersRequest, tmpHeader *MuteMembersHeaders, runtime *dara.RuntimeOptions) (_result *MuteMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MuteMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &MuteMembersShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserIds) {
+		request.UserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIds, dara.String("UserIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.UserIdsShrink) {
+		body["UserIds"] = request.UserIdsShrink
+	}
+
+	if !dara.IsNil(request.ConferenceId) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !dara.IsNil(request.MuteAction) {
+		body["muteAction"] = request.MuteAction
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MuteMembers"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/ysp/muteMembers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MuteMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 指定人员静音或取消静音
+//
+// @param request - MuteMembersRequest
+//
+// @return MuteMembersResponse
+func (client *Client) MuteMembers(request *MuteMembersRequest) (_result *MuteMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &MuteMembersHeaders{}
+	_result = &MuteMembersResponse{}
+	_body, _err := client.MuteMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改日程
 //
 // @param tmpReq - PatchEventRequest
