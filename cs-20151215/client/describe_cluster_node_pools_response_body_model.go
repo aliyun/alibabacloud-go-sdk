@@ -51,7 +51,8 @@ func (s *DescribeClusterNodePoolsResponseBody) Validate() error {
 type DescribeClusterNodePoolsResponseBodyNodepools struct {
 	AutoMode *DescribeClusterNodePoolsResponseBodyNodepoolsAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// The configurations about auto scaling.
-	AutoScaling *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	AutoScaling   *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling   `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	EfloNodeGroup *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup `json:"eflo_node_group,omitempty" xml:"eflo_node_group,omitempty" type:"Struct"`
 	// This parameter is discontinued.
 	//
 	// The network configurations of the edge node pool. This parameter takes effect only on edge node pools.
@@ -105,6 +106,10 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepools) GetAutoScaling() *Descri
 	return s.AutoScaling
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepools) GetEfloNodeGroup() *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup {
+	return s.EfloNodeGroup
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepools) GetInterconnectConfig() *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig {
 	return s.InterconnectConfig
 }
@@ -156,6 +161,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetAutoMode(v *DescribeC
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetAutoScaling(v *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling) *DescribeClusterNodePoolsResponseBodyNodepools {
 	s.AutoScaling = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetEfloNodeGroup(v *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) *DescribeClusterNodePoolsResponseBodyNodepools {
+	s.EfloNodeGroup = v
 	return s
 }
 
@@ -222,6 +232,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepools) Validate() error {
 	}
 	if s.AutoScaling != nil {
 		if err := s.AutoScaling.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EfloNodeGroup != nil {
+		if err := s.EfloNodeGroup.Validate(); err != nil {
 			return err
 		}
 	}
@@ -443,6 +458,47 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling) SetType(v str
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup struct {
+	// example:
+	//
+	// i113790071760688002461
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// i128147721760688002463
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) GetClusterId() *string {
+	return s.ClusterId
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) GetGroupId() *string {
+	return s.GroupId
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) SetClusterId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) SetGroupId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsEfloNodeGroup) Validate() error {
 	return dara.Validate(s)
 }
 

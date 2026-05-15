@@ -13,6 +13,8 @@ type iDescribeClusterNodePoolDetailResponseBody interface {
 	GetAutoMode() *DescribeClusterNodePoolDetailResponseBodyAutoMode
 	SetAutoScaling(v *DescribeClusterNodePoolDetailResponseBodyAutoScaling) *DescribeClusterNodePoolDetailResponseBody
 	GetAutoScaling() *DescribeClusterNodePoolDetailResponseBodyAutoScaling
+	SetEfloNodeGroup(v *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) *DescribeClusterNodePoolDetailResponseBody
+	GetEfloNodeGroup() *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup
 	SetHostNetwork(v bool) *DescribeClusterNodePoolDetailResponseBody
 	GetHostNetwork() *bool
 	SetInterconnectConfig(v *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) *DescribeClusterNodePoolDetailResponseBody
@@ -44,7 +46,8 @@ type iDescribeClusterNodePoolDetailResponseBody interface {
 type DescribeClusterNodePoolDetailResponseBody struct {
 	AutoMode *DescribeClusterNodePoolDetailResponseBodyAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// The auto scaling configuration of the node pool.
-	AutoScaling *DescribeClusterNodePoolDetailResponseBodyAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	AutoScaling   *DescribeClusterNodePoolDetailResponseBodyAutoScaling   `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	EfloNodeGroup *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup `json:"eflo_node_group,omitempty" xml:"eflo_node_group,omitempty" type:"Struct"`
 	// Indicates whether the pods in the edge node pool can use the host network.
 	//
 	// `true`: sets to host network.
@@ -118,6 +121,10 @@ func (s *DescribeClusterNodePoolDetailResponseBody) GetAutoScaling() *DescribeCl
 	return s.AutoScaling
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBody) GetEfloNodeGroup() *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup {
+	return s.EfloNodeGroup
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBody) GetHostNetwork() *bool {
 	return s.HostNetwork
 }
@@ -177,6 +184,11 @@ func (s *DescribeClusterNodePoolDetailResponseBody) SetAutoMode(v *DescribeClust
 
 func (s *DescribeClusterNodePoolDetailResponseBody) SetAutoScaling(v *DescribeClusterNodePoolDetailResponseBodyAutoScaling) *DescribeClusterNodePoolDetailResponseBody {
 	s.AutoScaling = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBody) SetEfloNodeGroup(v *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) *DescribeClusterNodePoolDetailResponseBody {
+	s.EfloNodeGroup = v
 	return s
 }
 
@@ -253,6 +265,11 @@ func (s *DescribeClusterNodePoolDetailResponseBody) Validate() error {
 	}
 	if s.AutoScaling != nil {
 		if err := s.AutoScaling.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EfloNodeGroup != nil {
+		if err := s.EfloNodeGroup.Validate(); err != nil {
 			return err
 		}
 	}
@@ -473,6 +490,47 @@ func (s *DescribeClusterNodePoolDetailResponseBodyAutoScaling) SetType(v string)
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyAutoScaling) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup struct {
+	// example:
+	//
+	// i113790071760688002461
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// i128147721760688002463
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) GetClusterId() *string {
+	return s.ClusterId
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) GetGroupId() *string {
+	return s.GroupId
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) SetClusterId(v string) *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) SetGroupId(v string) *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) Validate() error {
 	return dara.Validate(s)
 }
 
