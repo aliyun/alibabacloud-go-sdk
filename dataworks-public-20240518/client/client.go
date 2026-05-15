@@ -3827,6 +3827,88 @@ func (client *Client) CreateProjectMember(request *CreateProjectMemberRequest) (
 
 // Summary:
 //
+// # Create a workspace custom role
+//
+// @param tmpReq - CreateProjectRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectRoleResponse
+func (client *Client) CreateProjectRoleWithOptions(tmpReq *CreateProjectRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateProjectRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ModulePermissions) {
+		request.ModulePermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModulePermissions, dara.String("ModulePermissions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModulePermissionsShrink) {
+		query["ModulePermissions"] = request.ModulePermissionsShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProjectRole"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProjectRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create a workspace custom role
+//
+// @param request - CreateProjectRoleRequest
+//
+// @return CreateProjectRoleResponse
+func (client *Client) CreateProjectRole(request *CreateProjectRoleRequest) (_result *CreateProjectRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProjectRoleResponse{}
+	_body, _err := client.CreateProjectRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // \\>  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
 //
 // Description:
@@ -6686,6 +6768,72 @@ func (client *Client) DeleteProjectMember(request *DeleteProjectMemberRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteProjectMemberResponse{}
 	_body, _err := client.DeleteProjectMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete a workspace custom role
+//
+// @param request - DeleteProjectRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectRoleResponse
+func (client *Client) DeleteProjectRoleWithOptions(request *DeleteProjectRoleRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProjectRole"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete a workspace custom role
+//
+// @param request - DeleteProjectRoleRequest
+//
+// @return DeleteProjectRoleResponse
+func (client *Client) DeleteProjectRole(request *DeleteProjectRoleRequest) (_result *DeleteProjectRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProjectRoleResponse{}
+	_body, _err := client.DeleteProjectRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22063,6 +22211,88 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateProjectResponse{}
 	_body, _err := client.UpdateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update the permissions of a custom role
+//
+// @param tmpReq - UpdateProjectRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectRoleResponse
+func (client *Client) UpdateProjectRoleWithOptions(tmpReq *UpdateProjectRoleRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateProjectRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ModulePermissions) {
+		request.ModulePermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModulePermissions, dara.String("ModulePermissions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		query["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.ModulePermissionsShrink) {
+		query["ModulePermissions"] = request.ModulePermissionsShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateProjectRole"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateProjectRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update the permissions of a custom role
+//
+// @param request - UpdateProjectRoleRequest
+//
+// @return UpdateProjectRoleResponse
+func (client *Client) UpdateProjectRole(request *UpdateProjectRoleRequest) (_result *UpdateProjectRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateProjectRoleResponse{}
+	_body, _err := client.UpdateProjectRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
