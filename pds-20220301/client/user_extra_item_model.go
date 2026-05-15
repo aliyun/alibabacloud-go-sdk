@@ -37,6 +37,8 @@ type iUserExtraItem interface {
 	GetIsSync() *bool
 	SetLastLoginTime(v int64) *UserExtraItem
 	GetLastLoginTime() *int64
+	SetLastRefreshTokenTime(v int64) *UserExtraItem
+	GetLastRefreshTokenTime() *int64
 	SetNeedChangePasswordNextLogin(v bool) *UserExtraItem
 	GetNeedChangePasswordNextLogin() *bool
 	SetNickName(v string) *UserExtraItem
@@ -106,6 +108,7 @@ type UserExtraItem struct {
 	ExpiredAt                   *int64 `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
 	IsSync                      *bool  `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
 	LastLoginTime               *int64 `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
+	LastRefreshTokenTime        *int64 `json:"last_refresh_token_time,omitempty" xml:"last_refresh_token_time,omitempty"`
 	NeedChangePasswordNextLogin *bool  `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
 	// example:
 	//
@@ -204,6 +207,10 @@ func (s *UserExtraItem) GetIsSync() *bool {
 
 func (s *UserExtraItem) GetLastLoginTime() *int64 {
 	return s.LastLoginTime
+}
+
+func (s *UserExtraItem) GetLastRefreshTokenTime() *int64 {
+	return s.LastRefreshTokenTime
 }
 
 func (s *UserExtraItem) GetNeedChangePasswordNextLogin() *bool {
@@ -325,6 +332,11 @@ func (s *UserExtraItem) SetIsSync(v bool) *UserExtraItem {
 
 func (s *UserExtraItem) SetLastLoginTime(v int64) *UserExtraItem {
 	s.LastLoginTime = &v
+	return s
+}
+
+func (s *UserExtraItem) SetLastRefreshTokenTime(v int64) *UserExtraItem {
+	s.LastRefreshTokenTime = &v
 	return s
 }
 

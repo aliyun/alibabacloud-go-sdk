@@ -23,6 +23,10 @@ type iUser interface {
 	GetDomainId() *string
 	SetEmail(v string) *User
 	GetEmail() *string
+	SetLastLoginTime(v int64) *User
+	GetLastLoginTime() *int64
+	SetLastRefreshTokenTime(v int64) *User
+	GetLastRefreshTokenTime() *int64
 	SetNickName(v string) *User
 	GetNickName() *string
 	SetPhone(v string) *User
@@ -83,7 +87,9 @@ type User struct {
 	// example:
 	//
 	// a@aliyunpds.com
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	Email                *string `json:"email,omitempty" xml:"email,omitempty"`
+	LastLoginTime        *int64  `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
+	LastRefreshTokenTime *int64  `json:"last_refresh_token_time,omitempty" xml:"last_refresh_token_time,omitempty"`
 	// The nickname of the user.
 	//
 	// example:
@@ -176,6 +182,14 @@ func (s *User) GetEmail() *string {
 	return s.Email
 }
 
+func (s *User) GetLastLoginTime() *int64 {
+	return s.LastLoginTime
+}
+
+func (s *User) GetLastRefreshTokenTime() *int64 {
+	return s.LastRefreshTokenTime
+}
+
 func (s *User) GetNickName() *string {
 	return s.NickName
 }
@@ -240,6 +254,16 @@ func (s *User) SetDomainId(v string) *User {
 
 func (s *User) SetEmail(v string) *User {
 	s.Email = &v
+	return s
+}
+
+func (s *User) SetLastLoginTime(v int64) *User {
+	s.LastLoginTime = &v
+	return s
+}
+
+func (s *User) SetLastRefreshTokenTime(v int64) *User {
+	s.LastRefreshTokenTime = &v
 	return s
 }
 

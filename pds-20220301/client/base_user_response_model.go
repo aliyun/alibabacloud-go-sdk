@@ -33,6 +33,8 @@ type iBaseUserResponse interface {
 	GetIsSync() *bool
 	SetLastLoginTime(v int64) *BaseUserResponse
 	GetLastLoginTime() *int64
+	SetLastRefreshTokenTime(v int64) *BaseUserResponse
+	GetLastRefreshTokenTime() *int64
 	SetNeedChangePasswordNextLogin(v bool) *BaseUserResponse
 	GetNeedChangePasswordNextLogin() *bool
 	SetNickName(v string) *BaseUserResponse
@@ -96,6 +98,7 @@ type BaseUserResponse struct {
 	ExpiredAt                   *int64 `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
 	IsSync                      *bool  `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
 	LastLoginTime               *int64 `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
+	LastRefreshTokenTime        *int64 `json:"last_refresh_token_time,omitempty" xml:"last_refresh_token_time,omitempty"`
 	NeedChangePasswordNextLogin *bool  `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
 	// example:
 	//
@@ -185,6 +188,10 @@ func (s *BaseUserResponse) GetIsSync() *bool {
 
 func (s *BaseUserResponse) GetLastLoginTime() *int64 {
 	return s.LastLoginTime
+}
+
+func (s *BaseUserResponse) GetLastRefreshTokenTime() *int64 {
+	return s.LastRefreshTokenTime
 }
 
 func (s *BaseUserResponse) GetNeedChangePasswordNextLogin() *bool {
@@ -292,6 +299,11 @@ func (s *BaseUserResponse) SetIsSync(v bool) *BaseUserResponse {
 
 func (s *BaseUserResponse) SetLastLoginTime(v int64) *BaseUserResponse {
 	s.LastLoginTime = &v
+	return s
+}
+
+func (s *BaseUserResponse) SetLastRefreshTokenTime(v int64) *BaseUserResponse {
+	s.LastRefreshTokenTime = &v
 	return s
 }
 
