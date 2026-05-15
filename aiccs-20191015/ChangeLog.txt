@@ -1,3 +1,30 @@
+2026-05-15 Version: v4.0.0
+- Support API CancelAiCallDetails.
+- Support API CreateAiCallTask.
+- Support API GetCallDialogContent.
+- Support API ImportOneTaskPhoneNumber.
+- Support API ImportTaskNumberDatas.
+- Support API ListAvailableTts.
+- Support API PageQueryAgentList.
+- Support API PageQueryAgentListNew.
+- Support API QueryAiCallDetailPage.
+- Support API QueryAiCallTaskDetail.
+- Support API QueryAiCallTaskPage.
+- Support API QueryAiVoiceAgentDetail.
+- Support API QueryAiVoiceAgentDetailNew.
+- Support API QueryConversationDetailInfo.
+- Support API QueryConversationDetailInfoNew.
+- Support API QueryInboundCallId.
+- Support API StartAiCallTask.
+- Support API StopAiCallTask.
+- Support API UpdateAiCallTask.
+- Update API LlmSmartCall: add request parameters CustomerLineCode.
+- Update API LlmSmartCall: add request parameters SessionTimeout.
+- Update API LlmSmartCall: add request parameters TtsSpeed.
+- Update API LlmSmartCall: add request parameters TtsVoiceCode.
+- Update API LlmSmartCall: add request parameters TtsVolume.
+
+
 2025-05-14 Version: v3.2.3
 - Update API LlmSmartCall: add request parameters Extension.
 
