@@ -19,6 +19,8 @@ type iExportRecallManagementTableRequest interface {
   GetMaxcomputeTableName() *string 
   SetPartitions(v map[string]*string) *ExportRecallManagementTableRequest
   GetPartitions() map[string]*string 
+  SetRecallManagementTableVersionId(v string) *ExportRecallManagementTableRequest
+  GetRecallManagementTableVersionId() *string 
 }
 
 type ExportRecallManagementTableRequest struct {
@@ -41,6 +43,10 @@ type ExportRecallManagementTableRequest struct {
   // table-1
   MaxcomputeTableName *string `json:"MaxcomputeTableName,omitempty" xml:"MaxcomputeTableName,omitempty"`
   Partitions map[string]*string `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+  // example:
+  // 
+  // 20250213000000
+  RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
 }
 
 func (s ExportRecallManagementTableRequest) String() string {
@@ -71,6 +77,10 @@ func (s *ExportRecallManagementTableRequest) GetPartitions() map[string]*string 
   return s.Partitions
 }
 
+func (s *ExportRecallManagementTableRequest) GetRecallManagementTableVersionId() *string  {
+  return s.RecallManagementTableVersionId
+}
+
 func (s *ExportRecallManagementTableRequest) SetInstanceId(v string) *ExportRecallManagementTableRequest {
   s.InstanceId = &v
   return s
@@ -93,6 +103,11 @@ func (s *ExportRecallManagementTableRequest) SetMaxcomputeTableName(v string) *E
 
 func (s *ExportRecallManagementTableRequest) SetPartitions(v map[string]*string) *ExportRecallManagementTableRequest {
   s.Partitions = v
+  return s
+}
+
+func (s *ExportRecallManagementTableRequest) SetRecallManagementTableVersionId(v string) *ExportRecallManagementTableRequest {
+  s.RecallManagementTableVersionId = &v
   return s
 }
 

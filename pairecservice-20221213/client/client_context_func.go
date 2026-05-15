@@ -4177,6 +4177,10 @@ func (client *Client) ExportRecallManagementTableWithContext(ctx context.Context
 		body["Partitions"] = request.Partitions
 	}
 
+	if !dara.IsNil(request.RecallManagementTableVersionId) {
+		body["RecallManagementTableVersionId"] = request.RecallManagementTableVersionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
