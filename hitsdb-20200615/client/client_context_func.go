@@ -264,6 +264,14 @@ func (client *Client) CreateAdditionalVpcLinkWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdditionalAliBid) {
+		query["AdditionalAliBid"] = request.AdditionalAliBid
+	}
+
+	if !dara.IsNil(request.AdditionalAliUid) {
+		query["AdditionalAliUid"] = request.AdditionalAliUid
+	}
+
 	if !dara.IsNil(request.AdditionalVpcId) {
 		query["AdditionalVpcId"] = request.AdditionalVpcId
 	}

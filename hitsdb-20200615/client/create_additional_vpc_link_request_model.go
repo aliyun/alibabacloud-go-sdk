@@ -9,6 +9,10 @@ type iCreateAdditionalVpcLinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdditionalAliBid(v string) *CreateAdditionalVpcLinkRequest
+	GetAdditionalAliBid() *string
+	SetAdditionalAliUid(v string) *CreateAdditionalVpcLinkRequest
+	GetAdditionalAliUid() *string
 	SetAdditionalVpcId(v string) *CreateAdditionalVpcLinkRequest
 	GetAdditionalVpcId() *string
 	SetAdditionalVswitchId(v string) *CreateAdditionalVpcLinkRequest
@@ -22,6 +26,8 @@ type iCreateAdditionalVpcLinkRequest interface {
 }
 
 type CreateAdditionalVpcLinkRequest struct {
+	AdditionalAliBid *string `json:"AdditionalAliBid,omitempty" xml:"AdditionalAliBid,omitempty"`
+	AdditionalAliUid *string `json:"AdditionalAliUid,omitempty" xml:"AdditionalAliUid,omitempty"`
 	// This parameter is required.
 	AdditionalVpcId *string `json:"AdditionalVpcId,omitempty" xml:"AdditionalVpcId,omitempty"`
 	// This parameter is required.
@@ -38,6 +44,14 @@ func (s CreateAdditionalVpcLinkRequest) String() string {
 
 func (s CreateAdditionalVpcLinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAdditionalVpcLinkRequest) GetAdditionalAliBid() *string {
+	return s.AdditionalAliBid
+}
+
+func (s *CreateAdditionalVpcLinkRequest) GetAdditionalAliUid() *string {
+	return s.AdditionalAliUid
 }
 
 func (s *CreateAdditionalVpcLinkRequest) GetAdditionalVpcId() *string {
@@ -58,6 +72,16 @@ func (s *CreateAdditionalVpcLinkRequest) GetRegionId() *string {
 
 func (s *CreateAdditionalVpcLinkRequest) GetSecurityToken() *string {
 	return s.SecurityToken
+}
+
+func (s *CreateAdditionalVpcLinkRequest) SetAdditionalAliBid(v string) *CreateAdditionalVpcLinkRequest {
+	s.AdditionalAliBid = &v
+	return s
+}
+
+func (s *CreateAdditionalVpcLinkRequest) SetAdditionalAliUid(v string) *CreateAdditionalVpcLinkRequest {
+	s.AdditionalAliUid = &v
+	return s
 }
 
 func (s *CreateAdditionalVpcLinkRequest) SetAdditionalVpcId(v string) *CreateAdditionalVpcLinkRequest {
