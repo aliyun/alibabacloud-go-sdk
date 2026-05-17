@@ -9,6 +9,8 @@ type iSubscriptionForModify interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentConfig(v *SubscriptionForModifyAgentConfig) *SubscriptionForModify
+	GetAgentConfig() *SubscriptionForModifyAgentConfig
 	SetDescription(v string) *SubscriptionForModify
 	GetDescription() *string
 	SetFilterSetting(v *FilterSetting) *SubscriptionForModify
@@ -24,6 +26,7 @@ type iSubscriptionForModify interface {
 }
 
 type SubscriptionForModify struct {
+	AgentConfig *SubscriptionForModifyAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty" type:"Struct"`
 	// Description.
 	//
 	// example:
@@ -59,6 +62,10 @@ func (s SubscriptionForModify) GoString() string {
 	return s.String()
 }
 
+func (s *SubscriptionForModify) GetAgentConfig() *SubscriptionForModifyAgentConfig {
+	return s.AgentConfig
+}
+
 func (s *SubscriptionForModify) GetDescription() *string {
 	return s.Description
 }
@@ -81,6 +88,11 @@ func (s *SubscriptionForModify) GetSubscriptionName() *string {
 
 func (s *SubscriptionForModify) GetWorkspaceFilterSetting() *WorkspaceFilterSetting {
 	return s.WorkspaceFilterSetting
+}
+
+func (s *SubscriptionForModify) SetAgentConfig(v *SubscriptionForModifyAgentConfig) *SubscriptionForModify {
+	s.AgentConfig = v
+	return s
 }
 
 func (s *SubscriptionForModify) SetDescription(v string) *SubscriptionForModify {
@@ -114,6 +126,11 @@ func (s *SubscriptionForModify) SetWorkspaceFilterSetting(v *WorkspaceFilterSett
 }
 
 func (s *SubscriptionForModify) Validate() error {
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.FilterSetting != nil {
 		if err := s.FilterSetting.Validate(); err != nil {
 			return err
@@ -127,6 +144,50 @@ func (s *SubscriptionForModify) Validate() error {
 	if s.WorkspaceFilterSetting != nil {
 		if err := s.WorkspaceFilterSetting.Validate(); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+type SubscriptionForModifyAgentConfig struct {
+	AgentUuid *string                       `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
+	Routes    []*NotifyRouteForSubscription `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+}
+
+func (s SubscriptionForModifyAgentConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubscriptionForModifyAgentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubscriptionForModifyAgentConfig) GetAgentUuid() *string {
+	return s.AgentUuid
+}
+
+func (s *SubscriptionForModifyAgentConfig) GetRoutes() []*NotifyRouteForSubscription {
+	return s.Routes
+}
+
+func (s *SubscriptionForModifyAgentConfig) SetAgentUuid(v string) *SubscriptionForModifyAgentConfig {
+	s.AgentUuid = &v
+	return s
+}
+
+func (s *SubscriptionForModifyAgentConfig) SetRoutes(v []*NotifyRouteForSubscription) *SubscriptionForModifyAgentConfig {
+	s.Routes = v
+	return s
+}
+
+func (s *SubscriptionForModifyAgentConfig) Validate() error {
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

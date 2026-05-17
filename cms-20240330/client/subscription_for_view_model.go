@@ -9,6 +9,8 @@ type iSubscriptionForView interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentConfig(v *SubscriptionForViewAgentConfig) *SubscriptionForView
+	GetAgentConfig() *SubscriptionForViewAgentConfig
 	SetCreateTime(v string) *SubscriptionForView
 	GetCreateTime() *string
 	SetDescription(v string) *SubscriptionForView
@@ -25,6 +27,8 @@ type iSubscriptionForView interface {
 	GetSubscriptionId() *string
 	SetSubscriptionName(v string) *SubscriptionForView
 	GetSubscriptionName() *string
+	SetSubscriptionType(v string) *SubscriptionForView
+	GetSubscriptionType() *string
 	SetSyncFromType(v string) *SubscriptionForView
 	GetSyncFromType() *string
 	SetUpdateTime(v string) *SubscriptionForView
@@ -38,6 +42,7 @@ type iSubscriptionForView interface {
 }
 
 type SubscriptionForView struct {
+	AgentConfig *SubscriptionForViewAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty" type:"Struct"`
 	// Create Time.
 	//
 	// example:
@@ -80,6 +85,10 @@ type SubscriptionForView struct {
 	//
 	// Subscription test.
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	// example:
+	//
+	// NORMAL
+	SubscriptionType *string `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
 	SyncFromType     *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
 	// Update Time.
 	//
@@ -108,6 +117,10 @@ func (s SubscriptionForView) String() string {
 
 func (s SubscriptionForView) GoString() string {
 	return s.String()
+}
+
+func (s *SubscriptionForView) GetAgentConfig() *SubscriptionForViewAgentConfig {
+	return s.AgentConfig
 }
 
 func (s *SubscriptionForView) GetCreateTime() *string {
@@ -142,6 +155,10 @@ func (s *SubscriptionForView) GetSubscriptionName() *string {
 	return s.SubscriptionName
 }
 
+func (s *SubscriptionForView) GetSubscriptionType() *string {
+	return s.SubscriptionType
+}
+
 func (s *SubscriptionForView) GetSyncFromType() *string {
 	return s.SyncFromType
 }
@@ -160,6 +177,11 @@ func (s *SubscriptionForView) GetWorkspace() *string {
 
 func (s *SubscriptionForView) GetWorkspaceFilterSetting() *WorkspaceFilterSetting {
 	return s.WorkspaceFilterSetting
+}
+
+func (s *SubscriptionForView) SetAgentConfig(v *SubscriptionForViewAgentConfig) *SubscriptionForView {
+	s.AgentConfig = v
+	return s
 }
 
 func (s *SubscriptionForView) SetCreateTime(v string) *SubscriptionForView {
@@ -202,6 +224,11 @@ func (s *SubscriptionForView) SetSubscriptionName(v string) *SubscriptionForView
 	return s
 }
 
+func (s *SubscriptionForView) SetSubscriptionType(v string) *SubscriptionForView {
+	s.SubscriptionType = &v
+	return s
+}
+
 func (s *SubscriptionForView) SetSyncFromType(v string) *SubscriptionForView {
 	s.SyncFromType = &v
 	return s
@@ -228,6 +255,11 @@ func (s *SubscriptionForView) SetWorkspaceFilterSetting(v *WorkspaceFilterSettin
 }
 
 func (s *SubscriptionForView) Validate() error {
+	if s.AgentConfig != nil {
+		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.FilterSetting != nil {
 		if err := s.FilterSetting.Validate(); err != nil {
 			return err
@@ -241,6 +273,50 @@ func (s *SubscriptionForView) Validate() error {
 	if s.WorkspaceFilterSetting != nil {
 		if err := s.WorkspaceFilterSetting.Validate(); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+type SubscriptionForViewAgentConfig struct {
+	AgentUuid *string                       `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
+	Routes    []*NotifyRouteForSubscription `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+}
+
+func (s SubscriptionForViewAgentConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubscriptionForViewAgentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubscriptionForViewAgentConfig) GetAgentUuid() *string {
+	return s.AgentUuid
+}
+
+func (s *SubscriptionForViewAgentConfig) GetRoutes() []*NotifyRouteForSubscription {
+	return s.Routes
+}
+
+func (s *SubscriptionForViewAgentConfig) SetAgentUuid(v string) *SubscriptionForViewAgentConfig {
+	s.AgentUuid = &v
+	return s
+}
+
+func (s *SubscriptionForViewAgentConfig) SetRoutes(v []*NotifyRouteForSubscription) *SubscriptionForViewAgentConfig {
+	s.Routes = v
+	return s
+}
+
+func (s *SubscriptionForViewAgentConfig) Validate() error {
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
