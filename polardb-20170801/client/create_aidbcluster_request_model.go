@@ -179,8 +179,6 @@ type CreateAIDBClusterRequest struct {
 	//
 	// 1024
 	StorageSpace *int32 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// essdpl0
