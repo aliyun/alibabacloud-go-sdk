@@ -38,19 +38,58 @@ type iOneMetaKnowledgeBaseDocument interface {
 }
 
 type OneMetaKnowledgeBaseDocument struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DocsCount          *int32  `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// example:
+	//
+	// abc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 123
+	DocsCount *int32 `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// example:
+	//
+	// ADBPGLoader
 	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
-	FileExt            *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
-	FileSize           *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	KbUuid             *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	Keywords           *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	State              *int32  `json:"State,omitempty" xml:"State,omitempty"`
-	Summary            *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TextSplitterName   *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	// example:
+	//
+	// md
+	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// example:
+	//
+	// 20307
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// 2026-04-22 22:59:35
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2026-04-24 21:22:53
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// kb-***
+	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// example:
+	//
+	// ["test","abc"]
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// example:
+	//
+	// test.md
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// This is a test document.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// ChineseRecursiveTextSplitter
+	TextSplitterName *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
 }
 
 func (s OneMetaKnowledgeBaseDocument) String() string {

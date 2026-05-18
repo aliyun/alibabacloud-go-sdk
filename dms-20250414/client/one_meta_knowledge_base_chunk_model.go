@@ -22,11 +22,26 @@ type iOneMetaKnowledgeBaseChunk interface {
 }
 
 type OneMetaKnowledgeBaseChunk struct {
+	// example:
+	//
+	// 2026-04-20 15:51:27
 	ChunkMtime *string `json:"ChunkMtime,omitempty" xml:"ChunkMtime,omitempty"`
+	// example:
+	//
+	// titile1
 	ChunkTitle *string `json:"ChunkTitle,omitempty" xml:"ChunkTitle,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DocName    *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// abc
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// test.md
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// 2e12aeb5-52cd-4834-bcd8-****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s OneMetaKnowledgeBaseChunk) String() string {

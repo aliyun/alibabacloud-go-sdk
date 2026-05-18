@@ -2008,6 +2008,148 @@ func (client *Client) DeleteDataLakeTable(request *DeleteDataLakeTableRequest) (
 
 // Summary:
 //
+// 删除文档
+//
+// @param request - DeleteDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocumentResponse
+func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, runtime *dara.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentName) {
+		body["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDocument"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文档
+//
+// @param request - DeleteDocumentRequest
+//
+// @return DeleteDocumentResponse
+func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *DeleteDocumentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDocumentResponse{}
+	_body, _err := client.DeleteDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除onemeta3.0的知识库chunks
+//
+// @param tmpReq - DeleteDocumentChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocumentChunksResponse
+func (client *Client) DeleteDocumentChunksWithOptions(tmpReq *DeleteDocumentChunksRequest, runtime *dara.RuntimeOptions) (_result *DeleteDocumentChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteDocumentChunksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChunkIds) {
+		request.ChunkIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChunkIds, dara.String("ChunkIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkIdsShrink) {
+		body["ChunkIds"] = request.ChunkIdsShrink
+	}
+
+	if !dara.IsNil(request.DocumentName) {
+		body["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDocumentChunks"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDocumentChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除onemeta3.0的知识库chunks
+//
+// @param request - DeleteDocumentChunksRequest
+//
+// @return DeleteDocumentChunksResponse
+func (client *Client) DeleteDocumentChunks(request *DeleteDocumentChunksRequest) (_result *DeleteDocumentChunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDocumentChunksResponse{}
+	_body, _err := client.DeleteDocumentChunksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # DeleteFileUpload
 //
 // @param request - DeleteFileUploadRequest
@@ -2214,6 +2356,72 @@ func (client *Client) DescribeDataAgentSession(request *DescribeDataAgentSession
 
 // Summary:
 //
+// 获取文档详情
+//
+// @param request - DescribeDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDocumentResponse
+func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentName) {
+		body["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDocument"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档详情
+//
+// @param request - DescribeDocumentRequest
+//
+// @return DescribeDocumentResponse
+func (client *Client) DescribeDocument(request *DescribeDocumentRequest) (_result *DescribeDocumentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDocumentResponse{}
+	_body, _err := client.DescribeDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # DescribeFileUploadSignature
 //
 // @param request - DescribeFileUploadSignatureRequest
@@ -2333,6 +2541,68 @@ func (client *Client) DescribeKnowledgeBaseStats(request *DescribeKnowledgeBaseS
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeKnowledgeBaseStatsResponse{}
 	_body, _err := client.DescribeKnowledgeBaseStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识库中的上传签名
+//
+// @param request - DescribeKnowledgeBaseUploadSignatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBaseUploadSignatureResponse
+func (client *Client) DescribeKnowledgeBaseUploadSignatureWithOptions(request *DescribeKnowledgeBaseUploadSignatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBaseUploadSignatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KbUuid) {
+		query["KbUuid"] = request.KbUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBaseUploadSignature"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBaseUploadSignatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识库中的上传签名
+//
+// @param request - DescribeKnowledgeBaseUploadSignatureRequest
+//
+// @return DescribeKnowledgeBaseUploadSignatureResponse
+func (client *Client) DescribeKnowledgeBaseUploadSignature(request *DescribeKnowledgeBaseUploadSignatureRequest) (_result *DescribeKnowledgeBaseUploadSignatureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeKnowledgeBaseUploadSignatureResponse{}
+	_body, _err := client.DescribeKnowledgeBaseUploadSignatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4919,6 +5189,178 @@ func (client *Client) ListDataLakeTablebaseInfo(request *ListDataLakeTablebaseIn
 
 // Summary:
 //
+// 分页查询onemeta3.0的知识库chunks
+//
+// @param request - ListDocumentChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentChunksResponse
+func (client *Client) ListDocumentChunksWithOptions(request *ListDocumentChunksRequest, runtime *dara.RuntimeOptions) (_result *ListDocumentChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkTitlePattern) {
+		body["ChunkTitlePattern"] = request.ChunkTitlePattern
+	}
+
+	if !dara.IsNil(request.DocumentName) {
+		body["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SortFieldName) {
+		body["SortFieldName"] = request.SortFieldName
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDocumentChunks"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDocumentChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询onemeta3.0的知识库chunks
+//
+// @param request - ListDocumentChunksRequest
+//
+// @return ListDocumentChunksResponse
+func (client *Client) ListDocumentChunks(request *ListDocumentChunksRequest) (_result *ListDocumentChunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDocumentChunksResponse{}
+	_body, _err := client.ListDocumentChunksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档列表
+//
+// @param request - ListDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentsResponse
+func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, runtime *dara.RuntimeOptions) (_result *ListDocumentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Filters) {
+		body["Filters"] = request.Filters
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NamePattern) {
+		body["NamePattern"] = request.NamePattern
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SortFieldName) {
+		body["SortFieldName"] = request.SortFieldName
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDocuments"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档列表
+//
+// @param request - ListDocumentsRequest
+//
+// @return ListDocumentsResponse
+func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *ListDocumentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.ListDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # ListFileUpload
 //
 // @param request - ListFileUploadRequest
@@ -5004,6 +5446,92 @@ func (client *Client) ListFileUpload(request *ListFileUploadRequest) (_result *L
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListFileUploadResponse{}
 	_body, _err := client.ListFileUploadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询onemeta3.0的知识库
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Filters) {
+		body["Filters"] = request.Filters
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NamePattern) {
+		body["NamePattern"] = request.NamePattern
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SortFieldName) {
+		body["SortFieldName"] = request.SortFieldName
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.Tag) {
+		body["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBases"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询onemeta3.0的知识库
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_result *ListKnowledgeBasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.ListKnowledgeBasesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6242,6 +6770,328 @@ func (client *Client) UpdateDataLakeTable(request *UpdateDataLakeTableRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataLakeTableResponse{}
 	_body, _err := client.UpdateDataLakeTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文档
+//
+// @param request - UpdateDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDocumentResponse
+func (client *Client) UpdateDocumentWithOptions(request *UpdateDocumentRequest, runtime *dara.RuntimeOptions) (_result *UpdateDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentName) {
+		body["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.NewDescription) {
+		body["NewDescription"] = request.NewDescription
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDocument"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文档
+//
+// @param request - UpdateDocumentRequest
+//
+// @return UpdateDocumentResponse
+func (client *Client) UpdateDocument(request *UpdateDocumentRequest) (_result *UpdateDocumentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDocumentResponse{}
+	_body, _err := client.UpdateDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新onemeta3.0的知识库
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBaseWithOptions(request *UpdateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		query["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新onemeta3.0的知识库
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.UpdateKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传文档
+//
+// @param tmpReq - UploadDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadDocumentResponse
+func (client *Client) UploadDocumentWithOptions(tmpReq *UploadDocumentRequest, runtime *dara.RuntimeOptions) (_result *UploadDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UploadDocumentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Separators) {
+		request.SeparatorsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Separators, dara.String("Separators"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkOverlap) {
+		body["ChunkOverlap"] = request.ChunkOverlap
+	}
+
+	if !dara.IsNil(request.ChunkSize) {
+		body["ChunkSize"] = request.ChunkSize
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DocumentLoaderName) {
+		body["DocumentLoaderName"] = request.DocumentLoaderName
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.Location) {
+		body["Location"] = request.Location
+	}
+
+	if !dara.IsNil(request.SeparatorsShrink) {
+		body["Separators"] = request.SeparatorsShrink
+	}
+
+	if !dara.IsNil(request.SplitterModel) {
+		body["SplitterModel"] = request.SplitterModel
+	}
+
+	if !dara.IsNil(request.TextSplitterName) {
+		body["TextSplitterName"] = request.TextSplitterName
+	}
+
+	if !dara.IsNil(request.VlEnhance) {
+		body["VlEnhance"] = request.VlEnhance
+	}
+
+	if !dara.IsNil(request.ZhTitleEnhance) {
+		body["ZhTitleEnhance"] = request.ZhTitleEnhance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadDocument"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传文档
+//
+// @param request - UploadDocumentRequest
+//
+// @return UploadDocumentResponse
+func (client *Client) UploadDocument(request *UploadDocumentRequest) (_result *UploadDocumentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadDocumentResponse{}
+	_body, _err := client.UploadDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新或插入onemeta3.0的知识库chunks
+//
+// @param request - UpsertDocumentChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertDocumentChunksResponse
+func (client *Client) UpsertDocumentChunksWithOptions(request *UpsertDocumentChunksRequest, runtime *dara.RuntimeOptions) (_result *UpsertDocumentChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Chunks) {
+		body["Chunks"] = request.Chunks
+	}
+
+	if !dara.IsNil(request.DocumentName) {
+		body["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertDocumentChunks"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertDocumentChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新或插入onemeta3.0的知识库chunks
+//
+// @param request - UpsertDocumentChunksRequest
+//
+// @return UpsertDocumentChunksResponse
+func (client *Client) UpsertDocumentChunks(request *UpsertDocumentChunksRequest) (_result *UpsertDocumentChunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertDocumentChunksResponse{}
+	_body, _err := client.UpsertDocumentChunksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
