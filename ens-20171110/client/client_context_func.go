@@ -581,7 +581,7 @@ func (client *Client) AttachInstanceSDGWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 添加已有节点到集群节点池
+// Adds existing nodes to a specific node pool. You can add existing ENS instances to an ECK cluster as worker nodes. You can also add removed worker nodes back to the node pool by invoking AttachInstancesToNodePool.
 //
 // @param tmpReq - AttachInstancesToNodePoolRequest
 //
@@ -6243,7 +6243,7 @@ func (client *Client) DescribeClusterWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 查询添加已有节点到集群节点池的脚本
+// To add existing ENS instances to an ECK cluster as worker nodes, or to re-add node instances to a node pool after removing worker nodes, ECK supports manually adding existing nodes to a node pool. You can invoke the DescribeClusterAttachScripts interface to obtain the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -10454,6 +10454,10 @@ func (client *Client) DescribeSDGWithContext(ctx context.Context, tmpReq *Descri
 
 	if !dara.IsNil(request.SDGIdsShrink) {
 		query["SDGIds"] = request.SDGIdsShrink
+	}
+
+	if !dara.IsNil(request.SameDiskId) {
+		query["SameDiskId"] = request.SameDiskId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -16718,6 +16722,10 @@ func (client *Client) RunInstancesWithContext(ctx context.Context, tmpReq *RunIn
 		query["DeletionProtection"] = request.DeletionProtection
 	}
 
+	if !dara.IsNil(request.DeploymentSetId) {
+		query["DeploymentSetId"] = request.DeploymentSetId
+	}
+
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
@@ -18647,7 +18655,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 更新集群证书
+// # Update cluster certificates
 //
 // @param request - UpdateClusterCertificateRequest
 //

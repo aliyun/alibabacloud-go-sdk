@@ -854,7 +854,7 @@ func (client *Client) AttachInstanceSDG(request *AttachInstanceSDGRequest) (_res
 
 // Summary:
 //
-// 添加已有节点到集群节点池
+// Adds existing nodes to a specific node pool. You can add existing ENS instances to an ECK cluster as worker nodes. You can also add removed worker nodes back to the node pool by invoking AttachInstancesToNodePool.
 //
 // @param tmpReq - AttachInstancesToNodePoolRequest
 //
@@ -912,7 +912,7 @@ func (client *Client) AttachInstancesToNodePoolWithOptions(tmpReq *AttachInstanc
 
 // Summary:
 //
-// 添加已有节点到集群节点池
+// Adds existing nodes to a specific node pool. You can add existing ENS instances to an ECK cluster as worker nodes. You can also add removed worker nodes back to the node pool by invoking AttachInstancesToNodePool.
 //
 // @param request - AttachInstancesToNodePoolRequest
 //
@@ -8538,7 +8538,7 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
-// 查询添加已有节点到集群节点池的脚本
+// To add existing ENS instances to an ECK cluster as worker nodes, or to re-add node instances to a node pool after removing worker nodes, ECK supports manually adding existing nodes to a node pool. You can invoke the DescribeClusterAttachScripts interface to obtain the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -8590,7 +8590,7 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(request *DescribeC
 
 // Summary:
 //
-// 查询添加已有节点到集群节点池的脚本
+// To add existing ENS instances to an ECK cluster as worker nodes, or to re-add node instances to a node pool after removing worker nodes, ECK supports manually adding existing nodes to a node pool. You can invoke the DescribeClusterAttachScripts interface to obtain the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -14449,6 +14449,10 @@ func (client *Client) DescribeSDGWithOptions(tmpReq *DescribeSDGRequest, runtime
 
 	if !dara.IsNil(request.SDGIdsShrink) {
 		query["SDGIds"] = request.SDGIdsShrink
+	}
+
+	if !dara.IsNil(request.SameDiskId) {
+		query["SameDiskId"] = request.SameDiskId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -23032,6 +23036,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		query["DeletionProtection"] = request.DeletionProtection
 	}
 
+	if !dara.IsNil(request.DeploymentSetId) {
+		query["DeploymentSetId"] = request.DeploymentSetId
+	}
+
 	if !dara.IsNil(request.EnsRegionId) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
@@ -25569,7 +25577,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新集群证书
+// # Update cluster certificates
 //
 // @param request - UpdateClusterCertificateRequest
 //
@@ -25613,7 +25621,7 @@ func (client *Client) UpdateClusterCertificateWithOptions(request *UpdateCluster
 
 // Summary:
 //
-// 更新集群证书
+// # Update cluster certificates
 //
 // @param request - UpdateClusterCertificateRequest
 //

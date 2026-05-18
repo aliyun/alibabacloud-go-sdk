@@ -15,6 +15,8 @@ type iDescribeSDGRequest interface {
 	GetPageSize() *int32
 	SetSDGIds(v []*string) *DescribeSDGRequest
 	GetSDGIds() []*string
+	SetSameDiskId(v bool) *DescribeSDGRequest
+	GetSameDiskId() *bool
 }
 
 type DescribeSDGRequest struct {
@@ -33,7 +35,8 @@ type DescribeSDGRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
-	SDGIds []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
+	SDGIds     []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
+	SameDiskId *bool     `json:"SameDiskId,omitempty" xml:"SameDiskId,omitempty"`
 }
 
 func (s DescribeSDGRequest) String() string {
@@ -56,6 +59,10 @@ func (s *DescribeSDGRequest) GetSDGIds() []*string {
 	return s.SDGIds
 }
 
+func (s *DescribeSDGRequest) GetSameDiskId() *bool {
+	return s.SameDiskId
+}
+
 func (s *DescribeSDGRequest) SetPageNumber(v int32) *DescribeSDGRequest {
 	s.PageNumber = &v
 	return s
@@ -68,6 +75,11 @@ func (s *DescribeSDGRequest) SetPageSize(v int32) *DescribeSDGRequest {
 
 func (s *DescribeSDGRequest) SetSDGIds(v []*string) *DescribeSDGRequest {
 	s.SDGIds = v
+	return s
+}
+
+func (s *DescribeSDGRequest) SetSameDiskId(v bool) *DescribeSDGRequest {
+	s.SameDiskId = &v
 	return s
 }
 

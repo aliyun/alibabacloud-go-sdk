@@ -25,6 +25,8 @@ type iRunInstancesRequest interface {
 	GetDataDisk() []*RunInstancesRequestDataDisk
 	SetDeletionProtection(v bool) *RunInstancesRequest
 	GetDeletionProtection() *bool
+	SetDeploymentSetId(v string) *RunInstancesRequest
+	GetDeploymentSetId() *string
 	SetEnsRegionId(v string) *RunInstancesRequest
 	GetEnsRegionId() *string
 	SetHostName(v string) *RunInstancesRequest
@@ -161,6 +163,7 @@ type RunInstancesRequest struct {
 	// The specifications of data disks.
 	DataDisk           []*RunInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	DeletionProtection *bool                          `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DeploymentSetId    *string                        `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The ID of the node.
 	//
 	// >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
@@ -472,6 +475,10 @@ func (s *RunInstancesRequest) GetDeletionProtection() *bool {
 	return s.DeletionProtection
 }
 
+func (s *RunInstancesRequest) GetDeploymentSetId() *string {
+	return s.DeploymentSetId
+}
+
 func (s *RunInstancesRequest) GetEnsRegionId() *string {
 	return s.EnsRegionId
 }
@@ -653,6 +660,11 @@ func (s *RunInstancesRequest) SetDataDisk(v []*RunInstancesRequestDataDisk) *Run
 
 func (s *RunInstancesRequest) SetDeletionProtection(v bool) *RunInstancesRequest {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetDeploymentSetId(v string) *RunInstancesRequest {
+	s.DeploymentSetId = &v
 	return s
 }
 

@@ -25,6 +25,8 @@ type iRunInstancesShrinkRequest interface {
 	GetDataDiskShrink() *string
 	SetDeletionProtection(v bool) *RunInstancesShrinkRequest
 	GetDeletionProtection() *bool
+	SetDeploymentSetId(v string) *RunInstancesShrinkRequest
+	GetDeploymentSetId() *string
 	SetEnsRegionId(v string) *RunInstancesShrinkRequest
 	GetEnsRegionId() *string
 	SetHostName(v string) *RunInstancesShrinkRequest
@@ -161,6 +163,7 @@ type RunInstancesShrinkRequest struct {
 	// The specifications of data disks.
 	DataDiskShrink     *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
 	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DeploymentSetId    *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The ID of the node.
 	//
 	// >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
@@ -472,6 +475,10 @@ func (s *RunInstancesShrinkRequest) GetDeletionProtection() *bool {
 	return s.DeletionProtection
 }
 
+func (s *RunInstancesShrinkRequest) GetDeploymentSetId() *string {
+	return s.DeploymentSetId
+}
+
 func (s *RunInstancesShrinkRequest) GetEnsRegionId() *string {
 	return s.EnsRegionId
 }
@@ -653,6 +660,11 @@ func (s *RunInstancesShrinkRequest) SetDataDiskShrink(v string) *RunInstancesShr
 
 func (s *RunInstancesShrinkRequest) SetDeletionProtection(v bool) *RunInstancesShrinkRequest {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetDeploymentSetId(v string) *RunInstancesShrinkRequest {
+	s.DeploymentSetId = &v
 	return s
 }
 

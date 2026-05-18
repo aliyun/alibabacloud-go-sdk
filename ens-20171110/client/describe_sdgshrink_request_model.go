@@ -15,6 +15,8 @@ type iDescribeSDGShrinkRequest interface {
 	GetPageSize() *int32
 	SetSDGIdsShrink(v string) *DescribeSDGShrinkRequest
 	GetSDGIdsShrink() *string
+	SetSameDiskId(v bool) *DescribeSDGShrinkRequest
+	GetSameDiskId() *bool
 }
 
 type DescribeSDGShrinkRequest struct {
@@ -34,6 +36,7 @@ type DescribeSDGShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
 	SDGIdsShrink *string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty"`
+	SameDiskId   *bool   `json:"SameDiskId,omitempty" xml:"SameDiskId,omitempty"`
 }
 
 func (s DescribeSDGShrinkRequest) String() string {
@@ -56,6 +59,10 @@ func (s *DescribeSDGShrinkRequest) GetSDGIdsShrink() *string {
 	return s.SDGIdsShrink
 }
 
+func (s *DescribeSDGShrinkRequest) GetSameDiskId() *bool {
+	return s.SameDiskId
+}
+
 func (s *DescribeSDGShrinkRequest) SetPageNumber(v int32) *DescribeSDGShrinkRequest {
 	s.PageNumber = &v
 	return s
@@ -68,6 +75,11 @@ func (s *DescribeSDGShrinkRequest) SetPageSize(v int32) *DescribeSDGShrinkReques
 
 func (s *DescribeSDGShrinkRequest) SetSDGIdsShrink(v string) *DescribeSDGShrinkRequest {
 	s.SDGIdsShrink = &v
+	return s
+}
+
+func (s *DescribeSDGShrinkRequest) SetSameDiskId(v bool) *DescribeSDGShrinkRequest {
+	s.SameDiskId = &v
 	return s
 }
 
