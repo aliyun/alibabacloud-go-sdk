@@ -548,6 +548,92 @@ func (client *Client) ChangeMdsCubeTaskStatus(request *ChangeMdsCubeTaskStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户校验
+//
+// @param request - CheckUserAuthToMsceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckUserAuthToMsceneResponse
+func (client *Client) CheckUserAuthToMsceneWithOptions(request *CheckUserAuthToMsceneRequest, runtime *dara.RuntimeOptions) (_result *CheckUserAuthToMsceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthToken) {
+		body["AuthToken"] = request.AuthToken
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.OpenUid) {
+		body["OpenUid"] = request.OpenUid
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckUserAuthToMscene"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckUserAuthToMsceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户校验
+//
+// @param request - CheckUserAuthToMsceneRequest
+//
+// @return CheckUserAuthToMsceneResponse
+func (client *Client) CheckUserAuthToMscene(request *CheckUserAuthToMsceneRequest) (_result *CheckUserAuthToMsceneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckUserAuthToMsceneResponse{}
+	_body, _err := client.CheckUserAuthToMsceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CopyMcdpGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

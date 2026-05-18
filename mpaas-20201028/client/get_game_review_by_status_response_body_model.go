@@ -499,6 +499,7 @@ type GetGameReviewByStatusResponseBodyResultContentContentTargetDetail struct {
 	MiniProgramName   *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
 	MiniResourceId    *int64  `json:"MiniResourceId,omitempty" xml:"MiniResourceId,omitempty"`
 	PublishStatus     *int32  `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	PublishStatusDesc *string `json:"PublishStatusDesc,omitempty" xml:"PublishStatusDesc,omitempty"`
 	QrCodeUrl         *string `json:"QrCodeUrl,omitempty" xml:"QrCodeUrl,omitempty"`
 	ReviewTargetType  *string `json:"ReviewTargetType,omitempty" xml:"ReviewTargetType,omitempty"`
 	SubType           *int32  `json:"SubType,omitempty" xml:"SubType,omitempty"`
@@ -556,6 +557,10 @@ func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) GetM
 
 func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) GetPublishStatus() *int32 {
 	return s.PublishStatus
+}
+
+func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) GetPublishStatusDesc() *string {
+	return s.PublishStatusDesc
 }
 
 func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) GetQrCodeUrl() *string {
@@ -630,6 +635,11 @@ func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) SetM
 
 func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) SetPublishStatus(v int32) *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail {
 	s.PublishStatus = &v
+	return s
+}
+
+func (s *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail) SetPublishStatusDesc(v string) *GetGameReviewByStatusResponseBodyResultContentContentTargetDetail {
+	s.PublishStatusDesc = &v
 	return s
 }
 
