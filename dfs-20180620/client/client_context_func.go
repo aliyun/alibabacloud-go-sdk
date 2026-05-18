@@ -1181,6 +1181,64 @@ func (client *Client) DescribeVscMountPointsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量卸载VSC 挂载点
+//
+// @param tmpReq - DetachVscFromMountPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachVscFromMountPointsResponse
+func (client *Client) DetachVscFromMountPointsWithContext(ctx context.Context, tmpReq *DetachVscFromMountPointsRequest, runtime *dara.RuntimeOptions) (_result *DetachVscFromMountPointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DetachVscFromMountPointsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DetachInfos) {
+		request.DetachInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DetachInfos, dara.String("DetachInfos"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DetachInfosShrink) {
+		query["DetachInfos"] = request.DetachInfosShrink
+	}
+
+	if !dara.IsNil(request.InputRegionId) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !dara.IsNil(request.UseAssumeRoleChkServerPerm) {
+		query["UseAssumeRoleChkServerPerm"] = request.UseAssumeRoleChkServerPerm
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachVscFromMountPoints"),
+		Version:     dara.String("2018-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachVscFromMountPointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param tmpReq - DetachVscMountPointRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
