@@ -352,20 +352,12 @@ func (client *Client) CreateTensorboardWithContext(ctx context.Context, request 
 //
 // Deletes a completed or stopped job.
 //
-// @param request - DeleteJobRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteJobResponse
-func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, request *DeleteJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1791,20 +1783,12 @@ func (client *Client) StartTensorboardWithContext(ctx context.Context, Tensorboa
 //
 // Stops a running job.
 //
-// @param request - StopJobRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopJobResponse
-func (client *Client) StopJobWithContext(ctx context.Context, JobId *string, request *StopJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopJobResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) StopJobWithContext(ctx context.Context, JobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopJobResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}

@@ -507,20 +507,12 @@ func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_res
 //
 // Deletes a completed or stopped job.
 //
-// @param request - DeleteJobRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteJobResponse
-func (client *Client) DeleteJobWithOptions(JobId *string, request *DeleteJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -548,14 +540,12 @@ func (client *Client) DeleteJobWithOptions(JobId *string, request *DeleteJobRequ
 //
 // Deletes a completed or stopped job.
 //
-// @param request - DeleteJobRequest
-//
 // @return DeleteJobResponse
-func (client *Client) DeleteJob(JobId *string, request *DeleteJobRequest) (_result *DeleteJobResponse, _err error) {
+func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteJobResponse{}
-	_body, _err := client.DeleteJobWithOptions(JobId, request, headers, runtime)
+	_body, _err := client.DeleteJobWithOptions(JobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2391,20 +2381,12 @@ func (client *Client) StartTensorboard(TensorboardId *string, request *StartTens
 //
 // Stops a running job.
 //
-// @param request - StopJobRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopJobResponse
-func (client *Client) StopJobWithOptions(JobId *string, request *StopJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopJobResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopJobResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2432,14 +2414,12 @@ func (client *Client) StopJobWithOptions(JobId *string, request *StopJobRequest,
 //
 // Stops a running job.
 //
-// @param request - StopJobRequest
-//
 // @return StopJobResponse
-func (client *Client) StopJob(JobId *string, request *StopJobRequest) (_result *StopJobResponse, _err error) {
+func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StopJobResponse{}
-	_body, _err := client.StopJobWithOptions(JobId, request, headers, runtime)
+	_body, _err := client.StopJobWithOptions(JobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
