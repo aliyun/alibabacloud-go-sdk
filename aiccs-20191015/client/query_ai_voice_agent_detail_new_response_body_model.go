@@ -1423,7 +1423,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig) Validate() err
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig struct {
 	DefaultTag *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigDefaultTag `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty" type:"Struct"`
-	MappingTag *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag `json:"MappingTag,omitempty" xml:"MappingTag,omitempty" type:"Struct"`
+	MappingTag map[string]*string                                                                    `json:"MappingTag,omitempty" xml:"MappingTag,omitempty"`
 }
 
 func (s QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig) String() string {
@@ -1438,7 +1438,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagCon
 	return s.DefaultTag
 }
 
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig) GetMappingTag() *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag {
+func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig) GetMappingTag() map[string]*string {
 	return s.MappingTag
 }
 
@@ -1447,7 +1447,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagCon
 	return s
 }
 
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig) SetMappingTag(v *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig {
+func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig) SetMappingTag(v map[string]*string) *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig {
 	s.MappingTag = v
 	return s
 }
@@ -1455,11 +1455,6 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagCon
 func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig) Validate() error {
 	if s.DefaultTag != nil {
 		if err := s.DefaultTag.Validate(); err != nil {
-			return err
-		}
-	}
-	if s.MappingTag != nil {
-		if err := s.MappingTag.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1504,47 +1499,6 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagCon
 }
 
 func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigDefaultTag) Validate() error {
-	return dara.Validate(s)
-}
-
-type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag struct {
-	// example:
-	//
-	// 示例值示例值
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// example:
-	//
-	// 示例值示例值示例值
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) String() string {
-	return dara.Prettify(s)
-}
-
-func (s QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) GetDesc() *string {
-	return s.Desc
-}
-
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) GetTag() *string {
-	return s.Tag
-}
-
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) SetDesc(v string) *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag {
-	s.Desc = &v
-	return s
-}
-
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) SetTag(v string) *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag {
-	s.Tag = &v
-	return s
-}
-
-func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigMappingTag) Validate() error {
 	return dara.Validate(s)
 }
 

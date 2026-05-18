@@ -9,8 +9,8 @@ type iPageQueryAgentListNewRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAgentId(v int64) *PageQueryAgentListNewRequest
-	GetAgentId() *int64
+	SetAgentId(v string) *PageQueryAgentListNewRequest
+	GetAgentId() *string
 	SetAgentName(v string) *PageQueryAgentListNewRequest
 	GetAgentName() *string
 	SetIsAvailable(v bool) *PageQueryAgentListNewRequest
@@ -29,7 +29,7 @@ type PageQueryAgentListNewRequest struct {
 	// example:
 	//
 	// 12345
-	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// example:
 	//
 	// 示例值示例值
@@ -60,7 +60,7 @@ func (s PageQueryAgentListNewRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PageQueryAgentListNewRequest) GetAgentId() *int64 {
+func (s *PageQueryAgentListNewRequest) GetAgentId() *string {
 	return s.AgentId
 }
 
@@ -84,7 +84,7 @@ func (s *PageQueryAgentListNewRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
-func (s *PageQueryAgentListNewRequest) SetAgentId(v int64) *PageQueryAgentListNewRequest {
+func (s *PageQueryAgentListNewRequest) SetAgentId(v string) *PageQueryAgentListNewRequest {
 	s.AgentId = &v
 	return s
 }

@@ -9,27 +9,29 @@ type iQueryAiVoiceAgentDetailNewRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAgentId(v int64) *QueryAiVoiceAgentDetailNewRequest
-	GetAgentId() *int64
-	SetBranchId(v int64) *QueryAiVoiceAgentDetailNewRequest
-	GetBranchId() *int64
-	SetVersionId(v int64) *QueryAiVoiceAgentDetailNewRequest
-	GetVersionId() *int64
+	SetAgentId(v string) *QueryAiVoiceAgentDetailNewRequest
+	GetAgentId() *string
+	SetBranchId(v string) *QueryAiVoiceAgentDetailNewRequest
+	GetBranchId() *string
+	SetVersionId(v string) *QueryAiVoiceAgentDetailNewRequest
+	GetVersionId() *string
 }
 
 type QueryAiVoiceAgentDetailNewRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345678
-	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// example:
 	//
 	// 12
-	BranchId *int64 `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
 	// example:
 	//
 	// 21
-	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s QueryAiVoiceAgentDetailNewRequest) String() string {
@@ -40,29 +42,29 @@ func (s QueryAiVoiceAgentDetailNewRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAiVoiceAgentDetailNewRequest) GetAgentId() *int64 {
+func (s *QueryAiVoiceAgentDetailNewRequest) GetAgentId() *string {
 	return s.AgentId
 }
 
-func (s *QueryAiVoiceAgentDetailNewRequest) GetBranchId() *int64 {
+func (s *QueryAiVoiceAgentDetailNewRequest) GetBranchId() *string {
 	return s.BranchId
 }
 
-func (s *QueryAiVoiceAgentDetailNewRequest) GetVersionId() *int64 {
+func (s *QueryAiVoiceAgentDetailNewRequest) GetVersionId() *string {
 	return s.VersionId
 }
 
-func (s *QueryAiVoiceAgentDetailNewRequest) SetAgentId(v int64) *QueryAiVoiceAgentDetailNewRequest {
+func (s *QueryAiVoiceAgentDetailNewRequest) SetAgentId(v string) *QueryAiVoiceAgentDetailNewRequest {
 	s.AgentId = &v
 	return s
 }
 
-func (s *QueryAiVoiceAgentDetailNewRequest) SetBranchId(v int64) *QueryAiVoiceAgentDetailNewRequest {
+func (s *QueryAiVoiceAgentDetailNewRequest) SetBranchId(v string) *QueryAiVoiceAgentDetailNewRequest {
 	s.BranchId = &v
 	return s
 }
 
-func (s *QueryAiVoiceAgentDetailNewRequest) SetVersionId(v int64) *QueryAiVoiceAgentDetailNewRequest {
+func (s *QueryAiVoiceAgentDetailNewRequest) SetVersionId(v string) *QueryAiVoiceAgentDetailNewRequest {
 	s.VersionId = &v
 	return s
 }

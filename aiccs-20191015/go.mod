@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/aiccs-20191015/v4
+module github.com/alibabacloud-go/aiccs-20191015/v5
 
 go 1.14
 
