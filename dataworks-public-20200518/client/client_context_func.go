@@ -5196,6 +5196,14 @@ func (client *Client) DsgQuerySensResultWithContext(ctx context.Context, request
 		body["TenantId"] = request.TenantId
 	}
 
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}

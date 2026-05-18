@@ -131,11 +131,13 @@ func (client *Client) _postOSSObject(bucketName *string, form map[string]interfa
 
 		request_ = dara.NewRequest()
 		boundary := dara.GetBoundary()
+		tmp := dara.ToString(form["host"])
+		host := dara.StringValue(bucketName) + "." + tmp
 		request_.Protocol = dara.String("HTTPS")
 		request_.Method = dara.String("POST")
 		request_.Pathname = dara.String("/")
 		request_.Headers = map[string]*string{
-			"host":       dara.String(dara.ToString(form["host"])),
+			"host":       dara.String(host),
 			"date":       openapiutil.GetDateUTCString(),
 			"user-agent": openapiutil.GetUserAgent(dara.String("")),
 		}
@@ -2872,7 +2874,7 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -4134,7 +4136,7 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -7142,6 +7144,14 @@ func (client *Client) DsgQuerySensResultWithOptions(request *DsgQuerySensResultR
 		body["TenantId"] = request.TenantId
 	}
 
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -7852,8 +7862,6 @@ func (client *Client) DsgUserGroupQueryList(request *DsgUserGroupQueryListReques
 // Summary:
 //
 // Queries a list of users or roles of the current tenant.
-//
-// @param request - DsgUserGroupQueryUserListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -19509,8 +19517,6 @@ func (client *Client) QueryRecognizeRuleDetail(request *QueryRecognizeRuleDetail
 // Summary:
 //
 // Queries the built-in sensitive data identification rule that is used to configure a sensitive field.
-//
-// @param request - QueryRecognizeRulesTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

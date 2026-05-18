@@ -39,6 +39,10 @@ type iDsgQuerySensResultRequest interface {
 	GetTable() *string
 	SetTenantId(v string) *DsgQuerySensResultRequest
 	GetTenantId() *string
+	SetEndDate(v string) *DsgQuerySensResultRequest
+	GetEndDate() *string
+	SetStartDate(v string) *DsgQuerySensResultRequest
+	GetStartDate() *string
 }
 
 type DsgQuerySensResultRequest struct {
@@ -146,12 +150,12 @@ type DsgQuerySensResultRequest struct {
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 	// The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 10241024
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	EndDate   *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
 }
 
 func (s DsgQuerySensResultRequest) String() string {
@@ -220,6 +224,14 @@ func (s *DsgQuerySensResultRequest) GetTable() *string {
 
 func (s *DsgQuerySensResultRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *DsgQuerySensResultRequest) GetEndDate() *string {
+	return s.EndDate
+}
+
+func (s *DsgQuerySensResultRequest) GetStartDate() *string {
+	return s.StartDate
 }
 
 func (s *DsgQuerySensResultRequest) SetCol(v string) *DsgQuerySensResultRequest {
@@ -294,6 +306,16 @@ func (s *DsgQuerySensResultRequest) SetTable(v string) *DsgQuerySensResultReques
 
 func (s *DsgQuerySensResultRequest) SetTenantId(v string) *DsgQuerySensResultRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetEndDate(v string) *DsgQuerySensResultRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetStartDate(v string) *DsgQuerySensResultRequest {
+	s.StartDate = &v
 	return s
 }
 

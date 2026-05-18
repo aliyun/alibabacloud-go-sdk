@@ -108,7 +108,7 @@ type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	// 1
 	Status         *int32                                               `json:"Status,omitempty" xml:"Status,omitempty"`
 	Columns        []*DsgDesensPlanAddOrUpdateRequestDesensRulesColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	EmptyNotDesesn *bool                                                `json:"emptyNotDesesn,omitempty" xml:"emptyNotDesesn,omitempty"`
+	EmptyNotDesens *bool                                                `json:"emptyNotDesens,omitempty" xml:"emptyNotDesens,omitempty"`
 }
 
 func (s DsgDesensPlanAddOrUpdateRequestDesensRules) String() string {
@@ -155,8 +155,8 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetColumns() []*DsgDesensPl
 	return s.Columns
 }
 
-func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetEmptyNotDesesn() *bool {
-	return s.EmptyNotDesesn
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetEmptyNotDesens() *bool {
+	return s.EmptyNotDesens
 }
 
 func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetCheckWatermark(v bool) *DsgDesensPlanAddOrUpdateRequestDesensRules {
@@ -204,8 +204,8 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetColumns(v []*DsgDesensPl
 	return s
 }
 
-func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetEmptyNotDesesn(v bool) *DsgDesensPlanAddOrUpdateRequestDesensRules {
-	s.EmptyNotDesesn = &v
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetEmptyNotDesens(v bool) *DsgDesensPlanAddOrUpdateRequestDesensRules {
+	s.EmptyNotDesens = &v
 	return s
 }
 
