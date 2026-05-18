@@ -682,6 +682,10 @@ func (client *Client) CreateExternalCACertificateWithOptions(tmpReq *CreateExter
 		query["ApiPassthrough"] = request.ApiPassthroughShrink
 	}
 
+	if !dara.IsNil(request.CertMaxTime) {
+		query["CertMaxTime"] = request.CertMaxTime
+	}
+
 	if !dara.IsNil(request.Csr) {
 		query["Csr"] = request.Csr
 	}
@@ -1278,6 +1282,10 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 		query["Algorithm"] = request.Algorithm
 	}
 
+	if !dara.IsNil(request.CertMaxTime) {
+		query["CertMaxTime"] = request.CertMaxTime
+	}
+
 	if !dara.IsNil(request.CommonName) {
 		query["CommonName"] = request.CommonName
 	}
@@ -1562,8 +1570,6 @@ func (client *Client) DescribeCACertificate(request *DescribeCACertificateReques
 // ## Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeCACertificateCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

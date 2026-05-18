@@ -11,6 +11,8 @@ type iCreateSubCACertificateRequest interface {
 	GoString() string
 	SetAlgorithm(v string) *CreateSubCACertificateRequest
 	GetAlgorithm() *string
+	SetCertMaxTime(v int32) *CreateSubCACertificateRequest
+	GetCertMaxTime() *int32
 	SetClientToken(v string) *CreateSubCACertificateRequest
 	GetClientToken() *string
 	SetCommonName(v string) *CreateSubCACertificateRequest
@@ -66,6 +68,7 @@ type CreateSubCACertificateRequest struct {
 	//
 	// RSA_2048
 	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertMaxTime *int32  `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The common name or abbreviation of the organization. The value can contain letters.
 	//
@@ -175,6 +178,10 @@ func (s *CreateSubCACertificateRequest) GetAlgorithm() *string {
 	return s.Algorithm
 }
 
+func (s *CreateSubCACertificateRequest) GetCertMaxTime() *int32 {
+	return s.CertMaxTime
+}
+
 func (s *CreateSubCACertificateRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -237,6 +244,11 @@ func (s *CreateSubCACertificateRequest) GetYears() *int32 {
 
 func (s *CreateSubCACertificateRequest) SetAlgorithm(v string) *CreateSubCACertificateRequest {
 	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateSubCACertificateRequest) SetCertMaxTime(v int32) *CreateSubCACertificateRequest {
+	s.CertMaxTime = &v
 	return s
 }
 

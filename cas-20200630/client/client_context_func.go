@@ -460,6 +460,10 @@ func (client *Client) CreateExternalCACertificateWithContext(ctx context.Context
 		query["ApiPassthrough"] = request.ApiPassthroughShrink
 	}
 
+	if !dara.IsNil(request.CertMaxTime) {
+		query["CertMaxTime"] = request.CertMaxTime
+	}
+
 	if !dara.IsNil(request.Csr) {
 		query["Csr"] = request.Csr
 	}
@@ -930,6 +934,10 @@ func (client *Client) CreateSubCACertificateWithContext(ctx context.Context, req
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Algorithm) {
 		query["Algorithm"] = request.Algorithm
+	}
+
+	if !dara.IsNil(request.CertMaxTime) {
+		query["CertMaxTime"] = request.CertMaxTime
 	}
 
 	if !dara.IsNil(request.CommonName) {

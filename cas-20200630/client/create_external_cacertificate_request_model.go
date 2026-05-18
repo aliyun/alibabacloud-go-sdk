@@ -11,6 +11,8 @@ type iCreateExternalCACertificateRequest interface {
 	GoString() string
 	SetApiPassthrough(v *CreateExternalCACertificateRequestApiPassthrough) *CreateExternalCACertificateRequest
 	GetApiPassthrough() *CreateExternalCACertificateRequestApiPassthrough
+	SetCertMaxTime(v int32) *CreateExternalCACertificateRequest
+	GetCertMaxTime() *int32
 	SetCsr(v string) *CreateExternalCACertificateRequest
 	GetCsr() *string
 	SetInstanceId(v string) *CreateExternalCACertificateRequest
@@ -25,6 +27,7 @@ type iCreateExternalCACertificateRequest interface {
 
 type CreateExternalCACertificateRequest struct {
 	ApiPassthrough *CreateExternalCACertificateRequestApiPassthrough `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty" type:"Struct"`
+	CertMaxTime    *int32                                            `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
@@ -61,6 +64,10 @@ func (s *CreateExternalCACertificateRequest) GetApiPassthrough() *CreateExternal
 	return s.ApiPassthrough
 }
 
+func (s *CreateExternalCACertificateRequest) GetCertMaxTime() *int32 {
+	return s.CertMaxTime
+}
+
 func (s *CreateExternalCACertificateRequest) GetCsr() *string {
 	return s.Csr
 }
@@ -83,6 +90,11 @@ func (s *CreateExternalCACertificateRequest) GetValidity() *string {
 
 func (s *CreateExternalCACertificateRequest) SetApiPassthrough(v *CreateExternalCACertificateRequestApiPassthrough) *CreateExternalCACertificateRequest {
 	s.ApiPassthrough = v
+	return s
+}
+
+func (s *CreateExternalCACertificateRequest) SetCertMaxTime(v int32) *CreateExternalCACertificateRequest {
+	s.CertMaxTime = &v
 	return s
 }
 

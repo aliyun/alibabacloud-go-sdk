@@ -11,6 +11,8 @@ type iCreateExternalCACertificateShrinkRequest interface {
 	GoString() string
 	SetApiPassthroughShrink(v string) *CreateExternalCACertificateShrinkRequest
 	GetApiPassthroughShrink() *string
+	SetCertMaxTime(v int32) *CreateExternalCACertificateShrinkRequest
+	GetCertMaxTime() *int32
 	SetCsr(v string) *CreateExternalCACertificateShrinkRequest
 	GetCsr() *string
 	SetInstanceId(v string) *CreateExternalCACertificateShrinkRequest
@@ -25,6 +27,7 @@ type iCreateExternalCACertificateShrinkRequest interface {
 
 type CreateExternalCACertificateShrinkRequest struct {
 	ApiPassthroughShrink *string `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty"`
+	CertMaxTime          *int32  `json:"CertMaxTime,omitempty" xml:"CertMaxTime,omitempty"`
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
@@ -61,6 +64,10 @@ func (s *CreateExternalCACertificateShrinkRequest) GetApiPassthroughShrink() *st
 	return s.ApiPassthroughShrink
 }
 
+func (s *CreateExternalCACertificateShrinkRequest) GetCertMaxTime() *int32 {
+	return s.CertMaxTime
+}
+
 func (s *CreateExternalCACertificateShrinkRequest) GetCsr() *string {
 	return s.Csr
 }
@@ -83,6 +90,11 @@ func (s *CreateExternalCACertificateShrinkRequest) GetValidity() *string {
 
 func (s *CreateExternalCACertificateShrinkRequest) SetApiPassthroughShrink(v string) *CreateExternalCACertificateShrinkRequest {
 	s.ApiPassthroughShrink = &v
+	return s
+}
+
+func (s *CreateExternalCACertificateShrinkRequest) SetCertMaxTime(v int32) *CreateExternalCACertificateShrinkRequest {
+	s.CertMaxTime = &v
 	return s
 }
 
