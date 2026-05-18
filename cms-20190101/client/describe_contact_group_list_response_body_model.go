@@ -31,11 +31,9 @@ type DescribeContactGroupListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List of alarm contact groups.
+	Code             *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	ContactGroupList *DescribeContactGroupListResponseBodyContactGroupList `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
-	// List of alarm contact groups.
-	ContactGroups *DescribeContactGroupListResponseBodyContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
+	ContactGroups    *DescribeContactGroupListResponseBodyContactGroups    `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
 	// Return message.
 	//
 	// example:
@@ -186,48 +184,13 @@ func (s *DescribeContactGroupListResponseBodyContactGroupList) Validate() error 
 }
 
 type DescribeContactGroupListResponseBodyContactGroupListContactGroup struct {
-	// List of contacts.
-	Contacts *DescribeContactGroupListResponseBodyContactGroupListContactGroupContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// Creation time.
-	//
-	// example:
-	//
-	// 2023-06-07T03:52:30Z
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Description information of the alarm contact group.
-	//
-	// example:
-	//
-	// Devops-运维组
-	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// Indicates whether the weekly report subscription function is enabled. Values:
-	//
-	// - true: Yes.
-	//
-	// - false: No.
-	//
-	// example:
-	//
-	// false
-	EnableSubscribed *bool `json:"EnableSubscribed,omitempty" xml:"EnableSubscribed,omitempty"`
-	// Indicates whether the weekly report function is enabled.
-	//
-	// example:
-	//
-	// false
-	EnabledWeeklyReport *bool `json:"EnabledWeeklyReport,omitempty" xml:"EnabledWeeklyReport,omitempty"`
-	// Name.
-	//
-	// example:
-	//
-	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Update time.
-	//
-	// example:
-	//
-	// 2025-03-04T02:12:06Z
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Contacts            *DescribeContactGroupListResponseBodyContactGroupListContactGroupContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
+	CreateTime          *int64                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Describe            *string                                                                   `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	EnableSubscribed    *bool                                                                     `json:"EnableSubscribed,omitempty" xml:"EnableSubscribed,omitempty"`
+	EnabledWeeklyReport *bool                                                                     `json:"EnabledWeeklyReport,omitempty" xml:"EnabledWeeklyReport,omitempty"`
+	Name                *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdateTime          *int64                                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeContactGroupListResponseBodyContactGroupListContactGroup) String() string {

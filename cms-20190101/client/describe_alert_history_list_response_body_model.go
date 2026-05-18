@@ -24,7 +24,6 @@ type iDescribeAlertHistoryListResponseBody interface {
 }
 
 type DescribeAlertHistoryListResponseBody struct {
-	// The details of historical alerts.
 	AlarmHistoryList *DescribeAlertHistoryListResponseBodyAlarmHistoryList `json:"AlarmHistoryList,omitempty" xml:"AlarmHistoryList,omitempty" type:"Struct"`
 	// The status code.
 	//
@@ -170,130 +169,27 @@ func (s *DescribeAlertHistoryListResponseBodyAlarmHistoryList) Validate() error 
 }
 
 type DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory struct {
-	// The timestamp when the alert was triggered. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1640586600000
-	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// The TradeManager IDs of the alert contacts.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	ContactALIIMs *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactALIIMs `json:"ContactALIIMs,omitempty" xml:"ContactALIIMs,omitempty" type:"Struct"`
-	// The alert contact groups.
-	ContactGroups *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
-	// The email addresses of the alert contacts.
-	ContactMails *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactMails `json:"ContactMails,omitempty" xml:"ContactMails,omitempty" type:"Struct"`
-	// The mobile numbers of the alert contacts.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	ContactSmses *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactSmses `json:"ContactSmses,omitempty" xml:"ContactSmses,omitempty" type:"Struct"`
-	// The alert contacts that receive alert notifications.
-	Contacts *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// The resources that are monitored.
-	//
-	// example:
-	//
-	// {\\"instanceId\\":\\"i-bp1cqhiw1za2****\\"}
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The expression that is used to trigger alerts.
-	//
-	// example:
-	//
-	// $Average>=10
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 7671****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// i-bp1cqhiw1za2****
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The duration of the alert. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 360133
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The severity level and notification methods of the alert. Valid values:
-	//
-	// 	- P4: Alert notifications are sent by using emails and DingTalk chatbots.
-	//
-	// 	- OK: No alert is generated.
-	//
-	// example:
-	//
-	// P4
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The metric name.
-	//
-	// example:
-	//
-	// cpu_total
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// example:
-	//
-	// acs_ecs_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// applyTemplate61dc81b5-d357-4cf6-a9b7-9f83c1d5****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the alert rule.
-	//
-	// example:
-	//
-	// ECS_Rule
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The alert status. Valid values:
-	//
-	// 	- ALARM: Alerts are triggered.
-	//
-	// 	- OK: No alerts are triggered.
-	//
-	// example:
-	//
-	// ALARM
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Indicates whether alerts are muted. Valid values:
-	//
-	// 	- 2 (default): Alerts are muted and are not triggered within the mute period, even if the condition specified in the alert rule is met.
-	//
-	// 	- 0: Alerts are triggered or cleared.
-	//
-	// 	- 1: The alert rule is ineffective.
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The threshold of the metric value to trigger or clear an alert.
-	//
-	// example:
-	//
-	// 10.58
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The callback URL.
-	//
-	// example:
-	//
-	// https://www.aliyun.com
-	Webhooks *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
+	AlertTime       *int64                                                                         `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
+	ContactALIIMs   *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactALIIMs `json:"ContactALIIMs,omitempty" xml:"ContactALIIMs,omitempty" type:"Struct"`
+	ContactGroups   *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
+	ContactMails    *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactMails  `json:"ContactMails,omitempty" xml:"ContactMails,omitempty" type:"Struct"`
+	ContactSmses    *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactSmses  `json:"ContactSmses,omitempty" xml:"ContactSmses,omitempty" type:"Struct"`
+	Contacts        *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContacts      `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
+	Dimensions      *string                                                                        `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	EvaluationCount *int32                                                                         `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	Expression      *string                                                                        `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	GroupId         *string                                                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstanceName    *string                                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LastTime        *int64                                                                         `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	Level           *string                                                                        `json:"Level,omitempty" xml:"Level,omitempty"`
+	MetricName      *string                                                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace       *string                                                                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RuleId          *string                                                                        `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName        *string                                                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	State           *string                                                                        `json:"State,omitempty" xml:"State,omitempty"`
+	Status          *int32                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Value           *string                                                                        `json:"Value,omitempty" xml:"Value,omitempty"`
+	Webhooks        *string                                                                        `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 
 func (s DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory) String() string {

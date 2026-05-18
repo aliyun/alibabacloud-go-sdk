@@ -35,8 +35,7 @@ type DescribeMonitoringAgentProcessesResponseBody struct {
 	// example:
 	//
 	// The specified resource is not found.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The information about the processes.
+	Message       *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	NodeProcesses *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses `json:"NodeProcesses,omitempty" xml:"NodeProcesses,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -153,43 +152,11 @@ func (s *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses) Validate() e
 }
 
 type DescribeMonitoringAgentProcessesResponseBodyNodeProcessesNodeProcess struct {
-	// The command used to obtain the number of processes. Valid value: `number`.
-	//
-	// >  The `number` command obtains the number of processes that match the condition.
-	//
-	// example:
-	//
-	// number
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 3619****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-hp3hl3cx1pbahzy8****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the process.
-	//
-	// example:
-	//
-	// 234567
-	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The name of the process.
-	//
-	// example:
-	//
-	// Nginx
+	Command     *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProcessId   *int64  `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The user who launched the process.
-	//
-	// example:
-	//
-	// alice
 	ProcessUser *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
 }
 

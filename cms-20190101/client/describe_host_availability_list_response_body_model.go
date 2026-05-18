@@ -53,8 +53,7 @@ type DescribeHostAvailabilityListResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the availability monitoring tasks.
+	Success  *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskList *DescribeHostAvailabilityListResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
 	// The total number of returned entries.
 	//
@@ -170,68 +169,16 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskList) Validate() error {
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig struct {
-	// The configurations of the alert rule.
 	AlertConfig *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	// Indicates whether the availability monitoring task is disabled. Valid values:
-	//
-	// 	- true: The availability monitoring task is disabled.
-	//
-	// 	- false: The availability monitoring task is enabled.
-	//
-	// example:
-	//
-	// false
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 12345
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the application group.
-	//
-	// example:
-	//
-	// Group_ECS
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the availability monitoring task.
-	//
-	// example:
-	//
-	// 123456
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ECS instances that are monitored.
-	Instances *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The name of the availability monitoring task.
-	//
-	// example:
-	//
-	// ecs_instance
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The optional parameters of the availability monitoring task.
-	TaskOption *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
-	// The range of instances that are monitored by the availability monitoring task. Valid values:
-	//
-	// 	- GROUP: All ECS instances in the application group are monitored.
-	//
-	// 	- GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored.
-	//
-	// example:
-	//
-	// GROUP
-	TaskScope *string `json:"TaskScope,omitempty" xml:"TaskScope,omitempty"`
-	// The task type. Valid values:
-	//
-	// 	- PING
-	//
-	// 	- TELNET
-	//
-	// 	- HTTP
-	//
-	// example:
-	//
-	// HTTP
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Disabled    *bool                                                                      `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	GroupId     *int64                                                                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string                                                                    `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Id          *int64                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Instances   *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances   `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	TaskName    *string                                                                    `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskOption  *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption  `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
+	TaskScope   *string                                                                    `json:"TaskScope,omitempty" xml:"TaskScope,omitempty"`
+	TaskType    *string                                                                    `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig) String() string {
@@ -352,56 +299,13 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig) Validat
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig struct {
-	// The end of the time period during which the alert rule is effective. Valid values: 0 to 23.
-	//
-	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
-	//
-	// >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
-	//
-	// example:
-	//
-	// 22
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The trigger conditions of the alert rule.
+	EndTime        *int32                                                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EscalationList *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationList `json:"EscalationList,omitempty" xml:"EscalationList,omitempty" type:"Struct"`
-	// The alert notification methods. Valid values:
-	//
-	// 	- 2: Alert notifications are sent by using emails and DingTalk chatbots.
-	//
-	// 	- 1: Alert notifications are sent by using emails and DingTalk chatbots.
-	//
-	// 	- 0: Alert notifications are sent by using emails and DingTalk chatbots.
-	//
-	// example:
-	//
-	// 0
-	NotifyType *int32 `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
-	//
-	// example:
-	//
-	// 86400
-	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The beginning of the time period during which the alert rule is effective. Valid values: 0 to 23.
-	//
-	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
-	//
-	// >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
-	//
-	// example:
-	//
-	// 0
-	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The monitored resources.
-	TargetList *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
-	// The callback URL.
-	//
-	// CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
-	//
-	// example:
-	//
-	// https://www.aliyun.com
-	WebHook *string `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
+	NotifyType     *int32                                                                                   `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	SilenceTime    *int32                                                                                   `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime      *int32                                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetList     *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList     `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
+	WebHook        *string                                                                                  `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
 }
 
 func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig) String() string {
@@ -524,66 +428,11 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationListEscalationList struct {
-	// The method used to calculate metric values that trigger alerts. Valid values:
-	//
-	// 	- Value: the value of the HTTP status code
-	//
-	// 	- Average: the average HTTP response time
-	//
-	// 	- Value: the value of the Telnet status code
-	//
-	// 	- TelnetLatency: the average Telnet response time
-	//
-	// 	- Average: the average Ping packet loss rate
-	//
-	// example:
-	//
-	// Value
-	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// The name of the metric. Valid values:
-	//
-	// 	- HttpStatus
-	//
-	// 	- HttpLatency
-	//
-	// 	- TelnetStatus
-	//
-	// 	- TelnetLatency
-	//
-	// 	- PingLostRate
-	//
-	// example:
-	//
-	// HttpStatus
+	Aggregate  *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The comparison operator that is used in the alert rule. Valid values:
-	//
-	// 	- `>`
-	//
-	// 	- `>=`
-	//
-	// 	- `<`
-	//
-	// 	- `<=`
-	//
-	// 	- `=`
-	//
-	// example:
-	//
-	// =
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The consecutive number of times for which the metric value is measured before an alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	// The alert threshold.
-	//
-	// example:
-	//
-	// 400
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Times      *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationListEscalationList) String() string {
@@ -678,48 +527,10 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget struct {
-	// The Alibaba Cloud Resource Name (ARN) of the function.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// 	- Service: the service code
-	//
-	// 	- Region: the region ID
-	//
-	// 	- Account: the ID of the Alibaba Cloud account
-	//
-	// 	- ResourceType: the resource type
-	//
-	// 	- ResourceId: the resource ID.
-	//
-	// example:
-	//
-	// acs:mns:cn-hangzhou:17754132319*****:/queues/test/messages
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the resource that triggers the alert.
-	//
-	// example:
-	//
-	// 1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-formatted parameters of the alert callback.
-	//
-	// example:
-	//
-	// {"key1":"value1"}
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
-	// The alert level. Valid values:
-	//
-	// 	- INFO
-	//
-	// 	- WARN
-	//
-	// 	- CRITICAL
-	//
-	// example:
-	//
-	// INFO
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget) String() string {
@@ -796,64 +607,14 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption struct {
-	// The response to the HTTP request.
-	//
-	// example:
-	//
-	// OK
-	HttpKeyword *string `json:"HttpKeyword,omitempty" xml:"HttpKeyword,omitempty"`
-	// The HTTP request method. Valid values:
-	//
-	// 	- GET
-	//
-	// 	- POST
-	//
-	// 	- HEAD
-	//
-	// example:
-	//
-	// GET
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The method to trigger an alert. The alert can be triggered based on whether the specified alert rule is included in the response body. Valid values:
-	//
-	// 	- true: If the HTTP response body includes the alert rule, an alert is triggered.
-	//
-	// 	- false: If the HTTP response does not include the alert rule, an alert is triggered.
-	//
-	// example:
-	//
-	// true
-	HttpNegative *bool `json:"HttpNegative,omitempty" xml:"HttpNegative,omitempty"`
-	// The content of the HTTP POST request.
-	//
-	// example:
-	//
-	// params1=paramsValue1
-	HttpPostContent *string `json:"HttpPostContent,omitempty" xml:"HttpPostContent,omitempty"`
-	// The character set that is used in the HTTP response.
-	//
-	// example:
-	//
-	// UTF-8
+	HttpKeyword         *string `json:"HttpKeyword,omitempty" xml:"HttpKeyword,omitempty"`
+	HttpMethod          *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	HttpNegative        *bool   `json:"HttpNegative,omitempty" xml:"HttpNegative,omitempty"`
+	HttpPostContent     *string `json:"HttpPostContent,omitempty" xml:"HttpPostContent,omitempty"`
 	HttpResponseCharset *string `json:"HttpResponseCharset,omitempty" xml:"HttpResponseCharset,omitempty"`
-	// The URI that you want to monitor. If the TaskType parameter is set to HTTP, this parameter is required.
-	//
-	// example:
-	//
-	// https://www.aliyun.com
-	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
-	// The interval at which detection requests are sent. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The domain name or IP address that you want to monitor.
-	//
-	// example:
-	//
-	// ssh.aliyun.com
-	TelnetOrPingHost *string `json:"TelnetOrPingHost,omitempty" xml:"TelnetOrPingHost,omitempty"`
+	HttpURI             *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
+	Interval            *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	TelnetOrPingHost    *string `json:"TelnetOrPingHost,omitempty" xml:"TelnetOrPingHost,omitempty"`
 }
 
 func (s DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption) String() string {

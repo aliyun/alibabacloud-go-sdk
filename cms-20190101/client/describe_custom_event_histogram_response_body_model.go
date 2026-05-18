@@ -29,8 +29,7 @@ type DescribeCustomEventHistogramResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the number of times that the custom event occurred during each interval of the specified time period.
+	Code            *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	EventHistograms *DescribeCustomEventHistogramResponseBodyEventHistograms `json:"EventHistograms,omitempty" xml:"EventHistograms,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
 	//
@@ -149,27 +148,8 @@ func (s *DescribeCustomEventHistogramResponseBodyEventHistograms) Validate() err
 }
 
 type DescribeCustomEventHistogramResponseBodyEventHistogramsEventHistogram struct {
-	// The information about the number of times that the custom event occurred during an interval of the specified time period.
-	//
-	// example:
-	//
-	// 3
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The end time.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1552226750000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1552226740000
+	Count     *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

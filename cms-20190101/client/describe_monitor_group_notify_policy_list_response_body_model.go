@@ -37,8 +37,7 @@ type DescribeMonitorGroupNotifyPolicyListResponseBody struct {
 	// example:
 	//
 	// The Request is not authorization.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned policies.
+	Message          *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	NotifyPolicyList *DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyList `json:"NotifyPolicyList,omitempty" xml:"NotifyPolicyList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -170,40 +169,11 @@ func (s *DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyList) Valid
 }
 
 type DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyListNotifyPolicy struct {
-	// The end of the time range to query.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1551761781273
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 6780****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The policy ID.
-	//
-	// example:
-	//
-	// 123****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1551761781273
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The policy type.
-	//
-	// example:
-	//
-	// PauseNotify
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyListNotifyPolicy) String() string {

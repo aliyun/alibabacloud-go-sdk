@@ -115,7 +115,6 @@ func (s *DeleteMonitorGroupResponseBody) Validate() error {
 }
 
 type DeleteMonitorGroupResponseBodyGroup struct {
-	// The alert groups that receive alert notifications for the application group.
 	ContactGroups *DeleteMonitorGroupResponseBodyGroupContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
 	// The name of the application group.
 	//
@@ -195,11 +194,6 @@ func (s *DeleteMonitorGroupResponseBodyGroupContactGroups) Validate() error {
 }
 
 type DeleteMonitorGroupResponseBodyGroupContactGroupsContactGroup struct {
-	// The name of the alert group.
-	//
-	// example:
-	//
-	// ECS_Group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -35,8 +35,7 @@ type DescribeMonitoringAgentStatusesResponseBody struct {
 	// example:
 	//
 	// The specified resource is not found.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The host status information.
+	Message        *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	NodeStatusList *DescribeMonitoringAgentStatusesResponseBodyNodeStatusList `json:"NodeStatusList,omitempty" xml:"NodeStatusList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -153,120 +152,17 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusList) Validate() e
 }
 
 type DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus struct {
-	// The error code returned when the CloudMonitor agent is installed. Valid values:
-	//
-	// 	- Common.Timeout: The installation timed out.
-	//
-	// 	- Common.SLR: The service-linked role for CloudMonitor is unauthorized.
-	//
-	// 	- Common.OS: The operating system is not supported.
-	//
-	// 	- Assist.Invalid: Cloud Assistant is not running.
-	//
-	// 	- Assist.Invoke: An error occurred when the installation program is started.
-	//
-	// 	- Assist.Execute: An error occurred when the installation program is running.
 	AgentInstallErrorCode *string `json:"AgentInstallErrorCode,omitempty" xml:"AgentInstallErrorCode,omitempty"`
-	// Indicates whether the CloudMonitor agent is automatically installed. Valid values:
-	//
-	// 	- true: The CloudMonitor agent is automatically installed.
-	//
-	// 	- false: The CloudMonitor agent is not automatically installed.
-	//
-	// example:
-	//
-	// true
-	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-hp3dunahluwajv6f****
+	AutoInstall           *bool   `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LoongCollectorStatus  *string `json:"LoongCollectorStatus,omitempty" xml:"LoongCollectorStatus,omitempty"`
 	LoongCollectorVersion *string `json:"LoongCollectorVersion,omitempty" xml:"LoongCollectorVersion,omitempty"`
-	// Indicates whether the SysAK monitoring feature is enabled.`` Valid values:
-	//
-	// 	- `true`: The SysAK monitoring feature is enabled.
-	//
-	// 	- `false`: the SysAK monitoring feature is disabled.
-	//
-	// example:
-	//
-	// {"sysak":true}
-	OsMonitorConfig *string `json:"OsMonitorConfig,omitempty" xml:"OsMonitorConfig,omitempty"`
-	// The error status of SysOM. Valid values:
-	//
-	// 	- `install_fail`: SysOM fails to be installed or an unknown error occurs.
-	//
-	// 	- `install_assist_invalid`: SysOM fails to be installed because the status of Cloud Assistant is invalid.
-	//
-	// 	- `install_assist_command_fail`: SysOM fails to be installed because the installation command fails to run.
-	//
-	// 	- `uninstall_fail`: SysOM fails to be uninstalled or an unknown error occurs.
-	//
-	// 	- `uninstall_assist_invalid`: SysOM fails to be uninstalled because the status of Cloud Assistant is invalid.
-	//
-	// 	- `uninstall_assist_command_fail`: SysOM fails to be uninstalled because the uninstallation command fails to run.
-	//
-	// example:
-	//
-	// install_fail
-	OsMonitorErrorCode *string `json:"OsMonitorErrorCode,omitempty" xml:"OsMonitorErrorCode,omitempty"`
-	// The details of the execution error. Valid values:
-	//
-	// 	- `Command.ErrorCode.Fail.Downlaod.REGIN_ID`: Failed to obtain the region ID.
-	//
-	// 	- `Command.ErrorCode.Fail.Downlaod.SYSAK`: Failed to download the .rpm package of System Analyse Kit (SysAK).
-	//
-	// 	- `Command.ErrorCode.Fail.Downlaod.CMON_FILE`: Failed to download the CMON file.
-	//
-	// 	- `Command.ErrorCode.Fail.Downlaod.BTF`: Failed to start SysAK because the BTF file is not found.
-	//
-	// 	- `Command.ErrorCode.Fail.Start.SYSAK`: Failed to start SysAK due to an unknown error.
-	//
-	// example:
-	//
-	// Command.ErrorCode.Fail.Downlaod.REGIN_ID
-	OsMonitorErrorDetail *string `json:"OsMonitorErrorDetail,omitempty" xml:"OsMonitorErrorDetail,omitempty"`
-	// The status of SysOM. Valid values:
-	//
-	// 	- installing: SysOM is being installed.
-	//
-	// 	- running: SysOM is running.
-	//
-	// 	- stopped: SysOM is stopped.
-	//
-	// 	- uninstalling: SysOM is being uninstalled.
-	//
-	// example:
-	//
-	// running
-	OsMonitorStatus *string `json:"OsMonitorStatus,omitempty" xml:"OsMonitorStatus,omitempty"`
-	// The SysOM version.
-	//
-	// example:
-	//
-	// 1.3.0-12
-	OsMonitorVersion *string `json:"OsMonitorVersion,omitempty" xml:"OsMonitorVersion,omitempty"`
-	// The status of the CloudMonitor agent. Valid values:
-	//
-	// 	- running: The CloudMonitor agent is running.
-	//
-	// 	- stopped: The CloudMonitor agent is stopped.
-	//
-	// 	- installing: The CloudMonitor agent is being installed.
-	//
-	// 	- install_faild: The CloudMonitor agent fails to be installed.
-	//
-	// 	- abnormal: The CloudMonitor agent is not properly installed.
-	//
-	// 	- not_installed: The CloudMonitor agent is not installed.
-	//
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	OsMonitorConfig       *string `json:"OsMonitorConfig,omitempty" xml:"OsMonitorConfig,omitempty"`
+	OsMonitorErrorCode    *string `json:"OsMonitorErrorCode,omitempty" xml:"OsMonitorErrorCode,omitempty"`
+	OsMonitorErrorDetail  *string `json:"OsMonitorErrorDetail,omitempty" xml:"OsMonitorErrorDetail,omitempty"`
+	OsMonitorStatus       *string `json:"OsMonitorStatus,omitempty" xml:"OsMonitorStatus,omitempty"`
+	OsMonitorVersion      *string `json:"OsMonitorVersion,omitempty" xml:"OsMonitorVersion,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) String() string {

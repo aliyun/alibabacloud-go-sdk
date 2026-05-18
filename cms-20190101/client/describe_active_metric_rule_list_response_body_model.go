@@ -24,7 +24,6 @@ type iDescribeActiveMetricRuleListResponseBody interface {
 }
 
 type DescribeActiveMetricRuleListResponseBody struct {
-	// The details of the alert rules. The result is in the same structure as that returned by the DescribeMetricRuleList operation.
 	AlertList *DescribeActiveMetricRuleListResponseBodyAlertList `json:"AlertList,omitempty" xml:"AlertList,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -33,8 +32,7 @@ type DescribeActiveMetricRuleListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the alert rules.
+	Code       *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *DescribeActiveMetricRuleListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -171,112 +169,22 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertList) Validate() error {
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlert struct {
-	// The status of the alert rule. Valid values:
-	//
-	// 	- OK: The alert rule has no active alerts.
-	//
-	// 	- ALARM: The alert rule has active alerts.
-	//
-	// 	- INSUFFICIENT_DATA: No data is found.
-	//
-	// example:
-	//
-	// OK
-	AlertState *string `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
-	// The alert contact group.
-	//
-	// example:
-	//
-	// ECS_Group
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The monitoring data of the specified resource.
-	//
-	// example:
-	//
-	// ""
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The time period during which the alert rule is effective.
-	//
-	// example:
-	//
-	// 00:00-23:59
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// Indicates whether the alert rule is enabled. Valid values:
-	//
-	// 	- true: The alert rule is enabled.
-	//
-	// 	- false: The alert rule is disabled.
-	//
-	// example:
-	//
-	// true
-	EnableState *bool `json:"EnableState,omitempty" xml:"EnableState,omitempty"`
-	// The conditions for triggering different levels of alerts.
-	Escalations *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The subject of the alert notification email.
-	//
-	// example:
-	//
-	// ECS_Bucket
-	MailSubject *string `json:"MailSubject,omitempty" xml:"MailSubject,omitempty"`
-	// The name of the metric.
-	//
-	// example:
-	//
-	// cpu_total
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the Alibaba Cloud service.
-	//
-	// example:
-	//
-	// acs_ecs_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The time period during which the alert rule is ineffective.
-	//
-	// example:
-	//
-	// 00:00-06:00
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The aggregation period of monitoring data.
-	//
-	// Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The resources that are associated with the alert rule.
-	//
-	// example:
-	//
-	// [{"resource":"_ALL"}]
-	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// ruleIdxxxx
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the alert rule.
-	//
-	// example:
-	//
-	// myAlert
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period during which new alerts are not sent even if the trigger conditions are met.
-	//
-	// Unit: seconds.
-	//
-	// example:
-	//
-	// 86400
-	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The callback URL.
-	//
-	// example:
-	//
-	// http://www.aliyun.com
-	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	AlertState          *string                                                            `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
+	ContactGroups       *string                                                            `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	Dimensions          *string                                                            `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	EffectiveInterval   *string                                                            `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EnableState         *bool                                                              `json:"EnableState,omitempty" xml:"EnableState,omitempty"`
+	Escalations         *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
+	MailSubject         *string                                                            `json:"MailSubject,omitempty" xml:"MailSubject,omitempty"`
+	MetricName          *string                                                            `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace           *string                                                            `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NoEffectiveInterval *string                                                            `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	Period              *string                                                            `json:"Period,omitempty" xml:"Period,omitempty"`
+	Resources           *string                                                            `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	RuleId              *string                                                            `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName            *string                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SilenceTime         *string                                                            `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Webhook             *string                                                            `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeActiveMetricRuleListResponseBodyAlertListAlert) String() string {
@@ -441,12 +349,9 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlert) Validate() erro
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations struct {
-	// The trigger condition for Critical-level alerts.
 	Critical *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
-	// The conditions for triggering Info-level alerts.
-	Info *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
-	// The conditions for triggering Warn-level alerts.
-	Warn *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Struct"`
+	Info     *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo     `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
+	Warn     *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn     `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Struct"`
 }
 
 func (s DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations) String() string {
@@ -504,52 +409,10 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations) Vali
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical struct {
-	// The operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical methods for Critical-level alerts.
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Critical-level alerts.
-	//
-	// example:
-	//
-	// 99
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *string `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical) String() string {
@@ -601,54 +464,10 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritic
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo struct {
-	// The operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical methods for Info-level alerts.
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Info-level alerts.
-	//
-	// example:
-	//
-	// 95
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times
-	//
-	// for which the metric value meets the alert condition before an Info-level alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *string `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo) String() string {
@@ -700,54 +519,10 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo) 
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn struct {
-	// The operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical methods for Warn-level alerts.
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Warn-level alerts.
-	//
-	// example:
-	//
-	// 80
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times
-	//
-	// for which the metric value meets the alert condition before a Warn-level alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *string `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn) String() string {
@@ -833,126 +608,22 @@ func (s *DescribeActiveMetricRuleListResponseBodyDatapoints) Validate() error {
 }
 
 type DescribeActiveMetricRuleListResponseBodyDatapointsAlarm struct {
-	// The comparison operator that is used in the alert rule. Valid values:
-	//
-	// 	- `>`
-	//
-	// 	- `<`
-	//
-	// 	- `>=`
-	//
-	// 	- `<=`
-	//
-	// 	- `=`
-	//
-	// 	- `=`
-	//
-	// example:
-	//
-	// >
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The alert contact group.
-	//
-	// example:
-	//
-	// ECS_Group
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// Indicates whether the alert rule is enabled. Valid values:
-	//
-	// 	- true: The alert rule is enabled.
-	//
-	// 	- false: The alert rule is disabled.
-	//
-	// example:
-	//
-	// true
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end of the time period during which the alert rule is effective.
-	//
-	// Unit: hours. For example, the value 23 indicates `23:59:59`.
-	//
-	// example:
-	//
-	// 24
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The metric name.
-	//
-	// example:
-	//
-	// cpu_total
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// example:
-	//
-	// acs_ecs_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The aggregation period of monitoring data.
-	//
-	// Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// a151cd6023eacee2f0978e03863cc1697c89508****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the alert rule.
-	//
-	// example:
-	//
-	// SystemDefault_acs_rds_dashboard_CpuUsage
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period during which new alerts are not sent even if the trigger conditions are met.
-	//
-	// Unit: seconds.
-	//
-	// example:
-	//
-	// 86400
-	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The beginning of the time period during which the alert rule is effective.
-	//
-	// Unit: hours. For example, the value 00 indicates `00:00:00`.
-	//
-	// example:
-	//
-	// 00
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Indicates whether the alert rule is enabled.
-	//
-	// example:
-	//
-	// Enable
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The statistical method.
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The alert threshold.
-	//
-	// example:
-	//
-	// 90
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The callback URL.
-	//
-	// example:
-	//
-	// http://www.aliyun.com
-	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	ContactGroups      *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	Enable             *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EvaluationCount    *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	MetricName         *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Period             *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RuleId             *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SilenceTime        *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State              *string `json:"State,omitempty" xml:"State,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Webhook            *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeActiveMetricRuleListResponseBodyDatapointsAlarm) String() string {

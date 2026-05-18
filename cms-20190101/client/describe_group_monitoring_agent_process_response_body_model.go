@@ -53,8 +53,7 @@ type DescribeGroupMonitoringAgentProcessResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The process monitoring tasks.
+	PageSize  *string                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Processes *DescribeGroupMonitoringAgentProcessResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -200,42 +199,12 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcesses) Validate() er
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess struct {
-	// The alert rule configurations.
-	AlertConfig *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 12345
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the process monitoring task.
-	//
-	// example:
-	//
-	// 3F6150F9-45C7-43F9-9578-A58B2E72****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The matching conditions.
-	//
-	// >  Only the instances that meet the conditional expressions are monitored by the process monitoring task.
-	MatchExpress *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
-	// The logical operator used between conditional expressions that are used to match instances. Valid values:
-	//
-	// 	- all
-	//
-	// 	- and
-	//
-	// 	- or
-	//
-	// example:
-	//
-	// and
-	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
-	// The process name.
-	//
-	// example:
-	//
-	// sshd
-	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	AlertConfig                *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig  `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
+	GroupId                    *string                                                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id                         *string                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	MatchExpress               *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
+	MatchExpressFilterRelation *string                                                                      `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
+	ProcessName                *string                                                                      `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess) String() string {
@@ -349,94 +318,16 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig struct {
-	// The comparison operator that is used to compare the metric value with the threshold. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday.
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanOrEqualToThreshold
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The time period during which the alert rule is effective.
-	//
-	// example:
-	//
-	// 00:00-23:59
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The level of the alert. Valid values:
-	//
-	// 	- critical
-	//
-	// 	- warn
-	//
-	// 	- Info
-	//
-	// example:
-	//
-	// warn
-	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	// The time period during which the alert rule is ineffective.
-	//
-	// example:
-	//
-	// 00:00-23:59
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
-	//
-	// >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
-	//
-	// example:
-	//
-	// 86400
-	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The method used to calculate metric values that trigger alerts.
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The resources for which alerts are triggered.
-	TargetList *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
-	// The alert threshold.
-	//
-	// example:
-	//
-	// 5
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of times for which the threshold can be consecutively exceeded.
-	//
-	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
-	//
-	// example:
-	//
-	// 3
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-	//
-	// example:
-	//
-	// http://www.aliyun.com
-	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	ComparisonOperator  *string                                                                                          `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	EffectiveInterval   *string                                                                                          `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EscalationsLevel    *string                                                                                          `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
+	NoEffectiveInterval *string                                                                                          `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	SilenceTime         *string                                                                                          `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Statistics          *string                                                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	TargetList          *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
+	Threshold           *string                                                                                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times               *string                                                                                          `json:"Times,omitempty" xml:"Times,omitempty"`
+	Webhook             *string                                                                                          `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig) String() string {
@@ -581,54 +472,10 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message. Example: acs:mns:cn-hangzhou:120886317861\\*\\*\\*\\*:/queues/test123/message. Fields:
-	//
-	// 	- {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
-	//
-	// 	- {userId}: the ID of the Alibaba Cloud account.
-	//
-	// 	- {regionId}: the region ID of the SMQ queue or topic.
-	//
-	// 	- {Resource type}: the type of the resource for which alerts are triggered. Valid values:
-	//
-	//     	- **queues**
-	//
-	//     	- **topics**
-	//
-	// 	- {Resource name}: the resource name.
-	//
-	//     	- If the resource type is **queues**, the resource name is the queue name.
-	//
-	//     	- If the resource type is **topics**, the resource name is the topic name.
-	//
-	// example:
-	//
-	// acs:mns:cn-hangzhou:120886317861****:/queues/test/message
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the resource for which alerts are triggered.
-	//
-	// example:
-	//
-	// 123
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters of the alert callback. The parameters are in the JSON format.
-	//
-	// example:
-	//
-	// {"customField1":"value1","customField2":"$.name"}
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	JsonParmas *string `json:"JsonParmas,omitempty" xml:"JsonParmas,omitempty"`
-	// The alert level. Valid values:
-	//
-	// 	- INFO
-	//
-	// 	- WARN
-	//
-	// 	- CRITICAL
-	//
-	// example:
-	//
-	// CRITICAL
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) String() string {
@@ -714,40 +561,9 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExp
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpressMatchExpress struct {
-	// The matching condition. Valid values:
-	//
-	// 	- all (default): matches all
-	//
-	// 	- startWith: starts with a prefix
-	//
-	// 	- endWith: ends with a suffix
-	//
-	// 	- contains: contains
-	//
-	// 	- notContains: excludes
-	//
-	// 	- equals: equals
-	//
-	// >  The matched instances are monitored by the process monitoring task.
-	//
-	// example:
-	//
-	// all
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The criteria based on which the instances are matched.
-	//
-	// >  Set the value to `name`. The value name indicates that the instances are matched based on the instance name.
-	//
-	// example:
-	//
-	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The keyword used to match the instance name.
-	//
-	// example:
-	//
-	// portalHost
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpressMatchExpress) String() string {

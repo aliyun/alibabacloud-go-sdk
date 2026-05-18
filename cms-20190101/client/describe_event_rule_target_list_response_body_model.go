@@ -37,30 +37,24 @@ type DescribeEventRuleTargetListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the recipients if alert notifications are sent to the alert contacts of an alert contact group.
+	Code              *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ContactParameters *DescribeEventRuleTargetListResponseBodyContactParameters `json:"ContactParameters,omitempty" xml:"ContactParameters,omitempty" type:"Struct"`
-	// The information about the recipients in Function Compute.
-	FcParameters *DescribeEventRuleTargetListResponseBodyFcParameters `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Struct"`
+	FcParameters      *DescribeEventRuleTargetListResponseBodyFcParameters      `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Struct"`
 	// The error message.
 	//
 	// example:
 	//
 	// The Request is not authorization.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The notifications of Simple Message Queue (formerly MNS) (SMQ).
-	MnsParameters *DescribeEventRuleTargetListResponseBodyMnsParameters `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Struct"`
-	// The information about the recipients in OpenAPI Explorer.
+	Message           *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	MnsParameters     *DescribeEventRuleTargetListResponseBodyMnsParameters     `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Struct"`
 	OpenApiParameters *DescribeEventRuleTargetListResponseBodyOpenApiParameters `json:"OpenApiParameters,omitempty" xml:"OpenApiParameters,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 87170bc7-e28a-4c93-b9bf-90a1dbe84736
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the recipients in Log Service.
-	SlsParameters *DescribeEventRuleTargetListResponseBodySlsParameters `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Struct"`
-	// The information about the recipients if alert notifications are sent by sending a request to a callback URL.
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlsParameters     *DescribeEventRuleTargetListResponseBodySlsParameters     `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Struct"`
 	WebhookParameters *DescribeEventRuleTargetListResponseBodyWebhookParameters `json:"WebhookParameters,omitempty" xml:"WebhookParameters,omitempty" type:"Struct"`
 }
 
@@ -222,22 +216,9 @@ func (s *DescribeEventRuleTargetListResponseBodyContactParameters) Validate() er
 }
 
 type DescribeEventRuleTargetListResponseBodyContactParametersContactParameter struct {
-	// The name of the alert group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The alert notification methods. Valid values:
-	//
-	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
-	//
-	// example:
-	//
-	// 3
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyContactParametersContactParameter) String() string {
@@ -314,44 +295,11 @@ func (s *DescribeEventRuleTargetListResponseBodyFcParameters) Validate() error {
 }
 
 type DescribeEventRuleTargetListResponseBodyFcParametersFCParameter struct {
-	// The Alibaba Cloud Resource Name (ARN) of the function.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// - Service: the code of an Alibaba Cloud service
-	//
-	// - Region: the region ID
-	//
-	// - Account: the ID of an Alibaba Cloud account
-	//
-	// - ResourceType: the resource type
-	//
-	// - ResourceId: the resource ID
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The name of the function.
-	//
-	// example:
-	//
-	// fcTest1
+	Arn          *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 3
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region where Function Compute is deployed.
-	//
-	// example:
-	//
-	// cn-qingdao
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the Function Compute service.
-	//
-	// example:
-	//
-	// service1
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyFcParametersFCParameter) String() string {
@@ -446,44 +394,11 @@ func (s *DescribeEventRuleTargetListResponseBodyMnsParameters) Validate() error 
 }
 
 type DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter struct {
-	// The ARN of the MNS queue.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// - Service: the code of an Alibaba Cloud service
-	//
-	// - Region: the region ID
-	//
-	// - Account: the ID of an Alibaba Cloud account
-	//
-	// - ResourceType: the resource type
-	//
-	// - ResourceId: the resource ID
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 2
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the SMQ queue.
-	//
-	// example:
-	//
-	// testQueue
-	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	// The region for SMQ.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	Arn    *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Queue  *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The SMQ topic.
-	//
-	// example:
-	//
-	// topic_sample
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic  *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter) String() string {
@@ -578,67 +493,12 @@ func (s *DescribeEventRuleTargetListResponseBodyOpenApiParameters) Validate() er
 }
 
 type DescribeEventRuleTargetListResponseBodyOpenApiParametersOpenApiParameters struct {
-	// The name of the API operation.
-	//
-	// example:
-	//
-	// PutLogs
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The ARN of the API operation.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// - Service: the code of an Alibaba Cloud service
-	//
-	// - Region: the region ID
-	//
-	// - Account: the ID of an Alibaba Cloud account
-	//
-	// - ResourceType: the resource type
-	//
-	// - ResourceId: the resource ID The ARN of the Log Service Logstore.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// - Service: the code of an Alibaba Cloud service
-	//
-	// - Region: the region ID
-	//
-	// - Account: the ID of an Alibaba Cloud account
-	//
-	// - ResourceType: the resource type
-	//
-	// - ResourceId: the resource ID
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 3
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the cloud service to which the API operation belongs.
-	//
-	// example:
-	//
-	// log
+	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Arn     *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The region where the resource resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the role.
-	//
-	// example:
-	//
-	// MyRole
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The version of the API.
-	//
-	// example:
-	//
-	// 2019-01-01
+	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -752,44 +612,11 @@ func (s *DescribeEventRuleTargetListResponseBodySlsParameters) Validate() error 
 }
 
 type DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter struct {
-	// The ARN of the Log Service Logstore.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// - Service: the code of an Alibaba Cloud service
-	//
-	// - Region: the region ID
-	//
-	// - Account: the ID of an Alibaba Cloud account
-	//
-	// - ResourceType: the resource type
-	//
-	// - ResourceId: the resource ID
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the Logstore.
-	//
-	// example:
-	//
-	// logstore_test
+	Arn      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The name of the project.
-	//
-	// example:
-	//
-	// project_test
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter) String() string {
@@ -884,30 +711,10 @@ func (s *DescribeEventRuleTargetListResponseBodyWebhookParameters) Validate() er
 }
 
 type DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter struct {
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 5
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The HTTP request method. Valid values: GET and POST.
-	//
-	// example:
-	//
-	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The protocol type.
-	//
-	// example:
-	//
-	// HTTP
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Method   *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The callback URL.
-	//
-	// example:
-	//
-	// http://www.aliyun.com
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter) String() string {

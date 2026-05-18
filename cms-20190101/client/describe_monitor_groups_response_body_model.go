@@ -59,8 +59,7 @@ type DescribeMonitorGroupsResponseBody struct {
 	// example:
 	//
 	// F02B299A-D374-4595-9F55-7534D604F132
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources that are associated with the application group.
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeMonitorGroupsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -204,85 +203,21 @@ func (s *DescribeMonitorGroupsResponseBodyResources) Validate() error {
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResource struct {
-	// The URL of the ACK cluster from which the application group is synchronized.
-	//
-	// example:
-	//
-	// https://aliyun.com
-	BindUrl *string `json:"BindUrl,omitempty" xml:"BindUrl,omitempty"`
-	// The alert contact groups.
-	ContactGroups *DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
-	// The ID of the tag rule.
-	//
-	// example:
-	//
-	// 6b882d9a-5117-42e2-9d0c-4749a0c6****
-	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The timestamp when the application group was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1603181891000
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the application group was modified. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1603181891000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The tag key that is created for the application group by using the tag rule.
-	//
-	// example:
-	//
-	// GroupKey1
-	GroupFounderTagKey *string `json:"GroupFounderTagKey,omitempty" xml:"GroupFounderTagKey,omitempty"`
-	// The tag value that is created for the application group by using the tag rule.
-	//
-	// example:
-	//
-	// GroupValue1
-	GroupFounderTagValue *string `json:"GroupFounderTagValue,omitempty" xml:"GroupFounderTagValue,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 12345
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the application group.
-	//
-	// example:
-	//
-	// test123
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The resource ID.
-	//
-	// example:
-	//
-	// rg-aek2hopjh*******
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the Alibaba Cloud service.
-	//
-	// example:
-	//
-	// 49****
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The tags that are attached to the application group.
-	Tags *DescribeMonitorGroupsResponseBodyResourcesResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the template.
-	TemplateIds   *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateIds   `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Struct"`
-	TemplateInfos *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateInfos `json:"TemplateInfos,omitempty" xml:"TemplateInfos,omitempty" type:"Struct"`
-	// The type of the application group. Valid values:
-	//
-	// 	- custom: a self-managed application group
-	//
-	// 	- ehpc_cluster: an application group that is synchronized from an E-HPC cluster
-	//
-	// 	- kubernetes: an application group that is synchronized from an ACK cluster
-	//
-	// example:
-	//
-	// custom
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	BindUrl              *string                                                          `json:"BindUrl,omitempty" xml:"BindUrl,omitempty"`
+	ContactGroups        *DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
+	DynamicTagRuleId     *string                                                          `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
+	GmtCreate            *int64                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified          *int64                                                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GroupFounderTagKey   *string                                                          `json:"GroupFounderTagKey,omitempty" xml:"GroupFounderTagKey,omitempty"`
+	GroupFounderTagValue *string                                                          `json:"GroupFounderTagValue,omitempty" xml:"GroupFounderTagValue,omitempty"`
+	GroupId              *int64                                                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName            *string                                                          `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ResourceGroupId      *string                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId            *string                                                          `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Tags                 *DescribeMonitorGroupsResponseBodyResourcesResourceTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TemplateIds          *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateIds   `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Struct"`
+	TemplateInfos        *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateInfos `json:"TemplateInfos,omitempty" xml:"TemplateInfos,omitempty" type:"Struct"`
+	Type                 *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeMonitorGroupsResponseBodyResourcesResource) String() string {
@@ -487,11 +422,6 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups) Valida
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResourceContactGroupsContactGroup struct {
-	// The name of the alert contact group.
-	//
-	// example:
-	//
-	// CloudMonitor
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -551,17 +481,7 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResourceTags) Validate() erro
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResourceTagsTag struct {
-	// The tag key of the application group.
-	//
-	// example:
-	//
-	// tagKey1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the application group.
-	//
-	// example:
-	//
-	// tagValue1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

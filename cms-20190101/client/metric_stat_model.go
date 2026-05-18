@@ -28,14 +28,44 @@ type iMetricStat interface {
 }
 
 type MetricStat struct {
-	Associated   map[string]*string     `json:"Associated,omitempty" xml:"Associated,omitempty"`
-	Dimensions   []*Dimension           `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	LogTime      *int64                 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The additional information about the monitored object (instance).
+	Associated map[string]*string `json:"Associated,omitempty" xml:"Associated,omitempty"`
+	// The dimension information that is used to identify the monitored object (instance).
+	Dimensions []*Dimension `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// The recorded time of the monitoring data. Unit: milliseconds. For non-raw data (aggregated data), the value of LogTime is NULL.
+	//
+	// example:
+	//
+	// 1683686550073
+	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The measured value of the metric. The parameter contains multiple values by default.
 	Measurements map[string]interface{} `json:"Measurements,omitempty" xml:"Measurements,omitempty"`
-	Metric       *string                `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	Namespace    *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Period       *int32                 `json:"Period,omitempty" xml:"Period,omitempty"`
-	Timestamp    *int64                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The metric that is used to monitor the cloud service.
+	//
+	// example:
+	//
+	// cpu_idle
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The namespace of the cloud service.
+	//
+	// example:
+	//
+	// acs_ecs_dashboard
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The time interval based on which the metric value is measured.
+	//
+	// Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The timestamp of the monitoring data. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1641454680000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s MetricStat) String() string {

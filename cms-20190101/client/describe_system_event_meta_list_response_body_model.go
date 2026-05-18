@@ -29,8 +29,7 @@ type DescribeSystemEventMetaListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried meta information.
+	Code *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DescribeSystemEventMetaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -153,61 +152,14 @@ func (s *DescribeSystemEventMetaListResponseBodyData) Validate() error {
 }
 
 type DescribeSystemEventMetaListResponseBodyDataResource struct {
-	// The type of the system event. Valid values:
-	//
-	// 	- StatusNotification: fault notifications
-	//
-	// 	- Exception: exceptions
-	//
-	// 	- Maintenance: O\\&M
-	//
-	// example:
-	//
-	// Exception
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The alert level. Valid values:
-	//
-	// 	- CRITICAL
-	//
-	// 	- WARN
-	//
-	// 	- INFO
-	//
-	// example:
-	//
-	// INFO
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the system event.
-	//
-	// example:
-	//
-	// SelectFailureRate
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the event name.
-	//
-	// example:
-	//
-	// High query failure rate
+	EventType   *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	Level       *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NameDesc    *string `json:"NameDesc,omitempty" xml:"NameDesc,omitempty"`
 	NameDesc_en *string `json:"NameDesc.En,omitempty" xml:"NameDesc.En,omitempty"`
-	// The abbreviation of the service name.
-	//
-	// example:
-	//
-	// ADS
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The status of the system event.
-	//
-	// example:
-	//
-	// failed
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the event status.
-	//
-	// example:
-	//
-	// Operation Failed
-	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDesc  *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 }
 
 func (s DescribeSystemEventMetaListResponseBodyDataResource) String() string {

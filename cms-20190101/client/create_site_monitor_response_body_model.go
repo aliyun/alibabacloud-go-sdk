@@ -31,10 +31,7 @@ type CreateSiteMonitorResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
-	//
-	// If a site monitoring task is created, the result is returned. If a site monitoring task fails to be created, no result is returned.
+	Code             *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	CreateResultList *CreateSiteMonitorResponseBodyCreateResultList `json:"CreateResultList,omitempty" xml:"CreateResultList,omitempty" type:"Struct"`
 	// The result of the site monitoring task.
 	Data *CreateSiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -173,17 +170,7 @@ func (s *CreateSiteMonitorResponseBodyCreateResultList) Validate() error {
 }
 
 type CreateSiteMonitorResponseBodyCreateResultListCreateResultList struct {
-	// The ID of the site monitoring task.
-	//
-	// example:
-	//
-	// 2c8dbdf9-a3ab-46a1-85a4-f094965e****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the site monitoring task.
-	//
-	// example:
-	//
-	// HanZhou_ECS1
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -218,7 +205,6 @@ func (s *CreateSiteMonitorResponseBodyCreateResultListCreateResultList) Validate
 }
 
 type CreateSiteMonitorResponseBodyData struct {
-	// The result that is returned after you associate the existing alert rule with the site monitoring task.
 	AttachAlertResult *CreateSiteMonitorResponseBodyDataAttachAlertResult `json:"AttachAlertResult,omitempty" xml:"AttachAlertResult,omitempty" type:"Struct"`
 }
 
@@ -283,42 +269,11 @@ func (s *CreateSiteMonitorResponseBodyDataAttachAlertResult) Validate() error {
 }
 
 type CreateSiteMonitorResponseBodyDataAttachAlertResultContact struct {
-	// The status code that is returned after you associate the existing alert rule with the site monitoring task.
-	//
-	// >  The status code 200 indicates that the request was successful.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned after you associate the existing alert rule with the site monitoring task.
-	//
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request that was sent to associate the existing alert rule with the site monitoring task.
-	//
-	// example:
-	//
-	// 5dd33455-4f65-4b0c-9200-33d66f3f340b
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// SystemDefault_acs_ecs_dashboard_InternetOutRate_Percent
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Indicates whether the existing alert rule was associated with the site monitoring task. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSiteMonitorResponseBodyDataAttachAlertResultContact) String() string {

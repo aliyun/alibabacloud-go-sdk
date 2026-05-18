@@ -31,8 +31,7 @@ type DescribeEventRuleListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The event-triggered alert rule.
+	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	EventRules *DescribeEventRuleListResponseBodyEventRules `json:"EventRules,omitempty" xml:"EventRules,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -170,52 +169,13 @@ func (s *DescribeEventRuleListResponseBodyEventRules) Validate() error {
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRule struct {
-	// The description of the event-triggered alert rule.
-	//
-	// example:
-	//
-	// Default group event rule.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mode of the event-triggered alert rule.
+	Description  *string                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
 	EventPattern *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Struct"`
-	// The type of the event-triggered alert rule. Valid values:
-	//
-	// 	- SYSTEM: system event-triggered alert rule
-	//
-	// 	- CUSTOM: custom event-triggered alert rule
-	//
-	// example:
-	//
-	// SYSTEM
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 7378****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the event-triggered alert rule.
-	//
-	// example:
-	//
-	// test_DefaultEventRule_7378****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
-	//
-	// example:
-	//
-	// 86400
-	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The status of the event-triggered alert rule. Valid values:
-	//
-	// 	- ENABLED
-	//
-	// 	- DISABLED
-	//
-	// example:
-	//
-	// ENABLED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	EventType    *string                                                           `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	GroupId      *string                                                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name         *string                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	SilenceTime  *int64                                                            `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	State        *string                                                           `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeEventRuleListResponseBodyEventRulesEventRule) String() string {
@@ -333,32 +293,13 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern) Valid
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPattern struct {
-	// The custom filter conditions.
-	//
-	// example:
-	//
-	// ECS123
-	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
-	// The types of the event-triggered alert rules.
+	CustomFilters *string                                                                                    `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	EventTypeList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Struct"`
-	// The keyword for filtering.
 	KeywordFilter *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter `json:"KeywordFilter,omitempty" xml:"KeywordFilter,omitempty" type:"Struct"`
-	// The levels of the event-triggered alerts.
-	LevelList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternLevelList `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Struct"`
-	// The event names.
-	NameList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternNameList `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Struct"`
-	// The abbreviation of the Alibaba Cloud service name.
-	//
-	// example:
-	//
-	// CloudMonitor
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
-	//
-	// example:
-	//
-	// ycccluster1 and (i-23ij0o82612 or Executed1) or Asimulated not 222
-	SQLFilter *string `json:"SQLFilter,omitempty" xml:"SQLFilter,omitempty"`
+	LevelList     *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternLevelList     `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Struct"`
+	NameList      *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternNameList      `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Struct"`
+	Product       *string                                                                                    `json:"Product,omitempty" xml:"Product,omitempty"`
+	SQLFilter     *string                                                                                    `json:"SQLFilter,omitempty" xml:"SQLFilter,omitempty"`
 }
 
 func (s DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPattern) String() string {
@@ -482,18 +423,8 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPa
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter struct {
-	// The keywords that are used to match events.
 	Keywords *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilterKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
-	// The relationship between multiple keywords in a condition. Valid values:
-	//
-	// 	- OR: The relationship between keywords is OR.
-	//
-	// 	- NOT: The keyword is excluded. The value NOT indicates that all events that do not contain the keywords are matched.
-	//
-	// example:
-	//
-	// OR
-	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	Relation *string                                                                                            `json:"Relation,omitempty" xml:"Relation,omitempty"`
 }
 
 func (s DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter) String() string {

@@ -33,8 +33,7 @@ type DescribeExporterRuleListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data export rules.
+	Code       *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *DescribeExporterRuleListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -187,63 +186,15 @@ func (s *DescribeExporterRuleListResponseBodyDatapoints) Validate() error {
 }
 
 type DescribeExporterRuleListResponseBodyDatapointsDatapoint struct {
-	// The time when the rule was created. The value is a UNIX timestamp.
-	//
-	// example:
-	//
-	// 1584024616228
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the rule.
-	//
-	// example:
-	//
-	// Export monitoring data
-	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// The associated dimensions.
-	//
-	// example:
-	//
-	// {"instanceId":"xxxxx"}
-	Dimension *string                                                         `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	DstName   *DescribeExporterRuleListResponseBodyDatapointsDatapointDstName `json:"DstName,omitempty" xml:"DstName,omitempty" type:"Struct"`
-	// Indicates whether the rule is enabled.
-	//
-	// example:
-	//
-	// true
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the metric.
-	//
-	// > For more information, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/28619.html).
-	//
-	// example:
-	//
-	// cpu_total
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the service.
-	//
-	// > For more information, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/28619.html).
-	//
-	// example:
-	//
-	// acs_ecs_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the data export rule.
-	//
-	// example:
-	//
-	// myRuleName
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The time window of the exported data.\\
-	//
-	// Multiple windows are separated with commas (,).
-	//
-	// > Data in a time window of less than 60 seconds cannot be exported.
-	//
-	// example:
-	//
-	// 60,300
-	TargetWindows *string `json:"TargetWindows,omitempty" xml:"TargetWindows,omitempty"`
+	CreateTime    *int64                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Describe      *string                                                         `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	Dimension     *string                                                         `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	DstName       *DescribeExporterRuleListResponseBodyDatapointsDatapointDstName `json:"DstName,omitempty" xml:"DstName,omitempty" type:"Struct"`
+	Enabled       *bool                                                           `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MetricName    *string                                                         `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace     *string                                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RuleName      *string                                                         `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	TargetWindows *string                                                         `json:"TargetWindows,omitempty" xml:"TargetWindows,omitempty"`
 }
 
 func (s DescribeExporterRuleListResponseBodyDatapointsDatapoint) String() string {

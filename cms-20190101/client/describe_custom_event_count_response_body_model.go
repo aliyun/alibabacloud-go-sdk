@@ -29,8 +29,7 @@ type DescribeCustomEventCountResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the custom event.
+	Code              *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	CustomEventCounts *DescribeCustomEventCountResponseBodyCustomEventCounts `json:"CustomEventCounts,omitempty" xml:"CustomEventCounts,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
 	//
@@ -149,26 +148,9 @@ func (s *DescribeCustomEventCountResponseBodyCustomEventCounts) Validate() error
 }
 
 type DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount struct {
-	// The event name.
-	//
-	// example:
-	//
-	// BABEL_BUY
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of times that the custom event occurred.
-	//
-	// example:
-	//
-	// 20
-	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
-	// The time when the event occurred.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1552267615000
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Num  *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
+	Time *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount) String() string {

@@ -53,8 +53,7 @@ type DescribeSystemEventCountResponseBody struct {
 	// example:
 	//
 	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the system event.
+	Success           *string                                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	SystemEventCounts *DescribeSystemEventCountResponseBodySystemEventCounts `json:"SystemEventCounts,omitempty" xml:"SystemEventCounts,omitempty" type:"Struct"`
 }
 
@@ -155,74 +154,17 @@ func (s *DescribeSystemEventCountResponseBodySystemEventCounts) Validate() error
 }
 
 type DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount struct {
-	// The description of the system event.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 17285****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// ECS-test
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The level of the system event. Valid values:
-	//
-	// 	- Critical
-	//
-	// 	- Warn
-	//
-	// 	- Info
-	//
-	// example:
-	//
-	// Info
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the system event.
-	//
-	// example:
-	//
-	// Instance:StateChange
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of times that the system event has occurred.
-	//
-	// example:
-	//
-	// 3
-	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
-	// The name of the cloud service in which the system event occurred.
-	//
-	// example:
-	//
-	// ECS
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
-	//
-	// example:
-	//
-	// i-rj99xc6cptkk64ml****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The status of the system event.
-	//
-	// example:
-	//
-	// Normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the system event occurred. The value is a timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1635993751000
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Level        *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Num          *int64  `json:"Num,omitempty" xml:"Num,omitempty"`
+	Product      *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Time         *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount) String() string {

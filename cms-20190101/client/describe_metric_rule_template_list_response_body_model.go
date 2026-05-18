@@ -53,8 +53,7 @@ type DescribeMetricRuleTemplateListResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The queried alert templates.
+	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	Templates *DescribeMetricRuleTemplateListResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -170,46 +169,13 @@ func (s *DescribeMetricRuleTemplateListResponseBodyTemplates) Validate() error {
 }
 
 type DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate struct {
-	// The history of applying the alert templates to application groups.
 	ApplyHistories *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistories `json:"ApplyHistories,omitempty" xml:"ApplyHistories,omitempty" type:"Struct"`
-	// The description of the alert template.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp when the alert template was created.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1646018798000
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the alert template was modified.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1646054798000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The name of the alert template.
-	//
-	// example:
-	//
-	// ECS_Template1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version of the alert template.
-	//
-	// Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	RestVersion *int64 `json:"RestVersion,omitempty" xml:"RestVersion,omitempty"`
-	// The ID of the alert template.
-	//
-	// example:
-	//
-	// 70****
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Description    *string                                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate      *int64                                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *int64                                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name           *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	RestVersion    *int64                                                                     `json:"RestVersion,omitempty" xml:"RestVersion,omitempty"`
+	TemplateId     *int64                                                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate) String() string {
@@ -327,25 +293,8 @@ func (s *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistori
 }
 
 type DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistoriesApplyHistory struct {
-	// The timestamp when the alert template was applied to the application group.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1646055898000
-	ApplyTime *int64 `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 3607****
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the application group.
-	//
-	// example:
-	//
-	// ECS_Group
+	ApplyTime *int64  `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

@@ -716,12 +716,60 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalations) Validate() er
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
+	// The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value:
+	//
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	//
+	// - GreaterThanThreshold: greater than the threshold
+	//
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
+	//
+	// - LessThanThreshold: less than the threshold
+	//
+	// - NotEqualToThreshold: not equal to the threshold
+	//
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
+	//
+	// - LessThanYesterday: less than the metric value at the same time yesterday
+	//
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
+	//
+	// - LessThanLastWeek: less than the metric value at the same time last week
+	//
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	//
+	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	//
+	// example:
+	//
+	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The statistical methods for Critical-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value:
+	//
+	// - Average: the average value
+	//
+	// - Minimum: the minimum value
+	//
+	// - Maximum: the maximum value
+	//
+	// example:
+	//
+	// Average
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold for Critical-level alerts. Valid values of N: 1 to 200.
+	//
+	// example:
+	//
+	// 90
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered. Valid values of N: 1 to 200.
+	//
+	// example:
+	//
+	// 3
+	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) String() string {
@@ -791,12 +839,60 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) Valid
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
+	// The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value:
+	//
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	//
+	// - GreaterThanThreshold: greater than the threshold
+	//
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
+	//
+	// - LessThanThreshold: less than the threshold
+	//
+	// - NotEqualToThreshold: not equal to the threshold
+	//
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
+	//
+	// - LessThanYesterday: less than the metric value at the same time yesterday
+	//
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
+	//
+	// - LessThanLastWeek: less than the metric value at the same time last week
+	//
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	//
+	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	//
+	// example:
+	//
+	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The statistical methods for Info-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value:
+	//
+	// - Average: the average value
+	//
+	// - Minimum: the minimum value
+	//
+	// - Maximum: the maximum value
+	//
+	// example:
+	//
+	// Average
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold for Info-level alerts. Valid values of N: 1 to 200.
+	//
+	// example:
+	//
+	// 10
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered. Valid values of N: 1 to 200.
+	//
+	// example:
+	//
+	// 1
+	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) String() string {
@@ -866,12 +962,60 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) Validate(
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
+	// The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value:
+	//
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	//
+	// - GreaterThanThreshold: greater than the threshold
+	//
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold
+	//
+	// - LessThanThreshold: less than the threshold
+	//
+	// - NotEqualToThreshold: not equal to the threshold
+	//
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
+	//
+	// - LessThanYesterday: less than the metric value at the same time yesterday
+	//
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week
+	//
+	// - LessThanLastWeek: less than the metric value at the same time last week
+	//
+	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	//
+	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	//
+	// example:
+	//
+	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The statistical methods for Warn-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value:
+	//
+	// - Average: the average value
+	//
+	// - Minimum: the minimum value
+	//
+	// - Maximum: the maximum value
+	//
+	// example:
+	//
+	// Average
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold for Warn-level alerts. Valid values of N: 1 to 200.
+	//
+	// example:
+	//
+	// 20
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered. Valid values of N: 1 to 200.
+	//
+	// example:
+	//
+	// 3
+	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) String() string {

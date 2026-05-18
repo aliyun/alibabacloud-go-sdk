@@ -59,8 +59,7 @@ type DescribeMonitorGroupInstancesResponseBody struct {
 	// example:
 	//
 	// 97F2A410-9412-499C-9AD1-76EF7EC02DF2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resources in the application group.
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeMonitorGroupInstancesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -200,36 +199,11 @@ func (s *DescribeMonitorGroupInstancesResponseBodyResources) Validate() error {
 }
 
 type DescribeMonitorGroupInstancesResponseBodyResourcesResource struct {
-	// The abbreviation of the service name.
-	//
-	// example:
-	//
-	// ecs
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The resource ID.
-	//
-	// example:
-	//
-	// 12345
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-2ze3w55tr2r****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// hostIP
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the region where the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeMonitorGroupInstancesResponseBodyResourcesResource) String() string {

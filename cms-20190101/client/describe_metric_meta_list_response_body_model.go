@@ -43,8 +43,7 @@ type DescribeMetricMetaListResponseBody struct {
 	// example:
 	//
 	// 0CCE0AF0-053C-4B13-A583-DC9A85785D49
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configuration of the metrics in the resources.
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeMetricMetaListResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -170,70 +169,14 @@ func (s *DescribeMetricMetaListResponseBodyResources) Validate() error {
 }
 
 type DescribeMetricMetaListResponseBodyResourcesResource struct {
-	// The metric description.
-	//
-	// example:
-	//
-	// CPUUtilization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The monitoring dimensions of the resource. Multiple monitoring dimensions are separated with commas (,).
-	//
-	// example:
-	//
-	// instanceId
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The tags of the metric, including one or more JSON strings.
-	//
-	// Format: `[{"name":"tag key","value":"tag value"}]`. The `name` can be repeated. The following tags are available:
-	//
-	// 	- metricCategory: the category of the metric.
-	//
-	// 	- alertEnable: indicates whether to report alerts for the metric.
-	//
-	// 	- alertUnit: the unit of the metric in the alerts.
-	//
-	// 	- unitFactor: the factor for metric unit conversion.
-	//
-	// 	- minAlertPeriod: the minimum interval at which the alert is reported.
-	//
-	// 	- productCategory: the category of the service.
-	//
-	// example:
-	//
-	// [{\\"name\\":\\"alertUnit\\",\\"value\\":\\"Bytes\\"},{\\"name\\":\\"minAlertPeriod\\",\\"value\\":\\"60\\"},{\\"name\\":\\"metricCategory\\",\\"value\\":\\"instanceId\\"},{\\"name\\":\\"instanceType\\",\\"value\\":\\"disaster\\"},{\\"name\\":\\"is_alarm\\",\\"value\\":\\"true\\"},{\\"name\\":\\"productCategory\\",\\"value\\":\\"kvstore_old\\"}]
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The metric name.
-	//
-	// example:
-	//
-	// CPUUtilization
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// example:
-	//
-	// acs_kvstore
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The statistical periods of the metric. Multiple statistical periods are separated with commas (,).
-	//
-	// Unit: seconds.
-	//
-	// example:
-	//
-	// 60,300
-	Periods *string `json:"Periods,omitempty" xml:"Periods,omitempty"`
-	// The statistical method. Multiple statistical methods are separated with commas (,).
-	//
-	// example:
-	//
-	// Average,Minimum,Maximum
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The unit of the metric.
-	//
-	// example:
-	//
-	// %
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Dimensions  *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	MetricName  *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Periods     *string `json:"Periods,omitempty" xml:"Periods,omitempty"`
+	Statistics  *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeMetricMetaListResponseBodyResourcesResource) String() string {

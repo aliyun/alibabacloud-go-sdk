@@ -29,8 +29,7 @@ type DescribeContactListByContactGroupResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The alert contacts that receive alert notifications.
+	Code     *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Contacts *DescribeContactListByContactGroupResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -153,36 +152,11 @@ func (s *DescribeContactListByContactGroupResponseBodyContacts) Validate() error
 }
 
 type DescribeContactListByContactGroupResponseBodyContactsContact struct {
-	// The alert notification methods.
-	Channels *DescribeContactListByContactGroupResponseBodyContactsContactChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
-	// The time when the alert contact was created.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1552314252000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the alert contact.
-	//
-	// example:
-	//
-	// ECS
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The name of the alert contact.
-	//
-	// example:
-	//
-	// Alice
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the alert contact was modified.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1552314252000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Channels   *DescribeContactListByContactGroupResponseBodyContactsContactChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
+	CreateTime *int64                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Desc       *string                                                               `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Name       *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdateTime *int64                                                                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeContactListByContactGroupResponseBodyContactsContact) String() string {
@@ -248,34 +222,10 @@ func (s *DescribeContactListByContactGroupResponseBodyContactsContact) Validate(
 }
 
 type DescribeContactListByContactGroupResponseBodyContactsContactChannels struct {
-	// The TradeManager ID of the alert contact.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// Alice
-	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	// The webhook URL of the DingTalk chatbot.
-	//
-	// example:
-	//
-	// https://oapi.dingtalk.com/robot/send?access_token=9bf44f8189597d07dfdd7a123455ffc112****
+	AliIM       *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
 	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
-	// The email address of the alert contact.
-	//
-	// example:
-	//
-	// alice@example.com
-	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// The mobile number of the alert contact.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// 1333333****
-	SMS *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
+	Mail        *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	SMS         *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
 }
 
 func (s DescribeContactListByContactGroupResponseBodyContactsContactChannels) String() string {

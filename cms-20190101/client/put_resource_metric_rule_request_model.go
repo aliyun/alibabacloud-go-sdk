@@ -41,6 +41,8 @@ type iPutResourceMetricRuleRequest interface {
 	GetRuleId() *string
 	SetRuleName(v string) *PutResourceMetricRuleRequest
 	GetRuleName() *string
+	SetSendOK(v bool) *PutResourceMetricRuleRequest
+	GetSendOK() *bool
 	SetSilenceTime(v int32) *PutResourceMetricRuleRequest
 	GetSilenceTime() *int32
 	SetWebhook(v string) *PutResourceMetricRuleRequest
@@ -165,6 +167,7 @@ type PutResourceMetricRuleRequest struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SendOK   *bool   `json:"SendOK,omitempty" xml:"SendOK,omitempty"`
 	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
 	//
 	// >  If an alert is not cleared after the mute period ends, CloudMonitor resends an alert notification.
@@ -253,6 +256,10 @@ func (s *PutResourceMetricRuleRequest) GetRuleName() *string {
 	return s.RuleName
 }
 
+func (s *PutResourceMetricRuleRequest) GetSendOK() *bool {
+	return s.SendOK
+}
+
 func (s *PutResourceMetricRuleRequest) GetSilenceTime() *int32 {
 	return s.SilenceTime
 }
@@ -338,6 +345,11 @@ func (s *PutResourceMetricRuleRequest) SetRuleId(v string) *PutResourceMetricRul
 
 func (s *PutResourceMetricRuleRequest) SetRuleName(v string) *PutResourceMetricRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequest) SetSendOK(v bool) *PutResourceMetricRuleRequest {
+	s.SendOK = &v
 	return s
 }
 

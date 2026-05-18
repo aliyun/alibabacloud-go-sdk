@@ -18,9 +18,24 @@ type iMatcher interface {
 }
 
 type Matcher struct {
-	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The name of the metric dimension.
+	//
+	// example:
+	//
+	// i-fewrewr*****
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The matching mode of the metric dimension. Only EQUALS is supported. Default value: EQUALS.
+	//
+	// example:
+	//
+	// EQUALS
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the metric dimension.
+	//
+	// example:
+	//
+	// instanceId
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s Matcher) String() string {

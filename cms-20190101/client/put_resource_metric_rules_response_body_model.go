@@ -29,8 +29,7 @@ type PutResourceMetricRulesResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The alert rules that failed to be created for the resource.
+	Code             *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailedListResult *PutResourceMetricRulesResponseBodyFailedListResult `json:"FailedListResult,omitempty" xml:"FailedListResult,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -153,14 +152,8 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResult) Validate() error {
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResultTarget struct {
-	// The alert rule that failed to be created.
 	Result *PutResourceMetricRulesResponseBodyFailedListResultTargetResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// a151cd6023eacee2f0978e03863cc1697c89508****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId *string                                                         `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s PutResourceMetricRulesResponseBodyFailedListResultTarget) String() string {
@@ -199,28 +192,9 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResultTarget) Validate() er
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResultTargetResult struct {
-	// The response code.
-	//
-	// example:
-	//
-	// 404
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
-	//
-	// example:
-	//
-	// The request processing has failed due to some unknown error.
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutResourceMetricRulesResponseBodyFailedListResultTargetResult) String() string {

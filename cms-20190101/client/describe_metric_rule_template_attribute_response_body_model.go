@@ -119,7 +119,6 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBody) Validate() error {
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResource struct {
-	// The queried alert templates.
 	AlertTemplates *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates `json:"AlertTemplates,omitempty" xml:"AlertTemplates,omitempty" type:"Struct"`
 	// The description of the alert template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -240,59 +239,16 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates) 
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplate struct {
-	// The abbreviation of the Alibaba Cloud service name.
-	//
-	// example:
-	//
-	// ecs
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The threshold and the alert level.
-	Escalations *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The tags of the alert template.
-	Labels *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
-	// The metric name.
-	//
-	// example:
-	//
-	// cpu_total
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the Alibaba Cloud service.
-	//
-	// example:
-	//
-	// acs_ecs_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The method that is used to handle alerts when no monitoring data is found. Valid values:
-	//
-	// 	- KEEP_LAST_STATE (default): No operation is performed.
-	//
-	// 	- INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
-	//
-	// 	- OK: The status is considered normal.
-	//
-	// example:
-	//
-	// KEEP_LAST_STATE
-	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// The name of the alert rule.
-	//
-	// example:
-	//
-	// ECS_Rule
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The dimension of the alert. It is an extended field.
-	//
-	// example:
-	//
-	// {"disk":"/"}
-	Selector    *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	SilenceTime *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The callback URL to which a request is sent when an alert is triggered.
-	//
-	// example:
-	//
-	// https://www.aliyun.com
-	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	Category     *string                                                                                        `json:"Category,omitempty" xml:"Category,omitempty"`
+	Escalations  *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
+	Labels       *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabels      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
+	MetricName   *string                                                                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace    *string                                                                                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NoDataPolicy *string                                                                                        `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	RuleName     *string                                                                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Selector     *string                                                                                        `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	SilenceTime  *int32                                                                                         `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Webhook      *string                                                                                        `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplate) String() string {
@@ -408,12 +364,9 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations struct {
-	// The conditions for triggering Critical-level alerts.
 	Critical *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
-	// The conditions for triggering Info-level alerts.
-	Info *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
-	// The conditions for triggering Warn-level alerts.
-	Warn *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Struct"`
+	Info     *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo     `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
+	Warn     *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn     `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Struct"`
 }
 
 func (s DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations) String() string {
@@ -471,54 +424,10 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsCritical struct {
-	// The comparison operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical method for Critical-level alerts.
-	//
-	// The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Critical-level alerts.
-	//
-	// example:
-	//
-	// 90
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
-	//
-	// example:
-	//
-	// 5
-	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsCritical) String() string {
@@ -570,54 +479,10 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo struct {
-	// The comparison operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical method for Info-level alerts.
-	//
-	// The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Info-level alerts.
-	//
-	// example:
-	//
-	// 90
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo) String() string {
@@ -669,54 +534,10 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn struct {
-	// The comparison operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- NotEqualToThreshold: not equal to the threshold
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The statistical method for Warn-level alerts.
-	//
-	// The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Warn-level alerts.
-	//
-	// example:
-	//
-	// 90
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn) String() string {
@@ -802,17 +623,7 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabelsLabels struct {
-	// The tag key of the alert template.
-	//
-	// example:
-	//
-	// label1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the alert template.
-	//
-	// example:
-	//
-	// value1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

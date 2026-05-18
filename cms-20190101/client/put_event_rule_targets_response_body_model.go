@@ -35,13 +35,10 @@ type PutEventRuleTargetsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// This parameter is returned if the specified alert contact groups in the request failed to be created or modified.
+	Code                    *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailedContactParameters *PutEventRuleTargetsResponseBodyFailedContactParameters `json:"FailedContactParameters,omitempty" xml:"FailedContactParameters,omitempty" type:"Struct"`
-	// This parameter is returned if the specified functions in the request failed to be created or modified in Function Compute.
-	FailedFcParameters *PutEventRuleTargetsResponseBodyFailedFcParameters `json:"FailedFcParameters,omitempty" xml:"FailedFcParameters,omitempty" type:"Struct"`
-	// This parameter is returned if the specified queues in the request failed to be created or modified in SMQ.
-	FailedMnsParameters *PutEventRuleTargetsResponseBodyFailedMnsParameters `json:"FailedMnsParameters,omitempty" xml:"FailedMnsParameters,omitempty" type:"Struct"`
+	FailedFcParameters      *PutEventRuleTargetsResponseBodyFailedFcParameters      `json:"FailedFcParameters,omitempty" xml:"FailedFcParameters,omitempty" type:"Struct"`
+	FailedMnsParameters     *PutEventRuleTargetsResponseBodyFailedMnsParameters     `json:"FailedMnsParameters,omitempty" xml:"FailedMnsParameters,omitempty" type:"Struct"`
 	// The number of resources that failed to be created or modified.
 	//
 	// example:
@@ -202,22 +199,9 @@ func (s *PutEventRuleTargetsResponseBodyFailedContactParameters) Validate() erro
 }
 
 type PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter struct {
-	// The name of the alert contact group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 2
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The alert notification methods. Valid values:
-	//
-	// 4: Alert notifications are sent by using DingTalk and emails.
-	//
-	// example:
-	//
-	// 3
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Id               *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter) String() string {
@@ -294,30 +278,10 @@ func (s *PutEventRuleTargetsResponseBodyFailedFcParameters) Validate() error {
 }
 
 type PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter struct {
-	// The name of the function.
-	//
-	// example:
-	//
-	// functionTest1
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 1
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the Function Compute service.
-	//
-	// example:
-	//
-	// serviceTest1
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter) String() string {
@@ -403,23 +367,8 @@ func (s *PutEventRuleTargetsResponseBodyFailedMnsParameters) Validate() error {
 }
 
 type PutEventRuleTargetsResponseBodyFailedMnsParametersMnsParameter struct {
-	// The ID of the recipient.
-	//
-	// example:
-	//
-	// 2
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the MNS queue.
-	//
-	// example:
-	//
-	// testQueue
-	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	Id     *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Queue  *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 

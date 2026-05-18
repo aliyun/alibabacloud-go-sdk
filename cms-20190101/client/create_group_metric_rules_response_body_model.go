@@ -41,8 +41,7 @@ type CreateGroupMetricRulesResponseBody struct {
 	// example:
 	//
 	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the alert rules.
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *CreateGroupMetricRulesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the call is successful. Valid value:
 	//
@@ -153,42 +152,11 @@ func (s *CreateGroupMetricRulesResponseBodyResources) Validate() error {
 }
 
 type CreateGroupMetricRulesResponseBodyResourcesAlertResult struct {
-	// The status code that is returned for the alert rule.
-	//
-	// >  The status code 200 indicates that the call is successful.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message that is returned for the alert rule.
-	//
-	// example:
-	//
-	// Metric not found.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// 456789
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the alert rule.
-	//
-	// example:
-	//
-	// ECS_Rule1
+	Code     *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Indicates whether the alert rule was created. Valid value:
-	//
-	// - true: The alert rule was created.
-	//
-	// - false: The alert rule failed to be created.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateGroupMetricRulesResponseBodyResourcesAlertResult) String() string {

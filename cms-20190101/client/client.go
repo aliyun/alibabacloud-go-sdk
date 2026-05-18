@@ -6571,6 +6571,10 @@ func (client *Client) DescribeMetricMetaList(request *DescribeMetricMetaListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries blacklist policies.
+//
 // @param request - DescribeMetricRuleBlackListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6647,6 +6651,10 @@ func (client *Client) DescribeMetricRuleBlackListWithOptions(request *DescribeMe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries blacklist policies.
+//
 // @param request - DescribeMetricRuleBlackListRequest
 //
 // @return DescribeMetricRuleBlackListResponse
@@ -7977,7 +7985,7 @@ func (client *Client) DescribeMonitoringAgentHosts(request *DescribeMonitoringAg
 
 // Summary:
 //
-// 查询指定资源的进程数列表
+// Invokes the DescribeMonitoringAgentProcesses interface to query the process list of a specified resource.
 //
 // Description:
 //
@@ -8027,7 +8035,7 @@ func (client *Client) DescribeMonitoringAgentProcessesWithOptions(request *Descr
 
 // Summary:
 //
-// 查询指定资源的进程数列表
+// Invokes the DescribeMonitoringAgentProcesses interface to query the process list of a specified resource.
 //
 // Description:
 //
@@ -8982,7 +8990,7 @@ func (client *Client) DescribeSiteMonitorStatistics(request *DescribeSiteMonitor
 
 // Summary:
 //
-// 查询拨测探测节点列表
+// Queries detection points.
 //
 // @param request - DescribeSyntheticProbeListRequest
 //
@@ -9054,7 +9062,7 @@ func (client *Client) DescribeSyntheticProbeListWithOptions(request *DescribeSyn
 
 // Summary:
 //
-// 查询拨测探测节点列表
+// Queries detection points.
 //
 // @param request - DescribeSyntheticProbeListRequest
 //
@@ -12846,6 +12854,10 @@ func (client *Client) PutResourceMetricRuleWithOptions(tmpReq *PutResourceMetric
 
 	if !dara.IsNil(request.RuleName) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SendOK) {
+		query["SendOK"] = request.SendOK
 	}
 
 	if !dara.IsNil(request.SilenceTime) {

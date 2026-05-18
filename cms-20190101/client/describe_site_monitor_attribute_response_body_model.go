@@ -37,8 +37,7 @@ type DescribeSiteMonitorAttributeResponseBody struct {
 	// example:
 	//
 	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The alert rules that are configured for the site monitoring task.
+	Message     *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	MetricRules *DescribeSiteMonitorAttributeResponseBodyMetricRules `json:"MetricRules,omitempty" xml:"MetricRules,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -171,154 +170,22 @@ func (s *DescribeSiteMonitorAttributeResponseBodyMetricRules) Validate() error {
 }
 
 type DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule struct {
-	// Indicates whether the alert rule is enabled. Valid values:
-	//
-	// 	- true: The alert rule is enabled.
-	//
-	// 	- false: The alert rule is disabled.
-	//
-	// example:
-	//
-	// true
-	ActionEnable *string `json:"ActionEnable,omitempty" xml:"ActionEnable,omitempty"`
-	// The alert contact group to which alert notifications are sent.
-	//
-	// example:
-	//
-	// CloudMonitor
-	AlarmActions *string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty"`
-	// The operator that is used to compare the metric value with the threshold in the alert rule. Valid values:
-	//
-	// 	- `>=`
-	//
-	// 	- `>`
-	//
-	// 	- `<=`
-	//
-	// 	- `<`
-	//
-	// 	- `=`
-	//
-	// 	- `!=`
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanYesterday
+	ActionEnable       *string `json:"ActionEnable,omitempty" xml:"ActionEnable,omitempty"`
+	AlarmActions       *string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty"`
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The dimension of the alert rule.
-	//
-	// example:
-	//
-	// [{"taskId": "cc641dff-c19d-45f3-ad0a-818a0c4f****" }]
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The expression that is used to trigger alerts.
-	//
-	// example:
-	//
-	// $Availability=30
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The alert severity. Valid values:
-	//
-	// 	- 1: critical
-	//
-	// 	- 2: warning
-	//
-	// 	- 3: information
-	//
-	// example:
-	//
-	// 2
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The metric name.
-	//
-	// example:
-	//
-	// Availability
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// The value is in the following format: acs_service name.
-	//
-	// example:
-	//
-	// acs_networkmonitor
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The alert contact group that receives alert notifications.
-	//
-	// example:
-	//
-	// [ "CloudMonitor"]
-	OkActions *string `json:"OkActions,omitempty" xml:"OkActions,omitempty"`
-	// The time interval. The value is the same as the interval at which metric data is reported. Unit: seconds.
-	//
-	// >  If you specify a statistical period for the alert rule, data is queried based on the statistical period.
-	//
-	// example:
-	//
-	// 15s
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the alert rule.
-	//
-	// example:
-	//
-	// bf071ae_7b7aec3817b0fdf****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the alert rule.
-	//
-	// example:
-	//
-	// rule1
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The alert status. Valid values:
-	//
-	// 	- OK: The alert rule has no active alerts.
-	//
-	// 	- ALARM: The alert rule has active alerts.
-	//
-	// example:
-	//
-	// OK
-	StateValue *string `json:"StateValue,omitempty" xml:"StateValue,omitempty"`
-	// The statistical method of the alert rule. Valid values:
-	//
-	// 	- Availability: the percentage of available detection points
-	//
-	// 	- AvailableNumber: the number of available detection points
-	//
-	// 	- ErrorCodeMaximum: a status code for an alert
-	//
-	// 	- ErrorCodeMinimum: all status codes for a set of alerts
-	//
-	// 	- Average: response time
-	//
-	// example:
-	//
-	// Availability
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The alert threshold.
-	//
-	// example:
-	//
-	// 30
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Dimensions         *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	EvaluationCount    *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	Expression         *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Level              *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	MetricName         *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OkActions          *string `json:"OkActions,omitempty" xml:"OkActions,omitempty"`
+	Period             *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RuleId             *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	StateValue         *string `json:"StateValue,omitempty" xml:"StateValue,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule) String() string {
@@ -501,8 +368,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitors struct {
 	// example:
 	//
 	// 1
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The information of detection points. The information includes the carriers that provide the detection points and the cities where the detection points reside.
+	Interval  *string                                                        `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspCities *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities `json:"IspCities,omitempty" xml:"IspCities,omitempty" type:"Struct"`
 	// The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](https://help.aliyun.com/document_detail/115048.html).
 	OptionJson *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson `json:"OptionJson,omitempty" xml:"OptionJson,omitempty" type:"Struct"`
@@ -670,7 +536,6 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) Validate() error 
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule struct {
-	// The days in a week.
 	Days *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays `json:"days,omitempty" xml:"days,omitempty" type:"Struct"`
 	// The end time of the detection. Unit: hours.
 	//
@@ -805,28 +670,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities) Validate
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity struct {
-	// The city ID.
-	//
-	// example:
-	//
-	// 738
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The city name.
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The carrier ID.
-	//
-	// example:
-	//
-	// 465
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The carrier name.
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The network type of the detection point. Valid values: IDC, LASTMILE, and MOBILE.
-	//
-	// example:
-	//
-	// IDC
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspName  *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) String() string {
@@ -887,23 +735,18 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) V
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
-	// The assertions.
 	Assertions *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
 	// The number of retries after a DNS failure occurred.
 	//
 	// example:
 	//
 	// 3
-	Attempts *int64                                                                  `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	AuthInfo *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo `json:"auth_info,omitempty" xml:"auth_info,omitempty" type:"Struct"`
-	// The blocked URLs. Wildcards are supported in paths.
+	Attempts       *int64                                                                        `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	AuthInfo       *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo       `json:"auth_info,omitempty" xml:"auth_info,omitempty" type:"Struct"`
 	BlockedUrlList *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList `json:"blocked_url_list,omitempty" xml:"blocked_url_list,omitempty" type:"Struct"`
-	// The custom headers. Format: {"key": "somekey", "value":"somevalue"}.
 	BrowserHeaders *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders `json:"browser_headers,omitempty" xml:"browser_headers,omitempty" type:"Struct"`
-	// The custom hosts. Format: {"key": "somekey", "value":"somevalue"}.
-	BrowserHosts *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts `json:"browser_hosts,omitempty" xml:"browser_hosts,omitempty" type:"Struct"`
-	// The browser information.
-	BrowserInfo *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Struct"`
+	BrowserHosts   *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts   `json:"browser_hosts,omitempty" xml:"browser_hosts,omitempty" type:"Struct"`
+	BrowserInfo    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo    `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Struct"`
 	// Indicates whether certificate errors are ignored. Valid values:
 	//
 	// - false: Certificate errors are not ignored.
@@ -1000,11 +843,9 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// false
-	EmptyMessage        *bool `json:"empty_message,omitempty" xml:"empty_message,omitempty"`
-	EnablePacketCapture *bool `json:"enable_packet_capture,omitempty" xml:"enable_packet_capture,omitempty"`
-	// The string that is expected to exist on the page.
-	ExpectExistString *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
-	// The string that is not expected to exist on the page.
+	EmptyMessage         *bool                                                                               `json:"empty_message,omitempty" xml:"empty_message,omitempty"`
+	EnablePacketCapture  *bool                                                                               `json:"enable_packet_capture,omitempty" xml:"enable_packet_capture,omitempty"`
+	ExpectExistString    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString    `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
 	ExpectNonExistString *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Struct"`
 	// The domain name or alias to be parsed.
 	//
@@ -1144,9 +985,8 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// true
-	QuicEnabled *bool `json:"quic_enabled,omitempty" xml:"quic_enabled,omitempty"`
-	// The sites for which the QUIC protocol is forcibly used.
-	QuicTarget *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonQuicTarget `json:"quic_target,omitempty" xml:"quic_target,omitempty" type:"Struct"`
+	QuicEnabled *bool                                                                     `json:"quic_enabled,omitempty" xml:"quic_enabled,omitempty"`
+	QuicTarget  *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonQuicTarget `json:"quic_target,omitempty" xml:"quic_target,omitempty" type:"Struct"`
 	// The content of the HTTP request.
 	//
 	// example:
@@ -1212,18 +1052,16 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// example:
 	//
 	// 3
-	TimeOut     *int64  `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	TraceRegion *string `json:"trace_region,omitempty" xml:"trace_region,omitempty"`
-	TraceType   *string `json:"trace_type,omitempty" xml:"trace_type,omitempty"`
-	// The traffic hijacking blacklist. When redirection occurs, if the URL of the resource loaded by the browser matches the expression in the blacklist, traffic hijacking is considered to have occurred.
+	TimeOut                       *int64                                                                                       `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	TraceRegion                   *string                                                                                      `json:"trace_region,omitempty" xml:"trace_region,omitempty"`
+	TraceType                     *string                                                                                      `json:"trace_type,omitempty" xml:"trace_type,omitempty"`
 	TrafficHijackElementBlacklist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist `json:"traffic_hijack_element_blacklist,omitempty" xml:"traffic_hijack_element_blacklist,omitempty" type:"Struct"`
 	// When redirection occurs, if the browser loads more than the specified number of resources, traffic hijacking is considered to have occurred. If you set the value to 0, no validation is performed. Default value: 0.
 	//
 	// example:
 	//
 	// 0
-	TrafficHijackElementCount *int32 `json:"traffic_hijack_element_count,omitempty" xml:"traffic_hijack_element_count,omitempty"`
-	// The traffic hijacking whitelist. When redirection occurs, if the URL of the resource loaded by the browser does not match any expression in the whitelist, traffic hijacking is considered to have occurred.
+	TrafficHijackElementCount     *int32                                                                                       `json:"traffic_hijack_element_count,omitempty" xml:"traffic_hijack_element_count,omitempty"`
 	TrafficHijackElementWhitelist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Struct"`
 	UsePrivateCrt                 *bool                                                                                        `json:"use_private_crt,omitempty" xml:"use_private_crt,omitempty"`
 	UseSsl                        *bool                                                                                        `json:"use_ssl,omitempty" xml:"use_ssl,omitempty"`
@@ -1938,62 +1776,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertion
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions struct {
-	// The operator. Valid values:
-	//
-	// - contains: contains
-	//
-	// - doesNotContain: does not contain
-	//
-	// - matches: matches a regular expression
-	//
-	// - doesNotMatch: does not match a regular expression
-	//
-	// - is: equal to
-	//
-	// - isNot: not equal to
-	//
-	// - lessThan: less than
-	//
-	// - moreThan: greater than
-	//
-	// example:
-	//
-	// lessThan
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The path to the assertion.
-	//
-	// - If the assertion type is body_json, the path is json path.
-	//
-	// - If the assertion type is body_xml, the path is xml path.
-	//
-	// example:
-	//
-	// json path
 	Property *string `json:"property,omitempty" xml:"property,omitempty"`
-	// The value or character to which the condition of the assertion is compared.
-	//
-	// example:
-	//
-	// 0
-	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The assertion type. Valid values:
-	//
-	// - response_time: checks whether the response time meets expectations.
-	//
-	// - status_code: checks whether the HTTP status code meets expectations.
-	//
-	// - header: checks whether the fields in the response header meet expectations.
-	//
-	// - body_text: check whether the content in the response body meets expectations by using text matching.
-	//
-	// - body_json: check whether the content in the response body meets expectations by using JSON parsing (JSONPath).
-	//
-	// - body_xml: check whether the content in the response body meets expectations by using XML parsing (XPath).
-	//
-	// example:
-	//
-	// response_time
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Target   *string `json:"target,omitempty" xml:"target,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) String() string {
@@ -2379,18 +2165,8 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserIn
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo struct {
-	// The browser type.
-	//
-	// example:
-	//
-	// Chrome
 	Browser *string `json:"browser,omitempty" xml:"browser,omitempty"`
-	// The device type.
-	//
-	// example:
-	//
-	// laptop
-	Device *string `json:"device,omitempty" xml:"device,omitempty"`
+	Device  *string `json:"device,omitempty" xml:"device,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo) String() string {

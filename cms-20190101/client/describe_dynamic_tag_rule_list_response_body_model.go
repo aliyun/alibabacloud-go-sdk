@@ -69,8 +69,7 @@ type DescribeDynamicTagRuleListResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The tag rules of application groups.
+	Success      *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	TagGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupList `json:"TagGroupList,omitempty" xml:"TagGroupList,omitempty" type:"Struct"`
 	// The total number of returned entries.
 	//
@@ -204,53 +203,15 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupList) Validate() error {
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup struct {
-	// The alert contact group.
-	ContactGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupContactGroupList `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
-	// The ID of the tag rule.
-	//
-	// example:
-	//
-	// 1536df65-a719-429d-8813-73cc40d7****
-	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The conditional expressions used to create an application group based on the tag.
-	MatchExpress *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
-	// The logical operator that is used between conditional expressions. Valid values:
-	//
-	// 	- `and`
-	//
-	// 	- `or`
-	//
-	// >  Only one logical operator can be used in a request.
-	//
-	// example:
-	//
-	// or
-	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
-	// The ID of the region to which the tags belong.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of adding instances that meet the tag rule to the application group. Valid values:
-	//
-	// 	- `RUNNING`
-	//
-	// 	- `FINISH`
-	//
-	// example:
-	//
-	// FINISH
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag key.
-	//
-	// example:
-	//
-	// tagkey1
-	TagKey            *string                                                                      `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValueBlacklist *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTagValueBlacklist `json:"TagValueBlacklist,omitempty" xml:"TagValueBlacklist,omitempty" type:"Struct"`
-	// The IDs of the alert templates.
-	TemplateIdList *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTemplateIdList `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Struct"`
+	ContactGroupList           *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupContactGroupList  `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
+	DynamicTagRuleId           *string                                                                      `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
+	MatchExpress               *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress      `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
+	MatchExpressFilterRelation *string                                                                      `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
+	RegionId                   *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                     *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagKey                     *string                                                                      `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValueBlacklist          *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTagValueBlacklist `json:"TagValueBlacklist,omitempty" xml:"TagValueBlacklist,omitempty" type:"Struct"`
+	TemplateIdList             *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTemplateIdList    `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Struct"`
 }
 
 func (s DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup) String() string {
@@ -426,37 +387,8 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress)
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpressMatchExpress struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// azone-version
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// The `TagValue` and `TagValueMatchFunction` parameters must be used in pairs.
-	//
-	// example:
-	//
-	// *
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The method that is used to match tag values. Valid values:
-	//
-	// 	- all: includes all
-	//
-	// 	- startWith: starts with a prefix
-	//
-	// 	- endWith: ends with a suffix
-	//
-	// 	- contains: contains
-	//
-	// 	- notContains: does not contain
-	//
-	// 	- equals: equals
-	//
-	// example:
-	//
-	// all
+	TagKey                *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue              *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagValueMatchFunction *string `json:"TagValueMatchFunction,omitempty" xml:"TagValueMatchFunction,omitempty"`
 }
 

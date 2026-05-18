@@ -233,7 +233,6 @@ func (s *DescribeEventRuleAttributeResponseBodyResult) Validate() error {
 }
 
 type DescribeEventRuleAttributeResponseBodyResultEventPattern struct {
-	// The types of the event-triggered alert rules.
 	EventTypeList *DescribeEventRuleAttributeResponseBodyResultEventPatternEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Struct"`
 	// The keyword for filtering.
 	KeywordFilterObj *DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj `json:"KeywordFilterObj,omitempty" xml:"KeywordFilterObj,omitempty" type:"Struct"`
@@ -380,7 +379,6 @@ func (s *DescribeEventRuleAttributeResponseBodyResultEventPatternEventTypeList) 
 }
 
 type DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj struct {
-	// The keywords that are used to match events.
 	Keywords *DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObjKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
 	// The relationship between multiple keywords in a condition. Valid values:
 	//

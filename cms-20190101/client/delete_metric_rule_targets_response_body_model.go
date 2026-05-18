@@ -121,7 +121,6 @@ func (s *DeleteMetricRuleTargetsResponseBody) Validate() error {
 }
 
 type DeleteMetricRuleTargetsResponseBodyFailIds struct {
-	// The IDs of the resources that failed to be deleted.
 	TargetIds *DeleteMetricRuleTargetsResponseBodyFailIdsTargetIds `json:"TargetIds,omitempty" xml:"TargetIds,omitempty" type:"Struct"`
 }
 

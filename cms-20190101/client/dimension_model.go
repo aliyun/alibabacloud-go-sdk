@@ -16,7 +16,17 @@ type iDimension interface {
 }
 
 type Dimension struct {
+	// The name of the metric dimension.
+	//
+	// example:
+	//
+	// instanceId
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The value of the metric dimension.
+	//
+	// example:
+	//
+	// i-dferwret*****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

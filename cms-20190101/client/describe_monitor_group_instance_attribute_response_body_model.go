@@ -59,8 +59,7 @@ type DescribeMonitorGroupInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// 9FB8EA79-7279-4482-8D6D-3D28EEDD871A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources that are associated with the application group.
+	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeMonitorGroupInstanceAttributeResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -204,48 +203,15 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResources) Validate() 
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource struct {
-	// The name of the cloud service.
-	//
-	// example:
-	//
-	// ecs
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The resource description.
-	//
-	// example:
-	//
-	// desc_test
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The dimensions of the resource that is associated with the application group.
-	//
-	// example:
-	//
-	// {"instanceId":"i-m5e0k0bexac8tykr****"}
-	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-m5e0k0bexac8tykr****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// hostName
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The network type.
-	//
-	// example:
-	//
-	// vpc
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The region.
-	Region *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Struct"`
-	// The tag of the resource.
-	Tags *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The VPC description.
-	Vpc *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
+	Category     *string                                                                   `json:"Category,omitempty" xml:"Category,omitempty"`
+	Desc         *string                                                                   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Dimension    *string                                                                   `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	InstanceId   *string                                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string                                                                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	NetworkType  *string                                                                   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Region       *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Struct"`
+	Tags         *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Vpc          *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc    `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
 }
 
 func (s DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource) String() string {
@@ -357,18 +323,8 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource) Val
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion struct {
-	// The zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-f
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion) String() string {
@@ -436,17 +392,7 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags)
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// instanceNetworkType
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// VPC
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -481,17 +427,7 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsT
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc struct {
-	// The VPC ID.
-	//
-	// example:
-	//
-	// vpc-2zew7etgiceg21****
-	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-2ze36seq79n992****
+	VpcInstanceId     *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 	VswitchInstanceId *string `json:"VswitchInstanceId,omitempty" xml:"VswitchInstanceId,omitempty"`
 }
 

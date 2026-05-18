@@ -47,8 +47,7 @@ type DescribeSystemEventAttributeResponseBody struct {
 	// example:
 	//
 	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the event.
+	Success      *string                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	SystemEvents *DescribeSystemEventAttributeResponseBodySystemEvents `json:"SystemEvents,omitempty" xml:"SystemEvents,omitempty" type:"Struct"`
 }
 
@@ -149,80 +148,17 @@ func (s *DescribeSystemEventAttributeResponseBodySystemEvents) Validate() error 
 }
 
 type DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent struct {
-	// The details of the event.
-	//
-	// example:
-	//
-	// [{"product":"CloudMonitor","content":"{\\"ipGroup\\":\\"112.126.XX.XX,10.163.XX.XX\\",\\"tianjimonVersion\\":\\"1.2.22\\"}","groupId":"176,177,178,179,180,692,120812,1663836,96,2028302","time":"1552209568000","resourceId":"acs:ecs:cn-beijing:173651113438****:instance/i-25k35****","level":"CRITICAL","status":"stopped","instanceName":"cmssiteprobebj-6","name":"Agent_Status_Stopped","regionId":"cn-beijing"}]
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the application group.
-	//
-	// example:
-	//
-	// 12345
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The event ID.
-	//
-	// example:
-	//
-	// b936efc9-f621-4e8a-a6eb-076be40e****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// instanceId1
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The level of the event. Valid values:
-	//
-	// 	- CRITICAL
-	//
-	// 	- WARN
-	//
-	// 	- INFO
-	//
-	// example:
-	//
-	// WARN
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The event name.
-	//
-	// example:
-	//
-	// Agent_Status_Stopped
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The abbreviation of the service name.
-	//
-	// example:
-	//
-	// CloudMonitor
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
-	//
-	// example:
-	//
-	// xxxxx-1
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The status of the event.
-	//
-	// example:
-	//
-	// normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the event occurred. The value is a timestamp.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1552199984000
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Level        *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Product      *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Time         *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent) String() string {

@@ -47,8 +47,7 @@ type DescribeSystemEventHistogramResponseBody struct {
 	// example:
 	//
 	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about the number of times the system event occurred during each interval of a time period.
+	Success               *string                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 	SystemEventHistograms *DescribeSystemEventHistogramResponseBodySystemEventHistograms `json:"SystemEventHistograms,omitempty" xml:"SystemEventHistograms,omitempty" type:"Struct"`
 }
 
@@ -149,27 +148,8 @@ func (s *DescribeSystemEventHistogramResponseBodySystemEventHistograms) Validate
 }
 
 type DescribeSystemEventHistogramResponseBodySystemEventHistogramsSystemEventHistogram struct {
-	// The number of times the system event occurred.
-	//
-	// example:
-	//
-	// 2
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The end time.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1552225753000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1552225770000
+	Count     *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

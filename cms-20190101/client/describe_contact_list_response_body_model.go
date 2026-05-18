@@ -31,8 +31,7 @@ type DescribeContactListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The alert contacts.
+	Code     *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Contacts *DescribeContactListResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -170,48 +169,14 @@ func (s *DescribeContactListResponseBodyContacts) Validate() error {
 }
 
 type DescribeContactListResponseBodyContactsContact struct {
-	// The alert notification method.
-	Channels *DescribeContactListResponseBodyContactsContactChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
-	// The status of the alert notification method. Valid values: PENDING and OK.
-	//
-	// The email address must be activated after it is added as the value specified for the alert notification method. The value PENDING indicates that the email address is not activated. The value OK indicates that the email address is activated.
+	Channels      *DescribeContactListResponseBodyContactsContactChannels      `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 	ChannelsState *DescribeContactListResponseBodyContactsContactChannelsState `json:"ChannelsState,omitempty" xml:"ChannelsState,omitempty" type:"Struct"`
-	// None.
 	ContactGroups *DescribeContactListResponseBodyContactsContactContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
-	// The timestamp when the alert contact was created.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1552356159000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description.
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The language in which the alert information is displayed. Valid values:
-	//
-	// 	- zh-cn: simplified Chinese
-	//
-	// 	- en: English
-	//
-	// example:
-	//
-	// zh-cn
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the alert contact.
-	//
-	// example:
-	//
-	// Alice
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The timestamp when the alert contact was updated.
-	//
-	// Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1552356159000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime    *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Desc          *string                                                      `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Lang          *string                                                      `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name          *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdateTime    *int64                                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeContactListResponseBodyContactsContact) String() string {
@@ -314,30 +279,10 @@ func (s *DescribeContactListResponseBodyContactsContact) Validate() error {
 }
 
 type DescribeContactListResponseBodyContactsContactChannels struct {
-	// The TradeManager ID of the alert contact.
-	//
-	// example:
-	//
-	// Alice
-	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	// The webhook URL of the DingTalk chatbot.
-	//
-	// example:
-	//
-	// https://oapi.dingtalk.com/robot/send?access_token=9bf44f8189597d07dfdd7a123455ffc112****
+	AliIM       *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
 	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
-	// The email address of the alert contact.
-	//
-	// example:
-	//
-	// Alice@example.com
-	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// The phone number of the alert contac.
-	//
-	// example:
-	//
-	// 1333333****
-	SMS *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
+	Mail        *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	SMS         *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
 }
 
 func (s DescribeContactListResponseBodyContactsContactChannels) String() string {
@@ -389,46 +334,10 @@ func (s *DescribeContactListResponseBodyContactsContactChannels) Validate() erro
 }
 
 type DescribeContactListResponseBodyContactsContactChannelsState struct {
-	// The status of the TradeManager ID.
-	//
-	// Valid value: OK. The value OK indicates that the TradeManager ID is valid and can receive alert notifications.
-	//
-	// >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
-	//
-	// example:
-	//
-	// OK
-	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	// The status of the DingTalk chatbot.
-	//
-	// Valid value: OK. The value OK indicates that the DingTalk chatbot is normal and alert notifications can be received in a DingTalk group.
-	//
-	// example:
-	//
-	// OK
+	AliIM       *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
 	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
-	// The status of the email address. Valid values:
-	//
-	// 	- PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
-	//
-	// 	- OK: The phone number is activated and can receive alert notifications.
-	//
-	// example:
-	//
-	// PENDING
-	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// The status of the phone number. Valid values:
-	//
-	// 	- PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
-	//
-	// 	- OK: The phone number is activated and can receive alert notifications.
-	//
-	// >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
-	//
-	// example:
-	//
-	// OK
-	SMS *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
+	Mail        *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	SMS         *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
 }
 
 func (s DescribeContactListResponseBodyContactsContactChannelsState) String() string {

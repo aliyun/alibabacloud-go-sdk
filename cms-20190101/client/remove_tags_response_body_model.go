@@ -51,9 +51,8 @@ type RemoveTagsResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The deleted tags.
-	Tag *RemoveTagsResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	Success *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tag     *RemoveTagsResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
 func (s RemoveTagsResponseBody) String() string {

@@ -41,9 +41,8 @@ type DescribeMonitorGroupDynamicRulesResponseBody struct {
 	// example:
 	//
 	// 2170B94A-1576-4D65-900E-2093037CDAF3
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources that are associated with the application group.
-	Resource *DescribeMonitorGroupDynamicRulesResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resource  *DescribeMonitorGroupDynamicRulesResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// 	- true
@@ -153,30 +152,9 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBodyResource) Validate() error 
 }
 
 type DescribeMonitorGroupDynamicRulesResponseBodyResourceResource struct {
-	// The type of the cloud service to which the dynamic rule belongs. Valid values:
-	//
-	// 	- ecs: Elastic Compute Service (ECS)
-	//
-	// 	- rds: ApsaraDB RDS
-	//
-	// 	- slb: Server Load Balancer (SLB)
-	//
-	// example:
-	//
-	// ecs
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The filter condition. Valid values:
-	//
-	// 	- and: queries the instances that meet all alert rules.
-	//
-	// 	- or: queries the instances that meet any alert rule.
-	//
-	// example:
-	//
-	// and
-	FilterRelation *string `json:"FilterRelation,omitempty" xml:"FilterRelation,omitempty"`
-	// The dynamic rules of the application group.
-	Filters *DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	Category       *string                                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	FilterRelation *string                                                              `json:"FilterRelation,omitempty" xml:"FilterRelation,omitempty"`
+	Filters        *DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
 }
 
 func (s DescribeMonitorGroupDynamicRulesResponseBodyResourceResource) String() string {
@@ -258,30 +236,9 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters) Va
 }
 
 type DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFiltersFilter struct {
-	// The method that is used to filter the instances. Valid values:
-	//
-	// 	- contains: contains
-	//
-	// 	- startWith: starts with a prefix
-	//
-	// 	- endWith: ends with a suffix
-	//
-	// example:
-	//
-	// contains
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// hostName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the dynamic rule.
-	//
-	// example:
-	//
-	// 1
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFiltersFilter) String() string {

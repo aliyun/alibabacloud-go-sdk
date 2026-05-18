@@ -37,8 +37,7 @@ type DescribeMonitoringAgentHostsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the hosts.
+	Code  *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Hosts *DescribeMonitoringAgentHostsResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -221,98 +220,20 @@ func (s *DescribeMonitoringAgentHostsResponseBodyHosts) Validate() error {
 }
 
 type DescribeMonitoringAgentHostsResponseBodyHostsHost struct {
-	// The version of the CloudMonitor agent.
-	//
-	// example:
-	//
-	// 3.4.6
-	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 103201326074****
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The elastic IP address (EIP) of the host.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	// The ID of the EIP.
-	//
-	// example:
-	//
-	// eip-bp16i16k9gcezyfrp****
-	EipId *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
-	// The name of the host.
-	//
-	// example:
-	//
-	// hostIP
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-a2d5q7pm3f9yr212****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the ECS instance.
-	//
-	// example:
-	//
-	// ecs.n4
+	AgentVersion       *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
+	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EipAddress         *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	EipId              *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
+	HostName           *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The IP address of the host.
-	//
-	// > Multiple IP addresses are separated with commas (,).
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	IpGroup *string `json:"IpGroup,omitempty" xml:"IpGroup,omitempty"`
-	// The IP address of the Network Address Translation (NAT) gateway.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The network type.
-	//
-	// example:
-	//
-	// vpc
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The operating system.
-	//
-	// example:
-	//
-	// Linux
-	OperatingSystem *string `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The serial number of the host. A host that is not provided by Alibaba Cloud has a serial number instead of an instance ID.
-	//
-	// > This parameter can be used to accurately search for a monitored host.
-	//
-	// example:
-	//
-	// x12335-6cc8-4a22-9f21-1a00a719****
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// Indicates whether the host is provided by Alibaba Cloud. Valid values:
-	//
-	// 	- true: The host is provided by Alibaba Cloud.
-	//
-	// 	- false: The host is not provided by Alibaba Cloud.
-	//
-	// example:
-	//
-	// true
-	IsAliyunHost *bool `json:"isAliyunHost,omitempty" xml:"isAliyunHost,omitempty"`
+	IpGroup            *string `json:"IpGroup,omitempty" xml:"IpGroup,omitempty"`
+	NatIp              *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
+	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OperatingSystem    *string `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SerialNumber       *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	IsAliyunHost       *bool   `json:"isAliyunHost,omitempty" xml:"isAliyunHost,omitempty"`
 }
 
 func (s DescribeMonitoringAgentHostsResponseBodyHostsHost) String() string {

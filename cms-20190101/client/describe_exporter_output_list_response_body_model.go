@@ -33,8 +33,7 @@ type DescribeExporterOutputListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configuration sets for exporting monitoring data.
+	Code       *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *DescribeExporterOutputListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -187,28 +186,10 @@ func (s *DescribeExporterOutputListResponseBodyDatapoints) Validate() error {
 }
 
 type DescribeExporterOutputListResponseBodyDatapointsDatapoint struct {
-	// The JSON object that contains the details about the destination to which the monitoring data is exported.
 	ConfigJson *DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson `json:"ConfigJson,omitempty" xml:"ConfigJson,omitempty" type:"Struct"`
-	// The time when the configuration set was created. The value is a UNIX timestamp.
-	//
-	// example:
-	//
-	// 1584016495498
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the configuration set.
-	//
-	// example:
-	//
-	// exporterOut
-	DestName *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
-	// The service to which the monitoring data is exported.
-	//
-	// > Only Log Service is supported. More services will be supported in the future.
-	//
-	// example:
-	//
-	// SLS
-	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	CreateTime *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DestName   *string                                                              `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	DestType   *string                                                              `json:"DestType,omitempty" xml:"DestType,omitempty"`
 }
 
 func (s DescribeExporterOutputListResponseBodyDatapointsDatapoint) String() string {
@@ -265,30 +246,10 @@ func (s *DescribeExporterOutputListResponseBodyDatapointsDatapoint) Validate() e
 }
 
 type DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson struct {
-	// The AccessKey ID.
-	//
-	// example:
-	//
-	// LTAIpY33********
-	Ak *string `json:"ak,omitempty" xml:"ak,omitempty"`
-	// The Log Service endpoint to which the monitoring data is exported.
-	//
-	// example:
-	//
-	// http://cn-qingdao-share.log.aliyuncs.com
+	Ak       *string `json:"ak,omitempty" xml:"ak,omitempty"`
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The Logstore.
-	//
-	// example:
-	//
-	// monitorlogstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The Log Service project to which the monitoring data is exported.
-	//
-	// example:
-	//
-	// exporter
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson) String() string {

@@ -24,7 +24,6 @@ type iDescribeProductsOfActiveMetricRuleResponseBody interface {
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBody struct {
-	// The information about the services for which one-click alert is enabled.
 	AllProductInitMetricRuleList *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList `json:"AllProductInitMetricRuleList,omitempty" xml:"AllProductInitMetricRuleList,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -192,14 +191,8 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRule struct {
-	// The initial alert rules that are generated after one-click alert is enabled for a service.
 	AlertInitConfigList *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigList `json:"AlertInitConfigList,omitempty" xml:"AlertInitConfigList,omitempty" type:"Struct"`
-	// The abbreviation of the service name.
-	//
-	// example:
-	//
-	// ecs
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Product             *string                                                                                                                `json:"Product,omitempty" xml:"Product,omitempty"`
 }
 
 func (s DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRule) String() string {
@@ -272,104 +265,14 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigListAlertInitConfig struct {
-	// The operator that is used to compare the metric value with the threshold for Warn-level alerts.
-	//
-	// Valid values:
-	//
-	// 	- LessThanThreshold: less than the threshold
-	//
-	// 	- GreaterThanLastWeek: greater than the metric value at the same time last week
-	//
-	// 	- LessThanOrEqualToThreshold: less than or equal to the threshold
-	//
-	// 	- NotEqualToThreshold: does not equal to the threshold
-	//
-	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	//
-	// 	- GreaterThanYesterday: greater than the metric value at the same time yesterday
-	//
-	// 	- LessThanYesterday: less than the metric value at the same time yesterday
-	//
-	// 	- LessThanLastWeek: less than the metric value at the same time last week
-	//
-	// 	- GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	//
-	// 	- GreaterThanThreshold: greater than the threshold
-	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	//
-	// example:
-	//
-	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
-	//
-	// example:
-	//
-	// 3
-	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The alert level.
-	//
-	// Valid values:
-	//
-	// 	- INFO
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- WARN
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CRITICAL
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// CRITICAL
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// cpu_total
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// acs_rds_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The aggregation period of monitoring data. Unit: minutes. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// 1m
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The method used to calculate metric values that trigger alerts. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// Average
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The alert threshold.
-	//
-	// example:
-	//
-	// 90
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	EvaluationCount    *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	Level              *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	MetricName         *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Period             *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigListAlertInitConfig) String() string {

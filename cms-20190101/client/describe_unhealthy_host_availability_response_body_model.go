@@ -51,8 +51,7 @@ type DescribeUnhealthyHostAvailabilityResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The unhealthy instances that are detected by the specified availability monitoring tasks.
+	Success       *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 	UnhealthyList *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyList `json:"UnhealthyList,omitempty" xml:"UnhealthyList,omitempty" type:"Struct"`
 }
 
@@ -153,11 +152,6 @@ func (s *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyList) Validate() 
 }
 
 type DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstance struct {
-	// The ID of the availability monitoring task.
-	//
-	// example:
-	//
-	// 123456
 	Id           *int64                                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceList *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstanceInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 }

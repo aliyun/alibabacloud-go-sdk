@@ -29,8 +29,7 @@ type DescribeSiteMonitorISPCityListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried detection points.
+	Code        *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	IspCityList *DescribeSiteMonitorISPCityListResponseBodyIspCityList `json:"IspCityList,omitempty" xml:"IspCityList,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -153,56 +152,23 @@ func (s *DescribeSiteMonitorISPCityListResponseBodyIspCityList) Validate() error
 }
 
 type DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity struct {
-	Area_en    *string `json:"Area.en,omitempty" xml:"Area.en,omitempty"`
-	Area_zh_cN *string `json:"Area.zh_CN,omitempty" xml:"Area.zh_CN,omitempty"`
-	// The city ID.
-	//
-	// example:
-	//
-	// 4
-	City           *string `json:"City,omitempty" xml:"City,omitempty"`
-	CityName_en    *string `json:"CityName.en,omitempty" xml:"CityName.en,omitempty"`
-	CityName_zh_cN *string `json:"CityName.zh_CN,omitempty" xml:"CityName.zh_CN,omitempty"`
-	// The country name.
-	//
-	// > This parameter is valid only on the China site (aliyun.com).
-	//
-	// example:
-	//
-	// 629
-	Country       *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Country_en    *string `json:"Country.en,omitempty" xml:"Country.en,omitempty"`
-	Country_zh_cN *string `json:"Country.zh_CN,omitempty" xml:"Country.zh_CN,omitempty"`
-	// The IP address pool.
-	IPPool *DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool `json:"IPPool,omitempty" xml:"IPPool,omitempty" type:"Struct"`
-	// The number of IPv4 probes.
-	//
-	// example:
-	//
-	// 4
-	IPV4ProbeCount *string `json:"IPV4ProbeCount,omitempty" xml:"IPV4ProbeCount,omitempty"`
-	// The number of IPv6 probes.
-	//
-	// example:
-	//
-	// 3
-	IPV6ProbeCount *string `json:"IPV6ProbeCount,omitempty" xml:"IPV6ProbeCount,omitempty"`
-	// The carrier ID.
-	//
-	// example:
-	//
-	// 232
-	Isp           *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	IspName_en    *string `json:"IspName.en,omitempty" xml:"IspName.en,omitempty"`
-	IspName_zh_cN *string `json:"IspName.zh_CN,omitempty" xml:"IspName.zh_CN,omitempty"`
-	// The province name.
-	//
-	// example:
-	//
-	// 264
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Region_en    *string `json:"Region.en,omitempty" xml:"Region.en,omitempty"`
-	Region_zh_cN *string `json:"Region.zh_CN,omitempty" xml:"Region.zh_CN,omitempty"`
+	Area_en        *string                                                             `json:"Area.en,omitempty" xml:"Area.en,omitempty"`
+	Area_zh_cN     *string                                                             `json:"Area.zh_CN,omitempty" xml:"Area.zh_CN,omitempty"`
+	City           *string                                                             `json:"City,omitempty" xml:"City,omitempty"`
+	CityName_en    *string                                                             `json:"CityName.en,omitempty" xml:"CityName.en,omitempty"`
+	CityName_zh_cN *string                                                             `json:"CityName.zh_CN,omitempty" xml:"CityName.zh_CN,omitempty"`
+	Country        *string                                                             `json:"Country,omitempty" xml:"Country,omitempty"`
+	Country_en     *string                                                             `json:"Country.en,omitempty" xml:"Country.en,omitempty"`
+	Country_zh_cN  *string                                                             `json:"Country.zh_CN,omitempty" xml:"Country.zh_CN,omitempty"`
+	IPPool         *DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool `json:"IPPool,omitempty" xml:"IPPool,omitempty" type:"Struct"`
+	IPV4ProbeCount *string                                                             `json:"IPV4ProbeCount,omitempty" xml:"IPV4ProbeCount,omitempty"`
+	IPV6ProbeCount *string                                                             `json:"IPV6ProbeCount,omitempty" xml:"IPV6ProbeCount,omitempty"`
+	Isp            *string                                                             `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspName_en     *string                                                             `json:"IspName.en,omitempty" xml:"IspName.en,omitempty"`
+	IspName_zh_cN  *string                                                             `json:"IspName.zh_CN,omitempty" xml:"IspName.zh_CN,omitempty"`
+	Region         *string                                                             `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region_en      *string                                                             `json:"Region.en,omitempty" xml:"Region.en,omitempty"`
+	Region_zh_cN   *string                                                             `json:"Region.zh_CN,omitempty" xml:"Region.zh_CN,omitempty"`
 }
 
 func (s DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity) String() string {
