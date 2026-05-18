@@ -3513,6 +3513,458 @@ func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceL
 	return _result, _err
 }
 
+// Summary:
+//
+// 人脸活体验证
+//
+// @param request - FaceLivenessV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FaceLivenessV2Response
+func (client *Client) FaceLivenessV2WithOptions(request *FaceLivenessV2Request, runtime *dara.RuntimeOptions) (_result *FaceLivenessV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FacePictureFile) {
+		query["FacePictureFile"] = request.FacePictureFile
+	}
+
+	if !dara.IsNil(request.FacePictureUrl) {
+		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FacePictureBase64) {
+		body["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FaceLivenessV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FaceLivenessV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸活体验证
+//
+// @param request - FaceLivenessV2Request
+//
+// @return FaceLivenessV2Response
+func (client *Client) FaceLivenessV2(request *FaceLivenessV2Request) (_result *FaceLivenessV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FaceLivenessV2Response{}
+	_body, _err := client.FaceLivenessV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FaceLivenessV2Advance(request *FaceLivenessV2AdvanceRequest, runtime *dara.RuntimeOptions) (_result *FaceLivenessV2Response, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	faceLivenessV2Req := &FaceLivenessV2Request{}
+	openapiutil.Convert(request, faceLivenessV2Req)
+	if !dara.IsNil(request.FacePictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FacePictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		faceLivenessV2Req.FacePictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	faceLivenessV2Resp, _err := client.FaceLivenessV2WithOptions(faceLivenessV2Req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = faceLivenessV2Resp
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸活体验证
+//
+// @param request - FaceVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FaceVerifyIntlResponse
+func (client *Client) FaceVerifyIntlWithOptions(request *FaceVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceVerifyIntlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRegistration) {
+		query["AutoRegistration"] = request.AutoRegistration
+	}
+
+	if !dara.IsNil(request.FaceGroupCodes) {
+		query["FaceGroupCodes"] = request.FaceGroupCodes
+	}
+
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
+	}
+
+	if !dara.IsNil(request.FaceRegisterGroupCode) {
+		query["FaceRegisterGroupCode"] = request.FaceRegisterGroupCode
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ReturnFaces) {
+		query["ReturnFaces"] = request.ReturnFaces
+	}
+
+	if !dara.IsNil(request.SourceFacePictureFile) {
+		query["SourceFacePictureFile"] = request.SourceFacePictureFile
+	}
+
+	if !dara.IsNil(request.SourceFacePictureUrl) {
+		query["SourceFacePictureUrl"] = request.SourceFacePictureUrl
+	}
+
+	if !dara.IsNil(request.TargetFacePictureFile) {
+		query["TargetFacePictureFile"] = request.TargetFacePictureFile
+	}
+
+	if !dara.IsNil(request.TargetFacePictureUrl) {
+		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	if !dara.IsNil(request.VerifyModel) {
+		query["VerifyModel"] = request.VerifyModel
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SourceFacePicture) {
+		body["SourceFacePicture"] = request.SourceFacePicture
+	}
+
+	if !dara.IsNil(request.TargetFacePicture) {
+		body["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FaceVerifyIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FaceVerifyIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸活体验证
+//
+// @param request - FaceVerifyIntlRequest
+//
+// @return FaceVerifyIntlResponse
+func (client *Client) FaceVerifyIntl(request *FaceVerifyIntlRequest) (_result *FaceVerifyIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FaceVerifyIntlResponse{}
+	_body, _err := client.FaceVerifyIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FaceVerifyIntlAdvance(request *FaceVerifyIntlAdvanceRequest, runtime *dara.RuntimeOptions) (_result *FaceVerifyIntlResponse, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	faceVerifyIntlReq := &FaceVerifyIntlRequest{}
+	openapiutil.Convert(request, faceVerifyIntlReq)
+	if !dara.IsNil(request.SourceFacePictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.SourceFacePictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		faceVerifyIntlReq.SourceFacePictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	if !dara.IsNil(request.TargetFacePictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.TargetFacePictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		faceVerifyIntlReq.TargetFacePictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	faceVerifyIntlResp, _err := client.FaceVerifyIntlWithOptions(faceVerifyIntlReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = faceVerifyIntlResp
+	return _result, _err
+}
+
 // Deprecated: OpenAPI FraudResultCallBack is deprecated
 //
 // Summary:
