@@ -4819,6 +4819,50 @@ func (client *Client) OperateAppWithContext(ctx context.Context, request *Operat
 
 // Summary:
 //
+// 暂停云手机实例上正在运行的 Agent 任务。
+//
+// @param request - PauseAgentTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseAgentTaskResponse
+func (client *Client) PauseAgentTaskWithContext(ctx context.Context, request *PauseAgentTaskRequest, runtime *dara.RuntimeOptions) (_result *PauseAgentTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskIds) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseAgentTask"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseAgentTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Restarts one or more cloud phone instances.
 //
 // Description:
@@ -5251,6 +5295,54 @@ func (client *Client) ResetAndroidInstancesInGroupWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetAndroidInstancesInGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 继续云手机实例上正在运行的 Agent 任务。
+//
+// @param request - ResumeAgentTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeAgentTaskResponse
+func (client *Client) ResumeAgentTaskWithContext(ctx context.Context, request *ResumeAgentTaskRequest, runtime *dara.RuntimeOptions) (_result *ResumeAgentTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdditionalPrompt) {
+		query["AdditionalPrompt"] = request.AdditionalPrompt
+	}
+
+	if !dara.IsNil(request.TaskIds) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeAgentTask"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeAgentTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -1,3 +1,8 @@
+2026-05-19 Version: v4.23.0
+- Support API PauseAgentTask.
+- Support API ResumeAgentTask.
+
+
 2026-05-09 Version: v4.22.1
 - Update API DescribeSpec: add request parameters ChargeType.
 
