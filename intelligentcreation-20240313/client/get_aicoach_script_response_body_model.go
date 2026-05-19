@@ -61,6 +61,8 @@ type iGetAICoachScriptResponseBody interface {
 	GetOpeningRemarks() *string
 	SetOrderAckFlag(v bool) *GetAICoachScriptResponseBody
 	GetOrderAckFlag() *bool
+	SetPointCoveredFlag(v bool) *GetAICoachScriptResponseBody
+	GetPointCoveredFlag() *bool
 	SetPointDeductionRuleList(v []*GetAICoachScriptResponseBodyPointDeductionRuleList) *GetAICoachScriptResponseBody
 	GetPointDeductionRuleList() []*GetAICoachScriptResponseBodyPointDeductionRuleList
 	SetPoints(v []*GetAICoachScriptResponseBodyPoints) *GetAICoachScriptResponseBody
@@ -162,6 +164,7 @@ type GetAICoachScriptResponseBody struct {
 	//
 	// true
 	OrderAckFlag           *bool                                                 `json:"orderAckFlag,omitempty" xml:"orderAckFlag,omitempty"`
+	PointCoveredFlag       *bool                                                 `json:"pointCoveredFlag,omitempty" xml:"pointCoveredFlag,omitempty"`
 	PointDeductionRuleList []*GetAICoachScriptResponseBodyPointDeductionRuleList `json:"pointDeductionRuleList,omitempty" xml:"pointDeductionRuleList,omitempty" type:"Repeated"`
 	Points                 []*GetAICoachScriptResponseBodyPoints                 `json:"points,omitempty" xml:"points,omitempty" type:"Repeated"`
 	// example:
@@ -307,6 +310,10 @@ func (s *GetAICoachScriptResponseBody) GetOpeningRemarks() *string {
 
 func (s *GetAICoachScriptResponseBody) GetOrderAckFlag() *bool {
 	return s.OrderAckFlag
+}
+
+func (s *GetAICoachScriptResponseBody) GetPointCoveredFlag() *bool {
+	return s.PointCoveredFlag
 }
 
 func (s *GetAICoachScriptResponseBody) GetPointDeductionRuleList() []*GetAICoachScriptResponseBodyPointDeductionRuleList {
@@ -496,6 +503,11 @@ func (s *GetAICoachScriptResponseBody) SetOpeningRemarks(v string) *GetAICoachSc
 
 func (s *GetAICoachScriptResponseBody) SetOrderAckFlag(v bool) *GetAICoachScriptResponseBody {
 	s.OrderAckFlag = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetPointCoveredFlag(v bool) *GetAICoachScriptResponseBody {
+	s.PointCoveredFlag = &v
 	return s
 }
 
@@ -1174,6 +1186,7 @@ type GetAICoachScriptResponseBodyPoints struct {
 	//
 	// test
 	QuestionDescription *string `json:"questionDescription,omitempty" xml:"questionDescription,omitempty"`
+	ScriptPointId       *string `json:"scriptPointId,omitempty" xml:"scriptPointId,omitempty"`
 	// example:
 	//
 	// 1
@@ -1212,6 +1225,10 @@ func (s *GetAICoachScriptResponseBodyPoints) GetQuestionDescription() *string {
 	return s.QuestionDescription
 }
 
+func (s *GetAICoachScriptResponseBodyPoints) GetScriptPointId() *string {
+	return s.ScriptPointId
+}
+
 func (s *GetAICoachScriptResponseBodyPoints) GetSortNo() *int32 {
 	return s.SortNo
 }
@@ -1242,6 +1259,11 @@ func (s *GetAICoachScriptResponseBodyPoints) SetPointId(v string) *GetAICoachScr
 
 func (s *GetAICoachScriptResponseBodyPoints) SetQuestionDescription(v string) *GetAICoachScriptResponseBodyPoints {
 	s.QuestionDescription = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetScriptPointId(v string) *GetAICoachScriptResponseBodyPoints {
+	s.ScriptPointId = &v
 	return s
 }
 
