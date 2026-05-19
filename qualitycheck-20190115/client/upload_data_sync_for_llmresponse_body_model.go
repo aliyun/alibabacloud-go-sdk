@@ -222,7 +222,6 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRules) Validate() error {
 type UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo struct {
 	ConditionInfo *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo `json:"ConditionInfo,omitempty" xml:"ConditionInfo,omitempty" type:"Struct"`
 	Hit           *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit           `json:"Hit,omitempty" xml:"Hit,omitempty" type:"Struct"`
-	LlmResponse   *string                                                                      `json:"LlmResponse,omitempty" xml:"LlmResponse,omitempty"`
 	Rid           *string                                                                      `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	Tid           *string                                                                      `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -243,10 +242,6 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetHit(
 	return s.Hit
 }
 
-func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetLlmResponse() *string {
-	return s.LlmResponse
-}
-
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetRid() *string {
 	return s.Rid
 }
@@ -262,11 +257,6 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetCond
 
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetHit(v *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo {
 	s.Hit = v
-	return s
-}
-
-func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetLlmResponse(v string) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo {
-	s.LlmResponse = &v
 	return s
 }
 
