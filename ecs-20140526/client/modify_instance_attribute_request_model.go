@@ -442,6 +442,10 @@ type ModifyInstanceAttributeRequestCpuOptions struct {
 	//
 	// DiscreteCoreToHTMapping
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// example:
+	//
+	// enabled
+	NestedVirtualization *string `json:"NestedVirtualization,omitempty" xml:"NestedVirtualization,omitempty"`
 }
 
 func (s ModifyInstanceAttributeRequestCpuOptions) String() string {
@@ -464,6 +468,10 @@ func (s *ModifyInstanceAttributeRequestCpuOptions) GetTopologyType() *string {
 	return s.TopologyType
 }
 
+func (s *ModifyInstanceAttributeRequestCpuOptions) GetNestedVirtualization() *string {
+	return s.NestedVirtualization
+}
+
 func (s *ModifyInstanceAttributeRequestCpuOptions) SetCore(v int32) *ModifyInstanceAttributeRequestCpuOptions {
 	s.Core = &v
 	return s
@@ -476,6 +484,11 @@ func (s *ModifyInstanceAttributeRequestCpuOptions) SetThreadsPerCore(v int32) *M
 
 func (s *ModifyInstanceAttributeRequestCpuOptions) SetTopologyType(v string) *ModifyInstanceAttributeRequestCpuOptions {
 	s.TopologyType = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequestCpuOptions) SetNestedVirtualization(v string) *ModifyInstanceAttributeRequestCpuOptions {
+	s.NestedVirtualization = &v
 	return s
 }
 

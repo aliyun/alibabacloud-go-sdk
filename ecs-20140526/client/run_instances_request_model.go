@@ -1698,6 +1698,10 @@ type RunInstancesRequestCpuOptions struct {
 	//
 	// DiscreteCoreToHTMapping
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// example:
+	//
+	// enabled
+	NestedVirtualization *string `json:"NestedVirtualization,omitempty" xml:"NestedVirtualization,omitempty"`
 }
 
 func (s RunInstancesRequestCpuOptions) String() string {
@@ -1724,6 +1728,10 @@ func (s *RunInstancesRequestCpuOptions) GetTopologyType() *string {
 	return s.TopologyType
 }
 
+func (s *RunInstancesRequestCpuOptions) GetNestedVirtualization() *string {
+	return s.NestedVirtualization
+}
+
 func (s *RunInstancesRequestCpuOptions) SetCore(v int32) *RunInstancesRequestCpuOptions {
 	s.Core = &v
 	return s
@@ -1741,6 +1749,11 @@ func (s *RunInstancesRequestCpuOptions) SetThreadsPerCore(v int32) *RunInstances
 
 func (s *RunInstancesRequestCpuOptions) SetTopologyType(v string) *RunInstancesRequestCpuOptions {
 	s.TopologyType = &v
+	return s
+}
+
+func (s *RunInstancesRequestCpuOptions) SetNestedVirtualization(v string) *RunInstancesRequestCpuOptions {
+	s.NestedVirtualization = &v
 	return s
 }
 

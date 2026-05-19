@@ -9968,7 +9968,7 @@ func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcRe
 
 // Summary:
 //
-// 创建Vsc
+// # Create a virtual storage channel for an ECS instance
 //
 // @param request - CreateVscRequest
 //
@@ -10060,7 +10060,7 @@ func (client *Client) CreateVscWithOptions(request *CreateVscRequest, runtime *d
 
 // Summary:
 //
-// 创建Vsc
+// # Create a virtual storage channel for an ECS instance
 //
 // @param request - CreateVscRequest
 //
@@ -13641,7 +13641,7 @@ func (client *Client) DeleteVpc(request *DeleteVpcRequest) (_result *DeleteVpcRe
 
 // Summary:
 //
-// 删除虚拟存储通道
+// Delete a Virtual Storage Channel (VSC)
 //
 // @param request - DeleteVscRequest
 //
@@ -13713,7 +13713,7 @@ func (client *Client) DeleteVscWithOptions(request *DeleteVscRequest, runtime *d
 
 // Summary:
 //
-// 删除虚拟存储通道
+// Delete a Virtual Storage Channel (VSC)
 //
 // @param request - DeleteVscRequest
 //
@@ -19707,7 +19707,7 @@ func (client *Client) DescribeInstanceMaintenanceAttributes(request *DescribeIns
 
 // Summary:
 //
-// Queries the pricing information about newly attached subscription data disks or about the new instance types when you upgrade the configurations of unexpired subscription Elastic Compute Service (ECS) instances.
+// Queries the pricing info about the target instance types and newly added subscription data disks when you upgrade unexpired subscription ECS instances.
 //
 // Description:
 //
@@ -19815,7 +19815,7 @@ func (client *Client) DescribeInstanceModificationPriceWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the pricing information about newly attached subscription data disks or about the new instance types when you upgrade the configurations of unexpired subscription Elastic Compute Service (ECS) instances.
+// Queries the pricing info about the target instance types and newly added subscription data disks when you upgrade unexpired subscription ECS instances.
 //
 // Description:
 //
@@ -27989,7 +27989,7 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 
 // Summary:
 //
-// 查询虚拟存储通道
+// Query virtual storage channels (VSC). Support filtering by VscId, instance, Status, and label.
 //
 // @param request - DescribeVscsRequest
 //
@@ -28077,7 +28077,7 @@ func (client *Client) DescribeVscsWithOptions(request *DescribeVscsRequest, runt
 
 // Summary:
 //
-// 查询虚拟存储通道
+// Query virtual storage channels (VSC). Support filtering by VscId, instance, Status, and label.
 //
 // @param request - DescribeVscsRequest
 //

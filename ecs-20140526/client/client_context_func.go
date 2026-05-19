@@ -7765,7 +7765,7 @@ func (client *Client) CreateVpcWithContext(ctx context.Context, request *CreateV
 
 // Summary:
 //
-// 创建Vsc
+// # Create a virtual storage channel for an ECS instance
 //
 // @param request - CreateVscRequest
 //
@@ -10547,7 +10547,7 @@ func (client *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteV
 
 // Summary:
 //
-// 删除虚拟存储通道
+// Delete a Virtual Storage Channel (VSC)
 //
 // @param request - DeleteVscRequest
 //
@@ -15379,7 +15379,7 @@ func (client *Client) DescribeInstanceMaintenanceAttributesWithContext(ctx conte
 
 // Summary:
 //
-// Queries the pricing information about newly attached subscription data disks or about the new instance types when you upgrade the configurations of unexpired subscription Elastic Compute Service (ECS) instances.
+// Queries the pricing info about the target instance types and newly added subscription data disks when you upgrade unexpired subscription ECS instances.
 //
 // Description:
 //
@@ -21971,7 +21971,7 @@ func (client *Client) DescribeVpcsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// 查询虚拟存储通道
+// Query virtual storage channels (VSC). Support filtering by VscId, instance, Status, and label.
 //
 // @param request - DescribeVscsRequest
 //
