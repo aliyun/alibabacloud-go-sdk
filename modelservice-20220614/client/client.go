@@ -142,7 +142,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SceneType) {
-		query["SceneType"] = request.SceneType
+		query["scene_type"] = request.SceneType
 	}
 
 	req := &openapiutil.OpenApiRequest{

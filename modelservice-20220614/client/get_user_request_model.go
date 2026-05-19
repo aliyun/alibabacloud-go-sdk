@@ -16,8 +16,8 @@ type iGetUserRequest interface {
 type GetUserRequest struct {
 	// example:
 	//
-	// image_label
-	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	// sales_pick
+	SceneType *string `json:"scene_type,omitempty" xml:"scene_type,omitempty"`
 }
 
 func (s GetUserRequest) String() string {
