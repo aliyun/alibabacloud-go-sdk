@@ -895,6 +895,76 @@ func (client *Client) AddContainerPluginRule(request *AddContainerPluginRuleRequ
 
 // Summary:
 //
+// 创建文件防护规则
+//
+// @param request - AddFileProtectBindMachineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddFileProtectBindMachineResponse
+func (client *Client) AddFileProtectBindMachineWithOptions(request *AddFileProtectBindMachineRequest, runtime *dara.RuntimeOptions) (_result *AddFileProtectBindMachineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertUuids) {
+		query["AlertUuids"] = request.AlertUuids
+	}
+
+	if !dara.IsNil(request.BlockUuids) {
+		query["BlockUuids"] = request.BlockUuids
+	}
+
+	if !dara.IsNil(request.NoneUuids) {
+		query["NoneUuids"] = request.NoneUuids
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddFileProtectBindMachine"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddFileProtectBindMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件防护规则
+//
+// @param request - AddFileProtectBindMachineRequest
+//
+// @return AddFileProtectBindMachineResponse
+func (client *Client) AddFileProtectBindMachine(request *AddFileProtectBindMachineRequest) (_result *AddFileProtectBindMachineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddFileProtectBindMachineResponse{}
+	_body, _err := client.AddFileProtectBindMachineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an IDC probe to add assets in a data center to Security Center and manage the assets by using the Security Center console.
 //
 // Description:
@@ -4820,6 +4890,114 @@ func (client *Client) CreateFileDetectUploadUrl(request *CreateFileDetectUploadU
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateFileDetectUploadUrlResponse{}
 	_body, _err := client.CreateFileDetectUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件防护规则
+//
+// @param request - CreateFileProtectClientRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileProtectClientRuleResponse
+func (client *Client) CreateFileProtectClientRuleWithOptions(request *CreateFileProtectClientRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateFileProtectClientRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevel) {
+		query["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.ExcludeUsers) {
+		query["ExcludeUsers"] = request.ExcludeUsers
+	}
+
+	if !dara.IsNil(request.FileOps) {
+		query["FileOps"] = request.FileOps
+	}
+
+	if !dara.IsNil(request.FilePaths) {
+		query["FilePaths"] = request.FilePaths
+	}
+
+	if !dara.IsNil(request.FileTypes) {
+		query["FileTypes"] = request.FileTypes
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ProcPaths) {
+		query["ProcPaths"] = request.ProcPaths
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.SwitchId) {
+		query["SwitchId"] = request.SwitchId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFileProtectClientRule"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFileProtectClientRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件防护规则
+//
+// @param request - CreateFileProtectClientRuleRequest
+//
+// @return CreateFileProtectClientRuleResponse
+func (client *Client) CreateFileProtectClientRule(request *CreateFileProtectClientRuleRequest) (_result *CreateFileProtectClientRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateFileProtectClientRuleResponse{}
+	_body, _err := client.CreateFileProtectClientRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9218,6 +9396,92 @@ func (client *Client) DeleteDingTalk(request *DeleteDingTalkRequest) (_result *D
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDingTalkResponse{}
 	_body, _err := client.DeleteDingTalkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文件防护规则
+//
+// @param request - DeleteFileProtectClientRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFileProtectClientRuleResponse
+func (client *Client) DeleteFileProtectClientRuleWithOptions(request *DeleteFileProtectClientRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteFileProtectClientRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevel) {
+		query["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.ExcludeIdList) {
+		query["ExcludeIdList"] = request.ExcludeIdList
+	}
+
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SelectAll) {
+		query["SelectAll"] = request.SelectAll
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFileProtectClientRule"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFileProtectClientRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文件防护规则
+//
+// @param request - DeleteFileProtectClientRuleRequest
+//
+// @return DeleteFileProtectClientRuleResponse
+func (client *Client) DeleteFileProtectClientRule(request *DeleteFileProtectClientRuleRequest) (_result *DeleteFileProtectClientRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteFileProtectClientRuleResponse{}
+	_body, _err := client.DeleteFileProtectClientRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40229,6 +40493,255 @@ func (client *Client) GetFileDetectResult(request *GetFileDetectResultRequest) (
 
 // Summary:
 //
+// 获取文件防护事件
+//
+// @param request - GetFileProtectClientEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileProtectClientEventResponse
+func (client *Client) GetFileProtectClientEventWithOptions(request *GetFileProtectClientEventRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectClientEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFileProtectClientEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFileProtectClientEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护事件
+//
+// @param request - GetFileProtectClientEventRequest
+//
+// @return GetFileProtectClientEventResponse
+func (client *Client) GetFileProtectClientEvent(request *GetFileProtectClientEventRequest) (_result *GetFileProtectClientEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFileProtectClientEventResponse{}
+	_body, _err := client.GetFileProtectClientEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护事件大盘
+//
+// @param request - GetFileProtectClientEventDashboardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileProtectClientEventDashboardResponse
+func (client *Client) GetFileProtectClientEventDashboardWithOptions(request *GetFileProtectClientEventDashboardRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectClientEventDashboardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFileProtectClientEventDashboard"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFileProtectClientEventDashboardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护事件大盘
+//
+// @param request - GetFileProtectClientEventDashboardRequest
+//
+// @return GetFileProtectClientEventDashboardResponse
+func (client *Client) GetFileProtectClientEventDashboard(request *GetFileProtectClientEventDashboardRequest) (_result *GetFileProtectClientEventDashboardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFileProtectClientEventDashboardResponse{}
+	_body, _err := client.GetFileProtectClientEventDashboardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件保护规则
+//
+// @param request - GetFileProtectClientRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileProtectClientRuleResponse
+func (client *Client) GetFileProtectClientRuleWithOptions(request *GetFileProtectClientRuleRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectClientRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFileProtectClientRule"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFileProtectClientRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件保护规则
+//
+// @param request - GetFileProtectClientRuleRequest
+//
+// @return GetFileProtectClientRuleResponse
+func (client *Client) GetFileProtectClientRule(request *GetFileProtectClientRuleRequest) (_result *GetFileProtectClientRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFileProtectClientRuleResponse{}
+	_body, _err := client.GetFileProtectClientRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护规则大盘
+//
+// @param request - GetFileProtectClientRuleDashboardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileProtectClientRuleDashboardResponse
+func (client *Client) GetFileProtectClientRuleDashboardWithOptions(request *GetFileProtectClientRuleDashboardRequest, runtime *dara.RuntimeOptions) (_result *GetFileProtectClientRuleDashboardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFileProtectClientRuleDashboard"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFileProtectClientRuleDashboardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护规则大盘
+//
+// @param request - GetFileProtectClientRuleDashboardRequest
+//
+// @return GetFileProtectClientRuleDashboardResponse
+func (client *Client) GetFileProtectClientRuleDashboard(request *GetFileProtectClientRuleDashboardRequest) (_result *GetFileProtectClientRuleDashboardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFileProtectClientRuleDashboardResponse{}
+	_body, _err := client.GetFileProtectClientRuleDashboardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about the core file monitoring feature, including the number of effective rules and the installation status of the Security Center agent on servers.
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49367,6 +49880,259 @@ func (client *Client) ListDockerhubImage(request *ListDockerhubImageRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDockerhubImageResponse{}
 	_body, _err := client.ListDockerhubImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取绑定防篡改机器列表
+//
+// @param request - ListFileProtectBindMachineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileProtectBindMachineResponse
+func (client *Client) ListFileProtectBindMachineWithOptions(request *ListFileProtectBindMachineRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectBindMachineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFileProtectBindMachine"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFileProtectBindMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取绑定防篡改机器列表
+//
+// @param request - ListFileProtectBindMachineRequest
+//
+// @return ListFileProtectBindMachineResponse
+func (client *Client) ListFileProtectBindMachine(request *ListFileProtectBindMachineRequest) (_result *ListFileProtectBindMachineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFileProtectBindMachineResponse{}
+	_body, _err := client.ListFileProtectBindMachineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护事件列表
+//
+// @param request - ListFileProtectClientEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileProtectClientEventResponse
+func (client *Client) ListFileProtectClientEventWithOptions(request *ListFileProtectClientEventRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectClientEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFileProtectClientEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFileProtectClientEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护事件列表
+//
+// @param request - ListFileProtectClientEventRequest
+//
+// @return ListFileProtectClientEventResponse
+func (client *Client) ListFileProtectClientEvent(request *ListFileProtectClientEventRequest) (_result *ListFileProtectClientEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFileProtectClientEventResponse{}
+	_body, _err := client.ListFileProtectClientEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护规则列表
+//
+// @param request - ListFileProtectClientRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileProtectClientRuleResponse
+func (client *Client) ListFileProtectClientRuleWithOptions(request *ListFileProtectClientRuleRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectClientRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevel) {
+		query["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFileProtectClientRule"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFileProtectClientRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护规则列表
+//
+// @param request - ListFileProtectClientRuleRequest
+//
+// @return ListFileProtectClientRuleResponse
+func (client *Client) ListFileProtectClientRule(request *ListFileProtectClientRuleRequest) (_result *ListFileProtectClientRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFileProtectClientRuleResponse{}
+	_body, _err := client.ListFileProtectClientRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护规则所有文件类型
+//
+// @param request - ListFileProtectClientRuleFileTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileProtectClientRuleFileTypeResponse
+func (client *Client) ListFileProtectClientRuleFileTypeWithOptions(request *ListFileProtectClientRuleFileTypeRequest, runtime *dara.RuntimeOptions) (_result *ListFileProtectClientRuleFileTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFileProtectClientRuleFileType"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFileProtectClientRuleFileTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件防护规则所有文件类型
+//
+// @param request - ListFileProtectClientRuleFileTypeRequest
+//
+// @return ListFileProtectClientRuleFileTypeResponse
+func (client *Client) ListFileProtectClientRuleFileType(request *ListFileProtectClientRuleFileTypeRequest) (_result *ListFileProtectClientRuleFileTypeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFileProtectClientRuleFileTypeResponse{}
+	_body, _err := client.ListFileProtectClientRuleFileTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66743,6 +67509,324 @@ func (client *Client) UpdateCustomizeReportStatus(request *UpdateCustomizeReport
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateCustomizeReportStatusResponse{}
 	_body, _err := client.UpdateCustomizeReportStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件防护事件状态
+//
+// @param request - UpdateFileProtectClientEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileProtectClientEventResponse
+func (client *Client) UpdateFileProtectClientEventWithOptions(request *UpdateFileProtectClientEventRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileProtectClientEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevels) {
+		query["AlertLevels"] = request.AlertLevels
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.ExcludeIdList) {
+		query["ExcludeIdList"] = request.ExcludeIdList
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.InternetIp) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	if !dara.IsNil(request.IntranetIp) {
+		query["IntranetIp"] = request.IntranetIp
+	}
+
+	if !dara.IsNil(request.NewStatus) {
+		query["NewStatus"] = request.NewStatus
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.ProcPath) {
+		query["ProcPath"] = request.ProcPath
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SelectAll) {
+		query["SelectAll"] = request.SelectAll
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFileProtectClientEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFileProtectClientEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件防护事件状态
+//
+// @param request - UpdateFileProtectClientEventRequest
+//
+// @return UpdateFileProtectClientEventResponse
+func (client *Client) UpdateFileProtectClientEvent(request *UpdateFileProtectClientEventRequest) (_result *UpdateFileProtectClientEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateFileProtectClientEventResponse{}
+	_body, _err := client.UpdateFileProtectClientEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件防护规则
+//
+// @param request - UpdateFileProtectClientRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileProtectClientRuleResponse
+func (client *Client) UpdateFileProtectClientRuleWithOptions(request *UpdateFileProtectClientRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileProtectClientRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevel) {
+		query["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.ExcludeUsers) {
+		query["ExcludeUsers"] = request.ExcludeUsers
+	}
+
+	if !dara.IsNil(request.FileOps) {
+		query["FileOps"] = request.FileOps
+	}
+
+	if !dara.IsNil(request.FilePaths) {
+		query["FilePaths"] = request.FilePaths
+	}
+
+	if !dara.IsNil(request.FileTypes) {
+		query["FileTypes"] = request.FileTypes
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProcPaths) {
+		query["ProcPaths"] = request.ProcPaths
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFileProtectClientRule"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFileProtectClientRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件防护规则
+//
+// @param request - UpdateFileProtectClientRuleRequest
+//
+// @return UpdateFileProtectClientRuleResponse
+func (client *Client) UpdateFileProtectClientRule(request *UpdateFileProtectClientRuleRequest) (_result *UpdateFileProtectClientRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateFileProtectClientRuleResponse{}
+	_body, _err := client.UpdateFileProtectClientRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件防护规则状态
+//
+// @param request - UpdateFileProtectClientRuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileProtectClientRuleStatusResponse
+func (client *Client) UpdateFileProtectClientRuleStatusWithOptions(request *UpdateFileProtectClientRuleStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateFileProtectClientRuleStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertLevel) {
+		query["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.ExcludeIdList) {
+		query["ExcludeIdList"] = request.ExcludeIdList
+	}
+
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SelectAll) {
+		query["SelectAll"] = request.SelectAll
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFileProtectClientRuleStatus"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFileProtectClientRuleStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件防护规则状态
+//
+// @param request - UpdateFileProtectClientRuleStatusRequest
+//
+// @return UpdateFileProtectClientRuleStatusResponse
+func (client *Client) UpdateFileProtectClientRuleStatus(request *UpdateFileProtectClientRuleStatusRequest) (_result *UpdateFileProtectClientRuleStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateFileProtectClientRuleStatusResponse{}
+	_body, _err := client.UpdateFileProtectClientRuleStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
