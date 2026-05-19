@@ -17,6 +17,8 @@ type iCreateEmbodiedAIPlatformRequest interface {
 	GetPlatformName() *string
 	SetRayConfig(v *CreateEmbodiedAIPlatformRequestRayConfig) *CreateEmbodiedAIPlatformRequest
 	GetRayConfig() *CreateEmbodiedAIPlatformRequestRayConfig
+	SetRayTrainConfig(v *CreateEmbodiedAIPlatformRequestRayTrainConfig) *CreateEmbodiedAIPlatformRequest
+	GetRayTrainConfig() *CreateEmbodiedAIPlatformRequestRayTrainConfig
 	SetRegionId(v string) *CreateEmbodiedAIPlatformRequest
 	GetRegionId() *string
 	SetWebserverSpecName(v string) *CreateEmbodiedAIPlatformRequest
@@ -30,14 +32,18 @@ type CreateEmbodiedAIPlatformRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DeviceCount *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// example:
+	//
+	// 3
+	DeviceCount *int32 `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// platform1
-	PlatformName *string                                   `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	RayConfig    *CreateEmbodiedAIPlatformRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	PlatformName   *string                                        `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	RayConfig      *CreateEmbodiedAIPlatformRequestRayConfig      `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	RayTrainConfig *CreateEmbodiedAIPlatformRequestRayTrainConfig `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -74,6 +80,10 @@ func (s *CreateEmbodiedAIPlatformRequest) GetRayConfig() *CreateEmbodiedAIPlatfo
 	return s.RayConfig
 }
 
+func (s *CreateEmbodiedAIPlatformRequest) GetRayTrainConfig() *CreateEmbodiedAIPlatformRequestRayTrainConfig {
+	return s.RayTrainConfig
+}
+
 func (s *CreateEmbodiedAIPlatformRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -102,6 +112,11 @@ func (s *CreateEmbodiedAIPlatformRequest) SetRayConfig(v *CreateEmbodiedAIPlatfo
 	return s
 }
 
+func (s *CreateEmbodiedAIPlatformRequest) SetRayTrainConfig(v *CreateEmbodiedAIPlatformRequestRayTrainConfig) *CreateEmbodiedAIPlatformRequest {
+	s.RayTrainConfig = v
+	return s
+}
+
 func (s *CreateEmbodiedAIPlatformRequest) SetRegionId(v string) *CreateEmbodiedAIPlatformRequest {
 	s.RegionId = &v
 	return s
@@ -115,6 +130,11 @@ func (s *CreateEmbodiedAIPlatformRequest) SetWebserverSpecName(v string) *Create
 func (s *CreateEmbodiedAIPlatformRequest) Validate() error {
 	if s.RayConfig != nil {
 		if err := s.RayConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RayTrainConfig != nil {
+		if err := s.RayTrainConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -284,5 +304,199 @@ func (s *CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups) SetWorkerSpecType
 }
 
 func (s *CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEmbodiedAIPlatformRequestRayTrainConfig struct {
+	CpuAcu         *int64                                                       `json:"CpuAcu,omitempty" xml:"CpuAcu,omitempty"`
+	GpuSpecs       []*CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs     `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
+	TerminalConfig *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig `json:"TerminalConfig,omitempty" xml:"TerminalConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) GetCpuAcu() *int64 {
+	return s.CpuAcu
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) GetGpuSpecs() []*CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs {
+	return s.GpuSpecs
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) GetTerminalConfig() *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig {
+	return s.TerminalConfig
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) SetCpuAcu(v int64) *CreateEmbodiedAIPlatformRequestRayTrainConfig {
+	s.CpuAcu = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) SetGpuSpecs(v []*CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) *CreateEmbodiedAIPlatformRequestRayTrainConfig {
+	s.GpuSpecs = v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) SetTerminalConfig(v *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) *CreateEmbodiedAIPlatformRequestRayTrainConfig {
+	s.TerminalConfig = v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfig) Validate() error {
+	if s.GpuSpecs != nil {
+		for _, item := range s.GpuSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TerminalConfig != nil {
+		if err := s.TerminalConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs struct {
+	// example:
+	//
+	// "1"
+	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// ADB.MLGrand.4
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) GetAllocateUnit() *string {
+	return s.AllocateUnit
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) GetCount() *int64 {
+	return s.Count
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) GetSpecName() *string {
+	return s.SpecName
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) SetAllocateUnit(v string) *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs {
+	s.AllocateUnit = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) SetCount(v int64) *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs {
+	s.Count = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) SetSpecName(v string) *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs {
+	s.SpecName = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig struct {
+	AcrConfig *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig `json:"AcrConfig,omitempty" xml:"AcrConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) GetAcrConfig() *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig {
+	return s.AcrConfig
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) SetAcrConfig(v *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig {
+	s.AcrConfig = v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig) Validate() error {
+	if s.AcrConfig != nil {
+		if err := s.AcrConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig struct {
+	// example:
+	//
+	// cri-***
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// example:
+	//
+	// example-vpc.example-region.cr.aliyuncs.com
+	Registry *string `json:"Registry,omitempty" xml:"Registry,omitempty"`
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) GetNamespaces() []*string {
+	return s.Namespaces
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) GetRegistry() *string {
+	return s.Registry
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) SetInstanceId(v string) *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) SetNamespaces(v []*string) *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig {
+	s.Namespaces = v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) SetRegistry(v string) *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig {
+	s.Registry = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig) Validate() error {
 	return dara.Validate(s)
 }

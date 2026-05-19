@@ -158,6 +158,10 @@ func (client *Client) CreateEmbodiedAIPlatformWithOptions(tmpReq *CreateEmbodied
 		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, dara.String("RayConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RayTrainConfig) {
+		request.RayTrainConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayTrainConfig, dara.String("RayTrainConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
@@ -173,6 +177,10 @@ func (client *Client) CreateEmbodiedAIPlatformWithOptions(tmpReq *CreateEmbodied
 
 	if !dara.IsNil(request.RayConfigShrink) {
 		query["RayConfig"] = request.RayConfigShrink
+	}
+
+	if !dara.IsNil(request.RayTrainConfigShrink) {
+		query["RayTrainConfig"] = request.RayTrainConfigShrink
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -871,6 +879,10 @@ func (client *Client) ModifyEmbodiedAIPlatformWithOptions(tmpReq *ModifyEmbodied
 		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, dara.String("RayConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RayTrainConfig) {
+		request.RayTrainConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayTrainConfig, dara.String("RayTrainConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
@@ -886,6 +898,10 @@ func (client *Client) ModifyEmbodiedAIPlatformWithOptions(tmpReq *ModifyEmbodied
 
 	if !dara.IsNil(request.RayConfigShrink) {
 		query["RayConfig"] = request.RayConfigShrink
+	}
+
+	if !dara.IsNil(request.RayTrainConfigShrink) {
+		query["RayTrainConfig"] = request.RayTrainConfigShrink
 	}
 
 	if !dara.IsNil(request.RegionId) {

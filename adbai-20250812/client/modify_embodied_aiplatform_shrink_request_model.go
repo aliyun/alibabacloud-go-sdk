@@ -17,6 +17,8 @@ type iModifyEmbodiedAIPlatformShrinkRequest interface {
 	GetPlatformName() *string
 	SetRayConfigShrink(v string) *ModifyEmbodiedAIPlatformShrinkRequest
 	GetRayConfigShrink() *string
+	SetRayTrainConfigShrink(v string) *ModifyEmbodiedAIPlatformShrinkRequest
+	GetRayTrainConfigShrink() *string
 	SetRegionId(v string) *ModifyEmbodiedAIPlatformShrinkRequest
 	GetRegionId() *string
 	SetWebserverSpecName(v string) *ModifyEmbodiedAIPlatformShrinkRequest
@@ -36,8 +38,9 @@ type ModifyEmbodiedAIPlatformShrinkRequest struct {
 	// example:
 	//
 	// eap_platform
-	PlatformName    *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	PlatformName         *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	RayConfigShrink      *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	RayTrainConfigShrink *string `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -74,6 +77,10 @@ func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetRayConfigShrink() *string {
 	return s.RayConfigShrink
 }
 
+func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetRayTrainConfigShrink() *string {
+	return s.RayTrainConfigShrink
+}
+
 func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -99,6 +106,11 @@ func (s *ModifyEmbodiedAIPlatformShrinkRequest) SetPlatformName(v string) *Modif
 
 func (s *ModifyEmbodiedAIPlatformShrinkRequest) SetRayConfigShrink(v string) *ModifyEmbodiedAIPlatformShrinkRequest {
 	s.RayConfigShrink = &v
+	return s
+}
+
+func (s *ModifyEmbodiedAIPlatformShrinkRequest) SetRayTrainConfigShrink(v string) *ModifyEmbodiedAIPlatformShrinkRequest {
+	s.RayTrainConfigShrink = &v
 	return s
 }
 

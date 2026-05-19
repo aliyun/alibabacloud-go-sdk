@@ -17,6 +17,8 @@ type iCreateEmbodiedAIPlatformShrinkRequest interface {
 	GetPlatformName() *string
 	SetRayConfigShrink(v string) *CreateEmbodiedAIPlatformShrinkRequest
 	GetRayConfigShrink() *string
+	SetRayTrainConfigShrink(v string) *CreateEmbodiedAIPlatformShrinkRequest
+	GetRayTrainConfigShrink() *string
 	SetRegionId(v string) *CreateEmbodiedAIPlatformShrinkRequest
 	GetRegionId() *string
 	SetWebserverSpecName(v string) *CreateEmbodiedAIPlatformShrinkRequest
@@ -30,14 +32,18 @@ type CreateEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DeviceCount *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// example:
+	//
+	// 3
+	DeviceCount *int32 `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// platform1
-	PlatformName    *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	PlatformName         *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	RayConfigShrink      *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	RayTrainConfigShrink *string `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -74,6 +80,10 @@ func (s *CreateEmbodiedAIPlatformShrinkRequest) GetRayConfigShrink() *string {
 	return s.RayConfigShrink
 }
 
+func (s *CreateEmbodiedAIPlatformShrinkRequest) GetRayTrainConfigShrink() *string {
+	return s.RayTrainConfigShrink
+}
+
 func (s *CreateEmbodiedAIPlatformShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -99,6 +109,11 @@ func (s *CreateEmbodiedAIPlatformShrinkRequest) SetPlatformName(v string) *Creat
 
 func (s *CreateEmbodiedAIPlatformShrinkRequest) SetRayConfigShrink(v string) *CreateEmbodiedAIPlatformShrinkRequest {
 	s.RayConfigShrink = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformShrinkRequest) SetRayTrainConfigShrink(v string) *CreateEmbodiedAIPlatformShrinkRequest {
+	s.RayTrainConfigShrink = &v
 	return s
 }
 
