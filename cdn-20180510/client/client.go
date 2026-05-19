@@ -2937,6 +2937,72 @@ func (client *Client) DescribeCdnDeliverList(request *DescribeCdnDeliverListRequ
 
 // Summary:
 //
+// Queries the details of a diagnostic report.
+//
+// @param request - DescribeCdnDiagnoseReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCdnDiagnoseReportResponse
+func (client *Client) DescribeCdnDiagnoseReportWithOptions(request *DescribeCdnDiagnoseReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnDiagnoseReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCdnDiagnoseReport"),
+		Version:     dara.String("2018-05-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCdnDiagnoseReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a diagnostic report.
+//
+// @param request - DescribeCdnDiagnoseReportRequest
+//
+// @return DescribeCdnDiagnoseReportResponse
+func (client *Client) DescribeCdnDiagnoseReport(request *DescribeCdnDiagnoseReportRequest) (_result *DescribeCdnDiagnoseReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCdnDiagnoseReportResponse{}
+	_body, _err := client.DescribeCdnDiagnoseReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 天翼定制化小时日志下载接口
 //
 // @param request - DescribeCdnDomainAtoaLogsRequest
@@ -4511,6 +4577,100 @@ func (client *Client) DescribeCdnSubList() (_result *DescribeCdnSubListResponse,
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeCdnSubListResponse{}
 	_body, _err := client.DescribeCdnSubListWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of diagnostic tasks.
+//
+// @param request - DescribeCdnTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCdnTaskListResponse
+func (client *Client) DescribeCdnTaskListWithOptions(request *DescribeCdnTaskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdnTaskListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientIp) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !dara.IsNil(request.DiagnoseId) {
+		query["DiagnoseId"] = request.DiagnoseId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCdnTaskList"),
+		Version:     dara.String("2018-05-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCdnTaskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of diagnostic tasks.
+//
+// @param request - DescribeCdnTaskListRequest
+//
+// @return DescribeCdnTaskListResponse
+func (client *Client) DescribeCdnTaskList(request *DescribeCdnTaskListRequest) (_result *DescribeCdnTaskListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCdnTaskListResponse{}
+	_body, _err := client.DescribeCdnTaskListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
