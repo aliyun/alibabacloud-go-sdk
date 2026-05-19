@@ -1422,6 +1422,10 @@ func (client *Client) DescribeMOTokenUsageDetailWithContext(ctx context.Context,
 		query["ConsumerName"] = request.ConsumerName
 	}
 
+	if !dara.IsNil(request.Cursor) {
+		query["Cursor"] = request.Cursor
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}

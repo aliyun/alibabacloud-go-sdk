@@ -13,6 +13,8 @@ type iDescribeMOTokenUsageDetailRequest interface {
 	GetApiKey() *string
 	SetConsumerName(v string) *DescribeMOTokenUsageDetailRequest
 	GetConsumerName() *string
+	SetCursor(v string) *DescribeMOTokenUsageDetailRequest
+	GetCursor() *string
 	SetEndTime(v string) *DescribeMOTokenUsageDetailRequest
 	GetEndTime() *string
 	SetInstanceId(v string) *DescribeMOTokenUsageDetailRequest
@@ -35,6 +37,10 @@ type DescribeMOTokenUsageDetailRequest struct {
 	//
 	// 16******4_rds_copilot****_public_cn-4****02
 	ConsumerName *string `json:"ConsumerName,omitempty" xml:"ConsumerName,omitempty"`
+	// example:
+	//
+	// eyJpZCI6MTIzNDUsInRzIjoiMjAyNi0wNC0wOFQwMDowMDowMFoifQ==
+	Cursor *string `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
 	// example:
 	//
 	// 2025-12-13T16:00:00Z
@@ -83,6 +89,10 @@ func (s *DescribeMOTokenUsageDetailRequest) GetConsumerName() *string {
 	return s.ConsumerName
 }
 
+func (s *DescribeMOTokenUsageDetailRequest) GetCursor() *string {
+	return s.Cursor
+}
+
 func (s *DescribeMOTokenUsageDetailRequest) GetEndTime() *string {
 	return s.EndTime
 }
@@ -118,6 +128,11 @@ func (s *DescribeMOTokenUsageDetailRequest) SetApiKey(v string) *DescribeMOToken
 
 func (s *DescribeMOTokenUsageDetailRequest) SetConsumerName(v string) *DescribeMOTokenUsageDetailRequest {
 	s.ConsumerName = &v
+	return s
+}
+
+func (s *DescribeMOTokenUsageDetailRequest) SetCursor(v string) *DescribeMOTokenUsageDetailRequest {
+	s.Cursor = &v
 	return s
 }
 

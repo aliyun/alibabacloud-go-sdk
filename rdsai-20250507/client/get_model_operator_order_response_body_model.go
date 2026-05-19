@@ -146,6 +146,10 @@ func (s *GetModelOperatorOrderResponseBodyData) Validate() error {
 }
 
 type GetModelOperatorOrderResponseBodyDataInstanceList struct {
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The instance end time (format: Timestamp).
 	//
 	// example:
@@ -186,6 +190,10 @@ func (s GetModelOperatorOrderResponseBodyDataInstanceList) GoString() string {
 	return s.String()
 }
 
+func (s *GetModelOperatorOrderResponseBodyDataInstanceList) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *GetModelOperatorOrderResponseBodyDataInstanceList) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -204,6 +212,11 @@ func (s *GetModelOperatorOrderResponseBodyDataInstanceList) GetStartTime() *int6
 
 func (s *GetModelOperatorOrderResponseBodyDataInstanceList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetModelOperatorOrderResponseBodyDataInstanceList) SetChargeType(v string) *GetModelOperatorOrderResponseBodyDataInstanceList {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *GetModelOperatorOrderResponseBodyDataInstanceList) SetEndTime(v int64) *GetModelOperatorOrderResponseBodyDataInstanceList {

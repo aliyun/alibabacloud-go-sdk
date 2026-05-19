@@ -9,6 +9,8 @@ type iDescribeMOTokenUsageDetailResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNextCursor(v string) *DescribeMOTokenUsageDetailResponseBody
+	GetNextCursor() *string
 	SetPage(v int32) *DescribeMOTokenUsageDetailResponseBody
 	GetPage() *int32
 	SetPageSize(v int32) *DescribeMOTokenUsageDetailResponseBody
@@ -22,6 +24,10 @@ type iDescribeMOTokenUsageDetailResponseBody interface {
 }
 
 type DescribeMOTokenUsageDetailResponseBody struct {
+	// example:
+	//
+	// eyJpZCI6MTIzNDUsInRzIjoiMjAyNi0wNC0wOFQwMDowMDowMFoifQ==
+	NextCursor *string `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
 	// example:
 	//
 	// 1
@@ -51,6 +57,10 @@ func (s DescribeMOTokenUsageDetailResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMOTokenUsageDetailResponseBody) GetNextCursor() *string {
+	return s.NextCursor
+}
+
 func (s *DescribeMOTokenUsageDetailResponseBody) GetPage() *int32 {
 	return s.Page
 }
@@ -69,6 +79,11 @@ func (s *DescribeMOTokenUsageDetailResponseBody) GetRequestId() *string {
 
 func (s *DescribeMOTokenUsageDetailResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
+}
+
+func (s *DescribeMOTokenUsageDetailResponseBody) SetNextCursor(v string) *DescribeMOTokenUsageDetailResponseBody {
+	s.NextCursor = &v
+	return s
 }
 
 func (s *DescribeMOTokenUsageDetailResponseBody) SetPage(v int32) *DescribeMOTokenUsageDetailResponseBody {
