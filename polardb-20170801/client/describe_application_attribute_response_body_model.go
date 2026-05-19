@@ -15,6 +15,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetApplicationType() *string
 	SetArchitecture(v string) *DescribeApplicationAttributeResponseBody
 	GetArchitecture() *string
+	SetCanDisableSnat(v bool) *DescribeApplicationAttributeResponseBody
+	GetCanDisableSnat() *bool
 	SetComponents(v []*DescribeApplicationAttributeResponseBodyComponents) *DescribeApplicationAttributeResponseBody
 	GetComponents() []*DescribeApplicationAttributeResponseBodyComponents
 	SetCreationTime(v string) *DescribeApplicationAttributeResponseBody
@@ -43,6 +45,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetMemApplicationAttribute() *DescribeApplicationAttributeResponseBodyMemApplicationAttribute
 	SetMinorVersion(v string) *DescribeApplicationAttributeResponseBody
 	GetMinorVersion() *string
+	SetNatGatewayId(v string) *DescribeApplicationAttributeResponseBody
+	GetNatGatewayId() *string
 	SetPayType(v string) *DescribeApplicationAttributeResponseBody
 	GetPayType() *string
 	SetPolarClawSaaSApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) *DescribeApplicationAttributeResponseBody
@@ -59,6 +63,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetSecurityIPArrays() []*DescribeApplicationAttributeResponseBodySecurityIPArrays
 	SetServerlessType(v string) *DescribeApplicationAttributeResponseBody
 	GetServerlessType() *string
+	SetSnatStatus(v string) *DescribeApplicationAttributeResponseBody
+	GetSnatStatus() *string
 	SetStatus(v string) *DescribeApplicationAttributeResponseBody
 	GetStatus() *string
 	SetStorages(v []*DescribeApplicationAttributeResponseBodyStorages) *DescribeApplicationAttributeResponseBody
@@ -87,8 +93,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	// example:
 	//
 	// x86
-	Architecture *string                                               `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	Components   []*DescribeApplicationAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	Architecture   *string                                               `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	CanDisableSnat *bool                                                 `json:"CanDisableSnat,omitempty" xml:"CanDisableSnat,omitempty"`
+	Components     []*DescribeApplicationAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
@@ -128,6 +135,10 @@ type DescribeApplicationAttributeResponseBody struct {
 	MinorVersion            *string                                                          `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	// example:
 	//
+	// pc-xxx
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// example:
+	//
 	// Postpaid
 	PayType                           *string                                                                    `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
@@ -146,6 +157,10 @@ type DescribeApplicationAttributeResponseBody struct {
 	SecurityGroups   []*DescribeApplicationAttributeResponseBodySecurityGroups   `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	ServerlessType   *string                                                     `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// example:
+	//
+	// off
+	SnatStatus *string `json:"SnatStatus,omitempty" xml:"SnatStatus,omitempty"`
 	// example:
 	//
 	// Activated
@@ -195,6 +210,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetApplicationType() *string 
 
 func (s *DescribeApplicationAttributeResponseBody) GetArchitecture() *string {
 	return s.Architecture
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetCanDisableSnat() *bool {
+	return s.CanDisableSnat
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetComponents() []*DescribeApplicationAttributeResponseBodyComponents {
@@ -253,6 +272,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetMinorVersion() *string {
 	return s.MinorVersion
 }
 
+func (s *DescribeApplicationAttributeResponseBody) GetNatGatewayId() *string {
+	return s.NatGatewayId
+}
+
 func (s *DescribeApplicationAttributeResponseBody) GetPayType() *string {
 	return s.PayType
 }
@@ -283,6 +306,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetSecurityIPArrays() []*Desc
 
 func (s *DescribeApplicationAttributeResponseBody) GetServerlessType() *string {
 	return s.ServerlessType
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetSnatStatus() *string {
+	return s.SnatStatus
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetStatus() *string {
@@ -325,6 +352,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetApplicationType(v string) 
 
 func (s *DescribeApplicationAttributeResponseBody) SetArchitecture(v string) *DescribeApplicationAttributeResponseBody {
 	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetCanDisableSnat(v bool) *DescribeApplicationAttributeResponseBody {
+	s.CanDisableSnat = &v
 	return s
 }
 
@@ -398,6 +430,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetMinorVersion(v string) *De
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetNatGatewayId(v string) *DescribeApplicationAttributeResponseBody {
+	s.NatGatewayId = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetPayType(v string) *DescribeApplicationAttributeResponseBody {
 	s.PayType = &v
 	return s
@@ -435,6 +472,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetSecurityIPArrays(v []*Desc
 
 func (s *DescribeApplicationAttributeResponseBody) SetServerlessType(v string) *DescribeApplicationAttributeResponseBody {
 	s.ServerlessType = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetSnatStatus(v string) *DescribeApplicationAttributeResponseBody {
+	s.SnatStatus = &v
 	return s
 }
 

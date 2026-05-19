@@ -16211,6 +16211,10 @@ func (client *Client) DescribeDBInitializeVariable(request *DescribeDBInitialize
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例性能数据
+//
 // @param request - DescribeDBInstancePerformanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16279,6 +16283,10 @@ func (client *Client) DescribeDBInstancePerformanceWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例性能数据
+//
 // @param request - DescribeDBInstancePerformanceRequest
 //
 // @return DescribeDBInstancePerformanceResponse
@@ -20964,6 +20972,14 @@ func (client *Client) DescribePolarFsQuotaListWithOptions(request *DescribePolar
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.PolarFsInstanceId) {

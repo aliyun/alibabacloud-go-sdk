@@ -12772,6 +12772,10 @@ func (client *Client) DescribeDBInitializeVariableWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例性能数据
+//
 // @param request - DescribeDBInstancePerformanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16493,6 +16497,14 @@ func (client *Client) DescribePolarFsQuotaListWithContext(ctx context.Context, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.PolarFsInstanceId) {

@@ -11,6 +11,10 @@ type iDescribePolarFsQuotaListRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DescribePolarFsQuotaListRequest
 	GetDBClusterId() *string
+	SetPageNumber(v int32) *DescribePolarFsQuotaListRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribePolarFsQuotaListRequest
+	GetPageSize() *int32
 	SetPolarFsInstanceId(v string) *DescribePolarFsQuotaListRequest
 	GetPolarFsInstanceId() *string
 	SetQuotaMode(v string) *DescribePolarFsQuotaListRequest
@@ -24,6 +28,8 @@ type DescribePolarFsQuotaListRequest struct {
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -52,6 +58,14 @@ func (s *DescribePolarFsQuotaListRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DescribePolarFsQuotaListRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribePolarFsQuotaListRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribePolarFsQuotaListRequest) GetPolarFsInstanceId() *string {
 	return s.PolarFsInstanceId
 }
@@ -66,6 +80,16 @@ func (s *DescribePolarFsQuotaListRequest) GetRegionId() *string {
 
 func (s *DescribePolarFsQuotaListRequest) SetDBClusterId(v string) *DescribePolarFsQuotaListRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaListRequest) SetPageNumber(v int32) *DescribePolarFsQuotaListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaListRequest) SetPageSize(v int32) *DescribePolarFsQuotaListRequest {
+	s.PageSize = &v
 	return s
 }
 
