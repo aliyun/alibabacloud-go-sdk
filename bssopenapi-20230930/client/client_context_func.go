@@ -245,7 +245,7 @@ func (client *Client) CheckAccountExistWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 检测budgetName是否存在
+// # Check whether budgetName exists
 //
 // @param request - CheckBudgetNameExistsRequest
 //
@@ -295,7 +295,7 @@ func (client *Client) CheckBudgetNameExistsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建预算
+// # Create Budget
 //
 // @param tmpReq - CreateBudgetRequest
 //
@@ -1063,7 +1063,7 @@ func (client *Client) DeleteReportDefinitionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询单个Budget
+// # Query a Single Budget
 //
 // @param request - DescribeBudgetRequest
 //
@@ -1113,7 +1113,7 @@ func (client *Client) DescribeBudgetWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 查询预算列表
+// # Query budget list
 //
 // @param request - DescribeBudgetsRequest
 //
@@ -2629,6 +2629,66 @@ func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrder
 
 // Summary:
 //
+// # Query Cost Overview of a Cost Center
+//
+// @param request - QueryCostByCostCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCostByCostCenterResponse
+func (client *Client) QueryCostByCostCenterWithContext(ctx context.Context, request *QueryCostByCostCenterRequest, runtime *dara.RuntimeOptions) (_result *QueryCostByCostCenterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillingMonth) {
+		query["BillingMonth"] = request.BillingMonth
+	}
+
+	if !dara.IsNil(request.DisplayZeroAmountBills) {
+		query["DisplayZeroAmountBills"] = request.DisplayZeroAmountBills
+	}
+
+	if !dara.IsNil(request.GroupByCostCenterLevel) {
+		query["GroupByCostCenterLevel"] = request.GroupByCostCenterLevel
+	}
+
+	if !dara.IsNil(request.Metrics) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !dara.IsNil(request.OwnerAccountId) {
+		query["OwnerAccountId"] = request.OwnerAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryCostByCostCenter"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCostByCostCenterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询财务单元
 //
 // @param tmpReq - QueryCostCenterRequest
@@ -2879,7 +2939,7 @@ func (client *Client) QueryCostCenterShareRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改财务单元分摊规则
+// # Modify cost center allocation rules, including creating, modifying, and deleting allocation rules
 //
 // @param tmpReq - SaveCostCenterShareRuleRequest
 //

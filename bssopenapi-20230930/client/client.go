@@ -426,7 +426,7 @@ func (client *Client) CheckAccountExist(request *CheckAccountExistRequest) (_res
 
 // Summary:
 //
-// 检测budgetName是否存在
+// # Check whether budgetName exists
 //
 // @param request - CheckBudgetNameExistsRequest
 //
@@ -476,7 +476,7 @@ func (client *Client) CheckBudgetNameExistsWithOptions(request *CheckBudgetNameE
 
 // Summary:
 //
-// 检测budgetName是否存在
+// # Check whether budgetName exists
 //
 // @param request - CheckBudgetNameExistsRequest
 //
@@ -494,7 +494,7 @@ func (client *Client) CheckBudgetNameExists(request *CheckBudgetNameExistsReques
 
 // Summary:
 //
-// 创建预算
+// # Create Budget
 //
 // @param tmpReq - CreateBudgetRequest
 //
@@ -610,7 +610,7 @@ func (client *Client) CreateBudgetWithOptions(tmpReq *CreateBudgetRequest, runti
 
 // Summary:
 //
-// 创建预算
+// # Create Budget
 //
 // @param request - CreateBudgetRequest
 //
@@ -1460,7 +1460,7 @@ func (client *Client) DeleteReportDefinition(request *DeleteReportDefinitionRequ
 
 // Summary:
 //
-// 查询单个Budget
+// # Query a Single Budget
 //
 // @param request - DescribeBudgetRequest
 //
@@ -1510,7 +1510,7 @@ func (client *Client) DescribeBudgetWithOptions(request *DescribeBudgetRequest, 
 
 // Summary:
 //
-// 查询单个Budget
+// # Query a Single Budget
 //
 // @param request - DescribeBudgetRequest
 //
@@ -1528,7 +1528,7 @@ func (client *Client) DescribeBudget(request *DescribeBudgetRequest) (_result *D
 
 // Summary:
 //
-// 查询预算列表
+// # Query budget list
 //
 // @param request - DescribeBudgetsRequest
 //
@@ -1594,7 +1594,7 @@ func (client *Client) DescribeBudgetsWithOptions(request *DescribeBudgetsRequest
 
 // Summary:
 //
-// 查询预算列表
+// # Query budget list
 //
 // @param request - DescribeBudgetsRequest
 //
@@ -3521,6 +3521,84 @@ func (client *Client) PayOrder(request *PayOrderRequest) (_result *PayOrderRespo
 
 // Summary:
 //
+// # Query Cost Overview of a Cost Center
+//
+// @param request - QueryCostByCostCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCostByCostCenterResponse
+func (client *Client) QueryCostByCostCenterWithOptions(request *QueryCostByCostCenterRequest, runtime *dara.RuntimeOptions) (_result *QueryCostByCostCenterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillingMonth) {
+		query["BillingMonth"] = request.BillingMonth
+	}
+
+	if !dara.IsNil(request.DisplayZeroAmountBills) {
+		query["DisplayZeroAmountBills"] = request.DisplayZeroAmountBills
+	}
+
+	if !dara.IsNil(request.GroupByCostCenterLevel) {
+		query["GroupByCostCenterLevel"] = request.GroupByCostCenterLevel
+	}
+
+	if !dara.IsNil(request.Metrics) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !dara.IsNil(request.OwnerAccountId) {
+		query["OwnerAccountId"] = request.OwnerAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryCostByCostCenter"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryCostByCostCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Cost Overview of a Cost Center
+//
+// @param request - QueryCostByCostCenterRequest
+//
+// @return QueryCostByCostCenterResponse
+func (client *Client) QueryCostByCostCenter(request *QueryCostByCostCenterRequest) (_result *QueryCostByCostCenterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryCostByCostCenterResponse{}
+	_body, _err := client.QueryCostByCostCenterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询财务单元
 //
 // @param tmpReq - QueryCostCenterRequest
@@ -3843,7 +3921,7 @@ func (client *Client) QueryCostCenterShareRule(request *QueryCostCenterShareRule
 
 // Summary:
 //
-// 修改财务单元分摊规则
+// # Modify cost center allocation rules, including creating, modifying, and deleting allocation rules
 //
 // @param tmpReq - SaveCostCenterShareRuleRequest
 //
@@ -3917,7 +3995,7 @@ func (client *Client) SaveCostCenterShareRuleWithOptions(tmpReq *SaveCostCenterS
 
 // Summary:
 //
-// 修改财务单元分摊规则
+// # Modify cost center allocation rules, including creating, modifying, and deleting allocation rules
 //
 // @param request - SaveCostCenterShareRuleRequest
 //
