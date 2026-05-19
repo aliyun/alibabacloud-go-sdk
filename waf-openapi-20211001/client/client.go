@@ -5753,6 +5753,10 @@ func (client *Client) DescribeBaseSystemRulesWithOptions(request *DescribeBaseSy
 		query["RuleId"] = request.RuleId
 	}
 
+	if !dara.IsNil(request.RuleIds) {
+		query["RuleIds"] = request.RuleIds
+	}
+
 	if !dara.IsNil(request.RuleName) {
 		query["RuleName"] = request.RuleName
 	}

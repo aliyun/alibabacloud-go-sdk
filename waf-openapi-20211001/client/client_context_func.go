@@ -4504,6 +4504,10 @@ func (client *Client) DescribeBaseSystemRulesWithContext(ctx context.Context, re
 		query["RuleId"] = request.RuleId
 	}
 
+	if !dara.IsNil(request.RuleIds) {
+		query["RuleIds"] = request.RuleIds
+	}
+
 	if !dara.IsNil(request.RuleName) {
 		query["RuleName"] = request.RuleName
 	}

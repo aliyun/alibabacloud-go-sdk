@@ -29,6 +29,8 @@ type iDescribeBaseSystemRulesRequest interface {
 	GetRuleAction() *string
 	SetRuleId(v int64) *DescribeBaseSystemRulesRequest
 	GetRuleId() *int64
+	SetRuleIds(v []*int64) *DescribeBaseSystemRulesRequest
+	GetRuleIds() []*int64
 	SetRuleName(v string) *DescribeBaseSystemRulesRequest
 	GetRuleName() *string
 	SetRuleStatus(v int32) *DescribeBaseSystemRulesRequest
@@ -79,7 +81,8 @@ type DescribeBaseSystemRulesRequest struct {
 	// example:
 	//
 	// 113089
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId  *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// systemRuleTest
@@ -142,6 +145,10 @@ func (s *DescribeBaseSystemRulesRequest) GetRuleId() *int64 {
 	return s.RuleId
 }
 
+func (s *DescribeBaseSystemRulesRequest) GetRuleIds() []*int64 {
+	return s.RuleIds
+}
+
 func (s *DescribeBaseSystemRulesRequest) GetRuleName() *string {
 	return s.RuleName
 }
@@ -201,6 +208,11 @@ func (s *DescribeBaseSystemRulesRequest) SetRuleAction(v string) *DescribeBaseSy
 
 func (s *DescribeBaseSystemRulesRequest) SetRuleId(v int64) *DescribeBaseSystemRulesRequest {
 	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeBaseSystemRulesRequest) SetRuleIds(v []*int64) *DescribeBaseSystemRulesRequest {
+	s.RuleIds = v
 	return s
 }
 
