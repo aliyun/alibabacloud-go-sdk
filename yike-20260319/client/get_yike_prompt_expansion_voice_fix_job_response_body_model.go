@@ -9,8 +9,12 @@ type iGetYikePromptExpansionVoiceFixJobResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEndTime(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
+	GetEndTime() *string
 	SetErrorCode(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
 	GetErrorCode() *string
+	SetErrorMessage(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
+	GetErrorMessage() *string
 	SetJobId(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
 	GetJobId() *string
 	SetJobParams(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
@@ -21,15 +25,19 @@ type iGetYikePromptExpansionVoiceFixJobResponseBody interface {
 	GetJobStatus() *string
 	SetRequestId(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
 	GetRequestId() *string
+	SetStartTime(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
+	GetStartTime() *string
 	SetUserData(v string) *GetYikePromptExpansionVoiceFixJobResponseBody
 	GetUserData() *string
 }
 
 type GetYikePromptExpansionVoiceFixJobResponseBody struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// Forbidden
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// example:
 	//
 	// ab4802364a2e49208c99efab82df****
@@ -46,6 +54,7 @@ type GetYikePromptExpansionVoiceFixJobResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// {"testKey":"testValue"}
@@ -60,8 +69,16 @@ func (s GetYikePromptExpansionVoiceFixJobResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetEndTime() *string {
+	return s.EndTime
+}
+
 func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetErrorCode() *string {
 	return s.ErrorCode
+}
+
+func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetErrorMessage() *string {
+	return s.ErrorMessage
 }
 
 func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetJobId() *string {
@@ -84,12 +101,26 @@ func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetStartTime() *string {
+	return s.StartTime
+}
+
 func (s *GetYikePromptExpansionVoiceFixJobResponseBody) GetUserData() *string {
 	return s.UserData
 }
 
+func (s *GetYikePromptExpansionVoiceFixJobResponseBody) SetEndTime(v string) *GetYikePromptExpansionVoiceFixJobResponseBody {
+	s.EndTime = &v
+	return s
+}
+
 func (s *GetYikePromptExpansionVoiceFixJobResponseBody) SetErrorCode(v string) *GetYikePromptExpansionVoiceFixJobResponseBody {
 	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetYikePromptExpansionVoiceFixJobResponseBody) SetErrorMessage(v string) *GetYikePromptExpansionVoiceFixJobResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -115,6 +146,11 @@ func (s *GetYikePromptExpansionVoiceFixJobResponseBody) SetJobStatus(v string) *
 
 func (s *GetYikePromptExpansionVoiceFixJobResponseBody) SetRequestId(v string) *GetYikePromptExpansionVoiceFixJobResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetYikePromptExpansionVoiceFixJobResponseBody) SetStartTime(v string) *GetYikePromptExpansionVoiceFixJobResponseBody {
+	s.StartTime = &v
 	return s
 }
 
