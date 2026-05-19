@@ -14,7 +14,7 @@ type iGetCreditInfoRequest interface {
 }
 
 type GetCreditInfoRequest struct {
-	// Sub Account UID
+	// Message Information
 	//
 	// This parameter is required.
 	//

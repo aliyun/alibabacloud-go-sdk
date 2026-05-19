@@ -1860,7 +1860,7 @@ func (client *Client) GetShutdownPolicyRecord(request *GetShutdownPolicyRecordRe
 
 // Summary:
 //
-// 查询T2优惠券审批详情
+// # View Tier 2 coupon approval details
 //
 // @param request - GetTier2CouponApprovalDetailRequest
 //
@@ -1904,7 +1904,7 @@ func (client *Client) GetTier2CouponApprovalDetailWithOptions(request *GetTier2C
 
 // Summary:
 //
-// 查询T2优惠券审批详情
+// # View Tier 2 coupon approval details
 //
 // @param request - GetTier2CouponApprovalDetailRequest
 //
@@ -2050,6 +2050,88 @@ func (client *Client) InviteSubAccount(request *InviteSubAccountRequest) (_resul
 
 // Summary:
 //
+// T2 Sub-distributor Invitation (Supports Cross-Regional Validation)
+//
+// Description:
+//
+// 1. The API caller must be a channel general distributor partner of Alibaba Cloud International.
+//
+// 2. The system automatically determines if the invitation is cross-regional based on whether the `registerNation` parameter is within the T1 contract coverage area (the contract coverage area can be queried using the ListCountries API).
+//
+// - If it\\"s a cross-regional invitation, a cross-regional approval process will be initiated. After approval by Alibaba Cloud, an invitation registration email will be sent to the invited email address.
+//
+// - If it\\"s not a cross-regional invitation, an invitation registration email will be sent directly.
+//
+// @param request - InviteSubResellerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InviteSubResellerResponse
+func (client *Client) InviteSubResellerWithOptions(request *InviteSubResellerRequest, runtime *dara.RuntimeOptions) (_result *InviteSubResellerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountInfoList) {
+		query["AccountInfoList"] = request.AccountInfoList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InviteSubReseller"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InviteSubResellerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// T2 Sub-distributor Invitation (Supports Cross-Regional Validation)
+//
+// Description:
+//
+// 1. The API caller must be a channel general distributor partner of Alibaba Cloud International.
+//
+// 2. The system automatically determines if the invitation is cross-regional based on whether the `registerNation` parameter is within the T1 contract coverage area (the contract coverage area can be queried using the ListCountries API).
+//
+// - If it\\"s a cross-regional invitation, a cross-regional approval process will be initiated. After approval by Alibaba Cloud, an invitation registration email will be sent to the invited email address.
+//
+// - If it\\"s not a cross-regional invitation, an invitation registration email will be sent directly.
+//
+// @param request - InviteSubResellerRequest
+//
+// @return InviteSubResellerResponse
+func (client *Client) InviteSubReseller(request *InviteSubResellerRequest) (_result *InviteSubResellerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InviteSubResellerResponse{}
+	_body, _err := client.InviteSubResellerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 发放优惠券
 //
 // @param request - IssueCouponForCustomerRequest
@@ -2133,8 +2215,6 @@ func (client *Client) IssueCouponForCustomer(request *IssueCouponForCustomerRequ
 // Description:
 //
 // The current API request rate for cloud products has not been disclosed.
-//
-// @param request - ListCountriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

@@ -22,31 +22,25 @@ type iGetCreditInfoResponseBody interface {
 }
 
 type GetCreditInfoResponseBody struct {
-	// Result Code:
-	//
-	// - 200 OK
-	//
-	// - 1109 System Error
+	// success
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The Credit Line of Sub Account
 	Data *GetCreditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Message Information
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
 	//
 	// example:
 	//
-	// success
+	// The data returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID, Alibaba Cloud will track errors with this.
-	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	// The Credit have been consumed by Sub Account, and haven\\"t be paid.
 	//
 	// example:
 	//
@@ -117,49 +111,22 @@ func (s *GetCreditInfoResponseBody) Validate() error {
 }
 
 type GetCreditInfoResponseBodyData struct {
-	// The Credit Control status, Value Range:</br>
-	//
-	// 1. normal - Sub Account status is running as usual.
-	//
-	// 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
-	//
-	// 3. shutdown -  Sub Account status is down.
+	// Percentage value, when the available credit limit is lower than this credit limit percentage, a notification E-mail will be sent to the main account.
 	//
 	// example:
 	//
 	// normal
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// Percentage value, when the available credit limit is lower than this credit limit percentage, a notification E-mail will be sent to the main account.
+	// Manage order operation.
+	//
+	// - ban：Ban the new purchase action.
+	//
+	// - normal：The account could raise new purchase order as usual.
 	//
 	// example:
 	//
 	// 20
 	AlarmThreshold *string `json:"AlarmThreshold,omitempty" xml:"AlarmThreshold,omitempty"`
-	// The Credit available to consume.
-	//
-	// example:
-	//
-	// 800
-	AvailableCredit *string `json:"AvailableCredit,omitempty" xml:"AvailableCredit,omitempty"`
-	// Obtain total unpaid amount on demo bill before simulated deduction.
-	//
-	// example:
-	//
-	// 0.000000
-	ConsumedUndeductedValue *string `json:"ConsumedUndeductedValue,omitempty" xml:"ConsumedUndeductedValue,omitempty"`
-	// The Credit Line of Sub Account
-	//
-	// example:
-	//
-	// 1000
-	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
-	// The Credit have been consumed by Sub Account, and haven\\"t be paid.
-	//
-	// example:
-	//
-	// 200
-	OutstandingBalance *string `json:"OutstandingBalance,omitempty" xml:"OutstandingBalance,omitempty"`
-	PAYGFreezeStatus   *string `json:"PAYGFreezeStatus,omitempty" xml:"PAYGFreezeStatus,omitempty"`
 	// The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
 	//
 	// - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
@@ -170,13 +137,49 @@ type GetCreditInfoResponseBodyData struct {
 	//
 	// example:
 	//
+	// 800
+	AvailableCredit *string `json:"AvailableCredit,omitempty" xml:"AvailableCredit,omitempty"`
+	// Consumed & Undeducted Value（Amount consumption at the current point in time and for which the quota has not been deducted）
+	//
+	// example:
+	//
+	// 0.000000
+	ConsumedUndeductedValue *string `json:"ConsumedUndeductedValue,omitempty" xml:"ConsumedUndeductedValue,omitempty"`
+	// The Credit available to consume.
+	//
+	// example:
+	//
+	// 1000
+	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
+	// The Credit Control status, Value Range:</br>
+	//
+	// 1. normal - Sub Account status is running as usual.
+	//
+	// 2. arrearsNotShutdown - Sub Account status is running as usual, but have outstanding bill(s).
+	//
+	// 3. shutdown -  Sub Account status is down.
+	//
+	// example:
+	//
+	// 200
+	OutstandingBalance *string `json:"OutstandingBalance,omitempty" xml:"OutstandingBalance,omitempty"`
+	// PAYG Freeze Status
+	//
+	// freeze：freeze
+	//
+	// normal：normal
+	//
+	// example:
+	//
+	// normal
+	PAYGFreezeStatus *string `json:"PAYGFreezeStatus,omitempty" xml:"PAYGFreezeStatus,omitempty"`
+	// Obtain total unpaid amount on demo bill before simulated deduction.
+	//
+	// example:
+	//
 	// delayStop
 	ZeroCreditShutdownPolicy *string `json:"ZeroCreditShutdownPolicy,omitempty" xml:"ZeroCreditShutdownPolicy,omitempty"`
-	// Manage order operation.
-	//
-	// - ban：Ban the new purchase action.
-	//
-	// - normal：The account could raise new purchase order as usual.
+	// Request ID, Alibaba Cloud will track errors with this.
 	//
 	// example:
 	//
