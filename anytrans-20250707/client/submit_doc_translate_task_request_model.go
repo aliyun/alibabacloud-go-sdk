@@ -224,6 +224,7 @@ func (s *SubmitDocTranslateTaskRequestExt) Validate() error {
 }
 
 type SubmitDocTranslateTaskRequestExtConfig struct {
+	IsBilingual  *bool `json:"isBilingual,omitempty" xml:"isBilingual,omitempty"`
 	SkipImgTrans *bool `json:"skipImgTrans,omitempty" xml:"skipImgTrans,omitempty"`
 }
 
@@ -235,8 +236,17 @@ func (s SubmitDocTranslateTaskRequestExtConfig) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitDocTranslateTaskRequestExtConfig) GetIsBilingual() *bool {
+	return s.IsBilingual
+}
+
 func (s *SubmitDocTranslateTaskRequestExtConfig) GetSkipImgTrans() *bool {
 	return s.SkipImgTrans
+}
+
+func (s *SubmitDocTranslateTaskRequestExtConfig) SetIsBilingual(v bool) *SubmitDocTranslateTaskRequestExtConfig {
+	s.IsBilingual = &v
+	return s
 }
 
 func (s *SubmitDocTranslateTaskRequestExtConfig) SetSkipImgTrans(v bool) *SubmitDocTranslateTaskRequestExtConfig {
