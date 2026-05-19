@@ -2131,6 +2131,72 @@ func (client *Client) GetIcpFilingInfoForPartner(request *GetIcpFilingInfoForPar
 
 // Summary:
 //
+// 查询LLM Proxy配置
+//
+// @param request - GetLlmProxyConfigForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLlmProxyConfigForAdminResponse
+func (client *Client) GetLlmProxyConfigForAdminWithOptions(request *GetLlmProxyConfigForAdminRequest, runtime *dara.RuntimeOptions) (_result *GetLlmProxyConfigForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Capability) {
+		query["Capability"] = request.Capability
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLlmProxyConfigForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLlmProxyConfigForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询LLM Proxy配置
+//
+// @param request - GetLlmProxyConfigForAdminRequest
+//
+// @return GetLlmProxyConfigForAdminResponse
+func (client *Client) GetLlmProxyConfigForAdmin(request *GetLlmProxyConfigForAdminRequest) (_result *GetLlmProxyConfigForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLlmProxyConfigForAdminResponse{}
+	_body, _err := client.GetLlmProxyConfigForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通过授权码得到accessToken
 //
 // @param request - GetUserAccessTokenForPartnerRequest
