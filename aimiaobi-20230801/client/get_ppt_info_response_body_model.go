@@ -128,6 +128,10 @@ type GetPptInfoResponseBodyData struct {
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
 	// example:
 	//
+	// http://a.com/xxx.jpeg
+	PptArtifactCover *string `json:"PptArtifactCover,omitempty" xml:"PptArtifactCover,omitempty"`
+	// example:
+	//
 	// 5423431
 	PptArtifactId *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
 	// example:
@@ -160,6 +164,10 @@ func (s *GetPptInfoResponseBodyData) GetExportTaskId() *string {
 	return s.ExportTaskId
 }
 
+func (s *GetPptInfoResponseBodyData) GetPptArtifactCover() *string {
+	return s.PptArtifactCover
+}
+
 func (s *GetPptInfoResponseBodyData) GetPptArtifactId() *string {
 	return s.PptArtifactId
 }
@@ -183,6 +191,11 @@ func (s *GetPptInfoResponseBodyData) SetExportFileLink(v []*string) *GetPptInfoR
 
 func (s *GetPptInfoResponseBodyData) SetExportTaskId(v string) *GetPptInfoResponseBodyData {
 	s.ExportTaskId = &v
+	return s
+}
+
+func (s *GetPptInfoResponseBodyData) SetPptArtifactCover(v string) *GetPptInfoResponseBodyData {
+	s.PptArtifactCover = &v
 	return s
 }
 
