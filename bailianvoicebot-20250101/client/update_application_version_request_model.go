@@ -589,6 +589,11 @@ func (s *UpdateApplicationVersionRequestSynthesizerConfigPronRules) Validate() e
 }
 
 type UpdateApplicationVersionRequestTranscriberConfig struct {
+	CorrectionRules   []*UpdateApplicationVersionRequestTranscriberConfigCorrectionRules `json:"CorrectionRules,omitempty" xml:"CorrectionRules,omitempty" type:"Repeated"`
+	CustomizationId   *string                                                            `json:"CustomizationId,omitempty" xml:"CustomizationId,omitempty"`
+	EndSilenceTimeout *int32                                                             `json:"EndSilenceTimeout,omitempty" xml:"EndSilenceTimeout,omitempty"`
+	Model             *string                                                            `json:"Model,omitempty" xml:"Model,omitempty"`
+	NlsAccessProfile  *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile  `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
 	// example:
 	//
 	// MANAGED
@@ -596,7 +601,9 @@ type UpdateApplicationVersionRequestTranscriberConfig struct {
 	// example:
 	//
 	// ALIYUN
-	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine            *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	SpeechNoiseThreshold *int32  `json:"SpeechNoiseThreshold,omitempty" xml:"SpeechNoiseThreshold,omitempty"`
+	VocabularyId         *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
 }
 
 func (s UpdateApplicationVersionRequestTranscriberConfig) String() string {
@@ -607,12 +614,65 @@ func (s UpdateApplicationVersionRequestTranscriberConfig) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetCorrectionRules() []*UpdateApplicationVersionRequestTranscriberConfigCorrectionRules {
+	return s.CorrectionRules
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetCustomizationId() *string {
+	return s.CustomizationId
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetEndSilenceTimeout() *int32 {
+	return s.EndSilenceTimeout
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetModel() *string {
+	return s.Model
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetNlsAccessProfile() *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile {
+	return s.NlsAccessProfile
+}
+
 func (s *UpdateApplicationVersionRequestTranscriberConfig) GetNlsAccessType() *string {
 	return s.NlsAccessType
 }
 
 func (s *UpdateApplicationVersionRequestTranscriberConfig) GetNlsEngine() *string {
 	return s.NlsEngine
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetSpeechNoiseThreshold() *int32 {
+	return s.SpeechNoiseThreshold
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) GetVocabularyId() *string {
+	return s.VocabularyId
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetCorrectionRules(v []*UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.CorrectionRules = v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetCustomizationId(v string) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.CustomizationId = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetEndSilenceTimeout(v int32) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.EndSilenceTimeout = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetModel(v string) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetNlsAccessProfile(v *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.NlsAccessProfile = v
+	return s
 }
 
 func (s *UpdateApplicationVersionRequestTranscriberConfig) SetNlsAccessType(v string) *UpdateApplicationVersionRequestTranscriberConfig {
@@ -625,6 +685,90 @@ func (s *UpdateApplicationVersionRequestTranscriberConfig) SetNlsEngine(v string
 	return s
 }
 
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetSpeechNoiseThreshold(v int32) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.SpeechNoiseThreshold = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfig) SetVocabularyId(v string) *UpdateApplicationVersionRequestTranscriberConfig {
+	s.VocabularyId = &v
+	return s
+}
+
 func (s *UpdateApplicationVersionRequestTranscriberConfig) Validate() error {
+	if s.CorrectionRules != nil {
+		for _, item := range s.CorrectionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NlsAccessProfile != nil {
+		if err := s.NlsAccessProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateApplicationVersionRequestTranscriberConfigCorrectionRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) SetPattern(v string) *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) SetReplacement(v string) *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigCorrectionRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile struct {
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+}
+
+func (s UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile) GetAccessProfileId() *string {
+	return s.AccessProfileId
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile) SetAccessProfileId(v string) *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile {
+	s.AccessProfileId = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestTranscriberConfigNlsAccessProfile) Validate() error {
 	return dara.Validate(s)
 }
