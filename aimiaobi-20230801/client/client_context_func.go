@@ -2733,6 +2733,10 @@ func (client *Client) ExportPptArtifactWithContext(ctx context.Context, request 
 		body["ExportFileType"] = request.ExportFileType
 	}
 
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.PptArtifactId) {
 		body["PptArtifactId"] = request.PptArtifactId
 	}
@@ -4961,6 +4965,10 @@ func (client *Client) GetPptArtifactExportResultWithContext(ctx context.Context,
 		body["ExportTaskId"] = request.ExportTaskId
 	}
 
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -5053,6 +5061,10 @@ func (client *Client) GetPptInfoWithContext(ctx context.Context, request *GetPpt
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		body["TaskId"] = request.TaskId
 	}

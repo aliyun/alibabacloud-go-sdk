@@ -9,6 +9,8 @@ type iGetPptInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExternalUserId(v string) *GetPptInfoRequest
+	GetExternalUserId() *string
 	SetTaskId(v string) *GetPptInfoRequest
 	GetTaskId() *string
 	SetWorkspaceId(v string) *GetPptInfoRequest
@@ -16,6 +18,10 @@ type iGetPptInfoRequest interface {
 }
 
 type GetPptInfoRequest struct {
+	// example:
+	//
+	// abc
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// example:
 	//
 	// 1f178f22-ec52-467d-8489-eef4468x0240
@@ -34,12 +40,21 @@ func (s GetPptInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetPptInfoRequest) GetExternalUserId() *string {
+	return s.ExternalUserId
+}
+
 func (s *GetPptInfoRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
 func (s *GetPptInfoRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *GetPptInfoRequest) SetExternalUserId(v string) *GetPptInfoRequest {
+	s.ExternalUserId = &v
+	return s
 }
 
 func (s *GetPptInfoRequest) SetTaskId(v string) *GetPptInfoRequest {

@@ -11,6 +11,8 @@ type iGetPptArtifactExportResultRequest interface {
 	GoString() string
 	SetExportTaskId(v string) *GetPptArtifactExportResultRequest
 	GetExportTaskId() *string
+	SetExternalUserId(v string) *GetPptArtifactExportResultRequest
+	GetExternalUserId() *string
 	SetWorkspaceId(v string) *GetPptArtifactExportResultRequest
 	GetWorkspaceId() *string
 }
@@ -20,6 +22,10 @@ type GetPptArtifactExportResultRequest struct {
 	//
 	// 15aeb61b-cdeb-4b70-94d7-99518040647e
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	// example:
+	//
+	// abc
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// example:
 	//
 	// llm-xxxx
@@ -38,12 +44,21 @@ func (s *GetPptArtifactExportResultRequest) GetExportTaskId() *string {
 	return s.ExportTaskId
 }
 
+func (s *GetPptArtifactExportResultRequest) GetExternalUserId() *string {
+	return s.ExternalUserId
+}
+
 func (s *GetPptArtifactExportResultRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
 func (s *GetPptArtifactExportResultRequest) SetExportTaskId(v string) *GetPptArtifactExportResultRequest {
 	s.ExportTaskId = &v
+	return s
+}
+
+func (s *GetPptArtifactExportResultRequest) SetExternalUserId(v string) *GetPptArtifactExportResultRequest {
+	s.ExternalUserId = &v
 	return s
 }
 

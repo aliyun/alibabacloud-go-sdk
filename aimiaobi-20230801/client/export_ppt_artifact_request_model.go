@@ -13,6 +13,8 @@ type iExportPptArtifactRequest interface {
   GetEdit() *bool 
   SetExportFileType(v string) *ExportPptArtifactRequest
   GetExportFileType() *string 
+  SetExternalUserId(v string) *ExportPptArtifactRequest
+  GetExternalUserId() *string 
   SetPptArtifactId(v int64) *ExportPptArtifactRequest
   GetPptArtifactId() *int64 
   SetWorkspaceId(v string) *ExportPptArtifactRequest
@@ -30,6 +32,10 @@ type ExportPptArtifactRequest struct {
   // 
   // ppt
   ExportFileType *string `json:"ExportFileType,omitempty" xml:"ExportFileType,omitempty"`
+  // example:
+  // 
+  // abc
+  ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
   // This parameter is required.
   // 
   // example:
@@ -62,6 +68,10 @@ func (s *ExportPptArtifactRequest) GetExportFileType() *string  {
   return s.ExportFileType
 }
 
+func (s *ExportPptArtifactRequest) GetExternalUserId() *string  {
+  return s.ExternalUserId
+}
+
 func (s *ExportPptArtifactRequest) GetPptArtifactId() *int64  {
   return s.PptArtifactId
 }
@@ -81,6 +91,11 @@ func (s *ExportPptArtifactRequest) SetEdit(v bool) *ExportPptArtifactRequest {
 
 func (s *ExportPptArtifactRequest) SetExportFileType(v string) *ExportPptArtifactRequest {
   s.ExportFileType = &v
+  return s
+}
+
+func (s *ExportPptArtifactRequest) SetExternalUserId(v string) *ExportPptArtifactRequest {
+  s.ExternalUserId = &v
   return s
 }
 
