@@ -9,6 +9,10 @@ type iModelRouterQueryUsageBreakdownRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKeyId(v int64) *ModelRouterQueryUsageBreakdownRequest
+	GetApiKeyId() *int64
+	SetClientId(v int64) *ModelRouterQueryUsageBreakdownRequest
+	GetClientId() *int64
 	SetEndTime(v int64) *ModelRouterQueryUsageBreakdownRequest
 	GetEndTime() *int64
 	SetGranularity(v string) *ModelRouterQueryUsageBreakdownRequest
@@ -26,6 +30,14 @@ type iModelRouterQueryUsageBreakdownRequest interface {
 }
 
 type ModelRouterQueryUsageBreakdownRequest struct {
+	// example:
+	//
+	// 100
+	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// example:
+	//
+	// 1
+	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -70,6 +82,14 @@ func (s ModelRouterQueryUsageBreakdownRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryUsageBreakdownRequest) GetApiKeyId() *int64 {
+	return s.ApiKeyId
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) GetClientId() *int64 {
+	return s.ClientId
+}
+
 func (s *ModelRouterQueryUsageBreakdownRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -96,6 +116,16 @@ func (s *ModelRouterQueryUsageBreakdownRequest) GetPageSize() *int32 {
 
 func (s *ModelRouterQueryUsageBreakdownRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) SetApiKeyId(v int64) *ModelRouterQueryUsageBreakdownRequest {
+	s.ApiKeyId = &v
+	return s
+}
+
+func (s *ModelRouterQueryUsageBreakdownRequest) SetClientId(v int64) *ModelRouterQueryUsageBreakdownRequest {
+	s.ClientId = &v
+	return s
 }
 
 func (s *ModelRouterQueryUsageBreakdownRequest) SetEndTime(v int64) *ModelRouterQueryUsageBreakdownRequest {

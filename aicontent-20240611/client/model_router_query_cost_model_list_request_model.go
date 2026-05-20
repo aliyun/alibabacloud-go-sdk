@@ -9,6 +9,8 @@ type iModelRouterQueryCostModelListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKeyId(v int64) *ModelRouterQueryCostModelListRequest
+	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryCostModelListRequest
 	GetClientId() *int64
 	SetEndTime(v int64) *ModelRouterQueryCostModelListRequest
@@ -28,6 +30,10 @@ type iModelRouterQueryCostModelListRequest interface {
 }
 
 type ModelRouterQueryCostModelListRequest struct {
+	// example:
+	//
+	// 100
+	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
 	// example:
 	//
 	// 1
@@ -76,6 +82,10 @@ func (s ModelRouterQueryCostModelListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryCostModelListRequest) GetApiKeyId() *int64 {
+	return s.ApiKeyId
+}
+
 func (s *ModelRouterQueryCostModelListRequest) GetClientId() *int64 {
 	return s.ClientId
 }
@@ -106,6 +116,11 @@ func (s *ModelRouterQueryCostModelListRequest) GetSearch() *string {
 
 func (s *ModelRouterQueryCostModelListRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *ModelRouterQueryCostModelListRequest) SetApiKeyId(v int64) *ModelRouterQueryCostModelListRequest {
+	s.ApiKeyId = &v
+	return s
 }
 
 func (s *ModelRouterQueryCostModelListRequest) SetClientId(v int64) *ModelRouterQueryCostModelListRequest {

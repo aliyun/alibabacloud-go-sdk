@@ -3231,6 +3231,10 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithContext(ctx contex
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -3694,6 +3698,10 @@ func (client *Client) ModelRouterQueryCostModelDetailWithContext(ctx context.Con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -3773,6 +3781,10 @@ func (client *Client) ModelRouterQueryCostModelListWithContext(ctx context.Conte
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -3848,6 +3860,10 @@ func (client *Client) ModelRouterQueryCostOverviewMetricsWithContext(ctx context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -3919,6 +3935,10 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithContext(ctx context.Co
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -4529,6 +4549,14 @@ func (client *Client) ModelRouterQueryUsageBreakdownWithContext(ctx context.Cont
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
 	}

@@ -9,6 +9,10 @@ type iBillingCostBreakdownRowDTO interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKeyId(v int64) *BillingCostBreakdownRowDTO
+	GetApiKeyId() *int64
+	SetApiKeyName(v string) *BillingCostBreakdownRowDTO
+	GetApiKeyName() *string
 	SetBillingType(v string) *BillingCostBreakdownRowDTO
 	GetBillingType() *string
 	SetClientId(v int64) *BillingCostBreakdownRowDTO
@@ -36,6 +40,14 @@ type iBillingCostBreakdownRowDTO interface {
 }
 
 type BillingCostBreakdownRowDTO struct {
+	// example:
+	//
+	// 0
+	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// example:
+	//
+	// 默认密钥
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
 	// example:
 	//
 	// total_amount
@@ -88,6 +100,14 @@ func (s BillingCostBreakdownRowDTO) GoString() string {
 	return s.String()
 }
 
+func (s *BillingCostBreakdownRowDTO) GetApiKeyId() *int64 {
+	return s.ApiKeyId
+}
+
+func (s *BillingCostBreakdownRowDTO) GetApiKeyName() *string {
+	return s.ApiKeyName
+}
+
 func (s *BillingCostBreakdownRowDTO) GetBillingType() *string {
 	return s.BillingType
 }
@@ -134,6 +154,16 @@ func (s *BillingCostBreakdownRowDTO) GetTiers() []*BillingBillTierDTO {
 
 func (s *BillingCostBreakdownRowDTO) GetValues() *string {
 	return s.Values
+}
+
+func (s *BillingCostBreakdownRowDTO) SetApiKeyId(v int64) *BillingCostBreakdownRowDTO {
+	s.ApiKeyId = &v
+	return s
+}
+
+func (s *BillingCostBreakdownRowDTO) SetApiKeyName(v string) *BillingCostBreakdownRowDTO {
+	s.ApiKeyName = &v
+	return s
 }
 
 func (s *BillingCostBreakdownRowDTO) SetBillingType(v string) *BillingCostBreakdownRowDTO {

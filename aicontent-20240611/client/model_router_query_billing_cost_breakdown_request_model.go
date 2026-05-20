@@ -9,6 +9,8 @@ type iModelRouterQueryBillingCostBreakdownRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKeyId(v int64) *ModelRouterQueryBillingCostBreakdownRequest
+	GetApiKeyId() *int64
 	SetClientId(v int64) *ModelRouterQueryBillingCostBreakdownRequest
 	GetClientId() *int64
 	SetEndTime(v int64) *ModelRouterQueryBillingCostBreakdownRequest
@@ -32,6 +34,10 @@ type iModelRouterQueryBillingCostBreakdownRequest interface {
 }
 
 type ModelRouterQueryBillingCostBreakdownRequest struct {
+	// example:
+	//
+	// 100
+	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
 	// example:
 	//
 	// 5
@@ -88,6 +94,10 @@ func (s ModelRouterQueryBillingCostBreakdownRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryBillingCostBreakdownRequest) GetApiKeyId() *int64 {
+	return s.ApiKeyId
+}
+
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetClientId() *int64 {
 	return s.ClientId
 }
@@ -126,6 +136,11 @@ func (s *ModelRouterQueryBillingCostBreakdownRequest) GetPageSize() *int32 {
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *ModelRouterQueryBillingCostBreakdownRequest) SetApiKeyId(v int64) *ModelRouterQueryBillingCostBreakdownRequest {
+	s.ApiKeyId = &v
+	return s
 }
 
 func (s *ModelRouterQueryBillingCostBreakdownRequest) SetClientId(v int64) *ModelRouterQueryBillingCostBreakdownRequest {

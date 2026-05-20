@@ -4308,6 +4308,10 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *M
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -4902,6 +4906,10 @@ func (client *Client) ModelRouterQueryCostModelDetailWithOptions(request *ModelR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -5000,6 +5008,10 @@ func (client *Client) ModelRouterQueryCostModelListWithOptions(request *ModelRou
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -5094,6 +5106,10 @@ func (client *Client) ModelRouterQueryCostOverviewMetricsWithOptions(request *Mo
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -5184,6 +5200,10 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithOptions(request *Model
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["clientId"] = request.ClientId
 	}
@@ -5944,6 +5964,14 @@ func (client *Client) ModelRouterQueryUsageBreakdownWithOptions(request *ModelRo
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["endTime"] = request.EndTime
 	}

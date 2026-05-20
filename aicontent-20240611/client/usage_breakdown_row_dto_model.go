@@ -9,6 +9,10 @@ type iUsageBreakdownRowDTO interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiKeyId(v int64) *UsageBreakdownRowDTO
+	GetApiKeyId() *int64
+	SetApiKeyName(v string) *UsageBreakdownRowDTO
+	GetApiKeyName() *string
 	SetClientId(v int64) *UsageBreakdownRowDTO
 	GetClientId() *int64
 	SetClientName(v string) *UsageBreakdownRowDTO
@@ -28,6 +32,14 @@ type iUsageBreakdownRowDTO interface {
 }
 
 type UsageBreakdownRowDTO struct {
+	// example:
+	//
+	// 0
+	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// example:
+	//
+	// 默认密钥
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
 	// example:
 	//
 	// 0
@@ -64,6 +76,14 @@ func (s UsageBreakdownRowDTO) GoString() string {
 	return s.String()
 }
 
+func (s *UsageBreakdownRowDTO) GetApiKeyId() *int64 {
+	return s.ApiKeyId
+}
+
+func (s *UsageBreakdownRowDTO) GetApiKeyName() *string {
+	return s.ApiKeyName
+}
+
 func (s *UsageBreakdownRowDTO) GetClientId() *int64 {
 	return s.ClientId
 }
@@ -94,6 +114,16 @@ func (s *UsageBreakdownRowDTO) GetModelType() *string {
 
 func (s *UsageBreakdownRowDTO) GetSummaryTime() *int64 {
 	return s.SummaryTime
+}
+
+func (s *UsageBreakdownRowDTO) SetApiKeyId(v int64) *UsageBreakdownRowDTO {
+	s.ApiKeyId = &v
+	return s
+}
+
+func (s *UsageBreakdownRowDTO) SetApiKeyName(v string) *UsageBreakdownRowDTO {
+	s.ApiKeyName = &v
+	return s
 }
 
 func (s *UsageBreakdownRowDTO) SetClientId(v int64) *UsageBreakdownRowDTO {
