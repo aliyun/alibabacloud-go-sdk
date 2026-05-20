@@ -17020,6 +17020,94 @@ func (client *Client) DescribeScheduleTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 查询共享备份集
+//
+// @param request - DescribeSharedBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSharedBackupsResponse
+func (client *Client) DescribeSharedBackupsWithContext(ctx context.Context, request *DescribeSharedBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSharedBackupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBType) {
+		query["DBType"] = request.DBType
+	}
+
+	if !dara.IsNil(request.DBVersion) {
+		query["DBVersion"] = request.DBVersion
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ShareType) {
+		query["ShareType"] = request.ShareType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSharedBackups"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSharedBackupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Slow Log Details
 //
 // Description:
