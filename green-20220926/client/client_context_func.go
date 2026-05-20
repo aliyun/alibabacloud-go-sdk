@@ -738,6 +738,60 @@ func (client *Client) CreateCallbackWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建图库
+//
+// @param request - CreateImageLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageLibResponse
+func (client *Client) CreateImageLibWithContext(ctx context.Context, request *CreateImageLibRequest, runtime *dara.RuntimeOptions) (_result *CreateImageLibResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.LibName) {
+		body["LibName"] = request.LibName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateImageLib"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateImageLibResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Online Test
 //
 // @param request - CreateOnlineTestRequest
