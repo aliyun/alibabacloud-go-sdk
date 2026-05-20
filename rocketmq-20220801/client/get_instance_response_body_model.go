@@ -167,7 +167,9 @@ type GetInstanceResponseBodyData struct {
 	// The account information.
 	AccountInfo *GetInstanceResponseBodyDataAccountInfo `json:"accountInfo,omitempty" xml:"accountInfo,omitempty" type:"Struct"`
 	// The information about access control.
-	AclInfo *GetInstanceResponseBodyDataAclInfo `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
+	AclInfo         *GetInstanceResponseBodyDataAclInfo `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
+	AutoRenew       *bool                               `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	AutoRenewPeriod *int32                              `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
 	// The business ID (BID) of the commodity.
 	//
 	// example:
@@ -352,6 +354,14 @@ func (s *GetInstanceResponseBodyData) GetAclInfo() *GetInstanceResponseBodyDataA
 	return s.AclInfo
 }
 
+func (s *GetInstanceResponseBodyData) GetAutoRenew() *bool {
+	return s.AutoRenew
+}
+
+func (s *GetInstanceResponseBodyData) GetAutoRenewPeriod() *int32 {
+	return s.AutoRenewPeriod
+}
+
 func (s *GetInstanceResponseBodyData) GetBid() *string {
 	return s.Bid
 }
@@ -463,6 +473,16 @@ func (s *GetInstanceResponseBodyData) SetAccountInfo(v *GetInstanceResponseBodyD
 
 func (s *GetInstanceResponseBodyData) SetAclInfo(v *GetInstanceResponseBodyDataAclInfo) *GetInstanceResponseBodyData {
 	s.AclInfo = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetAutoRenew(v bool) *GetInstanceResponseBodyData {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetAutoRenewPeriod(v int32) *GetInstanceResponseBodyData {
+	s.AutoRenewPeriod = &v
 	return s
 }
 

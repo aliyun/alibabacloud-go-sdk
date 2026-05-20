@@ -67,6 +67,8 @@ type CreateInstanceRequest struct {
 	//
 	// 3
 	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	// Deprecated
+	//
 	// The commodity code. Valid values:
 	//
 	// 	- ons_rmqpost_public_intl: pay-as-you-go
