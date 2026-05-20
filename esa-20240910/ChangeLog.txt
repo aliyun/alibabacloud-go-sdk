@@ -8,6 +8,16 @@
 - Update API UpdateLoadBalancer: add request parameters AdaptiveRouting.OriginLevelRetry.
 
 
+2026-05-20 Version: v3.1.0
+- Support API DescribeTraceDiagnoseReport.
+- Support API GenerateTraceDiagnose.
+- Support API ListTraceTasks.
+- Update API CreateLoadBalancer: add request parameters AdaptiveRouting.OriginLevelRetry.
+- Update API GetLoadBalancer: add response parameters Body.AdaptiveRouting.OriginLevelRetry.
+- Update API ListLoadBalancers: add response parameters Body.LoadBalancers.$.AdaptiveRouting.OriginLevelRetry.
+- Update API UpdateLoadBalancer: add request parameters AdaptiveRouting.OriginLevelRetry.
+
+
 2026-05-12 Version: v3.0.1
 - Update API CreateImageTransform: add request parameters AutoAvif.
 - Update API CreateImageTransform: add request parameters AutoWebp.
