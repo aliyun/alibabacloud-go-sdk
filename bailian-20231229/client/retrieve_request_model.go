@@ -15,6 +15,8 @@ type iRetrieveRequest interface {
 	GetEnableReranking() *bool
 	SetEnableRewrite(v bool) *RetrieveRequest
 	GetEnableRewrite() *bool
+	SetExtra(v *RetrieveRequestExtra) *RetrieveRequest
+	GetExtra() *RetrieveRequestExtra
 	SetImages(v []*string) *RetrieveRequest
 	GetImages() []*string
 	SetIndexId(v string) *RetrieveRequest
@@ -71,8 +73,9 @@ type RetrieveRequest struct {
 	// example:
 	//
 	// false
-	EnableRewrite *bool     `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
-	Images        []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	EnableRewrite *bool                 `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	Extra         *RetrieveRequestExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	Images        []*string             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
 	// This parameter is required.
@@ -146,6 +149,10 @@ func (s *RetrieveRequest) GetEnableRewrite() *bool {
 	return s.EnableRewrite
 }
 
+func (s *RetrieveRequest) GetExtra() *RetrieveRequestExtra {
+	return s.Extra
+}
+
 func (s *RetrieveRequest) GetImages() []*string {
 	return s.Images
 }
@@ -205,6 +212,11 @@ func (s *RetrieveRequest) SetEnableRewrite(v bool) *RetrieveRequest {
 	return s
 }
 
+func (s *RetrieveRequest) SetExtra(v *RetrieveRequestExtra) *RetrieveRequest {
+	s.Extra = v
+	return s
+}
+
 func (s *RetrieveRequest) SetImages(v []*string) *RetrieveRequest {
 	s.Images = v
 	return s
@@ -261,6 +273,11 @@ func (s *RetrieveRequest) SetSparseSimilarityTopK(v int32) *RetrieveRequest {
 }
 
 func (s *RetrieveRequest) Validate() error {
+	if s.Extra != nil {
+		if err := s.Extra.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.QueryHistory != nil {
 		for _, item := range s.QueryHistory {
 			if item != nil {
@@ -289,6 +306,31 @@ func (s *RetrieveRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type RetrieveRequestExtra struct {
+	UniqueId *string `json:"uniqueId,omitempty" xml:"uniqueId,omitempty"`
+}
+
+func (s RetrieveRequestExtra) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RetrieveRequestExtra) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRequestExtra) GetUniqueId() *string {
+	return s.UniqueId
+}
+
+func (s *RetrieveRequestExtra) SetUniqueId(v string) *RetrieveRequestExtra {
+	s.UniqueId = &v
+	return s
+}
+
+func (s *RetrieveRequestExtra) Validate() error {
+	return dara.Validate(s)
 }
 
 type RetrieveRequestQueryHistory struct {

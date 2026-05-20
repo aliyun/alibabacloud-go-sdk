@@ -3724,6 +3724,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 	}
 	request := &RetrieveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Extra) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, dara.String("Extra"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Images) {
 		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, dara.String("Images"), dara.String("simple"))
 	}
@@ -3755,6 +3759,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 
 	if !dara.IsNil(request.EnableRewrite) {
 		query["EnableRewrite"] = request.EnableRewrite
+	}
+
+	if !dara.IsNil(request.ExtraShrink) {
+		query["Extra"] = request.ExtraShrink
 	}
 
 	if !dara.IsNil(request.ImagesShrink) {
@@ -3890,6 +3898,10 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 		request.DocumentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentIds, dara.String("DocumentIds"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Extra) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, dara.String("Extra"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryIdsShrink) {
 		query["CategoryIds"] = request.CategoryIdsShrink
@@ -3909,6 +3921,10 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 
 	if !dara.IsNil(request.EnableHeaders) {
 		query["EnableHeaders"] = request.EnableHeaders
+	}
+
+	if !dara.IsNil(request.ExtraShrink) {
+		query["Extra"] = request.ExtraShrink
 	}
 
 	if !dara.IsNil(request.IndexId) {

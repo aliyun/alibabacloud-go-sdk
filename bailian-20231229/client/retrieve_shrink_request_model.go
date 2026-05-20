@@ -15,6 +15,8 @@ type iRetrieveShrinkRequest interface {
 	GetEnableReranking() *bool
 	SetEnableRewrite(v bool) *RetrieveShrinkRequest
 	GetEnableRewrite() *bool
+	SetExtraShrink(v string) *RetrieveShrinkRequest
+	GetExtraShrink() *string
 	SetImagesShrink(v string) *RetrieveShrinkRequest
 	GetImagesShrink() *string
 	SetIndexId(v string) *RetrieveShrinkRequest
@@ -72,6 +74,7 @@ type RetrieveShrinkRequest struct {
 	//
 	// false
 	EnableRewrite *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
+	ExtraShrink   *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	ImagesShrink  *string `json:"Images,omitempty" xml:"Images,omitempty"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
@@ -146,6 +149,10 @@ func (s *RetrieveShrinkRequest) GetEnableRewrite() *bool {
 	return s.EnableRewrite
 }
 
+func (s *RetrieveShrinkRequest) GetExtraShrink() *string {
+	return s.ExtraShrink
+}
+
 func (s *RetrieveShrinkRequest) GetImagesShrink() *string {
 	return s.ImagesShrink
 }
@@ -202,6 +209,11 @@ func (s *RetrieveShrinkRequest) SetEnableReranking(v bool) *RetrieveShrinkReques
 
 func (s *RetrieveShrinkRequest) SetEnableRewrite(v bool) *RetrieveShrinkRequest {
 	s.EnableRewrite = &v
+	return s
+}
+
+func (s *RetrieveShrinkRequest) SetExtraShrink(v string) *RetrieveShrinkRequest {
+	s.ExtraShrink = &v
 	return s
 }
 

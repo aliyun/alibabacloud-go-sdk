@@ -19,6 +19,8 @@ type iSubmitIndexAddDocumentsJobRequest interface {
 	GetDocumentIds() []*string
 	SetEnableHeaders(v bool) *SubmitIndexAddDocumentsJobRequest
 	GetEnableHeaders() *bool
+	SetExtra(v *SubmitIndexAddDocumentsJobRequestExtra) *SubmitIndexAddDocumentsJobRequest
+	GetExtra() *SubmitIndexAddDocumentsJobRequestExtra
 	SetIndexId(v string) *SubmitIndexAddDocumentsJobRequest
 	GetIndexId() *string
 	SetOverlapSize(v int32) *SubmitIndexAddDocumentsJobRequest
@@ -35,8 +37,9 @@ type SubmitIndexAddDocumentsJobRequest struct {
 	ChunkMode   *string   `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
 	ChunkSize   *int32    `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
 	// The list of the primary key IDs of the documents.
-	DocumentIds   []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
-	EnableHeaders *bool     `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
+	DocumentIds   []*string                               `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	EnableHeaders *bool                                   `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
+	Extra         *SubmitIndexAddDocumentsJobRequestExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
 	// This parameter is required.
@@ -91,6 +94,10 @@ func (s *SubmitIndexAddDocumentsJobRequest) GetEnableHeaders() *bool {
 	return s.EnableHeaders
 }
 
+func (s *SubmitIndexAddDocumentsJobRequest) GetExtra() *SubmitIndexAddDocumentsJobRequestExtra {
+	return s.Extra
+}
+
 func (s *SubmitIndexAddDocumentsJobRequest) GetIndexId() *string {
 	return s.IndexId
 }
@@ -132,6 +139,11 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetEnableHeaders(v bool) *SubmitInde
 	return s
 }
 
+func (s *SubmitIndexAddDocumentsJobRequest) SetExtra(v *SubmitIndexAddDocumentsJobRequestExtra) *SubmitIndexAddDocumentsJobRequest {
+	s.Extra = v
+	return s
+}
+
 func (s *SubmitIndexAddDocumentsJobRequest) SetIndexId(v string) *SubmitIndexAddDocumentsJobRequest {
 	s.IndexId = &v
 	return s
@@ -153,5 +165,35 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetSourceType(v string) *SubmitIndex
 }
 
 func (s *SubmitIndexAddDocumentsJobRequest) Validate() error {
+	if s.Extra != nil {
+		if err := s.Extra.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type SubmitIndexAddDocumentsJobRequestExtra struct {
+	UniqueId *string `json:"uniqueId,omitempty" xml:"uniqueId,omitempty"`
+}
+
+func (s SubmitIndexAddDocumentsJobRequestExtra) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitIndexAddDocumentsJobRequestExtra) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIndexAddDocumentsJobRequestExtra) GetUniqueId() *string {
+	return s.UniqueId
+}
+
+func (s *SubmitIndexAddDocumentsJobRequestExtra) SetUniqueId(v string) *SubmitIndexAddDocumentsJobRequestExtra {
+	s.UniqueId = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequestExtra) Validate() error {
 	return dara.Validate(s)
 }
