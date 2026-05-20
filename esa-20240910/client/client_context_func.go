@@ -8427,6 +8427,54 @@ func (client *Client) DescribeSiteTopDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// 边缘容器的监控
+//
+// @param request - DescribeTraceDiagnoseReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTraceDiagnoseReportResponse
+func (client *Client) DescribeTraceDiagnoseReportWithContext(ctx context.Context, request *DescribeTraceDiagnoseReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceDiagnoseReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTraceDiagnoseReport"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTraceDiagnoseReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the page monitoring data.
 //
 // Description:
@@ -8673,6 +8721,50 @@ func (client *Client) ExportRecordsWithContext(ctx context.Context, request *Exp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExportRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 边缘容器的监控
+//
+// @param request - GenerateTraceDiagnoseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateTraceDiagnoseResponse
+func (client *Client) GenerateTraceDiagnoseWithContext(ctx context.Context, request *GenerateTraceDiagnoseRequest, runtime *dara.RuntimeOptions) (_result *GenerateTraceDiagnoseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateTraceDiagnose"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateTraceDiagnoseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14753,6 +14845,82 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 边缘容器的监控
+//
+// @param request - ListTraceTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTraceTasksResponse
+func (client *Client) ListTraceTasksWithContext(ctx context.Context, request *ListTraceTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTraceTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientIp) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !dara.IsNil(request.DiagnoseId) {
+		query["DiagnoseId"] = request.DiagnoseId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTraceTasks"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTraceTasksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

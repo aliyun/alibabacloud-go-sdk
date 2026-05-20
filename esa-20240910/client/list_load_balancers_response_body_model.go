@@ -444,6 +444,7 @@ type ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting struct {
 	//
 	// true
 	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
+	OriginLevelRetry    *bool `json:"OriginLevelRetry,omitempty" xml:"OriginLevelRetry,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) String() string {
@@ -458,8 +459,17 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) GetFailoverA
 	return s.FailoverAcrossPools
 }
 
+func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) GetOriginLevelRetry() *bool {
+	return s.OriginLevelRetry
+}
+
 func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) SetFailoverAcrossPools(v bool) *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting {
 	s.FailoverAcrossPools = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) SetOriginLevelRetry(v bool) *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting {
+	s.OriginLevelRetry = &v
 	return s
 }
 
