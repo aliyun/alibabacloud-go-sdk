@@ -79,6 +79,8 @@ type iInitializeRequest interface {
 	GetModel() *string
 	SetOcr(v string) *InitializeRequest
 	GetOcr() *string
+	SetOcrValueStandard(v string) *InitializeRequest
+	GetOcrValueStandard() *string
 	SetPages(v string) *InitializeRequest
 	GetPages() *string
 	SetProcedurePriority(v string) *InitializeRequest
@@ -394,6 +396,10 @@ type InitializeRequest struct {
 	//
 	// Y
 	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// example:
+	//
+	// 0
+	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
 	// Page configuration for collection, multiple pages are connected using commas. Value range:
 	//
 	// - **01**: Front side of the document
@@ -704,6 +710,10 @@ func (s *InitializeRequest) GetOcr() *string {
 	return s.Ocr
 }
 
+func (s *InitializeRequest) GetOcrValueStandard() *string {
+	return s.OcrValueStandard
+}
+
 func (s *InitializeRequest) GetPages() *string {
 	return s.Pages
 }
@@ -956,6 +966,11 @@ func (s *InitializeRequest) SetModel(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetOcr(v string) *InitializeRequest {
 	s.Ocr = &v
+	return s
+}
+
+func (s *InitializeRequest) SetOcrValueStandard(v string) *InitializeRequest {
+	s.OcrValueStandard = &v
 	return s
 }
 

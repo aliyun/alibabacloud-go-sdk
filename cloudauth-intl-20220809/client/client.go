@@ -4371,6 +4371,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["Ocr"] = request.Ocr
 	}
 
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
 	if !dara.IsNil(request.Pages) {
 		query["Pages"] = request.Pages
 	}

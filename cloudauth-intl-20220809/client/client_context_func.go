@@ -2638,6 +2638,10 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["Ocr"] = request.Ocr
 	}
 
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
 	if !dara.IsNil(request.Pages) {
 		query["Pages"] = request.Pages
 	}

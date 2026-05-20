@@ -79,6 +79,8 @@ type iInitializeShrinkRequest interface {
 	GetModel() *string
 	SetOcr(v string) *InitializeShrinkRequest
 	GetOcr() *string
+	SetOcrValueStandard(v string) *InitializeShrinkRequest
+	GetOcrValueStandard() *string
 	SetPages(v string) *InitializeShrinkRequest
 	GetPages() *string
 	SetProcedurePriority(v string) *InitializeShrinkRequest
@@ -394,6 +396,10 @@ type InitializeShrinkRequest struct {
 	//
 	// Y
 	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// example:
+	//
+	// 0
+	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
 	// Page configuration for collection, multiple pages are connected using commas. Value range:
 	//
 	// - **01**: Front side of the document
@@ -704,6 +710,10 @@ func (s *InitializeShrinkRequest) GetOcr() *string {
 	return s.Ocr
 }
 
+func (s *InitializeShrinkRequest) GetOcrValueStandard() *string {
+	return s.OcrValueStandard
+}
+
 func (s *InitializeShrinkRequest) GetPages() *string {
 	return s.Pages
 }
@@ -956,6 +966,11 @@ func (s *InitializeShrinkRequest) SetModel(v string) *InitializeShrinkRequest {
 
 func (s *InitializeShrinkRequest) SetOcr(v string) *InitializeShrinkRequest {
 	s.Ocr = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetOcrValueStandard(v string) *InitializeShrinkRequest {
+	s.OcrValueStandard = &v
 	return s
 }
 
