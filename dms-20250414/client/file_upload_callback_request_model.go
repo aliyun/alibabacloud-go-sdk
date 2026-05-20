@@ -17,6 +17,8 @@ type iFileUploadCallbackRequest interface {
 	GetFileSize() *int64
 	SetFilename(v string) *FileUploadCallbackRequest
 	GetFilename() *string
+	SetOssBucket(v string) *FileUploadCallbackRequest
+	GetOssBucket() *string
 	SetUploadLocation(v string) *FileUploadCallbackRequest
 	GetUploadLocation() *string
 }
@@ -39,7 +41,8 @@ type FileUploadCallbackRequest struct {
 	// example:
 	//
 	// conversion_metrics.csv
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename  *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	// This parameter is required.
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`
 }
@@ -68,6 +71,10 @@ func (s *FileUploadCallbackRequest) GetFilename() *string {
 	return s.Filename
 }
 
+func (s *FileUploadCallbackRequest) GetOssBucket() *string {
+	return s.OssBucket
+}
+
 func (s *FileUploadCallbackRequest) GetUploadLocation() *string {
 	return s.UploadLocation
 }
@@ -89,6 +96,11 @@ func (s *FileUploadCallbackRequest) SetFileSize(v int64) *FileUploadCallbackRequ
 
 func (s *FileUploadCallbackRequest) SetFilename(v string) *FileUploadCallbackRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *FileUploadCallbackRequest) SetOssBucket(v string) *FileUploadCallbackRequest {
+	s.OssBucket = &v
 	return s
 }
 

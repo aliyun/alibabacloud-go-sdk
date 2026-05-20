@@ -2643,6 +2643,10 @@ func (client *Client) FileUploadCallbackWithOptions(request *FileUploadCallbackR
 		query["Filename"] = request.Filename
 	}
 
+	if !dara.IsNil(request.OssBucket) {
+		query["OssBucket"] = request.OssBucket
+	}
+
 	if !dara.IsNil(request.UploadLocation) {
 		query["UploadLocation"] = request.UploadLocation
 	}

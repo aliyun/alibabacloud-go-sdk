@@ -32,16 +32,46 @@ type iOneMetaKnowledgeBase interface {
 }
 
 type OneMetaKnowledgeBase struct {
-	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 20464374909***
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// order knowledgebase
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ExtraInfo   *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// vehicle
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// {"keywords":"sales,vehicle brand"}
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// 2026-05-14 11:30:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2026-05-14 11:30:39
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	KbUuid      *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	State       *int32  `json:"State,omitempty" xml:"State,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// kb-***
+	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// example:
+	//
+	// order_kb
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 4phsj52f81ymlm***
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s OneMetaKnowledgeBase) String() string {

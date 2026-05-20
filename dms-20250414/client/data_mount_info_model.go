@@ -20,10 +20,22 @@ type iDataMountInfo interface {
 }
 
 type DataMountInfo struct {
+	// example:
+	//
+	// image
 	MountFolderName *string `json:"MountFolderName,omitempty" xml:"MountFolderName,omitempty"`
-	OssBucket       *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	Prefix          *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	ReadOnly        *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// test-bucket
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// example:
+	//
+	// /prod
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
 func (s DataMountInfo) String() string {
