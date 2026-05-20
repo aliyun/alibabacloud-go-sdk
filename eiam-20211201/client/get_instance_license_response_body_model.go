@@ -260,7 +260,9 @@ type GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail struct {
 	ConditionalAccessPolicyLicenseStatus *string `json:"ConditionalAccessPolicyLicenseStatus,omitempty" xml:"ConditionalAccessPolicyLicenseStatus,omitempty"`
 	M2mApplicationLicenseStatus          *string `json:"M2mApplicationLicenseStatus,omitempty" xml:"M2mApplicationLicenseStatus,omitempty"`
 	M2mApplicationQuota                  *int64  `json:"M2mApplicationQuota,omitempty" xml:"M2mApplicationQuota,omitempty"`
+	MimApplicationLicenseStatus          *string `json:"MimApplicationLicenseStatus,omitempty" xml:"MimApplicationLicenseStatus,omitempty"`
 	NetworkAccessEndpointQuota           *int64  `json:"NetworkAccessEndpointQuota,omitempty" xml:"NetworkAccessEndpointQuota,omitempty"`
+	PrepaidActiveUserNumber              *int64  `json:"PrepaidActiveUserNumber,omitempty" xml:"PrepaidActiveUserNumber,omitempty"`
 	UserQuota                            *int64  `json:"UserQuota,omitempty" xml:"UserQuota,omitempty"`
 }
 
@@ -284,8 +286,16 @@ func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetM2mAppli
 	return s.M2mApplicationQuota
 }
 
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetMimApplicationLicenseStatus() *string {
+	return s.MimApplicationLicenseStatus
+}
+
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetNetworkAccessEndpointQuota() *int64 {
 	return s.NetworkAccessEndpointQuota
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPrepaidActiveUserNumber() *int64 {
+	return s.PrepaidActiveUserNumber
 }
 
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetUserQuota() *int64 {
@@ -307,8 +317,18 @@ func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetM2mAppli
 	return s
 }
 
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetMimApplicationLicenseStatus(v string) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.MimApplicationLicenseStatus = &v
+	return s
+}
+
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetNetworkAccessEndpointQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
 	s.NetworkAccessEndpointQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetPrepaidActiveUserNumber(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.PrepaidActiveUserNumber = &v
 	return s
 }
 
