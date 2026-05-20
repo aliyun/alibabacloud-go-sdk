@@ -11,6 +11,8 @@ type iUpdateFlowEndpointInput interface {
 	GoString() string
 	SetDescription(v string) *UpdateFlowEndpointInput
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *UpdateFlowEndpointInput
+	GetDisablePublicNetworkAccess() *bool
 	SetFlowEndpointName(v string) *UpdateFlowEndpointInput
 	GetFlowEndpointName() *string
 	SetRoutingConfiguration(v []*FlowEndpointRoutingConfig) *UpdateFlowEndpointInput
@@ -26,6 +28,8 @@ type UpdateFlowEndpointInput struct {
 	//
 	// Production endpoint for flow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该端点的公网访问
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 工作流端点的唯一标识名称
 	//
 	// example:
@@ -58,6 +62,10 @@ func (s *UpdateFlowEndpointInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateFlowEndpointInput) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *UpdateFlowEndpointInput) GetFlowEndpointName() *string {
 	return s.FlowEndpointName
 }
@@ -72,6 +80,11 @@ func (s *UpdateFlowEndpointInput) GetTargetVersion() *string {
 
 func (s *UpdateFlowEndpointInput) SetDescription(v string) *UpdateFlowEndpointInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateFlowEndpointInput) SetDisablePublicNetworkAccess(v bool) *UpdateFlowEndpointInput {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 

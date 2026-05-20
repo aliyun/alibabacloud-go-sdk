@@ -15,6 +15,8 @@ type iFlow interface {
 	GetDefinition() *string
 	SetDescription(v string) *Flow
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *Flow
+	GetDisablePublicNetworkAccess() *bool
 	SetEnvironmentConfiguration(v *EnvironmentConfiguration) *Flow
 	GetEnvironmentConfiguration() *EnvironmentConfiguration
 	SetExecutionRoleArn(v string) *Flow
@@ -58,6 +60,8 @@ type Flow struct {
 	//
 	// Customer service automation flow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该工作流的公网访问，作为工作流级别的默认策略
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 工作流的环境变量配置，包含一组命名变量列表
 	EnvironmentConfiguration *EnvironmentConfiguration `json:"environmentConfiguration,omitempty" xml:"environmentConfiguration,omitempty"`
 	// 为工作流提供访问云服务权限的执行角色ARN
@@ -134,6 +138,10 @@ func (s *Flow) GetDescription() *string {
 	return s.Description
 }
 
+func (s *Flow) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *Flow) GetEnvironmentConfiguration() *EnvironmentConfiguration {
 	return s.EnvironmentConfiguration
 }
@@ -190,6 +198,11 @@ func (s *Flow) SetDefinition(v string) *Flow {
 
 func (s *Flow) SetDescription(v string) *Flow {
 	s.Description = &v
+	return s
+}
+
+func (s *Flow) SetDisablePublicNetworkAccess(v bool) *Flow {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 

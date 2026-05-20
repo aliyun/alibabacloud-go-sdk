@@ -1,3 +1,6 @@
+2026-05-20 Version: v5.8.1
+- Generated golang 2025-09-10 for AgentRun.
+
 2026-05-15 Version: v5.8.0
 - Support API CreateIMBot.
 - Support API DeleteIMBot.

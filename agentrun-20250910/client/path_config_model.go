@@ -11,6 +11,10 @@ type iPathConfig interface {
 	GoString() string
 	SetAgentRuntimeEndpointName(v string) *PathConfig
 	GetAgentRuntimeEndpointName() *string
+	SetCompatibleProtocol(v string) *PathConfig
+	GetCompatibleProtocol() *string
+	SetFlowEndpointName(v string) *PathConfig
+	GetFlowEndpointName() *string
 	SetMethods(v []*string) *PathConfig
 	GetMethods() []*string
 	SetPath(v string) *PathConfig
@@ -26,6 +30,18 @@ type iPathConfig interface {
 type PathConfig struct {
 	// agent runtime 版本（仅当 resourceType 为 runtime 时有效）
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
+	// 兼容协议，指定后端响应格式转换。仅当 resourceType 为 flow 时必填：native 表示 FnF 原生调用；openai、dify-workflow、dify-chatflow 为对应兼容 API。
+	//
+	// example:
+	//
+	// native
+	CompatibleProtocol *string `json:"compatibleProtocol,omitempty" xml:"compatibleProtocol,omitempty"`
+	// Flow 版本/别名（仅当 resourceType 为 flow 时有效，默认 Default）
+	//
+	// example:
+	//
+	// Default
+	FlowEndpointName *string `json:"flowEndpointName,omitempty" xml:"flowEndpointName,omitempty"`
 	// 支持的方法有：HEAD, GET, POST, PUT, DELETE, PATCH, OPTIONS
 	//
 	// example:
@@ -61,6 +77,14 @@ func (s *PathConfig) GetAgentRuntimeEndpointName() *string {
 	return s.AgentRuntimeEndpointName
 }
 
+func (s *PathConfig) GetCompatibleProtocol() *string {
+	return s.CompatibleProtocol
+}
+
+func (s *PathConfig) GetFlowEndpointName() *string {
+	return s.FlowEndpointName
+}
+
 func (s *PathConfig) GetMethods() []*string {
 	return s.Methods
 }
@@ -83,6 +107,16 @@ func (s *PathConfig) GetResourceType() *string {
 
 func (s *PathConfig) SetAgentRuntimeEndpointName(v string) *PathConfig {
 	s.AgentRuntimeEndpointName = &v
+	return s
+}
+
+func (s *PathConfig) SetCompatibleProtocol(v string) *PathConfig {
+	s.CompatibleProtocol = &v
+	return s
+}
+
+func (s *PathConfig) SetFlowEndpointName(v string) *PathConfig {
+	s.FlowEndpointName = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateFlowInput interface {
 	GetDefinition() *string
 	SetDescription(v string) *CreateFlowInput
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *CreateFlowInput
+	GetDisablePublicNetworkAccess() *bool
 	SetEnvironmentConfiguration(v *EnvironmentConfiguration) *CreateFlowInput
 	GetEnvironmentConfiguration() *EnvironmentConfiguration
 	SetExecutionRoleArn(v string) *CreateFlowInput
@@ -44,6 +46,8 @@ type CreateFlowInput struct {
 	//
 	// Customer service automation flow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该工作流的公网访问，作为工作流级别的默认策略。当 FlowEndpoint 未指定时，将继承此值
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 工作流的环境变量配置，包含一组命名变量列表
 	EnvironmentConfiguration *EnvironmentConfiguration `json:"environmentConfiguration,omitempty" xml:"environmentConfiguration,omitempty"`
 	// 为工作流提供访问云服务权限的执行角色ARN
@@ -100,6 +104,10 @@ func (s *CreateFlowInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateFlowInput) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *CreateFlowInput) GetEnvironmentConfiguration() *EnvironmentConfiguration {
 	return s.EnvironmentConfiguration
 }
@@ -139,6 +147,11 @@ func (s *CreateFlowInput) SetDefinition(v string) *CreateFlowInput {
 
 func (s *CreateFlowInput) SetDescription(v string) *CreateFlowInput {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowInput) SetDisablePublicNetworkAccess(v bool) *CreateFlowInput {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 

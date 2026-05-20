@@ -11,6 +11,8 @@ type iCreateFlowEndpointInput interface {
 	GoString() string
 	SetDescription(v string) *CreateFlowEndpointInput
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *CreateFlowEndpointInput
+	GetDisablePublicNetworkAccess() *bool
 	SetFlowEndpointName(v string) *CreateFlowEndpointInput
 	GetFlowEndpointName() *string
 	SetRoutingConfiguration(v []*FlowEndpointRoutingConfig) *CreateFlowEndpointInput
@@ -26,6 +28,8 @@ type CreateFlowEndpointInput struct {
 	//
 	// Production endpoint for flow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该端点的公网访问。创建时未指定则从父工作流继承
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 工作流端点的唯一标识名称
 	//
 	// This parameter is required.
@@ -60,6 +64,10 @@ func (s *CreateFlowEndpointInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateFlowEndpointInput) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *CreateFlowEndpointInput) GetFlowEndpointName() *string {
 	return s.FlowEndpointName
 }
@@ -74,6 +82,11 @@ func (s *CreateFlowEndpointInput) GetTargetVersion() *string {
 
 func (s *CreateFlowEndpointInput) SetDescription(v string) *CreateFlowEndpointInput {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowEndpointInput) SetDisablePublicNetworkAccess(v bool) *CreateFlowEndpointInput {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 

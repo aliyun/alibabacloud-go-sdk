@@ -33,6 +33,8 @@ type iAgentRuntime interface {
 	GetDescription() *string
 	SetDiskSize(v int) *AgentRuntime
 	GetDiskSize() *int
+	SetEdition(v string) *AgentRuntime
+	GetEdition() *string
 	SetEnableSessionIsolation(v bool) *AgentRuntime
 	GetEnableSessionIsolation() *bool
 	SetEnvironmentVariables(v map[string]*string) *AgentRuntime
@@ -143,6 +145,7 @@ type AgentRuntime struct {
 	// AI agent runtime for customer service automation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize    *int    `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	Edition     *string `json:"edition,omitempty" xml:"edition,omitempty"`
 	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
 	//
 	// example:
@@ -317,6 +320,10 @@ func (s *AgentRuntime) GetDiskSize() *int {
 	return s.DiskSize
 }
 
+func (s *AgentRuntime) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *AgentRuntime) GetEnableSessionIsolation() *bool {
 	return s.EnableSessionIsolation
 }
@@ -454,6 +461,11 @@ func (s *AgentRuntime) SetDescription(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetDiskSize(v int) *AgentRuntime {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *AgentRuntime) SetEdition(v string) *AgentRuntime {
+	s.Edition = &v
 	return s
 }
 

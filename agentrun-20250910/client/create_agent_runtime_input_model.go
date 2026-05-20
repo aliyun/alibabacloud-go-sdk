@@ -29,6 +29,8 @@ type iCreateAgentRuntimeInput interface {
 	GetDescription() *string
 	SetDiskSize(v int32) *CreateAgentRuntimeInput
 	GetDiskSize() *int32
+	SetEdition(v string) *CreateAgentRuntimeInput
+	GetEdition() *string
 	SetEnableSessionIsolation(v bool) *CreateAgentRuntimeInput
 	GetEnableSessionIsolation() *bool
 	SetEnvironmentVariables(v map[string]*string) *CreateAgentRuntimeInput
@@ -124,6 +126,7 @@ type CreateAgentRuntimeInput struct {
 	// AI agent runtime for customer service automation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize    *int32  `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	Edition     *string `json:"edition,omitempty" xml:"edition,omitempty"`
 	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
 	//
 	// example:
@@ -278,6 +281,10 @@ func (s *CreateAgentRuntimeInput) GetDiskSize() *int32 {
 	return s.DiskSize
 }
 
+func (s *CreateAgentRuntimeInput) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *CreateAgentRuntimeInput) GetEnableSessionIsolation() *bool {
 	return s.EnableSessionIsolation
 }
@@ -393,6 +400,11 @@ func (s *CreateAgentRuntimeInput) SetDescription(v string) *CreateAgentRuntimeIn
 
 func (s *CreateAgentRuntimeInput) SetDiskSize(v int32) *CreateAgentRuntimeInput {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *CreateAgentRuntimeInput) SetEdition(v string) *CreateAgentRuntimeInput {
+	s.Edition = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iFlowEndpoint interface {
 	GetCreatedAt() *string
 	SetDescription(v string) *FlowEndpoint
 	GetDescription() *string
+	SetDisablePublicNetworkAccess(v bool) *FlowEndpoint
+	GetDisablePublicNetworkAccess() *bool
 	SetFlowEndpointArn(v string) *FlowEndpoint
 	GetFlowEndpointArn() *string
 	SetFlowEndpointId(v string) *FlowEndpoint
@@ -42,6 +44,8 @@ type FlowEndpoint struct {
 	//
 	// Production endpoint for flow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否禁用该端点的公网访问
+	DisablePublicNetworkAccess *bool `json:"disablePublicNetworkAccess,omitempty" xml:"disablePublicNetworkAccess,omitempty"`
 	// 工作流端点的全局唯一资源名称
 	//
 	// example:
@@ -102,6 +106,10 @@ func (s *FlowEndpoint) GetDescription() *string {
 	return s.Description
 }
 
+func (s *FlowEndpoint) GetDisablePublicNetworkAccess() *bool {
+	return s.DisablePublicNetworkAccess
+}
+
 func (s *FlowEndpoint) GetFlowEndpointArn() *string {
 	return s.FlowEndpointArn
 }
@@ -137,6 +145,11 @@ func (s *FlowEndpoint) SetCreatedAt(v string) *FlowEndpoint {
 
 func (s *FlowEndpoint) SetDescription(v string) *FlowEndpoint {
 	s.Description = &v
+	return s
+}
+
+func (s *FlowEndpoint) SetDisablePublicNetworkAccess(v bool) *FlowEndpoint {
+	s.DisablePublicNetworkAccess = &v
 	return s
 }
 
