@@ -13,6 +13,8 @@ type iListCategoryRequest interface {
 	GetCategoryName() *string
 	SetCategoryType(v string) *ListCategoryRequest
 	GetCategoryType() *string
+	SetConnectorId(v string) *ListCategoryRequest
+	GetConnectorId() *string
 	SetMaxResults(v int32) *ListCategoryRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListCategoryRequest
@@ -29,6 +31,10 @@ type ListCategoryRequest struct {
 	//
 	// UNSTRUCTURED
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// file_conn_xxxxx
+	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 	// example:
 	//
 	// 20
@@ -59,6 +65,10 @@ func (s *ListCategoryRequest) GetCategoryType() *string {
 	return s.CategoryType
 }
 
+func (s *ListCategoryRequest) GetConnectorId() *string {
+	return s.ConnectorId
+}
+
 func (s *ListCategoryRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -78,6 +88,11 @@ func (s *ListCategoryRequest) SetCategoryName(v string) *ListCategoryRequest {
 
 func (s *ListCategoryRequest) SetCategoryType(v string) *ListCategoryRequest {
 	s.CategoryType = &v
+	return s
+}
+
+func (s *ListCategoryRequest) SetConnectorId(v string) *ListCategoryRequest {
+	s.ConnectorId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iListFileRequest interface {
 	GoString() string
 	SetCategoryId(v string) *ListFileRequest
 	GetCategoryId() *string
+	SetFileIds(v []*string) *ListFileRequest
+	GetFileIds() []*string
 	SetFileName(v string) *ListFileRequest
 	GetFileName() *string
 	SetMaxResults(v int32) *ListFileRequest
@@ -27,8 +29,9 @@ type ListFileRequest struct {
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	CategoryId *string   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	FileIds    []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
+	FileName   *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// example:
 	//
 	// 20
@@ -51,6 +54,10 @@ func (s *ListFileRequest) GetCategoryId() *string {
 	return s.CategoryId
 }
 
+func (s *ListFileRequest) GetFileIds() []*string {
+	return s.FileIds
+}
+
 func (s *ListFileRequest) GetFileName() *string {
 	return s.FileName
 }
@@ -65,6 +72,11 @@ func (s *ListFileRequest) GetNextToken() *string {
 
 func (s *ListFileRequest) SetCategoryId(v string) *ListFileRequest {
 	s.CategoryId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetFileIds(v []*string) *ListFileRequest {
+	s.FileIds = v
 	return s
 }
 

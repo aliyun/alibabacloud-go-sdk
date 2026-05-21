@@ -80,6 +80,71 @@ func (client *Client) AddCategoryWithContext(ctx context.Context, WorkspaceId *s
 
 // Summary:
 //
+// 创建连接器
+//
+// @param tmpReq - AddConnectorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddConnectorResponse
+func (client *Client) AddConnectorWithContext(ctx context.Context, WorkspaceId *string, tmpReq *AddConnectorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddConnectorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FileConnectorConfig) {
+		request.FileConnectorConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileConnectorConfig, dara.String("FileConnectorConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorName) {
+		body["ConnectorName"] = request.ConnectorName
+	}
+
+	if !dara.IsNil(request.ConnectorType) {
+		body["ConnectorType"] = request.ConnectorType
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FileConnectorConfigShrink) {
+		body["FileConnectorConfig"] = request.FileConnectorConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddConnector"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/connector"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddConnectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
 //
 // Description:
@@ -1653,6 +1718,57 @@ func (client *Client) GetAvailableParserTypesWithContext(ctx context.Context, Wo
 
 // Summary:
 //
+// # GetConnector
+//
+// @param request - GetConnectorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectorResponse
+func (client *Client) GetConnectorWithContext(ctx context.Context, WorkspaceId *string, request *GetConnectorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.ConnectorName) {
+		query["ConnectorName"] = request.ConnectorName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConnector"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/connector"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConnectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the current status of a specified knowledge base creation or add document job.
 //
 // Description:
@@ -2078,6 +2194,10 @@ func (client *Client) ListCategoryWithContext(ctx context.Context, WorkspaceId *
 		body["CategoryType"] = request.CategoryType
 	}
 
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -2201,23 +2321,33 @@ func (client *Client) ListChunksWithContext(ctx context.Context, WorkspaceId *st
 //
 // **Throttling:*	- Throttling will be triggered if you call this operation frequently. Do not exceed 5 times per second. If throttling is triggered, try again later.
 //
-// @param request - ListFileRequest
+// @param tmpReq - ListFileRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFileResponse
-func (client *Client) ListFileWithContext(ctx context.Context, WorkspaceId *string, request *ListFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFileResponse, _err error) {
+func (client *Client) ListFileWithContext(ctx context.Context, WorkspaceId *string, tmpReq *ListFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FileIds) {
+		request.FileIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileIds, dara.String("FileIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
 		query["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.FileIdsShrink) {
+		query["FileIds"] = request.FileIdsShrink
 	}
 
 	if !dara.IsNil(request.FileName) {
