@@ -408,7 +408,7 @@ func (client *Client) AssociateProjectToImage(request *AssociateProjectToImageRe
 
 // Summary:
 //
-// Associates a resource group with a workspace.
+// Bind a resource group to a workspace.
 //
 // Description:
 //
@@ -464,7 +464,7 @@ func (client *Client) AssociateProjectToResourceGroupWithOptions(request *Associ
 
 // Summary:
 //
-// Associates a resource group with a workspace.
+// Bind a resource group to a workspace.
 //
 // Description:
 //
@@ -17354,6 +17354,10 @@ func (client *Client) ListWorkflowInstancesWithOptions(tmpReq *ListWorkflowInsta
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BizDate) {
 		body["BizDate"] = request.BizDate
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		body["EnvType"] = request.EnvType
 	}
 
 	if !dara.IsNil(request.Filter) {

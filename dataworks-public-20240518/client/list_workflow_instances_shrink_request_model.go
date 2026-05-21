@@ -11,6 +11,8 @@ type iListWorkflowInstancesShrinkRequest interface {
 	GoString() string
 	SetBizDate(v int64) *ListWorkflowInstancesShrinkRequest
 	GetBizDate() *int64
+	SetEnvType(v string) *ListWorkflowInstancesShrinkRequest
+	GetEnvType() *string
 	SetFilter(v string) *ListWorkflowInstancesShrinkRequest
 	GetFilter() *string
 	SetIdsShrink(v string) *ListWorkflowInstancesShrinkRequest
@@ -46,6 +48,10 @@ type ListWorkflowInstancesShrinkRequest struct {
 	//
 	// 1710239005403
 	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// example:
 	//
 	// {
@@ -151,6 +157,10 @@ func (s *ListWorkflowInstancesShrinkRequest) GetBizDate() *int64 {
 	return s.BizDate
 }
 
+func (s *ListWorkflowInstancesShrinkRequest) GetEnvType() *string {
+	return s.EnvType
+}
+
 func (s *ListWorkflowInstancesShrinkRequest) GetFilter() *string {
 	return s.Filter
 }
@@ -201,6 +211,11 @@ func (s *ListWorkflowInstancesShrinkRequest) GetWorkflowId() *int64 {
 
 func (s *ListWorkflowInstancesShrinkRequest) SetBizDate(v int64) *ListWorkflowInstancesShrinkRequest {
 	s.BizDate = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesShrinkRequest) SetEnvType(v string) *ListWorkflowInstancesShrinkRequest {
+	s.EnvType = &v
 	return s
 }
 
