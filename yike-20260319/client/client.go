@@ -718,6 +718,68 @@ func (client *Client) GetYikeAIAppJob(request *GetYikeAIAppJobRequest) (_result 
 
 // Summary:
 //
+// 查询一刻口播视频生成任务
+//
+// @param request - GetYikeAgentJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAgentJobResponse
+func (client *Client) GetYikeAgentJobWithOptions(request *GetYikeAgentJobRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAgentJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAgentJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAgentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一刻口播视频生成任务
+//
+// @param request - GetYikeAgentJobRequest
+//
+// @return GetYikeAgentJobResponse
+func (client *Client) GetYikeAgentJob(request *GetYikeAgentJobRequest) (_result *GetYikeAgentJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikeAgentJobResponse{}
+	_body, _err := client.GetYikeAgentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取一刻媒资内容信息
 //
 // @param request - GetYikeAssetMediaInfoRequest
@@ -1769,6 +1831,72 @@ func (client *Client) SubmitYikeAIAppJob(request *SubmitYikeAIAppJobRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitYikeAIAppJobResponse{}
 	_body, _err := client.SubmitYikeAIAppJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻数字人口播视频生成任务
+//
+// @param request - SubmitYikeAvatarNarratorJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikeAvatarNarratorJobResponse
+func (client *Client) SubmitYikeAvatarNarratorJobWithOptions(request *SubmitYikeAvatarNarratorJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikeAvatarNarratorJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobParams) {
+		body["JobParams"] = request.JobParams
+	}
+
+	if !dara.IsNil(request.UserData) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikeAvatarNarratorJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikeAvatarNarratorJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻数字人口播视频生成任务
+//
+// @param request - SubmitYikeAvatarNarratorJobRequest
+//
+// @return SubmitYikeAvatarNarratorJobResponse
+func (client *Client) SubmitYikeAvatarNarratorJob(request *SubmitYikeAvatarNarratorJobRequest) (_result *SubmitYikeAvatarNarratorJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitYikeAvatarNarratorJobResponse{}
+	_body, _err := client.SubmitYikeAvatarNarratorJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
