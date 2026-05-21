@@ -9,8 +9,8 @@ type iAiPluginStatus interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetErrorLogs(v map[string]*string) *AiPluginStatus
-	GetErrorLogs() map[string]*string
+	SetErrorLogs(v []map[string]interface{}) *AiPluginStatus
+	GetErrorLogs() []map[string]interface{}
 	SetPluginId(v string) *AiPluginStatus
 	GetPluginId() *string
 	SetServiceHealthy(v bool) *AiPluginStatus
@@ -18,9 +18,9 @@ type iAiPluginStatus interface {
 }
 
 type AiPluginStatus struct {
-	ErrorLogs      map[string]*string `json:"errorLogs,omitempty" xml:"errorLogs,omitempty"`
-	PluginId       *string            `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	ServiceHealthy *bool              `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
+	ErrorLogs      []map[string]interface{} `json:"errorLogs,omitempty" xml:"errorLogs,omitempty" type:"Repeated"`
+	PluginId       *string                  `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	ServiceHealthy *bool                    `json:"serviceHealthy,omitempty" xml:"serviceHealthy,omitempty"`
 }
 
 func (s AiPluginStatus) String() string {
@@ -31,7 +31,7 @@ func (s AiPluginStatus) GoString() string {
 	return s.String()
 }
 
-func (s *AiPluginStatus) GetErrorLogs() map[string]*string {
+func (s *AiPluginStatus) GetErrorLogs() []map[string]interface{} {
 	return s.ErrorLogs
 }
 
@@ -43,7 +43,7 @@ func (s *AiPluginStatus) GetServiceHealthy() *bool {
 	return s.ServiceHealthy
 }
 
-func (s *AiPluginStatus) SetErrorLogs(v map[string]*string) *AiPluginStatus {
+func (s *AiPluginStatus) SetErrorLogs(v []map[string]interface{}) *AiPluginStatus {
 	s.ErrorLogs = v
 	return s
 }

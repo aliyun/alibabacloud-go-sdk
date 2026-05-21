@@ -19,6 +19,10 @@ type iHttpApiDeployConfig interface {
 	GetCustomDomainIds() []*string
 	SetCustomDomainInfos(v []*HttpApiDeployConfigCustomDomainInfos) *HttpApiDeployConfig
 	GetCustomDomainInfos() []*HttpApiDeployConfigCustomDomainInfos
+	SetEnvDomainIds(v []*string) *HttpApiDeployConfig
+	GetEnvDomainIds() []*string
+	SetEnvDomainInfos(v []*HttpApiDeployConfigEnvDomainInfos) *HttpApiDeployConfig
+	GetEnvDomainInfos() []*HttpApiDeployConfigEnvDomainInfos
 	SetEnvironmentId(v string) *HttpApiDeployConfig
 	GetEnvironmentId() *string
 	SetGatewayId(v string) *HttpApiDeployConfig
@@ -57,6 +61,8 @@ type HttpApiDeployConfig struct {
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
 	// The information about the custom domain names.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
+	EnvDomainIds      []*string                               `json:"envDomainIds,omitempty" xml:"envDomainIds,omitempty" type:"Repeated"`
+	EnvDomainInfos    []*HttpApiDeployConfigEnvDomainInfos    `json:"envDomainInfos,omitempty" xml:"envDomainInfos,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
 	// example:
@@ -126,6 +132,14 @@ func (s *HttpApiDeployConfig) GetCustomDomainInfos() []*HttpApiDeployConfigCusto
 	return s.CustomDomainInfos
 }
 
+func (s *HttpApiDeployConfig) GetEnvDomainIds() []*string {
+	return s.EnvDomainIds
+}
+
+func (s *HttpApiDeployConfig) GetEnvDomainInfos() []*HttpApiDeployConfigEnvDomainInfos {
+	return s.EnvDomainInfos
+}
+
 func (s *HttpApiDeployConfig) GetEnvironmentId() *string {
 	return s.EnvironmentId
 }
@@ -187,6 +201,16 @@ func (s *HttpApiDeployConfig) SetCustomDomainInfos(v []*HttpApiDeployConfigCusto
 	return s
 }
 
+func (s *HttpApiDeployConfig) SetEnvDomainIds(v []*string) *HttpApiDeployConfig {
+	s.EnvDomainIds = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetEnvDomainInfos(v []*HttpApiDeployConfigEnvDomainInfos) *HttpApiDeployConfig {
+	s.EnvDomainInfos = v
+	return s
+}
+
 func (s *HttpApiDeployConfig) SetEnvironmentId(v string) *HttpApiDeployConfig {
 	s.EnvironmentId = &v
 	return s
@@ -235,6 +259,15 @@ func (s *HttpApiDeployConfig) SetSubDomains(v []*HttpApiDeployConfigSubDomains) 
 func (s *HttpApiDeployConfig) Validate() error {
 	if s.CustomDomainInfos != nil {
 		for _, item := range s.CustomDomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EnvDomainInfos != nil {
+		for _, item := range s.EnvDomainInfos {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -344,6 +377,51 @@ func (s *HttpApiDeployConfigCustomDomainInfos) SetProtocol(v string) *HttpApiDep
 }
 
 func (s *HttpApiDeployConfigCustomDomainInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type HttpApiDeployConfigEnvDomainInfos struct {
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s HttpApiDeployConfigEnvDomainInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HttpApiDeployConfigEnvDomainInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) GetDomainId() *string {
+	return s.DomainId
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) GetName() *string {
+	return s.Name
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) SetDomainId(v string) *HttpApiDeployConfigEnvDomainInfos {
+	s.DomainId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) SetName(v string) *HttpApiDeployConfigEnvDomainInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) SetProtocol(v string) *HttpApiDeployConfigEnvDomainInfos {
+	s.Protocol = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigEnvDomainInfos) Validate() error {
 	return dara.Validate(s)
 }
 
