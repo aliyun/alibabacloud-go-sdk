@@ -262,6 +262,10 @@ func (client *Client) CreateApplicationVersionWithOptions(tmpReq *CreateApplicat
 		request.SynthesizerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SynthesizerConfig, dara.String("SynthesizerConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ToolConfig) {
+		request.ToolConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ToolConfig, dara.String("ToolConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.TranscriberConfig) {
 		request.TranscriberConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TranscriberConfig, dara.String("TranscriberConfig"), dara.String("json"))
 	}
@@ -293,6 +297,10 @@ func (client *Client) CreateApplicationVersionWithOptions(tmpReq *CreateApplicat
 
 	if !dara.IsNil(request.SynthesizerConfigShrink) {
 		query["SynthesizerConfig"] = request.SynthesizerConfigShrink
+	}
+
+	if !dara.IsNil(request.ToolConfigShrink) {
+		query["ToolConfig"] = request.ToolConfigShrink
 	}
 
 	if !dara.IsNil(request.TranscriberConfigShrink) {
@@ -2482,6 +2490,10 @@ func (client *Client) UpdateApplicationVersionWithOptions(tmpReq *UpdateApplicat
 		request.SynthesizerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SynthesizerConfig, dara.String("SynthesizerConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ToolConfig) {
+		request.ToolConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ToolConfig, dara.String("ToolConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.TranscriberConfig) {
 		request.TranscriberConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TranscriberConfig, dara.String("TranscriberConfig"), dara.String("json"))
 	}
@@ -2509,6 +2521,10 @@ func (client *Client) UpdateApplicationVersionWithOptions(tmpReq *UpdateApplicat
 
 	if !dara.IsNil(request.SynthesizerConfigShrink) {
 		query["SynthesizerConfig"] = request.SynthesizerConfigShrink
+	}
+
+	if !dara.IsNil(request.ToolConfigShrink) {
+		query["ToolConfig"] = request.ToolConfigShrink
 	}
 
 	if !dara.IsNil(request.TranscriberConfigShrink) {

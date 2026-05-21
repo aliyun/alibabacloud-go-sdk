@@ -23,6 +23,8 @@ type iCreateApplicationVersionRequest interface {
 	GetSourceVersionId() *string
 	SetSynthesizerConfig(v *CreateApplicationVersionRequestSynthesizerConfig) *CreateApplicationVersionRequest
 	GetSynthesizerConfig() *CreateApplicationVersionRequestSynthesizerConfig
+	SetToolConfig(v *CreateApplicationVersionRequestToolConfig) *CreateApplicationVersionRequest
+	GetToolConfig() *CreateApplicationVersionRequestToolConfig
 	SetTranscriberConfig(v *CreateApplicationVersionRequestTranscriberConfig) *CreateApplicationVersionRequest
 	GetTranscriberConfig() *CreateApplicationVersionRequestTranscriberConfig
 }
@@ -48,6 +50,7 @@ type CreateApplicationVersionRequest struct {
 	// 20904943-f711-494f-9f1f-e7f340f37707
 	SourceVersionId   *string                                           `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
 	SynthesizerConfig *CreateApplicationVersionRequestSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
+	ToolConfig        *CreateApplicationVersionRequestToolConfig        `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
 	TranscriberConfig *CreateApplicationVersionRequestTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
 }
 
@@ -85,6 +88,10 @@ func (s *CreateApplicationVersionRequest) GetSourceVersionId() *string {
 
 func (s *CreateApplicationVersionRequest) GetSynthesizerConfig() *CreateApplicationVersionRequestSynthesizerConfig {
 	return s.SynthesizerConfig
+}
+
+func (s *CreateApplicationVersionRequest) GetToolConfig() *CreateApplicationVersionRequestToolConfig {
+	return s.ToolConfig
 }
 
 func (s *CreateApplicationVersionRequest) GetTranscriberConfig() *CreateApplicationVersionRequestTranscriberConfig {
@@ -126,6 +133,11 @@ func (s *CreateApplicationVersionRequest) SetSynthesizerConfig(v *CreateApplicat
 	return s
 }
 
+func (s *CreateApplicationVersionRequest) SetToolConfig(v *CreateApplicationVersionRequestToolConfig) *CreateApplicationVersionRequest {
+	s.ToolConfig = v
+	return s
+}
+
 func (s *CreateApplicationVersionRequest) SetTranscriberConfig(v *CreateApplicationVersionRequestTranscriberConfig) *CreateApplicationVersionRequest {
 	s.TranscriberConfig = v
 	return s
@@ -149,6 +161,11 @@ func (s *CreateApplicationVersionRequest) Validate() error {
 	}
 	if s.SynthesizerConfig != nil {
 		if err := s.SynthesizerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToolConfig != nil {
+		if err := s.ToolConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -578,6 +595,85 @@ func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) SetReplaceme
 }
 
 func (s *CreateApplicationVersionRequestSynthesizerConfigPronRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationVersionRequestToolConfig struct {
+	McpServers []*CreateApplicationVersionRequestToolConfigMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
+}
+
+func (s CreateApplicationVersionRequestToolConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationVersionRequestToolConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationVersionRequestToolConfig) GetMcpServers() []*CreateApplicationVersionRequestToolConfigMcpServers {
+	return s.McpServers
+}
+
+func (s *CreateApplicationVersionRequestToolConfig) SetMcpServers(v []*CreateApplicationVersionRequestToolConfigMcpServers) *CreateApplicationVersionRequestToolConfig {
+	s.McpServers = v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestToolConfig) Validate() error {
+	if s.McpServers != nil {
+		for _, item := range s.McpServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateApplicationVersionRequestToolConfigMcpServers struct {
+	BaseUrl     *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SseEndpoint *string `json:"SseEndpoint,omitempty" xml:"SseEndpoint,omitempty"`
+}
+
+func (s CreateApplicationVersionRequestToolConfigMcpServers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationVersionRequestToolConfigMcpServers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) GetBaseUrl() *string {
+	return s.BaseUrl
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) GetSseEndpoint() *string {
+	return s.SseEndpoint
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) SetBaseUrl(v string) *CreateApplicationVersionRequestToolConfigMcpServers {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) SetName(v string) *CreateApplicationVersionRequestToolConfigMcpServers {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) SetSseEndpoint(v string) *CreateApplicationVersionRequestToolConfigMcpServers {
+	s.SseEndpoint = &v
+	return s
+}
+
+func (s *CreateApplicationVersionRequestToolConfigMcpServers) Validate() error {
 	return dara.Validate(s)
 }
 

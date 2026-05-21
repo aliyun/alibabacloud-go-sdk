@@ -21,6 +21,8 @@ type iUpdateApplicationVersionRequest interface {
 	GetScriptProfile() *UpdateApplicationVersionRequestScriptProfile
 	SetSynthesizerConfig(v *UpdateApplicationVersionRequestSynthesizerConfig) *UpdateApplicationVersionRequest
 	GetSynthesizerConfig() *UpdateApplicationVersionRequestSynthesizerConfig
+	SetToolConfig(v *UpdateApplicationVersionRequestToolConfig) *UpdateApplicationVersionRequest
+	GetToolConfig() *UpdateApplicationVersionRequestToolConfig
 	SetTranscriberConfig(v *UpdateApplicationVersionRequestTranscriberConfig) *UpdateApplicationVersionRequest
 	GetTranscriberConfig() *UpdateApplicationVersionRequestTranscriberConfig
 	SetVersionId(v string) *UpdateApplicationVersionRequest
@@ -47,6 +49,7 @@ type UpdateApplicationVersionRequest struct {
 	// if can be null:
 	// true
 	SynthesizerConfig *UpdateApplicationVersionRequestSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
+	ToolConfig        *UpdateApplicationVersionRequestToolConfig        `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
 	// if can be null:
 	// true
 	TranscriberConfig *UpdateApplicationVersionRequestTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
@@ -90,6 +93,10 @@ func (s *UpdateApplicationVersionRequest) GetSynthesizerConfig() *UpdateApplicat
 	return s.SynthesizerConfig
 }
 
+func (s *UpdateApplicationVersionRequest) GetToolConfig() *UpdateApplicationVersionRequestToolConfig {
+	return s.ToolConfig
+}
+
 func (s *UpdateApplicationVersionRequest) GetTranscriberConfig() *UpdateApplicationVersionRequestTranscriberConfig {
 	return s.TranscriberConfig
 }
@@ -128,6 +135,11 @@ func (s *UpdateApplicationVersionRequest) SetSynthesizerConfig(v *UpdateApplicat
 	return s
 }
 
+func (s *UpdateApplicationVersionRequest) SetToolConfig(v *UpdateApplicationVersionRequestToolConfig) *UpdateApplicationVersionRequest {
+	s.ToolConfig = v
+	return s
+}
+
 func (s *UpdateApplicationVersionRequest) SetTranscriberConfig(v *UpdateApplicationVersionRequestTranscriberConfig) *UpdateApplicationVersionRequest {
 	s.TranscriberConfig = v
 	return s
@@ -156,6 +168,11 @@ func (s *UpdateApplicationVersionRequest) Validate() error {
 	}
 	if s.SynthesizerConfig != nil {
 		if err := s.SynthesizerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToolConfig != nil {
+		if err := s.ToolConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -585,6 +602,85 @@ func (s *UpdateApplicationVersionRequestSynthesizerConfigPronRules) SetReplaceme
 }
 
 func (s *UpdateApplicationVersionRequestSynthesizerConfigPronRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateApplicationVersionRequestToolConfig struct {
+	McpServers []*UpdateApplicationVersionRequestToolConfigMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateApplicationVersionRequestToolConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApplicationVersionRequestToolConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationVersionRequestToolConfig) GetMcpServers() []*UpdateApplicationVersionRequestToolConfigMcpServers {
+	return s.McpServers
+}
+
+func (s *UpdateApplicationVersionRequestToolConfig) SetMcpServers(v []*UpdateApplicationVersionRequestToolConfigMcpServers) *UpdateApplicationVersionRequestToolConfig {
+	s.McpServers = v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestToolConfig) Validate() error {
+	if s.McpServers != nil {
+		for _, item := range s.McpServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateApplicationVersionRequestToolConfigMcpServers struct {
+	BaseUrl     *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SseEndpoint *string `json:"SseEndpoint,omitempty" xml:"SseEndpoint,omitempty"`
+}
+
+func (s UpdateApplicationVersionRequestToolConfigMcpServers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApplicationVersionRequestToolConfigMcpServers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) GetBaseUrl() *string {
+	return s.BaseUrl
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) GetName() *string {
+	return s.Name
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) GetSseEndpoint() *string {
+	return s.SseEndpoint
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) SetBaseUrl(v string) *UpdateApplicationVersionRequestToolConfigMcpServers {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) SetName(v string) *UpdateApplicationVersionRequestToolConfigMcpServers {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) SetSseEndpoint(v string) *UpdateApplicationVersionRequestToolConfigMcpServers {
+	s.SseEndpoint = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestToolConfigMcpServers) Validate() error {
 	return dara.Validate(s)
 }
 

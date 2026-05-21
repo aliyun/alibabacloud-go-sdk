@@ -21,6 +21,8 @@ type iUpdateApplicationVersionShrinkRequest interface {
 	GetScriptProfileShrink() *string
 	SetSynthesizerConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
 	GetSynthesizerConfigShrink() *string
+	SetToolConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
+	GetToolConfigShrink() *string
 	SetTranscriberConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
 	GetTranscriberConfigShrink() *string
 	SetVersionId(v string) *UpdateApplicationVersionShrinkRequest
@@ -47,6 +49,7 @@ type UpdateApplicationVersionShrinkRequest struct {
 	// if can be null:
 	// true
 	SynthesizerConfigShrink *string `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty"`
+	ToolConfigShrink        *string `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty"`
 	// if can be null:
 	// true
 	TranscriberConfigShrink *string `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty"`
@@ -90,6 +93,10 @@ func (s *UpdateApplicationVersionShrinkRequest) GetSynthesizerConfigShrink() *st
 	return s.SynthesizerConfigShrink
 }
 
+func (s *UpdateApplicationVersionShrinkRequest) GetToolConfigShrink() *string {
+	return s.ToolConfigShrink
+}
+
 func (s *UpdateApplicationVersionShrinkRequest) GetTranscriberConfigShrink() *string {
 	return s.TranscriberConfigShrink
 }
@@ -125,6 +132,11 @@ func (s *UpdateApplicationVersionShrinkRequest) SetScriptProfileShrink(v string)
 
 func (s *UpdateApplicationVersionShrinkRequest) SetSynthesizerConfigShrink(v string) *UpdateApplicationVersionShrinkRequest {
 	s.SynthesizerConfigShrink = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionShrinkRequest) SetToolConfigShrink(v string) *UpdateApplicationVersionShrinkRequest {
+	s.ToolConfigShrink = &v
 	return s
 }
 

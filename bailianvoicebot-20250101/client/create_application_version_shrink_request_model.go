@@ -23,6 +23,8 @@ type iCreateApplicationVersionShrinkRequest interface {
 	GetSourceVersionId() *string
 	SetSynthesizerConfigShrink(v string) *CreateApplicationVersionShrinkRequest
 	GetSynthesizerConfigShrink() *string
+	SetToolConfigShrink(v string) *CreateApplicationVersionShrinkRequest
+	GetToolConfigShrink() *string
 	SetTranscriberConfigShrink(v string) *CreateApplicationVersionShrinkRequest
 	GetTranscriberConfigShrink() *string
 }
@@ -48,6 +50,7 @@ type CreateApplicationVersionShrinkRequest struct {
 	// 20904943-f711-494f-9f1f-e7f340f37707
 	SourceVersionId         *string `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
 	SynthesizerConfigShrink *string `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty"`
+	ToolConfigShrink        *string `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty"`
 	TranscriberConfigShrink *string `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty"`
 }
 
@@ -87,6 +90,10 @@ func (s *CreateApplicationVersionShrinkRequest) GetSynthesizerConfigShrink() *st
 	return s.SynthesizerConfigShrink
 }
 
+func (s *CreateApplicationVersionShrinkRequest) GetToolConfigShrink() *string {
+	return s.ToolConfigShrink
+}
+
 func (s *CreateApplicationVersionShrinkRequest) GetTranscriberConfigShrink() *string {
 	return s.TranscriberConfigShrink
 }
@@ -123,6 +130,11 @@ func (s *CreateApplicationVersionShrinkRequest) SetSourceVersionId(v string) *Cr
 
 func (s *CreateApplicationVersionShrinkRequest) SetSynthesizerConfigShrink(v string) *CreateApplicationVersionShrinkRequest {
 	s.SynthesizerConfigShrink = &v
+	return s
+}
+
+func (s *CreateApplicationVersionShrinkRequest) SetToolConfigShrink(v string) *CreateApplicationVersionShrinkRequest {
+	s.ToolConfigShrink = &v
 	return s
 }
 

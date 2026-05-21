@@ -251,6 +251,7 @@ type GetApplicationResponseBodyDataDraftVersion struct {
 	RagConfig         *GetApplicationResponseBodyDataDraftVersionRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
 	ScriptProfile     *GetApplicationResponseBodyDataDraftVersionScriptProfile     `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
 	SynthesizerConfig *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
+	ToolConfig        *GetApplicationResponseBodyDataDraftVersionToolConfig        `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
 	TranscriberConfig *GetApplicationResponseBodyDataDraftVersionTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -282,6 +283,10 @@ func (s *GetApplicationResponseBodyDataDraftVersion) GetSynthesizerConfig() *Get
 	return s.SynthesizerConfig
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersion) GetToolConfig() *GetApplicationResponseBodyDataDraftVersionToolConfig {
+	return s.ToolConfig
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersion) GetTranscriberConfig() *GetApplicationResponseBodyDataDraftVersionTranscriberConfig {
 	return s.TranscriberConfig
 }
@@ -307,6 +312,11 @@ func (s *GetApplicationResponseBodyDataDraftVersion) SetScriptProfile(v *GetAppl
 
 func (s *GetApplicationResponseBodyDataDraftVersion) SetSynthesizerConfig(v *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig) *GetApplicationResponseBodyDataDraftVersion {
 	s.SynthesizerConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersion) SetToolConfig(v *GetApplicationResponseBodyDataDraftVersionToolConfig) *GetApplicationResponseBodyDataDraftVersion {
+	s.ToolConfig = v
 	return s
 }
 
@@ -338,6 +348,11 @@ func (s *GetApplicationResponseBodyDataDraftVersion) Validate() error {
 	}
 	if s.SynthesizerConfig != nil {
 		if err := s.SynthesizerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToolConfig != nil {
+		if err := s.ToolConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -799,6 +814,85 @@ func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) V
 	return dara.Validate(s)
 }
 
+type GetApplicationResponseBodyDataDraftVersionToolConfig struct {
+	McpServers []*GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionToolConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionToolConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfig) GetMcpServers() []*GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers {
+	return s.McpServers
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfig) SetMcpServers(v []*GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) *GetApplicationResponseBodyDataDraftVersionToolConfig {
+	s.McpServers = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfig) Validate() error {
+	if s.McpServers != nil {
+		for _, item := range s.McpServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers struct {
+	BaseUrl     *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SseEndpoint *string `json:"SseEndpoint,omitempty" xml:"SseEndpoint,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) GetBaseUrl() *string {
+	return s.BaseUrl
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) GetName() *string {
+	return s.Name
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) GetSseEndpoint() *string {
+	return s.SseEndpoint
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) SetBaseUrl(v string) *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) SetName(v string) *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) SetSseEndpoint(v string) *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers {
+	s.SseEndpoint = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataDraftVersionTranscriberConfig struct {
 	CorrectionRules   []*GetApplicationResponseBodyDataDraftVersionTranscriberConfigCorrectionRules `json:"CorrectionRules,omitempty" xml:"CorrectionRules,omitempty" type:"Repeated"`
 	CustomizationId   *string                                                                       `json:"CustomizationId,omitempty" xml:"CustomizationId,omitempty"`
@@ -989,6 +1083,7 @@ type GetApplicationResponseBodyDataPublishedVersion struct {
 	RagConfig         *GetApplicationResponseBodyDataPublishedVersionRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
 	ScriptProfile     *GetApplicationResponseBodyDataPublishedVersionScriptProfile     `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
 	SynthesizerConfig *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
+	ToolConfig        *GetApplicationResponseBodyDataPublishedVersionToolConfig        `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
 	TranscriberConfig *GetApplicationResponseBodyDataPublishedVersionTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -1020,6 +1115,10 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) GetSynthesizerConfig() 
 	return s.SynthesizerConfig
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersion) GetToolConfig() *GetApplicationResponseBodyDataPublishedVersionToolConfig {
+	return s.ToolConfig
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersion) GetTranscriberConfig() *GetApplicationResponseBodyDataPublishedVersionTranscriberConfig {
 	return s.TranscriberConfig
 }
@@ -1045,6 +1144,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) SetScriptProfile(v *Get
 
 func (s *GetApplicationResponseBodyDataPublishedVersion) SetSynthesizerConfig(v *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig) *GetApplicationResponseBodyDataPublishedVersion {
 	s.SynthesizerConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersion) SetToolConfig(v *GetApplicationResponseBodyDataPublishedVersionToolConfig) *GetApplicationResponseBodyDataPublishedVersion {
+	s.ToolConfig = v
 	return s
 }
 
@@ -1076,6 +1180,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) Validate() error {
 	}
 	if s.SynthesizerConfig != nil {
 		if err := s.SynthesizerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToolConfig != nil {
+		if err := s.ToolConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1534,6 +1643,85 @@ func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRule
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataPublishedVersionToolConfig struct {
+	McpServers []*GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionToolConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionToolConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfig) GetMcpServers() []*GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers {
+	return s.McpServers
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfig) SetMcpServers(v []*GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) *GetApplicationResponseBodyDataPublishedVersionToolConfig {
+	s.McpServers = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfig) Validate() error {
+	if s.McpServers != nil {
+		for _, item := range s.McpServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers struct {
+	BaseUrl     *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SseEndpoint *string `json:"SseEndpoint,omitempty" xml:"SseEndpoint,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) GetBaseUrl() *string {
+	return s.BaseUrl
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) GetName() *string {
+	return s.Name
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) GetSseEndpoint() *string {
+	return s.SseEndpoint
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) SetBaseUrl(v string) *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) SetName(v string) *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) SetSseEndpoint(v string) *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers {
+	s.SseEndpoint = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers) Validate() error {
 	return dara.Validate(s)
 }
 
