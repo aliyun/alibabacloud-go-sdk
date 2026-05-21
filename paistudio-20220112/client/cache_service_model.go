@@ -13,6 +13,8 @@ type iCacheService interface {
 	GetCacheInfos() []*CacheInfo
 	SetCacheServiceId(v string) *CacheService
 	GetCacheServiceId() *string
+	SetClusterId(v string) *CacheService
+	GetClusterId() *string
 	SetCreatedBy(v string) *CacheService
 	GetCreatedBy() *string
 	SetGmtCreated(v string) *CacheService
@@ -38,6 +40,7 @@ type iCacheService interface {
 type CacheService struct {
 	CacheInfos              []*CacheInfo `json:"CacheInfos,omitempty" xml:"CacheInfos,omitempty" type:"Repeated"`
 	CacheServiceId          *string      `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
+	ClusterId               *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CreatedBy               *string      `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	GmtCreated              *string      `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	NetworkType             *string      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
@@ -64,6 +67,10 @@ func (s *CacheService) GetCacheInfos() []*CacheInfo {
 
 func (s *CacheService) GetCacheServiceId() *string {
 	return s.CacheServiceId
+}
+
+func (s *CacheService) GetClusterId() *string {
+	return s.ClusterId
 }
 
 func (s *CacheService) GetCreatedBy() *string {
@@ -113,6 +120,11 @@ func (s *CacheService) SetCacheInfos(v []*CacheInfo) *CacheService {
 
 func (s *CacheService) SetCacheServiceId(v string) *CacheService {
 	s.CacheServiceId = &v
+	return s
+}
+
+func (s *CacheService) SetClusterId(v string) *CacheService {
+	s.ClusterId = &v
 	return s
 }
 
