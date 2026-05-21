@@ -16,13 +16,10 @@ type iBatchGetResourceConfigurationsResponseBody interface {
 }
 
 type BatchGetResourceConfigurationsResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// F1CE0D52-32DA-531A-87A4-B9A5B68*****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of resources.
+	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources []*BatchGetResourceConfigurationsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -66,66 +63,42 @@ func (s *BatchGetResourceConfigurationsResponseBody) Validate() error {
 }
 
 type BatchGetResourceConfigurationsResponseBodyResources struct {
-	// The ID of the Alibaba Cloud account.
-	//
 	// example:
 	//
 	// 151266687691****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The details of the resource configuration.
+	AccountId     *string                `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// The time when the resource was created.
-	//
 	// example:
 	//
 	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the resource.
-	//
 	// example:
 	//
 	// 2021-07-30T09:20:08Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The properties of the IP addresses.
+	ExpireTime          *string                                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	IpAddressAttributes []*BatchGetResourceConfigurationsResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
-	// The IP addresses.
-	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
-	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The region ID of the resource.
-	//
+	IpAddresses         []*string                                                                 `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource ID.
-	//
 	// example:
 	//
 	// eip-wz9gdtce0q6h48h*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource name.
-	//
 	// example:
 	//
 	// group1
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource type.
-	//
 	// example:
 	//
 	// ACS::ECS::Instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
-	Tags []*BatchGetResourceConfigurationsResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The zone ID.
-	//
+	ResourceType *string                                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags         []*BatchGetResourceConfigurationsResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cn-hangzhou-k
@@ -280,24 +253,14 @@ func (s *BatchGetResourceConfigurationsResponseBodyResources) Validate() error {
 }
 
 type BatchGetResourceConfigurationsResponseBodyResourcesIpAddressAttributes struct {
-	// The IP address.
-	//
 	// example:
 	//
 	// 192.168.1.2
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The network type. Valid values:
-	//
-	// - **Public**: Internet.
-	//
-	// - **Private**: Private network.
-	//
 	// example:
 	//
 	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The version of the IP address.
-	//
 	// example:
 	//
 	// Ipv4
@@ -344,14 +307,10 @@ func (s *BatchGetResourceConfigurationsResponseBodyResourcesIpAddressAttributes)
 }
 
 type BatchGetResourceConfigurationsResponseBodyResourcesTags struct {
-	// The tag key.
-	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
 	// example:
 	//
 	// test_value

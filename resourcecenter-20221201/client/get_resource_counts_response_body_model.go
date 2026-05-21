@@ -22,7 +22,7 @@ type iGetResourceCountsResponseBody interface {
 type GetResourceCountsResponseBody struct {
 	// The filter conditions.
 	Filters []*GetResourceCountsResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The dimension by which the queried resources are grouped.
+	// The dimension by which resources are queried.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetResourceCountsResponseBody struct {
 	//
 	// 6D98D9B0-318D-56A4-910C-93B5F945AF2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of resource counts.
+	// The numbers of resources.
 	ResourceCounts []*GetResourceCountsResponseBodyResourceCounts `json:"ResourceCounts,omitempty" xml:"ResourceCounts,omitempty" type:"Repeated"`
 }
 

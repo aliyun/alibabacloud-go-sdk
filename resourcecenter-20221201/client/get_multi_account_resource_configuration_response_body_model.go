@@ -40,7 +40,7 @@ type iGetMultiAccountResourceConfigurationResponseBody interface {
 }
 
 type GetMultiAccountResourceConfigurationResponseBody struct {
-	// The ID of the management account or member.
+	// The ID of the management account or member of the resource directory.
 	//
 	// example:
 	//
@@ -60,51 +60,51 @@ type GetMultiAccountResourceConfigurationResponseBody struct {
 	//
 	// 2023-09-18T07:04:21Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The properties of the IP addresses.
+	// The attributes of the IP address.
 	IpAddressAttributes []*GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The ID of the region where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B2DCC08B-C12A-5705-879C-5A1450016156
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of your Alibaba Cloud resource group.
+	// The ID of the resource group to which the resource belongs.
 	//
 	// example:
 	//
 	// rg-acfmzy6d****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// example:
 	//
 	// test_resource
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//
 	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tags of the resource.
 	Tags []*GetMultiAccountResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The zone ID.
+	// The zone ID of the resource.
 	//
 	// example:
 	//
@@ -277,15 +277,15 @@ type GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes struct 
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// - **Public**: Internet
+	// 	- **Public**: the Internet
 	//
-	// - **Private**: internal network
+	// 	- **Private**: internal network
 	//
 	// example:
 	//
 	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The version of the IP address.
+	// The version.
 	//
 	// example:
 	//
@@ -333,13 +333,13 @@ func (s *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) Va
 }
 
 type GetMultiAccountResourceConfigurationResponseBodyTags struct {
-	// The tag key.
+	// The key of tag N.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	//
 	// example:
 	//

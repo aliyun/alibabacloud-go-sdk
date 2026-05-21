@@ -20,9 +20,25 @@ type iListResourceRelationshipsResponseBody interface {
 }
 
 type ListResourceRelationshipsResponseBody struct {
-	MaxResults            *int32                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 682A3004-38E3-5122-9A11-CCDFAB9C3C4F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource relationships.
 	ResourceRelationships []*ListResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
 }
 
@@ -84,12 +100,42 @@ func (s *ListResourceRelationshipsResponseBody) Validate() error {
 }
 
 type ListResourceRelationshipsResponseBodyResourceRelationships struct {
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelatedResourceId       *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
+	// The region ID of the resource.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the associated resource.
+	//
+	// example:
+	//
+	// vpc-uf6m5okksddm6c9lh7***
+	RelatedResourceId *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
+	// The region ID of the associated resource.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RelatedResourceRegionId *string `json:"RelatedResourceRegionId,omitempty" xml:"RelatedResourceRegionId,omitempty"`
-	RelatedResourceType     *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
-	ResourceId              *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType            *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The type of the associated resource.
+	//
+	// example:
+	//
+	// ACS::VPC::VPC
+	RelatedResourceType *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
+	// The ID of the resource.
+	//
+	// example:
+	//
+	// m-eb3hji****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// example:
+	//
+	// ACS::ACK::Cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListResourceRelationshipsResponseBodyResourceRelationships) String() string {

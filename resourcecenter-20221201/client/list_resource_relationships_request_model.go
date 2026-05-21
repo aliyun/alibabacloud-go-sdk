@@ -24,14 +24,47 @@ type iListResourceRelationshipsRequest interface {
 }
 
 type ListResourceRelationshipsRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 500.
+	//
+	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
-	RegionId              *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The filter conditions for resources associated with the resource.
 	RelatedResourceFilter []*ListResourceRelationshipsRequestRelatedResourceFilter `json:"RelatedResourceFilter,omitempty" xml:"RelatedResourceFilter,omitempty" type:"Repeated"`
+	// The ID of the resource.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::ACK::Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -111,9 +144,20 @@ func (s *ListResourceRelationshipsRequest) Validate() error {
 }
 
 type ListResourceRelationshipsRequestRelatedResourceFilter struct {
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	//
+	// example:
+	//
+	// RelatedResourceRegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching method.
+	//
+	// example:
+	//
+	// Equals
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceRelationshipsRequestRelatedResourceFilter) String() string {

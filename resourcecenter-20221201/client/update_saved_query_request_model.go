@@ -26,9 +26,9 @@ type UpdateSavedQueryRequest struct {
 	//
 	// example:
 	//
-	// 查询我的所有资源，返回所有的列。
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expression of the template.
+	// The query statement in the template.
 	//
 	// example:
 	//
@@ -36,23 +36,23 @@ type UpdateSavedQueryRequest struct {
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The name of the template.
 	//
-	// - The name must be 1 to 64 characters in length.
+	// 	- The name must be 1 to 64 characters in length.
 	//
-	// - It can contain letters, digits, underscores (_), and hyphens (-).
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
 	//
-	// - It must be globally unique.
+	// 	- The name must be unique.
 	//
 	// example:
 	//
-	// 查询我的所有资源。
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cq-GeAck****
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 

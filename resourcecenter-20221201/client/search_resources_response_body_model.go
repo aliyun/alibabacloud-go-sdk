@@ -36,7 +36,7 @@ type SearchResourcesResponseBody struct {
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type SearchResourcesResponseBodyFilters struct {
 	//
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching method.
+	// The matching mode.
 	//
 	// example:
 	//
@@ -186,33 +186,24 @@ type SearchResourcesResponseBodyResources struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource was created.
 	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	//
 	// example:
 	//
 	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the resource is deleted. Valid values:
-	//
-	// - true
-	//
-	// - false
-	//
-	// example:
-	//
-	// true
-	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Deleted    *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
 	// The time when the resource expires.
 	//
 	// example:
 	//
 	// 2021-07-30T09:20:08Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The attributes of the IP addresses.
+	// The attributes of the IP address.
 	IpAddressAttributes []*SearchResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -248,7 +239,7 @@ type SearchResourcesResponseBodyResources struct {
 	Tags []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	//
 	// example:
 	//
@@ -412,15 +403,15 @@ type SearchResourcesResponseBodyResourcesIpAddressAttributes struct {
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// - **Public**: Internet
+	// 	- **Public**: the Internet
 	//
-	// - **Private**: Private network
+	// 	- **Private**: internal network
 	//
 	// example:
 	//
 	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The IP address version.
+	// The version.
 	//
 	// example:
 	//
@@ -468,13 +459,13 @@ func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) Validate() err
 }
 
 type SearchResourcesResponseBodyResourcesTags struct {
-	// The tag key.
+	// The key of tag N.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	//
 	// example:
 	//

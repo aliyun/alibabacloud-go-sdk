@@ -74,7 +74,7 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// example:
 	//
-	// 容器服务Kubernetes版
+	// Container Service for Kubernetes
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The name of supported related resource types.
 	RelatedResourceTypes []*string `json:"RelatedResourceTypes,omitempty" xml:"RelatedResourceTypes,omitempty" type:"Repeated"`
@@ -88,7 +88,7 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// example:
 	//
-	// 集群
+	// Cluster
 	ResourceTypeName *string `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
 }
 

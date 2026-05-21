@@ -20,13 +20,13 @@ type iListSavedQueriesResponseBody interface {
 }
 
 type ListSavedQueriesResponseBody struct {
-	// The maximum number of entries returned on each page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
@@ -110,21 +110,21 @@ type ListSavedQueriesResponseBodySavedQueries struct {
 	//
 	// example:
 	//
-	// 查询我的所有资源，返回所有的列。
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
-	// 查询我的所有资源。
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// example:
 	//
-	// cq-GeAck****
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The time when the template was last updated. The time is displayed in UTC.
+	// The time when the template was updated. The time is displayed in UTC.
 	//
 	// example:
 	//

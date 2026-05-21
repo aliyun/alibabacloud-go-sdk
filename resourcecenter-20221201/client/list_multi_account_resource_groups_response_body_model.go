@@ -24,13 +24,13 @@ type ListMultiAccountResourceGroupsResponseBody struct {
 	//
 	// AAAAAU5VsT9R1adMTuz9GzginZ3Y+7Y/5JATS+6q5GK9kT75
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0FF0A66E-781F-51EE-9531-928F197558F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource groups.
+	// The information about the resource groups.
 	ResourceGroups []*ListMultiAccountResourceGroupsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *ListMultiAccountResourceGroupsResponseBody) Validate() error {
 }
 
 type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
-	// The ID of the management account or a member in the resource directory.
+	// The ID of the management account or member of the resource directory.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
 	//
 	// group1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -113,18 +113,19 @@ type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
 	//
 	// my-project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group.
+	// The status of the resource group. Valid values:
 	//
-	// - Creating: The resource group is being created.
+	// 	- Creating: The resource group is being created.
 	//
-	// - OK: The resource group is created.
+	// 	- OK: The resource group is created.
 	//
-	// - PendingDelete: The resource group is pending deletion.
+	// 	- PendingDelete: The resource group is waiting to be deleted.
 	//
 	// example:
 	//
 	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListMultiAccountResourceGroupsResponseBodyResourceGroups) String() string {
@@ -159,6 +160,10 @@ func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) GetStatus() *
 	return s.Status
 }
 
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) GetTags() []*ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags {
+	return s.Tags
+}
+
 func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) SetAccountId(v string) *ListMultiAccountResourceGroupsResponseBodyResourceGroups {
 	s.AccountId = &v
 	return s
@@ -189,6 +194,55 @@ func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) SetStatus(v s
 	return s
 }
 
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) SetTags(v []*ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) *ListMultiAccountResourceGroupsResponseBodyResourceGroups {
+	s.Tags = v
+	return s
+}
+
 func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) SetKey(v string) *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) SetValue(v string) *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags) Validate() error {
 	return dara.Validate(s)
 }

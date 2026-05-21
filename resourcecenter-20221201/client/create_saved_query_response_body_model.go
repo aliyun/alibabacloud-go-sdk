@@ -20,7 +20,7 @@ type CreateSavedQueryResponseBody struct {
 	//
 	// example:
 	//
-	// cq-GeAck****
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The request ID.
 	//

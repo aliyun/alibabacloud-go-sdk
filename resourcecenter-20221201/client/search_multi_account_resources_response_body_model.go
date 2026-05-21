@@ -32,13 +32,13 @@ type SearchMultiAccountResourcesResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
-	// 查询返回结果下一页的令牌。
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -46,15 +46,15 @@ type SearchMultiAccountResourcesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the resources.
 	Resources []*SearchMultiAccountResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The scope of accounts in which the resources were searched. Valid values:
+	// The search scope.
 	//
-	// - The ID of the resource directory. This indicates that resources were searched in the management account and all member accounts of the resource directory.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
 	//
-	// - The ID of the Root folder. This indicates that resources were searched in all member accounts under the Root folder and its subfolders.
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
 	//
-	// - The ID of a folder. This indicates that resources were searched in all member accounts under the folder.
+	// 	- ID of a folder: Resources within all members in the folder are searched.
 	//
-	// - The ID of a member account. This indicates that resources were searched in the member account.
+	// 	- ID of a member: Resources within the member are searched.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type SearchMultiAccountResourcesResponseBodyFilters struct {
 	//
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching method.
+	// The matching mode.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ func (s *SearchMultiAccountResourcesResponseBodyFilters) Validate() error {
 }
 
 type SearchMultiAccountResourcesResponseBodyResources struct {
-	// The ID of the management account or a member account of the resource directory.
+	// The ID of the management account or member of the resource directory.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type SearchMultiAccountResourcesResponseBodyResources struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource was created.
 	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service that manages the resource.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	//
 	// example:
 	//
@@ -223,11 +223,11 @@ type SearchMultiAccountResourcesResponseBodyResources struct {
 	//
 	// 2023-06-14T14:35:45Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The attributes of the IP addresses.
+	// The attributes of the IP address.
 	IpAddressAttributes []*SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service that manages the resource.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -263,7 +263,7 @@ type SearchMultiAccountResourcesResponseBodyResources struct {
 	Tags []*SearchMultiAccountResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
-	// > Whether this parameter is returned depends on the Alibaba Cloud service that manages the resource.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	//
 	// example:
 	//
@@ -418,15 +418,15 @@ type SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes struct 
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// - **Public**: Internet.
+	// 	- **Public**: the Internet
 	//
-	// - **Private**: Private network.
+	// 	- **Private**: internal network
 	//
 	// example:
 	//
 	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The IP address version.
+	// The version.
 	//
 	// example:
 	//
@@ -474,13 +474,13 @@ func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) Va
 }
 
 type SearchMultiAccountResourcesResponseBodyResourcesTags struct {
-	// The tag key.
+	// The key of tag N.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	//
 	// example:
 	//

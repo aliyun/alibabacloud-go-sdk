@@ -28,7 +28,7 @@ type ListMultiAccountDeliveryChannelsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// This parameter is required.
 	//
@@ -109,10 +109,6 @@ type ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels struct {
 	// 2023-08-17T00:23:55Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the delivery channel.
-	//
-	// example:
-	//
-	// This is a description.
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
 	// The ID of the delivery channel.
 	//

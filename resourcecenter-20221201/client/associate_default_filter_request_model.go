@@ -20,7 +20,7 @@ type AssociateDefaultFilterRequest struct {
 	//
 	// example:
 	//
-	// 所有ECS实例资源
+	// My Filters
 	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 

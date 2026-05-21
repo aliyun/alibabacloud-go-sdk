@@ -14,7 +14,6 @@ type iBatchGetResourceConfigurationsRequest interface {
 }
 
 type BatchGetResourceConfigurationsRequest struct {
-	// The list of resources.
 	Resources []*BatchGetResourceConfigurationsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -49,22 +48,14 @@ func (s *BatchGetResourceConfigurationsRequest) Validate() error {
 }
 
 type BatchGetResourceConfigurationsRequestResources struct {
-	// The region ID of the resource.
-	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
-	//
 	// example:
 	//
 	// eip-bp1kyg72m****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
-	//
-	// For a list of resource types supported by Resource Center, see [Alibaba Cloud services and resource types that are supported by Resource Center](https://help.aliyun.com/document_detail/477798.html).
-	//
 	// example:
 	//
 	// ACS::VPC::RouteTable

@@ -34,21 +34,23 @@ type SearchMultiAccountResourcesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.``
 	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The scope of the accounts in which you want to search for resources. Valid values:
+	// The search scope. You can set the value to one of the following items:
 	//
-	// - The ID of a resource directory: Searches for resources in the management account and all its member accounts. For more information, see [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html).
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
 	//
-	// - The ID of the Root folder: Searches for resources in all member accounts under the Root folder and its subfolders. For more information, see [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html).
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
 	//
-	// - The ID of a folder: Searches for resources in all member accounts under the folder. For more information, see [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html).
+	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
 	//
-	// - The ID of a member account: Searches for resources in the member account. For more information, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +58,7 @@ type SearchMultiAccountResourcesRequest struct {
 	//
 	// rd-r4****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sorting parameters.
+	// The method that is used to sort the entries returned.
 	SortCriterion *SearchMultiAccountResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
 
@@ -132,15 +134,15 @@ func (s *SearchMultiAccountResourcesRequest) Validate() error {
 }
 
 type SearchMultiAccountResourcesRequestFilter struct {
-	// The key of the filter condition. For more information, see the "`Supported filter parameters`" section below.
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
 	//
 	// example:
 	//
 	// ResourceGroupId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching method.
+	// The matching mode.
 	//
-	// Set this parameter to `Equals`, which means an exact match.
+	// The value Equals indicates an equal match.
 	//
 	// example:
 	//
@@ -190,21 +192,19 @@ func (s *SearchMultiAccountResourcesRequestFilter) Validate() error {
 }
 
 type SearchMultiAccountResourcesRequestSortCriterion struct {
-	// The sort key.
+	// The attribute based on which the entries are sorted.
 	//
-	// Set this parameter to `CreateTime`, which means the results are sorted by resource creation time.
+	// The value CreateTime indicates the creation time of resources.
 	//
 	// example:
 	//
 	// CreateTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The sort order. Valid values:
+	// The order in which the entries are sorted. Valid values:
 	//
-	// - ASC: Ascending order.
+	// 	- ASC: The entries are sorted in ascending order. This value is the default value.
 	//
-	// - DESC: Descending order.
-	//
-	// Default value: ASC.
+	// 	- DESC: The entries are sorted in descending order.
 	//
 	// example:
 	//

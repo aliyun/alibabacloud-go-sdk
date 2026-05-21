@@ -22,34 +22,24 @@ type iGetResourceCountsRequest interface {
 type GetResourceCountsRequest struct {
 	// The filter conditions.
 	Filter []*GetResourceCountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The dimension by which the queried resources are grouped. Valid values:
+	// The dimension by which resources are queried. Valid values:
 	//
-	// - ResourceType: The resource type.
+	// 	- ResourceType
 	//
-	// - RegionId: The region.
+	// 	- Region
 	//
-	// - ResourceGroupId: The resource group ID.
+	// 	- ResourceGroupId
+	//
+	// 	- TagKey
+	//
+	// 	- TagValue
 	//
 	// example:
 	//
 	// ResourceType
-	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
-	// Specifies whether to include deleted resources. Valid values:
-	//
-	// - true
-	//
-	// - false
-	//
-	// example:
-	//
-	// true
-	IncludeDeletedResources *bool `json:"IncludeDeletedResources,omitempty" xml:"IncludeDeletedResources,omitempty"`
-	// The search keyword. Resource Center filters the search results based on relevance.
-	//
-	// example:
-	//
-	// keywords
-	SearchExpression *string `json:"SearchExpression,omitempty" xml:"SearchExpression,omitempty"`
+	GroupByKey              *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	IncludeDeletedResources *bool   `json:"IncludeDeletedResources,omitempty" xml:"IncludeDeletedResources,omitempty"`
+	SearchExpression        *string `json:"SearchExpression,omitempty" xml:"SearchExpression,omitempty"`
 }
 
 func (s GetResourceCountsRequest) String() string {
@@ -110,15 +100,15 @@ func (s *GetResourceCountsRequest) Validate() error {
 }
 
 type GetResourceCountsRequestFilter struct {
-	// The key of the filter condition. For information about valid values, see the "`Supported filter parameters`" section below.
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
 	//
 	// example:
 	//
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching method.
+	// The matching mode.
 	//
-	// Set this parameter to `Equals`, which means an equal match.
+	// The value Equals indicates an equal match.
 	//
 	// example:
 	//
