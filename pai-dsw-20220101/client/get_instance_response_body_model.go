@@ -103,6 +103,8 @@ type iGetInstanceResponseBody interface {
 	GetSuccess() *bool
 	SetTags(v []*GetInstanceResponseBodyTags) *GetInstanceResponseBody
 	GetTags() []*GetInstanceResponseBodyTags
+	SetTenantId(v string) *GetInstanceResponseBody
+	GetTenantId() *string
 	SetTerminalUrl(v string) *GetInstanceResponseBody
 	GetTerminalUrl() *string
 	SetUserCommandId(v string) *GetInstanceResponseBody
@@ -414,7 +416,8 @@ type GetInstanceResponseBody struct {
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The tags.
-	Tags []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags     []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantId *string                        `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The terminal URL.
 	//
 	// example:
@@ -656,6 +659,10 @@ func (s *GetInstanceResponseBody) GetSuccess() *bool {
 
 func (s *GetInstanceResponseBody) GetTags() []*GetInstanceResponseBodyTags {
 	return s.Tags
+}
+
+func (s *GetInstanceResponseBody) GetTenantId() *string {
+	return s.TenantId
 }
 
 func (s *GetInstanceResponseBody) GetTerminalUrl() *string {
@@ -926,6 +933,11 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 
 func (s *GetInstanceResponseBody) SetTags(v []*GetInstanceResponseBodyTags) *GetInstanceResponseBody {
 	s.Tags = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetTenantId(v string) *GetInstanceResponseBody {
+	s.TenantId = &v
 	return s
 }
 

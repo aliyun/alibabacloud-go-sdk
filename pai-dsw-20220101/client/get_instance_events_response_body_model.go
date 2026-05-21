@@ -23,6 +23,8 @@ type iGetInstanceEventsResponseBody interface {
 	GetRequestId() *string
 	SetSuccess(v bool) *GetInstanceEventsResponseBody
 	GetSuccess() *bool
+	SetTotalCount(v int32) *GetInstanceEventsResponseBody
+	GetTotalCount() *int32
 }
 
 type GetInstanceEventsResponseBody struct {
@@ -77,7 +79,8 @@ type GetInstanceEventsResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success    *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetInstanceEventsResponseBody) String() string {
@@ -116,6 +119,10 @@ func (s *GetInstanceEventsResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
+func (s *GetInstanceEventsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
 func (s *GetInstanceEventsResponseBody) SetCode(v string) *GetInstanceEventsResponseBody {
 	s.Code = &v
 	return s
@@ -148,6 +155,11 @@ func (s *GetInstanceEventsResponseBody) SetRequestId(v string) *GetInstanceEvent
 
 func (s *GetInstanceEventsResponseBody) SetSuccess(v bool) *GetInstanceEventsResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetInstanceEventsResponseBody) SetTotalCount(v int32) *GetInstanceEventsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 

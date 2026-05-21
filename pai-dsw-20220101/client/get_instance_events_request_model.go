@@ -15,6 +15,10 @@ type iGetInstanceEventsRequest interface {
 	GetEventLevel() *string
 	SetMaxEventsNum(v int32) *GetInstanceEventsRequest
 	GetMaxEventsNum() *int32
+	SetOffset(v int32) *GetInstanceEventsRequest
+	GetOffset() *int32
+	SetReverse(v bool) *GetInstanceEventsRequest
+	GetReverse() *bool
 	SetStartTime(v string) *GetInstanceEventsRequest
 	GetStartTime() *string
 	SetToken(v string) *GetInstanceEventsRequest
@@ -35,6 +39,8 @@ type GetInstanceEventsRequest struct {
 	//
 	// 2000
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	Offset       *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Reverse      *bool  `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// example:
@@ -65,6 +71,14 @@ func (s *GetInstanceEventsRequest) GetMaxEventsNum() *int32 {
 	return s.MaxEventsNum
 }
 
+func (s *GetInstanceEventsRequest) GetOffset() *int32 {
+	return s.Offset
+}
+
+func (s *GetInstanceEventsRequest) GetReverse() *bool {
+	return s.Reverse
+}
+
 func (s *GetInstanceEventsRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -85,6 +99,16 @@ func (s *GetInstanceEventsRequest) SetEventLevel(v string) *GetInstanceEventsReq
 
 func (s *GetInstanceEventsRequest) SetMaxEventsNum(v int32) *GetInstanceEventsRequest {
 	s.MaxEventsNum = &v
+	return s
+}
+
+func (s *GetInstanceEventsRequest) SetOffset(v int32) *GetInstanceEventsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetInstanceEventsRequest) SetReverse(v bool) *GetInstanceEventsRequest {
+	s.Reverse = &v
 	return s
 }
 

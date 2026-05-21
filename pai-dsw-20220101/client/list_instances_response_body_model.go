@@ -375,7 +375,8 @@ type ListInstancesResponseBodyInstances struct {
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
-	Tags []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags     []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantId *string                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The terminal URL.
 	//
 	// example:
@@ -580,6 +581,10 @@ func (s *ListInstancesResponseBodyInstances) GetStatus() *string {
 
 func (s *ListInstancesResponseBodyInstances) GetTags() []*ListInstancesResponseBodyInstancesTags {
 	return s.Tags
+}
+
+func (s *ListInstancesResponseBodyInstances) GetTenantId() *string {
+	return s.TenantId
 }
 
 func (s *ListInstancesResponseBodyInstances) GetTerminalUrl() *string {
@@ -801,6 +806,11 @@ func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesR
 
 func (s *ListInstancesResponseBodyInstances) SetTags(v []*ListInstancesResponseBodyInstancesTags) *ListInstancesResponseBodyInstances {
 	s.Tags = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetTenantId(v string) *ListInstancesResponseBodyInstances {
+	s.TenantId = &v
 	return s
 }
 

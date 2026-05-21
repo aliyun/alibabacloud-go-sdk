@@ -443,6 +443,116 @@ func (client *Client) CreateSanityCheckTaskWithContext(ctx context.Context, Chec
 
 // Summary:
 //
+// 创建临时文件
+//
+// @param request - CreateTempFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTempFileResponse
+func (client *Client) CreateTempFileWithContext(ctx context.Context, request *CreateTempFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTempFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Capacity) {
+		body["Capacity"] = request.Capacity
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Prefix) {
+		body["Prefix"] = request.Prefix
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTempFile"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiles"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTempFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建临时文件任务
+//
+// @param request - CreateTempFileTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTempFileTaskResponse
+func (client *Client) CreateTempFileTaskWithContext(ctx context.Context, request *CreateTempFileTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTempFileTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTempFileTask"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiletasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTempFileTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the automatic stop policy of an instance.
 //
 // @param headers - map
@@ -669,6 +779,119 @@ func (client *Client) DeleteInstancesWithContext(ctx context.Context, request *D
 
 // Summary:
 //
+// 删除临时文件
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTempFileResponse
+func (client *Client) DeleteTempFileWithContext(ctx context.Context, TempFileId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTempFileResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTempFile"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiles/" + dara.PercentEncode(dara.StringValue(TempFileId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTempFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除临时文件
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTempFileTaskResponse
+func (client *Client) DeleteTempFileTaskWithContext(ctx context.Context, TempFileTaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTempFileTaskResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTempFileTask"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiletasks/" + dara.PercentEncode(dara.StringValue(TempFileTaskId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTempFileTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除临时文件
+//
+// @param request - DeleteTempFileTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTempFileTasksResponse
+func (client *Client) DeleteTempFileTasksWithContext(ctx context.Context, request *DeleteTempFileTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTempFileTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TempFileTaskIds) {
+		body["TempFileTaskIds"] = request.TempFileTaskIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTempFileTasks"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/batch/tempfiletasks/delete"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTempFileTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about an auto stop policy for a specific idle instance.
 //
 // @param headers - map
@@ -780,6 +1003,14 @@ func (client *Client) GetInstanceEventsWithContext(ctx context.Context, Instance
 
 	if !dara.IsNil(request.MaxEventsNum) {
 		query["MaxEventsNum"] = request.MaxEventsNum
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		query["Reverse"] = request.Reverse
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -1183,6 +1414,72 @@ func (client *Client) GetSanityCheckTaskWithContext(ctx context.Context, CheckTy
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSanityCheckTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取临时文件详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTempFileResponse
+func (client *Client) GetTempFileWithContext(ctx context.Context, TempFileId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTempFileResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTempFile"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiles/" + dara.PercentEncode(dara.StringValue(TempFileId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTempFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取临时文件任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTempFileTaskResponse
+func (client *Client) GetTempFileTaskWithContext(ctx context.Context, TempFileTaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTempFileTaskResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTempFileTask"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiletasks/" + dara.PercentEncode(dara.StringValue(TempFileTaskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTempFileTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1765,6 +2062,81 @@ func (client *Client) ListSystemLogsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// 获取临时文件列表
+//
+// @param request - ListTempFilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTempFilesResponse
+func (client *Client) ListTempFilesWithContext(ctx context.Context, request *ListTempFilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTempFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Delimiter) {
+		query["Delimiter"] = request.Delimiter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Prefix) {
+		query["Prefix"] = request.Prefix
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTempFiles"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiles"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTempFilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动实例
 //
 // @param headers - map
@@ -2108,6 +2480,104 @@ func (client *Client) UpdateInstanceLabelsWithContext(ctx context.Context, Insta
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceLabelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新临时文件
+//
+// @param request - UpdateTempFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTempFileResponse
+func (client *Client) UpdateTempFileWithContext(ctx context.Context, TempFileId *string, request *UpdateTempFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTempFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GmtExpiredTime) {
+		body["GmtExpiredTime"] = request.GmtExpiredTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTempFile"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiles/" + dara.PercentEncode(dara.StringValue(TempFileId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTempFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新临时文件任务
+//
+// @param request - UpdateTempFileTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTempFileTaskResponse
+func (client *Client) UpdateTempFileTaskWithContext(ctx context.Context, TempFileTaskId *string, request *UpdateTempFileTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTempFileTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GmtExpiredTime) {
+		body["GmtExpiredTime"] = request.GmtExpiredTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTempFileTask"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/tempfiletasks/" + dara.PercentEncode(dara.StringValue(TempFileTaskId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTempFileTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
