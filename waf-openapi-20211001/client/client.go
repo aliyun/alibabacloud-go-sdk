@@ -11552,6 +11552,96 @@ func (client *Client) DescribePocFunctions(request *DescribePocFunctionsRequest)
 
 // Summary:
 //
+// 查看用户账单详情
+//
+// @param request - DescribePostpayBillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePostpayBillsResponse
+func (client *Client) DescribePostpayBillsWithOptions(request *DescribePostpayBillsRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayBillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PeriodType) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePostpayBills"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePostpayBillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看用户账单详情
+//
+// @param request - DescribePostpayBillsRequest
+//
+// @return DescribePostpayBillsResponse
+func (client *Client) DescribePostpayBills(request *DescribePostpayBillsRequest) (_result *DescribePostpayBillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePostpayBillsResponse{}
+	_body, _err := client.DescribePostpayBillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the bills of the burstable QPS (pay-as-you-go) feature. The feature is supported only by subscription Web Application Firewall (WAF) instances.
 //
 // @param request - DescribePrepayDailyBillsRequest
