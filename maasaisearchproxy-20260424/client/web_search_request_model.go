@@ -21,6 +21,8 @@ type iWebSearchRequest interface {
 	GetQuery() *string
 	SetRegion(v string) *WebSearchRequest
 	GetRegion() *string
+	SetSearchType(v string) *WebSearchRequest
+	GetSearchType() *string
 	SetStartTime(v string) *WebSearchRequest
 	GetStartTime() *string
 }
@@ -43,7 +45,8 @@ type WebSearchRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region     *string `json:"region,omitempty" xml:"region,omitempty"`
+	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
 	// example:
 	//
 	// 2026-03-06 10:04:45
@@ -82,6 +85,10 @@ func (s *WebSearchRequest) GetRegion() *string {
 	return s.Region
 }
 
+func (s *WebSearchRequest) GetSearchType() *string {
+	return s.SearchType
+}
+
 func (s *WebSearchRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -113,6 +120,11 @@ func (s *WebSearchRequest) SetQuery(v string) *WebSearchRequest {
 
 func (s *WebSearchRequest) SetRegion(v string) *WebSearchRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *WebSearchRequest) SetSearchType(v string) *WebSearchRequest {
+	s.SearchType = &v
 	return s
 }
 
