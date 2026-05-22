@@ -83,9 +83,15 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 		query["workspaceId"] = request.WorkspaceId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Auth) {
+		body["auth"] = request.Auth
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateApiKey"),
@@ -95,7 +101,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
+		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateApiKeyResponse{}
@@ -239,6 +245,126 @@ func (client *Client) DeleteApiKey(apiKeyId *string) (_result *DeleteApiKeyRespo
 	headers := make(map[string]*string)
 	_result = &DeleteApiKeyResponse{}
 	_body, _err := client.DeleteApiKeyWithOptions(apiKeyId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用API Key
+//
+// @param request - DisableApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApiKeyResponse
+func (client *Client) DisableApiKeyWithOptions(apiKeyId *string, request *DisableApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableApiKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId)) + "/disable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用API Key
+//
+// @param request - DisableApiKeyRequest
+//
+// @return DisableApiKeyResponse
+func (client *Client) DisableApiKey(apiKeyId *string, request *DisableApiKeyRequest) (_result *DisableApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableApiKeyResponse{}
+	_body, _err := client.DisableApiKeyWithOptions(apiKeyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用API Key
+//
+// @param request - EnableApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApiKeyResponse
+func (client *Client) EnableApiKeyWithOptions(apiKeyId *string, request *EnableApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableApiKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId)) + "/enable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用API Key
+//
+// @param request - EnableApiKeyRequest
+//
+// @return EnableApiKeyResponse
+func (client *Client) EnableApiKey(apiKeyId *string, request *EnableApiKeyRequest) (_result *EnableApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableApiKeyResponse{}
+	_body, _err := client.EnableApiKeyWithOptions(apiKeyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -458,6 +584,66 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
+// 重置API Key
+//
+// @param request - ResetApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetApiKeyResponse
+func (client *Client) ResetApiKeyWithOptions(apiKeyId *string, request *ResetApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResetApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetApiKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId)) + "/reset"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置API Key
+//
+// @param request - ResetApiKeyRequest
+//
+// @return ResetApiKeyResponse
+func (client *Client) ResetApiKey(apiKeyId *string, request *ResetApiKeyRequest) (_result *ResetApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResetApiKeyResponse{}
+	_body, _err := client.ResetApiKeyWithOptions(apiKeyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑apiKey的描述
 //
 // @param request - UpdateApiKeyRequest
@@ -479,9 +665,15 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyId *string, request *UpdateA
 		query["description"] = request.Description
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Auth) {
+		body["auth"] = request.Auth
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateApiKey"),
@@ -491,7 +683,7 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyId *string, request *UpdateA
 		Method:      dara.String("PUT"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
+		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiKeyResponse{}

@@ -130,7 +130,8 @@ type GetApiKeyResponseBodyApiKey struct {
 	// example:
 	//
 	// sk-ws-djI.mhU0D****testtestest
-	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	ApiKeyValue *string                          `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	Auth        *GetApiKeyResponseBodyApiKeyAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1378030599924858
@@ -169,6 +170,10 @@ func (s *GetApiKeyResponseBodyApiKey) GetApiKeyValue() *string {
 	return s.ApiKeyValue
 }
 
+func (s *GetApiKeyResponseBodyApiKey) GetAuth() *GetApiKeyResponseBodyApiKeyAuth {
+	return s.Auth
+}
+
 func (s *GetApiKeyResponseBodyApiKey) GetCreatedBy() *string {
 	return s.CreatedBy
 }
@@ -199,6 +204,11 @@ func (s *GetApiKeyResponseBodyApiKey) SetApiKeyValue(v string) *GetApiKeyRespons
 	return s
 }
 
+func (s *GetApiKeyResponseBodyApiKey) SetAuth(v *GetApiKeyResponseBodyApiKeyAuth) *GetApiKeyResponseBodyApiKey {
+	s.Auth = v
+	return s
+}
+
 func (s *GetApiKeyResponseBodyApiKey) SetCreatedBy(v string) *GetApiKeyResponseBodyApiKey {
 	s.CreatedBy = &v
 	return s
@@ -225,5 +235,48 @@ func (s *GetApiKeyResponseBodyApiKey) SetWorkspaceId(v string) *GetApiKeyRespons
 }
 
 func (s *GetApiKeyResponseBodyApiKey) Validate() error {
+	if s.Auth != nil {
+		if err := s.Auth.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetApiKeyResponseBodyApiKeyAuth struct {
+	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetApiKeyResponseBodyApiKeyAuth) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApiKeyResponseBodyApiKeyAuth) GoString() string {
+	return s.String()
+}
+
+func (s *GetApiKeyResponseBodyApiKeyAuth) GetAccessIps() []*string {
+	return s.AccessIps
+}
+
+func (s *GetApiKeyResponseBodyApiKeyAuth) GetType() *string {
+	return s.Type
+}
+
+func (s *GetApiKeyResponseBodyApiKeyAuth) SetAccessIps(v []*string) *GetApiKeyResponseBodyApiKeyAuth {
+	s.AccessIps = v
+	return s
+}
+
+func (s *GetApiKeyResponseBodyApiKeyAuth) SetType(v string) *GetApiKeyResponseBodyApiKeyAuth {
+	s.Type = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBodyApiKeyAuth) Validate() error {
 	return dara.Validate(s)
 }

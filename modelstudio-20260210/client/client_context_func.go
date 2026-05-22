@@ -34,9 +34,15 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 		query["workspaceId"] = request.WorkspaceId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Auth) {
+		body["auth"] = request.Auth
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateApiKey"),
@@ -46,7 +52,7 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
+		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateApiKeyResponse{}
@@ -134,6 +140,88 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, apiKeyId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用API Key
+//
+// @param request - DisableApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApiKeyResponse
+func (client *Client) DisableApiKeyWithContext(ctx context.Context, apiKeyId *string, request *DisableApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableApiKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId)) + "/disable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用API Key
+//
+// @param request - EnableApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApiKeyResponse
+func (client *Client) EnableApiKeyWithContext(ctx context.Context, apiKeyId *string, request *EnableApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableApiKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId)) + "/enable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableApiKeyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -299,6 +387,47 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// 重置API Key
+//
+// @param request - ResetApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetApiKeyResponse
+func (client *Client) ResetApiKeyWithContext(ctx context.Context, apiKeyId *string, request *ResetApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResetApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetApiKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId)) + "/reset"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑apiKey的描述
 //
 // @param request - UpdateApiKeyRequest
@@ -320,9 +449,15 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyId *str
 		query["description"] = request.Description
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Auth) {
+		body["auth"] = request.Auth
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateApiKey"),
@@ -332,7 +467,7 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyId *str
 		Method:      dara.String("PUT"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
+		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiKeyResponse{}

@@ -179,7 +179,8 @@ type ListApiKeysResponseBodyApiKeys struct {
 	// example:
 	//
 	// sk-ws-djI.8O7d*****2aICctnid4u4
-	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	ApiKeyValue *string                             `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	Auth        *ListApiKeysResponseBodyApiKeysAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1378030599924858
@@ -218,6 +219,10 @@ func (s *ListApiKeysResponseBodyApiKeys) GetApiKeyValue() *string {
 	return s.ApiKeyValue
 }
 
+func (s *ListApiKeysResponseBodyApiKeys) GetAuth() *ListApiKeysResponseBodyApiKeysAuth {
+	return s.Auth
+}
+
 func (s *ListApiKeysResponseBodyApiKeys) GetCreatedBy() *string {
 	return s.CreatedBy
 }
@@ -248,6 +253,11 @@ func (s *ListApiKeysResponseBodyApiKeys) SetApiKeyValue(v string) *ListApiKeysRe
 	return s
 }
 
+func (s *ListApiKeysResponseBodyApiKeys) SetAuth(v *ListApiKeysResponseBodyApiKeysAuth) *ListApiKeysResponseBodyApiKeys {
+	s.Auth = v
+	return s
+}
+
 func (s *ListApiKeysResponseBodyApiKeys) SetCreatedBy(v string) *ListApiKeysResponseBodyApiKeys {
 	s.CreatedBy = &v
 	return s
@@ -274,5 +284,48 @@ func (s *ListApiKeysResponseBodyApiKeys) SetWorkspaceId(v string) *ListApiKeysRe
 }
 
 func (s *ListApiKeysResponseBodyApiKeys) Validate() error {
+	if s.Auth != nil {
+		if err := s.Auth.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListApiKeysResponseBodyApiKeysAuth struct {
+	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListApiKeysResponseBodyApiKeysAuth) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListApiKeysResponseBodyApiKeysAuth) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuth) GetAccessIps() []*string {
+	return s.AccessIps
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuth) GetType() *string {
+	return s.Type
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuth) SetAccessIps(v []*string) *ListApiKeysResponseBodyApiKeysAuth {
+	s.AccessIps = v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuth) SetType(v string) *ListApiKeysResponseBodyApiKeysAuth {
+	s.Type = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuth) Validate() error {
 	return dara.Validate(s)
 }
