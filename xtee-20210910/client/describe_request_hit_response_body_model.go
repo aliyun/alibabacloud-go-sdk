@@ -250,6 +250,7 @@ type DescribeRequestHitResponseBodyResultObjectRuleHitRecords struct {
 	//
 	// RUNNING
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	RuleType   *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
 }
 
 func (s DescribeRequestHitResponseBodyResultObjectRuleHitRecords) String() string {
@@ -292,6 +293,10 @@ func (s *DescribeRequestHitResponseBodyResultObjectRuleHitRecords) GetRuleStatus
 	return s.RuleStatus
 }
 
+func (s *DescribeRequestHitResponseBodyResultObjectRuleHitRecords) GetRuleType() *string {
+	return s.RuleType
+}
+
 func (s *DescribeRequestHitResponseBodyResultObjectRuleHitRecords) SetCost(v int32) *DescribeRequestHitResponseBodyResultObjectRuleHitRecords {
 	s.Cost = &v
 	return s
@@ -329,6 +334,11 @@ func (s *DescribeRequestHitResponseBodyResultObjectRuleHitRecords) SetRuleSnapsh
 
 func (s *DescribeRequestHitResponseBodyResultObjectRuleHitRecords) SetRuleStatus(v string) *DescribeRequestHitResponseBodyResultObjectRuleHitRecords {
 	s.RuleStatus = &v
+	return s
+}
+
+func (s *DescribeRequestHitResponseBodyResultObjectRuleHitRecords) SetRuleType(v string) *DescribeRequestHitResponseBodyResultObjectRuleHitRecords {
+	s.RuleType = &v
 	return s
 }
 
