@@ -747,6 +747,102 @@ func (client *Client) MultiModalGuardWithContext(ctx context.Context, request *M
 
 // Summary:
 //
+// 视频检测任务提交
+//
+// @param request - MultiModalGuardAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalGuardAsyncResponse
+func (client *Client) MultiModalGuardAsyncWithContext(ctx context.Context, request *MultiModalGuardAsyncRequest, runtime *dara.RuntimeOptions) (_result *MultiModalGuardAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Service) {
+		body["Service"] = request.Service
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MultiModalGuardAsync"),
+		Version:     dara.String("2022-03-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MultiModalGuardAsyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频检测结果
+//
+// @param request - MultiModalGuardAsyncResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalGuardAsyncResultResponse
+func (client *Client) MultiModalGuardAsyncResultWithContext(ctx context.Context, request *MultiModalGuardAsyncResultRequest, runtime *dara.RuntimeOptions) (_result *MultiModalGuardAsyncResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Service) {
+		body["Service"] = request.Service
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MultiModalGuardAsyncResult"),
+		Version:     dara.String("2022-03-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MultiModalGuardAsyncResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 多模态同步检测接口，支持图片base64字符串
 //
 // @param request - MultiModalGuardForBase64Request
