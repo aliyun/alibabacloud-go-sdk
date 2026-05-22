@@ -114,7 +114,16 @@ func (s *AddServiceSharedAccountsRequest) SetType(v string) *AddServiceSharedAcc
 }
 
 func (s *AddServiceSharedAccountsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SharedAccounts != nil {
+		for _, item := range s.SharedAccounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddServiceSharedAccountsRequestSharedAccounts struct {

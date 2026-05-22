@@ -53,7 +53,12 @@ func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceRespons
 }
 
 func (s *UpdateServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DryRunResult != nil {
+		if err := s.DryRunResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceResponseBodyDryRunResult struct {
@@ -79,7 +84,12 @@ func (s *UpdateServiceResponseBodyDryRunResult) SetRolePolicy(v *UpdateServiceRe
 }
 
 func (s *UpdateServiceResponseBodyDryRunResult) Validate() error {
-	return dara.Validate(s)
+	if s.RolePolicy != nil {
+		if err := s.RolePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceResponseBodyDryRunResultRolePolicy struct {
@@ -150,7 +160,16 @@ func (s *UpdateServiceResponseBodyDryRunResultRolePolicy) SetPolicy(v string) *U
 }
 
 func (s *UpdateServiceResponseBodyDryRunResultRolePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.MissingPolicy != nil {
+		for _, item := range s.MissingPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy struct {

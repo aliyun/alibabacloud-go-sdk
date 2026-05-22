@@ -174,7 +174,12 @@ func (s *GetServiceEstimateCostRequest) SetTemplateName(v string) *GetServiceEst
 }
 
 func (s *GetServiceEstimateCostRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceEstimateCostRequestCommodity struct {

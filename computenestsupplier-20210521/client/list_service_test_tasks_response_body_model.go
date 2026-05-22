@@ -104,7 +104,16 @@ func (s *ListServiceTestTasksResponseBody) SetServiceTestTasks(v []*ListServiceT
 }
 
 func (s *ListServiceTestTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceTestTasks != nil {
+		for _, item := range s.ServiceTestTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceTestTasksResponseBodyServiceTestTasks struct {

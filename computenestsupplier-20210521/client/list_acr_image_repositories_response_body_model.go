@@ -104,7 +104,16 @@ func (s *ListAcrImageRepositoriesResponseBody) SetTotalCount(v int32) *ListAcrIm
 }
 
 func (s *ListAcrImageRepositoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Repositories != nil {
+		for _, item := range s.Repositories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAcrImageRepositoriesResponseBodyRepositories struct {

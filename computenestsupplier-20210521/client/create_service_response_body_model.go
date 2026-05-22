@@ -104,7 +104,12 @@ func (s *CreateServiceResponseBody) SetVersion(v string) *CreateServiceResponseB
 }
 
 func (s *CreateServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DryRunResult != nil {
+		if err := s.DryRunResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateServiceResponseBodyDryRunResult struct {
@@ -130,7 +135,12 @@ func (s *CreateServiceResponseBodyDryRunResult) SetRolePolicy(v *CreateServiceRe
 }
 
 func (s *CreateServiceResponseBodyDryRunResult) Validate() error {
-	return dara.Validate(s)
+	if s.RolePolicy != nil {
+		if err := s.RolePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateServiceResponseBodyDryRunResultRolePolicy struct {
@@ -201,7 +211,16 @@ func (s *CreateServiceResponseBodyDryRunResultRolePolicy) SetPolicy(v string) *C
 }
 
 func (s *CreateServiceResponseBodyDryRunResultRolePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.MissingPolicy != nil {
+		for _, item := range s.MissingPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy struct {

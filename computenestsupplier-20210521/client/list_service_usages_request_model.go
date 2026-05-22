@@ -15,6 +15,8 @@ type iListServiceUsagesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListServiceUsagesRequest
 	GetNextToken() *string
+	SetRegionId(v string) *ListServiceUsagesRequest
+	GetRegionId() *string
 	SetSupplierRole(v string) *ListServiceUsagesRequest
 	GetSupplierRole() *string
 }
@@ -34,6 +36,7 @@ type ListServiceUsagesRequest struct {
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The role of the service provider.
 	//
 	// example:
@@ -62,6 +65,10 @@ func (s *ListServiceUsagesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListServiceUsagesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ListServiceUsagesRequest) GetSupplierRole() *string {
 	return s.SupplierRole
 }
@@ -81,13 +88,27 @@ func (s *ListServiceUsagesRequest) SetNextToken(v string) *ListServiceUsagesRequ
 	return s
 }
 
+func (s *ListServiceUsagesRequest) SetRegionId(v string) *ListServiceUsagesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListServiceUsagesRequest) SetSupplierRole(v string) *ListServiceUsagesRequest {
 	s.SupplierRole = &v
 	return s
 }
 
 func (s *ListServiceUsagesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceUsagesRequestFilter struct {

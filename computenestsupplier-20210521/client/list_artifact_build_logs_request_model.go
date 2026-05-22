@@ -129,7 +129,16 @@ func (s *ListArtifactBuildLogsRequest) SetSortOrder(v string) *ListArtifactBuild
 }
 
 func (s *ListArtifactBuildLogsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactBuildLogsRequestFilter struct {

@@ -29,6 +29,8 @@ type iUpdateServiceRequest interface {
 	GetDryRun() *bool
 	SetDuration(v int64) *UpdateServiceRequest
 	GetDuration() *int64
+	SetIsDefault(v bool) *UpdateServiceRequest
+	GetIsDefault() *bool
 	SetIsSupportOperated(v bool) *UpdateServiceRequest
 	GetIsSupportOperated() *bool
 	SetLicenseMetadata(v string) *UpdateServiceRequest
@@ -139,7 +141,8 @@ type UpdateServiceRequest struct {
 	// example:
 	//
 	// 259200
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration  *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsDefault *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
 	//
 	// 	- true
@@ -319,6 +322,10 @@ func (s *UpdateServiceRequest) GetDuration() *int64 {
 	return s.Duration
 }
 
+func (s *UpdateServiceRequest) GetIsDefault() *bool {
+	return s.IsDefault
+}
+
 func (s *UpdateServiceRequest) GetIsSupportOperated() *bool {
 	return s.IsSupportOperated
 }
@@ -441,6 +448,11 @@ func (s *UpdateServiceRequest) SetDuration(v int64) *UpdateServiceRequest {
 	return s
 }
 
+func (s *UpdateServiceRequest) SetIsDefault(v bool) *UpdateServiceRequest {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *UpdateServiceRequest) SetIsSupportOperated(v bool) *UpdateServiceRequest {
 	s.IsSupportOperated = &v
 	return s
@@ -532,7 +544,40 @@ func (s *UpdateServiceRequest) SetVersionName(v string) *UpdateServiceRequest {
 }
 
 func (s *UpdateServiceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Commodity != nil {
+		if err := s.Commodity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ComplianceMetadata != nil {
+		if err := s.ComplianceMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInfo != nil {
+		for _, item := range s.ServiceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceLocaleConfigs != nil {
+		for _, item := range s.ServiceLocaleConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpdateOption != nil {
+		if err := s.UpdateOption.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceRequestCommodity struct {
@@ -606,7 +651,43 @@ func (s *UpdateServiceRequestCommodity) SetSpecificationMappings(v []*UpdateServ
 }
 
 func (s *UpdateServiceRequestCommodity) Validate() error {
-	return dara.Validate(s)
+	if s.ComponentsMappings != nil {
+		for _, item := range s.ComponentsMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MeteringEntityExtraInfos != nil {
+		for _, item := range s.MeteringEntityExtraInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MeteringEntityMappings != nil {
+		for _, item := range s.MeteringEntityMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SpecificationMappings != nil {
+		for _, item := range s.SpecificationMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateServiceRequestCommodityComponentsMappings struct {
@@ -996,7 +1077,25 @@ func (s *UpdateServiceRequestServiceInfo) SetSoftwares(v []*UpdateServiceRequest
 }
 
 func (s *UpdateServiceRequestServiceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Agreements != nil {
+		for _, item := range s.Agreements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Softwares != nil {
+		for _, item := range s.Softwares {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateServiceRequestServiceInfoAgreements struct {

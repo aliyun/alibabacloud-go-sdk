@@ -70,7 +70,12 @@ func (s *ContinueDeployServiceInstanceResponseBody) SetServiceInstanceId(v strin
 }
 
 func (s *ContinueDeployServiceInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DryRunResult != nil {
+		if err := s.DryRunResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ContinueDeployServiceInstanceResponseBodyDryRunResult struct {

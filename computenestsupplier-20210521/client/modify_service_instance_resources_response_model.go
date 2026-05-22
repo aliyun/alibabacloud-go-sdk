@@ -59,5 +59,10 @@ func (s *ModifyServiceInstanceResourcesResponse) SetBody(v *ModifyServiceInstanc
 }
 
 func (s *ModifyServiceInstanceResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

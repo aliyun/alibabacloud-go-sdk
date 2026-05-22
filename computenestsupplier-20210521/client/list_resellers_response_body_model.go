@@ -104,7 +104,16 @@ func (s *ListResellersResponseBody) SetTotalCount(v int32) *ListResellersRespons
 }
 
 func (s *ListResellersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupplierInformation != nil {
+		for _, item := range s.SupplierInformation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResellersResponseBodySupplierInformation struct {

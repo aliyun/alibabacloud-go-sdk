@@ -121,7 +121,12 @@ func (s *GetUploadCredentialsResponseBody) SetSuccess(v bool) *GetUploadCredenti
 }
 
 func (s *GetUploadCredentialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUploadCredentialsResponseBodyData struct {

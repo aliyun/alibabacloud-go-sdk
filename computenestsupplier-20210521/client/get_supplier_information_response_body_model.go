@@ -202,7 +202,21 @@ func (s *GetSupplierInformationResponseBody) SetSupportContacts(v []*GetSupplier
 }
 
 func (s *GetSupplierInformationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeliverySettings != nil {
+		if err := s.DeliverySettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportContacts != nil {
+		for _, item := range s.SupportContacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSupplierInformationResponseBodyDeliverySettings struct {

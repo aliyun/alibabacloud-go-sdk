@@ -80,7 +80,16 @@ func (s *ListArtifactBuildLogsResponseBody) SetRequestId(v string) *ListArtifact
 }
 
 func (s *ListArtifactBuildLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BuildLogs != nil {
+		for _, item := range s.BuildLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactBuildLogsResponseBodyBuildLogs struct {

@@ -59,5 +59,10 @@ func (s *DeleteAcrImageTagsResponse) SetBody(v *DeleteAcrImageTagsResponseBody) 
 }
 
 func (s *DeleteAcrImageTagsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

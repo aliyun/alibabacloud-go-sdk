@@ -104,7 +104,16 @@ func (s *ListArtifactVersionsResponseBody) SetTotalCount(v int32) *ListArtifactV
 }
 
 func (s *ListArtifactVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Artifacts != nil {
+		for _, item := range s.Artifacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactVersionsResponseBodyArtifacts struct {

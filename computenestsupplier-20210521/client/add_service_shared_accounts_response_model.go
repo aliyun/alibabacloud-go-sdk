@@ -59,5 +59,10 @@ func (s *AddServiceSharedAccountsResponse) SetBody(v *AddServiceSharedAccountsRe
 }
 
 func (s *AddServiceSharedAccountsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

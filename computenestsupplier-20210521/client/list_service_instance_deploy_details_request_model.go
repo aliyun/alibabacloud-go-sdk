@@ -200,7 +200,16 @@ func (s *ListServiceInstanceDeployDetailsRequest) SetStartTime(v string) *ListSe
 }
 
 func (s *ListServiceInstanceDeployDetailsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstanceDeployDetailsRequestFilter struct {

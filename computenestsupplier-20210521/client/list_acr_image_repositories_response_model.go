@@ -59,5 +59,10 @@ func (s *ListAcrImageRepositoriesResponse) SetBody(v *ListAcrImageRepositoriesRe
 }
 
 func (s *ListAcrImageRepositoriesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

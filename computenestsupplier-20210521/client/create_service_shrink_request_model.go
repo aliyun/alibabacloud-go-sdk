@@ -571,7 +571,25 @@ func (s *CreateServiceShrinkRequest) SetVersionName(v string) *CreateServiceShri
 }
 
 func (s *CreateServiceShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceInfo != nil {
+		for _, item := range s.ServiceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceShrinkRequestServiceInfo struct {
@@ -691,7 +709,25 @@ func (s *CreateServiceShrinkRequestServiceInfo) SetSoftwares(v []*CreateServiceS
 }
 
 func (s *CreateServiceShrinkRequestServiceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Agreements != nil {
+		for _, item := range s.Agreements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Softwares != nil {
+		for _, item := range s.Softwares {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceShrinkRequestServiceInfoAgreements struct {

@@ -83,7 +83,21 @@ func (s *GetArtifactRepositoryCredentialsResponseBody) SetRequestId(v string) *G
 }
 
 func (s *GetArtifactRepositoryCredentialsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableResources != nil {
+		for _, item := range s.AvailableResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Credentials != nil {
+		if err := s.Credentials.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetArtifactRepositoryCredentialsResponseBodyAvailableResources struct {

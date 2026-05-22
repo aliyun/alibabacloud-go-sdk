@@ -89,7 +89,16 @@ func (s *ListArtifactVersionsRequest) SetNextToken(v string) *ListArtifactVersio
 }
 
 func (s *ListArtifactVersionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactVersionsRequestFilters struct {

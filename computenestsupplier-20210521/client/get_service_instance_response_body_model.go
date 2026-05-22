@@ -21,6 +21,8 @@ type iGetServiceInstanceResponseBody interface {
 	GetEndTime() *string
 	SetGrafanaDashBoardUrl(v string) *GetServiceInstanceResponseBody
 	GetGrafanaDashBoardUrl() *string
+	SetGrantedPermission(v *GetServiceInstanceResponseBodyGrantedPermission) *GetServiceInstanceResponseBody
+	GetGrantedPermission() *GetServiceInstanceResponseBodyGrantedPermission
 	SetIsOperated(v bool) *GetServiceInstanceResponseBody
 	GetIsOperated() *bool
 	SetLicenseMetadata(v string) *GetServiceInstanceResponseBody
@@ -43,6 +45,8 @@ type iGetServiceInstanceResponseBody interface {
 	GetParameters() *string
 	SetPayType(v string) *GetServiceInstanceResponseBody
 	GetPayType() *string
+	SetPolicyNames(v string) *GetServiceInstanceResponseBody
+	GetPolicyNames() *string
 	SetPredefinedParameterName(v string) *GetServiceInstanceResponseBody
 	GetPredefinedParameterName() *string
 	SetProgress(v int64) *GetServiceInstanceResponseBody
@@ -127,7 +131,8 @@ type GetServiceInstanceResponseBody struct {
 	// example:
 	//
 	// https://g.xxxxxx.aliyun.com/d/xxxxxxxx-cn-mariadb/mysql-xxxxxxxx-quickstart-and-dashboard?orgId=355401&refresh=10s
-	GrafanaDashBoardUrl *string `json:"GrafanaDashBoardUrl,omitempty" xml:"GrafanaDashBoardUrl,omitempty"`
+	GrafanaDashBoardUrl *string                                          `json:"GrafanaDashBoardUrl,omitempty" xml:"GrafanaDashBoardUrl,omitempty"`
+	GrantedPermission   *GetServiceInstanceResponseBodyGrantedPermission `json:"GrantedPermission,omitempty" xml:"GrantedPermission,omitempty" type:"Struct"`
 	// Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
 	//
 	// 	- true
@@ -219,7 +224,8 @@ type GetServiceInstanceResponseBody struct {
 	// example:
 	//
 	// Subscription
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType     *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
 	// The package name.
 	//
 	// example:
@@ -386,6 +392,10 @@ func (s *GetServiceInstanceResponseBody) GetGrafanaDashBoardUrl() *string {
 	return s.GrafanaDashBoardUrl
 }
 
+func (s *GetServiceInstanceResponseBody) GetGrantedPermission() *GetServiceInstanceResponseBodyGrantedPermission {
+	return s.GrantedPermission
+}
+
 func (s *GetServiceInstanceResponseBody) GetIsOperated() *bool {
 	return s.IsOperated
 }
@@ -428,6 +438,10 @@ func (s *GetServiceInstanceResponseBody) GetParameters() *string {
 
 func (s *GetServiceInstanceResponseBody) GetPayType() *string {
 	return s.PayType
+}
+
+func (s *GetServiceInstanceResponseBody) GetPolicyNames() *string {
+	return s.PolicyNames
 }
 
 func (s *GetServiceInstanceResponseBody) GetPredefinedParameterName() *string {
@@ -528,6 +542,11 @@ func (s *GetServiceInstanceResponseBody) SetGrafanaDashBoardUrl(v string) *GetSe
 	return s
 }
 
+func (s *GetServiceInstanceResponseBody) SetGrantedPermission(v *GetServiceInstanceResponseBodyGrantedPermission) *GetServiceInstanceResponseBody {
+	s.GrantedPermission = v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBody) SetIsOperated(v bool) *GetServiceInstanceResponseBody {
 	s.IsOperated = &v
 	return s
@@ -580,6 +599,11 @@ func (s *GetServiceInstanceResponseBody) SetParameters(v string) *GetServiceInst
 
 func (s *GetServiceInstanceResponseBody) SetPayType(v string) *GetServiceInstanceResponseBody {
 	s.PayType = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetPolicyNames(v string) *GetServiceInstanceResponseBody {
+	s.PolicyNames = &v
 	return s
 }
 
@@ -669,6 +693,65 @@ func (s *GetServiceInstanceResponseBody) SetUserId(v int64) *GetServiceInstanceR
 }
 
 func (s *GetServiceInstanceResponseBody) Validate() error {
+	if s.GrantedPermission != nil {
+		if err := s.GrantedPermission.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkConfig != nil {
+		if err := s.NetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Service != nil {
+		if err := s.Service.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetServiceInstanceResponseBodyGrantedPermission struct {
+	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	PolicyNames      *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+}
+
+func (s GetServiceInstanceResponseBodyGrantedPermission) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyGrantedPermission) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyGrantedPermission) GetOperationEndTime() *string {
+	return s.OperationEndTime
+}
+
+func (s *GetServiceInstanceResponseBodyGrantedPermission) GetPolicyNames() *string {
+	return s.PolicyNames
+}
+
+func (s *GetServiceInstanceResponseBodyGrantedPermission) SetOperationEndTime(v string) *GetServiceInstanceResponseBodyGrantedPermission {
+	s.OperationEndTime = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyGrantedPermission) SetPolicyNames(v string) *GetServiceInstanceResponseBodyGrantedPermission {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyGrantedPermission) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -740,7 +823,25 @@ func (s *GetServiceInstanceResponseBodyNetworkConfig) SetReversePrivateVpcConnec
 }
 
 func (s *GetServiceInstanceResponseBodyNetworkConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateVpcConnections != nil {
+		for _, item := range s.PrivateVpcConnections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReversePrivateVpcConnections != nil {
+		for _, item := range s.ReversePrivateVpcConnections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections struct {
@@ -811,7 +912,16 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) SetPr
 }
 
 func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionConfigs != nil {
+		for _, item := range s.ConnectionConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs struct {
@@ -1253,7 +1363,25 @@ func (s *GetServiceInstanceResponseBodyService) SetVersionName(v string) *GetSer
 }
 
 func (s *GetServiceInstanceResponseBodyService) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceInfos != nil {
+		for _, item := range s.ServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UpgradableServiceInfos != nil {
+		for _, item := range s.UpgradableServiceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceInstanceResponseBodyServiceServiceInfos struct {

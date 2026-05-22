@@ -104,7 +104,16 @@ func (s *ListArtifactsResponseBody) SetTotalCount(v int32) *ListArtifactsRespons
 }
 
 func (s *ListArtifactsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Artifacts != nil {
+		for _, item := range s.Artifacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactsResponseBodyArtifacts struct {
@@ -296,7 +305,16 @@ func (s *ListArtifactsResponseBodyArtifacts) SetTags(v []*ListArtifactsResponseB
 }
 
 func (s *ListArtifactsResponseBodyArtifacts) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactsResponseBodyArtifactsTags struct {

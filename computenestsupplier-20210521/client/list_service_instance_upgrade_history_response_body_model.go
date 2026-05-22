@@ -104,7 +104,16 @@ func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetUpgradeHistory(v []*L
 }
 
 func (s *ListServiceInstanceUpgradeHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UpgradeHistory != nil {
+		for _, item := range s.UpgradeHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {

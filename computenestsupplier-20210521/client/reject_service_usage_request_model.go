@@ -13,6 +13,8 @@ type iRejectServiceUsageRequest interface {
 	GetClientToken() *string
 	SetComments(v string) *RejectServiceUsageRequest
 	GetComments() *string
+	SetRegionId(v string) *RejectServiceUsageRequest
+	GetRegionId() *string
 	SetServiceId(v string) *RejectServiceUsageRequest
 	GetServiceId() *string
 	SetType(v int32) *RejectServiceUsageRequest
@@ -34,6 +36,7 @@ type RejectServiceUsageRequest struct {
 	//
 	// Thanks for your application, please add your industry information.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -78,6 +81,10 @@ func (s *RejectServiceUsageRequest) GetComments() *string {
 	return s.Comments
 }
 
+func (s *RejectServiceUsageRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *RejectServiceUsageRequest) GetServiceId() *string {
 	return s.ServiceId
 }
@@ -97,6 +104,11 @@ func (s *RejectServiceUsageRequest) SetClientToken(v string) *RejectServiceUsage
 
 func (s *RejectServiceUsageRequest) SetComments(v string) *RejectServiceUsageRequest {
 	s.Comments = &v
+	return s
+}
+
+func (s *RejectServiceUsageRequest) SetRegionId(v string) *RejectServiceUsageRequest {
+	s.RegionId = &v
 	return s
 }
 

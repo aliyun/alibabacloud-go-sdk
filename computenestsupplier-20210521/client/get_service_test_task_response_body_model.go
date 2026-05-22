@@ -110,7 +110,16 @@ func (s *GetServiceTestTaskResponseBody) SetTaskRegionId(v string) *GetServiceTe
 }
 
 func (s *GetServiceTestTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExecutionDetails != nil {
+		for _, item := range s.ExecutionDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceTestTaskResponseBodyExecutionDetails struct {

@@ -65,7 +65,16 @@ func (s *ListServiceBuildLogsResponseBody) SetRequestId(v string) *ListServiceBu
 }
 
 func (s *ListServiceBuildLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BuildLogs != nil {
+		for _, item := range s.BuildLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceBuildLogsResponseBodyBuildLogs struct {

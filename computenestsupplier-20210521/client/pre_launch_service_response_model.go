@@ -59,5 +59,10 @@ func (s *PreLaunchServiceResponse) SetBody(v *PreLaunchServiceResponseBody) *Pre
 }
 
 func (s *PreLaunchServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

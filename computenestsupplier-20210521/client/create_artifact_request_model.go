@@ -233,7 +233,26 @@ func (s *CreateArtifactRequest) SetVersionName(v string) *CreateArtifactRequest 
 }
 
 func (s *CreateArtifactRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ArtifactBuildProperty != nil {
+		if err := s.ArtifactBuildProperty.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ArtifactProperty != nil {
+		if err := s.ArtifactProperty.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateArtifactRequestArtifactBuildProperty struct {
@@ -422,7 +441,21 @@ func (s *CreateArtifactRequestArtifactBuildProperty) SetSystemDiskSize(v int64) 
 }
 
 func (s *CreateArtifactRequestArtifactBuildProperty) Validate() error {
-	return dara.Validate(s)
+	if s.BuildArgs != nil {
+		for _, item := range s.BuildArgs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CodeRepo != nil {
+		if err := s.CodeRepo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateArtifactRequestArtifactBuildPropertyBuildArgs struct {

@@ -53,7 +53,16 @@ func (s *ListArtifactRisksResponseBody) SetRequestId(v string) *ListArtifactRisk
 }
 
 func (s *ListArtifactRisksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ArtifactRiskList != nil {
+		for _, item := range s.ArtifactRiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListArtifactRisksResponseBodyArtifactRiskList struct {

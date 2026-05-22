@@ -110,7 +110,12 @@ func (s *UpdateServiceInstanceAttributeRequest) SetServiceInstanceId(v string) *
 }
 
 func (s *UpdateServiceInstanceAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LicenseData != nil {
+		if err := s.LicenseData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceInstanceAttributeRequestLicenseData struct {
@@ -151,7 +156,12 @@ func (s *UpdateServiceInstanceAttributeRequestLicenseData) SetResponseInfo(v *Up
 }
 
 func (s *UpdateServiceInstanceAttributeRequestLicenseData) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseInfo != nil {
+		if err := s.ResponseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo struct {

@@ -571,7 +571,30 @@ func (s *CreateServiceRequest) SetVersionName(v string) *CreateServiceRequest {
 }
 
 func (s *CreateServiceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ComplianceMetadata != nil {
+		if err := s.ComplianceMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInfo != nil {
+		for _, item := range s.ServiceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceRequestComplianceMetadata struct {
@@ -717,7 +740,25 @@ func (s *CreateServiceRequestServiceInfo) SetSoftwares(v []*CreateServiceRequest
 }
 
 func (s *CreateServiceRequestServiceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Agreements != nil {
+		for _, item := range s.Agreements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Softwares != nil {
+		for _, item := range s.Softwares {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateServiceRequestServiceInfoAgreements struct {

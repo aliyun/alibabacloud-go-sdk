@@ -104,7 +104,16 @@ func (s *ListServiceInstanceDeployDetailsResponseBody) SetTotalCount(v int32) *L
 }
 
 func (s *ListServiceInstanceDeployDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeployDetails != nil {
+		for _, item := range s.DeployDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceInstanceDeployDetailsResponseBodyDeployDetails struct {

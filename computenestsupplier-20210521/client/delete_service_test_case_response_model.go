@@ -59,5 +59,10 @@ func (s *DeleteServiceTestCaseResponse) SetBody(v *DeleteServiceTestCaseResponse
 }
 
 func (s *DeleteServiceTestCaseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

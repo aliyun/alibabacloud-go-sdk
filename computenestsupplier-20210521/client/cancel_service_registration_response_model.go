@@ -59,5 +59,10 @@ func (s *CancelServiceRegistrationResponse) SetBody(v *CancelServiceRegistration
 }
 
 func (s *CancelServiceRegistrationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

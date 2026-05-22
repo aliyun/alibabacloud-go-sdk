@@ -59,5 +59,10 @@ func (s *DeleteArtifactResponse) SetBody(v *DeleteArtifactResponseBody) *DeleteA
 }
 
 func (s *DeleteArtifactResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

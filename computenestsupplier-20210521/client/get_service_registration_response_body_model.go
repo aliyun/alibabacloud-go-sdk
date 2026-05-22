@@ -195,7 +195,17 @@ func (s *GetServiceRegistrationResponseBody) SetSubmitTime(v string) *GetService
 }
 
 func (s *GetServiceRegistrationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceInfo != nil {
+		if err := s.ServiceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceRegistrationResponseBodyDetail struct {

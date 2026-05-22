@@ -95,7 +95,16 @@ func (s *GetServiceTemplateCriterionIssuesResponseBody) SetTotalMandatoryCriteri
 }
 
 func (s *GetServiceTemplateCriterionIssuesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateCriterionIssueList != nil {
+		for _, item := range s.TemplateCriterionIssueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList struct {
@@ -169,7 +178,16 @@ func (s *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList
 }
 
 func (s *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList) Validate() error {
-	return dara.Validate(s)
+	if s.CriterionIssues != nil {
+		for _, item := range s.CriterionIssues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssues struct {
@@ -233,7 +251,12 @@ func (s *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList
 }
 
 func (s *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssues) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendInfo != nil {
+		if err := s.ExtendInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssuesExtendInfo struct {

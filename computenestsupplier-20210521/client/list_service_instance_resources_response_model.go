@@ -59,5 +59,10 @@ func (s *ListServiceInstanceResourcesResponse) SetBody(v *ListServiceInstanceRes
 }
 
 func (s *ListServiceInstanceResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

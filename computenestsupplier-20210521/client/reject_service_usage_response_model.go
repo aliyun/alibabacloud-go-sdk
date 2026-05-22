@@ -59,5 +59,10 @@ func (s *RejectServiceUsageResponse) SetBody(v *RejectServiceUsageResponseBody) 
 }
 
 func (s *RejectServiceUsageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

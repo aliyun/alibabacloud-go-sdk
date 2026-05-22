@@ -29,6 +29,8 @@ type iUpdateServiceShrinkRequest interface {
 	GetDryRun() *bool
 	SetDuration(v int64) *UpdateServiceShrinkRequest
 	GetDuration() *int64
+	SetIsDefault(v bool) *UpdateServiceShrinkRequest
+	GetIsDefault() *bool
 	SetIsSupportOperated(v bool) *UpdateServiceShrinkRequest
 	GetIsSupportOperated() *bool
 	SetLicenseMetadata(v string) *UpdateServiceShrinkRequest
@@ -139,7 +141,8 @@ type UpdateServiceShrinkRequest struct {
 	// example:
 	//
 	// 259200
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration  *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsDefault *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
 	//
 	// 	- true
@@ -319,6 +322,10 @@ func (s *UpdateServiceShrinkRequest) GetDuration() *int64 {
 	return s.Duration
 }
 
+func (s *UpdateServiceShrinkRequest) GetIsDefault() *bool {
+	return s.IsDefault
+}
+
 func (s *UpdateServiceShrinkRequest) GetIsSupportOperated() *bool {
 	return s.IsSupportOperated
 }
@@ -441,6 +448,11 @@ func (s *UpdateServiceShrinkRequest) SetDuration(v int64) *UpdateServiceShrinkRe
 	return s
 }
 
+func (s *UpdateServiceShrinkRequest) SetIsDefault(v bool) *UpdateServiceShrinkRequest {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *UpdateServiceShrinkRequest) SetIsSupportOperated(v bool) *UpdateServiceShrinkRequest {
 	s.IsSupportOperated = &v
 	return s
@@ -532,7 +544,25 @@ func (s *UpdateServiceShrinkRequest) SetVersionName(v string) *UpdateServiceShri
 }
 
 func (s *UpdateServiceShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceInfo != nil {
+		for _, item := range s.ServiceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceLocaleConfigs != nil {
+		for _, item := range s.ServiceLocaleConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateServiceShrinkRequestServiceInfo struct {
@@ -648,7 +678,25 @@ func (s *UpdateServiceShrinkRequestServiceInfo) SetSoftwares(v []*UpdateServiceS
 }
 
 func (s *UpdateServiceShrinkRequestServiceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Agreements != nil {
+		for _, item := range s.Agreements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Softwares != nil {
+		for _, item := range s.Softwares {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateServiceShrinkRequestServiceInfoAgreements struct {

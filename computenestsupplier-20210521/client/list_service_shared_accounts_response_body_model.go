@@ -104,7 +104,16 @@ func (s *ListServiceSharedAccountsResponseBody) SetTotalCount(v int32) *ListServ
 }
 
 func (s *ListServiceSharedAccountsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ShareAccount != nil {
+		for _, item := range s.ShareAccount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceSharedAccountsResponseBodyShareAccount struct {

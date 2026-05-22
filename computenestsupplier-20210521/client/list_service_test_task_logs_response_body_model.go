@@ -87,7 +87,16 @@ func (s *ListServiceTestTaskLogsResponseBody) SetTaskLogs(v []*ListServiceTestTa
 }
 
 func (s *ListServiceTestTaskLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskLogs != nil {
+		for _, item := range s.TaskLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListServiceTestTaskLogsResponseBodyTaskLogs struct {
