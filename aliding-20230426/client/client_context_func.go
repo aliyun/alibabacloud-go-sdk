@@ -13091,6 +13091,78 @@ func (client *Client) GetUserIdWithContext(ctx context.Context, tmpReq *GetUserI
 
 // Summary:
 //
+// 根据操作人工号与 openDingtalkId 获取被查看用户工号
+//
+// @param tmpReq - GetUserIdByOpenDingtalkIdRequest
+//
+// @param tmpHeader - GetUserIdByOpenDingtalkIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdByOpenDingtalkIdResponse
+func (client *Client) GetUserIdByOpenDingtalkIdWithContext(ctx context.Context, tmpReq *GetUserIdByOpenDingtalkIdRequest, tmpHeader *GetUserIdByOpenDingtalkIdHeaders, runtime *dara.RuntimeOptions) (_result *GetUserIdByOpenDingtalkIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetUserIdByOpenDingtalkIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetUserIdByOpenDingtalkIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.OpenDingtalkId) {
+		body["openDingtalkId"] = request.OpenDingtalkId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserIdByOpenDingtalkId"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/im/getUserIdByOpenDingtalkId"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserIdByOpenDingtalkIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据orgId和staffId获取用户userId
 //
 // @param tmpReq - GetUserIdByOrgIdAndStaffIdRequest
