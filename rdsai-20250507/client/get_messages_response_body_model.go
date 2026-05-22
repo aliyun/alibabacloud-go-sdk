@@ -120,17 +120,22 @@ type GetMessagesResponseBodyData struct {
 	// example:
 	//
 	// like
-	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	Feedback             *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	GenerationFinishedAt *string `json:"GenerationFinishedAt,omitempty" xml:"GenerationFinishedAt,omitempty"`
+	GenerationStartedAt  *string `json:"GenerationStartedAt,omitempty" xml:"GenerationStartedAt,omitempty"`
+	GenerationStatus     *string `json:"GenerationStatus,omitempty" xml:"GenerationStatus,omitempty"`
 	// The message ID.
 	//
 	// example:
 	//
 	// 84dc9f9b-424a-404d-9c36-35e9d000****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastSentEntryId *string `json:"LastSentEntryId,omitempty" xml:"LastSentEntryId,omitempty"`
 	// The query statement.
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The retriever resources.
 	RetrieverResources []interface{} `json:"RetrieverResources,omitempty" xml:"RetrieverResources,omitempty" type:"Repeated"`
+	StreamKey          *string       `json:"StreamKey,omitempty" xml:"StreamKey,omitempty"`
 }
 
 func (s GetMessagesResponseBodyData) String() string {
@@ -161,8 +166,24 @@ func (s *GetMessagesResponseBodyData) GetFeedback() *string {
 	return s.Feedback
 }
 
+func (s *GetMessagesResponseBodyData) GetGenerationFinishedAt() *string {
+	return s.GenerationFinishedAt
+}
+
+func (s *GetMessagesResponseBodyData) GetGenerationStartedAt() *string {
+	return s.GenerationStartedAt
+}
+
+func (s *GetMessagesResponseBodyData) GetGenerationStatus() *string {
+	return s.GenerationStatus
+}
+
 func (s *GetMessagesResponseBodyData) GetId() *string {
 	return s.Id
+}
+
+func (s *GetMessagesResponseBodyData) GetLastSentEntryId() *string {
+	return s.LastSentEntryId
 }
 
 func (s *GetMessagesResponseBodyData) GetQuery() *string {
@@ -171,6 +192,10 @@ func (s *GetMessagesResponseBodyData) GetQuery() *string {
 
 func (s *GetMessagesResponseBodyData) GetRetrieverResources() []interface{} {
 	return s.RetrieverResources
+}
+
+func (s *GetMessagesResponseBodyData) GetStreamKey() *string {
+	return s.StreamKey
 }
 
 func (s *GetMessagesResponseBodyData) SetAnswer(v string) *GetMessagesResponseBodyData {
@@ -198,8 +223,28 @@ func (s *GetMessagesResponseBodyData) SetFeedback(v string) *GetMessagesResponse
 	return s
 }
 
+func (s *GetMessagesResponseBodyData) SetGenerationFinishedAt(v string) *GetMessagesResponseBodyData {
+	s.GenerationFinishedAt = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyData) SetGenerationStartedAt(v string) *GetMessagesResponseBodyData {
+	s.GenerationStartedAt = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyData) SetGenerationStatus(v string) *GetMessagesResponseBodyData {
+	s.GenerationStatus = &v
+	return s
+}
+
 func (s *GetMessagesResponseBodyData) SetId(v string) *GetMessagesResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyData) SetLastSentEntryId(v string) *GetMessagesResponseBodyData {
+	s.LastSentEntryId = &v
 	return s
 }
 
@@ -210,6 +255,11 @@ func (s *GetMessagesResponseBodyData) SetQuery(v string) *GetMessagesResponseBod
 
 func (s *GetMessagesResponseBodyData) SetRetrieverResources(v []interface{}) *GetMessagesResponseBodyData {
 	s.RetrieverResources = v
+	return s
+}
+
+func (s *GetMessagesResponseBodyData) SetStreamKey(v string) *GetMessagesResponseBodyData {
+	s.StreamKey = &v
 	return s
 }
 
