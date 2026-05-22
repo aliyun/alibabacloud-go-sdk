@@ -2063,7 +2063,7 @@ func (client *Client) CreateStructureImportTask(request *CreateStructureImportTa
 
 // Summary:
 //
-// 开通CN子实例
+// 创建自定义地址
 //
 // Description:
 //
@@ -2123,7 +2123,7 @@ func (client *Client) CreateSubCNInstanceWithOptions(request *CreateSubCNInstanc
 
 // Summary:
 //
-// 开通CN子实例
+// 创建自定义地址
 //
 // Description:
 //
@@ -2751,7 +2751,7 @@ func (client *Client) DeleteMem0(request *DeleteMem0Request) (_result *DeleteMem
 
 // Summary:
 //
-// 删除CN子实例
+// 删除自定义地址
 //
 // Description:
 //
@@ -2772,6 +2772,10 @@ func (client *Client) DeleteSubCNInstanceWithOptions(request *DeleteSubCNInstanc
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
 		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.InstanceClusterName) {
+		query["InstanceClusterName"] = request.InstanceClusterName
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2803,7 +2807,7 @@ func (client *Client) DeleteSubCNInstanceWithOptions(request *DeleteSubCNInstanc
 
 // Summary:
 //
-// 删除CN子实例
+// 删除自定义地址
 //
 // Description:
 //

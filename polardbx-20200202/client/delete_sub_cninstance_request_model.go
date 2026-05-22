@@ -11,6 +11,8 @@ type iDeleteSubCNInstanceRequest interface {
 	GoString() string
 	SetDBInstanceName(v string) *DeleteSubCNInstanceRequest
 	GetDBInstanceName() *string
+	SetInstanceClusterName(v string) *DeleteSubCNInstanceRequest
+	GetInstanceClusterName() *string
 	SetRegionId(v string) *DeleteSubCNInstanceRequest
 	GetRegionId() *string
 }
@@ -21,7 +23,8 @@ type DeleteSubCNInstanceRequest struct {
 	// example:
 	//
 	// pxc-********
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +45,21 @@ func (s *DeleteSubCNInstanceRequest) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
 
+func (s *DeleteSubCNInstanceRequest) GetInstanceClusterName() *string {
+	return s.InstanceClusterName
+}
+
 func (s *DeleteSubCNInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DeleteSubCNInstanceRequest) SetDBInstanceName(v string) *DeleteSubCNInstanceRequest {
 	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DeleteSubCNInstanceRequest) SetInstanceClusterName(v string) *DeleteSubCNInstanceRequest {
+	s.InstanceClusterName = &v
 	return s
 }
 

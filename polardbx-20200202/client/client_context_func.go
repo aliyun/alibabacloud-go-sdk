@@ -1581,7 +1581,7 @@ func (client *Client) CreateStructureImportTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 开通CN子实例
+// 创建自定义地址
 //
 // Description:
 //
@@ -2097,7 +2097,7 @@ func (client *Client) DeleteMem0WithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除CN子实例
+// 删除自定义地址
 //
 // Description:
 //
@@ -2118,6 +2118,10 @@ func (client *Client) DeleteSubCNInstanceWithContext(ctx context.Context, reques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
 		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.InstanceClusterName) {
+		query["InstanceClusterName"] = request.InstanceClusterName
 	}
 
 	if !dara.IsNil(request.RegionId) {
