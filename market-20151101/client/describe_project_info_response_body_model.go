@@ -65,7 +65,12 @@ func (s *DescribeProjectInfoResponseBody) SetSuccess(v bool) *DescribeProjectInf
 }
 
 func (s *DescribeProjectInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProjectInfoResponseBodyResult struct {

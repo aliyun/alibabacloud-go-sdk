@@ -65,7 +65,12 @@ func (s *CreateOrderResponseBody) SetRequestId(v string) *CreateOrderResponseBod
 }
 
 func (s *CreateOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrderResponseBodyInstanceIds struct {

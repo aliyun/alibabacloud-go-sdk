@@ -50,7 +50,12 @@ func (s *DescribeLicenseResponseBody) SetRequestId(v string) *DescribeLicenseRes
 }
 
 func (s *DescribeLicenseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.License != nil {
+		if err := s.License.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLicenseResponseBodyLicense struct {
@@ -209,7 +214,17 @@ func (s *DescribeLicenseResponseBodyLicense) SetSupplierName(v string) *Describe
 }
 
 func (s *DescribeLicenseResponseBodyLicense) Validate() error {
-	return dara.Validate(s)
+	if s.ExtendArray != nil {
+		if err := s.ExtendArray.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtendInfo != nil {
+		if err := s.ExtendInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLicenseResponseBodyLicenseExtendArray struct {
@@ -234,17 +249,20 @@ func (s *DescribeLicenseResponseBodyLicenseExtendArray) SetLicenseAttribute(v []
 }
 
 func (s *DescribeLicenseResponseBodyLicenseExtendArray) Validate() error {
-	return dara.Validate(s)
+	if s.LicenseAttribute != nil {
+		for _, item := range s.LicenseAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLicenseResponseBodyLicenseExtendArrayLicenseAttribute struct {
-	// example:
-	//
-	// -
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// -
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

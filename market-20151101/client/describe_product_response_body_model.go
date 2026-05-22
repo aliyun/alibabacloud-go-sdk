@@ -302,7 +302,22 @@ func (s *DescribeProductResponseBody) SetUseCount(v int64) *DescribeProductRespo
 }
 
 func (s *DescribeProductResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProductExtras != nil {
+		if err := s.ProductExtras.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProductSkus != nil {
+		if err := s.ProductSkus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShopInfo != nil {
+		if err := s.ShopInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductExtras struct {
@@ -327,22 +342,22 @@ func (s *DescribeProductResponseBodyProductExtras) SetProductExtra(v []*Describe
 }
 
 func (s *DescribeProductResponseBodyProductExtras) Validate() error {
-	return dara.Validate(s)
+	if s.ProductExtra != nil {
+		for _, item := range s.ProductExtra {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductExtrasProductExtra struct {
-	// example:
-	//
-	// product_advantage
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// example:
-	//
-	// 0
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// example:
-	//
-	// HTML
+	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Order  *int32  `json:"Order,omitempty" xml:"Order,omitempty"`
 	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
@@ -426,30 +441,24 @@ func (s *DescribeProductResponseBodyProductSkus) SetProductSku(v []*DescribeProd
 }
 
 func (s *DescribeProductResponseBodyProductSkus) Validate() error {
-	return dara.Validate(s)
+	if s.ProductSku != nil {
+		for _, item := range s.ProductSku {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSku struct {
-	// example:
-	//
-	// PREPAY
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// example:
-	//
-	// cmjj01****-Package
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// {\\"img_id\\":{\\"img_version|img_region\\":{\\"V1.7|cn-shenzhen-st3-a01\\":[\\"m-wz9ho4hmos0lpxcldqoq\\"]}}
-	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// example:
-	//
-	// true
-	Hidden  *bool                                                    `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
-	Modules *DescribeProductResponseBodyProductSkusProductSkuModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
-	// example:
-	//
-	// 21
+	ChargeType   *string                                                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Code         *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Constraints  *string                                                       `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	Hidden       *bool                                                         `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
+	Modules      *DescribeProductResponseBodyProductSkusProductSkuModules      `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
 	Name         *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	OrderPeriods *DescribeProductResponseBodyProductSkusProductSkuOrderPeriods `json:"OrderPeriods,omitempty" xml:"OrderPeriods,omitempty" type:"Struct"`
 }
@@ -526,7 +535,17 @@ func (s *DescribeProductResponseBodyProductSkusProductSku) SetOrderPeriods(v *De
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSku) Validate() error {
-	return dara.Validate(s)
+	if s.Modules != nil {
+		if err := s.Modules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrderPeriods != nil {
+		if err := s.OrderPeriods.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModules struct {
@@ -551,17 +570,20 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModules) SetModule(v []
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSkuModules) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModule struct {
-	// example:
-	//
-	// img_id
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 248220
+	Code       *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Id         *string                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	Properties *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
@@ -612,7 +634,12 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModule) SetPrope
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModule) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties struct {
@@ -637,24 +664,24 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Property != nil {
+		for _, item := range s.Property {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesProperty struct {
-	// example:
-	//
-	// 1
-	DisplayUnit *string `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
-	// example:
-	//
-	// img_id
+	DisplayUnit    *string                                                                                        `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
 	Key            *string                                                                                        `json:"Key,omitempty" xml:"Key,omitempty"`
 	Name           *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	PropertyValues *DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Struct"`
-	// example:
-	//
-	// number
-	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
+	ShowType       *string                                                                                        `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
 }
 
 func (s DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesProperty) String() string {
@@ -711,7 +738,12 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesProperty) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValues != nil {
+		if err := s.PropertyValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValues struct {
@@ -736,35 +768,26 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValues) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValue != nil {
+		for _, item := range s.PropertyValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValuesPropertyValue struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 123
-	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	// example:
-	//
-	// 11
-	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
-	// example:
-	//
-	// abc
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// 1
-	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	// example:
-	//
-	// single_string
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// m-28e213e7t
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Max         *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min         *string `json:"Min,omitempty" xml:"Min,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Step        *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValuesPropertyValue) String() string {
@@ -864,14 +887,20 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuOrderPeriods) SetOrderP
 }
 
 func (s *DescribeProductResponseBodyProductSkusProductSkuOrderPeriods) Validate() error {
-	return dara.Validate(s)
+	if s.OrderPeriod != nil {
+		for _, item := range s.OrderPeriod {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuOrderPeriodsOrderPeriod struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// HOUR
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 }
 
@@ -973,7 +1002,17 @@ func (s *DescribeProductResponseBodyShopInfo) SetWangWangs(v *DescribeProductRes
 }
 
 func (s *DescribeProductResponseBodyShopInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Telephones != nil {
+		if err := s.Telephones.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WangWangs != nil {
+		if err := s.WangWangs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyShopInfoTelephones struct {
@@ -1023,17 +1062,20 @@ func (s *DescribeProductResponseBodyShopInfoWangWangs) SetWangWang(v []*Describe
 }
 
 func (s *DescribeProductResponseBodyShopInfoWangWangs) Validate() error {
-	return dara.Validate(s)
+	if s.WangWang != nil {
+		for _, item := range s.WangWang {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductResponseBodyShopInfoWangWangsWangWang struct {
-	// example:
-	//
-	// 123
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// ABC
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

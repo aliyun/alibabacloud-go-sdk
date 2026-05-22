@@ -155,7 +155,16 @@ func (s *DescribeInvoiceForIsvResponseBody) SetSuccess(v bool) *DescribeInvoiceF
 }
 
 func (s *DescribeInvoiceForIsvResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvoiceForIsvResponseBodyResult struct {
@@ -364,7 +373,35 @@ func (s *DescribeInvoiceForIsvResponseBodyResult) SetUserNotice(v string) *Descr
 }
 
 func (s *DescribeInvoiceForIsvResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.EvaluateList != nil {
+		for _, item := range s.EvaluateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InvoiceList != nil {
+		for _, item := range s.InvoiceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReceiptUserInfoDto != nil {
+		if err := s.ReceiptUserInfoDto.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserAddressDto != nil {
+		if err := s.UserAddressDto.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInvoiceForIsvResponseBodyResultEvaluateList struct {

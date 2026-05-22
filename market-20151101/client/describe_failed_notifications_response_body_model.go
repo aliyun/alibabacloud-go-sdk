@@ -97,7 +97,16 @@ func (s *DescribeFailedNotificationsResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeFailedNotificationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationList != nil {
+		for _, item := range s.NotificationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFailedNotificationsResponseBodyNotificationList struct {

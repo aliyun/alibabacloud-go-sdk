@@ -323,7 +323,12 @@ func (s *DescribeInstanceForIsvResponseBody) SetSupplierName(v string) *Describe
 }
 
 func (s *DescribeInstanceForIsvResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RelationalData != nil {
+		if err := s.RelationalData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceForIsvResponseBodyRelationalData struct {

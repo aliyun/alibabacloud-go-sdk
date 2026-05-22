@@ -59,5 +59,10 @@ func (s *DescribeLicenseResponse) SetBody(v *DescribeLicenseResponseBody) *Descr
 }
 
 func (s *DescribeLicenseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

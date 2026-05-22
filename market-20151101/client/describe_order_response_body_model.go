@@ -338,7 +338,17 @@ func (s *DescribeOrderResponseBody) SetTotalPrice(v float32) *DescribeOrderRespo
 }
 
 func (s *DescribeOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupplierTelephones != nil {
+		if err := s.SupplierTelephones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeOrderResponseBodyInstanceIds struct {

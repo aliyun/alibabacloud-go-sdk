@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -90,9 +91,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ActivateLicenseResponse
 func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest, runtime *dara.RuntimeOptions) (_result *ActivateLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Identification) {
@@ -144,15 +147,21 @@ func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置自动续费
+//
 // @param request - AutoRenewInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AutoRenewInstanceResponse
 func (client *Client) AutoRenewInstanceWithOptions(request *AutoRenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *AutoRenewInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenewCycle) {
@@ -198,6 +207,10 @@ func (client *Client) AutoRenewInstanceWithOptions(request *AutoRenewInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置自动续费
+//
 // @param request - AutoRenewInstanceRequest
 //
 // @return AutoRenewInstanceResponse
@@ -222,9 +235,11 @@ func (client *Client) AutoRenewInstance(request *AutoRenewInstanceRequest) (_res
 //
 // @return ConfirmNotificationResponse
 func (client *Client) ConfirmNotificationWithOptions(request *ConfirmNotificationRequest, runtime *dara.RuntimeOptions) (_result *ConfirmNotificationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NotificationRequestId) {
@@ -272,15 +287,21 @@ func (client *Client) ConfirmNotification(request *ConfirmNotificationRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建订单
+//
 // @param request - CreateOrderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrderResponse
 func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -330,6 +351,10 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建订单
+//
 // @param request - CreateOrderRequest
 //
 // @return CreateOrderResponse
@@ -344,15 +369,21 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 	return _result, _err
 }
 
+// Summary:
+//
+// 跨账号角色授权，根据token获取用户信息
+//
 // @param request - CrossAccountVerifyTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CrossAccountVerifyTokenResponse
 func (client *Client) CrossAccountVerifyTokenWithOptions(request *CrossAccountVerifyTokenRequest, runtime *dara.RuntimeOptions) (_result *CrossAccountVerifyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Token) {
@@ -382,6 +413,10 @@ func (client *Client) CrossAccountVerifyTokenWithOptions(request *CrossAccountVe
 	return _result, _err
 }
 
+// Summary:
+//
+// 跨账号角色授权，根据token获取用户信息
+//
 // @param request - CrossAccountVerifyTokenRequest
 //
 // @return CrossAccountVerifyTokenResponse
@@ -406,9 +441,11 @@ func (client *Client) CrossAccountVerifyToken(request *CrossAccountVerifyTokenRe
 //
 // @return DescribeApiMeteringResponse
 func (client *Client) DescribeApiMeteringWithOptions(request *DescribeApiMeteringRequest, runtime *dara.RuntimeOptions) (_result *DescribeApiMeteringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -452,15 +489,21 @@ func (client *Client) DescribeApiMetering(request *DescribeApiMeteringRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 工作流当前节点信息
+//
 // @param request - DescribeCurrentNodeInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCurrentNodeInfoResponse
 func (client *Client) DescribeCurrentNodeInfoWithOptions(request *DescribeCurrentNodeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCurrentNodeInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -490,6 +533,10 @@ func (client *Client) DescribeCurrentNodeInfoWithOptions(request *DescribeCurren
 	return _result, _err
 }
 
+// Summary:
+//
+// 工作流当前节点信息
+//
 // @param request - DescribeCurrentNodeInfoRequest
 //
 // @return DescribeCurrentNodeInfoResponse
@@ -514,9 +561,11 @@ func (client *Client) DescribeCurrentNodeInfo(request *DescribeCurrentNodeInfoRe
 //
 // @return DescribeDistributionProductsResponse
 func (client *Client) DescribeDistributionProductsWithOptions(request *DescribeDistributionProductsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDistributionProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -570,9 +619,11 @@ func (client *Client) DescribeDistributionProducts(request *DescribeDistribution
 //
 // @return DescribeDistributionProductsLinkResponse
 func (client *Client) DescribeDistributionProductsLinkWithOptions(tmpReq *DescribeDistributionProductsLinkRequest, runtime *dara.RuntimeOptions) (_result *DescribeDistributionProductsLinkResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeDistributionProductsLinkShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -636,9 +687,11 @@ func (client *Client) DescribeDistributionProductsLink(request *DescribeDistribu
 //
 // @return DescribeFailedNotificationsResponse
 func (client *Client) DescribeFailedNotificationsWithOptions(request *DescribeFailedNotificationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailedNotificationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -700,9 +753,11 @@ func (client *Client) DescribeFailedNotifications(request *DescribeFailedNotific
 //
 // @return DescribeImageInstanceForIsvResponse
 func (client *Client) DescribeImageInstanceForIsvWithOptions(request *DescribeImageInstanceForIsvRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageInstanceForIsvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomerPk) {
@@ -754,15 +809,21 @@ func (client *Client) DescribeImageInstanceForIsv(request *DescribeImageInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例
+//
 // @param request - DescribeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -800,6 +861,10 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例
+//
 // @param request - DescribeInstanceRequest
 //
 // @return DescribeInstanceResponse
@@ -824,9 +889,11 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 //
 // @return DescribeInstanceForIsvResponse
 func (client *Client) DescribeInstanceForIsvWithOptions(request *DescribeInstanceForIsvRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceForIsvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -874,15 +941,21 @@ func (client *Client) DescribeInstanceForIsv(request *DescribeInstanceForIsvRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - DescribeInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Codes) {
@@ -928,6 +1001,10 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - DescribeInstancesRequest
 //
 // @return DescribeInstancesResponse
@@ -952,9 +1029,11 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 //
 // @return DescribeInvoiceForIsvResponse
 func (client *Client) DescribeInvoiceForIsvWithOptions(request *DescribeInvoiceForIsvRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvoiceForIsvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateTimeEnd) {
@@ -1048,9 +1127,11 @@ func (client *Client) DescribeInvoiceForIsv(request *DescribeInvoiceForIsvReques
 //
 // @return DescribeLicenseResponse
 func (client *Client) DescribeLicenseWithOptions(request *DescribeLicenseRequest, runtime *dara.RuntimeOptions) (_result *DescribeLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LicenseCode) {
@@ -1098,15 +1179,21 @@ func (client *Client) DescribeLicense(request *DescribeLicenseRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询订单
+//
 // @param request - DescribeOrderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOrderResponse
 func (client *Client) DescribeOrderWithOptions(request *DescribeOrderRequest, runtime *dara.RuntimeOptions) (_result *DescribeOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -1136,6 +1223,10 @@ func (client *Client) DescribeOrderWithOptions(request *DescribeOrderRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询订单
+//
 // @param request - DescribeOrderRequest
 //
 // @return DescribeOrderResponse
@@ -1160,9 +1251,11 @@ func (client *Client) DescribeOrder(request *DescribeOrderRequest) (_result *Des
 //
 // @return DescribeOrderForIsvResponse
 func (client *Client) DescribeOrderForIsvWithOptions(request *DescribeOrderForIsvRequest, runtime *dara.RuntimeOptions) (_result *DescribeOrderForIsvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderId) {
@@ -1210,15 +1303,21 @@ func (client *Client) DescribeOrderForIsv(request *DescribeOrderForIsvRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询价格
+//
 // @param request - DescribePriceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePriceResponse
 func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *dara.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Commodity) {
@@ -1252,6 +1351,10 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询价格
+//
 // @param request - DescribePriceRequest
 //
 // @return DescribePriceResponse
@@ -1272,9 +1375,11 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 //
 // @return DescribeProductResponse
 func (client *Client) DescribeProductWithOptions(request *DescribeProductRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliUid) {
@@ -1332,9 +1437,11 @@ func (client *Client) DescribeProduct(request *DescribeProductRequest) (_result 
 //
 // @return DescribeProductsResponse
 func (client *Client) DescribeProductsWithOptions(request *DescribeProductsRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
@@ -1390,15 +1497,21 @@ func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 附件信息
+//
 // @param request - DescribeProjectAttachmentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProjectAttachmentsResponse
 func (client *Client) DescribeProjectAttachmentsWithOptions(request *DescribeProjectAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeProjectAttachmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1428,6 +1541,10 @@ func (client *Client) DescribeProjectAttachmentsWithOptions(request *DescribePro
 	return _result, _err
 }
 
+// Summary:
+//
+// 附件信息
+//
 // @param request - DescribeProjectAttachmentsRequest
 //
 // @return DescribeProjectAttachmentsResponse
@@ -1442,15 +1559,21 @@ func (client *Client) DescribeProjectAttachments(request *DescribeProjectAttachm
 	return _result, _err
 }
 
+// Summary:
+//
+// 项目信息
+//
 // @param request - DescribeProjectInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProjectInfoResponse
 func (client *Client) DescribeProjectInfoWithOptions(request *DescribeProjectInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeProjectInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1480,6 +1603,10 @@ func (client *Client) DescribeProjectInfoWithOptions(request *DescribeProjectInf
 	return _result, _err
 }
 
+// Summary:
+//
+// 项目信息
+//
 // @param request - DescribeProjectInfoRequest
 //
 // @return DescribeProjectInfoResponse
@@ -1494,15 +1621,21 @@ func (client *Client) DescribeProjectInfo(request *DescribeProjectInfoRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询项目留言信息
+//
 // @param request - DescribeProjectMessagesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProjectMessagesResponse
 func (client *Client) DescribeProjectMessagesWithOptions(request *DescribeProjectMessagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeProjectMessagesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1536,6 +1669,10 @@ func (client *Client) DescribeProjectMessagesWithOptions(request *DescribeProjec
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询项目留言信息
+//
 // @param request - DescribeProjectMessagesRequest
 //
 // @return DescribeProjectMessagesResponse
@@ -1550,6 +1687,10 @@ func (client *Client) DescribeProjectMessages(request *DescribeProjectMessagesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询项目流程节点list
+//
 // Description:
 //
 // *
@@ -1562,9 +1703,11 @@ func (client *Client) DescribeProjectMessages(request *DescribeProjectMessagesRe
 //
 // @return DescribeProjectNodesResponse
 func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeProjectNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1594,6 +1737,10 @@ func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询项目流程节点list
+//
 // Description:
 //
 // *
@@ -1614,15 +1761,21 @@ func (client *Client) DescribeProjectNodes(request *DescribeProjectNodesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询项目操作记录列表
+//
 // @param request - DescribeProjectOperateLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProjectOperateLogsResponse
 func (client *Client) DescribeProjectOperateLogsWithOptions(request *DescribeProjectOperateLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeProjectOperateLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1652,6 +1805,10 @@ func (client *Client) DescribeProjectOperateLogsWithOptions(request *DescribePro
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询项目操作记录列表
+//
 // @param request - DescribeProjectOperateLogsRequest
 //
 // @return DescribeProjectOperateLogsResponse
@@ -1666,15 +1823,21 @@ func (client *Client) DescribeProjectOperateLogs(request *DescribeProjectOperate
 	return _result, _err
 }
 
+// Summary:
+//
+// 完成当前流程节点
+//
 // @param request - FinishCurrentProjectNodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FinishCurrentProjectNodeResponse
 func (client *Client) FinishCurrentProjectNodeWithOptions(request *FinishCurrentProjectNodeRequest, runtime *dara.RuntimeOptions) (_result *FinishCurrentProjectNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1716,6 +1879,10 @@ func (client *Client) FinishCurrentProjectNodeWithOptions(request *FinishCurrent
 	return _result, _err
 }
 
+// Summary:
+//
+// 完成当前流程节点
+//
 // @param request - FinishCurrentProjectNodeRequest
 //
 // @return FinishCurrentProjectNodeResponse
@@ -1740,9 +1907,11 @@ func (client *Client) FinishCurrentProjectNode(request *FinishCurrentProjectNode
 //
 // @return ModifyInvoiceForIsvResponse
 func (client *Client) ModifyInvoiceForIsvWithOptions(request *ModifyInvoiceForIsvRequest, runtime *dara.RuntimeOptions) (_result *ModifyInvoiceForIsvResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckNotice) {
@@ -1810,15 +1979,21 @@ func (client *Client) ModifyInvoiceForIsv(request *ModifyInvoiceForIsvRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停项目
+//
 // @param request - PauseProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PauseProjectResponse
 func (client *Client) PauseProjectWithOptions(request *PauseProjectRequest, runtime *dara.RuntimeOptions) (_result *PauseProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1856,6 +2031,10 @@ func (client *Client) PauseProjectWithOptions(request *PauseProjectRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停项目
+//
 // @param request - PauseProjectRequest
 //
 // @return PauseProjectResponse
@@ -1870,15 +2049,21 @@ func (client *Client) PauseProject(request *PauseProjectRequest) (_result *Pause
 	return _result, _err
 }
 
+// Summary:
+//
+// 云市场计量推送接口
+//
 // @param request - PushMeteringDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PushMeteringDataResponse
 func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataRequest, runtime *dara.RuntimeOptions) (_result *PushMeteringDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Metering) {
@@ -1908,6 +2093,10 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 云市场计量推送接口
+//
 // @param request - PushMeteringDataRequest
 //
 // @return PushMeteringDataResponse
@@ -1922,15 +2111,91 @@ func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 按次售卖按量计费
+//
+// @param request - PushTimesUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushTimesUsageResponse
+func (client *Client) PushTimesUsageWithOptions(request *PushTimesUsageRequest, runtime *dara.RuntimeOptions) (_result *PushTimesUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Times) {
+		query["Times"] = request.Times
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PushTimesUsage"),
+		Version:     dara.String("2015-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PushTimesUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按次售卖按量计费
+//
+// @param request - PushTimesUsageRequest
+//
+// @return PushTimesUsageResponse
+func (client *Client) PushTimesUsage(request *PushTimesUsageRequest) (_result *PushTimesUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PushTimesUsageResponse{}
+	_body, _err := client.PushTimesUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复已暂停的项目
+//
 // @param request - ResumeProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResumeProjectResponse
 func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, runtime *dara.RuntimeOptions) (_result *ResumeProjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1968,6 +2233,10 @@ func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 恢复已暂停的项目
+//
 // @param request - ResumeProjectRequest
 //
 // @return ResumeProjectResponse
@@ -1982,15 +2251,21 @@ func (client *Client) ResumeProject(request *ResumeProjectRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// 当前流程节点回滚到上一步
+//
 // @param request - RollbackCurrentProjectNodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RollbackCurrentProjectNodeResponse
 func (client *Client) RollbackCurrentProjectNodeWithOptions(request *RollbackCurrentProjectNodeRequest, runtime *dara.RuntimeOptions) (_result *RollbackCurrentProjectNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2028,6 +2303,10 @@ func (client *Client) RollbackCurrentProjectNodeWithOptions(request *RollbackCur
 	return _result, _err
 }
 
+// Summary:
+//
+// 当前流程节点回滚到上一步
+//
 // @param request - RollbackCurrentProjectNodeRequest
 //
 // @return RollbackCurrentProjectNodeResponse

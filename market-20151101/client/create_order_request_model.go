@@ -42,10 +42,7 @@ type CreateOrderRequest struct {
 	//
 	// INSTANCE_BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// example:
-	//
-	// 111********11
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:

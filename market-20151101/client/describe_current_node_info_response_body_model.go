@@ -65,7 +65,12 @@ func (s *DescribeCurrentNodeInfoResponseBody) SetSuccess(v bool) *DescribeCurren
 }
 
 func (s *DescribeCurrentNodeInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCurrentNodeInfoResponseBodyResult struct {

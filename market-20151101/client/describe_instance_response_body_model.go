@@ -329,7 +329,17 @@ func (s *DescribeInstanceResponseBody) SetSupplierName(v string) *DescribeInstan
 }
 
 func (s *DescribeInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Modules != nil {
+		if err := s.Modules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RelationalData != nil {
+		if err := s.RelationalData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyModules struct {
@@ -354,17 +364,20 @@ func (s *DescribeInstanceResponseBodyModules) SetModule(v []*DescribeInstanceRes
 }
 
 func (s *DescribeInstanceResponseBodyModules) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		for _, item := range s.Module {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyModulesModule struct {
-	// example:
-	//
-	// package_config
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 101*********026
+	Code       *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Id         *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	Properties *DescribeInstanceResponseBodyModulesModuleProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
@@ -415,7 +428,12 @@ func (s *DescribeInstanceResponseBodyModulesModule) SetProperties(v *DescribeIns
 }
 
 func (s *DescribeInstanceResponseBodyModulesModule) Validate() error {
-	return dara.Validate(s)
+	if s.Properties != nil {
+		if err := s.Properties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyModulesModuleProperties struct {
@@ -440,27 +458,24 @@ func (s *DescribeInstanceResponseBodyModulesModuleProperties) SetProperty(v []*D
 }
 
 func (s *DescribeInstanceResponseBodyModulesModuleProperties) Validate() error {
-	return dara.Validate(s)
+	if s.Property != nil {
+		for _, item := range s.Property {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyModulesModulePropertiesProperty struct {
-	// example:
-	//
-	// 12
-	DisplayUnit *string `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
-	// example:
-	//
-	// 12
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// 12
+	DisplayUnit    *string                                                                    `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
+	Key            *string                                                                    `json:"Key,omitempty" xml:"Key,omitempty"`
 	Name           *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	PropertyValues *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Struct"`
-	// example:
-	//
-	// 12
-	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
+	ShowType       *string                                                                    `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyModulesModulePropertiesProperty) String() string {
@@ -517,7 +532,12 @@ func (s *DescribeInstanceResponseBodyModulesModulePropertiesProperty) SetShowTyp
 }
 
 func (s *DescribeInstanceResponseBodyModulesModulePropertiesProperty) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValues != nil {
+		if err := s.PropertyValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues struct {
@@ -542,38 +562,26 @@ func (s *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValu
 }
 
 func (s *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValue != nil {
+		for _, item := range s.PropertyValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValuesPropertyValue struct {
-	// example:
-	//
-	// 12
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 12
-	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	// example:
-	//
-	// 12
-	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
-	// example:
-	//
-	// 12
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// 12
-	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	// example:
-	//
-	// 12
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 12
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Max         *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min         *string `json:"Min,omitempty" xml:"Min,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Step        *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValuesPropertyValue) String() string {

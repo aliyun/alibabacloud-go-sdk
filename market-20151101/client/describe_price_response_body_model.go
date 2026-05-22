@@ -206,7 +206,17 @@ func (s *DescribePriceResponseBody) SetTradePrice(v float32) *DescribePriceRespo
 }
 
 func (s *DescribePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Coupons != nil {
+		if err := s.Coupons.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromotionRules != nil {
+		if err := s.PromotionRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyCoupons struct {
@@ -231,28 +241,25 @@ func (s *DescribePriceResponseBodyCoupons) SetCoupon(v []*DescribePriceResponseB
 }
 
 func (s *DescribePriceResponseBodyCoupons) Validate() error {
-	return dara.Validate(s)
+	if s.Coupon != nil {
+		for _, item := range s.Coupon {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyCouponsCoupon struct {
-	// example:
-	//
-	// 100.00
-	CanPromFee *float32 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
-	CouponDesc *string  `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
-	CouponName *string  `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
-	// example:
-	//
-	// ActiveCoupon
-	CouponOptionCode *string `json:"CouponOptionCode,omitempty" xml:"CouponOptionCode,omitempty"`
-	// example:
-	//
-	// 3874923111
-	CouponOptionNo *string `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
-	// example:
-	//
-	// false
-	IsSelected *bool `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
+	CanPromFee       *float32 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	CouponDesc       *string  `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
+	CouponName       *string  `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
+	CouponOptionCode *string  `json:"CouponOptionCode,omitempty" xml:"CouponOptionCode,omitempty"`
+	CouponOptionNo   *string  `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
+	IsSelected       *bool    `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
 }
 
 func (s DescribePriceResponseBodyCouponsCoupon) String() string {
@@ -343,14 +350,20 @@ func (s *DescribePriceResponseBodyPromotionRules) SetPromotionRule(v []*Describe
 }
 
 func (s *DescribePriceResponseBodyPromotionRules) Validate() error {
-	return dara.Validate(s)
+	if s.PromotionRule != nil {
+		for _, item := range s.PromotionRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPromotionRulesPromotionRule struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 102112
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }

@@ -95,7 +95,12 @@ func (s *DescribeProductsResponseBody) SetTotalCount(v int32) *DescribeProductsR
 }
 
 func (s *DescribeProductsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProductItems != nil {
+		if err := s.ProductItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductsResponseBodyProductItems struct {
@@ -120,50 +125,35 @@ func (s *DescribeProductsResponseBodyProductItems) SetProductItem(v []*DescribeP
 }
 
 func (s *DescribeProductsResponseBodyProductItems) Validate() error {
-	return dara.Validate(s)
+	if s.ProductItem != nil {
+		for _, item := range s.ProductItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductsResponseBodyProductItemsProductItem struct {
-	// example:
-	//
-	// 53398003
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// example:
-	//
-	// cmjj02****
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DeliveryDate *string `json:"DeliveryDate,omitempty" xml:"DeliveryDate,omitempty"`
-	DeliveryWay  *string `json:"DeliveryWay,omitempty" xml:"DeliveryWay,omitempty"`
-	// example:
-	//
-	// https://oss.aliyuncs.com/photogallery/photo/1904996544835414/7549/767d6d07-8366-4822-b84e-61f6ea10d146.png
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// windows
-	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	// example:
-	//
-	// {\\"DiscountPrice\\": 0.0, \\"TradePrice\\": 15750.0, \\"Currency\\": \\"CNY\\", \\"OriginalPrice\\": 15750.0, \\"RuleIds\\": {\\"RuleId\\": []}, \\"Coupons\\": {\\"Coupon\\": []}}
-	PriceInfo *string `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty"`
-	// example:
-	//
-	// 5.0
+	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DeliveryDate     *string `json:"DeliveryDate,omitempty" xml:"DeliveryDate,omitempty"`
+	DeliveryWay      *string `json:"DeliveryWay,omitempty" xml:"DeliveryWay,omitempty"`
+	ImageUrl         *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OperationSystem  *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	PriceInfo        *string `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty"`
 	Score            *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 	SuggestedPrice   *string `json:"SuggestedPrice,omitempty" xml:"SuggestedPrice,omitempty"`
-	// example:
-	//
-	// 228399
-	SupplierId   *int64  `json:"SupplierId,omitempty" xml:"SupplierId,omitempty"`
-	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// example:
-	//
-	// /products/53616009/cmjj02****.html
-	TargetUrl    *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	WarrantyDate *string `json:"WarrantyDate,omitempty" xml:"WarrantyDate,omitempty"`
+	SupplierId       *int64  `json:"SupplierId,omitempty" xml:"SupplierId,omitempty"`
+	SupplierName     *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetUrl        *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WarrantyDate     *string `json:"WarrantyDate,omitempty" xml:"WarrantyDate,omitempty"`
 }
 
 func (s DescribeProductsResponseBodyProductItemsProductItem) String() string {

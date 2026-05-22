@@ -95,7 +95,12 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceItems != nil {
+		if err := s.InstanceItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstanceItems struct {
@@ -120,69 +125,36 @@ func (s *DescribeInstancesResponseBodyInstanceItems) SetInstanceItem(v []*Descri
 }
 
 func (s *DescribeInstancesResponseBodyInstanceItems) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceItem != nil {
+		for _, item := range s.InstanceItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstanceItemsInstanceItem struct {
-	// example:
-	//
-	// {}
-	ApiJson *string `json:"ApiJson,omitempty" xml:"ApiJson,omitempty"`
-	// example:
-	//
-	// {"frontEndUrl":"https://***.aliyun.com","password":"Sjtv***","adminUrl":"https://***.aiiyun.com","username":"aliyun***"}
-	AppJson *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
-	// example:
-	//
-	// 1570634021000
-	BeganOn *int64 `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
-	// example:
-	//
-	// 1570634021000
-	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
-	// example:
-	//
-	// 1570644021000
-	EndOn      *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
-	ExtendJson *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
-	// example:
-	//
-	// {"password":"***","ip":"118.31.***.41","innerIp":"118.31.***.41","region":"","username":"***","beianInfo":""}
-	HostJson *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
-	// example:
-	//
-	// {}
-	IdaasJson *string `json:"IdaasJson,omitempty" xml:"IdaasJson,omitempty"`
-	// example:
-	//
-	// {}
-	ImageJson *string `json:"ImageJson,omitempty" xml:"ImageJson,omitempty"`
-	// example:
-	//
-	// 1551111111
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 204211111111111
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// cmgj00**11
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// example:
-	//
-	// cmgj00**11-prepay
+	ApiJson        *string `json:"ApiJson,omitempty" xml:"ApiJson,omitempty"`
+	AppJson        *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
+	BeganOn        *int64  `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
+	CreatedOn      *int64  `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	EndOn          *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
+	ExtendJson     *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
+	HostJson       *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
+	IdaasJson      *string `json:"IdaasJson,omitempty" xml:"IdaasJson,omitempty"`
+	ImageJson      *string `json:"ImageJson,omitempty" xml:"ImageJson,omitempty"`
+	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId        *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName    *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
-	// example:
-	//
-	// APP
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// example:
-	//
-	// OPENED
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	ProductType    *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName   *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstanceItemsInstanceItem) String() string {

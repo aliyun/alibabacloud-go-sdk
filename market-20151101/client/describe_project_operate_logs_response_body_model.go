@@ -65,7 +65,16 @@ func (s *DescribeProjectOperateLogsResponseBody) SetSuccess(v bool) *DescribePro
 }
 
 func (s *DescribeProjectOperateLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProjectOperateLogsResponseBodyResult struct {

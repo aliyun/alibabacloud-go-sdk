@@ -59,5 +59,10 @@ func (s *ModifyInvoiceForIsvResponse) SetBody(v *ModifyInvoiceForIsvResponseBody
 }
 
 func (s *ModifyInvoiceForIsvResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
