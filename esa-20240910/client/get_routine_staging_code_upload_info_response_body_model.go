@@ -18,40 +18,9 @@ type iGetRoutineStagingCodeUploadInfoResponseBody interface {
 }
 
 type GetRoutineStagingCodeUploadInfoResponseBody struct {
-	// The code version.
-	//
-	// example:
-	//
-	// 1710120201067203242
-	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The configuration information that can be used to upload to OSS.
-	//
-	// example:
-	//
-	// {
-	//
-	//             "Url": "http://oss_fake_bucket_url",
-	//
-	//             "OSSAccessKeyId": "xxx",
-	//
-	//             "key": "site_er_js/hello.1418586423220543.unstable.js",
-	//
-	//             "callback": "xxx==",
-	//
-	//             "x:codeDescription": "xxx=",
-	//
-	//             "policy": "xxx",
-	//
-	//             "Signature": "xxx="
-	//
-	// }
+	CodeVersion   *string                `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
 	OssPostConfig map[string]interface{} `json:"OssPostConfig,omitempty" xml:"OssPostConfig,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRoutineStagingCodeUploadInfoResponseBody) String() string {

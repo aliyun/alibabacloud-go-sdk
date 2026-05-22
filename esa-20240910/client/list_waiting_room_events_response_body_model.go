@@ -16,13 +16,7 @@ type iListWaitingRoomEventsResponseBody interface {
 }
 
 type ListWaitingRoomEventsResponseBody struct {
-	// The request ID, which is used to trace a call.
-	//
-	// example:
-	//
-	// f3c3700a-4c0f-4a24-b576-fd7dbf9e7c55
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the waiting room events.
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WaitingRoomEvents []*ListWaitingRoomEventsResponseBodyWaitingRoomEvents `json:"WaitingRoomEvents,omitempty" xml:"WaitingRoomEvents,omitempty" type:"Repeated"`
 }
 
@@ -66,166 +60,26 @@ func (s *ListWaitingRoomEventsResponseBody) Validate() error {
 }
 
 type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
-	// The content of the custom waiting room page. This parameter is returned when the waiting room type is set to custom. The content is URL-encoded.
-	//
-	// example:
-	//
-	// html-yets-maqi1111
-	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	// The event description.
-	//
-	// example:
-	//
-	// terraform-example
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether session renewal is disabled. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// off
+	CustomPageHtml              *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// The event status. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time of the event. This value is a UNIX timestamp.
-	//
-	// example:
-	//
-	// 1719814497
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// off
-	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-	//
-	// 	- enus: English.
-	//
-	// 	- zhcn: Simplified Chinese.
-	//
-	// 	- zhhk: Traditional Chinese.
-	//
-	// example:
-	//
-	// zhcn
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The custom event name.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of new users per minute.
-	//
-	// example:
-	//
-	// 11
-	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Indicates whether pre-queuing is enabled. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
-	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
-	// The start time for pre-queuing. This value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
-	//
-	// example:
-	//
-	// 1719814097
-	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
-	// The queuing method. Valid values:
-	//
-	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
-	//
-	// 	- fifo: Users gain access to the origin in order of arrival.
-	//
-	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
-	//
-	// 	- reject-all: Users are blocked from reaching the origin.
-	//
-	// example:
-	//
-	// fifo
-	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code to return while a user is in the queue. Valid values:
-	//
-	// 	- 200
-	//
-	// 	- 202
-	//
-	// 	- 429
-	//
-	// example:
-	//
-	// 200
-	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// Indicates whether random queuing is enabled. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
-	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
-	//
-	// example:
-	//
-	// 3
-	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The start time of the event. This value is a UNIX timestamp.
-	//
-	// example:
-	//
-	// 1719814398
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The maximum number of active users.
-	//
-	// example:
-	//
-	// 22
-	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The unique ID of the waiting room event.
-	//
-	// example:
-	//
-	// 89677721098****
-	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
-	// The ID of the waiting room associated with the event.
-	//
-	// example:
-	//
-	// 5c938a045c9ca46607163d34966****
-	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
-	// The type of the waiting room. Valid values:
-	//
-	// 	- default
-	//
-	// 	- custom
-	//
-	// example:
-	//
-	// custom
-	WaitingRoomType *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
+	Enable                      *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EndTime                     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JsonResponseEnable          *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	Language                    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Name                        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewUsersPerMinute           *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	PreQueueEnable              *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
+	PreQueueStartTime           *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
+	QueuingMethod               *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	QueuingStatusCode           *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	RandomPreQueueEnable        *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
+	SessionDuration             *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	StartTime                   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalActiveUsers            *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	WaitingRoomEventId          *int64  `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
+	WaitingRoomId               *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	WaitingRoomType             *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
 }
 
 func (s ListWaitingRoomEventsResponseBodyWaitingRoomEvents) String() string {

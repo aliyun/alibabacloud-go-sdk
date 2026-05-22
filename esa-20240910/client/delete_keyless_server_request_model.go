@@ -16,19 +16,9 @@ type iDeleteKeylessServerRequest interface {
 }
 
 type DeleteKeylessServerRequest struct {
-	// Keyless server ID。
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 11223***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

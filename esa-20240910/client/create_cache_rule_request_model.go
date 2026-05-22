@@ -70,110 +70,19 @@ type iCreateCacheRuleRequest interface {
 }
 
 type CreateCacheRuleRequest struct {
-	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
-	//
-	// example:
-	//
-	// 8880
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
-	// Browser cache mode. Possible values:
-	//
-	// - no_cache: Do not cache.
-	//
-	// - follow_origin: Follow the origin server\\"s cache policy.
-	//
-	// - override_origin: Override the origin server\\"s cache policy.
-	//
-	// example:
-	//
-	// follow_origin
-	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
-	// Browser cache expiration time, in seconds.
-	//
-	// example:
-	//
-	// 300
-	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
-	// Set the bypass cache mode. Possible values:
-	//
-	// - cache_all: Cache all requests.
-	//
-	// - bypass_all: Bypass cache for all requests.
-	//
-	// example:
-	//
-	// cache_all
-	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
-	// Cache deception defense. Used to defend against web cache deception attacks; only the verified cache content will be cached. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
-	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
-	//
-	// - bypass_cache_reserve: Requests bypass cache retention.
-	//
-	// - eligible_for_cache_reserve: Eligible for cache retention.
-	//
-	// example:
-	//
-	// bypass_cache_reserve
-	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
-	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
-	//
-	// example:
-	//
-	// cookiename
-	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
-	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
-	//
-	// example:
-	//
-	// headername
-	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
-	// Edge cache mode. Possible values:
-	//
-	// - follow_origin: Follow the origin server\\"s cache policy (if it exists), otherwise use the default cache policy.
-	//
-	// - no_cache: Do not cache.
-	//
-	// - override_origin: Override the origin server\\"s cache policy.
-	//
-	// - follow_origin_bypass: Follow the origin server\\"s cache policy (if it exists), otherwise do not cache.
-	//
-	// example:
-	//
-	// follow_origin
-	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
-	// Edge cache expiration time, in seconds.
-	//
-	// example:
-	//
-	// 300
-	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
-	// Status code cache expiration time, in seconds.
-	//
-	// example:
-	//
-	// 300
-	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
-	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
-	//
-	// example:
-	//
-	// cookie_exapmle
-	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
-	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
-	//
-	// example:
-	//
-	// example
-	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
 	// example:
 	//
 	// ignore
@@ -182,118 +91,21 @@ type CreateCacheRuleRequest struct {
 	// example:
 	//
 	// on
-	PostCache *string `json:"PostCache,omitempty" xml:"PostCache,omitempty"`
-	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
-	//
-	// example:
-	//
-	// example
-	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// The processing mode for query strings when generating the cache key. Possible values:
-	//
-	// - ignore_all: Ignore all.
-	//
-	// - exclude_query_string: Exclude specified query strings.
-	//
-	// - reserve_all: Default, reserve all.
-	//
-	// - include_query_string: Include specified query strings.
-	//
-	// example:
-	//
-	// reserve_all
+	PostCache       *string `json:"PostCache,omitempty" xml:"PostCache,omitempty"`
+	QueryString     *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
 	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
+	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence        *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	ServeStale      *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 340035003106221
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version for the configuration to take effect. The default is version 0.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Query string sorting, disabled by default. Possible values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
+	SiteId                  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteVersion             *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
-	// When generating the cache key, include the client device type. Possible values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
-	// Include the client\\"s geographical location when generating the cache key. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
-	// Include the client\\"s language type when generating the cache key. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+	UserDeviceType          *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	UserGeo                 *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	UserLanguage            *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
 }
 
 func (s CreateCacheRuleRequest) String() string {

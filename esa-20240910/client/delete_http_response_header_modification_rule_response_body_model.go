@@ -14,11 +14,6 @@ type iDeleteHttpResponseHeaderModificationRuleResponseBody interface {
 }
 
 type DeleteHttpResponseHeaderModificationRuleResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

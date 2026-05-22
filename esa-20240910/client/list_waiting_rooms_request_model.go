@@ -16,19 +16,8 @@ type iListWaitingRoomsRequest interface {
 }
 
 type ListWaitingRoomsRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 120876698010528
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The ID of the waiting room. Specify this parameter to query the information about a specific waiting room.
-	//
-	// example:
-	//
-	// 6a51d5bc6460887abd1291dc7d4d****
+	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 }
 

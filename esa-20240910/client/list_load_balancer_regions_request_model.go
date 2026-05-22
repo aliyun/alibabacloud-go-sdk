@@ -16,18 +16,8 @@ type iListLoadBalancerRegionsRequest interface {
 }
 
 type ListLoadBalancerRegionsRequest struct {
-	// Page number.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
-	//
-	// example:
-	//
-	// 1024
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListLoadBalancerRegionsRequest) String() string {

@@ -14,11 +14,6 @@ type iGetEdgeContainerAppLogRiverRequest interface {
 }
 
 type GetEdgeContainerAppLogRiverRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
-	//
-	// example:
-	//
-	// app-880688675****88
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

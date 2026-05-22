@@ -16,18 +16,8 @@ type iCommitRoutineStagingCodeResponseBody interface {
 }
 
 type CommitRoutineStagingCodeResponseBody struct {
-	// The version number of the newly generated code.
-	//
-	// example:
-	//
-	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CommitRoutineStagingCodeResponseBody) String() string {

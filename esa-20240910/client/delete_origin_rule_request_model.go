@@ -16,21 +16,9 @@ type iDeleteOriginRuleRequest interface {
 }
 
 type DeleteOriginRuleRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListOriginRules](https://help.aliyun.com/document_detail/2866989.html) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 33793140540****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3400350********
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

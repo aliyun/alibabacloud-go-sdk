@@ -42,96 +42,21 @@ type iResetScheduledPreloadJobResponseBody interface {
 }
 
 type ResetScheduledPreloadJobResponseBody struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 15685865xxx14622
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The time when the SQL task was created.
-	//
-	// example:
-	//
-	// 2024-06-02T02:23:26Z
-	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The domain names to be prefetched.
-	//
-	// example:
-	//
-	// testurl.com
-	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The error message that is returned.
-	//
-	// example:
-	//
-	// invalid domain:test.com
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
-	//
-	// example:
-	//
-	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
+	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CreatedAt     *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Domains       *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	ErrorInfo     *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The ID of the URL list file, which can be used during downloads.
-	//
-	// example:
-	//
-	// 665d3b48621bccf3fe29e1a7
-	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// 665d3af3621bccf3fe29e1a4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The method to submit the URLs to be prefetched.
-	//
-	// example:
-	//
-	// oss
-	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	// The delivery project name.
-	//
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 190007158391808
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of submitted prefetch tasks.
-	//
-	// example:
-	//
-	// 1
-	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type. Valid values: refresh and preload.
-	//
-	// example:
-	//
-	// preload
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of URLs.
-	//
-	// example:
-	//
-	// 2
-	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	// The number of submitted URLs.
-	//
-	// example:
-	//
-	// 1
-	UrlSubmitted *int32 `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
+	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InsertWay     *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	TaskSubmitted *int32  `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
+	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UrlCount      *int32  `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
+	UrlSubmitted  *int32  `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
 }
 
 func (s ResetScheduledPreloadJobResponseBody) String() string {

@@ -25,37 +25,17 @@ type iTagResourcesRequest interface {
 
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. Valid values:
-	//
-	// 	- China site (aliyun.com): cn-hangzhou
-	//
-	// 	- International site (alibabacloud.com): ap-southeast-1
+	// 要创建并绑定标签的资源所在的地域ID。
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID. Enter a website ID or DNS record ID.
+	// 资源ID,最多 50个子项
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
-	//
-	// 	- Site: **site**
-	//
-	// 	- DNS records: **record**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// site
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags that you want to add to the resource. You can enter up to 20 tags.
-	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -136,21 +116,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag keys.
+	// 标签键
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// 标签值
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

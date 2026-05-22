@@ -16,21 +16,7 @@ type iVerifySiteResponseBody interface {
 }
 
 type VerifySiteResponseBody struct {
-	// Indicates whether the verification passed. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 65C66B7B-671A-8297-9187-2R5477247B76
+	Passed    *bool   `json:"Passed,omitempty" xml:"Passed,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

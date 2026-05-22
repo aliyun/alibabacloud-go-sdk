@@ -16,14 +16,8 @@ type iGetEdgeContainerAppResourceStatusResponseBody interface {
 }
 
 type GetEdgeContainerAppResourceStatusResponseBody struct {
-	// Queries the regions of deployment.
-	Regions []*GetEdgeContainerAppResourceStatusResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   []*GetEdgeContainerAppResourceStatusResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEdgeContainerAppResourceStatusResponseBody) String() string {
@@ -66,122 +60,12 @@ func (s *GetEdgeContainerAppResourceStatusResponseBody) Validate() error {
 }
 
 type GetEdgeContainerAppResourceStatusResponseBodyRegions struct {
-	// Whether smooth offline is being used.
-	//
-	// example:
-	//
-	// false
-	IsOffline *bool `json:"IsOffline,omitempty" xml:"IsOffline,omitempty"`
-	// Whether it is a test environment.
-	//
-	// example:
-	//
-	// false
-	IsStaging *bool `json:"IsStaging,omitempty" xml:"IsStaging,omitempty"`
-	// Supported ISPs are as follows. The parameter is left empty for regions outside the Chinese mainland. ISP:
-	//
-	// 	- China Mobile: cmcc
-	//
-	// 	- China Telecom: chinanet
-	//
-	// 	- China Unicom: unicom
-	//
-	// example:
-	//
-	// unicom
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The number of ready replicas.
-	//
-	// example:
-	//
-	// 1
-	Ready *int32 `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	// Chinese mainland:
-	//
-	// 	- East China: huadong
-	//
-	// 	- South China: huanan
-	//
-	// 	- Central China: huazhong
-	//
-	// 	- North China: huabei
-	//
-	// 	- Northwest China: xibei
-	//
-	// 	- Southwest China: xinan
-	//
-	// 	- Northeast China: dongbei
-	//
-	// Special Administrative Regions and Overseas:
-	//
-	// 	- Taiwan, China: tw
-	//
-	// 	- Macau, China: mo
-	//
-	// 	- Hong Kong, China: hk
-	//
-	// 	- Japan: jp
-	//
-	// 	- United States: us
-	//
-	// 	- Thailand: th
-	//
-	// 	- Korea: kr
-	//
-	// 	- Russia: ru
-	//
-	// 	- Singapore: sg
-	//
-	// 	- France: fr
-	//
-	// 	- Spain: es
-	//
-	// 	- Italy: it
-	//
-	// 	- Sweden: se
-	//
-	// 	- UAE: ae
-	//
-	// 	- Indonesia: id
-	//
-	// 	- Chile: cl
-	//
-	// 	- Philippines: ph
-	//
-	// 	- Malaysia: my
-	//
-	// 	- Vietnam: vn
-	//
-	// 	- Argentina: AR
-	//
-	// 	- Australia: au
-	//
-	// 	- Brazil: br
-	//
-	// 	- Colombia: co
-	//
-	// 	- Germany: de
-	//
-	// 	- UK: GB
-	//
-	// 	- Peru: pe
-	//
-	// 	- Saudi Arabia: sa
-	//
-	// 	- Netherlands: nl
-	//
-	// 	- South Africa: za
-	//
-	// example:
-	//
-	// huadong
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The number of replicas that are deployed.
-	//
-	// example:
-	//
-	// 1
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	IsOffline *bool   `json:"IsOffline,omitempty" xml:"IsOffline,omitempty"`
+	IsStaging *bool   `json:"IsStaging,omitempty" xml:"IsStaging,omitempty"`
+	Isp       *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Ready     *int32  `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetEdgeContainerAppResourceStatusResponseBodyRegions) String() string {

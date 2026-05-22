@@ -14,11 +14,6 @@ type iUpdateOriginProtectionResponseBody interface {
 }
 
 type UpdateOriginProtectionResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 4C6B5E5A-42FC-5DF2-986C-4DAAE3C55086
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

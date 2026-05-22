@@ -20,26 +20,10 @@ type iListCiphersResponseBody interface {
 }
 
 type ListCiphersResponseBody struct {
-	// Name of the cipher suite group.
-	//
-	// example:
-	//
-	// all
-	CiphersGroup *string `json:"CiphersGroup,omitempty" xml:"CiphersGroup,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result.
-	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Total number of cipher suites.
-	//
-	// example:
-	//
-	// 16
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CiphersGroup *string   `json:"CiphersGroup,omitempty" xml:"CiphersGroup,omitempty"`
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result       []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalCount   *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCiphersResponseBody) String() string {

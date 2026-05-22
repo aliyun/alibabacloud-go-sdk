@@ -14,8 +14,6 @@ type iGetPageRequest interface {
 }
 
 type GetPageRequest struct {
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
-	//
 	// example:
 	//
 	// 50000001

@@ -14,11 +14,6 @@ type iRebuildEdgeContainerAppStagingEnvRequest interface {
 }
 
 type RebuildEdgeContainerAppStagingEnvRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
-	//
-	// example:
-	//
-	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

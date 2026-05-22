@@ -18,25 +18,9 @@ type iListRoutineRoutesRequest interface {
 }
 
 type ListRoutineRoutesRequest struct {
-	// The page number. Default value: 1.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The function name.
-	//
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
 }
 

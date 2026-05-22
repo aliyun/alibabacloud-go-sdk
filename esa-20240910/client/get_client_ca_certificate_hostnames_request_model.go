@@ -16,15 +16,8 @@ type iGetClientCaCertificateHostnamesRequest interface {
 }
 
 type GetClientCaCertificateHostnamesRequest struct {
-	// example:
-	//
-	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

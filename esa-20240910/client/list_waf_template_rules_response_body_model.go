@@ -16,14 +16,11 @@ type iListWafTemplateRulesResponseBody interface {
 }
 
 type ListWafTemplateRulesResponseBody struct {
-	// Request ID.
-	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of returned template rules.
-	Rules []*ListWafTemplateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     []*ListWafTemplateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s ListWafTemplateRulesResponseBody) String() string {
@@ -66,28 +63,19 @@ func (s *ListWafTemplateRulesResponseBody) Validate() error {
 }
 
 type ListWafTemplateRulesResponseBodyRules struct {
-	// Rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Rule name.
-	//
 	// example:
 	//
 	// HTTP Directory Traversal Rule [Template]
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// WAF operation phase.
-	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Rule status.
-	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Rule type.
-	//
 	// example:
 	//
 	// http_directory_traversal

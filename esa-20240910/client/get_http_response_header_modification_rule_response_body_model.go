@@ -30,68 +30,15 @@ type iGetHttpResponseHeaderModificationRuleResponseBody interface {
 }
 
 type GetHttpResponseHeaderModificationRuleResponseBody struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, with the following values:
-	//
-	// - global: Global configuration.
-	//
-	// - rule: Rule-based configuration.
-	//
-	// example:
-	//
-	// rule
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Modify response headers, supporting add, delete, and modify operations.
+	ConfigId                   *int64                                                                         `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType                 *string                                                                        `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	RequestId                  *string                                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResponseHeaderModification []*GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq "video.example.com")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values are:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the site configuration. For sites that have enabled configuration version management, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	Rule                       *string                                                                        `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                 *string                                                                        `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                   *string                                                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                   *int32                                                                         `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SiteVersion                *int32                                                                         `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s GetHttpResponseHeaderModificationRuleResponseBody) String() string {
@@ -197,31 +144,10 @@ func (s *GetHttpResponseHeaderModificationRuleResponseBody) Validate() error {
 }
 
 type GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification struct {
-	// Response header name.
-	//
-	// example:
-	//
-	// headerName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation method. Possible values are:
-	//
-	// - add: Add.
-	//
-	// - del: Delete
-	//
-	// - modify: Modify.
-	//
-	// example:
-	//
-	// add
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Response header value.
-	//
-	// example:
-	//
-	// headerValue
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) String() string {

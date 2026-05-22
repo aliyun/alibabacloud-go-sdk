@@ -15,10 +15,6 @@ type iReleaseInstanceRequest interface {
 
 type ReleaseInstanceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// esa-ddos-2sdj**3s
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

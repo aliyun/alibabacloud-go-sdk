@@ -26,53 +26,13 @@ type iListCompressionRulesRequest interface {
 }
 
 type ListCompressionRulesRequest struct {
-	// Configuration ID, which can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) interface.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type. Possible values:
-	//
-	// - global: Global configuration.
-	//
-	// - rule: Rule-based configuration.
-	//
-	// example:
-	//
-	// rule
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 34003500310****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
-	//
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

@@ -20,34 +20,10 @@ type iCreateUserDeliveryTaskResponseBody interface {
 }
 
 type CreateUserDeliveryTaskResponseBody struct {
-	// The data center. Valid values:
-	//
-	// 	- cn: the Chinese mainland.
-	//
-	// 	- sg: outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2CCD40B1-3F20-5FF0-8A67-E3F34B87744F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the delivery task.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
-	//
-	// example:
-	//
-	// er-http
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateUserDeliveryTaskResponseBody) String() string {

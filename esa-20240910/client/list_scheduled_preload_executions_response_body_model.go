@@ -18,20 +18,9 @@ type iListScheduledPreloadExecutionsResponseBody interface {
 }
 
 type ListScheduledPreloadExecutionsResponseBody struct {
-	// The information about prefetch plans returned.
 	Executions []*ListScheduledPreloadExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListScheduledPreloadExecutionsResponseBody) String() string {
@@ -83,64 +72,14 @@ func (s *ListScheduledPreloadExecutionsResponseBody) Validate() error {
 }
 
 type ListScheduledPreloadExecutionsResponseBodyExecutions struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 15685865xxx14622
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plan.
-	//
-	// example:
-	//
-	// 2024-05-31T18:10:48.849+08:00
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
-	//
-	// example:
-	//
-	// 66599bd7397885b43804901c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution in the plan. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// 665d3af3621bccf3fe29e1a4
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs prefetched in each batch.
-	//
-	// example:
-	//
-	// 10
-	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plan.
-	//
-	// example:
-	//
-	// 2024-05-31T17:10:48.849+08:00
+	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
-	//
-	// 	- **waiting**
-	//
-	// 	- **running**
-	//
-	// 	- **finished**
-	//
-	// 	- **failed**
-	//
-	// 	- **stopped**
-	//
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListScheduledPreloadExecutionsResponseBodyExecutions) String() string {

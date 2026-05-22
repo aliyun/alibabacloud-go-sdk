@@ -20,32 +20,20 @@ type iUpdateListRequest interface {
 }
 
 type UpdateListRequest struct {
-	// The new description of the list.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The items in the updated list. The value is a JSON array.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a custom list
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The new name of the list.
-	//
 	// This parameter is required.
 	//
 	// example:

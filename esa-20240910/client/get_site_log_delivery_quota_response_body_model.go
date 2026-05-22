@@ -20,38 +20,10 @@ type iGetSiteLogDeliveryQuotaResponseBody interface {
 }
 
 type GetSiteLogDeliveryQuotaResponseBody struct {
-	// The log category. Valid values:
-	//
-	// 1.  dcdn_log_access_l1 (default): access logs.
-	//
-	// 2.  dcdn_log_er: Edge Routine logs.
-	//
-	// 3.  dcdn_log_waf: firewall logs.
-	//
-	// 4.  dcdn_log_ipa: TCP/UDP proxy logs.
-	//
-	// example:
-	//
-	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The remaining quota.
-	//
-	// example:
-	//
-	// 3
-	FreeQuota *int64 `json:"FreeQuota,omitempty" xml:"FreeQuota,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4C14840EF0EAAB6D97CDE0C5F6554ACE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	FreeQuota    *int64  `json:"FreeQuota,omitempty" xml:"FreeQuota,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId       *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s GetSiteLogDeliveryQuotaResponseBody) String() string {

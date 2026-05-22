@@ -18,24 +18,9 @@ type iUpdateUserDeliveryTaskStatusResponseBody interface {
 }
 
 type UpdateUserDeliveryTaskStatusResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the delivery task.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
-	//
-	// example:
-	//
-	// test_project
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s UpdateUserDeliveryTaskStatusResponseBody) String() string {

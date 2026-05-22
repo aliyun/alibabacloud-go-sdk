@@ -14,11 +14,6 @@ type iHttpDeliveryQueryParamValue interface {
 }
 
 type HttpDeliveryQueryParamValue struct {
-	// The static variable.
-	//
-	// example:
-	//
-	// alicdn
 	StaticValue *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 }
 

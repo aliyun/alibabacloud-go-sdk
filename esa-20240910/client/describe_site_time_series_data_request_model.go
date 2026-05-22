@@ -22,44 +22,12 @@ type iDescribeSiteTimeSeriesDataRequest interface {
 }
 
 type DescribeSiteTimeSeriesDataRequest struct {
-	// The end time for obtaining data.
-	//
-	// The date format follows ISO8601 notation and uses UTC+0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
-	//
-	// > The end time must be later than the start time.
-	//
-	// example:
-	//
-	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Query metrics.
-	//
 	// This parameter is required.
-	Fields []*DescribeSiteTimeSeriesDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The time granularity for querying data, in seconds.
-	//
-	// Depending on the maximum time span of a single query, this parameter supports values of 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For details, see the **Supported Query Time Granularities**.
-	//
-	// example:
-	//
-	// 300
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Site ID. Obtain the site ID by calling the [ListSites](~~ListSites~~) interface.
-	//
-	// If this parameter is empty, user-level data will be queried.
-	//
-	// example:
-	//
-	// 1150376036*****
-	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time for obtaining data.
-	//
-	// The date format follows ISO8601 notation and uses UTC+0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
-	//
-	// example:
-	//
-	// 2023-04-08T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Fields    []*DescribeSiteTimeSeriesDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Interval  *string                                    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	SiteId    *string                                    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	StartTime *string                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSiteTimeSeriesDataRequest) String() string {
@@ -129,16 +97,8 @@ func (s *DescribeSiteTimeSeriesDataRequest) Validate() error {
 }
 
 type DescribeSiteTimeSeriesDataRequestFields struct {
-	// Query dimension.
 	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
-	// Query metric value.
-	//
-	// > For specific dimensions, see [Data Analysis Field Description](https://help.aliyun.com/document_detail/2878520.html).
-	//
-	// example:
-	//
-	// Traffic
-	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldName *string   `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 }
 
 func (s DescribeSiteTimeSeriesDataRequestFields) String() string {

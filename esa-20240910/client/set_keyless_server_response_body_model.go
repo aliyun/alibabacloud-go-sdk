@@ -20,24 +20,10 @@ type iSetKeylessServerResponseBody interface {
 }
 
 type SetKeylessServerResponseBody struct {
-	// Keyless server ID。
-	//
-	// example:
-	//
-	// babaabcd****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s SetKeylessServerResponseBody) String() string {

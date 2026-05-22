@@ -16,14 +16,8 @@ type iGetSiteWafSettingsResponseBody interface {
 }
 
 type GetSiteWafSettingsResponseBody struct {
-	// Request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of site WAF configuration.
-	Settings *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Settings  *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 }
 
 func (s GetSiteWafSettingsResponseBody) String() string {

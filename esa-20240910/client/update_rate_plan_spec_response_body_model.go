@@ -18,20 +18,9 @@ type iUpdateRatePlanSpecResponseBody interface {
 }
 
 type UpdateRatePlanSpecResponseBody struct {
-	// example:
-	//
-	// xcdn-as23ds***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 2223332122***
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 30423A7F-A83D-1E24-B80E-86DD25790758
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateRatePlanSpecResponseBody) String() string {

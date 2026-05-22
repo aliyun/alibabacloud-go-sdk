@@ -16,17 +16,7 @@ type iCreateRoutineRouteResponseBody interface {
 }
 
 type CreateRoutineRouteResponseBody struct {
-	// The configuration ID.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	ConfigId  *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -14,13 +14,7 @@ type iGetUserDeliveryTaskRequest interface {
 }
 
 type GetUserDeliveryTaskRequest struct {
-	// The name of the delivery task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_project
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

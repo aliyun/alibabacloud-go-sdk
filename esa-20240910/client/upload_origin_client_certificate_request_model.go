@@ -20,35 +20,12 @@ type iUploadOriginClientCertificateRequest interface {
 }
 
 type UploadOriginClientCertificateRequest struct {
-	// The certificate content.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The certificate name.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private key of the certificate.
-	//
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

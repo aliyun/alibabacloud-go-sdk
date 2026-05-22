@@ -24,38 +24,12 @@ type iListHttpsApplicationConfigurationsResponseBody interface {
 }
 
 type ListHttpsApplicationConfigurationsResponseBody struct {
-	// Response body configurations.
-	Configs []*ListHttpsApplicationConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Current page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
-	//
-	// example:
-	//
-	// 16
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
-	//
-	// example:
-	//
-	// 2
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Configs    []*ListHttpsApplicationConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                                   `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHttpsApplicationConfigurationsResponseBody) String() string {
@@ -134,159 +108,26 @@ func (s *ListHttpsApplicationConfigurationsResponseBody) Validate() error {
 }
 
 type ListHttpsApplicationConfigurationsResponseBodyConfigs struct {
-	// Alt-Svc feature switch, default is off. Value range:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
-	// example:
-	//
-	// on
-	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
-	// Whether the Alt-Svc header includes the clear parameter, default is off. Values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
-	// The validity period of Alt-Svc in seconds, default is 86400 seconds.
-	//
-	// example:
-	//
-	// 86400
-	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
-	// Whether the Alt-Svc header includes the persist parameter, default is off. Values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 395386449776640
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule-based configurations. Possible values:
-	//
-	// - global: Query global configuration.
-	//
-	// - rule: Query rule-based configuration.
-	//
-	// example:
-	//
-	// global
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Whether HSTS is enabled, default is off. Value range:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
-	// Whether to include subdomains in HSTS, default is off. Value range:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
+	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType            *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
-	// The expiration time of HSTS in seconds.
-	//
-	// example:
-	//
-	// 3600
-	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	// Whether HSTS preloading is enabled, default is off. Value range:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	// Whether to enable forced HTTPS, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
-	// Forced HTTPS redirect status code. Possible values:
-	//
-	// - 301
-	//
-	// - 302
-	//
-	// - 307
-	//
-	// - 308
-	//
-	// example:
-	//
-	// 301
-	HttpsForceCode    *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
-	HttpsNoSniDeny    *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
-	HttpsSniVerify    *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
-	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true.
-	//
-	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration is effective, default is version 0.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsNoSniDeny        *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
+	HttpsSniVerify        *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
+	HttpsSniWhitelist     *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence              *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SiteVersion           *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s ListHttpsApplicationConfigurationsResponseBodyConfigs) String() string {

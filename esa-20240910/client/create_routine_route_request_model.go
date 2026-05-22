@@ -30,69 +30,15 @@ type iCreateRoutineRouteRequest interface {
 }
 
 type CreateRoutineRouteRequest struct {
-	// Bypass mode Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
-	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
-	// The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
-	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The routing switch. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
+	Bypass      *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	Fallback    *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
-	// The name of the route.
-	//
-	// example:
-	//
-	// test_route
-	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The edge function name.
-	//
+	RouteName   *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	// The content of the rule.
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The order in which the rule is executed.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
+	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// example:
 	//

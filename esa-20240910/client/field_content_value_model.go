@@ -16,13 +16,7 @@ type iFieldContentValue interface {
 }
 
 type FieldContentValue struct {
-	// The sequence number of the fields.
-	//
-	// example:
-	//
-	// 1
-	SortOrder *int64 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The fields.
+	SortOrder *int64                        `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	FieldList []*FieldContentValueFieldList `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
 }
 
@@ -66,44 +60,13 @@ func (s *FieldContentValue) Validate() error {
 }
 
 type FieldContentValueFieldList struct {
-	// The field name.
-	//
-	// example:
-	//
-	// ClientIp
-	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The description of the field in English.
-	//
-	// example:
-	//
-	// IP address of the client.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the field in Chinese.
+	FieldName     *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DescriptionCn *string `json:"DescriptionCn,omitempty" xml:"DescriptionCn,omitempty"`
-	// The category of the field.
-	//
-	// example:
-	//
-	// Client
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The data type of the field.
-	//
-	// example:
-	//
-	// String
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The sequence number of the field.
-	//
-	// example:
-	//
-	// 1
-	SortOrder *int64 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// Indicates whether the field is available by default.
-	//
-	// example:
-	//
-	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DataType      *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	SortOrder     *int64  `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	IsDefault     *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 }
 
 func (s FieldContentValueFieldList) String() string {

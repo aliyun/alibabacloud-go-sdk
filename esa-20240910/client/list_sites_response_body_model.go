@@ -22,32 +22,11 @@ type iListSitesResponseBody interface {
 }
 
 type ListSitesResponseBody struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of websites per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried websites.
-	Sites []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	// The total number of websites.
-	//
-	// example:
-	//
-	// 40
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Sites      []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSitesResponseBody) String() string {
@@ -117,121 +96,23 @@ func (s *ListSitesResponseBody) Validate() error {
 }
 
 type ListSitesResponseBodySites struct {
-	// The DNS setup for the website. Valid values:
-	//
-	// 	- **NS**
-	//
-	// 	- **CNAME**
-	//
-	// example:
-	//
-	// NS
-	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
-	//
-	// example:
-	//
-	// example.cname.com
-	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
-	// The service location for the website. Valid values:
-	//
-	// 	- **domestic**: the Chinese mainland
-	//
-	// 	- **global**: global
-	//
-	// 	- **overseas**: outside the Chinese mainland
-	//
-	// example:
-	//
-	// domestic
-	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-12-24T02:01:11Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the plan associated with the website.
-	//
-	// example:
-	//
-	// onBvtlmIyeXLbiDw81F9
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The nameservers assigned to the website domain, which are separated by commas (,).
-	//
-	// example:
-	//
-	// male1-1.ialicdn.com,female1-1.ialicdn.com
-	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
-	OfflineReason  *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
-	// The plan name.
-	//
-	// example:
-	//
-	// plan-168656498****
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The plan associated with the website.
-	//
-	// example:
-	//
-	// normal
-	PlanSpecName *string `json:"PlanSpecName,omitempty" xml:"PlanSpecName,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-aek26g6i6se6pna
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 123456789****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
-	//
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The website status. Valid values:
-	//
-	// 	- **pending**: The website is to be configured.
-	//
-	// 	- **active**: The website is active.
-	//
-	// 	- **offline**: The website is suspended.
-	//
-	// 	- **moved**: The website has been added and verified by another Alibaba Cloud account.
-	//
-	// example:
-	//
-	// pending
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the website.
-	//
-	// example:
-	//
-	// {"tag1":"value1"}
-	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-12-24T02:01:11Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
-	//
-	// example:
-	//
-	// verify_d516cb3740f81f0cef77d162edd1****
-	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// The website visit time is represented in the ISO 8601 date format using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
-	//
-	// example:
-	//
-	// 2023-12-24T02:01:11Z
-	VisitTime *string `json:"VisitTime,omitempty" xml:"VisitTime,omitempty"`
+	AccessType      *string                `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	CnameZone       *string                `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
+	Coverage        *string                `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	CreateTime      *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId      *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NameServerList  *string                `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
+	OfflineReason   *string                `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
+	PlanName        *string                `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	PlanSpecName    *string                `json:"PlanSpecName,omitempty" xml:"PlanSpecName,omitempty"`
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SiteId          *int64                 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName        *string                `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UpdateTime      *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VerifyCode      *string                `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	VisitTime       *string                `json:"VisitTime,omitempty" xml:"VisitTime,omitempty"`
 }
 
 func (s ListSitesResponseBodySites) String() string {

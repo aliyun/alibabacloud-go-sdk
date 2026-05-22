@@ -16,21 +16,9 @@ type iGetTransportLayerApplicationRequest interface {
 }
 
 type GetTransportLayerApplicationRequest struct {
-	// Number of forwarding rules contained in the transport layer acceleration application.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 170997271816****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Transport layer application ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

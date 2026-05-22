@@ -16,21 +16,9 @@ type iDeleteCertificateRequest interface {
 }
 
 type DeleteCertificateRequest struct {
-	// The certificate ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

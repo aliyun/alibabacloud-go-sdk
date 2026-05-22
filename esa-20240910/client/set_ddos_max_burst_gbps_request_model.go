@@ -17,16 +17,8 @@ type iSetDdosMaxBurstGbpsRequest interface {
 
 type SetDdosMaxBurstGbpsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// esa-site-ads11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 300
 	MaxBurstGbps *string `json:"MaxBurstGbps,omitempty" xml:"MaxBurstGbps,omitempty"`
 }
 

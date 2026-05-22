@@ -24,30 +24,12 @@ type iCreateScheduledPreloadExecutionsResponseBody interface {
 }
 
 type CreateScheduledPreloadExecutionsResponseBody struct {
-	// The information about prefetch plans that failed to be created.
-	FailedExecutions []*CreateScheduledPreloadExecutionsResponseBodyFailedExecutions `json:"FailedExecutions,omitempty" xml:"FailedExecutions,omitempty" type:"Repeated"`
-	// The information about plan failures.
-	FailedMessages []*string `json:"FailedMessages,omitempty" xml:"FailedMessages,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of prefetch plans that are created.
-	//
-	// example:
-	//
-	// 12
-	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The information about created prefetch plans.
+	FailedExecutions  []*CreateScheduledPreloadExecutionsResponseBodyFailedExecutions  `json:"FailedExecutions,omitempty" xml:"FailedExecutions,omitempty" type:"Repeated"`
+	FailedMessages    []*string                                                        `json:"FailedMessages,omitempty" xml:"FailedMessages,omitempty" type:"Repeated"`
+	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessCount      *int32                                                           `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 	SuccessExecutions []*CreateScheduledPreloadExecutionsResponseBodySuccessExecutions `json:"SuccessExecutions,omitempty" xml:"SuccessExecutions,omitempty" type:"Repeated"`
-	// The total number of new plans requested.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount        *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s CreateScheduledPreloadExecutionsResponseBody) String() string {
@@ -135,64 +117,14 @@ func (s *CreateScheduledPreloadExecutionsResponseBody) Validate() error {
 }
 
 type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 15685865xxx14622
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plans.
-	//
-	// example:
-	//
-	// 2024-06-03T02:43:35Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
-	//
-	// example:
-	//
-	// 66599bd7397885b43804901c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// 665d3af3621bccf3fe29e1a4
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs prefetched in each batch.
-	//
-	// example:
-	//
-	// 10
-	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plans.
-	//
-	// example:
-	//
-	// 2024-06-02T02:43:35Z
+	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
-	//
-	// 	- **waiting**
-	//
-	// 	- **running**
-	//
-	// 	- **finished**
-	//
-	// 	- **failed**
-	//
-	// 	- **stopped**
-	//
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateScheduledPreloadExecutionsResponseBodyFailedExecutions) String() string {
@@ -280,64 +212,14 @@ func (s *CreateScheduledPreloadExecutionsResponseBodyFailedExecutions) Validate(
 }
 
 type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 15685865xxx14622
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plans.
-	//
-	// example:
-	//
-	// 2024-06-03T02:43:35Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
-	//
-	// example:
-	//
-	// 66599bd7397885b43804901c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// 665d3af3621bccf3fe29e1a4
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs prefetched in each batch.
-	//
-	// example:
-	//
-	// 10
-	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plans.
-	//
-	// example:
-	//
-	// 2024-06-02T02:43:35Z
+	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
-	//
-	// 	- **waiting**
-	//
-	// 	- **running**
-	//
-	// 	- **finished**
-	//
-	// 	- **failed**
-	//
-	// 	- **stopped**
-	//
-	// example:
-	//
-	// failed
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateScheduledPreloadExecutionsResponseBodySuccessExecutions) String() string {

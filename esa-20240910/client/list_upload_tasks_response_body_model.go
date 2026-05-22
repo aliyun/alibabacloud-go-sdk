@@ -16,14 +16,8 @@ type iListUploadTasksResponseBody interface {
 }
 
 type ListUploadTasksResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6D****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The file upload tasks.
-	Tasks []*ListUploadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     []*ListUploadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListUploadTasksResponseBody) String() string {
@@ -66,69 +60,12 @@ func (s *ListUploadTasksResponseBody) Validate() error {
 }
 
 type ListUploadTasksResponseBodyTasks struct {
-	// The time when the task was created.
-	//
-	// example:
-	//
-	// 2023-07-26T01:56:15Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned when the file upload task failed.
-	//
-	// example:
-	//
-	// invalid url
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The error code. Multiple error codes are separated by commas (,).
-	//
-	// 	- **InvalidUrl**: The URL format is incorrect.
-	//
-	// 	- **InvalidDomain**: The domain ownership fails to be verified.
-	//
-	// 	- **QuotaExcess**: The quota limit has been reached.
-	//
-	// 	- **OtherErrors**: Other errors.
-	//
-	// example:
-	//
-	// InvalidUrl,InvalidDomain
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The task status.
-	//
-	// 	- **Complete**: The task is complete.
-	//
-	// 	- **Refreshing**: The task is in progress.
-	//
-	// 	- **Failed**: The task failed.
-	//
-	// example:
-	//
-	// Complete
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task type. Valid values:
-	//
-	// 	- **file**: purges the cache by file URL.
-	//
-	// 	- **preload**: prefetches files.
-	//
-	// 	- **directory**: purges the cache by directory.
-	//
-	// 	- **ignoreparams**: purges the cache by URL with specified parameters ignored.
-	//
-	// example:
-	//
-	// file
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the file upload task.
-	//
-	// example:
-	//
-	// 159253299357****
-	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
-	// The name of the file upload task.
-	//
-	// example:
-	//
-	// purge_file_task
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UploadId       *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
 	UploadTaskName *string `json:"UploadTaskName,omitempty" xml:"UploadTaskName,omitempty"`
 }
 

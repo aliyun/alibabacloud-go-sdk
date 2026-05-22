@@ -28,51 +28,14 @@ type iUpdateCustomScenePolicyResponseBody interface {
 }
 
 type UpdateCustomScenePolicyResponseBody struct {
-	// The time when the policy expires.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-04-03T19:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The policy name.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of websites associated.
-	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
-	// The policy ID.
-	//
-	// example:
-	//
-	// 1
-	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteIds   *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The time when the policy takes effect.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-04-03T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the policy template. Valid value:
-	//
-	// 	- **promotion**: major events.
-	//
-	// example:
-	//
-	// promotion
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Objects   []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	PolicyId  *int64    `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteIds   *string   `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
+	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Template  *string   `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
 func (s UpdateCustomScenePolicyResponseBody) String() string {

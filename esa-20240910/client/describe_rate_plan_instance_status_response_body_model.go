@@ -18,38 +18,9 @@ type iDescribeRatePlanInstanceStatusResponseBody interface {
 }
 
 type DescribeRatePlanInstanceStatusResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// xcdn-91fknmb80f0g***
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance status. Valid values:
-	//
-	// 	- running: The instance is running.
-	//
-	// 	- renewing: The instance is being renewed.
-	//
-	// 	- upgrading: The configuration of the instance is being upgraded.
-	//
-	// 	- releasePrepaidService: The instance is released due to expiration.
-	//
-	// 	- creating: The instance is being created.
-	//
-	// 	- downgrading: The configuration of the instance is being downgraded.
-	//
-	// 	- ceasePrepaidService: The instance has expired.
-	//
-	// example:
-	//
-	// running
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 60423A7F-A83D-1E24-B80E-86DD25790759
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRatePlanInstanceStatusResponseBody) String() string {

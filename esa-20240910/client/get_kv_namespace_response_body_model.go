@@ -30,68 +30,15 @@ type iGetKvNamespaceResponseBody interface {
 }
 
 type GetKvNamespaceResponseBody struct {
-	// The available capacity of the namespace. Unit: bytes.
-	//
-	// example:
-	//
-	// 1073741824
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The available capacity of the namespace.
-	//
-	// example:
-	//
-	// 1 GB
-	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of the namespace. Unit: bytes.
-	//
-	// example:
-	//
-	// 10048576
-	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
-	// The used capacity of the namespace.
-	//
-	// example:
-	//
-	// 100 MB
+	Capacity           *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsed       *int64  `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
-	// The description of the namespace.
-	//
-	// example:
-	//
-	// this is a test namespace.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
-	//
-	// example:
-	//
-	// test_namespace
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// 643355322374688768
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the namespace. Valid values:
-	//
-	// 	- **online**: working as expected.
-	//
-	// 	- **delete**: pending deletion.
-	//
-	// 	- **deleting**: being deleted.
-	//
-	// 	- **deleted**: deleted.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceId        *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetKvNamespaceResponseBody) String() string {

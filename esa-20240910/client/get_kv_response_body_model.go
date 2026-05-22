@@ -16,18 +16,8 @@ type iGetKvResponseBody interface {
 }
 
 type GetKvResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The value of the key.
-	//
-	// example:
-	//
-	// test_value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetKvResponseBody) String() string {

@@ -22,45 +22,11 @@ type iListEdgeContainerRecordsRequest interface {
 }
 
 type ListEdgeContainerRecordsRequest struct {
-	// The page number. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The match mode to filter the record names:
-	//
-	// 	- **fuzzy**
-	//
-	// 	- **prefix**
-	//
-	// 	- **suffix**
-	//
-	// 	- **exact*	- (default)
-	//
-	// example:
-	//
-	// fuzzy
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
-	// The record name.
-	//
-	// example:
-	//
-	// a.example.com
-	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
-	//
+	RecordName      *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

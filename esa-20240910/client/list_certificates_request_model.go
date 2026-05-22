@@ -22,38 +22,12 @@ type iListCertificatesRequest interface {
 }
 
 type ListCertificatesRequest struct {
-	// The keyword that is used for the search.
-	//
-	// example:
-	//
-	// example
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 3
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-	//
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Specifies whether to return only valid certificates.
-	//
-	// example:
-	//
-	// 1
-	ValidOnly *bool `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
+	SiteId    *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	ValidOnly *bool  `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
 }
 
 func (s ListCertificatesRequest) String() string {

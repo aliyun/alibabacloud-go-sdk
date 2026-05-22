@@ -16,17 +16,7 @@ type iCreateOriginPoolResponseBody interface {
 }
 
 type CreateOriginPoolResponseBody struct {
-	// The ID of the newly created origin address pool.
-	//
-	// example:
-	//
-	// 103852052519****
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -14,9 +14,6 @@ type iReleaseInstanceResponseBody interface {
 }
 
 type ReleaseInstanceResponseBody struct {
-	// example:
-	//
-	// 04F0F334-1335-****-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -16,17 +16,7 @@ type iCreateEdgeContainerAppVersionResponseBody interface {
 }
 
 type CreateEdgeContainerAppVersionResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the created version.
-	//
-	// example:
-	//
-	// ver-87962637161651****
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 

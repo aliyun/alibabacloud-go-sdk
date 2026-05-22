@@ -16,19 +16,8 @@ type iGetCacheTagRequest interface {
 }
 
 type GetCacheTagRequest struct {
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site.
-	//
-	// example:
-	//
-	// 1
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

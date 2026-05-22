@@ -20,42 +20,10 @@ type iSetHttpDDoSAttackIntelligentProtectionResponseBody interface {
 }
 
 type SetHttpDDoSAttackIntelligentProtectionResponseBody struct {
-	// The mode of smart HTTP DDoS protection. Valid values:
-	//
-	// 	- **observe**: alert.
-	//
-	// 	- **defense**: block.
-	//
-	// example:
-	//
-	// defense
-	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
-	// The level of smart HTTP DDoS protection. Valid values:
-	//
-	// 	- **level0**: very loose.
-	//
-	// 	- **level30**: loose.
-	//
-	// 	- **level60**: normal.
-	//
-	// 	- **level90**: strict.
-	//
-	// example:
-	//
-	// level60
+	AiMode     *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 156A6B-677B1A-4297B7-9187B7-2B44792
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s SetHttpDDoSAttackIntelligentProtectionResponseBody) String() string {

@@ -18,27 +18,10 @@ type iUploadClientCaCertificateRequest interface {
 }
 
 type UploadClientCaCertificateRequest struct {
-	// The certificate content.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The certificate name.
-	//
-	// example:
-	//
-	// yourCertName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The website ID.
-	//
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

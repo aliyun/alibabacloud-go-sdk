@@ -16,17 +16,7 @@ type iCreateUrlObservationResponseBody interface {
 }
 
 type CreateUrlObservationResponseBody struct {
-	// The configuration ID.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	ConfigId  *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

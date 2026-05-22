@@ -14,11 +14,6 @@ type iUpdateLoadBalancerResponseBody interface {
 }
 
 type UpdateLoadBalancerResponseBody struct {
-	// Request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

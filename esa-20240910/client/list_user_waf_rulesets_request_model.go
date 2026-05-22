@@ -23,10 +23,6 @@ type iListUserWafRulesetsRequest interface {
 
 type ListUserWafRulesetsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// esa-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
@@ -39,10 +35,7 @@ type ListUserWafRulesetsRequest struct {
 	// example:
 	//
 	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// example:
-	//
-	// 1
+	Phase     *string                              `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	QueryArgs *ListUserWafRulesetsRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 }
 

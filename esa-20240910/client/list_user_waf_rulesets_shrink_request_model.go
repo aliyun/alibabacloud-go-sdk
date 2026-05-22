@@ -23,10 +23,6 @@ type iListUserWafRulesetsShrinkRequest interface {
 
 type ListUserWafRulesetsShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// esa-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
@@ -39,10 +35,7 @@ type ListUserWafRulesetsShrinkRequest struct {
 	// example:
 	//
 	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// example:
-	//
-	// 1
+	Phase           *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 }
 

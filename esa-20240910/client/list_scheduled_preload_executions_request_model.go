@@ -14,13 +14,7 @@ type iListScheduledPreloadExecutionsRequest interface {
 }
 
 type ListScheduledPreloadExecutionsRequest struct {
-	// The ID of the scheduled prefetch task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ListScheduledPreloadExecutions
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

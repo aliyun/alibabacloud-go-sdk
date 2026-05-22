@@ -20,24 +20,10 @@ type iDeleteKeylessServerResponseBody interface {
 }
 
 type DeleteKeylessServerResponseBody struct {
-	// Keyless server ID。
-	//
-	// example:
-	//
-	// baba39055622c008b90285a8838e****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s DeleteKeylessServerResponseBody) String() string {

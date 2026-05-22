@@ -24,49 +24,12 @@ type iListHttpsBasicConfigurationsRequest interface {
 }
 
 type ListHttpsBasicConfigurationsRequest struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Value range:
-	//
-	// - global: Query global configuration.
-	//
-	// - rule: Query rule configuration.
-	//
-	// This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
-	//
-	// example:
-	//
-	// global
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number, default is 1 if not provided.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page, maximum is 500, default is 500 if not provided.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name, which can be used to find the rule with the specified name.
-	//
-	// example:
-	//
-	// test
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

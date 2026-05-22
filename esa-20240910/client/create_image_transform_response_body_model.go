@@ -16,17 +16,7 @@ type iCreateImageTransformResponseBody interface {
 }
 
 type CreateImageTransformResponseBody struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 352816096987136
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	ConfigId  *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -20,30 +20,10 @@ type iDeleteSiteOriginClientCertificateResponseBody interface {
 }
 
 type DeleteSiteOriginClientCertificateResponseBody struct {
-	// The certificate ID on ESA.
-	//
-	// example:
-	//
-	// babaabcd****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 123456789****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
-	//
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s DeleteSiteOriginClientCertificateResponseBody) String() string {

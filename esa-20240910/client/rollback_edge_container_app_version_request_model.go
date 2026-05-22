@@ -22,29 +22,12 @@ type iRollbackEdgeContainerAppVersionRequest interface {
 }
 
 type RollbackEdgeContainerAppVersionRequest struct {
-	// The application ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// app-88068867578379****
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The remarks.
-	//
-	// example:
-	//
-	// test rollback app
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Percentage  *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	Remarks     *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	UsedPercent *bool   `json:"UsedPercent,omitempty" xml:"UsedPercent,omitempty"`
-	// The ID of version that you want to roll back.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ver-87962637161651****
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 

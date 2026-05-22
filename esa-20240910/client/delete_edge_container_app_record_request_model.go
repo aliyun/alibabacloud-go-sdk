@@ -18,28 +18,11 @@ type iDeleteEdgeContainerAppRecordRequest interface {
 }
 
 type DeleteEdgeContainerAppRecordRequest struct {
-	// The application ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The associated domain name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 5407498413****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s DeleteEdgeContainerAppRecordRequest) String() string {

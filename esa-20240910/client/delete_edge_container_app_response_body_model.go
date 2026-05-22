@@ -16,18 +16,8 @@ type iDeleteEdgeContainerAppResponseBody interface {
 }
 
 type DeleteEdgeContainerAppResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the deletion is successful.
-	//
-	// example:
-	//
-	// ok
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DeleteEdgeContainerAppResponseBody) String() string {

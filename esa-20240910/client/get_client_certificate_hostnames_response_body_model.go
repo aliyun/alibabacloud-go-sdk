@@ -22,32 +22,11 @@ type iGetClientCertificateHostnamesResponseBody interface {
 }
 
 type GetClientCertificateHostnamesResponseBody struct {
-	// The domain names with which the certificate is associated.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the client CA certificate.
-	//
-	// example:
-	//
-	// baba39055622c008b90285a8838ed09a
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 1234567890123
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
-	//
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	Id        *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId    *int64    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName  *string   `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s GetClientCertificateHostnamesResponseBody) String() string {

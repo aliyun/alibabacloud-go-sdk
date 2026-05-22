@@ -22,50 +22,11 @@ type iCheckSiteNameResponseBody interface {
 }
 
 type CheckSiteNameResponseBody struct {
-	// The description of the verification result. Valid values:
-	//
-	// 	- **success**: The verification is successful.
-	//
-	// 	- **Site.AlreadyExist**: The website domain name has already been added.
-	//
-	// 	- **Site.InvalidName**: Invalid website domain name.
-	//
-	// 	- **Site.SubSiteUnavailable**: Subdomains are not allowed.
-	//
-	// 	- **Site.InternalError**: An internal error occurs.
-	//
-	// example:
-	//
-	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether a subdomain is specified. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	IsSubSite *bool `json:"IsSubSite,omitempty" xml:"IsSubSite,omitempty"`
-	// The verification message.
-	Messeage *string `json:"Messeage,omitempty" xml:"Messeage,omitempty"`
-	// Indicates whether the verification passed.
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsSubSite   *bool   `json:"IsSubSite,omitempty" xml:"IsSubSite,omitempty"`
+	Messeage    *string `json:"Messeage,omitempty" xml:"Messeage,omitempty"`
+	Passed      *bool   `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckSiteNameResponseBody) String() string {

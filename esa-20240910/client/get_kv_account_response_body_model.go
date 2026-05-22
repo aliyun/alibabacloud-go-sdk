@@ -30,60 +30,15 @@ type iGetKvAccountResponseBody interface {
 }
 
 type GetKvAccountResponseBody struct {
-	// The available capacity of all namespaces in the account. Unit: bytes.
-	//
-	// example:
-	//
-	// 1073741824
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The available capacity of all namespaces in the account.
-	//
-	// example:
-	//
-	// 1 GB
-	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of all namespaces in the account. Unit: bytes.
-	//
-	// example:
-	//
-	// 10048576
-	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
-	// The used capacity of all namespaces in the account.
-	//
-	// example:
-	//
-	// 100 MB
-	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
-	// The namespaces in the account.
-	NamespaceList []*GetKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
-	// The maximum number of namespaces that can be created in the account.
-	//
-	// example:
-	//
-	// 10
-	NamespaceQuota *int32 `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
-	// The number of created namespaces that store key-value data in the account.
-	//
-	// example:
-	//
-	// 1
-	NamespaceUsed *int32 `json:"NamespaceUsed,omitempty" xml:"NamespaceUsed,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether Edge KV is activated for the Alibaba Cloud account.
-	//
-	// 	- **online**
-	//
-	// 	- **offline**
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Capacity           *int64                                   `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	CapacityString     *string                                  `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsed       *int64                                   `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
+	CapacityUsedString *string                                  `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	NamespaceList      []*GetKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	NamespaceQuota     *int32                                   `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
+	NamespaceUsed      *int32                                   `json:"NamespaceUsed,omitempty" xml:"NamespaceUsed,omitempty"`
+	RequestId          *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status             *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetKvAccountResponseBody) String() string {
@@ -189,62 +144,14 @@ func (s *GetKvAccountResponseBody) Validate() error {
 }
 
 type GetKvAccountResponseBodyNamespaceList struct {
-	// The available capacity of the namespace. Unit: bytes.
-	//
-	// example:
-	//
-	// 1073741824
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The available capacity of the namespace.
-	//
-	// example:
-	//
-	// 1 GB
-	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of the namespace. Unit: bytes.
-	//
-	// example:
-	//
-	// 100048576
-	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
-	// The used capacity of the namespace.
-	//
-	// example:
-	//
-	// 100 MB
+	Capacity           *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	CapacityUsed       *int64  `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
-	// The description of the namespace.
-	//
-	// example:
-	//
-	// the first namespace
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
-	//
-	// example:
-	//
-	// test_namespace
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// 643355322374688768
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The status of the namespace. Valid values:
-	//
-	// 	- **online**: normal.
-	//
-	// 	- **delete**: pending deletion.
-	//
-	// 	- **deleting**: being deleted.
-	//
-	// 	- **deleted**: deleted.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceId        *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetKvAccountResponseBodyNamespaceList) String() string {

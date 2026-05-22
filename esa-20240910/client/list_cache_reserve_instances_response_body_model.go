@@ -24,38 +24,12 @@ type iListCacheReserveInstancesResponseBody interface {
 }
 
 type ListCacheReserveInstancesResponseBody struct {
-	// The cache reserve instances.
 	InstanceInfo []*ListCacheReserveInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	// Page number. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size, default **500**, range: **1~500**.
-	//
-	// example:
-	//
-	// 500
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 65C66B7B-671A-8297-9187-2R5477247B76
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count.
-	//
-	// example:
-	//
-	// 16
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total pages.
-	//
-	// example:
-	//
-	// 1
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	PageNumber   *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage    *int32                                               `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListCacheReserveInstancesResponseBody) String() string {
@@ -134,57 +108,14 @@ func (s *ListCacheReserveInstancesResponseBody) Validate() error {
 }
 
 type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
-	// Cache reserve capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 512000
-	CacheReserveCapacity *int64 `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
-	// Cache reserve usage region.
-	//
-	// example:
-	//
-	// HK
-	CacheReserveRegion *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Instance purchase time.
-	//
-	// example:
-	//
-	// 2024-04-12T05:41:51Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Duration of the instance purchase, unit: months.
-	//
-	// example:
-	//
-	// 3
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Instance expiration time.
-	//
-	// example:
-	//
-	// 2024-10-05T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Instance ID.
-	//
-	// example:
-	//
-	// sp-xcdn-96wblslz****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the cache reserve instance. Valid values:
-	//
-	// 	- **online**: The instance is in service.
-	//
-	// 	- **offline**: The instance has expired within an allowable period. In this state, it is unavailable.
-	//
-	// 	- **disable**: The instance has been released.
-	//
-	// 	- **overdue**: The instance has been stopped due to overdue payments.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CacheReserveCapacity *int64  `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
+	CacheReserveRegion   *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
+	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCacheReserveInstancesResponseBodyInstanceInfo) String() string {

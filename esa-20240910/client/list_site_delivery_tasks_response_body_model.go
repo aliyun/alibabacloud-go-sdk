@@ -22,32 +22,11 @@ type iListSiteDeliveryTasksResponseBody interface {
 }
 
 type ListSiteDeliveryTasksResponseBody struct {
-	// The page number. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 34DCBC8A-****-****-****-6DAA11D7DDBD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The delivery tasks.
-	Tasks []*ListSiteDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of log delivery tasks.
-	//
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks      []*ListSiteDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSiteDeliveryTasksResponseBody) String() string {
@@ -117,64 +96,11 @@ func (s *ListSiteDeliveryTasksResponseBody) Validate() error {
 }
 
 type ListSiteDeliveryTasksResponseBodyTasks struct {
-	// The log category. Valid values:
-	//
-	// 	- dcdn_log_access_l1 (default): access logs.
-	//
-	// 	- dcdn_log_er: Edge Routine logs.
-	//
-	// 	- dcdn_log_waf: firewall logs.
-	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
-	//
-	// example:
-	//
-	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The data center. Valid values:
-	//
-	// 	- cn: the Chinese mainland.
-	//
-	// 	- sg: outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn
-	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
-	//
-	// 1.  sls: Alibaba Cloud Simple Log Service (SLS).
-	//
-	// 2.  http: HTTP server.
-	//
-	// 3.  aws3: Amazon Simple Storage Service (S3).
-	//
-	// 4.  oss: Alibaba Cloud Object Storage Service (OSS).
-	//
-	// 5.  kafka: Kafka.
-	//
-	// 6.  aws3cmpt: S3-compatible storage service.
-	//
-	// example:
-	//
-	// sls
+	DataCenter   *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The status of the delivery task.
-	//
-	// 	- **online**
-	//
-	// 	- **offline**
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
-	//
-	// example:
-	//
-	// cdn-test-task
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s ListSiteDeliveryTasksResponseBodyTasks) String() string {

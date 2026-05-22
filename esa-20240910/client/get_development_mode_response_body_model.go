@@ -16,21 +16,7 @@ type iGetDevelopmentModeResponseBody interface {
 }
 
 type GetDevelopmentModeResponseBody struct {
-	// Switch. Values:
-	//
-	// - **on**: Enabled.
-	//
-	// - **off**: Disabled.
-	//
-	// example:
-	//
-	// on
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	Enable    *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -16,19 +16,8 @@ type iCommitRoutineStagingCodeRequest interface {
 }
 
 type CommitRoutineStagingCodeRequest struct {
-	// The description of the code version.
-	//
-	// example:
-	//
-	// description of this code ver
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CommitRoutineStagingCode
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -22,36 +22,11 @@ type iDescribeSiteTopDataResponseBody interface {
 }
 
 type DescribeSiteTopDataResponseBody struct {
-	// The returned data.
-	Data []*DescribeSiteTopDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The end of the time range during which data was queried.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-04-09T16:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 35C66C7B-671H-4297-9187-2C447724****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sampling rate.
-	//
-	// example:
-	//
-	// 100
-	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	// The beginning of the time range during which data was queried.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-04-08T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Data         []*DescribeSiteTopDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	EndTime      *string                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SamplingRate *float32                               `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	StartTime    *string                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSiteTopDataResponseBody) String() string {
@@ -121,20 +96,9 @@ func (s *DescribeSiteTopDataResponseBody) Validate() error {
 }
 
 type DescribeSiteTopDataResponseBodyData struct {
-	// The returned data.
-	DetailData []*DescribeSiteTopDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
-	// The dimension at which data was queried.
-	//
-	// example:
-	//
-	// ALL
-	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
-	// The metric name.
-	//
-	// example:
-	//
-	// Traffic
-	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	DetailData    []*DescribeSiteTopDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
+	DimensionName *string                                          `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	FieldName     *string                                          `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 }
 
 func (s DescribeSiteTopDataResponseBodyData) String() string {
@@ -186,18 +150,8 @@ func (s *DescribeSiteTopDataResponseBodyData) Validate() error {
 }
 
 type DescribeSiteTopDataResponseBodyDataDetailData struct {
-	// The dimension value.
-	//
-	// example:
-	//
-	// ALL
-	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	// The queried numeric value.
-	//
-	// example:
-	//
-	// 123
-	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+	DimensionValue *string     `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	Value          interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeSiteTopDataResponseBodyDataDetailData) String() string {

@@ -22,25 +22,11 @@ type iDescribeHttpDDoSIntelligentAclRulesResponseBody interface {
 }
 
 type DescribeHttpDDoSIntelligentAclRulesResponseBody struct {
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleInfos []*DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleInfos  []*DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
+	TotalCount *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHttpDDoSIntelligentAclRulesResponseBody) String() string {
@@ -110,34 +96,13 @@ func (s *DescribeHttpDDoSIntelligentAclRulesResponseBody) Validate() error {
 }
 
 type DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos struct {
-	// example:
-	//
-	// deny
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// example:
-	//
-	// {"$and":[{"key":"URI","opValue":"prefix-match","values":"/"}]}
-	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// example:
-	//
-	// 1000030
-	LogRuleId *int64 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
-	// example:
-	//
-	// 1800
-	PunishTime *int64 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
-	// example:
-	//
-	// test.example.com
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Condition  *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	LogRuleId  *int64  `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
+	PunishTime *int64  `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// example:
-	//
-	// 20569929
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// example:
-	//
-	// smart_cc_***
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos) String() string {

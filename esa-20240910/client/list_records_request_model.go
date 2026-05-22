@@ -30,90 +30,16 @@ type iListRecordsRequest interface {
 }
 
 type ListRecordsRequest struct {
-	// The business scenario of the record for acceleration. Valid values:
-	//
-	// 	- **image_video**: video and image.
-	//
-	// 	- **api**: API.
-	//
-	// 	- **web**: web page.
-	//
-	// example:
-	//
-	// web
-	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The page number. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by whether the record is proxied. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The match mode to search for the record name. Default value: exact. Valid values:
-	//
-	// 	- **prefix**: match by prefix.
-	//
-	// 	- **suffix**: match by suffix.
-	//
-	// 	- **exact**: exact match.
-	//
-	// 	- **fuzzy**: fuzzy match.
-	//
-	// example:
-	//
-	// fuzzy
+	BizName         *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Proxied         *bool   `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
-	// The record name. This parameter specifies a filter condition for the query.
-	//
-	// example:
-	//
-	// www.example.com
-	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
+	RecordName      *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-	//
-	// 	- **OSS**: OSS bucket.
-	//
-	// 	- **S3**: S3 bucket.
-	//
-	// 	- **LB**: load balancer.
-	//
-	// 	- **OP**: origin pool.
-	//
-	// 	- **Domain**: domain name.
-	//
-	// example:
-	//
-	// OSS
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The DNS record type.
-	//
-	// example:
-	//
-	// CNAME
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListRecordsRequest) String() string {

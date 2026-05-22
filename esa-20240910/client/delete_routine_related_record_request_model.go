@@ -20,37 +20,13 @@ type iDeleteRoutineRelatedRecordRequest interface {
 }
 
 type DeleteRoutineRelatedRecordRequest struct {
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// DeleteRoutineRelatedRecord
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The record ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The record name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-xxx.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

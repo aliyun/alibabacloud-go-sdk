@@ -18,16 +18,9 @@ type iGetCacheReserveSpecificationResponseBody interface {
 }
 
 type GetCacheReserveSpecificationResponseBody struct {
-	// List of cache retention capacity specifications.
 	CacheReserveCapacity []*string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty" type:"Repeated"`
-	// List of cache retention region specifications.
-	CacheReserveRegion []*string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty" type:"Repeated"`
-	// Request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CacheReserveRegion   []*string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty" type:"Repeated"`
+	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCacheReserveSpecificationResponseBody) String() string {

@@ -30,75 +30,22 @@ type iUpdateCompressionRuleRequest interface {
 }
 
 type UpdateCompressionRuleRequest struct {
-	// Brotli compression. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
 	// example:
 	//
 	// on
 	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
-	// Configuration ID. It can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Gzip compression. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
 	// example:
 	//
 	// on
-	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - To match all incoming requests: Set the value to true
-	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq "video.example.com")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
+	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence   *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Zstd compression. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
 	// example:
 	//
 	// on

@@ -26,34 +26,13 @@ type iListDDoSInstancesRequest interface {
 }
 
 type ListDDoSInstancesRequest struct {
-	// example:
-	//
-	// esa-ddos-b1e0l80ugfeo
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// esa-site-a71k7bw1adf
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
-	// example:
-	//
-	// CreateTime
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// example:
-	//
-	// asc
-	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SortBy         *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortOrder      *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDDoSInstancesRequest) String() string {

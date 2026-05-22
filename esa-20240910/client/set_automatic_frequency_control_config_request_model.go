@@ -23,32 +23,13 @@ type iSetAutomaticFrequencyControlConfigRequest interface {
 
 type SetAutomaticFrequencyControlConfigRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

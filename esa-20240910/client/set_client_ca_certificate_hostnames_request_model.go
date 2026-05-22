@@ -20,15 +20,8 @@ type iSetClientCaCertificateHostnamesRequest interface {
 type SetClientCaCertificateHostnamesRequest struct {
 	// This parameter is required.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// example:
-	//
-	// babaabcd****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id        *string   `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

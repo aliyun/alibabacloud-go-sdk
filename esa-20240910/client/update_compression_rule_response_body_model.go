@@ -14,11 +14,6 @@ type iUpdateCompressionRuleResponseBody interface {
 }
 
 type UpdateCompressionRuleResponseBody struct {
-	// Request ID.
-	//
-	// example:
-	//
-	// CE8EB0DE-3267-53D1-AB83-F36377D63FD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

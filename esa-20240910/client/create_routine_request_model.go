@@ -18,20 +18,9 @@ type iCreateRoutineRequest interface {
 }
 
 type CreateRoutineRequest struct {
-	// The routine description.
-	//
-	// example:
-	//
-	// the description of this routine
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	HasAssets   *bool   `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
-	// The routine name, which must be unique in the same account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

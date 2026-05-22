@@ -30,52 +30,19 @@ type iSetKeylessServerRequest interface {
 }
 
 type SetKeylessServerRequest struct {
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----****
-	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----****
+	CaCertificate     *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
-	// example:
-	//
-	// -----BEGIN RSA PRIVATE KEY-----****
-	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
+	ClientPrivateKey  *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// keyless.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Keyless server ID。
-	//
-	// example:
-	//
-	// baba39055622c008b90285a8838e****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 443
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// example:
-	//
-	// true
-	Verify *bool `json:"Verify,omitempty" xml:"Verify,omitempty"`
+	Verify *bool  `json:"Verify,omitempty" xml:"Verify,omitempty"`
 }
 
 func (s SetKeylessServerRequest) String() string {

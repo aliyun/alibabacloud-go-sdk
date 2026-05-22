@@ -24,33 +24,12 @@ type iGetRoutineResponseBody interface {
 }
 
 type GetRoutineResponseBody struct {
-	// The time when the routine was created.
-	//
-	// example:
-	//
-	// 2024-03-11T01:23:21Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The default record name to access.
-	//
-	// example:
-	//
-	// routine1.example.com
-	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
-	// The description of the routine.
-	//
-	// example:
-	//
-	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the environments.
-	Envs      []*GetRoutineResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
-	HasAssets *bool                         `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CreateTime           *string                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRelatedRecord *string                       `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
+	Description          *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Envs                 []*GetRoutineResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
+	HasAssets            *bool                         `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
+	RequestId            *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRoutineResponseBody) String() string {
@@ -130,12 +109,7 @@ func (s *GetRoutineResponseBody) Validate() error {
 
 type GetRoutineResponseBodyEnvs struct {
 	CodeDeploy *GetRoutineResponseBodyEnvsCodeDeploy `json:"CodeDeploy,omitempty" xml:"CodeDeploy,omitempty" type:"Struct"`
-	// The environment type.
-	//
-	// example:
-	//
-	// production
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	Env        *string                               `json:"Env,omitempty" xml:"Env,omitempty"`
 }
 
 func (s GetRoutineResponseBodyEnvs) String() string {

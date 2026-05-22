@@ -26,55 +26,13 @@ type iListRewriteUrlRulesRequest interface {
 }
 
 type ListRewriteUrlRulesRequest struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Value range:
-	//
-	// - global: Query global configuration;
-	//
-	// - rule: Query rule configuration;
-	//
-	// This parameter is optional. If not provided, it does not distinguish between global and rule configurations. This parameter only takes effect when the functionName parameter is provided.
-	//
-	// example:
-	//
-	// global
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Range: **1~500**, default is **500**.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. Not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456789****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
-	//
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

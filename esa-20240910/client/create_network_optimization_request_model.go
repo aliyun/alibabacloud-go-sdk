@@ -34,93 +34,18 @@ type iCreateNetworkOptimizationRequest interface {
 }
 
 type CreateNetworkOptimizationRequest struct {
-	// Whether to enable GRPC, disabled by default. Possible values:
-	//
-	// - on: Enable
-	//
-	// - off: Disable
-	//
-	// example:
-	//
-	// on
-	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	// Whether to enable HTTP2 origin, disabled by default. Possible values:
-	//
-	// - on: Enable
-	//
-	// - off: Disable
-	//
-	// example:
-	//
-	// on
+	Grpc        *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
-	//
+	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable  *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 340035003106221
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the configuration, defaulting to version 0.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Whether to enable smart routing service, disabled by default. Possible values:
-	//
-	// - on: Enable
-	//
-	// - off: Disable
-	//
-	// example:
-	//
-	// on
-	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
-	// Maximum upload file size in MB, range: 100～500.
-	//
-	// example:
-	//
-	// 100
+	SiteId            *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteVersion       *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	// Whether to enable Websocket, enabled by default. Possible values:
-	//
-	// - on: Enable
-	//
-	// - off: Disable
-	//
-	// example:
-	//
-	// on
-	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
 }
 
 func (s CreateNetworkOptimizationRequest) String() string {

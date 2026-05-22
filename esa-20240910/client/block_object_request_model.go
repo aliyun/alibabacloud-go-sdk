@@ -20,35 +20,12 @@ type iBlockObjectRequest interface {
 }
 
 type BlockObjectRequest struct {
-	// The content to block.
-	//
 	// This parameter is required.
 	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
-	//
-	// example:
-	//
-	// 864000
-	Maxage *int32 `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
+	Maxage  *int32    `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BlockObject
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The type. Valid values:
-	//
-	// 	- **block**
-	//
-	// 	- **unblock**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// block
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

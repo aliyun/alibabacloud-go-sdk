@@ -22,57 +22,12 @@ type iPurgeCachesRequest interface {
 }
 
 type PurgeCachesRequest struct {
-	// Content to be refreshed.
-	Content *PurgeCachesRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Used for refreshing cached resources in edge computing, such as allowing the refresh of content cached using the CacheAPI interface of an edge function.
-	//
-	// example:
-	//
-	// true
-	EdgeComputePurge *bool `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
-	// Indicates whether to refresh all resources under the directory when the content from the origin and the source resource are inconsistent. The default is false.
-	//
-	// - **true**: Refreshes all resources under the specified directory.
-	//
-	// - **false**: Refreshes only the changed resources under the specified directory.
-	//
-	// >
-	//
-	// >  Applies to: Directory refresh, cachetag refresh, ignoreParams refresh, hostname refresh, and purge all cache of the site.
-	//
-	// example:
-	//
-	// true
-	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	Content          *PurgeCachesRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	EdgeComputePurge *bool                      `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
+	Force            *bool                      `json:"Force,omitempty" xml:"Force,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The type of refresh task. Possible values:
-	//
-	// - **file*	- (default): File refresh.
-	//
-	// - **cachekey**: Cachekey refresh.
-	//
-	// - **cachetag**: Cachetag refresh.
-	//
-	// - **directory**: Directory refresh.
-	//
-	// - **ignoreParams**: Ignore parameters refresh. Ignoring parameters means removing the ? and everything after it in the request URL. When performing an ignore parameters refresh, the user first submits the URL without parameters through the interface. The submitted URLs to be refreshed will then be matched against the cached resource URLs with the parameters removed. If the cached resource URL, after removing the parameters, matches the URL to be refreshed, the CDN node will refresh the cached resources.
-	//
-	// - **hostname**: Hostname refresh.
-	//
-	// - **purgeall**: Purge all cache under the site.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -139,24 +94,13 @@ func (s *PurgeCachesRequest) Validate() error {
 }
 
 type PurgeCachesRequestContent struct {
-	// List of cachekeys to be refreshed, required when the type is cachekey.
-	CacheKeys []*PurgeCachesRequestContentCacheKeys `json:"CacheKeys,omitempty" xml:"CacheKeys,omitempty" type:"Repeated"`
-	// List of cachetags to be refreshed, required when the type is cachetag.
-	CacheTags []*string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	// List of directories to be refreshed, required when the type is directory.
-	Directories []*string `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// List of files to be refreshed, required when the type is file.
-	Files []interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// List of hostnames to be refreshed, required when the type is hostname.
-	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// List of files with ignored parameters, required when the type is ignoreParams.
-	IgnoreParams []*string `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
-	// Flag for purging all content. Default is false, set to true when the type is purgeall.
-	//
-	// example:
-	//
-	// true
-	PurgeAll *bool `json:"PurgeAll,omitempty" xml:"PurgeAll,omitempty"`
+	CacheKeys    []*PurgeCachesRequestContentCacheKeys `json:"CacheKeys,omitempty" xml:"CacheKeys,omitempty" type:"Repeated"`
+	CacheTags    []*string                             `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	Directories  []*string                             `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
+	Files        []interface{}                         `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Hostnames    []*string                             `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	IgnoreParams []*string                             `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
+	PurgeAll     *bool                                 `json:"PurgeAll,omitempty" xml:"PurgeAll,omitempty"`
 }
 
 func (s PurgeCachesRequestContent) String() string {
@@ -244,30 +188,8 @@ func (s *PurgeCachesRequestContent) Validate() error {
 }
 
 type PurgeCachesRequestContentCacheKeys struct {
-	// When refreshing, specify the header information corresponding to the cache key. When the custom cache key feature switch is enabled, the cache key will be generated based on the specified header for refreshing.
-	//
-	// **UserGeo: Country/Region**
-	//
-	// - Country/region codes follow the ISO 3166-2 standard.
-	//
-	// **UserDeviceType: Device Type, currently there are three enum values**
-	//
-	// - desktop
-	//
-	//  - tablet
-	//
-	//  - mobile
-	//
-	// **UserLanguage: Language**
-	//
-	// - Language codes follow the ISO 639-1 or BCP47 standards. For example, input \\"zh\\" to refresh content in Chinese.
 	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	// URL address to be refreshed.
-	//
-	// example:
-	//
-	// http://a.com/1.jpg?b=1
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url     *string            `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s PurgeCachesRequestContentCacheKeys) String() string {

@@ -14,13 +14,7 @@ type iDeleteScheduledPreloadJobRequest interface {
 }
 
 type DeleteScheduledPreloadJobRequest struct {
-	// The ID of the scheduled prefetch task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// DeleteScheduledPreloadJob
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

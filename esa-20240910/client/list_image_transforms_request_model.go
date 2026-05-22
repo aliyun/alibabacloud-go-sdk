@@ -26,55 +26,13 @@ type iListImageTransformsRequest interface {
 }
 
 type ListImageTransformsRequest struct {
-	// Configuration ID. Can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
-	//
-	// example:
-	//
-	// 352816096987136
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Possible values:
-	//
-	// - global: Query global configuration;
-	//
-	// - rule: Query rule configuration;
-	//
-	// This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
-	//
-	// example:
-	//
-	// global
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number. The default value is 1 if not provided.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page. The maximum value is 500, and the default value is 500 if not provided.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// test1
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID. Can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
-	//
-	// example:
-	//
-	// 1
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

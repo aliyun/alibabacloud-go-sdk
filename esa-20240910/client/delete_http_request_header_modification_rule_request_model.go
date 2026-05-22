@@ -16,21 +16,9 @@ type iDeleteHttpRequestHeaderModificationRuleRequest interface {
 }
 
 type DeleteHttpRequestHeaderModificationRuleRequest struct {
-	// The configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](~~ListHttpRequestHeaderModificationRules~~) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

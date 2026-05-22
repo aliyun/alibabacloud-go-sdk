@@ -24,38 +24,12 @@ type iListImageTransformsResponseBody interface {
 }
 
 type ListImageTransformsResponseBody struct {
-	// Configuration list.
-	Configs []*ListImageTransformsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Current page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Range: **1~500**, default is **500**.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
-	//
-	// example:
-	//
-	// 16
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
-	//
-	// example:
-	//
-	// 2
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Configs    []*ListImageTransformsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListImageTransformsResponseBody) String() string {
@@ -141,71 +115,15 @@ type ListImageTransformsResponseBodyConfigs struct {
 	// example:
 	//
 	// on
-	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 395386449776640
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type. Possible values:
-	//
-	// - global: Global configuration;
-	//
-	// - rule: Rule configuration;
-	//
-	// example:
-	//
-	// global
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Switch. Possible values:
-	//
-	// - **on**: Enabled.
-	//
-	// - **off**: Disabled.
-	//
-	// example:
-	//
-	// on
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.request.uri.path.file_name eq \\"jpg\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// test
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site configuration version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	AutoWebp    *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
+	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Enable      *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable  *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s ListImageTransformsResponseBodyConfigs) String() string {

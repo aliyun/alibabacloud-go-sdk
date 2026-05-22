@@ -16,17 +16,7 @@ type iUpdateOriginPoolResponseBody interface {
 }
 
 type UpdateOriginPoolResponseBody struct {
-	// Source address pool ID.
-	//
-	// example:
-	//
-	// 1038520525196928
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A74
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

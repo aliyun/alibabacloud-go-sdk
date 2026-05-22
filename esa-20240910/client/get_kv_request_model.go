@@ -18,27 +18,10 @@ type iGetKvRequest interface {
 }
 
 type GetKvRequest struct {
-	// Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
-	//
-	// example:
-	//
-	// true
 	Base64 *bool `json:"Base64,omitempty" xml:"Base64,omitempty"`
-	// The key name for the query.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 

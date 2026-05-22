@@ -18,27 +18,10 @@ type iListWaitingRoomEventsRequest interface {
 }
 
 type ListWaitingRoomEventsRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 7096621098****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The ID of the waiting room event. This parameter is optional. You can specify this parameter to query a specific waiting room event.
-	//
-	// example:
-	//
-	// 89677721098****
+	SiteId             *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
-	// The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6a51d5bc6460887abd129****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 }
 

@@ -26,50 +26,14 @@ type iCreateHttpRequestHeaderModificationRuleRequest interface {
 }
 
 type CreateHttpRequestHeaderModificationRuleRequest struct {
-	// Modify request headers, supporting add, delete, and modify operations.
-	//
 	// This parameter is required.
 	RequestHeaderModification []*CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - To match all incoming requests: Set the value to true
-	//
-	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq "video.example.com")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
+	Rule                      *string                                                                    `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                *string                                                                    `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                  *string                                                                    `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                  *int32                                                                     `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5407498413****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
-	//
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -158,35 +122,12 @@ func (s *CreateHttpRequestHeaderModificationRuleRequest) Validate() error {
 }
 
 type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {
-	// Request header name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// headername
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Operation type. Possible values:
-	//
-	// - add: Add.
-	//
-	// - del: Delete
-	//
-	// - modify: Modify.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Request header value.
-	//
-	// example:
-	//
-	// headervalue
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) String() string {

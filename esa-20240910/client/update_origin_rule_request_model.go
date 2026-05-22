@@ -56,129 +56,29 @@ type iUpdateOriginRuleRequest interface {
 }
 
 type UpdateOriginRuleRequest struct {
-	// Configuration ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Rewrite the DNS resolution record of the origin request.
-	//
-	// example:
-	//
-	// test.example.com
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	DnsRecord             *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
 	Follow302Enable       *string `json:"Follow302Enable,omitempty" xml:"Follow302Enable,omitempty"`
 	Follow302MaxTries     *string `json:"Follow302MaxTries,omitempty" xml:"Follow302MaxTries,omitempty"`
 	Follow302RetainArgs   *string `json:"Follow302RetainArgs,omitempty" xml:"Follow302RetainArgs,omitempty"`
 	Follow302RetainHeader *string `json:"Follow302RetainHeader,omitempty" xml:"Follow302RetainHeader,omitempty"`
 	Follow302TargetHost   *string `json:"Follow302TargetHost,omitempty" xml:"Follow302TargetHost,omitempty"`
-	// The HOST carried in the origin request.
-	//
-	// example:
-	//
-	// origin.example.com
-	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	// Port of the origin server when using HTTP protocol for origin pull.
-	//
-	// example:
-	//
-	// 8080
-	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
-	// Port of the origin server when using HTTPS protocol for origin pull.
-	//
-	// example:
-	//
-	// 4433
-	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	// mTLS switch. Valid values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
-	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
-	// Protocol used for the origin request. Valid values:
-	//
-	// - http: Use HTTP protocol for origin pull.
-	//
-	// - https: Use HTTPS protocol for origin pull.
-	//
-	// - follow: Follow the client\\"s protocol for origin pull.
-	//
-	// example:
-	//
-	// http
-	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
-	// SNI carried in the origin request.
-	//
-	// example:
-	//
-	// origin.example.com
-	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
-	// Origin certificate verification switch. Valid values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
-	// Use range chunking for origin pull file download. Valid values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// - force: Force.
-	//
-	// example:
-	//
-	// on
-	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
-	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
-	// Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Valid values:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
+	OriginHost            *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	OriginHttpPort        *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	OriginHttpsPort       *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginMtls            *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginReadTimeout     *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
+	OriginScheme          *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	OriginSni             *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginVerify          *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
+	Range                 *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	RangeChunkSize        *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence              *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

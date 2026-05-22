@@ -14,11 +14,6 @@ type iSetHttpDDoSAttackRuleStatusResponseBody interface {
 }
 
 type SetHttpDDoSAttackRuleStatusResponseBody struct {
-	// ID of the request
-	//
-	// example:
-	//
-	// F7B84CF8-F8A4-53F8-9B91-2643FD72042B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

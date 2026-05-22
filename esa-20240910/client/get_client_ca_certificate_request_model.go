@@ -16,21 +16,9 @@ type iGetClientCaCertificateRequest interface {
 }
 
 type GetClientCaCertificateRequest struct {
-	// The certificate ID, which can be obtained by calling the [ListClientCaCertificates](https://help.aliyun.com/document_detail/2860651.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

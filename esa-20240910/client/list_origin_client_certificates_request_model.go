@@ -18,25 +18,9 @@ type iListOriginClientCertificatesRequest interface {
 }
 
 type ListOriginClientCertificatesRequest struct {
-	// The page number. Pages start from page 1. Default value: 1.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
-	//
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

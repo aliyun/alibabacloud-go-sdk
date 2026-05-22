@@ -26,41 +26,18 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The maximum number of tags to return.
-	//
-	// example:
-	//
-	// 20
-	MaxItem *int32 `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
-	//
-	// >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
-	//
-	// example:
-	//
-	// AAAAAZjtYxxxxxxxx
+	MaxItem   *int32  `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resources reside.
+	// 要创建并绑定标签的资源所在的地域ID。
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The website ID.
+	// 资源ID,最多 50个子项
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// site
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// A list of tags. You can enter up to 20 tags.
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType  *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -148,17 +125,9 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// env
+	// 标签键
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// value
+	// 标签值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

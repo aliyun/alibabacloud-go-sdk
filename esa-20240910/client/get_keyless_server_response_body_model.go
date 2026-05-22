@@ -38,60 +38,19 @@ type iGetKeylessServerResponseBody interface {
 }
 
 type GetKeylessServerResponseBody struct {
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----****
-	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----****
+	CaCertificate     *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
-	// example:
-	//
-	// -----BEGIN RSA PRIVATE KEY-----****
-	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
-	// example:
-	//
-	// 2024-03-11T01:23:21Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example.com
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Keyless server ID。
-	//
-	// example:
-	//
-	// baba39055622c008b90285a8838e****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 443
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// example:
-	//
-	// 3558df77-8a7a-4060-a900-2d794940****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// example:
-	//
-	// 2025-03-13T02:13:28Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// true
-	Verify *bool `json:"Verify,omitempty" xml:"Verify,omitempty"`
+	ClientPrivateKey  *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Host              *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId            *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName          *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Verify            *bool   `json:"Verify,omitempty" xml:"Verify,omitempty"`
 }
 
 func (s GetKeylessServerResponseBody) String() string {

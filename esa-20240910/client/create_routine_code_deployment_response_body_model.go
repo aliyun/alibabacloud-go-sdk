@@ -20,26 +20,10 @@ type iCreateRoutineCodeDeploymentResponseBody interface {
 }
 
 type CreateRoutineCodeDeploymentResponseBody struct {
-	// The configuration list of the phased release version number.
 	CodeVersions []*CreateRoutineCodeDeploymentResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	// The deployment record ID.
-	//
-	// example:
-	//
-	// 234
-	DeploymentId *string `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The phased release policy. The constant string is "percentage".
-	//
-	// example:
-	//
-	// percentage
-	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	DeploymentId *string                                                `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
+	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Strategy     *string                                                `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s CreateRoutineCodeDeploymentResponseBody) String() string {
@@ -100,18 +84,8 @@ func (s *CreateRoutineCodeDeploymentResponseBody) Validate() error {
 }
 
 type CreateRoutineCodeDeploymentResponseBodyCodeVersions struct {
-	// The version of the code.
-	//
-	// example:
-	//
-	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The phased release ratio.
-	//
-	// example:
-	//
-	// 100
-	Percentage *int64 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Percentage  *int64  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 }
 
 func (s CreateRoutineCodeDeploymentResponseBodyCodeVersions) String() string {

@@ -20,32 +20,11 @@ type iListKvsRequest interface {
 }
 
 type ListKvsRequest struct {
-	// The name of the namespace that you specify when you call the [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_namespace
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The page number. The product of PageNumber and PageSize cannot exceed 50,000.
-	//
-	// example:
-	//
-	// 10
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 50. Maximum value: 100.
-	//
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The prefix to query.
-	//
-	// example:
-	//
-	// prefix-
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Prefix     *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
 
 func (s ListKvsRequest) String() string {

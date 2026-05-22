@@ -18,24 +18,9 @@ type iUpdateEdgeContainerAppLogRiverRequest interface {
 }
 
 type UpdateEdgeContainerAppLogRiverRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](https://help.aliyun.com/document_detail/2852396.html) operation.
-	//
-	// example:
-	//
-	// app-88068867578379****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The log path of the container.
-	//
-	// example:
-	//
-	// /root/hello.log
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Specifies whether to collect the standard output of the container.
-	//
-	// example:
-	//
-	// true
-	Stdout *bool `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Stdout *bool   `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
 }
 
 func (s UpdateEdgeContainerAppLogRiverRequest) String() string {

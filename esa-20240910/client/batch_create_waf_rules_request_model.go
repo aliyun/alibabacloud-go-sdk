@@ -24,39 +24,19 @@ type iBatchCreateWafRulesRequest interface {
 }
 
 type BatchCreateWafRulesRequest struct {
-	// A list of configurations for each rule, specifying detailed configurations for each rule.
 	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// WAF rule type, with values:
-	//
-	// - **http_anti_scan**: Scan protection.
-	//
-	// - **http_bot**: Bots.
-	//
 	// example:
 	//
-	// http_anti_scan
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Ruleset ID.
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// Shared configuration for multiple rules, specifying common attributes of multiple rules.
-	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	// http_custom
+	Phase     *string             `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	RulesetId *int64              `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	Shared    *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
-	//
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

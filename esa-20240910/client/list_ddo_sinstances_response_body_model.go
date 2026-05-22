@@ -25,28 +25,11 @@ type iListDDoSInstancesResponseBody interface {
 
 type ListDDoSInstancesResponseBody struct {
 	InstanceInfo []*ListDDoSInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 9F1DC265-BF10-5C9C-B607-760265C5F365
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// example:
-	//
-	// 2
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	PageNumber   *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage    *int32                                       `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListDDoSInstancesResponseBody) String() string {
@@ -125,34 +108,13 @@ func (s *ListDDoSInstancesResponseBody) Validate() error {
 }
 
 type ListDDoSInstancesResponseBodyInstanceInfo struct {
-	// example:
-	//
-	// 2025-07-01T07:59:07Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// cn_300
+	CreateTime                      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DDoSBurstableDomesticProtection *string `json:"DDoSBurstableDomesticProtection,omitempty" xml:"DDoSBurstableDomesticProtection,omitempty"`
-	// example:
-	//
-	// overseas_300
 	DDoSBurstableOverseasProtection *string `json:"DDoSBurstableOverseasProtection,omitempty" xml:"DDoSBurstableOverseasProtection,omitempty"`
-	// example:
-	//
-	// sp-ddddxxxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 2026-03-25T16:00:00Z
-	ReserveReleaseTime *string `json:"ReserveReleaseTime,omitempty" xml:"ReserveReleaseTime,omitempty"`
-	// example:
-	//
-	// esa-site-b0s6kmx0r0n4
-	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId                      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ReserveReleaseTime              *string `json:"ReserveReleaseTime,omitempty" xml:"ReserveReleaseTime,omitempty"`
+	SiteInstanceId                  *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
+	Status                          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDDoSInstancesResponseBodyInstanceInfo) String() string {

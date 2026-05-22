@@ -16,14 +16,10 @@ type iListManagedRulesGroupsRequest interface {
 }
 
 type ListManagedRulesGroupsRequest struct {
-	// Page number, used to specify the page number for pagination queries.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size, used to specify the number of items per page for pagination queries.
-	//
 	// example:
 	//
 	// 20

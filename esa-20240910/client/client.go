@@ -139,7 +139,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Activates the client based on the certificate ID.
+// 激活客户端证书
 //
 // @param request - ActivateClientCertificateRequest
 //
@@ -179,7 +179,7 @@ func (client *Client) ActivateClientCertificateWithOptions(request *ActivateClie
 
 // Summary:
 //
-// Activates the client based on the certificate ID.
+// 激活客户端证书
 //
 // @param request - ActivateClientCertificateRequest
 //
@@ -197,7 +197,7 @@ func (client *Client) ActivateClientCertificate(request *ActivateClientCertifica
 
 // Summary:
 //
-// # Enable Version Management
+// 开启版本管理
 //
 // @param request - ActivateVersionManagementRequest
 //
@@ -241,7 +241,7 @@ func (client *Client) ActivateVersionManagementWithOptions(request *ActivateVers
 
 // Summary:
 //
-// # Enable Version Management
+// 开启版本管理
 //
 // @param request - ActivateVersionManagementRequest
 //
@@ -259,7 +259,7 @@ func (client *Client) ActivateVersionManagement(request *ActivateVersionManageme
 
 // Summary:
 //
-// Applies for a free SSL certificate.
+// 申请免费证书
 //
 // @param request - ApplyCertificateRequest
 //
@@ -311,7 +311,7 @@ func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateReque
 
 // Summary:
 //
-// Applies for a free SSL certificate.
+// 申请免费证书
 //
 // @param request - ApplyCertificateRequest
 //
@@ -391,13 +391,7 @@ func (client *Client) ApplyCustomHostnameCertificate(request *ApplyCustomHostnam
 
 // Summary:
 //
-// Adds DNS records of different record types at a time..
-//
-// Description:
-//
-// This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
-//
-// Successful and failed records along with error messages are listed in the response.
+// 批量创建记录
 //
 // @param tmpReq - BatchCreateRecordsRequest
 //
@@ -451,13 +445,7 @@ func (client *Client) BatchCreateRecordsWithOptions(tmpReq *BatchCreateRecordsRe
 
 // Summary:
 //
-// Adds DNS records of different record types at a time..
-//
-// Description:
-//
-// This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
-//
-// Successful and failed records along with error messages are listed in the response.
+// 批量创建记录
 //
 // @param request - BatchCreateRecordsRequest
 //
@@ -475,7 +463,7 @@ func (client *Client) BatchCreateRecords(request *BatchCreateRecordsRequest) (_r
 
 // Summary:
 //
-// # Batch Create WAF Rules
+// 批量创建WAF规则
 //
 // @param tmpReq - BatchCreateWafRulesRequest
 //
@@ -551,7 +539,7 @@ func (client *Client) BatchCreateWafRulesWithOptions(tmpReq *BatchCreateWafRules
 
 // Summary:
 //
-// # Batch Create WAF Rules
+// 批量创建WAF规则
 //
 // @param request - BatchCreateWafRulesRequest
 //
@@ -569,7 +557,7 @@ func (client *Client) BatchCreateWafRules(request *BatchCreateWafRulesRequest) (
 
 // Summary:
 //
-// Deletes key-value pairs from a namespace at a time based on keys.
+// 批量删除Namespace的key-value对
 //
 // @param tmpReq - BatchDeleteKvRequest
 //
@@ -625,7 +613,7 @@ func (client *Client) BatchDeleteKvWithOptions(tmpReq *BatchDeleteKvRequest, run
 
 // Summary:
 //
-// Deletes key-value pairs from a namespace at a time based on keys.
+// 批量删除Namespace的key-value对
 //
 // @param request - BatchDeleteKvRequest
 //
@@ -643,79 +631,7 @@ func (client *Client) BatchDeleteKv(request *BatchDeleteKvRequest) (_result *Bat
 
 // Summary:
 //
-// Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
-//
-// Description:
-//
-// This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
-//
-//	func TestBatchDeleteWithHighCapacity() error {
-//
-//		// Initialize the configurations.
-//
-//		cfg := new(openapi.Config)
-//
-//		cfg.SetAccessKeyId("xxxxxxxxx")
-//
-//		cfg.SetAccessKeySecret("xxxxxxxxxx")
-//
-//		cli, err := NewClient(cfg)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		runtime := &util.RuntimeOptions{}
-//
-//		// Construct a request for deleting key-value pairs at a time.
-//
-//		namespace := "test_batch_put"
-//
-//		rawReq := BatchDeleteKvRequest{
-//
-//			Namespace: &namespace,
-//
-//		}
-//
-//		for i := 0; i < 10000; i++ {
-//
-//			key := fmt.Sprintf("test_key_%d", i)
-//
-//			rawReq.Keys = append(rawReq.Keys, &key)
-//
-//		}
-//
-//		payload, err := json.Marshal(rawReq)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		// If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
-//
-//		reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
-//
-//			Namespace: &namespace,
-//
-//			UrlObject: bytes.NewReader(payload),
-//
-//		}
-//
-//		resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		return nil
-//
-//	}
+// 批量删除Namespace下的KV队，支持大body的上传，上限100M
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -763,79 +679,7 @@ func (client *Client) BatchDeleteKvWithHighCapacityWithOptions(request *BatchDel
 
 // Summary:
 //
-// Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
-//
-// Description:
-//
-// This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
-//
-//	func TestBatchDeleteWithHighCapacity() error {
-//
-//		// Initialize the configurations.
-//
-//		cfg := new(openapi.Config)
-//
-//		cfg.SetAccessKeyId("xxxxxxxxx")
-//
-//		cfg.SetAccessKeySecret("xxxxxxxxxx")
-//
-//		cli, err := NewClient(cfg)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		runtime := &util.RuntimeOptions{}
-//
-//		// Construct a request for deleting key-value pairs at a time.
-//
-//		namespace := "test_batch_put"
-//
-//		rawReq := BatchDeleteKvRequest{
-//
-//			Namespace: &namespace,
-//
-//		}
-//
-//		for i := 0; i < 10000; i++ {
-//
-//			key := fmt.Sprintf("test_key_%d", i)
-//
-//			rawReq.Keys = append(rawReq.Keys, &key)
-//
-//		}
-//
-//		payload, err := json.Marshal(rawReq)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		// If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
-//
-//		reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
-//
-//			Namespace: &namespace,
-//
-//			UrlObject: bytes.NewReader(payload),
-//
-//		}
-//
-//		resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		return nil
-//
-//	}
+// 批量删除Namespace下的KV队，支持大body的上传，上限100M
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -960,7 +804,7 @@ func (client *Client) BatchDeleteKvWithHighCapacityAdvance(request *BatchDeleteK
 
 // Summary:
 //
-// # Batch Get Expression Matches
+// 批量获取表达式的匹配项
 //
 // @param tmpReq - BatchGetExpressionFieldsRequest
 //
@@ -1032,7 +876,7 @@ func (client *Client) BatchGetExpressionFieldsWithOptions(tmpReq *BatchGetExpres
 
 // Summary:
 //
-// # Batch Get Expression Matches
+// 批量获取表达式的匹配项
 //
 // @param request - BatchGetExpressionFieldsRequest
 //
@@ -1050,7 +894,7 @@ func (client *Client) BatchGetExpressionFields(request *BatchGetExpressionFields
 
 // Summary:
 //
-// Configures key-value pairs for a namespace at a time based on specified keys.
+// 批量配置Namespace的key-value对
 //
 // @param tmpReq - BatchPutKvRequest
 //
@@ -1106,7 +950,7 @@ func (client *Client) BatchPutKvWithOptions(tmpReq *BatchPutKvRequest, runtime *
 
 // Summary:
 //
-// Configures key-value pairs for a namespace at a time based on specified keys.
+// 批量配置Namespace的key-value对
 //
 // @param request - BatchPutKvRequest
 //
@@ -1124,95 +968,7 @@ func (client *Client) BatchPutKv(request *BatchPutKvRequest) (_result *BatchPutK
 
 // Summary:
 //
-// Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
-//
-// Description:
-//
-// This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
-//
-//	func TestBatchPutKvWithHighCapacity() error {
-//
-//		// Initialize the configurations.
-//
-//		cfg := new(openapi.Config)
-//
-//		cfg.SetAccessKeyId("xxxxxxxxx")
-//
-//		cfg.SetAccessKeySecret("xxxxxxxxxx")
-//
-//		cli, err := NewClient(cfg)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		runtime := &util.RuntimeOptions{}
-//
-//		// Construct a request for uploading key-value pairs at a time.
-//
-//		namespace := "test_batch_put"
-//
-//		numKv := 10000
-//
-//		kvList := make([]*BatchPutKvRequestKvList, numKv)
-//
-//		test_value := strings.Repeat("a", 10*1024)
-//
-//		for i := 0; i < numKv; i++ {
-//
-//			key := fmt.Sprintf("test_key_%d", i)
-//
-//			value := test_value
-//
-//			kvList[i] = &BatchPutKvRequestKvList{
-//
-//				Key:   &key,
-//
-//				Value: &value,
-//
-//			}
-//
-//		}
-//
-//		rawReq := BatchPutKvRequest{
-//
-//			Namespace: &namespace,
-//
-//			KvList:    kvList,
-//
-//		}
-//
-//		payload, err := json.Marshal(rawReq)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		// If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
-//
-//		reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
-//
-//			Namespace: &namespace,
-//
-//			UrlObject: bytes.NewReader(payload),
-//
-//		}
-//
-//		resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		return nil
-//
-//	}
+// 批量设置Namespace的key-value对，支持最大100M的请求体
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -1260,95 +1016,7 @@ func (client *Client) BatchPutKvWithHighCapacityWithOptions(request *BatchPutKvW
 
 // Summary:
 //
-// Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
-//
-// Description:
-//
-// This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
-//
-//	func TestBatchPutKvWithHighCapacity() error {
-//
-//		// Initialize the configurations.
-//
-//		cfg := new(openapi.Config)
-//
-//		cfg.SetAccessKeyId("xxxxxxxxx")
-//
-//		cfg.SetAccessKeySecret("xxxxxxxxxx")
-//
-//		cli, err := NewClient(cfg)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		runtime := &util.RuntimeOptions{}
-//
-//		// Construct a request for uploading key-value pairs at a time.
-//
-//		namespace := "test_batch_put"
-//
-//		numKv := 10000
-//
-//		kvList := make([]*BatchPutKvRequestKvList, numKv)
-//
-//		test_value := strings.Repeat("a", 10*1024)
-//
-//		for i := 0; i < numKv; i++ {
-//
-//			key := fmt.Sprintf("test_key_%d", i)
-//
-//			value := test_value
-//
-//			kvList[i] = &BatchPutKvRequestKvList{
-//
-//				Key:   &key,
-//
-//				Value: &value,
-//
-//			}
-//
-//		}
-//
-//		rawReq := BatchPutKvRequest{
-//
-//			Namespace: &namespace,
-//
-//			KvList:    kvList,
-//
-//		}
-//
-//		payload, err := json.Marshal(rawReq)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		// If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
-//
-//		reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
-//
-//			Namespace: &namespace,
-//
-//			UrlObject: bytes.NewReader(payload),
-//
-//		}
-//
-//		resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		return nil
-//
-//	}
+// 批量设置Namespace的key-value对，支持最大100M的请求体
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -1473,7 +1141,7 @@ func (client *Client) BatchPutKvWithHighCapacityAdvance(request *BatchPutKvWithH
 
 // Summary:
 //
-// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+// 批量修改WAF规则
 //
 // @param tmpReq - BatchUpdateWafRulesRequest
 //
@@ -1549,7 +1217,7 @@ func (client *Client) BatchUpdateWafRulesWithOptions(tmpReq *BatchUpdateWafRules
 
 // Summary:
 //
-// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+// 批量修改WAF规则
 //
 // @param request - BatchUpdateWafRulesRequest
 //
@@ -1567,7 +1235,7 @@ func (client *Client) BatchUpdateWafRules(request *BatchUpdateWafRulesRequest) (
 
 // Summary:
 //
-// Blocks URLs.
+// # URL封禁
 //
 // @param tmpReq - BlockObjectRequest
 //
@@ -1629,7 +1297,7 @@ func (client *Client) BlockObjectWithOptions(tmpReq *BlockObjectRequest, runtime
 
 // Summary:
 //
-// Blocks URLs.
+// # URL封禁
 //
 // @param request - BlockObjectRequest
 //
@@ -1692,7 +1360,7 @@ func (client *Client) CheckAssumeSlrRole() (_result *CheckAssumeSlrRoleResponse,
 
 // Summary:
 //
-// Checks whether a specified website name is available.
+// 校验站点名称是否可用
 //
 // @param request - CheckSiteNameRequest
 //
@@ -1736,7 +1404,7 @@ func (client *Client) CheckSiteNameWithOptions(request *CheckSiteNameRequest, ru
 
 // Summary:
 //
-// Checks whether a specified website name is available.
+// 校验站点名称是否可用
 //
 // @param request - CheckSiteNameRequest
 //
@@ -1754,7 +1422,7 @@ func (client *Client) CheckSiteName(request *CheckSiteNameRequest) (_result *Che
 
 // Summary:
 //
-// Checks the name of a real-time log delivery task.
+// 实时日志任务投递名检查
 //
 // @param request - CheckSiteProjectNameRequest
 //
@@ -1794,7 +1462,7 @@ func (client *Client) CheckSiteProjectNameWithOptions(request *CheckSiteProjectN
 
 // Summary:
 //
-// Checks the name of a real-time log delivery task.
+// 实时日志任务投递名检查
 //
 // @param request - CheckSiteProjectNameRequest
 //
@@ -1812,7 +1480,7 @@ func (client *Client) CheckSiteProjectName(request *CheckSiteProjectNameRequest)
 
 // Summary:
 //
-// Checks the name of a real-time log delivery task by account.
+// 实时日志用户任务投递名检查
 //
 // @param request - CheckUserProjectNameRequest
 //
@@ -1852,7 +1520,7 @@ func (client *Client) CheckUserProjectNameWithOptions(request *CheckUserProjectN
 
 // Summary:
 //
-// Checks the name of a real-time log delivery task by account.
+// 实时日志用户任务投递名检查
 //
 // @param request - CheckUserProjectNameRequest
 //
@@ -1870,7 +1538,7 @@ func (client *Client) CheckUserProjectName(request *CheckUserProjectNameRequest)
 
 // Summary:
 //
-// Commits the unstable code in the staging environment to generate an official code version.
+// 提交Routine测试版本代码
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -1918,7 +1586,7 @@ func (client *Client) CommitRoutineStagingCodeWithOptions(request *CommitRoutine
 
 // Summary:
 //
-// Commits the unstable code in the staging environment to generate an official code version.
+// 提交Routine测试版本代码
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -1936,7 +1604,7 @@ func (client *Client) CommitRoutineStagingCode(request *CommitRoutineStagingCode
 
 // Summary:
 //
-// # Create a new site cache configuration
+// 新增站点缓存配置
 //
 // @param request - CreateCacheRuleRequest
 //
@@ -2092,7 +1760,7 @@ func (client *Client) CreateCacheRuleWithOptions(request *CreateCacheRuleRequest
 
 // Summary:
 //
-// # Create a new site cache configuration
+// 新增站点缓存配置
 //
 // @param request - CreateCacheRuleRequest
 //
@@ -2110,7 +1778,7 @@ func (client *Client) CreateCacheRule(request *CreateCacheRuleRequest) (_result 
 
 // Summary:
 //
-// Uses the ESA-managed certificate authority (CA) to issue client certificates.
+// 创建客户端证书
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -2168,7 +1836,7 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 
 // Summary:
 //
-// Uses the ESA-managed certificate authority (CA) to issue client certificates.
+// 创建客户端证书
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -2186,7 +1854,7 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 
 // Summary:
 //
-// # Add a compression rule
+// 新增压缩规则
 //
 // @param request - CreateCompressionRuleRequest
 //
@@ -2262,7 +1930,7 @@ func (client *Client) CreateCompressionRuleWithOptions(request *CreateCompressio
 
 // Summary:
 //
-// # Add a compression rule
+// 新增压缩规则
 //
 // @param request - CreateCompressionRuleRequest
 //
@@ -2374,7 +2042,7 @@ func (client *Client) CreateCustomHostname(request *CreateCustomHostnameRequest)
 
 // Summary:
 //
-// Add configurations for modifying the response code.
+// 新增修改响应码规则
 //
 // @param request - CreateCustomResponseCodeRuleRequest
 //
@@ -2446,7 +2114,7 @@ func (client *Client) CreateCustomResponseCodeRuleWithOptions(request *CreateCus
 
 // Summary:
 //
-// Add configurations for modifying the response code.
+// 新增修改响应码规则
 //
 // @param request - CreateCustomResponseCodeRuleRequest
 //
@@ -2464,7 +2132,7 @@ func (client *Client) CreateCustomResponseCodeRule(request *CreateCustomResponse
 
 // Summary:
 //
-// Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
+// 创建定制场景策略
 //
 // @param request - CreateCustomScenePolicyRequest
 //
@@ -2528,7 +2196,7 @@ func (client *Client) CreateCustomScenePolicyWithOptions(request *CreateCustomSc
 
 // Summary:
 //
-// Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
+// 创建定制场景策略
 //
 // @param request - CreateCustomScenePolicyRequest
 //
@@ -2546,7 +2214,7 @@ func (client *Client) CreateCustomScenePolicy(request *CreateCustomScenePolicyRe
 
 // Summary:
 //
-// Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
+// 创建边缘容器的应用
 //
 // @param request - CreateEdgeContainerAppRequest
 //
@@ -2642,7 +2310,7 @@ func (client *Client) CreateEdgeContainerAppWithOptions(request *CreateEdgeConta
 
 // Summary:
 //
-// Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
+// 创建边缘容器的应用
 //
 // @param request - CreateEdgeContainerAppRequest
 //
@@ -2660,7 +2328,7 @@ func (client *Client) CreateEdgeContainerApp(request *CreateEdgeContainerAppRequ
 
 // Summary:
 //
-// # Create an image secret for the edge container application
+// 创建边缘容器应用的镜像秘钥
 //
 // @param request - CreateEdgeContainerAppImageSecretRequest
 //
@@ -2716,7 +2384,7 @@ func (client *Client) CreateEdgeContainerAppImageSecretWithOptions(request *Crea
 
 // Summary:
 //
-// # Create an image secret for the edge container application
+// 创建边缘容器应用的镜像秘钥
 //
 // @param request - CreateEdgeContainerAppImageSecretRequest
 //
@@ -2734,7 +2402,7 @@ func (client *Client) CreateEdgeContainerAppImageSecret(request *CreateEdgeConta
 
 // Summary:
 //
-// Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
+// 创建一个边缘容器应用的域名记录
 //
 // @param request - CreateEdgeContainerAppRecordRequest
 //
@@ -2786,7 +2454,7 @@ func (client *Client) CreateEdgeContainerAppRecordWithOptions(request *CreateEdg
 
 // Summary:
 //
-// Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
+// 创建一个边缘容器应用的域名记录
 //
 // @param request - CreateEdgeContainerAppRecordRequest
 //
@@ -2804,7 +2472,7 @@ func (client *Client) CreateEdgeContainerAppRecord(request *CreateEdgeContainerA
 
 // Summary:
 //
-// Creates a version for a containerized application. You can iterate the application based on the version.
+// 创建边缘容器应用的版本
 //
 // @param tmpReq - CreateEdgeContainerAppVersionRequest
 //
@@ -2866,7 +2534,7 @@ func (client *Client) CreateEdgeContainerAppVersionWithOptions(tmpReq *CreateEdg
 
 // Summary:
 //
-// Creates a version for a containerized application. You can iterate the application based on the version.
+// 创建边缘容器应用的版本
 //
 // @param request - CreateEdgeContainerAppVersionRequest
 //
@@ -2884,7 +2552,7 @@ func (client *Client) CreateEdgeContainerAppVersion(request *CreateEdgeContainer
 
 // Summary:
 //
-// Adds the configuration of modifying HTTP request headers for a website.
+// 新增HTTP入站请求头规则
 //
 // @param tmpReq - CreateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -2958,7 +2626,7 @@ func (client *Client) CreateHttpIncomingRequestHeaderModificationRuleWithOptions
 
 // Summary:
 //
-// Adds the configuration of modifying HTTP request headers for a website.
+// 新增HTTP入站请求头规则
 //
 // @param request - CreateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -2976,7 +2644,7 @@ func (client *Client) CreateHttpIncomingRequestHeaderModificationRule(request *C
 
 // Summary:
 //
-// Adds the configuration of modifying HTTP response headers for a website.
+// 新增HTTP入站响应头规则
 //
 // @param tmpReq - CreateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -3050,7 +2718,7 @@ func (client *Client) CreateHttpIncomingResponseHeaderModificationRuleWithOption
 
 // Summary:
 //
-// Adds the configuration of modifying HTTP response headers for a website.
+// 新增HTTP入站响应头规则
 //
 // @param request - CreateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -3068,7 +2736,7 @@ func (client *Client) CreateHttpIncomingResponseHeaderModificationRule(request *
 
 // Summary:
 //
-// # Add HTTP Request Header Rule
+// 新增HTTP请求头规则
 //
 // @param tmpReq - CreateHttpRequestHeaderModificationRuleRequest
 //
@@ -3142,7 +2810,7 @@ func (client *Client) CreateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 
 // Summary:
 //
-// # Add HTTP Request Header Rule
+// 新增HTTP请求头规则
 //
 // @param request - CreateHttpRequestHeaderModificationRuleRequest
 //
@@ -3160,7 +2828,7 @@ func (client *Client) CreateHttpRequestHeaderModificationRule(request *CreateHtt
 
 // Summary:
 //
-// # Add HTTP Response Header Rule
+// 新增HTTP响应头规则
 //
 // @param tmpReq - CreateHttpResponseHeaderModificationRuleRequest
 //
@@ -3234,7 +2902,7 @@ func (client *Client) CreateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 // Summary:
 //
-// # Add HTTP Response Header Rule
+// 新增HTTP响应头规则
 //
 // @param request - CreateHttpResponseHeaderModificationRuleRequest
 //
@@ -3252,7 +2920,7 @@ func (client *Client) CreateHttpResponseHeaderModificationRule(request *CreateHt
 
 // Summary:
 //
-// # Create a new site HTTPS application configuration
+// 创建站点HTTPS应用配置
 //
 // @param request - CreateHttpsApplicationConfigurationRequest
 //
@@ -3368,7 +3036,7 @@ func (client *Client) CreateHttpsApplicationConfigurationWithOptions(request *Cr
 
 // Summary:
 //
-// # Create a new site HTTPS application configuration
+// 创建站点HTTPS应用配置
 //
 // @param request - CreateHttpsApplicationConfigurationRequest
 //
@@ -3386,7 +3054,7 @@ func (client *Client) CreateHttpsApplicationConfiguration(request *CreateHttpsAp
 
 // Summary:
 //
-// # Create a new site HTTPS basic configuration
+// 新增站点HTTPS基础配置
 //
 // @param request - CreateHttpsBasicConfigurationRequest
 //
@@ -3486,7 +3154,7 @@ func (client *Client) CreateHttpsBasicConfigurationWithOptions(request *CreateHt
 
 // Summary:
 //
-// # Create a new site HTTPS basic configuration
+// 新增站点HTTPS基础配置
 //
 // @param request - CreateHttpsBasicConfigurationRequest
 //
@@ -3504,7 +3172,7 @@ func (client *Client) CreateHttpsBasicConfiguration(request *CreateHttpsBasicCon
 
 // Summary:
 //
-// # Add Site Image Transformation Configuration
+// 新增站点图片转换配置
 //
 // @param request - CreateImageTransformRequest
 //
@@ -3580,7 +3248,7 @@ func (client *Client) CreateImageTransformWithOptions(request *CreateImageTransf
 
 // Summary:
 //
-// # Add Site Image Transformation Configuration
+// 新增站点图片转换配置
 //
 // @param request - CreateImageTransformRequest
 //
@@ -3598,7 +3266,7 @@ func (client *Client) CreateImageTransform(request *CreateImageTransformRequest)
 
 // Summary:
 //
-// Create a namespace in your Alibaba Cloud account.
+// 新增Namespace
 //
 // @param request - CreateKvNamespaceRequest
 //
@@ -3646,7 +3314,7 @@ func (client *Client) CreateKvNamespaceWithOptions(request *CreateKvNamespaceReq
 
 // Summary:
 //
-// Create a namespace in your Alibaba Cloud account.
+// 新增Namespace
 //
 // @param request - CreateKvNamespaceRequest
 //
@@ -3664,7 +3332,7 @@ func (client *Client) CreateKvNamespace(request *CreateKvNamespaceRequest) (_res
 
 // Summary:
 //
-// Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
+// 创建自定义列表
 //
 // @param tmpReq - CreateListRequest
 //
@@ -3726,7 +3394,7 @@ func (client *Client) CreateListWithOptions(tmpReq *CreateListRequest, runtime *
 
 // Summary:
 //
-// Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
+// 创建自定义列表
 //
 // @param request - CreateListRequest
 //
@@ -3744,11 +3412,7 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 
 // Summary:
 //
-// # Add a New Load Balancer
-//
-// Description:
-//
-// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and more, to achieve effective traffic management and optimization.
+// 新增负载均衡器
 //
 // @param tmpReq - CreateLoadBalancerRequest
 //
@@ -3870,11 +3534,7 @@ func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRe
 
 // Summary:
 //
-// # Add a New Load Balancer
-//
-// Description:
-//
-// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and more, to achieve effective traffic management and optimization.
+// 新增负载均衡器
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -3892,7 +3552,7 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 
 // Summary:
 //
-// # Create a new site network optimization configuration
+// 新增站点网络优化配置
 //
 // @param request - CreateNetworkOptimizationRequest
 //
@@ -3976,7 +3636,7 @@ func (client *Client) CreateNetworkOptimizationWithOptions(request *CreateNetwor
 
 // Summary:
 //
-// # Create a new site network optimization configuration
+// 新增站点网络优化配置
 //
 // @param request - CreateNetworkOptimizationRequest
 //
@@ -3994,11 +3654,7 @@ func (client *Client) CreateNetworkOptimization(request *CreateNetworkOptimizati
 
 // Summary:
 //
-// # Add a new origin address pool
-//
-// Description:
-//
-// Multiple origins can be added under the origin address, supporting domain names, IPs, OSS, S3, and other types of origins. It supports authentication for OSS and S3 type origins.
+// 新增源地址池
 //
 // @param tmpReq - CreateOriginPoolRequest
 //
@@ -4060,11 +3716,7 @@ func (client *Client) CreateOriginPoolWithOptions(tmpReq *CreateOriginPoolReques
 
 // Summary:
 //
-// # Add a new origin address pool
-//
-// Description:
-//
-// Multiple origins can be added under the origin address, supporting domain names, IPs, OSS, S3, and other types of origins. It supports authentication for OSS and S3 type origins.
+// 新增源地址池
 //
 // @param request - CreateOriginPoolRequest
 //
@@ -4082,7 +3734,7 @@ func (client *Client) CreateOriginPool(request *CreateOriginPoolRequest) (_resul
 
 // Summary:
 //
-// Enables origin protection.
+// 开启源站防护
 //
 // @param request - CreateOriginProtectionRequest
 //
@@ -4130,7 +3782,7 @@ func (client *Client) CreateOriginProtectionWithOptions(request *CreateOriginPro
 
 // Summary:
 //
-// Enables origin protection.
+// 开启源站防护
 //
 // @param request - CreateOriginProtectionRequest
 //
@@ -4148,7 +3800,7 @@ func (client *Client) CreateOriginProtection(request *CreateOriginProtectionRequ
 
 // Summary:
 //
-// # Create a new origin rule configuration for the site
+// 创建站点回源规则配置
 //
 // @param request - CreateOriginRuleRequest
 //
@@ -4276,7 +3928,7 @@ func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleReque
 
 // Summary:
 //
-// # Create a new origin rule configuration for the site
+// 创建站点回源规则配置
 //
 // @param request - CreateOriginRuleRequest
 //
@@ -4294,7 +3946,7 @@ func (client *Client) CreateOriginRule(request *CreateOriginRuleRequest) (_resul
 
 // Summary:
 //
-// Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
+// 调用CreatePage创建自定义响应页面
 //
 // @param tmpReq - CreatePageRequest
 //
@@ -4360,7 +4012,7 @@ func (client *Client) CreatePageWithOptions(tmpReq *CreatePageRequest, runtime *
 
 // Summary:
 //
-// Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
+// 调用CreatePage创建自定义响应页面
 //
 // @param request - CreatePageRequest
 //
@@ -4378,7 +4030,7 @@ func (client *Client) CreatePage(request *CreatePageRequest) (_result *CreatePag
 
 // Summary:
 //
-// Creates a DNS record for a specific website.
+// 创建记录
 //
 // @param tmpReq - CreateRecordRequest
 //
@@ -4472,7 +4124,7 @@ func (client *Client) CreateRecordWithOptions(tmpReq *CreateRecordRequest, runti
 
 // Summary:
 //
-// Creates a DNS record for a specific website.
+// 创建记录
 //
 // @param request - CreateRecordRequest
 //
@@ -4490,7 +4142,7 @@ func (client *Client) CreateRecord(request *CreateRecordRequest) (_result *Creat
 
 // Summary:
 //
-// # Add a Redirect Rule
+// 新增重定向规则
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -4570,7 +4222,7 @@ func (client *Client) CreateRedirectRuleWithOptions(request *CreateRedirectRuleR
 
 // Summary:
 //
-// # Add a Redirect Rule
+// 新增重定向规则
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -4588,7 +4240,7 @@ func (client *Client) CreateRedirectRule(request *CreateRedirectRuleRequest) (_r
 
 // Summary:
 //
-// # Add Rewrite URL Rule
+// 新增重写Url规则
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -4668,7 +4320,7 @@ func (client *Client) CreateRewriteUrlRuleWithOptions(request *CreateRewriteUrlR
 
 // Summary:
 //
-// # Add Rewrite URL Rule
+// 新增重写Url规则
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -4686,7 +4338,7 @@ func (client *Client) CreateRewriteUrlRule(request *CreateRewriteUrlRuleRequest)
 
 // Summary:
 //
-// Creates a routine.
+// 创建routine
 //
 // @param request - CreateRoutineRequest
 //
@@ -4738,7 +4390,7 @@ func (client *Client) CreateRoutineWithOptions(request *CreateRoutineRequest, ru
 
 // Summary:
 //
-// Creates a routine.
+// 创建routine
 //
 // @param request - CreateRoutineRequest
 //
@@ -4756,15 +4408,7 @@ func (client *Client) CreateRoutine(request *CreateRoutineRequest) (_result *Cre
 
 // Summary:
 //
-// Release the version of the function code in proportion to the specified environment.
-//
-// Description:
-//
-// ## [](#)Request description
-//
-//   - When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
-//
-//   - `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
+// 发布Routine某个版本代码
 //
 // @param tmpReq - CreateRoutineCodeDeploymentRequest
 //
@@ -4826,15 +4470,7 @@ func (client *Client) CreateRoutineCodeDeploymentWithOptions(tmpReq *CreateRouti
 
 // Summary:
 //
-// Release the version of the function code in proportion to the specified environment.
-//
-// Description:
-//
-// ## [](#)Request description
-//
-//   - When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
-//
-//   - `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
+// 发布Routine某个版本代码
 //
 // @param request - CreateRoutineCodeDeploymentRequest
 //
@@ -4852,7 +4488,7 @@ func (client *Client) CreateRoutineCodeDeployment(request *CreateRoutineCodeDepl
 
 // Summary:
 //
-// Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
+// 新增Routine关联域名
 //
 // @param request - CreateRoutineRelatedRecordRequest
 //
@@ -4904,7 +4540,7 @@ func (client *Client) CreateRoutineRelatedRecordWithOptions(request *CreateRouti
 
 // Summary:
 //
-// Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
+// 新增Routine关联域名
 //
 // @param request - CreateRoutineRelatedRecordRequest
 //
@@ -4922,7 +4558,7 @@ func (client *Client) CreateRoutineRelatedRecord(request *CreateRoutineRelatedRe
 
 // Summary:
 //
-// Adds edge function routing configurations.
+// 创建边缘函数路由配置
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -4998,7 +4634,7 @@ func (client *Client) CreateRoutineRouteWithOptions(request *CreateRoutineRouteR
 
 // Summary:
 //
-// Adds edge function routing configurations.
+// 创建边缘函数路由配置
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -5100,7 +4736,7 @@ func (client *Client) CreateRoutineWithAssetsCodeVersion(request *CreateRoutineW
 
 // Summary:
 //
-// Creates scheduled prefetch plans.
+// 批量新增定时预热任务的计划
 //
 // @param tmpReq - CreateScheduledPreloadExecutionsRequest
 //
@@ -5156,7 +4792,7 @@ func (client *Client) CreateScheduledPreloadExecutionsWithOptions(tmpReq *Create
 
 // Summary:
 //
-// Creates scheduled prefetch plans.
+// 批量新增定时预热任务的计划
 //
 // @param request - CreateScheduledPreloadExecutionsRequest
 //
@@ -5174,7 +4810,7 @@ func (client *Client) CreateScheduledPreloadExecutions(request *CreateScheduledP
 
 // Summary:
 //
-// Adds a scheduled prefetch task.
+// 新增定时预热任务
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -5234,7 +4870,7 @@ func (client *Client) CreateScheduledPreloadJobWithOptions(request *CreateSchedu
 
 // Summary:
 //
-// Adds a scheduled prefetch task.
+// 新增定时预热任务
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -5252,13 +4888,7 @@ func (client *Client) CreateScheduledPreloadJob(request *CreateScheduledPreloadJ
 
 // Summary:
 //
-// Adds a website.
-//
-// Description:
-//
-//	  Make sure that you have an available plan before you add a website.
-//
-//		- Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
+// 新建站点
 //
 // @param request - CreateSiteRequest
 //
@@ -5318,13 +4948,7 @@ func (client *Client) CreateSiteWithOptions(request *CreateSiteRequest, runtime 
 
 // Summary:
 //
-// Adds a website.
-//
-// Description:
-//
-//	  Make sure that you have an available plan before you add a website.
-//
-//		- Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
+// 新建站点
 //
 // @param request - CreateSiteRequest
 //
@@ -5342,15 +4966,7 @@ func (client *Client) CreateSite(request *CreateSiteRequest) (_result *CreateSit
 
 // Summary:
 //
-// Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
-//
-// Description:
-//
-//	  **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
-//
-//		- **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
-//
-//		- **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
+// 新建自定义字段
 //
 // @param tmpReq - CreateSiteCustomLogRequest
 //
@@ -5420,15 +5036,7 @@ func (client *Client) CreateSiteCustomLogWithOptions(tmpReq *CreateSiteCustomLog
 
 // Summary:
 //
-// Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
-//
-// Description:
-//
-//	  **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
-//
-//		- **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
-//
-//		- **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
+// 新建自定义字段
 //
 // @param request - CreateSiteCustomLogRequest
 //
@@ -5446,7 +5054,7 @@ func (client *Client) CreateSiteCustomLog(request *CreateSiteCustomLogRequest) (
 
 // Summary:
 //
-// Creates a real-time log delivery task.
+// 新建一个任务投递
 //
 // @param tmpReq - CreateSiteDeliveryTaskRequest
 //
@@ -5560,7 +5168,7 @@ func (client *Client) CreateSiteDeliveryTaskWithOptions(tmpReq *CreateSiteDelive
 
 // Summary:
 //
-// Creates a real-time log delivery task.
+// 新建一个任务投递
 //
 // @param request - CreateSiteDeliveryTaskRequest
 //
@@ -5623,7 +5231,7 @@ func (client *Client) CreateSlrRoleForRealtimeLog() (_result *CreateSlrRoleForRe
 
 // Summary:
 //
-// # Create Transport Layer Application
+// 创建四层应用
 //
 // @param tmpReq - CreateTransportLayerApplicationRequest
 //
@@ -5701,7 +5309,7 @@ func (client *Client) CreateTransportLayerApplicationWithOptions(tmpReq *CreateT
 
 // Summary:
 //
-// # Create Transport Layer Application
+// 创建四层应用
 //
 // @param request - CreateTransportLayerApplicationRequest
 //
@@ -5719,7 +5327,7 @@ func (client *Client) CreateTransportLayerApplication(request *CreateTransportLa
 
 // Summary:
 //
-// Create a web page monitoring configuration.
+// 新增网页监测配置
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -5771,7 +5379,7 @@ func (client *Client) CreateUrlObservationWithOptions(request *CreateUrlObservat
 
 // Summary:
 //
-// Create a web page monitoring configuration.
+// 新增网页监测配置
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -5789,27 +5397,7 @@ func (client *Client) CreateUrlObservation(request *CreateUrlObservationRequest)
 
 // Summary:
 //
-// Creates a log delivery task to ship logs to the specified destination.
-//
-// Description:
-//
-// This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
-//
-//   - **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
-//
-//   - **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
-//
-//   - **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
-//
-// ## [](#)Precautions
-//
-//   - Make sure that you have sufficient permissions to perform delivery tasks.
-//
-//   - If you enable encryption or authentication, properly configure corresponding parameters.
-//
-//   - Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
-//
-//   - Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
+// 新建一个用户粒度任务投递
 //
 // @param tmpReq - CreateUserDeliveryTaskRequest
 //
@@ -5923,27 +5511,7 @@ func (client *Client) CreateUserDeliveryTaskWithOptions(tmpReq *CreateUserDelive
 
 // Summary:
 //
-// Creates a log delivery task to ship logs to the specified destination.
-//
-// Description:
-//
-// This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
-//
-//   - **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
-//
-//   - **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
-//
-//   - **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
-//
-// ## [](#)Precautions
-//
-//   - Make sure that you have sufficient permissions to perform delivery tasks.
-//
-//   - If you enable encryption or authentication, properly configure corresponding parameters.
-//
-//   - Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
-//
-//   - Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
+// 新建一个用户粒度任务投递
 //
 // @param request - CreateUserDeliveryTaskRequest
 //
@@ -6103,7 +5671,7 @@ func (client *Client) CreateUserWafRuleset(request *CreateUserWafRulesetRequest)
 
 // Summary:
 //
-// Add video processing configurations for a website.
+// 新增站点视频处理配置
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -6191,7 +5759,7 @@ func (client *Client) CreateVideoProcessingWithOptions(request *CreateVideoProce
 
 // Summary:
 //
-// Add video processing configurations for a website.
+// 新增站点视频处理配置
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -6209,7 +5777,7 @@ func (client *Client) CreateVideoProcessing(request *CreateVideoProcessingReques
 
 // Summary:
 //
-// # Create WAF Rule
+// 创建WAF规则
 //
 // @param tmpReq - CreateWafRuleRequest
 //
@@ -6277,7 +5845,7 @@ func (client *Client) CreateWafRuleWithOptions(tmpReq *CreateWafRuleRequest, run
 
 // Summary:
 //
-// # Create WAF Rule
+// 创建WAF规则
 //
 // @param request - CreateWafRuleRequest
 //
@@ -6295,7 +5863,7 @@ func (client *Client) CreateWafRule(request *CreateWafRuleRequest) (_result *Cre
 
 // Summary:
 //
-// # Create WAF Ruleset
+// 创建WAF规则集
 //
 // @param request - CreateWafRulesetRequest
 //
@@ -6353,7 +5921,7 @@ func (client *Client) CreateWafRulesetWithOptions(request *CreateWafRulesetReque
 
 // Summary:
 //
-// # Create WAF Ruleset
+// 创建WAF规则集
 //
 // @param request - CreateWafRulesetRequest
 //
@@ -6371,7 +5939,7 @@ func (client *Client) CreateWafRuleset(request *CreateWafRulesetRequest) (_resul
 
 // Summary:
 //
-// Creates a waiting room for a website.
+// 创建等候室
 //
 // @param tmpReq - CreateWaitingRoomRequest
 //
@@ -6485,7 +6053,7 @@ func (client *Client) CreateWaitingRoomWithOptions(tmpReq *CreateWaitingRoomRequ
 
 // Summary:
 //
-// Creates a waiting room for a website.
+// 创建等候室
 //
 // @param request - CreateWaitingRoomRequest
 //
@@ -6503,7 +6071,7 @@ func (client *Client) CreateWaitingRoom(request *CreateWaitingRoomRequest) (_res
 
 // Summary:
 //
-// Creates a waiting room event.
+// 创建等候室事件
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -6623,7 +6191,7 @@ func (client *Client) CreateWaitingRoomEventWithOptions(request *CreateWaitingRo
 
 // Summary:
 //
-// Creates a waiting room event.
+// 创建等候室事件
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -6641,7 +6209,7 @@ func (client *Client) CreateWaitingRoomEvent(request *CreateWaitingRoomEventRequ
 
 // Summary:
 //
-// # Create Waiting Room Rule
+// 创建等候室规则
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -6701,7 +6269,7 @@ func (client *Client) CreateWaitingRoomRuleWithOptions(request *CreateWaitingRoo
 
 // Summary:
 //
-// # Create Waiting Room Rule
+// 创建等候室规则
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -6719,11 +6287,7 @@ func (client *Client) CreateWaitingRoomRule(request *CreateWaitingRoomRuleReques
 
 // Summary:
 //
-// Disables version management for a website.
-//
-// Description:
-//
-// You can disable version management only when the default environment and version 0 exist.
+// 关闭版本管理
 //
 // @param request - DeactivateVersionManagementRequest
 //
@@ -6767,11 +6331,7 @@ func (client *Client) DeactivateVersionManagementWithOptions(request *Deactivate
 
 // Summary:
 //
-// Disables version management for a website.
-//
-// Description:
-//
-// You can disable version management only when the default environment and version 0 exist.
+// 关闭版本管理
 //
 // @param request - DeactivateVersionManagementRequest
 //
@@ -6789,7 +6349,7 @@ func (client *Client) DeactivateVersionManagement(request *DeactivateVersionMana
 
 // Summary:
 //
-// # Delete Cache Configuration
+// 删除缓存配置
 //
 // @param request - DeleteCacheRuleRequest
 //
@@ -6837,7 +6397,7 @@ func (client *Client) DeleteCacheRuleWithOptions(request *DeleteCacheRuleRequest
 
 // Summary:
 //
-// # Delete Cache Configuration
+// 删除缓存配置
 //
 // @param request - DeleteCacheRuleRequest
 //
@@ -6855,7 +6415,7 @@ func (client *Client) DeleteCacheRule(request *DeleteCacheRuleRequest) (_result 
 
 // Summary:
 //
-// Deletes a certificate for a website.
+// 删除证书
 //
 // @param request - DeleteCertificateRequest
 //
@@ -6895,7 +6455,7 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 
 // Summary:
 //
-// Deletes a certificate for a website.
+// 删除证书
 //
 // @param request - DeleteCertificateRequest
 //
@@ -6913,7 +6473,7 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 
 // Summary:
 //
-// Deletes a client CA certificate.
+// 删除客户端CA证书
 //
 // @param request - DeleteClientCaCertificateRequest
 //
@@ -6953,7 +6513,7 @@ func (client *Client) DeleteClientCaCertificateWithOptions(request *DeleteClient
 
 // Summary:
 //
-// Deletes a client CA certificate.
+// 删除客户端CA证书
 //
 // @param request - DeleteClientCaCertificateRequest
 //
@@ -6971,7 +6531,7 @@ func (client *Client) DeleteClientCaCertificate(request *DeleteClientCaCertifica
 
 // Summary:
 //
-// Deletes a revoked client certificate.
+// 删除客户端证书
 //
 // @param request - DeleteClientCertificateRequest
 //
@@ -7011,7 +6571,7 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 
 // Summary:
 //
-// Deletes a revoked client certificate.
+// 删除客户端证书
 //
 // @param request - DeleteClientCertificateRequest
 //
@@ -7029,7 +6589,7 @@ func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRe
 
 // Summary:
 //
-// # Delete compression rule
+// 删除压缩规则
 //
 // @param request - DeleteCompressionRuleRequest
 //
@@ -7077,7 +6637,7 @@ func (client *Client) DeleteCompressionRuleWithOptions(request *DeleteCompressio
 
 // Summary:
 //
-// # Delete compression rule
+// 删除压缩规则
 //
 // @param request - DeleteCompressionRuleRequest
 //
@@ -7157,7 +6717,7 @@ func (client *Client) DeleteCustomHostname(request *DeleteCustomHostnameRequest)
 
 // Summary:
 //
-// Deletes the configuration of response code modification for a website.
+// 删除修改响应码规则
 //
 // @param request - DeleteCustomResponseCodeRuleRequest
 //
@@ -7205,7 +6765,7 @@ func (client *Client) DeleteCustomResponseCodeRuleWithOptions(request *DeleteCus
 
 // Summary:
 //
-// Deletes the configuration of response code modification for a website.
+// 删除修改响应码规则
 //
 // @param request - DeleteCustomResponseCodeRuleRequest
 //
@@ -7223,7 +6783,7 @@ func (client *Client) DeleteCustomResponseCodeRule(request *DeleteCustomResponse
 
 // Summary:
 //
-// Deletes a scenario-specific custom policy.
+// 删除定制场景策略
 //
 // @param request - DeleteCustomScenePolicyRequest
 //
@@ -7267,7 +6827,7 @@ func (client *Client) DeleteCustomScenePolicyWithOptions(request *DeleteCustomSc
 
 // Summary:
 //
-// Deletes a scenario-specific custom policy.
+// 删除定制场景策略
 //
 // @param request - DeleteCustomScenePolicyRequest
 //
@@ -7285,7 +6845,7 @@ func (client *Client) DeleteCustomScenePolicy(request *DeleteCustomScenePolicyRe
 
 // Summary:
 //
-// Deletes a containerized application.
+// 删除边缘容器的应用
 //
 // @param request - DeleteEdgeContainerAppRequest
 //
@@ -7329,7 +6889,7 @@ func (client *Client) DeleteEdgeContainerAppWithOptions(request *DeleteEdgeConta
 
 // Summary:
 //
-// Deletes a containerized application.
+// 删除边缘容器的应用
 //
 // @param request - DeleteEdgeContainerAppRequest
 //
@@ -7347,7 +6907,7 @@ func (client *Client) DeleteEdgeContainerApp(request *DeleteEdgeContainerAppRequ
 
 // Summary:
 //
-// # Delete the image secret of an edge container application
+// 删除边缘容器应用的镜像秘钥
 //
 // @param request - DeleteEdgeContainerAppImageSecretRequest
 //
@@ -7395,7 +6955,7 @@ func (client *Client) DeleteEdgeContainerAppImageSecretWithOptions(request *Dele
 
 // Summary:
 //
-// # Delete the image secret of an edge container application
+// 删除边缘容器应用的镜像秘钥
 //
 // @param request - DeleteEdgeContainerAppImageSecretRequest
 //
@@ -7413,7 +6973,7 @@ func (client *Client) DeleteEdgeContainerAppImageSecret(request *DeleteEdgeConta
 
 // Summary:
 //
-// Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
+// 删除一个边缘容器应用的域名记录
 //
 // @param request - DeleteEdgeContainerAppRecordRequest
 //
@@ -7465,7 +7025,7 @@ func (client *Client) DeleteEdgeContainerAppRecordWithOptions(request *DeleteEdg
 
 // Summary:
 //
-// Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
+// 删除一个边缘容器应用的域名记录
 //
 // @param request - DeleteEdgeContainerAppRecordRequest
 //
@@ -7483,7 +7043,7 @@ func (client *Client) DeleteEdgeContainerAppRecord(request *DeleteEdgeContainerA
 
 // Summary:
 //
-// Deletes a version of a containerized application.
+// 删除边缘容器应用的版本
 //
 // @param request - DeleteEdgeContainerAppVersionRequest
 //
@@ -7531,7 +7091,7 @@ func (client *Client) DeleteEdgeContainerAppVersionWithOptions(request *DeleteEd
 
 // Summary:
 //
-// Deletes a version of a containerized application.
+// 删除边缘容器应用的版本
 //
 // @param request - DeleteEdgeContainerAppVersionRequest
 //
@@ -7549,7 +7109,7 @@ func (client *Client) DeleteEdgeContainerAppVersion(request *DeleteEdgeContainer
 
 // Summary:
 //
-// # Delete rules for deep learning and protection distribution
+// 删除深度学习和防护下发的规则
 //
 // @param request - DeleteHttpDDoSIntelligentRuleRequest
 //
@@ -7601,7 +7161,7 @@ func (client *Client) DeleteHttpDDoSIntelligentRuleWithOptions(request *DeleteHt
 
 // Summary:
 //
-// # Delete rules for deep learning and protection distribution
+// 删除深度学习和防护下发的规则
 //
 // @param request - DeleteHttpDDoSIntelligentRuleRequest
 //
@@ -7619,7 +7179,7 @@ func (client *Client) DeleteHttpDDoSIntelligentRule(request *DeleteHttpDDoSIntel
 
 // Summary:
 //
-// Deletes the configuration of modifying incoming HTTP request headers for a website.
+// 删除HTTP入站请求头规则
 //
 // @param request - DeleteHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -7667,7 +7227,7 @@ func (client *Client) DeleteHttpIncomingRequestHeaderModificationRuleWithOptions
 
 // Summary:
 //
-// Deletes the configuration of modifying incoming HTTP request headers for a website.
+// 删除HTTP入站请求头规则
 //
 // @param request - DeleteHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -7685,7 +7245,7 @@ func (client *Client) DeleteHttpIncomingRequestHeaderModificationRule(request *D
 
 // Summary:
 //
-// Deletes the configuration of modifying HTTP response headers for a website.
+// 删除HTTP入站响应头规则
 //
 // @param request - DeleteHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -7733,7 +7293,7 @@ func (client *Client) DeleteHttpIncomingResponseHeaderModificationRuleWithOption
 
 // Summary:
 //
-// Deletes the configuration of modifying HTTP response headers for a website.
+// 删除HTTP入站响应头规则
 //
 // @param request - DeleteHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -7751,7 +7311,7 @@ func (client *Client) DeleteHttpIncomingResponseHeaderModificationRule(request *
 
 // Summary:
 //
-// Deletes the configuration of modifying HTTP request headers for a website.
+// 删除HTTP请求头规则
 //
 // @param request - DeleteHttpRequestHeaderModificationRuleRequest
 //
@@ -7799,7 +7359,7 @@ func (client *Client) DeleteHttpRequestHeaderModificationRuleWithOptions(request
 
 // Summary:
 //
-// Deletes the configuration of modifying HTTP request headers for a website.
+// 删除HTTP请求头规则
 //
 // @param request - DeleteHttpRequestHeaderModificationRuleRequest
 //
@@ -7817,7 +7377,7 @@ func (client *Client) DeleteHttpRequestHeaderModificationRule(request *DeleteHtt
 
 // Summary:
 //
-// Deletes the configuration of modifying HTTP response headers for a website.
+// 删除HTTP响应头规则
 //
 // @param request - DeleteHttpResponseHeaderModificationRuleRequest
 //
@@ -7865,7 +7425,7 @@ func (client *Client) DeleteHttpResponseHeaderModificationRuleWithOptions(reques
 
 // Summary:
 //
-// Deletes the configuration of modifying HTTP response headers for a website.
+// 删除HTTP响应头规则
 //
 // @param request - DeleteHttpResponseHeaderModificationRuleRequest
 //
@@ -7883,7 +7443,7 @@ func (client *Client) DeleteHttpResponseHeaderModificationRule(request *DeleteHt
 
 // Summary:
 //
-// # Delete HTTPS Application Configuration
+// 删除HTTPS应用配置
 //
 // @param request - DeleteHttpsApplicationConfigurationRequest
 //
@@ -7931,7 +7491,7 @@ func (client *Client) DeleteHttpsApplicationConfigurationWithOptions(request *De
 
 // Summary:
 //
-// # Delete HTTPS Application Configuration
+// 删除HTTPS应用配置
 //
 // @param request - DeleteHttpsApplicationConfigurationRequest
 //
@@ -7949,7 +7509,7 @@ func (client *Client) DeleteHttpsApplicationConfiguration(request *DeleteHttpsAp
 
 // Summary:
 //
-// # Delete HTTPS Basic Configuration
+// 删除HTTPS基础配置
 //
 // @param request - DeleteHttpsBasicConfigurationRequest
 //
@@ -7997,7 +7557,7 @@ func (client *Client) DeleteHttpsBasicConfigurationWithOptions(request *DeleteHt
 
 // Summary:
 //
-// # Delete HTTPS Basic Configuration
+// 删除HTTPS基础配置
 //
 // @param request - DeleteHttpsBasicConfigurationRequest
 //
@@ -8015,7 +7575,7 @@ func (client *Client) DeleteHttpsBasicConfiguration(request *DeleteHttpsBasicCon
 
 // Summary:
 //
-// # Delete Site Image Transformation Configuration
+// 删除站点图片转换配置
 //
 // @param request - DeleteImageTransformRequest
 //
@@ -8063,7 +7623,7 @@ func (client *Client) DeleteImageTransformWithOptions(request *DeleteImageTransf
 
 // Summary:
 //
-// # Delete Site Image Transformation Configuration
+// 删除站点图片转换配置
 //
 // @param request - DeleteImageTransformRequest
 //
@@ -8147,7 +7707,7 @@ func (client *Client) DeleteKeylessServer(request *DeleteKeylessServerRequest) (
 
 // Summary:
 //
-// Deletes a key-value pair from a namespace.
+// 删除Namespace的Key-Value对
 //
 // @param request - DeleteKvRequest
 //
@@ -8187,7 +7747,7 @@ func (client *Client) DeleteKvWithOptions(request *DeleteKvRequest, runtime *dar
 
 // Summary:
 //
-// Deletes a key-value pair from a namespace.
+// 删除Namespace的Key-Value对
 //
 // @param request - DeleteKvRequest
 //
@@ -8205,7 +7765,7 @@ func (client *Client) DeleteKv(request *DeleteKvRequest) (_result *DeleteKvRespo
 
 // Summary:
 //
-// Deletes a namespace from an Alibaba Cloud account.
+// 删除Namespace
 //
 // @param request - DeleteKvNamespaceRequest
 //
@@ -8249,7 +7809,7 @@ func (client *Client) DeleteKvNamespaceWithOptions(request *DeleteKvNamespaceReq
 
 // Summary:
 //
-// Deletes a namespace from an Alibaba Cloud account.
+// 删除Namespace
 //
 // @param request - DeleteKvNamespaceRequest
 //
@@ -8267,7 +7827,7 @@ func (client *Client) DeleteKvNamespace(request *DeleteKvNamespaceRequest) (_res
 
 // Summary:
 //
-// Deletes a custom list that is no longer needed.
+// 删除自定义列表
 //
 // @param request - DeleteListRequest
 //
@@ -8311,7 +7871,7 @@ func (client *Client) DeleteListWithOptions(request *DeleteListRequest, runtime 
 
 // Summary:
 //
-// Deletes a custom list that is no longer needed.
+// 删除自定义列表
 //
 // @param request - DeleteListRequest
 //
@@ -8329,11 +7889,7 @@ func (client *Client) DeleteList(request *DeleteListRequest) (_result *DeleteLis
 
 // Summary:
 //
-// # Delete Load Balancer
-//
-// Description:
-//
-// Delete a load balancer by its ID, only one can be deleted at a time.
+// 删除负载均衡器
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -8381,11 +7937,7 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 
 // Summary:
 //
-// # Delete Load Balancer
-//
-// Description:
-//
-// Delete a load balancer by its ID, only one can be deleted at a time.
+// 删除负载均衡器
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -8403,7 +7955,7 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 
 // Summary:
 //
-// # Delete Network Optimization Configuration
+// 删除网络优化配置
 //
 // @param request - DeleteNetworkOptimizationRequest
 //
@@ -8451,7 +8003,7 @@ func (client *Client) DeleteNetworkOptimizationWithOptions(request *DeleteNetwor
 
 // Summary:
 //
-// # Delete Network Optimization Configuration
+// 删除网络优化配置
 //
 // @param request - DeleteNetworkOptimizationRequest
 //
@@ -8585,7 +8137,7 @@ func (client *Client) DeleteOriginClientCertificate(request *DeleteOriginClientC
 
 // Summary:
 //
-// # Delete Origin Address Pool
+// 删除源地址池
 //
 // @param request - DeleteOriginPoolRequest
 //
@@ -8633,7 +8185,7 @@ func (client *Client) DeleteOriginPoolWithOptions(request *DeleteOriginPoolReque
 
 // Summary:
 //
-// # Delete Origin Address Pool
+// 删除源地址池
 //
 // @param request - DeleteOriginPoolRequest
 //
@@ -8651,7 +8203,7 @@ func (client *Client) DeleteOriginPool(request *DeleteOriginPoolRequest) (_resul
 
 // Summary:
 //
-// Disables origin protection.
+// 关闭源站防护功能
 //
 // @param request - DeleteOriginProtectionRequest
 //
@@ -8695,7 +8247,7 @@ func (client *Client) DeleteOriginProtectionWithOptions(request *DeleteOriginPro
 
 // Summary:
 //
-// Disables origin protection.
+// 关闭源站防护功能
 //
 // @param request - DeleteOriginProtectionRequest
 //
@@ -8713,7 +8265,7 @@ func (client *Client) DeleteOriginProtection(request *DeleteOriginProtectionRequ
 
 // Summary:
 //
-// # Delete Origin Rule Configuration
+// 删除回源规则配置
 //
 // @param request - DeleteOriginRuleRequest
 //
@@ -8761,7 +8313,7 @@ func (client *Client) DeleteOriginRuleWithOptions(request *DeleteOriginRuleReque
 
 // Summary:
 //
-// # Delete Origin Rule Configuration
+// 删除回源规则配置
 //
 // @param request - DeleteOriginRuleRequest
 //
@@ -8779,7 +8331,7 @@ func (client *Client) DeleteOriginRule(request *DeleteOriginRuleRequest) (_resul
 
 // Summary:
 //
-// Deletes a custom error page that is no longer needed.
+// 删除自定义响应页面
 //
 // @param request - DeletePageRequest
 //
@@ -8823,7 +8375,7 @@ func (client *Client) DeletePageWithOptions(request *DeletePageRequest, runtime 
 
 // Summary:
 //
-// Deletes a custom error page that is no longer needed.
+// 删除自定义响应页面
 //
 // @param request - DeletePageRequest
 //
@@ -8841,7 +8393,7 @@ func (client *Client) DeletePage(request *DeletePageRequest) (_result *DeletePag
 
 // Summary:
 //
-// Deletes a DNS record of a website based on the specified RecordId.
+// 删除记录
 //
 // @param request - DeleteRecordRequest
 //
@@ -8889,7 +8441,7 @@ func (client *Client) DeleteRecordWithOptions(request *DeleteRecordRequest, runt
 
 // Summary:
 //
-// Deletes a DNS record of a website based on the specified RecordId.
+// 删除记录
 //
 // @param request - DeleteRecordRequest
 //
@@ -8907,7 +8459,7 @@ func (client *Client) DeleteRecord(request *DeleteRecordRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a URL redirect rule for a website.
+// 删除重定向规则
 //
 // @param request - DeleteRedirectRuleRequest
 //
@@ -8955,7 +8507,7 @@ func (client *Client) DeleteRedirectRuleWithOptions(request *DeleteRedirectRuleR
 
 // Summary:
 //
-// Deletes a URL redirect rule for a website.
+// 删除重定向规则
 //
 // @param request - DeleteRedirectRuleRequest
 //
@@ -8973,7 +8525,7 @@ func (client *Client) DeleteRedirectRule(request *DeleteRedirectRuleRequest) (_r
 
 // Summary:
 //
-// Deletes a URL rewrite rule for a website.
+// 删除重写Url规则
 //
 // @param request - DeleteRewriteUrlRuleRequest
 //
@@ -9021,7 +8573,7 @@ func (client *Client) DeleteRewriteUrlRuleWithOptions(request *DeleteRewriteUrlR
 
 // Summary:
 //
-// Deletes a URL rewrite rule for a website.
+// 删除重写Url规则
 //
 // @param request - DeleteRewriteUrlRuleRequest
 //
@@ -9039,7 +8591,7 @@ func (client *Client) DeleteRewriteUrlRule(request *DeleteRewriteUrlRuleRequest)
 
 // Summary:
 //
-// Deletes a routine in Edge Routine.
+// 删除Routine
 //
 // @param request - DeleteRoutineRequest
 //
@@ -9083,7 +8635,7 @@ func (client *Client) DeleteRoutineWithOptions(request *DeleteRoutineRequest, ru
 
 // Summary:
 //
-// Deletes a routine in Edge Routine.
+// 删除Routine
 //
 // @param request - DeleteRoutineRequest
 //
@@ -9101,7 +8653,7 @@ func (client *Client) DeleteRoutine(request *DeleteRoutineRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a code version of a routine.
+// 删除Routine某版本代码
 //
 // @param request - DeleteRoutineCodeVersionRequest
 //
@@ -9149,7 +8701,7 @@ func (client *Client) DeleteRoutineCodeVersionWithOptions(request *DeleteRoutine
 
 // Summary:
 //
-// Deletes a code version of a routine.
+// 删除Routine某版本代码
 //
 // @param request - DeleteRoutineCodeVersionRequest
 //
@@ -9167,7 +8719,7 @@ func (client *Client) DeleteRoutineCodeVersion(request *DeleteRoutineCodeVersion
 
 // Summary:
 //
-// Deletes a record that is associated with a routine.
+// 删除Routine关联域名
 //
 // @param request - DeleteRoutineRelatedRecordRequest
 //
@@ -9225,7 +8777,7 @@ func (client *Client) DeleteRoutineRelatedRecordWithOptions(request *DeleteRouti
 
 // Summary:
 //
-// Deletes a record that is associated with a routine.
+// 删除Routine关联域名
 //
 // @param request - DeleteRoutineRelatedRecordRequest
 //
@@ -9243,7 +8795,7 @@ func (client *Client) DeleteRoutineRelatedRecord(request *DeleteRoutineRelatedRe
 
 // Summary:
 //
-// Deletes the route configuration of an edge function.
+// 删除边缘函数路由配置
 //
 // @param request - DeleteRoutineRouteRequest
 //
@@ -9291,7 +8843,7 @@ func (client *Client) DeleteRoutineRouteWithOptions(request *DeleteRoutineRouteR
 
 // Summary:
 //
-// Deletes the route configuration of an edge function.
+// 删除边缘函数路由配置
 //
 // @param request - DeleteRoutineRouteRequest
 //
@@ -9309,7 +8861,7 @@ func (client *Client) DeleteRoutineRoute(request *DeleteRoutineRouteRequest) (_r
 
 // Summary:
 //
-// Deletes a scheduled prefetch plan based on the plan ID.
+// 删除单个定时预热计划
 //
 // @param request - DeleteScheduledPreloadExecutionRequest
 //
@@ -9353,7 +8905,7 @@ func (client *Client) DeleteScheduledPreloadExecutionWithOptions(request *Delete
 
 // Summary:
 //
-// Deletes a scheduled prefetch plan based on the plan ID.
+// 删除单个定时预热计划
 //
 // @param request - DeleteScheduledPreloadExecutionRequest
 //
@@ -9371,7 +8923,7 @@ func (client *Client) DeleteScheduledPreloadExecution(request *DeleteScheduledPr
 
 // Summary:
 //
-// Deletes a specified scheduled prefetch task based on the task ID.
+// 删除指定定时预热任务
 //
 // @param request - DeleteScheduledPreloadJobRequest
 //
@@ -9415,7 +8967,7 @@ func (client *Client) DeleteScheduledPreloadJobWithOptions(request *DeleteSchedu
 
 // Summary:
 //
-// Deletes a specified scheduled prefetch task based on the task ID.
+// 删除指定定时预热任务
 //
 // @param request - DeleteScheduledPreloadJobRequest
 //
@@ -9433,7 +8985,7 @@ func (client *Client) DeleteScheduledPreloadJob(request *DeleteScheduledPreloadJ
 
 // Summary:
 //
-// Deletes a website based on the specified website ID.
+// 删除站点
 //
 // @param request - DeleteSiteRequest
 //
@@ -9481,7 +9033,7 @@ func (client *Client) DeleteSiteWithOptions(request *DeleteSiteRequest, runtime 
 
 // Summary:
 //
-// Deletes a website based on the specified website ID.
+// 删除站点
 //
 // @param request - DeleteSiteRequest
 //
@@ -9499,7 +9051,7 @@ func (client *Client) DeleteSite(request *DeleteSiteRequest) (_result *DeleteSit
 
 // Summary:
 //
-// Deletes a real-time log delivery task.
+// 删除一个任务投递
 //
 // @param request - DeleteSiteDeliveryTaskRequest
 //
@@ -9547,7 +9099,7 @@ func (client *Client) DeleteSiteDeliveryTaskWithOptions(request *DeleteSiteDeliv
 
 // Summary:
 //
-// Deletes a real-time log delivery task.
+// 删除一个任务投递
 //
 // @param request - DeleteSiteDeliveryTaskRequest
 //
@@ -9623,7 +9175,7 @@ func (client *Client) DeleteSiteOriginClientCertificate(request *DeleteSiteOrigi
 
 // Summary:
 //
-// # Delete Transport Layer Application
+// 删除四层应用接口
 //
 // @param request - DeleteTransportLayerApplicationRequest
 //
@@ -9671,7 +9223,7 @@ func (client *Client) DeleteTransportLayerApplicationWithOptions(request *Delete
 
 // Summary:
 //
-// # Delete Transport Layer Application
+// 删除四层应用接口
 //
 // @param request - DeleteTransportLayerApplicationRequest
 //
@@ -9689,7 +9241,7 @@ func (client *Client) DeleteTransportLayerApplication(request *DeleteTransportLa
 
 // Summary:
 //
-// Deletes page monitoring configurations.
+// 删除网页监测配置
 //
 // @param request - DeleteUrlObservationRequest
 //
@@ -9737,7 +9289,7 @@ func (client *Client) DeleteUrlObservationWithOptions(request *DeleteUrlObservat
 
 // Summary:
 //
-// Deletes page monitoring configurations.
+// 删除网页监测配置
 //
 // @param request - DeleteUrlObservationRequest
 //
@@ -9755,17 +9307,7 @@ func (client *Client) DeleteUrlObservation(request *DeleteUrlObservationRequest)
 
 // Summary:
 //
-// Deletes a log delivery task from your Alibaba Cloud account.
-//
-// Description:
-//
-// *****>
-//
-//   - Deleted tasks cannot be restored. Proceed with caution.
-//
-//   - To call this operation, you must have an account that has the required permissions.
-//
-//   - The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
+// 删除一个用户任务投递
 //
 // @param request - DeleteUserDeliveryTaskRequest
 //
@@ -9809,17 +9351,7 @@ func (client *Client) DeleteUserDeliveryTaskWithOptions(request *DeleteUserDeliv
 
 // Summary:
 //
-// Deletes a log delivery task from your Alibaba Cloud account.
-//
-// Description:
-//
-// *****>
-//
-//   - Deleted tasks cannot be restored. Proceed with caution.
-//
-//   - To call this operation, you must have an account that has the required permissions.
-//
-//   - The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
+// 删除一个用户任务投递
 //
 // @param request - DeleteUserDeliveryTaskRequest
 //
@@ -9837,13 +9369,27 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 
 // Summary:
 //
-// Used for deleting an instance-level Web Application Firewall (WAF) ruleset.
+// 用于删除实例级别的Web应用防火墙规则集。
 //
 // Description:
 //
-// ## Request Description
+// ## 请求说明
 //
-// - `InstanceId` and `Id` are required parameters, specifying the WAF instance ID to be operated on and the specific ruleset ID, respectively.
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
 //
 // @param request - DeleteUserWafRulesetRequest
 //
@@ -9893,13 +9439,27 @@ func (client *Client) DeleteUserWafRulesetWithOptions(request *DeleteUserWafRule
 
 // Summary:
 //
-// Used for deleting an instance-level Web Application Firewall (WAF) ruleset.
+// 用于删除实例级别的Web应用防火墙规则集。
 //
 // Description:
 //
-// ## Request Description
+// ## 请求说明
 //
-// - `InstanceId` and `Id` are required parameters, specifying the WAF instance ID to be operated on and the specific ruleset ID, respectively.
+// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
+//
+// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
+//
+// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
+//
+// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
+//
+// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
+//
+// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
+//
+// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
+//
+// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
 //
 // @param request - DeleteUserWafRulesetRequest
 //
@@ -9917,7 +9477,7 @@ func (client *Client) DeleteUserWafRuleset(request *DeleteUserWafRulesetRequest)
 
 // Summary:
 //
-// Deletes a video processing configuration.
+// 删除站点视频处理配置
 //
 // @param request - DeleteVideoProcessingRequest
 //
@@ -9965,7 +9525,7 @@ func (client *Client) DeleteVideoProcessingWithOptions(request *DeleteVideoProce
 
 // Summary:
 //
-// Deletes a video processing configuration.
+// 删除站点视频处理配置
 //
 // @param request - DeleteVideoProcessingRequest
 //
@@ -9983,7 +9543,7 @@ func (client *Client) DeleteVideoProcessing(request *DeleteVideoProcessingReques
 
 // Summary:
 //
-// # Delete WAF Rule
+// 删除WAF规则
 //
 // @param request - DeleteWafRuleRequest
 //
@@ -10037,7 +9597,7 @@ func (client *Client) DeleteWafRuleWithOptions(request *DeleteWafRuleRequest, ru
 
 // Summary:
 //
-// # Delete WAF Rule
+// 删除WAF规则
 //
 // @param request - DeleteWafRuleRequest
 //
@@ -10055,7 +9615,7 @@ func (client *Client) DeleteWafRule(request *DeleteWafRuleRequest) (_result *Del
 
 // Summary:
 //
-// # Delete WAF Ruleset
+// 删除WAF规则集
 //
 // @param request - DeleteWafRulesetRequest
 //
@@ -10109,7 +9669,7 @@ func (client *Client) DeleteWafRulesetWithOptions(request *DeleteWafRulesetReque
 
 // Summary:
 //
-// # Delete WAF Ruleset
+// 删除WAF规则集
 //
 // @param request - DeleteWafRulesetRequest
 //
@@ -10127,7 +9687,7 @@ func (client *Client) DeleteWafRuleset(request *DeleteWafRulesetRequest) (_resul
 
 // Summary:
 //
-// Deletes a waiting room.
+// 删除等候室
 //
 // @param request - DeleteWaitingRoomRequest
 //
@@ -10175,7 +9735,7 @@ func (client *Client) DeleteWaitingRoomWithOptions(request *DeleteWaitingRoomReq
 
 // Summary:
 //
-// Deletes a waiting room.
+// 删除等候室
 //
 // @param request - DeleteWaitingRoomRequest
 //
@@ -10193,7 +9753,7 @@ func (client *Client) DeleteWaitingRoom(request *DeleteWaitingRoomRequest) (_res
 
 // Summary:
 //
-// Deletes a waiting room event.
+// 删除等候室事件
 //
 // @param request - DeleteWaitingRoomEventRequest
 //
@@ -10241,7 +9801,7 @@ func (client *Client) DeleteWaitingRoomEventWithOptions(request *DeleteWaitingRo
 
 // Summary:
 //
-// Deletes a waiting room event.
+// 删除等候室事件
 //
 // @param request - DeleteWaitingRoomEventRequest
 //
@@ -10259,7 +9819,7 @@ func (client *Client) DeleteWaitingRoomEvent(request *DeleteWaitingRoomEventRequ
 
 // Summary:
 //
-// Deletes a waiting room bypass rule.
+// 删除等候室规则
 //
 // @param request - DeleteWaitingRoomRuleRequest
 //
@@ -10307,7 +9867,7 @@ func (client *Client) DeleteWaitingRoomRuleWithOptions(request *DeleteWaitingRoo
 
 // Summary:
 //
-// Deletes a waiting room bypass rule.
+// 删除等候室规则
 //
 // @param request - DeleteWaitingRoomRuleRequest
 //
@@ -10325,7 +9885,7 @@ func (client *Client) DeleteWaitingRoomRule(request *DeleteWaitingRoomRuleReques
 
 // Summary:
 //
-// Queries the configurations of a scenario-specific policy.
+// 查询定制场景策略配置
 //
 // @param request - DescribeCustomScenePoliciesRequest
 //
@@ -10377,7 +9937,7 @@ func (client *Client) DescribeCustomScenePoliciesWithOptions(request *DescribeCu
 
 // Summary:
 //
-// Queries the configurations of a scenario-specific policy.
+// 查询定制场景策略配置
 //
 // @param request - DescribeCustomScenePoliciesRequest
 //
@@ -10395,7 +9955,7 @@ func (client *Client) DescribeCustomScenePolicies(request *DescribeCustomScenePo
 
 // Summary:
 //
-// Queries DDoS attack events.
+// 攻击分析-查询攻击事件列表
 //
 // @param request - DescribeDDoSAllEventListRequest
 //
@@ -10459,7 +10019,7 @@ func (client *Client) DescribeDDoSAllEventListWithOptions(request *DescribeDDoSA
 
 // Summary:
 //
-// Queries DDoS attack events.
+// 攻击分析-查询攻击事件列表
 //
 // @param request - DescribeDDoSAllEventListRequest
 //
@@ -10477,7 +10037,7 @@ func (client *Client) DescribeDDoSAllEventList(request *DescribeDDoSAllEventList
 
 // Summary:
 //
-// # Query DCDN DDoS user bps and pps data
+// 查询DCDN DDoS用户bps、pps数据
 //
 // @param request - DescribeDDoSBpsListRequest
 //
@@ -10517,7 +10077,7 @@ func (client *Client) DescribeDDoSBpsListWithOptions(request *DescribeDDoSBpsLis
 
 // Summary:
 //
-// # Query DCDN DDoS user bps and pps data
+// 查询DCDN DDoS用户bps、pps数据
 //
 // @param request - DescribeDDoSBpsListRequest
 //
@@ -10535,7 +10095,7 @@ func (client *Client) DescribeDDoSBpsList(request *DescribeDDoSBpsListRequest) (
 
 // Summary:
 //
-// # DDoS Analysis Layer 7 QPS Trend Chart API
+// ddos分析七层qps走势图接口
 //
 // @param request - DescribeDDoSL7QpsListRequest
 //
@@ -10595,7 +10155,7 @@ func (client *Client) DescribeDDoSL7QpsListWithOptions(request *DescribeDDoSL7Qp
 
 // Summary:
 //
-// # DDoS Analysis Layer 7 QPS Trend Chart API
+// ddos分析七层qps走势图接口
 //
 // @param request - DescribeDDoSL7QpsListRequest
 //
@@ -10671,7 +10231,7 @@ func (client *Client) DescribeDdosMaxBurstGbps(request *DescribeDdosMaxBurstGbps
 
 // Summary:
 //
-// Provides monitoring data for metrics of ESA edge containers.
+// 边缘容器的监控
 //
 // @param request - DescribeEdgeContainerAppStatsRequest
 //
@@ -10711,7 +10271,7 @@ func (client *Client) DescribeEdgeContainerAppStatsWithOptions(request *Describe
 
 // Summary:
 //
-// Provides monitoring data for metrics of ESA edge containers.
+// 边缘容器的监控
 //
 // @param request - DescribeEdgeContainerAppStatsRequest
 //
@@ -10729,7 +10289,7 @@ func (client *Client) DescribeEdgeContainerAppStats(request *DescribeEdgeContain
 
 // Summary:
 //
-// Queries the configuration of smart HTTP DDoS protection for a website.
+// 查询HTTP DDoS智能防护配置信息
 //
 // @param request - DescribeHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -10773,7 +10333,7 @@ func (client *Client) DescribeHttpDDoSAttackIntelligentProtectionWithOptions(req
 
 // Summary:
 //
-// Queries the configuration of smart HTTP DDoS protection for a website.
+// 查询HTTP DDoS智能防护配置信息
 //
 // @param request - DescribeHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -10791,7 +10351,7 @@ func (client *Client) DescribeHttpDDoSAttackIntelligentProtection(request *Descr
 
 // Summary:
 //
-// Queries the configurations of HTTP DDoS attack protection.
+// 查询HTTP DDoS攻击防护配置信息
 //
 // @param request - DescribeHttpDDoSAttackProtectionRequest
 //
@@ -10835,7 +10395,7 @@ func (client *Client) DescribeHttpDDoSAttackProtectionWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the configurations of HTTP DDoS attack protection.
+// 查询HTTP DDoS攻击防护配置信息
 //
 // @param request - DescribeHttpDDoSAttackProtectionRequest
 //
@@ -11071,7 +10631,7 @@ func (client *Client) DescribeHttpDDoSIntelligentRateLimitRules(request *Describ
 
 // Summary:
 //
-// Queries whether Edge KV is activated in your Alibaba Cloud account.
+// 查询账户的KV状态信
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -11100,7 +10660,7 @@ func (client *Client) DescribeKvAccountStatusWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// Queries whether Edge KV is activated in your Alibaba Cloud account.
+// 查询账户的KV状态信
 //
 // @return DescribeKvAccountStatusResponse
 func (client *Client) DescribeKvAccountStatus() (_result *DescribeKvAccountStatusResponse, _err error) {
@@ -11116,7 +10676,7 @@ func (client *Client) DescribeKvAccountStatus() (_result *DescribeKvAccountStatu
 
 // Summary:
 //
-// Queries the details of prefetch tasks by time, task status, or prefetch URL.
+// 预热任务查询接口
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -11156,7 +10716,7 @@ func (client *Client) DescribePreloadTasksWithOptions(request *DescribePreloadTa
 
 // Summary:
 //
-// Queries the details of prefetch tasks by time, task status, or prefetch URL.
+// 预热任务查询接口
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -11174,7 +10734,7 @@ func (client *Client) DescribePreloadTasks(request *DescribePreloadTasksRequest)
 
 // Summary:
 //
-// Queries the details of purge tasks.
+// 刷新任务查询接口
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -11214,7 +10774,7 @@ func (client *Client) DescribePurgeTasksWithOptions(request *DescribePurgeTasksR
 
 // Summary:
 //
-// Queries the details of purge tasks.
+// 刷新任务查询接口
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -11232,11 +10792,7 @@ func (client *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (_r
 
 // Summary:
 //
-// Queries the status of an instance that uses a plan.
-//
-// Description:
-//
-// You can query the status of an instance after you purchase a plan for the instance.
+// 查询套餐实例状态
 //
 // @param request - DescribeRatePlanInstanceStatusRequest
 //
@@ -11280,11 +10836,7 @@ func (client *Client) DescribeRatePlanInstanceStatusWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the status of an instance that uses a plan.
-//
-// Description:
-//
-// You can query the status of an instance after you purchase a plan for the instance.
+// 查询套餐实例状态
 //
 // @param request - DescribeRatePlanInstanceStatusRequest
 //
@@ -11302,7 +10854,7 @@ func (client *Client) DescribeRatePlanInstanceStatus(request *DescribeRatePlanIn
 
 // Summary:
 //
-// Queries the prices, types, and status of plans.
+// 套餐询价
 //
 // @param request - DescribeRatePlanPriceRequest
 //
@@ -11354,7 +10906,7 @@ func (client *Client) DescribeRatePlanPriceWithOptions(request *DescribeRatePlan
 
 // Summary:
 //
-// Queries the prices, types, and status of plans.
+// 套餐询价
 //
 // @param request - DescribeRatePlanPriceRequest
 //
@@ -11372,17 +10924,7 @@ func (client *Client) DescribeRatePlanPrice(request *DescribeRatePlanPriceReques
 
 // Summary:
 //
-// Queries the URLs from which you can download the raw access logs of a website.
-//
-// Description:
-//
-//	  If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
-//
-//		- The log data is collected every hour.
-//
-//		- You can call this operation up to 50 times per second per account.
-//
-//		- You can query only logs in the last month. The time range cannot exceed 31 days.
+// 查询站点离线日志
 //
 // @param request - DescribeSiteLogsRequest
 //
@@ -11442,17 +10984,7 @@ func (client *Client) DescribeSiteLogsWithOptions(request *DescribeSiteLogsReque
 
 // Summary:
 //
-// Queries the URLs from which you can download the raw access logs of a website.
-//
-// Description:
-//
-//	  If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
-//
-//		- The log data is collected every hour.
-//
-//		- You can call this operation up to 50 times per second per account.
-//
-//		- You can query only logs in the last month. The time range cannot exceed 31 days.
+// 查询站点离线日志
 //
 // @param request - DescribeSiteLogsRequest
 //
@@ -11470,25 +11002,7 @@ func (client *Client) DescribeSiteLogs(request *DescribeSiteLogsRequest) (_resul
 
 // Summary:
 //
-// # Query traffic analysis time series data
-//
-// Description:
-//
-// - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
-//
-// - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
-//
-//   - For a span of 3 hours or less, it returns 1-minute granularity data.
-//
-//   - For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
-//
-//   - For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
-//
-//   - For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
-//
-//   - For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
-//
-// - Due to the high number of accesses during the query period, the data analysis may be sampled.
+// 查询时序数据
 //
 // @param tmpReq - DescribeSiteTimeSeriesDataRequest
 //
@@ -11554,25 +11068,7 @@ func (client *Client) DescribeSiteTimeSeriesDataWithOptions(tmpReq *DescribeSite
 
 // Summary:
 //
-// # Query traffic analysis time series data
-//
-// Description:
-//
-// - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
-//
-// - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
-//
-//   - For a span of 3 hours or less, it returns 1-minute granularity data.
-//
-//   - For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
-//
-//   - For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
-//
-//   - For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
-//
-//   - For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
-//
-// - Due to the high number of accesses during the query period, the data analysis may be sampled.
+// 查询时序数据
 //
 // @param request - DescribeSiteTimeSeriesDataRequest
 //
@@ -11590,11 +11086,7 @@ func (client *Client) DescribeSiteTimeSeriesData(request *DescribeSiteTimeSeries
 
 // Summary:
 //
-// Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
-//
-// Description:
-//
-//	If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
+// 获取TOP数据
 //
 // @param tmpReq - DescribeSiteTopDataRequest
 //
@@ -11664,11 +11156,7 @@ func (client *Client) DescribeSiteTopDataWithOptions(tmpReq *DescribeSiteTopData
 
 // Summary:
 //
-// Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
-//
-// Description:
-//
-//	If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
+// 获取TOP数据
 //
 // @param request - DescribeSiteTopDataRequest
 //
@@ -11752,11 +11240,7 @@ func (client *Client) DescribeTraceDiagnoseReport(request *DescribeTraceDiagnose
 
 // Summary:
 //
-// Queries the page monitoring data.
-//
-// Description:
-//
-// If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
+// 查询网页观测质量数据
 //
 // @param request - DescribeUrlObservationDataRequest
 //
@@ -11820,11 +11304,7 @@ func (client *Client) DescribeUrlObservationDataWithOptions(request *DescribeUrl
 
 // Summary:
 //
-// Queries the page monitoring data.
-//
-// Description:
-//
-// If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
+// 查询网页观测质量数据
 //
 // @param request - DescribeUrlObservationDataRequest
 //
@@ -11842,7 +11322,7 @@ func (client *Client) DescribeUrlObservationData(request *DescribeUrlObservation
 
 // Summary:
 //
-// Disables a scenario-specific policy.
+// 禁用定制场景策略
 //
 // @param request - DisableCustomScenePolicyRequest
 //
@@ -11886,7 +11366,7 @@ func (client *Client) DisableCustomScenePolicyWithOptions(request *DisableCustom
 
 // Summary:
 //
-// Disables a scenario-specific policy.
+// 禁用定制场景策略
 //
 // @param request - DisableCustomScenePolicyRequest
 //
@@ -11904,7 +11384,7 @@ func (client *Client) DisableCustomScenePolicy(request *DisableCustomScenePolicy
 
 // Summary:
 //
-// # Edit WAF Configuration for a Site
+// 编辑站点WAF配置
 //
 // @param tmpReq - EditSiteWafSettingsRequest
 //
@@ -11964,7 +11444,7 @@ func (client *Client) EditSiteWafSettingsWithOptions(tmpReq *EditSiteWafSettings
 
 // Summary:
 //
-// # Edit WAF Configuration for a Site
+// 编辑站点WAF配置
 //
 // @param request - EditSiteWafSettingsRequest
 //
@@ -11982,7 +11462,7 @@ func (client *Client) EditSiteWafSettings(request *EditSiteWafSettingsRequest) (
 
 // Summary:
 //
-// Enables a scenario-specific policy.
+// 启动定制场景策略
 //
 // @param request - EnableCustomScenePolicyRequest
 //
@@ -12026,7 +11506,7 @@ func (client *Client) EnableCustomScenePolicyWithOptions(request *EnableCustomSc
 
 // Summary:
 //
-// Enables a scenario-specific policy.
+// 启动定制场景策略
 //
 // @param request - EnableCustomScenePolicyRequest
 //
@@ -12044,7 +11524,7 @@ func (client *Client) EnableCustomScenePolicy(request *EnableCustomScenePolicyRe
 
 // Summary:
 //
-// Exports all DNS records of a website domain as a TXT file.
+// 导出记录
 //
 // @param request - ExportRecordsRequest
 //
@@ -12084,7 +11564,7 @@ func (client *Client) ExportRecordsWithOptions(request *ExportRecordsRequest, ru
 
 // Summary:
 //
-// Exports all DNS records of a website domain as a TXT file.
+// 导出记录
 //
 // @param request - ExportRecordsRequest
 //
@@ -12164,7 +11644,7 @@ func (client *Client) GenerateTraceDiagnose(request *GenerateTraceDiagnoseReques
 
 // Summary:
 //
-// Queries the usage of the upload file quota for API security schema verification.
+// 获取架构文件套餐使用情况
 //
 // @param request - GetApiSchemaUsageRequest
 //
@@ -12212,7 +11692,7 @@ func (client *Client) GetApiSchemaUsageWithOptions(request *GetApiSchemaUsageReq
 
 // Summary:
 //
-// Queries the usage of the upload file quota for API security schema verification.
+// 获取架构文件套餐使用情况
 //
 // @param request - GetApiSchemaUsageRequest
 //
@@ -12296,7 +11776,7 @@ func (client *Client) GetAutomaticFrequencyControlConfig(request *GetAutomaticFr
 
 // Summary:
 //
-// Queries the available specifications of cache reserve instances.
+// 查询缓存保持实例规格
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12325,7 +11805,7 @@ func (client *Client) GetCacheReserveSpecificationWithOptions(runtime *dara.Runt
 
 // Summary:
 //
-// Queries the available specifications of cache reserve instances.
+// 查询缓存保持实例规格
 //
 // @return GetCacheReserveSpecificationResponse
 func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSpecificationResponse, _err error) {
@@ -12341,7 +11821,7 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
-// # Query a single cache configuration
+// 查询单条缓存配置
 //
 // @param request - GetCacheRuleRequest
 //
@@ -12381,7 +11861,7 @@ func (client *Client) GetCacheRuleWithOptions(request *GetCacheRuleRequest, runt
 
 // Summary:
 //
-// # Query a single cache configuration
+// 查询单条缓存配置
 //
 // @param request - GetCacheRuleRequest
 //
@@ -12399,7 +11879,7 @@ func (client *Client) GetCacheRule(request *GetCacheRuleRequest) (_result *GetCa
 
 // Summary:
 //
-// # Query Site Cache Tag Configuration
+// 查询站点缓存Tag配置
 //
 // @param request - GetCacheTagRequest
 //
@@ -12439,7 +11919,7 @@ func (client *Client) GetCacheTagWithOptions(request *GetCacheTagRequest, runtim
 
 // Summary:
 //
-// # Query Site Cache Tag Configuration
+// 查询站点缓存Tag配置
 //
 // @param request - GetCacheTagRequest
 //
@@ -12457,7 +11937,7 @@ func (client *Client) GetCacheTag(request *GetCacheTagRequest) (_result *GetCach
 
 // Summary:
 //
-// # Retrieve the certificate, private key, and certificate information
+// 获取证书和私钥以及证书信息
 //
 // @param request - GetCertificateRequest
 //
@@ -12505,7 +11985,7 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 
 // Summary:
 //
-// # Retrieve the certificate, private key, and certificate information
+// 获取证书和私钥以及证书信息
 //
 // @param request - GetCertificateRequest
 //
@@ -12523,7 +12003,7 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 
 // Summary:
 //
-// # Query certificate quota and usage
+// 查询证书quota及用量
 //
 // @param request - GetCertificateQuotaRequest
 //
@@ -12563,7 +12043,7 @@ func (client *Client) GetCertificateQuotaWithOptions(request *GetCertificateQuot
 
 // Summary:
 //
-// # Query certificate quota and usage
+// 查询证书quota及用量
 //
 // @param request - GetCertificateQuotaRequest
 //
@@ -12581,7 +12061,7 @@ func (client *Client) GetCertificateQuota(request *GetCertificateQuotaRequest) (
 
 // Summary:
 //
-// Queries a client CA certificate.
+// 获取客户端CA证书信息
 //
 // @param request - GetClientCaCertificateRequest
 //
@@ -12621,7 +12101,7 @@ func (client *Client) GetClientCaCertificateWithOptions(request *GetClientCaCert
 
 // Summary:
 //
-// Queries a client CA certificate.
+// 获取客户端CA证书信息
 //
 // @param request - GetClientCaCertificateRequest
 //
@@ -12705,7 +12185,7 @@ func (client *Client) GetClientCaCertificateHostnames(request *GetClientCaCertif
 
 // Summary:
 //
-// Queries information about a client certificate.
+// 获取客户端证书以及证书信息
 //
 // @param request - GetClientCertificateRequest
 //
@@ -12745,7 +12225,7 @@ func (client *Client) GetClientCertificateWithOptions(request *GetClientCertific
 
 // Summary:
 //
-// Queries information about a client certificate.
+// 获取客户端证书以及证书信息
 //
 // @param request - GetClientCertificateRequest
 //
@@ -12763,7 +12243,7 @@ func (client *Client) GetClientCertificate(request *GetClientCertificateRequest)
 
 // Summary:
 //
-// Queries domain names associated with a client CA certificate. If no certificate is specified, domain names associated with an Edge Security Acceleration(ESA)-managed CA certificate are returned.
+// 获取客户端证书绑定的域名列表
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -12803,7 +12283,7 @@ func (client *Client) GetClientCertificateHostnamesWithOptions(request *GetClien
 
 // Summary:
 //
-// Queries domain names associated with a client CA certificate. If no certificate is specified, domain names associated with an Edge Security Acceleration(ESA)-managed CA certificate are returned.
+// 获取客户端证书绑定的域名列表
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -12821,7 +12301,7 @@ func (client *Client) GetClientCertificateHostnames(request *GetClientCertificat
 
 // Summary:
 //
-// # Queries the CNAME flattening configuration of a website
+// 查询站点cname拉平配置
 //
 // @param request - GetCnameFlatteningRequest
 //
@@ -12861,7 +12341,7 @@ func (client *Client) GetCnameFlatteningWithOptions(request *GetCnameFlatteningR
 
 // Summary:
 //
-// # Queries the CNAME flattening configuration of a website
+// 查询站点cname拉平配置
 //
 // @param request - GetCnameFlatteningRequest
 //
@@ -12879,7 +12359,7 @@ func (client *Client) GetCnameFlattening(request *GetCnameFlatteningRequest) (_r
 
 // Summary:
 //
-// # Query Compression Rule Details
+// 查询压缩规则详情
 //
 // @param request - GetCompressionRuleRequest
 //
@@ -12919,7 +12399,7 @@ func (client *Client) GetCompressionRuleWithOptions(request *GetCompressionRuleR
 
 // Summary:
 //
-// # Query Compression Rule Details
+// 查询压缩规则详情
 //
 // @param request - GetCompressionRuleRequest
 //
@@ -12937,7 +12417,7 @@ func (client *Client) GetCompressionRule(request *GetCompressionRuleRequest) (_r
 
 // Summary:
 //
-// Queries the configuration of Chinese mainland access optimization.
+// 查询站点中国大陆网络接入优化配置
 //
 // @param request - GetCrossBorderOptimizationRequest
 //
@@ -12977,7 +12457,7 @@ func (client *Client) GetCrossBorderOptimizationWithOptions(request *GetCrossBor
 
 // Summary:
 //
-// Queries the configuration of Chinese mainland access optimization.
+// 查询站点中国大陆网络接入优化配置
 //
 // @param request - GetCrossBorderOptimizationRequest
 //
@@ -13123,7 +12603,7 @@ func (client *Client) GetCustomResponseCodeRule(request *GetCustomResponseCodeRu
 
 // Summary:
 //
-// # Query Site Developer Mode Configuration
+// 查询站点开发者模式配置
 //
 // @param request - GetDevelopmentModeRequest
 //
@@ -13163,7 +12643,7 @@ func (client *Client) GetDevelopmentModeWithOptions(request *GetDevelopmentModeR
 
 // Summary:
 //
-// # Query Site Developer Mode Configuration
+// 查询站点开发者模式配置
 //
 // @param request - GetDevelopmentModeRequest
 //
@@ -13181,7 +12661,7 @@ func (client *Client) GetDevelopmentMode(request *GetDevelopmentModeRequest) (_r
 
 // Summary:
 //
-// Queries the information about a containerized application, including basic application configurations and health check configurations.
+// 获取边缘容器应用信息
 //
 // @param request - GetEdgeContainerAppRequest
 //
@@ -13225,7 +12705,7 @@ func (client *Client) GetEdgeContainerAppWithOptions(request *GetEdgeContainerAp
 
 // Summary:
 //
-// Queries the information about a containerized application, including basic application configurations and health check configurations.
+// 获取边缘容器应用信息
 //
 // @param request - GetEdgeContainerAppRequest
 //
@@ -13243,7 +12723,7 @@ func (client *Client) GetEdgeContainerApp(request *GetEdgeContainerAppRequest) (
 
 // Summary:
 //
-// Queries the log collection configuration of a containerized application.
+// 获取边缘容器应用日志采集配置
 //
 // @param request - GetEdgeContainerAppLogRiverRequest
 //
@@ -13283,7 +12763,7 @@ func (client *Client) GetEdgeContainerAppLogRiverWithOptions(request *GetEdgeCon
 
 // Summary:
 //
-// Queries the log collection configuration of a containerized application.
+// 获取边缘容器应用日志采集配置
 //
 // @param request - GetEdgeContainerAppLogRiverRequest
 //
@@ -13363,7 +12843,7 @@ func (client *Client) GetEdgeContainerAppResourceCapacity(request *GetEdgeContai
 
 // Summary:
 //
-// Obtain the resource reservation configuration of the edge container.
+// 获取边缘容器资源预留配置
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
 //
@@ -13407,7 +12887,7 @@ func (client *Client) GetEdgeContainerAppResourceReserveWithOptions(request *Get
 
 // Summary:
 //
-// Obtain the resource reservation configuration of the edge container.
+// 获取边缘容器资源预留配置
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
 //
@@ -13425,7 +12905,7 @@ func (client *Client) GetEdgeContainerAppResourceReserve(request *GetEdgeContain
 
 // Summary:
 //
-// Obtains the distribution of edge container application resources.
+// 获取边缘容器应用资源分布
 //
 // @param request - GetEdgeContainerAppResourceStatusRequest
 //
@@ -13469,7 +12949,7 @@ func (client *Client) GetEdgeContainerAppResourceStatusWithOptions(request *GetE
 
 // Summary:
 //
-// Obtains the distribution of edge container application resources.
+// 获取边缘容器应用资源分布
 //
 // @param request - GetEdgeContainerAppResourceStatusRequest
 //
@@ -13487,7 +12967,7 @@ func (client *Client) GetEdgeContainerAppResourceStatus(request *GetEdgeContaine
 
 // Summary:
 //
-// Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
+// 获取边缘容器应用的状态信息
 //
 // @param request - GetEdgeContainerAppStatusRequest
 //
@@ -13535,7 +13015,7 @@ func (client *Client) GetEdgeContainerAppStatusWithOptions(request *GetEdgeConta
 
 // Summary:
 //
-// Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
+// 获取边缘容器应用的状态信息
 //
 // @param request - GetEdgeContainerAppStatusRequest
 //
@@ -13553,7 +13033,7 @@ func (client *Client) GetEdgeContainerAppStatus(request *GetEdgeContainerAppStat
 
 // Summary:
 //
-// Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
+// 获取边缘容器应用的某个版本信息
 //
 // @param request - GetEdgeContainerAppVersionRequest
 //
@@ -13593,7 +13073,7 @@ func (client *Client) GetEdgeContainerAppVersionWithOptions(request *GetEdgeCont
 
 // Summary:
 //
-// Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
+// 获取边缘容器应用的某个版本信息
 //
 // @param request - GetEdgeContainerAppVersionRequest
 //
@@ -13611,7 +13091,7 @@ func (client *Client) GetEdgeContainerAppVersion(request *GetEdgeContainerAppVer
 
 // Summary:
 //
-// Queries regions where a containerized application is deployed based on the application ID.
+// 获取边缘容器应用部署区域
 //
 // @param request - GetEdgeContainerDeployRegionsRequest
 //
@@ -13651,7 +13131,7 @@ func (client *Client) GetEdgeContainerDeployRegionsWithOptions(request *GetEdgeC
 
 // Summary:
 //
-// Queries regions where a containerized application is deployed based on the application ID.
+// 获取边缘容器应用部署区域
 //
 // @param request - GetEdgeContainerDeployRegionsRequest
 //
@@ -13669,7 +13149,7 @@ func (client *Client) GetEdgeContainerDeployRegions(request *GetEdgeContainerDep
 
 // Summary:
 //
-// Queries Edge Container logs.
+// 获取边缘容器日志信息
 //
 // @param request - GetEdgeContainerLogsRequest
 //
@@ -13709,7 +13189,7 @@ func (client *Client) GetEdgeContainerLogsWithOptions(request *GetEdgeContainerL
 
 // Summary:
 //
-// Queries Edge Container logs.
+// 获取边缘容器日志信息
 //
 // @param request - GetEdgeContainerLogsRequest
 //
@@ -13727,7 +13207,7 @@ func (client *Client) GetEdgeContainerLogs(request *GetEdgeContainerLogsRequest)
 
 // Summary:
 //
-// Queries the deployment status of an application in the staging environment by using the application ID.
+// 获取应用测试环境部署状态
 //
 // @param request - GetEdgeContainerStagingDeployStatusRequest
 //
@@ -13767,7 +13247,7 @@ func (client *Client) GetEdgeContainerStagingDeployStatusWithOptions(request *Ge
 
 // Summary:
 //
-// Queries the deployment status of an application in the staging environment by using the application ID.
+// 获取应用测试环境部署状态
 //
 // @param request - GetEdgeContainerStagingDeployStatusRequest
 //
@@ -13785,7 +13265,7 @@ func (client *Client) GetEdgeContainerStagingDeployStatus(request *GetEdgeContai
 
 // Summary:
 //
-// Queries the terminal information of a containerized application.
+// 获取边缘容器应用的终端信息
 //
 // @param request - GetEdgeContainerTerminalRequest
 //
@@ -13829,7 +13309,7 @@ func (client *Client) GetEdgeContainerTerminalWithOptions(request *GetEdgeContai
 
 // Summary:
 //
-// Queries the terminal information of a containerized application.
+// 获取边缘容器应用的终端信息
 //
 // @param request - GetEdgeContainerTerminalRequest
 //
@@ -13847,7 +13327,7 @@ func (client *Client) GetEdgeContainerTerminal(request *GetEdgeContainerTerminal
 
 // Summary:
 //
-// Checks the status of Edge Routine.
+// # GetErService
 //
 // @param request - GetErServiceRequest
 //
@@ -13887,7 +13367,7 @@ func (client *Client) GetErServiceWithOptions(request *GetErServiceRequest, runt
 
 // Summary:
 //
-// Checks the status of Edge Routine.
+// # GetErService
 //
 // @param request - GetErServiceRequest
 //
@@ -13905,7 +13385,7 @@ func (client *Client) GetErService(request *GetErServiceRequest) (_result *GetEr
 
 // Summary:
 //
-// Queries the configuration details of an HTTP request header modification rule for a website.
+// 查询HTTP入站请求头规则详情
 //
 // @param request - GetHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -13945,7 +13425,7 @@ func (client *Client) GetHttpIncomingRequestHeaderModificationRuleWithOptions(re
 
 // Summary:
 //
-// Queries the configuration details of an HTTP request header modification rule for a website.
+// 查询HTTP入站请求头规则详情
 //
 // @param request - GetHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -13963,7 +13443,7 @@ func (client *Client) GetHttpIncomingRequestHeaderModificationRule(request *GetH
 
 // Summary:
 //
-// Queries the configuration details of an incoming HTTP response header modification rule for a website.
+// 查询HTTP入站响应头规则
 //
 // @param request - GetHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -14003,7 +13483,7 @@ func (client *Client) GetHttpIncomingResponseHeaderModificationRuleWithOptions(r
 
 // Summary:
 //
-// Queries the configuration details of an incoming HTTP response header modification rule for a website.
+// 查询HTTP入站响应头规则
 //
 // @param request - GetHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -14021,7 +13501,7 @@ func (client *Client) GetHttpIncomingResponseHeaderModificationRule(request *Get
 
 // Summary:
 //
-// # Query HTTP Request Header Rule Details
+// 查询HTTP请求头规则详情
 //
 // @param request - GetHttpRequestHeaderModificationRuleRequest
 //
@@ -14061,7 +13541,7 @@ func (client *Client) GetHttpRequestHeaderModificationRuleWithOptions(request *G
 
 // Summary:
 //
-// # Query HTTP Request Header Rule Details
+// 查询HTTP请求头规则详情
 //
 // @param request - GetHttpRequestHeaderModificationRuleRequest
 //
@@ -14079,7 +13559,7 @@ func (client *Client) GetHttpRequestHeaderModificationRule(request *GetHttpReque
 
 // Summary:
 //
-// # Query HTTP Response Header Rules
+// 查询HTTP响应头规则
 //
 // @param request - GetHttpResponseHeaderModificationRuleRequest
 //
@@ -14119,7 +13599,7 @@ func (client *Client) GetHttpResponseHeaderModificationRuleWithOptions(request *
 
 // Summary:
 //
-// # Query HTTP Response Header Rules
+// 查询HTTP响应头规则
 //
 // @param request - GetHttpResponseHeaderModificationRuleRequest
 //
@@ -14137,7 +13617,7 @@ func (client *Client) GetHttpResponseHeaderModificationRule(request *GetHttpResp
 
 // Summary:
 //
-// # Query a Single HTTPS Application Configuration
+// 查询单条HTTPS应用的配置
 //
 // @param request - GetHttpsApplicationConfigurationRequest
 //
@@ -14177,7 +13657,7 @@ func (client *Client) GetHttpsApplicationConfigurationWithOptions(request *GetHt
 
 // Summary:
 //
-// # Query a Single HTTPS Application Configuration
+// 查询单条HTTPS应用的配置
 //
 // @param request - GetHttpsApplicationConfigurationRequest
 //
@@ -14195,7 +13675,7 @@ func (client *Client) GetHttpsApplicationConfiguration(request *GetHttpsApplicat
 
 // Summary:
 //
-// # Query a Single HTTPS Basic Configuration
+// 查询单条HTTPS基础配置
 //
 // @param request - GetHttpsBasicConfigurationRequest
 //
@@ -14235,7 +13715,7 @@ func (client *Client) GetHttpsBasicConfigurationWithOptions(request *GetHttpsBas
 
 // Summary:
 //
-// # Query a Single HTTPS Basic Configuration
+// 查询单条HTTPS基础配置
 //
 // @param request - GetHttpsBasicConfigurationRequest
 //
@@ -14253,7 +13733,7 @@ func (client *Client) GetHttpsBasicConfiguration(request *GetHttpsBasicConfigura
 
 // Summary:
 //
-// Queries the IPv6 configuration of a website.
+// 查询站点IPv6配置
 //
 // @param request - GetIPv6Request
 //
@@ -14293,7 +13773,7 @@ func (client *Client) GetIPv6WithOptions(request *GetIPv6Request, runtime *dara.
 
 // Summary:
 //
-// Queries the IPv6 configuration of a website.
+// 查询站点IPv6配置
 //
 // @param request - GetIPv6Request
 //
@@ -14311,7 +13791,7 @@ func (client *Client) GetIPv6(request *GetIPv6Request) (_result *GetIPv6Response
 
 // Summary:
 //
-// # Query Single Site Image Transformation Configuration
+// 查询单条站点图片转换配置
 //
 // @param request - GetImageTransformRequest
 //
@@ -14351,7 +13831,7 @@ func (client *Client) GetImageTransformWithOptions(request *GetImageTransformReq
 
 // Summary:
 //
-// # Query Single Site Image Transformation Configuration
+// 查询单条站点图片转换配置
 //
 // @param request - GetImageTransformRequest
 //
@@ -14435,7 +13915,7 @@ func (client *Client) GetKeylessServer(request *GetKeylessServerRequest) (_resul
 
 // Summary:
 //
-// Queries the value of a key in a key-value pair.
+// 查询Key-Value对的某个Key值
 //
 // @param request - GetKvRequest
 //
@@ -14475,7 +13955,7 @@ func (client *Client) GetKvWithOptions(request *GetKvRequest, runtime *dara.Runt
 
 // Summary:
 //
-// Queries the value of a key in a key-value pair.
+// 查询Key-Value对的某个Key值
 //
 // @param request - GetKvRequest
 //
@@ -14493,7 +13973,7 @@ func (client *Client) GetKv(request *GetKvRequest) (_result *GetKvResponse, _err
 
 // Summary:
 //
-// Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
+// 列出账号下的NS
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -14522,7 +14002,7 @@ func (client *Client) GetKvAccountWithOptions(runtime *dara.RuntimeOptions) (_re
 
 // Summary:
 //
-// Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
+// 列出账号下的NS
 //
 // @return GetKvAccountResponse
 func (client *Client) GetKvAccount() (_result *GetKvAccountResponse, _err error) {
@@ -14538,7 +14018,7 @@ func (client *Client) GetKvAccount() (_result *GetKvAccountResponse, _err error)
 
 // Summary:
 //
-// Queries the value and time to live (TTL) of a key.
+// 查询Key-Value对的某个Key的详情
 //
 // @param request - GetKvDetailRequest
 //
@@ -14586,7 +14066,7 @@ func (client *Client) GetKvDetailWithOptions(request *GetKvDetailRequest, runtim
 
 // Summary:
 //
-// Queries the value and time to live (TTL) of a key.
+// 查询Key-Value对的某个Key的详情
 //
 // @param request - GetKvDetailRequest
 //
@@ -14604,7 +14084,7 @@ func (client *Client) GetKvDetail(request *GetKvDetailRequest) (_result *GetKvDe
 
 // Summary:
 //
-// Queries the information about a namespace in your Alibaba Cloud account.
+// 查询Namespace信息
 //
 // @param request - GetKvNamespaceRequest
 //
@@ -14644,7 +14124,7 @@ func (client *Client) GetKvNamespaceWithOptions(request *GetKvNamespaceRequest, 
 
 // Summary:
 //
-// Queries the information about a namespace in your Alibaba Cloud account.
+// 查询Namespace信息
 //
 // @param request - GetKvNamespaceRequest
 //
@@ -14662,7 +14142,7 @@ func (client *Client) GetKvNamespace(request *GetKvNamespaceRequest) (_result *G
 
 // Summary:
 //
-// Queries the details of a custom list, such as the name, description, type, and content.
+// 获取单个自定义列表
 //
 // @param request - GetListRequest
 //
@@ -14706,7 +14186,7 @@ func (client *Client) GetListWithOptions(request *GetListRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the details of a custom list, such as the name, description, type, and content.
+// 获取单个自定义列表
 //
 // @param request - GetListRequest
 //
@@ -14724,11 +14204,7 @@ func (client *Client) GetList(request *GetListRequest) (_result *GetListResponse
 
 // Summary:
 //
-// # Query a Specific Load Balancer
-//
-// Description:
-//
-// This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
+// 查询特定的负载均衡器
 //
 // @param request - GetLoadBalancerRequest
 //
@@ -14768,11 +14244,7 @@ func (client *Client) GetLoadBalancerWithOptions(request *GetLoadBalancerRequest
 
 // Summary:
 //
-// # Query a Specific Load Balancer
-//
-// Description:
-//
-// This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
+// 查询特定的负载均衡器
 //
 // @param request - GetLoadBalancerRequest
 //
@@ -14790,7 +14262,7 @@ func (client *Client) GetLoadBalancer(request *GetLoadBalancerRequest) (_result 
 
 // Summary:
 //
-// # Query Managed Transform Configuration
+// 查询站点托管转换配置
 //
 // @param request - GetManagedTransformRequest
 //
@@ -14830,7 +14302,7 @@ func (client *Client) GetManagedTransformWithOptions(request *GetManagedTransfor
 
 // Summary:
 //
-// # Query Managed Transform Configuration
+// 查询站点托管转换配置
 //
 // @param request - GetManagedTransformRequest
 //
@@ -14848,7 +14320,7 @@ func (client *Client) GetManagedTransform(request *GetManagedTransformRequest) (
 
 // Summary:
 //
-// # Query a single network optimization configuration
+// 查询单条网络优化配置
 //
 // @param request - GetNetworkOptimizationRequest
 //
@@ -14888,7 +14360,7 @@ func (client *Client) GetNetworkOptimizationWithOptions(request *GetNetworkOptim
 
 // Summary:
 //
-// # Query a single network optimization configuration
+// 查询单条网络优化配置
 //
 // @param request - GetNetworkOptimizationRequest
 //
@@ -15080,7 +14552,7 @@ func (client *Client) GetOriginClientCertificateHostnames(request *GetOriginClie
 
 // Summary:
 //
-// # Query a specific origin pool
+// 查询特定源地址池
 //
 // @param request - GetOriginPoolRequest
 //
@@ -15120,7 +14592,7 @@ func (client *Client) GetOriginPoolWithOptions(request *GetOriginPoolRequest, ru
 
 // Summary:
 //
-// # Query a specific origin pool
+// 查询特定源地址池
 //
 // @param request - GetOriginPoolRequest
 //
@@ -15138,7 +14610,7 @@ func (client *Client) GetOriginPool(request *GetOriginPoolRequest) (_result *Get
 
 // Summary:
 //
-// Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
+// 查询站点源站防护相关配置，查看回源IP白名单的信息
 //
 // @param request - GetOriginProtectionRequest
 //
@@ -15178,7 +14650,7 @@ func (client *Client) GetOriginProtectionWithOptions(request *GetOriginProtectio
 
 // Summary:
 //
-// Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
+// 查询站点源站防护相关配置，查看回源IP白名单的信息
 //
 // @param request - GetOriginProtectionRequest
 //
@@ -15196,7 +14668,7 @@ func (client *Client) GetOriginProtection(request *GetOriginProtectionRequest) (
 
 // Summary:
 //
-// Queries the configurations of a single origin rule.
+// 查询单条回源规则的配置
 //
 // @param request - GetOriginRuleRequest
 //
@@ -15236,7 +14708,7 @@ func (client *Client) GetOriginRuleWithOptions(request *GetOriginRuleRequest, ru
 
 // Summary:
 //
-// Queries the configurations of a single origin rule.
+// 查询单条回源规则的配置
 //
 // @param request - GetOriginRuleRequest
 //
@@ -15254,7 +14726,7 @@ func (client *Client) GetOriginRule(request *GetOriginRuleRequest) (_result *Get
 
 // Summary:
 //
-// Queries the details of a custom error page based on the error page ID.
+// 获取单个自定义响应页面详情
 //
 // @param request - GetPageRequest
 //
@@ -15298,7 +14770,7 @@ func (client *Client) GetPageWithOptions(request *GetPageRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the details of a custom error page based on the error page ID.
+// 获取单个自定义响应页面详情
 //
 // @param request - GetPageRequest
 //
@@ -15378,7 +14850,7 @@ func (client *Client) GetPerformanceDataCollection(request *GetPerformanceDataCo
 
 // Summary:
 //
-// Queries the quotas and quota usage for different cache purge options.
+// 获取刷新Quota
 //
 // @param request - GetPurgeQuotaRequest
 //
@@ -15426,7 +14898,7 @@ func (client *Client) GetPurgeQuotaWithOptions(request *GetPurgeQuotaRequest, ru
 
 // Summary:
 //
-// Queries the quotas and quota usage for different cache purge options.
+// 获取刷新Quota
 //
 // @param request - GetPurgeQuotaRequest
 //
@@ -15444,7 +14916,7 @@ func (client *Client) GetPurgeQuota(request *GetPurgeQuotaRequest) (_result *Get
 
 // Summary:
 //
-// Queries the fields in real-time logs based on the log category.
+// ub日志字段列表接口
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //
@@ -15484,7 +14956,7 @@ func (client *Client) GetRealtimeDeliveryFieldWithOptions(request *GetRealtimeDe
 
 // Summary:
 //
-// Queries the fields in real-time logs based on the log category.
+// ub日志字段列表接口
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //
@@ -15502,7 +14974,7 @@ func (client *Client) GetRealtimeDeliveryField(request *GetRealtimeDeliveryField
 
 // Summary:
 //
-// Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
+// 查询单条记录信息
 //
 // @param request - GetRecordRequest
 //
@@ -15542,7 +15014,7 @@ func (client *Client) GetRecordWithOptions(request *GetRecordRequest, runtime *d
 
 // Summary:
 //
-// Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
+// 查询单条记录信息
 //
 // @param request - GetRecordRequest
 //
@@ -15560,7 +15032,7 @@ func (client *Client) GetRecord(request *GetRecordRequest) (_result *GetRecordRe
 
 // Summary:
 //
-// # Query Redirect Rule Details
+// 查询重定向规则详情
 //
 // @param request - GetRedirectRuleRequest
 //
@@ -15600,7 +15072,7 @@ func (client *Client) GetRedirectRuleWithOptions(request *GetRedirectRuleRequest
 
 // Summary:
 //
-// # Query Redirect Rule Details
+// 查询重定向规则详情
 //
 // @param request - GetRedirectRuleRequest
 //
@@ -15618,7 +15090,7 @@ func (client *Client) GetRedirectRule(request *GetRedirectRuleRequest) (_result 
 
 // Summary:
 //
-// # Query details of the rewrite URL rule
+// 查询重写URL规则详情
 //
 // @param request - GetRewriteUrlRuleRequest
 //
@@ -15658,7 +15130,7 @@ func (client *Client) GetRewriteUrlRuleWithOptions(request *GetRewriteUrlRuleReq
 
 // Summary:
 //
-// # Query details of the rewrite URL rule
+// 查询重写URL规则详情
 //
 // @param request - GetRewriteUrlRuleRequest
 //
@@ -15676,7 +15148,7 @@ func (client *Client) GetRewriteUrlRule(request *GetRewriteUrlRuleRequest) (_res
 
 // Summary:
 //
-// Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
+// 查询Routine配置信息
 //
 // @param request - GetRoutineRequest
 //
@@ -15720,7 +15192,7 @@ func (client *Client) GetRoutineWithOptions(request *GetRoutineRequest, runtime 
 
 // Summary:
 //
-// Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
+// 查询Routine配置信息
 //
 // @param request - GetRoutineRequest
 //
@@ -15800,7 +15272,7 @@ func (client *Client) GetRoutineAccessToken(request *GetRoutineAccessTokenReques
 
 // Summary:
 //
-// Queries information about a code version of a routine.
+// 查询Routine某版本代码
 //
 // @param request - GetRoutineCodeVersionRequest
 //
@@ -15848,7 +15320,7 @@ func (client *Client) GetRoutineCodeVersionWithOptions(request *GetRoutineCodeVe
 
 // Summary:
 //
-// Queries information about a code version of a routine.
+// 查询Routine某版本代码
 //
 // @param request - GetRoutineCodeVersionRequest
 //
@@ -15866,7 +15338,7 @@ func (client *Client) GetRoutineCodeVersion(request *GetRoutineCodeVersionReques
 
 // Summary:
 //
-// Queries the route configurations of a single edge function.
+// 查询单条边缘函数路由的配置
 //
 // @param request - GetRoutineRouteRequest
 //
@@ -15914,7 +15386,7 @@ func (client *Client) GetRoutineRouteWithOptions(request *GetRoutineRouteRequest
 
 // Summary:
 //
-// Queries the route configurations of a single edge function.
+// 查询单条边缘函数路由的配置
 //
 // @param request - GetRoutineRouteRequest
 //
@@ -15932,13 +15404,7 @@ func (client *Client) GetRoutineRoute(request *GetRoutineRouteRequest) (_result 
 
 // Summary:
 //
-// Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
-//
-// Description:
-//
-//	  Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
-//
-//		- A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
+// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
 //
 // @param request - GetRoutineStagingCodeUploadInfoRequest
 //
@@ -15986,13 +15452,7 @@ func (client *Client) GetRoutineStagingCodeUploadInfoWithOptions(request *GetRou
 
 // Summary:
 //
-// Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
-//
-// Description:
-//
-//	  Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
-//
-//		- A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
+// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
 //
 // @param request - GetRoutineStagingCodeUploadInfoRequest
 //
@@ -16010,7 +15470,7 @@ func (client *Client) GetRoutineStagingCodeUploadInfo(request *GetRoutineStaging
 
 // Summary:
 //
-// Queries the IP addresses of staging environments for Edge Routine.
+// 查询边缘函数测试环境IP
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -16039,7 +15499,7 @@ func (client *Client) GetRoutineStagingEnvIpWithOptions(runtime *dara.RuntimeOpt
 
 // Summary:
 //
-// Queries the IP addresses of staging environments for Edge Routine.
+// 查询边缘函数测试环境IP
 //
 // @return GetRoutineStagingEnvIpResponse
 func (client *Client) GetRoutineStagingEnvIp() (_result *GetRoutineStagingEnvIpResponse, _err error) {
@@ -16055,7 +15515,7 @@ func (client *Client) GetRoutineStagingEnvIp() (_result *GetRoutineStagingEnvIpR
 
 // Summary:
 //
-// Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
+// 查询用户的Routine列表
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -16084,7 +15544,7 @@ func (client *Client) GetRoutineUserInfoWithOptions(runtime *dara.RuntimeOptions
 
 // Summary:
 //
-// Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
+// 查询用户的Routine列表
 //
 // @return GetRoutineUserInfoResponse
 func (client *Client) GetRoutineUserInfo() (_result *GetRoutineUserInfoResponse, _err error) {
@@ -16100,7 +15560,7 @@ func (client *Client) GetRoutineUserInfo() (_result *GetRoutineUserInfoResponse,
 
 // Summary:
 //
-// Queries a specified scheduled prefetch task based on the task ID.
+// 查询单个定时预热任务
 //
 // @param request - GetScheduledPreloadJobRequest
 //
@@ -16140,7 +15600,7 @@ func (client *Client) GetScheduledPreloadJobWithOptions(request *GetScheduledPre
 
 // Summary:
 //
-// Queries a specified scheduled prefetch task based on the task ID.
+// 查询单个定时预热任务
 //
 // @param request - GetScheduledPreloadJobRequest
 //
@@ -16158,7 +15618,7 @@ func (client *Client) GetScheduledPreloadJob(request *GetScheduledPreloadJobRequ
 
 // Summary:
 //
-// Queries the configuration for search engine crawler of a website.
+// 查询站点放行搜索引擎爬虫配置
 //
 // @param request - GetSeoBypassRequest
 //
@@ -16198,7 +15658,7 @@ func (client *Client) GetSeoBypassWithOptions(request *GetSeoBypassRequest, runt
 
 // Summary:
 //
-// Queries the configuration for search engine crawler of a website.
+// 查询站点放行搜索引擎爬虫配置
 //
 // @param request - GetSeoBypassRequest
 //
@@ -16216,7 +15676,7 @@ func (client *Client) GetSeoBypass(request *GetSeoBypassRequest) (_result *GetSe
 
 // Summary:
 //
-// Queries information about a website based on the website ID.
+// 查询单个站点的信息
 //
 // @param request - GetSiteRequest
 //
@@ -16256,7 +15716,7 @@ func (client *Client) GetSiteWithOptions(request *GetSiteRequest, runtime *dara.
 
 // Summary:
 //
-// Queries information about a website based on the website ID.
+// 查询单个站点的信息
 //
 // @param request - GetSiteRequest
 //
@@ -16274,7 +15734,7 @@ func (client *Client) GetSite(request *GetSiteRequest) (_result *GetSiteResponse
 
 // Summary:
 //
-// Queries the nameservers configured for a website.
+// 查询当前NS列表
 //
 // @param request - GetSiteCurrentNSRequest
 //
@@ -16314,7 +15774,7 @@ func (client *Client) GetSiteCurrentNSWithOptions(request *GetSiteCurrentNSReque
 
 // Summary:
 //
-// Queries the nameservers configured for a website.
+// 查询当前NS列表
 //
 // @param request - GetSiteCurrentNSRequest
 //
@@ -16332,15 +15792,7 @@ func (client *Client) GetSiteCurrentNS(request *GetSiteCurrentNSRequest) (_resul
 
 // Summary:
 //
-// Queries the configuration of custom log fields for a website.
-//
-// Description:
-//
-//	  **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
-//
-//		- **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
-//
-//		- ****
+// 获取自定义字段
 //
 // @param request - GetSiteCustomLogRequest
 //
@@ -16380,15 +15832,7 @@ func (client *Client) GetSiteCustomLogWithOptions(request *GetSiteCustomLogReque
 
 // Summary:
 //
-// Queries the configuration of custom log fields for a website.
-//
-// Description:
-//
-//	  **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
-//
-//		- **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
-//
-//		- ****
+// 获取自定义字段
 //
 // @param request - GetSiteCustomLogRequest
 //
@@ -16406,7 +15850,7 @@ func (client *Client) GetSiteCustomLog(request *GetSiteCustomLogRequest) (_resul
 
 // Summary:
 //
-// Queries a real-time log delivery task.
+// 获取一个实时日志任务投递
 //
 // @param request - GetSiteDeliveryTaskRequest
 //
@@ -16446,7 +15890,7 @@ func (client *Client) GetSiteDeliveryTaskWithOptions(request *GetSiteDeliveryTas
 
 // Summary:
 //
-// Queries a real-time log delivery task.
+// 获取一个实时日志任务投递
 //
 // @param request - GetSiteDeliveryTaskRequest
 //
@@ -16464,23 +15908,7 @@ func (client *Client) GetSiteDeliveryTask(request *GetSiteDeliveryTaskRequest) (
 
 // Summary:
 //
-// Queries the remaining quota for delivering a specific category of real-time logs in a website.
-//
-// Description:
-//
-// You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
-//
-// **Take note of the following parameters:**
-//
-//   - “
-//
-//   - `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
-//
-//   - `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
-//
-// **Response:**
-//
-//   - If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
+// 获取日志投递任务quota数
 //
 // @param request - GetSiteLogDeliveryQuotaRequest
 //
@@ -16520,23 +15948,7 @@ func (client *Client) GetSiteLogDeliveryQuotaWithOptions(request *GetSiteLogDeli
 
 // Summary:
 //
-// Queries the remaining quota for delivering a specific category of real-time logs in a website.
-//
-// Description:
-//
-// You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
-//
-// **Take note of the following parameters:**
-//
-//   - “
-//
-//   - `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
-//
-//   - `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
-//
-// **Response:**
-//
-//   - If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
+// 获取日志投递任务quota数
 //
 // @param request - GetSiteLogDeliveryQuotaRequest
 //
@@ -16554,7 +15966,7 @@ func (client *Client) GetSiteLogDeliveryQuota(request *GetSiteLogDeliveryQuotaRe
 
 // Summary:
 //
-// Queries the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
+// 查询站点名称独占配置
 //
 // @param request - GetSiteNameExclusiveRequest
 //
@@ -16594,7 +16006,7 @@ func (client *Client) GetSiteNameExclusiveWithOptions(request *GetSiteNameExclus
 
 // Summary:
 //
-// Queries the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
+// 查询站点名称独占配置
 //
 // @param request - GetSiteNameExclusiveRequest
 //
@@ -16670,7 +16082,7 @@ func (client *Client) GetSiteOriginClientCertificate(request *GetSiteOriginClien
 
 // Summary:
 //
-// Queries the ESA proxy configuration of a website.
+// 查询站点暂停配置
 //
 // @param request - GetSitePauseRequest
 //
@@ -16710,7 +16122,7 @@ func (client *Client) GetSitePauseWithOptions(request *GetSitePauseRequest, runt
 
 // Summary:
 //
-// Queries the ESA proxy configuration of a website.
+// 查询站点暂停配置
 //
 // @param request - GetSitePauseRequest
 //
@@ -16728,7 +16140,7 @@ func (client *Client) GetSitePause(request *GetSitePauseRequest) (_result *GetSi
 
 // Summary:
 //
-// # Get WAF Configuration for a Site
+// 获取站点WAF配置
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -16780,7 +16192,7 @@ func (client *Client) GetSiteWafSettingsWithOptions(request *GetSiteWafSettingsR
 
 // Summary:
 //
-// # Get WAF Configuration for a Site
+// 获取站点WAF配置
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -16798,7 +16210,7 @@ func (client *Client) GetSiteWafSettings(request *GetSiteWafSettingsRequest) (_r
 
 // Summary:
 //
-// # Query Multi-level Cache Configuration for Site
+// 查询站点多级缓存配置
 //
 // @param request - GetTieredCacheRequest
 //
@@ -16838,7 +16250,7 @@ func (client *Client) GetTieredCacheWithOptions(request *GetTieredCacheRequest, 
 
 // Summary:
 //
-// # Query Multi-level Cache Configuration for Site
+// 查询站点多级缓存配置
 //
 // @param request - GetTieredCacheRequest
 //
@@ -16856,7 +16268,7 @@ func (client *Client) GetTieredCache(request *GetTieredCacheRequest) (_result *G
 
 // Summary:
 //
-// # Query details of the transport layer application
+// 查询四层应用的详情
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -16896,7 +16308,7 @@ func (client *Client) GetTransportLayerApplicationWithOptions(request *GetTransp
 
 // Summary:
 //
-// # Query details of the transport layer application
+// 查询四层应用的详情
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -16914,7 +16326,7 @@ func (client *Client) GetTransportLayerApplication(request *GetTransportLayerApp
 
 // Summary:
 //
-// Queries the execution status and running information of a file upload task based on the task ID.
+// 文件上传任务查询接口
 //
 // @param request - GetUploadTaskRequest
 //
@@ -16954,7 +16366,7 @@ func (client *Client) GetUploadTaskWithOptions(request *GetUploadTaskRequest, ru
 
 // Summary:
 //
-// Queries the execution status and running information of a file upload task based on the task ID.
+// 文件上传任务查询接口
 //
 // @param request - GetUploadTaskRequest
 //
@@ -16972,15 +16384,7 @@ func (client *Client) GetUploadTask(request *GetUploadTaskRequest) (_result *Get
 
 // Summary:
 //
-// Queries the information about a log delivery task by account.
-//
-// Description:
-//
-//	  This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****
-//
-//		- You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****
-//
-//		- ****````
+// 获取用户粒度任务投递
 //
 // @param request - GetUserDeliveryTaskRequest
 //
@@ -17020,15 +16424,7 @@ func (client *Client) GetUserDeliveryTaskWithOptions(request *GetUserDeliveryTas
 
 // Summary:
 //
-// Queries the information about a log delivery task by account.
-//
-// Description:
-//
-//	  This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****
-//
-//		- You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****
-//
-//		- ****````
+// 获取用户粒度任务投递
 //
 // @param request - GetUserDeliveryTaskRequest
 //
@@ -17046,11 +16442,7 @@ func (client *Client) GetUserDeliveryTask(request *GetUserDeliveryTaskRequest) (
 
 // Summary:
 //
-// Queries the remaining log delivery quota of each log category in your account.
-//
-// Description:
-//
-// This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
+// 获取日志投递任务用户quota数
 //
 // @param request - GetUserLogDeliveryQuotaRequest
 //
@@ -17090,11 +16482,7 @@ func (client *Client) GetUserLogDeliveryQuotaWithOptions(request *GetUserLogDeli
 
 // Summary:
 //
-// Queries the remaining log delivery quota of each log category in your account.
-//
-// Description:
-//
-// This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
+// 获取日志投递任务用户quota数
 //
 // @param request - GetUserLogDeliveryQuotaRequest
 //
@@ -17178,7 +16566,7 @@ func (client *Client) GetUserWafRuleset(request *GetUserWafRulesetRequest) (_res
 
 // Summary:
 //
-// Queries the video processing configuration details of a site.
+// 查询站点视频处理配置详情
 //
 // @param request - GetVideoProcessingRequest
 //
@@ -17226,7 +16614,7 @@ func (client *Client) GetVideoProcessingWithOptions(request *GetVideoProcessingR
 
 // Summary:
 //
-// Queries the video processing configuration details of a site.
+// 查询站点视频处理配置详情
 //
 // @param request - GetVideoProcessingRequest
 //
@@ -17244,7 +16632,7 @@ func (client *Client) GetVideoProcessing(request *GetVideoProcessingRequest) (_r
 
 // Summary:
 //
-// This interface is used to obtain the application key (AppKey) for the BOT behavior detection feature in the site\\"s Web Application Firewall (WAF). The key is typically used for authentication and data exchange with the WAF service.
+// 获取WAF中BOT阶段的APP key
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -17273,7 +16661,7 @@ func (client *Client) GetWafBotAppKeyWithOptions(runtime *dara.RuntimeOptions) (
 
 // Summary:
 //
-// This interface is used to obtain the application key (AppKey) for the BOT behavior detection feature in the site\\"s Web Application Firewall (WAF). The key is typically used for authentication and data exchange with the WAF service.
+// 获取WAF中BOT阶段的APP key
 //
 // @return GetWafBotAppKeyResponse
 func (client *Client) GetWafBotAppKey() (_result *GetWafBotAppKeyResponse, _err error) {
@@ -17289,7 +16677,7 @@ func (client *Client) GetWafBotAppKey() (_result *GetWafBotAppKeyResponse, _err 
 
 // Summary:
 //
-// Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
+// 将匹配项转换为表达式
 //
 // @param request - GetWafFilterRequest
 //
@@ -17345,7 +16733,7 @@ func (client *Client) GetWafFilterWithOptions(request *GetWafFilterRequest, runt
 
 // Summary:
 //
-// Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
+// 将匹配项转换为表达式
 //
 // @param request - GetWafFilterRequest
 //
@@ -17363,7 +16751,7 @@ func (client *Client) GetWafFilter(request *GetWafFilterRequest) (_result *GetWa
 
 // Summary:
 //
-// # Get WAF Quota Details
+// 获取WAF配额详情
 //
 // @param request - GetWafQuotaRequest
 //
@@ -17407,7 +16795,7 @@ func (client *Client) GetWafQuotaWithOptions(request *GetWafQuotaRequest, runtim
 
 // Summary:
 //
-// # Get WAF Quota Details
+// 获取WAF配额详情
 //
 // @param request - GetWafQuotaRequest
 //
@@ -17425,7 +16813,7 @@ func (client *Client) GetWafQuota(request *GetWafQuotaRequest) (_result *GetWafQ
 
 // Summary:
 //
-// # Get Details of a Single WAF Rule
+// 获取单个WAF规则详情
 //
 // @param request - GetWafRuleRequest
 //
@@ -17473,7 +16861,7 @@ func (client *Client) GetWafRuleWithOptions(request *GetWafRuleRequest, runtime 
 
 // Summary:
 //
-// # Get Details of a Single WAF Rule
+// 获取单个WAF规则详情
 //
 // @param request - GetWafRuleRequest
 //
@@ -17491,7 +16879,7 @@ func (client *Client) GetWafRule(request *GetWafRuleRequest) (_result *GetWafRul
 
 // Summary:
 //
-// # Get WAF Ruleset Details
+// 获取WAF规则集详情
 //
 // @param request - GetWafRulesetRequest
 //
@@ -17543,7 +16931,7 @@ func (client *Client) GetWafRulesetWithOptions(request *GetWafRulesetRequest, ru
 
 // Summary:
 //
-// # Get WAF Ruleset Details
+// 获取WAF规则集详情
 //
 // @param request - GetWafRulesetRequest
 //
@@ -17561,7 +16949,7 @@ func (client *Client) GetWafRuleset(request *GetWafRulesetRequest) (_result *Get
 
 // Summary:
 //
-// # Query Cache Reserve Instance List
+// 查询缓存保持实例列表
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -17601,7 +16989,7 @@ func (client *Client) ListCacheReserveInstancesWithOptions(request *ListCacheRes
 
 // Summary:
 //
-// # Query Cache Reserve Instance List
+// 查询缓存保持实例列表
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -17619,7 +17007,7 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 
 // Summary:
 //
-// # Query multiple cache configurations
+// 查询多条缓存配置
 //
 // @param request - ListCacheRulesRequest
 //
@@ -17659,7 +17047,7 @@ func (client *Client) ListCacheRulesWithOptions(request *ListCacheRulesRequest, 
 
 // Summary:
 //
-// # Query multiple cache configurations
+// 查询多条缓存配置
 //
 // @param request - ListCacheRulesRequest
 //
@@ -17677,7 +17065,7 @@ func (client *Client) ListCacheRules(request *ListCacheRulesRequest) (_result *L
 
 // Summary:
 //
-// Lists certificates of a website.
+// 查询站点下证书列表
 //
 // @param request - ListCertificatesRequest
 //
@@ -17737,7 +17125,7 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 
 // Summary:
 //
-// Lists certificates of a website.
+// 查询站点下证书列表
 //
 // @param request - ListCertificatesRequest
 //
@@ -17755,7 +17143,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// Lists certificates that match specified records for a website. You can specify multiple records at a time.
+// 查询匹配记录名的站点证书列表
 //
 // @param request - ListCertificatesByRecordRequest
 //
@@ -17811,7 +17199,7 @@ func (client *Client) ListCertificatesByRecordWithOptions(request *ListCertifica
 
 // Summary:
 //
-// Lists certificates that match specified records for a website. You can specify multiple records at a time.
+// 查询匹配记录名的站点证书列表
 //
 // @param request - ListCertificatesByRecordRequest
 //
@@ -17829,7 +17217,7 @@ func (client *Client) ListCertificatesByRecord(request *ListCertificatesByRecord
 
 // Summary:
 //
-// # Query TLS Cipher Suite List
+// 查询TLS密码套件列表
 //
 // @param request - ListCiphersRequest
 //
@@ -17869,7 +17257,7 @@ func (client *Client) ListCiphersWithOptions(request *ListCiphersRequest, runtim
 
 // Summary:
 //
-// # Query TLS Cipher Suite List
+// 查询TLS密码套件列表
 //
 // @param request - ListCiphersRequest
 //
@@ -17887,7 +17275,7 @@ func (client *Client) ListCiphers(request *ListCiphersRequest) (_result *ListCip
 
 // Summary:
 //
-// Queries a list of client certificate authority (CA) certificates for a website.
+// 查询站点下客户端CA证书列表
 //
 // @param request - ListClientCaCertificatesRequest
 //
@@ -17927,7 +17315,7 @@ func (client *Client) ListClientCaCertificatesWithOptions(request *ListClientCaC
 
 // Summary:
 //
-// Queries a list of client certificate authority (CA) certificates for a website.
+// 查询站点下客户端CA证书列表
 //
 // @param request - ListClientCaCertificatesRequest
 //
@@ -17945,7 +17333,7 @@ func (client *Client) ListClientCaCertificates(request *ListClientCaCertificates
 
 // Summary:
 //
-// Queries client certificates configured for a website.
+// 查询站点下客户端证书列表
 //
 // @param request - ListClientCertificatesRequest
 //
@@ -17985,7 +17373,7 @@ func (client *Client) ListClientCertificatesWithOptions(request *ListClientCerti
 
 // Summary:
 //
-// Queries client certificates configured for a website.
+// 查询站点下客户端证书列表
 //
 // @param request - ListClientCertificatesRequest
 //
@@ -18003,7 +17391,7 @@ func (client *Client) ListClientCertificates(request *ListClientCertificatesRequ
 
 // Summary:
 //
-// # Query the list of compression rules
+// 查询压缩规则列表
 //
 // @param request - ListCompressionRulesRequest
 //
@@ -18043,7 +17431,7 @@ func (client *Client) ListCompressionRulesWithOptions(request *ListCompressionRu
 
 // Summary:
 //
-// # Query the list of compression rules
+// 查询压缩规则列表
 //
 // @param request - ListCompressionRulesRequest
 //
@@ -18147,7 +17535,7 @@ func (client *Client) ListCustomHostnames(request *ListCustomHostnamesRequest) (
 
 // Summary:
 //
-// Queries the configuration list of an HTTP response header modification rule for a website.
+// 查询修改响应码规则列表
 //
 // @param request - ListCustomResponseCodeRulesRequest
 //
@@ -18215,7 +17603,7 @@ func (client *Client) ListCustomResponseCodeRulesWithOptions(request *ListCustom
 
 // Summary:
 //
-// Queries the configuration list of an HTTP response header modification rule for a website.
+// 查询修改响应码规则列表
 //
 // @param request - ListCustomResponseCodeRulesRequest
 //
@@ -18319,11 +17707,7 @@ func (client *Client) ListDDoSInstances(request *ListDDoSInstancesRequest) (_res
 
 // Summary:
 //
-// Batch query whether the IP address is included in the ESA resolution result.
-//
-// Description:
-//
-// This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
+// 批量查询IP是否为VIP
 //
 // @param request - ListESAIPInfoRequest
 //
@@ -18363,11 +17747,7 @@ func (client *Client) ListESAIPInfoWithOptions(request *ListESAIPInfoRequest, ru
 
 // Summary:
 //
-// Batch query whether the IP address is included in the ESA resolution result.
-//
-// Description:
-//
-// This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
+// 批量查询IP是否为VIP
 //
 // @param request - ListESAIPInfoRequest
 //
@@ -18385,7 +17765,7 @@ func (client *Client) ListESAIPInfo(request *ListESAIPInfoRequest) (_result *Lis
 
 // Summary:
 //
-// # Retrieve the list of image secrets for edge container applications
+// 获取边缘容器应用的镜像秘钥列表
 //
 // @param request - ListEdgeContainerAppImageSecretsRequest
 //
@@ -18429,7 +17809,7 @@ func (client *Client) ListEdgeContainerAppImageSecretsWithOptions(request *ListE
 
 // Summary:
 //
-// # Retrieve the list of image secrets for edge container applications
+// 获取边缘容器应用的镜像秘钥列表
 //
 // @param request - ListEdgeContainerAppImageSecretsRequest
 //
@@ -18447,7 +17827,7 @@ func (client *Client) ListEdgeContainerAppImageSecrets(request *ListEdgeContaine
 
 // Summary:
 //
-// Lists domain names that are associated with a containerized application.
+// 获取一个边缘容器应用的全部域名记录
 //
 // @param request - ListEdgeContainerAppRecordsRequest
 //
@@ -18487,7 +17867,7 @@ func (client *Client) ListEdgeContainerAppRecordsWithOptions(request *ListEdgeCo
 
 // Summary:
 //
-// Lists domain names that are associated with a containerized application.
+// 获取一个边缘容器应用的全部域名记录
 //
 // @param request - ListEdgeContainerAppRecordsRequest
 //
@@ -18505,7 +17885,7 @@ func (client *Client) ListEdgeContainerAppRecords(request *ListEdgeContainerAppR
 
 // Summary:
 //
-// Lists versions of all containerized applications.
+// 获取边缘容器应用的全部版本信息
 //
 // @param request - ListEdgeContainerAppVersionsRequest
 //
@@ -18545,7 +17925,7 @@ func (client *Client) ListEdgeContainerAppVersionsWithOptions(request *ListEdgeC
 
 // Summary:
 //
-// Lists versions of all containerized applications.
+// 获取边缘容器应用的全部版本信息
 //
 // @param request - ListEdgeContainerAppVersionsRequest
 //
@@ -18563,7 +17943,7 @@ func (client *Client) ListEdgeContainerAppVersions(request *ListEdgeContainerApp
 
 // Summary:
 //
-// Queries all containerized applications in your Alibaba Cloud account.
+// 获取用户全部边缘容器应用
 //
 // @param request - ListEdgeContainerAppsRequest
 //
@@ -18627,7 +18007,7 @@ func (client *Client) ListEdgeContainerAppsWithOptions(request *ListEdgeContaine
 
 // Summary:
 //
-// Queries all containerized applications in your Alibaba Cloud account.
+// 获取用户全部边缘容器应用
 //
 // @param request - ListEdgeContainerAppsRequest
 //
@@ -18645,7 +18025,7 @@ func (client *Client) ListEdgeContainerApps(request *ListEdgeContainerAppsReques
 
 // Summary:
 //
-// Queries the records that are associated with Edge Container for a website.
+// 查询站点的边缘容器记录
 //
 // @param request - ListEdgeContainerRecordsRequest
 //
@@ -18685,7 +18065,7 @@ func (client *Client) ListEdgeContainerRecordsWithOptions(request *ListEdgeConta
 
 // Summary:
 //
-// Queries the records that are associated with Edge Container for a website.
+// 查询站点的边缘容器记录
 //
 // @param request - ListEdgeContainerRecordsRequest
 //
@@ -18703,7 +18083,7 @@ func (client *Client) ListEdgeContainerRecords(request *ListEdgeContainerRecords
 
 // Summary:
 //
-// Queries Edge Routine plans.
+// 查询用户可购买的边缘函数的套餐
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -18732,7 +18112,7 @@ func (client *Client) ListEdgeRoutinePlansWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// Queries Edge Routine plans.
+// 查询用户可购买的边缘函数的套餐
 //
 // @return ListEdgeRoutinePlansResponse
 func (client *Client) ListEdgeRoutinePlans() (_result *ListEdgeRoutinePlansResponse, _err error) {
@@ -18748,11 +18128,7 @@ func (client *Client) ListEdgeRoutinePlans() (_result *ListEdgeRoutinePlansRespo
 
 // Summary:
 //
-// Queries the records that are associated with Edge Routine routes for a website.
-//
-// Description:
-//
-// >  You can call this operation 100 times per second.
+// 查询站点的边缘路由记录
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -18792,11 +18168,7 @@ func (client *Client) ListEdgeRoutineRecordsWithOptions(request *ListEdgeRoutine
 
 // Summary:
 //
-// Queries the records that are associated with Edge Routine routes for a website.
-//
-// Description:
-//
-// >  You can call this operation 100 times per second.
+// 查询站点的边缘路由记录
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -18814,7 +18186,7 @@ func (client *Client) ListEdgeRoutineRecords(request *ListEdgeRoutineRecordsRequ
 
 // Summary:
 //
-// Queries the configuration details of an incoming HTTP request header modification rule for a website.
+// 查询HTTP入站请求头规则列表
 //
 // @param request - ListHttpIncomingRequestHeaderModificationRulesRequest
 //
@@ -18854,7 +18226,7 @@ func (client *Client) ListHttpIncomingRequestHeaderModificationRulesWithOptions(
 
 // Summary:
 //
-// Queries the configuration details of an incoming HTTP request header modification rule for a website.
+// 查询HTTP入站请求头规则列表
 //
 // @param request - ListHttpIncomingRequestHeaderModificationRulesRequest
 //
@@ -18872,7 +18244,7 @@ func (client *Client) ListHttpIncomingRequestHeaderModificationRules(request *Li
 
 // Summary:
 //
-// Queries the configurations of an incoming HTTP response header modification rule for a website.
+// 查询HTTP入站响应头规则列表
 //
 // @param request - ListHttpIncomingResponseHeaderModificationRulesRequest
 //
@@ -18912,7 +18284,7 @@ func (client *Client) ListHttpIncomingResponseHeaderModificationRulesWithOptions
 
 // Summary:
 //
-// Queries the configurations of an incoming HTTP response header modification rule for a website.
+// 查询HTTP入站响应头规则列表
 //
 // @param request - ListHttpIncomingResponseHeaderModificationRulesRequest
 //
@@ -18930,7 +18302,7 @@ func (client *Client) ListHttpIncomingResponseHeaderModificationRules(request *L
 
 // Summary:
 //
-// # List of HTTP Request Header Rules
+// 查询HTTP请求头规则列表
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -18970,7 +18342,7 @@ func (client *Client) ListHttpRequestHeaderModificationRulesWithOptions(request 
 
 // Summary:
 //
-// # List of HTTP Request Header Rules
+// 查询HTTP请求头规则列表
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -18988,7 +18360,7 @@ func (client *Client) ListHttpRequestHeaderModificationRules(request *ListHttpRe
 
 // Summary:
 //
-// # List of HTTP Response Header Rules
+// 查询HTTP响应头规则列表
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -19028,7 +18400,7 @@ func (client *Client) ListHttpResponseHeaderModificationRulesWithOptions(request
 
 // Summary:
 //
-// # List of HTTP Response Header Rules
+// 查询HTTP响应头规则列表
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -19046,7 +18418,7 @@ func (client *Client) ListHttpResponseHeaderModificationRules(request *ListHttpR
 
 // Summary:
 //
-// # Query multiple HTTPS application configurations
+// 查询多条HTTPS应用的配置
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -19086,7 +18458,7 @@ func (client *Client) ListHttpsApplicationConfigurationsWithOptions(request *Lis
 
 // Summary:
 //
-// # Query multiple HTTPS application configurations
+// 查询多条HTTPS应用的配置
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -19104,7 +18476,7 @@ func (client *Client) ListHttpsApplicationConfigurations(request *ListHttpsAppli
 
 // Summary:
 //
-// # Query multiple HTTPS basic configurations
+// 查询多条HTTPS基础配置
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -19144,7 +18516,7 @@ func (client *Client) ListHttpsBasicConfigurationsWithOptions(request *ListHttps
 
 // Summary:
 //
-// # Query multiple HTTPS basic configurations
+// 查询多条HTTPS基础配置
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -19162,7 +18534,7 @@ func (client *Client) ListHttpsBasicConfigurations(request *ListHttpsBasicConfig
 
 // Summary:
 //
-// # Query Multiple Site Image Transformation Configurations
+// 查询多条站点图片转换配置
 //
 // @param request - ListImageTransformsRequest
 //
@@ -19202,7 +18574,7 @@ func (client *Client) ListImageTransformsWithOptions(request *ListImageTransform
 
 // Summary:
 //
-// # Query Multiple Site Image Transformation Configurations
+// 查询多条站点图片转换配置
 //
 // @param request - ListImageTransformsRequest
 //
@@ -19220,7 +18592,7 @@ func (client *Client) ListImageTransforms(request *ListImageTransformsRequest) (
 
 // Summary:
 //
-// Queries the quota details in a subscription plan.
+// 查询实例或者站点的quota值
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -19260,7 +18632,7 @@ func (client *Client) ListInstanceQuotasWithOptions(request *ListInstanceQuotasR
 
 // Summary:
 //
-// Queries the quota details in a subscription plan.
+// 查询实例或者站点的quota值
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -19278,7 +18650,7 @@ func (client *Client) ListInstanceQuotas(request *ListInstanceQuotasRequest) (_r
 
 // Summary:
 //
-// Queries quotas and the actual usage in a plan based on the website or plan ID.
+// 查询功能quota和用量
 //
 // @param request - ListInstanceQuotasWithUsageRequest
 //
@@ -19318,7 +18690,7 @@ func (client *Client) ListInstanceQuotasWithUsageWithOptions(request *ListInstan
 
 // Summary:
 //
-// Queries quotas and the actual usage in a plan based on the website or plan ID.
+// 查询功能quota和用量
 //
 // @param request - ListInstanceQuotasWithUsageRequest
 //
@@ -19406,7 +18778,7 @@ func (client *Client) ListKeylessServers(request *ListKeylessServersRequest) (_r
 
 // Summary:
 //
-// Lists all key-value pairs in a namespace in your Alibaba Cloud account.
+// 遍历Namespace的Key值
 //
 // @param request - ListKvsRequest
 //
@@ -19446,7 +18818,7 @@ func (client *Client) ListKvsWithOptions(request *ListKvsRequest, runtime *dara.
 
 // Summary:
 //
-// Lists all key-value pairs in a namespace in your Alibaba Cloud account.
+// 遍历Namespace的Key值
 //
 // @param request - ListKvsRequest
 //
@@ -19464,7 +18836,7 @@ func (client *Client) ListKvs(request *ListKvsRequest) (_result *ListKvsResponse
 
 // Summary:
 //
-// Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
+// 列举自定义列表
 //
 // @param tmpReq - ListListsRequest
 //
@@ -19522,7 +18894,7 @@ func (client *Client) ListListsWithOptions(tmpReq *ListListsRequest, runtime *da
 
 // Summary:
 //
-// Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
+// 列举自定义列表
 //
 // @param request - ListListsRequest
 //
@@ -19540,19 +18912,7 @@ func (client *Client) ListLists(request *ListListsRequest) (_result *ListListsRe
 
 // Summary:
 //
-// # Query the status of origins in load balancers
-//
-// Description:
-//
-// Query the status of origins under load balancers. You can pass multiple load balancer IDs at once, separated by commas. This is for load balancers that have monitors configured. It will probe the origins in the source address pools used by the load balancers and record the current status of each origin.
-//
-// - Healthy(healthy): The probe result is available.
-//
-// - Unhealthy(unhealthy): The probe result is unavailable.
-//
-// - Unknown(unknown): Unknown, the monitor has not yet probed.
-//
-// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
+// 查询负载均衡器里各源站状态
 //
 // @param request - ListLoadBalancerOriginStatusRequest
 //
@@ -19592,19 +18952,7 @@ func (client *Client) ListLoadBalancerOriginStatusWithOptions(request *ListLoadB
 
 // Summary:
 //
-// # Query the status of origins in load balancers
-//
-// Description:
-//
-// Query the status of origins under load balancers. You can pass multiple load balancer IDs at once, separated by commas. This is for load balancers that have monitors configured. It will probe the origins in the source address pools used by the load balancers and record the current status of each origin.
-//
-// - Healthy(healthy): The probe result is available.
-//
-// - Unhealthy(unhealthy): The probe result is unavailable.
-//
-// - Unknown(unknown): Unknown, the monitor has not yet probed.
-//
-// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
+// 查询负载均衡器里各源站状态
 //
 // @param request - ListLoadBalancerOriginStatusRequest
 //
@@ -19622,11 +18970,7 @@ func (client *Client) ListLoadBalancerOriginStatus(request *ListLoadBalancerOrig
 
 // Summary:
 //
-// # Query Load Balancer Region List
-//
-// Description:
-//
-// When creating a load balancer \\"based on country/region scheduling\\" strategy through OpenAPI, use the code of primary or secondary regions to represent traffic from this geographical area.
+// 查询负载均衡区域列表
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -19666,11 +19010,7 @@ func (client *Client) ListLoadBalancerRegionsWithOptions(request *ListLoadBalanc
 
 // Summary:
 //
-// # Query Load Balancer Region List
-//
-// Description:
-//
-// When creating a load balancer \\"based on country/region scheduling\\" strategy through OpenAPI, use the code of primary or secondary regions to represent traffic from this geographical area.
+// 查询负载均衡区域列表
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -19688,7 +19028,7 @@ func (client *Client) ListLoadBalancerRegions(request *ListLoadBalancerRegionsRe
 
 // Summary:
 //
-// # Query the list of load balancers
+// 查询负载均衡器列表
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -19728,7 +19068,7 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 
 // Summary:
 //
-// # Query the list of load balancers
+// 查询负载均衡器列表
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -19746,7 +19086,7 @@ func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_res
 
 // Summary:
 //
-// # List Custom Managed Rule Groups
+// 列举自定义托管规则组
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -19794,7 +19134,7 @@ func (client *Client) ListManagedRulesGroupsWithOptions(request *ListManagedRule
 
 // Summary:
 //
-// # List Custom Managed Rule Groups
+// 列举自定义托管规则组
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -19812,7 +19152,7 @@ func (client *Client) ListManagedRulesGroups(request *ListManagedRulesGroupsRequ
 
 // Summary:
 //
-// # Query multiple network optimization configurations
+// 查询多条网络优化配置
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -19852,7 +19192,7 @@ func (client *Client) ListNetworkOptimizationsWithOptions(request *ListNetworkOp
 
 // Summary:
 //
-// # Query multiple network optimization configurations
+// 查询多条网络优化配置
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -19986,7 +19326,7 @@ func (client *Client) ListOriginClientCertificates(request *ListOriginClientCert
 
 // Summary:
 //
-// # List Origin Pools
+// 查询源地址池的列表
 //
 // @param request - ListOriginPoolsRequest
 //
@@ -20026,7 +19366,7 @@ func (client *Client) ListOriginPoolsWithOptions(request *ListOriginPoolsRequest
 
 // Summary:
 //
-// # List Origin Pools
+// 查询源地址池的列表
 //
 // @param request - ListOriginPoolsRequest
 //
@@ -20044,7 +19384,7 @@ func (client *Client) ListOriginPools(request *ListOriginPoolsRequest) (_result 
 
 // Summary:
 //
-// # Query multiple origin rule configurations
+// 查询多条回源规则配置
 //
 // @param request - ListOriginRulesRequest
 //
@@ -20084,7 +19424,7 @@ func (client *Client) ListOriginRulesWithOptions(request *ListOriginRulesRequest
 
 // Summary:
 //
-// # Query multiple origin rule configurations
+// 查询多条回源规则配置
 //
 // @param request - ListOriginRulesRequest
 //
@@ -20102,7 +19442,7 @@ func (client *Client) ListOriginRules(request *ListOriginRulesRequest) (_result 
 
 // Summary:
 //
-// Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
+// 列举自定义响应页面
 //
 // @param tmpReq - ListPagesRequest
 //
@@ -20160,7 +19500,7 @@ func (client *Client) ListPagesWithOptions(tmpReq *ListPagesRequest, runtime *da
 
 // Summary:
 //
-// Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
+// 列举自定义响应页面
 //
 // @param request - ListPagesRequest
 //
@@ -20178,7 +19518,7 @@ func (client *Client) ListPages(request *ListPagesRequest) (_result *ListPagesRe
 
 // Summary:
 //
-// Queries pay-as-you-go instances.
+// 查询该用户下已购的后付费站点套餐实例
 //
 // @param request - ListPostpaidRatePlanInstancesRequest
 //
@@ -20218,7 +19558,7 @@ func (client *Client) ListPostpaidRatePlanInstancesWithOptions(request *ListPost
 
 // Summary:
 //
-// Queries pay-as-you-go instances.
+// 查询该用户下已购的后付费站点套餐实例
 //
 // @param request - ListPostpaidRatePlanInstancesRequest
 //
@@ -20236,11 +19576,7 @@ func (client *Client) ListPostpaidRatePlanInstances(request *ListPostpaidRatePla
 
 // Summary:
 //
-// Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
-//
-// Description:
-//
-// The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
+// 查询站点下记录列表
 //
 // @param request - ListRecordsRequest
 //
@@ -20280,11 +19616,7 @@ func (client *Client) ListRecordsWithOptions(request *ListRecordsRequest, runtim
 
 // Summary:
 //
-// Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
-//
-// Description:
-//
-// The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
+// 查询站点下记录列表
 //
 // @param request - ListRecordsRequest
 //
@@ -20302,7 +19634,7 @@ func (client *Client) ListRecords(request *ListRecordsRequest) (_result *ListRec
 
 // Summary:
 //
-// # Query Redirect Rule List
+// 查询重定向规则列表
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -20342,7 +19674,7 @@ func (client *Client) ListRedirectRulesWithOptions(request *ListRedirectRulesReq
 
 // Summary:
 //
-// # Query Redirect Rule List
+// 查询重定向规则列表
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -20360,7 +19692,7 @@ func (client *Client) ListRedirectRules(request *ListRedirectRulesRequest) (_res
 
 // Summary:
 //
-// # List of Rewrite URL Rules
+// 查询重写Url规则列表
 //
 // @param request - ListRewriteUrlRulesRequest
 //
@@ -20400,7 +19732,7 @@ func (client *Client) ListRewriteUrlRulesWithOptions(request *ListRewriteUrlRule
 
 // Summary:
 //
-// # List of Rewrite URL Rules
+// 查询重写Url规则列表
 //
 // @param request - ListRewriteUrlRulesRequest
 //
@@ -20418,7 +19750,7 @@ func (client *Client) ListRewriteUrlRules(request *ListRewriteUrlRulesRequest) (
 
 // Summary:
 //
-// Lists the regions to which Edge Routine code can be released for canary deployment.
+// 查询Routine灰度环境列表
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -20447,7 +19779,7 @@ func (client *Client) ListRoutineCanaryAreasWithOptions(runtime *dara.RuntimeOpt
 
 // Summary:
 //
-// Lists the regions to which Edge Routine code can be released for canary deployment.
+// 查询Routine灰度环境列表
 //
 // @return ListRoutineCanaryAreasResponse
 func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasResponse, _err error) {
@@ -20463,15 +19795,7 @@ func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasR
 
 // Summary:
 //
-// Queries the code versions of a function (routine) by page.
-//
-// Description:
-//
-// Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
-//
-// Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
-//
-// The response includes the number, description, and creation time of each code version.
+// 查询Routine的代码版本列表
 //
 // @param request - ListRoutineCodeVersionsRequest
 //
@@ -20527,15 +19851,7 @@ func (client *Client) ListRoutineCodeVersionsWithOptions(request *ListRoutineCod
 
 // Summary:
 //
-// Queries the code versions of a function (routine) by page.
-//
-// Description:
-//
-// Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
-//
-// Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
-//
-// The response includes the number, description, and creation time of each code version.
+// 查询Routine的代码版本列表
 //
 // @param request - ListRoutineCodeVersionsRequest
 //
@@ -20553,11 +19869,7 @@ func (client *Client) ListRoutineCodeVersions(request *ListRoutineCodeVersionsRe
 
 // Summary:
 //
-// The records associated with the function.
-//
-// Description:
-//
-// You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
+// 查询函数关联域名列表
 //
 // @param request - ListRoutineRelatedRecordsRequest
 //
@@ -20613,11 +19925,7 @@ func (client *Client) ListRoutineRelatedRecordsWithOptions(request *ListRoutineR
 
 // Summary:
 //
-// The records associated with the function.
-//
-// Description:
-//
-// You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
+// 查询函数关联域名列表
 //
 // @param request - ListRoutineRelatedRecordsRequest
 //
@@ -20635,7 +19943,7 @@ func (client *Client) ListRoutineRelatedRecords(request *ListRoutineRelatedRecor
 
 // Summary:
 //
-// Queries the routes of an edge function.
+// 查询边缘程序的函数路由列表
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -20687,7 +19995,7 @@ func (client *Client) ListRoutineRoutesWithOptions(request *ListRoutineRoutesReq
 
 // Summary:
 //
-// Queries the routes of an edge function.
+// 查询边缘程序的函数路由列表
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -20705,7 +20013,7 @@ func (client *Client) ListRoutineRoutes(request *ListRoutineRoutesRequest) (_res
 
 // Summary:
 //
-// Lists the plans in a scheduled prefetch task by task ID.
+// 列出指定任务下的执行计划
 //
 // @param request - ListScheduledPreloadExecutionsRequest
 //
@@ -20745,7 +20053,7 @@ func (client *Client) ListScheduledPreloadExecutionsWithOptions(request *ListSch
 
 // Summary:
 //
-// Lists the plans in a scheduled prefetch task by task ID.
+// 列出指定任务下的执行计划
 //
 // @param request - ListScheduledPreloadExecutionsRequest
 //
@@ -20763,7 +20071,7 @@ func (client *Client) ListScheduledPreloadExecutions(request *ListScheduledPrelo
 
 // Summary:
 //
-// Queries the scheduled prefetch tasks for a website.
+// 列出定时预热任务列表
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -20803,7 +20111,7 @@ func (client *Client) ListScheduledPreloadJobsWithOptions(request *ListScheduled
 
 // Summary:
 //
-// Queries the scheduled prefetch tasks for a website.
+// 列出定时预热任务列表
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -20821,7 +20129,7 @@ func (client *Client) ListScheduledPreloadJobs(request *ListScheduledPreloadJobs
 
 // Summary:
 //
-// Lists all log delivery tasks that are in progress.
+// 列出全部任务投递
 //
 // @param request - ListSiteDeliveryTasksRequest
 //
@@ -20861,7 +20169,7 @@ func (client *Client) ListSiteDeliveryTasksWithOptions(request *ListSiteDelivery
 
 // Summary:
 //
-// Lists all log delivery tasks that are in progress.
+// 列出全部任务投递
 //
 // @param request - ListSiteDeliveryTasksRequest
 //
@@ -20937,7 +20245,7 @@ func (client *Client) ListSiteOriginClientCertificates(request *ListSiteOriginCl
 
 // Summary:
 //
-// Queries the edge function routes for a website.
+// 查询站点的函数路由列表
 //
 // @param request - ListSiteRoutesRequest
 //
@@ -21001,7 +20309,7 @@ func (client *Client) ListSiteRoutesWithOptions(request *ListSiteRoutesRequest, 
 
 // Summary:
 //
-// Queries the edge function routes for a website.
+// 查询站点的函数路由列表
 //
 // @param request - ListSiteRoutesRequest
 //
@@ -21019,7 +20327,7 @@ func (client *Client) ListSiteRoutes(request *ListSiteRoutesRequest) (_result *L
 
 // Summary:
 //
-// Queries the information about websites in your account, such as the name, status, and configuration of each website.
+// 查询站点列表
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -21065,7 +20373,7 @@ func (client *Client) ListSitesWithOptions(tmpReq *ListSitesRequest, runtime *da
 
 // Summary:
 //
-// Queries the information about websites in your account, such as the name, status, and configuration of each website.
+// 查询站点列表
 //
 // @param request - ListSitesRequest
 //
@@ -21083,7 +20391,7 @@ func (client *Client) ListSites(request *ListSitesRequest) (_result *ListSitesRe
 
 // Summary:
 //
-// Queries tags based on the region ID and resource type.
+// 查询云资源已经绑定标签列表
 //
 // @param request - ListTagResourcesRequest
 //
@@ -21151,7 +20459,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries tags based on the region ID and resource type.
+// 查询云资源已经绑定标签列表
 //
 // @param request - ListTagResourcesRequest
 //
@@ -21263,7 +20571,7 @@ func (client *Client) ListTraceTasks(request *ListTraceTasksRequest) (_result *L
 
 // Summary:
 //
-// # List of Transport Layer Applications
+// 查询四层应用列表
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -21303,7 +20611,7 @@ func (client *Client) ListTransportLayerApplicationsWithOptions(request *ListTra
 
 // Summary:
 //
-// # List of Transport Layer Applications
+// 查询四层应用列表
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -21321,7 +20629,7 @@ func (client *Client) ListTransportLayerApplications(request *ListTransportLayer
 
 // Summary:
 //
-// Queries the execution status and running information of file upload tasks based on the task time and type.
+// 获取文件上传任务
 //
 // @param request - ListUploadTasksRequest
 //
@@ -21361,7 +20669,7 @@ func (client *Client) ListUploadTasksWithOptions(request *ListUploadTasksRequest
 
 // Summary:
 //
-// Queries the execution status and running information of file upload tasks based on the task time and type.
+// 获取文件上传任务
 //
 // @param request - ListUploadTasksRequest
 //
@@ -21379,7 +20687,7 @@ func (client *Client) ListUploadTasks(request *ListUploadTasksRequest) (_result 
 
 // Summary:
 //
-// Queries the list of page monitoring configurations.
+// 查询网页观测配置列表
 //
 // @param request - ListUrlObservationsRequest
 //
@@ -21435,7 +20743,7 @@ func (client *Client) ListUrlObservationsWithOptions(request *ListUrlObservation
 
 // Summary:
 //
-// Queries the list of page monitoring configurations.
+// 查询网页观测配置列表
 //
 // @param request - ListUrlObservationsRequest
 //
@@ -21453,7 +20761,7 @@ func (client *Client) ListUrlObservations(request *ListUrlObservationsRequest) (
 
 // Summary:
 //
-// Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
+// 列出用户全部任务投递
 //
 // @param request - ListUserDeliveryTasksRequest
 //
@@ -21493,7 +20801,7 @@ func (client *Client) ListUserDeliveryTasksWithOptions(request *ListUserDelivery
 
 // Summary:
 //
-// Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
+// 列出用户全部任务投递
 //
 // @param request - ListUserDeliveryTasksRequest
 //
@@ -21511,7 +20819,7 @@ func (client *Client) ListUserDeliveryTasks(request *ListUserDeliveryTasksReques
 
 // Summary:
 //
-// Queries the plans that you purchased and the details of the plans.
+// 查询该用户下可用的已购套餐实例
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -21551,7 +20859,7 @@ func (client *Client) ListUserRatePlanInstancesWithOptions(request *ListUserRate
 
 // Summary:
 //
-// Queries the plans that you purchased and the details of the plans.
+// 查询该用户下可用的已购套餐实例
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -21569,11 +20877,7 @@ func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstanc
 
 // Summary:
 //
-// Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
-//
-// Description:
-//
-// You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
+// 查询用户的Routine列表
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -21625,11 +20929,7 @@ func (client *Client) ListUserRoutinesWithOptions(request *ListUserRoutinesReque
 
 // Summary:
 //
-// Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
-//
-// Description:
-//
-// You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
+// 查询用户的Routine列表
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -21731,7 +21031,7 @@ func (client *Client) ListUserWafRulesets(request *ListUserWafRulesetsRequest) (
 
 // Summary:
 //
-// Queries the video processing configurations of a site.
+// 查询站点视频处理配置列表
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -21799,7 +21099,7 @@ func (client *Client) ListVideoProcessingsWithOptions(request *ListVideoProcessi
 
 // Summary:
 //
-// Queries the video processing configurations of a site.
+// 查询站点视频处理配置列表
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -21817,7 +21117,7 @@ func (client *Client) ListVideoProcessings(request *ListVideoProcessingsRequest)
 
 // Summary:
 //
-// # List WAF Managed Rules
+// 列举WAF的托管规则
 //
 // @param tmpReq - ListWafManagedRulesRequest
 //
@@ -21907,7 +21207,7 @@ func (client *Client) ListWafManagedRulesWithOptions(tmpReq *ListWafManagedRules
 
 // Summary:
 //
-// # List WAF Managed Rules
+// 列举WAF的托管规则
 //
 // @param request - ListWafManagedRulesRequest
 //
@@ -21925,7 +21225,7 @@ func (client *Client) ListWafManagedRules(request *ListWafManagedRulesRequest) (
 
 // Summary:
 //
-// # List WAF Phases
+// 列举WAF阶段
 //
 // @param request - ListWafPhasesRequest
 //
@@ -21973,7 +21273,7 @@ func (client *Client) ListWafPhasesWithOptions(request *ListWafPhasesRequest, ru
 
 // Summary:
 //
-// # List WAF Phases
+// 列举WAF阶段
 //
 // @param request - ListWafPhasesRequest
 //
@@ -21991,7 +21291,7 @@ func (client *Client) ListWafPhases(request *ListWafPhasesRequest) (_result *Lis
 
 // Summary:
 //
-// # List WAF Rules
+// 列举WAF规则
 //
 // @param tmpReq - ListWafRulesRequest
 //
@@ -22065,7 +21365,7 @@ func (client *Client) ListWafRulesWithOptions(tmpReq *ListWafRulesRequest, runti
 
 // Summary:
 //
-// # List WAF Rules
+// 列举WAF规则
 //
 // @param request - ListWafRulesRequest
 //
@@ -22083,7 +21383,7 @@ func (client *Client) ListWafRules(request *ListWafRulesRequest) (_result *ListW
 
 // Summary:
 //
-// # List WAF Rule Sets
+// 列举WAF规则集
 //
 // @param tmpReq - ListWafRulesetsRequest
 //
@@ -22153,7 +21453,7 @@ func (client *Client) ListWafRulesetsWithOptions(tmpReq *ListWafRulesetsRequest,
 
 // Summary:
 //
-// # List WAF Rule Sets
+// 列举WAF规则集
 //
 // @param request - ListWafRulesetsRequest
 //
@@ -22171,7 +21471,7 @@ func (client *Client) ListWafRulesets(request *ListWafRulesetsRequest) (_result 
 
 // Summary:
 //
-// # List WAF Template Rules
+// 列举WAF模板规则
 //
 // @param tmpReq - ListWafTemplateRulesRequest
 //
@@ -22233,7 +21533,7 @@ func (client *Client) ListWafTemplateRulesWithOptions(tmpReq *ListWafTemplateRul
 
 // Summary:
 //
-// # List WAF Template Rules
+// 列举WAF模板规则
 //
 // @param request - ListWafTemplateRulesRequest
 //
@@ -22251,7 +21551,7 @@ func (client *Client) ListWafTemplateRules(request *ListWafTemplateRulesRequest)
 
 // Summary:
 //
-// # List WAF Rule Usage
+// 列举WAF规则的使用情况
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -22303,7 +21603,7 @@ func (client *Client) ListWafUsageOfRulesWithOptions(request *ListWafUsageOfRule
 
 // Summary:
 //
-// # List WAF Rule Usage
+// 列举WAF规则的使用情况
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -22321,11 +21621,7 @@ func (client *Client) ListWafUsageOfRules(request *ListWafUsageOfRulesRequest) (
 
 // Summary:
 //
-// Queries the information about waiting room events for a waiting room.
-//
-// Description:
-//
-// You can call this operation to query details of all waiting room events related to a waiting room in a website.
+// 查询等候室事件
 //
 // @param request - ListWaitingRoomEventsRequest
 //
@@ -22365,11 +21661,7 @@ func (client *Client) ListWaitingRoomEventsWithOptions(request *ListWaitingRoomE
 
 // Summary:
 //
-// Queries the information about waiting room events for a waiting room.
-//
-// Description:
-//
-// You can call this operation to query details of all waiting room events related to a waiting room in a website.
+// 查询等候室事件
 //
 // @param request - ListWaitingRoomEventsRequest
 //
@@ -22387,11 +21679,7 @@ func (client *Client) ListWaitingRoomEvents(request *ListWaitingRoomEventsReques
 
 // Summary:
 //
-// # Query Waiting Room Bypass Rules
-//
-// Description:
-//
-// This API allows users to query the list of waiting room bypass rules associated with a specific site.
+// 查询等候室绕过规则
 //
 // @param request - ListWaitingRoomRulesRequest
 //
@@ -22431,11 +21719,7 @@ func (client *Client) ListWaitingRoomRulesWithOptions(request *ListWaitingRoomRu
 
 // Summary:
 //
-// # Query Waiting Room Bypass Rules
-//
-// Description:
-//
-// This API allows users to query the list of waiting room bypass rules associated with a specific site.
+// 查询等候室绕过规则
 //
 // @param request - ListWaitingRoomRulesRequest
 //
@@ -22453,11 +21737,7 @@ func (client *Client) ListWaitingRoomRules(request *ListWaitingRoomRulesRequest)
 
 // Summary:
 //
-// Queries the information about all waiting rooms in a website.
-//
-// Description:
-//
-// You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
+// 查询等候室
 //
 // @param request - ListWaitingRoomsRequest
 //
@@ -22497,11 +21777,7 @@ func (client *Client) ListWaitingRoomsWithOptions(request *ListWaitingRoomsReque
 
 // Summary:
 //
-// Queries the information about all waiting rooms in a website.
-//
-// Description:
-//
-// You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
+// 查询等候室
 //
 // @param request - ListWaitingRoomsRequest
 //
@@ -22581,7 +21857,7 @@ func (client *Client) OpenErService(request *OpenErServiceRequest) (_result *Ope
 
 // Summary:
 //
-// Prefetches cache.
+// 缓存预热
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -22643,7 +21919,7 @@ func (client *Client) PreloadCachesWithOptions(tmpReq *PreloadCachesRequest, run
 
 // Summary:
 //
-// Prefetches cache.
+// 缓存预热
 //
 // @param request - PreloadCachesRequest
 //
@@ -22661,7 +21937,7 @@ func (client *Client) PreloadCaches(request *PreloadCachesRequest) (_result *Pre
 
 // Summary:
 //
-// Releases a specific version of a containerized application. You can call this operation to iterate an application.
+// 发布边缘容器应用的某个版本
 //
 // @param tmpReq - PublishEdgeContainerAppVersionRequest
 //
@@ -22745,7 +22021,7 @@ func (client *Client) PublishEdgeContainerAppVersionWithOptions(tmpReq *PublishE
 
 // Summary:
 //
-// Releases a specific version of a containerized application. You can call this operation to iterate an application.
+// 发布边缘容器应用的某个版本
 //
 // @param request - PublishEdgeContainerAppVersionRequest
 //
@@ -22763,7 +22039,7 @@ func (client *Client) PublishEdgeContainerAppVersion(request *PublishEdgeContain
 
 // Summary:
 //
-// Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
+// 发布Routine某版本代码
 //
 // @param request - PublishRoutineCodeVersionRequest
 //
@@ -22815,7 +22091,7 @@ func (client *Client) PublishRoutineCodeVersionWithOptions(request *PublishRouti
 
 // Summary:
 //
-// Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
+// 发布Routine某版本代码
 //
 // @param request - PublishRoutineCodeVersionRequest
 //
@@ -22833,7 +22109,7 @@ func (client *Client) PublishRoutineCodeVersion(request *PublishRoutineCodeVersi
 
 // Summary:
 //
-// # New Purchase of Cache Retention
+// 新购缓存保持
 //
 // @param request - PurchaseCacheReserveRequest
 //
@@ -22897,7 +22173,7 @@ func (client *Client) PurchaseCacheReserveWithOptions(request *PurchaseCacheRese
 
 // Summary:
 //
-// # New Purchase of Cache Retention
+// 新购缓存保持
 //
 // @param request - PurchaseCacheReserveRequest
 //
@@ -22915,13 +22191,7 @@ func (client *Client) PurchaseCacheReserve(request *PurchaseCacheReserveRequest)
 
 // Summary:
 //
-// # Purchase New Package
-//
-// Description:
-//
-// 1. The package name and code can be obtained from the DescribeRatePlanPrice interface.
-//
-// 2. If the acceleration area is not overseas, the site must have successfully completed the filing process.
+// 新购套餐
 //
 // @param request - PurchaseRatePlanRequest
 //
@@ -23005,13 +22275,7 @@ func (client *Client) PurchaseRatePlanWithOptions(request *PurchaseRatePlanReque
 
 // Summary:
 //
-// # Purchase New Package
-//
-// Description:
-//
-// 1. The package name and code can be obtained from the DescribeRatePlanPrice interface.
-//
-// 2. If the acceleration area is not overseas, the site must have successfully completed the filing process.
+// 新购套餐
 //
 // @param request - PurchaseRatePlanRequest
 //
@@ -23029,7 +22293,7 @@ func (client *Client) PurchaseRatePlan(request *PurchaseRatePlanRequest) (_resul
 
 // Summary:
 //
-// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
+// 缓存刷新
 //
 // @param tmpReq - PurgeCachesRequest
 //
@@ -23095,7 +22359,7 @@ func (client *Client) PurgeCachesWithOptions(tmpReq *PurgeCachesRequest, runtime
 
 // Summary:
 //
-// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
+// 缓存刷新
 //
 // @param request - PurgeCachesRequest
 //
@@ -23113,7 +22377,7 @@ func (client *Client) PurgeCaches(request *PurgeCachesRequest) (_result *PurgeCa
 
 // Summary:
 //
-// Configures a key-value pair for a namespace. The request body can be up to 2 MB.
+// 设置Namespace的Key-Value对
 //
 // @param request - PutKvRequest
 //
@@ -23179,7 +22443,7 @@ func (client *Client) PutKvWithOptions(request *PutKvRequest, runtime *dara.Runt
 
 // Summary:
 //
-// Configures a key-value pair for a namespace. The request body can be up to 2 MB.
+// 设置Namespace的Key-Value对
 //
 // @param request - PutKvRequest
 //
@@ -23197,81 +22461,7 @@ func (client *Client) PutKv(request *PutKvRequest) (_result *PutKvResponse, _err
 
 // Summary:
 //
-// Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
-//
-// Description:
-//
-// This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
-//
-//	func TestPutKvWithHighCapacity() {
-//
-//		// Initialize the configurations.
-//
-//		cfg := new(openapi.Config)
-//
-//		cfg.SetAccessKeyId("xxxxxxxxx")
-//
-//		cfg.SetAccessKeySecret("xxxxxxxxxx")
-//
-//		cli, err := NewClient(cfg)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		runtime := &util.RuntimeOptions{}
-//
-//		// Construct a request for uploading key-value pairs.
-//
-//		namespace := "test-put-kv"
-//
-//		key := "test_PutKvWithHighCapacity_0"
-//
-//		value := strings.Repeat("t", 10*1024*1024)
-//
-//		rawReq := &PutKvRequest{
-//
-//			Namespace: &namespace,
-//
-//			Key:       &key,
-//
-//			Value:     &value,
-//
-//		}
-//
-//		payload, err := json.Marshal(rawReq)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		// If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
-//
-//		reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
-//
-//			Namespace: &namespace,
-//
-//			Key:       &key,
-//
-//			UrlObject: bytes.NewReader([]byte(payload)),
-//
-//		}
-//
-//		resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		return nil
-//
-//	}
+// 设置Namespace的Key-Value对，支持最大25M的Body
 //
 // @param request - PutKvWithHighCapacityRequest
 //
@@ -23323,81 +22513,7 @@ func (client *Client) PutKvWithHighCapacityWithOptions(request *PutKvWithHighCap
 
 // Summary:
 //
-// Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
-//
-// Description:
-//
-// This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
-//
-//	func TestPutKvWithHighCapacity() {
-//
-//		// Initialize the configurations.
-//
-//		cfg := new(openapi.Config)
-//
-//		cfg.SetAccessKeyId("xxxxxxxxx")
-//
-//		cfg.SetAccessKeySecret("xxxxxxxxxx")
-//
-//		cli, err := NewClient(cfg)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		runtime := &util.RuntimeOptions{}
-//
-//		// Construct a request for uploading key-value pairs.
-//
-//		namespace := "test-put-kv"
-//
-//		key := "test_PutKvWithHighCapacity_0"
-//
-//		value := strings.Repeat("t", 10*1024*1024)
-//
-//		rawReq := &PutKvRequest{
-//
-//			Namespace: &namespace,
-//
-//			Key:       &key,
-//
-//			Value:     &value,
-//
-//		}
-//
-//		payload, err := json.Marshal(rawReq)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		// If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
-//
-//		reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
-//
-//			Namespace: &namespace,
-//
-//			Key:       &key,
-//
-//			UrlObject: bytes.NewReader([]byte(payload)),
-//
-//		}
-//
-//		resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
-//
-//		if err != nil {
-//
-//			return err
-//
-//		}
-//
-//		return nil
-//
-//	}
+// 设置Namespace的Key-Value对，支持最大25M的Body
 //
 // @param request - PutKvWithHighCapacityRequest
 //
@@ -23522,7 +22638,7 @@ func (client *Client) PutKvWithHighCapacityAdvance(request *PutKvWithHighCapacit
 
 // Summary:
 //
-// Rebuilds the staging environment for containerized applications.
+// 重建边缘容器应用的测试环境
 //
 // @param request - RebuildEdgeContainerAppStagingEnvRequest
 //
@@ -23566,7 +22682,7 @@ func (client *Client) RebuildEdgeContainerAppStagingEnvWithOptions(request *Rebu
 
 // Summary:
 //
-// Rebuilds the staging environment for containerized applications.
+// 重建边缘容器应用的测试环境
 //
 // @param request - RebuildEdgeContainerAppStagingEnvRequest
 //
@@ -23646,7 +22762,7 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 
 // Summary:
 //
-// Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
+// 重置定时预热任务的进度，从头开始预热
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -23690,7 +22806,7 @@ func (client *Client) ResetScheduledPreloadJobWithOptions(request *ResetSchedule
 
 // Summary:
 //
-// Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
+// 重置定时预热任务的进度，从头开始预热
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -23708,7 +22824,7 @@ func (client *Client) ResetScheduledPreloadJob(request *ResetScheduledPreloadJob
 
 // Summary:
 //
-// Revokes an activated client certificate.
+// 吊销客户端证书
 //
 // @param request - RevokeClientCertificateRequest
 //
@@ -23748,7 +22864,7 @@ func (client *Client) RevokeClientCertificateWithOptions(request *RevokeClientCe
 
 // Summary:
 //
-// Revokes an activated client certificate.
+// 吊销客户端证书
 //
 // @param request - RevokeClientCertificateRequest
 //
@@ -23766,7 +22882,7 @@ func (client *Client) RevokeClientCertificate(request *RevokeClientCertificateRe
 
 // Summary:
 //
-// Rolls back a version of a containerized application.
+// 回滚边缘容器应用的某个版本
 //
 // @param request - RollbackEdgeContainerAppVersionRequest
 //
@@ -23828,7 +22944,7 @@ func (client *Client) RollbackEdgeContainerAppVersionWithOptions(request *Rollba
 
 // Summary:
 //
-// Rolls back a version of a containerized application.
+// 回滚边缘容器应用的某个版本
 //
 // @param request - RollbackEdgeContainerAppVersionRequest
 //
@@ -23924,7 +23040,7 @@ func (client *Client) SetAutomaticFrequencyControlConfig(request *SetAutomaticFr
 
 // Summary:
 //
-// Configures whether to enable certificates and update certificate information for a website.
+// 设置证书
 //
 // @param request - SetCertificateRequest
 //
@@ -24006,7 +23122,7 @@ func (client *Client) SetCertificateWithOptions(request *SetCertificateRequest, 
 
 // Summary:
 //
-// Configures whether to enable certificates and update certificate information for a website.
+// 设置证书
 //
 // @param request - SetCertificateRequest
 //
@@ -24102,7 +23218,7 @@ func (client *Client) SetClientCaCertificateHostnames(request *SetClientCaCertif
 
 // Summary:
 //
-// Associates domain names with a client CA certificate. If no certificate is specified, domain names are associated with an Edge Security Acceleration (ESA)-managed CA certificate.
+// 为客户端证书绑定域名
 //
 // @param tmpReq - SetClientCertificateHostnamesRequest
 //
@@ -24162,7 +23278,7 @@ func (client *Client) SetClientCertificateHostnamesWithOptions(tmpReq *SetClient
 
 // Summary:
 //
-// Associates domain names with a client CA certificate. If no certificate is specified, domain names are associated with an Edge Security Acceleration (ESA)-managed CA certificate.
+// 为客户端证书绑定域名
 //
 // @param request - SetClientCertificateHostnamesRequest
 //
@@ -24246,7 +23362,7 @@ func (client *Client) SetDdosMaxBurstGbps(request *SetDdosMaxBurstGbpsRequest) (
 
 // Summary:
 //
-// Configures smart HTTP DDoS protection.
+// 设置HTTP DDoS智能防护配置信息
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -24298,7 +23414,7 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtectionWithOptions(request 
 
 // Summary:
 //
-// Configures smart HTTP DDoS protection.
+// 设置HTTP DDoS智能防护配置信息
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -24316,7 +23432,7 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtection(request *SetHttpDDo
 
 // Summary:
 //
-// Configures HTTP DDoS attack protection for a website.
+// 设置HTTP DDoS攻击防护配置信息
 //
 // @param request - SetHttpDDoSAttackProtectionRequest
 //
@@ -24364,7 +23480,7 @@ func (client *Client) SetHttpDDoSAttackProtectionWithOptions(request *SetHttpDDo
 
 // Summary:
 //
-// Configures HTTP DDoS attack protection for a website.
+// 设置HTTP DDoS攻击防护配置信息
 //
 // @param request - SetHttpDDoSAttackProtectionRequest
 //
@@ -24382,7 +23498,7 @@ func (client *Client) SetHttpDDoSAttackProtection(request *SetHttpDDoSAttackProt
 
 // Summary:
 //
-// # Set the Protection Action for Specified HTTP DDoS Attack Rules
+// 设置HTTP DDoS攻击防护指定规则防护动作
 //
 // @param request - SetHttpDDoSAttackRuleActionRequest
 //
@@ -24434,7 +23550,7 @@ func (client *Client) SetHttpDDoSAttackRuleActionWithOptions(request *SetHttpDDo
 
 // Summary:
 //
-// # Set the Protection Action for Specified HTTP DDoS Attack Rules
+// 设置HTTP DDoS攻击防护指定规则防护动作
 //
 // @param request - SetHttpDDoSAttackRuleActionRequest
 //
@@ -24452,7 +23568,7 @@ func (client *Client) SetHttpDDoSAttackRuleAction(request *SetHttpDDoSAttackRule
 
 // Summary:
 //
-// # Set the Protection Status of Specified HTTP DDoS Attack Rules
+// 设置HTTP DDoS攻击防护指定规则防护状态
 //
 // @param request - SetHttpDDoSAttackRuleStatusRequest
 //
@@ -24504,7 +23620,7 @@ func (client *Client) SetHttpDDoSAttackRuleStatusWithOptions(request *SetHttpDDo
 
 // Summary:
 //
-// # Set the Protection Status of Specified HTTP DDoS Attack Rules
+// 设置HTTP DDoS攻击防护指定规则防护状态
 //
 // @param request - SetHttpDDoSAttackRuleStatusRequest
 //
@@ -24694,7 +23810,7 @@ func (client *Client) SetOriginClientCertificateHostnames(request *SetOriginClie
 
 // Summary:
 //
-// Starts a scheduled prefetch plan based on the plan ID.
+// 开始单个定时预热计划
 //
 // @param request - StartScheduledPreloadExecutionRequest
 //
@@ -24738,7 +23854,7 @@ func (client *Client) StartScheduledPreloadExecutionWithOptions(request *StartSc
 
 // Summary:
 //
-// Starts a scheduled prefetch plan based on the plan ID.
+// 开始单个定时预热计划
 //
 // @param request - StartScheduledPreloadExecutionRequest
 //
@@ -24756,7 +23872,7 @@ func (client *Client) StartScheduledPreloadExecution(request *StartScheduledPrel
 
 // Summary:
 //
-// Stops a scheduled prefetch plan based on the plan ID.
+// 停止单个定时预热计划
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -24800,7 +23916,7 @@ func (client *Client) StopScheduledPreloadExecutionWithOptions(request *StopSche
 
 // Summary:
 //
-// Stops a scheduled prefetch plan based on the plan ID.
+// 停止单个定时预热计划
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -24818,7 +23934,7 @@ func (client *Client) StopScheduledPreloadExecution(request *StopScheduledPreloa
 
 // Summary:
 //
-// Adds one or more tags to resources.
+// 为指定的资源统一创建并绑定标签
 //
 // @param request - TagResourcesRequest
 //
@@ -24882,7 +23998,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds one or more tags to resources.
+// 为指定的资源统一创建并绑定标签
 //
 // @param request - TagResourcesRequest
 //
@@ -24900,7 +24016,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Deletes a resource tag based on a specified resource ID.
+// 为资源列表统一解绑标签
 //
 // @param request - UntagResourcesRequest
 //
@@ -24964,7 +24080,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Deletes a resource tag based on a specified resource ID.
+// 为资源列表统一解绑标签
 //
 // @param request - UntagResourcesRequest
 //
@@ -24982,7 +24098,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// # Cache Reserve Specification Change
+// 缓存保持变配
 //
 // @param request - UpdateCacheReserveSpecRequest
 //
@@ -25038,7 +24154,7 @@ func (client *Client) UpdateCacheReserveSpecWithOptions(request *UpdateCacheRese
 
 // Summary:
 //
-// # Cache Reserve Specification Change
+// 缓存保持变配
 //
 // @param request - UpdateCacheReserveSpecRequest
 //
@@ -25056,7 +24172,7 @@ func (client *Client) UpdateCacheReserveSpec(request *UpdateCacheReserveSpecRequ
 
 // Summary:
 //
-// # Modify cache configuration
+// 修改缓存配置
 //
 // @param request - UpdateCacheRuleRequest
 //
@@ -25212,7 +24328,7 @@ func (client *Client) UpdateCacheRuleWithOptions(request *UpdateCacheRuleRequest
 
 // Summary:
 //
-// # Modify cache configuration
+// 修改缓存配置
 //
 // @param request - UpdateCacheRuleRequest
 //
@@ -25230,7 +24346,7 @@ func (client *Client) UpdateCacheRule(request *UpdateCacheRuleRequest) (_result 
 
 // Summary:
 //
-// Modifies the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
+// 修改站点缓存Tag配置
 //
 // @param request - UpdateCacheTagRequest
 //
@@ -25286,7 +24402,7 @@ func (client *Client) UpdateCacheTagWithOptions(request *UpdateCacheTagRequest, 
 
 // Summary:
 //
-// Modifies the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
+// 修改站点缓存Tag配置
 //
 // @param request - UpdateCacheTagRequest
 //
@@ -25304,7 +24420,7 @@ func (client *Client) UpdateCacheTag(request *UpdateCacheTagRequest) (_result *U
 
 // Summary:
 //
-// Modifies the CNAME flattening configuration of a website.
+// 修改站点cname拉平配置
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -25352,7 +24468,7 @@ func (client *Client) UpdateCnameFlatteningWithOptions(request *UpdateCnameFlatt
 
 // Summary:
 //
-// Modifies the CNAME flattening configuration of a website.
+// 修改站点cname拉平配置
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -25370,7 +24486,7 @@ func (client *Client) UpdateCnameFlattening(request *UpdateCnameFlatteningReques
 
 // Summary:
 //
-// # Modify compression rule
+// 修改压缩规则
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -25446,7 +24562,7 @@ func (client *Client) UpdateCompressionRuleWithOptions(request *UpdateCompressio
 
 // Summary:
 //
-// # Modify compression rule
+// 修改压缩规则
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -25464,7 +24580,7 @@ func (client *Client) UpdateCompressionRule(request *UpdateCompressionRuleReques
 
 // Summary:
 //
-// Modifies the configuration of the Chinese mainland network access optimization.
+// 修改站点中国大陆网络接入优化的配置
 //
 // @param request - UpdateCrossBorderOptimizationRequest
 //
@@ -25512,7 +24628,7 @@ func (client *Client) UpdateCrossBorderOptimizationWithOptions(request *UpdateCr
 
 // Summary:
 //
-// Modifies the configuration of the Chinese mainland network access optimization.
+// 修改站点中国大陆网络接入优化的配置
 //
 // @param request - UpdateCrossBorderOptimizationRequest
 //
@@ -25620,7 +24736,7 @@ func (client *Client) UpdateCustomHostname(request *UpdateCustomHostnameRequest)
 
 // Summary:
 //
-// Modify the response code configurations for a website.
+// 修改修改响应码规则
 //
 // @param request - UpdateCustomResponseCodeRuleRequest
 //
@@ -25692,7 +24808,7 @@ func (client *Client) UpdateCustomResponseCodeRuleWithOptions(request *UpdateCus
 
 // Summary:
 //
-// Modify the response code configurations for a website.
+// 修改修改响应码规则
 //
 // @param request - UpdateCustomResponseCodeRuleRequest
 //
@@ -25710,7 +24826,7 @@ func (client *Client) UpdateCustomResponseCodeRule(request *UpdateCustomResponse
 
 // Summary:
 //
-// Modifies the configurations of a custom scenario-specific policy.
+// 修改定制场景策略
 //
 // @param request - UpdateCustomScenePolicyRequest
 //
@@ -25778,7 +24894,7 @@ func (client *Client) UpdateCustomScenePolicyWithOptions(request *UpdateCustomSc
 
 // Summary:
 //
-// Modifies the configurations of a custom scenario-specific policy.
+// 修改定制场景策略
 //
 // @param request - UpdateCustomScenePolicyRequest
 //
@@ -25796,7 +24912,7 @@ func (client *Client) UpdateCustomScenePolicy(request *UpdateCustomScenePolicyRe
 
 // Summary:
 //
-// Modifies the development mode configuration of your website. If you enable Development Mode, all requests bypass caching components on POPs and are redirected to the origin server. This allows clients to retrieve the most recent resources on the origin server.
+// 修改站点开发者模式配置
 //
 // @param request - UpdateDevelopmentModeRequest
 //
@@ -25844,7 +24960,7 @@ func (client *Client) UpdateDevelopmentModeWithOptions(request *UpdateDevelopmen
 
 // Summary:
 //
-// Modifies the development mode configuration of your website. If you enable Development Mode, all requests bypass caching components on POPs and are redirected to the origin server. This allows clients to retrieve the most recent resources on the origin server.
+// 修改站点开发者模式配置
 //
 // @param request - UpdateDevelopmentModeRequest
 //
@@ -25862,7 +24978,7 @@ func (client *Client) UpdateDevelopmentMode(request *UpdateDevelopmentModeReques
 
 // Summary:
 //
-// Updates the log collection configuration of a containerized application.
+// 更新边缘容器应用日志采集配置
 //
 // @param request - UpdateEdgeContainerAppLogRiverRequest
 //
@@ -25914,7 +25030,7 @@ func (client *Client) UpdateEdgeContainerAppLogRiverWithOptions(request *UpdateE
 
 // Summary:
 //
-// Updates the log collection configuration of a containerized application.
+// 更新边缘容器应用日志采集配置
 //
 // @param request - UpdateEdgeContainerAppLogRiverRequest
 //
@@ -25932,7 +25048,7 @@ func (client *Client) UpdateEdgeContainerAppLogRiver(request *UpdateEdgeContaine
 
 // Summary:
 //
-// Updates the resource reservation configuration of an edge container.
+// 更新边缘容器资源预留配置
 //
 // @param tmpReq - UpdateEdgeContainerAppResourceReserveRequest
 //
@@ -25998,7 +25114,7 @@ func (client *Client) UpdateEdgeContainerAppResourceReserveWithOptions(tmpReq *U
 
 // Summary:
 //
-// Updates the resource reservation configuration of an edge container.
+// 更新边缘容器资源预留配置
 //
 // @param request - UpdateEdgeContainerAppResourceReserveRequest
 //
@@ -26016,7 +25132,7 @@ func (client *Client) UpdateEdgeContainerAppResourceReserve(request *UpdateEdgeC
 
 // Summary:
 //
-// Updates the HTTP incoming request header modification rule.
+// 修改HTTP入站请求头规则
 //
 // @param tmpReq - UpdateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -26090,7 +25206,7 @@ func (client *Client) UpdateHttpIncomingRequestHeaderModificationRuleWithOptions
 
 // Summary:
 //
-// Updates the HTTP incoming request header modification rule.
+// 修改HTTP入站请求头规则
 //
 // @param request - UpdateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -26108,7 +25224,7 @@ func (client *Client) UpdateHttpIncomingRequestHeaderModificationRule(request *U
 
 // Summary:
 //
-// Updates the configuration of modifying HTTP response headers for a website.
+// 修改HTTP入站响应头规则
 //
 // @param tmpReq - UpdateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -26182,7 +25298,7 @@ func (client *Client) UpdateHttpIncomingResponseHeaderModificationRuleWithOption
 
 // Summary:
 //
-// Updates the configuration of modifying HTTP response headers for a website.
+// 修改HTTP入站响应头规则
 //
 // @param request - UpdateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -26200,7 +25316,7 @@ func (client *Client) UpdateHttpIncomingResponseHeaderModificationRule(request *
 
 // Summary:
 //
-// # Modify HTTP Request Header Rules
+// 修改HTTP请求头规则
 //
 // @param tmpReq - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -26274,7 +25390,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 
 // Summary:
 //
-// # Modify HTTP Request Header Rules
+// 修改HTTP请求头规则
 //
 // @param request - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -26292,7 +25408,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRule(request *UpdateHtt
 
 // Summary:
 //
-// # Modify HTTP response header rules
+// 修改HTTP响应头规则
 //
 // @param tmpReq - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -26366,7 +25482,7 @@ func (client *Client) UpdateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 // Summary:
 //
-// # Modify HTTP response header rules
+// 修改HTTP响应头规则
 //
 // @param request - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -26384,7 +25500,7 @@ func (client *Client) UpdateHttpResponseHeaderModificationRule(request *UpdateHt
 
 // Summary:
 //
-// # Modify HTTPS Application Configuration
+// 修改HTTPS应用配置
 //
 // @param request - UpdateHttpsApplicationConfigurationRequest
 //
@@ -26500,7 +25616,7 @@ func (client *Client) UpdateHttpsApplicationConfigurationWithOptions(request *Up
 
 // Summary:
 //
-// # Modify HTTPS Application Configuration
+// 修改HTTPS应用配置
 //
 // @param request - UpdateHttpsApplicationConfigurationRequest
 //
@@ -26518,7 +25634,7 @@ func (client *Client) UpdateHttpsApplicationConfiguration(request *UpdateHttpsAp
 
 // Summary:
 //
-// # Modify HTTPS Basic Configuration
+// 修改HTTPS基础配置
 //
 // @param request - UpdateHttpsBasicConfigurationRequest
 //
@@ -26622,7 +25738,7 @@ func (client *Client) UpdateHttpsBasicConfigurationWithOptions(request *UpdateHt
 
 // Summary:
 //
-// # Modify HTTPS Basic Configuration
+// 修改HTTPS基础配置
 //
 // @param request - UpdateHttpsBasicConfigurationRequest
 //
@@ -26640,7 +25756,7 @@ func (client *Client) UpdateHttpsBasicConfiguration(request *UpdateHttpsBasicCon
 
 // Summary:
 //
-// Modifies the IPv6 configuration of a website.
+// 修改站点IPv6配置
 //
 // @param request - UpdateIPv6Request
 //
@@ -26692,7 +25808,7 @@ func (client *Client) UpdateIPv6WithOptions(request *UpdateIPv6Request, runtime 
 
 // Summary:
 //
-// Modifies the IPv6 configuration of a website.
+// 修改站点IPv6配置
 //
 // @param request - UpdateIPv6Request
 //
@@ -26710,7 +25826,7 @@ func (client *Client) UpdateIPv6(request *UpdateIPv6Request) (_result *UpdateIPv
 
 // Summary:
 //
-// # Modify Site Image Transformation Configuration
+// 修改站点的图片转换配置
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -26786,7 +25902,7 @@ func (client *Client) UpdateImageTransformWithOptions(request *UpdateImageTransf
 
 // Summary:
 //
-// # Modify Site Image Transformation Configuration
+// 修改站点的图片转换配置
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -26804,7 +25920,7 @@ func (client *Client) UpdateImageTransform(request *UpdateImageTransformRequest)
 
 // Summary:
 //
-// Updates a custom list.
+// 更新自定义列表
 //
 // @param tmpReq - UpdateListRequest
 //
@@ -26866,7 +25982,7 @@ func (client *Client) UpdateListWithOptions(tmpReq *UpdateListRequest, runtime *
 
 // Summary:
 //
-// Updates a custom list.
+// 更新自定义列表
 //
 // @param request - UpdateListRequest
 //
@@ -26884,11 +26000,7 @@ func (client *Client) UpdateList(request *UpdateListRequest) (_result *UpdateLis
 
 // Summary:
 //
-// # Modify Load Balancer
-//
-// Description:
-//
-// Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.	Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
+// 修改负载均衡器
 //
 // @param tmpReq - UpdateLoadBalancerRequest
 //
@@ -27010,11 +26122,7 @@ func (client *Client) UpdateLoadBalancerWithOptions(tmpReq *UpdateLoadBalancerRe
 
 // Summary:
 //
-// # Modify Load Balancer
-//
-// Description:
-//
-// Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.	Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
+// 修改负载均衡器
 //
 // @param request - UpdateLoadBalancerRequest
 //
@@ -27032,7 +26140,7 @@ func (client *Client) UpdateLoadBalancer(request *UpdateLoadBalancerRequest) (_r
 
 // Summary:
 //
-// Modifies the configuration of managed transforms for your website.
+// 修改站点托管转换的配置
 //
 // @param request - UpdateManagedTransformRequest
 //
@@ -27092,7 +26200,7 @@ func (client *Client) UpdateManagedTransformWithOptions(request *UpdateManagedTr
 
 // Summary:
 //
-// Modifies the configuration of managed transforms for your website.
+// 修改站点托管转换的配置
 //
 // @param request - UpdateManagedTransformRequest
 //
@@ -27110,7 +26218,7 @@ func (client *Client) UpdateManagedTransform(request *UpdateManagedTransformRequ
 
 // Summary:
 //
-// # Modify network optimization configuration
+// 修改网络优化配置
 //
 // @param request - UpdateNetworkOptimizationRequest
 //
@@ -27194,7 +26302,7 @@ func (client *Client) UpdateNetworkOptimizationWithOptions(request *UpdateNetwor
 
 // Summary:
 //
-// # Modify network optimization configuration
+// 修改网络优化配置
 //
 // @param request - UpdateNetworkOptimizationRequest
 //
@@ -27212,7 +26320,7 @@ func (client *Client) UpdateNetworkOptimization(request *UpdateNetworkOptimizati
 
 // Summary:
 //
-// # Modify the Monitor
+// 修改源地址池
 //
 // @param tmpReq - UpdateOriginPoolRequest
 //
@@ -27274,7 +26382,7 @@ func (client *Client) UpdateOriginPoolWithOptions(tmpReq *UpdateOriginPoolReques
 
 // Summary:
 //
-// # Modify the Monitor
+// 修改源地址池
 //
 // @param request - UpdateOriginPoolRequest
 //
@@ -27292,7 +26400,7 @@ func (client *Client) UpdateOriginPool(request *UpdateOriginPoolRequest) (_resul
 
 // Summary:
 //
-// Enables or disables IP convergence.
+// 修改源站防护
 //
 // @param request - UpdateOriginProtectionRequest
 //
@@ -27344,7 +26452,7 @@ func (client *Client) UpdateOriginProtectionWithOptions(request *UpdateOriginPro
 
 // Summary:
 //
-// Enables or disables IP convergence.
+// 修改源站防护
 //
 // @param request - UpdateOriginProtectionRequest
 //
@@ -27362,7 +26470,7 @@ func (client *Client) UpdateOriginProtection(request *UpdateOriginProtectionRequ
 
 // Summary:
 //
-// Updates the IP whitelist for origin protection used by a website to the latest version.
+// 确认更新站点回源IP白名单到最新版本
 //
 // @param request - UpdateOriginProtectionIpWhiteListRequest
 //
@@ -27406,7 +26514,7 @@ func (client *Client) UpdateOriginProtectionIpWhiteListWithOptions(request *Upda
 
 // Summary:
 //
-// Updates the IP whitelist for origin protection used by a website to the latest version.
+// 确认更新站点回源IP白名单到最新版本
 //
 // @param request - UpdateOriginProtectionIpWhiteListRequest
 //
@@ -27424,7 +26532,7 @@ func (client *Client) UpdateOriginProtectionIpWhiteList(request *UpdateOriginPro
 
 // Summary:
 //
-// # Modify Origin Rule Configuration for Site
+// 修改站点的回源规则配置
 //
 // @param request - UpdateOriginRuleRequest
 //
@@ -27552,7 +26660,7 @@ func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleReque
 
 // Summary:
 //
-// # Modify Origin Rule Configuration for Site
+// 修改站点的回源规则配置
 //
 // @param request - UpdateOriginRuleRequest
 //
@@ -27570,7 +26678,7 @@ func (client *Client) UpdateOriginRule(request *UpdateOriginRuleRequest) (_resul
 
 // Summary:
 //
-// Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
+// 更新自定义响应页面
 //
 // @param tmpReq - UpdatePageRequest
 //
@@ -27640,7 +26748,7 @@ func (client *Client) UpdatePageWithOptions(tmpReq *UpdatePageRequest, runtime *
 
 // Summary:
 //
-// Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
+// 更新自定义响应页面
 //
 // @param request - UpdatePageRequest
 //
@@ -27724,7 +26832,7 @@ func (client *Client) UpdatePerformanceDataCollection(request *UpdatePerformance
 
 // Summary:
 //
-// # Plan Adjustment
+// 套餐变配
 //
 // @param request - UpdateRatePlanSpecRequest
 //
@@ -27788,7 +26896,7 @@ func (client *Client) UpdateRatePlanSpecWithOptions(request *UpdateRatePlanSpecR
 
 // Summary:
 //
-// # Plan Adjustment
+// 套餐变配
 //
 // @param request - UpdateRatePlanSpecRequest
 //
@@ -27806,23 +26914,7 @@ func (client *Client) UpdateRatePlanSpec(request *UpdateRatePlanSpecRequest) (_r
 
 // Summary:
 //
-// Updates multiple types of DNS records and origin authentication configurations.
-//
-// Description:
-//
-// This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
-//
-// ### [](#)Usage notes
-//
-//   - The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
-//
-//   - You must specify a priority (Priority) for some record types, such as MX and SRV.
-//
-//   - You must specify specific fields such as Flag and Tag for CAA records.
-//
-//   - When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
-//
-//   - If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
+// 更新记录
 //
 // @param tmpReq - UpdateRecordRequest
 //
@@ -27912,23 +27004,7 @@ func (client *Client) UpdateRecordWithOptions(tmpReq *UpdateRecordRequest, runti
 
 // Summary:
 //
-// Updates multiple types of DNS records and origin authentication configurations.
-//
-// Description:
-//
-// This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
-//
-// ### [](#)Usage notes
-//
-//   - The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
-//
-//   - You must specify a priority (Priority) for some record types, such as MX and SRV.
-//
-//   - You must specify specific fields such as Flag and Tag for CAA records.
-//
-//   - When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
-//
-//   - If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
+// 更新记录
 //
 // @param request - UpdateRecordRequest
 //
@@ -27946,7 +27022,7 @@ func (client *Client) UpdateRecord(request *UpdateRecordRequest) (_result *Updat
 
 // Summary:
 //
-// # Update Redirect Rule
+// 更新重定向规则
 //
 // @param request - UpdateRedirectRuleRequest
 //
@@ -28026,7 +27102,7 @@ func (client *Client) UpdateRedirectRuleWithOptions(request *UpdateRedirectRuleR
 
 // Summary:
 //
-// # Update Redirect Rule
+// 更新重定向规则
 //
 // @param request - UpdateRedirectRuleRequest
 //
@@ -28044,7 +27120,7 @@ func (client *Client) UpdateRedirectRule(request *UpdateRedirectRuleRequest) (_r
 
 // Summary:
 //
-// # Modify Rewrite URL Rule
+// 修改重写Url规则
 //
 // @param request - UpdateRewriteUrlRuleRequest
 //
@@ -28124,7 +27200,7 @@ func (client *Client) UpdateRewriteUrlRuleWithOptions(request *UpdateRewriteUrlR
 
 // Summary:
 //
-// # Modify Rewrite URL Rule
+// 修改重写Url规则
 //
 // @param request - UpdateRewriteUrlRuleRequest
 //
@@ -28142,7 +27218,7 @@ func (client *Client) UpdateRewriteUrlRule(request *UpdateRewriteUrlRuleRequest)
 
 // Summary:
 //
-// Modifies the description of a routine.
+// 修改Routine描述信息
 //
 // @param request - UpdateRoutineConfigDescriptionRequest
 //
@@ -28190,7 +27266,7 @@ func (client *Client) UpdateRoutineConfigDescriptionWithOptions(request *UpdateR
 
 // Summary:
 //
-// Modifies the description of a routine.
+// 修改Routine描述信息
 //
 // @param request - UpdateRoutineConfigDescriptionRequest
 //
@@ -28208,7 +27284,7 @@ func (client *Client) UpdateRoutineConfigDescription(request *UpdateRoutineConfi
 
 // Summary:
 //
-// Modifies the route configuration of an edge function.
+// 修改边缘函数路由的配置
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -28288,7 +27364,7 @@ func (client *Client) UpdateRoutineRouteWithOptions(request *UpdateRoutineRouteR
 
 // Summary:
 //
-// Modifies the route configuration of an edge function.
+// 修改边缘函数路由的配置
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -28306,7 +27382,7 @@ func (client *Client) UpdateRoutineRoute(request *UpdateRoutineRouteRequest) (_r
 
 // Summary:
 //
-// Updates a scheduled prefetch plan based on the plan ID.
+// 更新单个定时预热计划
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -28368,7 +27444,7 @@ func (client *Client) UpdateScheduledPreloadExecutionWithOptions(request *Update
 
 // Summary:
 //
-// Updates a scheduled prefetch plan based on the plan ID.
+// 更新单个定时预热计划
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -28386,7 +27462,7 @@ func (client *Client) UpdateScheduledPreloadExecution(request *UpdateScheduledPr
 
 // Summary:
 //
-// Modifies the search engine crawler configuration for a website.
+// 修改站点放行搜索引擎爬虫配置
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -28434,7 +27510,7 @@ func (client *Client) UpdateSeoBypassWithOptions(request *UpdateSeoBypassRequest
 
 // Summary:
 //
-// Modifies the search engine crawler configuration for a website.
+// 修改站点放行搜索引擎爬虫配置
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -28452,15 +27528,7 @@ func (client *Client) UpdateSeoBypass(request *UpdateSeoBypassRequest) (_result 
 
 // Summary:
 //
-// Converts the DNS setup option of a website.
-//
-// Description:
-//
-// When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
-//
-//   - The website only has proxied A/AAAA and CNAME records.
-//
-//   - The DNS passthrough mode and custom nameserver features are not enabled for the website.
+// 修改站点接入方式
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
@@ -28508,15 +27576,7 @@ func (client *Client) UpdateSiteAccessTypeWithOptions(request *UpdateSiteAccessT
 
 // Summary:
 //
-// Converts the DNS setup option of a website.
-//
-// Description:
-//
-// When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
-//
-//   - The website only has proxied A/AAAA and CNAME records.
-//
-//   - The DNS passthrough mode and custom nameserver features are not enabled for the website.
+// 修改站点接入方式
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
@@ -28534,7 +27594,7 @@ func (client *Client) UpdateSiteAccessType(request *UpdateSiteAccessTypeRequest)
 
 // Summary:
 //
-// Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
+// 修改站点加速区域
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -28582,7 +27642,7 @@ func (client *Client) UpdateSiteCoverageWithOptions(request *UpdateSiteCoverageR
 
 // Summary:
 //
-// Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
+// 修改站点加速区域
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -28600,7 +27660,7 @@ func (client *Client) UpdateSiteCoverage(request *UpdateSiteCoverageRequest) (_r
 
 // Summary:
 //
-// Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+// 修改自定义字段
 //
 // @param tmpReq - UpdateSiteCustomLogRequest
 //
@@ -28670,7 +27730,7 @@ func (client *Client) UpdateSiteCustomLogWithOptions(tmpReq *UpdateSiteCustomLog
 
 // Summary:
 //
-// Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+// 修改自定义字段
 //
 // @param request - UpdateSiteCustomLogRequest
 //
@@ -28688,7 +27748,7 @@ func (client *Client) UpdateSiteCustomLog(request *UpdateSiteCustomLogRequest) (
 
 // Summary:
 //
-// Modifies a real-time log delivery task.
+// 修改一个任务投递
 //
 // @param request - UpdateSiteDeliveryTaskRequest
 //
@@ -28752,7 +27812,7 @@ func (client *Client) UpdateSiteDeliveryTaskWithOptions(request *UpdateSiteDeliv
 
 // Summary:
 //
-// Modifies a real-time log delivery task.
+// 修改一个任务投递
 //
 // @param request - UpdateSiteDeliveryTaskRequest
 //
@@ -28770,7 +27830,7 @@ func (client *Client) UpdateSiteDeliveryTask(request *UpdateSiteDeliveryTaskRequ
 
 // Summary:
 //
-// Changes the status of a real-time log delivery task.
+// 上下线一个任务投递
 //
 // @param request - UpdateSiteDeliveryTaskStatusRequest
 //
@@ -28810,7 +27870,7 @@ func (client *Client) UpdateSiteDeliveryTaskStatusWithOptions(request *UpdateSit
 
 // Summary:
 //
-// Changes the status of a real-time log delivery task.
+// 上下线一个任务投递
 //
 // @param request - UpdateSiteDeliveryTaskStatusRequest
 //
@@ -28828,7 +27888,7 @@ func (client *Client) UpdateSiteDeliveryTaskStatus(request *UpdateSiteDeliveryTa
 
 // Summary:
 //
-// Modifies the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
+// 修改站点名称独占配置
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -28876,7 +27936,7 @@ func (client *Client) UpdateSiteNameExclusiveWithOptions(request *UpdateSiteName
 
 // Summary:
 //
-// Modifies the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
+// 修改站点名称独占配置
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -28894,7 +27954,7 @@ func (client *Client) UpdateSiteNameExclusive(request *UpdateSiteNameExclusiveRe
 
 // Summary:
 //
-// Modifies the ESA proxy configuration of a website.
+// 修改站点暂停配置
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -28942,7 +28002,7 @@ func (client *Client) UpdateSitePauseWithOptions(request *UpdateSitePauseRequest
 
 // Summary:
 //
-// Modifies the ESA proxy configuration of a website.
+// 修改站点暂停配置
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -28960,7 +28020,7 @@ func (client *Client) UpdateSitePause(request *UpdateSitePauseRequest) (_result 
 
 // Summary:
 //
-// Updates the custom nameserver names for a single website.
+// 修改站点自定义NS
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -29008,7 +28068,7 @@ func (client *Client) UpdateSiteVanityNSWithOptions(request *UpdateSiteVanityNSR
 
 // Summary:
 //
-// Updates the custom nameserver names for a single website.
+// 修改站点自定义NS
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -29026,7 +28086,7 @@ func (client *Client) UpdateSiteVanityNS(request *UpdateSiteVanityNSRequest) (_r
 
 // Summary:
 //
-// Modifies the tiered cache configuration of your website.
+// 修改站点多级缓存配置
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -29074,7 +28134,7 @@ func (client *Client) UpdateTieredCacheWithOptions(request *UpdateTieredCacheReq
 
 // Summary:
 //
-// Modifies the tiered cache configuration of your website.
+// 修改站点多级缓存配置
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -29092,7 +28152,7 @@ func (client *Client) UpdateTieredCache(request *UpdateTieredCacheRequest) (_res
 
 // Summary:
 //
-// # Modify Transport Layer Application
+// 修改四层应用
 //
 // @param tmpReq - UpdateTransportLayerApplicationRequest
 //
@@ -29170,7 +28230,7 @@ func (client *Client) UpdateTransportLayerApplicationWithOptions(tmpReq *UpdateT
 
 // Summary:
 //
-// # Modify Transport Layer Application
+// 修改四层应用
 //
 // @param request - UpdateTransportLayerApplicationRequest
 //
@@ -29188,7 +28248,7 @@ func (client *Client) UpdateTransportLayerApplication(request *UpdateTransportLa
 
 // Summary:
 //
-// Updates the webpage monitoring configuration.
+// 更新网页监测配置
 //
 // @param request - UpdateUrlObservationRequest
 //
@@ -29240,7 +28300,7 @@ func (client *Client) UpdateUrlObservationWithOptions(request *UpdateUrlObservat
 
 // Summary:
 //
-// Updates the webpage monitoring configuration.
+// 更新网页监测配置
 //
 // @param request - UpdateUrlObservationRequest
 //
@@ -29258,7 +28318,7 @@ func (client *Client) UpdateUrlObservation(request *UpdateUrlObservationRequest)
 
 // Summary:
 //
-// Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
+// 修改一个用户粒度任务投递
 //
 // @param request - UpdateUserDeliveryTaskRequest
 //
@@ -29322,7 +28382,7 @@ func (client *Client) UpdateUserDeliveryTaskWithOptions(request *UpdateUserDeliv
 
 // Summary:
 //
-// Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
+// 修改一个用户粒度任务投递
 //
 // @param request - UpdateUserDeliveryTaskRequest
 //
@@ -29340,13 +28400,7 @@ func (client *Client) UpdateUserDeliveryTask(request *UpdateUserDeliveryTaskRequ
 
 // Summary:
 //
-// Changes the status of a delivery task in your Alibaba Cloud account.
-//
-// Description:
-//
-// ## [](#)
-//
-// You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
+// 上下线一个用户任务投递
 //
 // @param request - UpdateUserDeliveryTaskStatusRequest
 //
@@ -29386,13 +28440,7 @@ func (client *Client) UpdateUserDeliveryTaskStatusWithOptions(request *UpdateUse
 
 // Summary:
 //
-// Changes the status of a delivery task in your Alibaba Cloud account.
-//
-// Description:
-//
-// ## [](#)
-//
-// You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
+// 上下线一个用户任务投递
 //
 // @param request - UpdateUserDeliveryTaskStatusRequest
 //
@@ -29556,7 +28604,7 @@ func (client *Client) UpdateUserWafRuleset(request *UpdateUserWafRulesetRequest)
 
 // Summary:
 //
-// Modifies the video processing configuration of the site.
+// 修改站点的视频处理配置
 //
 // @param request - UpdateVideoProcessingRequest
 //
@@ -29644,7 +28692,7 @@ func (client *Client) UpdateVideoProcessingWithOptions(request *UpdateVideoProce
 
 // Summary:
 //
-// Modifies the video processing configuration of the site.
+// 修改站点的视频处理配置
 //
 // @param request - UpdateVideoProcessingRequest
 //
@@ -29662,7 +28710,7 @@ func (client *Client) UpdateVideoProcessing(request *UpdateVideoProcessingReques
 
 // Summary:
 //
-// # Update WAF Rule Page
+// 更新WAF规则页面
 //
 // @param tmpReq - UpdateWafRuleRequest
 //
@@ -29734,7 +28782,7 @@ func (client *Client) UpdateWafRuleWithOptions(tmpReq *UpdateWafRuleRequest, run
 
 // Summary:
 //
-// # Update WAF Rule Page
+// 更新WAF规则页面
 //
 // @param request - UpdateWafRuleRequest
 //
@@ -29752,7 +28800,7 @@ func (client *Client) UpdateWafRule(request *UpdateWafRuleRequest) (_result *Upd
 
 // Summary:
 //
-// # Update WAF Ruleset
+// 更新WAF规则集
 //
 // @param request - UpdateWafRulesetRequest
 //
@@ -29810,7 +28858,7 @@ func (client *Client) UpdateWafRulesetWithOptions(request *UpdateWafRulesetReque
 
 // Summary:
 //
-// # Update WAF Ruleset
+// 更新WAF规则集
 //
 // @param request - UpdateWafRulesetRequest
 //
@@ -29828,7 +28876,7 @@ func (client *Client) UpdateWafRuleset(request *UpdateWafRulesetRequest) (_resul
 
 // Summary:
 //
-// Modifies the configurations of a waiting room.
+// 修改等候室
 //
 // @param tmpReq - UpdateWaitingRoomRequest
 //
@@ -29946,7 +28994,7 @@ func (client *Client) UpdateWaitingRoomWithOptions(tmpReq *UpdateWaitingRoomRequ
 
 // Summary:
 //
-// Modifies the configurations of a waiting room.
+// 修改等候室
 //
 // @param request - UpdateWaitingRoomRequest
 //
@@ -29964,7 +29012,7 @@ func (client *Client) UpdateWaitingRoom(request *UpdateWaitingRoomRequest) (_res
 
 // Summary:
 //
-// Modifies the configurations of a waiting room event.
+// 修改等候室事件
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -30084,7 +29132,7 @@ func (client *Client) UpdateWaitingRoomEventWithOptions(request *UpdateWaitingRo
 
 // Summary:
 //
-// Modifies the configurations of a waiting room event.
+// 修改等候室事件
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -30102,11 +29150,7 @@ func (client *Client) UpdateWaitingRoomEvent(request *UpdateWaitingRoomEventRequ
 
 // Summary:
 //
-// # Modify Waiting Room Rule
-//
-// Description:
-//
-// This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
+// 修改等候室规则
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -30166,11 +29210,7 @@ func (client *Client) UpdateWaitingRoomRuleWithOptions(request *UpdateWaitingRoo
 
 // Summary:
 //
-// # Modify Waiting Room Rule
-//
-// Description:
-//
-// This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
+// 修改等候室规则
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -30188,7 +29228,7 @@ func (client *Client) UpdateWaitingRoomRule(request *UpdateWaitingRoomRuleReques
 
 // Summary:
 //
-// Uploads a client certificate authority (CA) certificate.
+// 上传客户端CA证书
 //
 // @param request - UploadClientCaCertificateRequest
 //
@@ -30242,7 +29282,7 @@ func (client *Client) UploadClientCaCertificateWithOptions(request *UploadClient
 
 // Summary:
 //
-// Uploads a client certificate authority (CA) certificate.
+// 上传客户端CA证书
 //
 // @param request - UploadClientCaCertificateRequest
 //
@@ -30260,13 +29300,7 @@ func (client *Client) UploadClientCaCertificate(request *UploadClientCaCertifica
 
 // Summary:
 //
-// Uploads the file that contains resources to be purged or prefetched.
-//
-// Description:
-//
-// >
-//
-//   - The file can be up to 10 MB in size.
+// 缓存刷新文件上传
 //
 // @param request - UploadFileRequest
 //
@@ -30322,13 +29356,7 @@ func (client *Client) UploadFileWithOptions(request *UploadFileRequest, runtime 
 
 // Summary:
 //
-// Uploads the file that contains resources to be purged or prefetched.
-//
-// Description:
-//
-// >
-//
-//   - The file can be up to 10 MB in size.
+// 缓存刷新文件上传
 //
 // @param request - UploadFileRequest
 //
@@ -30599,7 +29627,7 @@ func (client *Client) UploadOriginClientCertificate(request *UploadOriginClientC
 
 // Summary:
 //
-// # Upload site origin client certificate
+// 上传站点回源客户端证书
 //
 // @param request - UploadSiteOriginClientCertificateRequest
 //
@@ -30657,7 +29685,7 @@ func (client *Client) UploadSiteOriginClientCertificateWithOptions(request *Uplo
 
 // Summary:
 //
-// # Upload site origin client certificate
+// 上传站点回源客户端证书
 //
 // @param request - UploadSiteOriginClientCertificateRequest
 //
@@ -30737,13 +29765,7 @@ func (client *Client) VerifyCustomHostname(request *VerifyCustomHostnameRequest)
 
 // Summary:
 //
-// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
-//
-// Description:
-//
-// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
-//
-// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
+// 校验站点的归属
 //
 // @param request - VerifySiteRequest
 //
@@ -30787,13 +29809,7 @@ func (client *Client) VerifySiteWithOptions(request *VerifySiteRequest, runtime 
 
 // Summary:
 //
-// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
-//
-// Description:
-//
-// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
-//
-// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
+// 校验站点的归属
 //
 // @param request - VerifySiteRequest
 //

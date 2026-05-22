@@ -14,13 +14,7 @@ type iGetSitePauseRequest interface {
 }
 
 type GetSitePauseRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

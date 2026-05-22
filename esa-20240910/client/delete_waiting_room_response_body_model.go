@@ -14,11 +14,6 @@ type iDeleteWaitingRoomResponseBody interface {
 }
 
 type DeleteWaitingRoomResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

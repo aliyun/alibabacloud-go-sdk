@@ -24,43 +24,13 @@ type iUpdateUserDeliveryTaskRequest interface {
 }
 
 type UpdateUserDeliveryTaskRequest struct {
-	// The log category. Valid values:
-	//
-	// 	- dcdn_log_access_l1 (default): access logs.
-	//
-	// 	- dcdn_log_er: Edge Routine logs.
-	//
-	// 	- dcdn_log_waf: firewall logs.
-	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
-	//
-	// example:
-	//
-	// dcdn_log_er
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The discard rate. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log fields that you want to include in logs to be delivered. Separate the log fields with commas (,).
-	//
+	BusinessType *string  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Details      *string  `json:"Details,omitempty" xml:"Details,omitempty"`
+	DiscardRate  *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ClientRequestID,ClientRequestHost
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// The name of the delivery task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_project
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

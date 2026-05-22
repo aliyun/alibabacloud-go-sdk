@@ -16,13 +16,7 @@ type iListWaitingRoomRulesResponseBody interface {
 }
 
 type ListWaitingRoomRulesResponseBody struct {
-	// Request ID, used for tracking the call status.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A123425345
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of waiting room bypass rules.
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WaitingRoomRules []*ListWaitingRoomRulesResponseBodyWaitingRoomRules `json:"WaitingRoomRules,omitempty" xml:"WaitingRoomRules,omitempty" type:"Repeated"`
 }
 
@@ -66,38 +60,10 @@ func (s *ListWaitingRoomRulesResponseBody) Validate() error {
 }
 
 type ListWaitingRoomRulesResponseBodyWaitingRoomRules struct {
-	// Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: set the value to true
-	//
-	// - Match specific requests: set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.request.uri.path.file_name eq \\"jpg\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter does not need to be set when adding global configuration. Value range:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter does not need to be set when adding global configuration.
-	//
-	// example:
-	//
-	// ip
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule ID.
-	//
-	// example:
-	//
-	// 37286782688****
-	WaitingRoomRuleId *int64 `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
+	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	WaitingRoomRuleId *int64  `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
 }
 
 func (s ListWaitingRoomRulesResponseBodyWaitingRoomRules) String() string {

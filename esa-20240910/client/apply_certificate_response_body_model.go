@@ -20,26 +20,10 @@ type iApplyCertificateResponseBody interface {
 }
 
 type ApplyCertificateResponseBody struct {
-	// Request ID.
-	//
-	// example:
-	//
-	// 156A6B-677B1A-4297B7-9187B7-2B44792
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of free certificate application details.
-	Result []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Site name.
-	//
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// Number of certificates applied for, which is the same as the number of input domains.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	SiteName   *string                               `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ApplyCertificateResponseBody) String() string {
@@ -100,23 +84,8 @@ func (s *ApplyCertificateResponseBody) Validate() error {
 }
 
 type ApplyCertificateResponseBodyResult struct {
-	// Certificate domain.
-	//
-	// example:
-	//
-	// *.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Certificate ID.
-	//
-	// example:
-	//
-	// 30000478
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Status of the certificate application.
-	//
-	// example:
-	//
-	// Applying
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

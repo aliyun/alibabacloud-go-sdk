@@ -15,10 +15,6 @@ type iGetPerformanceDataCollectionRequest interface {
 
 type GetPerformanceDataCollectionRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

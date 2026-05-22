@@ -26,56 +26,13 @@ type iDescribePreloadTasksRequest interface {
 }
 
 type DescribePreloadTasksRequest struct {
-	// The content to prefetch. Exact match is supported.
-	//
-	// example:
-	//
-	// http://a.com/1.jpg?b=2
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time.
-	//
-	// example:
-	//
-	// 2023-03-23T06:23:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. Valid values: **1*	- to **100000**. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
-	//
-	// example:
-	//
-	// 123456789****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2023-03-22T17:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
-	//
-	// 	- **Complete**: The task is complete.
-	//
-	// 	- **Refreshing**: The task is running.
-	//
-	// 	- **Failed**: The task failed.
-	//
-	// example:
-	//
-	// Complete
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePreloadTasksRequest) String() string {

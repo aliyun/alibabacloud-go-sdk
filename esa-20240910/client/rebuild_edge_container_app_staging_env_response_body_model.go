@@ -14,11 +14,6 @@ type iRebuildEdgeContainerAppStagingEnvResponseBody interface {
 }
 
 type RebuildEdgeContainerAppStagingEnvResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

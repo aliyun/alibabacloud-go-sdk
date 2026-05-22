@@ -24,41 +24,20 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// Default value: **false**.
-	//
-	// example:
-	//
-	// false
+	// 是否全部删除，只针对TagKey.N为空时有效
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The ID of the region where the resources reside. Set the value to **cn-hangzhou**.
+	// 要创建并绑定标签的资源所在的地域ID。
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of resource N. Valid values of N: **1*	- to **50**.
+	// 资源ID,最多 50个子项
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// site
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The key of tag N to remove from the resource. Valid values of N: **1*	- to **20**.
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	TagKey        []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {

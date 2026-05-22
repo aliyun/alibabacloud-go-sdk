@@ -26,50 +26,28 @@ type iListWafRulesRequest interface {
 }
 
 type ListWafRulesRequest struct {
-	// Query page number, used for pagination.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Query page size, used for pagination.
-	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// WAF rule type. Values:
-	//
-	// - http_anti_scan: Scan protection
-	//
-	// - http_bot: Bots
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Query filter conditions.
-	//
-	// example:
-	//
-	// http_custom
+	Phase     *string                       `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	QueryArgs *ListWafRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 	RulesetId *int64                        `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
-	//
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -154,44 +132,24 @@ func (s *ListWafRulesRequest) Validate() error {
 }
 
 type ListWafRulesRequestQueryArgs struct {
-	// Fuzzy search for values in IP access control.
-	//
-	// example:
-	//
-	// 10.0.0.1
 	ConfigValueLike *string `json:"ConfigValueLike,omitempty" xml:"ConfigValueLike,omitempty"`
-	// Whether to reverse the sorting result.
-	//
-	// example:
-	//
-	// true
-	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Exact query for WAF rule ID.
-	//
+	Desc            *bool   `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Fuzzy query for WAF rule ID or name.
-	//
 	// example:
 	//
 	// example
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// Fuzzy query for WAF rule name.
-	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
-	// Sort the returned list by the specified column.
-	//
 	// example:
 	//
 	// position
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// Exact query for WAF rule status.
-	//
 	// example:
 	//
 	// on

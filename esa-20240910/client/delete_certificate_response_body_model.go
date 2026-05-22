@@ -20,30 +20,10 @@ type iDeleteCertificateResponseBody interface {
 }
 
 type DeleteCertificateResponseBody struct {
-	// The certificate ID.
-	//
-	// example:
-	//
-	// babaded901474b9693acf530e0fb1d95
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F32C57AA-7BF8-49AE-A2CC-9F42390F5A19
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 1234567890123
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
-	//
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s DeleteCertificateResponseBody) String() string {

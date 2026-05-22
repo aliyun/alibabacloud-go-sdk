@@ -24,38 +24,12 @@ type iDescribeCustomScenePoliciesResponseBody interface {
 }
 
 type DescribeCustomScenePoliciesResponseBody struct {
-	// The scenario-specific policies.
 	DataModule []*DescribeCustomScenePoliciesResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The policy quota.
-	//
-	// example:
-	//
-	// 10
-	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 85H66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Quota      *int32                                               `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCustomScenePoliciesResponseBody) String() string {
@@ -134,59 +108,14 @@ func (s *DescribeCustomScenePoliciesResponseBody) Validate() error {
 }
 
 type DescribeCustomScenePoliciesResponseBodyDataModule struct {
-	// The time when the policy expires.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-03-06T16:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the scenario-specific policy.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of websites that are associated with the policy.
-	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
-	// The policy ID.
-	//
-	// example:
-	//
-	// 1234****
-	PolicyId *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SiteIds  *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
-	// The time when the policy takes effect.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-03-04T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the policy. Valid values:
-	//
-	// 	- **Disabled**
-	//
-	// 	- **Pending**
-	//
-	// 	- **Running**
-	//
-	// 	- **Expired**
-	//
-	// example:
-	//
-	// Expired
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the policy template. Valid value:
-	//
-	// 	- **promotion**: major events.
-	//
-	// example:
-	//
-	// promotion
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Objects   []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	PolicyId  *int64    `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SiteIds   *string   `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
+	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Template  *string   `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
 func (s DescribeCustomScenePoliciesResponseBodyDataModule) String() string {

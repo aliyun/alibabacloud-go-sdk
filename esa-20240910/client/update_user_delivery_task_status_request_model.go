@@ -16,21 +16,9 @@ type iUpdateUserDeliveryTaskStatusRequest interface {
 }
 
 type UpdateUserDeliveryTaskStatusRequest struct {
-	// Enables or disables the delivery task. Valid values: online and offline.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// online
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The name of the delivery task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_project
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

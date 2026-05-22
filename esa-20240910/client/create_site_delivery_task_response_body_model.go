@@ -20,34 +20,10 @@ type iCreateSiteDeliveryTaskResponseBody interface {
 }
 
 type CreateSiteDeliveryTaskResponseBody struct {
-	// The data center. Valid values:
-	//
-	// 	- cn: the Chinese mainland.
-	//
-	// 	- oversea: outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9358E852-992D-5BC7-8BD7-975CA02773A8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.[](~~2850189~~)
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the delivery task.
-	//
-	// example:
-	//
-	// er-oss
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateSiteDeliveryTaskResponseBody) String() string {

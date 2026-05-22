@@ -16,21 +16,9 @@ type iGetHttpsApplicationConfigurationRequest interface {
 }
 
 type GetHttpsApplicationConfigurationRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [listHttpsApplicationConfigurations](https://help.aliyun.com/document_detail/2869087.html) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

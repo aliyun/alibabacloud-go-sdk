@@ -28,9 +28,6 @@ type iListPostpaidRatePlanInstancesRequest interface {
 }
 
 type ListPostpaidRatePlanInstancesRequest struct {
-	// example:
-	//
-	// ListPostpaidRatePlanInstances
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`

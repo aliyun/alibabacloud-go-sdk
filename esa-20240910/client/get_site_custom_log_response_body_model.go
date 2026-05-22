@@ -22,32 +22,11 @@ type iGetSiteCustomLogResponseBody interface {
 }
 
 type GetSiteCustomLogResponseBody struct {
-	// The ID of the custom log field configuration.
-	//
-	// example:
-	//
-	// 6befa4aa-2a94-4f51-a245-295787192d2c
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Indicates whether the custom configuration exists.
-	//
-	// example:
-	//
-	// true
-	IsExist *bool `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
-	// The custom fields.
+	ConfigId       *int64                                      `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	IsExist        *bool                                       `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
 	LogCustomField *GetSiteCustomLogResponseBodyLogCustomField `json:"LogCustomField,omitempty" xml:"LogCustomField,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6befa4aa-2a94-4f51-a245-295787192d2c
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 167026711***
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId         *int64                                      `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s GetSiteCustomLogResponseBody) String() string {
@@ -113,11 +92,8 @@ func (s *GetSiteCustomLogResponseBody) Validate() error {
 }
 
 type GetSiteCustomLogResponseBodyLogCustomField struct {
-	// The cookie fields.
-	Cookies []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
-	// The request header fields.
-	RequestHeaders []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// The response header fields.
+	Cookies         []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
+	RequestHeaders  []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	ResponseHeaders []*string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
 }
 

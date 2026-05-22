@@ -14,11 +14,6 @@ type iUpdateCustomResponseCodeRuleResponseBody interface {
 }
 
 type UpdateCustomResponseCodeRuleResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// C7518056-E30F-55F8-97DD-004D8030703B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

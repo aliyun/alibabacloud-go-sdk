@@ -14,11 +14,6 @@ type iActivateVersionManagementResponseBody interface {
 }
 
 type ActivateVersionManagementResponseBody struct {
-	// Request ID.
-	//
-	// example:
-	//
-	// C370DAF1-C838-4288-A1A0-9A87633D2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

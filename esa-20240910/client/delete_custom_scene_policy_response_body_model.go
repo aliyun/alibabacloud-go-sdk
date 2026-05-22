@@ -16,17 +16,7 @@ type iDeleteCustomScenePolicyResponseBody interface {
 }
 
 type DeleteCustomScenePolicyResponseBody struct {
-	// The policy ID.
-	//
-	// example:
-	//
-	// 1
-	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 5CC228B4-7A67-4016-9C9F-4A4133494A91
+	PolicyId  *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

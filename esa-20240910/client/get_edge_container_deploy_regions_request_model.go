@@ -14,11 +14,6 @@ type iGetEdgeContainerDeployRegionsRequest interface {
 }
 
 type GetEdgeContainerDeployRegionsRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
-	//
-	// example:
-	//
-	// GetEdgeContainerDeployRegions
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

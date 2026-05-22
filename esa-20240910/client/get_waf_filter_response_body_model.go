@@ -16,10 +16,7 @@ type iGetWafFilterResponseBody interface {
 }
 
 type GetWafFilterResponseBody struct {
-	// The returned match conditions.
 	Filter *GetWafFilterResponseBodyFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -62,22 +59,15 @@ func (s *GetWafFilterResponseBody) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilter struct {
-	// The matched objects and related properties.
 	Fields []*GetWafFilterResponseBodyFilterFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The WAF rule category.
-	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The condition for matching incoming requests.
-	//
 	// example:
 	//
 	// characteristics
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The rule type.
-	//
 	// example:
 	//
 	// http_custom_cc
@@ -143,31 +133,18 @@ func (s *GetWafFilterResponseBodyFilter) Validate() error {
 
 type GetWafFilterResponseBodyFilterFields struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The field for matched objects in the system.
-	//
 	// example:
 	//
 	// http.request.headers
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The label of the matched object.
-	//
 	// example:
 	//
 	// Header
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The logical conditions.
-	Logics  []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
-	MinPlan *string                                       `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
-	// The selector, which defines how to select a matched object.
+	Label    *string                                       `json:"Label,omitempty" xml:"Label,omitempty"`
+	Logics   []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
+	MinPlan  *string                                       `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
 	Selector *GetWafFilterResponseBodyFilterFieldsSelector `json:"Selector,omitempty" xml:"Selector,omitempty" type:"Struct"`
-	// Indicates whether the matched object contains a subfield.
-	//
-	// example:
-	//
-	// true
-	Sub *bool `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	// The tip on how to enter a subfield.
-	//
+	Sub      *bool                                         `json:"Sub,omitempty" xml:"Sub,omitempty"`
 	// example:
 	//
 	// e.g. Content-Type
@@ -273,63 +250,33 @@ func (s *GetWafFilterResponseBodyFilterFields) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogics struct {
-	// A custom attribute. For example, this parameter can specify whether the value is case-sensitive.
-	//
 	// example:
 	//
 	// 1
 	Attributes *int32 `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	Enable     *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The type of the value input box. Valid values:
-	//
-	// 	- select:single
-	//
-	// 	- select:multi
-	//
-	// 	- input:single
-	//
-	// 	- input:multi
-	//
 	// example:
 	//
 	// input:single
-	Kind    *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	MinPlan *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
-	// Indicates whether the match result is inverted.
-	Negative *bool `json:"Negative,omitempty" xml:"Negative,omitempty"`
-	// The displayed matching characters.
-	//
+	Kind     *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	MinPlan  *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
+	Negative *bool   `json:"Negative,omitempty" xml:"Negative,omitempty"`
 	// example:
 	//
 	// Does not equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The matching characters in the system.
-	//
 	// example:
 	//
 	// eq
 	Symbol *string `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	// The tip on how to enter a valid value that is required by the rules.
-	//
 	// example:
 	//
 	// e.g. image/jpeg
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
-	// The type of the value. Valid values:
-	//
-	// 	- integer
-	//
-	// 	- integer_slice
-	//
-	// 	- string
-	//
-	// 	- string_slice
-	//
 	// example:
 	//
 	// string
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The validator, which defines the validation rules for a value.
+	Type      *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 	Validator *GetWafFilterResponseBodyFilterFieldsLogicsValidator `json:"Validator,omitempty" xml:"Validator,omitempty" type:"Struct"`
 }
 
@@ -441,22 +388,16 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogics) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogicsValidator struct {
-	// The error message when the validation fails.
-	//
 	// example:
 	//
 	// Enter a valid expression
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The length of the value.
+	ErrMsg *string          `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	Length *WafQuotaInteger `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The regular expression pattern of the value, which is used to validate strings.
-	//
 	// example:
 	//
 	// ^example$
-	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The range of the value, which is used to validate numbers.
-	Range *WafQuotaInteger `json:"Range,omitempty" xml:"Range,omitempty"`
+	Pattern *string          `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Range   *WafQuotaInteger `json:"Range,omitempty" xml:"Range,omitempty"`
 }
 
 func (s GetWafFilterResponseBodyFilterFieldsLogicsValidator) String() string {
@@ -518,10 +459,7 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogicsValidator) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelector struct {
-	// The data. This parameter is available only when the value of the Kind parameter is data.
 	Data []*GetWafFilterResponseBodyFilterFieldsSelectorData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The type of selector. Valid values: data and others.
-	//
 	// example:
 	//
 	// data
@@ -568,14 +506,10 @@ func (s *GetWafFilterResponseBodyFilterFieldsSelector) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelectorData struct {
-	// The label of the data.
-	//
 	// example:
 	//
 	// China
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The value of the data.
-	//
 	// example:
 	//
 	// CN

@@ -16,14 +16,8 @@ type iGetEdgeContainerAppResponseBody interface {
 }
 
 type GetEdgeContainerAppResponseBody struct {
-	// The basic information about the application.
-	App *GetEdgeContainerAppResponseBodyApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 156A6B-677B1A-4297B7-9187B7-2B44792
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	App       *GetEdgeContainerAppResponseBodyApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEdgeContainerAppResponseBody) String() string {
@@ -62,90 +56,19 @@ func (s *GetEdgeContainerAppResponseBody) Validate() error {
 }
 
 type GetEdgeContainerAppResponseBodyApp struct {
-	// The application ID.
-	//
-	// example:
-	//
-	// app-88068867578379****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the application was created.
-	//
-	// example:
-	//
-	// 2023-07-25T05:58:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain name that is associated with the application. If no domain name is associated with the application, the value is an empty string.
-	//
-	// example:
-	//
-	// www.1feel.cn
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the gateway. Valid values:
-	//
-	// 	- l7: Layer 7 gateway.
-	//
-	// 	- l4: Layer 4 gateway.
-	//
-	// example:
-	//
-	// l7
-	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// The information about health checks.
-	HealthCheck *GetEdgeContainerAppResponseBodyAppHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
-	// The application name.
-	//
-	// example:
-	//
-	// test-app1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether QUIC is enabled.
-	//
-	// example:
-	//
-	// false
-	QuicCid *string `json:"QuicCid,omitempty" xml:"QuicCid,omitempty"`
-	// The remarks about the application.
-	//
-	// example:
-	//
-	// test app
-	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The server port. Valid values: 1 to 65535.
-	//
-	// example:
-	//
-	// 80
-	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
-	// The status of the application. Valid values:
-	//
-	// 	- creating: The application is being created.
-	//
-	// 	- failed: The application failed to be created.
-	//
-	// 	- created: The application is created.
-	//
-	// example:
-	//
-	// created
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
-	//
-	// example:
-	//
-	// 80
-	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	// The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-03-26T02:35:58Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The number of versions of the application.
-	//
-	// example:
-	//
-	// 1
-	VersionCount *int32 `json:"VersionCount,omitempty" xml:"VersionCount,omitempty"`
+	AppId        *string                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime   *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName   *string                                        `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GatewayType  *string                                        `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	HealthCheck  *GetEdgeContainerAppResponseBodyAppHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	QuicCid      *string                                        `json:"QuicCid,omitempty" xml:"QuicCid,omitempty"`
+	Remarks      *string                                        `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	ServicePort  *int32                                         `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	Status       *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetPort   *int32                                         `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	UpdateTime   *string                                        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VersionCount *int32                                         `json:"VersionCount,omitempty" xml:"VersionCount,omitempty"`
 }
 
 func (s GetEdgeContainerAppResponseBodyApp) String() string {
@@ -283,70 +206,16 @@ func (s *GetEdgeContainerAppResponseBodyApp) Validate() error {
 }
 
 type GetEdgeContainerAppResponseBodyAppHealthCheck struct {
-	// The number of consecutive failed health checks required for an application to be considered as unhealthy.
-	//
-	// example:
-	//
-	// 5
-	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	// The domain name that is used for health checks.
-	//
-	// example:
-	//
-	// test.com
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The range of health check status codes that indicate successful health checks.
-	//
-	// example:
-	//
-	// http_2xx
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The interval between health checks. Unit: seconds.
-	//
-	// example:
-	//
-	// 5
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The HTTP method that the health check request uses.
-	//
-	// example:
-	//
-	// HEAD
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The health check port.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The number of consecutive successful health checks required for an application to be considered as healthy.
-	//
-	// example:
-	//
-	// 3
-	SuccTimes *int32 `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
-	// The timeout period of the health check. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The health check type. Valid values:
-	//
-	// 	- l7
-	//
-	// 	- l4
-	//
-	// example:
-	//
-	// l7
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The health check URL.
-	//
-	// example:
-	//
-	// /health_check
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	FailTimes *int32  `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Method    *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	SuccTimes *int32  `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
+	Timeout   *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetEdgeContainerAppResponseBodyAppHealthCheck) String() string {

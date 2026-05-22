@@ -38,92 +38,23 @@ type iCreateSiteDeliveryTaskShrinkRequest interface {
 }
 
 type CreateSiteDeliveryTaskShrinkRequest struct {
-	// The log category. Valid values:
-	//
-	// 	- **dcdn_log_access_l1*	- (default): access logs.
-	//
-	// 	- **dcdn_log_er**: Edge Routine logs.
-	//
-	// 	- **dcdn_log_waf**: firewall logs.
-	//
-	// 	- **dcdn_log_ipa**: TCP/UDP proxy logs.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The data center. Valid values:
-	//
-	// 	- cn: the Chinese mainland.
-	//
-	// 	- oversea: outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn
-	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
-	//
-	// 	- sls: Alibaba Cloud Simple Log Service (SLS).
-	//
-	// 	- http: HTTP server.
-	//
-	// 	- aws3: Amazon Simple Storage Service (S3).
-	//
-	// 	- oss: Alibaba Cloud Object Storage Service (OSS).
-	//
-	// 	- kafka: Kafka.
-	//
-	// 	- aws3cmpt: S3-compatible storage service.
-	//
+	DataCenter   *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// sls
-	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The discard rate. Default value: 0.
-	//
-	// example:
-	//
-	// 0.0
-	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log fields, which are separated by commas (,).
-	//
+	DeliveryType *string  `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DiscardRate  *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// user_agent,ip_adress,ip_port
-	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// The configurations for delivery to an HTTP server.
-	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
-	// The configurations for delivery to Kafka.
+	FieldName           *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer           *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
+	HttpDeliveryShrink  *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
-	// The configurations for delivery to OSS.
-	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	// The configurations for delivery to Amazon S3 or an S3-compatible service.
-	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
+	OssDeliveryShrink   *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
+	S3DeliveryShrink    *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12312312112***
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The configurations for delivery to SLS.
+	SiteId            *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
-	// The name of the delivery task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dcdn-test-task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

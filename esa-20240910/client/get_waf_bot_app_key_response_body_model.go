@@ -16,14 +16,10 @@ type iGetWafBotAppKeyResponseBody interface {
 }
 
 type GetWafBotAppKeyResponseBody struct {
-	// Application key.
-	//
 	// example:
 	//
 	// example_appkey
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225

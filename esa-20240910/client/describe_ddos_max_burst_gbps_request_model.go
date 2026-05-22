@@ -15,10 +15,6 @@ type iDescribeDdosMaxBurstGbpsRequest interface {
 
 type DescribeDdosMaxBurstGbpsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// esa-site-a71k7bw19dz4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

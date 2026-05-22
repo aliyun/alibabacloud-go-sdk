@@ -16,21 +16,9 @@ type iDeleteOriginPoolRequest interface {
 }
 
 type DeleteOriginPoolRequest struct {
-	// The ID of the origin address pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) API.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 103852052519****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 21655860979****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

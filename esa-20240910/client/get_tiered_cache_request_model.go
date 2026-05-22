@@ -14,13 +14,7 @@ type iGetTieredCacheRequest interface {
 }
 
 type GetTieredCacheRequest struct {
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

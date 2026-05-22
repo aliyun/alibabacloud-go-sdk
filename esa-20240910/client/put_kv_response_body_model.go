@@ -18,24 +18,9 @@ type iPutKvResponseBody interface {
 }
 
 type PutKvResponseBody struct {
-	// The length of the value in the key-value pair.
-	//
-	// example:
-	//
-	// 4
-	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	Length    *string `json:"Length,omitempty" xml:"Length,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
-	//
-	// example:
-	//
-	// test
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s PutKvResponseBody) String() string {

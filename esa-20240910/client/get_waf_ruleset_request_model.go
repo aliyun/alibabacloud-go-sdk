@@ -18,20 +18,14 @@ type iGetWafRulesetRequest interface {
 }
 
 type GetWafRulesetRequest struct {
-	// The ID of the WAF ruleset, which can be obtained by calling the ListWafRulesets interface.
-	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The WAF operation phase, specifying the phase of the ruleset to query.
-	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
 	// example:
 	//
 	// 1

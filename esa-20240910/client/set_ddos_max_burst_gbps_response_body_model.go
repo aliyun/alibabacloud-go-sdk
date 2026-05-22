@@ -14,9 +14,6 @@ type iSetDdosMaxBurstGbpsResponseBody interface {
 }
 
 type SetDdosMaxBurstGbpsResponseBody struct {
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

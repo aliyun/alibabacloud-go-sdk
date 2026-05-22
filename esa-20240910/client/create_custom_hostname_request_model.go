@@ -31,66 +31,30 @@ type iCreateCustomHostnameRequest interface {
 
 type CreateCustomHostnameRequest struct {
 	// 云盾证书ID，使用云盾证书时必填
-	//
-	// example:
-	//
-	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
 	// 云盾证书所在地域，使用云盾证书时必填
-	//
-	// example:
-	//
-	// cn-hangzhou
 	CasRegion *string `json:"CasRegion,omitempty" xml:"CasRegion,omitempty"`
 	// 证书类型，SSL 开启时必填
-	//
-	// example:
-	//
-	// free
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// 证书公钥，使用上传证书时必填
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	// 自定义主机名
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// custom.site.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// 证书私钥，使用上传证书时必填
-	//
-	// example:
-	//
-	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	// 绑定的源站记录ID
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// 关联站点ID
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// SSL开关
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// on
 	SslFlag *string `json:"SslFlag,omitempty" xml:"SslFlag,omitempty"`
 }
 

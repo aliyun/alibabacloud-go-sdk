@@ -14,11 +14,6 @@ type iUpdateDevelopmentModeResponseBody interface {
 }
 
 type UpdateDevelopmentModeResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 65C66B7B-671A-8297-9187-2R5477247B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

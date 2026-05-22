@@ -14,13 +14,7 @@ type iGetRoutineRequest interface {
 }
 
 type GetRoutineRequest struct {
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// GetRoutine
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

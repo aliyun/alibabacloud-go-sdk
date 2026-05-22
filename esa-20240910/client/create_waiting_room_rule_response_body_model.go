@@ -16,18 +16,8 @@ type iCreateWaitingRoomRuleResponseBody interface {
 }
 
 type CreateWaitingRoomRuleResponseBody struct {
-	// Request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Waiting room bypass rule ID.
-	//
-	// example:
-	//
-	// 420072638347264
-	WaitingRoomRuleId *int64 `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WaitingRoomRuleId *int64  `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
 }
 
 func (s CreateWaitingRoomRuleResponseBody) String() string {

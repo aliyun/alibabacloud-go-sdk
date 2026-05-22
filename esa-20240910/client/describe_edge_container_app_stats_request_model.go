@@ -27,39 +27,14 @@ type iDescribeEdgeContainerAppStatsRequest interface {
 
 type DescribeEdgeContainerAppStatsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// app-xxxx
-	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// example:
-	//
-	// 2024-09-02T16:04:05Z
+	App     *string `json:"App,omitempty" xml:"App,omitempty"`
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// pod_ready_rate
-	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// example:
-	//
-	// telecom,unicom,cmcc
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// example:
-	//
-	// huizhou
-	Locate *string `json:"Locate,omitempty" xml:"Locate,omitempty"`
-	// example:
-	//
-	// 2024-09-02T15:04:05Z
+	Fields    *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	Isp       *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Locate    *string `json:"Locate,omitempty" xml:"Locate,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// t-xxxx
-	Tenant *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+	Tenant    *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
 }
 
 func (s DescribeEdgeContainerAppStatsRequest) String() string {

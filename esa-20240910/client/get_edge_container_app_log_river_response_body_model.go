@@ -18,20 +18,9 @@ type iGetEdgeContainerAppLogRiverResponseBody interface {
 }
 
 type GetEdgeContainerAppLogRiverResponseBody struct {
-	// The log path of the container. It must be an absolute path that starts with a forward slash (/). You can use asterisks (\\*) and question marks (?) as wildcards.
-	//
-	// example:
-	//
-	// /root/hello.log
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the standard output of the container is collected.
-	Stdout *bool `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+	Stdout    *bool   `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
 }
 
 func (s GetEdgeContainerAppLogRiverResponseBody) String() string {

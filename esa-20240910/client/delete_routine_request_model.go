@@ -14,13 +14,7 @@ type iDeleteRoutineRequest interface {
 }
 
 type DeleteRoutineRequest struct {
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

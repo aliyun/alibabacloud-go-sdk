@@ -22,49 +22,13 @@ type iCreateScheduledPreloadJobRequest interface {
 }
 
 type CreateScheduledPreloadJobRequest struct {
-	// The method to submit URLs to be prefetched.
-	//
-	// Valid values:
-	//
-	// 	- **textBox**
-	//
-	// 	- **oss**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// oss
 	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	// The name of the scheduled prefetch task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The URL of the OSS object that stores the URLs to be prefetched.
-	//
-	// example:
-	//
-	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 190007158391808
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The URLs to be prefetched. This parameter is required if you set InsertWay to textBox.
-	//
-	// example:
-	//
-	// http://testurl.com/a.txt
-	//
-	// http://testurl.com/b.txt
+	SiteId  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	UrlList *string `json:"UrlList,omitempty" xml:"UrlList,omitempty"`
 }
 

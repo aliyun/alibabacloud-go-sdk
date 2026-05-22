@@ -20,24 +20,10 @@ type iSetAutomaticFrequencyControlConfigResponseBody interface {
 }
 
 type SetAutomaticFrequencyControlConfigResponseBody struct {
-	// example:
-	//
-	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// example:
-	//
-	// on
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// example:
-	//
-	// normal
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// F32C57AA-7BF8-49AE-A2CC-9F42390F5A19
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetAutomaticFrequencyControlConfigResponseBody) String() string {

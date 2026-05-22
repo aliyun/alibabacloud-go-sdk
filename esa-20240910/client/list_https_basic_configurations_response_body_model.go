@@ -24,38 +24,12 @@ type iListHttpsBasicConfigurationsResponseBody interface {
 }
 
 type ListHttpsBasicConfigurationsResponseBody struct {
-	// Response body configuration.
-	Configs []*ListHttpsBasicConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Current page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
-	//
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
-	//
-	// example:
-	//
-	// 2
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Configs    []*ListHttpsBasicConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                             `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListHttpsBasicConfigurationsResponseBody) String() string {
@@ -134,152 +108,22 @@ func (s *ListHttpsBasicConfigurationsResponseBody) Validate() error {
 }
 
 type ListHttpsBasicConfigurationsResponseBodyConfigs struct {
-	// Custom ciphersuite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
-	//
-	// example:
-	//
-	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
-	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
-	// Ciphersuite group, defaults to enabling all ciphersuites. Value range:
-	//
-	// - all: all ciphersuites.
-	//
-	// - strict: strong ciphersuites.
-	//
-	// - custom: custom ciphersuites.
-	//
-	// example:
-	//
-	// strict
+	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 395386449776640
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Value range:
-	//
-	// - global: Query global configuration.
-	//
-	// - rule: Query rule configuration.
-	//
-	// example:
-	//
-	// global
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Whether to enable HTTP2, default is on. Value range:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
-	// example:
-	//
-	// on
-	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	// Whether to enable HTTP3, default is on. Value range:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
-	// example:
-	//
-	// on
-	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
-	// Whether to enable HTTPS, default is enabled. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
-	// Whether to enable OCSP, default is off. Value range:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
-	// example:
-	//
-	// on
-	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true.
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Whether to enable TLS1.0, default is disabled. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
-	// Whether to enable TLS1.1, default is disabled. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
-	// Whether to enable TLS1.2, default is disabled. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
-	// Whether to enable TLS1.3, default is disabled. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+	ConfigId         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType       *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence         *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
 }
 
 func (s ListHttpsBasicConfigurationsResponseBodyConfigs) String() string {

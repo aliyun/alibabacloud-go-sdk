@@ -14,9 +14,6 @@ type iUpdateUserWafRulesetResponseBody interface {
 }
 
 type UpdateUserWafRulesetResponseBody struct {
-	// example:
-	//
-	// xxxx-xxxx-xxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

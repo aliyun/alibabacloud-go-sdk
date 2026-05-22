@@ -14,13 +14,7 @@ type iCheckUserProjectNameRequest interface {
 }
 
 type CheckUserProjectNameRequest struct {
-	// The name of the real-time log delivery task.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ali-dcdn-log-56
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 

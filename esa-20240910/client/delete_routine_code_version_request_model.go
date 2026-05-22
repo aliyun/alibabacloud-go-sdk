@@ -16,21 +16,9 @@ type iDeleteRoutineCodeVersionRequest interface {
 }
 
 type DeleteRoutineCodeVersionRequest struct {
-	// The code version.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

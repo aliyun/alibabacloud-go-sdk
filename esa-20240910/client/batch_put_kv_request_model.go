@@ -16,17 +16,9 @@ type iBatchPutKvRequest interface {
 }
 
 type BatchPutKvRequest struct {
-	// The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
-	//
 	// This parameter is required.
 	KvList []*BatchPutKvRequestKvList `json:"KvList,omitempty" xml:"KvList,omitempty" type:"Repeated"`
-	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -70,33 +62,11 @@ func (s *BatchPutKvRequest) Validate() error {
 }
 
 type BatchPutKvRequestKvList struct {
-	// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
-	//
-	// example:
-	//
-	// 1690081381
-	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
-	//
-	// example:
-	//
-	// 3600
+	Expiration    *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	ExpirationTtl *int64 `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
-	// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key content.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

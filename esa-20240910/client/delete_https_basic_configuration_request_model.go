@@ -16,21 +16,9 @@ type iDeleteHttpsBasicConfigurationRequest interface {
 }
 
 type DeleteHttpsBasicConfigurationRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](~~ListHttpsBasicConfigurations~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

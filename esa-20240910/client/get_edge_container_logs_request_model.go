@@ -16,21 +16,9 @@ type iGetEdgeContainerLogsRequest interface {
 }
 
 type GetEdgeContainerLogsRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of log entries to output.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 500
 	Lines *int32 `json:"Lines,omitempty" xml:"Lines,omitempty"`
 }
 

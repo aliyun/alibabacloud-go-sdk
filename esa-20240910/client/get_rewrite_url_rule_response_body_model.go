@@ -36,98 +36,18 @@ type iGetRewriteUrlRuleResponseBody interface {
 }
 
 type GetRewriteUrlRuleResponseBody struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type. Possible values:
-	//
-	// - global: Global configuration;
-	//
-	// - rule: Rule-based configuration;
-	//
-	// example:
-	//
-	// global
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The rewritten query string.
-	//
-	// example:
-	//
-	// example=123
-	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Query string rewrite type. Possible values:
-	//
-	// - static: Static mode.
-	//
-	// - dynamic: Dynamic mode.
-	//
-	// example:
-	//
-	// static
+	ConfigId               *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType             *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	// URI rewrite type. Possible values:
-	//
-	// - static: Static mode.
-	//
-	// - dynamic: Dynamic mode.
-	//
-	// example:
-	//
-	// static
-	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq "video.example.com")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter does not need to be set when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority for execution.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The target URI after rewriting.
-	//
-	// example:
-	//
-	// /image/example.jpg
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence               *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SiteVersion            *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetRewriteUrlRuleResponseBody) String() string {

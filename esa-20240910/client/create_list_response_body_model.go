@@ -16,14 +16,10 @@ type iCreateListResponseBody interface {
 }
 
 type CreateListResponseBody struct {
-	// The ID of the custom list.[](~~2850217~~)
-	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225

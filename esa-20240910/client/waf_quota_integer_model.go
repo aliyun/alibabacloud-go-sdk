@@ -22,36 +22,11 @@ type iWafQuotaInteger interface {
 }
 
 type WafQuotaInteger struct {
-	// Is equal to
-	//
-	// example:
-	//
-	// 1
-	Equal *int32 `json:"Equal,omitempty" xml:"Equal,omitempty"`
-	// Is greater than
-	//
-	// example:
-	//
-	// 1
-	GreaterThan *int32 `json:"GreaterThan,omitempty" xml:"GreaterThan,omitempty"`
-	// Is greater than or equal to
-	//
-	// example:
-	//
-	// 1
+	Equal              *int32 `json:"Equal,omitempty" xml:"Equal,omitempty"`
+	GreaterThan        *int32 `json:"GreaterThan,omitempty" xml:"GreaterThan,omitempty"`
 	GreaterThanOrEqual *int32 `json:"GreaterThanOrEqual,omitempty" xml:"GreaterThanOrEqual,omitempty"`
-	// Is less than
-	//
-	// example:
-	//
-	// 1
-	LessThan *int32 `json:"LessThan,omitempty" xml:"LessThan,omitempty"`
-	// Is less than or equal to
-	//
-	// example:
-	//
-	// 1
-	LessThanOrEqual *int32 `json:"LessThanOrEqual,omitempty" xml:"LessThanOrEqual,omitempty"`
+	LessThan           *int32 `json:"LessThan,omitempty" xml:"LessThan,omitempty"`
+	LessThanOrEqual    *int32 `json:"LessThanOrEqual,omitempty" xml:"LessThanOrEqual,omitempty"`
 }
 
 func (s WafQuotaInteger) String() string {

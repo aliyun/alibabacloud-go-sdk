@@ -16,21 +16,9 @@ type iGetCertificateQuotaRequest interface {
 }
 
 type GetCertificateQuotaRequest struct {
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Certificate Quota type.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -32,84 +32,20 @@ type iUpdateRewriteUrlRuleRequest interface {
 }
 
 type UpdateRewriteUrlRuleRequest struct {
-	// Configuration ID. It can be obtained by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3528160969****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The query string after rewriting.
-	//
-	// example:
-	//
-	// example=123
-	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// Query string rewrite type. Value range:
-	//
-	// - static: Static mode.
-	//
-	// - dynamic: Dynamic mode.
-	//
-	// example:
-	//
-	// static
+	ConfigId               *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	// URI rewrite type. Value range:
-	//
-	// - static: Static mode.
-	//
-	// - dynamic: Dynamic mode.
-	//
 	// if can be null:
 	// false
-	//
-	// example:
-	//
-	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq "video.example.com")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Value range:
-	//
-	// - on: Enable.
-	//
-	// - off: Disable.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// example=123
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
+	Rule           *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable     *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence       *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456789****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The target URI after rewriting.
-	//
-	// example:
-	//
-	// /image/example.jpg
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s UpdateRewriteUrlRuleRequest) String() string {

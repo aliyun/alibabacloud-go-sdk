@@ -30,70 +30,15 @@ type iStopScheduledPreloadExecutionResponseBody interface {
 }
 
 type StopScheduledPreloadExecutionResponseBody struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 15685865xxx14622
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the prefetch plan.
-	//
-	// example:
-	//
-	// 2024-05-31T18:10:48.849+08:00
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
-	//
-	// example:
-	//
-	// 66599bd7397885b43804901c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time interval between each batch execution in the plan. Unit: seconds.
-	//
-	// example:
-	//
-	// 60
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
-	//
-	// example:
-	//
-	// 665d3af3621bccf3fe29e1a4
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of URLs prefetched in each batch.
-	//
-	// example:
-	//
-	// 10
-	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the prefetch plan.
-	//
-	// example:
-	//
-	// 2024-05-31T17:10:48.849+08:00
+	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch plan. Valid values:
-	//
-	// 	- **waiting**
-	//
-	// 	- **running**
-	//
-	// 	- **finished**
-	//
-	// 	- **failed**
-	//
-	// 	- **stopped**
-	//
-	// example:
-	//
-	// stopped
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s StopScheduledPreloadExecutionResponseBody) String() string {

@@ -50,145 +50,25 @@ type iCreateHttpsApplicationConfigurationRequest interface {
 }
 
 type CreateHttpsApplicationConfigurationRequest struct {
-	// Alt-Svc feature switch, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
-	// Whether the Alt-Svc header includes the clear parameter, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
-	// Alt-Svc validity period in seconds, default is 86400 seconds.
-	//
-	// example:
-	//
-	// 86400
-	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
-	// Whether the Alt-Svc header includes the persist parameter, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
-	// Whether to enable HSTS, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
-	// Whether to include subdomains in HSTS, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
+	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
-	// HSTS expiration time in seconds.
-	//
-	// example:
-	//
-	// 3600
-	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	// Whether to enable HSTS preload, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	// Whether to enable forced HTTPS, default is disabled. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
-	// Forced HTTPS redirect status code. Possible values:
-	//
-	// - 301
-	//
-	// - 302
-	//
-	// - 307
-	//
-	// - 308
-	//
-	// example:
-	//
-	// 301
-	HttpsForceCode    *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
-	HttpsNoSniDeny    *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
-	HttpsSniVerify    *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
-	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
-	//
+	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsNoSniDeny        *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
+	HttpsSniVerify        *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
+	HttpsSniWhitelist     *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence              *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
-	//
-	// example:
-	//
-	// 1
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

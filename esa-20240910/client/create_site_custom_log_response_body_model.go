@@ -14,11 +14,6 @@ type iCreateSiteCustomLogResponseBody interface {
 }
 
 type CreateSiteCustomLogResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 073bd613-6e72-4461-b6bc-19326dfc6a9c
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

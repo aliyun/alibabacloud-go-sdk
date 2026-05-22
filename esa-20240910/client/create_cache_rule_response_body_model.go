@@ -16,17 +16,7 @@ type iCreateCacheRuleResponseBody interface {
 }
 
 type CreateCacheRuleResponseBody struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 352816096987136
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	ConfigId  *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

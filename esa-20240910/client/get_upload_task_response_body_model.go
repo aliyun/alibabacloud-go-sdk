@@ -18,36 +18,9 @@ type iGetUploadTaskResponseBody interface {
 }
 
 type GetUploadTaskResponseBody struct {
-	// The error message returned when the file upload task failed.
-	//
-	// example:
-	//
-	// invalid url
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// ET5BF670-09D5-4D0B-BEBY-D96A2A52****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status.
-	//
-	// 	- **INIT**: The task is being initialized.
-	//
-	// 	- **activacted**: The task is activated.
-	//
-	// 	- **running**: The task is running.
-	//
-	// 	- **success**: The task is successful.
-	//
-	// 	- **partial**: The task is partially successful.
-	//
-	// 	- **fail**: The task failed.
-	//
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetUploadTaskResponseBody) String() string {

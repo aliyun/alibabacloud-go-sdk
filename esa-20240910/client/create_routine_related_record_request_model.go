@@ -18,29 +18,11 @@ type iCreateRoutineRelatedRecordRequest interface {
 }
 
 type CreateRoutineRelatedRecordRequest struct {
-	// The routine name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CreateRoutineRelatedRecord
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The record name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-record-1.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 54362329990032
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

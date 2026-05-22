@@ -20,33 +20,19 @@ type iCreateWafRulesetRequest interface {
 }
 
 type CreateWafRulesetRequest struct {
-	// Ruleset name.
-	//
-	// example:
-	//
-	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// WAF operation phase.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
-	//
-	// example:
-	//
-	// 0
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

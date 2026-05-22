@@ -14,13 +14,7 @@ type iCheckSiteNameRequest interface {
 }
 
 type CheckSiteNameRequest struct {
-	// The website name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 

@@ -14,11 +14,6 @@ type iDeleteEdgeContainerAppVersionResponseBody interface {
 }
 
 type DeleteEdgeContainerAppVersionResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// b021e538-9dde-46ed-a1f2-9469da8f3e77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

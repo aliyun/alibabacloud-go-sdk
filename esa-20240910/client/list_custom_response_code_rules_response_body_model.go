@@ -24,38 +24,12 @@ type iListCustomResponseCodeRulesResponseBody interface {
 }
 
 type ListCustomResponseCodeRulesResponseBody struct {
-	// Modifies the list of response code configurations.
-	Configs []*ListCustomResponseCodeRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The number of the returned page. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 500. Valid values: 1 to 500.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 10
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
-	//
-	// example:
-	//
-	// 1
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Configs    []*ListCustomResponseCodeRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                            `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListCustomResponseCodeRulesResponseBody) String() string {
@@ -134,72 +108,15 @@ func (s *ListCustomResponseCodeRulesResponseBody) Validate() error {
 }
 
 type ListCustomResponseCodeRulesResponseBodyConfigs struct {
-	// The configuration ID.
-	//
-	// example:
-	//
-	// 395386449776640
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. Valid values:
-	//
-	// 	- global: global configuration.
-	//
-	// 	- rule: rule configuration.
-	//
-	// example:
-	//
-	// global
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Response page.
-	//
-	// example:
-	//
-	// 0
-	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	// Response code
-	//
-	// example:
-	//
-	// 200
-	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
-	//
-	// 	- true: Match all incoming requests.
-	//
-	// 	- Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
-	//
-	// example:
-	//
-	// (http.host eq "video.example.com")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
-	//
-	// 	- on
-	//
-	// 	- off
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. You do not need to set this parameter when you add global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	PageId      *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	ReturnCode  *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
+	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable  *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s ListCustomResponseCodeRulesResponseBodyConfigs) String() string {

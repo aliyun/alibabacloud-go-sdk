@@ -32,63 +32,17 @@ type iSetCertificateRequest interface {
 }
 
 type SetCertificateRequest struct {
-	// The certificate ID on Certificate Management Service.
-	//
-	// example:
-	//
-	// 30000478
-	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// The certificate content.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
-	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The certificate ID on ESA.
-	//
-	// example:
-	//
-	// 30001303
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
-	// The certificate name.
-	//
-	// example:
-	//
-	// yourCertName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private key of the certificate.
-	//
-	// example:
-	//
-	// -----BEGIN PRIVATE KEY-----
-	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The region.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	CasId         *int64  `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	Certificate   *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyServerId   *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrivateKey    *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The certificate type. Valid values:
-	//
-	// 	- cas: a certificate purchased by using Certificate Management Service.
-	//
-	// 	- upload: a custom certificate that you upload.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cas
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

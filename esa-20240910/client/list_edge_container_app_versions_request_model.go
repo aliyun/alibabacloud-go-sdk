@@ -26,59 +26,13 @@ type iListEdgeContainerAppVersionsRequest interface {
 }
 
 type ListEdgeContainerAppVersionsRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// app-88068867578379****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The sorting field. Valid values:
-	//
-	// 	- Name: the version name.
-	//
-	// 	- CreateTime: the time when the version was created.
-	//
-	// 	- UpdateTime: the time when the version was last modified.
-	//
-	// example:
-	//
-	// Name
-	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
-	// The order in which you want to sort the query results. Valid values:
-	//
-	// 	- ASC: in ascending order.
-	//
-	// 	- DESC: in descending order.
-	//
-	// example:
-	//
-	// DESC
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The page number. Valid values: 1 to 65535.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used for the search.
-	//
-	// example:
-	//
-	// ver-100568263967926****
-	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The parameter used for fuzzy search. Valid values: VersionId and Name.
-	//
-	// example:
-	//
-	// VersionId
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	OrderKey   *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	OrderType  *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey  *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 }
 

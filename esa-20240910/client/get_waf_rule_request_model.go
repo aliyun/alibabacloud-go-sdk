@@ -16,16 +16,12 @@ type iGetWafRuleRequest interface {
 }
 
 type GetWafRuleRequest struct {
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
 	// This parameter is required.
 	//
 	// example:

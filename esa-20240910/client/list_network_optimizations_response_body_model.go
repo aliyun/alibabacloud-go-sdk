@@ -24,38 +24,12 @@ type iListNetworkOptimizationsResponseBody interface {
 }
 
 type ListNetworkOptimizationsResponseBody struct {
-	// Response body configurations.
-	Configs []*ListNetworkOptimizationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The current page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The size of the page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
-	//
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
-	//
-	// example:
-	//
-	// 2
-	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Configs    []*ListNetworkOptimizationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                         `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListNetworkOptimizationsResponseBody) String() string {
@@ -134,106 +108,18 @@ func (s *ListNetworkOptimizationsResponseBody) Validate() error {
 }
 
 type ListNetworkOptimizationsResponseBodyConfigs struct {
-	// Configuration ID.
-	//
-	// example:
-	//
-	// 395386449776640
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
-	//
-	// - global: Query global configuration.
-	//
-	// - rule: Query rule-based configuration.
-	//
-	// example:
-	//
-	// global
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Whether to enable GRPC, default is off. The value range is:
-	//
-	// - on: enabled.
-	//
-	// - off: disabled.
-	//
-	// example:
-	//
-	// on
-	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	// Whether to enable HTTP2 origin, defaulting to off. The value range is as follows:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-	//
-	// - Match all incoming requests: Set the value to true
-	//
-	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
-	//
-	// example:
-	//
-	// (http.host eq \\"video.example.com\\")
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. The value range is as follows:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
-	//
-	// example:
-	//
-	// rule_example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
-	//
-	// example:
-	//
-	// 1
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Whether to enable smart routing service, defaulting to off. The value range is as follows:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
-	// Maximum file size for upload, in MB. The value range is 100 to 500.
-	//
-	// example:
-	//
-	// 500
+	ConfigId          *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType        *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence          *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SiteVersion       *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	// Whether to enable Websocket, enabled by default. Value range:
-	//
-	// - on: Enabled.
-	//
-	// - off: Disabled.
-	//
-	// example:
-	//
-	// on
-	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
 }
 
 func (s ListNetworkOptimizationsResponseBodyConfigs) String() string {

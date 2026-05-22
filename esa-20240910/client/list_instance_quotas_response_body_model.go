@@ -20,32 +20,10 @@ type iListInstanceQuotasResponseBody interface {
 }
 
 type ListInstanceQuotasResponseBody struct {
-	// The plan ID.
-	//
-	// example:
-	//
-	// sp-xcdn-96wblslz****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The quotas in the plan.
-	Quotas []*ListInstanceQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247B78
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The plan status. Valid values:
-	//
-	// 	- online: The plan is in service.
-	//
-	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-	//
-	// 	- disable: The plan is released.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Quotas     []*ListInstanceQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstanceQuotasResponseBody) String() string {
@@ -106,33 +84,8 @@ func (s *ListInstanceQuotasResponseBody) Validate() error {
 }
 
 type ListInstanceQuotasResponseBodyQuotas struct {
-	// The quota name.
-	//
-	// example:
-	//
-	// customHttpCert
-	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The quota value.
-	//
-	// example:
-	//
-	// 10
-	QuotaValue *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
-	// The threshold type of the quota. Valid values:
-	//
-	// 	- value: enumerates the values of the quota.
-	//
-	// 	- bool: specifies whether the quota is available.
-	//
-	// 	- num: the upper limit of the quota.
-	//
-	// 	- range: the value range for the quota.
-	//
-	// 	- custom: other types than the preceding four quota threshold types.
-	//
-	// example:
-	//
-	// bool
+	QuotaName      *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	QuotaValue     *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
 	QuotaValueType *string `json:"QuotaValueType,omitempty" xml:"QuotaValueType,omitempty"`
 }
 

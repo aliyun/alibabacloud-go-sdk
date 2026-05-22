@@ -16,14 +16,8 @@ type iGetSiteCurrentNSResponseBody interface {
 }
 
 type GetSiteCurrentNSResponseBody struct {
-	// The nameservers of the website.
-	NSList []*string `json:"NSList,omitempty" xml:"NSList,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2430E05E-1340-5773-B5E1-B743929F46F2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NSList    []*string `json:"NSList,omitempty" xml:"NSList,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSiteCurrentNSResponseBody) String() string {

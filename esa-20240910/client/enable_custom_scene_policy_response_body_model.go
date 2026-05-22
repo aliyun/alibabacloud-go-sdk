@@ -16,17 +16,7 @@ type iEnableCustomScenePolicyResponseBody interface {
 }
 
 type EnableCustomScenePolicyResponseBody struct {
-  // The policy ID.
-  // 
-  // example:
-  // 
-  // 1
   PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-  // The request ID.
-  // 
-  // example:
-  // 
-  // 65C66B7B-671A-8297-9187-2R5477247B76
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

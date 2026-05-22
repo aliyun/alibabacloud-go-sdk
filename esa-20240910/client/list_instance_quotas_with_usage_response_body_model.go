@@ -20,32 +20,10 @@ type iListInstanceQuotasWithUsageResponseBody interface {
 }
 
 type ListInstanceQuotasWithUsageResponseBody struct {
-	// The plan ID.[](~~2850189~~)
-	//
-	// example:
-	//
-	// sp-xcdn-96wblslz****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The quotas and their actual usage in the plan.
-	Quotas []*ListInstanceQuotasWithUsageResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 85H66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The plan status. Valid values:
-	//
-	// 	- online: The plan is in service.
-	//
-	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-	//
-	// 	- disable: The plan is released.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Quotas     []*ListInstanceQuotasWithUsageResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstanceQuotasWithUsageResponseBody) String() string {
@@ -106,26 +84,10 @@ func (s *ListInstanceQuotasWithUsageResponseBody) Validate() error {
 }
 
 type ListInstanceQuotasWithUsageResponseBodyQuotas struct {
-	// The quota name.
-	//
-	// example:
-	//
-	// redirect_rules|rule_quota
-	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The quota value.
-	//
-	// example:
-	//
-	// 10
-	QuotaValue *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
-	// The usage of the quota in each website associated with the plan.
-	SiteUsage []*ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
-	// The quota usage.
-	//
-	// example:
-	//
-	// 3
-	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	QuotaName  *string                                                   `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	QuotaValue *string                                                   `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	SiteUsage  []*ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	Usage      *string                                                   `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ListInstanceQuotasWithUsageResponseBodyQuotas) String() string {
@@ -186,23 +148,8 @@ func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) Validate() error {
 }
 
 type ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage struct {
-	// The website ID.
-	//
-	// example:
-	//
-	// 34818329392****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
-	//
-	// example:
-	//
-	// test.top
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The quota usage of the website.
-	//
-	// example:
-	//
-	// 1
+	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 	SiteUsage *string `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
 }
 

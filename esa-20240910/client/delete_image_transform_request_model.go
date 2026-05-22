@@ -16,21 +16,9 @@ type iDeleteImageTransformRequest interface {
 }
 
 type DeleteImageTransformRequest struct {
-	// Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

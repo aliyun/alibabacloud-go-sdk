@@ -14,11 +14,6 @@ type iDeleteRedirectRuleResponseBody interface {
 }
 
 type DeleteRedirectRuleResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// BF9B849D-D847-5B16-9371-8ECB557A5921
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

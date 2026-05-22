@@ -22,32 +22,11 @@ type iDescribePurgeTasksResponseBody interface {
 }
 
 type DescribePurgeTasksResponseBody struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A123425345
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
-	Tasks []*DescribePurgeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 15
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int64                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks      []*DescribePurgeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePurgeTasksResponseBody) String() string {
@@ -117,66 +96,13 @@ func (s *DescribePurgeTasksResponseBody) Validate() error {
 }
 
 type DescribePurgeTasksResponseBodyTasks struct {
-	// The purged content.
-	//
-	// example:
-	//
-	// http://a.com/1.jpg?b=1
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the task was created.
-	//
-	// example:
-	//
-	// 2023-07-26T01:56:15Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error description returned when the purge task failed.
-	//
-	// example:
-	//
-	// Internal Error
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The progress of the task, in percentage.
-	//
-	// example:
-	//
-	// 100%
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The task status.
-	//
-	// 	- **Complete**: The task is complete.
-	//
-	// 	- **Refreshing**: The task is in progress.
-	//
-	// 	- **Failed**: The task failed.
-	//
-	// example:
-	//
-	// Complete
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 16346513304
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the purge task. Valid values:
-	//
-	// 	- **file*	- (default): purges the cache by file.
-	//
-	// 	- **cachetag**: purges the cache by cache tag.
-	//
-	// 	- **directory**: purges the cache by directory.
-	//
-	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
-	//
-	// 	- **hostname**: purges the cache by hostname.
-	//
-	// 	- **purgeall**: purges all cache.
-	//
-	// example:
-	//
-	// file
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Process     *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribePurgeTasksResponseBodyTasks) String() string {

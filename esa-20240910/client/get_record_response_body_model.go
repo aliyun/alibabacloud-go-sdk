@@ -16,14 +16,8 @@ type iGetRecordResponseBody interface {
 }
 
 type GetRecordResponseBody struct {
-	// The information about the queried record.
 	RecordModel *GetRecordResponseBodyRecordModel `json:"RecordModel,omitempty" xml:"RecordModel,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F32C57AA-7BF8-49AE-A2CC-9F42390F5A19
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRecordResponseBody) String() string {
@@ -62,124 +56,22 @@ func (s *GetRecordResponseBody) Validate() error {
 }
 
 type GetRecordResponseBodyRecordModel struct {
-	// The origin authentication information of the CNAME record.
-	AuthConf *GetRecordResponseBodyRecordModelAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	// The business scenario of the record for acceleration. Leave this parameter empty if your record is not proxied. Valid values:
-	//
-	// 	- **image_video**
-	//
-	// 	- **api**
-	//
-	// 	- **web**
-	//
-	// example:
-	//
-	// image_video
-	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The comments of the record.
-	//
-	// example:
-	//
-	// This is a comment.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-03-10T13:30:39Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The DNS record information. The content returned by this parameter varies based on the record type.
-	//
-	// example:
-	//
-	// {"value":"1.1.1.1"}
-	Data *GetRecordResponseBodyRecordModelData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The origin host policy. This policy takes effect when the record type is CNAME. Valid values:
-	//
-	// 	- follow_hostname: matches the requested domain name.
-	//
-	// 	- follow_origin_domain: matches the origin\\"s domain name.
-	//
-	// example:
-	//
-	// follow_origin_domain
-	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
-	//
-	// example:
-	//
-	// a.example.com.cnamezone.com
-	RecordCname *string `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
-	// The record ID.
-	//
-	// example:
-	//
-	// 1234567890123
-	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The record name.
-	//
-	// example:
-	//
-	// a.example.com
-	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
-	//
-	// 	- **OSS**: OSS bucket.
-	//
-	// 	- **S3**: S3 bucket.
-	//
-	// 	- **LB**: load balancer.
-	//
-	// 	- **OP**: origin pool.
-	//
-	// 	- **Domain**: domain name.
-	//
-	// If you do not pass this parameter or if you leave its value empty, Domain is returned by default.
-	//
-	// example:
-	//
-	// OSS
-	RecordSourceType *string `json:"RecordSourceType,omitempty" xml:"RecordSourceType,omitempty"`
-	// The type of the DNS record, such as **A/AAAA, CNAME, and TXT**.
-	//
-	// example:
-	//
-	// A/AAAA
-	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// The website ID.
-	//
-	// example:
-	//
-	// 1234567890123
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
-	//
-	// example:
-	//
-	// example.com
-	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
-	//
-	// example:
-	//
-	// 20
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-01-27T02:26:22Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AuthConf         *GetRecordResponseBodyRecordModelAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	BizName          *string                                   `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	Comment          *string                                   `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime       *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Data             *GetRecordResponseBodyRecordModelData     `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HostPolicy       *string                                   `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	Proxied          *bool                                     `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	RecordCname      *string                                   `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
+	RecordId         *int64                                    `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RecordName       *string                                   `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	RecordSourceType *string                                   `json:"RecordSourceType,omitempty" xml:"RecordSourceType,omitempty"`
+	RecordType       *string                                   `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	SiteId           *int64                                    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName         *string                                   `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	Ttl              *int32                                    `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	UpdateTime       *string                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetRecordResponseBodyRecordModel) String() string {
@@ -349,50 +241,11 @@ func (s *GetRecordResponseBodyRecordModel) Validate() error {
 }
 
 type GetRecordResponseBodyRecordModelAuthConf struct {
-	// The access key ID of the account to which the origin server belongs. This parameter is returned if the origin type is OSS and AuthType is set to private_cross_account, or the origin type is S3 and AuthType is set to private.
-	//
-	// example:
-	//
-	// VIxuvJSA2S03f******kp208dy5w7
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The authentication type of the origin server. Different origins support different authentication types. The origin type refers to the SourceType parameter in this operation. This parameter is returned if the origin type is OSS or S3Valid values:
-	//
-	// 	- **public**: public read. This value is returned when the origin is a public OSS or S3 bucket.
-	//
-	// 	- **private**: private read. This value is returned when the origin is a private S3 bucket.
-	//
-	// 	- **private_same_account**: private read in the same account. This value is returned when the origin is a private OSS bucket in your account.
-	//
-	// 	- **private_cross_account**: private read across accounts. This value is returned when the origin is a private OSS bucket in a different Alibaba Cloud account.
-	//
-	// example:
-	//
-	// public
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The region of the origin. If the origin type is S3, you must specify this value. You can obtain the region information from the official website of S3.
-	//
-	// example:
-	//
-	// us-east-1
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The secret access key of the account to which the origin server belongs. This parameter is returned if the origin type is OSS and AuthType is set to private_cross_account, or the origin type is S3 and AuthType is set to private.SecretKey
-	//
-	// example:
-	//
-	// u0Nkg5gBK*******QF5wvKMM504JUHt
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The version of the signature algorithm. This parameter is returned when the origin type is S3 and AuthType is private. The following two types are supported:
-	//
-	// 	- **v2**
-	//
-	// 	- **v4**
-	//
-	// If this parameter is left empty, the default value v4 is used.
-	//
-	// example:
-	//
-	// v2
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetRecordResponseBodyRecordModelAuthConf) String() string {
@@ -453,107 +306,21 @@ func (s *GetRecordResponseBodyRecordModelAuthConf) Validate() error {
 }
 
 type GetRecordResponseBodyRecordModelData struct {
-	// The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
-	//
-	// example:
-	//
-	// 1
-	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
-	//
-	// example:
-	//
-	// dGVzdGFkYWxrcw==
-	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
-	//
-	// example:
-	//
-	// abcdef1234567890
-	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
-	//
-	// example:
-	//
-	// 128
-	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The public key identification for the record. Valid values: 0 to 65535. This parameter is required when you add a CAA record.
-	//
-	// example:
-	//
-	// 1
-	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	// The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-	//
-	// example:
-	//
-	// 1
-	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
-	// The port of the record. Valid values: 0 to 65535. This parameter is required when you add an SRV record.
-	//
-	// example:
-	//
-	// 8707
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
-	//
-	// example:
-	//
-	// 10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-	//
-	// example:
-	//
-	// 1
-	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The tag of the record. The Tag of a CAA record indicate its specific type and usage.
-	//
-	// example:
-	//
-	// issue
-	Tag  *string                `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
-	//
-	// example:
-	//
-	// RSA
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-	//
-	// example:
-	//
-	// 0
-	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The record value or part of the record content. This parameter is returned when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records.
-	//
-	// 	- **A/AAAA**: the IP address. Multiple IP addresses are separated with commas (,). There is at least one IPv4 address.
-	//
-	// 	- **CNAME**: the target domain name.
-	//
-	// 	- **NS**: the nameserver for the domain name.
-	//
-	// 	- **MX**: a valid domain name of the target mail server.
-	//
-	// 	- **TXT**: a valid text string.
-	//
-	// 	- **CAA**: a valid domain name of the certificate authority.
-	//
-	// 	- **SRV**: a valid domain name of the target host.
-	//
-	// 	- **URI**: a valid URI string.
-	//
-	// example:
-	//
-	// example.com
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight of the record, specified within the range of 0 to 65535. This parameter is required when you add SRV or URI records.
-	//
-	// example:
-	//
-	// 0
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Algorithm    *int32                 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Certificate  *string                `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	Fingerprint  *string                `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	Flag         *int32                 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	KeyTag       *int32                 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	MatchingType *int32                 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	Port         *int32                 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Priority     *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Selector     *int32                 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	Tag          *string                `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type         *int32                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Usage        *int32                 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	Value        *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight       *int32                 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s GetRecordResponseBodyRecordModelData) String() string {

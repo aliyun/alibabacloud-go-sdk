@@ -20,18 +20,10 @@ type iUpdateSiteCustomLogShrinkRequest interface {
 }
 
 type UpdateSiteCustomLogShrinkRequest struct {
-	// The cookie fields.
-	CookiesShrink *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
-	// The request header fields.
-	RequestHeadersShrink *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
-	// The response header fields.
+	CookiesShrink         *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	RequestHeadersShrink  *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
 	ResponseHeadersShrink *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
-	// site id
-	//
-	// example:
-	//
-	// 11223****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId                *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s UpdateSiteCustomLogShrinkRequest) String() string {

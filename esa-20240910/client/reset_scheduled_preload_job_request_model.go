@@ -14,11 +14,6 @@ type iResetScheduledPreloadJobRequest interface {
 }
 
 type ResetScheduledPreloadJobRequest struct {
-	// The ID of the scheduled prefetch task.
-	//
-	// example:
-	//
-	// ResetScheduledPreloadJob
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

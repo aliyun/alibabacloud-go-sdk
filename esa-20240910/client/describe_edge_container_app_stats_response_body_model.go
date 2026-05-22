@@ -30,55 +30,15 @@ type iDescribeEdgeContainerAppStatsResponseBody interface {
 }
 
 type DescribeEdgeContainerAppStatsResponseBody struct {
-	// Average CPU limit ratio
-	//
-	// example:
-	//
-	// 0.1
-	CpuUsageSecondsQuotaRateAvg *float64 `json:"CpuUsageSecondsQuotaRateAvg,omitempty" xml:"CpuUsageSecondsQuotaRateAvg,omitempty"`
-	// Average number of CPU cores
-	//
-	// example:
-	//
-	// 2
-	CpuUsageSecondsTotalAvg *float64 `json:"CpuUsageSecondsTotalAvg,omitempty" xml:"CpuUsageSecondsTotalAvg,omitempty"`
-	// Average read IO
-	//
-	// example:
-	//
-	// 0
-	FsReadsBytesAvgAvg *float64 `json:"FsReadsBytesAvgAvg,omitempty" xml:"FsReadsBytesAvgAvg,omitempty"`
-	// Average write IO
-	//
-	// example:
-	//
-	// 0
-	FsWritesBytesAvgAvg *float64 `json:"FsWritesBytesAvgAvg,omitempty" xml:"FsWritesBytesAvgAvg,omitempty"`
-	// Average memory usage
-	//
-	// example:
-	//
-	// 0.1
-	MemoryRssAvg *float64 `json:"MemoryRssAvg,omitempty" xml:"MemoryRssAvg,omitempty"`
-	// Average memory limit proportion
-	//
-	// example:
-	//
-	// 1
-	MemoryRssQuotaRateAvg *float64 `json:"MemoryRssQuotaRateAvg,omitempty" xml:"MemoryRssQuotaRateAvg,omitempty"`
-	// Average PodReady rate
-	//
-	// example:
-	//
-	// 100
-	PodReadyRateAvg *float64                                           `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
-	Points          []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 35C66C7B-671H-4297-9187-2C4477247A78
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CpuUsageSecondsQuotaRateAvg *float64                                           `json:"CpuUsageSecondsQuotaRateAvg,omitempty" xml:"CpuUsageSecondsQuotaRateAvg,omitempty"`
+	CpuUsageSecondsTotalAvg     *float64                                           `json:"CpuUsageSecondsTotalAvg,omitempty" xml:"CpuUsageSecondsTotalAvg,omitempty"`
+	FsReadsBytesAvgAvg          *float64                                           `json:"FsReadsBytesAvgAvg,omitempty" xml:"FsReadsBytesAvgAvg,omitempty"`
+	FsWritesBytesAvgAvg         *float64                                           `json:"FsWritesBytesAvgAvg,omitempty" xml:"FsWritesBytesAvgAvg,omitempty"`
+	MemoryRssAvg                *float64                                           `json:"MemoryRssAvg,omitempty" xml:"MemoryRssAvg,omitempty"`
+	MemoryRssQuotaRateAvg       *float64                                           `json:"MemoryRssQuotaRateAvg,omitempty" xml:"MemoryRssQuotaRateAvg,omitempty"`
+	PodReadyRateAvg             *float64                                           `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
+	Points                      []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	RequestId                   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEdgeContainerAppStatsResponseBody) String() string {
@@ -184,38 +144,14 @@ func (s *DescribeEdgeContainerAppStatsResponseBody) Validate() error {
 }
 
 type DescribeEdgeContainerAppStatsResponseBodyPoints struct {
-	// example:
-	//
-	// 0.1
 	ContainerCpuUsageSecondsQuotaRate *float64 `json:"ContainerCpuUsageSecondsQuotaRate,omitempty" xml:"ContainerCpuUsageSecondsQuotaRate,omitempty"`
-	// example:
-	//
-	// 2
-	ContainerCpuUsageSecondsTotal *float64 `json:"ContainerCpuUsageSecondsTotal,omitempty" xml:"ContainerCpuUsageSecondsTotal,omitempty"`
-	// example:
-	//
-	// 0
-	ContainerFsReadsBytesAvg *float64 `json:"ContainerFsReadsBytesAvg,omitempty" xml:"ContainerFsReadsBytesAvg,omitempty"`
-	// example:
-	//
-	// 0
-	ContainerFsWritesBytesAvg *float64 `json:"ContainerFsWritesBytesAvg,omitempty" xml:"ContainerFsWritesBytesAvg,omitempty"`
-	// example:
-	//
-	// 0.1
-	ContainerMemoryRss *float64 `json:"ContainerMemoryRss,omitempty" xml:"ContainerMemoryRss,omitempty"`
-	// example:
-	//
-	// 1
-	ContainerMemoryRssQuotaRate *float64 `json:"ContainerMemoryRssQuotaRate,omitempty" xml:"ContainerMemoryRssQuotaRate,omitempty"`
-	// example:
-	//
-	// 100
-	PodReadyRate *float64 `json:"PodReadyRate,omitempty" xml:"PodReadyRate,omitempty"`
-	// example:
-	//
-	// 2024-01-18T15:04:05Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	ContainerCpuUsageSecondsTotal     *float64 `json:"ContainerCpuUsageSecondsTotal,omitempty" xml:"ContainerCpuUsageSecondsTotal,omitempty"`
+	ContainerFsReadsBytesAvg          *float64 `json:"ContainerFsReadsBytesAvg,omitempty" xml:"ContainerFsReadsBytesAvg,omitempty"`
+	ContainerFsWritesBytesAvg         *float64 `json:"ContainerFsWritesBytesAvg,omitempty" xml:"ContainerFsWritesBytesAvg,omitempty"`
+	ContainerMemoryRss                *float64 `json:"ContainerMemoryRss,omitempty" xml:"ContainerMemoryRss,omitempty"`
+	ContainerMemoryRssQuotaRate       *float64 `json:"ContainerMemoryRssQuotaRate,omitempty" xml:"ContainerMemoryRssQuotaRate,omitempty"`
+	PodReadyRate                      *float64 `json:"PodReadyRate,omitempty" xml:"PodReadyRate,omitempty"`
+	Time                              *string  `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeEdgeContainerAppStatsResponseBodyPoints) String() string {

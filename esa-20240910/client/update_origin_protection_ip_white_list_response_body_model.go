@@ -14,11 +14,6 @@ type iUpdateOriginProtectionIpWhiteListResponseBody interface {
 }
 
 type UpdateOriginProtectionIpWhiteListResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
