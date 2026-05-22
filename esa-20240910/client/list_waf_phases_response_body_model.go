@@ -16,7 +16,10 @@ type iListWafPhasesResponseBody interface {
 }
 
 type ListWafPhasesResponseBody struct {
+	// List of WAF operation phases.
 	Phases []*ListWafPhasesResponseBodyPhases `json:"Phases,omitempty" xml:"Phases,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -63,7 +66,13 @@ func (s *ListWafPhasesResponseBody) Validate() error {
 }
 
 type ListWafPhasesResponseBodyPhases struct {
-	Phase    *string                                    `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Name of the WAF operation phase.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// List of WAF rulesets.
 	Rulesets []*ListWafPhasesResponseBodyPhasesRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
 }
 
@@ -107,9 +116,21 @@ func (s *ListWafPhasesResponseBodyPhases) Validate() error {
 }
 
 type ListWafPhasesResponseBodyPhasesRulesets struct {
-	Id     *int64              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name   *string             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Rules  []*WafRuleConfig    `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// ID of the WAF ruleset.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the WAF ruleset.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of rule configurations in the WAF ruleset.
+	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Shared configuration for rules in the WAF ruleset.
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
 }
 

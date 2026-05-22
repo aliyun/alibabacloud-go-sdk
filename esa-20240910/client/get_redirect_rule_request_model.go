@@ -16,9 +16,21 @@ type iGetRedirectRuleRequest interface {
 }
 
 type GetRedirectRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 34003500310****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

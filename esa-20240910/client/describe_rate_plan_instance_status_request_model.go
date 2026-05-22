@@ -14,6 +14,11 @@ type iDescribeRatePlanInstanceStatusRequest interface {
 }
 
 type DescribeRatePlanInstanceStatusRequest struct {
+	// The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation.
+	//
+	// example:
+	//
+	// xcdn-91fknmb80f0g***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

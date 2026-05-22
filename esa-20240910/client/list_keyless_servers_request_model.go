@@ -18,9 +18,19 @@ type iListKeylessServersRequest interface {
 }
 
 type ListKeylessServersRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

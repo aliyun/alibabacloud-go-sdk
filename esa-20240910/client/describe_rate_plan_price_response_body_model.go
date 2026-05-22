@@ -17,7 +17,12 @@ type iDescribeRatePlanPriceResponseBody interface {
 
 type DescribeRatePlanPriceResponseBody struct {
 	PriceModel *DescribeRatePlanPriceResponseBodyPriceModel `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 50423A7F-A83D-1E24-B80E-86DD25790759
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRatePlanPriceResponseBody) String() string {

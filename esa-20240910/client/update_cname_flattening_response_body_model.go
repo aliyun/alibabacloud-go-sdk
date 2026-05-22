@@ -14,6 +14,11 @@ type iUpdateCnameFlatteningResponseBody interface {
 }
 
 type UpdateCnameFlatteningResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

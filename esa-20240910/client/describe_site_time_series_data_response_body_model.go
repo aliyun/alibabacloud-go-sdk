@@ -26,12 +26,43 @@ type iDescribeSiteTimeSeriesDataResponseBody interface {
 }
 
 type DescribeSiteTimeSeriesDataResponseBody struct {
-	Data           []*DescribeSiteTimeSeriesDataResponseBodyData           `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	EndTime        *string                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval       *int64                                                  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SamplingRate   *float32                                                `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	StartTime      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Returned data.
+	Data []*DescribeSiteTimeSeriesDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The end time for fetching the data.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The granularity of the data, in seconds.
+	//
+	// example:
+	//
+	// 300
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sampling rate, in %.
+	//
+	// example:
+	//
+	// 100
+	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// The start time for fetching the data.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Aggregated query data.
 	SummarizedData []*DescribeSiteTimeSeriesDataResponseBodySummarizedData `json:"SummarizedData,omitempty" xml:"SummarizedData,omitempty" type:"Repeated"`
 }
 
@@ -129,10 +160,26 @@ func (s *DescribeSiteTimeSeriesDataResponseBody) Validate() error {
 }
 
 type DescribeSiteTimeSeriesDataResponseBodyData struct {
-	DetailData     []*DescribeSiteTimeSeriesDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
-	DimensionName  *string                                                 `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
-	DimensionValue *string                                                 `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	FieldName      *string                                                 `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Returned data.
+	DetailData []*DescribeSiteTimeSeriesDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
+	// Query dimension.
+	//
+	// example:
+	//
+	// ALL
+	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// Query dimension value.
+	//
+	// example:
+	//
+	// ALL
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// Query metric value.
+	//
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 }
 
 func (s DescribeSiteTimeSeriesDataResponseBodyData) String() string {
@@ -193,8 +240,18 @@ func (s *DescribeSiteTimeSeriesDataResponseBodyData) Validate() error {
 }
 
 type DescribeSiteTimeSeriesDataResponseBodyDataDetailData struct {
-	TimeStamp *string     `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value     interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Start timestamp of the time slice.
+	//
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Value.
+	//
+	// example:
+	//
+	// 123
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeSiteTimeSeriesDataResponseBodyDataDetailData) String() string {
@@ -228,11 +285,36 @@ func (s *DescribeSiteTimeSeriesDataResponseBodyDataDetailData) Validate() error 
 }
 
 type DescribeSiteTimeSeriesDataResponseBodySummarizedData struct {
-	AggMethod      *string     `json:"AggMethod,omitempty" xml:"AggMethod,omitempty"`
-	DimensionName  *string     `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
-	DimensionValue *string     `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	FieldName      *string     `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	Value          interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The aggregation method used.
+	//
+	// example:
+	//
+	// sum
+	AggMethod *string `json:"AggMethod,omitempty" xml:"AggMethod,omitempty"`
+	// The dimension of the aggregated data being queried.
+	//
+	// example:
+	//
+	// ALL
+	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// The value of the aggregated dimension being queried.
+	//
+	// example:
+	//
+	// ALL
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// The value of the aggregated metric being queried.
+	//
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The aggregated value.
+	//
+	// example:
+	//
+	// 12345
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeSiteTimeSeriesDataResponseBodySummarizedData) String() string {

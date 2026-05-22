@@ -30,14 +30,15 @@ type iGetWafRuleResponseBody interface {
 }
 
 type GetWafRuleResponseBody struct {
+	// Rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 自定义响应页面ID
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// example:
 	//
 	// 2000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 自定义响应页面名称
+	// Rule name.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +46,7 @@ type GetWafRuleResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 自定义响应页面内容类型
+	// WAF operation phase.
 	//
 	// This parameter is required.
 	//
@@ -53,19 +54,27 @@ type GetWafRuleResponseBody struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The position of the rule in the rule set.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RulesetId *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Rule status.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last modified time of the rule.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z

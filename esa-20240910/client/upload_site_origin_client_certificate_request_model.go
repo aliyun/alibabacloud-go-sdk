@@ -20,12 +20,35 @@ type iUploadSiteOriginClientCertificateRequest interface {
 }
 
 type UploadSiteOriginClientCertificateRequest struct {
+	// The certificate content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private key of the certificate.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// Site ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

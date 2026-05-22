@@ -14,6 +14,11 @@ type iUpdateSitePauseResponseBody interface {
 }
 
 type UpdateSitePauseResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 6abd807e-ed2a-44de-ac54-ac38a62472e6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

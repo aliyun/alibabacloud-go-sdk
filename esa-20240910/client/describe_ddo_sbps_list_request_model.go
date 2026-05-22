@@ -20,11 +20,41 @@ type iDescribeDDoSBpsListRequest interface {
 }
 
 type DescribeDDoSBpsListRequest struct {
+	// Protection area, defaulting to global if not filled. When specified, the values are as follows:
+	//
+	// - domestic: Mainland China.
+	//
+	// - overseas: Global (excluding Mainland China).
+	//
+	// - global: Global.
+	//
+	// example:
+	//
+	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time for fetching data. In ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// The end time must be later than the start time, and the span between start and end times should not exceed 31 days.
+	//
+	// example:
+	//
+	// 2023-05-18T06:19:42Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 70966210986912
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time for fetching data, in ISO8601 format, using UTC+0, formatted as: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-14T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

@@ -18,9 +18,16 @@ type iGetRoutineUserInfoResponseBody interface {
 }
 
 type GetRoutineUserInfoResponseBody struct {
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Routines   []*GetRoutineUserInfoResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
-	Subdomains []*string                                 `json:"Subdomains,omitempty" xml:"Subdomains,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routines.
+	Routines []*GetRoutineUserInfoResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
+	// The subdomains.
+	Subdomains []*string `json:"Subdomains,omitempty" xml:"Subdomains,omitempty" type:"Repeated"`
 }
 
 func (s GetRoutineUserInfoResponseBody) String() string {
@@ -72,8 +79,23 @@ func (s *GetRoutineUserInfoResponseBody) Validate() error {
 }
 
 type GetRoutineUserInfoResponseBodyRoutines struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the routine was created.
+	//
+	// example:
+	//
+	// 2024-03-11T01:23:02.883361712Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The routine description, which is Base64-encoded.
+	//
+	// example:
+	//
+	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The routine name.
+	//
+	// example:
+	//
+	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
 }
 

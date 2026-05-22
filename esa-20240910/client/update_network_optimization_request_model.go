@@ -34,19 +34,95 @@ type iUpdateNetworkOptimizationRequest interface {
 }
 
 type UpdateNetworkOptimizationRequest struct {
+	// Configuration ID.
+	//
 	// This parameter is required.
-	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Grpc        *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Whether to enable GRPC, default is disabled. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// Whether to enable HTTP2 origin, default is disabled. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable  *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
-	SiteId            *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Whether to enable the smart routing service, default is disabled. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Maximum upload file size, in MB, with a range of 100 to 500.
+	//
+	// example:
+	//
+	// 100
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+	// Whether to enable Websocket, default is enabled. Possible values:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
 }
 
 func (s UpdateNetworkOptimizationRequest) String() string {

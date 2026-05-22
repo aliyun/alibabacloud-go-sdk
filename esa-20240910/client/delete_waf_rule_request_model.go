@@ -18,18 +18,27 @@ type iDeleteWafRuleRequest interface {
 }
 
 type DeleteWafRuleRequest struct {
+	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

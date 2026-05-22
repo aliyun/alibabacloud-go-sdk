@@ -18,11 +18,28 @@ type iApplyCertificateRequest interface {
 }
 
 type ApplyCertificateRequest struct {
+	// List of domains, separated by commas.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com,blog.example.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// Site ID.
+	//
 	// This parameter is required.
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The certificate type. Valid values: lets_encrypt, digicert_single, and digicert_wildcard.
+	//
+	// example:
+	//
+	// lets_encrypt
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ApplyCertificateRequest) String() string {

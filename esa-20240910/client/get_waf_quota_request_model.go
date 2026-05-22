@@ -14,6 +14,16 @@ type iGetWafQuotaRequest interface {
 }
 
 type GetWafQuotaRequest struct {
+	// The path of the WAF quota, for example:
+	//
+	// 	- managed_rules_group: represents the quota for the WAF managed rules group
+	//
+	// 	- list: represents the quota for custom lists
+	//
+	// 	- page: represents the quota for custom response pages
+	//
+	// 	- scene_policy: represents the quota for scenario protection
+	//
 	// example:
 	//
 	// page

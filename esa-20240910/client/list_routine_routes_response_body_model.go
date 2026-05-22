@@ -24,12 +24,38 @@ type iListRoutineRoutesResponseBody interface {
 }
 
 type ListRoutineRoutesResponseBody struct {
-	Configs    []*ListRoutineRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The returned configurations.
+	Configs []*ListRoutineRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 83
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListRoutineRoutesResponseBody) String() string {
@@ -108,19 +134,104 @@ func (s *ListRoutineRoutesResponseBody) Validate() error {
 }
 
 type ListRoutineRoutesResponseBodyConfigs struct {
-	Bypass      *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
-	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	Fallback    *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	Mode        *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Bypass mode. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: queries rule configurations.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The exception origin switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
+	// The configuration mode. Valid values:
+	//
+	// 	- simple: Simple mode.
+	//
+	// 	- custom: Custom mode.
+	//
+	// example:
+	//
+	// simple
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The route switch. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
-	RouteName   *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The route name.
+	//
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The routine name.
+	//
+	// example:
+	//
+	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteId      *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName    *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 554889455535696
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// test.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The version number of the website configurations.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	// example:
 	//
 	// 5

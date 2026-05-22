@@ -16,8 +16,10 @@ type iQuotaListItemsValue interface {
 }
 
 type QuotaListItemsValue struct {
-	Enable *bool           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Value  *WafQuotaString `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The switch for the type of item in the custom list.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Format restrictions for the type of item in the custom list.
+	Value *WafQuotaString `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s QuotaListItemsValue) String() string {

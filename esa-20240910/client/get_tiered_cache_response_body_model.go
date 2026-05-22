@@ -16,8 +16,26 @@ type iGetTieredCacheResponseBody interface {
 }
 
 type GetTieredCacheResponseBody struct {
+	// Multi-level cache architecture mode. Possible values:
+	//
+	// - edge: Edge cache layer.
+	//
+	// - edge_smart: Edge cache layer + intelligent cache layer.
+	//
+	// - edge_regional: Edge cache layer + regional cache layer.
+	//
+	// - edge_regional_smart: Edge cache layer + regional cache layer + intelligent cache layer.
+	//
+	// example:
+	//
+	// edge
 	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTieredCacheResponseBody) String() string {

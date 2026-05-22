@@ -24,15 +24,50 @@ type iCreateCustomScenePolicyRequest interface {
 }
 
 type CreateCustomScenePolicyRequest struct {
+	// The time when the policy expires.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-07T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The policy name.
+	//
 	// This parameter is required.
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// 7096621098****
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
 	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
+	// The time when the policy takes effect.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-07T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the policy template. Valid value:
+	//
+	// 	- **promotion**: major events.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// promotion
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 

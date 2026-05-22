@@ -14,7 +14,13 @@ type iGetEdgeContainerAppResourceStatusRequest interface {
 }
 
 type GetEdgeContainerAppResourceStatusRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// app-96253477062511****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

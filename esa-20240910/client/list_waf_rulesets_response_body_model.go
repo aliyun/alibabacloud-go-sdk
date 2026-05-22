@@ -26,24 +26,40 @@ type iListWafRulesetsResponseBody interface {
 }
 
 type ListWafRulesetsResponseBody struct {
+	// Number of WAF rule sets used by the instance in this WAF operation phase.
+	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rulesets  []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
-	SiteUsage *int64                                 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of rule set information, containing detailed information about the rule sets.
+	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
+	// Number of WAF rule sets used by the site in this WAF operation phase.
+	//
+	// example:
+	//
+	// 5
+	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// Total number of filtered records.
+	//
 	// example:
 	//
 	// 5
@@ -135,28 +151,42 @@ func (s *ListWafRulesetsResponseBody) Validate() error {
 }
 
 type ListWafRulesetsResponseBodyRulesets struct {
+	// List of match objects.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// ID of the WAF rule set.
+	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the rule set.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WAF operation phase.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Status of the rule set.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Protection target type in http_bot.
+	//
 	// example:
 	//
 	// web
-	Target *string   `json:"Target,omitempty" xml:"Target,omitempty"`
-	Types  []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// List of rule types.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// Last modification time of the rule set.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z

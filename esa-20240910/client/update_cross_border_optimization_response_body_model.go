@@ -14,6 +14,11 @@ type iUpdateCrossBorderOptimizationResponseBody interface {
 }
 
 type UpdateCrossBorderOptimizationResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

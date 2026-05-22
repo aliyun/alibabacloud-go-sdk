@@ -16,9 +16,21 @@ type iDeleteCustomResponseCodeRuleRequest interface {
 }
 
 type DeleteCustomResponseCodeRuleRequest struct {
+	// The configuration ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 434497172875264
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 478016908379824
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

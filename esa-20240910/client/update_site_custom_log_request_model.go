@@ -20,10 +20,18 @@ type iUpdateSiteCustomLogRequest interface {
 }
 
 type UpdateSiteCustomLogRequest struct {
-	Cookies         []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
-	RequestHeaders  []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The cookie fields.
+	Cookies []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
+	// The request header fields.
+	RequestHeaders []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The response header fields.
 	ResponseHeaders []*string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	SiteId          *int64    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// site id
+	//
+	// example:
+	//
+	// 11223****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s UpdateSiteCustomLogRequest) String() string {

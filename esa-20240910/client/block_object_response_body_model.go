@@ -16,8 +16,18 @@ type iBlockObjectResponseBody interface {
 }
 
 type BlockObjectResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The blocking task ID.
+	//
+	// example:
+	//
+	// 15940956620
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BlockObjectResponseBody) String() string {

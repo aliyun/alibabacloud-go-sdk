@@ -20,16 +20,28 @@ type iCreateRoutineCodeDeploymentRequest interface {
 }
 
 type CreateRoutineCodeDeploymentRequest struct {
+	// The configuration list of phased release version numbers. A maximum of two versions are supported, and the sum of the total proportions is equal to 100.
+	//
 	// This parameter is required.
 	CodeVersions []*CreateRoutineCodeDeploymentRequestCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
+	// The name of the environment. Only supports test environment `staging` or production environment `production`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// production
+	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The function name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The deployment policy. Valid value: percentage.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -96,9 +108,21 @@ func (s *CreateRoutineCodeDeploymentRequest) Validate() error {
 }
 
 type CreateRoutineCodeDeploymentRequestCodeVersions struct {
+	// The version of the code.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The phased release ratio of the code version. Valid values: 1 to 100.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	Percentage *int64 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 }
 

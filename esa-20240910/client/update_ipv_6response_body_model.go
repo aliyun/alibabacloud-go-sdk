@@ -14,6 +14,11 @@ type iUpdateIPv6ResponseBody interface {
 }
 
 type UpdateIPv6ResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

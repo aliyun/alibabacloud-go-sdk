@@ -16,7 +16,21 @@ type iGetSiteNameExclusiveResponseBody interface {
 }
 
 type GetSiteNameExclusiveResponseBody struct {
-	Enable    *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether site hold is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

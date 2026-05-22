@@ -34,17 +34,80 @@ type iPurchaseRatePlanRequest interface {
 }
 
 type PurchaseRatePlanRequest struct {
-	Amount     *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew  *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	Channel    *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable auto payment.
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Auto-renewal:
+	//
+	// - true: Enable auto-renewal.
+	//
+	// - false: Disable auto-renewal.
+	//
+	// example:
+	//
+	// true
+	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Channel   *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- PREPAY: subscription.
+	//
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// example:
+	//
+	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Coverage   *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PlanCode   *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
-	PlanName   *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	SiteName   *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The service location. Valid values:
+	//
+	// 	- domestic: the Chinese mainland.
+	//
+	// 	- global: global.
+	//
+	// 	- overseas: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// domestic
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// Subscription period (in months).
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// Package code.
+	//
+	// example:
+	//
+	// entranceplan
+	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
+	// Package name.
+	//
+	// example:
+	//
+	// basic
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// Site name.
+	//
+	// example:
+	//
+	// test.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The DNS setup option for the website. Valid values:
+	//
+	// 	- NS
+	//
+	// 	- CNAME
+	//
+	// example:
+	//
+	// CNAME
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PurchaseRatePlanRequest) String() string {

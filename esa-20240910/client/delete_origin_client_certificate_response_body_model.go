@@ -20,10 +20,30 @@ type iDeleteOriginClientCertificateResponseBody interface {
 }
 
 type DeleteOriginClientCertificateResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s DeleteOriginClientCertificateResponseBody) String() string {

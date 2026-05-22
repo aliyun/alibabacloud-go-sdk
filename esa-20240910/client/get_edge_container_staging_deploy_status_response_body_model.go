@@ -30,15 +30,74 @@ type iGetEdgeContainerStagingDeployStatusResponseBody interface {
 }
 
 type GetEdgeContainerStagingDeployStatusResponseBody struct {
-	ContainersReady   *string                                                         `json:"ContainersReady,omitempty" xml:"ContainersReady,omitempty"`
-	CreationTimestamp *string                                                         `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	Initialized       *string                                                         `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	Phase             *string                                                         `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	PodRestartState   *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState `json:"PodRestartState,omitempty" xml:"PodRestartState,omitempty" type:"Struct"`
-	Ready             *string                                                         `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	RequestId         *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scheduled         *string                                                         `json:"Scheduled,omitempty" xml:"Scheduled,omitempty"`
-	VIPs              []*string                                                       `json:"VIPs,omitempty" xml:"VIPs,omitempty" type:"Repeated"`
+	// Indicates whether the container is ready.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	ContainersReady *string `json:"ContainersReady,omitempty" xml:"ContainersReady,omitempty"`
+	// The time when the container was created. The value is a timestamp.
+	//
+	// example:
+	//
+	// 2024-09-24T06:46:35Z
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	// The initialization status of the container.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	Initialized *string `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
+	// The status of the container in the staging environment.
+	//
+	// 	- NoContainer: created.
+	//
+	// 	- Running: running.
+	//
+	// 	- Failed: abnormal.
+	//
+	// example:
+	//
+	// Running
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The details of container restart.
+	PodRestartState *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState `json:"PodRestartState,omitempty" xml:"PodRestartState,omitempty" type:"Struct"`
+	// Indicates whether domain names are associated with the container.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	Ready *string `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2F2C992B-3FE2-5EBB-A61F-F9DD4EB257DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling status of the container.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	Scheduled *string `json:"Scheduled,omitempty" xml:"Scheduled,omitempty"`
+	// The virtual IP addresses.
+	VIPs []*string `json:"VIPs,omitempty" xml:"VIPs,omitempty" type:"Repeated"`
 }
 
 func (s GetEdgeContainerStagingDeployStatusResponseBody) String() string {
@@ -140,8 +199,18 @@ func (s *GetEdgeContainerStagingDeployStatusResponseBody) Validate() error {
 }
 
 type GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState struct {
+	// The reason for the last restart.
+	//
+	// example:
+	//
+	// OOMKilled
 	LastTerminatedReason *string `json:"LastTerminatedReason,omitempty" xml:"LastTerminatedReason,omitempty"`
-	RestartCount         *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// The number of times that the container restarted.
+	//
+	// example:
+	//
+	// 1
+	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
 }
 
 func (s GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) String() string {

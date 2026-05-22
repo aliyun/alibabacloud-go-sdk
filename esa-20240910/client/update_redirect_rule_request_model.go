@@ -32,18 +32,91 @@ type iUpdateRedirectRuleRequest interface {
 }
 
 type UpdateRedirectRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) interface.
+	//
 	// This parameter is required.
-	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Preserve query string. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence           *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The response status code used by the node to respond with the redirect address to the client. Value range:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 303
+	//
+	// - 307
+	//
+	// - 308
+	//
+	// example:
+	//
+	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	TargetUrl  *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The target URL after redirection.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// Redirect type. Value range:
+	//
+	// - static: Static mode.
+	//
+	// - dynamic: Dynamic mode.
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRedirectRuleRequest) String() string {

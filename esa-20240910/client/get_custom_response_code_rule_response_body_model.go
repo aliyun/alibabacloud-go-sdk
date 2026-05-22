@@ -32,16 +32,46 @@ type iGetCustomResponseCodeRuleResponseBody interface {
 }
 
 type GetCustomResponseCodeRuleResponseBody struct {
-	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	PageId      *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ReturnCode  *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable  *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 0
+	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s GetCustomResponseCodeRuleResponseBody) String() string {

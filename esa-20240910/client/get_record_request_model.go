@@ -14,7 +14,13 @@ type iGetRecordRequest interface {
 }
 
 type GetRecordRequest struct {
+	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 }
 

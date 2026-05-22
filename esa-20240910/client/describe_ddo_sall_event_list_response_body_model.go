@@ -24,12 +24,38 @@ type iDescribeDDoSAllEventListResponseBody interface {
 }
 
 type DescribeDDoSAllEventListResponseBody struct {
-	DataList   []*DescribeDDoSAllEventListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId     *int64                                          `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The DDoS attack events.
+	DataList []*DescribeDDoSAllEventListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D73A4243-CFBD-5110-876F-09237E77ECBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 7096621098****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDDoSAllEventListResponseBody) String() string {
@@ -108,18 +134,78 @@ func (s *DescribeDDoSAllEventListResponseBody) Validate() error {
 }
 
 type DescribeDDoSAllEventListResponseBodyDataList struct {
-	Bps         *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	Coverage    *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	Cps         *int64  `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The peak of volumetric attacks. Unit: bit/s.
+	//
+	// example:
+	//
+	// 800
+	Bps      *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The peak of connection flood attacks. Unit: connections per seconds (CPS).
+	//
+	// example:
+	//
+	// 50
+	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// The time when the DDoS attack ends.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-02-12T15:59:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The attack event ID.
+	//
+	// example:
+	//
+	// web-cc_1
 	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	EventResult *string `json:"EventResult,omitempty" xml:"EventResult,omitempty"`
-	EventType   *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	Pps         *int64  `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	Qps         *int64  `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetId    *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of DDoS attacks that was queried. Valid values:
+	//
+	// 	- **web-cc**: web resource exhaustion attacks.
+	//
+	// 	- **cc**: connection flood attacks.
+	//
+	// 	- **traffic**: volumetric attacks.
+	//
+	// example:
+	//
+	// web-cc
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The peak of volumetric attacks. Unit: packets per second (PPS).
+	//
+	// example:
+	//
+	// 12000
+	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// The peak QPS of web resource exhaustion attacks.
+	//
+	// example:
+	//
+	// 7692
+	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// The time when the DDoS attack starts.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-02-12T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The attack target.
+	//
+	// example:
+	//
+	// example.com
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The ID of the web resource exhaustion attack target.
+	//
+	// example:
+	//
+	// 000000000155****
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 }
 
 func (s DescribeDDoSAllEventListResponseBodyDataList) String() string {

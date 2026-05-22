@@ -37,14 +37,57 @@ type CreateImageTransformRequest struct {
 	// example:
 	//
 	// on
-	AutoWebp   *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
+	// Indicates whether image transformation is enabled. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - To match all incoming requests: Set the value to true
+	//
+	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+	//
+	// example:
+	//
+	// (http.request.uri.path.file_name eq \\"jpg\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence   *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

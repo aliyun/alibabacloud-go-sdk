@@ -18,8 +18,15 @@ type iBatchDeleteKvResponseBody interface {
 }
 
 type BatchDeleteKvResponseBody struct {
-	FailKeys    []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The keys that failed to be deleted.
+	FailKeys []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The keys that are deleted.
 	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
 }
 

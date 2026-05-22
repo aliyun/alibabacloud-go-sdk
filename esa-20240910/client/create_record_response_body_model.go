@@ -16,7 +16,17 @@ type iCreateRecordResponseBody interface {
 }
 
 type CreateRecordResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record ID.
+	//
+	// example:
+	//
+	// 1234567890123
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

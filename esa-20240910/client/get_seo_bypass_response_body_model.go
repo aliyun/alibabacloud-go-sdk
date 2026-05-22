@@ -16,7 +16,21 @@ type iGetSeoBypassResponseBody interface {
 }
 
 type GetSeoBypassResponseBody struct {
-	Enable    *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The status of the feature. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -23,6 +23,10 @@ type GetUserWafRulesetRequest struct {
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// esa-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

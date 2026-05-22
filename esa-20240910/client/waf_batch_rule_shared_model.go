@@ -28,14 +28,46 @@ type iWafBatchRuleShared interface {
 }
 
 type WafBatchRuleShared struct {
-	Action      *string                    `json:"Action,omitempty" xml:"Action,omitempty"`
-	Actions     *WafBatchRuleSharedActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Struct"`
-	CrossSiteId *int64                     `json:"CrossSiteId,omitempty" xml:"CrossSiteId,omitempty"`
-	Expression  *string                    `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Match       *WafRuleMatch2             `json:"Match,omitempty" xml:"Match,omitempty"`
-	Mode        *string                    `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name        *string                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Target      *string                    `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The action that you want WAF to perform on requests that match the rule.
+	//
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The extended action configurations.
+	Actions *WafBatchRuleSharedActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Struct"`
+	// Specifies the cross-domain website ID.
+	//
+	// example:
+	//
+	// 10000001
+	CrossSiteId *int64 `json:"CrossSiteId,omitempty" xml:"CrossSiteId,omitempty"`
+	// The expression.
+	//
+	// example:
+	//
+	// ip.src eq 1.1.1.1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The matching rule.
+	Match *WafRuleMatch2 `json:"Match,omitempty" xml:"Match,omitempty"`
+	// Web SDK integration method: automatic integration (automatic) or manual integration (manual).
+	//
+	// example:
+	//
+	// automatic
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ruleset name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Protection type: web or app.
+	//
+	// example:
+	//
+	// web
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s WafBatchRuleShared) String() string {
@@ -133,6 +165,7 @@ func (s *WafBatchRuleShared) Validate() error {
 }
 
 type WafBatchRuleSharedActions struct {
+	// The custom response.
 	Response *WafBatchRuleSharedActionsResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 }
 
@@ -163,8 +196,18 @@ func (s *WafBatchRuleSharedActions) Validate() error {
 }
 
 type WafBatchRuleSharedActionsResponse struct {
+	// The custom response code.
+	//
+	// example:
+	//
+	// 403
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the custom response page.
+	//
+	// example:
+	//
+	// 50000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s WafBatchRuleSharedActionsResponse) String() string {

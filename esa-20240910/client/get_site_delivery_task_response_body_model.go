@@ -40,20 +40,108 @@ type iGetSiteDeliveryTaskResponseBody interface {
 }
 
 type GetSiteDeliveryTaskResponseBody struct {
-	BusinessType *string     `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	DataCenter   *string     `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	DeliveryType *string     `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DiscardRate  *float32    `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	FieldList    *string     `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
-	FilterRules  *string     `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
-	FilterVer    *string     `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	RawRule      *string     `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
-	RequestId    *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SinkConfig   interface{} `json:"SinkConfig,omitempty" xml:"SinkConfig,omitempty"`
-	SiteId       *int64      `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName     *string     `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	Status       *string     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName     *string     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
+	// example:
+	//
+	// dcdn_log_access_l1
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 1.  cn: the Chinese mainland.
+	//
+	// 2.  sg: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn
+	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+	//
+	// 2.  http: HTTP server.
+	//
+	// 3.  aws3: Amazon Simple Storage Service (S3).
+	//
+	// 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+	//
+	// 5.  kafka: Kafka.
+	//
+	// 6.  aws3cmpt: S3-compatible storage service.
+	//
+	// example:
+	//
+	// sls
+	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate.
+	//
+	// example:
+	//
+	// 0.0
+	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log fields.
+	//
+	// example:
+	//
+	// Client,UserAgent
+	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
+	// The filtering rules.
+	//
+	// example:
+	//
+	// []
+	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
+	FilterVer   *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
+	RawRule     *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The delivery configuration.
+	//
+	// example:
+	//
+	// {\\"Region\\": \\"cn-hangzhou\\", \\"Endpoint\\": \\"https://***.oss-cn-hangzhou.aliyuncs.com\\", \\"BucketPath\\": \\"hjy-test002/online-logs\\"}
+	SinkConfig interface{} `json:"SinkConfig,omitempty" xml:"SinkConfig,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// test.***.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The status of the delivery task.
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
+	// example:
+	//
+	// cdn-test-task
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s GetSiteDeliveryTaskResponseBody) String() string {

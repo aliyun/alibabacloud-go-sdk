@@ -28,15 +28,52 @@ type iCreateTransportLayerApplicationShrinkRequest interface {
 }
 
 type CreateTransportLayerApplicationShrinkRequest struct {
+	// Whether to enable China mainland network access optimization, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	IpAccessRule            *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	Ipv6                    *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	KeepAliveProtection     *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
+	// IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
+	// IPv6 switch.
+	//
+	// example:
+	//
+	// off
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
+	// Domain name of the transport layer application.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aaa.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// List of forwarding rules.
+	//
 	// This parameter is required.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	StaticIp *string `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
 }

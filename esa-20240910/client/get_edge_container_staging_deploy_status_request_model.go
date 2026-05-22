@@ -14,6 +14,11 @@ type iGetEdgeContainerStagingDeployStatusRequest interface {
 }
 
 type GetEdgeContainerStagingDeployStatusRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
+	// example:
+	//
+	// GetEdgeContainerStagingDeployStatus
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

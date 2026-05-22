@@ -26,13 +26,55 @@ type iListNetworkOptimizationsRequest interface {
 }
 
 type ListNetworkOptimizationsRequest struct {
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule-based configuration.
+	//
+	// This parameter is optional; if not provided, it does not distinguish between global and rule-based configurations.
+	//
+	// example:
+	//
+	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Page number, defaulting to 1 if not provided.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name, which can be used to find the rule with the specified name.
+	//
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 1231231221****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+	//
+	// example:
+	//
+	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

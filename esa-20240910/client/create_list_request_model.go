@@ -20,15 +20,26 @@ type iCreateListRequest interface {
 }
 
 type CreateListRequest struct {
+	// The description of the list that you want to create.
+	//
 	// example:
 	//
 	// a custom list
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Items       []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The items in the list that you want to create.
+	//
+	// example:
+	//
+	// a custom list
+	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the list that you want to create.
+	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The name of the list that you want to create.
+	//
 	// This parameter is required.
 	//
 	// example:

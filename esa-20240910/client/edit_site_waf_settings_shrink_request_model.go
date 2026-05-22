@@ -18,11 +18,19 @@ type iEditSiteWafSettingsShrinkRequest interface {
 }
 
 type EditSiteWafSettingsShrinkRequest struct {
+  // WAF configuration information for the site, passed in JSON format.
   SettingsShrink *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
+  // Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+  // 
   // example:
   // 
   // 1
   SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+  // Site version.
+  // 
+  // example:
+  // 
+  // 0
   SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

@@ -16,9 +16,21 @@ type iDeleteWaitingRoomRuleRequest interface {
 }
 
 type DeleteWaitingRoomRuleRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room bypass rule.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3672886****
 	WaitingRoomRuleId *int64 `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
 }
 

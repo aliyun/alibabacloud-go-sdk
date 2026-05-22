@@ -40,20 +40,81 @@ type iGetTransportLayerApplicationResponseBody interface {
 }
 
 type GetTransportLayerApplicationResponseBody struct {
-	ApplicationId           *int64                                                    `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Cname                   *string                                                   `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	CrossBorderOptimization *string                                                   `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	IpAccessRule            *string                                                   `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	Ipv6                    *string                                                   `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	KeepAliveProtection     *string                                                   `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	RecordName              *string                                                   `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	RequestId               *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules                   []*GetTransportLayerApplicationResponseBodyRules          `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	RulesCount              *int32                                                    `json:"RulesCount,omitempty" xml:"RulesCount,omitempty"`
-	SiteId                  *int64                                                    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	StaticIp                *string                                                   `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
-	StaticIpV4List          []*GetTransportLayerApplicationResponseBodyStaticIpV4List `json:"StaticIpV4List,omitempty" xml:"StaticIpV4List,omitempty" type:"Repeated"`
-	Status                  *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specific value of the origin, which needs to match the type of the origin.
+	//
+	// example:
+	//
+	// 17099311410****
+	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Whether to enable China mainland network access optimization, default is off. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// example.com.ialicdn.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// on
+	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
+	// #/components/schemas/WafRuleMatch2
+	//
+	// example:
+	//
+	// on
+	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
+	// Ipv6 switch
+	//
+	// example:
+	//
+	// on
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
+	// Query Transport Layer Acceleration Application
+	//
+	// example:
+	//
+	// test.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EB635996-1FD6-5DFD-BA57-27A849599940
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Edge port. Supports:
+	//
+	// - A single port, such as 80.
+	//
+	// - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
+	//
+	// - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+	Rules []*GetTransportLayerApplicationResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Forwarding rule protocol, with values:
+	//
+	// - TCP: TCP protocol.
+	//
+	// - UDP: UDP protocol.
+	//
+	// example:
+	//
+	// 1
+	RulesCount *int32 `json:"RulesCount,omitempty" xml:"RulesCount,omitempty"`
+	// Details of the forwarding rule.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId         *int64                                                    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	StaticIp       *string                                                   `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
+	StaticIpV4List []*GetTransportLayerApplicationResponseBodyStaticIpV4List `json:"StaticIpV4List,omitempty" xml:"StaticIpV4List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTransportLayerApplicationResponseBody) String() string {
@@ -213,14 +274,74 @@ func (s *GetTransportLayerApplicationResponseBody) Validate() error {
 }
 
 type GetTransportLayerApplicationResponseBodyRules struct {
+	// The domain name of the transport layer application.
+	//
+	// example:
+	//
+	// off
 	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
-	Comment                 *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	EdgePort                *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
-	Protocol                *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RuleId                  *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Source                  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourcePort              *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	SourceType              *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
+	//
+	// - on: Turned on.
+	//
+	// - off: Turned off.
+	//
+	// example:
+	//
+	// IPv6 switch.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Comment information of the rule.
+	//
+	// example:
+	//
+	// 80
+	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
+	// Client IP pass-through protocol, supporting:
+	//
+	// - **off**: No pass-through.
+	//
+	// - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+	//
+	// - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+	//
+	// - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+	//
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Status of the transport layer application
+	//
+	// - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+	//
+	// - **active**: Active.
+	//
+	// example:
+	//
+	// 1234323***
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Origin port. Supports:
+	//
+	// - A single port, when the origin port is a single port, any valid edge port combination is supported.
+	//
+	// - Port range, only when the edge port is a port range, the origin port can be set as a port range and the size of the range must be consistent with the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which are inconsistent.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
+	//
+	// example:
+	//
+	// 80
+	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// Rule ID.
+	//
+	// example:
+	//
+	// domain
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s GetTransportLayerApplicationResponseBodyRules) String() string {

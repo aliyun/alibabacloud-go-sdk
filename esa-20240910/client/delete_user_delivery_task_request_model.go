@@ -14,7 +14,13 @@ type iDeleteUserDeliveryTaskRequest interface {
 }
 
 type DeleteUserDeliveryTaskRequest struct {
+	// The name of the delivery task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

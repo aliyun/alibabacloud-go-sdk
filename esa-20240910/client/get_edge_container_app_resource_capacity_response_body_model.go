@@ -16,8 +16,14 @@ type iGetEdgeContainerAppResourceCapacityResponseBody interface {
 }
 
 type GetEdgeContainerAppResourceCapacityResponseBody struct {
-	Regions   []*GetEdgeContainerAppResourceCapacityResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried region.
+	Regions []*GetEdgeContainerAppResourceCapacityResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 50423A7F-A83D-1E24-B80E-86DD25790759
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEdgeContainerAppResourceCapacityResponseBody) String() string {
@@ -60,9 +66,104 @@ func (s *GetEdgeContainerAppResourceCapacityResponseBody) Validate() error {
 }
 
 type GetEdgeContainerAppResourceCapacityResponseBodyRegions struct {
-	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// Supported ISPs are as follows. The parameter is left empty for regions outside the Chinese mainland. ISP:
+	//
+	// 	- China Mobile: cmcc
+	//
+	// 	- China Telecom: chinanet
+	//
+	// 	- China Unicom: unicom
+	//
+	// example:
+	//
+	// unicom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// Chinese mainland:
+	//
+	// 	- East China: huadong
+	//
+	// 	- South China: huanan
+	//
+	// 	- Central China: huazhong
+	//
+	// 	- North China: huabei
+	//
+	// 	- Northwest China: xibei
+	//
+	// 	- Southwest China: xinan
+	//
+	// 	- Northeast China: dongbei
+	//
+	// Special Administrative Regions and Overseas:
+	//
+	// 	- Taiwan, China: tw
+	//
+	// 	- Macau, China: mo
+	//
+	// 	- Hong Kong, China: hk
+	//
+	// 	- Japan: jp
+	//
+	// 	- United States: us
+	//
+	// 	- Thailand: th
+	//
+	// 	- Korea: kr
+	//
+	// 	- Russia: ru
+	//
+	// 	- Singapore: sg
+	//
+	// 	- France: fr
+	//
+	// 	- Spain: es
+	//
+	// 	- Italy: it
+	//
+	// 	- Sweden: se
+	//
+	// 	- UAE: ae
+	//
+	// 	- Indonesia: id
+	//
+	// 	- Chile: cl
+	//
+	// 	- Philippines: ph
+	//
+	// 	- Malaysia: my
+	//
+	// 	- Vietnam: vn
+	//
+	// 	- Argentina: AR
+	//
+	// 	- Australia: au
+	//
+	// 	- Brazil: br
+	//
+	// 	- Colombia: co
+	//
+	// 	- Germany: de
+	//
+	// 	- UK: GB
+	//
+	// 	- Peru: pe
+	//
+	// 	- Saudi Arabia: sa
+	//
+	// 	- Netherlands: nl
+	//
+	// 	- South Africa: za
+	//
+	// example:
+	//
+	// huadong
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The number of container replicas that can be deployed.
+	//
+	// example:
+	//
+	// 16
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
 
 func (s GetEdgeContainerAppResourceCapacityResponseBodyRegions) String() string {

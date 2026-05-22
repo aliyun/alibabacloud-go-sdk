@@ -24,12 +24,58 @@ type iPurchaseCacheReserveRequest interface {
 }
 
 type PurchaseCacheReserveRequest struct {
-	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew  *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Whether to automatically pay. The default value is false.
+	//
+	// - true: Automatically pay.
+	//
+	// - false: Do not automatically pay.
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Whether to auto-renew:
+	//
+	// - true: Auto-renew.
+	//
+	// - false: Do not auto-renew.
+	//
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Billing type
+	//
+	// - PREPAY: Prepaid.
+	//
+	// - POSTPAY: Postpaid.
+	//
+	// example:
+	//
+	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CrRegion   *string `json:"CrRegion,omitempty" xml:"CrRegion,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	QuotaGb    *int64  `json:"QuotaGb,omitempty" xml:"QuotaGb,omitempty"`
+	// Cache retention region
+	//
+	// - HK: Hong Kong, China
+	//
+	// - CN-beijing: Mainland China - Beijing
+	//
+	// example:
+	//
+	// HK
+	CrRegion *string `json:"CrRegion,omitempty" xml:"CrRegion,omitempty"`
+	// Purchase period (unit: month).
+	//
+	// example:
+	//
+	// 3
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// Cache retention specification (unit: GB).
+	//
+	// example:
+	//
+	// 512000
+	QuotaGb *int64 `json:"QuotaGb,omitempty" xml:"QuotaGb,omitempty"`
 }
 
 func (s PurchaseCacheReserveRequest) String() string {

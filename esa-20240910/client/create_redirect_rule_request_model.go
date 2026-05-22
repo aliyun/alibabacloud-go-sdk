@@ -32,20 +32,96 @@ type iCreateRedirectRuleRequest interface {
 }
 
 type CreateRedirectRuleRequest struct {
+	// Preserve query string. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence           *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - To match all incoming requests: Set the value to true
+	//
+	// - To match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration will take effect. The default is version 0.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Response status code used by the node to respond to the client with the redirect address. Value range:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 303
+	//
+	// - 307
+	//
+	// - 308
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Target URL after redirection.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// Redirect type. Value range:
+	//
+	// - static: Static mode.
+	//
+	// - dynamic: Dynamic mode.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// static
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -26,28 +26,50 @@ type iListWafRulesShrinkRequest interface {
 }
 
 type ListWafRulesShrinkRequest struct {
+	// Query page number, used for pagination.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Query page size, used for pagination.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// WAF rule type. Values:
+	//
+	// - http_anti_scan: Scan protection
+	//
+	// - http_bot: Bots
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http_custom
-	Phase           *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query filter conditions.
+	//
+	// example:
+	//
+	// http_custom
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 	RulesetId       *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

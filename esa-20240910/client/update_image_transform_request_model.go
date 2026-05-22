@@ -38,14 +38,58 @@ type UpdateImageTransformRequest struct {
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
+	// Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
+	//
 	// This parameter is required.
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether to enable image transformation. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - To match all incoming requests: Set the value to true.
+	//
+	// - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+	//
+	// example:
+	//
+	// (http.request.uri.path.file_name eq \\"jpg\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence   *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

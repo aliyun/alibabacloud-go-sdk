@@ -16,6 +16,11 @@ type iCreateWaitingRoomResponseBody interface {
 }
 
 type CreateWaitingRoomResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
 }

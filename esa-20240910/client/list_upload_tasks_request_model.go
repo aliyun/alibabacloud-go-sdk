@@ -20,10 +20,38 @@ type iListUploadTasksRequest interface {
 }
 
 type ListUploadTasksRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The time when the task ends. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2019-12-06T12:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The time when the task starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2018-11-29T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- **file**: purges the cache by file URL.
+	//
+	// 	- **preload**: prefetches files.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreparams**: purges the cache by URL with specified parameters ignored.
+	//
+	// example:
+	//
+	// file
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListUploadTasksRequest) String() string {

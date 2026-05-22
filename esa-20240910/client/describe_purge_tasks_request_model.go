@@ -28,14 +28,74 @@ type iDescribePurgeTasksRequest interface {
 }
 
 type DescribePurgeTasksRequest struct {
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The content to purge. Exact match is supported.
+	//
+	// example:
+	//
+	// http://a.com/1.jpg?b=1
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2022-11-18T15:59:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Valid values: 1 to 100000.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-11-16T05:33:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is in progress.
+	//
+	// 	- **Failed**: The task failed.
+	//
+	// example:
+	//
+	// Complete
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **cachetag**: purges the cache by cache tag.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	//
+	// 	- **hostname**: purges the cache by hostname.
+	//
+	// 	- **purgeall**: purges all cache.
+	//
+	// example:
+	//
+	// file
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribePurgeTasksRequest) String() string {

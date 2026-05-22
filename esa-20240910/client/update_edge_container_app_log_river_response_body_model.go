@@ -18,9 +18,24 @@ type iUpdateEdgeContainerAppLogRiverResponseBody interface {
 }
 
 type UpdateEdgeContainerAppLogRiverResponseBody struct {
-	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The log path of the container.
+	//
+	// example:
+	//
+	// /root/hello.log
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 42DE97FA-45D2-5615-9A31-55D9EC0D7563
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Stdout    *bool   `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+	// Indicates whether the standard output of the container is collected.
+	//
+	// example:
+	//
+	// true
+	Stdout *bool `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
 }
 
 func (s UpdateEdgeContainerAppLogRiverResponseBody) String() string {

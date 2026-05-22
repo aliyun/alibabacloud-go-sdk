@@ -18,9 +18,28 @@ type iUpdateSiteDeliveryTaskStatusResponseBody interface {
 }
 
 type UpdateSiteDeliveryTaskStatusResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The status of the delivery task. Valid values:
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
+	// example:
+	//
+	// cdn-test-task
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s UpdateSiteDeliveryTaskStatusResponseBody) String() string {

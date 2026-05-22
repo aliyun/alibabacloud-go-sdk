@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 激活客户端证书
+// Activates the client based on the certificate ID.
 //
 // @param request - ActivateClientCertificateRequest
 //
@@ -49,7 +49,7 @@ func (client *Client) ActivateClientCertificateWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 开启版本管理
+// # Enable Version Management
 //
 // @param request - ActivateVersionManagementRequest
 //
@@ -93,7 +93,7 @@ func (client *Client) ActivateVersionManagementWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 申请免费证书
+// Applies for a free SSL certificate.
 //
 // @param request - ApplyCertificateRequest
 //
@@ -189,7 +189,13 @@ func (client *Client) ApplyCustomHostnameCertificateWithContext(ctx context.Cont
 
 // Summary:
 //
-// 批量创建记录
+// Adds DNS records of different record types at a time..
+//
+// Description:
+//
+// This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+//
+// Successful and failed records along with error messages are listed in the response.
 //
 // @param tmpReq - BatchCreateRecordsRequest
 //
@@ -243,7 +249,7 @@ func (client *Client) BatchCreateRecordsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 批量创建WAF规则
+// # Batch Create WAF Rules
 //
 // @param tmpReq - BatchCreateWafRulesRequest
 //
@@ -319,7 +325,7 @@ func (client *Client) BatchCreateWafRulesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 批量删除Namespace的key-value对
+// Deletes key-value pairs from a namespace at a time based on keys.
 //
 // @param tmpReq - BatchDeleteKvRequest
 //
@@ -375,7 +381,79 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 
 // Summary:
 //
-// 批量删除Namespace下的KV队，支持大body的上传，上限100M
+// Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+//
+//	func TestBatchDeleteWithHighCapacity() error {
+//
+//		// Initialize the configurations.
+//
+//		cfg := new(openapi.Config)
+//
+//		cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//		cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//		cli, err := NewClient(cfg)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		runtime := &util.RuntimeOptions{}
+//
+//		// Construct a request for deleting key-value pairs at a time.
+//
+//		namespace := "test_batch_put"
+//
+//		rawReq := BatchDeleteKvRequest{
+//
+//			Namespace: &namespace,
+//
+//		}
+//
+//		for i := 0; i < 10000; i++ {
+//
+//			key := fmt.Sprintf("test_key_%d", i)
+//
+//			rawReq.Keys = append(rawReq.Keys, &key)
+//
+//		}
+//
+//		payload, err := json.Marshal(rawReq)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		// If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+//
+//		reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+//
+//			Namespace: &namespace,
+//
+//			UrlObject: bytes.NewReader(payload),
+//
+//		}
+//
+//		resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		return nil
+//
+//	}
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -423,7 +501,7 @@ func (client *Client) BatchDeleteKvWithHighCapacityWithContext(ctx context.Conte
 
 // Summary:
 //
-// 批量获取表达式的匹配项
+// # Batch Get Expression Matches
 //
 // @param tmpReq - BatchGetExpressionFieldsRequest
 //
@@ -495,7 +573,7 @@ func (client *Client) BatchGetExpressionFieldsWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 批量配置Namespace的key-value对
+// Configures key-value pairs for a namespace at a time based on specified keys.
 //
 // @param tmpReq - BatchPutKvRequest
 //
@@ -551,7 +629,95 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 
 // Summary:
 //
-// 批量设置Namespace的key-value对，支持最大100M的请求体
+// Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+//
+//	func TestBatchPutKvWithHighCapacity() error {
+//
+//		// Initialize the configurations.
+//
+//		cfg := new(openapi.Config)
+//
+//		cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//		cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//		cli, err := NewClient(cfg)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		runtime := &util.RuntimeOptions{}
+//
+//		// Construct a request for uploading key-value pairs at a time.
+//
+//		namespace := "test_batch_put"
+//
+//		numKv := 10000
+//
+//		kvList := make([]*BatchPutKvRequestKvList, numKv)
+//
+//		test_value := strings.Repeat("a", 10*1024)
+//
+//		for i := 0; i < numKv; i++ {
+//
+//			key := fmt.Sprintf("test_key_%d", i)
+//
+//			value := test_value
+//
+//			kvList[i] = &BatchPutKvRequestKvList{
+//
+//				Key:   &key,
+//
+//				Value: &value,
+//
+//			}
+//
+//		}
+//
+//		rawReq := BatchPutKvRequest{
+//
+//			Namespace: &namespace,
+//
+//			KvList:    kvList,
+//
+//		}
+//
+//		payload, err := json.Marshal(rawReq)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		// If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+//
+//		reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+//
+//			Namespace: &namespace,
+//
+//			UrlObject: bytes.NewReader(payload),
+//
+//		}
+//
+//		resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		return nil
+//
+//	}
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -599,7 +765,7 @@ func (client *Client) BatchPutKvWithHighCapacityWithContext(ctx context.Context,
 
 // Summary:
 //
-// 批量修改WAF规则
+// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
 //
 // @param tmpReq - BatchUpdateWafRulesRequest
 //
@@ -675,7 +841,7 @@ func (client *Client) BatchUpdateWafRulesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # URL封禁
+// Blocks URLs.
 //
 // @param tmpReq - BlockObjectRequest
 //
@@ -737,7 +903,7 @@ func (client *Client) BlockObjectWithContext(ctx context.Context, tmpReq *BlockO
 
 // Summary:
 //
-// 校验站点名称是否可用
+// Checks whether a specified website name is available.
 //
 // @param request - CheckSiteNameRequest
 //
@@ -781,7 +947,7 @@ func (client *Client) CheckSiteNameWithContext(ctx context.Context, request *Che
 
 // Summary:
 //
-// 实时日志任务投递名检查
+// Checks the name of a real-time log delivery task.
 //
 // @param request - CheckSiteProjectNameRequest
 //
@@ -821,7 +987,7 @@ func (client *Client) CheckSiteProjectNameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 实时日志用户任务投递名检查
+// Checks the name of a real-time log delivery task by account.
 //
 // @param request - CheckUserProjectNameRequest
 //
@@ -861,7 +1027,7 @@ func (client *Client) CheckUserProjectNameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 提交Routine测试版本代码
+// Commits the unstable code in the staging environment to generate an official code version.
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -909,7 +1075,7 @@ func (client *Client) CommitRoutineStagingCodeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 新增站点缓存配置
+// # Create a new site cache configuration
 //
 // @param request - CreateCacheRuleRequest
 //
@@ -1065,7 +1231,7 @@ func (client *Client) CreateCacheRuleWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建客户端证书
+// Uses the ESA-managed certificate authority (CA) to issue client certificates.
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -1123,7 +1289,7 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 新增压缩规则
+// # Add a compression rule
 //
 // @param request - CreateCompressionRuleRequest
 //
@@ -1275,7 +1441,7 @@ func (client *Client) CreateCustomHostnameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 新增修改响应码规则
+// Add configurations for modifying the response code.
 //
 // @param request - CreateCustomResponseCodeRuleRequest
 //
@@ -1347,7 +1513,7 @@ func (client *Client) CreateCustomResponseCodeRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// 创建定制场景策略
+// Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
 //
 // @param request - CreateCustomScenePolicyRequest
 //
@@ -1411,7 +1577,7 @@ func (client *Client) CreateCustomScenePolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建边缘容器的应用
+// Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
 //
 // @param request - CreateEdgeContainerAppRequest
 //
@@ -1507,7 +1673,7 @@ func (client *Client) CreateEdgeContainerAppWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建边缘容器应用的镜像秘钥
+// # Create an image secret for the edge container application
 //
 // @param request - CreateEdgeContainerAppImageSecretRequest
 //
@@ -1563,7 +1729,7 @@ func (client *Client) CreateEdgeContainerAppImageSecretWithContext(ctx context.C
 
 // Summary:
 //
-// 创建一个边缘容器应用的域名记录
+// Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
 //
 // @param request - CreateEdgeContainerAppRecordRequest
 //
@@ -1615,7 +1781,7 @@ func (client *Client) CreateEdgeContainerAppRecordWithContext(ctx context.Contex
 
 // Summary:
 //
-// 创建边缘容器应用的版本
+// Creates a version for a containerized application. You can iterate the application based on the version.
 //
 // @param tmpReq - CreateEdgeContainerAppVersionRequest
 //
@@ -1677,7 +1843,7 @@ func (client *Client) CreateEdgeContainerAppVersionWithContext(ctx context.Conte
 
 // Summary:
 //
-// 新增HTTP入站请求头规则
+// Adds the configuration of modifying HTTP request headers for a website.
 //
 // @param tmpReq - CreateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -1751,7 +1917,7 @@ func (client *Client) CreateHttpIncomingRequestHeaderModificationRuleWithContext
 
 // Summary:
 //
-// 新增HTTP入站响应头规则
+// Adds the configuration of modifying HTTP response headers for a website.
 //
 // @param tmpReq - CreateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -1825,7 +1991,7 @@ func (client *Client) CreateHttpIncomingResponseHeaderModificationRuleWithContex
 
 // Summary:
 //
-// 新增HTTP请求头规则
+// # Add HTTP Request Header Rule
 //
 // @param tmpReq - CreateHttpRequestHeaderModificationRuleRequest
 //
@@ -1899,7 +2065,7 @@ func (client *Client) CreateHttpRequestHeaderModificationRuleWithContext(ctx con
 
 // Summary:
 //
-// 新增HTTP响应头规则
+// # Add HTTP Response Header Rule
 //
 // @param tmpReq - CreateHttpResponseHeaderModificationRuleRequest
 //
@@ -1973,7 +2139,7 @@ func (client *Client) CreateHttpResponseHeaderModificationRuleWithContext(ctx co
 
 // Summary:
 //
-// 创建站点HTTPS应用配置
+// # Create a new site HTTPS application configuration
 //
 // @param request - CreateHttpsApplicationConfigurationRequest
 //
@@ -2089,7 +2255,7 @@ func (client *Client) CreateHttpsApplicationConfigurationWithContext(ctx context
 
 // Summary:
 //
-// 新增站点HTTPS基础配置
+// # Create a new site HTTPS basic configuration
 //
 // @param request - CreateHttpsBasicConfigurationRequest
 //
@@ -2189,7 +2355,7 @@ func (client *Client) CreateHttpsBasicConfigurationWithContext(ctx context.Conte
 
 // Summary:
 //
-// 新增站点图片转换配置
+// # Add Site Image Transformation Configuration
 //
 // @param request - CreateImageTransformRequest
 //
@@ -2265,7 +2431,7 @@ func (client *Client) CreateImageTransformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 新增Namespace
+// Create a namespace in your Alibaba Cloud account.
 //
 // @param request - CreateKvNamespaceRequest
 //
@@ -2313,7 +2479,7 @@ func (client *Client) CreateKvNamespaceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建自定义列表
+// Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
 //
 // @param tmpReq - CreateListRequest
 //
@@ -2375,7 +2541,11 @@ func (client *Client) CreateListWithContext(ctx context.Context, tmpReq *CreateL
 
 // Summary:
 //
-// 新增负载均衡器
+// # Add a New Load Balancer
+//
+// Description:
+//
+// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and more, to achieve effective traffic management and optimization.
 //
 // @param tmpReq - CreateLoadBalancerRequest
 //
@@ -2497,7 +2667,7 @@ func (client *Client) CreateLoadBalancerWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 新增站点网络优化配置
+// # Create a new site network optimization configuration
 //
 // @param request - CreateNetworkOptimizationRequest
 //
@@ -2581,7 +2751,11 @@ func (client *Client) CreateNetworkOptimizationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 新增源地址池
+// # Add a new origin address pool
+//
+// Description:
+//
+// Multiple origins can be added under the origin address, supporting domain names, IPs, OSS, S3, and other types of origins. It supports authentication for OSS and S3 type origins.
 //
 // @param tmpReq - CreateOriginPoolRequest
 //
@@ -2643,7 +2817,7 @@ func (client *Client) CreateOriginPoolWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 开启源站防护
+// Enables origin protection.
 //
 // @param request - CreateOriginProtectionRequest
 //
@@ -2691,7 +2865,7 @@ func (client *Client) CreateOriginProtectionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建站点回源规则配置
+// # Create a new origin rule configuration for the site
 //
 // @param request - CreateOriginRuleRequest
 //
@@ -2819,7 +2993,7 @@ func (client *Client) CreateOriginRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 调用CreatePage创建自定义响应页面
+// Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
 //
 // @param tmpReq - CreatePageRequest
 //
@@ -2885,7 +3059,7 @@ func (client *Client) CreatePageWithContext(ctx context.Context, tmpReq *CreateP
 
 // Summary:
 //
-// 创建记录
+// Creates a DNS record for a specific website.
 //
 // @param tmpReq - CreateRecordRequest
 //
@@ -2979,7 +3153,7 @@ func (client *Client) CreateRecordWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// 新增重定向规则
+// # Add a Redirect Rule
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -3059,7 +3233,7 @@ func (client *Client) CreateRedirectRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 新增重写Url规则
+// # Add Rewrite URL Rule
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -3139,7 +3313,7 @@ func (client *Client) CreateRewriteUrlRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建routine
+// Creates a routine.
 //
 // @param request - CreateRoutineRequest
 //
@@ -3191,7 +3365,15 @@ func (client *Client) CreateRoutineWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 发布Routine某个版本代码
+// Release the version of the function code in proportion to the specified environment.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+//   - When you create a version for deployment, you can set the environment name `Env` parameter only to the test environment `staging` or the production environment `production`.
+//
+//   - `CodeVersions` parameter supports up to two versions of a phased release, and the sum of the proportions of these versions must be equal to 100%.
 //
 // @param tmpReq - CreateRoutineCodeDeploymentRequest
 //
@@ -3253,7 +3435,7 @@ func (client *Client) CreateRoutineCodeDeploymentWithContext(ctx context.Context
 
 // Summary:
 //
-// 新增Routine关联域名
+// Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
 //
 // @param request - CreateRoutineRelatedRecordRequest
 //
@@ -3305,7 +3487,7 @@ func (client *Client) CreateRoutineRelatedRecordWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建边缘函数路由配置
+// Adds edge function routing configurations.
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -3447,7 +3629,7 @@ func (client *Client) CreateRoutineWithAssetsCodeVersionWithContext(ctx context.
 
 // Summary:
 //
-// 批量新增定时预热任务的计划
+// Creates scheduled prefetch plans.
 //
 // @param tmpReq - CreateScheduledPreloadExecutionsRequest
 //
@@ -3503,7 +3685,7 @@ func (client *Client) CreateScheduledPreloadExecutionsWithContext(ctx context.Co
 
 // Summary:
 //
-// 新增定时预热任务
+// Adds a scheduled prefetch task.
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -3563,7 +3745,13 @@ func (client *Client) CreateScheduledPreloadJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 新建站点
+// Adds a website.
+//
+// Description:
+//
+//	  Make sure that you have an available plan before you add a website.
+//
+//		- Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
 //
 // @param request - CreateSiteRequest
 //
@@ -3623,7 +3811,15 @@ func (client *Client) CreateSiteWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 新建自定义字段
+// Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+//
+// Description:
+//
+//	  **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+//
+//		- **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+//
+//		- **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
 //
 // @param tmpReq - CreateSiteCustomLogRequest
 //
@@ -3693,7 +3889,7 @@ func (client *Client) CreateSiteCustomLogWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 新建一个任务投递
+// Creates a real-time log delivery task.
 //
 // @param tmpReq - CreateSiteDeliveryTaskRequest
 //
@@ -3807,7 +4003,7 @@ func (client *Client) CreateSiteDeliveryTaskWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建四层应用
+// # Create Transport Layer Application
 //
 // @param tmpReq - CreateTransportLayerApplicationRequest
 //
@@ -3885,7 +4081,7 @@ func (client *Client) CreateTransportLayerApplicationWithContext(ctx context.Con
 
 // Summary:
 //
-// 新增网页监测配置
+// Create a web page monitoring configuration.
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -3937,7 +4133,27 @@ func (client *Client) CreateUrlObservationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 新建一个用户粒度任务投递
+// Creates a log delivery task to ship logs to the specified destination.
+//
+// Description:
+//
+// This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+//
+//   - **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+//
+//   - **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+//
+//   - **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+//
+// ## [](#)Precautions
+//
+//   - Make sure that you have sufficient permissions to perform delivery tasks.
+//
+//   - If you enable encryption or authentication, properly configure corresponding parameters.
+//
+//   - Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+//
+//   - Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
 //
 // @param tmpReq - CreateUserDeliveryTaskRequest
 //
@@ -4155,7 +4371,7 @@ func (client *Client) CreateUserWafRulesetWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 新增站点视频处理配置
+// Add video processing configurations for a website.
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -4243,7 +4459,7 @@ func (client *Client) CreateVideoProcessingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建WAF规则
+// # Create WAF Rule
 //
 // @param tmpReq - CreateWafRuleRequest
 //
@@ -4311,7 +4527,7 @@ func (client *Client) CreateWafRuleWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// 创建WAF规则集
+// # Create WAF Ruleset
 //
 // @param request - CreateWafRulesetRequest
 //
@@ -4369,7 +4585,7 @@ func (client *Client) CreateWafRulesetWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建等候室
+// Creates a waiting room for a website.
 //
 // @param tmpReq - CreateWaitingRoomRequest
 //
@@ -4483,7 +4699,7 @@ func (client *Client) CreateWaitingRoomWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建等候室事件
+// Creates a waiting room event.
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -4603,7 +4819,7 @@ func (client *Client) CreateWaitingRoomEventWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建等候室规则
+// # Create Waiting Room Rule
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -4663,7 +4879,11 @@ func (client *Client) CreateWaitingRoomRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 关闭版本管理
+// Disables version management for a website.
+//
+// Description:
+//
+// You can disable version management only when the default environment and version 0 exist.
 //
 // @param request - DeactivateVersionManagementRequest
 //
@@ -4707,7 +4927,7 @@ func (client *Client) DeactivateVersionManagementWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除缓存配置
+// # Delete Cache Configuration
 //
 // @param request - DeleteCacheRuleRequest
 //
@@ -4755,7 +4975,7 @@ func (client *Client) DeleteCacheRuleWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除证书
+// Deletes a certificate for a website.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -4795,7 +5015,7 @@ func (client *Client) DeleteCertificateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除客户端CA证书
+// Deletes a client CA certificate.
 //
 // @param request - DeleteClientCaCertificateRequest
 //
@@ -4835,7 +5055,7 @@ func (client *Client) DeleteClientCaCertificateWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除客户端证书
+// Deletes a revoked client certificate.
 //
 // @param request - DeleteClientCertificateRequest
 //
@@ -4875,7 +5095,7 @@ func (client *Client) DeleteClientCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除压缩规则
+// # Delete compression rule
 //
 // @param request - DeleteCompressionRuleRequest
 //
@@ -4967,7 +5187,7 @@ func (client *Client) DeleteCustomHostnameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除修改响应码规则
+// Deletes the configuration of response code modification for a website.
 //
 // @param request - DeleteCustomResponseCodeRuleRequest
 //
@@ -5015,7 +5235,7 @@ func (client *Client) DeleteCustomResponseCodeRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// 删除定制场景策略
+// Deletes a scenario-specific custom policy.
 //
 // @param request - DeleteCustomScenePolicyRequest
 //
@@ -5059,7 +5279,7 @@ func (client *Client) DeleteCustomScenePolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除边缘容器的应用
+// Deletes a containerized application.
 //
 // @param request - DeleteEdgeContainerAppRequest
 //
@@ -5103,7 +5323,7 @@ func (client *Client) DeleteEdgeContainerAppWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除边缘容器应用的镜像秘钥
+// # Delete the image secret of an edge container application
 //
 // @param request - DeleteEdgeContainerAppImageSecretRequest
 //
@@ -5151,7 +5371,7 @@ func (client *Client) DeleteEdgeContainerAppImageSecretWithContext(ctx context.C
 
 // Summary:
 //
-// 删除一个边缘容器应用的域名记录
+// Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
 //
 // @param request - DeleteEdgeContainerAppRecordRequest
 //
@@ -5203,7 +5423,7 @@ func (client *Client) DeleteEdgeContainerAppRecordWithContext(ctx context.Contex
 
 // Summary:
 //
-// 删除边缘容器应用的版本
+// Deletes a version of a containerized application.
 //
 // @param request - DeleteEdgeContainerAppVersionRequest
 //
@@ -5251,7 +5471,7 @@ func (client *Client) DeleteEdgeContainerAppVersionWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除深度学习和防护下发的规则
+// # Delete rules for deep learning and protection distribution
 //
 // @param request - DeleteHttpDDoSIntelligentRuleRequest
 //
@@ -5303,7 +5523,7 @@ func (client *Client) DeleteHttpDDoSIntelligentRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除HTTP入站请求头规则
+// Deletes the configuration of modifying incoming HTTP request headers for a website.
 //
 // @param request - DeleteHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -5351,7 +5571,7 @@ func (client *Client) DeleteHttpIncomingRequestHeaderModificationRuleWithContext
 
 // Summary:
 //
-// 删除HTTP入站响应头规则
+// Deletes the configuration of modifying HTTP response headers for a website.
 //
 // @param request - DeleteHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -5399,7 +5619,7 @@ func (client *Client) DeleteHttpIncomingResponseHeaderModificationRuleWithContex
 
 // Summary:
 //
-// 删除HTTP请求头规则
+// Deletes the configuration of modifying HTTP request headers for a website.
 //
 // @param request - DeleteHttpRequestHeaderModificationRuleRequest
 //
@@ -5447,7 +5667,7 @@ func (client *Client) DeleteHttpRequestHeaderModificationRuleWithContext(ctx con
 
 // Summary:
 //
-// 删除HTTP响应头规则
+// Deletes the configuration of modifying HTTP response headers for a website.
 //
 // @param request - DeleteHttpResponseHeaderModificationRuleRequest
 //
@@ -5495,7 +5715,7 @@ func (client *Client) DeleteHttpResponseHeaderModificationRuleWithContext(ctx co
 
 // Summary:
 //
-// 删除HTTPS应用配置
+// # Delete HTTPS Application Configuration
 //
 // @param request - DeleteHttpsApplicationConfigurationRequest
 //
@@ -5543,7 +5763,7 @@ func (client *Client) DeleteHttpsApplicationConfigurationWithContext(ctx context
 
 // Summary:
 //
-// 删除HTTPS基础配置
+// # Delete HTTPS Basic Configuration
 //
 // @param request - DeleteHttpsBasicConfigurationRequest
 //
@@ -5591,7 +5811,7 @@ func (client *Client) DeleteHttpsBasicConfigurationWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除站点图片转换配置
+// # Delete Site Image Transformation Configuration
 //
 // @param request - DeleteImageTransformRequest
 //
@@ -5687,7 +5907,7 @@ func (client *Client) DeleteKeylessServerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除Namespace的Key-Value对
+// Deletes a key-value pair from a namespace.
 //
 // @param request - DeleteKvRequest
 //
@@ -5727,7 +5947,7 @@ func (client *Client) DeleteKvWithContext(ctx context.Context, request *DeleteKv
 
 // Summary:
 //
-// 删除Namespace
+// Deletes a namespace from an Alibaba Cloud account.
 //
 // @param request - DeleteKvNamespaceRequest
 //
@@ -5771,7 +5991,7 @@ func (client *Client) DeleteKvNamespaceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除自定义列表
+// Deletes a custom list that is no longer needed.
 //
 // @param request - DeleteListRequest
 //
@@ -5815,7 +6035,11 @@ func (client *Client) DeleteListWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除负载均衡器
+// # Delete Load Balancer
+//
+// Description:
+//
+// Delete a load balancer by its ID, only one can be deleted at a time.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -5863,7 +6087,7 @@ func (client *Client) DeleteLoadBalancerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除网络优化配置
+// # Delete Network Optimization Configuration
 //
 // @param request - DeleteNetworkOptimizationRequest
 //
@@ -5991,7 +6215,7 @@ func (client *Client) DeleteOriginClientCertificateWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除源地址池
+// # Delete Origin Address Pool
 //
 // @param request - DeleteOriginPoolRequest
 //
@@ -6039,7 +6263,7 @@ func (client *Client) DeleteOriginPoolWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 关闭源站防护功能
+// Disables origin protection.
 //
 // @param request - DeleteOriginProtectionRequest
 //
@@ -6083,7 +6307,7 @@ func (client *Client) DeleteOriginProtectionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除回源规则配置
+// # Delete Origin Rule Configuration
 //
 // @param request - DeleteOriginRuleRequest
 //
@@ -6131,7 +6355,7 @@ func (client *Client) DeleteOriginRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除自定义响应页面
+// Deletes a custom error page that is no longer needed.
 //
 // @param request - DeletePageRequest
 //
@@ -6175,7 +6399,7 @@ func (client *Client) DeletePageWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除记录
+// Deletes a DNS record of a website based on the specified RecordId.
 //
 // @param request - DeleteRecordRequest
 //
@@ -6223,7 +6447,7 @@ func (client *Client) DeleteRecordWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除重定向规则
+// Deletes a URL redirect rule for a website.
 //
 // @param request - DeleteRedirectRuleRequest
 //
@@ -6271,7 +6495,7 @@ func (client *Client) DeleteRedirectRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除重写Url规则
+// Deletes a URL rewrite rule for a website.
 //
 // @param request - DeleteRewriteUrlRuleRequest
 //
@@ -6319,7 +6543,7 @@ func (client *Client) DeleteRewriteUrlRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除Routine
+// Deletes a routine in Edge Routine.
 //
 // @param request - DeleteRoutineRequest
 //
@@ -6363,7 +6587,7 @@ func (client *Client) DeleteRoutineWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除Routine某版本代码
+// Deletes a code version of a routine.
 //
 // @param request - DeleteRoutineCodeVersionRequest
 //
@@ -6411,7 +6635,7 @@ func (client *Client) DeleteRoutineCodeVersionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除Routine关联域名
+// Deletes a record that is associated with a routine.
 //
 // @param request - DeleteRoutineRelatedRecordRequest
 //
@@ -6469,7 +6693,7 @@ func (client *Client) DeleteRoutineRelatedRecordWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除边缘函数路由配置
+// Deletes the route configuration of an edge function.
 //
 // @param request - DeleteRoutineRouteRequest
 //
@@ -6517,7 +6741,7 @@ func (client *Client) DeleteRoutineRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除单个定时预热计划
+// Deletes a scheduled prefetch plan based on the plan ID.
 //
 // @param request - DeleteScheduledPreloadExecutionRequest
 //
@@ -6561,7 +6785,7 @@ func (client *Client) DeleteScheduledPreloadExecutionWithContext(ctx context.Con
 
 // Summary:
 //
-// 删除指定定时预热任务
+// Deletes a specified scheduled prefetch task based on the task ID.
 //
 // @param request - DeleteScheduledPreloadJobRequest
 //
@@ -6605,7 +6829,7 @@ func (client *Client) DeleteScheduledPreloadJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除站点
+// Deletes a website based on the specified website ID.
 //
 // @param request - DeleteSiteRequest
 //
@@ -6653,7 +6877,7 @@ func (client *Client) DeleteSiteWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除一个任务投递
+// Deletes a real-time log delivery task.
 //
 // @param request - DeleteSiteDeliveryTaskRequest
 //
@@ -6741,7 +6965,7 @@ func (client *Client) DeleteSiteOriginClientCertificateWithContext(ctx context.C
 
 // Summary:
 //
-// 删除四层应用接口
+// # Delete Transport Layer Application
 //
 // @param request - DeleteTransportLayerApplicationRequest
 //
@@ -6789,7 +7013,7 @@ func (client *Client) DeleteTransportLayerApplicationWithContext(ctx context.Con
 
 // Summary:
 //
-// 删除网页监测配置
+// Deletes page monitoring configurations.
 //
 // @param request - DeleteUrlObservationRequest
 //
@@ -6837,7 +7061,17 @@ func (client *Client) DeleteUrlObservationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除一个用户任务投递
+// Deletes a log delivery task from your Alibaba Cloud account.
+//
+// Description:
+//
+// *****>
+//
+//   - Deleted tasks cannot be restored. Proceed with caution.
+//
+//   - To call this operation, you must have an account that has the required permissions.
+//
+//   - The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
 //
 // @param request - DeleteUserDeliveryTaskRequest
 //
@@ -6881,27 +7115,13 @@ func (client *Client) DeleteUserDeliveryTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 用于删除实例级别的Web应用防火墙规则集。
+// Used for deleting an instance-level Web Application Firewall (WAF) ruleset.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 本API允许用户为指定实例创建新的WAF（Web Application Firewall）规则集。
-//
-// - `InstanceId` 是必需参数，指定了要为其创建规则集的具体实例。
-//
-// - `Phase` 参数定义了规则集的应用阶段，例如自定义规则、频次控制等。
-//
-// - `Name` 和 `Expression` 是必填项，分别代表规则集的名字和具体的匹配表达式。
-//
-// - 可选参数 `Description` 提供了对规则集功能或用途的文字描述。
-//
-// - `Status` 控制着规则集是否立即生效 (`on`) 或者处于关闭状态 (`off`)。
-//
-// - 通过 `Rules` 参数可以进一步配置更详细的规则列表，每个规则都包含名称、位置、表达式及动作等属性。
-//
-// - 成功响应将返回新创建规则集的唯一标识符 `Id` 以及所有关联规则的ID列表 `RuleIds`。
+// - `InstanceId` and `Id` are required parameters, specifying the WAF instance ID to be operated on and the specific ruleset ID, respectively.
 //
 // @param request - DeleteUserWafRulesetRequest
 //
@@ -6951,7 +7171,7 @@ func (client *Client) DeleteUserWafRulesetWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除站点视频处理配置
+// Deletes a video processing configuration.
 //
 // @param request - DeleteVideoProcessingRequest
 //
@@ -6999,7 +7219,7 @@ func (client *Client) DeleteVideoProcessingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除WAF规则
+// # Delete WAF Rule
 //
 // @param request - DeleteWafRuleRequest
 //
@@ -7053,7 +7273,7 @@ func (client *Client) DeleteWafRuleWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除WAF规则集
+// # Delete WAF Ruleset
 //
 // @param request - DeleteWafRulesetRequest
 //
@@ -7107,7 +7327,7 @@ func (client *Client) DeleteWafRulesetWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除等候室
+// Deletes a waiting room.
 //
 // @param request - DeleteWaitingRoomRequest
 //
@@ -7155,7 +7375,7 @@ func (client *Client) DeleteWaitingRoomWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除等候室事件
+// Deletes a waiting room event.
 //
 // @param request - DeleteWaitingRoomEventRequest
 //
@@ -7203,7 +7423,7 @@ func (client *Client) DeleteWaitingRoomEventWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除等候室规则
+// Deletes a waiting room bypass rule.
 //
 // @param request - DeleteWaitingRoomRuleRequest
 //
@@ -7251,7 +7471,7 @@ func (client *Client) DeleteWaitingRoomRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询定制场景策略配置
+// Queries the configurations of a scenario-specific policy.
 //
 // @param request - DescribeCustomScenePoliciesRequest
 //
@@ -7303,7 +7523,7 @@ func (client *Client) DescribeCustomScenePoliciesWithContext(ctx context.Context
 
 // Summary:
 //
-// 攻击分析-查询攻击事件列表
+// Queries DDoS attack events.
 //
 // @param request - DescribeDDoSAllEventListRequest
 //
@@ -7367,7 +7587,7 @@ func (client *Client) DescribeDDoSAllEventListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询DCDN DDoS用户bps、pps数据
+// # Query DCDN DDoS user bps and pps data
 //
 // @param request - DescribeDDoSBpsListRequest
 //
@@ -7407,7 +7627,7 @@ func (client *Client) DescribeDDoSBpsListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// ddos分析七层qps走势图接口
+// # DDoS Analysis Layer 7 QPS Trend Chart API
 //
 // @param request - DescribeDDoSL7QpsListRequest
 //
@@ -7507,7 +7727,7 @@ func (client *Client) DescribeDdosMaxBurstGbpsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 边缘容器的监控
+// Provides monitoring data for metrics of ESA edge containers.
 //
 // @param request - DescribeEdgeContainerAppStatsRequest
 //
@@ -7547,7 +7767,7 @@ func (client *Client) DescribeEdgeContainerAppStatsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询HTTP DDoS智能防护配置信息
+// Queries the configuration of smart HTTP DDoS protection for a website.
 //
 // @param request - DescribeHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -7591,7 +7811,7 @@ func (client *Client) DescribeHttpDDoSAttackIntelligentProtectionWithContext(ctx
 
 // Summary:
 //
-// 查询HTTP DDoS攻击防护配置信息
+// Queries the configurations of HTTP DDoS attack protection.
 //
 // @param request - DescribeHttpDDoSAttackProtectionRequest
 //
@@ -7799,7 +8019,7 @@ func (client *Client) DescribeHttpDDoSIntelligentRateLimitRulesWithContext(ctx c
 
 // Summary:
 //
-// 预热任务查询接口
+// Queries the details of prefetch tasks by time, task status, or prefetch URL.
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -7839,7 +8059,7 @@ func (client *Client) DescribePreloadTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 刷新任务查询接口
+// Queries the details of purge tasks.
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -7879,7 +8099,11 @@ func (client *Client) DescribePurgeTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询套餐实例状态
+// Queries the status of an instance that uses a plan.
+//
+// Description:
+//
+// You can query the status of an instance after you purchase a plan for the instance.
 //
 // @param request - DescribeRatePlanInstanceStatusRequest
 //
@@ -7923,7 +8147,7 @@ func (client *Client) DescribeRatePlanInstanceStatusWithContext(ctx context.Cont
 
 // Summary:
 //
-// 套餐询价
+// Queries the prices, types, and status of plans.
 //
 // @param request - DescribeRatePlanPriceRequest
 //
@@ -7975,7 +8199,17 @@ func (client *Client) DescribeRatePlanPriceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询站点离线日志
+// Queries the URLs from which you can download the raw access logs of a website.
+//
+// Description:
+//
+//	  If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+//
+//		- The log data is collected every hour.
+//
+//		- You can call this operation up to 50 times per second per account.
+//
+//		- You can query only logs in the last month. The time range cannot exceed 31 days.
 //
 // @param request - DescribeSiteLogsRequest
 //
@@ -8035,7 +8269,25 @@ func (client *Client) DescribeSiteLogsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询时序数据
+// # Query traffic analysis time series data
+//
+// Description:
+//
+// - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
+//
+// - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
+//
+//   - For a span of 3 hours or less, it returns 1-minute granularity data.
+//
+//   - For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
+//
+//   - For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
+//
+//   - For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
+//
+//   - For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
+//
+// - Due to the high number of accesses during the query period, the data analysis may be sampled.
 //
 // @param tmpReq - DescribeSiteTimeSeriesDataRequest
 //
@@ -8101,7 +8353,11 @@ func (client *Client) DescribeSiteTimeSeriesDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取TOP数据
+// Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+//
+// Description:
+//
+//	If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
 //
 // @param tmpReq - DescribeSiteTopDataRequest
 //
@@ -8219,7 +8475,11 @@ func (client *Client) DescribeTraceDiagnoseReportWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询网页观测质量数据
+// Queries the page monitoring data.
+//
+// Description:
+//
+// If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
 //
 // @param request - DescribeUrlObservationDataRequest
 //
@@ -8283,7 +8543,7 @@ func (client *Client) DescribeUrlObservationDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// 禁用定制场景策略
+// Disables a scenario-specific policy.
 //
 // @param request - DisableCustomScenePolicyRequest
 //
@@ -8327,7 +8587,7 @@ func (client *Client) DisableCustomScenePolicyWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 编辑站点WAF配置
+// # Edit WAF Configuration for a Site
 //
 // @param tmpReq - EditSiteWafSettingsRequest
 //
@@ -8387,7 +8647,7 @@ func (client *Client) EditSiteWafSettingsWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 启动定制场景策略
+// Enables a scenario-specific policy.
 //
 // @param request - EnableCustomScenePolicyRequest
 //
@@ -8431,7 +8691,7 @@ func (client *Client) EnableCustomScenePolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 导出记录
+// Exports all DNS records of a website domain as a TXT file.
 //
 // @param request - ExportRecordsRequest
 //
@@ -8515,7 +8775,7 @@ func (client *Client) GenerateTraceDiagnoseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取架构文件套餐使用情况
+// Queries the usage of the upload file quota for API security schema verification.
 //
 // @param request - GetApiSchemaUsageRequest
 //
@@ -8611,7 +8871,7 @@ func (client *Client) GetAutomaticFrequencyControlConfigWithContext(ctx context.
 
 // Summary:
 //
-// 查询单条缓存配置
+// # Query a single cache configuration
 //
 // @param request - GetCacheRuleRequest
 //
@@ -8651,7 +8911,7 @@ func (client *Client) GetCacheRuleWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
-// 查询站点缓存Tag配置
+// # Query Site Cache Tag Configuration
 //
 // @param request - GetCacheTagRequest
 //
@@ -8691,7 +8951,7 @@ func (client *Client) GetCacheTagWithContext(ctx context.Context, request *GetCa
 
 // Summary:
 //
-// 获取证书和私钥以及证书信息
+// # Retrieve the certificate, private key, and certificate information
 //
 // @param request - GetCertificateRequest
 //
@@ -8739,7 +8999,7 @@ func (client *Client) GetCertificateWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询证书quota及用量
+// # Query certificate quota and usage
 //
 // @param request - GetCertificateQuotaRequest
 //
@@ -8779,7 +9039,7 @@ func (client *Client) GetCertificateQuotaWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取客户端CA证书信息
+// Queries a client CA certificate.
 //
 // @param request - GetClientCaCertificateRequest
 //
@@ -8867,7 +9127,7 @@ func (client *Client) GetClientCaCertificateHostnamesWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取客户端证书以及证书信息
+// Queries information about a client certificate.
 //
 // @param request - GetClientCertificateRequest
 //
@@ -8907,7 +9167,7 @@ func (client *Client) GetClientCertificateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取客户端证书绑定的域名列表
+// Queries domain names associated with a client CA certificate. If no certificate is specified, domain names associated with an Edge Security Acceleration(ESA)-managed CA certificate are returned.
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -8947,7 +9207,7 @@ func (client *Client) GetClientCertificateHostnamesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询站点cname拉平配置
+// # Queries the CNAME flattening configuration of a website
 //
 // @param request - GetCnameFlatteningRequest
 //
@@ -8987,7 +9247,7 @@ func (client *Client) GetCnameFlatteningWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询压缩规则详情
+// # Query Compression Rule Details
 //
 // @param request - GetCompressionRuleRequest
 //
@@ -9027,7 +9287,7 @@ func (client *Client) GetCompressionRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询站点中国大陆网络接入优化配置
+// Queries the configuration of Chinese mainland access optimization.
 //
 // @param request - GetCrossBorderOptimizationRequest
 //
@@ -9159,7 +9419,7 @@ func (client *Client) GetCustomResponseCodeRuleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询站点开发者模式配置
+// # Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
 //
@@ -9199,7 +9459,7 @@ func (client *Client) GetDevelopmentModeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取边缘容器应用信息
+// Queries the information about a containerized application, including basic application configurations and health check configurations.
 //
 // @param request - GetEdgeContainerAppRequest
 //
@@ -9243,7 +9503,7 @@ func (client *Client) GetEdgeContainerAppWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取边缘容器应用日志采集配置
+// Queries the log collection configuration of a containerized application.
 //
 // @param request - GetEdgeContainerAppLogRiverRequest
 //
@@ -9327,7 +9587,7 @@ func (client *Client) GetEdgeContainerAppResourceCapacityWithContext(ctx context
 
 // Summary:
 //
-// 获取边缘容器资源预留配置
+// Obtain the resource reservation configuration of the edge container.
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
 //
@@ -9371,7 +9631,7 @@ func (client *Client) GetEdgeContainerAppResourceReserveWithContext(ctx context.
 
 // Summary:
 //
-// 获取边缘容器应用资源分布
+// Obtains the distribution of edge container application resources.
 //
 // @param request - GetEdgeContainerAppResourceStatusRequest
 //
@@ -9415,7 +9675,7 @@ func (client *Client) GetEdgeContainerAppResourceStatusWithContext(ctx context.C
 
 // Summary:
 //
-// 获取边缘容器应用的状态信息
+// Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
 //
 // @param request - GetEdgeContainerAppStatusRequest
 //
@@ -9463,7 +9723,7 @@ func (client *Client) GetEdgeContainerAppStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取边缘容器应用的某个版本信息
+// Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
 //
 // @param request - GetEdgeContainerAppVersionRequest
 //
@@ -9503,7 +9763,7 @@ func (client *Client) GetEdgeContainerAppVersionWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取边缘容器应用部署区域
+// Queries regions where a containerized application is deployed based on the application ID.
 //
 // @param request - GetEdgeContainerDeployRegionsRequest
 //
@@ -9543,7 +9803,7 @@ func (client *Client) GetEdgeContainerDeployRegionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取边缘容器日志信息
+// Queries Edge Container logs.
 //
 // @param request - GetEdgeContainerLogsRequest
 //
@@ -9583,7 +9843,7 @@ func (client *Client) GetEdgeContainerLogsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取应用测试环境部署状态
+// Queries the deployment status of an application in the staging environment by using the application ID.
 //
 // @param request - GetEdgeContainerStagingDeployStatusRequest
 //
@@ -9623,7 +9883,7 @@ func (client *Client) GetEdgeContainerStagingDeployStatusWithContext(ctx context
 
 // Summary:
 //
-// 获取边缘容器应用的终端信息
+// Queries the terminal information of a containerized application.
 //
 // @param request - GetEdgeContainerTerminalRequest
 //
@@ -9667,7 +9927,7 @@ func (client *Client) GetEdgeContainerTerminalWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # GetErService
+// Checks the status of Edge Routine.
 //
 // @param request - GetErServiceRequest
 //
@@ -9707,7 +9967,7 @@ func (client *Client) GetErServiceWithContext(ctx context.Context, request *GetE
 
 // Summary:
 //
-// 查询HTTP入站请求头规则详情
+// Queries the configuration details of an HTTP request header modification rule for a website.
 //
 // @param request - GetHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -9747,7 +10007,7 @@ func (client *Client) GetHttpIncomingRequestHeaderModificationRuleWithContext(ct
 
 // Summary:
 //
-// 查询HTTP入站响应头规则
+// Queries the configuration details of an incoming HTTP response header modification rule for a website.
 //
 // @param request - GetHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -9787,7 +10047,7 @@ func (client *Client) GetHttpIncomingResponseHeaderModificationRuleWithContext(c
 
 // Summary:
 //
-// 查询HTTP请求头规则详情
+// # Query HTTP Request Header Rule Details
 //
 // @param request - GetHttpRequestHeaderModificationRuleRequest
 //
@@ -9827,7 +10087,7 @@ func (client *Client) GetHttpRequestHeaderModificationRuleWithContext(ctx contex
 
 // Summary:
 //
-// 查询HTTP响应头规则
+// # Query HTTP Response Header Rules
 //
 // @param request - GetHttpResponseHeaderModificationRuleRequest
 //
@@ -9867,7 +10127,7 @@ func (client *Client) GetHttpResponseHeaderModificationRuleWithContext(ctx conte
 
 // Summary:
 //
-// 查询单条HTTPS应用的配置
+// # Query a Single HTTPS Application Configuration
 //
 // @param request - GetHttpsApplicationConfigurationRequest
 //
@@ -9907,7 +10167,7 @@ func (client *Client) GetHttpsApplicationConfigurationWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询单条HTTPS基础配置
+// # Query a Single HTTPS Basic Configuration
 //
 // @param request - GetHttpsBasicConfigurationRequest
 //
@@ -9947,7 +10207,7 @@ func (client *Client) GetHttpsBasicConfigurationWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询站点IPv6配置
+// Queries the IPv6 configuration of a website.
 //
 // @param request - GetIPv6Request
 //
@@ -9987,7 +10247,7 @@ func (client *Client) GetIPv6WithContext(ctx context.Context, request *GetIPv6Re
 
 // Summary:
 //
-// 查询单条站点图片转换配置
+// # Query Single Site Image Transformation Configuration
 //
 // @param request - GetImageTransformRequest
 //
@@ -10075,7 +10335,7 @@ func (client *Client) GetKeylessServerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询Key-Value对的某个Key值
+// Queries the value of a key in a key-value pair.
 //
 // @param request - GetKvRequest
 //
@@ -10115,7 +10375,7 @@ func (client *Client) GetKvWithContext(ctx context.Context, request *GetKvReques
 
 // Summary:
 //
-// 查询Key-Value对的某个Key的详情
+// Queries the value and time to live (TTL) of a key.
 //
 // @param request - GetKvDetailRequest
 //
@@ -10163,7 +10423,7 @@ func (client *Client) GetKvDetailWithContext(ctx context.Context, request *GetKv
 
 // Summary:
 //
-// 查询Namespace信息
+// Queries the information about a namespace in your Alibaba Cloud account.
 //
 // @param request - GetKvNamespaceRequest
 //
@@ -10203,7 +10463,7 @@ func (client *Client) GetKvNamespaceWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取单个自定义列表
+// Queries the details of a custom list, such as the name, description, type, and content.
 //
 // @param request - GetListRequest
 //
@@ -10247,7 +10507,11 @@ func (client *Client) GetListWithContext(ctx context.Context, request *GetListRe
 
 // Summary:
 //
-// 查询特定的负载均衡器
+// # Query a Specific Load Balancer
+//
+// Description:
+//
+// This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
 //
 // @param request - GetLoadBalancerRequest
 //
@@ -10287,7 +10551,7 @@ func (client *Client) GetLoadBalancerWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询站点托管转换配置
+// # Query Managed Transform Configuration
 //
 // @param request - GetManagedTransformRequest
 //
@@ -10327,7 +10591,7 @@ func (client *Client) GetManagedTransformWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询单条网络优化配置
+// # Query a single network optimization configuration
 //
 // @param request - GetNetworkOptimizationRequest
 //
@@ -10487,7 +10751,7 @@ func (client *Client) GetOriginClientCertificateHostnamesWithContext(ctx context
 
 // Summary:
 //
-// 查询特定源地址池
+// # Query a specific origin pool
 //
 // @param request - GetOriginPoolRequest
 //
@@ -10527,7 +10791,7 @@ func (client *Client) GetOriginPoolWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 查询站点源站防护相关配置，查看回源IP白名单的信息
+// Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
 //
 // @param request - GetOriginProtectionRequest
 //
@@ -10567,7 +10831,7 @@ func (client *Client) GetOriginProtectionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询单条回源规则的配置
+// Queries the configurations of a single origin rule.
 //
 // @param request - GetOriginRuleRequest
 //
@@ -10607,7 +10871,7 @@ func (client *Client) GetOriginRuleWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取单个自定义响应页面详情
+// Queries the details of a custom error page based on the error page ID.
 //
 // @param request - GetPageRequest
 //
@@ -10695,7 +10959,7 @@ func (client *Client) GetPerformanceDataCollectionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取刷新Quota
+// Queries the quotas and quota usage for different cache purge options.
 //
 // @param request - GetPurgeQuotaRequest
 //
@@ -10743,7 +11007,7 @@ func (client *Client) GetPurgeQuotaWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// ub日志字段列表接口
+// Queries the fields in real-time logs based on the log category.
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //
@@ -10783,7 +11047,7 @@ func (client *Client) GetRealtimeDeliveryFieldWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询单条记录信息
+// Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
 //
 // @param request - GetRecordRequest
 //
@@ -10823,7 +11087,7 @@ func (client *Client) GetRecordWithContext(ctx context.Context, request *GetReco
 
 // Summary:
 //
-// 查询重定向规则详情
+// # Query Redirect Rule Details
 //
 // @param request - GetRedirectRuleRequest
 //
@@ -10863,7 +11127,7 @@ func (client *Client) GetRedirectRuleWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询重写URL规则详情
+// # Query details of the rewrite URL rule
 //
 // @param request - GetRewriteUrlRuleRequest
 //
@@ -10903,7 +11167,7 @@ func (client *Client) GetRewriteUrlRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询Routine配置信息
+// Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
 //
 // @param request - GetRoutineRequest
 //
@@ -10991,7 +11255,7 @@ func (client *Client) GetRoutineAccessTokenWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询Routine某版本代码
+// Queries information about a code version of a routine.
 //
 // @param request - GetRoutineCodeVersionRequest
 //
@@ -11039,7 +11303,7 @@ func (client *Client) GetRoutineCodeVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询单条边缘函数路由的配置
+// Queries the route configurations of a single edge function.
 //
 // @param request - GetRoutineRouteRequest
 //
@@ -11087,7 +11351,13 @@ func (client *Client) GetRoutineRouteWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+// Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+//
+// Description:
+//
+//	  Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+//
+//		- A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
 //
 // @param request - GetRoutineStagingCodeUploadInfoRequest
 //
@@ -11135,7 +11405,7 @@ func (client *Client) GetRoutineStagingCodeUploadInfoWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询单个定时预热任务
+// Queries a specified scheduled prefetch task based on the task ID.
 //
 // @param request - GetScheduledPreloadJobRequest
 //
@@ -11175,7 +11445,7 @@ func (client *Client) GetScheduledPreloadJobWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询站点放行搜索引擎爬虫配置
+// Queries the configuration for search engine crawler of a website.
 //
 // @param request - GetSeoBypassRequest
 //
@@ -11215,7 +11485,7 @@ func (client *Client) GetSeoBypassWithContext(ctx context.Context, request *GetS
 
 // Summary:
 //
-// 查询单个站点的信息
+// Queries information about a website based on the website ID.
 //
 // @param request - GetSiteRequest
 //
@@ -11255,7 +11525,7 @@ func (client *Client) GetSiteWithContext(ctx context.Context, request *GetSiteRe
 
 // Summary:
 //
-// 查询当前NS列表
+// Queries the nameservers configured for a website.
 //
 // @param request - GetSiteCurrentNSRequest
 //
@@ -11295,7 +11565,15 @@ func (client *Client) GetSiteCurrentNSWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取自定义字段
+// Queries the configuration of custom log fields for a website.
+//
+// Description:
+//
+//	  **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+//
+//		- **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+//
+//		- ****
 //
 // @param request - GetSiteCustomLogRequest
 //
@@ -11335,7 +11613,7 @@ func (client *Client) GetSiteCustomLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取一个实时日志任务投递
+// Queries a real-time log delivery task.
 //
 // @param request - GetSiteDeliveryTaskRequest
 //
@@ -11375,7 +11653,23 @@ func (client *Client) GetSiteDeliveryTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取日志投递任务quota数
+// Queries the remaining quota for delivering a specific category of real-time logs in a website.
+//
+// Description:
+//
+// You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+//
+// **Take note of the following parameters:**
+//
+//   - “
+//
+//   - `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+//
+//   - `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+//
+// **Response:**
+//
+//   - If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
 //
 // @param request - GetSiteLogDeliveryQuotaRequest
 //
@@ -11415,7 +11709,7 @@ func (client *Client) GetSiteLogDeliveryQuotaWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询站点名称独占配置
+// Queries the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
 //
 // @param request - GetSiteNameExclusiveRequest
 //
@@ -11495,7 +11789,7 @@ func (client *Client) GetSiteOriginClientCertificateWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询站点暂停配置
+// Queries the ESA proxy configuration of a website.
 //
 // @param request - GetSitePauseRequest
 //
@@ -11535,7 +11829,7 @@ func (client *Client) GetSitePauseWithContext(ctx context.Context, request *GetS
 
 // Summary:
 //
-// 获取站点WAF配置
+// # Get WAF Configuration for a Site
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -11587,7 +11881,7 @@ func (client *Client) GetSiteWafSettingsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询站点多级缓存配置
+// # Query Multi-level Cache Configuration for Site
 //
 // @param request - GetTieredCacheRequest
 //
@@ -11627,7 +11921,7 @@ func (client *Client) GetTieredCacheWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询四层应用的详情
+// # Query details of the transport layer application
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -11667,7 +11961,7 @@ func (client *Client) GetTransportLayerApplicationWithContext(ctx context.Contex
 
 // Summary:
 //
-// 文件上传任务查询接口
+// Queries the execution status and running information of a file upload task based on the task ID.
 //
 // @param request - GetUploadTaskRequest
 //
@@ -11707,7 +12001,15 @@ func (client *Client) GetUploadTaskWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取用户粒度任务投递
+// Queries the information about a log delivery task by account.
+//
+// Description:
+//
+//	  This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****
+//
+//		- You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****
+//
+//		- ****````
 //
 // @param request - GetUserDeliveryTaskRequest
 //
@@ -11747,7 +12049,11 @@ func (client *Client) GetUserDeliveryTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取日志投递任务用户quota数
+// Queries the remaining log delivery quota of each log category in your account.
+//
+// Description:
+//
+// This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
 //
 // @param request - GetUserLogDeliveryQuotaRequest
 //
@@ -11835,7 +12141,7 @@ func (client *Client) GetUserWafRulesetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询站点视频处理配置详情
+// Queries the video processing configuration details of a site.
 //
 // @param request - GetVideoProcessingRequest
 //
@@ -11883,7 +12189,7 @@ func (client *Client) GetVideoProcessingWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 将匹配项转换为表达式
+// Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
 //
 // @param request - GetWafFilterRequest
 //
@@ -11939,7 +12245,7 @@ func (client *Client) GetWafFilterWithContext(ctx context.Context, request *GetW
 
 // Summary:
 //
-// 获取WAF配额详情
+// # Get WAF Quota Details
 //
 // @param request - GetWafQuotaRequest
 //
@@ -11983,7 +12289,7 @@ func (client *Client) GetWafQuotaWithContext(ctx context.Context, request *GetWa
 
 // Summary:
 //
-// 获取单个WAF规则详情
+// # Get Details of a Single WAF Rule
 //
 // @param request - GetWafRuleRequest
 //
@@ -12031,7 +12337,7 @@ func (client *Client) GetWafRuleWithContext(ctx context.Context, request *GetWaf
 
 // Summary:
 //
-// 获取WAF规则集详情
+// # Get WAF Ruleset Details
 //
 // @param request - GetWafRulesetRequest
 //
@@ -12083,7 +12389,7 @@ func (client *Client) GetWafRulesetWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 查询缓存保持实例列表
+// # Query Cache Reserve Instance List
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -12123,7 +12429,7 @@ func (client *Client) ListCacheReserveInstancesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询多条缓存配置
+// # Query multiple cache configurations
 //
 // @param request - ListCacheRulesRequest
 //
@@ -12163,7 +12469,7 @@ func (client *Client) ListCacheRulesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询站点下证书列表
+// Lists certificates of a website.
 //
 // @param request - ListCertificatesRequest
 //
@@ -12223,7 +12529,7 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询匹配记录名的站点证书列表
+// Lists certificates that match specified records for a website. You can specify multiple records at a time.
 //
 // @param request - ListCertificatesByRecordRequest
 //
@@ -12279,7 +12585,7 @@ func (client *Client) ListCertificatesByRecordWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询TLS密码套件列表
+// # Query TLS Cipher Suite List
 //
 // @param request - ListCiphersRequest
 //
@@ -12319,7 +12625,7 @@ func (client *Client) ListCiphersWithContext(ctx context.Context, request *ListC
 
 // Summary:
 //
-// 查询站点下客户端CA证书列表
+// Queries a list of client certificate authority (CA) certificates for a website.
 //
 // @param request - ListClientCaCertificatesRequest
 //
@@ -12359,7 +12665,7 @@ func (client *Client) ListClientCaCertificatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询站点下客户端证书列表
+// Queries client certificates configured for a website.
 //
 // @param request - ListClientCertificatesRequest
 //
@@ -12399,7 +12705,7 @@ func (client *Client) ListClientCertificatesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询压缩规则列表
+// # Query the list of compression rules
 //
 // @param request - ListCompressionRulesRequest
 //
@@ -12507,7 +12813,7 @@ func (client *Client) ListCustomHostnamesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询修改响应码规则列表
+// Queries the configuration list of an HTTP response header modification rule for a website.
 //
 // @param request - ListCustomResponseCodeRulesRequest
 //
@@ -12643,7 +12949,11 @@ func (client *Client) ListDDoSInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 批量查询IP是否为VIP
+// Batch query whether the IP address is included in the ESA resolution result.
+//
+// Description:
+//
+// This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
 //
 // @param request - ListESAIPInfoRequest
 //
@@ -12683,7 +12993,7 @@ func (client *Client) ListESAIPInfoWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取边缘容器应用的镜像秘钥列表
+// # Retrieve the list of image secrets for edge container applications
 //
 // @param request - ListEdgeContainerAppImageSecretsRequest
 //
@@ -12727,7 +13037,7 @@ func (client *Client) ListEdgeContainerAppImageSecretsWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取一个边缘容器应用的全部域名记录
+// Lists domain names that are associated with a containerized application.
 //
 // @param request - ListEdgeContainerAppRecordsRequest
 //
@@ -12767,7 +13077,7 @@ func (client *Client) ListEdgeContainerAppRecordsWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取边缘容器应用的全部版本信息
+// Lists versions of all containerized applications.
 //
 // @param request - ListEdgeContainerAppVersionsRequest
 //
@@ -12807,7 +13117,7 @@ func (client *Client) ListEdgeContainerAppVersionsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取用户全部边缘容器应用
+// Queries all containerized applications in your Alibaba Cloud account.
 //
 // @param request - ListEdgeContainerAppsRequest
 //
@@ -12871,7 +13181,7 @@ func (client *Client) ListEdgeContainerAppsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询站点的边缘容器记录
+// Queries the records that are associated with Edge Container for a website.
 //
 // @param request - ListEdgeContainerRecordsRequest
 //
@@ -12911,7 +13221,11 @@ func (client *Client) ListEdgeContainerRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询站点的边缘路由记录
+// Queries the records that are associated with Edge Routine routes for a website.
+//
+// Description:
+//
+// >  You can call this operation 100 times per second.
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -12951,7 +13265,7 @@ func (client *Client) ListEdgeRoutineRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询HTTP入站请求头规则列表
+// Queries the configuration details of an incoming HTTP request header modification rule for a website.
 //
 // @param request - ListHttpIncomingRequestHeaderModificationRulesRequest
 //
@@ -12991,7 +13305,7 @@ func (client *Client) ListHttpIncomingRequestHeaderModificationRulesWithContext(
 
 // Summary:
 //
-// 查询HTTP入站响应头规则列表
+// Queries the configurations of an incoming HTTP response header modification rule for a website.
 //
 // @param request - ListHttpIncomingResponseHeaderModificationRulesRequest
 //
@@ -13031,7 +13345,7 @@ func (client *Client) ListHttpIncomingResponseHeaderModificationRulesWithContext
 
 // Summary:
 //
-// 查询HTTP请求头规则列表
+// # List of HTTP Request Header Rules
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -13071,7 +13385,7 @@ func (client *Client) ListHttpRequestHeaderModificationRulesWithContext(ctx cont
 
 // Summary:
 //
-// 查询HTTP响应头规则列表
+// # List of HTTP Response Header Rules
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -13111,7 +13425,7 @@ func (client *Client) ListHttpResponseHeaderModificationRulesWithContext(ctx con
 
 // Summary:
 //
-// 查询多条HTTPS应用的配置
+// # Query multiple HTTPS application configurations
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -13151,7 +13465,7 @@ func (client *Client) ListHttpsApplicationConfigurationsWithContext(ctx context.
 
 // Summary:
 //
-// 查询多条HTTPS基础配置
+// # Query multiple HTTPS basic configurations
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -13191,7 +13505,7 @@ func (client *Client) ListHttpsBasicConfigurationsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询多条站点图片转换配置
+// # Query Multiple Site Image Transformation Configurations
 //
 // @param request - ListImageTransformsRequest
 //
@@ -13231,7 +13545,7 @@ func (client *Client) ListImageTransformsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询实例或者站点的quota值
+// Queries the quota details in a subscription plan.
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -13271,7 +13585,7 @@ func (client *Client) ListInstanceQuotasWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询功能quota和用量
+// Queries quotas and the actual usage in a plan based on the website or plan ID.
 //
 // @param request - ListInstanceQuotasWithUsageRequest
 //
@@ -13363,7 +13677,7 @@ func (client *Client) ListKeylessServersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 遍历Namespace的Key值
+// Lists all key-value pairs in a namespace in your Alibaba Cloud account.
 //
 // @param request - ListKvsRequest
 //
@@ -13403,7 +13717,7 @@ func (client *Client) ListKvsWithContext(ctx context.Context, request *ListKvsRe
 
 // Summary:
 //
-// 列举自定义列表
+// Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
 //
 // @param tmpReq - ListListsRequest
 //
@@ -13461,7 +13775,19 @@ func (client *Client) ListListsWithContext(ctx context.Context, tmpReq *ListList
 
 // Summary:
 //
-// 查询负载均衡器里各源站状态
+// # Query the status of origins in load balancers
+//
+// Description:
+//
+// Query the status of origins under load balancers. You can pass multiple load balancer IDs at once, separated by commas. This is for load balancers that have monitors configured. It will probe the origins in the source address pools used by the load balancers and record the current status of each origin.
+//
+// - Healthy(healthy): The probe result is available.
+//
+// - Unhealthy(unhealthy): The probe result is unavailable.
+//
+// - Unknown(unknown): Unknown, the monitor has not yet probed.
+//
+// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
 //
 // @param request - ListLoadBalancerOriginStatusRequest
 //
@@ -13501,7 +13827,11 @@ func (client *Client) ListLoadBalancerOriginStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询负载均衡区域列表
+// # Query Load Balancer Region List
+//
+// Description:
+//
+// When creating a load balancer \\"based on country/region scheduling\\" strategy through OpenAPI, use the code of primary or secondary regions to represent traffic from this geographical area.
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -13541,7 +13871,7 @@ func (client *Client) ListLoadBalancerRegionsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询负载均衡器列表
+// # Query the list of load balancers
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -13581,7 +13911,7 @@ func (client *Client) ListLoadBalancersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 列举自定义托管规则组
+// # List Custom Managed Rule Groups
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -13629,7 +13959,7 @@ func (client *Client) ListManagedRulesGroupsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询多条网络优化配置
+// # Query multiple network optimization configurations
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -13749,7 +14079,7 @@ func (client *Client) ListOriginClientCertificatesWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询源地址池的列表
+// # List Origin Pools
 //
 // @param request - ListOriginPoolsRequest
 //
@@ -13789,7 +14119,7 @@ func (client *Client) ListOriginPoolsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询多条回源规则配置
+// # Query multiple origin rule configurations
 //
 // @param request - ListOriginRulesRequest
 //
@@ -13829,7 +14159,7 @@ func (client *Client) ListOriginRulesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 列举自定义响应页面
+// Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
 //
 // @param tmpReq - ListPagesRequest
 //
@@ -13887,7 +14217,7 @@ func (client *Client) ListPagesWithContext(ctx context.Context, tmpReq *ListPage
 
 // Summary:
 //
-// 查询该用户下已购的后付费站点套餐实例
+// Queries pay-as-you-go instances.
 //
 // @param request - ListPostpaidRatePlanInstancesRequest
 //
@@ -13927,7 +14257,11 @@ func (client *Client) ListPostpaidRatePlanInstancesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询站点下记录列表
+// Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+//
+// Description:
+//
+// The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
 //
 // @param request - ListRecordsRequest
 //
@@ -13967,7 +14301,7 @@ func (client *Client) ListRecordsWithContext(ctx context.Context, request *ListR
 
 // Summary:
 //
-// 查询重定向规则列表
+// # Query Redirect Rule List
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -14007,7 +14341,7 @@ func (client *Client) ListRedirectRulesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询重写Url规则列表
+// # List of Rewrite URL Rules
 //
 // @param request - ListRewriteUrlRulesRequest
 //
@@ -14047,7 +14381,15 @@ func (client *Client) ListRewriteUrlRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询Routine的代码版本列表
+// Queries the code versions of a function (routine) by page.
+//
+// Description:
+//
+// Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+//
+// Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+//
+// The response includes the number, description, and creation time of each code version.
 //
 // @param request - ListRoutineCodeVersionsRequest
 //
@@ -14103,7 +14445,11 @@ func (client *Client) ListRoutineCodeVersionsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询函数关联域名列表
+// The records associated with the function.
+//
+// Description:
+//
+// You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
 //
 // @param request - ListRoutineRelatedRecordsRequest
 //
@@ -14159,7 +14505,7 @@ func (client *Client) ListRoutineRelatedRecordsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询边缘程序的函数路由列表
+// Queries the routes of an edge function.
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -14211,7 +14557,7 @@ func (client *Client) ListRoutineRoutesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 列出指定任务下的执行计划
+// Lists the plans in a scheduled prefetch task by task ID.
 //
 // @param request - ListScheduledPreloadExecutionsRequest
 //
@@ -14251,7 +14597,7 @@ func (client *Client) ListScheduledPreloadExecutionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 列出定时预热任务列表
+// Queries the scheduled prefetch tasks for a website.
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -14291,7 +14637,7 @@ func (client *Client) ListScheduledPreloadJobsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 列出全部任务投递
+// Lists all log delivery tasks that are in progress.
 //
 // @param request - ListSiteDeliveryTasksRequest
 //
@@ -14371,7 +14717,7 @@ func (client *Client) ListSiteOriginClientCertificatesWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询站点的函数路由列表
+// Queries the edge function routes for a website.
 //
 // @param request - ListSiteRoutesRequest
 //
@@ -14435,7 +14781,7 @@ func (client *Client) ListSiteRoutesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询站点列表
+// Queries the information about websites in your account, such as the name, status, and configuration of each website.
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -14481,7 +14827,7 @@ func (client *Client) ListSitesWithContext(ctx context.Context, tmpReq *ListSite
 
 // Summary:
 //
-// 查询云资源已经绑定标签列表
+// Queries tags based on the region ID and resource type.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -14625,7 +14971,7 @@ func (client *Client) ListTraceTasksWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询四层应用列表
+// # List of Transport Layer Applications
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -14665,7 +15011,7 @@ func (client *Client) ListTransportLayerApplicationsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取文件上传任务
+// Queries the execution status and running information of file upload tasks based on the task time and type.
 //
 // @param request - ListUploadTasksRequest
 //
@@ -14705,7 +15051,7 @@ func (client *Client) ListUploadTasksWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询网页观测配置列表
+// Queries the list of page monitoring configurations.
 //
 // @param request - ListUrlObservationsRequest
 //
@@ -14761,7 +15107,7 @@ func (client *Client) ListUrlObservationsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出用户全部任务投递
+// Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
 //
 // @param request - ListUserDeliveryTasksRequest
 //
@@ -14801,7 +15147,7 @@ func (client *Client) ListUserDeliveryTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询该用户下可用的已购套餐实例
+// Queries the plans that you purchased and the details of the plans.
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -14841,7 +15187,11 @@ func (client *Client) ListUserRatePlanInstancesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询用户的Routine列表
+// Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+//
+// Description:
+//
+// You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -14959,7 +15309,7 @@ func (client *Client) ListUserWafRulesetsWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询站点视频处理配置列表
+// Queries the video processing configurations of a site.
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -15027,7 +15377,7 @@ func (client *Client) ListVideoProcessingsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 列举WAF的托管规则
+// # List WAF Managed Rules
 //
 // @param tmpReq - ListWafManagedRulesRequest
 //
@@ -15117,7 +15467,7 @@ func (client *Client) ListWafManagedRulesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 列举WAF阶段
+// # List WAF Phases
 //
 // @param request - ListWafPhasesRequest
 //
@@ -15165,7 +15515,7 @@ func (client *Client) ListWafPhasesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 列举WAF规则
+// # List WAF Rules
 //
 // @param tmpReq - ListWafRulesRequest
 //
@@ -15239,7 +15589,7 @@ func (client *Client) ListWafRulesWithContext(ctx context.Context, tmpReq *ListW
 
 // Summary:
 //
-// 列举WAF规则集
+// # List WAF Rule Sets
 //
 // @param tmpReq - ListWafRulesetsRequest
 //
@@ -15309,7 +15659,7 @@ func (client *Client) ListWafRulesetsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 列举WAF模板规则
+// # List WAF Template Rules
 //
 // @param tmpReq - ListWafTemplateRulesRequest
 //
@@ -15371,7 +15721,7 @@ func (client *Client) ListWafTemplateRulesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 列举WAF规则的使用情况
+// # List WAF Rule Usage
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -15423,7 +15773,11 @@ func (client *Client) ListWafUsageOfRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询等候室事件
+// Queries the information about waiting room events for a waiting room.
+//
+// Description:
+//
+// You can call this operation to query details of all waiting room events related to a waiting room in a website.
 //
 // @param request - ListWaitingRoomEventsRequest
 //
@@ -15463,7 +15817,11 @@ func (client *Client) ListWaitingRoomEventsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询等候室绕过规则
+// # Query Waiting Room Bypass Rules
+//
+// Description:
+//
+// This API allows users to query the list of waiting room bypass rules associated with a specific site.
 //
 // @param request - ListWaitingRoomRulesRequest
 //
@@ -15503,7 +15861,11 @@ func (client *Client) ListWaitingRoomRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询等候室
+// Queries the information about all waiting rooms in a website.
+//
+// Description:
+//
+// You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
 //
 // @param request - ListWaitingRoomsRequest
 //
@@ -15587,7 +15949,7 @@ func (client *Client) OpenErServiceWithContext(ctx context.Context, request *Ope
 
 // Summary:
 //
-// 缓存预热
+// Prefetches cache.
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -15649,7 +16011,7 @@ func (client *Client) PreloadCachesWithContext(ctx context.Context, tmpReq *Prel
 
 // Summary:
 //
-// 发布边缘容器应用的某个版本
+// Releases a specific version of a containerized application. You can call this operation to iterate an application.
 //
 // @param tmpReq - PublishEdgeContainerAppVersionRequest
 //
@@ -15733,7 +16095,7 @@ func (client *Client) PublishEdgeContainerAppVersionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 发布Routine某版本代码
+// Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
 //
 // @param request - PublishRoutineCodeVersionRequest
 //
@@ -15785,7 +16147,7 @@ func (client *Client) PublishRoutineCodeVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 新购缓存保持
+// # New Purchase of Cache Retention
 //
 // @param request - PurchaseCacheReserveRequest
 //
@@ -15849,7 +16211,13 @@ func (client *Client) PurchaseCacheReserveWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 新购套餐
+// # Purchase New Package
+//
+// Description:
+//
+// 1. The package name and code can be obtained from the DescribeRatePlanPrice interface.
+//
+// 2. If the acceleration area is not overseas, the site must have successfully completed the filing process.
 //
 // @param request - PurchaseRatePlanRequest
 //
@@ -15933,7 +16301,7 @@ func (client *Client) PurchaseRatePlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 缓存刷新
+// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
 //
 // @param tmpReq - PurgeCachesRequest
 //
@@ -15999,7 +16367,7 @@ func (client *Client) PurgeCachesWithContext(ctx context.Context, tmpReq *PurgeC
 
 // Summary:
 //
-// 设置Namespace的Key-Value对
+// Configures a key-value pair for a namespace. The request body can be up to 2 MB.
 //
 // @param request - PutKvRequest
 //
@@ -16065,7 +16433,81 @@ func (client *Client) PutKvWithContext(ctx context.Context, request *PutKvReques
 
 // Summary:
 //
-// 设置Namespace的Key-Value对，支持最大25M的Body
+// Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+//
+//	func TestPutKvWithHighCapacity() {
+//
+//		// Initialize the configurations.
+//
+//		cfg := new(openapi.Config)
+//
+//		cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//		cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//		cli, err := NewClient(cfg)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		runtime := &util.RuntimeOptions{}
+//
+//		// Construct a request for uploading key-value pairs.
+//
+//		namespace := "test-put-kv"
+//
+//		key := "test_PutKvWithHighCapacity_0"
+//
+//		value := strings.Repeat("t", 10*1024*1024)
+//
+//		rawReq := &PutKvRequest{
+//
+//			Namespace: &namespace,
+//
+//			Key:       &key,
+//
+//			Value:     &value,
+//
+//		}
+//
+//		payload, err := json.Marshal(rawReq)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		// If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+//
+//		reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+//
+//			Namespace: &namespace,
+//
+//			Key:       &key,
+//
+//			UrlObject: bytes.NewReader([]byte(payload)),
+//
+//		}
+//
+//		resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+//
+//		if err != nil {
+//
+//			return err
+//
+//		}
+//
+//		return nil
+//
+//	}
 //
 // @param request - PutKvWithHighCapacityRequest
 //
@@ -16117,7 +16559,7 @@ func (client *Client) PutKvWithHighCapacityWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 重建边缘容器应用的测试环境
+// Rebuilds the staging environment for containerized applications.
 //
 // @param request - RebuildEdgeContainerAppStagingEnvRequest
 //
@@ -16205,7 +16647,7 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 重置定时预热任务的进度，从头开始预热
+// Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -16249,7 +16691,7 @@ func (client *Client) ResetScheduledPreloadJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 吊销客户端证书
+// Revokes an activated client certificate.
 //
 // @param request - RevokeClientCertificateRequest
 //
@@ -16289,7 +16731,7 @@ func (client *Client) RevokeClientCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 回滚边缘容器应用的某个版本
+// Rolls back a version of a containerized application.
 //
 // @param request - RollbackEdgeContainerAppVersionRequest
 //
@@ -16411,7 +16853,7 @@ func (client *Client) SetAutomaticFrequencyControlConfigWithContext(ctx context.
 
 // Summary:
 //
-// 设置证书
+// Configures whether to enable certificates and update certificate information for a website.
 //
 // @param request - SetCertificateRequest
 //
@@ -16553,7 +16995,7 @@ func (client *Client) SetClientCaCertificateHostnamesWithContext(ctx context.Con
 
 // Summary:
 //
-// 为客户端证书绑定域名
+// Associates domain names with a client CA certificate. If no certificate is specified, domain names are associated with an Edge Security Acceleration (ESA)-managed CA certificate.
 //
 // @param tmpReq - SetClientCertificateHostnamesRequest
 //
@@ -16661,7 +17103,7 @@ func (client *Client) SetDdosMaxBurstGbpsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 设置HTTP DDoS智能防护配置信息
+// Configures smart HTTP DDoS protection.
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -16713,7 +17155,7 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtectionWithContext(ctx cont
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护配置信息
+// Configures HTTP DDoS attack protection for a website.
 //
 // @param request - SetHttpDDoSAttackProtectionRequest
 //
@@ -16761,7 +17203,7 @@ func (client *Client) SetHttpDDoSAttackProtectionWithContext(ctx context.Context
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护指定规则防护动作
+// # Set the Protection Action for Specified HTTP DDoS Attack Rules
 //
 // @param request - SetHttpDDoSAttackRuleActionRequest
 //
@@ -16813,7 +17255,7 @@ func (client *Client) SetHttpDDoSAttackRuleActionWithContext(ctx context.Context
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护指定规则防护状态
+// # Set the Protection Status of Specified HTTP DDoS Attack Rules
 //
 // @param request - SetHttpDDoSAttackRuleStatusRequest
 //
@@ -17001,7 +17443,7 @@ func (client *Client) SetOriginClientCertificateHostnamesWithContext(ctx context
 
 // Summary:
 //
-// 开始单个定时预热计划
+// Starts a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StartScheduledPreloadExecutionRequest
 //
@@ -17045,7 +17487,7 @@ func (client *Client) StartScheduledPreloadExecutionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 停止单个定时预热计划
+// Stops a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -17089,7 +17531,7 @@ func (client *Client) StopScheduledPreloadExecutionWithContext(ctx context.Conte
 
 // Summary:
 //
-// 为指定的资源统一创建并绑定标签
+// Adds one or more tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -17153,7 +17595,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 为资源列表统一解绑标签
+// Deletes a resource tag based on a specified resource ID.
 //
 // @param request - UntagResourcesRequest
 //
@@ -17217,7 +17659,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 缓存保持变配
+// # Cache Reserve Specification Change
 //
 // @param request - UpdateCacheReserveSpecRequest
 //
@@ -17273,7 +17715,7 @@ func (client *Client) UpdateCacheReserveSpecWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改缓存配置
+// # Modify cache configuration
 //
 // @param request - UpdateCacheRuleRequest
 //
@@ -17429,7 +17871,7 @@ func (client *Client) UpdateCacheRuleWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 修改站点缓存Tag配置
+// Modifies the cache tag configuration of your website. You can call this operation when you need to specify tags in the Cache-Tag response header to use the purge by cache tag feature.
 //
 // @param request - UpdateCacheTagRequest
 //
@@ -17485,7 +17927,7 @@ func (client *Client) UpdateCacheTagWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 修改站点cname拉平配置
+// Modifies the CNAME flattening configuration of a website.
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -17533,7 +17975,7 @@ func (client *Client) UpdateCnameFlatteningWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改压缩规则
+// # Modify compression rule
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -17609,7 +18051,7 @@ func (client *Client) UpdateCompressionRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改站点中国大陆网络接入优化的配置
+// Modifies the configuration of the Chinese mainland network access optimization.
 //
 // @param request - UpdateCrossBorderOptimizationRequest
 //
@@ -17729,7 +18171,7 @@ func (client *Client) UpdateCustomHostnameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改修改响应码规则
+// Modify the response code configurations for a website.
 //
 // @param request - UpdateCustomResponseCodeRuleRequest
 //
@@ -17801,7 +18243,7 @@ func (client *Client) UpdateCustomResponseCodeRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// 修改定制场景策略
+// Modifies the configurations of a custom scenario-specific policy.
 //
 // @param request - UpdateCustomScenePolicyRequest
 //
@@ -17869,7 +18311,7 @@ func (client *Client) UpdateCustomScenePolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改站点开发者模式配置
+// Modifies the development mode configuration of your website. If you enable Development Mode, all requests bypass caching components on POPs and are redirected to the origin server. This allows clients to retrieve the most recent resources on the origin server.
 //
 // @param request - UpdateDevelopmentModeRequest
 //
@@ -17917,7 +18359,7 @@ func (client *Client) UpdateDevelopmentModeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新边缘容器应用日志采集配置
+// Updates the log collection configuration of a containerized application.
 //
 // @param request - UpdateEdgeContainerAppLogRiverRequest
 //
@@ -17969,7 +18411,7 @@ func (client *Client) UpdateEdgeContainerAppLogRiverWithContext(ctx context.Cont
 
 // Summary:
 //
-// 更新边缘容器资源预留配置
+// Updates the resource reservation configuration of an edge container.
 //
 // @param tmpReq - UpdateEdgeContainerAppResourceReserveRequest
 //
@@ -18035,7 +18477,7 @@ func (client *Client) UpdateEdgeContainerAppResourceReserveWithContext(ctx conte
 
 // Summary:
 //
-// 修改HTTP入站请求头规则
+// Updates the HTTP incoming request header modification rule.
 //
 // @param tmpReq - UpdateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -18109,7 +18551,7 @@ func (client *Client) UpdateHttpIncomingRequestHeaderModificationRuleWithContext
 
 // Summary:
 //
-// 修改HTTP入站响应头规则
+// Updates the configuration of modifying HTTP response headers for a website.
 //
 // @param tmpReq - UpdateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -18183,7 +18625,7 @@ func (client *Client) UpdateHttpIncomingResponseHeaderModificationRuleWithContex
 
 // Summary:
 //
-// 修改HTTP请求头规则
+// # Modify HTTP Request Header Rules
 //
 // @param tmpReq - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -18257,7 +18699,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRuleWithContext(ctx con
 
 // Summary:
 //
-// 修改HTTP响应头规则
+// # Modify HTTP response header rules
 //
 // @param tmpReq - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -18331,7 +18773,7 @@ func (client *Client) UpdateHttpResponseHeaderModificationRuleWithContext(ctx co
 
 // Summary:
 //
-// 修改HTTPS应用配置
+// # Modify HTTPS Application Configuration
 //
 // @param request - UpdateHttpsApplicationConfigurationRequest
 //
@@ -18447,7 +18889,7 @@ func (client *Client) UpdateHttpsApplicationConfigurationWithContext(ctx context
 
 // Summary:
 //
-// 修改HTTPS基础配置
+// # Modify HTTPS Basic Configuration
 //
 // @param request - UpdateHttpsBasicConfigurationRequest
 //
@@ -18551,7 +18993,7 @@ func (client *Client) UpdateHttpsBasicConfigurationWithContext(ctx context.Conte
 
 // Summary:
 //
-// 修改站点IPv6配置
+// Modifies the IPv6 configuration of a website.
 //
 // @param request - UpdateIPv6Request
 //
@@ -18603,7 +19045,7 @@ func (client *Client) UpdateIPv6WithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// 修改站点的图片转换配置
+// # Modify Site Image Transformation Configuration
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -18679,7 +19121,7 @@ func (client *Client) UpdateImageTransformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 更新自定义列表
+// Updates a custom list.
 //
 // @param tmpReq - UpdateListRequest
 //
@@ -18741,7 +19183,11 @@ func (client *Client) UpdateListWithContext(ctx context.Context, tmpReq *UpdateL
 
 // Summary:
 //
-// 修改负载均衡器
+// # Modify Load Balancer
+//
+// Description:
+//
+// Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.	Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
 //
 // @param tmpReq - UpdateLoadBalancerRequest
 //
@@ -18863,7 +19309,7 @@ func (client *Client) UpdateLoadBalancerWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 修改站点托管转换的配置
+// Modifies the configuration of managed transforms for your website.
 //
 // @param request - UpdateManagedTransformRequest
 //
@@ -18923,7 +19369,7 @@ func (client *Client) UpdateManagedTransformWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改网络优化配置
+// # Modify network optimization configuration
 //
 // @param request - UpdateNetworkOptimizationRequest
 //
@@ -19007,7 +19453,7 @@ func (client *Client) UpdateNetworkOptimizationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改源地址池
+// # Modify the Monitor
 //
 // @param tmpReq - UpdateOriginPoolRequest
 //
@@ -19069,7 +19515,7 @@ func (client *Client) UpdateOriginPoolWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// 修改源站防护
+// Enables or disables IP convergence.
 //
 // @param request - UpdateOriginProtectionRequest
 //
@@ -19121,7 +19567,7 @@ func (client *Client) UpdateOriginProtectionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 确认更新站点回源IP白名单到最新版本
+// Updates the IP whitelist for origin protection used by a website to the latest version.
 //
 // @param request - UpdateOriginProtectionIpWhiteListRequest
 //
@@ -19165,7 +19611,7 @@ func (client *Client) UpdateOriginProtectionIpWhiteListWithContext(ctx context.C
 
 // Summary:
 //
-// 修改站点的回源规则配置
+// # Modify Origin Rule Configuration for Site
 //
 // @param request - UpdateOriginRuleRequest
 //
@@ -19293,7 +19739,7 @@ func (client *Client) UpdateOriginRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新自定义响应页面
+// Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
 //
 // @param tmpReq - UpdatePageRequest
 //
@@ -19411,7 +19857,7 @@ func (client *Client) UpdatePerformanceDataCollectionWithContext(ctx context.Con
 
 // Summary:
 //
-// 套餐变配
+// # Plan Adjustment
 //
 // @param request - UpdateRatePlanSpecRequest
 //
@@ -19475,7 +19921,23 @@ func (client *Client) UpdateRatePlanSpecWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新记录
+// Updates multiple types of DNS records and origin authentication configurations.
+//
+// Description:
+//
+// This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+//
+// ### [](#)Usage notes
+//
+//   - The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+//
+//   - You must specify a priority (Priority) for some record types, such as MX and SRV.
+//
+//   - You must specify specific fields such as Flag and Tag for CAA records.
+//
+//   - When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+//
+//   - If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
 //
 // @param tmpReq - UpdateRecordRequest
 //
@@ -19565,7 +20027,7 @@ func (client *Client) UpdateRecordWithContext(ctx context.Context, tmpReq *Updat
 
 // Summary:
 //
-// 更新重定向规则
+// # Update Redirect Rule
 //
 // @param request - UpdateRedirectRuleRequest
 //
@@ -19645,7 +20107,7 @@ func (client *Client) UpdateRedirectRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改重写Url规则
+// # Modify Rewrite URL Rule
 //
 // @param request - UpdateRewriteUrlRuleRequest
 //
@@ -19725,7 +20187,7 @@ func (client *Client) UpdateRewriteUrlRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改Routine描述信息
+// Modifies the description of a routine.
 //
 // @param request - UpdateRoutineConfigDescriptionRequest
 //
@@ -19773,7 +20235,7 @@ func (client *Client) UpdateRoutineConfigDescriptionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 修改边缘函数路由的配置
+// Modifies the route configuration of an edge function.
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -19853,7 +20315,7 @@ func (client *Client) UpdateRoutineRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新单个定时预热计划
+// Updates a scheduled prefetch plan based on the plan ID.
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -19915,7 +20377,7 @@ func (client *Client) UpdateScheduledPreloadExecutionWithContext(ctx context.Con
 
 // Summary:
 //
-// 修改站点放行搜索引擎爬虫配置
+// Modifies the search engine crawler configuration for a website.
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -19963,7 +20425,15 @@ func (client *Client) UpdateSeoBypassWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 修改站点接入方式
+// Converts the DNS setup option of a website.
+//
+// Description:
+//
+// When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
+//
+//   - The website only has proxied A/AAAA and CNAME records.
+//
+//   - The DNS passthrough mode and custom nameserver features are not enabled for the website.
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
@@ -20011,7 +20481,7 @@ func (client *Client) UpdateSiteAccessTypeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改站点加速区域
+// Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -20059,7 +20529,7 @@ func (client *Client) UpdateSiteCoverageWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改自定义字段
+// Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
 //
 // @param tmpReq - UpdateSiteCustomLogRequest
 //
@@ -20129,7 +20599,7 @@ func (client *Client) UpdateSiteCustomLogWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 修改一个任务投递
+// Modifies a real-time log delivery task.
 //
 // @param request - UpdateSiteDeliveryTaskRequest
 //
@@ -20193,7 +20663,7 @@ func (client *Client) UpdateSiteDeliveryTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 上下线一个任务投递
+// Changes the status of a real-time log delivery task.
 //
 // @param request - UpdateSiteDeliveryTaskStatusRequest
 //
@@ -20233,7 +20703,7 @@ func (client *Client) UpdateSiteDeliveryTaskStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// 修改站点名称独占配置
+// Modifies the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -20281,7 +20751,7 @@ func (client *Client) UpdateSiteNameExclusiveWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改站点暂停配置
+// Modifies the ESA proxy configuration of a website.
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -20329,7 +20799,7 @@ func (client *Client) UpdateSitePauseWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 修改站点自定义NS
+// Updates the custom nameserver names for a single website.
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -20377,7 +20847,7 @@ func (client *Client) UpdateSiteVanityNSWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改站点多级缓存配置
+// Modifies the tiered cache configuration of your website.
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -20425,7 +20895,7 @@ func (client *Client) UpdateTieredCacheWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改四层应用
+// # Modify Transport Layer Application
 //
 // @param tmpReq - UpdateTransportLayerApplicationRequest
 //
@@ -20503,7 +20973,7 @@ func (client *Client) UpdateTransportLayerApplicationWithContext(ctx context.Con
 
 // Summary:
 //
-// 更新网页监测配置
+// Updates the webpage monitoring configuration.
 //
 // @param request - UpdateUrlObservationRequest
 //
@@ -20555,7 +21025,7 @@ func (client *Client) UpdateUrlObservationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改一个用户粒度任务投递
+// Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
 //
 // @param request - UpdateUserDeliveryTaskRequest
 //
@@ -20619,7 +21089,13 @@ func (client *Client) UpdateUserDeliveryTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 上下线一个用户任务投递
+// Changes the status of a delivery task in your Alibaba Cloud account.
+//
+// Description:
+//
+// ## [](#)
+//
+// You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
 //
 // @param request - UpdateUserDeliveryTaskStatusRequest
 //
@@ -20767,7 +21243,7 @@ func (client *Client) UpdateUserWafRulesetWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 修改站点的视频处理配置
+// Modifies the video processing configuration of the site.
 //
 // @param request - UpdateVideoProcessingRequest
 //
@@ -20855,7 +21331,7 @@ func (client *Client) UpdateVideoProcessingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新WAF规则页面
+// # Update WAF Rule Page
 //
 // @param tmpReq - UpdateWafRuleRequest
 //
@@ -20927,7 +21403,7 @@ func (client *Client) UpdateWafRuleWithContext(ctx context.Context, tmpReq *Upda
 
 // Summary:
 //
-// 更新WAF规则集
+// # Update WAF Ruleset
 //
 // @param request - UpdateWafRulesetRequest
 //
@@ -20985,7 +21461,7 @@ func (client *Client) UpdateWafRulesetWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 修改等候室
+// Modifies the configurations of a waiting room.
 //
 // @param tmpReq - UpdateWaitingRoomRequest
 //
@@ -21103,7 +21579,7 @@ func (client *Client) UpdateWaitingRoomWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 修改等候室事件
+// Modifies the configurations of a waiting room event.
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -21223,7 +21699,11 @@ func (client *Client) UpdateWaitingRoomEventWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改等候室规则
+// # Modify Waiting Room Rule
+//
+// Description:
+//
+// This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -21283,7 +21763,7 @@ func (client *Client) UpdateWaitingRoomRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 上传客户端CA证书
+// Uploads a client certificate authority (CA) certificate.
 //
 // @param request - UploadClientCaCertificateRequest
 //
@@ -21337,7 +21817,13 @@ func (client *Client) UploadClientCaCertificateWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 缓存刷新文件上传
+// Uploads the file that contains resources to be purged or prefetched.
+//
+// Description:
+//
+// >
+//
+//   - The file can be up to 10 MB in size.
 //
 // @param request - UploadFileRequest
 //
@@ -21503,7 +21989,7 @@ func (client *Client) UploadOriginClientCertificateWithContext(ctx context.Conte
 
 // Summary:
 //
-// 上传站点回源客户端证书
+// # Upload site origin client certificate
 //
 // @param request - UploadSiteOriginClientCertificateRequest
 //
@@ -21605,7 +22091,13 @@ func (client *Client) VerifyCustomHostnameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 校验站点的归属
+// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+//
+// Description:
+//
+// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+//
+// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
 //
 // @param request - VerifySiteRequest
 //

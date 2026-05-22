@@ -28,14 +28,50 @@ type iUpdateTransportLayerApplicationRequest interface {
 }
 
 type UpdateTransportLayerApplicationRequest struct {
+	// Transport layer application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+	//
 	// This parameter is required.
-	ApplicationId           *int64                                         `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CrossBorderOptimization *string                                        `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	IpAccessRule            *string                                        `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	Ipv6                    *string                                        `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	KeepAliveProtection     *string                                        `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	Rules                   []*UpdateTransportLayerApplicationRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 165503967****
+	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Whether to enable China mainland network access optimization, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
+	// IP access rule switch. When enabled, the IP access rules in WAF will take effect on the transport layer application.
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
+	// IPv6 switch.
+	//
+	// example:
+	//
+	// on
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
+	// Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
+	Rules []*UpdateTransportLayerApplicationRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	StaticIp *string `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
 }
@@ -134,13 +170,80 @@ func (s *UpdateTransportLayerApplicationRequest) Validate() error {
 }
 
 type UpdateTransportLayerApplicationRequestRules struct {
+	// Client IP pass-through protocol, supports:
+	//
+	// - **off**: No pass-through.
+	//
+	// - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+	//
+	// - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+	//
+	// - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+	//
+	// example:
+	//
+	// SPP
 	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
-	Comment                 *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	EdgePort                *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
-	Protocol                *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Source                  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourcePort              *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	SourceType              *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Comment information for the rule.
+	//
+	// example:
+	//
+	// 123
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Edge port. Supports:
+	//
+	// - A single port, e.g., 80.
+	//
+	// - Port range, e.g., 81-85, representing ports 81, 82, 83, 84, 85.
+	//
+	// - Combination of ports and port ranges, separated by commas, e.g., 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+	//
+	// - Edge ports within a single rule and between multiple rules must not overlap.
+	//
+	// example:
+	//
+	// 80
+	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
+	// Forwarding rule protocol, supports:
+	//
+	// - TCP: TCP protocol.
+	//
+	// - UDP: UDP protocol.
+	//
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Specific value of the source.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Source port. Supports:
+	//
+	// - A single port, when the source port is a single port, any valid edge port combination is supported.
+	//
+	// - Port range, only when the edge port is a port range, the source port can be set as a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the source port cannot be set to 81-85 because the source port range is 5 and the edge port range is 3, which do not match.
+	//
+	// example:
+	//
+	// 80
+	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// Source type, supports:
+	//
+	// - **ip**: IP address.
+	//
+	// - **domain**: Domain name.
+	//
+	// - **OP**: Origin pool.
+	//
+	// - **LB**: Load balancer.
+	//
+	// example:
+	//
+	// ip
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s UpdateTransportLayerApplicationRequestRules) String() string {

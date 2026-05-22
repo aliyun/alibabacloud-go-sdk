@@ -20,10 +20,30 @@ type iCreateSiteResponseBody interface {
 }
 
 type CreateSiteResponseBody struct {
+	// The nameservers assigned by ESA. The values are separated by commas (,). This parameter is returned if you set AccessType to NS. In this case, you must change the nameservers of your domain to the assigned ones. Then, you can verify the domain ownership and activate your website.
+	//
+	// example:
+	//
+	// ns1.example.com,ns2.example.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId         *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	VerifyCode     *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The verification code for the website. If you set AccessType to CNAME, you need to add a TXT record whose hostname is **_esaauth.[websiteDomainName]*	- and record value is the value of VerifyCode to the DNS records of your domain. ****Then, you can verify the domain ownership and activate your website.
+	//
+	// example:
+	//
+	// verify_aah9dioasmov****
+	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
 func (s CreateSiteResponseBody) String() string {

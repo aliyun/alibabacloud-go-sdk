@@ -18,10 +18,27 @@ type iUploadOriginCaCertificateRequest interface {
 }
 
 type UploadOriginCaCertificateRequest struct {
+	// The certificate content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

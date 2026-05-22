@@ -24,12 +24,38 @@ type iListLoadBalancerRegionsResponseBody interface {
 }
 
 type ListLoadBalancerRegionsResponseBody struct {
-	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Regions    []*ListLoadBalancerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page
+	//
+	// example:
+	//
+	// 1024
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of region information
+	Regions []*ListLoadBalancerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// Request ID
+	//
+	// example:
+	//
+	// 81A5E222-24BF-17EF-9E80-A68D9B8F363D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records
+	//
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListLoadBalancerRegionsResponseBody) String() string {
@@ -108,10 +134,26 @@ func (s *ListLoadBalancerRegionsResponseBody) Validate() error {
 }
 
 type ListLoadBalancerRegionsResponseBodyRegions struct {
-	RegionCnName *string                                                 `json:"RegionCnName,omitempty" xml:"RegionCnName,omitempty"`
-	RegionCode   *string                                                 `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionEnName *string                                                 `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	SubRegions   []*ListLoadBalancerRegionsResponseBodyRegionsSubRegions `json:"SubRegions,omitempty" xml:"SubRegions,omitempty" type:"Repeated"`
+	// Primary region Chinese full name
+	//
+	// example:
+	//
+	// 东南亚
+	RegionCnName *string `json:"RegionCnName,omitempty" xml:"RegionCnName,omitempty"`
+	// Primary region code
+	//
+	// example:
+	//
+	// SEAS
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// Primary region English full name
+	//
+	// example:
+	//
+	// South East Asia
+	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
+	// List of secondary region information
+	SubRegions []*ListLoadBalancerRegionsResponseBodyRegionsSubRegions `json:"SubRegions,omitempty" xml:"SubRegions,omitempty" type:"Repeated"`
 }
 
 func (s ListLoadBalancerRegionsResponseBodyRegions) String() string {
@@ -172,8 +214,23 @@ func (s *ListLoadBalancerRegionsResponseBodyRegions) Validate() error {
 }
 
 type ListLoadBalancerRegionsResponseBodyRegionsSubRegions struct {
+	// Secondary region Chinese full name
+	//
+	// example:
+	//
+	// 印度尼西亚
 	SubRegionCnName *string `json:"SubRegionCnName,omitempty" xml:"SubRegionCnName,omitempty"`
-	SubRegionCode   *string `json:"SubRegionCode,omitempty" xml:"SubRegionCode,omitempty"`
+	// Secondary region code
+	//
+	// example:
+	//
+	// ID
+	SubRegionCode *string `json:"SubRegionCode,omitempty" xml:"SubRegionCode,omitempty"`
+	// Secondary region English full name
+	//
+	// example:
+	//
+	// Indonesia
 	SubRegionEnName *string `json:"SubRegionEnName,omitempty" xml:"SubRegionEnName,omitempty"`
 }
 

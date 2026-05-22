@@ -26,6 +26,9 @@ type GenerateTraceDiagnoseResponseBody struct {
 	//
 	// http://cdn.dns-detect.alicdn.com/diagnose/?id=xxxxxxx
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
+	// example:
+	//
+	// http://cdn.dns-detect.alicdn.com/diagnose_v2?id=5d97ac9b&token=WFji65gy2mGNM11bD929%2BCMoyI6mbk2deRR9hOC6INH%2FoYbccQZQcvEn4wc%2FDPHlTshxRSAa5HokX%2BabItBpJ0FdnteROssomXqgIdjHpM46L%2BbaIeweZfsWG6QnbXT5n7O5APMyc%2Fe8d1o9PwwB429Ccks1FU1AfjNZfvBcLeo%3D
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

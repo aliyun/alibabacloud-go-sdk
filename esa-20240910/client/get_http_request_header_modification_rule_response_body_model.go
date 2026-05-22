@@ -30,15 +30,68 @@ type iGetHttpRequestHeaderModificationRuleResponseBody interface {
 }
 
 type GetHttpRequestHeaderModificationRuleResponseBody struct {
-	ConfigId                  *int64                                                                       `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType                *string                                                                      `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - global: Global configuration.
+	//
+	// - rule: Rule-based configuration.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Modify request headers, supporting add, delete, and modify operations.
 	RequestHeaderModification []*GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	RequestId                 *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rule                      *string                                                                      `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable                *string                                                                      `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                  *string                                                                      `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence                  *int32                                                                       `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion               *int32                                                                       `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. The smaller the value, the higher the priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s GetHttpRequestHeaderModificationRuleResponseBody) String() string {
@@ -144,10 +197,31 @@ func (s *GetHttpRequestHeaderModificationRuleResponseBody) Validate() error {
 }
 
 type GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Request header name.
+	//
+	// example:
+	//
+	// headerName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation method. Possible values:
+	//
+	// - add: Add.
+	//
+	// - del: Delete
+	//
+	// - modify: Modify.
+	//
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Request header value.
+	//
+	// example:
+	//
+	// headValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) String() string {

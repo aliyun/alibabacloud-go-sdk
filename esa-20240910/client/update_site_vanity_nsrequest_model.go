@@ -16,8 +16,19 @@ type iUpdateSiteVanityNSRequest interface {
 }
 
 type UpdateSiteVanityNSRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
-	SiteId       *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The custom nameserver names. You can specify two to five custom nameserver names. Separate multiple names with commas (,).
+	//
+	// example:
+	//
+	// ns1.example.com,ns2.example.com
 	VanityNSList *string `json:"VanityNSList,omitempty" xml:"VanityNSList,omitempty"`
 }
 

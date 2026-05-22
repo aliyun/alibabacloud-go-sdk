@@ -26,27 +26,40 @@ type iListWafRulesResponseBody interface {
 }
 
 type ListWafRulesResponseBody struct {
+	// Number of rules used in this WAF phase for the corresponding instance of the site.
+	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned list of rules.
+	Rules []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Site usage.
+	//
 	// example:
 	//
 	// 5
 	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// Total number of rules after filtering.
+	//
 	// example:
 	//
 	// 20
@@ -138,47 +151,72 @@ func (s *ListWafRulesResponseBody) Validate() error {
 }
 
 type ListWafRulesResponseBodyRules struct {
+	// The action corresponding to the rule.
+	//
 	// example:
 	//
 	// deny
-	Action                *string        `json:"Action,omitempty" xml:"Action,omitempty"`
-	CharacteristicsFields []*string      `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
-	Config                *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	Fields                []*string      `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// List of statistical objects for frequency control rules.
+	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
+	// Rule configuration.
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// List of fields for rule matching
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// Rule ID.
+	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Rule name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WAF phase.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Position order of the rule in the corresponding ruleset.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Ruleset ID.
+	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Skip attribute for whitelist rules.
+	//
 	// example:
 	//
 	// part
 	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// Rule status.
+	//
 	// example:
 	//
 	// on
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Timer  *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of WAF phases to be skipped by whitelist rules.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Configuration for the effective time of the rule.
+	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
+	// Rule type.
+	//
 	// example:
 	//
 	// http_custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z

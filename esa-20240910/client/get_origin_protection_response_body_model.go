@@ -39,18 +39,58 @@ type GetOriginProtectionResponseBody struct {
 	// example:
 	//
 	// off
-	AutoConfirmIPList          *string                                                    `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
-	CurrentIPWhitelist         *GetOriginProtectionResponseBodyCurrentIPWhitelist         `json:"CurrentIPWhitelist,omitempty" xml:"CurrentIPWhitelist,omitempty" type:"Struct"`
-	DiffIPWhitelist            *GetOriginProtectionResponseBodyDiffIPWhitelist            `json:"DiffIPWhitelist,omitempty" xml:"DiffIPWhitelist,omitempty" type:"Struct"`
-	LatestIPWhitelist          *GetOriginProtectionResponseBodyLatestIPWhitelist          `json:"LatestIPWhitelist,omitempty" xml:"LatestIPWhitelist,omitempty" type:"Struct"`
-	NeedUpdate                 *bool                                                      `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
-	OriginConverge             *string                                                    `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
+	AutoConfirmIPList *string `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
+	// The IP whitelist for origin protection used by the website.
+	CurrentIPWhitelist *GetOriginProtectionResponseBodyCurrentIPWhitelist `json:"CurrentIPWhitelist,omitempty" xml:"CurrentIPWhitelist,omitempty" type:"Struct"`
+	// The IP whitelist for origin protection that has been updated.
+	DiffIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelist `json:"DiffIPWhitelist,omitempty" xml:"DiffIPWhitelist,omitempty" type:"Struct"`
+	// The latest IP whitelist for origin protection.
+	LatestIPWhitelist *GetOriginProtectionResponseBodyLatestIPWhitelist `json:"LatestIPWhitelist,omitempty" xml:"LatestIPWhitelist,omitempty" type:"Struct"`
+	// Indicates whether the IP whitelist for origin protection needs to be updated. If the currently used IP whitelist is different from the latest IP whitelist, it needs to be updated, and the value is true.
+	//
+	// 	- true: The update is required.
+	//
+	// 	- false: No update is required.
+	//
+	// example:
+	//
+	// true
+	NeedUpdate *bool `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
+	// Indicates whether IP convergence is enabled.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
+	// Indicates whether origin protection is enabled.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	OriginProtection           *string                                                    `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
 	RegionalCurrentIPWhitelist *GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist `json:"RegionalCurrentIPWhitelist,omitempty" xml:"RegionalCurrentIPWhitelist,omitempty" type:"Struct"`
 	RegionalDiffIPWhitelist    *GetOriginProtectionResponseBodyRegionalDiffIPWhitelist    `json:"RegionalDiffIPWhitelist,omitempty" xml:"RegionalDiffIPWhitelist,omitempty" type:"Struct"`
 	RegionalLatestIPWhitelist  *GetOriginProtectionResponseBodyRegionalLatestIPWhitelist  `json:"RegionalLatestIPWhitelist,omitempty" xml:"RegionalLatestIPWhitelist,omitempty" type:"Struct"`
-	RequestId                  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId                     *int64                                                     `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s GetOriginProtectionResponseBody) String() string {
@@ -204,7 +244,9 @@ func (s *GetOriginProtectionResponseBody) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyCurrentIPWhitelist struct {
+	// The IP whitelist for origin protection used by the website, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection used by the website, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -239,9 +281,12 @@ func (s *GetOriginProtectionResponseBodyCurrentIPWhitelist) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelist struct {
-	AddedIPWhitelist    *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist    `json:"AddedIPWhitelist,omitempty" xml:"AddedIPWhitelist,omitempty" type:"Struct"`
+	// The new IP whitelist for origin protection.
+	AddedIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist `json:"AddedIPWhitelist,omitempty" xml:"AddedIPWhitelist,omitempty" type:"Struct"`
+	// The IP whitelist for origin protection that remains unchanged.
 	NoChangeIpWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist `json:"NoChangeIpWhitelist,omitempty" xml:"NoChangeIpWhitelist,omitempty" type:"Struct"`
-	RemovedIPWhitelist  *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist  `json:"RemovedIPWhitelist,omitempty" xml:"RemovedIPWhitelist,omitempty" type:"Struct"`
+	// The IP whitelist for origin protection that has been deleted.
+	RemovedIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist `json:"RemovedIPWhitelist,omitempty" xml:"RemovedIPWhitelist,omitempty" type:"Struct"`
 }
 
 func (s GetOriginProtectionResponseBodyDiffIPWhitelist) String() string {
@@ -299,7 +344,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist struct {
+	// The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -334,7 +381,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) Validat
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist struct {
+	// The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -369,7 +418,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) Vali
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist struct {
+	// The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -404,7 +455,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) Valid
 }
 
 type GetOriginProtectionResponseBodyLatestIPWhitelist struct {
+	// The latest IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The latest IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 

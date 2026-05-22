@@ -24,12 +24,38 @@ type iListUrlObservationsResponseBody interface {
 }
 
 type ListUrlObservationsResponseBody struct {
-	Configs    []*ListUrlObservationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The configurations of the feature.
+	Configs []*ListUrlObservationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The number of the returned page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListUrlObservationsResponseBody) String() string {
@@ -108,9 +134,28 @@ func (s *ListUrlObservationsResponseBody) Validate() error {
 }
 
 type ListUrlObservationsResponseBodyConfigs struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	SdkType  *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
-	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// SDK integration. Valid values:
+	//
+	// 	- **automatic**
+	//
+	// 	- **manual**
+	//
+	// example:
+	//
+	// manual
+	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
+	// The URL of the web page to monitor.
+	//
+	// example:
+	//
+	// example.com/test
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListUrlObservationsResponseBodyConfigs) String() string {

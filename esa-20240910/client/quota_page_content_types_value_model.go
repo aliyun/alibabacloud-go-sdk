@@ -16,7 +16,9 @@ type iQuotaPageContentTypesValue interface {
 }
 
 type QuotaPageContentTypesValue struct {
-	Enable        *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The switch for the Content-Type type in custom response pages.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The content length quota for the Content-Type in custom response pages.
 	ContentLength *WafQuotaInteger `json:"ContentLength,omitempty" xml:"ContentLength,omitempty"`
 }
 

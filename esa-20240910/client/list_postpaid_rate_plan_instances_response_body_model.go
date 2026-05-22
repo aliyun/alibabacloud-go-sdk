@@ -27,9 +27,10 @@ type ListPostpaidRatePlanInstancesResponseBody struct {
 	InstanceInfo []*ListPostpaidRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
 	PageNumber   *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage    *int32                                                   `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListPostpaidRatePlanInstancesResponseBody) String() string {

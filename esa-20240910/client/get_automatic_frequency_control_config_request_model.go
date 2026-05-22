@@ -17,7 +17,14 @@ type iGetAutomaticFrequencyControlConfigRequest interface {
 
 type GetAutomaticFrequencyControlConfigRequest struct {
 	// This parameter is required.
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

@@ -24,12 +24,38 @@ type iListRedirectRulesResponseBody interface {
 }
 
 type ListRedirectRulesResponseBody struct {
-	Configs    []*ListRedirectRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// List of redirect configurations.
+	Configs []*ListRedirectRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListRedirectRulesResponseBody) String() string {
@@ -108,17 +134,102 @@ func (s *ListRedirectRulesResponseBody) Validate() error {
 }
 
 type ListRedirectRulesResponseBodyConfigs struct {
-	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType         *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - global: Global configuration.
+	//
+	// - rule: Rule configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Preserve query string. Value range:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
+	// example:
+	//
+	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence           *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion        *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter does not need to be set when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. The smaller the value, the higher the priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, with the default being version 0.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Response status code used by the node to respond to the client with the redirect address. Possible values:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 303
+	//
+	// - 307
+	//
+	// - 308
+	//
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Target URL after redirection.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// Redirect type. Possible values:
+	//
+	// - static: Static mode.
+	//
+	// - dynamic: Dynamic mode.
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListRedirectRulesResponseBodyConfigs) String() string {

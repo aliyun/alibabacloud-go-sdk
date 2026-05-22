@@ -22,11 +22,25 @@ type iDescribeHttpDDoSIntelligentRateLimitRulesResponseBody interface {
 }
 
 type DescribeHttpDDoSIntelligentRateLimitRulesResponseBody struct {
-	PageNumber *int32                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleInfos  []*DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
-	TotalCount *int64                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleInfos []*DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHttpDDoSIntelligentRateLimitRulesResponseBody) String() string {
@@ -96,14 +110,41 @@ func (s *DescribeHttpDDoSIntelligentRateLimitRulesResponseBody) Validate() error
 }
 
 type DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Condition  *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	LogRuleId  *int64  `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
-	PunishTime *int64  `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
-	RateLimit  *string `json:"RateLimit,omitempty" xml:"RateLimit,omitempty"`
+	// example:
+	//
+	// js
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {"$and":[{"key":"URI","opValue":"prefix-match","values":"/"}]}
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// 100030
+	LogRuleId *int64 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
+	// example:
+	//
+	// 86400
+	PunishTime *int64 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// example:
+	//
+	// {"threshold":2000,"interval":5,"target":"ip","ttl":600}
+	RateLimit *string `json:"RateLimit,omitempty" xml:"RateLimit,omitempty"`
+	// example:
+	//
+	// test.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 20110849
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// inner_cc_client_ip_ratelimit
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// {"field":"ip","mode":"count"}
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 }
 

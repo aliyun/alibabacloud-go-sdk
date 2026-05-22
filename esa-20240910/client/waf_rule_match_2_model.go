@@ -26,13 +26,36 @@ type iWafRuleMatch2 interface {
 }
 
 type WafRuleMatch2 struct {
-	ConvertToLower *bool                    `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
-	Criteria       []*WafRuleMatch2Criteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic          *string                  `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchOperator  *string                  `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
-	MatchType      *string                  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MatchValue     interface{}              `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	Negate         *bool                    `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// Transforms input to lowercase to ensure case-insensitivity.
+	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
+	// The details of logical databases.
+	Criteria []*WafRuleMatch2Criteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// The logical judgment.
+	//
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The matching operator.
+	//
+	// example:
+	//
+	// eq
+	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The value of the matching condition.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
+	// Converts a value or condition to its opposite.
+	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 
 func (s WafRuleMatch2) String() string {
@@ -120,13 +143,36 @@ func (s *WafRuleMatch2) Validate() error {
 }
 
 type WafRuleMatch2Criteria struct {
-	ConvertToLower *bool                            `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
-	Criteria       []*WafRuleMatch2CriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic          *string                          `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchOperator  *string                          `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
-	MatchType      *string                          `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MatchValue     interface{}                      `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	Negate         *bool                            `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// Transforms input to lowercase to ensure case-insensitivity.
+	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
+	// The details of logical databases.
+	Criteria []*WafRuleMatch2CriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// The logical judgment.
+	//
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The matching operator.
+	//
+	// example:
+	//
+	// eq
+	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The value of the matching condition.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
+	// Converts a value or condition to its opposite.
+	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 
 func (s WafRuleMatch2Criteria) String() string {
@@ -214,13 +260,36 @@ func (s *WafRuleMatch2Criteria) Validate() error {
 }
 
 type WafRuleMatch2CriteriaCriteria struct {
-	ConvertToLower *bool                                    `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
-	Criteria       []*WafRuleMatch2CriteriaCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic          *string                                  `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchOperator  *string                                  `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
-	MatchType      *string                                  `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MatchValue     interface{}                              `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	Negate         *bool                                    `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// Transforms input to lowercase to ensure case-insensitivity.
+	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
+	// The details of logical databases.
+	Criteria []*WafRuleMatch2CriteriaCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// The logical judgment.
+	//
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The matching operator.
+	//
+	// example:
+	//
+	// eq
+	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The value of the matching condition.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
+	// Converts a value or condition to its opposite.
+	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 
 func (s WafRuleMatch2CriteriaCriteria) String() string {
@@ -308,11 +377,28 @@ func (s *WafRuleMatch2CriteriaCriteria) Validate() error {
 }
 
 type WafRuleMatch2CriteriaCriteriaCriteria struct {
-	ConvertToLower *bool       `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
-	MatchOperator  *string     `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
-	MatchType      *string     `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MatchValue     interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	Negate         *bool       `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// Transforms input to lowercase to ensure case-insensitivity.
+	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
+	// The matching operator.
+	//
+	// example:
+	//
+	// eq
+	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The value of the matching condition.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
+	// Converts a value or condition to its opposite.
+	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 
 func (s WafRuleMatch2CriteriaCriteriaCriteria) String() string {

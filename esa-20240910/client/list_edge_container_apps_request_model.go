@@ -24,11 +24,55 @@ type iListEdgeContainerAppsRequest interface {
 }
 
 type ListEdgeContainerAppsRequest struct {
-	OrderKey   *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
-	OrderType  *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchKey  *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The sorting field. This parameter is left empty by default. Valid values:
+	//
+	// 	- Name: the version name.
+	//
+	// 	- CreateTime: the time when the version was created.
+	//
+	// 	- UpdateTime: the time when the version was last modified.
+	//
+	// example:
+	//
+	// CreateTime
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The order in which you want to sort the query results. This parameter is left empty by default. Valid values:
+	//
+	// 	- ASC: in ascending order.
+	//
+	// 	- DESC: in descending order.
+	//
+	// example:
+	//
+	// Asc
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Default value: **1**. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword.
+	//
+	// example:
+	//
+	// ver-1005682639679266816
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The search criterion based on which you want to perform fuzzy search. Valid values:
+	//
+	// 	- Appid: the application ID.
+	//
+	// 	- Name: the application name.
+	//
+	// example:
+	//
+	// Appid
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 }
 

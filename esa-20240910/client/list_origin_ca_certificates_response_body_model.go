@@ -26,13 +26,44 @@ type iListOriginCaCertificatesResponseBody interface {
 }
 
 type ListOriginCaCertificatesResponseBody struct {
-	PageNumber *int64                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListOriginCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	SiteId     *int64                                        `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName   *string                                       `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Page number, default is 1 if not provided.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the certificates.
+	Result []*ListOriginCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListOriginCaCertificatesResponseBody) String() string {
@@ -120,21 +151,98 @@ func (s *ListOriginCaCertificatesResponseBody) Validate() error {
 }
 
 type ListOriginCaCertificatesResponseBodyResult struct {
-	CommonName         *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FingerprintSha256  *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Issuer             *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NotAfter           *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore          *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	PubkeyAlgorithm    *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	SAN                *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	SerialNumber       *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-11-26T16:00:00Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The certificate status.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// 	- upload: custom certificate that you upload
+	//
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListOriginCaCertificatesResponseBodyResult) String() string {

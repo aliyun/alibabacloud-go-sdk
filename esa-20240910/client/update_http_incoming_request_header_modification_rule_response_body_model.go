@@ -14,6 +14,11 @@ type iUpdateHttpIncomingRequestHeaderModificationRuleResponseBody interface {
 }
 
 type UpdateHttpIncomingRequestHeaderModificationRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// BFEF3861-8BB7-5B63-954C-6575EA7FB2CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

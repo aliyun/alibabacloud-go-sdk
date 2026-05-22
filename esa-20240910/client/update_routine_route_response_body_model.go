@@ -14,6 +14,11 @@ type iUpdateRoutineRouteResponseBody interface {
 }
 
 type UpdateRoutineRouteResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

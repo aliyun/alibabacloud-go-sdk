@@ -26,13 +26,55 @@ type iListCacheRulesRequest interface {
 }
 
 type ListCacheRulesRequest struct {
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule-based configurations. Possible values:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule-based configuration.
+	//
+	// This parameter is optional; if not provided, it will not distinguish between global and rule-based configurations.
+	//
+	// example:
+	//
+	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Page number, defaulting to 1 if not provided.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// test
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+	//
+	// example:
+	//
+	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

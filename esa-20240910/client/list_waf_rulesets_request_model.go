@@ -24,23 +24,41 @@ type iListWafRulesetsRequest interface {
 }
 
 type ListWafRulesetsRequest struct {
+	// Page number, specifying the current page number for paginated queries.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, specifying the number of records per page for paginated queries.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// WAF operation phase, specifying the rule set phase to query.
+	//
 	// example:
 	//
 	// http_bot
-	Phase     *string                          `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query parameters, passed in JSON format, containing various filtering conditions.
+	//
+	// example:
+	//
+	// http_bot
 	QueryArgs *ListWafRulesetsRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -116,15 +134,22 @@ func (s *ListWafRulesetsRequest) Validate() error {
 }
 
 type ListWafRulesetsRequestQueryArgs struct {
+	// Fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+	//
 	// example:
 	//
 	// example
 	AnyLike *string `json:"AnyLike,omitempty" xml:"AnyLike,omitempty"`
-	Desc    *bool   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Whether to sort in descending order.
+	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Fuzzy search for rule set name.
+	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
+	// Specify the column to sort by.
+	//
 	// example:
 	//
 	// id

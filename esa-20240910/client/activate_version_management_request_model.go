@@ -14,7 +14,13 @@ type iActivateVersionManagementRequest interface {
 }
 
 type ActivateVersionManagementRequest struct {
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 11223***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

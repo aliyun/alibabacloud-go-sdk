@@ -16,8 +16,14 @@ type iListEdgeContainerAppImageSecretsResponseBody interface {
 }
 
 type ListEdgeContainerAppImageSecretsResponseBody struct {
+	// List of image secrets.
 	ImageSecretList []*ListEdgeContainerAppImageSecretsResponseBodyImageSecretList `json:"ImageSecretList,omitempty" xml:"ImageSecretList,omitempty" type:"Repeated"`
-	RequestId       *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 3558df77-8a7a-4060-a900-2d7949403836
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEdgeContainerAppImageSecretsResponseBody) String() string {
@@ -60,8 +66,23 @@ func (s *ListEdgeContainerAppImageSecretsResponseBody) Validate() error {
 }
 
 type ListEdgeContainerAppImageSecretsResponseBodyImageSecretList struct {
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Name of the image secret.
+	//
+	// example:
+	//
+	// reg-123****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Registry address.
+	//
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com
 	Registry *string `json:"Registry,omitempty" xml:"Registry,omitempty"`
+	// Username for the image repository
+	//
+	// example:
+	//
+	// admin
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

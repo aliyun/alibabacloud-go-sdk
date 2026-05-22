@@ -16,9 +16,21 @@ type iDeleteCompressionRuleRequest interface {
 }
 
 type DeleteCompressionRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

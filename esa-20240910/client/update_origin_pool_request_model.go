@@ -20,11 +20,33 @@ type iUpdateOriginPoolRequest interface {
 }
 
 type UpdateOriginPoolRequest struct {
+	// Whether the origin pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
+	//
 	// This parameter is required.
-	Id      *int64                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	//
+	// example:
+	//
+	// 1038520525196928
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Information about the origins added to the origin pool. Multiple origins are passed as an array.
 	Origins []*UpdateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 216558609793952
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -86,14 +108,63 @@ func (s *UpdateOriginPoolRequest) Validate() error {
 }
 
 type UpdateOriginPoolRequestOrigins struct {
-	Address         *string                                 `json:"Address,omitempty" xml:"Address,omitempty"`
-	AuthConf        *UpdateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	Enabled         *bool                                   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Header          interface{}                             `json:"Header,omitempty" xml:"Header,omitempty"`
-	IpVersionPolicy *string                                 `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
-	Name            *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight          *int32                                  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The address of the origin, e.g., www.example.com.
+	//
+	// example:
+	//
+	// www.example.com
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Authentication information. When the origin is OSS or S3 and requires authentication, you need to pass the related configuration information for authentication.
+	AuthConf *UpdateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	// Whether the origin is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The request header to be included when fetching from the origin, supporting only Host.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "Host": [
+	//
+	//           "example.com"
+	//
+	//         ]
+	//
+	//       }
+	Header          interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	IpVersionPolicy *string     `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
+	// The name of the origin, which must be unique under one origin pool.
+	//
+	// example:
+	//
+	// origin1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the origin:
+	//
+	// - ip_domain: IP or domain type origin;
+	//
+	// - OSS: OSS address origin;
+	//
+	// - S3: AWS S3 origin.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight, an integer between 0 and 100.
+	//
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateOriginPoolRequestOrigins) String() string {
@@ -186,11 +257,44 @@ func (s *UpdateOriginPoolRequestOrigins) Validate() error {
 }
 
 type UpdateOriginPoolRequestOriginsAuthConf struct {
+	// The AccessKey required for private authentication.
+	//
+	// example:
+	//
+	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of authentication.
+	//
+	// - public: Public read/write, used when the origin is OSS or S3 and is set to public read/write;
+	//
+	// - private_same_account: Private same account, used when the origin is OSS and the authentication type is private within the same account;
+	//
+	// - private_cross_account: Private cross-account, used when the origin is OSS and the authentication type is private across accounts;
+	//
+	// - private: Used when the origin is S3 and the authentication type is private.
+	//
+	// example:
+	//
+	// public
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The region of the origin required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// us-east-1
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The SecretKey required for private authentication.
+	//
+	// example:
+	//
+	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The signature version required when the origin is AWS S3.
+	//
+	// example:
+	//
+	// v2
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UpdateOriginPoolRequestOriginsAuthConf) String() string {

@@ -16,8 +16,14 @@ type iListLoadBalancerOriginStatusResponseBody interface {
 }
 
 type ListLoadBalancerOriginStatusResponseBody struct {
+	// List of origin statuses under the load balancer.
 	OriginStatus []*ListLoadBalancerOriginStatusResponseBodyOriginStatus `json:"OriginStatus,omitempty" xml:"OriginStatus,omitempty" type:"Repeated"`
-	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request ID, used for tracking the request.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListLoadBalancerOriginStatusResponseBody) String() string {
@@ -60,12 +66,50 @@ func (s *ListLoadBalancerOriginStatusResponseBody) Validate() error {
 }
 
 type ListLoadBalancerOriginStatusResponseBodyOriginStatus struct {
-	LoadBalancerId *int64  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OriginId       *int64  `json:"OriginId,omitempty" xml:"OriginId,omitempty"`
-	PoolId         *int64  `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
-	PoolType       *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// ID of the load balancer.
+	//
+	// example:
+	//
+	// 99874066052****
+	LoadBalancerId *int64 `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// ID of the origin.
+	//
+	// example:
+	//
+	// 99750209487****
+	OriginId *int64 `json:"OriginId,omitempty" xml:"OriginId,omitempty"`
+	// ID of the source address pool.
+	//
+	// example:
+	//
+	// 99750209487****
+	PoolId *int64 `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
+	// The origin pool to which the source belongs, under this load balancer. Only \\"default_pool\\" (default address pool) will be displayed; other types will return an empty string.
+	//
+	// example:
+	//
+	// default_pool
+	PoolType *string `json:"PoolType,omitempty" xml:"PoolType,omitempty"`
+	// Reason for the probe failure.
+	//
+	// example:
+	//
+	// TCP connection error
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Status of the origin:
+	//
+	// - Healthy(healthy): The probe result is available.
+	//
+	// - Unhealthy(unhealthy): The probe result is unavailable.
+	//
+	// - Unknown(unknown): Unknown, the monitor has not yet probed.
+	//
+	// - Undetected(undetected): The load balancer to which the origin belongs is not bound to a monitor.
+	//
+	// example:
+	//
+	// healthy
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLoadBalancerOriginStatusResponseBodyOriginStatus) String() string {

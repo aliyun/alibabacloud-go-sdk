@@ -17,8 +17,16 @@ type iGetCustomResponseCodeRuleRequest interface {
 
 type GetCustomResponseCodeRuleRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 424022244554752
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 775724064754208
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

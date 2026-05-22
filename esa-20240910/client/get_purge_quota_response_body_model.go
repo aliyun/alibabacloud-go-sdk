@@ -22,9 +22,24 @@ type iGetPurgeQuotaResponseBody interface {
 }
 
 type GetPurgeQuotaResponseBody struct {
+	// The total quota.
+	//
+	// example:
+	//
+	// 100000
 	Quota      *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
 	Quota30Day *string `json:"Quota30Day,omitempty" xml:"Quota30Day,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The quota usage.
+	//
+	// example:
+	//
+	// 10
 	Usage      *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 	Usage30Day *string `json:"Usage30Day,omitempty" xml:"Usage30Day,omitempty"`
 }

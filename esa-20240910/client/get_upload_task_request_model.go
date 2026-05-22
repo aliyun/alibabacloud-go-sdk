@@ -16,7 +16,17 @@ type iGetUploadTaskRequest interface {
 }
 
 type GetUploadTaskRequest struct {
-	SiteId   *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/2850466.html) operation.
+	//
+	// example:
+	//
+	// 159253299357****
 	UploadId *int64 `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
 }
 

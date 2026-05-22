@@ -30,17 +30,73 @@ type iPublishEdgeContainerAppVersionRequest interface {
 }
 
 type PublishEdgeContainerAppVersionRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	FullRelease *bool   `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
-	Percentage  *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
+	//
+	// example:
+	//
+	// true
+	FullRelease *bool `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// The release percentage. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The environment to which you want to release the version. Valid values:
+	//
+	// 	- prod: the production environment.
+	//
+	// 	- staging: the staging environment.
+	//
 	// This parameter is required.
-	PublishEnv  *string   `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
-	PublishType *string   `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	Regions     []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	Remarks     *string   `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	StartTime   *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	//
+	// example:
+	//
+	// prod
+	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	// Specifies how the version is released. Valid values:
+	//
+	// 	- percentage: releases the version by percentage.
+	//
+	// 	- region: releases the version by region.
+	//
+	// If you do not specify this parameter, the version is released by percentage by default.
+	//
+	// example:
+	//
+	// percentage
+	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	// The regions to which the version is released.
+	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The remarks. This parameter is empty by default.
+	//
+	// example:
+	//
+	// test publish app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2023-06-05T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The version ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ver-87962637161651****
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 

@@ -24,22 +24,39 @@ type iBatchUpdateWafRulesShrinkRequest interface {
 }
 
 type BatchUpdateWafRulesShrinkRequest struct {
+	// The configurations of rules.
 	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	//
 	// example:
 	//
 	// 10000001
-	RulesetId    *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The configurations shared by multiple rules.
+	//
+	// example:
+	//
+	// 10000001
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

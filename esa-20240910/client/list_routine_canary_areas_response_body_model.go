@@ -16,8 +16,14 @@ type iListRoutineCanaryAreasResponseBody interface {
 }
 
 type ListRoutineCanaryAreasResponseBody struct {
+	// The regions for canary release.
 	CanaryAreas []*string `json:"CanaryAreas,omitempty" xml:"CanaryAreas,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRoutineCanaryAreasResponseBody) String() string {

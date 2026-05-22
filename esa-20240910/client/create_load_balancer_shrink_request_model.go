@@ -42,27 +42,156 @@ type iCreateLoadBalancerShrinkRequest interface {
 }
 
 type CreateLoadBalancerShrinkRequest struct {
+	// Configuration for failover across pools.
+	//
+	// example:
+	//
+	// true
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
+	// List of default pools.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled            *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Detailed description of the load balancer, for easier management and identification.
+	//
+	// example:
+	//
+	// Load balancer description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the load balancer is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
+	// Monitor configuration, used for health checks.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order
 	MonitorShrink *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
+	// The name of the load balancer, which must meet the domain name format validation and be a subdomain under the site.
+	//
 	// This parameter is required.
-	Name                 *string     `json:"Name,omitempty" xml:"Name,omitempty"`
-	RandomSteeringShrink *string     `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
-	RegionPools          interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
-	RulesShrink          *string     `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	SessionAffinity      *string     `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	//
+	// example:
+	//
+	// lb.example.com
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+	//
+	// example:
+	//
+	// 123
+	RandomSteeringShrink *string `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
+	// Address pools corresponding to primary regions.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
+	// Rule information.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "ENAM": [
+	//
+	//     12345678****
+	//
+	//   ],
+	//
+	//   "WNAM": [
+	//
+	//     23456789****,
+	//
+	//     23456789****
+	//
+	//   ]
+	//
+	// }
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// Session persistence, with possible values:
+	//
+	// - off: Not enabled.
+	//
+	// - ip: Session persistence by IP.
+	//
+	// - cookie: Session persistence by cookie.
+	//
+	// example:
+	//
+	// ip
+	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Load balancing strategy.
+	//
+	// - geo: Geographical strategy.
+	//
+	// - random: Weighted round-robin.
+	//
+	// - order: Primary and backup method.
+	//
 	// This parameter is required.
-	SteeringPolicy *string     `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	//
+	// example:
+	//
+	// order
+	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
+	// Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
+	//
+	// example:
+	//
+	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
-	Ttl            *int32      `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
+	//
+	// example:
+	//
+	// 300
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s CreateLoadBalancerShrinkRequest) String() string {

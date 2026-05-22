@@ -18,8 +18,19 @@ type iCheckAssumeSlrRoleResponseBody interface {
 }
 
 type CheckAssumeSlrRoleResponseBody struct {
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	IsExist   *string `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	// example:
+	//
+	// aliuid:xxx assumeOssRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// true
+	IsExist *string `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

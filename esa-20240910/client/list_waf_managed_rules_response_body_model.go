@@ -22,19 +22,28 @@ type iListWafManagedRulesResponseBody interface {
 }
 
 type ListWafManagedRulesResponseBody struct {
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of managed rules.
+	Rules []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Total number of rules after filtering.
+	//
 	// example:
 	//
 	// 20
@@ -108,11 +117,36 @@ func (s *ListWafManagedRulesResponseBody) Validate() error {
 }
 
 type ListWafManagedRulesResponseBodyRules struct {
-	Action          *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProtectionLevel *int32  `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Protection action of the managed rule.
+	//
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// ID of the managed rule.
+	//
+	// example:
+	//
+	// 100001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the managed rule.
+	//
+	// example:
+	//
+	// SQL injection
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Protection level of the managed rule.
+	//
+	// example:
+	//
+	// 1
+	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// Protection status of the managed rule.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListWafManagedRulesResponseBodyRules) String() string {

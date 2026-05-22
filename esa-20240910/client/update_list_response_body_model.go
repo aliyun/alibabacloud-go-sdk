@@ -14,6 +14,8 @@ type iUpdateListResponseBody interface {
 }
 
 type UpdateListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225

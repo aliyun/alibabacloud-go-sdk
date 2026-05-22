@@ -18,9 +18,25 @@ type iListOriginCaCertificatesRequest interface {
 }
 
 type ListOriginCaCertificatesRequest struct {
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

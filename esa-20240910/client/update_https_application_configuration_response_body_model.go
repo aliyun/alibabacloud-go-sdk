@@ -14,6 +14,11 @@ type iUpdateHttpsApplicationConfigurationResponseBody interface {
 }
 
 type UpdateHttpsApplicationConfigurationResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -18,9 +18,32 @@ type iListUserDeliveryTasksRequest interface {
 }
 
 type ListUserDeliveryTasksRequest struct {
+	// The log category. Valid values:
+	//
+	// 1.  dcdn_log_access_l1 (default): access logs.
+	//
+	// 2.  dcdn_log_er: Edge Routine logs.
+	//
+	// 3.  dcdn_log_waf: firewall logs.
+	//
+	// 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+	//
+	// example:
+	//
+	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserDeliveryTasksRequest) String() string {

@@ -20,10 +20,34 @@ type iCheckSiteProjectNameResponseBody interface {
 }
 
 type CheckSiteProjectNameResponseBody struct {
-	Check       *bool   `json:"Check,omitempty" xml:"Check,omitempty"`
+	// Indicates whether the task name is valid. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The result description.
+	//
+	// example:
+	//
+	// project name pass the check
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the real-time log delivery task.
+	//
+	// example:
+	//
+	// dcdn_waf_userAccount_log
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckSiteProjectNameResponseBody) String() string {

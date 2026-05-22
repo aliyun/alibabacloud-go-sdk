@@ -22,11 +22,37 @@ type iUpdateScheduledPreloadExecutionRequest interface {
 }
 
 type UpdateScheduledPreloadExecutionRequest struct {
+	// The end time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
 	// This parameter is required.
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	//
+	// example:
+	//
+	// UpdateScheduledPreloadExecution
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

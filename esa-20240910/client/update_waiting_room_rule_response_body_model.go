@@ -14,6 +14,11 @@ type iUpdateWaitingRoomRuleResponseBody interface {
 }
 
 type UpdateWaitingRoomRuleResponseBody struct {
+	// Request ID, used for tracking the progress of request processing.
+	//
+	// example:
+	//
+	// 9bfe9d95-7bf6-469d-a628-ed7bc9f25073
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

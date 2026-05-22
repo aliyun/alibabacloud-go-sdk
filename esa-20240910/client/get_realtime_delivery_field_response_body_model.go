@@ -16,8 +16,14 @@ type iGetRealtimeDeliveryFieldResponseBody interface {
 }
 
 type GetRealtimeDeliveryFieldResponseBody struct {
+	// The fields returned.
 	FieldContent map[string]*FieldContentValue `json:"FieldContent,omitempty" xml:"FieldContent,omitempty"`
-	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRealtimeDeliveryFieldResponseBody) String() string {

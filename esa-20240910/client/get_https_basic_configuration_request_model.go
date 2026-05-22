@@ -16,9 +16,21 @@ type iGetHttpsBasicConfigurationRequest interface {
 }
 
 type GetHttpsBasicConfigurationRequest struct {
+	// ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://help.aliyun.com/document_detail/2867470.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

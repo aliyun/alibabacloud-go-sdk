@@ -18,9 +18,18 @@ type iCreateCustomHostnameResponseBody interface {
 }
 
 type CreateCustomHostnameResponseBody struct {
-	Hostname   *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	HostnameId *int64  `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// custom.site.com
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	HostnameId *int64 `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCustomHostnameResponseBody) String() string {

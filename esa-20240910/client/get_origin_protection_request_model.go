@@ -14,7 +14,13 @@ type iGetOriginProtectionRequest interface {
 }
 
 type GetOriginProtectionRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

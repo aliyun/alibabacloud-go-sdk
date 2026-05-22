@@ -20,10 +20,34 @@ type iCheckUserProjectNameResponseBody interface {
 }
 
 type CheckUserProjectNameResponseBody struct {
-	Check       *bool   `json:"Check,omitempty" xml:"Check,omitempty"`
+	// Indicates whether the name is valid. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The reason why the name passed or failed the check.
+	//
+	// example:
+	//
+	// project name pass the check
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the real-time log delivery task.
+	//
+	// example:
+	//
+	// ali-dcdn-log-56
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckUserProjectNameResponseBody) String() string {

@@ -30,7 +30,7 @@ type iGetPageResponseBody interface {
 }
 
 type GetPageResponseBody struct {
-	// 自定义响应页面内容BASE64编码
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetPageResponseBody struct {
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 自定义响应页面内容类型
+	// The Content-Type field in the HTTP header.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,25 @@ type GetPageResponseBody struct {
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 自定义响应页面描述
+	// The description of the custom error page.
 	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 自定义响应页面ID
+	// The ID of the custom error page.[](~~2850223~~)
 	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the custom response page.
+	//
 	// example:
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// 自定义响应页面名称
+	// The name of the custom response page.
 	//
 	// This parameter is required.
 	//
@@ -70,11 +72,15 @@ type GetPageResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SiteIds   []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
+	// The time when the custom error page was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z

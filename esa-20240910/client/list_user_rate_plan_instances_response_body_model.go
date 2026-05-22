@@ -24,12 +24,38 @@ type iListUserRatePlanInstancesResponseBody interface {
 }
 
 type ListUserRatePlanInstancesResponseBody struct {
+	// The queried plans.
 	InstanceInfo []*ListUserRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	PageNumber   *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage    *int32                                               `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 68
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListUserRatePlanInstancesResponseBody) String() string {
@@ -108,31 +134,102 @@ func (s *ListUserRatePlanInstancesResponseBody) Validate() error {
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
-	BillingMode                     *string                                                   `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	BotInstanceLevel                *string                                                   `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
-	BotRequest                      *string                                                   `json:"BotRequest,omitempty" xml:"BotRequest,omitempty"`
-	Coverages                       *string                                                   `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	CreateTime                      *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossborderTraffic              *string                                                   `json:"CrossborderTraffic,omitempty" xml:"CrossborderTraffic,omitempty"`
-	DdosBurstableDomesticProtection *string                                                   `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
-	DdosBurstableOverseasProtection *string                                                   `json:"DdosBurstableOverseasProtection,omitempty" xml:"DdosBurstableOverseasProtection,omitempty"`
-	DdosInstanceLevel               *string                                                   `json:"DdosInstanceLevel,omitempty" xml:"DdosInstanceLevel,omitempty"`
-	Duration                        *int32                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EdgeRoutineRquest               *string                                                   `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
-	EdgeWafRequest                  *string                                                   `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
-	ExpireTime                      *string                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId                      *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Layer4Traffic                   *string                                                   `json:"Layer4Traffic,omitempty" xml:"Layer4Traffic,omitempty"`
-	Layer4TrafficIntl               *string                                                   `json:"Layer4TrafficIntl,omitempty" xml:"Layer4TrafficIntl,omitempty"`
-	PlanName                        *string                                                   `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	PlanTraffic                     *string                                                   `json:"PlanTraffic,omitempty" xml:"PlanTraffic,omitempty"`
-	PlanType                        *string                                                   `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	SiteQuota                       *string                                                   `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
-	Sites                           []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	SmartRoutingRequest             *string                                                   `json:"SmartRoutingRequest,omitempty" xml:"SmartRoutingRequest,omitempty"`
-	StaticRequest                   *string                                                   `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
-	Status                          *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubscribeType                   *string                                                   `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- PREPAY: subscription.
+	//
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// example:
+	//
+	// PREPAY
+	BillingMode      *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	BotInstanceLevel *string `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
+	BotRequest       *string `json:"BotRequest,omitempty" xml:"BotRequest,omitempty"`
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+	//
+	// 	- domestic: the Chinese mainland.
+	//
+	// 	- overseas: outside the Chinese mainland.
+	//
+	// 	- global: global.
+	//
+	// example:
+	//
+	// domestic,overseas
+	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
+	// The time when the plan was purchased.
+	//
+	// example:
+	//
+	// YYYY-MM-DDThh:mm:ssZ
+	CreateTime                      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossborderTraffic              *string `json:"CrossborderTraffic,omitempty" xml:"CrossborderTraffic,omitempty"`
+	DdosBurstableDomesticProtection *string `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
+	DdosBurstableOverseasProtection *string `json:"DdosBurstableOverseasProtection,omitempty" xml:"DdosBurstableOverseasProtection,omitempty"`
+	DdosInstanceLevel               *string `json:"DdosInstanceLevel,omitempty" xml:"DdosInstanceLevel,omitempty"`
+	// The subscription duration of the plan. Unit: month.
+	//
+	// example:
+	//
+	// 3
+	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EdgeRoutineRquest *string `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
+	EdgeWafRequest    *string `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
+	// The time when the plan expires.
+	//
+	// example:
+	//
+	// YYYY-MM-DDThh:mm:ssZ
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The plan ID.
+	//
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Layer4Traffic     *string `json:"Layer4Traffic,omitempty" xml:"Layer4Traffic,omitempty"`
+	Layer4TrafficIntl *string `json:"Layer4TrafficIntl,omitempty" xml:"Layer4TrafficIntl,omitempty"`
+	// The plan name.
+	//
+	// example:
+	//
+	// basic
+	PlanName    *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	PlanTraffic *string `json:"PlanTraffic,omitempty" xml:"PlanTraffic,omitempty"`
+	// The plan type. Valid values:
+	//
+	// 	- normal
+	//
+	// 	- enterprise
+	//
+	// example:
+	//
+	// normal
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The maximum number of websites that can be associated with the plan.
+	//
+	// example:
+	//
+	// 1
+	SiteQuota *string `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
+	// The websites that have been associated with the plan.
+	Sites               []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	SmartRoutingRequest *string                                                   `json:"SmartRoutingRequest,omitempty" xml:"SmartRoutingRequest,omitempty"`
+	StaticRequest       *string                                                   `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
+	// The plan status. Valid values:
+	//
+	// 	- online: The plan is in service.
+	//
+	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The plan is released.
+	//
+	// example:
+	//
+	// online
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s ListUserRatePlanInstancesResponseBodyInstanceInfo) String() string {
@@ -382,8 +479,31 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) Validate() error {
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName   *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website status. Valid values:
+	//
+	// 	- pending: The website is to be configured.
+	//
+	// 	- active: The website is active.
+	//
+	// 	- offline: The website is suspended.
+	//
+	// 	- moved: The website has been added and verified by another Alibaba Cloud account.
+	//
+	// example:
+	//
+	// pending
 	SiteStatus *string `json:"SiteStatus,omitempty" xml:"SiteStatus,omitempty"`
 }
 

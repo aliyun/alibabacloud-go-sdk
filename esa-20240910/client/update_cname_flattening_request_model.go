@@ -16,9 +16,25 @@ type iUpdateCnameFlatteningRequest interface {
 }
 
 type UpdateCnameFlatteningRequest struct {
+	// The CNAME flattening mode. Valid values:
+	//
+	// 	- flatten_all: flattens all CNAMEs.
+	//
+	// 	- flatten_at_root: flattens only the root domain. Default: flatten_at_root
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// flatten_all
 	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

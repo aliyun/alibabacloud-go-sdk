@@ -16,8 +16,19 @@ type iGetRoutineStagingCodeUploadInfoRequest interface {
 }
 
 type GetRoutineStagingCodeUploadInfoRequest struct {
+	// The code description.
+	//
+	// example:
+	//
+	// the description of code
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	// The routine name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// GetRoutineStagingCodeUploadInfo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -15,6 +15,10 @@ type iApplyCustomHostnameCertificateRequest interface {
 
 type ApplyCustomHostnameCertificateRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	HostnameId *int64 `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
 }
 

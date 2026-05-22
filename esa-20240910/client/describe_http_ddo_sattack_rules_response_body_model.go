@@ -22,11 +22,25 @@ type iDescribeHttpDDoSAttackRulesResponseBody interface {
 }
 
 type DescribeHttpDDoSAttackRulesResponseBody struct {
-	PageNumber *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleInfos  []*DescribeHttpDDoSAttackRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
-	TotalCount *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// D4030CD2-0D9D-5E92-B358-421AE58307C6
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleInfos []*DescribeHttpDDoSAttackRulesResponseBodyRuleInfos `json:"RuleInfos,omitempty" xml:"RuleInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHttpDDoSAttackRulesResponseBody) String() string {
@@ -96,14 +110,38 @@ func (s *DescribeHttpDDoSAttackRulesResponseBody) Validate() error {
 }
 
 type DescribeHttpDDoSAttackRulesResponseBodyRuleInfos struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// deny
 	DefaultAction *string `json:"DefaultAction,omitempty" xml:"DefaultAction,omitempty"`
-	LogRuleId     *int32  `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
-	RuleDesc      *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	RuleId        *int32  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleIdInfo    *string `json:"RuleIdInfo,omitempty" xml:"RuleIdInfo,omitempty"`
-	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 100010
+	LogRuleId *int32 `json:"LogRuleId,omitempty" xml:"LogRuleId,omitempty"`
+	// example:
+	//
+	// The HTTP request\\"s Accept header contains invalid features#1
+	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	// example:
+	//
+	// 20203578
+	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// global_01_s
+	RuleIdInfo *string `json:"RuleIdInfo,omitempty" xml:"RuleIdInfo,omitempty"`
+	// example:
+	//
+	// Illegal request。
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeHttpDDoSAttackRulesResponseBodyRuleInfos) String() string {

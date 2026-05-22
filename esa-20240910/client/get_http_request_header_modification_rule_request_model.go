@@ -16,9 +16,21 @@ type iGetHttpRequestHeaderModificationRuleRequest interface {
 }
 
 type GetHttpRequestHeaderModificationRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

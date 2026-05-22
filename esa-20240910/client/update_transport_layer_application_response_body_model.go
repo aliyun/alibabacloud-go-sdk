@@ -14,6 +14,11 @@ type iUpdateTransportLayerApplicationResponseBody interface {
 }
 
 type UpdateTransportLayerApplicationResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 9e5448c7-edaf-49aa-9887-0fcd0832306c
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

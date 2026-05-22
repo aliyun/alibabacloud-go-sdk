@@ -18,7 +18,10 @@ type iDescribeRatePlanPriceRequest interface {
 }
 
 type DescribeRatePlanPriceRequest struct {
-	Amount   *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 1
 	Period   *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 }

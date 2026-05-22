@@ -18,9 +18,32 @@ type iDescribeHttpDDoSAttackProtectionResponseBody interface {
 }
 
 type DescribeHttpDDoSAttackProtectionResponseBody struct {
+	// The level of HTTP DDoS attack protection. Valid values:
+	//
+	// 	- **very weak**: very loose.
+	//
+	// 	- **weak**: loose.
+	//
+	// 	- **default**: normal.
+	//
+	// 	- **hard**: strict.
+	//
+	// example:
+	//
+	// default
 	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C4477247A78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s DescribeHttpDDoSAttackProtectionResponseBody) String() string {

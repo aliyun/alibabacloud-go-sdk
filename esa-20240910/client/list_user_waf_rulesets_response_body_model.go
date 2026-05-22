@@ -36,6 +36,8 @@ type ListUserWafRulesetsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -123,6 +125,9 @@ func (s *ListUserWafRulesetsResponseBody) Validate() error {
 }
 
 type ListUserWafRulesetsResponseBodyRulesets struct {
+	// example:
+	//
+	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
@@ -134,9 +139,12 @@ type ListUserWafRulesetsResponseBodyRulesets struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
-	// http_bot
-	Phase    *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	Position *int64  `json:"Position,omitempty" xml:"Position,omitempty"`
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
 	// example:
 	//
 	// on

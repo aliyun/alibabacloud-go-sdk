@@ -22,11 +22,32 @@ type iListUserDeliveryTasksResponseBody interface {
 }
 
 type ListUserDeliveryTasksResponseBody struct {
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks      []*ListUserDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number returned.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1f94c47f-3a1a-4f69-8d6c-bfeee1b49aab
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The delivery tasks.
+	Tasks []*ListUserDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of delivery tasks.
+	//
+	// example:
+	//
+	// 68
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListUserDeliveryTasksResponseBody) String() string {
@@ -96,11 +117,40 @@ func (s *ListUserDeliveryTasksResponseBody) Validate() error {
 }
 
 type ListUserDeliveryTasksResponseBodyTasks struct {
+	// The log category.
+	//
+	// example:
+	//
+	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	DataCenter   *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The data center. Valid values:
+	//
+	// 1.  cn: the Chinese mainland.
+	//
+	// 2.  sg: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn
+	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The delivery destination.
+	//
+	// example:
+	//
+	// oss
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The status of the delivery task.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
+	// example:
+	//
+	// testoss11
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s ListUserDeliveryTasksResponseBodyTasks) String() string {

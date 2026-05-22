@@ -16,7 +16,21 @@ type iGetSitePauseResponseBody interface {
 }
 
 type GetSitePauseResponseBody struct {
-	Paused    *bool   `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// Indicates whether ESA is paused on the website. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

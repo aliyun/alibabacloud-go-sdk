@@ -17,7 +17,12 @@ type iDeleteSiteRequest interface {
 
 type DeleteSiteRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s DeleteSiteRequest) String() string {

@@ -24,12 +24,38 @@ type iListOriginRulesResponseBody interface {
 }
 
 type ListOriginRulesResponseBody struct {
-	Configs    []*ListOriginRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// Response body configuration.
+	Configs []*ListOriginRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListOriginRulesResponseBody) String() string {
@@ -108,29 +134,141 @@ func (s *ListOriginRulesResponseBody) Validate() error {
 }
 
 type ListOriginRulesResponseBodyConfigs struct {
-	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType            *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 395386449776640
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Rewrite the DNS resolution record for the origin request.
+	//
+	// example:
+	//
+	// test.example.com
 	DnsRecord             *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
 	Follow302Enable       *string `json:"Follow302Enable,omitempty" xml:"Follow302Enable,omitempty"`
 	Follow302MaxTries     *string `json:"Follow302MaxTries,omitempty" xml:"Follow302MaxTries,omitempty"`
 	Follow302RetainArgs   *string `json:"Follow302RetainArgs,omitempty" xml:"Follow302RetainArgs,omitempty"`
 	Follow302RetainHeader *string `json:"Follow302RetainHeader,omitempty" xml:"Follow302RetainHeader,omitempty"`
 	Follow302TargetHost   *string `json:"Follow302TargetHost,omitempty" xml:"Follow302TargetHost,omitempty"`
-	OriginHost            *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	OriginHttpPort        *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
-	OriginHttpsPort       *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	OriginMtls            *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
-	OriginReadTimeout     *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
-	OriginScheme          *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
-	OriginSni             *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
-	OriginVerify          *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
-	Range                 *string `json:"Range,omitempty" xml:"Range,omitempty"`
-	RangeChunkSize        *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
-	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence              *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion           *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// HOST carried in the origin request.
+	//
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// The port of the origin server to access when using the HTTP protocol for origin requests.
+	//
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// The port of the origin server to access when using the HTTPS protocol for origin requests.
+	//
+	// example:
+	//
+	// 4433
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	// mTLS switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
+	// Protocol used for the origin request. Value range:
+	//
+	// - http: Use HTTP protocol for origin.
+	//
+	// - https: Use HTTPS protocol for origin.
+	//
+	// - follow: Follow the client\\"s protocol for origin.
+	//
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// SNI carried in the back-to-origin request.
+	//
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// Origin certificate verification switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
+	// Use range slicing to download files from the origin. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// - force: Force
+	//
+	// example:
+	//
+	// on
+	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. The smaller the value, the higher the priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
 func (s ListOriginRulesResponseBodyConfigs) String() string {

@@ -17,8 +17,16 @@ type iUpdatePerformanceDataCollectionRequest interface {
 
 type UpdatePerformanceDataCollectionRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 34003500310****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

@@ -16,7 +16,17 @@ type iSetCertificateResponseBody interface {
 }
 
 type SetCertificateResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaffe176ae44e2ad16d3e309b9e506
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A666D44F-19D6-490E-97CF-1A64AB962C57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

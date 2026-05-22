@@ -16,8 +16,18 @@ type iPreloadCachesResponseBody interface {
 }
 
 type PreloadCachesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The prefetch task ID.
+	//
+	// example:
+	//
+	// 16401427840
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PreloadCachesResponseBody) String() string {

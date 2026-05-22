@@ -28,15 +28,65 @@ type iUpdateCustomResponseCodeRuleRequest interface {
 }
 
 type UpdateCustomResponseCodeRuleRequest struct {
+	// The ID of the configuration.
+	//
 	// This parameter is required.
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	PageId     *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Response page.
+	//
+	// example:
+	//
+	// 0
+	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// 200
 	ReturnCode *string `json:"ReturnCode,omitempty" xml:"ReturnCode,omitempty"`
-	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
+	//
+	// 	- true: Match all incoming requests.
+	//
+	// 	- Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence   *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The rule name. You do not need to set this parameter when you add global configurations.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 437375513708224
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

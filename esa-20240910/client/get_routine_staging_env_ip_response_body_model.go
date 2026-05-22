@@ -16,8 +16,14 @@ type iGetRoutineStagingEnvIpResponseBody interface {
 }
 
 type GetRoutineStagingEnvIpResponseBody struct {
-	IPV4      []*string `json:"IPV4,omitempty" xml:"IPV4,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The IPv4 addresses.
+	IPV4 []*string `json:"IPV4,omitempty" xml:"IPV4,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRoutineStagingEnvIpResponseBody) String() string {

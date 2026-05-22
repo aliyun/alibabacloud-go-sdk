@@ -24,12 +24,38 @@ type iListCompressionRulesResponseBody interface {
 }
 
 type ListCompressionRulesResponseBody struct {
-	Configs    []*ListCompressionRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                     `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// List of compression rule configurations.
+	Configs []*ListCompressionRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items.
+	//
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListCompressionRulesResponseBody) String() string {
@@ -108,16 +134,86 @@ func (s *ListCompressionRulesResponseBody) Validate() error {
 }
 
 type ListCompressionRulesResponseBodyConfigs struct {
-	Brotli      *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
-	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	Gzip        *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable  *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence    *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	Zstd        *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
+	// Brotli compression. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - global: Global configuration.
+	//
+	// - rule: Rule-based configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Gzip compression. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. The smaller the value, the higher the priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Zstd compression. Value range: - on: Enable. - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Zstd *string `json:"Zstd,omitempty" xml:"Zstd,omitempty"`
 }
 
 func (s ListCompressionRulesResponseBodyConfigs) String() string {

@@ -46,33 +46,161 @@ type iCreateWaitingRoomRequest interface {
 }
 
 type CreateWaitingRoomRequest struct {
+	// The name of the custom cookie.
+	//
 	// This parameter is required.
-	CookieName                  *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	CustomPageHtml              *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	//
+	// example:
+	//
+	// __aliwaitingroom_example
+	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	//
+	// example:
+	//
+	// Hello%20world!
+	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	// The description of the waiting room.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to disable session renewal. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// Specifies whether to enable the waiting room. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The hostname and path.
+	//
 	// This parameter is required.
-	HostNameAndPath    []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
-	JsonResponseEnable *string                                    `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	Language           *string                                    `json:"Language,omitempty" xml:"Language,omitempty"`
+	HostNameAndPath []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
+	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+	//
+	// 	- enus: English.
+	//
+	// 	- zhcn: Simplified Chinese.
+	//
+	// 	- zhhk: Traditional Chinese.
+	//
+	// example:
+	//
+	// enus
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The name of the waiting room.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	QueueAllEnable    *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// Specifies whether to queue all requests. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: Users are blocked from reaching the origin.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The maximum number of active users.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// default
 	WaitingRoomType *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
 }
 
@@ -251,11 +379,29 @@ func (s *CreateWaitingRoomRequest) Validate() error {
 }
 
 type CreateWaitingRoomRequestHostNameAndPath struct {
+	// The domain name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The path.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The subdomain.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test.
 	Subdomain *string `json:"Subdomain,omitempty" xml:"Subdomain,omitempty"`
 }
 

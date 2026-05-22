@@ -20,17 +20,28 @@ type iUpdateWafRulesetRequest interface {
 }
 
 type UpdateWafRulesetRequest struct {
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The target status to change for the ruleset.
+	//
 	// example:
 	//
 	// on

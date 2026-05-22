@@ -18,9 +18,19 @@ type iCreateRoutineRelatedRecordResponseBody interface {
 }
 
 type CreateRoutineRelatedRecordResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateRoutineRelatedRecordResponseBody) String() string {

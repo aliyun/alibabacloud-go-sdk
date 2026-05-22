@@ -16,7 +16,14 @@ type iCreateWafRulesetResponseBody interface {
 }
 
 type CreateWafRulesetResponseBody struct {
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225

@@ -26,14 +26,50 @@ type iUpdateHttpResponseHeaderModificationRuleRequest interface {
 }
 
 type UpdateHttpResponseHeaderModificationRuleRequest struct {
+	// Configuration ID. It can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+	//
 	// This parameter is required.
-	ConfigId                   *int64                                                                       `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modify response headers, supporting three operation methods: add, delete, and modify.
 	ResponseHeaderModification []*UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	Rule                       *string                                                                      `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable                 *string                                                                      `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                   *string                                                                      `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence                   *int32                                                                       `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -122,12 +158,35 @@ func (s *UpdateHttpResponseHeaderModificationRuleRequest) Validate() error {
 }
 
 type UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification struct {
+	// Response header name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operation method. Value range:
+	//
+	// - add: Add.
+	//
+	// - del: Delete
+	//
+	// - modify: Modify.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Response header value.
+	//
+	// example:
+	//
+	// headerValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) String() string {

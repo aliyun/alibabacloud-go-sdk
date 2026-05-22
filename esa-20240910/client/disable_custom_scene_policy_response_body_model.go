@@ -16,7 +16,17 @@ type iDisableCustomScenePolicyResponseBody interface {
 }
 
 type DisableCustomScenePolicyResponseBody struct {
-	PolicyId  *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The ID of the disabled policy.
+	//
+	// example:
+	//
+	// 100001
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

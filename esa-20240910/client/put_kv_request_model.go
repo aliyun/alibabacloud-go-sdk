@@ -24,14 +24,47 @@ type iPutKvRequest interface {
 }
 
 type PutKvRequest struct {
-	Base64        *bool  `json:"Base64,omitempty" xml:"Base64,omitempty"`
-	Expiration    *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// Specifies whether the content of the key is Base64-encoded. Set this parameter to true if you want to store the key content in binary format. When this parameter is set to true, the Value parameter must be Base64-encoded.
+	//
+	// example:
+	//
+	// true
+	Base64 *bool `json:"Base64,omitempty" xml:"Base64,omitempty"`
+	// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+	//
+	// example:
+	//
+	// 1690081381
+	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+	//
+	// example:
+	//
+	// 3600
 	ExpirationTtl *int64 `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://help.aliyun.com/document_detail/2850486.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

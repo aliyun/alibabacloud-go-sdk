@@ -20,10 +20,34 @@ type iGetCacheTagResponseBody interface {
 }
 
 type GetCacheTagResponseBody struct {
+	// Whether to ignore case. Possible values:
+	//
+	// - on: Enabled, ignores case.
+	//
+	// - off: Disabled, does not ignore case.
+	//
+	// example:
+	//
+	// on
 	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteVersion     *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Version number of the site.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Custom CacheTag name.
+	//
+	// example:
+	//
+	// example
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s GetCacheTagResponseBody) String() string {

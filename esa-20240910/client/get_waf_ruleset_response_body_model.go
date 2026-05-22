@@ -28,13 +28,13 @@ type iGetWafRulesetResponseBody interface {
 }
 
 type GetWafRulesetResponseBody struct {
-	// 自定义响应页面ID
+	// Ruleset ID.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 自定义响应页面名称
+	// Ruleset name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type GetWafRulesetResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 自定义响应页面内容类型
+	// The WAF operation phase applicable to the ruleset.
 	//
 	// This parameter is required.
 	//
@@ -50,16 +50,24 @@ type GetWafRulesetResponseBody struct {
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*WafRuleConfig    `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	Shared    *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of rule configurations in the ruleset.
+	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Shared configurations for the rules in the ruleset.
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// Ruleset status.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last modified time of the ruleset.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z

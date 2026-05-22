@@ -20,12 +20,34 @@ type iListWaitingRoomRulesRequest interface {
 }
 
 type ListWaitingRoomRulesRequest struct {
+	// Rule name, optional, used for querying by the name of the waiting room bypass rule.
+	//
+	// example:
+	//
+	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room to bypass, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) interface.
+	//
 	// This parameter is required.
-	WaitingRoomId     *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
-	WaitingRoomRuleId *int64  `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
+	//
+	// example:
+	//
+	// 6a51d5bc6460887abd129****
+	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// The ID of the waiting room bypass rule to update, which can be obtained by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) interface.
+	//
+	// example:
+	//
+	// 37286782688****
+	WaitingRoomRuleId *int64 `json:"WaitingRoomRuleId,omitempty" xml:"WaitingRoomRuleId,omitempty"`
 }
 
 func (s ListWaitingRoomRulesRequest) String() string {

@@ -18,9 +18,38 @@ type iGetErServiceResponseBody interface {
 }
 
 type GetErServiceResponseBody struct {
-	PlanName  *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The billing mode. Valid values:
+	//
+	// 	- er_paymode: billed for customers on the China site.
+	//
+	// 	- er_freemode: free for customers on the China site.
+	//
+	// 	- er_paymodeintl: billed for customers on the International site.
+	//
+	// 	- err_freemodeintl: free for customers on the International site
+	//
+	// example:
+	//
+	// er_paymode
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The service status. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Running
+	//
+	// 	- NotOpened
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetErServiceResponseBody) String() string {

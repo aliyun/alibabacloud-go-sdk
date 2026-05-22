@@ -18,10 +18,27 @@ type iUpdateSiteDeliveryTaskStatusRequest interface {
 }
 
 type UpdateSiteDeliveryTaskStatusRequest struct {
+	// Specifies whether to enable the delivery task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// online
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cdn-test-task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

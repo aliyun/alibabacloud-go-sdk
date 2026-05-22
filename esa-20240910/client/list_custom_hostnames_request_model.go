@@ -26,13 +26,35 @@ type iListCustomHostnamesRequest interface {
 }
 
 type ListCustomHostnamesRequest struct {
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// custom.site.com
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// exact
 	NameMatchType *string `json:"NameMatchType,omitempty" xml:"NameMatchType,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RecordId      *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// This parameter is required.
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 744571165985008
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

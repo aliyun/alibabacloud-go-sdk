@@ -21,10 +21,24 @@ type iDescribeHttpDDoSIntelligentAclRulesRequest interface {
 
 type DescribeHttpDDoSIntelligentAclRulesRequest struct {
 	// This parameter is required.
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleType   *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// acl
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

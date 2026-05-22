@@ -28,18 +28,41 @@ type iCreateUserWafRulesetShrinkRequest interface {
 }
 
 type CreateUserWafRulesetShrinkRequest struct {
+	// example:
+	//
+	// this is a test ruleset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ip.src == 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// esa-site-ads11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// http_custom
 	Phase        *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	RulesShrink  *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

@@ -16,9 +16,21 @@ type iActivateClientCertificateRequest interface {
 }
 
 type ActivateClientCertificateRequest struct {
+	// The certificate ID, which can be obtained by calling the [ListClientCertificates](https://help.aliyun.com/document_detail/2852848.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

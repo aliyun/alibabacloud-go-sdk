@@ -21,12 +21,24 @@ type iListWafTemplateRulesShrinkRequest interface {
 
 type ListWafTemplateRulesShrinkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// WAF operation phase, used to filter template rules for a specific phase.
+	//
 	// example:
 	//
 	// http_anti_scan
-	Phase           *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query parameters, used to filter template rules based on conditions such as rule type.
+	//
+	// example:
+	//
+	// http_anti_scan
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	SiteId          *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ListWafTemplateRulesShrinkRequest) String() string {

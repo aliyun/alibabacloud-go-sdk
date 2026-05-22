@@ -23,10 +23,22 @@ type iSetClientCaCertificateHostnamesResponseBody interface {
 
 type SetClientCaCertificateHostnamesResponseBody struct {
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	Id        *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId    *int64    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName  *string   `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s SetClientCaCertificateHostnamesResponseBody) String() string {

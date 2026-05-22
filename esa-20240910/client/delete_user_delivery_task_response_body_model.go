@@ -14,6 +14,11 @@ type iDeleteUserDeliveryTaskResponseBody interface {
 }
 
 type DeleteUserDeliveryTaskResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 952ea16b-1f05-4a76-bb32-420282d8aeb9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

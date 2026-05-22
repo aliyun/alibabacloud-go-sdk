@@ -18,9 +18,25 @@ type iListClientCertificatesRequest interface {
 }
 
 type ListClientCertificatesRequest struct {
+	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

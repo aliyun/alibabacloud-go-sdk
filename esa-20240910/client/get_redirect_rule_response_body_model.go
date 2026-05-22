@@ -36,18 +36,108 @@ type iGetRedirectRuleResponseBody interface {
 }
 
 type GetRedirectRuleResponseBody struct {
-	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType         *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - global: Global configuration.
+	//
+	// - rule: Rule-based configuration.
+	//
+	// example:
+	//
+	// rule
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Preserve query string. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence           *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion        *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Possible values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. The smaller the value, the higher the priority.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site, defaulting to version 0.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Response status code used by the node to respond to the client with the redirect address. Possible values:
+	//
+	// - 301
+	//
+	// - 302
+	//
+	// - 303
+	//
+	// - 307
+	//
+	// - 308
+	//
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Target URL after redirection.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// Redirect type. Possible values:
+	//
+	// - static: Static mode.
+	//
+	// - dynamic: Dynamic mode.
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetRedirectRuleResponseBody) String() string {

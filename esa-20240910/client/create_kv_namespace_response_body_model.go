@@ -22,11 +22,44 @@ type iCreateKvNamespaceResponseBody interface {
 }
 
 type CreateKvNamespaceResponseBody struct {
+	// The description of the namespace.
+	//
+	// example:
+	//
+	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	//
+	// example:
+	//
+	// 657717877171818496
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// 	- **online**: working as expected.
+	//
+	// 	- **delete**: pending deletion.
+	//
+	// 	- **deleting**: being deleted.
+	//
+	// 	- **deleted**: deleted.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateKvNamespaceResponseBody) String() string {

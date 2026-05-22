@@ -22,11 +22,32 @@ type iListKvsResponseBody interface {
 }
 
 type ListKvsResponseBody struct {
-	Keys       []*ListKvsResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	PageNumber *int32                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The key-value pairs.
+	Keys []*ListKvsResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 100
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1024
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListKvsResponseBody) String() string {
@@ -96,7 +117,17 @@ func (s *ListKvsResponseBody) Validate() error {
 }
 
 type ListKvsResponseBodyKeys struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The key name.
+	//
+	// example:
+	//
+	// Key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the key was last updated.
+	//
+	// example:
+	//
+	// 2021-12-13T07:46:03Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

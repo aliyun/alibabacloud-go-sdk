@@ -14,6 +14,11 @@ type iDeleteTransportLayerApplicationResponseBody interface {
 }
 
 type DeleteTransportLayerApplicationResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 90510C29-1E40-5A11-93F1-B9F5EDF57EE1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

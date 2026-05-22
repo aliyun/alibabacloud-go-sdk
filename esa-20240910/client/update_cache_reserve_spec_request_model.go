@@ -20,10 +20,34 @@ type iUpdateCacheReserveSpecRequest interface {
 }
 
 type UpdateCacheReserveSpecRequest struct {
-	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ChargeType    *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TargetQuotaGb *int64  `json:"TargetQuotaGb,omitempty" xml:"TargetQuotaGb,omitempty"`
+	// Automatic payment.
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Billing type. Valid values:
+	//
+	// - PREPAY
+	//
+	// - POSTPAY
+	//
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Instance ID.
+	//
+	// example:
+	//
+	// esa-cr-9tuv*********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Cache requested size, in GB.
+	//
+	// example:
+	//
+	// 1000
+	TargetQuotaGb *int64 `json:"TargetQuotaGb,omitempty" xml:"TargetQuotaGb,omitempty"`
 }
 
 func (s UpdateCacheReserveSpecRequest) String() string {

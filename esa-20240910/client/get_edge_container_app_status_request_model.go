@@ -16,8 +16,19 @@ type iGetEdgeContainerAppStatusRequest interface {
 }
 
 type GetEdgeContainerAppStatusRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The release environment. Valid values: prod and staging.
+	//
+	// example:
+	//
+	// staging
 	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
 }
 

@@ -38,19 +38,112 @@ type iGetNetworkOptimizationResponseBody interface {
 }
 
 type GetNetworkOptimizationResponseBody struct {
-	ConfigId          *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType        *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence          *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SiteVersion       *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration.
+	//
+	// - rule: Query rule configuration.
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Whether to enable GRPC, default is disabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	//
+	// - Match all incoming requests: Set the value to true
+	//
+	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	//
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. This parameter is not required when adding a global configuration. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name. This parameter is not required when adding a global configuration.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution order. The smaller the value, the higher the priority.
+	//
+	// example:
+	//
+	// 2
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Site configuration version number. For sites with version management enabled, this parameter can specify the effective site version, defaulting to version 0.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Whether to enable smart routing service, default is disabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// Maximum upload file size in MB, with a range from 100 to 500.
+	//
+	// example:
+	//
+	// 500
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+	// Whether to enable Websocket, default is enabled. Value range:
+	//
+	// - on: Enable
+	//
+	// - off: Disable
+	//
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
 }
 
 func (s GetNetworkOptimizationResponseBody) String() string {

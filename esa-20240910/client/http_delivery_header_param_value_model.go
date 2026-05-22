@@ -14,6 +14,11 @@ type iHttpDeliveryHeaderParamValue interface {
 }
 
 type HttpDeliveryHeaderParamValue struct {
+	// The static variable.
+	//
+	// example:
+	//
+	// alicdn
 	StaticValue *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 }
 

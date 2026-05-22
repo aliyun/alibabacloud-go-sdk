@@ -16,8 +16,14 @@ type iGetEdgeContainerDeployRegionsResponseBody interface {
 }
 
 type GetEdgeContainerDeployRegionsResponseBody struct {
-	Regions   []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The regions.
+	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEdgeContainerDeployRegionsResponseBody) String() string {

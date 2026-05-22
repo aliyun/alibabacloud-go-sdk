@@ -18,9 +18,20 @@ type iDescribeDdosMaxBurstGbpsResponseBody interface {
 }
 
 type DescribeDdosMaxBurstGbpsResponseBody struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// esa-site-a71k7bw19dz4
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 300
 	MaxBurstGbps *string `json:"MaxBurstGbps,omitempty" xml:"MaxBurstGbps,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// B5D71671-B074-5702-A0F5-B923920FDDD4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDdosMaxBurstGbpsResponseBody) String() string {

@@ -19,8 +19,11 @@ type GetUserWafRulesetResponseBody struct {
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Ruleset   *GetUserWafRulesetResponseBodyRuleset `json:"Ruleset,omitempty" xml:"Ruleset,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {}
+	Ruleset *GetUserWafRulesetResponseBodyRuleset `json:"Ruleset,omitempty" xml:"Ruleset,omitempty" type:"Struct"`
 }
 
 func (s GetUserWafRulesetResponseBody) String() string {
@@ -59,15 +62,42 @@ func (s *GetUserWafRulesetResponseBody) Validate() error {
 }
 
 type GetUserWafRulesetResponseBodyRuleset struct {
-	Description *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expression  *string                                      `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Id          *int64                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Phase       *string                                      `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	Position    *int64                                       `json:"Position,omitempty" xml:"Position,omitempty"`
-	Rules       []*GetUserWafRulesetResponseBodyRulesetRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	Shared      *WafBatchRuleShared                          `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	Status      *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ip.src == 1.1.1.1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// [{}]
+	Rules []*GetUserWafRulesetResponseBodyRulesetRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetUserWafRulesetResponseBodyRuleset) String() string {
@@ -178,20 +208,69 @@ func (s *GetUserWafRulesetResponseBodyRuleset) Validate() error {
 }
 
 type GetUserWafRulesetResponseBodyRulesetRules struct {
-	Action                *string        `json:"Action,omitempty" xml:"Action,omitempty"`
-	CharacteristicsFields []*string      `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
-	Config                *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	Fields                []*string      `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	Id                    *int64         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                  *string        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Phase                 *string        `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	Position              *int64         `json:"Position,omitempty" xml:"Position,omitempty"`
-	RulesetId             *int64         `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	Skip                  *string        `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	Status                *string        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                  []*string      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type                  *string        `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime            *string        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// ["http.host"]
+	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {
+	//
+	//   "Id": 20000001,
+	//
+	//   "Name": "rule1",
+	//
+	//   "Expression": "ip.src eq 1.1.1.1",
+	//
+	//   "Action": "deny"
+	//
+	// }
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// ["ip.src"]
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// example:
+	//
+	// all
+	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ["http_custom"]
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2025-07-07T15:00:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetUserWafRulesetResponseBodyRulesetRules) String() string {

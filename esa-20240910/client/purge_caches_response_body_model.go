@@ -16,8 +16,18 @@ type iPurgeCachesResponseBody interface {
 }
 
 type PurgeCachesResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task ID, which is returned when you create a refresh or preheat task.
+	//
+	// example:
+	//
+	// 15940956620
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PurgeCachesResponseBody) String() string {

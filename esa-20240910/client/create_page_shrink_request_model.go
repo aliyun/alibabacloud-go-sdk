@@ -22,20 +22,32 @@ type iCreatePageShrinkRequest interface {
 }
 
 type CreatePageShrinkRequest struct {
+	// The Base64-encoded page content. Example: "PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=", which indicates "hello page".
+	//
 	// example:
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The Content-Type field in the HTTP header. Valid values:
+	//
+	// 	- text/html
+	//
+	// 	- application/json
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The description of the page.
+	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the custom error page.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,9 @@ type iWafQuotaString interface {
 }
 
 type WafQuotaString struct {
+	// example:
+	//
+	// ^\\d+$
 	Regexp *string `json:"Regexp,omitempty" xml:"Regexp,omitempty"`
 }
 

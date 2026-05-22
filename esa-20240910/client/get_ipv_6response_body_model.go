@@ -18,8 +18,22 @@ type iGetIPv6ResponseBody interface {
 }
 
 type GetIPv6ResponseBody struct {
-	Enable    *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Indicates whether IPv6 is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

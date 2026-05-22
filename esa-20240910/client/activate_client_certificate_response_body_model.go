@@ -20,10 +20,30 @@ type iActivateClientCertificateResponseBody interface {
 }
 
 type ActivateClientCertificateResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s ActivateClientCertificateResponseBody) String() string {

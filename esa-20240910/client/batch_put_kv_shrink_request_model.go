@@ -16,9 +16,17 @@ type iBatchPutKvShrinkRequest interface {
 }
 
 type BatchPutKvShrinkRequest struct {
+	// The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
+	//
 	// This parameter is required.
 	KvListShrink *string `json:"KvList,omitempty" xml:"KvList,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 

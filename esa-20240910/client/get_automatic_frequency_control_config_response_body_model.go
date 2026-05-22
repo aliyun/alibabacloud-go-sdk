@@ -28,14 +28,38 @@ type iGetAutomaticFrequencyControlConfigResponseBody interface {
 }
 
 type GetAutomaticFrequencyControlConfigResponseBody struct {
+	// example:
+	//
+	// js
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Interval   *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	PunishTime *int32  `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Threshold  *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 10
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// normal
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// example:
+	//
+	// 20000000
+	PunishTime *int32 `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11957665
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 100
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s GetAutomaticFrequencyControlConfigResponseBody) String() string {

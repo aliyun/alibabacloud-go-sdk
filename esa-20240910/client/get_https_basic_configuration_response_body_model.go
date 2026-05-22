@@ -46,23 +46,154 @@ type iGetHttpsBasicConfigurationResponseBody interface {
 }
 
 type GetHttpsBasicConfigurationResponseBody struct {
-	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	//
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// Cipher suite group, default is all cipher suites. Value range:
+	//
+	// - all: All cipher suites.
+	//
+	// - strict: Strong cipher suites.
+	//
+	// - custom: Custom cipher suites.
+	//
+	// example:
+	//
+	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
-	ConfigId         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	ConfigType       *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
-	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
-	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence         *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
-	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
-	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
-	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+	// Configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configuration type, which can be used to query global or rule configurations. Value range:
+	//
+	// - global: Query global configuration;
+	//
+	// - rule: Query rule configuration;
+	//
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Whether to enable HTTP2, default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// Whether to enable HTTP3, which is enabled by default. The value can be:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// Whether to enable HTTPS, default is enabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// Whether to enable OCSP, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D2***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Matching rule content.
+	//
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Rule switch. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// Rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Rule execution sequence.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Whether to enable TLS1.0, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// Whether to enable TLS1.1, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// Whether to enable TLS1.2, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// Whether to enable TLS1.3, default is disabled. Value range:
+	//
+	// - on: Enable.
+	//
+	// - off: Disable.
+	//
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
 }
 
 func (s GetHttpsBasicConfigurationResponseBody) String() string {

@@ -14,7 +14,13 @@ type iListCiphersRequest interface {
 }
 
 type ListCiphersRequest struct {
+	// The name of the cipher suite group, which can be: all, strict, custom.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// strict
 	CiphersGroup *string `json:"CiphersGroup,omitempty" xml:"CiphersGroup,omitempty"`
 }
 

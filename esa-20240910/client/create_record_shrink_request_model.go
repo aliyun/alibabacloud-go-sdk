@@ -34,27 +34,107 @@ type iCreateRecordShrinkRequest interface {
 }
 
 type CreateRecordShrinkRequest struct {
+	// The origin authentication information of the CNAME record.
 	AuthConfShrink *string `json:"AuthConf,omitempty" xml:"AuthConf,omitempty"`
-	// 业务场景
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	//
+	// 	- **image_video**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
+	//
+	// example:
+	//
+	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comment of the record. The maximum length is 100 characters.
+	//
+	// example:
+	//
+	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html) .
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "value":"2.2.2.2"
+	//
+	// }
 	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	//
+	// 	- follow_hostname: Follow the host record.
+	//
+	// 	- follow_origin_domain: match the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// 是否代理加速
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// 记录名称
+	// The record name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// This parameter is required.
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required.
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// 记录类型
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
+	// If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+	//
+	// example:
+	//
+	// OSS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A/AAAA
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

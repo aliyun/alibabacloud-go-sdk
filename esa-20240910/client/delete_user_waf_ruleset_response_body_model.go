@@ -14,6 +14,11 @@ type iDeleteUserWafRulesetResponseBody interface {
 }
 
 type DeleteUserWafRulesetResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -16,8 +16,18 @@ type iUploadFileResponseBody interface {
 }
 
 type UploadFileResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UploadId  *int64  `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// The ID of the file upload task. You can use this ID for task submission or query subsequently.
+	//
+	// example:
+	//
+	// 159253299357****
+	UploadId *int64 `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
 }
 
 func (s UploadFileResponseBody) String() string {

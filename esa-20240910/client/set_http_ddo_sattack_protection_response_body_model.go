@@ -18,9 +18,24 @@ type iSetHttpDDoSAttackProtectionResponseBody interface {
 }
 
 type SetHttpDDoSAttackProtectionResponseBody struct {
+	// The level of HTTP DDoS attack protection.
+	//
+	// example:
+	//
+	// default
 	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s SetHttpDDoSAttackProtectionResponseBody) String() string {

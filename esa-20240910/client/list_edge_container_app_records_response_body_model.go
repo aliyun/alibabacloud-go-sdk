@@ -22,11 +22,32 @@ type iListEdgeContainerAppRecordsResponseBody interface {
 }
 
 type ListEdgeContainerAppRecordsResponseBody struct {
-	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records    []*ListEdgeContainerAppRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The details about the associated domain names.
+	Records []*ListEdgeContainerAppRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of domain names that are associated with the specified application.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEdgeContainerAppRecordsResponseBody) String() string {
@@ -96,14 +117,59 @@ func (s *ListEdgeContainerAppRecordsResponseBody) Validate() error {
 }
 
 type ListEdgeContainerAppRecordsResponseBodyRecords struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Cname      *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The application ID.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The CNAME of the associated domain name.
+	//
+	// example:
+	//
+	// kdxceo****.yun****.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The configuration ID of the associated domain name.
+	//
+	// example:
+	//
+	// 27522948436****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record ID of the associated domain name.
+	//
+	// example:
+	//
+	// 266****
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The associated domain name.
+	//
+	// example:
+	//
+	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	SchemdId   *int32  `json:"SchemdId,omitempty" xml:"SchemdId,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The scheduling domain ID of the associated domain name.
+	//
+	// example:
+	//
+	// 123456
+	SchemdId *int32 `json:"SchemdId,omitempty" xml:"SchemdId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The time when the scheduling domain ID or CNAME was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-12-22T08:32:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

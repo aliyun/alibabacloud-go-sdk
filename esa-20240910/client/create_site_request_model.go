@@ -22,16 +22,53 @@ type iCreateSiteRequest interface {
 }
 
 type CreateSiteRequest struct {
-	// This parameter is required.
-	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// This parameter is required.
-	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// This parameter is required.
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 记录名称
+	// The DNS setup. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// NS
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The service location. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland
+	//
+	// 	- **global**: global
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// domestic
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. Specify at least one of the instance ID and website ID. If you specify both of them, the instance ID is used.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbaudit-cn-nwy349jdb03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource group. If you leave this parameter empty, the system uses the default resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmw4znnok****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The website name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CreateSite
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 

@@ -24,13 +24,60 @@ type iListCacheReserveInstancesRequest interface {
 }
 
 type ListCacheReserveInstancesRequest struct {
+	// Instance ID.
+	//
+	// example:
+	//
+	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SortOrder  *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size. Range: **1~500**, default is **500**.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The criterion by which you want to sort the queried instances. Valid values:
+	//
+	// 	- **ExpireTime**
+	//
+	// 	- **CreateTime**
+	//
+	// example:
+	//
+	// ExpireTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The order by which you want to sort the queried instances. Valid values:
+	//
+	// 	- **asc**
+	//
+	// 	- **desc**
+	//
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- **online**: The instance is in service.
+	//
+	// 	- **offline**: The instance has expired within an allowable period. In this state, it is unavailable.
+	//
+	// 	- **disable**: The instance has been released.
+	//
+	// 	- **overdue**: The instance has been stopped due to overdue payments.
+	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

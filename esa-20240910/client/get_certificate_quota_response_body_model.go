@@ -24,12 +24,38 @@ type iGetCertificateQuotaResponseBody interface {
 }
 
 type GetCertificateQuotaResponseBody struct {
-	Quota      *int64                                      `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	QuotaUsage *int64                                      `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteCount  *int64                                      `json:"SiteCount,omitempty" xml:"SiteCount,omitempty"`
-	SiteUsage  []*GetCertificateQuotaResponseBodySiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
-	Type       *string                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Free certificate quota.
+	//
+	// example:
+	//
+	// 10
+	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// Usage of free certificate quota.
+	//
+	// example:
+	//
+	// 5
+	QuotaUsage *int64 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of sites.
+	//
+	// example:
+	//
+	// 2
+	SiteCount *int64 `json:"SiteCount,omitempty" xml:"SiteCount,omitempty"`
+	// List of site usage details.
+	SiteUsage []*GetCertificateQuotaResponseBodySiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	// Certificate Quota type.
+	//
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetCertificateQuotaResponseBody) String() string {
@@ -108,9 +134,24 @@ func (s *GetCertificateQuotaResponseBody) Validate() error {
 }
 
 type GetCertificateQuotaResponseBodySiteUsage struct {
-	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName  *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	SiteUsage *int64  `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// Site ID.
+	//
+	// example:
+	//
+	// 165929521496928
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// Site usage.
+	//
+	// example:
+	//
+	// 5
+	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
 }
 
 func (s GetCertificateQuotaResponseBodySiteUsage) String() string {

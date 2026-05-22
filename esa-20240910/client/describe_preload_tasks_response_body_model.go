@@ -22,11 +22,32 @@ type iDescribePreloadTasksResponseBody interface {
 }
 
 type DescribePreloadTasksResponseBody struct {
-	PageNumber *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks      []*DescribePreloadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*DescribePreloadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 83
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePreloadTasksResponseBody) String() string {
@@ -96,12 +117,54 @@ func (s *DescribePreloadTasksResponseBody) Validate() error {
 }
 
 type DescribePreloadTasksResponseBodyTasks struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The prefetched content.
+	//
+	// example:
+	//
+	// http://a.com/1.jpg?b=2
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2023-03-28 14:28:57
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned upon a prefetch task failure. Valid values:
+	//
+	// 	- **Internal Error**
+	//
+	// 	- **Origin Timeout**
+	//
+	// 	- **Origin Return StatusCode 5XX**
+	//
+	// example:
+	//
+	// Internal Error
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Process     *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The progress of the task, in percentage.
+	//
+	// example:
+	//
+	// 100%
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// The task status.
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is in progress.
+	//
+	// 	- **Failed**: The task failed.
+	//
+	// example:
+	//
+	// Complete
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the queried task.
+	//
+	// example:
+	//
+	// 1597854579687428
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribePreloadTasksResponseBodyTasks) String() string {

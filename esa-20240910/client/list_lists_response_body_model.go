@@ -26,24 +26,35 @@ type iListListsResponseBody interface {
 }
 
 type ListListsResponseBody struct {
-	ItemsUsage *int64                        `json:"ItemsUsage,omitempty" xml:"ItemsUsage,omitempty"`
-	Lists      []*ListListsResponseBodyLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
+	ItemsUsage *int64 `json:"ItemsUsage,omitempty" xml:"ItemsUsage,omitempty"`
+	// The array that contains list information, including list data after paging.
+	Lists []*ListListsResponseBodyLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of filtered lists.
+	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of created lists.
+	//
 	// example:
 	//
 	// 10
@@ -135,28 +146,38 @@ func (s *ListListsResponseBody) Validate() error {
 }
 
 type ListListsResponseBodyLists struct {
-	// 自定义响应页面描述
+	// The list description.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom list.[](~~2850217~~)
+	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list type.
+	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The length of the list information array, which indicates how many items the list contains.
+	//
 	// example:
 	//
 	// 100
 	Length *int64 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The list name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the list was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z

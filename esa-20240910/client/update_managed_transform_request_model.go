@@ -22,11 +22,40 @@ type iUpdateManagedTransformRequest interface {
 }
 
 type UpdateManagedTransformRequest struct {
+	// Specifies whether to include the header that indicates the geographical location of a client in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
-	AddRealClientIpHeader      *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
-	RealClientIpHeaderName     *string `json:"RealClientIpHeaderName,omitempty" xml:"RealClientIpHeaderName,omitempty"`
+	// Specifies whether to include the "ali-real-client-ip" header that indicates the client\\"s real IP address in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	AddRealClientIpHeader  *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	RealClientIpHeaderName *string `json:"RealClientIpHeaderName,omitempty" xml:"RealClientIpHeaderName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 

@@ -29,20 +29,52 @@ type iUpdateCustomHostnameRequest interface {
 
 type UpdateCustomHostnameRequest struct {
 	// 云盾证书ID，使用云盾证书时必填
+	//
+	// example:
+	//
+	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
 	// 云盾证书所在地域，使用云盾证书时必填
+	//
+	// example:
+	//
+	// cn-hangzhou
 	CasRegion *string `json:"CasRegion,omitempty" xml:"CasRegion,omitempty"`
 	// 证书类型，SSL 开启时必填
+	//
+	// example:
+	//
+	// cas
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// 证书公钥，使用上传证书时必填
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	HostnameId *int64 `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
 	// 证书私钥，使用上传证书时必填
+	//
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	// 绑定的源站记录ID
+	//
+	// example:
+	//
+	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// SSL开关
+	//
+	// example:
+	//
+	// on
 	SslFlag *string `json:"SslFlag,omitempty" xml:"SslFlag,omitempty"`
 }
 

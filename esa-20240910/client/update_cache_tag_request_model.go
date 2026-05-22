@@ -20,11 +20,36 @@ type iUpdateCacheTagRequest interface {
 }
 
 type UpdateCacheTagRequest struct {
+	// Specifies whether to ignore case sensitivity. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
-	SiteId      *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteVersion *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	TagName     *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	//
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The name of the custom cache tag.
+	//
+	// example:
+	//
+	// example
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s UpdateCacheTagRequest) String() string {

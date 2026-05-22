@@ -22,11 +22,32 @@ type iListEdgeContainerRecordsResponseBody interface {
 }
 
 type ListEdgeContainerRecordsResponseBody struct {
-	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records    []*ListEdgeContainerRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The records.
+	Records []*ListEdgeContainerRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records returned.
+	//
+	// example:
+	//
+	// 50
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEdgeContainerRecordsResponseBody) String() string {
@@ -96,12 +117,42 @@ func (s *ListEdgeContainerRecordsResponseBody) Validate() error {
 }
 
 type ListEdgeContainerRecordsResponseBodyRecords struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-12-24T02:01:11Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured.
+	//
+	// example:
+	//
+	// a.example.com.cnamezone.com
 	RecordCname *string `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
-	RecordName  *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	SiteId      *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName    *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The record name.
+	//
+	// example:
+	//
+	// a.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-12-22T08:32:02Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListEdgeContainerRecordsResponseBodyRecords) String() string {

@@ -26,13 +26,31 @@ type iListKeylessServersResponseBody interface {
 }
 
 type ListKeylessServersResponseBody struct {
-	PageNumber *int64                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListKeylessServersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	SiteId     *int64                                  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName   *string                                 `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListKeylessServersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 90
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListKeylessServersResponseBody) String() string {
@@ -120,16 +138,48 @@ func (s *ListKeylessServersResponseBody) Validate() error {
 }
 
 type ListKeylessServersResponseBodyResult struct {
-	CaCertificate     *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----****
+	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----****
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
-	ClientPrivateKey  *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Host              *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port              *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Verify            *bool   `json:"Verify,omitempty" xml:"Verify,omitempty"`
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY-----****
+	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// example.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Keyless server ID。
+	//
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b5****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 443
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// true
+	Verify *bool `json:"Verify,omitempty" xml:"Verify,omitempty"`
 }
 
 func (s ListKeylessServersResponseBodyResult) String() string {

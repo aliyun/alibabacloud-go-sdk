@@ -20,10 +20,26 @@ type iGetApiSchemaUsageResponseBody interface {
 }
 
 type GetApiSchemaUsageResponseBody struct {
-	InstanceId    *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceUsage *int32                                 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
-	RequestId     *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Usages        []*GetApiSchemaUsageResponseBodyUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
+	// The plan ID.
+	//
+	// example:
+	//
+	// esa-site-agknce3n****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of files uploaded for schema verification in the plan instance of the website.
+	//
+	// example:
+	//
+	// 10
+	InstanceUsage *int32 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 952ea16b-1f05-4a76-bb32-420282d8****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Usage details for websites.
+	Usages []*GetApiSchemaUsageResponseBodyUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
 }
 
 func (s GetApiSchemaUsageResponseBody) String() string {
@@ -84,9 +100,24 @@ func (s *GetApiSchemaUsageResponseBody) Validate() error {
 }
 
 type GetApiSchemaUsageResponseBodyUsages struct {
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Usage *int32  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 40000449
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of files uploaded for the website.
+	//
+	// example:
+	//
+	// 0
+	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s GetApiSchemaUsageResponseBodyUsages) String() string {

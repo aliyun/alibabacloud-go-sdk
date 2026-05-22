@@ -20,10 +20,16 @@ type iWafTimer interface {
 }
 
 type WafTimer struct {
-	Periods       []*WafTimerPeriods       `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
+	Periods []*WafTimerPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// permanent
 	Scopes        *string                  `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
 	WeeklyPeriods []*WafTimerWeeklyPeriods `json:"WeeklyPeriods,omitempty" xml:"WeeklyPeriods,omitempty" type:"Repeated"`
-	Zone          *int32                   `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// example:
+	//
+	// 8
+	Zone *int32 `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s WafTimer) String() string {
@@ -93,7 +99,13 @@ func (s *WafTimer) Validate() error {
 }
 
 type WafTimerPeriods struct {
-	End   *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 2025-01-01T01:00:00Z
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 2025-01-01T00:00:00Z
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -129,7 +141,10 @@ func (s *WafTimerPeriods) Validate() error {
 
 type WafTimerWeeklyPeriods struct {
 	DailyPeriods []*WafTimerWeeklyPeriodsDailyPeriods `json:"DailyPeriods,omitempty" xml:"DailyPeriods,omitempty" type:"Repeated"`
-	Days         *string                              `json:"Days,omitempty" xml:"Days,omitempty"`
+	// example:
+	//
+	// 1
+	Days *string `json:"Days,omitempty" xml:"Days,omitempty"`
 }
 
 func (s WafTimerWeeklyPeriods) String() string {
@@ -172,7 +187,13 @@ func (s *WafTimerWeeklyPeriods) Validate() error {
 }
 
 type WafTimerWeeklyPeriodsDailyPeriods struct {
-	End   *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 01:00:00
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 00:00:00
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 

@@ -24,12 +24,38 @@ type iListEdgeRoutinePlansResponseBody interface {
 }
 
 type ListEdgeRoutinePlansResponseBody struct {
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlanInfo   []*ListEdgeRoutinePlansResponseBodyPlanInfo `json:"PlanInfo,omitempty" xml:"PlanInfo,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                      `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The plans.
+	PlanInfo []*ListEdgeRoutinePlansResponseBodyPlanInfo `json:"PlanInfo,omitempty" xml:"PlanInfo,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListEdgeRoutinePlansResponseBody) String() string {
@@ -108,12 +134,50 @@ func (s *ListEdgeRoutinePlansResponseBody) Validate() error {
 }
 
 type ListEdgeRoutinePlansResponseBodyPlanInfo struct {
-	BillingMode                  *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	ErRoutineCodeVersionQuota    *string `json:"ErRoutineCodeVersionQuota,omitempty" xml:"ErRoutineCodeVersionQuota,omitempty"`
-	ErRoutineQuota               *string `json:"ErRoutineQuota,omitempty" xml:"ErRoutineQuota,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- PREPAY: subscription.
+	//
+	// 	- POSTPAY: pay-as-you-go.
+	//
+	// example:
+	//
+	// POSTPAY
+	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	// The maximum number of versions that each routine supports.
+	//
+	// example:
+	//
+	// 20
+	ErRoutineCodeVersionQuota *string `json:"ErRoutineCodeVersionQuota,omitempty" xml:"ErRoutineCodeVersionQuota,omitempty"`
+	// The maximum of routines that can be created.
+	//
+	// example:
+	//
+	// 100
+	ErRoutineQuota *string `json:"ErRoutineQuota,omitempty" xml:"ErRoutineQuota,omitempty"`
+	// The maximum number of websites with which each routine can be associated.
+	//
+	// example:
+	//
+	// 100
 	ErRoutineRouteSiteCountQuota *string `json:"ErRoutineRouteSiteCountQuota,omitempty" xml:"ErRoutineRouteSiteCountQuota,omitempty"`
-	PaymentMethod                *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
-	PlanName                     *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The payment method. Valid values:
+	//
+	// 	- er_free
+	//
+	// 	- er_pay
+	//
+	// example:
+	//
+	// er_free
+	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	// The plan name.
+	//
+	// example:
+	//
+	// test_plan
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 }
 
 func (s ListEdgeRoutinePlansResponseBodyPlanInfo) String() string {

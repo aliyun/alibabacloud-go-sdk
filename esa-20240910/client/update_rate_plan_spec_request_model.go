@@ -24,11 +24,37 @@ type iUpdateRatePlanSpecRequest interface {
 }
 
 type UpdateRatePlanSpecRequest struct {
-	AutoPay        *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderType      *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Specifies whether to enable auto payment.
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// xcdn-91fknmb80f0g
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The specification update type. Valid values:
+	//
+	// 	- DOWNGRADE
+	//
+	// 	- UPGRADE
+	//
+	// example:
+	//
+	// UPGRADE
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// entranceplan
 	TargetPlanCode *string `json:"TargetPlanCode,omitempty" xml:"TargetPlanCode,omitempty"`
+	// example:
+	//
+	// basic
 	TargetPlanName *string `json:"TargetPlanName,omitempty" xml:"TargetPlanName,omitempty"`
 }
 

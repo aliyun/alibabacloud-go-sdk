@@ -20,11 +20,33 @@ type iUpdateOriginPoolShrinkRequest interface {
 }
 
 type UpdateOriginPoolShrinkRequest struct {
+	// Whether the origin pool is enabled:
+	//
+	// - true: Enabled;
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
+	//
 	// This parameter is required.
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	//
+	// example:
+	//
+	// 1038520525196928
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Information about the origins added to the origin pool. Multiple origins are passed as an array.
 	OriginsShrink *string `json:"Origins,omitempty" xml:"Origins,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 216558609793952
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

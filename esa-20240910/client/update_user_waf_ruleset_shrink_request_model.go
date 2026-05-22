@@ -30,17 +30,55 @@ type iUpdateUserWafRulesetShrinkRequest interface {
 }
 
 type UpdateUserWafRulesetShrinkRequest struct {
+	// example:
+	//
+	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// ip.src == 1.1.1.1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Position     *int64  `json:"Position,omitempty" xml:"Position,omitempty"`
+	//
+	// example:
+	//
+	// esa-xxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// [
+	//
+	//   {
+	//
+	//     "Id": 20000001,
+	//
+	//     "Name": "rule1",
+	//
+	//     "Expression": "ip.src eq 1.1.1.1",
+	//
+	//     "Action": "deny"
+	//
+	//   }
 	RulesShrink  *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateUserWafRulesetShrinkRequest) String() string {

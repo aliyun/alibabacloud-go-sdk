@@ -34,17 +34,76 @@ type iUploadOriginCaCertificateResponseBody interface {
 }
 
 type UploadOriginCaCertificateResponseBody struct {
-	CommonName         *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	FingerprintSha256  *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Issuer             *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	NotAfter           *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore          *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SerialNumber       *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-12-01T02:13:07Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-12-01T02:13:07Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1daa
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ValidityDays       *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// 	- OK
+	//
+	// 	- Fail
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
+	// example:
+	//
+	// 365
+	ValidityDays *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
 }
 
 func (s UploadOriginCaCertificateResponseBody) String() string {

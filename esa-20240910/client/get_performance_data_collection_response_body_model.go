@@ -16,7 +16,15 @@ type iGetPerformanceDataCollectionResponseBody interface {
 }
 
 type GetPerformanceDataCollectionResponseBody struct {
-	Enable    *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

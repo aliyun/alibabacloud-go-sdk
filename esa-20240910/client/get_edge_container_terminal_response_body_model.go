@@ -26,13 +26,48 @@ type iGetEdgeContainerTerminalResponseBody interface {
 }
 
 type GetEdgeContainerTerminalResponseBody struct {
-	Cluster   *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The cluster name.
+	//
+	// example:
+	//
+	// c497b44c2a59f4ae0bd2826edc40a2c6e
+	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The container name.
+	//
+	// example:
+	//
+	// worker0
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// ns1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Pod       *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	// The name of the container group.
+	//
+	// example:
+	//
+	// 1775b9e0-8463-457e-89e8-fb7b6d125b2e
+	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID.
+	//
+	// example:
+	//
+	// af22f4xxxxxxxxxxxxxxxxxx
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The information about the shared token.
+	//
+	// example:
+	//
+	// af22f4-xxxxx-xxxx-xxxx-xxxx
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetEdgeContainerTerminalResponseBody) String() string {

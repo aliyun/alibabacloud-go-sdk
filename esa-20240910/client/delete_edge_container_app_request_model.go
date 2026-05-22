@@ -14,6 +14,11 @@ type iDeleteEdgeContainerAppRequest interface {
 }
 
 type DeleteEdgeContainerAppRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
+	// example:
+	//
+	// app-1232321454***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

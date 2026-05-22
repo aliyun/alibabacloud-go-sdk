@@ -24,14 +24,23 @@ type iBatchGetExpressionFieldsRequest interface {
 }
 
 type BatchGetExpressionFieldsRequest struct {
+	// List of expressions.
+	//
+	// example:
+	//
+	// http_bot
 	Expressions []*BatchGetExpressionFieldsRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
 	InstanceId  *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Kind        *string                                       `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// WAF Phase
+	//
 	// example:
 	//
 	// http_bot
 	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
+	// Site ID
+	//
 	// example:
 	//
 	// 1
@@ -114,8 +123,18 @@ func (s *BatchGetExpressionFieldsRequest) Validate() error {
 }
 
 type BatchGetExpressionFieldsRequestExpressions struct {
+	// Content of the expression.
+	//
+	// example:
+	//
+	// ip.src eq 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The sequence number of the expression.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s BatchGetExpressionFieldsRequestExpressions) String() string {
