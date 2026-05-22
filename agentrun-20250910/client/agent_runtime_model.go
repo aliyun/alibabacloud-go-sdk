@@ -31,6 +31,8 @@ type iAgentRuntime interface {
 	GetCredentialName() *string
 	SetDescription(v string) *AgentRuntime
 	GetDescription() *string
+	SetDisableSessionAffinity(v bool) *AgentRuntime
+	GetDisableSessionAffinity() *bool
 	SetDiskSize(v int) *AgentRuntime
 	GetDiskSize() *int
 	SetEdition(v string) *AgentRuntime
@@ -144,8 +146,14 @@ type AgentRuntime struct {
 	//
 	// AI agent runtime for customer service automation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize    *int    `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	Edition     *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// 是否禁用会话亲和性。默认为 false（即默认启用会话亲和），设置为 true 时关闭会话亲和
+	//
+	// example:
+	//
+	// false
+	DisableSessionAffinity *bool   `json:"disableSessionAffinity,omitempty" xml:"disableSessionAffinity,omitempty"`
+	DiskSize               *int    `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	Edition                *string `json:"edition,omitempty" xml:"edition,omitempty"`
 	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
 	//
 	// example:
@@ -316,6 +324,10 @@ func (s *AgentRuntime) GetDescription() *string {
 	return s.Description
 }
 
+func (s *AgentRuntime) GetDisableSessionAffinity() *bool {
+	return s.DisableSessionAffinity
+}
+
 func (s *AgentRuntime) GetDiskSize() *int {
 	return s.DiskSize
 }
@@ -456,6 +468,11 @@ func (s *AgentRuntime) SetCredentialName(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetDescription(v string) *AgentRuntime {
 	s.Description = &v
+	return s
+}
+
+func (s *AgentRuntime) SetDisableSessionAffinity(v bool) *AgentRuntime {
+	s.DisableSessionAffinity = &v
 	return s
 }
 
