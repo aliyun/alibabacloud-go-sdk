@@ -9,8 +9,12 @@ type iAttachment interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttachResourceId(v string) *Attachment
+	GetAttachResourceId() *string
 	SetAttachResourceIds(v []*string) *Attachment
 	GetAttachResourceIds() []*string
+	SetAttachResourceParentIds(v []*string) *Attachment
+	GetAttachResourceParentIds() []*string
 	SetAttachResourceType(v string) *Attachment
 	GetAttachResourceType() *string
 	SetEnvironmentId(v string) *Attachment
@@ -22,8 +26,10 @@ type iAttachment interface {
 }
 
 type Attachment struct {
+	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
 	// The resource IDs.
-	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	AttachResourceIds       []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	AttachResourceParentIds []*string `json:"attachResourceParentIds,omitempty" xml:"attachResourceParentIds,omitempty" type:"Repeated"`
 	// The supported mount point type. Valid values:
 	//
 	// 	- HttpApi: an HTTP API
@@ -72,8 +78,16 @@ func (s Attachment) GoString() string {
 	return s.String()
 }
 
+func (s *Attachment) GetAttachResourceId() *string {
+	return s.AttachResourceId
+}
+
 func (s *Attachment) GetAttachResourceIds() []*string {
 	return s.AttachResourceIds
+}
+
+func (s *Attachment) GetAttachResourceParentIds() []*string {
+	return s.AttachResourceParentIds
 }
 
 func (s *Attachment) GetAttachResourceType() *string {
@@ -92,8 +106,18 @@ func (s *Attachment) GetPolicyAttachmentId() *string {
 	return s.PolicyAttachmentId
 }
 
+func (s *Attachment) SetAttachResourceId(v string) *Attachment {
+	s.AttachResourceId = &v
+	return s
+}
+
 func (s *Attachment) SetAttachResourceIds(v []*string) *Attachment {
 	s.AttachResourceIds = v
+	return s
+}
+
+func (s *Attachment) SetAttachResourceParentIds(v []*string) *Attachment {
+	s.AttachResourceParentIds = v
 	return s
 }
 
