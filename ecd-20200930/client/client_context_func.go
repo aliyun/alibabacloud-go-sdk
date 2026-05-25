@@ -11345,6 +11345,10 @@ func (client *Client) DescribeRecordFileWithContext(ctx context.Context, request
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}

@@ -29,6 +29,8 @@ type iDescribeRecordFileRequest interface {
 	GetRecordType() *string
 	SetRegionId(v string) *DescribeRecordFileRequest
 	GetRegionId() *string
+	SetResourceType(v string) *DescribeRecordFileRequest
+	GetResourceType() *string
 	SetStartTime(v string) *DescribeRecordFileRequest
 	GetStartTime() *string
 	SetStatus(v int32) *DescribeRecordFileRequest
@@ -77,7 +79,8 @@ type DescribeRecordFileRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// example:
 	//
 	// 20251218175715
@@ -136,6 +139,10 @@ func (s *DescribeRecordFileRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeRecordFileRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
 func (s *DescribeRecordFileRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -191,6 +198,11 @@ func (s *DescribeRecordFileRequest) SetRecordType(v string) *DescribeRecordFileR
 
 func (s *DescribeRecordFileRequest) SetRegionId(v string) *DescribeRecordFileRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRecordFileRequest) SetResourceType(v string) *DescribeRecordFileRequest {
+	s.ResourceType = &v
 	return s
 }
 
