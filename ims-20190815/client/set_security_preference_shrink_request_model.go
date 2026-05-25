@@ -19,6 +19,8 @@ type iSetSecurityPreferenceShrinkRequest interface {
 	GetAllowUserToManageMFADevices() *bool
 	SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceShrinkRequest
 	GetAllowUserToManagePersonalDingTalk() *bool
+	SetAllowUserToManageServiceCredentials(v bool) *SetSecurityPreferenceShrinkRequest
+	GetAllowUserToManageServiceCredentials() *bool
 	SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceShrinkRequest
 	GetEnableSaveMFATicket() *bool
 	SetLoginNetworkMasks(v string) *SetSecurityPreferenceShrinkRequest
@@ -87,7 +89,8 @@ type SetSecurityPreferenceShrinkRequest struct {
 	// example:
 	//
 	// true
-	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	AllowUserToManagePersonalDingTalk   *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	AllowUserToManageServiceCredentials *bool `json:"AllowUserToManageServiceCredentials,omitempty" xml:"AllowUserToManageServiceCredentials,omitempty"`
 	// Specifies whether RAM users can remember the MFA devices for seven days. Valid values:
 	//
 	// 	- true
@@ -180,6 +183,10 @@ func (s *SetSecurityPreferenceShrinkRequest) GetAllowUserToManagePersonalDingTal
 	return s.AllowUserToManagePersonalDingTalk
 }
 
+func (s *SetSecurityPreferenceShrinkRequest) GetAllowUserToManageServiceCredentials() *bool {
+	return s.AllowUserToManageServiceCredentials
+}
+
 func (s *SetSecurityPreferenceShrinkRequest) GetEnableSaveMFATicket() *bool {
 	return s.EnableSaveMFATicket
 }
@@ -234,6 +241,11 @@ func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManageMFADevices(v bo
 
 func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceShrinkRequest {
 	s.AllowUserToManagePersonalDingTalk = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManageServiceCredentials(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.AllowUserToManageServiceCredentials = &v
 	return s
 }
 

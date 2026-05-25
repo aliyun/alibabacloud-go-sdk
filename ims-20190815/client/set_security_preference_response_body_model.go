@@ -178,7 +178,8 @@ type SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference stru
 	// example:
 	//
 	// false
-	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
+	AllowUserToManageAccessKeys         *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
+	AllowUserToManageServiceCredentials *bool `json:"AllowUserToManageServiceCredentials,omitempty" xml:"AllowUserToManageServiceCredentials,omitempty"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference) String() string {
@@ -193,8 +194,17 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 	return s.AllowUserToManageAccessKeys
 }
 
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference) GetAllowUserToManageServiceCredentials() *bool {
+	return s.AllowUserToManageServiceCredentials
+}
+
 func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference) SetAllowUserToManageAccessKeys(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference {
 	s.AllowUserToManageAccessKeys = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference) SetAllowUserToManageServiceCredentials(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference {
+	s.AllowUserToManageServiceCredentials = &v
 	return s
 }
 

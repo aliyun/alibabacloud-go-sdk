@@ -19,6 +19,8 @@ type iSetSecurityPreferenceRequest interface {
 	GetAllowUserToManageMFADevices() *bool
 	SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceRequest
 	GetAllowUserToManagePersonalDingTalk() *bool
+	SetAllowUserToManageServiceCredentials(v bool) *SetSecurityPreferenceRequest
+	GetAllowUserToManageServiceCredentials() *bool
 	SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceRequest
 	GetEnableSaveMFATicket() *bool
 	SetLoginNetworkMasks(v string) *SetSecurityPreferenceRequest
@@ -87,7 +89,8 @@ type SetSecurityPreferenceRequest struct {
 	// example:
 	//
 	// true
-	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	AllowUserToManagePersonalDingTalk   *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	AllowUserToManageServiceCredentials *bool `json:"AllowUserToManageServiceCredentials,omitempty" xml:"AllowUserToManageServiceCredentials,omitempty"`
 	// Specifies whether RAM users can remember the MFA devices for seven days. Valid values:
 	//
 	// 	- true
@@ -180,6 +183,10 @@ func (s *SetSecurityPreferenceRequest) GetAllowUserToManagePersonalDingTalk() *b
 	return s.AllowUserToManagePersonalDingTalk
 }
 
+func (s *SetSecurityPreferenceRequest) GetAllowUserToManageServiceCredentials() *bool {
+	return s.AllowUserToManageServiceCredentials
+}
+
 func (s *SetSecurityPreferenceRequest) GetEnableSaveMFATicket() *bool {
 	return s.EnableSaveMFATicket
 }
@@ -234,6 +241,11 @@ func (s *SetSecurityPreferenceRequest) SetAllowUserToManageMFADevices(v bool) *S
 
 func (s *SetSecurityPreferenceRequest) SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceRequest {
 	s.AllowUserToManagePersonalDingTalk = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceRequest) SetAllowUserToManageServiceCredentials(v bool) *SetSecurityPreferenceRequest {
+	s.AllowUserToManageServiceCredentials = &v
 	return s
 }
 

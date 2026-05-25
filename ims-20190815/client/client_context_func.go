@@ -3586,6 +3586,10 @@ func (client *Client) SetSecurityPreferenceWithContext(ctx context.Context, tmpR
 		query["AllowUserToManagePersonalDingTalk"] = request.AllowUserToManagePersonalDingTalk
 	}
 
+	if !dara.IsNil(request.AllowUserToManageServiceCredentials) {
+		query["AllowUserToManageServiceCredentials"] = request.AllowUserToManageServiceCredentials
+	}
+
 	if !dara.IsNil(request.EnableSaveMFATicket) {
 		query["EnableSaveMFATicket"] = request.EnableSaveMFATicket
 	}

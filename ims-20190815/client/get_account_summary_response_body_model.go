@@ -177,7 +177,8 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	// example:
 	//
 	// 1000
-	RolesQuota *int32 `json:"RolesQuota,omitempty" xml:"RolesQuota,omitempty"`
+	RolesQuota                               *int32 `json:"RolesQuota,omitempty" xml:"RolesQuota,omitempty"`
+	ServiceCredentialsPerUserPerServiceQuota *int32 `json:"ServiceCredentialsPerUserPerServiceQuota,omitempty" xml:"ServiceCredentialsPerUserPerServiceQuota,omitempty"`
 	// The number of RAM users.
 	//
 	// example:
@@ -294,6 +295,10 @@ func (s *GetAccountSummaryResponseBodySummaryMap) GetRoles() *int32 {
 
 func (s *GetAccountSummaryResponseBodySummaryMap) GetRolesQuota() *int32 {
 	return s.RolesQuota
+}
+
+func (s *GetAccountSummaryResponseBodySummaryMap) GetServiceCredentialsPerUserPerServiceQuota() *int32 {
+	return s.ServiceCredentialsPerUserPerServiceQuota
 }
 
 func (s *GetAccountSummaryResponseBodySummaryMap) GetUsers() *int32 {
@@ -414,6 +419,11 @@ func (s *GetAccountSummaryResponseBodySummaryMap) SetRoles(v int32) *GetAccountS
 
 func (s *GetAccountSummaryResponseBodySummaryMap) SetRolesQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
 	s.RolesQuota = &v
+	return s
+}
+
+func (s *GetAccountSummaryResponseBodySummaryMap) SetServiceCredentialsPerUserPerServiceQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
+	s.ServiceCredentialsPerUserPerServiceQuota = &v
 	return s
 }
 
