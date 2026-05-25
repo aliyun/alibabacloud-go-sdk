@@ -23712,6 +23712,84 @@ func (client *Client) QueryHistoryMetricDistribution(request *QueryHistoryMetric
 
 // Summary:
 //
+// 查询桌面历史使用时长排行榜
+//
+// @param request - QueryHistoryUsageDurationRankRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHistoryUsageDurationRankResponse
+func (client *Client) QueryHistoryUsageDurationRankWithOptions(request *QueryHistoryUsageDurationRankRequest, runtime *dara.RuntimeOptions) (_result *QueryHistoryUsageDurationRankResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryHistoryUsageDurationRank"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryHistoryUsageDurationRankResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面历史使用时长排行榜
+//
+// @param request - QueryHistoryUsageDurationRankRequest
+//
+// @return QueryHistoryUsageDurationRankResponse
+func (client *Client) QueryHistoryUsageDurationRank(request *QueryHistoryUsageDurationRankRequest) (_result *QueryHistoryUsageDurationRankResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryHistoryUsageDurationRankResponse{}
+	_body, _err := client.QueryHistoryUsageDurationRankWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Restart cloud computers.
 //
 // Description:
