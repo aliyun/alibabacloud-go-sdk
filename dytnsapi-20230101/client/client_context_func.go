@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dytnsapi"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNumberHLRResponse
-func (client *Client) DescribeNumberHLRWithOptions(request *DescribeNumberHLRRequest, runtime *dara.RuntimeOptions) (_result *DescribeNumberHLRResponse, _err error) {
+func (client *Client) DescribeNumberHLRWithContext(ctx context.Context, request *DescribeNumberHLRRequest, runtime *dara.RuntimeOptions) (_result *DescribeNumberHLRResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -108,29 +59,11 @@ func (client *Client) DescribeNumberHLRWithOptions(request *DescribeNumberHLRReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNumberHLRResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # HLR服务
-//
-// @param request - DescribeNumberHLRRequest
-//
-// @return DescribeNumberHLRResponse
-func (client *Client) DescribeNumberHLR(request *DescribeNumberHLRRequest) (_result *DescribeNumberHLRResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNumberHLRResponse{}
-	_body, _err := client.DescribeNumberHLRWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -143,7 +76,7 @@ func (client *Client) DescribeNumberHLR(request *DescribeNumberHLRRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNumberMccMncResponse
-func (client *Client) DescribeNumberMccMncWithOptions(request *DescribeNumberMccMncRequest, runtime *dara.RuntimeOptions) (_result *DescribeNumberMccMncResponse, _err error) {
+func (client *Client) DescribeNumberMccMncWithContext(ctx context.Context, request *DescribeNumberMccMncRequest, runtime *dara.RuntimeOptions) (_result *DescribeNumberMccMncResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -186,29 +119,11 @@ func (client *Client) DescribeNumberMccMncWithOptions(request *DescribeNumberMcc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNumberMccMncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 号码百科国际站号码归属服务
-//
-// @param request - DescribeNumberMccMncRequest
-//
-// @return DescribeNumberMccMncResponse
-func (client *Client) DescribeNumberMccMnc(request *DescribeNumberMccMncRequest) (_result *DescribeNumberMccMncResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNumberMccMncResponse{}
-	_body, _err := client.DescribeNumberMccMncWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -221,7 +136,7 @@ func (client *Client) DescribeNumberMccMnc(request *DescribeNumberMccMncRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIdentificationResultResponse
-func (client *Client) GetIdentificationResultWithOptions(request *GetIdentificationResultRequest, runtime *dara.RuntimeOptions) (_result *GetIdentificationResultResponse, _err error) {
+func (client *Client) GetIdentificationResultWithContext(ctx context.Context, request *GetIdentificationResultRequest, runtime *dara.RuntimeOptions) (_result *GetIdentificationResultResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -252,29 +167,11 @@ func (client *Client) GetIdentificationResultWithOptions(request *GetIdentificat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIdentificationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取认证结果
-//
-// @param request - GetIdentificationResultRequest
-//
-// @return GetIdentificationResultResponse
-func (client *Client) GetIdentificationResult(request *GetIdentificationResultRequest) (_result *GetIdentificationResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIdentificationResultResponse{}
-	_body, _err := client.GetIdentificationResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -287,7 +184,7 @@ func (client *Client) GetIdentificationResult(request *GetIdentificationResultRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIdentificationSessionResponse
-func (client *Client) GetIdentificationSessionWithOptions(request *GetIdentificationSessionRequest, runtime *dara.RuntimeOptions) (_result *GetIdentificationSessionResponse, _err error) {
+func (client *Client) GetIdentificationSessionWithContext(ctx context.Context, request *GetIdentificationSessionRequest, runtime *dara.RuntimeOptions) (_result *GetIdentificationSessionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -314,29 +211,11 @@ func (client *Client) GetIdentificationSessionWithOptions(request *GetIdentifica
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIdentificationSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 国际认证获取sessionId
-//
-// @param request - GetIdentificationSessionRequest
-//
-// @return GetIdentificationSessionResponse
-func (client *Client) GetIdentificationSession(request *GetIdentificationSessionRequest) (_result *GetIdentificationSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIdentificationSessionResponse{}
-	_body, _err := client.GetIdentificationSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -349,7 +228,7 @@ func (client *Client) GetIdentificationSession(request *GetIdentificationSession
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPhoneNumberIdentificationResultResponse
-func (client *Client) GetPhoneNumberIdentificationResultWithOptions(request *GetPhoneNumberIdentificationResultRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberIdentificationResultResponse, _err error) {
+func (client *Client) GetPhoneNumberIdentificationResultWithContext(ctx context.Context, request *GetPhoneNumberIdentificationResultRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberIdentificationResultResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -404,29 +283,11 @@ func (client *Client) GetPhoneNumberIdentificationResultWithOptions(request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPhoneNumberIdentificationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the verification result of your phone number.
-//
-// @param request - GetPhoneNumberIdentificationResultRequest
-//
-// @return GetPhoneNumberIdentificationResultResponse
-func (client *Client) GetPhoneNumberIdentificationResult(request *GetPhoneNumberIdentificationResultRequest) (_result *GetPhoneNumberIdentificationResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPhoneNumberIdentificationResultResponse{}
-	_body, _err := client.GetPhoneNumberIdentificationResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -439,7 +300,7 @@ func (client *Client) GetPhoneNumberIdentificationResult(request *GetPhoneNumber
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPhoneNumberIdentificationUrlResponse
-func (client *Client) GetPhoneNumberIdentificationUrlWithOptions(request *GetPhoneNumberIdentificationUrlRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberIdentificationUrlResponse, _err error) {
+func (client *Client) GetPhoneNumberIdentificationUrlWithContext(ctx context.Context, request *GetPhoneNumberIdentificationUrlRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberIdentificationUrlResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -494,28 +355,10 @@ func (client *Client) GetPhoneNumberIdentificationUrlWithOptions(request *GetPho
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPhoneNumberIdentificationUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the verification URL of your phone number.
-//
-// @param request - GetPhoneNumberIdentificationUrlRequest
-//
-// @return GetPhoneNumberIdentificationUrlResponse
-func (client *Client) GetPhoneNumberIdentificationUrl(request *GetPhoneNumberIdentificationUrlRequest) (_result *GetPhoneNumberIdentificationUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPhoneNumberIdentificationUrlResponse{}
-	_body, _err := client.GetPhoneNumberIdentificationUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
