@@ -25,10 +25,25 @@ type iEventRule interface {
 
 type EventRule struct {
   Conditional []*ConditionalRule `json:"Conditional,omitempty" xml:"Conditional,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // true
   Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+  // example:
+  // 
+  // crash
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+  // example:
+  // 
+  // 2021-02-15 12:00:00
   ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+  // example:
+  // 
+  // user
   Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+  // example:
+  // 
+  // 1
   SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 }
 
@@ -95,6 +110,15 @@ func (s *EventRule) SetSampleRate(v float32) *EventRule {
 }
 
 func (s *EventRule) Validate() error {
-  return dara.Validate(s)
+  if s.Conditional != nil {
+    for _, item := range s.Conditional {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

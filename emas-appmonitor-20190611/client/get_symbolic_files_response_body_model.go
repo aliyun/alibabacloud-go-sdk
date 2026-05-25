@@ -110,7 +110,12 @@ func (s *GetSymbolicFilesResponseBody) SetSuccess(v bool) *GetSymbolicFilesRespo
 }
 
 func (s *GetSymbolicFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSymbolicFilesResponseBodyModel struct {
@@ -187,7 +192,16 @@ func (s *GetSymbolicFilesResponseBodyModel) SetTotal(v int64) *GetSymbolicFilesR
 }
 
 func (s *GetSymbolicFilesResponseBodyModel) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetSymbolicFilesResponseBodyModelItems struct {

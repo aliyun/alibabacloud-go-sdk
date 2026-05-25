@@ -18,9 +18,18 @@ type iFullSampleItem interface {
 }
 
 type FullSampleItem struct {
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1740489688615
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// testUser
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 
 func (s FullSampleItem) String() string {

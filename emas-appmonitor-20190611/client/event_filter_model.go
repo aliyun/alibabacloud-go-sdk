@@ -20,10 +20,23 @@ type iEventFilter interface {
 }
 
 type EventFilter struct {
+  // key
+  // 
+  // example:
+  // 
+  // startTime
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+  // op
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // >
   Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+  // filters
   SubFilters []*EventFilter `json:"SubFilters,omitempty" xml:"SubFilters,omitempty" type:"Repeated"`
+  // values
   Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -72,6 +85,15 @@ func (s *EventFilter) SetValues(v []*string) *EventFilter {
 }
 
 func (s *EventFilter) Validate() error {
-  return dara.Validate(s)
+  if s.SubFilters != nil {
+    for _, item := range s.SubFilters {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 

@@ -110,7 +110,12 @@ func (s *GetErrorsResponseBody) SetSuccess(v bool) *GetErrorsResponseBody {
 }
 
 func (s *GetErrorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetErrorsResponseBodyModel struct {
@@ -187,7 +192,16 @@ func (s *GetErrorsResponseBodyModel) SetTotal(v int64) *GetErrorsResponseBodyMod
 }
 
 func (s *GetErrorsResponseBodyModel) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetErrorsResponseBodyModelItems struct {

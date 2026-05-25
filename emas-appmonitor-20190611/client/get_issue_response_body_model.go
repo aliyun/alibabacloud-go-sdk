@@ -108,7 +108,12 @@ func (s *GetIssueResponseBody) SetSuccess(v bool) *GetIssueResponseBody {
 }
 
 func (s *GetIssueResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIssueResponseBodyModel struct {
@@ -201,6 +206,7 @@ type GetIssueResponseBodyModel struct {
 	// 1
 	KeyLine *int32  `json:"KeyLine,omitempty" xml:"KeyLine,omitempty"`
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// example:
 	//
 	// java.lang.NullPointerException
@@ -218,6 +224,7 @@ type GetIssueResponseBodyModel struct {
 	// true
 	SymbolicStatus *bool     `json:"SymbolicStatus,omitempty" xml:"SymbolicStatus,omitempty"`
 	Tags           []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetIssueResponseBodyModel) String() string {
@@ -332,6 +339,10 @@ func (s *GetIssueResponseBodyModel) GetName() *string {
 	return s.Name
 }
 
+func (s *GetIssueResponseBodyModel) GetReason() *string {
+	return s.Reason
+}
+
 func (s *GetIssueResponseBodyModel) GetStack() *string {
 	return s.Stack
 }
@@ -350,6 +361,10 @@ func (s *GetIssueResponseBodyModel) GetSymbolicStatus() *bool {
 
 func (s *GetIssueResponseBodyModel) GetTags() []*string {
 	return s.Tags
+}
+
+func (s *GetIssueResponseBodyModel) GetType() *string {
+	return s.Type
 }
 
 func (s *GetIssueResponseBodyModel) SetAffectedVersions(v []*string) *GetIssueResponseBodyModel {
@@ -482,6 +497,11 @@ func (s *GetIssueResponseBodyModel) SetName(v string) *GetIssueResponseBodyModel
 	return s
 }
 
+func (s *GetIssueResponseBodyModel) SetReason(v string) *GetIssueResponseBodyModel {
+	s.Reason = &v
+	return s
+}
+
 func (s *GetIssueResponseBodyModel) SetStack(v string) *GetIssueResponseBodyModel {
 	s.Stack = &v
 	return s
@@ -504,6 +524,11 @@ func (s *GetIssueResponseBodyModel) SetSymbolicStatus(v bool) *GetIssueResponseB
 
 func (s *GetIssueResponseBodyModel) SetTags(v []*string) *GetIssueResponseBodyModel {
 	s.Tags = v
+	return s
+}
+
+func (s *GetIssueResponseBodyModel) SetType(v string) *GetIssueResponseBodyModel {
+	s.Type = &v
 	return s
 }
 

@@ -116,7 +116,17 @@ func (s *GetIssueRequest) SetTimeRange(v *GetIssueRequestTimeRange) *GetIssueReq
 }
 
 func (s *GetIssueRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeRange != nil {
+		if err := s.TimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIssueRequestFilter struct {

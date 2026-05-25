@@ -9,6 +9,126 @@ import (
 
 // Summary:
 //
+// # CreateTlogTask
+//
+// @param request - CreateTlogTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTlogTaskResponse
+func (client *Client) CreateTlogTaskWithContext(ctx context.Context, request *CreateTlogTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateTlogTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AliYunCurrentPk) {
+		body["AliYunCurrentPk"] = request.AliYunCurrentPk
+	}
+
+	if !dara.IsNil(request.AliYunMainPk) {
+		body["AliYunMainPk"] = request.AliYunMainPk
+	}
+
+	if !dara.IsNil(request.AliYunName) {
+		body["AliYunName"] = request.AliYunName
+	}
+
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.AppVersion) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !dara.IsNil(request.BeginDate) {
+		body["BeginDate"] = request.BeginDate
+	}
+
+	if !dara.IsNil(request.Brand) {
+		body["Brand"] = request.Brand
+	}
+
+	if !dara.IsNil(request.City) {
+		body["City"] = request.City
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.CollectionNums) {
+		body["CollectionNums"] = request.CollectionNums
+	}
+
+	if !dara.IsNil(request.Days) {
+		body["Days"] = request.Days
+	}
+
+	if !dara.IsNil(request.DeviceJson) {
+		body["DeviceJson"] = request.DeviceJson
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ErrorType) {
+		body["ErrorType"] = request.ErrorType
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NotifySettingJson) {
+		body["NotifySettingJson"] = request.NotifySettingJson
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.OsVersion) {
+		body["OsVersion"] = request.OsVersion
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTlogTask"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTlogTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取错误事件详情
 //
 // @param request - GetErrorRequest
@@ -17,9 +137,11 @@ import (
 //
 // @return GetErrorResponse
 func (client *Client) GetErrorWithContext(ctx context.Context, request *GetErrorRequest, runtime *dara.RuntimeOptions) (_result *GetErrorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -87,9 +209,11 @@ func (client *Client) GetErrorWithContext(ctx context.Context, request *GetError
 //
 // @return GetErrorsResponse
 func (client *Client) GetErrorsWithContext(ctx context.Context, tmpReq *GetErrorsRequest, runtime *dara.RuntimeOptions) (_result *GetErrorsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetErrorsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -170,9 +294,11 @@ func (client *Client) GetErrorsWithContext(ctx context.Context, tmpReq *GetError
 //
 // @return GetIssueResponse
 func (client *Client) GetIssueWithContext(ctx context.Context, tmpReq *GetIssueRequest, runtime *dara.RuntimeOptions) (_result *GetIssueResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetIssueShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -241,9 +367,11 @@ func (client *Client) GetIssueWithContext(ctx context.Context, tmpReq *GetIssueR
 //
 // @return GetIssuesResponse
 func (client *Client) GetIssuesWithContext(ctx context.Context, tmpReq *GetIssuesRequest, runtime *dara.RuntimeOptions) (_result *GetIssuesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetIssuesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -332,9 +460,11 @@ func (client *Client) GetIssuesWithContext(ctx context.Context, tmpReq *GetIssue
 //
 // @return GetSymbolicFilesResponse
 func (client *Client) GetSymbolicFilesWithContext(ctx context.Context, request *GetSymbolicFilesRequest, runtime *dara.RuntimeOptions) (_result *GetSymbolicFilesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -410,6 +540,402 @@ func (client *Client) GetSymbolicFilesWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// # GetTlogCollectList
+//
+// @param request - GetTlogCollectListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTlogCollectListResponse
+func (client *Client) GetTlogCollectListWithContext(ctx context.Context, request *GetTlogCollectListRequest, runtime *dara.RuntimeOptions) (_result *GetTlogCollectListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.AppVersion) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !dara.IsNil(request.Author) {
+		body["Author"] = request.Author
+	}
+
+	if !dara.IsNil(request.BeginDate) {
+		body["BeginDate"] = request.BeginDate
+	}
+
+	if !dara.IsNil(request.City) {
+		body["City"] = request.City
+	}
+
+	if !dara.IsNil(request.CreateBeginDate) {
+		body["CreateBeginDate"] = request.CreateBeginDate
+	}
+
+	if !dara.IsNil(request.CreateEndDate) {
+		body["CreateEndDate"] = request.CreateEndDate
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		body["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.OsVersion) {
+		body["OsVersion"] = request.OsVersion
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PositiveComment) {
+		body["PositiveComment"] = request.PositiveComment
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UpdateBeginDate) {
+		body["UpdateBeginDate"] = request.UpdateBeginDate
+	}
+
+	if !dara.IsNil(request.UpdateEndDate) {
+		body["UpdateEndDate"] = request.UpdateEndDate
+	}
+
+	if !dara.IsNil(request.UserNick) {
+		body["UserNick"] = request.UserNick
+	}
+
+	if !dara.IsNil(request.Utdid) {
+		body["Utdid"] = request.Utdid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTlogCollectList"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTlogCollectListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # TlogDeviceInfo
+//
+// @param request - GetTlogDeviceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTlogDeviceInfoResponse
+func (client *Client) GetTlogDeviceInfoWithContext(ctx context.Context, request *GetTlogDeviceInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTlogDeviceInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		body["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTlogDeviceInfo"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTlogDeviceInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetTlogDeviceList
+//
+// @param request - GetTlogDeviceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTlogDeviceListResponse
+func (client *Client) GetTlogDeviceListWithContext(ctx context.Context, request *GetTlogDeviceListRequest, runtime *dara.RuntimeOptions) (_result *GetTlogDeviceListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.AppVersion) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !dara.IsNil(request.BeginDate) {
+		body["BeginDate"] = request.BeginDate
+	}
+
+	if !dara.IsNil(request.Brand) {
+		body["Brand"] = request.Brand
+	}
+
+	if !dara.IsNil(request.City) {
+		body["City"] = request.City
+	}
+
+	if !dara.IsNil(request.CreateBeginDate) {
+		body["CreateBeginDate"] = request.CreateBeginDate
+	}
+
+	if !dara.IsNil(request.CreateEndDate) {
+		body["CreateEndDate"] = request.CreateEndDate
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.OsVersion) {
+		body["OsVersion"] = request.OsVersion
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.UpdateBeginDate) {
+		body["UpdateBeginDate"] = request.UpdateBeginDate
+	}
+
+	if !dara.IsNil(request.UpdateEndDate) {
+		body["UpdateEndDate"] = request.UpdateEndDate
+	}
+
+	if !dara.IsNil(request.UserNick) {
+		body["UserNick"] = request.UserNick
+	}
+
+	if !dara.IsNil(request.Utdid) {
+		body["Utdid"] = request.Utdid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTlogDeviceList"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTlogDeviceListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetTlogTaskCollections
+//
+// @param request - GetTlogTaskCollectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTlogTaskCollectionsResponse
+func (client *Client) GetTlogTaskCollectionsWithContext(ctx context.Context, request *GetTlogTaskCollectionsRequest, runtime *dara.RuntimeOptions) (_result *GetTlogTaskCollectionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTlogTaskCollections"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTlogTaskCollectionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetTlogTaskInfo
+//
+// @param request - GetTlogTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTlogTaskInfoResponse
+func (client *Client) GetTlogTaskInfoWithContext(ctx context.Context, request *GetTlogTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTlogTaskInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTlogTaskInfo"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTlogTaskInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # RequestUploadToken
 //
 // @param request - RequestUploadTokenRequest
@@ -418,9 +944,11 @@ func (client *Client) GetSymbolicFilesWithContext(ctx context.Context, request *
 //
 // @return RequestUploadTokenResponse
 func (client *Client) RequestUploadTokenWithContext(ctx context.Context, request *RequestUploadTokenRequest, runtime *dara.RuntimeOptions) (_result *RequestUploadTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {
@@ -456,6 +984,82 @@ func (client *Client) RequestUploadTokenWithContext(ctx context.Context, request
 
 // Summary:
 //
+// # SearchTlog
+//
+// @param request - SearchTlogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchTlogResponse
+func (client *Client) SearchTlogWithContext(ctx context.Context, request *SearchTlogRequest, runtime *dara.RuntimeOptions) (_result *SearchTlogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppKey) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !dara.IsNil(request.BeginDate) {
+		body["BeginDate"] = request.BeginDate
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		body["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.LevelJson) {
+		body["LevelJson"] = request.LevelJson
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchTlog"),
+		Version:     dara.String("2019-06-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchTlogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # SubmitSymbolic
 //
 // @param request - SubmitSymbolicRequest
@@ -464,9 +1068,11 @@ func (client *Client) RequestUploadTokenWithContext(ctx context.Context, request
 //
 // @return SubmitSymbolicResponse
 func (client *Client) SubmitSymbolicWithContext(ctx context.Context, request *SubmitSymbolicRequest, runtime *dara.RuntimeOptions) (_result *SubmitSymbolicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppKey) {

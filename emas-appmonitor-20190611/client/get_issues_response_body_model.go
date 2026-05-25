@@ -108,7 +108,12 @@ func (s *GetIssuesResponseBody) SetSuccess(v bool) *GetIssuesResponseBody {
 }
 
 func (s *GetIssuesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIssuesResponseBodyModel struct {
@@ -185,7 +190,16 @@ func (s *GetIssuesResponseBodyModel) SetTotal(v int64) *GetIssuesResponseBodyMod
 }
 
 func (s *GetIssuesResponseBodyModel) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIssuesResponseBodyModelItems struct {
@@ -249,10 +263,12 @@ type GetIssuesResponseBodyModelItems struct {
 	//
 	// 1.0.0
 	FirstVersion *string `json:"FirstVersion,omitempty" xml:"FirstVersion,omitempty"`
+	LagCost      *int64  `json:"LagCost,omitempty" xml:"LagCost,omitempty"`
 	// example:
 	//
 	// ServiceType
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// example:
 	//
 	// java.lang.NullPointerException: Attempt to invoke virtual method \\"java.lang.Object java.lang.ref.WeakReference.get()\\" on a null object reference
@@ -266,7 +282,9 @@ type GetIssuesResponseBodyModelItems struct {
 	// example:
 	//
 	// CREATE_COMPLETE
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetIssuesResponseBodyModelItems) String() string {
@@ -349,8 +367,16 @@ func (s *GetIssuesResponseBodyModelItems) GetFirstVersion() *string {
 	return s.FirstVersion
 }
 
+func (s *GetIssuesResponseBodyModelItems) GetLagCost() *int64 {
+	return s.LagCost
+}
+
 func (s *GetIssuesResponseBodyModelItems) GetName() *string {
 	return s.Name
+}
+
+func (s *GetIssuesResponseBodyModelItems) GetReason() *string {
+	return s.Reason
 }
 
 func (s *GetIssuesResponseBodyModelItems) GetStack() *string {
@@ -359,6 +385,14 @@ func (s *GetIssuesResponseBodyModelItems) GetStack() *string {
 
 func (s *GetIssuesResponseBodyModelItems) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *GetIssuesResponseBodyModelItems) GetTags() []*string {
+	return s.Tags
+}
+
+func (s *GetIssuesResponseBodyModelItems) GetType() *string {
+	return s.Type
 }
 
 func (s *GetIssuesResponseBodyModelItems) SetAffectedUserCount(v int32) *GetIssuesResponseBodyModelItems {
@@ -451,8 +485,18 @@ func (s *GetIssuesResponseBodyModelItems) SetFirstVersion(v string) *GetIssuesRe
 	return s
 }
 
+func (s *GetIssuesResponseBodyModelItems) SetLagCost(v int64) *GetIssuesResponseBodyModelItems {
+	s.LagCost = &v
+	return s
+}
+
 func (s *GetIssuesResponseBodyModelItems) SetName(v string) *GetIssuesResponseBodyModelItems {
 	s.Name = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetReason(v string) *GetIssuesResponseBodyModelItems {
+	s.Reason = &v
 	return s
 }
 
@@ -463,6 +507,16 @@ func (s *GetIssuesResponseBodyModelItems) SetStack(v string) *GetIssuesResponseB
 
 func (s *GetIssuesResponseBodyModelItems) SetStatus(v int32) *GetIssuesResponseBodyModelItems {
 	s.Status = &v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetTags(v []*string) *GetIssuesResponseBodyModelItems {
+	s.Tags = v
+	return s
+}
+
+func (s *GetIssuesResponseBodyModelItems) SetType(v string) *GetIssuesResponseBodyModelItems {
+	s.Type = &v
 	return s
 }
 

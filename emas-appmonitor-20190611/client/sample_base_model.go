@@ -22,8 +22,14 @@ type iSampleBase interface {
 type SampleBase struct {
 	FullSampleDeviceIds []*FullSampleItem `json:"FullSampleDeviceIds,omitempty" xml:"FullSampleDeviceIds,omitempty" type:"Repeated"`
 	FullSampleUsers     []*FullSampleItem `json:"FullSampleUsers,omitempty" xml:"FullSampleUsers,omitempty" type:"Repeated"`
-	SampleMethod        *string           `json:"SampleMethod,omitempty" xml:"SampleMethod,omitempty"`
-	SampleRate          *float32          `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// example:
+	//
+	// event
+	SampleMethod *string `json:"SampleMethod,omitempty" xml:"SampleMethod,omitempty"`
+	// example:
+	//
+	// 1
+	SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 }
 
 func (s SampleBase) String() string {
@@ -71,5 +77,23 @@ func (s *SampleBase) SetSampleRate(v float32) *SampleBase {
 }
 
 func (s *SampleBase) Validate() error {
-	return dara.Validate(s)
+	if s.FullSampleDeviceIds != nil {
+		for _, item := range s.FullSampleDeviceIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FullSampleUsers != nil {
+		for _, item := range s.FullSampleUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

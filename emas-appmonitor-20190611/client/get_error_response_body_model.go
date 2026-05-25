@@ -107,7 +107,12 @@ func (s *GetErrorResponseBody) SetSuccess(v bool) *GetErrorResponseBody {
 }
 
 func (s *GetErrorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetErrorResponseBodyModel struct {
@@ -221,7 +226,8 @@ type GetErrorResponseBodyModel struct {
 	// example:
 	//
 	// 0
-	ColNo *string `json:"ColNo,omitempty" xml:"ColNo,omitempty"`
+	ColNo       *string `json:"ColNo,omitempty" xml:"ColNo,omitempty"`
+	Controllers *string `json:"Controllers,omitempty" xml:"Controllers,omitempty"`
 	// example:
 	//
 	// CN
@@ -363,7 +369,8 @@ type GetErrorResponseBodyModel struct {
 	// example:
 	//
 	// -
-	FeatureScene *string `json:"FeatureScene,omitempty" xml:"FeatureScene,omitempty"`
+	FeatureScene   *string `json:"FeatureScene,omitempty" xml:"FeatureScene,omitempty"`
+	FileDescriptor *string `json:"FileDescriptor,omitempty" xml:"FileDescriptor,omitempty"`
 	// example:
 	//
 	// baselineCspm_20241005
@@ -448,10 +455,12 @@ type GetErrorResponseBodyModel struct {
 	//
 	// java.lang.NullPointerException: Attempt to invoke virtual method \\"java.lang.Object
 	JsBacktrace *string `json:"JsBacktrace,omitempty" xml:"JsBacktrace,omitempty"`
+	LagCost     *int32  `json:"LagCost,omitempty" xml:"LagCost,omitempty"`
 	// example:
 	//
 	// cn
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language           *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LaunchedCrashStage *int32  `json:"LaunchedCrashStage,omitempty" xml:"LaunchedCrashStage,omitempty"`
 	// example:
 	//
 	// 2025-02-25 18:02:50
@@ -468,6 +477,7 @@ type GetErrorResponseBodyModel struct {
 	//
 	// -
 	MainLog *string `json:"MainLog,omitempty" xml:"MainLog,omitempty"`
+	MemInfo *string `json:"MemInfo,omitempty" xml:"MemInfo,omitempty"`
 	// example:
 	//
 	// -
@@ -815,6 +825,10 @@ func (s *GetErrorResponseBodyModel) GetColNo() *string {
 	return s.ColNo
 }
 
+func (s *GetErrorResponseBodyModel) GetControllers() *string {
+	return s.Controllers
+}
+
 func (s *GetErrorResponseBodyModel) GetCountry() *string {
 	return s.Country
 }
@@ -955,6 +969,10 @@ func (s *GetErrorResponseBodyModel) GetFeatureScene() *string {
 	return s.FeatureScene
 }
 
+func (s *GetErrorResponseBodyModel) GetFileDescriptor() *string {
+	return s.FileDescriptor
+}
+
 func (s *GetErrorResponseBodyModel) GetFileName() *string {
 	return s.FileName
 }
@@ -1039,8 +1057,16 @@ func (s *GetErrorResponseBodyModel) GetJsBacktrace() *string {
 	return s.JsBacktrace
 }
 
+func (s *GetErrorResponseBodyModel) GetLagCost() *int32 {
+	return s.LagCost
+}
+
 func (s *GetErrorResponseBodyModel) GetLanguage() *string {
 	return s.Language
+}
+
+func (s *GetErrorResponseBodyModel) GetLaunchedCrashStage() *int32 {
+	return s.LaunchedCrashStage
 }
 
 func (s *GetErrorResponseBodyModel) GetLaunchedTime() *string {
@@ -1057,6 +1083,10 @@ func (s *GetErrorResponseBodyModel) GetLogHash() *int64 {
 
 func (s *GetErrorResponseBodyModel) GetMainLog() *string {
 	return s.MainLog
+}
+
+func (s *GetErrorResponseBodyModel) GetMemInfo() *string {
+	return s.MemInfo
 }
 
 func (s *GetErrorResponseBodyModel) GetMemoryMap() *string {
@@ -1418,6 +1448,11 @@ func (s *GetErrorResponseBodyModel) SetColNo(v string) *GetErrorResponseBodyMode
 	return s
 }
 
+func (s *GetErrorResponseBodyModel) SetControllers(v string) *GetErrorResponseBodyModel {
+	s.Controllers = &v
+	return s
+}
+
 func (s *GetErrorResponseBodyModel) SetCountry(v string) *GetErrorResponseBodyModel {
 	s.Country = &v
 	return s
@@ -1593,6 +1628,11 @@ func (s *GetErrorResponseBodyModel) SetFeatureScene(v string) *GetErrorResponseB
 	return s
 }
 
+func (s *GetErrorResponseBodyModel) SetFileDescriptor(v string) *GetErrorResponseBodyModel {
+	s.FileDescriptor = &v
+	return s
+}
+
 func (s *GetErrorResponseBodyModel) SetFileName(v string) *GetErrorResponseBodyModel {
 	s.FileName = &v
 	return s
@@ -1698,8 +1738,18 @@ func (s *GetErrorResponseBodyModel) SetJsBacktrace(v string) *GetErrorResponseBo
 	return s
 }
 
+func (s *GetErrorResponseBodyModel) SetLagCost(v int32) *GetErrorResponseBodyModel {
+	s.LagCost = &v
+	return s
+}
+
 func (s *GetErrorResponseBodyModel) SetLanguage(v string) *GetErrorResponseBodyModel {
 	s.Language = &v
+	return s
+}
+
+func (s *GetErrorResponseBodyModel) SetLaunchedCrashStage(v int32) *GetErrorResponseBodyModel {
+	s.LaunchedCrashStage = &v
 	return s
 }
 
@@ -1720,6 +1770,11 @@ func (s *GetErrorResponseBodyModel) SetLogHash(v int64) *GetErrorResponseBodyMod
 
 func (s *GetErrorResponseBodyModel) SetMainLog(v string) *GetErrorResponseBodyModel {
 	s.MainLog = &v
+	return s
+}
+
+func (s *GetErrorResponseBodyModel) SetMemInfo(v string) *GetErrorResponseBodyModel {
+	s.MemInfo = &v
 	return s
 }
 

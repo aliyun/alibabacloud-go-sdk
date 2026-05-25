@@ -116,7 +116,12 @@ func (s *GetIssueShrinkRequest) SetTimeRange(v *GetIssueShrinkRequestTimeRange) 
 }
 
 func (s *GetIssueShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TimeRange != nil {
+		if err := s.TimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIssueShrinkRequestTimeRange struct {

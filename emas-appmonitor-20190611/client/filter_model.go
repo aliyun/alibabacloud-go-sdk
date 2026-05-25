@@ -20,10 +20,26 @@ type iFilter interface {
 }
 
 type Filter struct {
-	Key        *string     `json:"Key,omitempty" xml:"Key,omitempty"`
-	Operator   *string     `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	SubFilters []*Filter   `json:"SubFilters,omitempty" xml:"SubFilters,omitempty" type:"Repeated"`
-	Values     interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
+	// key
+	//
+	// example:
+	//
+	// -
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// operator
+	//
+	// example:
+	//
+	// -
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// subFillter
+	SubFilters []*Filter `json:"SubFilters,omitempty" xml:"SubFilters,omitempty" type:"Repeated"`
+	// values
+	//
+	// example:
+	//
+	// 1,2,3
+	Values interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s Filter) String() string {
@@ -71,5 +87,14 @@ func (s *Filter) SetValues(v interface{}) *Filter {
 }
 
 func (s *Filter) Validate() error {
-	return dara.Validate(s)
+	if s.SubFilters != nil {
+		for _, item := range s.SubFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

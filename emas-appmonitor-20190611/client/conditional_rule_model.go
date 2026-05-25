@@ -22,11 +22,23 @@ type iConditionalRule interface {
 }
 
 type ConditionalRule struct {
-	Filter     *EventFilter `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	ModifyTime *string      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name       *string      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator   *string      `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	SampleRate *float32     `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	Filter *EventFilter `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// 1205-02-01 12:00:00
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// user
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 1
+	SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 }
 
 func (s ConditionalRule) String() string {
@@ -83,5 +95,10 @@ func (s *ConditionalRule) SetSampleRate(v float32) *ConditionalRule {
 }
 
 func (s *ConditionalRule) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

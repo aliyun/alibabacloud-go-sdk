@@ -165,7 +165,12 @@ func (s *GetErrorsShrinkRequest) SetUtdid(v string) *GetErrorsShrinkRequest {
 }
 
 func (s *GetErrorsShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TimeRange != nil {
+		if err := s.TimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetErrorsShrinkRequestTimeRange struct {

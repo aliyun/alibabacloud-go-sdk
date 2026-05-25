@@ -165,7 +165,17 @@ func (s *GetErrorsRequest) SetUtdid(v string) *GetErrorsRequest {
 }
 
 func (s *GetErrorsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TimeRange != nil {
+		if err := s.TimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetErrorsRequestFilter struct {
