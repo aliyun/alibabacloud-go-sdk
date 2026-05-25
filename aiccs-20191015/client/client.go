@@ -8568,6 +8568,76 @@ func (client *Client) ListTaskDetail(request *ListTaskDetailRequest) (_result *L
 
 // Summary:
 //
+// 高德全双工
+//
+// @param request - LlmFullDuplexCallOperateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LlmFullDuplexCallOperateResponse
+func (client *Client) LlmFullDuplexCallOperateWithOptions(request *LlmFullDuplexCallOperateRequest, runtime *dara.RuntimeOptions) (_result *LlmFullDuplexCallOperateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallId) {
+		query["CallId"] = request.CallId
+	}
+
+	if !dara.IsNil(request.Command) {
+		query["Command"] = request.Command
+	}
+
+	if !dara.IsNil(request.Param) {
+		query["Param"] = request.Param
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LlmFullDuplexCallOperate"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LlmFullDuplexCallOperateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 高德全双工
+//
+// @param request - LlmFullDuplexCallOperateRequest
+//
+// @return LlmFullDuplexCallOperateResponse
+func (client *Client) LlmFullDuplexCallOperate(request *LlmFullDuplexCallOperateRequest) (_result *LlmFullDuplexCallOperateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &LlmFullDuplexCallOperateResponse{}
+	_body, _err := client.LlmFullDuplexCallOperateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 基于大模型的智能外呼
 //
 // @param tmpReq - LlmSmartCallRequest
@@ -8787,6 +8857,106 @@ func (client *Client) LlmSmartCallEncrypt(request *LlmSmartCallEncryptRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &LlmSmartCallEncryptResponse{}
 	_body, _err := client.LlmSmartCallEncryptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于大模型的智能外呼
+//
+// @param tmpReq - LlmSmartCallFullDuplexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LlmSmartCallFullDuplexResponse
+func (client *Client) LlmSmartCallFullDuplexWithOptions(tmpReq *LlmSmartCallFullDuplexRequest, runtime *dara.RuntimeOptions) (_result *LlmSmartCallFullDuplexResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &LlmSmartCallFullDuplexShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.StartWordParam) {
+		request.StartWordParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StartWordParam, dara.String("StartWordParam"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCode) {
+		query["ApplicationCode"] = request.ApplicationCode
+	}
+
+	if !dara.IsNil(request.CalledNumber) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !dara.IsNil(request.CallerNumber) {
+		query["CallerNumber"] = request.CallerNumber
+	}
+
+	if !dara.IsNil(request.OutId) {
+		query["OutId"] = request.OutId
+	}
+
+	if !dara.IsNil(request.SessionTimeout) {
+		query["SessionTimeout"] = request.SessionTimeout
+	}
+
+	if !dara.IsNil(request.StartWordParamShrink) {
+		query["StartWordParam"] = request.StartWordParamShrink
+	}
+
+	if !dara.IsNil(request.TtsSpeed) {
+		query["TtsSpeed"] = request.TtsSpeed
+	}
+
+	if !dara.IsNil(request.TtsVoiceCode) {
+		query["TtsVoiceCode"] = request.TtsVoiceCode
+	}
+
+	if !dara.IsNil(request.TtsVolume) {
+		query["TtsVolume"] = request.TtsVolume
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LlmSmartCallFullDuplex"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LlmSmartCallFullDuplexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于大模型的智能外呼
+//
+// @param request - LlmSmartCallFullDuplexRequest
+//
+// @return LlmSmartCallFullDuplexResponse
+func (client *Client) LlmSmartCallFullDuplex(request *LlmSmartCallFullDuplexRequest) (_result *LlmSmartCallFullDuplexResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &LlmSmartCallFullDuplexResponse{}
+	_body, _err := client.LlmSmartCallFullDuplexWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
