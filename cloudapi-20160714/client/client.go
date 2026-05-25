@@ -2764,6 +2764,80 @@ func (client *Client) CreateSignature(request *CreateSignatureRequest) (_result 
 
 // Summary:
 //
+// 创建环境模型
+//
+// @param request - CreateStageModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStageModelResponse
+func (client *Client) CreateStageModelWithOptions(request *CreateStageModelRequest, runtime *dara.RuntimeOptions) (_result *CreateStageModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StageAlias) {
+		query["StageAlias"] = request.StageAlias
+	}
+
+	if !dara.IsNil(request.StageName) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStageModel"),
+		Version:     dara.String("2016-07-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStageModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建环境模型
+//
+// @param request - CreateStageModelRequest
+//
+// @return CreateStageModelResponse
+func (client *Client) CreateStageModel(request *CreateStageModelRequest) (_result *CreateStageModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateStageModelResponse{}
+	_body, _err := client.CreateStageModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom throttling policy.
 //
 // Description:
@@ -4571,6 +4645,72 @@ func (client *Client) DeleteSignature(request *DeleteSignatureRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteSignatureResponse{}
 	_body, _err := client.DeleteSignatureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除环境
+//
+// @param request - DeleteStageModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStageModelResponse
+func (client *Client) DeleteStageModelWithOptions(request *DeleteStageModelRequest, runtime *dara.RuntimeOptions) (_result *DeleteStageModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StageModelId) {
+		query["StageModelId"] = request.StageModelId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStageModel"),
+		Version:     dara.String("2016-07-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStageModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除环境
+//
+// @param request - DeleteStageModelRequest
+//
+// @return DeleteStageModelResponse
+func (client *Client) DeleteStageModel(request *DeleteStageModelRequest) (_result *DeleteStageModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteStageModelResponse{}
+	_body, _err := client.DeleteStageModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11450,6 +11590,84 @@ func (client *Client) DescribeSignaturesByApi(request *DescribeSignaturesByApiRe
 
 // Summary:
 //
+// 查询环境列表
+//
+// @param request - DescribeStageModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStageModelsResponse
+func (client *Client) DescribeStageModelsWithOptions(request *DescribeStageModelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStageModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StageAlias) {
+		query["StageAlias"] = request.StageAlias
+	}
+
+	if !dara.IsNil(request.StageName) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeStageModels"),
+		Version:     dara.String("2016-07-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeStageModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询环境列表
+//
+// @param request - DescribeStageModelsRequest
+//
+// @return DescribeStageModelsResponse
+func (client *Client) DescribeStageModels(request *DescribeStageModelsRequest) (_result *DescribeStageModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeStageModelsResponse{}
+	_body, _err := client.DescribeStageModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the number of API Gateway resources in a region.
 //
 // @param request - DescribeSummaryDataRequest
@@ -15159,6 +15377,80 @@ func (client *Client) ModifySignature(request *ModifySignatureRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifySignatureResponse{}
 	_body, _err := client.ModifySignatureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改环境模型
+//
+// @param request - ModifyStageModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyStageModelResponse
+func (client *Client) ModifyStageModelWithOptions(request *ModifyStageModelRequest, runtime *dara.RuntimeOptions) (_result *ModifyStageModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StageAlias) {
+		query["StageAlias"] = request.StageAlias
+	}
+
+	if !dara.IsNil(request.StageModelId) {
+		query["StageModelId"] = request.StageModelId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyStageModel"),
+		Version:     dara.String("2016-07-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyStageModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改环境模型
+//
+// @param request - ModifyStageModelRequest
+//
+// @return ModifyStageModelResponse
+func (client *Client) ModifyStageModel(request *ModifyStageModelRequest) (_result *ModifyStageModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyStageModelResponse{}
+	_body, _err := client.ModifyStageModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
