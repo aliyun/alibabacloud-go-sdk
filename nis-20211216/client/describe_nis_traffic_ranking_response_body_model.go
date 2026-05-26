@@ -149,11 +149,14 @@ type DescribeNisTrafficRankingResponseBodyFlowRankingList struct {
 	// example:
 	//
 	// 100
-	Bytes *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	Bytes              *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	BytesIncrease      *float64 `json:"BytesIncrease,omitempty" xml:"BytesIncrease,omitempty"`
+	BytesIncreaseRatio *float64 `json:"BytesIncreaseRatio,omitempty" xml:"BytesIncreaseRatio,omitempty"`
 	// example:
 	//
 	// 0.2
 	BytesRate *float64 `json:"BytesRate,omitempty" xml:"BytesRate,omitempty"`
+	CenId     *string  `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// example:
 	//
 	// 45102
@@ -324,8 +327,20 @@ func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetBytes() *float
 	return s.Bytes
 }
 
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetBytesIncrease() *float64 {
+	return s.BytesIncrease
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetBytesIncreaseRatio() *float64 {
+	return s.BytesIncreaseRatio
+}
+
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetBytesRate() *float64 {
 	return s.BytesRate
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetCenId() *string {
+	return s.CenId
 }
 
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetClientAsn() *string {
@@ -503,8 +518,23 @@ func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetBytes(v float6
 	return s
 }
 
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetBytesIncrease(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
+	s.BytesIncrease = &v
+	return s
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetBytesIncreaseRatio(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
+	s.BytesIncreaseRatio = &v
+	return s
+}
+
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetBytesRate(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
 	s.BytesRate = &v
+	return s
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetCenId(v string) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
+	s.CenId = &v
 	return s
 }
 

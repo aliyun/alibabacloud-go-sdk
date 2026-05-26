@@ -53,7 +53,7 @@ func (client *Client) CreateAndAnalyzeNetworkPathWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a network path in the cloud for reachability analysis.
+// Creates a network path for reachability analysis.
 //
 // Description:
 //

@@ -124,7 +124,7 @@ func (client *Client) CreateAndAnalyzeNetworkPath(request *CreateAndAnalyzeNetwo
 
 // Summary:
 //
-// Creates a network path in the cloud for reachability analysis.
+// Creates a network path for reachability analysis.
 //
 // Description:
 //
@@ -226,7 +226,7 @@ func (client *Client) CreateNetworkPathWithOptions(request *CreateNetworkPathReq
 
 // Summary:
 //
-// Creates a network path in the cloud for reachability analysis.
+// Creates a network path for reachability analysis.
 //
 // Description:
 //
@@ -1867,8 +1867,6 @@ func (client *Client) GetVbrFlowTopN(request *GetVbrFlowTopNRequest) (_result *G
 // Summary:
 //
 // 巡检资源类型列表
-//
-// @param request - ListNisInspectionResourceTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
