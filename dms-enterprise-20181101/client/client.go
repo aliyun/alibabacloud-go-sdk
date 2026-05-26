@@ -5777,16 +5777,16 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		query["Description"] = request.Description
 	}
 
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !dara.IsNil(request.VpcId) {
 		query["VpcId"] = request.VpcId
 	}
 
 	if !dara.IsNil(request.WorkspaceName) {
 		query["WorkspaceName"] = request.WorkspaceName
+	}
+
+	if !dara.IsNil(request.WorkspaceRegion) {
+		query["WorkspaceRegion"] = request.WorkspaceRegion
 	}
 
 	body := map[string]interface{}{}
@@ -8738,7 +8738,7 @@ func (client *Client) FixSqlByMetaAgent(request *FixSqlByMetaAgentRequest) (_res
 
 // Summary:
 //
-// 数据库知识库补数据接口
+// # Database knowledge base data supplementation interface
 //
 // @param request - GenMetaKnowledgeAssetRequest
 //
@@ -8782,7 +8782,7 @@ func (client *Client) GenMetaKnowledgeAssetWithOptions(request *GenMetaKnowledge
 
 // Summary:
 //
-// 数据库知识库补数据接口
+// # Database knowledge base data supplementation interface
 //
 // @param request - GenMetaKnowledgeAssetRequest
 //
@@ -10721,7 +10721,7 @@ func (client *Client) GetDataLakePartition(request *GetDataLakePartitionRequest)
 
 // Summary:
 //
-// Queries basic information about tables in the data lake.
+// Invokes this API to obtain table info in the data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -10785,7 +10785,7 @@ func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableReque
 
 // Summary:
 //
-// Queries basic information about tables in the data lake.
+// Invokes this API to obtain table info in the data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -17311,6 +17311,96 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
+// 分页查询资产盘点任务历史列表
+//
+// Description:
+//
+// 对应控制台 /knowledge/job/inventory/list，分页查询当前租户下的资产盘点任务历史，支持按任务 ID、创建人关键词及状态筛选
+//
+// @param request - ListInventoryJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInventoryJobsResponse
+func (client *Client) ListInventoryJobsWithOptions(request *ListInventoryJobsRequest, runtime *dara.RuntimeOptions) (_result *ListInventoryJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInventoryJobs"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInventoryJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询资产盘点任务历史列表
+//
+// Description:
+//
+// 对应控制台 /knowledge/job/inventory/list，分页查询当前租户下的资产盘点任务历史，支持按任务 ID、创建人关键词及状态筛选
+//
+// @param request - ListInventoryJobsRequest
+//
+// @return ListInventoryJobsResponse
+func (client *Client) ListInventoryJobs(request *ListInventoryJobsRequest) (_result *ListInventoryJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInventoryJobsResponse{}
+	_body, _err := client.ListInventoryJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about task flows in the business scenarios of a workspace in Data Management (DMS).
 //
 // Description:
@@ -22800,6 +22890,96 @@ func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *S
 	runtime := &dara.RuntimeOptions{}
 	_result = &SearchDatabaseResponse{}
 	_body, _err := client.SearchDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询盘点任务下的表资产列表
+//
+// Description:
+//
+// 对应控制台 /knowledge/job/inventory/asset，分页查询指定盘点任务产出的表级资产信息，支持关键词筛选与排序
+//
+// @param request - SearchInventoryAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchInventoryAssetResponse
+func (client *Client) SearchInventoryAssetWithOptions(request *SearchInventoryAssetRequest, runtime *dara.RuntimeOptions) (_result *SearchInventoryAssetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchInventoryAsset"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchInventoryAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询盘点任务下的表资产列表
+//
+// Description:
+//
+// 对应控制台 /knowledge/job/inventory/asset，分页查询指定盘点任务产出的表级资产信息，支持关键词筛选与排序
+//
+// @param request - SearchInventoryAssetRequest
+//
+// @return SearchInventoryAssetResponse
+func (client *Client) SearchInventoryAsset(request *SearchInventoryAssetRequest) (_result *SearchInventoryAssetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchInventoryAssetResponse{}
+	_body, _err := client.SearchInventoryAssetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
