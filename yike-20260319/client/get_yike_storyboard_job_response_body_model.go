@@ -9,6 +9,8 @@ type iGetYikeStoryboardJobResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetJobCredit(v *GetYikeStoryboardJobResponseBodyJobCredit) *GetYikeStoryboardJobResponseBody
+	GetJobCredit() *GetYikeStoryboardJobResponseBodyJobCredit
 	SetJobId(v string) *GetYikeStoryboardJobResponseBody
 	GetJobId() *string
 	SetJobParams(v *GetYikeStoryboardJobResponseBodyJobParams) *GetYikeStoryboardJobResponseBody
@@ -22,6 +24,7 @@ type iGetYikeStoryboardJobResponseBody interface {
 }
 
 type GetYikeStoryboardJobResponseBody struct {
+	JobCredit *GetYikeStoryboardJobResponseBodyJobCredit `json:"JobCredit,omitempty" xml:"JobCredit,omitempty" type:"Struct"`
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
@@ -46,6 +49,10 @@ func (s GetYikeStoryboardJobResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetYikeStoryboardJobResponseBody) GetJobCredit() *GetYikeStoryboardJobResponseBodyJobCredit {
+	return s.JobCredit
+}
+
 func (s *GetYikeStoryboardJobResponseBody) GetJobId() *string {
 	return s.JobId
 }
@@ -64,6 +71,11 @@ func (s *GetYikeStoryboardJobResponseBody) GetJobStatus() *string {
 
 func (s *GetYikeStoryboardJobResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetYikeStoryboardJobResponseBody) SetJobCredit(v *GetYikeStoryboardJobResponseBodyJobCredit) *GetYikeStoryboardJobResponseBody {
+	s.JobCredit = v
+	return s
 }
 
 func (s *GetYikeStoryboardJobResponseBody) SetJobId(v string) *GetYikeStoryboardJobResponseBody {
@@ -92,6 +104,11 @@ func (s *GetYikeStoryboardJobResponseBody) SetRequestId(v string) *GetYikeStoryb
 }
 
 func (s *GetYikeStoryboardJobResponseBody) Validate() error {
+	if s.JobCredit != nil {
+		if err := s.JobCredit.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.JobParams != nil {
 		if err := s.JobParams.Validate(); err != nil {
 			return err
@@ -103,6 +120,73 @@ func (s *GetYikeStoryboardJobResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetYikeStoryboardJobResponseBodyJobCredit struct {
+	// example:
+	//
+	// 10.0
+	ElementImageGeneration *string `json:"ElementImageGeneration,omitempty" xml:"ElementImageGeneration,omitempty"`
+	// example:
+	//
+	// 200.2
+	TotalCreditCost *string `json:"TotalCreditCost,omitempty" xml:"TotalCreditCost,omitempty"`
+	// example:
+	//
+	// 10.2
+	VideoComposition *string `json:"VideoComposition,omitempty" xml:"VideoComposition,omitempty"`
+	// example:
+	//
+	// 180.0
+	VideoGeneration *string `json:"VideoGeneration,omitempty" xml:"VideoGeneration,omitempty"`
+}
+
+func (s GetYikeStoryboardJobResponseBodyJobCredit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetYikeStoryboardJobResponseBodyJobCredit) GoString() string {
+	return s.String()
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) GetElementImageGeneration() *string {
+	return s.ElementImageGeneration
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) GetTotalCreditCost() *string {
+	return s.TotalCreditCost
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) GetVideoComposition() *string {
+	return s.VideoComposition
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) GetVideoGeneration() *string {
+	return s.VideoGeneration
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) SetElementImageGeneration(v string) *GetYikeStoryboardJobResponseBodyJobCredit {
+	s.ElementImageGeneration = &v
+	return s
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) SetTotalCreditCost(v string) *GetYikeStoryboardJobResponseBodyJobCredit {
+	s.TotalCreditCost = &v
+	return s
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) SetVideoComposition(v string) *GetYikeStoryboardJobResponseBodyJobCredit {
+	s.VideoComposition = &v
+	return s
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) SetVideoGeneration(v string) *GetYikeStoryboardJobResponseBodyJobCredit {
+	s.VideoGeneration = &v
+	return s
+}
+
+func (s *GetYikeStoryboardJobResponseBodyJobCredit) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetYikeStoryboardJobResponseBodyJobParams struct {
