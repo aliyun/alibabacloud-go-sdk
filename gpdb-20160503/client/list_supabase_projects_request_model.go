@@ -41,9 +41,15 @@ type ListSupabaseProjectsRequest struct {
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
@@ -51,11 +57,23 @@ type ListSupabaseProjectsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ProjectId
 	SearchField *string `json:"SearchField,omitempty" xml:"SearchField,omitempty"`
+	// example:
+	//
+	// gp-bp***************
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
-	SortField   *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	SortOrder   *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// example:
+	//
+	// UpdatedDate
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 
 func (s ListSupabaseProjectsRequest) String() string {

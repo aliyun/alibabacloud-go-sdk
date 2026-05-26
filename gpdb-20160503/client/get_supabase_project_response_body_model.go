@@ -33,6 +33,8 @@ type iGetSupabaseProjectResponseBody interface {
 	GetPayType() *string
 	SetPrivateConnectUrl(v string) *GetSupabaseProjectResponseBody
 	GetPrivateConnectUrl() *string
+	SetProjectDescription(v string) *GetSupabaseProjectResponseBody
+	GetProjectDescription() *string
 	SetProjectId(v string) *GetSupabaseProjectResponseBody
 	GetProjectId() *string
 	SetProjectName(v string) *GetSupabaseProjectResponseBody
@@ -62,13 +64,19 @@ type iGetSupabaseProjectResponseBody interface {
 }
 
 type GetSupabaseProjectResponseBody struct {
+	// example:
+	//
+	// false
 	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// The creation time.
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 127.0.0.1,100.64.XX.XX/10
 	DBSecurityIpList *string `json:"DBSecurityIpList,omitempty" xml:"DBSecurityIpList,omitempty"`
 	// The Supabase Dashboard password (Not Used)
 	//
@@ -103,16 +111,29 @@ type GetSupabaseProjectResponseBody struct {
 	// example:
 	//
 	// 15
-	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Eni             *string `json:"Eni,omitempty" xml:"Eni,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// eni-xxxxxx
+	Eni *string `json:"Eni,omitempty" xml:"Eni,omitempty"`
+	// example:
+	//
+	// v1.0.3
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
-	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// POSTPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The private (VPC) connection URL for the Supabase Dashboard.
 	//
 	// example:
 	//
 	// 192.168.0.11
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// example:
+	//
+	// for-test-project
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
 	// The Supabase instance ID.
 	//
 	// example:
@@ -168,7 +189,10 @@ type GetSupabaseProjectResponseBody struct {
 	// example:
 	//
 	// 2
-	StorageSize *int64  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// example:
+	//
+	// cloud_essd_pl0
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
 	//
@@ -252,6 +276,10 @@ func (s *GetSupabaseProjectResponseBody) GetPayType() *string {
 
 func (s *GetSupabaseProjectResponseBody) GetPrivateConnectUrl() *string {
 	return s.PrivateConnectUrl
+}
+
+func (s *GetSupabaseProjectResponseBody) GetProjectDescription() *string {
+	return s.ProjectDescription
 }
 
 func (s *GetSupabaseProjectResponseBody) GetProjectId() *string {
@@ -363,6 +391,11 @@ func (s *GetSupabaseProjectResponseBody) SetPayType(v string) *GetSupabaseProjec
 
 func (s *GetSupabaseProjectResponseBody) SetPrivateConnectUrl(v string) *GetSupabaseProjectResponseBody {
 	s.PrivateConnectUrl = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetProjectDescription(v string) *GetSupabaseProjectResponseBody {
+	s.ProjectDescription = &v
 	return s
 }
 

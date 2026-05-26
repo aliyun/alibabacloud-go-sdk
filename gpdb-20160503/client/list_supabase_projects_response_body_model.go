@@ -151,6 +151,9 @@ func (s *ListSupabaseProjectsResponseBody) Validate() error {
 }
 
 type ListSupabaseProjectsResponseBodyItems struct {
+	// example:
+	//
+	// false
 	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// The creation time.
 	//
@@ -188,7 +191,10 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2026-04-27T16:00:00Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go
@@ -206,7 +212,8 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	// example:
 	//
 	// 192.168.0.1
-	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	PrivateConnectUrl  *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
 	// The Supabase project ID.
 	//
 	// example:
@@ -329,6 +336,10 @@ func (s *ListSupabaseProjectsResponseBodyItems) GetPrivateConnectUrl() *string {
 	return s.PrivateConnectUrl
 }
 
+func (s *ListSupabaseProjectsResponseBodyItems) GetProjectDescription() *string {
+	return s.ProjectDescription
+}
+
 func (s *ListSupabaseProjectsResponseBodyItems) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -420,6 +431,11 @@ func (s *ListSupabaseProjectsResponseBodyItems) SetPayType(v string) *ListSupaba
 
 func (s *ListSupabaseProjectsResponseBodyItems) SetPrivateConnectUrl(v string) *ListSupabaseProjectsResponseBodyItems {
 	s.PrivateConnectUrl = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetProjectDescription(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.ProjectDescription = &v
 	return s
 }
 
