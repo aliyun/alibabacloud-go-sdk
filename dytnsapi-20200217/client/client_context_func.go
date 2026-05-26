@@ -575,7 +575,7 @@ func (client *Client) DescribeMobileOperatorAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// 号码分析实时查询蚂蚁
+// Obtains the analysis results of a number.
 //
 // @param request - DescribePhoneNumberAnalysisRequest
 //
@@ -1335,7 +1335,7 @@ func (client *Client) DescribePhoneTwiceTelVerifyWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取UAID申请Token所需的签名字段
+// Obtains the signature of an authorization token when China Mobile, China Unicom, or China Telecom provides the Uniform Anonymous Identifier (UAID) capability.
 //
 // @param request - GetUAIDApplyTokenSignRequest
 //
@@ -1493,6 +1493,74 @@ func (client *Client) GetUAIDConversionSignWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUAIDConversionSignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 历史三要素
+//
+// @param request - HistoryThreeElementsVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HistoryThreeElementsVerificationResponse
+func (client *Client) HistoryThreeElementsVerificationWithContext(ctx context.Context, request *HistoryThreeElementsVerificationRequest, runtime *dara.RuntimeOptions) (_result *HistoryThreeElementsVerificationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthCode) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !dara.IsNil(request.Carrier) {
+		query["Carrier"] = request.Carrier
+	}
+
+	if !dara.IsNil(request.CertCode) {
+		query["CertCode"] = request.CertCode
+	}
+
+	if !dara.IsNil(request.InputNumber) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !dara.IsNil(request.Mask) {
+		query["Mask"] = request.Mask
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.VerificationTime) {
+		query["VerificationTime"] = request.VerificationTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HistoryThreeElementsVerification"),
+		Version:     dara.String("2020-02-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HistoryThreeElementsVerificationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3133,7 +3201,7 @@ func (client *Client) UAIDConversionWithContext(ctx context.Context, request *UA
 
 // Summary:
 //
-// 获取UAID
+// Obtains a Uniform Anonymous Identifier (UAID) based on the authorization token of a carrier. For more information about how to obtain the authorization token and its signature value, see the GetUAIDApplyTokenSign documentation.
 //
 // @param request - UAIDVerificationRequest
 //
