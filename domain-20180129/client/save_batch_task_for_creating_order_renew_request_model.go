@@ -146,7 +146,8 @@ type SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam struct {
 	// example:
 	//
 	// Aliyun.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PermitPremiumRenew *bool   `json:"PermitPremiumRenew,omitempty" xml:"PermitPremiumRenew,omitempty"`
 	// example:
 	//
 	// 1
@@ -169,6 +170,10 @@ func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) GetDomainName
 	return s.DomainName
 }
 
+func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) GetPermitPremiumRenew() *bool {
+	return s.PermitPremiumRenew
+}
+
 func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) GetSubscriptionDuration() *int32 {
 	return s.SubscriptionDuration
 }
@@ -180,6 +185,11 @@ func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) SetCurrentExp
 
 func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) SetDomainName(v string) *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam {
 	s.DomainName = &v
+	return s
+}
+
+func (s *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam) SetPermitPremiumRenew(v bool) *SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam {
+	s.PermitPremiumRenew = &v
 	return s
 }
 

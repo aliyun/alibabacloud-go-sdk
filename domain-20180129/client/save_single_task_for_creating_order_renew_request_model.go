@@ -17,6 +17,8 @@ type iSaveSingleTaskForCreatingOrderRenewRequest interface {
 	GetDomainName() *string
 	SetLang(v string) *SaveSingleTaskForCreatingOrderRenewRequest
 	GetLang() *string
+	SetPermitPremiumRenew(v bool) *SaveSingleTaskForCreatingOrderRenewRequest
+	GetPermitPremiumRenew() *bool
 	SetPromotionNo(v string) *SaveSingleTaskForCreatingOrderRenewRequest
 	GetPromotionNo() *string
 	SetSubscriptionDuration(v int32) *SaveSingleTaskForCreatingOrderRenewRequest
@@ -49,7 +51,8 @@ type SaveSingleTaskForCreatingOrderRenewRequest struct {
 	// example:
 	//
 	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PermitPremiumRenew *bool   `json:"PermitPremiumRenew,omitempty" xml:"PermitPremiumRenew,omitempty"`
 	// example:
 	//
 	// 123132
@@ -98,6 +101,10 @@ func (s *SaveSingleTaskForCreatingOrderRenewRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *SaveSingleTaskForCreatingOrderRenewRequest) GetPermitPremiumRenew() *bool {
+	return s.PermitPremiumRenew
+}
+
 func (s *SaveSingleTaskForCreatingOrderRenewRequest) GetPromotionNo() *string {
 	return s.PromotionNo
 }
@@ -135,6 +142,11 @@ func (s *SaveSingleTaskForCreatingOrderRenewRequest) SetDomainName(v string) *Sa
 
 func (s *SaveSingleTaskForCreatingOrderRenewRequest) SetLang(v string) *SaveSingleTaskForCreatingOrderRenewRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *SaveSingleTaskForCreatingOrderRenewRequest) SetPermitPremiumRenew(v bool) *SaveSingleTaskForCreatingOrderRenewRequest {
+	s.PermitPremiumRenew = &v
 	return s
 }
 

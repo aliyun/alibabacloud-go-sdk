@@ -2075,7 +2075,7 @@ func (client *Client) QueryDomainByDomainNameWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 根据实例id查询域名信息
+// Queries the basic information about a domain name based on the instance ID.
 //
 // @param request - QueryDomainByInstanceIdRequest
 //
@@ -5798,6 +5798,10 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenewWithContext(ctx context
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PermitPremiumRenew) {
+		query["PermitPremiumRenew"] = request.PermitPremiumRenew
 	}
 
 	if !dara.IsNil(request.PromotionNo) {

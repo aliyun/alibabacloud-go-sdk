@@ -2722,7 +2722,7 @@ func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRe
 
 // Summary:
 //
-// 根据实例id查询域名信息
+// Queries the basic information about a domain name based on the instance ID.
 //
 // @param request - QueryDomainByInstanceIdRequest
 //
@@ -2774,7 +2774,7 @@ func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByI
 
 // Summary:
 //
-// 根据实例id查询域名信息
+// Queries the basic information about a domain name based on the instance ID.
 //
 // @param request - QueryDomainByInstanceIdRequest
 //
@@ -7409,6 +7409,10 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *Sa
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PermitPremiumRenew) {
+		query["PermitPremiumRenew"] = request.PermitPremiumRenew
 	}
 
 	if !dara.IsNil(request.PromotionNo) {
