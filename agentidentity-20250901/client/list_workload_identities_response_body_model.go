@@ -121,7 +121,10 @@ type ListWorkloadIdentitiesResponseBodyWorkloadIdentities struct {
 	// example:
 	//
 	// acs:ram::1953507478506681:role/test-rrsa-cb5ca90a20f854671adbac6ed4559a654
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled *bool   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	SourceAgentArn        *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	SourcePlatform        *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 	// example:
 	//
 	// 2025-12-18T06:19:17Z
@@ -164,6 +167,18 @@ func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) GetRoleArn() *str
 	return s.RoleArn
 }
 
+func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) GetSessionBindingEnabled() *bool {
+	return s.SessionBindingEnabled
+}
+
+func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) GetSourceAgentArn() *string {
+	return s.SourceAgentArn
+}
+
+func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -198,6 +213,21 @@ func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) SetIdentityProvid
 
 func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) SetRoleArn(v string) *ListWorkloadIdentitiesResponseBodyWorkloadIdentities {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) SetSessionBindingEnabled(v bool) *ListWorkloadIdentitiesResponseBodyWorkloadIdentities {
+	s.SessionBindingEnabled = &v
+	return s
+}
+
+func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) SetSourceAgentArn(v string) *ListWorkloadIdentitiesResponseBodyWorkloadIdentities {
+	s.SourceAgentArn = &v
+	return s
+}
+
+func (s *ListWorkloadIdentitiesResponseBodyWorkloadIdentities) SetSourcePlatform(v string) *ListWorkloadIdentitiesResponseBodyWorkloadIdentities {
+	s.SourcePlatform = &v
 	return s
 }
 

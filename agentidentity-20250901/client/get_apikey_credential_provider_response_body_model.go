@@ -74,7 +74,8 @@ type GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider struct {
 	// example:
 	//
 	// example provider
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 	// example:
 	//
 	// 2025-12-18T06:19:17Z
@@ -105,6 +106,10 @@ func (s *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) GetDes
 	return s.Description
 }
 
+func (s *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -126,6 +131,11 @@ func (s *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetCre
 
 func (s *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetDescription(v string) *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
 	s.Description = &v
+	return s
+}
+
+func (s *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetTokenVaultName(v string) *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
+	s.TokenVaultName = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iListAPIKeyCredentialProvidersRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListAPIKeyCredentialProvidersRequest
 	GetNextToken() *string
+	SetTokenVaultName(v string) *ListAPIKeyCredentialProvidersRequest
+	GetTokenVaultName() *string
 }
 
 type ListAPIKeyCredentialProvidersRequest struct {
@@ -23,7 +25,8 @@ type ListAPIKeyCredentialProvidersRequest struct {
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l8i017XhgKLf/HqWDGD375
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s ListAPIKeyCredentialProvidersRequest) String() string {
@@ -42,6 +45,10 @@ func (s *ListAPIKeyCredentialProvidersRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListAPIKeyCredentialProvidersRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *ListAPIKeyCredentialProvidersRequest) SetMaxResults(v int32) *ListAPIKeyCredentialProvidersRequest {
 	s.MaxResults = &v
 	return s
@@ -49,6 +56,11 @@ func (s *ListAPIKeyCredentialProvidersRequest) SetMaxResults(v int32) *ListAPIKe
 
 func (s *ListAPIKeyCredentialProvidersRequest) SetNextToken(v string) *ListAPIKeyCredentialProvidersRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListAPIKeyCredentialProvidersRequest) SetTokenVaultName(v string) *ListAPIKeyCredentialProvidersRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

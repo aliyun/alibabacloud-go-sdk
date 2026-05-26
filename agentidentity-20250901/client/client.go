@@ -58,6 +58,146 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 创建应用
+//
+// @param request - AddSAMLIdentityProviderCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSAMLIdentityProviderCertificateResponse
+func (client *Client) AddSAMLIdentityProviderCertificateWithOptions(request *AddSAMLIdentityProviderCertificateRequest, runtime *dara.RuntimeOptions) (_result *AddSAMLIdentityProviderCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	if !dara.IsNil(request.X509Certificate) {
+		body["X509Certificate"] = request.X509Certificate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddSAMLIdentityProviderCertificate"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddSAMLIdentityProviderCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - AddSAMLIdentityProviderCertificateRequest
+//
+// @return AddSAMLIdentityProviderCertificateResponse
+func (client *Client) AddSAMLIdentityProviderCertificate(request *AddSAMLIdentityProviderCertificateRequest) (_result *AddSAMLIdentityProviderCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddSAMLIdentityProviderCertificateResponse{}
+	_body, _err := client.AddSAMLIdentityProviderCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略集关联网关
+//
+// @param request - AttachPolicySetToGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachPolicySetToGatewayResponse
+func (client *Client) AttachPolicySetToGatewayWithOptions(request *AttachPolicySetToGatewayRequest, runtime *dara.RuntimeOptions) (_result *AttachPolicySetToGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EnforcementMode) {
+		body["EnforcementMode"] = request.EnforcementMode
+	}
+
+	if !dara.IsNil(request.GatewayArn) {
+		body["GatewayArn"] = request.GatewayArn
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachPolicySetToGateway"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachPolicySetToGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略集关联网关
+//
+// @param request - AttachPolicySetToGatewayRequest
+//
+// @return AttachPolicySetToGatewayResponse
+func (client *Client) AttachPolicySetToGateway(request *AttachPolicySetToGatewayRequest) (_result *AttachPolicySetToGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachPolicySetToGatewayResponse{}
+	_body, _err := client.AttachPolicySetToGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建一个 API 密钥凭证提供商
 //
 // @param request - CreateAPIKeyCredentialProviderRequest
@@ -83,6 +223,10 @@ func (client *Client) CreateAPIKeyCredentialProviderWithOptions(request *CreateA
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -119,6 +263,76 @@ func (client *Client) CreateAPIKeyCredentialProvider(request *CreateAPIKeyCreden
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAPIKeyCredentialProviderResponse{}
 	_body, _err := client.CreateAPIKeyCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建WorkloadIdentity
+//
+// @param request - CreateClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClientSecretResponse
+func (client *Client) CreateClientSecretWithOptions(request *CreateClientSecretRequest, runtime *dara.RuntimeOptions) (_result *CreateClientSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateClientSecret"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateClientSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建WorkloadIdentity
+//
+// @param request - CreateClientSecretRequest
+//
+// @return CreateClientSecretResponse
+func (client *Client) CreateClientSecret(request *CreateClientSecretRequest) (_result *CreateClientSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateClientSecretResponse{}
+	_body, _err := client.CreateClientSecretWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -249,6 +463,10 @@ func (client *Client) CreateOAuth2CredentialProviderWithOptions(tmpReq *CreateOA
 		body["OAuth2ProviderConfig"] = request.OAuth2ProviderConfigShrink
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -292,6 +510,534 @@ func (client *Client) CreateOAuth2CredentialProvider(request *CreateOAuth2Creden
 
 // Summary:
 //
+// 创建一个权限策略
+//
+// @param tmpReq - CreatePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyResponse
+func (client *Client) CreatePolicyWithOptions(tmpReq *CreatePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Definition) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, dara.String("Definition"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DefinitionShrink) {
+		body["Definition"] = request.DefinitionShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolicy"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个权限策略
+//
+// @param request - CreatePolicyRequest
+//
+// @return CreatePolicyResponse
+func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CreatePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个权限策略集合
+//
+// @param request - CreatePolicySetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicySetResponse
+func (client *Client) CreatePolicySetWithOptions(request *CreatePolicySetRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicySetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolicySet"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolicySetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个权限策略集合
+//
+// @param request - CreatePolicySetRequest
+//
+// @return CreatePolicySetResponse
+func (client *Client) CreatePolicySet(request *CreatePolicySetRequest) (_result *CreatePolicySetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolicySetResponse{}
+	_body, _err := client.CreatePolicySetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Role
+//
+// @param request - CreateRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoleResponse
+func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRole"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Role
+//
+// @param request - CreateRoleRequest
+//
+// @return CreateRoleResponse
+func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRoleResponse{}
+	_body, _err := client.CreateRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略集关联网关
+//
+// @param request - CreateRoleAssignmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoleAssignmentResponse
+func (client *Client) CreateRoleAssignmentWithOptions(request *CreateRoleAssignmentRequest, runtime *dara.RuntimeOptions) (_result *CreateRoleAssignmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PrincipalName) {
+		body["PrincipalName"] = request.PrincipalName
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRoleAssignment"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRoleAssignmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略集关联网关
+//
+// @param request - CreateRoleAssignmentRequest
+//
+// @return CreateRoleAssignmentResponse
+func (client *Client) CreateRoleAssignment(request *CreateRoleAssignmentRequest) (_result *CreateRoleAssignmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRoleAssignmentResponse{}
+	_body, _err := client.CreateRoleAssignmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个凭证库
+//
+// @param tmpReq - CreateTokenVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTokenVaultResponse
+func (client *Client) CreateTokenVaultWithOptions(tmpReq *CreateTokenVaultRequest, runtime *dara.RuntimeOptions) (_result *CreateTokenVaultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateTokenVaultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EncryptionConfig) {
+		request.EncryptionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionConfig, dara.String("EncryptionConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EncryptionConfigShrink) {
+		body["EncryptionConfig"] = request.EncryptionConfigShrink
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		body["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTokenVault"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTokenVaultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个凭证库
+//
+// @param request - CreateTokenVaultRequest
+//
+// @return CreateTokenVaultResponse
+func (client *Client) CreateTokenVault(request *CreateTokenVaultRequest) (_result *CreateTokenVaultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTokenVaultResponse{}
+	_body, _err := client.CreateTokenVaultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建UserPool
+//
+// @param request - CreateUserPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserPoolResponse
+func (client *Client) CreateUserPoolWithOptions(request *CreateUserPoolRequest, runtime *dara.RuntimeOptions) (_result *CreateUserPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUserPool"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建UserPool
+//
+// @param request - CreateUserPoolRequest
+//
+// @return CreateUserPoolResponse
+func (client *Client) CreateUserPool(request *CreateUserPoolRequest) (_result *CreateUserPoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateUserPoolResponse{}
+	_body, _err := client.CreateUserPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建WorkloadIdentity
+//
+// @param tmpReq - CreateUserPoolClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserPoolClientResponse
+func (client *Client) CreateUserPoolClientWithOptions(tmpReq *CreateUserPoolClientRequest, runtime *dara.RuntimeOptions) (_result *CreateUserPoolClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateUserPoolClientShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RedirectURIs) {
+		request.RedirectURIsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectURIs, dara.String("RedirectURIs"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessTokenValidity) {
+		body["AccessTokenValidity"] = request.AccessTokenValidity
+	}
+
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.EnforcePKCE) {
+		body["EnforcePKCE"] = request.EnforcePKCE
+	}
+
+	if !dara.IsNil(request.RedirectURIsShrink) {
+		body["RedirectURIs"] = request.RedirectURIsShrink
+	}
+
+	if !dara.IsNil(request.RefreshTokenValidity) {
+		body["RefreshTokenValidity"] = request.RefreshTokenValidity
+	}
+
+	if !dara.IsNil(request.SecretRequired) {
+		body["SecretRequired"] = request.SecretRequired
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUserPoolClient"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserPoolClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建WorkloadIdentity
+//
+// @param request - CreateUserPoolClientRequest
+//
+// @return CreateUserPoolClientResponse
+func (client *Client) CreateUserPoolClient(request *CreateUserPoolClientRequest) (_result *CreateUserPoolClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateUserPoolClientResponse{}
+	_body, _err := client.CreateUserPoolClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建WorkloadIdentity
 //
 // @param tmpReq - CreateWorkloadIdentityRequest
@@ -317,6 +1063,10 @@ func (client *Client) CreateWorkloadIdentityWithOptions(tmpReq *CreateWorkloadId
 		body["AllowedResourceOAuth2ReturnURLs"] = request.AllowedResourceOAuth2ReturnURLsShrink
 	}
 
+	if !dara.IsNil(request.CreateRAMRole) {
+		body["CreateRAMRole"] = request.CreateRAMRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -327,6 +1077,18 @@ func (client *Client) CreateWorkloadIdentityWithOptions(tmpReq *CreateWorkloadId
 
 	if !dara.IsNil(request.RoleArn) {
 		body["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.SessionBindingEnabled) {
+		body["SessionBindingEnabled"] = request.SessionBindingEnabled
+	}
+
+	if !dara.IsNil(request.SourceAgentArn) {
+		body["SourceAgentArn"] = request.SourceAgentArn
+	}
+
+	if !dara.IsNil(request.SourcePlatform) {
+		body["SourcePlatform"] = request.SourcePlatform
 	}
 
 	if !dara.IsNil(request.WorkloadIdentityName) {
@@ -395,6 +1157,10 @@ func (client *Client) DeleteAPIKeyCredentialProviderWithOptions(request *DeleteA
 		body["APIKeyCredentialProviderName"] = request.APIKeyCredentialProviderName
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -429,6 +1195,80 @@ func (client *Client) DeleteAPIKeyCredentialProvider(request *DeleteAPIKeyCreden
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAPIKeyCredentialProviderResponse{}
 	_body, _err := client.DeleteAPIKeyCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除IdentityProvider
+//
+// @param request - DeleteClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClientSecretResponse
+func (client *Client) DeleteClientSecretWithOptions(request *DeleteClientSecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.ClientSecretId) {
+		body["ClientSecretId"] = request.ClientSecretId
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteClientSecret"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteClientSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除IdentityProvider
+//
+// @param request - DeleteClientSecretRequest
+//
+// @return DeleteClientSecretResponse
+func (client *Client) DeleteClientSecret(request *DeleteClientSecretRequest) (_result *DeleteClientSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteClientSecretResponse{}
+	_body, _err := client.DeleteClientSecretWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -519,6 +1359,10 @@ func (client *Client) DeleteOAuth2CredentialProviderWithOptions(request *DeleteO
 		body["OAuth2CredentialProviderName"] = request.OAuth2CredentialProviderName
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -553,6 +1397,596 @@ func (client *Client) DeleteOAuth2CredentialProvider(request *DeleteOAuth2Creden
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteOAuth2CredentialProviderResponse{}
 	_body, _err := client.DeleteOAuth2CredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个权限策略
+//
+// @param request - DeletePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyResponse
+func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolicy"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个权限策略
+//
+// @param request - DeletePolicyRequest
+//
+// @return DeletePolicyResponse
+func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.DeletePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个权限策略集合
+//
+// @param request - DeletePolicySetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicySetResponse
+func (client *Client) DeletePolicySetWithOptions(request *DeletePolicySetRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicySetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolicySet"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolicySetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个权限策略集合
+//
+// @param request - DeletePolicySetRequest
+//
+// @return DeletePolicySetResponse
+func (client *Client) DeletePolicySet(request *DeletePolicySetRequest) (_result *DeletePolicySetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolicySetResponse{}
+	_body, _err := client.DeletePolicySetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Role
+//
+// @param request - DeleteRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoleResponse
+func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRole"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Role
+//
+// @param request - DeleteRoleRequest
+//
+// @return DeleteRoleResponse
+func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRoleResponse{}
+	_body, _err := client.DeleteRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 网关取消关联策略集
+//
+// @param request - DeleteRoleAssignmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoleAssignmentResponse
+func (client *Client) DeleteRoleAssignmentWithOptions(request *DeleteRoleAssignmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteRoleAssignmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PrincipalName) {
+		body["PrincipalName"] = request.PrincipalName
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRoleAssignment"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRoleAssignmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 网关取消关联策略集
+//
+// @param request - DeleteRoleAssignmentRequest
+//
+// @return DeleteRoleAssignmentResponse
+func (client *Client) DeleteRoleAssignment(request *DeleteRoleAssignmentRequest) (_result *DeleteRoleAssignmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRoleAssignmentResponse{}
+	_body, _err := client.DeleteRoleAssignmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除WorkloadIdentity
+//
+// @param request - DeleteSAMLIdentityProviderCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSAMLIdentityProviderCertificateResponse
+func (client *Client) DeleteSAMLIdentityProviderCertificateWithOptions(request *DeleteSAMLIdentityProviderCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSAMLIdentityProviderCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateId) {
+		body["CertificateId"] = request.CertificateId
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSAMLIdentityProviderCertificate"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSAMLIdentityProviderCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除WorkloadIdentity
+//
+// @param request - DeleteSAMLIdentityProviderCertificateRequest
+//
+// @return DeleteSAMLIdentityProviderCertificateResponse
+func (client *Client) DeleteSAMLIdentityProviderCertificate(request *DeleteSAMLIdentityProviderCertificateRequest) (_result *DeleteSAMLIdentityProviderCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSAMLIdentityProviderCertificateResponse{}
+	_body, _err := client.DeleteSAMLIdentityProviderCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个指定的凭证库。
+//
+// @param request - DeleteTokenVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTokenVaultResponse
+func (client *Client) DeleteTokenVaultWithOptions(request *DeleteTokenVaultRequest, runtime *dara.RuntimeOptions) (_result *DeleteTokenVaultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTokenVault"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTokenVaultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个指定的凭证库。
+//
+// @param request - DeleteTokenVaultRequest
+//
+// @return DeleteTokenVaultResponse
+func (client *Client) DeleteTokenVault(request *DeleteTokenVaultRequest) (_result *DeleteTokenVaultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteTokenVaultResponse{}
+	_body, _err := client.DeleteTokenVaultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除User
+//
+// @param request - DeleteUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
+func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUser"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除User
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
+func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUserResponse{}
+	_body, _err := client.DeleteUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除UserPool
+//
+// @param request - DeleteUserPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserPoolResponse
+func (client *Client) DeleteUserPoolWithOptions(request *DeleteUserPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUserPool"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUserPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除UserPool
+//
+// @param request - DeleteUserPoolRequest
+//
+// @return DeleteUserPoolResponse
+func (client *Client) DeleteUserPool(request *DeleteUserPoolRequest) (_result *DeleteUserPoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUserPoolResponse{}
+	_body, _err := client.DeleteUserPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除WorkloadIdentity
+//
+// @param request - DeleteUserPoolClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserPoolClientResponse
+func (client *Client) DeleteUserPoolClientWithOptions(request *DeleteUserPoolClientRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserPoolClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUserPoolClient"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUserPoolClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除WorkloadIdentity
+//
+// @param request - DeleteUserPoolClientRequest
+//
+// @return DeleteUserPoolClientResponse
+func (client *Client) DeleteUserPoolClient(request *DeleteUserPoolClientRequest) (_result *DeleteUserPoolClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUserPoolClientResponse{}
+	_body, _err := client.DeleteUserPoolClientWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -624,6 +2058,76 @@ func (client *Client) DeleteWorkloadIdentity(request *DeleteWorkloadIdentityRequ
 
 // Summary:
 //
+// 网关取消关联策略集
+//
+// @param request - DetachPolicySetFromGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPolicySetFromGatewayResponse
+func (client *Client) DetachPolicySetFromGatewayWithOptions(request *DetachPolicySetFromGatewayRequest, runtime *dara.RuntimeOptions) (_result *DetachPolicySetFromGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayArn) {
+		body["GatewayArn"] = request.GatewayArn
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachPolicySetFromGateway"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachPolicySetFromGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 网关取消关联策略集
+//
+// @param request - DetachPolicySetFromGatewayRequest
+//
+// @return DetachPolicySetFromGatewayResponse
+func (client *Client) DetachPolicySetFromGateway(request *DetachPolicySetFromGatewayRequest) (_result *DetachPolicySetFromGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachPolicySetFromGatewayResponse{}
+	_body, _err := client.DetachPolicySetFromGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询一个 API 密钥凭证提供商
 //
 // @param request - GetAPIKeyCredentialProviderRequest
@@ -641,6 +2145,10 @@ func (client *Client) GetAPIKeyCredentialProviderWithOptions(request *GetAPIKeyC
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.APIKeyCredentialProviderName) {
 		body["APIKeyCredentialProviderName"] = request.APIKeyCredentialProviderName
+	}
+
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -677,6 +2185,72 @@ func (client *Client) GetAPIKeyCredentialProvider(request *GetAPIKeyCredentialPr
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAPIKeyCredentialProviderResponse{}
 	_body, _err := client.GetAPIKeyCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关策略配置
+//
+// @param request - GetGatewayPolicyConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayPolicyConfigResponse
+func (client *Client) GetGatewayPolicyConfigWithOptions(request *GetGatewayPolicyConfigRequest, runtime *dara.RuntimeOptions) (_result *GetGatewayPolicyConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayArn) {
+		body["GatewayArn"] = request.GatewayArn
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayPolicyConfig"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayPolicyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关策略配置
+//
+// @param request - GetGatewayPolicyConfigRequest
+//
+// @return GetGatewayPolicyConfigResponse
+func (client *Client) GetGatewayPolicyConfig(request *GetGatewayPolicyConfigRequest) (_result *GetGatewayPolicyConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetGatewayPolicyConfigResponse{}
+	_body, _err := client.GetGatewayPolicyConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -767,6 +2341,10 @@ func (client *Client) GetOAuth2CredentialProviderWithOptions(request *GetOAuth2C
 		body["OAuth2CredentialProviderName"] = request.OAuth2CredentialProviderName
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -801,6 +2379,580 @@ func (client *Client) GetOAuth2CredentialProvider(request *GetOAuth2CredentialPr
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetOAuth2CredentialProviderResponse{}
 	_body, _err := client.GetOAuth2CredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一个 权限策略
+//
+// @param request - GetPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyResponse
+func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPolicy"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一个 权限策略
+//
+// @param request - GetPolicyRequest
+//
+// @return GetPolicyResponse
+func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPolicyResponse{}
+	_body, _err := client.GetPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一个 权限策略集合
+//
+// @param request - GetPolicySetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicySetResponse
+func (client *Client) GetPolicySetWithOptions(request *GetPolicySetRequest, runtime *dara.RuntimeOptions) (_result *GetPolicySetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPolicySet"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPolicySetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一个 权限策略集合
+//
+// @param request - GetPolicySetRequest
+//
+// @return GetPolicySetResponse
+func (client *Client) GetPolicySet(request *GetPolicySetRequest) (_result *GetPolicySetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPolicySetResponse{}
+	_body, _err := client.GetPolicySetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Role
+//
+// @param request - GetRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoleResponse
+func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *dara.RuntimeOptions) (_result *GetRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRole"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Role
+//
+// @param request - GetRoleRequest
+//
+// @return GetRoleResponse
+func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRoleResponse{}
+	_body, _err := client.GetRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - GetSAMLIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSAMLIdentityProviderResponse
+func (client *Client) GetSAMLIdentityProviderWithOptions(request *GetSAMLIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *GetSAMLIdentityProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSAMLIdentityProvider"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSAMLIdentityProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - GetSAMLIdentityProviderRequest
+//
+// @return GetSAMLIdentityProviderResponse
+func (client *Client) GetSAMLIdentityProvider(request *GetSAMLIdentityProviderRequest) (_result *GetSAMLIdentityProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSAMLIdentityProviderResponse{}
+	_body, _err := client.GetSAMLIdentityProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - GetSAMLServiceProviderInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSAMLServiceProviderInfoResponse
+func (client *Client) GetSAMLServiceProviderInfoWithOptions(request *GetSAMLServiceProviderInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSAMLServiceProviderInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSAMLServiceProviderInfo"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSAMLServiceProviderInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - GetSAMLServiceProviderInfoRequest
+//
+// @return GetSAMLServiceProviderInfoResponse
+func (client *Client) GetSAMLServiceProviderInfo(request *GetSAMLServiceProviderInfoRequest) (_result *GetSAMLServiceProviderInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSAMLServiceProviderInfoResponse{}
+	_body, _err := client.GetSAMLServiceProviderInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定凭证库的详细配置。
+//
+// @param request - GetTokenVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenVaultResponse
+func (client *Client) GetTokenVaultWithOptions(request *GetTokenVaultRequest, runtime *dara.RuntimeOptions) (_result *GetTokenVaultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTokenVault"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTokenVaultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定凭证库的详细配置。
+//
+// @param request - GetTokenVaultRequest
+//
+// @return GetTokenVaultResponse
+func (client *Client) GetTokenVault(request *GetTokenVaultRequest) (_result *GetTokenVaultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTokenVaultResponse{}
+	_body, _err := client.GetTokenVaultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
+func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUser"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
+func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserResponse{}
+	_body, _err := client.GetUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取UserPool
+//
+// @param request - GetUserPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserPoolResponse
+func (client *Client) GetUserPoolWithOptions(request *GetUserPoolRequest, runtime *dara.RuntimeOptions) (_result *GetUserPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserPool"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取UserPool
+//
+// @param request - GetUserPoolRequest
+//
+// @return GetUserPoolResponse
+func (client *Client) GetUserPool(request *GetUserPoolRequest) (_result *GetUserPoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserPoolResponse{}
+	_body, _err := client.GetUserPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - GetUserPoolClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserPoolClientResponse
+func (client *Client) GetUserPoolClientWithOptions(request *GetUserPoolClientRequest, runtime *dara.RuntimeOptions) (_result *GetUserPoolClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserPoolClient"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserPoolClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - GetUserPoolClientRequest
+//
+// @return GetUserPoolClientResponse
+func (client *Client) GetUserPoolClient(request *GetUserPoolClientRequest) (_result *GetUserPoolClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserPoolClientResponse{}
+	_body, _err := client.GetUserPoolClientWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -895,6 +3047,10 @@ func (client *Client) ListAPIKeyCredentialProvidersWithOptions(request *ListAPIK
 		body["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -929,6 +3085,72 @@ func (client *Client) ListAPIKeyCredentialProviders(request *ListAPIKeyCredentia
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAPIKeyCredentialProvidersResponse{}
 	_body, _err := client.ListAPIKeyCredentialProvidersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListClientSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClientSecretsResponse
+func (client *Client) ListClientSecretsWithOptions(request *ListClientSecretsRequest, runtime *dara.RuntimeOptions) (_result *ListClientSecretsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListClientSecrets"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListClientSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListClientSecretsRequest
+//
+// @return ListClientSecretsResponse
+func (client *Client) ListClientSecrets(request *ListClientSecretsRequest) (_result *ListClientSecretsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListClientSecretsResponse{}
+	_body, _err := client.ListClientSecretsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1027,6 +3249,10 @@ func (client *Client) ListOAuth2CredentialProvidersWithOptions(request *ListOAut
 		body["NextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -1061,6 +3287,702 @@ func (client *Client) ListOAuth2CredentialProviders(request *ListOAuth2Credentia
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListOAuth2CredentialProvidersResponse{}
 	_body, _err := client.ListOAuth2CredentialProvidersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出权限策略
+//
+// @param request - ListPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesResponse
+func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPolicies"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出权限策略
+//
+// @param request - ListPoliciesRequest
+//
+// @return ListPoliciesResponse
+func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.ListPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出网关策略配置
+//
+// @param request - ListPolicySetAttachedGatewaysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicySetAttachedGatewaysResponse
+func (client *Client) ListPolicySetAttachedGatewaysWithOptions(request *ListPolicySetAttachedGatewaysRequest, runtime *dara.RuntimeOptions) (_result *ListPolicySetAttachedGatewaysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPolicySetAttachedGateways"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPolicySetAttachedGatewaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出网关策略配置
+//
+// @param request - ListPolicySetAttachedGatewaysRequest
+//
+// @return ListPolicySetAttachedGatewaysResponse
+func (client *Client) ListPolicySetAttachedGateways(request *ListPolicySetAttachedGatewaysRequest) (_result *ListPolicySetAttachedGatewaysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPolicySetAttachedGatewaysResponse{}
+	_body, _err := client.ListPolicySetAttachedGatewaysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出权限策略集合
+//
+// @param request - ListPolicySetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicySetsResponse
+func (client *Client) ListPolicySetsWithOptions(request *ListPolicySetsRequest, runtime *dara.RuntimeOptions) (_result *ListPolicySetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPolicySets"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPolicySetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出权限策略集合
+//
+// @param request - ListPolicySetsRequest
+//
+// @return ListPolicySetsResponse
+func (client *Client) ListPolicySets(request *ListPolicySetsRequest) (_result *ListPolicySetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPolicySetsResponse{}
+	_body, _err := client.ListPolicySetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出网关策略配置
+//
+// @param request - ListRoleAssignmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoleAssignmentsResponse
+func (client *Client) ListRoleAssignmentsWithOptions(request *ListRoleAssignmentsRequest, runtime *dara.RuntimeOptions) (_result *ListRoleAssignmentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PrincipalName) {
+		body["PrincipalName"] = request.PrincipalName
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRoleAssignments"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRoleAssignmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出网关策略配置
+//
+// @param request - ListRoleAssignmentsRequest
+//
+// @return ListRoleAssignmentsResponse
+func (client *Client) ListRoleAssignments(request *ListRoleAssignmentsRequest) (_result *ListRoleAssignmentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListRoleAssignmentsResponse{}
+	_body, _err := client.ListRoleAssignmentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出Roles
+//
+// @param request - ListRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRolesResponse
+func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *dara.RuntimeOptions) (_result *ListRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRoles"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出Roles
+//
+// @param request - ListRolesRequest
+//
+// @return ListRolesResponse
+func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListRolesResponse{}
+	_body, _err := client.ListRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListSAMLIdentityProviderCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSAMLIdentityProviderCertificatesResponse
+func (client *Client) ListSAMLIdentityProviderCertificatesWithOptions(request *ListSAMLIdentityProviderCertificatesRequest, runtime *dara.RuntimeOptions) (_result *ListSAMLIdentityProviderCertificatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSAMLIdentityProviderCertificates"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSAMLIdentityProviderCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListSAMLIdentityProviderCertificatesRequest
+//
+// @return ListSAMLIdentityProviderCertificatesResponse
+func (client *Client) ListSAMLIdentityProviderCertificates(request *ListSAMLIdentityProviderCertificatesRequest) (_result *ListSAMLIdentityProviderCertificatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSAMLIdentityProviderCertificatesResponse{}
+	_body, _err := client.ListSAMLIdentityProviderCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出账户下所有的 API 密钥凭证
+//
+// @param request - ListTokenVaultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTokenVaultsResponse
+func (client *Client) ListTokenVaultsWithOptions(request *ListTokenVaultsRequest, runtime *dara.RuntimeOptions) (_result *ListTokenVaultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTokenVaults"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTokenVaultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出账户下所有的 API 密钥凭证
+//
+// @param request - ListTokenVaultsRequest
+//
+// @return ListTokenVaultsResponse
+func (client *Client) ListTokenVaults(request *ListTokenVaultsRequest) (_result *ListTokenVaultsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTokenVaultsResponse{}
+	_body, _err := client.ListTokenVaultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListUserPoolClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserPoolClientsResponse
+func (client *Client) ListUserPoolClientsWithOptions(request *ListUserPoolClientsRequest, runtime *dara.RuntimeOptions) (_result *ListUserPoolClientsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserPoolClients"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserPoolClientsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListUserPoolClientsRequest
+//
+// @return ListUserPoolClientsResponse
+func (client *Client) ListUserPoolClients(request *ListUserPoolClientsRequest) (_result *ListUserPoolClientsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUserPoolClientsResponse{}
+	_body, _err := client.ListUserPoolClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListUserPoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserPoolsResponse
+func (client *Client) ListUserPoolsWithOptions(request *ListUserPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListUserPoolsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserPools"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserPoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
+// @param request - ListUserPoolsRequest
+//
+// @return ListUserPoolsResponse
+func (client *Client) ListUserPools(request *ListUserPoolsRequest) (_result *ListUserPoolsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUserPoolsResponse{}
+	_body, _err := client.ListUserPoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出用户
+//
+// @param request - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
+func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUsers"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出用户
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
+func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUsersResponse{}
+	_body, _err := client.ListUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1136,6 +4058,102 @@ func (client *Client) ListWorkloadIdentities(request *ListWorkloadIdentitiesRequ
 
 // Summary:
 //
+// 创建WorkloadIdentity
+//
+// @param tmpReq - SetSAMLIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSAMLIdentityProviderResponse
+func (client *Client) SetSAMLIdentityProviderWithOptions(tmpReq *SetSAMLIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *SetSAMLIdentityProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SetSAMLIdentityProviderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.X509Certificates) {
+		request.X509CertificatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.X509Certificates, dara.String("X509Certificates"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EntityId) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.JITProvisionStatus) {
+		body["JITProvisionStatus"] = request.JITProvisionStatus
+	}
+
+	if !dara.IsNil(request.JITUpdateStatus) {
+		body["JITUpdateStatus"] = request.JITUpdateStatus
+	}
+
+	if !dara.IsNil(request.LoginURL) {
+		body["LoginURL"] = request.LoginURL
+	}
+
+	if !dara.IsNil(request.SAMLBindingType) {
+		body["SAMLBindingType"] = request.SAMLBindingType
+	}
+
+	if !dara.IsNil(request.SSOStatus) {
+		body["SSOStatus"] = request.SSOStatus
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	if !dara.IsNil(request.X509CertificatesShrink) {
+		body["X509Certificates"] = request.X509CertificatesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetSAMLIdentityProvider"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetSAMLIdentityProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建WorkloadIdentity
+//
+// @param request - SetSAMLIdentityProviderRequest
+//
+// @return SetSAMLIdentityProviderResponse
+func (client *Client) SetSAMLIdentityProvider(request *SetSAMLIdentityProviderRequest) (_result *SetSAMLIdentityProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetSAMLIdentityProviderResponse{}
+	_body, _err := client.SetSAMLIdentityProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新一个 API 密钥凭证提供商
 //
 // @param request - UpdateAPIKeyCredentialProviderRequest
@@ -1161,6 +4179,10 @@ func (client *Client) UpdateAPIKeyCredentialProviderWithOptions(request *UpdateA
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1197,6 +4219,76 @@ func (client *Client) UpdateAPIKeyCredentialProvider(request *UpdateAPIKeyCreden
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAPIKeyCredentialProviderResponse{}
 	_body, _err := client.UpdateAPIKeyCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关策略配置
+//
+// @param request - UpdateGatewayPolicyConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayPolicyConfigResponse
+func (client *Client) UpdateGatewayPolicyConfigWithOptions(request *UpdateGatewayPolicyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayPolicyConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EnforcementMode) {
+		body["EnforcementMode"] = request.EnforcementMode
+	}
+
+	if !dara.IsNil(request.GatewayArn) {
+		body["GatewayArn"] = request.GatewayArn
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayPolicyConfig"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayPolicyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关策略配置
+//
+// @param request - UpdateGatewayPolicyConfigRequest
+//
+// @return UpdateGatewayPolicyConfigResponse
+func (client *Client) UpdateGatewayPolicyConfig(request *UpdateGatewayPolicyConfigRequest) (_result *UpdateGatewayPolicyConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateGatewayPolicyConfigResponse{}
+	_body, _err := client.UpdateGatewayPolicyConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1327,6 +4419,10 @@ func (client *Client) UpdateOAuth2CredentialProviderWithOptions(tmpReq *UpdateOA
 		body["OAuth2ProviderConfig"] = request.OAuth2ProviderConfigShrink
 	}
 
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -1361,6 +4457,450 @@ func (client *Client) UpdateOAuth2CredentialProvider(request *UpdateOAuth2Creden
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateOAuth2CredentialProviderResponse{}
 	_body, _err := client.UpdateOAuth2CredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新一个权限策略
+//
+// @param tmpReq - UpdatePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolicyResponse
+func (client *Client) UpdatePolicyWithOptions(tmpReq *UpdatePolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdatePolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Definition) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, dara.String("Definition"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DefinitionShrink) {
+		body["Definition"] = request.DefinitionShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePolicy"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新一个权限策略
+//
+// @param request - UpdatePolicyRequest
+//
+// @return UpdatePolicyResponse
+func (client *Client) UpdatePolicy(request *UpdatePolicyRequest) (_result *UpdatePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePolicyResponse{}
+	_body, _err := client.UpdatePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新一个权限策略集合
+//
+// @param request - UpdatePolicySetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolicySetResponse
+func (client *Client) UpdatePolicySetWithOptions(request *UpdatePolicySetRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolicySetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PolicySetName) {
+		body["PolicySetName"] = request.PolicySetName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePolicySet"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePolicySetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新一个权限策略集合
+//
+// @param request - UpdatePolicySetRequest
+//
+// @return UpdatePolicySetResponse
+func (client *Client) UpdatePolicySet(request *UpdatePolicySetRequest) (_result *UpdatePolicySetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePolicySetResponse{}
+	_body, _err := client.UpdatePolicySetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Role
+//
+// @param request - UpdateRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoleResponse
+func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRole"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Role
+//
+// @param request - UpdateRoleRequest
+//
+// @return UpdateRoleResponse
+func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRoleResponse{}
+	_body, _err := client.UpdateRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新凭证库。
+//
+// @param request - UpdateTokenVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTokenVaultResponse
+func (client *Client) UpdateTokenVaultWithOptions(request *UpdateTokenVaultRequest, runtime *dara.RuntimeOptions) (_result *UpdateTokenVaultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RoleArn) {
+		body["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.TokenVaultName) {
+		body["TokenVaultName"] = request.TokenVaultName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTokenVault"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTokenVaultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新凭证库。
+//
+// @param request - UpdateTokenVaultRequest
+//
+// @return UpdateTokenVaultResponse
+func (client *Client) UpdateTokenVault(request *UpdateTokenVaultRequest) (_result *UpdateTokenVaultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateTokenVaultResponse{}
+	_body, _err := client.UpdateTokenVaultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新IdentityProvider
+//
+// @param request - UpdateUserPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserPoolResponse
+func (client *Client) UpdateUserPoolWithOptions(request *UpdateUserPoolRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUserPool"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUserPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新IdentityProvider
+//
+// @param request - UpdateUserPoolRequest
+//
+// @return UpdateUserPoolResponse
+func (client *Client) UpdateUserPool(request *UpdateUserPoolRequest) (_result *UpdateUserPoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateUserPoolResponse{}
+	_body, _err := client.UpdateUserPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param tmpReq - UpdateUserPoolClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserPoolClientResponse
+func (client *Client) UpdateUserPoolClientWithOptions(tmpReq *UpdateUserPoolClientRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserPoolClientResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateUserPoolClientShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RedirectURIs) {
+		request.RedirectURIsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectURIs, dara.String("RedirectURIs"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessTokenValidity) {
+		body["AccessTokenValidity"] = request.AccessTokenValidity
+	}
+
+	if !dara.IsNil(request.ClientName) {
+		body["ClientName"] = request.ClientName
+	}
+
+	if !dara.IsNil(request.EnforcePKCE) {
+		body["EnforcePKCE"] = request.EnforcePKCE
+	}
+
+	if !dara.IsNil(request.RedirectURIsShrink) {
+		body["RedirectURIs"] = request.RedirectURIsShrink
+	}
+
+	if !dara.IsNil(request.RefreshTokenValidity) {
+		body["RefreshTokenValidity"] = request.RefreshTokenValidity
+	}
+
+	if !dara.IsNil(request.SecretRequired) {
+		body["SecretRequired"] = request.SecretRequired
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUserPoolClient"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUserPoolClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - UpdateUserPoolClientRequest
+//
+// @return UpdateUserPoolClientResponse
+func (client *Client) UpdateUserPoolClient(request *UpdateUserPoolClientRequest) (_result *UpdateUserPoolClientResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateUserPoolClientResponse{}
+	_body, _err := client.UpdateUserPoolClientWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1405,6 +4945,10 @@ func (client *Client) UpdateWorkloadIdentityWithOptions(tmpReq *UpdateWorkloadId
 
 	if !dara.IsNil(request.RoleArn) {
 		body["RoleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.SessionBindingEnabled) {
+		body["SessionBindingEnabled"] = request.SessionBindingEnabled
 	}
 
 	if !dara.IsNil(request.WorkloadIdentityName) {

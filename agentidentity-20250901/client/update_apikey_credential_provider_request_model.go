@@ -15,6 +15,8 @@ type iUpdateAPIKeyCredentialProviderRequest interface {
 	GetAPIKeyCredentialProviderName() *string
 	SetDescription(v string) *UpdateAPIKeyCredentialProviderRequest
 	GetDescription() *string
+	SetTokenVaultName(v string) *UpdateAPIKeyCredentialProviderRequest
+	GetTokenVaultName() *string
 }
 
 type UpdateAPIKeyCredentialProviderRequest struct {
@@ -29,7 +31,8 @@ type UpdateAPIKeyCredentialProviderRequest struct {
 	// example:
 	//
 	// new example provider
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s UpdateAPIKeyCredentialProviderRequest) String() string {
@@ -52,6 +55,10 @@ func (s *UpdateAPIKeyCredentialProviderRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAPIKeyCredentialProviderRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *UpdateAPIKeyCredentialProviderRequest) SetAPIKey(v string) *UpdateAPIKeyCredentialProviderRequest {
 	s.APIKey = &v
 	return s
@@ -64,6 +71,11 @@ func (s *UpdateAPIKeyCredentialProviderRequest) SetAPIKeyCredentialProviderName(
 
 func (s *UpdateAPIKeyCredentialProviderRequest) SetDescription(v string) *UpdateAPIKeyCredentialProviderRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAPIKeyCredentialProviderRequest) SetTokenVaultName(v string) *UpdateAPIKeyCredentialProviderRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

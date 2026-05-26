@@ -75,7 +75,10 @@ type GetWorkloadIdentityResponseBodyWorkloadIdentity struct {
 	// example:
 	//
 	// acs:ram::123456:role/agent-101-role
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled *bool   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	SourceAgentArn        *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	SourcePlatform        *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 	// example:
 	//
 	// 2025-12-18T06:19:17Z
@@ -118,6 +121,18 @@ func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetRoleArn() *string {
 	return s.RoleArn
 }
 
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetSessionBindingEnabled() *bool {
+	return s.SessionBindingEnabled
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetSourceAgentArn() *string {
+	return s.SourceAgentArn
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -152,6 +167,21 @@ func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetIdentityProviderNam
 
 func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetRoleArn(v string) *GetWorkloadIdentityResponseBodyWorkloadIdentity {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetSessionBindingEnabled(v bool) *GetWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.SessionBindingEnabled = &v
+	return s
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetSourceAgentArn(v string) *GetWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.SourceAgentArn = &v
+	return s
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetSourcePlatform(v string) *GetWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.SourcePlatform = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iCreateOAuth2CredentialProviderShrinkRequest interface {
 	GetOAuth2CredentialProviderName() *string
 	SetOAuth2ProviderConfigShrink(v string) *CreateOAuth2CredentialProviderShrinkRequest
 	GetOAuth2ProviderConfigShrink() *string
+	SetTokenVaultName(v string) *CreateOAuth2CredentialProviderShrinkRequest
+	GetTokenVaultName() *string
 }
 
 type CreateOAuth2CredentialProviderShrinkRequest struct {
@@ -39,6 +41,7 @@ type CreateOAuth2CredentialProviderShrinkRequest struct {
 	// oauth-provider-aliyun
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfigShrink   *string `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateOAuth2CredentialProviderShrinkRequest) String() string {
@@ -69,6 +72,10 @@ func (s *CreateOAuth2CredentialProviderShrinkRequest) GetOAuth2ProviderConfigShr
 	return s.OAuth2ProviderConfigShrink
 }
 
+func (s *CreateOAuth2CredentialProviderShrinkRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *CreateOAuth2CredentialProviderShrinkRequest) SetCallbackURL(v string) *CreateOAuth2CredentialProviderShrinkRequest {
 	s.CallbackURL = &v
 	return s
@@ -91,6 +98,11 @@ func (s *CreateOAuth2CredentialProviderShrinkRequest) SetOAuth2CredentialProvide
 
 func (s *CreateOAuth2CredentialProviderShrinkRequest) SetOAuth2ProviderConfigShrink(v string) *CreateOAuth2CredentialProviderShrinkRequest {
 	s.OAuth2ProviderConfigShrink = &v
+	return s
+}
+
+func (s *CreateOAuth2CredentialProviderShrinkRequest) SetTokenVaultName(v string) *CreateOAuth2CredentialProviderShrinkRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

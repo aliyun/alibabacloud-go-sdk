@@ -17,6 +17,8 @@ type iUpdateWorkloadIdentityRequest interface {
 	GetIdentityProviderName() *string
 	SetRoleArn(v string) *UpdateWorkloadIdentityRequest
 	GetRoleArn() *string
+	SetSessionBindingEnabled(v string) *UpdateWorkloadIdentityRequest
+	GetSessionBindingEnabled() *string
 	SetWorkloadIdentityName(v string) *UpdateWorkloadIdentityRequest
 	GetWorkloadIdentityName() *string
 }
@@ -36,7 +38,8 @@ type UpdateWorkloadIdentityRequest struct {
 	// example:
 	//
 	// acs:ram::123456:role/agent-101-role
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled *string `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
 	// example:
 	//
 	// agent-101
@@ -67,6 +70,10 @@ func (s *UpdateWorkloadIdentityRequest) GetRoleArn() *string {
 	return s.RoleArn
 }
 
+func (s *UpdateWorkloadIdentityRequest) GetSessionBindingEnabled() *string {
+	return s.SessionBindingEnabled
+}
+
 func (s *UpdateWorkloadIdentityRequest) GetWorkloadIdentityName() *string {
 	return s.WorkloadIdentityName
 }
@@ -88,6 +95,11 @@ func (s *UpdateWorkloadIdentityRequest) SetIdentityProviderName(v string) *Updat
 
 func (s *UpdateWorkloadIdentityRequest) SetRoleArn(v string) *UpdateWorkloadIdentityRequest {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *UpdateWorkloadIdentityRequest) SetSessionBindingEnabled(v string) *UpdateWorkloadIdentityRequest {
+	s.SessionBindingEnabled = &v
 	return s
 }
 

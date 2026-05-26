@@ -11,6 +11,8 @@ type iDeleteAPIKeyCredentialProviderRequest interface {
 	GoString() string
 	SetAPIKeyCredentialProviderName(v string) *DeleteAPIKeyCredentialProviderRequest
 	GetAPIKeyCredentialProviderName() *string
+	SetTokenVaultName(v string) *DeleteAPIKeyCredentialProviderRequest
+	GetTokenVaultName() *string
 }
 
 type DeleteAPIKeyCredentialProviderRequest struct {
@@ -18,6 +20,7 @@ type DeleteAPIKeyCredentialProviderRequest struct {
 	//
 	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s DeleteAPIKeyCredentialProviderRequest) String() string {
@@ -32,8 +35,17 @@ func (s *DeleteAPIKeyCredentialProviderRequest) GetAPIKeyCredentialProviderName(
 	return s.APIKeyCredentialProviderName
 }
 
+func (s *DeleteAPIKeyCredentialProviderRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *DeleteAPIKeyCredentialProviderRequest) SetAPIKeyCredentialProviderName(v string) *DeleteAPIKeyCredentialProviderRequest {
 	s.APIKeyCredentialProviderName = &v
+	return s
+}
+
+func (s *DeleteAPIKeyCredentialProviderRequest) SetTokenVaultName(v string) *DeleteAPIKeyCredentialProviderRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

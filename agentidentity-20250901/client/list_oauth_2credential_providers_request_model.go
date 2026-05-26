@@ -13,6 +13,8 @@ type iListOAuth2CredentialProvidersRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListOAuth2CredentialProvidersRequest
 	GetNextToken() *string
+	SetTokenVaultName(v string) *ListOAuth2CredentialProvidersRequest
+	GetTokenVaultName() *string
 }
 
 type ListOAuth2CredentialProvidersRequest struct {
@@ -23,7 +25,8 @@ type ListOAuth2CredentialProvidersRequest struct {
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6mmxm9MUzOLyiXaWmj3GOT8
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s ListOAuth2CredentialProvidersRequest) String() string {
@@ -42,6 +45,10 @@ func (s *ListOAuth2CredentialProvidersRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListOAuth2CredentialProvidersRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *ListOAuth2CredentialProvidersRequest) SetMaxResults(v int32) *ListOAuth2CredentialProvidersRequest {
 	s.MaxResults = &v
 	return s
@@ -49,6 +56,11 @@ func (s *ListOAuth2CredentialProvidersRequest) SetMaxResults(v int32) *ListOAuth
 
 func (s *ListOAuth2CredentialProvidersRequest) SetNextToken(v string) *ListOAuth2CredentialProvidersRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListOAuth2CredentialProvidersRequest) SetTokenVaultName(v string) *ListOAuth2CredentialProvidersRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

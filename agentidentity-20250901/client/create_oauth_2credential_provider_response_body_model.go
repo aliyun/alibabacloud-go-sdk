@@ -84,6 +84,7 @@ type CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider struct {
 	// oauth-provider-aliyun
 	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 	// example:
 	//
 	// 2025-12-18T06:19:17Z
@@ -126,6 +127,10 @@ func (s *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) Get
 	return s.OAuth2ProviderConfig
 }
 
+func (s *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -162,6 +167,11 @@ func (s *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) Set
 
 func (s *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) SetOAuth2ProviderConfig(v *OAuth2ProviderConfig) *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider {
 	s.OAuth2ProviderConfig = v
+	return s
+}
+
+func (s *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider) SetTokenVaultName(v string) *CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider {
+	s.TokenVaultName = &v
 	return s
 }
 

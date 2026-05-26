@@ -11,6 +11,8 @@ type iDeleteOAuth2CredentialProviderRequest interface {
 	GoString() string
 	SetOAuth2CredentialProviderName(v string) *DeleteOAuth2CredentialProviderRequest
 	GetOAuth2CredentialProviderName() *string
+	SetTokenVaultName(v string) *DeleteOAuth2CredentialProviderRequest
+	GetTokenVaultName() *string
 }
 
 type DeleteOAuth2CredentialProviderRequest struct {
@@ -18,6 +20,7 @@ type DeleteOAuth2CredentialProviderRequest struct {
 	//
 	// oauth2-provider-aliyun
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s DeleteOAuth2CredentialProviderRequest) String() string {
@@ -32,8 +35,17 @@ func (s *DeleteOAuth2CredentialProviderRequest) GetOAuth2CredentialProviderName(
 	return s.OAuth2CredentialProviderName
 }
 
+func (s *DeleteOAuth2CredentialProviderRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *DeleteOAuth2CredentialProviderRequest) SetOAuth2CredentialProviderName(v string) *DeleteOAuth2CredentialProviderRequest {
 	s.OAuth2CredentialProviderName = &v
+	return s
+}
+
+func (s *DeleteOAuth2CredentialProviderRequest) SetTokenVaultName(v string) *DeleteOAuth2CredentialProviderRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

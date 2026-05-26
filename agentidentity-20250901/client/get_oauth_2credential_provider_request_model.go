@@ -11,6 +11,8 @@ type iGetOAuth2CredentialProviderRequest interface {
 	GoString() string
 	SetOAuth2CredentialProviderName(v string) *GetOAuth2CredentialProviderRequest
 	GetOAuth2CredentialProviderName() *string
+	SetTokenVaultName(v string) *GetOAuth2CredentialProviderRequest
+	GetTokenVaultName() *string
 }
 
 type GetOAuth2CredentialProviderRequest struct {
@@ -18,6 +20,7 @@ type GetOAuth2CredentialProviderRequest struct {
 	//
 	// oauth2-provider-aliyun
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s GetOAuth2CredentialProviderRequest) String() string {
@@ -32,8 +35,17 @@ func (s *GetOAuth2CredentialProviderRequest) GetOAuth2CredentialProviderName() *
 	return s.OAuth2CredentialProviderName
 }
 
+func (s *GetOAuth2CredentialProviderRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *GetOAuth2CredentialProviderRequest) SetOAuth2CredentialProviderName(v string) *GetOAuth2CredentialProviderRequest {
 	s.OAuth2CredentialProviderName = &v
+	return s
+}
+
+func (s *GetOAuth2CredentialProviderRequest) SetTokenVaultName(v string) *GetOAuth2CredentialProviderRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

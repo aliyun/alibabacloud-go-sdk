@@ -74,7 +74,8 @@ type CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider struct {
 	// example:
 	//
 	// example provider
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) String() string {
@@ -101,6 +102,10 @@ func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) Get
 	return s.Description
 }
 
+func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetAPIKeyCredentialProviderName(v string) *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
 	s.APIKeyCredentialProviderName = &v
 	return s
@@ -118,6 +123,11 @@ func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) Set
 
 func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetDescription(v string) *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetTokenVaultName(v string) *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
+	s.TokenVaultName = &v
 	return s
 }
 

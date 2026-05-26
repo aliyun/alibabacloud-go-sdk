@@ -11,6 +11,8 @@ type iGetAPIKeyCredentialProviderRequest interface {
 	GoString() string
 	SetAPIKeyCredentialProviderName(v string) *GetAPIKeyCredentialProviderRequest
 	GetAPIKeyCredentialProviderName() *string
+	SetTokenVaultName(v string) *GetAPIKeyCredentialProviderRequest
+	GetTokenVaultName() *string
 }
 
 type GetAPIKeyCredentialProviderRequest struct {
@@ -18,6 +20,7 @@ type GetAPIKeyCredentialProviderRequest struct {
 	//
 	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s GetAPIKeyCredentialProviderRequest) String() string {
@@ -32,8 +35,17 @@ func (s *GetAPIKeyCredentialProviderRequest) GetAPIKeyCredentialProviderName() *
 	return s.APIKeyCredentialProviderName
 }
 
+func (s *GetAPIKeyCredentialProviderRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *GetAPIKeyCredentialProviderRequest) SetAPIKeyCredentialProviderName(v string) *GetAPIKeyCredentialProviderRequest {
 	s.APIKeyCredentialProviderName = &v
+	return s
+}
+
+func (s *GetAPIKeyCredentialProviderRequest) SetTokenVaultName(v string) *GetAPIKeyCredentialProviderRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

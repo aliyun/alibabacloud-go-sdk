@@ -19,6 +19,8 @@ type iUpdateOAuth2CredentialProviderRequest interface {
 	GetOAuth2CredentialProviderName() *string
 	SetOAuth2ProviderConfig(v *OAuth2ProviderConfig) *UpdateOAuth2CredentialProviderRequest
 	GetOAuth2ProviderConfig() *OAuth2ProviderConfig
+	SetTokenVaultName(v string) *UpdateOAuth2CredentialProviderRequest
+	GetTokenVaultName() *string
 }
 
 type UpdateOAuth2CredentialProviderRequest struct {
@@ -41,6 +43,7 @@ type UpdateOAuth2CredentialProviderRequest struct {
 	// oauth2-provider-aliyun
 	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s UpdateOAuth2CredentialProviderRequest) String() string {
@@ -71,6 +74,10 @@ func (s *UpdateOAuth2CredentialProviderRequest) GetOAuth2ProviderConfig() *OAuth
 	return s.OAuth2ProviderConfig
 }
 
+func (s *UpdateOAuth2CredentialProviderRequest) GetTokenVaultName() *string {
+	return s.TokenVaultName
+}
+
 func (s *UpdateOAuth2CredentialProviderRequest) SetCallbackURL(v string) *UpdateOAuth2CredentialProviderRequest {
 	s.CallbackURL = &v
 	return s
@@ -93,6 +100,11 @@ func (s *UpdateOAuth2CredentialProviderRequest) SetOAuth2CredentialProviderName(
 
 func (s *UpdateOAuth2CredentialProviderRequest) SetOAuth2ProviderConfig(v *OAuth2ProviderConfig) *UpdateOAuth2CredentialProviderRequest {
 	s.OAuth2ProviderConfig = v
+	return s
+}
+
+func (s *UpdateOAuth2CredentialProviderRequest) SetTokenVaultName(v string) *UpdateOAuth2CredentialProviderRequest {
+	s.TokenVaultName = &v
 	return s
 }
 

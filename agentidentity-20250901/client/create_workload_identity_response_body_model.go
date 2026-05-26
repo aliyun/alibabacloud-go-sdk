@@ -75,7 +75,10 @@ type CreateWorkloadIdentityResponseBodyWorkloadIdentity struct {
 	// example:
 	//
 	// acs:ram::123456:role/agent-101-role
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled *bool   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	SourceAgentArn        *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	SourcePlatform        *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 	// example:
 	//
 	// 2025-12-18T06:19:17Z
@@ -118,6 +121,18 @@ func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) GetRoleArn() *strin
 	return s.RoleArn
 }
 
+func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) GetSessionBindingEnabled() *bool {
+	return s.SessionBindingEnabled
+}
+
+func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) GetSourceAgentArn() *string {
+	return s.SourceAgentArn
+}
+
+func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -152,6 +167,21 @@ func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) SetIdentityProvider
 
 func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) SetRoleArn(v string) *CreateWorkloadIdentityResponseBodyWorkloadIdentity {
 	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) SetSessionBindingEnabled(v bool) *CreateWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.SessionBindingEnabled = &v
+	return s
+}
+
+func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) SetSourceAgentArn(v string) *CreateWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.SourceAgentArn = &v
+	return s
+}
+
+func (s *CreateWorkloadIdentityResponseBodyWorkloadIdentity) SetSourcePlatform(v string) *CreateWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.SourcePlatform = &v
 	return s
 }
 
