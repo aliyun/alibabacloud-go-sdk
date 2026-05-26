@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/live-20161101/v2
+module github.com/alibabacloud-go/live-20161101/v3
 
 go 1.14
 

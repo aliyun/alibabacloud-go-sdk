@@ -21,8 +21,6 @@ type iAddLiveRecordVodConfigRequest interface {
 	GetDelayTime() *int32
 	SetDomainName(v string) *AddLiveRecordVodConfigRequest
 	GetDomainName() *string
-	SetFormatConfig(v bool) *AddLiveRecordVodConfigRequest
-	GetFormatConfig() *bool
 	SetOnDemand(v int32) *AddLiveRecordVodConfigRequest
 	GetOnDemand() *int32
 	SetOwnerId(v int64) *AddLiveRecordVodConfigRequest
@@ -92,8 +90,7 @@ type AddLiveRecordVodConfigRequest struct {
 	// example:
 	//
 	// example.com
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FormatConfig *bool   `json:"FormatConfig,omitempty" xml:"FormatConfig,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Specifies whether to enable on-demand recording. Valid values:
 	//
 	// 	- **0*	- (default): disables on-demand recording.
@@ -160,10 +157,6 @@ func (s *AddLiveRecordVodConfigRequest) GetDelayTime() *int32 {
 
 func (s *AddLiveRecordVodConfigRequest) GetDomainName() *string {
 	return s.DomainName
-}
-
-func (s *AddLiveRecordVodConfigRequest) GetFormatConfig() *bool {
-	return s.FormatConfig
 }
 
 func (s *AddLiveRecordVodConfigRequest) GetOnDemand() *int32 {
@@ -233,11 +226,6 @@ func (s *AddLiveRecordVodConfigRequest) SetDelayTime(v int32) *AddLiveRecordVodC
 
 func (s *AddLiveRecordVodConfigRequest) SetDomainName(v string) *AddLiveRecordVodConfigRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *AddLiveRecordVodConfigRequest) SetFormatConfig(v bool) *AddLiveRecordVodConfigRequest {
-	s.FormatConfig = &v
 	return s
 }
 

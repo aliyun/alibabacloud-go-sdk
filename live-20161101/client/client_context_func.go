@@ -2116,10 +2116,6 @@ func (client *Client) AddLiveRecordVodConfigWithContext(ctx context.Context, req
 		query["DomainName"] = request.DomainName
 	}
 
-	if !dara.IsNil(request.FormatConfig) {
-		query["FormatConfig"] = request.FormatConfig
-	}
-
 	if !dara.IsNil(request.OnDemand) {
 		query["OnDemand"] = request.OnDemand
 	}
@@ -30374,10 +30370,6 @@ func (client *Client) UpdateLiveRecordVodConfigWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !dara.IsNil(request.FormatConfig) {
-		query["FormatConfig"] = request.FormatConfig
 	}
 
 	if !dara.IsNil(request.OnDemand) {

@@ -2892,10 +2892,6 @@ func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVo
 		query["DomainName"] = request.DomainName
 	}
 
-	if !dara.IsNil(request.FormatConfig) {
-		query["FormatConfig"] = request.FormatConfig
-	}
-
 	if !dara.IsNil(request.OnDemand) {
 		query["OnDemand"] = request.OnDemand
 	}
@@ -41662,10 +41658,6 @@ func (client *Client) UpdateLiveRecordVodConfigWithOptions(request *UpdateLiveRe
 
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !dara.IsNil(request.FormatConfig) {
-		query["FormatConfig"] = request.FormatConfig
 	}
 
 	if !dara.IsNil(request.OnDemand) {
