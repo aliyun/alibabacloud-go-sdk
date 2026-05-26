@@ -85,6 +85,108 @@ func (client *Client) EngineSearchWithContext(ctx context.Context, request *Engi
 
 // Summary:
 //
+// 获取数据集资源 OSS 访问地址
+//
+// @param request - GetDatasetResourceUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResourceUrlResponse
+func (client *Client) GetDatasetResourceUrlWithContext(ctx context.Context, request *GetDatasetResourceUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResourceUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetId) {
+		body["datasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.PrimaryKey) {
+		body["primaryKey"] = request.PrimaryKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDatasetResourceUrl"),
+		Version:     dara.String("2026-04-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/dataset/open/resources"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDatasetResourceUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交单条记录导入任务
+//
+// @param request - ImportDatasetDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportDatasetDataResponse
+func (client *Client) ImportDatasetDataWithContext(ctx context.Context, request *ImportDatasetDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ImportDatasetDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetId) {
+		body["datasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.Records) {
+		body["records"] = request.Records
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportDatasetData"),
+		Version:     dara.String("2026-04-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/dataset/open/upsert"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportDatasetDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # AI问答对话
 //
 // @param request - QaChatRequest
