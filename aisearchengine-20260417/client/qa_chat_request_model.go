@@ -20,10 +20,13 @@ type iQaChatRequest interface {
 }
 
 type QaChatRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2047140750220754946
-	AppId   *string               `json:"appId,omitempty" xml:"appId,omitempty"`
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// This parameter is required.
 	Message *QaChatRequestMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
 	// example:
 	//
