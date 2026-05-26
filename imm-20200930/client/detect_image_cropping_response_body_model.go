@@ -11,13 +11,16 @@ type iDetectImageCroppingResponseBody interface {
 	GoString() string
 	SetCroppings(v []*CroppingSuggestion) *DetectImageCroppingResponseBody
 	GetCroppings() []*CroppingSuggestion
+	SetMatchedInclusionHints(v []*string) *DetectImageCroppingResponseBody
+	GetMatchedInclusionHints() []*string
 	SetRequestId(v string) *DetectImageCroppingResponseBody
 	GetRequestId() *string
 }
 
 type DetectImageCroppingResponseBody struct {
 	// The image cropping suggestions.
-	Croppings []*CroppingSuggestion `json:"Croppings,omitempty" xml:"Croppings,omitempty" type:"Repeated"`
+	Croppings             []*CroppingSuggestion `json:"Croppings,omitempty" xml:"Croppings,omitempty" type:"Repeated"`
+	MatchedInclusionHints []*string             `json:"MatchedInclusionHints,omitempty" xml:"MatchedInclusionHints,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s *DetectImageCroppingResponseBody) GetCroppings() []*CroppingSuggestion {
 	return s.Croppings
 }
 
+func (s *DetectImageCroppingResponseBody) GetMatchedInclusionHints() []*string {
+	return s.MatchedInclusionHints
+}
+
 func (s *DetectImageCroppingResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *DetectImageCroppingResponseBody) SetCroppings(v []*CroppingSuggestion) *DetectImageCroppingResponseBody {
 	s.Croppings = v
+	return s
+}
+
+func (s *DetectImageCroppingResponseBody) SetMatchedInclusionHints(v []*string) *DetectImageCroppingResponseBody {
+	s.MatchedInclusionHints = v
 	return s
 }
 

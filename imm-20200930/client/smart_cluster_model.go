@@ -9,6 +9,8 @@ type iSmartCluster interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClusterType(v string) *SmartCluster
+	GetClusterType() *string
 	SetCreateTime(v string) *SmartCluster
 	GetCreateTime() *string
 	SetDatasetName(v string) *SmartCluster
@@ -27,13 +29,18 @@ type iSmartCluster interface {
 	GetOwnerId() *string
 	SetProjectName(v string) *SmartCluster
 	GetProjectName() *string
+	SetReason(v string) *SmartCluster
+	GetReason() *string
 	SetRule(v *SmartClusterRule) *SmartCluster
 	GetRule() *SmartClusterRule
+	SetRules(v []*SmartClusterRule) *SmartCluster
+	GetRules() []*SmartClusterRule
 	SetUpdateTime(v string) *SmartCluster
 	GetUpdateTime() *string
 }
 
 type SmartCluster struct {
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The time when the cluster was created.
 	//
 	// example:
@@ -84,8 +91,10 @@ type SmartCluster struct {
 	//
 	// MyProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The clustering rule.
-	Rule *SmartClusterRule `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	Rule  *SmartClusterRule   `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	Rules []*SmartClusterRule `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The time when the cluster was updated.
 	//
 	// example:
@@ -100,6 +109,10 @@ func (s SmartCluster) String() string {
 
 func (s SmartCluster) GoString() string {
 	return s.String()
+}
+
+func (s *SmartCluster) GetClusterType() *string {
+	return s.ClusterType
 }
 
 func (s *SmartCluster) GetCreateTime() *string {
@@ -138,12 +151,25 @@ func (s *SmartCluster) GetProjectName() *string {
 	return s.ProjectName
 }
 
+func (s *SmartCluster) GetReason() *string {
+	return s.Reason
+}
+
 func (s *SmartCluster) GetRule() *SmartClusterRule {
 	return s.Rule
 }
 
+func (s *SmartCluster) GetRules() []*SmartClusterRule {
+	return s.Rules
+}
+
 func (s *SmartCluster) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *SmartCluster) SetClusterType(v string) *SmartCluster {
+	s.ClusterType = &v
+	return s
 }
 
 func (s *SmartCluster) SetCreateTime(v string) *SmartCluster {
@@ -191,8 +217,18 @@ func (s *SmartCluster) SetProjectName(v string) *SmartCluster {
 	return s
 }
 
+func (s *SmartCluster) SetReason(v string) *SmartCluster {
+	s.Reason = &v
+	return s
+}
+
 func (s *SmartCluster) SetRule(v *SmartClusterRule) *SmartCluster {
 	s.Rule = v
+	return s
+}
+
+func (s *SmartCluster) SetRules(v []*SmartClusterRule) *SmartCluster {
+	s.Rules = v
 	return s
 }
 
@@ -205,6 +241,15 @@ func (s *SmartCluster) Validate() error {
 	if s.Rule != nil {
 		if err := s.Rule.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

@@ -13,6 +13,8 @@ type iDetectImageCroppingRequest interface {
 	GetAspectRatios() *string
 	SetCredentialConfig(v *CredentialConfig) *DetectImageCroppingRequest
 	GetCredentialConfig() *CredentialConfig
+	SetInclusionHints(v []*string) *DetectImageCroppingRequest
+	GetInclusionHints() []*string
 	SetProjectName(v string) *DetectImageCroppingRequest
 	GetProjectName() *string
 	SetSourceURI(v string) *DetectImageCroppingRequest
@@ -46,6 +48,7 @@ type DetectImageCroppingRequest struct {
 	//
 	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	InclusionHints   []*string         `json:"InclusionHints,omitempty" xml:"InclusionHints,omitempty" type:"Repeated"`
 	// The name of the project.
 	//
 	// This parameter is required.
@@ -80,6 +83,10 @@ func (s *DetectImageCroppingRequest) GetCredentialConfig() *CredentialConfig {
 	return s.CredentialConfig
 }
 
+func (s *DetectImageCroppingRequest) GetInclusionHints() []*string {
+	return s.InclusionHints
+}
+
 func (s *DetectImageCroppingRequest) GetProjectName() *string {
 	return s.ProjectName
 }
@@ -95,6 +102,11 @@ func (s *DetectImageCroppingRequest) SetAspectRatios(v string) *DetectImageCropp
 
 func (s *DetectImageCroppingRequest) SetCredentialConfig(v *CredentialConfig) *DetectImageCroppingRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *DetectImageCroppingRequest) SetInclusionHints(v []*string) *DetectImageCroppingRequest {
+	s.InclusionHints = v
 	return s
 }
 

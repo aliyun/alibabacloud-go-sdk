@@ -11,13 +11,16 @@ type iInsightsConfig interface {
 	GoString() string
 	SetLanguage(v string) *InsightsConfig
 	GetLanguage() *string
+	SetVideo(v *VideoInsightsConfig) *InsightsConfig
+	GetVideo() *VideoInsightsConfig
 }
 
 type InsightsConfig struct {
 	// example:
 	//
 	// zh-Hans
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language *string              `json:"Language,omitempty" xml:"Language,omitempty"`
+	Video    *VideoInsightsConfig `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s InsightsConfig) String() string {
@@ -32,11 +35,25 @@ func (s *InsightsConfig) GetLanguage() *string {
 	return s.Language
 }
 
+func (s *InsightsConfig) GetVideo() *VideoInsightsConfig {
+	return s.Video
+}
+
 func (s *InsightsConfig) SetLanguage(v string) *InsightsConfig {
 	s.Language = &v
 	return s
 }
 
+func (s *InsightsConfig) SetVideo(v *VideoInsightsConfig) *InsightsConfig {
+	s.Video = v
+	return s
+}
+
 func (s *InsightsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -9,15 +9,21 @@ type iSmartClusterRule interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBaseURIs(v []*string) *SmartClusterRule
+	GetBaseURIs() []*string
 	SetKeywords(v []*string) *SmartClusterRule
 	GetKeywords() []*string
+	SetRuleType(v string) *SmartClusterRule
+	GetRuleType() *string
 	SetSensitivity(v float32) *SmartClusterRule
 	GetSensitivity() *float32
 }
 
 type SmartClusterRule struct {
+	BaseURIs []*string `json:"BaseURIs,omitempty" xml:"BaseURIs,omitempty" type:"Repeated"`
 	// Keywords
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	RuleType *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// Sensitivity
 	//
 	// example:
@@ -34,16 +40,34 @@ func (s SmartClusterRule) GoString() string {
 	return s.String()
 }
 
+func (s *SmartClusterRule) GetBaseURIs() []*string {
+	return s.BaseURIs
+}
+
 func (s *SmartClusterRule) GetKeywords() []*string {
 	return s.Keywords
+}
+
+func (s *SmartClusterRule) GetRuleType() *string {
+	return s.RuleType
 }
 
 func (s *SmartClusterRule) GetSensitivity() *float32 {
 	return s.Sensitivity
 }
 
+func (s *SmartClusterRule) SetBaseURIs(v []*string) *SmartClusterRule {
+	s.BaseURIs = v
+	return s
+}
+
 func (s *SmartClusterRule) SetKeywords(v []*string) *SmartClusterRule {
 	s.Keywords = v
+	return s
+}
+
+func (s *SmartClusterRule) SetRuleType(v string) *SmartClusterRule {
+	s.RuleType = &v
 	return s
 }
 

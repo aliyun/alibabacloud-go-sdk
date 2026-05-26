@@ -5706,6 +5706,10 @@ func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCropping
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, dara.String("CredentialConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.InclusionHints) {
+		request.InclusionHintsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InclusionHints, dara.String("InclusionHints"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AspectRatios) {
 		query["AspectRatios"] = request.AspectRatios
@@ -5713,6 +5717,10 @@ func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCropping
 
 	if !dara.IsNil(request.CredentialConfigShrink) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !dara.IsNil(request.InclusionHintsShrink) {
+		query["InclusionHints"] = request.InclusionHintsShrink
 	}
 
 	if !dara.IsNil(request.ProjectName) {
