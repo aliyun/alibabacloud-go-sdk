@@ -333,6 +333,53 @@ func (client *Client) CreateBenchmarkTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 创建单个配置
+//
+// @param request - CreateConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConfigResponse
+func (client *Client) CreateConfigWithContext(ctx context.Context, ClusterId *string, ConfigType *string, Name *string, ConfigKey *string, request *CreateConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Value) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConfig"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/configs/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ConfigType)) + "/" + dara.PercentEncode(dara.StringValue(Name)) + "/" + dara.PercentEncode(dara.StringValue(ConfigKey))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建故障注入任务
 //
 // @param request - CreateFaultInjectionRequest
@@ -1290,6 +1337,47 @@ func (client *Client) DeleteBenchmarkTaskWithContext(ctx context.Context, Cluste
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBenchmarkTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除单个配置项
+//
+// @param request - DeleteConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConfigResponse
+func (client *Client) DeleteConfigWithContext(ctx context.Context, ClusterId *string, ConfigType *string, Name *string, ConfigKey *string, request *DeleteConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConfig"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/configs/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ConfigType)) + "/" + dara.PercentEncode(dara.StringValue(Name)) + "/" + dara.PercentEncode(dara.StringValue(ConfigKey))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3465,6 +3553,57 @@ func (client *Client) ListBenchmarkTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 查询服务的所有配置项（支持分页）
+//
+// @param request - ListConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConfigsResponse
+func (client *Client) ListConfigsWithContext(ctx context.Context, ClusterId *string, ConfigType *string, Name *string, request *ListConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConfigs"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/configs/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ConfigType)) + "/" + dara.PercentEncode(dara.StringValue(Name))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConfigsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of private gateways.
 //
 // @param tmpReq - ListGatewayRequest
@@ -5120,6 +5259,53 @@ func (client *Client) UpdateBenchmarkTaskWithContext(ctx context.Context, Cluste
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateBenchmarkTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新单个配置项
+//
+// @param request - UpdateConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConfigResponse
+func (client *Client) UpdateConfigWithContext(ctx context.Context, ClusterId *string, ConfigType *string, Name *string, ConfigKey *string, request *UpdateConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Value) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConfig"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/configs/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ConfigType)) + "/" + dara.PercentEncode(dara.StringValue(Name)) + "/" + dara.PercentEncode(dara.StringValue(ConfigKey))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
