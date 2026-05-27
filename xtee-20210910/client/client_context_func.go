@@ -1441,6 +1441,70 @@ func (client *Client) CreateFieldWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
+// 创建样本记录对客
+//
+// @param request - CreateForeignPocSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateForeignPocSampleResponse
+func (client *Client) CreateForeignPocSampleWithContext(ctx context.Context, request *CreateForeignPocSampleRequest, runtime *dara.RuntimeOptions) (_result *CreateForeignPocSampleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.File) {
+		query["File"] = request.File
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.SampleName) {
+		query["SampleName"] = request.SampleName
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateForeignPocSample"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateForeignPocSampleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Submit Task
 //
 // @param request - CreateModelRequest
@@ -17627,6 +17691,62 @@ func (client *Client) UploadFileCheckWithContext(ctx context.Context, request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadFileCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传并校验样本文件
+//
+// @param request - UploadForeignSampleFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadForeignSampleFileResponse
+func (client *Client) UploadForeignSampleFileWithContext(ctx context.Context, request *UploadForeignSampleFileRequest, runtime *dara.RuntimeOptions) (_result *UploadForeignSampleFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.File) {
+		query["File"] = request.File
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadForeignSampleFile"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadForeignSampleFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

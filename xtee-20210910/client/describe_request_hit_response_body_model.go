@@ -250,7 +250,12 @@ type DescribeRequestHitResponseBodyResultObjectRuleHitRecords struct {
 	//
 	// RUNNING
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	RuleType   *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
+	// Rule Type
+	//
+	// example:
+	//
+	// DEFAULT
+	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
 }
 
 func (s DescribeRequestHitResponseBodyResultObjectRuleHitRecords) String() string {
