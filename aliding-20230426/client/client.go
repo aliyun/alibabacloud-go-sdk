@@ -1569,6 +1569,101 @@ func (client *Client) BatchGetFormDataByIdList(request *BatchGetFormDataByIdList
 
 // Summary:
 //
+// 批量根据操作人工号与 openDingtalkId 获取被查看用户工号，单次最多 50 个。
+//
+// @param tmpReq - BatchGetUserIdByOpenDingtalkIdRequest
+//
+// @param tmpHeader - BatchGetUserIdByOpenDingtalkIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetUserIdByOpenDingtalkIdResponse
+func (client *Client) BatchGetUserIdByOpenDingtalkIdWithOptions(tmpReq *BatchGetUserIdByOpenDingtalkIdRequest, tmpHeader *BatchGetUserIdByOpenDingtalkIdHeaders, runtime *dara.RuntimeOptions) (_result *BatchGetUserIdByOpenDingtalkIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchGetUserIdByOpenDingtalkIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &BatchGetUserIdByOpenDingtalkIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.OpenDingtalkIds) {
+		request.OpenDingtalkIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenDingtalkIds, dara.String("openDingtalkIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !dara.IsNil(request.OpenDingtalkIdsShrink) {
+		body["openDingtalkIds"] = request.OpenDingtalkIdsShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetUserIdByOpenDingtalkId"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/im/batchGetUserIdByOpenDingtalkId"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetUserIdByOpenDingtalkIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量根据操作人工号与 openDingtalkId 获取被查看用户工号，单次最多 50 个。
+//
+// @param request - BatchGetUserIdByOpenDingtalkIdRequest
+//
+// @return BatchGetUserIdByOpenDingtalkIdResponse
+func (client *Client) BatchGetUserIdByOpenDingtalkId(request *BatchGetUserIdByOpenDingtalkIdRequest) (_result *BatchGetUserIdByOpenDingtalkIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &BatchGetUserIdByOpenDingtalkIdHeaders{}
+	_result = &BatchGetUserIdByOpenDingtalkIdResponse{}
+	_body, _err := client.BatchGetUserIdByOpenDingtalkIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询群成员
 //
 // @param tmpReq - BatchQueryGroupMemberRequest
