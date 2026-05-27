@@ -9,8 +9,12 @@ type iGetYikeAgentJobResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCreateTime(v string) *GetYikeAgentJobResponseBody
+	GetCreateTime() *string
 	SetErrorCode(v string) *GetYikeAgentJobResponseBody
 	GetErrorCode() *string
+	SetFinishTime(v string) *GetYikeAgentJobResponseBody
+	GetFinishTime() *string
 	SetJobId(v string) *GetYikeAgentJobResponseBody
 	GetJobId() *string
 	SetJobParams(v string) *GetYikeAgentJobResponseBody
@@ -28,10 +32,12 @@ type iGetYikeAgentJobResponseBody interface {
 }
 
 type GetYikeAgentJobResponseBody struct {
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
 	//
 	// WorkflowTaskFailed
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// example:
 	//
 	// ab4802364a2e49208c99efab82df****
@@ -67,8 +73,16 @@ func (s GetYikeAgentJobResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetYikeAgentJobResponseBody) GetCreateTime() *string {
+	return s.CreateTime
+}
+
 func (s *GetYikeAgentJobResponseBody) GetErrorCode() *string {
 	return s.ErrorCode
+}
+
+func (s *GetYikeAgentJobResponseBody) GetFinishTime() *string {
+	return s.FinishTime
 }
 
 func (s *GetYikeAgentJobResponseBody) GetJobId() *string {
@@ -99,8 +113,18 @@ func (s *GetYikeAgentJobResponseBody) GetUserData() *string {
 	return s.UserData
 }
 
+func (s *GetYikeAgentJobResponseBody) SetCreateTime(v string) *GetYikeAgentJobResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *GetYikeAgentJobResponseBody) SetErrorCode(v string) *GetYikeAgentJobResponseBody {
 	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetYikeAgentJobResponseBody) SetFinishTime(v string) *GetYikeAgentJobResponseBody {
+	s.FinishTime = &v
 	return s
 }
 
