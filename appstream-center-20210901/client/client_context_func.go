@@ -1468,6 +1468,50 @@ func (client *Client) DeliverToUserSlsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 查询研发主机详情
+//
+// @param request - DescribeWuyingServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWuyingServerResponse
+func (client *Client) DescribeWuyingServerWithContext(ctx context.Context, request *DescribeWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *DescribeWuyingServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WuyingServerId) {
+		body["WuyingServerId"] = request.WuyingServerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWuyingServer"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWuyingServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the Elastic IP Addresses (EIPs) of workstations.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
