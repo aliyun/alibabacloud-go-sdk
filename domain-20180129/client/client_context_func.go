@@ -768,6 +768,10 @@ func (client *Client) CreateIntlFixedPriceDomainOrderWithContext(ctx context.Con
 		query["ExpectedPrice"] = request.ExpectedPrice
 	}
 
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4280,6 +4284,10 @@ func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithContext(ctx cont
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ServiceType) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	if !dara.IsNil(request.Status) {

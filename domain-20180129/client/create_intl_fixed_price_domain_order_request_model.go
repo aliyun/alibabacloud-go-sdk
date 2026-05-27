@@ -17,6 +17,8 @@ type iCreateIntlFixedPriceDomainOrderRequest interface {
 	GetDomain() *string
 	SetExpectedPrice(v int64) *CreateIntlFixedPriceDomainOrderRequest
 	GetExpectedPrice() *int64
+	SetProductType(v int32) *CreateIntlFixedPriceDomainOrderRequest
+	GetProductType() *int32
 }
 
 type CreateIntlFixedPriceDomainOrderRequest struct {
@@ -36,6 +38,7 @@ type CreateIntlFixedPriceDomainOrderRequest struct {
 	//
 	// 58.00
 	ExpectedPrice *int64 `json:"ExpectedPrice,omitempty" xml:"ExpectedPrice,omitempty"`
+	ProductType   *int32 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s CreateIntlFixedPriceDomainOrderRequest) String() string {
@@ -62,6 +65,10 @@ func (s *CreateIntlFixedPriceDomainOrderRequest) GetExpectedPrice() *int64 {
 	return s.ExpectedPrice
 }
 
+func (s *CreateIntlFixedPriceDomainOrderRequest) GetProductType() *int32 {
+	return s.ProductType
+}
+
 func (s *CreateIntlFixedPriceDomainOrderRequest) SetAutoPay(v bool) *CreateIntlFixedPriceDomainOrderRequest {
 	s.AutoPay = &v
 	return s
@@ -79,6 +86,11 @@ func (s *CreateIntlFixedPriceDomainOrderRequest) SetDomain(v string) *CreateIntl
 
 func (s *CreateIntlFixedPriceDomainOrderRequest) SetExpectedPrice(v int64) *CreateIntlFixedPriceDomainOrderRequest {
 	s.ExpectedPrice = &v
+	return s
+}
+
+func (s *CreateIntlFixedPriceDomainOrderRequest) SetProductType(v int32) *CreateIntlFixedPriceDomainOrderRequest {
+	s.ProductType = &v
 	return s
 }
 

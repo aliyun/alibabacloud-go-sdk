@@ -1041,6 +1041,10 @@ func (client *Client) CreateIntlFixedPriceDomainOrderWithOptions(request *Create
 		query["ExpectedPrice"] = request.ExpectedPrice
 	}
 
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5529,6 +5533,10 @@ func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request 
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ServiceType) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	if !dara.IsNil(request.Status) {

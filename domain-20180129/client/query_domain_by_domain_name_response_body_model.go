@@ -9,6 +9,8 @@ type iQueryDomainByDomainNameResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCnnicPrivacyServiceStatus(v string) *QueryDomainByDomainNameResponseBody
+	GetCnnicPrivacyServiceStatus() *string
 	SetDnsList(v *QueryDomainByDomainNameResponseBodyDnsList) *QueryDomainByDomainNameResponseBody
 	GetDnsList() *QueryDomainByDomainNameResponseBodyDnsList
 	SetDomainGroupId(v int64) *QueryDomainByDomainNameResponseBody
@@ -43,6 +45,8 @@ type iQueryDomainByDomainNameResponseBody interface {
 	GetInstanceId() *string
 	SetPremium(v bool) *QueryDomainByDomainNameResponseBody
 	GetPremium() *bool
+	SetPrivacyServiceStatus(v string) *QueryDomainByDomainNameResponseBody
+	GetPrivacyServiceStatus() *string
 	SetRealNameStatus(v string) *QueryDomainByDomainNameResponseBody
 	GetRealNameStatus() *string
 	SetRegistrantName(v string) *QueryDomainByDomainNameResponseBody
@@ -82,7 +86,11 @@ type iQueryDomainByDomainNameResponseBody interface {
 }
 
 type QueryDomainByDomainNameResponseBody struct {
-	DnsList *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	// example:
+	//
+	// UN_SUPPORT
+	CnnicPrivacyServiceStatus *string                                     `json:"CnnicPrivacyServiceStatus,omitempty" xml:"CnnicPrivacyServiceStatus,omitempty"`
+	DnsList                   *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
 	// The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
 	//
 	// example:
@@ -203,6 +211,10 @@ type QueryDomainByDomainNameResponseBody struct {
 	//
 	// false
 	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// UN_SUPPORT
+	PrivacyServiceStatus *string `json:"PrivacyServiceStatus,omitempty" xml:"PrivacyServiceStatus,omitempty"`
 	// The status of real-name verification for the domain name. Valid values:
 	//
 	// 	- **NONAUDIT**: The real-name verification is not performed.
@@ -331,6 +343,10 @@ func (s QueryDomainByDomainNameResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *QueryDomainByDomainNameResponseBody) GetCnnicPrivacyServiceStatus() *string {
+	return s.CnnicPrivacyServiceStatus
+}
+
 func (s *QueryDomainByDomainNameResponseBody) GetDnsList() *QueryDomainByDomainNameResponseBodyDnsList {
 	return s.DnsList
 }
@@ -397,6 +413,10 @@ func (s *QueryDomainByDomainNameResponseBody) GetInstanceId() *string {
 
 func (s *QueryDomainByDomainNameResponseBody) GetPremium() *bool {
 	return s.Premium
+}
+
+func (s *QueryDomainByDomainNameResponseBody) GetPrivacyServiceStatus() *string {
+	return s.PrivacyServiceStatus
 }
 
 func (s *QueryDomainByDomainNameResponseBody) GetRealNameStatus() *string {
@@ -469,6 +489,11 @@ func (s *QueryDomainByDomainNameResponseBody) GetZhRegistrantName() *string {
 
 func (s *QueryDomainByDomainNameResponseBody) GetZhRegistrantOrganization() *string {
 	return s.ZhRegistrantOrganization
+}
+
+func (s *QueryDomainByDomainNameResponseBody) SetCnnicPrivacyServiceStatus(v string) *QueryDomainByDomainNameResponseBody {
+	s.CnnicPrivacyServiceStatus = &v
+	return s
 }
 
 func (s *QueryDomainByDomainNameResponseBody) SetDnsList(v *QueryDomainByDomainNameResponseBodyDnsList) *QueryDomainByDomainNameResponseBody {
@@ -553,6 +578,11 @@ func (s *QueryDomainByDomainNameResponseBody) SetInstanceId(v string) *QueryDoma
 
 func (s *QueryDomainByDomainNameResponseBody) SetPremium(v bool) *QueryDomainByDomainNameResponseBody {
 	s.Premium = &v
+	return s
+}
+
+func (s *QueryDomainByDomainNameResponseBody) SetPrivacyServiceStatus(v string) *QueryDomainByDomainNameResponseBody {
+	s.PrivacyServiceStatus = &v
 	return s
 }
 

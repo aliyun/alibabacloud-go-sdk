@@ -13,6 +13,8 @@ type iSaveBatchTaskForDomainNameProxyServiceRequest interface {
 	GetDomainName() []*string
 	SetLang(v string) *SaveBatchTaskForDomainNameProxyServiceRequest
 	GetLang() *string
+	SetServiceType(v string) *SaveBatchTaskForDomainNameProxyServiceRequest
+	GetServiceType() *string
 	SetStatus(v bool) *SaveBatchTaskForDomainNameProxyServiceRequest
 	GetStatus() *bool
 	SetUserClientIp(v string) *SaveBatchTaskForDomainNameProxyServiceRequest
@@ -30,6 +32,10 @@ type SaveBatchTaskForDomainNameProxyServiceRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cnnicRegistryService
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -58,6 +64,10 @@ func (s *SaveBatchTaskForDomainNameProxyServiceRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *SaveBatchTaskForDomainNameProxyServiceRequest) GetServiceType() *string {
+	return s.ServiceType
+}
+
 func (s *SaveBatchTaskForDomainNameProxyServiceRequest) GetStatus() *bool {
 	return s.Status
 }
@@ -73,6 +83,11 @@ func (s *SaveBatchTaskForDomainNameProxyServiceRequest) SetDomainName(v []*strin
 
 func (s *SaveBatchTaskForDomainNameProxyServiceRequest) SetLang(v string) *SaveBatchTaskForDomainNameProxyServiceRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *SaveBatchTaskForDomainNameProxyServiceRequest) SetServiceType(v string) *SaveBatchTaskForDomainNameProxyServiceRequest {
+	s.ServiceType = &v
 	return s
 }
 

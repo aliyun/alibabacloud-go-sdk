@@ -9,6 +9,8 @@ type iQueryDomainByInstanceIdResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCnnicPrivacyServiceStatus(v string) *QueryDomainByInstanceIdResponseBody
+	GetCnnicPrivacyServiceStatus() *string
 	SetDnsList(v *QueryDomainByInstanceIdResponseBodyDnsList) *QueryDomainByInstanceIdResponseBody
 	GetDnsList() *QueryDomainByInstanceIdResponseBodyDnsList
 	SetDomainGroupId(v int64) *QueryDomainByInstanceIdResponseBody
@@ -84,7 +86,11 @@ type iQueryDomainByInstanceIdResponseBody interface {
 }
 
 type QueryDomainByInstanceIdResponseBody struct {
-	DnsList *QueryDomainByInstanceIdResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	// example:
+	//
+	// UN_SUPPORT
+	CnnicPrivacyServiceStatus *string                                     `json:"CnnicPrivacyServiceStatus,omitempty" xml:"CnnicPrivacyServiceStatus,omitempty"`
+	DnsList                   *QueryDomainByInstanceIdResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1234
@@ -146,7 +152,10 @@ type QueryDomainByInstanceIdResponseBody struct {
 	// example:
 	//
 	// false
-	Premium              *bool   `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// UN_SUPPORT
 	PrivacyServiceStatus *string `json:"PrivacyServiceStatus,omitempty" xml:"PrivacyServiceStatus,omitempty"`
 	// example:
 	//
@@ -212,6 +221,10 @@ func (s QueryDomainByInstanceIdResponseBody) String() string {
 
 func (s QueryDomainByInstanceIdResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDomainByInstanceIdResponseBody) GetCnnicPrivacyServiceStatus() *string {
+	return s.CnnicPrivacyServiceStatus
 }
 
 func (s *QueryDomainByInstanceIdResponseBody) GetDnsList() *QueryDomainByInstanceIdResponseBodyDnsList {
@@ -356,6 +369,11 @@ func (s *QueryDomainByInstanceIdResponseBody) GetZhRegistrantName() *string {
 
 func (s *QueryDomainByInstanceIdResponseBody) GetZhRegistrantOrganization() *string {
 	return s.ZhRegistrantOrganization
+}
+
+func (s *QueryDomainByInstanceIdResponseBody) SetCnnicPrivacyServiceStatus(v string) *QueryDomainByInstanceIdResponseBody {
+	s.CnnicPrivacyServiceStatus = &v
+	return s
 }
 
 func (s *QueryDomainByInstanceIdResponseBody) SetDnsList(v *QueryDomainByInstanceIdResponseBodyDnsList) *QueryDomainByInstanceIdResponseBody {
