@@ -97,6 +97,166 @@ func (client *Client) AddHotlineNumberWithContext(ctx context.Context, tmpReq *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加呼入号码
+//
+// @param tmpReq - AddInboundNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddInboundNumberResponse
+func (client *Client) AddInboundNumberWithContext(ctx context.Context, tmpReq *AddInboundNumberRequest, runtime *dara.RuntimeOptions) (_result *AddInboundNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddInboundNumberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InboundNumbers) {
+		request.InboundNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InboundNumbers, dara.String("InboundNumbers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCode) {
+		query["ApplicationCode"] = request.ApplicationCode
+	}
+
+	if !dara.IsNil(request.InboundNumbersShrink) {
+		query["InboundNumbers"] = request.InboundNumbersShrink
+	}
+
+	if !dara.IsNil(request.InboundType) {
+		query["InboundType"] = request.InboundType
+	}
+
+	if !dara.IsNil(request.LineCode) {
+		query["LineCode"] = request.LineCode
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddInboundNumber"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddInboundNumberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AddLargeModel
+//
+// @param tmpReq - AddLargeModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddLargeModelResponse
+func (client *Client) AddLargeModelWithContext(ctx context.Context, tmpReq *AddLargeModelRequest, runtime *dara.RuntimeOptions) (_result *AddLargeModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddLargeModelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BaseModel) {
+		request.BaseModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BaseModel, dara.String("BaseModel"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthCode) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !dara.IsNil(request.BaseModelShrink) {
+		query["BaseModel"] = request.BaseModelShrink
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelUrl) {
+		query["ModelUrl"] = request.ModelUrl
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		query["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.TopP) {
+		query["TopP"] = request.TopP
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddLargeModel"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddLargeModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - AddOuterAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9639,6 +9799,76 @@ func (client *Client) TerminateAiOutboundTaskWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// # TestLargeModel
+//
+// @param tmpReq - TestLargeModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TestLargeModelResponse
+func (client *Client) TestLargeModelWithContext(ctx context.Context, tmpReq *TestLargeModelRequest, runtime *dara.RuntimeOptions) (_result *TestLargeModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &TestLargeModelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BaseModel) {
+		request.BaseModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BaseModel, dara.String("BaseModel"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseModelShrink) {
+		query["BaseModel"] = request.BaseModelShrink
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		query["ModelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.UserDialogContent) {
+		query["UserDialogContent"] = request.UserDialogContent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TestLargeModel"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TestLargeModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - TransferCallToSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10043,6 +10273,96 @@ func (client *Client) UpdateDepartmentWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDepartmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateLargeModel
+//
+// @param tmpReq - UpdateLargeModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLargeModelResponse
+func (client *Client) UpdateLargeModelWithContext(ctx context.Context, tmpReq *UpdateLargeModelRequest, runtime *dara.RuntimeOptions) (_result *UpdateLargeModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateLargeModelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BaseModel) {
+		request.BaseModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BaseModel, dara.String("BaseModel"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthCode) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !dara.IsNil(request.BaseModelShrink) {
+		query["BaseModel"] = request.BaseModelShrink
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		query["ModelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelUrl) {
+		query["ModelUrl"] = request.ModelUrl
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Temperature) {
+		query["Temperature"] = request.Temperature
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.TopP) {
+		query["TopP"] = request.TopP
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLargeModel"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLargeModelResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
