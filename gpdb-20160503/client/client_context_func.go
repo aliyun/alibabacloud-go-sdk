@@ -12145,6 +12145,66 @@ func (client *Client) ListStreamingJobsWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// # Query the label List of Supabase instances
+//
+// @param request - ListSupabaseProjectTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupabaseProjectTagsResponse
+func (client *Client) ListSupabaseProjectTagsWithContext(ctx context.Context, request *ListSupabaseProjectTagsRequest, runtime *dara.RuntimeOptions) (_result *ListSupabaseProjectTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSupabaseProjectTags"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSupabaseProjectTagsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a paginated list of Supabase instances in your account. You can filter the list by region.
 //
 // Description:
@@ -14131,6 +14191,58 @@ func (client *Client) ModifySupabaseAutoScalePolicyWithContext(ctx context.Conte
 
 // Summary:
 //
+// # Modify the Supabase project description
+//
+// @param request - ModifySupabaseProjectDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseProjectDescriptionResponse
+func (client *Client) ModifySupabaseProjectDescriptionWithContext(ctx context.Context, request *ModifySupabaseProjectDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseProjectDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectDescription) {
+		query["ProjectDescription"] = request.ProjectDescription
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySupabaseProjectDescription"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySupabaseProjectDescriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modify the resources of a Supabase instance. You can upgrade or decrease the quota of compute resources and scale out storage resources (disk size).
 //
 // @param request - ModifySupabaseProjectResourceRequest
@@ -15683,6 +15795,62 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
+// # Supabase project labeling
+//
+// @param request - TagSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagSupabaseProjectResponse
+func (client *Client) TagSupabaseProjectWithContext(ctx context.Context, request *TagSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *TagSupabaseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagSupabaseProject"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagSupabaseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates text embeddings using an embedding model.
 //
 // @param tmpReq - TextEmbeddingRequest
@@ -15939,6 +16107,66 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Detach labels from a Supabase instance
+//
+// @param request - UntagSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagSupabaseProjectResponse
+func (client *Client) UntagSupabaseProjectWithContext(ctx context.Context, request *UntagSupabaseProjectRequest, runtime *dara.RuntimeOptions) (_result *UntagSupabaseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKey) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagSupabaseProject"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagSupabaseProjectResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
