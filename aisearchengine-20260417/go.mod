@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/aisearchengine-20260417
+module github.com/alibabacloud-go/aisearchengine-20260417/v2
 
 go 1.14
 

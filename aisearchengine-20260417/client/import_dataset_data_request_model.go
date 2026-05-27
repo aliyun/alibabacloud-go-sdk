@@ -9,19 +9,17 @@ type iImportDatasetDataRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetId(v int64) *ImportDatasetDataRequest
-	GetDatasetId() *int64
+	SetDatasetId(v string) *ImportDatasetDataRequest
+	GetDatasetId() *string
 	SetRecords(v []map[string]interface{}) *ImportDatasetDataRequest
 	GetRecords() []map[string]interface{}
 }
 
 type ImportDatasetDataRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 730
-	DatasetId *int64 `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
 	// This parameter is required.
 	Records []map[string]interface{} `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 }
@@ -34,7 +32,7 @@ func (s ImportDatasetDataRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ImportDatasetDataRequest) GetDatasetId() *int64 {
+func (s *ImportDatasetDataRequest) GetDatasetId() *string {
 	return s.DatasetId
 }
 
@@ -42,7 +40,7 @@ func (s *ImportDatasetDataRequest) GetRecords() []map[string]interface{} {
 	return s.Records
 }
 
-func (s *ImportDatasetDataRequest) SetDatasetId(v int64) *ImportDatasetDataRequest {
+func (s *ImportDatasetDataRequest) SetDatasetId(v string) *ImportDatasetDataRequest {
 	s.DatasetId = &v
 	return s
 }

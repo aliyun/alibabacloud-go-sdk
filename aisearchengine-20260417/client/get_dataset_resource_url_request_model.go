@@ -9,19 +9,17 @@ type iGetDatasetResourceUrlRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetId(v int64) *GetDatasetResourceUrlRequest
-	GetDatasetId() *int64
+	SetDatasetId(v string) *GetDatasetResourceUrlRequest
+	GetDatasetId() *string
 	SetPrimaryKey(v string) *GetDatasetResourceUrlRequest
 	GetPrimaryKey() *string
 }
 
 type GetDatasetResourceUrlRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 730
-	DatasetId *int64 `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -38,7 +36,7 @@ func (s GetDatasetResourceUrlRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetDatasetResourceUrlRequest) GetDatasetId() *int64 {
+func (s *GetDatasetResourceUrlRequest) GetDatasetId() *string {
 	return s.DatasetId
 }
 
@@ -46,7 +44,7 @@ func (s *GetDatasetResourceUrlRequest) GetPrimaryKey() *string {
 	return s.PrimaryKey
 }
 
-func (s *GetDatasetResourceUrlRequest) SetDatasetId(v int64) *GetDatasetResourceUrlRequest {
+func (s *GetDatasetResourceUrlRequest) SetDatasetId(v string) *GetDatasetResourceUrlRequest {
 	s.DatasetId = &v
 	return s
 }
