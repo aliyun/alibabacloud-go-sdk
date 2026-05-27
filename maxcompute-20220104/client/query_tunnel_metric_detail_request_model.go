@@ -11,6 +11,8 @@ type iQueryTunnelMetricDetailRequest interface {
 	GoString() string
 	SetAscOrder(v bool) *QueryTunnelMetricDetailRequest
 	GetAscOrder() *bool
+	SetCodeList(v []*int64) *QueryTunnelMetricDetailRequest
+	GetCodeList() []*int64
 	SetGroupList(v []*string) *QueryTunnelMetricDetailRequest
 	GetGroupList() []*string
 	SetLimit(v int64) *QueryTunnelMetricDetailRequest
@@ -36,6 +38,7 @@ type QueryTunnelMetricDetailRequest struct {
 	//
 	// false
 	AscOrder  *bool     `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	CodeList  []*int64  `json:"codeList,omitempty" xml:"codeList,omitempty" type:"Repeated"`
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -81,6 +84,10 @@ func (s *QueryTunnelMetricDetailRequest) GetAscOrder() *bool {
 	return s.AscOrder
 }
 
+func (s *QueryTunnelMetricDetailRequest) GetCodeList() []*int64 {
+	return s.CodeList
+}
+
 func (s *QueryTunnelMetricDetailRequest) GetGroupList() []*string {
 	return s.GroupList
 }
@@ -119,6 +126,11 @@ func (s *QueryTunnelMetricDetailRequest) GetStartTime() *int64 {
 
 func (s *QueryTunnelMetricDetailRequest) SetAscOrder(v bool) *QueryTunnelMetricDetailRequest {
 	s.AscOrder = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetCodeList(v []*int64) *QueryTunnelMetricDetailRequest {
+	s.CodeList = v
 	return s
 }
 

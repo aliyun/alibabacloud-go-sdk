@@ -21,8 +21,6 @@ type iListComputeMetricsByInstanceRequest interface {
 	GetPageSize() *int64
 	SetProjectNames(v []*string) *ListComputeMetricsByInstanceRequest
 	GetProjectNames() []*string
-	SetRegion(v string) *ListComputeMetricsByInstanceRequest
-	GetRegion() *string
 	SetSignature(v string) *ListComputeMetricsByInstanceRequest
 	GetSignature() *string
 	SetSpecCodes(v []*string) *ListComputeMetricsByInstanceRequest
@@ -66,12 +64,6 @@ type ListComputeMetricsByInstanceRequest struct {
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The name of MaxCompute project.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The signature of the SQL job.
 	//
 	// example:
@@ -122,10 +114,6 @@ func (s *ListComputeMetricsByInstanceRequest) GetProjectNames() []*string {
 	return s.ProjectNames
 }
 
-func (s *ListComputeMetricsByInstanceRequest) GetRegion() *string {
-	return s.Region
-}
-
 func (s *ListComputeMetricsByInstanceRequest) GetSignature() *string {
 	return s.Signature
 }
@@ -169,11 +157,6 @@ func (s *ListComputeMetricsByInstanceRequest) SetPageSize(v int64) *ListComputeM
 
 func (s *ListComputeMetricsByInstanceRequest) SetProjectNames(v []*string) *ListComputeMetricsByInstanceRequest {
 	s.ProjectNames = v
-	return s
-}
-
-func (s *ListComputeMetricsByInstanceRequest) SetRegion(v string) *ListComputeMetricsByInstanceRequest {
-	s.Region = &v
 	return s
 }
 

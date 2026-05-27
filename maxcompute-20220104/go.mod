@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/maxcompute-20220104/v4
+module github.com/alibabacloud-go/maxcompute-20220104/v5
 
 go 1.14
 

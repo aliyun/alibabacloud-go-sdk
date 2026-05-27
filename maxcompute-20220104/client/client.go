@@ -3314,10 +3314,6 @@ func (client *Client) ListComputeMetricsByInstanceWithOptions(request *ListCompu
 		body["projectNames"] = request.ProjectNames
 	}
 
-	if !dara.IsNil(request.Region) {
-		body["region"] = request.Region
-	}
-
 	if !dara.IsNil(request.Signature) {
 		body["signature"] = request.Signature
 	}
@@ -3370,6 +3366,104 @@ func (client *Client) ListComputeMetricsByInstance(request *ListComputeMetricsBy
 	headers := make(map[string]*string)
 	_result = &ListComputeMetricsByInstanceResponse{}
 	_body, _err := client.ListComputeMetricsByInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按Signature查看作业计算使用量明细
+//
+// @param request - ListComputeMetricsBySignatureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListComputeMetricsBySignatureResponse
+func (client *Client) ListComputeMetricsBySignatureWithOptions(request *ListComputeMetricsBySignatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListComputeMetricsBySignatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobOwner) {
+		body["jobOwner"] = request.JobOwner
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.Signature) {
+		body["signature"] = request.Signature
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.Types) {
+		body["types"] = request.Types
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListComputeMetricsBySignature"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/computeMetrics/listBySignature"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListComputeMetricsBySignatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按Signature查看作业计算使用量明细
+//
+// @param request - ListComputeMetricsBySignatureRequest
+//
+// @return ListComputeMetricsBySignatureResponse
+func (client *Client) ListComputeMetricsBySignature(request *ListComputeMetricsBySignatureRequest) (_result *ListComputeMetricsBySignatureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListComputeMetricsBySignatureResponse{}
+	_body, _err := client.ListComputeMetricsBySignatureWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3498,6 +3592,76 @@ func (client *Client) ListFunctions(projectName *string, request *ListFunctionsR
 	headers := make(map[string]*string)
 	_result = &ListFunctionsResponse{}
 	_body, _err := client.ListFunctionsWithOptions(projectName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取需要进行成本分析的项目或者实例
+//
+// @param request - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["startDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstances"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/bills/instances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取需要进行成本分析的项目或者实例
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4711,6 +4875,92 @@ func (client *Client) ListMmsTimerLogs(sourceId *string, timerId *string, reques
 
 // Summary:
 //
+// # ListMmsTimers
+//
+// @param request - ListMmsTimersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMmsTimersResponse
+func (client *Client) ListMmsTimersWithOptions(sourceId *string, request *ListMmsTimersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsTimersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SrcDbName) {
+		query["srcDbName"] = request.SrcDbName
+	}
+
+	if !dara.IsNil(request.SrcTableName) {
+		query["srcTableName"] = request.SrcTableName
+	}
+
+	if !dara.IsNil(request.Stopped) {
+		query["stopped"] = request.Stopped
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMmsTimers"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMmsTimersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListMmsTimers
+//
+// @param request - ListMmsTimersRequest
+//
+// @return ListMmsTimersResponse
+func (client *Client) ListMmsTimers(sourceId *string, request *ListMmsTimersRequest) (_result *ListMmsTimersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMmsTimersResponse{}
+	_body, _err := client.ListMmsTimersWithOptions(sourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the packages in a MaxCompute project.
 //
 // @param headers - map
@@ -5220,7 +5470,7 @@ func (client *Client) ListStoragePartitionsInfoWithOptions(project *string, tabl
 	request := &ListStoragePartitionsInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.Types) {
-		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, dara.String("types"), dara.String("json"))
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, dara.String("types"), dara.String("simple"))
 	}
 
 	query := map[string]interface{}{}
@@ -6147,6 +6397,10 @@ func (client *Client) QueryTunnelMetricDetailWithOptions(metric *string, request
 		body["ascOrder"] = request.AscOrder
 	}
 
+	if !dara.IsNil(request.CodeList) {
+		body["codeList"] = request.CodeList
+	}
+
 	if !dara.IsNil(request.GroupList) {
 		body["groupList"] = request.GroupList
 	}
@@ -6271,6 +6525,66 @@ func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *Ret
 
 // Summary:
 //
+// # RetryMmsTask
+//
+// @param request - RetryMmsTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryMmsTaskResponse
+func (client *Client) RetryMmsTaskWithOptions(sourceId *string, taskId *string, request *RetryMmsTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetryMmsTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryMmsTask"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/tasks/" + dara.PercentEncode(dara.StringValue(taskId)) + "/retry"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryMmsTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # RetryMmsTask
+//
+// @param request - RetryMmsTaskRequest
+//
+// @return RetryMmsTaskResponse
+func (client *Client) RetryMmsTask(sourceId *string, taskId *string, request *RetryMmsTaskRequest) (_result *RetryMmsTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RetryMmsTaskResponse{}
+	_body, _err := client.RetryMmsTaskWithOptions(sourceId, taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a migration job.
 //
 // @param headers - map
@@ -6369,6 +6683,416 @@ func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *Stop
 	return _result, _err
 }
 
+// Summary:
+//
+// 按实例统计或者按计费项统计费用信息
+//
+// @param request - SumBillsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SumBillsResponse
+func (client *Client) SumBillsWithOptions(request *SumBillsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumBillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatsType) {
+		body["statsType"] = request.StatsType
+	}
+
+	if !dara.IsNil(request.TopN) {
+		body["topN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SumBills"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/bills/sum"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SumBillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按实例统计或者按计费项统计费用信息
+//
+// @param request - SumBillsRequest
+//
+// @return SumBillsResponse
+func (client *Client) SumBills(request *SumBillsRequest) (_result *SumBillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SumBillsResponse{}
+	_body, _err := client.SumBillsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按实例统计或者按计费项逐日进行费用统计
+//
+// @param request - SumBillsByDateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SumBillsByDateResponse
+func (client *Client) SumBillsByDateWithOptions(request *SumBillsByDateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumBillsByDateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatsType) {
+		body["statsType"] = request.StatsType
+	}
+
+	if !dara.IsNil(request.TopN) {
+		body["topN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SumBillsByDate"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/bills/sumByDate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SumBillsByDateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按实例统计或者按计费项逐日进行费用统计
+//
+// @param request - SumBillsByDateRequest
+//
+// @return SumBillsByDateResponse
+func (client *Client) SumBillsByDate(request *SumBillsByDateRequest) (_result *SumBillsByDateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SumBillsByDateResponse{}
+	_body, _err := client.SumBillsByDateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按项目或者实例统计计算用量
+//
+// @param request - SumComputeMetricsByRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SumComputeMetricsByRecordResponse
+func (client *Client) SumComputeMetricsByRecordWithOptions(request *SumComputeMetricsByRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumComputeMetricsByRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SumComputeMetricsByRecord"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/computeMetrics/sumByRecord"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SumComputeMetricsByRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按项目或者实例统计计算用量
+//
+// @param request - SumComputeMetricsByRecordRequest
+//
+// @return SumComputeMetricsByRecordResponse
+func (client *Client) SumComputeMetricsByRecord(request *SumComputeMetricsByRecordRequest) (_result *SumComputeMetricsByRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SumComputeMetricsByRecordResponse{}
+	_body, _err := client.SumComputeMetricsByRecordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 统计扫描量计算类的使用量或者CU时计算类使用量
+//
+// @param request - SumComputeMetricsByUsageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SumComputeMetricsByUsageResponse
+func (client *Client) SumComputeMetricsByUsageWithOptions(request *SumComputeMetricsByUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumComputeMetricsByUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UsageType) {
+		body["usageType"] = request.UsageType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SumComputeMetricsByUsage"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/computeMetrics/sumByUsage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SumComputeMetricsByUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 统计扫描量计算类的使用量或者CU时计算类使用量
+//
+// @param request - SumComputeMetricsByUsageRequest
+//
+// @return SumComputeMetricsByUsageResponse
+func (client *Client) SumComputeMetricsByUsage(request *SumComputeMetricsByUsageRequest) (_result *SumComputeMetricsByUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SumComputeMetricsByUsageResponse{}
+	_body, _err := client.SumComputeMetricsByUsageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按实例统或者按计费项统计的明细信息
+//
+// @param request - SumDailyBillsByItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SumDailyBillsByItemResponse
+func (client *Client) SumDailyBillsByItemWithOptions(request *SumDailyBillsByItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumDailyBillsByItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatsType) {
+		body["statsType"] = request.StatsType
+	}
+
+	if !dara.IsNil(request.Types) {
+		body["types"] = request.Types
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SumDailyBillsByItem"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/dailyBills/sumByItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SumDailyBillsByItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按实例统或者按计费项统计的明细信息
+//
+// @param request - SumDailyBillsByItemRequest
+//
+// @return SumDailyBillsByItemResponse
+func (client *Client) SumDailyBillsByItem(request *SumDailyBillsByItemRequest) (_result *SumDailyBillsByItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SumDailyBillsByItemResponse{}
+	_body, _err := client.SumDailyBillsByItemWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按照project或者存储类型按天统计存储用量
+//
 // @param request - SumStorageMetricsByDateRequest
 //
 // @param headers - map
@@ -6392,20 +7116,12 @@ func (client *Client) SumStorageMetricsByDateWithOptions(request *SumStorageMetr
 		body["projectNames"] = request.ProjectNames
 	}
 
-	if !dara.IsNil(request.Region) {
-		body["region"] = request.Region
-	}
-
 	if !dara.IsNil(request.StartDate) {
 		body["startDate"] = request.StartDate
 	}
 
 	if !dara.IsNil(request.StatsType) {
 		body["statsType"] = request.StatsType
-	}
-
-	if !dara.IsNil(request.UserId) {
-		body["userId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6432,6 +7148,10 @@ func (client *Client) SumStorageMetricsByDateWithOptions(request *SumStorageMetr
 	return _result, _err
 }
 
+// Summary:
+//
+// 按照project或者存储类型按天统计存储用量
+//
 // @param request - SumStorageMetricsByDateRequest
 //
 // @return SumStorageMetricsByDateResponse
@@ -6440,6 +7160,144 @@ func (client *Client) SumStorageMetricsByDate(request *SumStorageMetricsByDateRe
 	headers := make(map[string]*string)
 	_result = &SumStorageMetricsByDateResponse{}
 	_body, _err := client.SumStorageMetricsByDateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 按项目统计各种类型存储使用量统计
+//
+// @param request - SumStorageMetricsByTypeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SumStorageMetricsByTypeResponse
+func (client *Client) SumStorageMetricsByTypeWithOptions(request *SumStorageMetricsByTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SumStorageMetricsByTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.ProjectNames) {
+		body["projectNames"] = request.ProjectNames
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatsType) {
+		body["statsType"] = request.StatsType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SumStorageMetricsByType"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/storageMetrics/sumByType"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SumStorageMetricsByTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 按项目统计各种类型存储使用量统计
+//
+// @param request - SumStorageMetricsByTypeRequest
+//
+// @return SumStorageMetricsByTypeResponse
+func (client *Client) SumStorageMetricsByType(request *SumStorageMetricsByTypeRequest) (_result *SumStorageMetricsByTypeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SumStorageMetricsByTypeResponse{}
+	_body, _err := client.SumStorageMetricsByTypeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # TriggerMmsTimer
+//
+// @param request - TriggerMmsTimerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerMmsTimerResponse
+func (client *Client) TriggerMmsTimerWithOptions(sourceId *string, timerId *string, request *TriggerMmsTimerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TriggerMmsTimerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TriggerMmsTimer"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers/" + dara.PercentEncode(dara.StringValue(timerId)) + "/trigger"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TriggerMmsTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # TriggerMmsTimer
+//
+// @param request - TriggerMmsTimerRequest
+//
+// @return TriggerMmsTimerResponse
+func (client *Client) TriggerMmsTimer(sourceId *string, timerId *string, request *TriggerMmsTimerRequest) (_result *TriggerMmsTimerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TriggerMmsTimerResponse{}
+	_body, _err := client.TriggerMmsTimerWithOptions(sourceId, timerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6745,6 +7603,318 @@ func (client *Client) UpdateMmsDataSource(sourceId *string, request *UpdateMmsDa
 	headers := make(map[string]*string)
 	_result = &UpdateMmsDataSourceResponse{}
 	_body, _err := client.UpdateMmsDataSourceWithOptions(sourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 功能：
+//
+// @param request - UpdateMmsDbRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmsDbResponse
+func (client *Client) UpdateMmsDbWithOptions(sourceId *string, dbId *string, request *UpdateMmsDbRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMmsDbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DstName) {
+		body["dstName"] = request.DstName
+	}
+
+	if !dara.IsNil(request.DstProjectName) {
+		body["dstProjectName"] = request.DstProjectName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmsDb"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/dbs/" + dara.PercentEncode(dara.StringValue(dbId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmsDbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 功能：
+//
+// @param request - UpdateMmsDbRequest
+//
+// @return UpdateMmsDbResponse
+func (client *Client) UpdateMmsDb(sourceId *string, dbId *string, request *UpdateMmsDbRequest) (_result *UpdateMmsDbResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMmsDbResponse{}
+	_body, _err := client.UpdateMmsDbWithOptions(sourceId, dbId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新表元数据
+//
+// @param request - UpdateMmsTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmsTableResponse
+func (client *Client) UpdateMmsTableWithOptions(sourceId *string, tableId *string, request *UpdateMmsTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMmsTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DstName) {
+		body["dstName"] = request.DstName
+	}
+
+	if !dara.IsNil(request.DstProjectName) {
+		body["dstProjectName"] = request.DstProjectName
+	}
+
+	if !dara.IsNil(request.DstSchemaName) {
+		body["dstSchemaName"] = request.DstSchemaName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmsTable"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/tables/" + dara.PercentEncode(dara.StringValue(tableId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmsTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新表元数据
+//
+// @param request - UpdateMmsTableRequest
+//
+// @return UpdateMmsTableResponse
+func (client *Client) UpdateMmsTable(sourceId *string, tableId *string, request *UpdateMmsTableRequest) (_result *UpdateMmsTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMmsTableResponse{}
+	_body, _err := client.UpdateMmsTableWithOptions(sourceId, tableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新表元数据
+//
+// @param request - UpdateMmsTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmsTablesResponse
+func (client *Client) UpdateMmsTablesWithOptions(sourceId *string, request *UpdateMmsTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMmsTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DbName) {
+		body["dbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.DstProjectName) {
+		body["dstProjectName"] = request.DstProjectName
+	}
+
+	if !dara.IsNil(request.DstSchemaName) {
+		body["dstSchemaName"] = request.DstSchemaName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TableNames) {
+		body["tableNames"] = request.TableNames
+	}
+
+	if !dara.IsNil(request.Tables) {
+		body["tables"] = request.Tables
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmsTables"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/tables"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmsTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新表元数据
+//
+// @param request - UpdateMmsTablesRequest
+//
+// @return UpdateMmsTablesResponse
+func (client *Client) UpdateMmsTables(sourceId *string, request *UpdateMmsTablesRequest) (_result *UpdateMmsTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMmsTablesResponse{}
+	_body, _err := client.UpdateMmsTablesWithOptions(sourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateMmsTimer
+//
+// @param request - UpdateMmsTimerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmsTimerResponse
+func (client *Client) UpdateMmsTimerWithOptions(sourceId *string, timerId *string, request *UpdateMmsTimerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMmsTimerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ScheduleType) {
+		body["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.Stopped) {
+		body["stopped"] = request.Stopped
+	}
+
+	if !dara.IsNil(request.Value) {
+		body["value"] = request.Value
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmsTimer"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers/" + dara.PercentEncode(dara.StringValue(timerId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmsTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateMmsTimer
+//
+// @param request - UpdateMmsTimerRequest
+//
+// @return UpdateMmsTimerResponse
+func (client *Client) UpdateMmsTimer(sourceId *string, timerId *string, request *UpdateMmsTimerRequest) (_result *UpdateMmsTimerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMmsTimerResponse{}
+	_body, _err := client.UpdateMmsTimerWithOptions(sourceId, timerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

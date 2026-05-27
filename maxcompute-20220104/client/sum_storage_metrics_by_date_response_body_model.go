@@ -11,10 +11,6 @@ type iSumStorageMetricsByDateResponseBody interface {
 	GoString() string
 	SetData(v []*SumStorageMetricsByDateResponseBodyData) *SumStorageMetricsByDateResponseBody
 	GetData() []*SumStorageMetricsByDateResponseBodyData
-	SetErrorCode(v string) *SumStorageMetricsByDateResponseBody
-	GetErrorCode() *string
-	SetErrorMsg(v string) *SumStorageMetricsByDateResponseBody
-	GetErrorMsg() *string
 	SetHttpCode(v int32) *SumStorageMetricsByDateResponseBody
 	GetHttpCode() *int32
 	SetRequestId(v string) *SumStorageMetricsByDateResponseBody
@@ -23,14 +19,6 @@ type iSumStorageMetricsByDateResponseBody interface {
 
 type SumStorageMetricsByDateResponseBody struct {
 	Data []*SumStorageMetricsByDateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// success
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// this quota is not exist.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// example:
 	//
 	// 200
@@ -53,14 +41,6 @@ func (s *SumStorageMetricsByDateResponseBody) GetData() []*SumStorageMetricsByDa
 	return s.Data
 }
 
-func (s *SumStorageMetricsByDateResponseBody) GetErrorCode() *string {
-	return s.ErrorCode
-}
-
-func (s *SumStorageMetricsByDateResponseBody) GetErrorMsg() *string {
-	return s.ErrorMsg
-}
-
 func (s *SumStorageMetricsByDateResponseBody) GetHttpCode() *int32 {
 	return s.HttpCode
 }
@@ -71,16 +51,6 @@ func (s *SumStorageMetricsByDateResponseBody) GetRequestId() *string {
 
 func (s *SumStorageMetricsByDateResponseBody) SetData(v []*SumStorageMetricsByDateResponseBodyData) *SumStorageMetricsByDateResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *SumStorageMetricsByDateResponseBody) SetErrorCode(v string) *SumStorageMetricsByDateResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SumStorageMetricsByDateResponseBody) SetErrorMsg(v string) *SumStorageMetricsByDateResponseBody {
-	s.ErrorMsg = &v
 	return s
 }
 

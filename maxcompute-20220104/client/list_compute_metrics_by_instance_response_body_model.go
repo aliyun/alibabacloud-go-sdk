@@ -11,10 +11,6 @@ type iListComputeMetricsByInstanceResponseBody interface {
 	GoString() string
 	SetData(v *ListComputeMetricsByInstanceResponseBodyData) *ListComputeMetricsByInstanceResponseBody
 	GetData() *ListComputeMetricsByInstanceResponseBodyData
-	SetErrorCode(v string) *ListComputeMetricsByInstanceResponseBody
-	GetErrorCode() *string
-	SetErrorMsg(v string) *ListComputeMetricsByInstanceResponseBody
-	GetErrorMsg() *string
 	SetHttpCode(v int32) *ListComputeMetricsByInstanceResponseBody
 	GetHttpCode() *int32
 	SetRequestId(v string) *ListComputeMetricsByInstanceResponseBody
@@ -24,18 +20,6 @@ type iListComputeMetricsByInstanceResponseBody interface {
 type ListComputeMetricsByInstanceResponseBody struct {
 	// The data returned.
 	Data *ListComputeMetricsByInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// OBJECT_NOT_EXIST
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// This object does not exist.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
 	// - 1xx: informational response. The request is received and is being processed.
@@ -72,14 +56,6 @@ func (s *ListComputeMetricsByInstanceResponseBody) GetData() *ListComputeMetrics
 	return s.Data
 }
 
-func (s *ListComputeMetricsByInstanceResponseBody) GetErrorCode() *string {
-	return s.ErrorCode
-}
-
-func (s *ListComputeMetricsByInstanceResponseBody) GetErrorMsg() *string {
-	return s.ErrorMsg
-}
-
 func (s *ListComputeMetricsByInstanceResponseBody) GetHttpCode() *int32 {
 	return s.HttpCode
 }
@@ -90,16 +66,6 @@ func (s *ListComputeMetricsByInstanceResponseBody) GetRequestId() *string {
 
 func (s *ListComputeMetricsByInstanceResponseBody) SetData(v *ListComputeMetricsByInstanceResponseBodyData) *ListComputeMetricsByInstanceResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ListComputeMetricsByInstanceResponseBody) SetErrorCode(v string) *ListComputeMetricsByInstanceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListComputeMetricsByInstanceResponseBody) SetErrorMsg(v string) *ListComputeMetricsByInstanceResponseBody {
-	s.ErrorMsg = &v
 	return s
 }
 
