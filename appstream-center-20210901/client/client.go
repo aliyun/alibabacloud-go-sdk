@@ -136,6 +136,72 @@ func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *A
 
 // Summary:
 //
+// 为研发主机分配辅助私有IP
+//
+// @param request - AssignWuyingServerPrivateAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignWuyingServerPrivateAddressesResponse
+func (client *Client) AssignWuyingServerPrivateAddressesWithOptions(request *AssignWuyingServerPrivateAddressesRequest, runtime *dara.RuntimeOptions) (_result *AssignWuyingServerPrivateAddressesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SecondaryPrivateIpAddressCount) {
+		body["SecondaryPrivateIpAddressCount"] = request.SecondaryPrivateIpAddressCount
+	}
+
+	if !dara.IsNil(request.WuyingServerId) {
+		body["WuyingServerId"] = request.WuyingServerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssignWuyingServerPrivateAddresses"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssignWuyingServerPrivateAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为研发主机分配辅助私有IP
+//
+// @param request - AssignWuyingServerPrivateAddressesRequest
+//
+// @return AssignWuyingServerPrivateAddressesResponse
+func (client *Client) AssignWuyingServerPrivateAddresses(request *AssignWuyingServerPrivateAddressesRequest) (_result *AssignWuyingServerPrivateAddressesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AssignWuyingServerPrivateAddressesResponse{}
+	_body, _err := client.AssignWuyingServerPrivateAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds assigned users to or removes assigned users from a delivery group. Only users added to the assigned user list can access App Streaming.
 //
 // @param tmpReq - AuthorizeInstanceGroupRequest
@@ -5855,6 +5921,72 @@ func (client *Client) TagCloudResources(request *TagCloudResourcesRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &TagCloudResourcesResponse{}
 	_body, _err := client.TagCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑研发主机的辅助私有IP
+//
+// @param request - UnassignWuyingServerPrivateAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnassignWuyingServerPrivateAddressesResponse
+func (client *Client) UnassignWuyingServerPrivateAddressesWithOptions(request *UnassignWuyingServerPrivateAddressesRequest, runtime *dara.RuntimeOptions) (_result *UnassignWuyingServerPrivateAddressesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PrivateIpAddresses) {
+		body["PrivateIpAddresses"] = request.PrivateIpAddresses
+	}
+
+	if !dara.IsNil(request.WuyingServerId) {
+		body["WuyingServerId"] = request.WuyingServerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnassignWuyingServerPrivateAddresses"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnassignWuyingServerPrivateAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑研发主机的辅助私有IP
+//
+// @param request - UnassignWuyingServerPrivateAddressesRequest
+//
+// @return UnassignWuyingServerPrivateAddressesResponse
+func (client *Client) UnassignWuyingServerPrivateAddresses(request *UnassignWuyingServerPrivateAddressesRequest) (_result *UnassignWuyingServerPrivateAddressesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnassignWuyingServerPrivateAddressesResponse{}
+	_body, _err := client.UnassignWuyingServerPrivateAddressesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

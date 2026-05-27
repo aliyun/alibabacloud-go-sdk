@@ -117,9 +117,18 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
+	// example:
+	//
+	// Added
 	AddVirtualNodePoolStatus *string `json:"AddVirtualNodePoolStatus,omitempty" xml:"AddVirtualNodePoolStatus,omitempty"`
-	AliUid                   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Bandwidth                *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 10
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// Region.
 	//
 	// example:
@@ -140,12 +149,19 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The data disks.
 	DataDisk []*ListWuyingServerResponseBodyWuyingServerListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	EniPrivateIpAddressQuantity *int32 `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
 	// The time when the subscription instance expires.
 	//
 	// example:
 	//
 	// 2025-09-03T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// 2.0.0
 	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
 	// The ID of the custom image.
 	//
@@ -154,10 +170,17 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// imgc-06****oagaev
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The image name.
+	//
+	// example:
+	//
+	// Ubuntu 22.04
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The list of information about the workstation instance.
 	InstanceInfoList []*ListWuyingServerResponseBodyWuyingServerListInstanceInfoList `json:"InstanceInfoList,omitempty" xml:"InstanceInfoList,omitempty" type:"Repeated"`
-	MaxPrice         *float32                                                        `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// example:
+	//
+	// 0.5
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
 	// The private IP address.
 	//
 	// example:
@@ -187,8 +210,12 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// Linux
-	OsType                *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PolicyGroupIdList     []*string `json:"PolicyGroupIdList,omitempty" xml:"PolicyGroupIdList,omitempty" type:"Repeated"`
+	OsType            *string                                                      `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PolicyGroupIdList []*string                                                    `json:"PolicyGroupIdList,omitempty" xml:"PolicyGroupIdList,omitempty" type:"Repeated"`
+	PrivateIpSets     []*ListWuyingServerResponseBodyWuyingServerListPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Connected
 	ResourceSessionStatus *string   `json:"ResourceSessionStatus,omitempty" xml:"ResourceSessionStatus,omitempty"`
 	SecurityGroupIds      []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The specifications.
@@ -199,7 +226,10 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// RUNNING
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// spot
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	// The type of the system disk.
 	//
@@ -207,7 +237,10 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	SystemDiskId       *string `json:"SystemDiskId,omitempty" xml:"SystemDiskId,omitempty"`
+	// example:
+	//
+	// d-bp1234567890abcde
+	SystemDiskId *string `json:"SystemDiskId,omitempty" xml:"SystemDiskId,omitempty"`
 	// The performance level (PL) of the system disk.
 	//
 	// example:
@@ -219,11 +252,25 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// 100
-	SystemDiskSize    *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	TimerGroupId      *string   `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	Users             []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
-	VirtualKubeletIp  *string   `json:"VirtualKubeletIp,omitempty" xml:"VirtualKubeletIp,omitempty"`
-	VirtualNodePoolId *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// example:
+	//
+	// tg-bp1234567890abcde
+	TimerGroupId *string   `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	Users        []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10.0.0.100
+	VirtualKubeletIp *string `json:"VirtualKubeletIp,omitempty" xml:"VirtualKubeletIp,omitempty"`
+	// example:
+	//
+	// vnp-bp1234567890abcde
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
+	VkUpgradeNeeded   *bool   `json:"VkUpgradeNeeded,omitempty" xml:"VkUpgradeNeeded,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	VkVersion *string `json:"VkVersion,omitempty" xml:"VkVersion,omitempty"`
 	// The ID of the workstation.
 	//
 	// example:
@@ -274,6 +321,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetDataDisk() []*ListWuyi
 	return s.DataDisk
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetEniPrivateIpAddressQuantity() *int32 {
+	return s.EniPrivateIpAddressQuantity
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetExpiredTime() *string {
 	return s.ExpiredTime
 }
@@ -320,6 +371,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetOsType() *string {
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetPolicyGroupIdList() []*string {
 	return s.PolicyGroupIdList
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetPrivateIpSets() []*ListWuyingServerResponseBodyWuyingServerListPrivateIpSets {
+	return s.PrivateIpSets
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetResourceSessionStatus() *string {
@@ -378,6 +433,14 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetVirtualNodePoolId() *s
 	return s.VirtualNodePoolId
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetVkUpgradeNeeded() *bool {
+	return s.VkUpgradeNeeded
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetVkVersion() *string {
+	return s.VkVersion
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetWuyingServerId() *string {
 	return s.WuyingServerId
 }
@@ -418,6 +481,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetCreateTime(v string) *
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetDataDisk(v []*ListWuyingServerResponseBodyWuyingServerListDataDisk) *ListWuyingServerResponseBodyWuyingServerList {
 	s.DataDisk = v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetEniPrivateIpAddressQuantity(v int32) *ListWuyingServerResponseBodyWuyingServerList {
+	s.EniPrivateIpAddressQuantity = &v
 	return s
 }
 
@@ -478,6 +546,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetOsType(v string) *List
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetPolicyGroupIdList(v []*string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.PolicyGroupIdList = v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetPrivateIpSets(v []*ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) *ListWuyingServerResponseBodyWuyingServerList {
+	s.PrivateIpSets = v
 	return s
 }
 
@@ -551,6 +624,16 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetVirtualNodePoolId(v st
 	return s
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetVkUpgradeNeeded(v bool) *ListWuyingServerResponseBodyWuyingServerList {
+	s.VkUpgradeNeeded = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetVkVersion(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.VkVersion = &v
+	return s
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetWuyingServerId(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.WuyingServerId = &v
 	return s
@@ -573,6 +656,15 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
 	}
 	if s.InstanceInfoList != nil {
 		for _, item := range s.InstanceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PrivateIpSets != nil {
+		for _, item := range s.PrivateIpSets {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -604,8 +696,14 @@ type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	DataDiskId       *string `json:"DataDiskId,omitempty" xml:"DataDiskId,omitempty"`
-	DataDiskNo       *string `json:"DataDiskNo,omitempty" xml:"DataDiskNo,omitempty"`
+	// example:
+	//
+	// d-bp1234567890abcde
+	DataDiskId *string `json:"DataDiskId,omitempty" xml:"DataDiskId,omitempty"`
+	// example:
+	//
+	// 1
+	DataDiskNo *string `json:"DataDiskNo,omitempty" xml:"DataDiskNo,omitempty"`
 	// The PL of the data disk.
 	//
 	// example:
@@ -722,6 +820,47 @@ func (s *ListWuyingServerResponseBodyWuyingServerListInstanceInfoList) Validate(
 	return dara.Validate(s)
 }
 
+type ListWuyingServerResponseBodyWuyingServerListPrivateIpSets struct {
+	// example:
+	//
+	// true
+	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// example:
+	//
+	// 10.0.0.1
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+}
+
+func (s ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) GoString() string {
+	return s.String()
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) GetPrimary() *bool {
+	return s.Primary
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) GetPrivateIpAddress() *string {
+	return s.PrivateIpAddress
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) SetPrimary(v bool) *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets {
+	s.Primary = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) SetPrivateIpAddress(v string) *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerListPrivateIpSets) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
 	// The number of vCPUs.
 	//
@@ -740,8 +879,11 @@ type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
 	// example:
 	//
 	// 196,608
-	GpuMemory *int32  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	GpuSpec   *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// example:
+	//
+	// NVIDIA T4
+	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
 	// The memory size. Unit: MB.
 	//
 	// example:
@@ -823,8 +965,14 @@ func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Val
 }
 
 type ListWuyingServerResponseBodyWuyingServerListSessions struct {
+	// example:
+	//
+	// 2026-01-01T08:00:00Z
 	ResourceSessionStartTime *string `json:"ResourceSessionStartTime,omitempty" xml:"ResourceSessionStartTime,omitempty"`
-	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// user1
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListWuyingServerResponseBodyWuyingServerListSessions) String() string {
