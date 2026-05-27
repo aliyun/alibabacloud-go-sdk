@@ -20,6 +20,9 @@ type iListArtifactsResponseBody interface {
 }
 
 type ListArtifactsResponseBody struct {
+	// example:
+	//
+	// [{"path":"reports/summary.pdf","size":1024,"lastModified":"2026-05-25T08:00:00Z","isDirectory":false}]
 	Artifacts []*ListArtifactsResponseBodyArtifacts `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
 	// example:
 	//

@@ -341,6 +341,96 @@ func (client *Client) CreateDigitalEmployeeSkill(name *string, request *CreateDi
 
 // Summary:
 //
+// 创建 MCP 服务
+//
+// @param request - CreateMcpServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcpServiceResponse
+func (client *Client) CreateMcpServiceWithOptions(name *string, request *CreateMcpServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMcpServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Connection) {
+		body["connection"] = request.Connection
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.McpServiceName) {
+		body["mcpServiceName"] = request.McpServiceName
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Tools) {
+		body["tools"] = request.Tools
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMcpService"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/mcpService"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMcpServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 MCP 服务
+//
+// @param request - CreateMcpServiceRequest
+//
+// @return CreateMcpServiceResponse
+func (client *Client) CreateMcpService(name *string, request *CreateMcpServiceRequest) (_result *CreateMcpServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMcpServiceResponse{}
+	_body, _err := client.CreateMcpServiceWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建会话
 //
 // @param request - CreateThreadRequest
@@ -605,6 +695,66 @@ func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string
 
 // Summary:
 //
+// 删除 MCP 服务
+//
+// @param request - DeleteMcpServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcpServiceResponse
+func (client *Client) DeleteMcpServiceWithOptions(name *string, mcpServiceName *string, request *DeleteMcpServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMcpServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMcpService"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/mcpService/" + dara.PercentEncode(dara.StringValue(mcpServiceName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMcpServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除 MCP 服务
+//
+// @param request - DeleteMcpServiceRequest
+//
+// @return DeleteMcpServiceResponse
+func (client *Client) DeleteMcpService(name *string, mcpServiceName *string, request *DeleteMcpServiceRequest) (_result *DeleteMcpServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMcpServiceResponse{}
+	_body, _err := client.DeleteMcpServiceWithOptions(name, mcpServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除会话
 //
 // @param request - DeleteThreadRequest
@@ -665,7 +815,77 @@ func (client *Client) DeleteThread(name *string, threadId *string, request *Dele
 
 // Summary:
 //
-// 下载产物文件
+// 预览远端 MCP 工具列表
+//
+// @param request - FetchRemoteMcpToolsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchRemoteMcpToolsResponse
+func (client *Client) FetchRemoteMcpToolsWithOptions(request *FetchRemoteMcpToolsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *FetchRemoteMcpToolsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Connection) {
+		body["connection"] = request.Connection
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["network"] = request.Network
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FetchRemoteMcpTools"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/mcptools"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FetchRemoteMcpToolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览远端 MCP 工具列表
+//
+// @param request - FetchRemoteMcpToolsRequest
+//
+// @return FetchRemoteMcpToolsResponse
+func (client *Client) FetchRemoteMcpTools(request *FetchRemoteMcpToolsRequest) (_result *FetchRemoteMcpToolsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FetchRemoteMcpToolsResponse{}
+	_body, _err := client.FetchRemoteMcpToolsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 下载小型产物文件
 //
 // @param request - GetArtifactRequest
 //
@@ -729,7 +949,7 @@ func (client *Client) GetArtifactWithOptions(name *string, request *GetArtifactR
 
 // Summary:
 //
-// 下载产物文件
+// 下载小型产物文件
 //
 // @param request - GetArtifactRequest
 //
@@ -865,6 +1085,66 @@ func (client *Client) GetDigitalEmployeeSkill(name *string, skillName *string, r
 	headers := make(map[string]*string)
 	_result = &GetDigitalEmployeeSkillResponse{}
 	_body, _err := client.GetDigitalEmployeeSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 MCP 服务
+//
+// @param request - GetMcpServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcpServiceResponse
+func (client *Client) GetMcpServiceWithOptions(name *string, mcpServiceName *string, request *GetMcpServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMcpServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMcpService"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/mcpService/" + dara.PercentEncode(dara.StringValue(mcpServiceName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMcpServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 MCP 服务
+//
+// @param request - GetMcpServiceRequest
+//
+// @return GetMcpServiceResponse
+func (client *Client) GetMcpService(name *string, mcpServiceName *string, request *GetMcpServiceRequest) (_result *GetMcpServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMcpServiceResponse{}
+	_body, _err := client.GetMcpServiceWithOptions(name, mcpServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1308,6 +1588,76 @@ func (client *Client) ListDigitalEmployees(request *ListDigitalEmployeesRequest)
 
 // Summary:
 //
+// 查询数字员工下的 MCP 服务列表
+//
+// @param request - ListMcpServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcpServicesResponse
+func (client *Client) ListMcpServicesWithOptions(name *string, request *ListMcpServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMcpServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMcpServices"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/mcpServices"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMcpServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数字员工下的 MCP 服务列表
+//
+// @param request - ListMcpServicesRequest
+//
+// @return ListMcpServicesResponse
+func (client *Client) ListMcpServices(name *string, request *ListMcpServicesRequest) (_result *ListMcpServicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMcpServicesResponse{}
+	_body, _err := client.ListMcpServicesWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出会话
 //
 // @param tmpReq - ListThreadsRequest
@@ -1559,6 +1909,92 @@ func (client *Client) UpdateDigitalEmployeeSkill(name *string, skillName *string
 	headers := make(map[string]*string)
 	_result = &UpdateDigitalEmployeeSkillResponse{}
 	_body, _err := client.UpdateDigitalEmployeeSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 MCP 服务
+//
+// @param request - UpdateMcpServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMcpServiceResponse
+func (client *Client) UpdateMcpServiceWithOptions(name *string, mcpServiceName *string, request *UpdateMcpServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMcpServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Connection) {
+		body["connection"] = request.Connection
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Tools) {
+		body["tools"] = request.Tools
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMcpService"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/mcpService/" + dara.PercentEncode(dara.StringValue(mcpServiceName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMcpServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 MCP 服务
+//
+// @param request - UpdateMcpServiceRequest
+//
+// @return UpdateMcpServiceResponse
+func (client *Client) UpdateMcpService(name *string, mcpServiceName *string, request *UpdateMcpServiceRequest) (_result *UpdateMcpServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMcpServiceResponse{}
+	_body, _err := client.UpdateMcpServiceWithOptions(name, mcpServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
