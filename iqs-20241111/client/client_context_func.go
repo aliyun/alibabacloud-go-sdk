@@ -667,6 +667,48 @@ func (client *Client) ReadPageScrapeWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
+// 扫描文件
+//
+// @param request - ScanFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScanFileResponse
+func (client *Client) ScanFileWithContext(ctx context.Context, request *ScanFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScanFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScanFile"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/domain/scan/file"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScanFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 通晓统一搜索API
 //
 // @param request - UnifiedSearchRequest
@@ -799,7 +841,7 @@ func (client *Client) omniAnswerWithSSECtx_opYieldFunc(_yield chan *OmniAnswerRe
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
 		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
-			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			data := dara.StringValue(resp.Event.Data)
 			_err := dara.ConvertChan(map[string]interface{}{
 				"statusCode": dara.IntValue(resp.StatusCode),
 				"headers":    resp.Headers,
