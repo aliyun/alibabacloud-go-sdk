@@ -13,12 +13,18 @@ type iUpdateExecutorGroupRequest interface {
 	GetApiKey() *string
 	SetAuthType(v string) *UpdateExecutorGroupRequest
 	GetAuthType() *string
+	SetAutoScale(v bool) *UpdateExecutorGroupRequest
+	GetAutoScale() *bool
 	SetClusterId(v string) *UpdateExecutorGroupRequest
 	GetClusterId() *string
+	SetCmsWorkspaceId(v string) *UpdateExecutorGroupRequest
+	GetCmsWorkspaceId() *string
 	SetDescription(v string) *UpdateExecutorGroupRequest
 	GetDescription() *string
 	SetId(v string) *UpdateExecutorGroupRequest
 	GetId() *string
+	SetName(v string) *UpdateExecutorGroupRequest
+	GetName() *string
 	SetNetwork(v string) *UpdateExecutorGroupRequest
 	GetNetwork() *string
 	SetProtocol(v string) *UpdateExecutorGroupRequest
@@ -27,6 +33,8 @@ type iUpdateExecutorGroupRequest interface {
 	GetWorkerType() *string
 	SetWorkers(v string) *UpdateExecutorGroupRequest
 	GetWorkers() *string
+	SetXAttrs(v string) *UpdateExecutorGroupRequest
+	GetXAttrs() *string
 }
 
 type UpdateExecutorGroupRequest struct {
@@ -37,17 +45,21 @@ type UpdateExecutorGroupRequest struct {
 	// example:
 	//
 	// APP
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AutoScale *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-d6a5243b6fa
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CmsWorkspaceId *string `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
 	// example:
 	//
 	// group1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Deprecated
+	//
 	// ID。
 	//
 	// This parameter is required.
@@ -55,7 +67,8 @@ type UpdateExecutorGroupRequest struct {
 	// example:
 	//
 	// 110176
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// public
@@ -72,6 +85,7 @@ type UpdateExecutorGroupRequest struct {
 	//
 	// [{"address":"http://47.111.188.191:18789"}]
 	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
+	XAttrs  *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s UpdateExecutorGroupRequest) String() string {
@@ -90,8 +104,16 @@ func (s *UpdateExecutorGroupRequest) GetAuthType() *string {
 	return s.AuthType
 }
 
+func (s *UpdateExecutorGroupRequest) GetAutoScale() *bool {
+	return s.AutoScale
+}
+
 func (s *UpdateExecutorGroupRequest) GetClusterId() *string {
 	return s.ClusterId
+}
+
+func (s *UpdateExecutorGroupRequest) GetCmsWorkspaceId() *string {
+	return s.CmsWorkspaceId
 }
 
 func (s *UpdateExecutorGroupRequest) GetDescription() *string {
@@ -100,6 +122,10 @@ func (s *UpdateExecutorGroupRequest) GetDescription() *string {
 
 func (s *UpdateExecutorGroupRequest) GetId() *string {
 	return s.Id
+}
+
+func (s *UpdateExecutorGroupRequest) GetName() *string {
+	return s.Name
 }
 
 func (s *UpdateExecutorGroupRequest) GetNetwork() *string {
@@ -118,6 +144,10 @@ func (s *UpdateExecutorGroupRequest) GetWorkers() *string {
 	return s.Workers
 }
 
+func (s *UpdateExecutorGroupRequest) GetXAttrs() *string {
+	return s.XAttrs
+}
+
 func (s *UpdateExecutorGroupRequest) SetApiKey(v string) *UpdateExecutorGroupRequest {
 	s.ApiKey = &v
 	return s
@@ -128,8 +158,18 @@ func (s *UpdateExecutorGroupRequest) SetAuthType(v string) *UpdateExecutorGroupR
 	return s
 }
 
+func (s *UpdateExecutorGroupRequest) SetAutoScale(v bool) *UpdateExecutorGroupRequest {
+	s.AutoScale = &v
+	return s
+}
+
 func (s *UpdateExecutorGroupRequest) SetClusterId(v string) *UpdateExecutorGroupRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateExecutorGroupRequest) SetCmsWorkspaceId(v string) *UpdateExecutorGroupRequest {
+	s.CmsWorkspaceId = &v
 	return s
 }
 
@@ -140,6 +180,11 @@ func (s *UpdateExecutorGroupRequest) SetDescription(v string) *UpdateExecutorGro
 
 func (s *UpdateExecutorGroupRequest) SetId(v string) *UpdateExecutorGroupRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateExecutorGroupRequest) SetName(v string) *UpdateExecutorGroupRequest {
+	s.Name = &v
 	return s
 }
 
@@ -160,6 +205,11 @@ func (s *UpdateExecutorGroupRequest) SetWorkerType(v string) *UpdateExecutorGrou
 
 func (s *UpdateExecutorGroupRequest) SetWorkers(v string) *UpdateExecutorGroupRequest {
 	s.Workers = &v
+	return s
+}
+
+func (s *UpdateExecutorGroupRequest) SetXAttrs(v string) *UpdateExecutorGroupRequest {
+	s.XAttrs = &v
 	return s
 }
 

@@ -437,12 +437,24 @@ func (client *Client) CreateExecutorGroupWithOptions(request *CreateExecutorGrou
 		body["AuthType"] = request.AuthType
 	}
 
+	if !dara.IsNil(request.AutoScale) {
+		body["AutoScale"] = request.AutoScale
+	}
+
 	if !dara.IsNil(request.ClusterId) {
 		body["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.CmsWorkspaceId) {
+		body["CmsWorkspaceId"] = request.CmsWorkspaceId
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.IntegrationType) {
+		body["IntegrationType"] = request.IntegrationType
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -463,6 +475,10 @@ func (client *Client) CreateExecutorGroupWithOptions(request *CreateExecutorGrou
 
 	if !dara.IsNil(request.Workers) {
 		body["Workers"] = request.Workers
+	}
+
+	if !dara.IsNil(request.XAttrs) {
+		body["XAttrs"] = request.XAttrs
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1153,6 +1169,10 @@ func (client *Client) DeleteExecutorGroupWithOptions(request *DeleteExecutorGrou
 
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6397,8 +6417,16 @@ func (client *Client) UpdateExecutorGroupWithOptions(request *UpdateExecutorGrou
 		body["AuthType"] = request.AuthType
 	}
 
+	if !dara.IsNil(request.AutoScale) {
+		body["AutoScale"] = request.AutoScale
+	}
+
 	if !dara.IsNil(request.ClusterId) {
 		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.CmsWorkspaceId) {
+		body["CmsWorkspaceId"] = request.CmsWorkspaceId
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -6407,6 +6435,10 @@ func (client *Client) UpdateExecutorGroupWithOptions(request *UpdateExecutorGrou
 
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
 	}
 
 	if !dara.IsNil(request.Network) {
@@ -6423,6 +6455,10 @@ func (client *Client) UpdateExecutorGroupWithOptions(request *UpdateExecutorGrou
 
 	if !dara.IsNil(request.Workers) {
 		body["Workers"] = request.Workers
+	}
+
+	if !dara.IsNil(request.XAttrs) {
+		body["XAttrs"] = request.XAttrs
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -13,10 +13,16 @@ type iCreateExecutorGroupRequest interface {
 	GetApiKey() *string
 	SetAuthType(v string) *CreateExecutorGroupRequest
 	GetAuthType() *string
+	SetAutoScale(v bool) *CreateExecutorGroupRequest
+	GetAutoScale() *bool
 	SetClusterId(v string) *CreateExecutorGroupRequest
 	GetClusterId() *string
+	SetCmsWorkspaceId(v string) *CreateExecutorGroupRequest
+	GetCmsWorkspaceId() *string
 	SetDescription(v string) *CreateExecutorGroupRequest
 	GetDescription() *string
+	SetIntegrationType(v string) *CreateExecutorGroupRequest
+	GetIntegrationType() *string
 	SetName(v string) *CreateExecutorGroupRequest
 	GetName() *string
 	SetNetwork(v string) *CreateExecutorGroupRequest
@@ -27,6 +33,8 @@ type iCreateExecutorGroupRequest interface {
 	GetWorkerType() *string
 	SetWorkers(v string) *CreateExecutorGroupRequest
 	GetWorkers() *string
+	SetXAttrs(v string) *CreateExecutorGroupRequest
+	GetXAttrs() *string
 }
 
 type CreateExecutorGroupRequest struct {
@@ -37,17 +45,20 @@ type CreateExecutorGroupRequest struct {
 	// example:
 	//
 	// api_key
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AutoScale *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CmsWorkspaceId *string `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
 	// example:
 	//
 	// group1
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -74,6 +85,7 @@ type CreateExecutorGroupRequest struct {
 	//
 	// [{"address":"http://47.111.188.191:18789"}]
 	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
+	XAttrs  *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s CreateExecutorGroupRequest) String() string {
@@ -92,12 +104,24 @@ func (s *CreateExecutorGroupRequest) GetAuthType() *string {
 	return s.AuthType
 }
 
+func (s *CreateExecutorGroupRequest) GetAutoScale() *bool {
+	return s.AutoScale
+}
+
 func (s *CreateExecutorGroupRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *CreateExecutorGroupRequest) GetCmsWorkspaceId() *string {
+	return s.CmsWorkspaceId
+}
+
 func (s *CreateExecutorGroupRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateExecutorGroupRequest) GetIntegrationType() *string {
+	return s.IntegrationType
 }
 
 func (s *CreateExecutorGroupRequest) GetName() *string {
@@ -120,6 +144,10 @@ func (s *CreateExecutorGroupRequest) GetWorkers() *string {
 	return s.Workers
 }
 
+func (s *CreateExecutorGroupRequest) GetXAttrs() *string {
+	return s.XAttrs
+}
+
 func (s *CreateExecutorGroupRequest) SetApiKey(v string) *CreateExecutorGroupRequest {
 	s.ApiKey = &v
 	return s
@@ -130,13 +158,28 @@ func (s *CreateExecutorGroupRequest) SetAuthType(v string) *CreateExecutorGroupR
 	return s
 }
 
+func (s *CreateExecutorGroupRequest) SetAutoScale(v bool) *CreateExecutorGroupRequest {
+	s.AutoScale = &v
+	return s
+}
+
 func (s *CreateExecutorGroupRequest) SetClusterId(v string) *CreateExecutorGroupRequest {
 	s.ClusterId = &v
 	return s
 }
 
+func (s *CreateExecutorGroupRequest) SetCmsWorkspaceId(v string) *CreateExecutorGroupRequest {
+	s.CmsWorkspaceId = &v
+	return s
+}
+
 func (s *CreateExecutorGroupRequest) SetDescription(v string) *CreateExecutorGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateExecutorGroupRequest) SetIntegrationType(v string) *CreateExecutorGroupRequest {
+	s.IntegrationType = &v
 	return s
 }
 
@@ -162,6 +205,11 @@ func (s *CreateExecutorGroupRequest) SetWorkerType(v string) *CreateExecutorGrou
 
 func (s *CreateExecutorGroupRequest) SetWorkers(v string) *CreateExecutorGroupRequest {
 	s.Workers = &v
+	return s
+}
+
+func (s *CreateExecutorGroupRequest) SetXAttrs(v string) *CreateExecutorGroupRequest {
+	s.XAttrs = &v
 	return s
 }
 

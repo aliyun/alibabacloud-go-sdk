@@ -132,7 +132,8 @@ type ListExecutorsResponseBodyData struct {
 	// example:
 	//
 	// 9999
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// example:
 	//
 	// 2.0.2
@@ -175,6 +176,10 @@ func (s *ListExecutorsResponseBodyData) GetPort() *int32 {
 	return s.Port
 }
 
+func (s *ListExecutorsResponseBodyData) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListExecutorsResponseBodyData) GetVersion() *string {
 	return s.Version
 }
@@ -210,6 +215,11 @@ func (s *ListExecutorsResponseBodyData) SetOnline(v bool) *ListExecutorsResponse
 
 func (s *ListExecutorsResponseBodyData) SetPort(v int32) *ListExecutorsResponseBodyData {
 	s.Port = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyData) SetStatus(v string) *ListExecutorsResponseBodyData {
+	s.Status = &v
 	return s
 }
 

@@ -219,12 +219,15 @@ type ListExecutorGroupResponseBodyDataRecords struct {
 	// example:
 	//
 	// api_key
-	AuthType *string                                             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	CiteList []*ListExecutorGroupResponseBodyDataRecordsCiteList `json:"CiteList,omitempty" xml:"CiteList,omitempty" type:"Repeated"`
+	AuthType       *string                                             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AutoScale      *bool                                               `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	CiteList       []*ListExecutorGroupResponseBodyDataRecordsCiteList `json:"CiteList,omitempty" xml:"CiteList,omitempty" type:"Repeated"`
+	CmsWorkspaceId *string                                             `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
 	// example:
 	//
 	// my first workflow
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// example:
 	//
 	// job01
@@ -236,7 +239,8 @@ type ListExecutorGroupResponseBodyDataRecords struct {
 	// example:
 	//
 	// openai
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ResolvedWorkers *string `json:"ResolvedWorkers,omitempty" xml:"ResolvedWorkers,omitempty"`
 	// example:
 	//
 	// 12
@@ -249,6 +253,7 @@ type ListExecutorGroupResponseBodyDataRecords struct {
 	//
 	// [{"address":"http://47.111.188.191:18789"}]
 	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
+	XAttrs  *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s ListExecutorGroupResponseBodyDataRecords) String() string {
@@ -267,12 +272,24 @@ func (s *ListExecutorGroupResponseBodyDataRecords) GetAuthType() *string {
 	return s.AuthType
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) GetAutoScale() *bool {
+	return s.AutoScale
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) GetCiteList() []*ListExecutorGroupResponseBodyDataRecordsCiteList {
 	return s.CiteList
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) GetCmsWorkspaceId() *string {
+	return s.CmsWorkspaceId
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) GetIntegrationType() *string {
+	return s.IntegrationType
 }
 
 func (s *ListExecutorGroupResponseBodyDataRecords) GetName() *string {
@@ -287,6 +304,10 @@ func (s *ListExecutorGroupResponseBodyDataRecords) GetProtocol() *string {
 	return s.Protocol
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) GetResolvedWorkers() *string {
+	return s.ResolvedWorkers
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) GetWorkerId() *int64 {
 	return s.WorkerId
 }
@@ -299,6 +320,10 @@ func (s *ListExecutorGroupResponseBodyDataRecords) GetWorkers() *string {
 	return s.Workers
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) GetXAttrs() *string {
+	return s.XAttrs
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) SetApiKey(v string) *ListExecutorGroupResponseBodyDataRecords {
 	s.ApiKey = &v
 	return s
@@ -309,13 +334,28 @@ func (s *ListExecutorGroupResponseBodyDataRecords) SetAuthType(v string) *ListEx
 	return s
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) SetAutoScale(v bool) *ListExecutorGroupResponseBodyDataRecords {
+	s.AutoScale = &v
+	return s
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) SetCiteList(v []*ListExecutorGroupResponseBodyDataRecordsCiteList) *ListExecutorGroupResponseBodyDataRecords {
 	s.CiteList = v
 	return s
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) SetCmsWorkspaceId(v string) *ListExecutorGroupResponseBodyDataRecords {
+	s.CmsWorkspaceId = &v
+	return s
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) SetDescription(v string) *ListExecutorGroupResponseBodyDataRecords {
 	s.Description = &v
+	return s
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) SetIntegrationType(v string) *ListExecutorGroupResponseBodyDataRecords {
+	s.IntegrationType = &v
 	return s
 }
 
@@ -334,6 +374,11 @@ func (s *ListExecutorGroupResponseBodyDataRecords) SetProtocol(v string) *ListEx
 	return s
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) SetResolvedWorkers(v string) *ListExecutorGroupResponseBodyDataRecords {
+	s.ResolvedWorkers = &v
+	return s
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) SetWorkerId(v int64) *ListExecutorGroupResponseBodyDataRecords {
 	s.WorkerId = &v
 	return s
@@ -346,6 +391,11 @@ func (s *ListExecutorGroupResponseBodyDataRecords) SetWorkerType(v string) *List
 
 func (s *ListExecutorGroupResponseBodyDataRecords) SetWorkers(v string) *ListExecutorGroupResponseBodyDataRecords {
 	s.Workers = &v
+	return s
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) SetXAttrs(v string) *ListExecutorGroupResponseBodyDataRecords {
+	s.XAttrs = &v
 	return s
 }
 
