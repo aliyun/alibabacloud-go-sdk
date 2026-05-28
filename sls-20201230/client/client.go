@@ -11,8 +11,14 @@ import (
 )
 
 type AgentInstanceConfigGrayConfigs struct {
+	// example:
+	//
+	// appVersion="1.0.0"
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// {"enable":true}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 }
 
 func (s AgentInstanceConfigGrayConfigs) String() string {
@@ -34,28 +40,42 @@ func (s *AgentInstanceConfigGrayConfigs) SetContent(v string) *AgentInstanceConf
 }
 
 type Alert struct {
+	// The configurations of the alert rule.
+	//
 	// This parameter is required.
 	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	CreateTime    *int64              `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the alert rule was created.
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the alert rule.
+	//
 	// example:
 	//
 	// Alert Desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The alert rule name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alertNameExample
-	DisplayName      *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	LastModifiedTime *int64  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The time when the alert rule was last modified.
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The ID of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alert-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling settings.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// The alert status.
+	//
 	// example:
 	//
 	// ENABLED/DISABLED
@@ -111,62 +131,96 @@ func (s *Alert) SetStatus(v string) *Alert {
 }
 
 type AlertConfiguration struct {
+	// The annotations of the alert rule.
 	Annotations []*AlertTag `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	// Specifies whether to allow the system to automatically add annotations to the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
-	AutoAnnotation         *bool                   `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
+	AutoAnnotation *bool `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
+	// The alert trigger conditions.
 	ConditionConfiguration *ConditionConfiguration `json:"conditionConfiguration,omitempty" xml:"conditionConfiguration,omitempty"`
+	// The ID of the dashboard associated with the alert rule.
+	//
 	// example:
 	//
 	// dasnboardExample
 	Dashboard *string `json:"dashboard,omitempty" xml:"dashboard,omitempty"`
+	// The configurations of group evaluation.
+	//
 	// This parameter is required.
-	GroupConfiguration *GroupConfiguration  `json:"groupConfiguration,omitempty" xml:"groupConfiguration,omitempty"`
+	GroupConfiguration *GroupConfiguration `json:"groupConfiguration,omitempty" xml:"groupConfiguration,omitempty"`
+	// The set operation configurations for the query statements of the alert rule.
 	JoinConfigurations []*JoinConfiguration `json:"joinConfigurations,omitempty" xml:"joinConfigurations,omitempty" type:"Repeated"`
-	Labels             []*AlertTag          `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// The labels of the alert rule.
+	Labels []*AlertTag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// The time when a paused alert rule is resumed.
+	//
 	// example:
 	//
 	// 1698907508
 	MuteUntil *int64 `json:"muteUntil,omitempty" xml:"muteUntil,omitempty"`
+	// Specifies whether to enable the no-data alert feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	NoDataFire *bool `json:"noDataFire,omitempty" xml:"noDataFire,omitempty"`
+	// The severity of the no-data alert.
+	//
 	// example:
 	//
 	// 6
-	NoDataSeverity      *int32               `json:"noDataSeverity,omitempty" xml:"noDataSeverity,omitempty"`
+	NoDataSeverity *int32 `json:"noDataSeverity,omitempty" xml:"noDataSeverity,omitempty"`
+	// The notification configurations of Simple Log Service.
 	PolicyConfiguration *PolicyConfiguration `json:"policyConfiguration,omitempty" xml:"policyConfiguration,omitempty"`
+	// The query statements.
+	//
 	// This parameter is required.
 	QueryList []*AlertQuery `json:"queryList,omitempty" xml:"queryList,omitempty" type:"Repeated"`
+	// Specifies whether to send a recovery notification after an alert is cleared.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	SendResolved *bool `json:"sendResolved,omitempty" xml:"sendResolved,omitempty"`
+	// The alert severity configurations.
+	//
 	// This parameter is required.
-	SeverityConfigurations []*SeverityConfiguration     `json:"severityConfigurations,omitempty" xml:"severityConfigurations,omitempty" type:"Repeated"`
-	SinkAlerthub           *SinkAlerthubConfiguration   `json:"sinkAlerthub,omitempty" xml:"sinkAlerthub,omitempty"`
-	SinkCms                *SinkCmsConfiguration        `json:"sinkCms,omitempty" xml:"sinkCms,omitempty"`
-	SinkEventStore         *SinkEventStoreConfiguration `json:"sinkEventStore,omitempty" xml:"sinkEventStore,omitempty"`
-	Tags                   []*string                    `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TemplateConfiguration  *TemplateConfiguration       `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	SeverityConfigurations []*SeverityConfiguration `json:"severityConfigurations,omitempty" xml:"severityConfigurations,omitempty" type:"Repeated"`
+	// The configurations that allow alerts to be sent to the notification system of Simple Log Service.
+	SinkAlerthub *SinkAlerthubConfiguration `json:"sinkAlerthub,omitempty" xml:"sinkAlerthub,omitempty"`
+	// The configurations that allow alerts to be sent to CloudMonitor Event Center.
+	SinkCms *SinkCmsConfiguration `json:"sinkCms,omitempty" xml:"sinkCms,omitempty"`
+	// The configurations that allow alerts to be sent to an Eventstore.
+	SinkEventStore *SinkEventStoreConfiguration `json:"sinkEventStore,omitempty" xml:"sinkEventStore,omitempty"`
+	// The custom tags of the alert rule.
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The alert template configurations.
+	TemplateConfiguration *TemplateConfiguration `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	// The maximum number of consecutive times that the trigger condition is met.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Threshold *int32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The type of the alert rule.
+	//
 	// example:
 	//
 	// default
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -294,68 +348,92 @@ func (s *AlertConfiguration) SetVersion(v string) *AlertConfiguration {
 }
 
 type AlertQuery struct {
+	// The name of the chart.
+	//
 	// example:
 	//
 	// chartExmaple
 	ChartTitle *string `json:"chartTitle,omitempty" xml:"chartTitle,omitempty"`
+	// The ID of the dashboard.
+	//
 	// example:
 	//
 	// dashboardExample
 	DashboardId *string `json:"dashboardId,omitempty" xml:"dashboardId,omitempty"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// now
 	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// Specifies whether to enable Dedicated SQL.
+	//
 	// example:
 	//
 	// auto
 	PowerSqlMode *string `json:"powerSqlMode,omitempty" xml:"powerSqlMode,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// projectExample
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The query statement.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 	- | select *
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	Region  *string `json:"region,omitempty" xml:"region,omitempty"`
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role.
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -5m
 	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+	// The name of the storage.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// store Example
 	Store *string `json:"store,omitempty" xml:"store,omitempty"`
+	// The storage type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// log
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The type of the time span.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Relative
 	TimeSpanType *string `json:"timeSpanType,omitempty" xml:"timeSpanType,omitempty"`
-	Ui           *string `json:"ui,omitempty" xml:"ui,omitempty"`
+	// The page on which you can record frontend configurations in specified scenarios.
+	Ui *string `json:"ui,omitempty" xml:"ui,omitempty"`
 }
 
 func (s AlertQuery) String() string {
@@ -432,10 +510,14 @@ func (s *AlertQuery) SetUi(v string) *AlertQuery {
 }
 
 type AlertTag struct {
+	// The key name.
+	//
 	// example:
 	//
 	// title
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key value.
+	//
 	// example:
 	//
 	// example value
@@ -460,11 +542,465 @@ func (s *AlertTag) SetValue(v string) *AlertTag {
 	return s
 }
 
+type AsyncSqlResponseData struct {
+	AsyncSqlMetaPB *AsyncSqlResponseDataAsyncSqlMetaPB `json:"AsyncSqlMetaPB,omitempty" xml:"AsyncSqlMetaPB,omitempty" type:"Struct"`
+	// example:
+	//
+	// InvalidQuery
+	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// example:
+	//
+	// line 37:14: Column \\"xyz\\" cannot be resolved
+	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 690C4F2A16FBD65C40000484_14
+	Id   *string     `json:"id,omitempty" xml:"id,omitempty"`
+	Rows [][]*string `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FINISHED
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s AsyncSqlResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncSqlResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncSqlResponseData) SetAsyncSqlMetaPB(v *AsyncSqlResponseDataAsyncSqlMetaPB) *AsyncSqlResponseData {
+	s.AsyncSqlMetaPB = v
+	return s
+}
+
+func (s *AsyncSqlResponseData) SetErrorCode(v string) *AsyncSqlResponseData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AsyncSqlResponseData) SetErrorMessage(v string) *AsyncSqlResponseData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AsyncSqlResponseData) SetId(v string) *AsyncSqlResponseData {
+	s.Id = &v
+	return s
+}
+
+func (s *AsyncSqlResponseData) SetRows(v [][]*string) *AsyncSqlResponseData {
+	s.Rows = v
+	return s
+}
+
+func (s *AsyncSqlResponseData) SetState(v string) *AsyncSqlResponseData {
+	s.State = &v
+	return s
+}
+
+type AsyncSqlResponseDataAsyncSqlMetaPB struct {
+	// example:
+	//
+	// 10
+	CpuCores *int32 `json:"cpu_cores,omitempty" xml:"cpu_cores,omitempty"`
+	// example:
+	//
+	// 0.2
+	CpuSec *float64 `json:"cpu_sec,omitempty" xml:"cpu_sec,omitempty"`
+	// example:
+	//
+	// 30000
+	ElapsedMilli *int64    `json:"elapsed_milli,omitempty" xml:"elapsed_milli,omitempty"`
+	Keys         []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10000000
+	ProcessedRows *int64 `json:"processed_rows,omitempty" xml:"processed_rows,omitempty"`
+	// example:
+	//
+	// Complete
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// example:
+	//
+	// 12000
+	ResultRows *int32 `json:"result_rows,omitempty" xml:"result_rows,omitempty"`
+}
+
+func (s AsyncSqlResponseDataAsyncSqlMetaPB) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncSqlResponseDataAsyncSqlMetaPB) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetCpuCores(v int32) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetCpuSec(v float64) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.CpuSec = &v
+	return s
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetElapsedMilli(v int64) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.ElapsedMilli = &v
+	return s
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetKeys(v []*string) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.Keys = v
+	return s
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetProcessedRows(v int64) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.ProcessedRows = &v
+	return s
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetProgress(v string) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.Progress = &v
+	return s
+}
+
+func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetResultRows(v int32) *AsyncSqlResponseDataAsyncSqlMetaPB {
+	s.ResultRows = &v
+	return s
+}
+
+type AzureBlobIngestion struct {
+	// This parameter is required.
+	Configuration *AzureBlobIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// 1714360481
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// azure blob ingestion
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// azure blob ingestion
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 1714360481
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-azure-blob-123456
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ingest-processor-1756802123-953901
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// This parameter is required.
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// example:
+	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s AzureBlobIngestion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AzureBlobIngestion) GoString() string {
+	return s.String()
+}
+
+func (s *AzureBlobIngestion) SetConfiguration(v *AzureBlobIngestionConfiguration) *AzureBlobIngestion {
+	s.Configuration = v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetCreateTime(v int64) *AzureBlobIngestion {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetDescription(v string) *AzureBlobIngestion {
+	s.Description = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetDisplayName(v string) *AzureBlobIngestion {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetLastModifiedTime(v int64) *AzureBlobIngestion {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetName(v string) *AzureBlobIngestion {
+	s.Name = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetProcessorId(v string) *AzureBlobIngestion {
+	s.ProcessorId = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetSchedule(v *Schedule) *AzureBlobIngestion {
+	s.Schedule = v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetScheduleId(v string) *AzureBlobIngestion {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *AzureBlobIngestion) SetStatus(v string) *AzureBlobIngestion {
+	s.Status = &v
+	return s
+}
+
+type AzureBlobIngestionConfiguration struct {
+	// example:
+	//
+	// myLogstore
+	Logstore *string                                `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Source   *AzureBlobIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s AzureBlobIngestionConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AzureBlobIngestionConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *AzureBlobIngestionConfiguration) SetLogstore(v string) *AzureBlobIngestionConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfiguration) SetSource(v *AzureBlobIngestionConfigurationSource) *AzureBlobIngestionConfiguration {
+	s.Source = v
+	return s
+}
+
+type AzureBlobIngestionConfigurationSource struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dGVzdGtleQ==
+	AccountKey *string `json:"accountKey,omitempty" xml:"accountKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test001
+	AccountName        *string                `json:"accountName,omitempty" xml:"accountName,omitempty"`
+	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// none
+	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-container
+	ContainerName *string `json:"containerName,omitempty" xml:"containerName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UTF-8
+	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// example:
+	//
+	// 1714360481
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// https://your-storage.blob.core.windows.net
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// This parameter is required.
+	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30m
+	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// .*
+	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// example:
+	//
+	// prefix
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// example:
+	//
+	// ingest-processor-1756802123-953901
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// example:
+	//
+	// 1714274081
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// false
+	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// example:
+	//
+	// __time__
+	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// example:
+	//
+	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
+	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// example:
+	//
+	// GMT+08:00
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s AzureBlobIngestionConfigurationSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AzureBlobIngestionConfigurationSource) GoString() string {
+	return s.String()
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetAccountKey(v string) *AzureBlobIngestionConfigurationSource {
+	s.AccountKey = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetAccountName(v string) *AzureBlobIngestionConfigurationSource {
+	s.AccountName = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetAdvancedParameters(v map[string]interface{}) *AzureBlobIngestionConfigurationSource {
+	s.AdvancedParameters = v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetCompressionCodec(v string) *AzureBlobIngestionConfigurationSource {
+	s.CompressionCodec = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetContainerName(v string) *AzureBlobIngestionConfigurationSource {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetEncoding(v string) *AzureBlobIngestionConfigurationSource {
+	s.Encoding = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetEndTime(v int64) *AzureBlobIngestionConfigurationSource {
+	s.EndTime = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetEndpoint(v string) *AzureBlobIngestionConfigurationSource {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetFormat(v map[string]interface{}) *AzureBlobIngestionConfigurationSource {
+	s.Format = v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetInterval(v string) *AzureBlobIngestionConfigurationSource {
+	s.Interval = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetPattern(v string) *AzureBlobIngestionConfigurationSource {
+	s.Pattern = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetPrefix(v string) *AzureBlobIngestionConfigurationSource {
+	s.Prefix = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetProcessorId(v string) *AzureBlobIngestionConfigurationSource {
+	s.ProcessorId = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetStartTime(v int64) *AzureBlobIngestionConfigurationSource {
+	s.StartTime = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetTagPackId(v bool) *AzureBlobIngestionConfigurationSource {
+	s.TagPackId = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetTimeField(v string) *AzureBlobIngestionConfigurationSource {
+	s.TimeField = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetTimeFormat(v string) *AzureBlobIngestionConfigurationSource {
+	s.TimeFormat = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetTimePattern(v string) *AzureBlobIngestionConfigurationSource {
+	s.TimePattern = &v
+	return s
+}
+
+func (s *AzureBlobIngestionConfigurationSource) SetTimeZone(v string) *AzureBlobIngestionConfigurationSource {
+	s.TimeZone = &v
+	return s
+}
+
 type ConditionConfiguration struct {
+	// The evaluate expression.
+	//
 	// example:
 	//
 	// cnt > 100
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The number of entries that match the evaluate expression to return.
+	//
 	// example:
 	//
 	// __count__ > 5
@@ -495,17 +1031,12 @@ type ConsumeProcessor struct {
 	// example:
 	//
 	// 1717171200
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// 过滤content字段
+	CreateTime  *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 字段过滤处理
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Processor ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -557,6 +1088,8 @@ func (s *ConsumeProcessor) SetUpdateTime(v int64) *ConsumeProcessor {
 }
 
 type ConsumeProcessorConfiguration struct {
+	// SPL statement
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -579,14 +1112,24 @@ func (s *ConsumeProcessorConfiguration) SetSpl(v string) *ConsumeProcessorConfig
 }
 
 type ConsumerGroup struct {
+	// The name of the consumer group.
+	//
 	// example:
 	//
-	// test-group
+	// test-consumer-group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether to consume data in sequence. Valid values:
+	//
+	// 	- true: If a shard is split, the data in the original shard is consumed first. Then, the data in the new shards is consumed at the same time. If shards are merged, the data in the original shards is consumed first. Then, the data in the new shard is consumed.
+	//
+	// 	- false: The data in all shards is consumed at the same time. If a new shard is generated after a shard is split or shards are merged, the data in the new shard is immediately consumed.
+	//
 	// example:
 	//
 	// false
 	Order *bool `json:"order,omitempty" xml:"order,omitempty"`
+	// The timeout period. If Simple Log Service does not receive heartbeats from a consumer within the timeout period, Simple Log Service deletes the consumer. Unit: seconds.
+	//
 	// example:
 	//
 	// 300
@@ -891,6 +1434,8 @@ func (s *ESIngestion) SetStatus(v string) *ESIngestion {
 }
 
 type ESIngestionConfiguration struct {
+	// logstore
+	//
 	// This parameter is required.
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// This parameter is required.
@@ -919,23 +1464,23 @@ type ESIngestionConfigurationSource struct {
 	// This parameter is required.
 	BootstrapServers *string `json:"BootstrapServers,omitempty" xml:"BootstrapServers,omitempty"`
 	// This parameter is required.
+	ConnectorMode *string `json:"ConnectorMode,omitempty" xml:"ConnectorMode,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
 	// This parameter is required.
-	MinFragRangeSec *int64 `json:"MinFragRangeSec,omitempty" xml:"MinFragRangeSec,omitempty"`
+	MaxDataDelaySec *int64 `json:"MaxDataDelaySec,omitempty" xml:"MaxDataDelaySec,omitempty"`
 	// This parameter is required.
-	ConnectorMode *string `json:"connectorMode,omitempty" xml:"connectorMode,omitempty"`
-	EndTime       *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	MinFragRangeSec *int64  `json:"MinFragRangeSec,omitempty" xml:"MinFragRangeSec,omitempty"`
+	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// This parameter is required.
-	MaxDataDelaySec *int64  `json:"maxDataDelaySec,omitempty" xml:"maxDataDelaySec,omitempty"`
-	Password        *string `json:"password,omitempty" xml:"password,omitempty"`
-	// This parameter is required.
-	Query         *string `json:"query,omitempty" xml:"query,omitempty"`
-	StartTime     *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TimeFieldName *string `json:"timeFieldName,omitempty" xml:"timeFieldName,omitempty"`
-	TimeFormat    *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
-	TimeZone      *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-	Username      *string `json:"username,omitempty" xml:"username,omitempty"`
-	VpcId         *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TimeFieldName *string `json:"TimeFieldName,omitempty" xml:"TimeFieldName,omitempty"`
+	TimeFormat    *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
+	TimeZone      *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ESIngestionConfigurationSource) String() string {
@@ -951,16 +1496,6 @@ func (s *ESIngestionConfigurationSource) SetBootstrapServers(v string) *ESIngest
 	return s
 }
 
-func (s *ESIngestionConfigurationSource) SetIndex(v string) *ESIngestionConfigurationSource {
-	s.Index = &v
-	return s
-}
-
-func (s *ESIngestionConfigurationSource) SetMinFragRangeSec(v int64) *ESIngestionConfigurationSource {
-	s.MinFragRangeSec = &v
-	return s
-}
-
 func (s *ESIngestionConfigurationSource) SetConnectorMode(v string) *ESIngestionConfigurationSource {
 	s.ConnectorMode = &v
 	return s
@@ -971,8 +1506,18 @@ func (s *ESIngestionConfigurationSource) SetEndTime(v int64) *ESIngestionConfigu
 	return s
 }
 
+func (s *ESIngestionConfigurationSource) SetIndex(v string) *ESIngestionConfigurationSource {
+	s.Index = &v
+	return s
+}
+
 func (s *ESIngestionConfigurationSource) SetMaxDataDelaySec(v int64) *ESIngestionConfigurationSource {
 	s.MaxDataDelaySec = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetMinFragRangeSec(v int64) *ESIngestionConfigurationSource {
+	s.MinFragRangeSec = &v
 	return s
 }
 
@@ -1017,36 +1562,66 @@ func (s *ESIngestionConfigurationSource) SetVpcId(v string) *ESIngestionConfigur
 }
 
 type ETL struct {
+	// The configurations of the data transformation job.
+	//
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The time when the data transformation job was created.
+	//
 	// example:
 	//
 	// 1714274900
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
 	// example:
 	//
-	// 加工作业
+	// ETL
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// etljob
+	// ETL
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The time when the data transformation job was last modified.
+	//
 	// example:
 	//
 	// 1714274900
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// job name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// etl-20240426
+	// ETL
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the scheduler.
+	//
 	// example:
 	//
 	// f0eb655e501a8780808d1970ef6d04c4
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The status of the data transformation job. Valid values:
+	//
+	// 1.  RUNNING
+	//
+	// 2.  STOPPING
+	//
+	// 3.  STOPPED
+	//
+	// 4.  SUCCEEDED
+	//
+	// 5.  FAILED
+	//
+	// 6.  STARTING
+	//
+	// 7.  RESTARTING
+	//
 	// example:
 	//
 	// RUNNING
@@ -1103,48 +1678,68 @@ func (s *ETL) SetStatus(v string) *ETL {
 
 type ETLConfiguration struct {
 	// Deprecated
+	//
+	// The AccessKey ID used to grant the permissions to read data from the source logstore. This parameter is required. If you use a role to grant the required permissions, specify an empty string.
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// Deprecated
+	//
+	// The AccessKey secret used to grant the permissions to read data from the source logstore. This parameter is required. If you use a role to grant the required permissions, specify an empty string.
 	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	// The beginning of the time range for transformation. Specify a Unix timestamp that is accurate to the second. This parameter is required. If you want to transform data from the first log in the source logstore, enter 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1714274900
+	// 0
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The type of the data transformation syntax.
+	//
 	// example:
 	//
 	// SPL
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the source logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The advanced parameter settings.
+	//
 	// example:
 	//
-	// config.vpc.vpc_id.test1：vpc-uf6mskb0b****n9yj
+	// config.vpc.vpc_id.test1:vpc-uf6mskb0b****n9yj
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role that is used to grant the permissions to read data from the source logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ram::13234:role/logtarget
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The transformation script.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e_set("key","value")
 	Script *string `json:"script,omitempty" xml:"script,omitempty"`
+	// The storage destinations.
+	//
 	// This parameter is required.
 	Sinks []*ETLConfigurationSink `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
+	// The end of the time range for transformation. Specify a Unix timestamp that is accurate to the second. This parameter is required. If you want to transform data until the data transformation job is manually stopped, enter 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1714274970
+	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -1208,29 +1803,43 @@ func (s *ETLConfiguration) SetToTime(v int64) *ETLConfiguration {
 
 type ETLConfigurationSink struct {
 	// Deprecated
+	//
+	// The AccessKey ID that is used to grant the permissions to write data to the destination Logstore.
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// Deprecated
-	AccessKeySecret *string   `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	Datasets        []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
-	Endpoint        *string   `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	//
+	// The AccessKey secret that is used to grant the permissions to write data to the destination Logstore.
+	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	// The result data to write.
+	Datasets []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
+	// The Simple Log Service endpoint for the region where the destination project resides.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The name of the destination Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the storage destination.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-etljob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the destination project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role that is used to grant the permissions to write data to the destination Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1288,12 +1897,29 @@ func (s *ETLConfigurationSink) SetRoleArn(v string) *ETLConfigurationSink {
 }
 
 type EncryptConf struct {
+	// Specifies whether to enable data encryption. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The encryption algorithm. Valid values: default and sm4. If enable is set to true, you must configure this parameter.
+	//
 	// example:
 	//
 	// default
-	EncryptType *string             `json:"encrypt_type,omitempty" xml:"encrypt_type,omitempty"`
+	EncryptType *string `json:"encrypt_type,omitempty" xml:"encrypt_type,omitempty"`
+	// Optional. If you configure this parameter, the bring-your-own-key (BYOK) key is used. If you do not configure this parameter, the service key of Simple Log Service is used.
+	//
+	// example:
+	//
+	// {    "cmk_key_id" : "f5136b95-2420-ab31-xxxxxxxxx"    "arn" :  "acs:ram::13234:role/logsource"    "region_id" : "cn-hangzhou"  }
 	UserCmkInfo *EncryptUserCmkConf `json:"user_cmk_info,omitempty" xml:"user_cmk_info,omitempty"`
 }
 
@@ -1321,11 +1947,29 @@ func (s *EncryptConf) SetUserCmkInfo(v *EncryptUserCmkConf) *EncryptConf {
 }
 
 type EncryptUserCmkConf struct {
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:ram::13234:role/logsource
 	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
+	// The ID of the customer master key (CMK) if you use the bring-your-own-key (BYOK) key.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// f5136b95-2420-ab31-xxxxxxxxx
 	CmkKeyId *string `json:"cmk_key_id,omitempty" xml:"cmk_key_id,omitempty"`
+	// The ID of the region where the CMK resides.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
 }
 
@@ -1352,8 +1996,315 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 	return s
 }
 
+type GCSIngestion struct {
+	// This parameter is required.
+	Configuration *GCSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// 1714360481
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
+	// example:
+	//
+	// gcs ingestion
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gcs ingestion
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 1714360581
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-gcs-123456
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GCSIngestion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GCSIngestion) GoString() string {
+	return s.String()
+}
+
+func (s *GCSIngestion) SetConfiguration(v *GCSIngestionConfiguration) *GCSIngestion {
+	s.Configuration = v
+	return s
+}
+
+func (s *GCSIngestion) SetCreateTime(v int64) *GCSIngestion {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GCSIngestion) SetDescription(v string) *GCSIngestion {
+	s.Description = &v
+	return s
+}
+
+func (s *GCSIngestion) SetDisplayName(v string) *GCSIngestion {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GCSIngestion) SetLastModifiedTime(v int64) *GCSIngestion {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *GCSIngestion) SetName(v string) *GCSIngestion {
+	s.Name = &v
+	return s
+}
+
+func (s *GCSIngestion) SetScheduleId(v string) *GCSIngestion {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *GCSIngestion) SetStatus(v string) *GCSIngestion {
+	s.Status = &v
+	return s
+}
+
+type GCSIngestionConfiguration struct {
+	// logstore
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myLogstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// This parameter is required.
+	Source *GCSIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s GCSIngestionConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GCSIngestionConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GCSIngestionConfiguration) SetLogstore(v string) *GCSIngestionConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *GCSIngestionConfiguration) SetSource(v *GCSIngestionConfigurationSource) *GCSIngestionConfiguration {
+	s.Source = v
+	return s
+}
+
+type GCSIngestionConfigurationSource struct {
+	// This parameter is required.
+	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	// This parameter is required.
+	AccessKeySecret    *string                `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gcsbucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// none
+	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UTF-8
+	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// example:
+	//
+	// 1714360481
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// oss-cn-hangzhou.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// This parameter is required.
+	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// never
+	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// .*
+	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// example:
+	//
+	// prefix
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// example:
+	//
+	// ingest-processor-1756802123-953901
+	ProcessorId          *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	RestoreObjectEnabled *bool   `json:"restoreObjectEnabled,omitempty" xml:"restoreObjectEnabled,omitempty"`
+	// example:
+	//
+	// 1714274081
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	TagPackId *bool  `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// example:
+	//
+	// __time__
+	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// example:
+	//
+	// [0-9]{0,2}\/[0-9a-zA-Z]+\/[0-9:,]+
+	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// example:
+	//
+	// GMT+08:00
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s GCSIngestionConfigurationSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GCSIngestionConfigurationSource) GoString() string {
+	return s.String()
+}
+
+func (s *GCSIngestionConfigurationSource) SetAccessKeyId(v string) *GCSIngestionConfigurationSource {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetAccessKeySecret(v string) *GCSIngestionConfigurationSource {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetAdvancedParameters(v map[string]interface{}) *GCSIngestionConfigurationSource {
+	s.AdvancedParameters = v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetBucket(v string) *GCSIngestionConfigurationSource {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetCompressionCodec(v string) *GCSIngestionConfigurationSource {
+	s.CompressionCodec = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetEncoding(v string) *GCSIngestionConfigurationSource {
+	s.Encoding = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetEndTime(v int64) *GCSIngestionConfigurationSource {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetEndpoint(v string) *GCSIngestionConfigurationSource {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetFormat(v map[string]interface{}) *GCSIngestionConfigurationSource {
+	s.Format = v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetInterval(v string) *GCSIngestionConfigurationSource {
+	s.Interval = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetPattern(v string) *GCSIngestionConfigurationSource {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetPrefix(v string) *GCSIngestionConfigurationSource {
+	s.Prefix = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetProcessorId(v string) *GCSIngestionConfigurationSource {
+	s.ProcessorId = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetRestoreObjectEnabled(v bool) *GCSIngestionConfigurationSource {
+	s.RestoreObjectEnabled = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetStartTime(v int64) *GCSIngestionConfigurationSource {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetTagPackId(v bool) *GCSIngestionConfigurationSource {
+	s.TagPackId = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetTimeField(v string) *GCSIngestionConfigurationSource {
+	s.TimeField = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetTimeFormat(v string) *GCSIngestionConfigurationSource {
+	s.TimeFormat = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetTimePattern(v string) *GCSIngestionConfigurationSource {
+	s.TimePattern = &v
+	return s
+}
+
+func (s *GCSIngestionConfigurationSource) SetTimeZone(v string) *GCSIngestionConfigurationSource {
+	s.TimeZone = &v
+	return s
+}
+
 type GroupConfiguration struct {
+	// The fields of group evaluation.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The type of group evaluation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1381,10 +2332,34 @@ func (s *GroupConfiguration) SetType(v string) *GroupConfiguration {
 }
 
 type Histogram struct {
-	Count    *int64  `json:"count,omitempty" xml:"count,omitempty"`
-	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
+	// The number of logs that are generated during the subinterval.
+	//
+	// example:
+	//
+	// 2
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1409529600
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// Indicates whether the query result in the subinterval is complete. Valid values:
+	//
+	// 	- Complete: The query is successful, and the complete result is returned.
+	//
+	// 	- Incomplete: The query is successful, but the query result is incomplete. To obtain the complete result, you must repeat the request.
+	//
+	// example:
+	//
+	// Complete
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
-	To       *int32  `json:"to,omitempty" xml:"to,omitempty"`
+	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1409569200
+	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
 }
 
 func (s Histogram) String() string {
@@ -1416,23 +2391,34 @@ func (s *Histogram) SetTo(v int32) *Histogram {
 }
 
 type IndexJsonKey struct {
+	// Alias.
+	//
 	// example:
 	//
 	// myAlias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// Case sensitivity.
+	//
 	// example:
 	//
 	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Whether the field contains Chinese characters.
+	//
 	// example:
 	//
 	// true
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// Whether to enable statistics.
+	//
 	// example:
 	//
 	// true
-	DocValue *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
-	Token    []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	// Delimiter.
+	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// The data type of the field.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1480,35 +2466,52 @@ func (s *IndexJsonKey) SetType(v string) *IndexJsonKey {
 }
 
 type IndexKey struct {
+	// Alias.
+	//
 	// example:
 	//
 	// myAlias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// Case sensitivity.
+	//
 	// example:
 	//
 	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Whether the field contains Chinese characters.
+	//
 	// example:
 	//
 	// true
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// Whether to enable statistics.
+	//
 	// example:
 	//
 	// true
-	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	DocValue  *bool   `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	Embedding *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
+	// Whether to enable auto indexing for all text fields in JSON.
+	//
 	// example:
 	//
 	// true
-	IndexAll *bool                    `json:"index_all,omitempty" xml:"index_all,omitempty"`
+	IndexAll *bool `json:"index_all,omitempty" xml:"index_all,omitempty"`
+	// json key
 	JsonKeys map[string]*IndexJsonKey `json:"json_keys,omitempty" xml:"json_keys,omitempty"`
-	MaxDepth *int64                   `json:"max_depth,omitempty" xml:"max_depth,omitempty"`
-	Token    []*string                `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// Maximum depth.
+	MaxDepth *int64 `json:"max_depth,omitempty" xml:"max_depth,omitempty"`
+	// Delimiter.
+	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// The data type of the field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+	VectorIndex *string `json:"vector_index,omitempty" xml:"vector_index,omitempty"`
 }
 
 func (s IndexKey) String() string {
@@ -1539,6 +2542,11 @@ func (s *IndexKey) SetDocValue(v bool) *IndexKey {
 	return s
 }
 
+func (s *IndexKey) SetEmbedding(v string) *IndexKey {
+	s.Embedding = &v
+	return s
+}
+
 func (s *IndexKey) SetIndexAll(v bool) *IndexKey {
 	s.IndexAll = &v
 	return s
@@ -1564,22 +2572,20 @@ func (s *IndexKey) SetType(v string) *IndexKey {
 	return s
 }
 
+func (s *IndexKey) SetVectorIndex(v string) *IndexKey {
+	s.VectorIndex = &v
+	return s
+}
+
 type IngestProcessor struct {
 	// This parameter is required.
 	Configuration *IngestProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// example:
 	//
 	// 1717171200
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// 过滤content字段
+	CreateTime  *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 字段过滤处理
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// This parameter is required.
 	//
@@ -1663,10 +2669,14 @@ func (s *IngestProcessorConfiguration) SetSpl(v string) *IngestProcessorConfigur
 }
 
 type JoinConfiguration struct {
+	// The condition of the set operation.
+	//
 	// example:
 	//
 	// $0.id == $1.id
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The type of the set operation.
+	//
 	// example:
 	//
 	// left_join
@@ -1835,12 +2845,14 @@ type KafkaIngestionConfigurationSource struct {
 	//
 	// true
 	EnableSlsContext *bool `json:"enableSlsContext,omitempty" xml:"enableSlsContext,omitempty"`
+	EnableVpcNat     *bool `json:"enableVpcNat,omitempty" xml:"enableVpcNat,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTF-8
-	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	Encoding *string                `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	Format   map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1857,6 +2869,11 @@ type KafkaIngestionConfigurationSource struct {
 	//
 	// true
 	ParseArray *bool `json:"parseArray,omitempty" xml:"parseArray,omitempty"`
+	// example:
+	//
+	// ingest-processor-1756802123-953901
+	ProcessorId    *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	SecurityGroups *string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty"`
 	// example:
 	//
 	// __time__
@@ -1886,6 +2903,7 @@ type KafkaIngestionConfigurationSource struct {
 	// text,json
 	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
 func (s KafkaIngestionConfigurationSource) String() string {
@@ -1921,8 +2939,18 @@ func (s *KafkaIngestionConfigurationSource) SetEnableSlsContext(v bool) *KafkaIn
 	return s
 }
 
+func (s *KafkaIngestionConfigurationSource) SetEnableVpcNat(v bool) *KafkaIngestionConfigurationSource {
+	s.EnableVpcNat = &v
+	return s
+}
+
 func (s *KafkaIngestionConfigurationSource) SetEncoding(v string) *KafkaIngestionConfigurationSource {
 	s.Encoding = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetFormat(v map[string]interface{}) *KafkaIngestionConfigurationSource {
+	s.Format = v
 	return s
 }
 
@@ -1938,6 +2966,16 @@ func (s *KafkaIngestionConfigurationSource) SetNameResolutions(v string) *KafkaI
 
 func (s *KafkaIngestionConfigurationSource) SetParseArray(v bool) *KafkaIngestionConfigurationSource {
 	s.ParseArray = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetProcessorId(v string) *KafkaIngestionConfigurationSource {
+	s.ProcessorId = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetSecurityGroups(v string) *KafkaIngestionConfigurationSource {
+	s.SecurityGroups = &v
 	return s
 }
 
@@ -1976,13 +3014,22 @@ func (s *KafkaIngestionConfigurationSource) SetVpcId(v string) *KafkaIngestionCo
 	return s
 }
 
+func (s *KafkaIngestionConfigurationSource) SetVswitchId(v string) *KafkaIngestionConfigurationSource {
+	s.VswitchId = &v
+	return s
+}
+
 type LogContent struct {
+	// The name of the custom key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// key-test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom key.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2010,13 +3057,20 @@ func (s *LogContent) SetValue(v string) *LogContent {
 }
 
 type LogGroup struct {
+	// The log list.
+	//
 	// This parameter is required.
 	LogItems []*LogItem `json:"LogItems,omitempty" xml:"LogItems,omitempty" type:"Repeated"`
-	LogTags  []*LogTag  `json:"LogTags,omitempty" xml:"LogTags,omitempty" type:"Repeated"`
+	// The log tags.
+	LogTags []*LogTag `json:"LogTags,omitempty" xml:"LogTags,omitempty" type:"Repeated"`
+	// The log source. For example, the source of a log can be the IP address of the server where the log is generated.
+	//
 	// example:
 	//
 	// 192.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The log topic. This field is user-defined and is used to distinguish between logs.
+	//
 	// example:
 	//
 	// topic-test
@@ -2070,14 +3124,22 @@ func (s *LogGroupList) SetLogGroupList(v []*LogGroup) *LogGroupList {
 }
 
 type LogItem struct {
+	// The log fields.
+	//
 	// This parameter is required.
 	Contents []*LogContent `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// The log time. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1690254376
 	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 123456789
+	TimeNs *int32 `json:"TimeNs,omitempty" xml:"TimeNs,omitempty"`
 }
 
 func (s LogItem) String() string {
@@ -2098,13 +3160,22 @@ func (s *LogItem) SetTime(v int32) *LogItem {
 	return s
 }
 
+func (s *LogItem) SetTimeNs(v int32) *LogItem {
+	s.TimeNs = &v
+	return s
+}
+
 type LogTag struct {
+	// The name of the custom key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// key-test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom key.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2132,34 +3203,64 @@ func (s *LogTag) SetValue(v string) *LogTag {
 }
 
 type LogtailConfig struct {
+	// The name of the Logtail configuration. The name must be unique in the project to which the Logtail configuration belongs. After the Logtail configuration is created, you cannot change the name of the Logtail configuration. The name must meet the following requirements:
+	//
+	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start and end with a lowercase letter or a digit.
+	//
+	// 	- The name must be 2 to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-config
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The time at which the Logtail configuration was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1655176807
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The detailed settings of the data source. For more information, see [inputDetail](https://help.aliyun.com/document_detail/29058.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// "logType": "common_reg_log", "logPath": "/var/log/httpd/", "filePattern": "access*.log", "localStorage": true, "timeFormat": "%Y/%m/%d %H:%M:%S", "logBeginRegex": ".*", "regex": "(\\w+)(\\s+)", "key" :["key1", "key2"], "filterKey":["key1"], "filterRegex":["regex1"], "fileEncoding":"utf8", "topicFormat": "none"
 	InputDetail map[string]interface{} `json:"inputDetail,omitempty" xml:"inputDetail,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **plugin**: Logs such as MySQL binary logs are collected by using Logtail plug-ins.
+	//
+	// 	- **file**: Logs from text files are collected by using existing modes, including the full regex mode and delimiter mode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file
 	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
+	// The time at which the Logtail configuration was last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1655176807
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The sample log.
+	//
 	// example:
 	//
 	// 2022-06-14 11:13:29.796 | DEBUG    | __main__:<module>:1 - hello world
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	// The detailed settings of the data destination. For more information, see [outputDetail](https://help.aliyun.com/document_detail/29058.html).
+	//
 	// This parameter is required.
 	OutputDetail *LogtailConfigOutputDetail `json:"outputDetail,omitempty" xml:"outputDetail,omitempty" type:"Struct"`
+	// The type of the data destination. Set the value to LogService. Collected logs can be uploaded to only Simple Log Service.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2217,22 +3318,30 @@ func (s *LogtailConfig) SetOutputType(v string) *LogtailConfig {
 }
 
 type LogtailConfigOutputDetail struct {
+	// The endpoint. For more information, see [Endpoints](https://help.aliyun.com/document_detail/29008.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-intranet.log.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The name of the Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of observable data in the Logstore.
+	//
 	// example:
 	//
 	// logs
@@ -2268,30 +3377,49 @@ func (s *LogtailConfigOutputDetail) SetTelemetryType(v string) *LogtailConfigOut
 }
 
 type LogtailPipelineConfig struct {
+	// The aggregation plug-ins.
 	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
+	// The name of the configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-config
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// The creation time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1655176807
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The data output plug-ins.
+	//
 	// This parameter is required.
 	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
-	Global   map[string]interface{}   `json:"global,omitempty" xml:"global,omitempty"`
+	// The global configuration.
+	//
+	// example:
+	//
+	// {     "TopicType": "custom",     "TopicFormat": "aaa",     "EnableAlwaysOnline": true,     "EnableTimestampNanosecond": true,     "UsingOldContentTag": true }
+	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
+	// The data source plug-ins.
+	//
 	// This parameter is required.
 	Inputs []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	// The last modification time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1655176807
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The sample log.
+	//
 	// example:
 	//
 	// 127.0.0.1 - - [10/Jun/2022:12:36:49 +0800] "GET /index.html HTTP/1.1" 200
-	LogSample  *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	// The processing plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2358,33 +3486,50 @@ func (s *LogtailPipelineConfig) SetTask(v map[string]interface{}) *LogtailPipeli
 }
 
 type MLDataParam struct {
+	// The unique identifier of the data.
+	//
 	// example:
 	//
 	// dc74b0f569126bb310e1ba6454c351ac
-	AnnotationdataId *string                                 `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
-	Annotations      map[string]*MLDataParamAnnotationsValue `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	Config           map[string]*string                      `json:"config,omitempty" xml:"config,omitempty"`
+	AnnotationdataId *string `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
+	// The annotations of the data.
+	Annotations map[string]*MLDataParamAnnotationsValue `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// The configurations of the data.
+	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1695094335
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The hash value of the data.
+	//
 	// example:
 	//
 	// 59db060bd89468245d76416a68a510ac
 	DataHash *string `json:"dataHash,omitempty" xml:"dataHash,omitempty"`
+	// The ID of the associated dataset.
+	//
 	// example:
 	//
-	// a9bd488f6dd42d294495fb780858e83d
+	// cb8cc4eb51a85e823471cdb368fae9be
 	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 1695094335
-	LastModifyTime *int64                                  `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	Predictions    map[string]*MLDataParamPredictionsValue `json:"predictions,omitempty" xml:"predictions,omitempty"`
+	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The model preview results.
+	Predictions map[string]*MLDataParamPredictionsValue `json:"predictions,omitempty" xml:"predictions,omitempty"`
+	// The data source.
+	//
 	// example:
 	//
 	// xxx/xxx/xxx/
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// oss
@@ -2450,38 +3595,52 @@ func (s *MLDataParam) SetValueType(v string) *MLDataParam {
 }
 
 type MLDataSetParam struct {
+	// The creator.
+	//
 	// example:
 	//
 	// sls-console
 	CreateBy *string `json:"createBy,omitempty" xml:"createBy,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1695090077
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The type of the data.
+	//
 	// example:
 	//
 	// Metric
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The unique identifier of the dataset.
+	//
 	// example:
 	//
 	// d9bd488f6dd42d294495fb780858e83d
 	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
-	// example:
-	//
-	// 数据集A
+	// The description of the dataset.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the tag system that corresponds to the dataset.
+	//
 	// example:
 	//
 	// a191ae4ca615b0ccb93c211fc8a998af
 	LabelId *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 1695090077
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// sls_builtin_dataset_metric.shapeclassification.anomalydetection
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The configuration type of the tag table.
+	//
 	// example:
 	//
 	// Metric.ShapeClassification.AnomalyDetection
@@ -2542,27 +3701,32 @@ func (s *MLDataSetParam) SetSettingType(v string) *MLDataSetParam {
 }
 
 type MLLabelParam struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1695090077
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// 默认表
+	// The description of the tag table.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The unique identifier of the tag table.
+	//
 	// example:
 	//
 	// abbd488f6dd42d294495fb780858e83d
 	LabelId *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 1695090077
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// example:
-	//
-	// 标签表
-	Name     *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the tag table.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The configurations of the tag tables.
 	Settings []*MLLabelParamSettings `json:"settings,omitempty" xml:"settings,omitempty" type:"Repeated"`
+	// The type of the tag table.
+	//
 	// example:
 	//
 	// xxx
@@ -2613,18 +3777,26 @@ func (s *MLLabelParam) SetType(v string) *MLLabelParam {
 }
 
 type MLLabelParamSettings struct {
+	// The details of the configuration.
+	//
 	// example:
 	//
 	// ""
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The mode of the configuration.
+	//
 	// example:
 	//
 	// builtin
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The task type of the configuration.
+	//
 	// example:
 	//
 	// Trace.RCA
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number of the configuration.
+	//
 	// example:
 	//
 	// 0.01
@@ -2660,8 +3832,10 @@ func (s *MLLabelParamSettings) SetVersion(v string) *MLLabelParamSettings {
 }
 
 type MLServiceAnalysisParam struct {
-	Input     []map[string]*string `json:"input,omitempty" xml:"input,omitempty" type:"Repeated"`
-	Parameter map[string]*string   `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The input data.
+	Input []map[string]*string `json:"input,omitempty" xml:"input,omitempty" type:"Repeated"`
+	// The parameter.
+	Parameter map[string]*string `json:"parameter,omitempty" xml:"parameter,omitempty"`
 }
 
 func (s MLServiceAnalysisParam) String() string {
@@ -2827,36 +4001,52 @@ func (s *MLServiceParamResource) SetReplica(v int32) *MLServiceParamResource {
 }
 
 type MaxComputeExport struct {
+	// The setting of the MaxCompute data shipping job.
+	//
 	// This parameter is required.
 	Configuration *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
-	// 1714284115
+	// 1718787534
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
 	// example:
 	//
-	// odpsexport-demo
+	// MaxComputeExport
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// odpsexport-test
+	// MaxComputeExport
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
-	// 1714284589
+	// 1718787681
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// job name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// export-general-1714033191-584993-hcl
+	// MaxComputeExport
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the MaxCompute data shipping job.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The status of the MaxCompute data shipping job.
+	//
 	// example:
 	//
 	// RUNNING
@@ -2912,31 +4102,41 @@ func (s *MaxComputeExport) SetStatus(v string) *MaxComputeExport {
 }
 
 type MaxComputeExportConfiguration struct {
+	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 1718380800
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The name of the Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sls-logstore-demo
+	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is used to read data from Simple Log Service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// acs:ram::123456789:role/aliyunlogdefaultrole
+	// acs:ram::1234567890:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The configuration of the MaxCompute data shipping job.
+	//
 	// This parameter is required.
 	Sink *MaxComputeExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty"`
+	// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0
+	// 1718390800
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -2974,68 +4174,112 @@ func (s *MaxComputeExportConfiguration) SetToTime(v int64) *MaxComputeExportConf
 }
 
 type MaxComputeExportConfigurationSink struct {
+	// Specifies the minimum time granularity between two data shipping jobs. Unit: seconds. Valid values:
+	//
+	// 	- 1800 (default)
+	//
+	// 	- 3600
+	//
 	// example:
 	//
 	// 1800
 	BufferInterval *string `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	// The fields that you want to ship.
+	//
 	// This parameter is required.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// Specifies whether to filter the invalid content.
+	//
+	// 	- true (default)
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	FilterInvalid *bool `json:"filterInvalid,omitempty" xml:"filterInvalid,omitempty"`
 	// Deprecated
 	//
+	// The AccessKey ID used to write data to MaxCompute.
+	//
 	// example:
 	//
-	// asdfghjk
+	// axxxxxxxxxxxb
 	OdpsAccessKeyId *string `json:"odpsAccessKeyId,omitempty" xml:"odpsAccessKeyId,omitempty"`
 	// Deprecated
 	//
+	// The AccessKey secret used to write data to MaxCompute.
+	//
 	// example:
 	//
-	// esasdfghjkl
+	// aaxxxxxxxxxxxxxxxxxxxxxbb
 	OdpsAccessSecret *string `json:"odpsAccessSecret,omitempty" xml:"odpsAccessSecret,omitempty"`
+	// The endpoint of MaxCompute.
+	//
+	// 	- ⚠️Note: The endpoint of MaxCompute must be the same as that of the Simple Log Service project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
+	// https://service.cn-hangzhou-intranet.maxcompute.aliyun-inc.com/api
 	OdpsEndpoint *string `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
+	// The name of the MaxCompute project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demo_project
 	OdpsProject *string `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
+	// The Resource Access Management (RAM) role the data shipping job assumes to write data to MaxCompute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// acs:ram::123456789:role/aliyunlogdefaultrole
+	// acs:ram::xxxxxxx
 	OdpsRolearn *string `json:"odpsRolearn,omitempty" xml:"odpsRolearn,omitempty"`
+	// The name of the MaxCompute table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demo_table
 	OdpsTable *string `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
+	// The Tunnel endpoint of MaxCompute.
+	//
+	// 	- ⚠️Note: The Tunnel endpoint of MaxCompute must be the same as that of the Simple Log Service project.
+	//
 	// example:
 	//
-	// http://dt.cn-hangzhou.maxcompute.aliyun-inc.com
+	// https://dt.cn-hangzhou-intranet.maxcompute.aliyun-inc.com
 	OdpsTunnelEndpoint *string `json:"odpsTunnelEndpoint,omitempty" xml:"odpsTunnelEndpoint,omitempty"`
+	// The partition key columns that you want to ship.
+	//
 	// This parameter is required.
 	PartitionColumn []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
+	// The time partition format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// %Y_%m_%d
 	PartitionTimeFormat *string `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
+	// The time partition type. Valid values:
+	//
+	// 	- StrfTimeFormat (default)
+	//
+	// 	- JavaSimpleDateFormat
+	//
 	// example:
 	//
 	// StrfTimeFormat
 	TimeFormatType *string `json:"timeFormatType,omitempty" xml:"timeFormatType,omitempty"`
+	// The time zone.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3123,35 +4367,50 @@ func (s *MaxComputeExportConfigurationSink) SetTimeZone(v string) *MaxComputeExp
 }
 
 type OSSExport struct {
+	// The OSS export configuration.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The time when the OSS data shipping job was created.
+	//
 	// example:
 	//
-	// 1714284025
+	// 123456789
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the OSS data shipping job.
+	//
 	// example:
 	//
-	// job-test
+	// This is a oss export
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the OSS data shipping job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// job-demo
+	// This is a oss export
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The time when the OSS data shipping job was last modified.
+	//
 	// example:
 	//
-	// 1714284115
+	// 123456789
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The name of the OSS data shipping job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// job-1714109458-123456
+	// myossexportjob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the OSS data shipping job.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The status of the OSS data shipping job.
+	//
 	// example:
 	//
 	// RUNNING
@@ -3207,22 +4466,32 @@ func (s *OSSExport) SetStatus(v string) *OSSExport {
 }
 
 type OSSExportConfiguration struct {
+	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore.
+	//
 	// example:
 	//
-	// 1714123644
+	// 123456789
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// logstore-demo
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is used to read data from Simple Log Service.
+	//
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunlogdefaultrole
-	RoleArn *string                     `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Sink    *OSSExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The configurations of the OSS data shipping job.
+	Sink                  *OSSExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	SourceSecureTransport *bool                       `json:"sourceSecureTransport,omitempty" xml:"sourceSecureTransport,omitempty"`
+	// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped.
+	//
 	// example:
 	//
-	// 1714357112
+	// 123456789
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -3254,77 +4523,117 @@ func (s *OSSExportConfiguration) SetSink(v *OSSExportConfigurationSink) *OSSExpo
 	return s
 }
 
+func (s *OSSExportConfiguration) SetSourceSecureTransport(v bool) *OSSExportConfiguration {
+	s.SourceSecureTransport = &v
+	return s
+}
+
 func (s *OSSExportConfiguration) SetToTime(v int64) *OSSExportConfiguration {
 	s.ToTime = &v
 	return s
 }
 
 type OSSExportConfigurationSink struct {
+	// The OSS bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+	//
 	// example:
 	//
 	// 300
 	BufferInterval *int64 `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+	//
 	// example:
 	//
 	// 256
 	BufferSize *int64 `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
+	// The compression type. Valid values: snappy, gizp, zstd, and none.
+	//
 	// example:
 	//
-	// snappy
-	CompressionType *string                `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	ContentDetail   map[string]interface{} `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
+	// snappy/gizp/zstd/none
+	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
+	// The details of the OSS object. Note: The value of this parameter is in the JSON format and varies based on the value of contentType.
+	ContentDetail map[string]interface{} `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
+	// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+	//
 	// example:
 	//
-	// json
+	// json/parquet/csv/orc
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// Deprecated
 	//
+	// The latency of data shipping.
+	//
+	// >
+	//
+	// 	- This parameter is deprecated.
+	//
 	// example:
 	//
-	// 900
+	// 123
 	DelaySec *int64 `json:"delaySec,omitempty" xml:"delaySec,omitempty"`
+	// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+	//
 	// example:
 	//
 	// 900
 	DelaySeconds *int64 `json:"delaySeconds,omitempty" xml:"delaySeconds,omitempty"`
+	// 	- The endpoint that is used to access OSS. You can specify only an internal OSS endpoint for the region where the Simple Log Service project resides. The value is in the `http://+OSS endpoint` format. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	//
+	// 	- The endpoint that is used to access OSS-HDFS. You can specify only an internal OSS-HDFS endpoint for the region where the Simple Log Service project resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://oss-cn-hangzhou-internal.aliyuncs.com
+	// http://xxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The partition format. For more information, see [Partition formats](https://help.aliyun.com/document_detail/371934.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// %Y/%m/%d/%H/%M
+	// %Y_%m_%d/good/bad
 	PathFormat *string `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
+	// The partition format type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// time
+	// only support time
 	PathFormatType *string `json:"pathFormatType,omitempty" xml:"pathFormatType,omitempty"`
+	// The prefix of the OSS object.
+	//
 	// example:
 	//
-	// demo/
+	// prefixxxx/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The ARN of the RAM role that is used to write data to OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// acs:ram::123456789:role/aliyunlogdefaultrole
+	// acs:ram::xxxxxxx
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The suffix of the OSS object.
+	//
 	// example:
 	//
 	// .json
 	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
+	// The time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
+	//
 	// example:
 	//
 	// +0800
@@ -3415,38 +4724,56 @@ func (s *OSSExportConfigurationSink) SetTimeZone(v string) *OSSExportConfigurati
 }
 
 type OSSIngestion struct {
+	// The configurations of the OSS data import job.
+	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The time when the data import job was created.
+	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the data import job.
+	//
 	// example:
 	//
 	// oss ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the data import job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The time when the data import job was last modified.
+	//
 	// example:
 	//
 	// 1714360481
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The name of the data import job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-oss-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling settings.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// The ID of the data import job.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The status of the data import job.
+	//
 	// example:
 	//
 	// RUNNING
@@ -3507,12 +4834,16 @@ func (s *OSSIngestion) SetStatus(v string) *OSSIngestion {
 }
 
 type OSSIngestionConfiguration struct {
+	// The Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myLogstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The source that you specify for the configurations of the OSS data import job.
+	//
 	// This parameter is required.
 	Source *OSSIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
 }
@@ -3536,58 +4867,87 @@ func (s *OSSIngestionConfiguration) SetSource(v *OSSIngestionConfigurationSource
 }
 
 type OSSIngestionConfigurationSource struct {
+	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
+	// The OSS bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ossbucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The compression type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// none
+	// none,snappy,gzip
 	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	// The encoding type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTF-8
 	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// The point in time before which modified OSS objects are imported.
+	//
 	// example:
 	//
 	// 1714360481
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The OSS endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The format.
+	//
 	// This parameter is required.
 	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// The interval at which the system checks for new files.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// never
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// The regular expression that is used to filter OSS objects by directory.
+	//
 	// example:
 	//
 	// .*
 	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// The directory of the OSS objects.
+	//
 	// example:
 	//
 	// prefix
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// example:
 	//
+	// ingest-processor-1756802123-953901
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// Specifies whether to import OSS objects of the Archive class.
+	//
+	// example:
+	//
 	// true
 	RestoreObjectEnabled *bool `json:"restoreObjectEnabled,omitempty" xml:"restoreObjectEnabled,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role.
+	//
 	// example:
 	//
 	// acs:ram::12345:role/aliyunlogdefaultrole
 	RoleARN *string `json:"roleARN,omitempty" xml:"roleARN,omitempty"`
+	// The point in time after which modified OSS objects are imported.
+	//
 	// example:
 	//
 	// 1714274081
@@ -3596,22 +4956,32 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// true
 	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// The time field to extract.
+	//
 	// example:
 	//
 	// __time__
 	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// The format of the time field.
+	//
 	// example:
 	//
 	// yyyy-MM-dd HH:mm:ss
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// The regular expression that is used to extract time.
+	//
 	// example:
 	//
-	// [0-9]{0,2}\/[0-9a-zA-Z]+\/[0-9:,]+
+	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// The time zone of the time field.
+	//
 	// example:
 	//
 	// GMT+08:00
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// Specifies whether to enable OSS metadata indexing.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3626,6 +4996,11 @@ func (s OSSIngestionConfigurationSource) String() string {
 
 func (s OSSIngestionConfigurationSource) GoString() string {
 	return s.String()
+}
+
+func (s *OSSIngestionConfigurationSource) SetAdvancedParameters(v map[string]interface{}) *OSSIngestionConfigurationSource {
+	s.AdvancedParameters = v
+	return s
 }
 
 func (s *OSSIngestionConfigurationSource) SetBucket(v string) *OSSIngestionConfigurationSource {
@@ -3670,6 +5045,11 @@ func (s *OSSIngestionConfigurationSource) SetPattern(v string) *OSSIngestionConf
 
 func (s *OSSIngestionConfigurationSource) SetPrefix(v string) *OSSIngestionConfigurationSource {
 	s.Prefix = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetProcessorId(v string) *OSSIngestionConfigurationSource {
+	s.ProcessorId = &v
 	return s
 }
 
@@ -3719,14 +5099,20 @@ func (s *OSSIngestionConfigurationSource) SetUseMetaIndex(v bool) *OSSIngestionC
 }
 
 type PolicyConfiguration struct {
+	// The action policy.
+	//
 	// example:
 	//
 	// example_action_policy
 	ActionPolicyId *string `json:"actionPolicyId,omitempty" xml:"actionPolicyId,omitempty"`
+	// The alert policy.
+	//
 	// example:
 	//
 	// sls.builtin.dynamic
 	AlertPolicyId *string `json:"alertPolicyId,omitempty" xml:"alertPolicyId,omitempty"`
+	// The repeat interval.
+	//
 	// example:
 	//
 	// 10m
@@ -3780,16 +5166,36 @@ func (s *ProcessorAssociate) SetProcessorId(v string) *ProcessorAssociate {
 
 type ProjectSummary struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// This parameter is required.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ali-test-project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acf******sq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1710230272
 	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
@@ -3832,16 +5238,19 @@ func (s *ProjectSummary) SetUpdateTime(v int64) *ProjectSummary {
 }
 
 type S3Ingestion struct {
-	// This parameter is required.
-	Configuration *S3IngestionConfigurationSource `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
 	// example:
 	//
 	// s3 ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3878,7 +5287,7 @@ func (s S3Ingestion) GoString() string {
 	return s.String()
 }
 
-func (s *S3Ingestion) SetConfiguration(v *S3IngestionConfigurationSource) *S3Ingestion {
+func (s *S3Ingestion) SetConfiguration(v *S3IngestionConfiguration) *S3Ingestion {
 	s.Configuration = v
 	return s
 }
@@ -3924,6 +5333,8 @@ func (s *S3Ingestion) SetStatus(v string) *S3Ingestion {
 }
 
 type S3IngestionConfiguration struct {
+	// logstore
+	//
 	// example:
 	//
 	// myLogstore
@@ -3950,24 +5361,33 @@ func (s *S3IngestionConfiguration) SetSource(v *S3IngestionConfigurationSource) 
 }
 
 type S3IngestionConfigurationSource struct {
+	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
+	// aws access key
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AKIxxxxxxxxxxYJE
 	AwsAccessKey *string `json:"awsAccessKey,omitempty" xml:"awsAccessKey,omitempty"`
+	// aws access key secret
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123xxxxxxxxxxfjf
 	AwsAccessKeySecret *string `json:"awsAccessKeySecret,omitempty" xml:"awsAccessKeySecret,omitempty"`
+	// s3 region
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-northeast-1
 	AwsRegion *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
+	// sqs queue url
+	//
 	// example:
 	//
 	// https://sqs.ap-northeast-1.amazonaws.com/123456788/chifan
@@ -3976,12 +5396,16 @@ type S3IngestionConfigurationSource struct {
 	//
 	// false
 	AwsUseSQS *bool `json:"awsUseSQS,omitempty" xml:"awsUseSQS,omitempty"`
+	// s3 bucket
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// s3bucket
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket             *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	CloudFrontEndpoint *string `json:"cloudFrontEndpoint,omitempty" xml:"cloudFrontEndpoint,omitempty"`
+	CloudFrontToken    *string `json:"cloudFrontToken,omitempty" xml:"cloudFrontToken,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -3998,6 +5422,12 @@ type S3IngestionConfigurationSource struct {
 	//
 	// 1714360481
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// s3 endpoint
+	//
+	// example:
+	//
+	// s3.us-east-1.amazonaws.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// This parameter is required.
 	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
 	// This parameter is required.
@@ -4016,6 +5446,10 @@ type S3IngestionConfigurationSource struct {
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// example:
 	//
+	// ingest-processor-1756802123-953901
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// example:
+	//
 	// 1714274081
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// example:
@@ -4032,7 +5466,7 @@ type S3IngestionConfigurationSource struct {
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
 	// example:
 	//
-	// [0-9]{0,2}\/[0-9a-zA-Z]+\/[0-9:,]+
+	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
 	// example:
 	//
@@ -4042,6 +5476,7 @@ type S3IngestionConfigurationSource struct {
 	//
 	// false
 	UseAwsSQSOnly *bool `json:"useAwsSQSOnly,omitempty" xml:"useAwsSQSOnly,omitempty"`
+	UseCloudFront *bool `json:"useCloudFront,omitempty" xml:"useCloudFront,omitempty"`
 }
 
 func (s S3IngestionConfigurationSource) String() string {
@@ -4050,6 +5485,11 @@ func (s S3IngestionConfigurationSource) String() string {
 
 func (s S3IngestionConfigurationSource) GoString() string {
 	return s.String()
+}
+
+func (s *S3IngestionConfigurationSource) SetAdvancedParameters(v map[string]interface{}) *S3IngestionConfigurationSource {
+	s.AdvancedParameters = v
+	return s
 }
 
 func (s *S3IngestionConfigurationSource) SetAwsAccessKey(v string) *S3IngestionConfigurationSource {
@@ -4082,6 +5522,16 @@ func (s *S3IngestionConfigurationSource) SetBucket(v string) *S3IngestionConfigu
 	return s
 }
 
+func (s *S3IngestionConfigurationSource) SetCloudFrontEndpoint(v string) *S3IngestionConfigurationSource {
+	s.CloudFrontEndpoint = &v
+	return s
+}
+
+func (s *S3IngestionConfigurationSource) SetCloudFrontToken(v string) *S3IngestionConfigurationSource {
+	s.CloudFrontToken = &v
+	return s
+}
+
 func (s *S3IngestionConfigurationSource) SetCompressionCodec(v string) *S3IngestionConfigurationSource {
 	s.CompressionCodec = &v
 	return s
@@ -4094,6 +5544,11 @@ func (s *S3IngestionConfigurationSource) SetEncoding(v string) *S3IngestionConfi
 
 func (s *S3IngestionConfigurationSource) SetEndTime(v int64) *S3IngestionConfigurationSource {
 	s.EndTime = &v
+	return s
+}
+
+func (s *S3IngestionConfigurationSource) SetEndpoint(v string) *S3IngestionConfigurationSource {
+	s.Endpoint = &v
 	return s
 }
 
@@ -4114,6 +5569,11 @@ func (s *S3IngestionConfigurationSource) SetPattern(v string) *S3IngestionConfig
 
 func (s *S3IngestionConfigurationSource) SetPrefix(v string) *S3IngestionConfigurationSource {
 	s.Prefix = &v
+	return s
+}
+
+func (s *S3IngestionConfigurationSource) SetProcessorId(v string) *S3IngestionConfigurationSource {
+	s.ProcessorId = &v
 	return s
 }
 
@@ -4152,16 +5612,46 @@ func (s *S3IngestionConfigurationSource) SetUseAwsSQSOnly(v bool) *S3IngestionCo
 	return s
 }
 
+func (s *S3IngestionConfigurationSource) SetUseCloudFront(v bool) *S3IngestionConfigurationSource {
+	s.UseCloudFront = &v
+	return s
+}
+
 type SavedSearch struct {
+	// The display name of the saved search.
+	//
 	// This parameter is required.
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the Logstore.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the saved search.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// savedsearch-name
 	SavedsearchName *string `json:"savedsearchName,omitempty" xml:"savedsearchName,omitempty"`
+	// The search statement or the analytic statement.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	SearchQuery *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
-	Topic       *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// The topic of the log. Default value: empty string ("").
+	//
+	// example:
+	//
+	// topic
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
 func (s SavedSearch) String() string {
@@ -4198,31 +5688,43 @@ func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 }
 
 type Schedule struct {
+	// The cron expression.
+	//
 	// example:
 	//
 	// 0/5 	- 	- 	- *
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// The number of seconds for which the scheduled job is delayed.
+	//
 	// example:
 	//
 	// 4
 	Delay *int32 `json:"delay,omitempty" xml:"delay,omitempty"`
+	// The fixed interval.
+	//
 	// example:
 	//
-	// 60s
+	// 1m/1h
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// Specifies whether to run the scheduled job immediately.
+	//
 	// example:
 	//
 	// false
 	RunImmediately *bool `json:"runImmediately,omitempty" xml:"runImmediately,omitempty"`
+	// The time zone for the cron expression. This parameter is empty by default, which indicates that the time zone is UTC+8.
+	//
 	// example:
 	//
-	// +0800
+	// "+0800"
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// The scheduling type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// FixedRate
+	// Cron
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -4265,38 +5767,56 @@ func (s *Schedule) SetType(v string) *Schedule {
 }
 
 type ScheduledSQL struct {
+	// The configuration of the Scheduled SQL job.
+	//
 	// This parameter is required.
 	Configuration *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The time when the Scheduled SQL job was created.
+	//
 	// example:
 	//
 	// 1714123644
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the scheduled SQL job.
+	//
 	// example:
 	//
-	// schedule-sql-test
+	// This is a scheduled sql job
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the scheduled SQL job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// scheduleSqlTest
+	// This is a scheduled sql job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The time when the Scheduled SQL job was last modified.
+	//
 	// example:
 	//
 	// 1714123644
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The name of the scheduled SQL job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sql-1714123463-225223
+	// test-scheduled-sql
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling settings of the Scheduled SQL job.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// The ID of the scheduler.
+	//
 	// example:
 	//
 	// e73f43732852064ad5d091914e39342f
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The status of the Scheduled SQL job.
+	//
 	// example:
 	//
 	// ENABLED
@@ -4357,98 +5877,158 @@ func (s *ScheduledSQL) SetStatus(v string) *ScheduledSQL {
 }
 
 type ScheduledSQLConfiguration struct {
+	// The data format. Valid values: log2log, log2metric, and metric2metric.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// log2log
 	DataFormat *string `json:"dataFormat,omitempty" xml:"dataFormat,omitempty"`
+	// The endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-intranet.log.aliyuncs.com
 	DestEndpoint *string `json:"destEndpoint,omitempty" xml:"destEndpoint,omitempty"`
+	// The destination Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dest-logstore-demo
 	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	// The destination project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// project-demo
 	DestProject *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	// The ARN of the RAM role that is assumed to write data to the destination Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunlogetlrole
 	DestRoleArn *string `json:"destRoleArn,omitempty" xml:"destRoleArn,omitempty"`
+	// example:
+	//
+	// true
+	ForceComplete *bool `json:"forceComplete,omitempty" xml:"forceComplete,omitempty"`
+	// The start time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1712592000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The start time of the SQL time window.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// @m-1m
 	FromTimeExpr *string `json:"fromTimeExpr,omitempty" xml:"fromTimeExpr,omitempty"`
+	// example:
+	//
+	// 1
+	MaxConcurrency *int64 `json:"maxConcurrency,omitempty" xml:"maxConcurrency,omitempty"`
+	// The maximum number of SQL timeouts allowed. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	MaxRetries *int64 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
+	// The maximum timeout period of SQL analysis. Unit: seconds. Valid values: 60 to 1800.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 600
 	MaxRunTimeInSeconds *int64 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
+	// The SQL configurations. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   addLabels: "{}",
+	//
+	//   hashLabels: "[]",
+	//
+	//   labelKeys: "[\\"your label1\\",\\"your label2\\"]",
+	//
+	//   metricKeys: "[\\"your Indicator1\\",\\"your Indicator2\\"]",
+	//
+	//   metricName: "",
+	//
+	//   timeKey: ""
+	//
+	// }
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The type of the resource pool. The value enhanced specifies an enhanced resource pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enhanced
 	ResourcePool *string `json:"resourcePool,omitempty" xml:"resourcePool,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is assigned to the Scheduled SQL job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunlogetlrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The query statement of the Scheduled SQL job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 	- | select *
 	Script *string `json:"script,omitempty" xml:"script,omitempty"`
+	// The source Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// source-logstore-demo
 	SourceLogstore *string `json:"sourceLogstore,omitempty" xml:"sourceLogstore,omitempty"`
+	// The type of the query statement.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// searchQuery
 	SqlType *string `json:"sqlType,omitempty" xml:"sqlType,omitempty"`
+	// The end time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+	// The end time of the SQL time window.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4490,6 +6070,11 @@ func (s *ScheduledSQLConfiguration) SetDestRoleArn(v string) *ScheduledSQLConfig
 	return s
 }
 
+func (s *ScheduledSQLConfiguration) SetForceComplete(v bool) *ScheduledSQLConfiguration {
+	s.ForceComplete = &v
+	return s
+}
+
 func (s *ScheduledSQLConfiguration) SetFromTime(v int64) *ScheduledSQLConfiguration {
 	s.FromTime = &v
 	return s
@@ -4497,6 +6082,11 @@ func (s *ScheduledSQLConfiguration) SetFromTime(v int64) *ScheduledSQLConfigurat
 
 func (s *ScheduledSQLConfiguration) SetFromTimeExpr(v string) *ScheduledSQLConfiguration {
 	s.FromTimeExpr = &v
+	return s
+}
+
+func (s *ScheduledSQLConfiguration) SetMaxConcurrency(v int64) *ScheduledSQLConfiguration {
+	s.MaxConcurrency = &v
 	return s
 }
 
@@ -4551,7 +6141,10 @@ func (s *ScheduledSQLConfiguration) SetToTimeExpr(v string) *ScheduledSQLConfigu
 }
 
 type SeverityConfiguration struct {
+	// The trigger condition configurations.
 	EvalCondition *ConditionConfiguration `json:"evalCondition,omitempty" xml:"evalCondition,omitempty"`
+	// The value of the alert severity.
+	//
 	// example:
 	//
 	// 8
@@ -4576,7 +6169,100 @@ func (s *SeverityConfiguration) SetSeverity(v int32) *SeverityConfiguration {
 	return s
 }
 
+type ShardingPolicy struct {
+	// example:
+	//
+	// 1764659409
+	QueryActiveTime *int64                    `json:"queryActiveTime,omitempty" xml:"queryActiveTime,omitempty"`
+	ShardGroup      *ShardingPolicyShardGroup `json:"shardGroup,omitempty" xml:"shardGroup,omitempty" type:"Struct"`
+	// This parameter is required.
+	ShardHash *ShardingPolicyShardHash `json:"shardHash,omitempty" xml:"shardHash,omitempty" type:"Struct"`
+}
+
+func (s ShardingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShardingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ShardingPolicy) SetQueryActiveTime(v int64) *ShardingPolicy {
+	s.QueryActiveTime = &v
+	return s
+}
+
+func (s *ShardingPolicy) SetShardGroup(v *ShardingPolicyShardGroup) *ShardingPolicy {
+	s.ShardGroup = v
+	return s
+}
+
+func (s *ShardingPolicy) SetShardHash(v *ShardingPolicyShardHash) *ShardingPolicy {
+	s.ShardHash = v
+	return s
+}
+
+type ShardingPolicyShardGroup struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8
+	GroupCount *int32 `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	// This parameter is required.
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+}
+
+func (s ShardingPolicyShardGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShardingPolicyShardGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ShardingPolicyShardGroup) SetGroupCount(v int32) *ShardingPolicyShardGroup {
+	s.GroupCount = &v
+	return s
+}
+
+func (s *ShardingPolicyShardGroup) SetKeys(v []*string) *ShardingPolicyShardGroup {
+	s.Keys = v
+	return s
+}
+
+type ShardingPolicyShardHash struct {
+	// This parameter is required.
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	MaxHashCount *int32 `json:"maxHashCount,omitempty" xml:"maxHashCount,omitempty"`
+}
+
+func (s ShardingPolicyShardHash) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShardingPolicyShardHash) GoString() string {
+	return s.String()
+}
+
+func (s *ShardingPolicyShardHash) SetKeys(v []*string) *ShardingPolicyShardHash {
+	s.Keys = v
+	return s
+}
+
+func (s *ShardingPolicyShardHash) SetMaxHashCount(v int32) *ShardingPolicyShardHash {
+	s.MaxHashCount = &v
+	return s
+}
+
 type SinkAlerthubConfiguration struct {
+	// Specifies whether to send alerts.
+	//
 	// example:
 	//
 	// true
@@ -4597,6 +6283,8 @@ func (s *SinkAlerthubConfiguration) SetEnabled(v bool) *SinkAlerthubConfiguratio
 }
 
 type SinkCmsConfiguration struct {
+	// Specifies whether to send alerts.
+	//
 	// example:
 	//
 	// true
@@ -4617,22 +6305,32 @@ func (s *SinkCmsConfiguration) SetEnabled(v bool) *SinkCmsConfiguration {
 }
 
 type SinkEventStoreConfiguration struct {
+	// Specifies whether to send alerts.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// endpoint
+	//
 	// example:
 	//
 	// cn-shanghai-intranet.log.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The name of the Eventstore.
+	//
 	// example:
 	//
 	// exampleStore
 	EventStore *string `json:"eventStore,omitempty" xml:"eventStore,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// exampleProject
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.
+	//
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunlogetlrole
@@ -4673,10 +6371,23 @@ func (s *SinkEventStoreConfiguration) SetRoleArn(v string) *SinkEventStoreConfig
 }
 
 type StoreViewStore struct {
+	// The name of the project.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ali-test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	Query   *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The query statement that contains filter conditions.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The name of the Logstore or Metricstore.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// my-logstore
 	StoreName *string `json:"storeName,omitempty" xml:"storeName,omitempty"`
 }
 
@@ -4703,25 +6414,125 @@ func (s *StoreViewStore) SetStoreName(v string) *StoreViewStore {
 	return s
 }
 
+type SubmitAsyncSqlParams struct {
+	Extensions *SubmitAsyncSqlParamsExtensions `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1627268100
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// job: IT | select name, age, gender from log
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1627268200
+	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
+}
+
+func (s SubmitAsyncSqlParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAsyncSqlParams) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAsyncSqlParams) SetExtensions(v *SubmitAsyncSqlParamsExtensions) *SubmitAsyncSqlParams {
+	s.Extensions = v
+	return s
+}
+
+func (s *SubmitAsyncSqlParams) SetFrom(v int32) *SubmitAsyncSqlParams {
+	s.From = &v
+	return s
+}
+
+func (s *SubmitAsyncSqlParams) SetLogstore(v string) *SubmitAsyncSqlParams {
+	s.Logstore = &v
+	return s
+}
+
+func (s *SubmitAsyncSqlParams) SetQuery(v string) *SubmitAsyncSqlParams {
+	s.Query = &v
+	return s
+}
+
+func (s *SubmitAsyncSqlParams) SetTo(v int32) *SubmitAsyncSqlParams {
+	s.To = &v
+	return s
+}
+
+type SubmitAsyncSqlParamsExtensions struct {
+	// example:
+	//
+	// 30000
+	MaxRunTime *int64 `json:"maxRunTime,omitempty" xml:"maxRunTime,omitempty"`
+	// example:
+	//
+	// true
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+}
+
+func (s SubmitAsyncSqlParamsExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAsyncSqlParamsExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAsyncSqlParamsExtensions) SetMaxRunTime(v int64) *SubmitAsyncSqlParamsExtensions {
+	s.MaxRunTime = &v
+	return s
+}
+
+func (s *SubmitAsyncSqlParamsExtensions) SetPowerSql(v bool) *SubmitAsyncSqlParamsExtensions {
+	s.PowerSql = &v
+	return s
+}
+
 type TemplateConfiguration struct {
+	// The annotations of the template.
 	Aonotations map[string]interface{} `json:"aonotations,omitempty" xml:"aonotations,omitempty"`
+	// The ID of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls.app.ack.ip.not_enough
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The language of the template.
+	//
 	// example:
 	//
 	// cn
-	Lang   *string                `json:"lang,omitempty" xml:"lang,omitempty"`
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The tokens that are carried by the template.
 	Tokens map[string]interface{} `json:"tokens,omitempty" xml:"tokens,omitempty"`
+	// The type of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sys
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version of the template.
+	//
 	// example:
 	//
 	// 1
@@ -4886,18 +6697,32 @@ func (s *Ticket) SetValid(v bool) *Ticket {
 }
 
 type Chart struct {
+	// The action.
+	//
 	// This parameter is required.
 	Action map[string]interface{} `json:"action,omitempty" xml:"action,omitempty"`
+	// The display configuration of the chart.
+	//
 	// This parameter is required.
 	Display map[string]interface{} `json:"display,omitempty" xml:"display,omitempty"`
+	// The query statement.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// (*)| SELECT date_format(__time__ - __time__ % 60, \\"%H:%i:%s\\") as time, count(1) as count GROUP BY time ORDER BY time
 	Search map[string]interface{} `json:"search,omitempty" xml:"search,omitempty"`
+	// The title of the chart.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-chart
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the chart.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4949,10 +6774,7 @@ type Dashboard struct {
 	//
 	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	// example:
-	//
-	// 这是一个仪表盘。
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -4995,14 +6817,24 @@ func (s *Dashboard) SetDisplayName(v string) *Dashboard {
 }
 
 type ExternalStore struct {
+	// The name of the external store. The name must be unique in a project and must be different from Logstore names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rds_store
 	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	// The parameters that are configured for the external store.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// { 		"vpc-id": "vpc-bp1aevy8sofi8mh1q****", 		"instance-id": "i-bp1b6c719dfa08exf****", 		"host": "192.168.XX.XX", 		"port": "3306", 		"username": "root", 		"password": "sfdsfldsfksfls****", 		"db": "meta", 		"table": "join_meta", 		"region": "cn-qingdao" 	}
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The storage type. Set the value to rds-vpc, which indicates a database on an ApsaraDB RDS for MySQL instance in a virtual private cloud (VPC).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5035,18 +6867,34 @@ func (s *ExternalStore) SetStoreType(v string) *ExternalStore {
 }
 
 type Index struct {
+	// The configurations of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify at least one of the following parameters: line and keys.
 	Keys map[string]*IndexKey `json:"keys,omitempty" xml:"keys,omitempty"`
-	Line *IndexLine           `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	// The configurations of full-text indexes. You must specify at least one of the following parameters: line and keys.
+	Line *IndexLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	// Specifies whether to enable the LogReduce feature. After you enable the LogReduce feature, either the whitelist or blacklist takes effect. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false (default)
+	//
 	// example:
 	//
 	// true
-	LogReduce          *bool     `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	// The blacklist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
 	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	// The whitelist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
 	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	// The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of this parameter. Valid values: 64 to 16384.
+	//
 	// example:
 	//
 	// 2048
 	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	// example:
+	//
+	// false
+	ScanIndex *bool `json:"scan_index,omitempty" xml:"scan_index,omitempty"`
 }
 
 func (s Index) String() string {
@@ -5087,17 +6935,38 @@ func (s *Index) SetMaxTextLen(v int32) *Index {
 	return s
 }
 
+func (s *Index) SetScanIndex(v bool) *Index {
+	s.ScanIndex = &v
+	return s
+}
+
 type IndexLine struct {
+	// Specifies whether to enable case sensitivity. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false (default)
+	//
 	// example:
 	//
 	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Specifies whether the field contains Chinese characters. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false (default)
+	//
 	// example:
 	//
-	// true
-	Chn         *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
+	// false
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The excluded fields. You cannot specify both include_keys and exclude_keys.
 	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	// The included fields. You cannot specify both include_keys and exclude_keys.
 	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	// The delimiters. You can specify a delimiter to delimit the content of a field value.
+	//
 	// This parameter is required.
 	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
@@ -5136,8 +7005,12 @@ func (s *IndexLine) SetToken(v []*string) *IndexLine {
 }
 
 type Logging struct {
+	// The settings of the service log feature.
+	//
 	// This parameter is required.
 	LoggingDetails []*LoggingLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
+	// The name of the project to which service logs are stored.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5165,12 +7038,32 @@ func (s *Logging) SetLoggingProject(v string) *Logging {
 }
 
 type LoggingLoggingDetails struct {
+	// The logstore name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The type of the service logs. Valid values:
+	//
+	// 	- consumergroup_log: the consumption delay logs of consumer groups.
+	//
+	// 	- logtail_alarm: the alert logs of Logtail.
+	//
+	// 	- operation_log: the operation logs. You are charged for operation logs.
+	//
+	// 	- logtail_profile: the collection logs of Logtail.
+	//
+	// 	- metering: the metering logs.
+	//
+	// 	- logtail_status: the status logs of Logtail.
+	//
+	// 	- scheduledsqlalert: the operational logs of scheduled SQL jobs.
+	//
+	// 	- etl_alert: the operational logs of data transformation jobs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5198,54 +7091,120 @@ func (s *LoggingLoggingDetails) SetType(v string) *LoggingLoggingDetails {
 }
 
 type Logstore struct {
-	// example:
+	// Specifies whether to record public IP addresses. Default value: false. Valid values:
 	//
-	// true
-	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// example:
+	// 	- true
 	//
-	// true
-	AutoSplit  *bool  `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// 	- false
+	//
 	// example:
 	//
 	// false
-	EnableTracking *bool        `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	EncryptConf    *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
+	// Specifies whether to enable automatic sharding. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// The time at which the Logstore was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1453949705
+	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
+	// The configuration of data encryption.
+	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
+	// The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: days.
+	//
+	// example:
+	//
+	// 60
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The retention period of data in the Infrequent Access (IA) storage tier of the Logstore.
+	//
 	// example:
 	//
 	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
-	LastModifyTime      *int32 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The time at which the Logstore was last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1524155379
+	LastModifyTime *int32 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The name of the Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+	//
 	// example:
 	//
-	// 2
+	// 6
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
+	//
+	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	//
+	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+	//
 	// example:
 	//
 	// standard
-	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The ingest processor ID.
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// The type of the service to which the logs belong.
+	//
+	// example:
+	//
+	// aliyun
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	// The number of shards.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
-	ShardCount    *int32  `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
+	// The type of the data that you want to query. Valid values:
+	//
+	// 	- Metrics: metric data.
+	//
+	// 	- None: non-metric data.
+	//
+	// example:
+	//
+	// Metrics
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
+	// The log retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 30
+	// 1
 	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
@@ -5327,6 +7286,11 @@ func (s *Logstore) SetShardCount(v int32) *Logstore {
 	return s
 }
 
+func (s *Logstore) SetShardingPolicy(v *ShardingPolicy) *Logstore {
+	s.ShardingPolicy = v
+	return s
+}
+
 func (s *Logstore) SetTelemetryType(v string) *Logstore {
 	s.TelemetryType = &v
 	return s
@@ -5344,20 +7308,17 @@ type Machine struct {
 	HostId *string `json:"host-id,omitempty" xml:"host-id,omitempty"`
 	// example:
 	//
-	// 192.168.x.x
+	// 192.168.xx.x
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 	// example:
 	//
-	// 1657509674
+	// 1447182247
 	LastHeartbeatTime *int64 `json:"lastHeartbeatTime,omitempty" xml:"lastHeartbeatTime,omitempty"`
 	// example:
 	//
-	// 3B70F4F1-80F7-46C4-A6C1-100D66C***47
+	// 3B70F4F1-80F7-46C4-A6C1-100***CEE647
 	MachineUniqueid *string `json:"machine-uniqueid,omitempty" xml:"machine-uniqueid,omitempty"`
-	// example:
-	//
-	// test
-	UserdefinedId *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
+	UserdefinedId   *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
 }
 
 func (s Machine) String() string {
@@ -5399,8 +7360,11 @@ type MachineGroup struct {
 	//
 	// example:
 	//
-	// test-group
+	// machineGroup-1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// example:
+	//
+	// “”
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
 	// This parameter is required.
 	//
@@ -5448,11 +7412,11 @@ func (s *MachineGroup) SetMachineList(v []*string) *MachineGroup {
 type MachineGroupGroupAttribute struct {
 	// example:
 	//
-	// test-group
+	// testgroup
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
 	// example:
 	//
-	// test-topic
+	// testtopic
 	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
 }
 
@@ -5475,26 +7439,74 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 }
 
 type Project struct {
+	// The time at which the project was created.
+	//
+	// example:
+	//
+	// 2021-07-07 14:08:09
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The data redundancy type.
+	//
 	// example:
 	//
 	// LRS
 	DataRedundancyType *string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty"`
+	// The description of the project.
+	//
 	// This parameter is required.
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	//
+	// example:
+	//
+	// Description of my-project
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time at which the project was last modified.
+	//
+	// example:
+	//
+	// 2022-04-18 13:30:19
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
-	Owner          *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the project.
+	//
+	// example:
+	//
+	// ""
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The name of the project. The name is included in the value of the Host header. The name must be unique in a region. You cannot change the name after the project is created.
+	//
 	// This parameter is required.
-	ProjectName *string                `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	Quota       map[string]interface{} `json:"quota,omitempty" xml:"quota,omitempty"`
+	//
+	// example:
+	//
+	// ali-test-project
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// project quota
+	Quota map[string]interface{} `json:"quota,omitempty" xml:"quota,omitempty"`
 	// example:
 	//
 	// false
-	RecycleBinEnabled *bool   `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
-	Region            *string `json:"region,omitempty" xml:"region,omitempty"`
-	ResourceGroupId   *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
+	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
+	// The region to which the project belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the resource group to which the project belongs.
+	//
+	// example:
+	//
+	// rg-acf******sq
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The status of the project. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Disable
+	//
+	// example:
+	//
+	// Normal
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Project) String() string {
@@ -5522,11 +7534,6 @@ func (s *Project) SetDescription(v string) *Project {
 
 func (s *Project) SetLastModifyTime(v string) *Project {
 	s.LastModifyTime = &v
-	return s
-}
-
-func (s *Project) SetLocation(v string) *Project {
-	s.Location = &v
 	return s
 }
 
@@ -5566,10 +7573,22 @@ func (s *Project) SetStatus(v string) *Project {
 }
 
 type ServiceStatus struct {
+	// Indicates whether the service is activated.
+	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Current status.
+	//
+	// 	- Opened: The service is activated.
+	//
+	// 	- NotExist: The service does not exist.
+	//
+	// 	- Opening: The service is activating.
+	//
+	// 	- Closed: The service has overdue payments and is disabled.
+	//
 	// example:
 	//
 	// NotExist
@@ -5595,22 +7614,36 @@ func (s *ServiceStatus) SetStatus(v string) *ServiceStatus {
 }
 
 type Shard struct {
+	// The time at which the shard was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
-	// 1453949705
+	// 1524222931
 	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The end of the MD5 hash range.
+	//
 	// example:
 	//
 	// 8000000000000000000000000000000
 	ExclusiveEndKey *string `json:"exclusiveEndKey,omitempty" xml:"exclusiveEndKey,omitempty"`
+	// The start of the MD5 hash range. The value is included in the MD5 hash range of the shard.
+	//
 	// example:
 	//
 	// 00000000000000000000000000000000
 	InclusiveBeginKey *string `json:"inclusiveBeginKey,omitempty" xml:"inclusiveBeginKey,omitempty"`
+	// shard id
+	//
 	// example:
 	//
 	// 0
 	ShardID *int32 `json:"shardID,omitempty" xml:"shardID,omitempty"`
+	// The status of the shard. After you create a shard, the shard enters the readwrite state. If you split a shard or merge shards, the shard status changes to readonly. The newly generated shards are in the readwrite state. The status of a shard does not affect the performance of read operations that are performed on the shard. Data can be written to the shards that are in the readwrite state, but data cannot be written to the shards that are in the readonly state. Valid values:
+	//
+	// 	- readwrite
+	//
+	// 	- readonly
+	//
 	// example:
 	//
 	// readwrite
@@ -5651,15 +7684,20 @@ func (s *Shard) SetStatus(v string) *Shard {
 }
 
 type MLDataParamAnnotationsValue struct {
+	// The Alibaba Cloud account ID of the annotator.
+	//
 	// example:
 	//
 	// xxxx
 	AnnotatedBy *string `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
+	// The update time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1694761550
-	UpdateTime *int64               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Results    []map[string]*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The annotation results.
+	Results []map[string]*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s MLDataParamAnnotationsValue) String() string {
@@ -5686,15 +7724,20 @@ func (s *MLDataParamAnnotationsValue) SetResults(v []map[string]*string) *MLData
 }
 
 type MLDataParamPredictionsValue struct {
+	// The annotator.
+	//
 	// example:
 	//
 	// xxx
 	AnnotatedBy *string `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1694761550
-	UpdateTime *int64               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Results    []map[string]*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The results.
+	Results []map[string]*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s MLDataParamPredictionsValue) String() string {
@@ -6026,8 +8069,16 @@ func (s *ConsumerGroupUpdateCheckPointResponse) SetStatusCode(v int32) *Consumer
 type CreateAgentInstanceConfigRequest struct {
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// apm_trace
 	ConfigType  *string                           `json:"configType,omitempty" xml:"configType,omitempty"`
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
@@ -6261,6 +8312,73 @@ func (s *CreateAnnotationLabelResponse) SetHeaders(v map[string]*string) *Create
 }
 
 func (s *CreateAnnotationLabelResponse) SetStatusCode(v int32) *CreateAnnotationLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateAzureBlobIngestionRequest struct {
+	// This parameter is required.
+	Configuration *AzureBlobIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                          `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// This parameter is required.
+	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateAzureBlobIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAzureBlobIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAzureBlobIngestionRequest) SetConfiguration(v *AzureBlobIngestionConfiguration) *CreateAzureBlobIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateAzureBlobIngestionRequest) SetDescription(v string) *CreateAzureBlobIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAzureBlobIngestionRequest) SetDisplayName(v string) *CreateAzureBlobIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateAzureBlobIngestionRequest) SetName(v string) *CreateAzureBlobIngestionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAzureBlobIngestionRequest) SetSchedule(v *Schedule) *CreateAzureBlobIngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type CreateAzureBlobIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *CreateAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAzureBlobIngestionResponse) SetStatusCode(v int32) *CreateAzureBlobIngestionResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -6808,6 +8926,162 @@ func (s *CreateETLResponse) SetStatusCode(v int32) *CreateETLResponse {
 	return s
 }
 
+type CreateElasticsearchIngestionRequest struct {
+	// This parameter is required.
+	Configuration *ESIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// es ingestion
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// es ingestion
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-elasticsearch- 123456-123
+	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateElasticsearchIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticsearchIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticsearchIngestionRequest) SetConfiguration(v *ESIngestionConfiguration) *CreateElasticsearchIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateElasticsearchIngestionRequest) SetDescription(v string) *CreateElasticsearchIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateElasticsearchIngestionRequest) SetDisplayName(v string) *CreateElasticsearchIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateElasticsearchIngestionRequest) SetName(v string) *CreateElasticsearchIngestionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateElasticsearchIngestionRequest) SetSchedule(v *Schedule) *CreateElasticsearchIngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type CreateElasticsearchIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateElasticsearchIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticsearchIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticsearchIngestionResponse) SetHeaders(v map[string]*string) *CreateElasticsearchIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateElasticsearchIngestionResponse) SetStatusCode(v int32) *CreateElasticsearchIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateGCSIngestionRequest struct {
+	// This parameter is required.
+	Configuration *GCSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateGCSIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGCSIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGCSIngestionRequest) SetConfiguration(v *GCSIngestionConfiguration) *CreateGCSIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateGCSIngestionRequest) SetDescription(v string) *CreateGCSIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateGCSIngestionRequest) SetDisplayName(v string) *CreateGCSIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateGCSIngestionRequest) SetName(v string) *CreateGCSIngestionRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateGCSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGCSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGCSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGCSIngestionResponse) SetHeaders(v map[string]*string) *CreateGCSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGCSIngestionResponse) SetStatusCode(v int32) *CreateGCSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGCSIngestionResponse) SetBody(v interface{}) *CreateGCSIngestionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIndexRequest struct {
 	// The request body.
 	Body *Index `json:"body,omitempty" xml:"body,omitempty"`
@@ -6931,7 +9205,8 @@ type CreateLogStoreRequest struct {
 	// standard
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// IngestProcessor ID
-	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	ProcessorId     *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The number of shards.
 	//
 	// >  You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
@@ -6941,7 +9216,8 @@ type CreateLogStoreRequest struct {
 	// example:
 	//
 	// 2
-	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// The type of the observable data. Valid values:
 	//
 	// 	- **None*	- (default): log data
@@ -7020,8 +9296,18 @@ func (s *CreateLogStoreRequest) SetProcessorId(v string) *CreateLogStoreRequest 
 	return s
 }
 
+func (s *CreateLogStoreRequest) SetResourceGroupId(v string) *CreateLogStoreRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateLogStoreRequest) SetShardCount(v int32) *CreateLogStoreRequest {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *CreateLogStoreRequest) SetShardingPolicy(v *ShardingPolicy) *CreateLogStoreRequest {
+	s.ShardingPolicy = v
 	return s
 }
 
@@ -7434,6 +9720,76 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 	return s
 }
 
+type CreateMaterializedViewRequest struct {
+	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	StartTime       *int32  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Ttl             *int32  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s CreateMaterializedViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaterializedViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaterializedViewRequest) SetAggIntervalMins(v int32) *CreateMaterializedViewRequest {
+	s.AggIntervalMins = &v
+	return s
+}
+
+func (s *CreateMaterializedViewRequest) SetLogstore(v string) *CreateMaterializedViewRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *CreateMaterializedViewRequest) SetName(v string) *CreateMaterializedViewRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMaterializedViewRequest) SetOriginalSql(v string) *CreateMaterializedViewRequest {
+	s.OriginalSql = &v
+	return s
+}
+
+func (s *CreateMaterializedViewRequest) SetStartTime(v int32) *CreateMaterializedViewRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateMaterializedViewRequest) SetTtl(v int32) *CreateMaterializedViewRequest {
+	s.Ttl = &v
+	return s
+}
+
+type CreateMaterializedViewResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateMaterializedViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaterializedViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaterializedViewResponse) SetHeaders(v map[string]*string) *CreateMaterializedViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMaterializedViewResponse) SetStatusCode(v int32) *CreateMaterializedViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateMaxComputeExportRequest struct {
 	// The setting of the MaxCompute data shipping job.
 	//
@@ -7511,6 +9867,7 @@ func (s *CreateMaxComputeExportResponse) SetStatusCode(v int32) *CreateMaxComput
 }
 
 type CreateMetricStoreRequest struct {
+	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
 	// Specifies whether to enable automatic sharding.
 	//
 	// example:
@@ -7552,7 +9909,8 @@ type CreateMetricStoreRequest struct {
 	// example:
 	//
 	// 2
-	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// The retention period of the metric data in the Metricstore. Unit: days.
 	//
 	// This parameter is required.
@@ -7569,6 +9927,11 @@ func (s CreateMetricStoreRequest) String() string {
 
 func (s CreateMetricStoreRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMetricStoreRequest) SetAppendMeta(v bool) *CreateMetricStoreRequest {
+	s.AppendMeta = &v
+	return s
 }
 
 func (s *CreateMetricStoreRequest) SetAutoSplit(v bool) *CreateMetricStoreRequest {
@@ -7608,6 +9971,11 @@ func (s *CreateMetricStoreRequest) SetName(v string) *CreateMetricStoreRequest {
 
 func (s *CreateMetricStoreRequest) SetShardCount(v int32) *CreateMetricStoreRequest {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *CreateMetricStoreRequest) SetShardingPolicy(v *ShardingPolicy) *CreateMetricStoreRequest {
+	s.ShardingPolicy = v
 	return s
 }
 
@@ -7983,10 +10351,21 @@ func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
 
 type CreateS3IngestionRequest struct {
 	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                   `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
@@ -8592,6 +10971,29 @@ func (s *DeleteAnnotationLabelResponse) SetStatusCode(v int32) *DeleteAnnotation
 	return s
 }
 
+type DeleteAzureBlobIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *DeleteAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAzureBlobIngestionResponse) SetStatusCode(v int32) *DeleteAzureBlobIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteCollectionPolicyRequest struct {
 	// example:
 	//
@@ -8805,6 +11207,29 @@ func (s *DeleteETLResponse) SetStatusCode(v int32) *DeleteETLResponse {
 	return s
 }
 
+type DeleteElasticsearchIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteElasticsearchIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticsearchIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticsearchIngestionResponse) SetHeaders(v map[string]*string) *DeleteElasticsearchIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteElasticsearchIngestionResponse) SetStatusCode(v int32) *DeleteElasticsearchIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteIndexResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8939,6 +11364,29 @@ func (s *DeleteMachineGroupResponse) SetHeaders(v map[string]*string) *DeleteMac
 }
 
 func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteMaterializedViewResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteMaterializedViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMaterializedViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMaterializedViewResponse) SetHeaders(v map[string]*string) *DeleteMaterializedViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMaterializedViewResponse) SetStatusCode(v int32) *DeleteMaterializedViewResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -9262,6 +11710,7 @@ func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBod
 
 type DescribeRegionsResponseBodyRegions struct {
 	DataRedundancyType []*string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty" type:"Repeated"`
+	InternalEndpoint   *string   `json:"internalEndpoint,omitempty" xml:"internalEndpoint,omitempty"`
 	// The public endpoint of Simple Log Service.
 	InternetEndpoint *string `json:"internetEndpoint,omitempty" xml:"internetEndpoint,omitempty"`
 	// The internal endpoint of Simple Log Service.
@@ -9282,6 +11731,11 @@ func (s DescribeRegionsResponseBodyRegions) GoString() string {
 
 func (s *DescribeRegionsResponseBodyRegions) SetDataRedundancyType(v []*string) *DescribeRegionsResponseBodyRegions {
 	s.DataRedundancyType = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetInternalEndpoint(v string) *DescribeRegionsResponseBodyRegions {
+	s.InternalEndpoint = &v
 	return s
 }
 
@@ -9461,12 +11915,24 @@ func (s *GetAgentInstanceConfigShrinkRequest) SetAttributesShrink(v string) *Get
 }
 
 type GetAgentInstanceConfigResponseBody struct {
-	Attributes     map[string]*string                `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	Config         *string                           `json:"config,omitempty" xml:"config,omitempty"`
-	ConfigType     *string                           `json:"configType,omitempty" xml:"configType,omitempty"`
-	CreateTime     *int64                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	GrayConfigs    []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
-	LastModifyTime *int64                            `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// example:
+	//
+	// apm_biz_trace
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// example:
+	//
+	// 1749543828
+	CreateTime  *int64                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1749543828
+	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
 }
 
 func (s GetAgentInstanceConfigResponseBody) String() string {
@@ -9768,6 +12234,93 @@ func (s *GetAppliedMachineGroupsResponse) SetStatusCode(v int32) *GetAppliedMach
 }
 
 func (s *GetAppliedMachineGroupsResponse) SetBody(v *GetAppliedMachineGroupsResponseBody) *GetAppliedMachineGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type GetAsyncSqlRequest struct {
+	// example:
+	//
+	// 100
+	Line *int32 `json:"line,omitempty" xml:"line,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+}
+
+func (s GetAsyncSqlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncSqlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncSqlRequest) SetLine(v int32) *GetAsyncSqlRequest {
+	s.Line = &v
+	return s
+}
+
+func (s *GetAsyncSqlRequest) SetOffset(v int32) *GetAsyncSqlRequest {
+	s.Offset = &v
+	return s
+}
+
+type GetAsyncSqlResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncSqlResponseData `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAsyncSqlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncSqlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncSqlResponse) SetHeaders(v map[string]*string) *GetAsyncSqlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncSqlResponse) SetStatusCode(v int32) *GetAsyncSqlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAsyncSqlResponse) SetBody(v *AsyncSqlResponseData) *GetAsyncSqlResponse {
+	s.Body = v
+	return s
+}
+
+type GetAzureBlobIngestionResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AzureBlobIngestion `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *GetAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAzureBlobIngestionResponse) SetStatusCode(v int32) *GetAzureBlobIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAzureBlobIngestionResponse) SetBody(v *AzureBlobIngestion) *GetAzureBlobIngestionResponse {
 	s.Body = v
 	return s
 }
@@ -10978,6 +13531,64 @@ func (s *GetETLResponse) SetBody(v *ETL) *GetETLResponse {
 	return s
 }
 
+type GetElasticsearchIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ESIngestion       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetElasticsearchIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticsearchIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticsearchIngestionResponse) SetHeaders(v map[string]*string) *GetElasticsearchIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetElasticsearchIngestionResponse) SetStatusCode(v int32) *GetElasticsearchIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetElasticsearchIngestionResponse) SetBody(v *ESIngestion) *GetElasticsearchIngestionResponse {
+	s.Body = v
+	return s
+}
+
+type GetGCSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GCSIngestion      `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGCSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGCSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGCSIngestionResponse) SetHeaders(v map[string]*string) *GetGCSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGCSIngestionResponse) SetStatusCode(v int32) *GetGCSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGCSIngestionResponse) SetBody(v *GCSIngestion) *GetGCSIngestionResponse {
+	s.Body = v
+	return s
+}
+
 type GetHistogramsRequest struct {
 	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	//
@@ -11387,6 +13998,52 @@ func (s *GetLogStoreResponse) SetBody(v *Logstore) *GetLogStoreResponse {
 	return s
 }
 
+type GetLogStoreConfigResponseBody struct {
+	ClientIpHeaders []*string `json:"clientIpHeaders,omitempty" xml:"clientIpHeaders,omitempty" type:"Repeated"`
+}
+
+func (s GetLogStoreConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogStoreConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogStoreConfigResponseBody) SetClientIpHeaders(v []*string) *GetLogStoreConfigResponseBody {
+	s.ClientIpHeaders = v
+	return s
+}
+
+type GetLogStoreConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLogStoreConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLogStoreConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogStoreConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogStoreConfigResponse) SetHeaders(v map[string]*string) *GetLogStoreConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogStoreConfigResponse) SetStatusCode(v int32) *GetLogStoreConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogStoreConfigResponse) SetBody(v *GetLogStoreConfigResponseBody) *GetLogStoreConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetLogStoreMeteringModeResponseBody struct {
 	// The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
 	//
@@ -11649,8 +14306,6 @@ type GetLogsV2Headers struct {
 	//
 	// 	- For PHP, JavaScript, and C#, only the gzip algorithm is supported for decompression.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// lz4
@@ -11697,7 +14352,8 @@ type GetLogsV2Request struct {
 	// example:
 	//
 	// false
-	Highlight *bool `json:"highlight,omitempty" xml:"highlight,omitempty"`
+	Highlight  *bool `json:"highlight,omitempty" xml:"highlight,omitempty"`
+	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
 	//
 	// example:
@@ -11778,6 +14434,11 @@ func (s *GetLogsV2Request) SetFrom(v int32) *GetLogsV2Request {
 
 func (s *GetLogsV2Request) SetHighlight(v bool) *GetLogsV2Request {
 	s.Highlight = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetIsAccurate(v bool) *GetLogsV2Request {
+	s.IsAccurate = &v
 	return s
 }
 
@@ -12271,6 +14932,111 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 	return s
 }
 
+type GetMaterializedViewHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	ContentType   *string            `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+}
+
+func (s GetMaterializedViewHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaterializedViewHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaterializedViewHeaders) SetCommonHeaders(v map[string]*string) *GetMaterializedViewHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMaterializedViewHeaders) SetContentType(v string) *GetMaterializedViewHeaders {
+	s.ContentType = &v
+	return s
+}
+
+type GetMaterializedViewResponseBody struct {
+	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	Enabled         *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	StartTime       *int32  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Ttl             *int32  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s GetMaterializedViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaterializedViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaterializedViewResponseBody) SetAggIntervalMins(v int32) *GetMaterializedViewResponseBody {
+	s.AggIntervalMins = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetEnabled(v bool) *GetMaterializedViewResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetLogstore(v string) *GetMaterializedViewResponseBody {
+	s.Logstore = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetName(v string) *GetMaterializedViewResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetOriginalSql(v string) *GetMaterializedViewResponseBody {
+	s.OriginalSql = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetStartTime(v int32) *GetMaterializedViewResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetTtl(v int32) *GetMaterializedViewResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+type GetMaterializedViewResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMaterializedViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMaterializedViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaterializedViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaterializedViewResponse) SetHeaders(v map[string]*string) *GetMaterializedViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMaterializedViewResponse) SetStatusCode(v int32) *GetMaterializedViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponse) SetBody(v *GetMaterializedViewResponseBody) *GetMaterializedViewResponse {
+	s.Body = v
+	return s
+}
+
 type GetMaxComputeExportResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -12301,6 +15067,7 @@ func (s *GetMaxComputeExportResponse) SetBody(v *MaxComputeExport) *GetMaxComput
 }
 
 type GetMetricStoreResponseBody struct {
+	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
 	// Indicates whether the automatic sharding feature is enabled.
 	//
 	// example:
@@ -12344,13 +15111,15 @@ type GetMetricStoreResponseBody struct {
 	// example:
 	//
 	// my_metric_store
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// The number of shards.
 	//
 	// example:
 	//
 	// 2
-	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// The retention period. Unit: days.
 	//
 	// example:
@@ -12365,6 +15134,11 @@ func (s GetMetricStoreResponseBody) String() string {
 
 func (s GetMetricStoreResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetMetricStoreResponseBody) SetAppendMeta(v bool) *GetMetricStoreResponseBody {
+	s.AppendMeta = &v
+	return s
 }
 
 func (s *GetMetricStoreResponseBody) SetAutoSplit(v bool) *GetMetricStoreResponseBody {
@@ -12412,8 +15186,18 @@ func (s *GetMetricStoreResponseBody) SetName(v string) *GetMetricStoreResponseBo
 	return s
 }
 
+func (s *GetMetricStoreResponseBody) SetProcessorId(v string) *GetMetricStoreResponseBody {
+	s.ProcessorId = &v
+	return s
+}
+
 func (s *GetMetricStoreResponseBody) SetShardCount(v int32) *GetMetricStoreResponseBody {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *GetMetricStoreResponseBody) SetShardingPolicy(v *ShardingPolicy) *GetMetricStoreResponseBody {
+	s.ShardingPolicy = v
 	return s
 }
 
@@ -13082,9 +15866,18 @@ func (s *GetStoreViewIndexResponse) SetBody(v *GetStoreViewIndexResponseBody) *G
 }
 
 type ListAgentInstanceConfigsRequest struct {
+	// example:
+	//
+	// apm_trace
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	Offset     *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 100
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListAgentInstanceConfigsRequest) String() string {
@@ -13112,8 +15905,14 @@ func (s *ListAgentInstanceConfigsRequest) SetSize(v int64) *ListAgentInstanceCon
 
 type ListAgentInstanceConfigsResponseBody struct {
 	Configs []*ListAgentInstanceConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	Size    *int64                                         `json:"size,omitempty" xml:"size,omitempty"`
-	Total   *int64                                         `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAgentInstanceConfigsResponseBody) String() string {
@@ -13140,8 +15939,14 @@ func (s *ListAgentInstanceConfigsResponseBody) SetTotal(v int64) *ListAgentInsta
 }
 
 type ListAgentInstanceConfigsResponseBodyConfigs struct {
+	// example:
+	//
+	// {"workspace": "test-workspace","service": "test-service"}
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	ConfigType *string            `json:"configType,omitempty" xml:"configType,omitempty"`
+	// example:
+	//
+	// apm_biz_trace
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 }
 
 func (s ListAgentInstanceConfigsResponseBodyConfigs) String() string {
@@ -13674,6 +16479,93 @@ func (s *ListAnnotationLabelsResponse) SetStatusCode(v int32) *ListAnnotationLab
 }
 
 func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBody) *ListAnnotationLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAzureBlobIngestionRequest struct {
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListAzureBlobIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAzureBlobIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAzureBlobIngestionRequest) SetLogstore(v string) *ListAzureBlobIngestionRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListAzureBlobIngestionRequest) SetOffset(v int32) *ListAzureBlobIngestionRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListAzureBlobIngestionRequest) SetSize(v int32) *ListAzureBlobIngestionRequest {
+	s.Size = &v
+	return s
+}
+
+type ListAzureBlobIngestionResponseBody struct {
+	Count   *int32                `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*AzureBlobIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32                `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAzureBlobIngestionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAzureBlobIngestionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAzureBlobIngestionResponseBody) SetCount(v int32) *ListAzureBlobIngestionResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAzureBlobIngestionResponseBody) SetResults(v []*AzureBlobIngestion) *ListAzureBlobIngestionResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListAzureBlobIngestionResponseBody) SetTotal(v int32) *ListAzureBlobIngestionResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAzureBlobIngestionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAzureBlobIngestionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *ListAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAzureBlobIngestionResponse) SetStatusCode(v int32) *ListAzureBlobIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAzureBlobIngestionResponse) SetBody(v *ListAzureBlobIngestionResponseBody) *ListAzureBlobIngestionResponse {
 	s.Body = v
 	return s
 }
@@ -15269,6 +18161,210 @@ func (s *ListETLsResponse) SetBody(v *ListETLsResponseBody) *ListETLsResponse {
 	return s
 }
 
+type ListElasticsearchIngestionsRequest struct {
+	// example:
+	//
+	// ali-test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListElasticsearchIngestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticsearchIngestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticsearchIngestionsRequest) SetLogstore(v string) *ListElasticsearchIngestionsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListElasticsearchIngestionsRequest) SetOffset(v int32) *ListElasticsearchIngestionsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListElasticsearchIngestionsRequest) SetSize(v int32) *ListElasticsearchIngestionsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListElasticsearchIngestionsResponseBody struct {
+	// example:
+	//
+	// 10
+	Count   *int32         `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*ESIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 80
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListElasticsearchIngestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticsearchIngestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticsearchIngestionsResponseBody) SetCount(v int32) *ListElasticsearchIngestionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListElasticsearchIngestionsResponseBody) SetResults(v []*ESIngestion) *ListElasticsearchIngestionsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListElasticsearchIngestionsResponseBody) SetTotal(v int32) *ListElasticsearchIngestionsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListElasticsearchIngestionsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListElasticsearchIngestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListElasticsearchIngestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticsearchIngestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticsearchIngestionsResponse) SetHeaders(v map[string]*string) *ListElasticsearchIngestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListElasticsearchIngestionsResponse) SetStatusCode(v int32) *ListElasticsearchIngestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListElasticsearchIngestionsResponse) SetBody(v *ListElasticsearchIngestionsResponseBody) *ListElasticsearchIngestionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListGCSIngestionsRequest struct {
+	// example:
+	//
+	// test
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 100
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListGCSIngestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGCSIngestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGCSIngestionsRequest) SetLogstore(v string) *ListGCSIngestionsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListGCSIngestionsRequest) SetOffset(v int32) *ListGCSIngestionsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListGCSIngestionsRequest) SetSize(v int32) *ListGCSIngestionsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListGCSIngestionsResponseBody struct {
+	// example:
+	//
+	// 100
+	Count   *int32          `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*GCSIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListGCSIngestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGCSIngestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGCSIngestionsResponseBody) SetCount(v int32) *ListGCSIngestionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListGCSIngestionsResponseBody) SetResults(v []*GCSIngestion) *ListGCSIngestionsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListGCSIngestionsResponseBody) SetTotal(v int32) *ListGCSIngestionsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListGCSIngestionsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGCSIngestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGCSIngestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGCSIngestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGCSIngestionsResponse) SetHeaders(v map[string]*string) *ListGCSIngestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGCSIngestionsResponse) SetStatusCode(v int32) *ListGCSIngestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGCSIngestionsResponse) SetBody(v *ListGCSIngestionsResponseBody) *ListGCSIngestionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListIngestProcessorsRequest struct {
 	// The display name of the ingest processor.
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
@@ -15885,6 +18981,180 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 	return s
 }
 
+type ListMaterializedViewRequest struct {
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListMaterializedViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterializedViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterializedViewRequest) SetName(v string) *ListMaterializedViewRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMaterializedViewRequest) SetOffset(v int32) *ListMaterializedViewRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListMaterializedViewRequest) SetSize(v int32) *ListMaterializedViewRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMaterializedViewResponseBody struct {
+	Count             *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	MaterializedViews []*string `json:"materializedViews,omitempty" xml:"materializedViews,omitempty" type:"Repeated"`
+	Total             *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMaterializedViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterializedViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterializedViewResponseBody) SetCount(v int32) *ListMaterializedViewResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListMaterializedViewResponseBody) SetMaterializedViews(v []*string) *ListMaterializedViewResponseBody {
+	s.MaterializedViews = v
+	return s
+}
+
+func (s *ListMaterializedViewResponseBody) SetTotal(v int32) *ListMaterializedViewResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMaterializedViewResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMaterializedViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMaterializedViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterializedViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterializedViewResponse) SetHeaders(v map[string]*string) *ListMaterializedViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMaterializedViewResponse) SetStatusCode(v int32) *ListMaterializedViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMaterializedViewResponse) SetBody(v *ListMaterializedViewResponseBody) *ListMaterializedViewResponse {
+	s.Body = v
+	return s
+}
+
+type ListMaterializedViewsRequest struct {
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListMaterializedViewsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterializedViewsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterializedViewsRequest) SetName(v string) *ListMaterializedViewsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMaterializedViewsRequest) SetOffset(v int32) *ListMaterializedViewsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListMaterializedViewsRequest) SetSize(v int32) *ListMaterializedViewsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMaterializedViewsResponseBody struct {
+	Count             *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	MaterializedViews []*string `json:"materializedViews,omitempty" xml:"materializedViews,omitempty" type:"Repeated"`
+	Total             *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMaterializedViewsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterializedViewsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterializedViewsResponseBody) SetCount(v int32) *ListMaterializedViewsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListMaterializedViewsResponseBody) SetMaterializedViews(v []*string) *ListMaterializedViewsResponseBody {
+	s.MaterializedViews = v
+	return s
+}
+
+func (s *ListMaterializedViewsResponseBody) SetTotal(v int32) *ListMaterializedViewsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMaterializedViewsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMaterializedViewsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMaterializedViewsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterializedViewsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterializedViewsResponse) SetHeaders(v map[string]*string) *ListMaterializedViewsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMaterializedViewsResponse) SetStatusCode(v int32) *ListMaterializedViewsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMaterializedViewsResponse) SetBody(v *ListMaterializedViewsResponseBody) *ListMaterializedViewsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMaxComputeExportsRequest struct {
 	// example:
 	//
@@ -16420,7 +19690,8 @@ func (s *ListOSSIngestionsResponse) SetBody(v *ListOSSIngestionsResponseBody) *L
 }
 
 type ListProjectRequest struct {
-	FetchQuota *bool `json:"fetchQuota,omitempty" xml:"fetchQuota,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	FetchQuota  *bool   `json:"fetchQuota,omitempty" xml:"fetchQuota,omitempty"`
 	// The line from which the query starts. Default value: 0.
 	//
 	// example:
@@ -16432,7 +19703,12 @@ type ListProjectRequest struct {
 	// example:
 	//
 	// ali-test-project
-	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzf******sxby
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The number of entries per page. Default value: 100. This operation can return up to 500 projects.
 	//
@@ -16448,6 +19724,11 @@ func (s ListProjectRequest) String() string {
 
 func (s ListProjectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListProjectRequest) SetDescription(v string) *ListProjectRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *ListProjectRequest) SetFetchQuota(v bool) *ListProjectRequest {
@@ -16546,8 +19827,8 @@ func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectRe
 
 type ListS3IngestionsRequest struct {
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Offset   *string `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size     *string `json:"size,omitempty" xml:"size,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListS3IngestionsRequest) String() string {
@@ -16563,12 +19844,12 @@ func (s *ListS3IngestionsRequest) SetLogstore(v string) *ListS3IngestionsRequest
 	return s
 }
 
-func (s *ListS3IngestionsRequest) SetOffset(v string) *ListS3IngestionsRequest {
+func (s *ListS3IngestionsRequest) SetOffset(v int32) *ListS3IngestionsRequest {
 	s.Offset = &v
 	return s
 }
 
-func (s *ListS3IngestionsRequest) SetSize(v string) *ListS3IngestionsRequest {
+func (s *ListS3IngestionsRequest) SetSize(v int32) *ListS3IngestionsRequest {
 	s.Size = &v
 	return s
 }
@@ -17606,6 +20887,46 @@ func (s *PutIngestProcessorResponse) SetStatusCode(v int32) *PutIngestProcessorR
 	return s
 }
 
+type PutLogStoreConfigRequest struct {
+	ClientIpHeaders []*string `json:"clientIpHeaders,omitempty" xml:"clientIpHeaders,omitempty" type:"Repeated"`
+}
+
+func (s PutLogStoreConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLogStoreConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutLogStoreConfigRequest) SetClientIpHeaders(v []*string) *PutLogStoreConfigRequest {
+	s.ClientIpHeaders = v
+	return s
+}
+
+type PutLogStoreConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s PutLogStoreConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLogStoreConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutLogStoreConfigResponse) SetHeaders(v map[string]*string) *PutLogStoreConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutLogStoreConfigResponse) SetStatusCode(v int32) *PutLogStoreConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type PutLogsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The compression format. lz4 and gzip are supported.
@@ -18016,6 +21337,29 @@ func (s *SplitShardResponse) SetBody(v []*Shard) *SplitShardResponse {
 	return s
 }
 
+type StartAzureBlobIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *StartAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAzureBlobIngestionResponse) SetStatusCode(v int32) *StartAzureBlobIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type StartETLResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -18036,6 +21380,58 @@ func (s *StartETLResponse) SetHeaders(v map[string]*string) *StartETLResponse {
 
 func (s *StartETLResponse) SetStatusCode(v int32) *StartETLResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type StartElasticsearchIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartElasticsearchIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartElasticsearchIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartElasticsearchIngestionResponse) SetHeaders(v map[string]*string) *StartElasticsearchIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartElasticsearchIngestionResponse) SetStatusCode(v int32) *StartElasticsearchIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StartGCSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartGCSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartGCSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartGCSIngestionResponse) SetHeaders(v map[string]*string) *StartGCSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartGCSIngestionResponse) SetStatusCode(v int32) *StartGCSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartGCSIngestionResponse) SetBody(v interface{}) *StartGCSIngestionResponse {
+	s.Body = v
 	return s
 }
 
@@ -18131,6 +21527,29 @@ func (s *StartOSSIngestionResponse) SetStatusCode(v int32) *StartOSSIngestionRes
 	return s
 }
 
+type StopAzureBlobIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *StopAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAzureBlobIngestionResponse) SetStatusCode(v int32) *StopAzureBlobIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type StopETLResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -18151,6 +21570,58 @@ func (s *StopETLResponse) SetHeaders(v map[string]*string) *StopETLResponse {
 
 func (s *StopETLResponse) SetStatusCode(v int32) *StopETLResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type StopElasticsearchIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopElasticsearchIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopElasticsearchIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopElasticsearchIngestionResponse) SetHeaders(v map[string]*string) *StopElasticsearchIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopElasticsearchIngestionResponse) SetStatusCode(v int32) *StopElasticsearchIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StopGCSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopGCSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopGCSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopGCSIngestionResponse) SetHeaders(v map[string]*string) *StopGCSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopGCSIngestionResponse) SetStatusCode(v int32) *StopGCSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopGCSIngestionResponse) SetBody(v interface{}) *StopGCSIngestionResponse {
+	s.Body = v
 	return s
 }
 
@@ -18243,6 +21714,87 @@ func (s *StopOSSIngestionResponse) SetHeaders(v map[string]*string) *StopOSSInge
 
 func (s *StopOSSIngestionResponse) SetStatusCode(v int32) *StopOSSIngestionResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type SubmitAsyncSqlHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// application/x-protobuf
+	Accept *string `json:"Accept,omitempty" xml:"Accept,omitempty"`
+	// example:
+	//
+	// lz4
+	AcceptEncoding *string `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
+}
+
+func (s SubmitAsyncSqlHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAsyncSqlHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAsyncSqlHeaders) SetCommonHeaders(v map[string]*string) *SubmitAsyncSqlHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SubmitAsyncSqlHeaders) SetAccept(v string) *SubmitAsyncSqlHeaders {
+	s.Accept = &v
+	return s
+}
+
+func (s *SubmitAsyncSqlHeaders) SetAcceptEncoding(v string) *SubmitAsyncSqlHeaders {
+	s.AcceptEncoding = &v
+	return s
+}
+
+type SubmitAsyncSqlRequest struct {
+	Body *SubmitAsyncSqlParams `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitAsyncSqlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAsyncSqlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAsyncSqlRequest) SetBody(v *SubmitAsyncSqlParams) *SubmitAsyncSqlRequest {
+	s.Body = v
+	return s
+}
+
+type SubmitAsyncSqlResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncSqlResponseData `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitAsyncSqlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAsyncSqlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAsyncSqlResponse) SetHeaders(v map[string]*string) *SubmitAsyncSqlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAsyncSqlResponse) SetStatusCode(v int32) *SubmitAsyncSqlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAsyncSqlResponse) SetBody(v *AsyncSqlResponseData) *SubmitAsyncSqlResponse {
+	s.Body = v
 	return s
 }
 
@@ -18461,6 +22013,10 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 type UpdateAgentInstanceConfigRequest struct {
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	Config      *string                           `json:"config,omitempty" xml:"config,omitempty"`
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
@@ -18491,6 +22047,10 @@ func (s *UpdateAgentInstanceConfigRequest) SetGrayConfigs(v []*AgentInstanceConf
 type UpdateAgentInstanceConfigShrinkRequest struct {
 	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	Config      *string                           `json:"config,omitempty" xml:"config,omitempty"`
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
@@ -18695,6 +22255,66 @@ func (s *UpdateAnnotationLabelResponse) SetHeaders(v map[string]*string) *Update
 }
 
 func (s *UpdateAnnotationLabelResponse) SetStatusCode(v int32) *UpdateAnnotationLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateAzureBlobIngestionRequest struct {
+	// This parameter is required.
+	Configuration *AzureBlobIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                          `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule    *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s UpdateAzureBlobIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAzureBlobIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAzureBlobIngestionRequest) SetConfiguration(v *AzureBlobIngestionConfiguration) *UpdateAzureBlobIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateAzureBlobIngestionRequest) SetDescription(v string) *UpdateAzureBlobIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAzureBlobIngestionRequest) SetDisplayName(v string) *UpdateAzureBlobIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateAzureBlobIngestionRequest) SetSchedule(v *Schedule) *UpdateAzureBlobIngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type UpdateAzureBlobIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateAzureBlobIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAzureBlobIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAzureBlobIngestionResponse) SetHeaders(v map[string]*string) *UpdateAzureBlobIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAzureBlobIngestionResponse) SetStatusCode(v int32) *UpdateAzureBlobIngestionResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -18948,6 +22568,133 @@ func (s *UpdateETLResponse) SetStatusCode(v int32) *UpdateETLResponse {
 	return s
 }
 
+type UpdateElasticsearchIngestionRequest struct {
+	// This parameter is required.
+	Configuration *ESIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// es ingestion test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// es-ingestion-test
+	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Schedule    *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s UpdateElasticsearchIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateElasticsearchIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateElasticsearchIngestionRequest) SetConfiguration(v *ESIngestionConfiguration) *UpdateElasticsearchIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateElasticsearchIngestionRequest) SetDescription(v string) *UpdateElasticsearchIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateElasticsearchIngestionRequest) SetDisplayName(v string) *UpdateElasticsearchIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateElasticsearchIngestionRequest) SetSchedule(v *Schedule) *UpdateElasticsearchIngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type UpdateElasticsearchIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateElasticsearchIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateElasticsearchIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateElasticsearchIngestionResponse) SetHeaders(v map[string]*string) *UpdateElasticsearchIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateElasticsearchIngestionResponse) SetStatusCode(v int32) *UpdateElasticsearchIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateGCSIngestionRequest struct {
+	// This parameter is required.
+	Configuration *GCSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateGCSIngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGCSIngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGCSIngestionRequest) SetConfiguration(v *GCSIngestionConfiguration) *UpdateGCSIngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateGCSIngestionRequest) SetDescription(v string) *UpdateGCSIngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGCSIngestionRequest) SetDisplayName(v string) *UpdateGCSIngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateGCSIngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGCSIngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGCSIngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGCSIngestionResponse) SetHeaders(v map[string]*string) *UpdateGCSIngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGCSIngestionResponse) SetStatusCode(v int32) *UpdateGCSIngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGCSIngestionResponse) SetBody(v interface{}) *UpdateGCSIngestionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIndexRequest struct {
 	// The request body.
 	Body *Index `json:"body,omitempty" xml:"body,omitempty"`
@@ -19069,7 +22816,8 @@ type UpdateLogStoreRequest struct {
 	// example:
 	//
 	// 2
-	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// Deprecated
 	//
 	// The type of the observable data. Valid values:
@@ -19147,6 +22895,11 @@ func (s *UpdateLogStoreRequest) SetMode(v string) *UpdateLogStoreRequest {
 
 func (s *UpdateLogStoreRequest) SetShardCount(v int32) *UpdateLogStoreRequest {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *UpdateLogStoreRequest) SetShardingPolicy(v *ShardingPolicy) *UpdateLogStoreRequest {
+	s.ShardingPolicy = v
 	return s
 }
 
@@ -19806,6 +23559,64 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 	return s
 }
 
+type UpdateMaterializedViewRequest struct {
+	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	Enable          *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	Ttl             *int32  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+}
+
+func (s UpdateMaterializedViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMaterializedViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMaterializedViewRequest) SetAggIntervalMins(v int32) *UpdateMaterializedViewRequest {
+	s.AggIntervalMins = &v
+	return s
+}
+
+func (s *UpdateMaterializedViewRequest) SetEnable(v bool) *UpdateMaterializedViewRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateMaterializedViewRequest) SetOriginalSql(v string) *UpdateMaterializedViewRequest {
+	s.OriginalSql = &v
+	return s
+}
+
+func (s *UpdateMaterializedViewRequest) SetTtl(v int32) *UpdateMaterializedViewRequest {
+	s.Ttl = &v
+	return s
+}
+
+type UpdateMaterializedViewResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateMaterializedViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMaterializedViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMaterializedViewResponse) SetHeaders(v map[string]*string) *UpdateMaterializedViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMaterializedViewResponse) SetStatusCode(v int32) *UpdateMaterializedViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateMaxComputeExportRequest struct {
 	// The setting of the MaxCompute data shipping job.
 	//
@@ -19870,6 +23681,7 @@ func (s *UpdateMaxComputeExportResponse) SetStatusCode(v int32) *UpdateMaxComput
 }
 
 type UpdateMetricStoreRequest struct {
+	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
 	// Specifies whether to enable automatic sharding.
 	//
 	// example:
@@ -19889,7 +23701,8 @@ type UpdateMetricStoreRequest struct {
 	// example:
 	//
 	// standard
-	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode           *string         `json:"mode,omitempty" xml:"mode,omitempty"`
+	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// The retention period of the metric data. Unit: days.
 	//
 	// example:
@@ -19904,6 +23717,11 @@ func (s UpdateMetricStoreRequest) String() string {
 
 func (s UpdateMetricStoreRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateMetricStoreRequest) SetAppendMeta(v bool) *UpdateMetricStoreRequest {
+	s.AppendMeta = &v
+	return s
 }
 
 func (s *UpdateMetricStoreRequest) SetAutoSplit(v bool) *UpdateMetricStoreRequest {
@@ -19928,6 +23746,11 @@ func (s *UpdateMetricStoreRequest) SetMaxSplitShard(v int32) *UpdateMetricStoreR
 
 func (s *UpdateMetricStoreRequest) SetMode(v string) *UpdateMetricStoreRequest {
 	s.Mode = &v
+	return s
+}
+
+func (s *UpdateMetricStoreRequest) SetShardingPolicy(v *ShardingPolicy) *UpdateMetricStoreRequest {
+	s.ShardingPolicy = v
 	return s
 }
 
@@ -21634,6 +25457,89 @@ func (client *Client) CreateAnnotationLabel(request *CreateAnnotationLabelReques
 
 // Summary:
 //
+// 创建Azure blob文件导入任务
+//
+// @param request - CreateAzureBlobIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAzureBlobIngestionResponse
+func (client *Client) CreateAzureBlobIngestionWithOptions(project *string, request *CreateAzureBlobIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAzureBlobIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Azure blob文件导入任务
+//
+// @param request - CreateAzureBlobIngestionRequest
+//
+// @return CreateAzureBlobIngestionResponse
+func (client *Client) CreateAzureBlobIngestion(project *string, request *CreateAzureBlobIngestionRequest) (_result *CreateAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAzureBlobIngestionResponse{}
+	_body, _err := client.CreateAzureBlobIngestionWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Logtail configuration.
 //
 // Description:
@@ -22016,7 +25922,7 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 
 // Summary:
 //
-// 创建下载任务
+// Creates a log download task in a project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -22076,7 +25982,7 @@ func (client *Client) CreateDownloadJobWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// 创建下载任务
+// Creates a log download task in a project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -22165,6 +26071,168 @@ func (client *Client) CreateETL(project *string, request *CreateETLRequest) (_re
 	headers := make(map[string]*string)
 	_result = &CreateETLResponse{}
 	_body, _err := client.CreateETLWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建ES导入任务
+//
+// @param request - CreateElasticsearchIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateElasticsearchIngestionResponse
+func (client *Client) CreateElasticsearchIngestionWithOptions(project *string, request *CreateElasticsearchIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateElasticsearchIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateElasticsearchIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateElasticsearchIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建ES导入任务
+//
+// @param request - CreateElasticsearchIngestionRequest
+//
+// @return CreateElasticsearchIngestionResponse
+func (client *Client) CreateElasticsearchIngestion(project *string, request *CreateElasticsearchIngestionRequest) (_result *CreateElasticsearchIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateElasticsearchIngestionResponse{}
+	_body, _err := client.CreateElasticsearchIngestionWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建GCP Cloud Storage文件导入任务
+//
+// @param request - CreateGCSIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGCSIngestionResponse
+func (client *Client) CreateGCSIngestionWithOptions(project *string, request *CreateGCSIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGCSIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGCSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gcsingestions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &CreateGCSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建GCP Cloud Storage文件导入任务
+//
+// @param request - CreateGCSIngestionRequest
+//
+// @return CreateGCSIngestionResponse
+func (client *Client) CreateGCSIngestion(project *string, request *CreateGCSIngestionRequest) (_result *CreateGCSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGCSIngestionResponse{}
+	_body, _err := client.CreateGCSIngestionWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22327,8 +26395,16 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 		body["processorId"] = request.ProcessorId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
 		body["shardCount"] = request.ShardCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardingPolicy)) {
+		body["shardingPolicy"] = request.ShardingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TelemetryType)) {
@@ -22688,6 +26764,93 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 
 // Summary:
 //
+// 创建物化视图
+//
+// @param request - CreateMaterializedViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMaterializedViewResponse
+func (client *Client) CreateMaterializedViewWithOptions(project *string, request *CreateMaterializedViewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMaterializedViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggIntervalMins)) {
+		body["aggIntervalMins"] = request.AggIntervalMins
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		body["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalSql)) {
+		body["originalSql"] = request.OriginalSql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		body["ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMaterializedView"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/materializedviews"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateMaterializedViewResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建物化视图
+//
+// @param request - CreateMaterializedViewRequest
+//
+// @return CreateMaterializedViewResponse
+func (client *Client) CreateMaterializedView(project *string, request *CreateMaterializedViewRequest) (_result *CreateMaterializedViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMaterializedViewResponse{}
+	_body, _err := client.CreateMaterializedViewWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a MaxCompute data shipping job.
 //
 // Description:
@@ -22820,6 +26983,10 @@ func (client *Client) CreateMetricStoreWithOptions(project *string, request *Cre
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppendMeta)) {
+		body["appendMeta"] = request.AppendMeta
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
 		body["autoSplit"] = request.AutoSplit
 	}
@@ -22850,6 +27017,10 @@ func (client *Client) CreateMetricStoreWithOptions(project *string, request *Cre
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
 		body["shardCount"] = request.ShardCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardingPolicy)) {
+		body["shardingPolicy"] = request.ShardingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
@@ -23615,7 +27786,7 @@ func (client *Client) CreateSqlInstance(project *string, request *CreateSqlInsta
 
 // Summary:
 //
-// 创建StoreView
+// Creates a dataset.
 //
 // @param request - CreateStoreViewRequest
 //
@@ -23671,7 +27842,7 @@ func (client *Client) CreateStoreViewWithOptions(project *string, request *Creat
 
 // Summary:
 //
-// 创建StoreView
+// Creates a dataset.
 //
 // @param request - CreateStoreViewRequest
 //
@@ -24047,6 +28218,59 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 
 // Summary:
 //
+// 创建Azure blob文件导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAzureBlobIngestionResponse
+func (client *Client) DeleteAzureBlobIngestionWithOptions(project *string, azureBlobIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAzureBlobIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions/" + tea.StringValue(azureBlobIngestionName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Azure blob文件导入任务
+//
+// @return DeleteAzureBlobIngestionResponse
+func (client *Client) DeleteAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *DeleteAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAzureBlobIngestionResponse{}
+	_body, _err := client.DeleteAzureBlobIngestionWithOptions(project, azureBlobIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a log collection policy from a cloud service.
 //
 // Description:
@@ -24208,7 +28432,7 @@ func (client *Client) DeleteConfig(project *string, configName *string) (_result
 
 // Summary:
 //
-// # DeleteConsumeProcessor
+// Deletes the consumption processor.
 //
 // @param headers - map
 //
@@ -24244,7 +28468,7 @@ func (client *Client) DeleteConsumeProcessorWithOptions(project *string, process
 
 // Summary:
 //
-// # DeleteConsumeProcessor
+// Deletes the consumption processor.
 //
 // @return DeleteConsumeProcessorResponse
 func (client *Client) DeleteConsumeProcessor(project *string, processorName *string) (_result *DeleteConsumeProcessorResponse, _err error) {
@@ -24606,6 +28830,59 @@ func (client *Client) DeleteETL(project *string, etlName *string) (_result *Dele
 
 // Summary:
 //
+// 删除ES导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteElasticsearchIngestionResponse
+func (client *Client) DeleteElasticsearchIngestionWithOptions(project *string, esIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteElasticsearchIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteElasticsearchIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions/" + tea.StringValue(esIngestionName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteElasticsearchIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ES导入任务
+//
+// @return DeleteElasticsearchIngestionResponse
+func (client *Client) DeleteElasticsearchIngestion(project *string, esIngestionName *string) (_result *DeleteElasticsearchIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteElasticsearchIngestionResponse{}
+	_body, _err := client.DeleteElasticsearchIngestionWithOptions(project, esIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an index of a Logstore.
 //
 // Description:
@@ -24789,7 +29066,7 @@ func (client *Client) DeleteLogStore(project *string, logstore *string) (_result
 
 // Summary:
 //
-// 关闭项目的服务日志记录。
+// Disables the service log feature for a project.
 //
 // @param headers - map
 //
@@ -24825,7 +29102,7 @@ func (client *Client) DeleteLoggingWithOptions(project *string, headers map[stri
 
 // Summary:
 //
-// 关闭项目的服务日志记录。
+// Disables the service log feature for a project.
 //
 // @return DeleteLoggingResponse
 func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResponse, _err error) {
@@ -24959,6 +29236,59 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 	headers := make(map[string]*string)
 	_result = &DeleteMachineGroupResponse{}
 	_body, _err := client.DeleteMachineGroupWithOptions(project, machineGroup, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除物化视图
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaterializedViewResponse
+func (client *Client) DeleteMaterializedViewWithOptions(project *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMaterializedViewResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMaterializedView"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/materializedviews/" + tea.StringValue(name)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteMaterializedViewResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除物化视图
+//
+// @return DeleteMaterializedViewResponse
+func (client *Client) DeleteMaterializedView(project *string, name *string) (_result *DeleteMaterializedViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMaterializedViewResponse{}
+	_body, _err := client.DeleteMaterializedViewWithOptions(project, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25183,7 +29513,7 @@ func (client *Client) DeleteOSSExport(project *string, ossExportName *string) (_
 
 // Summary:
 //
-// 删除OSSHDFS投递任务
+// Deletes an OSS-HDFS data shipping job.
 //
 // @param headers - map
 //
@@ -25219,7 +29549,7 @@ func (client *Client) DeleteOSSHDFSExportWithOptions(project *string, ossExportN
 
 // Summary:
 //
-// 删除OSSHDFS投递任务
+// Deletes an OSS-HDFS data shipping job.
 //
 // @return DeleteOSSHDFSExportResponse
 func (client *Client) DeleteOSSHDFSExport(project *string, ossExportName *string) (_result *DeleteOSSHDFSExportResponse, _err error) {
@@ -26408,6 +30738,130 @@ func (client *Client) GetAppliedMachineGroups(project *string, configName *strin
 
 // Summary:
 //
+// 获取异步SQL的状态以及结果
+//
+// @param request - GetAsyncSqlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncSqlResponse
+func (client *Client) GetAsyncSqlWithOptions(project *string, queryId *string, request *GetAsyncSqlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncSqlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
+		query["line"] = request.Line
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncSql"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/asyncsql/" + tea.StringValue(queryId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAsyncSqlResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取异步SQL的状态以及结果
+//
+// @param request - GetAsyncSqlRequest
+//
+// @return GetAsyncSqlResponse
+func (client *Client) GetAsyncSql(project *string, queryId *string, request *GetAsyncSqlRequest) (_result *GetAsyncSqlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAsyncSqlResponse{}
+	_body, _err := client.GetAsyncSqlWithOptions(project, queryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Azure blob文件导入任务信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAzureBlobIngestionResponse
+func (client *Client) GetAzureBlobIngestionWithOptions(project *string, azureBlobIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAzureBlobIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions/" + tea.StringValue(azureBlobIngestionName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Azure blob文件导入任务信息
+//
+// @return GetAzureBlobIngestionResponse
+func (client *Client) GetAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *GetAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAzureBlobIngestionResponse{}
+	_body, _err := client.GetAzureBlobIngestionWithOptions(project, azureBlobIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the checkpoints of a shard from which data is consumed by a consumer group.
 //
 // Description:
@@ -26483,7 +30937,7 @@ func (client *Client) GetCheckPoint(project *string, logstore *string, consumerG
 
 // Summary:
 //
-// 调用GetCollectionPolicy获取对应的规则
+// Queries the information about a log collection policy.
 //
 // Description:
 //
@@ -26536,7 +30990,7 @@ func (client *Client) GetCollectionPolicyWithOptions(policyName *string, request
 
 // Summary:
 //
-// 调用GetCollectionPolicy获取对应的规则
+// Queries the information about a log collection policy.
 //
 // Description:
 //
@@ -27173,6 +31627,112 @@ func (client *Client) GetETL(project *string, etlName *string) (_result *GetETLR
 
 // Summary:
 //
+// 获取ElasticSearch导入任务信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetElasticsearchIngestionResponse
+func (client *Client) GetElasticsearchIngestionWithOptions(project *string, esIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetElasticsearchIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetElasticsearchIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions/" + tea.StringValue(esIngestionName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetElasticsearchIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ElasticSearch导入任务信息
+//
+// @return GetElasticsearchIngestionResponse
+func (client *Client) GetElasticsearchIngestion(project *string, esIngestionName *string) (_result *GetElasticsearchIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetElasticsearchIngestionResponse{}
+	_body, _err := client.GetElasticsearchIngestionWithOptions(project, esIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取GCP Cloud Storage文件导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGCSIngestionResponse
+func (client *Client) GetGCSIngestionWithOptions(project *string, gcsIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGCSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGCSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gcsingestions/" + tea.StringValue(gcsIngestionName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGCSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取GCP Cloud Storage文件导入任务
+//
+// @return GetGCSIngestionResponse
+func (client *Client) GetGCSIngestion(project *string, gcsIngestionName *string) (_result *GetGCSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGCSIngestionResponse{}
+	_body, _err := client.GetGCSIngestionWithOptions(project, gcsIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the distribution of logs that meet the specified search conditions in a Logstore.
 //
 // Description:
@@ -27470,6 +32030,59 @@ func (client *Client) GetLogStore(project *string, logstore *string) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetLogStoreResponse{}
 	_body, _err := client.GetLogStoreWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志库配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogStoreConfigResponse
+func (client *Client) GetLogStoreConfigWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogStoreConfigResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogStoreConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLogStoreConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志库配置
+//
+// @return GetLogStoreConfigResponse
+func (client *Client) GetLogStoreConfig(project *string, logstore *string) (_result *GetLogStoreConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLogStoreConfigResponse{}
+	_body, _err := client.GetLogStoreConfigWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27813,6 +32426,10 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 
 	if !tea.BoolValue(util.IsUnset(request.Highlight)) {
 		body["highlight"] = request.Highlight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAccurate)) {
+		body["isAccurate"] = request.IsAccurate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Line)) {
@@ -28175,6 +32792,68 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 
 // Summary:
 //
+// 获取物化视图
+//
+// @param headers - GetMaterializedViewHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMaterializedViewResponse
+func (client *Client) GetMaterializedViewWithOptions(project *string, name *string, headers *GetMaterializedViewHeaders, runtime *util.RuntimeOptions) (_result *GetMaterializedViewResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.ContentType)) {
+		realHeaders["Content-Type"] = util.ToJSONString(headers.ContentType)
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMaterializedView"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/materializedviews/" + tea.StringValue(name)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMaterializedViewResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取物化视图
+//
+// @return GetMaterializedViewResponse
+func (client *Client) GetMaterializedView(project *string, name *string) (_result *GetMaterializedViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMaterializedViewHeaders{}
+	_result = &GetMaterializedViewResponse{}
+	_body, _err := client.GetMaterializedViewWithOptions(project, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a MaxCompute data shipping job.
 //
 // Description:
@@ -28390,7 +33069,7 @@ func (client *Client) GetMetricStoreMeteringMode(project *string, metricStore *s
 
 // Summary:
 //
-// 获取OSS投递任务
+// Queries the information about an Object Storage Service (OSS) data shipping job.
 //
 // @param headers - map
 //
@@ -28426,7 +33105,7 @@ func (client *Client) GetOSSExportWithOptions(project *string, ossExportName *st
 
 // Summary:
 //
-// 获取OSS投递任务
+// Queries the information about an Object Storage Service (OSS) data shipping job.
 //
 // @return GetOSSExportResponse
 func (client *Client) GetOSSExport(project *string, ossExportName *string) (_result *GetOSSExportResponse, _err error) {
@@ -28443,7 +33122,7 @@ func (client *Client) GetOSSExport(project *string, ossExportName *string) (_res
 
 // Summary:
 //
-// # Get OSSHDFS Exports
+// Queries the information about an OSS-HDFS data shipping job.
 //
 // @param headers - map
 //
@@ -28479,7 +33158,7 @@ func (client *Client) GetOSSHDFSExportWithOptions(project *string, ossExportName
 
 // Summary:
 //
-// # Get OSSHDFS Exports
+// Queries the information about an OSS-HDFS data shipping job.
 //
 // @return GetOSSHDFSExportResponse
 func (client *Client) GetOSSHDFSExport(project *string, ossExportName *string) (_result *GetOSSHDFSExportResponse, _err error) {
@@ -29643,6 +34322,81 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 
 // Summary:
 //
+// 列出Azure blob文件导入任务
+//
+// @param request - ListAzureBlobIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAzureBlobIngestionResponse
+func (client *Client) ListAzureBlobIngestionWithOptions(project *string, request *ListAzureBlobIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAzureBlobIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出Azure blob文件导入任务
+//
+// @param request - ListAzureBlobIngestionRequest
+//
+// @return ListAzureBlobIngestionResponse
+func (client *Client) ListAzureBlobIngestion(project *string, request *ListAzureBlobIngestionRequest) (_result *ListAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAzureBlobIngestionResponse{}
+	_body, _err := client.ListAzureBlobIngestionWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of log collection policies for cloud services.
 //
 // Description:
@@ -30368,6 +35122,156 @@ func (client *Client) ListETLs(project *string, request *ListETLsRequest) (_resu
 
 // Summary:
 //
+// 创建ES导入任务
+//
+// @param request - ListElasticsearchIngestionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListElasticsearchIngestionsResponse
+func (client *Client) ListElasticsearchIngestionsWithOptions(project *string, request *ListElasticsearchIngestionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListElasticsearchIngestionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListElasticsearchIngestions"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListElasticsearchIngestionsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建ES导入任务
+//
+// @param request - ListElasticsearchIngestionsRequest
+//
+// @return ListElasticsearchIngestionsResponse
+func (client *Client) ListElasticsearchIngestions(project *string, request *ListElasticsearchIngestionsRequest) (_result *ListElasticsearchIngestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListElasticsearchIngestionsResponse{}
+	_body, _err := client.ListElasticsearchIngestionsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出GCP Cloud Storage文件导入任务
+//
+// @param request - ListGCSIngestionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGCSIngestionsResponse
+func (client *Client) ListGCSIngestionsWithOptions(project *string, request *ListGCSIngestionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGCSIngestionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGCSIngestions"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gcsingestions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGCSIngestionsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出GCP Cloud Storage文件导入任务
+//
+// @param request - ListGCSIngestionsRequest
+//
+// @return ListGCSIngestionsResponse
+func (client *Client) ListGCSIngestions(project *string, request *ListGCSIngestionsRequest) (_result *ListGCSIngestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGCSIngestionsResponse{}
+	_body, _err := client.ListGCSIngestionsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of ingest processors that meet specific conditions.
 //
 // @param request - ListIngestProcessorsRequest
@@ -30827,6 +35731,156 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 
 // Summary:
 //
+// 列举物化视图
+//
+// @param request - ListMaterializedViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMaterializedViewResponse
+func (client *Client) ListMaterializedViewWithOptions(project *string, request *ListMaterializedViewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMaterializedViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMaterializedView"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/materializedviews"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMaterializedViewResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举物化视图
+//
+// @param request - ListMaterializedViewRequest
+//
+// @return ListMaterializedViewResponse
+func (client *Client) ListMaterializedView(project *string, request *ListMaterializedViewRequest) (_result *ListMaterializedViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMaterializedViewResponse{}
+	_body, _err := client.ListMaterializedViewWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举物化视图
+//
+// @param request - ListMaterializedViewsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMaterializedViewsResponse
+func (client *Client) ListMaterializedViewsWithOptions(project *string, request *ListMaterializedViewsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMaterializedViewsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMaterializedViews"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/materializedviews"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMaterializedViewsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举物化视图
+//
+// @param request - ListMaterializedViewsRequest
+//
+// @return ListMaterializedViewsResponse
+func (client *Client) ListMaterializedViews(project *string, request *ListMaterializedViewsRequest) (_result *ListMaterializedViewsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMaterializedViewsResponse{}
+	_body, _err := client.ListMaterializedViewsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of MaxCompute data shipping jobs.
 //
 // Description:
@@ -31021,7 +36075,7 @@ func (client *Client) ListMetricStores(project *string, request *ListMetricStore
 
 // Summary:
 //
-// 列出OSS投递任务
+// Queries a list of Object Storage Service (OSS) data shipping jobs in a project.
 //
 // @param request - ListOSSExportsRequest
 //
@@ -31077,7 +36131,7 @@ func (client *Client) ListOSSExportsWithOptions(project *string, request *ListOS
 
 // Summary:
 //
-// 列出OSS投递任务
+// Queries a list of Object Storage Service (OSS) data shipping jobs in a project.
 //
 // @param request - ListOSSExportsRequest
 //
@@ -31096,7 +36150,7 @@ func (client *Client) ListOSSExports(project *string, request *ListOSSExportsReq
 
 // Summary:
 //
-// 列举OSSHDFS投递任务
+// Queries a list of OSS-HDFS data shipping jobs in a project.
 //
 // @param request - ListOSSHDFSExportsRequest
 //
@@ -31152,7 +36206,7 @@ func (client *Client) ListOSSHDFSExportsWithOptions(project *string, request *Li
 
 // Summary:
 //
-// 列举OSSHDFS投递任务
+// Queries a list of OSS-HDFS data shipping jobs in a project.
 //
 // @param request - ListOSSHDFSExportsRequest
 //
@@ -31267,6 +36321,10 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FetchQuota)) {
 		query["fetchQuota"] = request.FetchQuota
 	}
@@ -31833,7 +36891,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 合并两个相邻的readwrite状态的Shards。在参数中指定一个shardID，服务端自动找相邻的下一个Shard进行合并。
+// Merges readwrite shards that are adjacent to each other.
 //
 // @param headers - map
 //
@@ -31869,7 +36927,7 @@ func (client *Client) MergeShardWithOptions(project *string, logstore *string, s
 
 // Summary:
 //
-// 合并两个相邻的readwrite状态的Shards。在参数中指定一个shardID，服务端自动找相邻的下一个Shard进行合并。
+// Merges readwrite shards that are adjacent to each other.
 //
 // @return MergeShardResponse
 func (client *Client) MergeShard(project *string, logstore *string, shard *string) (_result *MergeShardResponse, _err error) {
@@ -31962,6 +37020,8 @@ func (client *Client) PullLogsWithOptions(project *string, logStore *string, sha
 	if _err != nil {
 		return _result, _err
 	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		query["count"] = request.Count
@@ -31989,6 +37049,7 @@ func (client *Client) PullLogsWithOptions(project *string, logStore *string, sha
 	}
 
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
@@ -32260,6 +37321,73 @@ func (client *Client) PutIngestProcessor(project *string, processorName *string,
 	headers := make(map[string]*string)
 	_result = &PutIngestProcessorResponse{}
 	_body, _err := client.PutIngestProcessorWithOptions(project, processorName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改日志库的配置
+//
+// @param request - PutLogStoreConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutLogStoreConfigResponse
+func (client *Client) PutLogStoreConfigWithOptions(project *string, logstore *string, request *PutLogStoreConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutLogStoreConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientIpHeaders)) {
+		body["clientIpHeaders"] = request.ClientIpHeaders
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutLogStoreConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/config"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutLogStoreConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改日志库的配置
+//
+// @param request - PutLogStoreConfigRequest
+//
+// @return PutLogStoreConfigResponse
+func (client *Client) PutLogStoreConfig(project *string, logstore *string, request *PutLogStoreConfigRequest) (_result *PutLogStoreConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutLogStoreConfigResponse{}
+	_body, _err := client.PutLogStoreConfigWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32652,7 +37780,7 @@ func (client *Client) PutWebtracking(project *string, logstoreName *string, requ
 
 // Summary:
 //
-// 刷新token
+// Refreshes an access token by using a ticket to access the Simple Log Service console.
 //
 // @param request - RefreshTokenRequest
 //
@@ -32701,7 +37829,7 @@ func (client *Client) RefreshTokenWithOptions(request *RefreshTokenRequest, head
 
 // Summary:
 //
-// 刷新token
+// Refreshes an access token by using a ticket to access the Simple Log Service console.
 //
 // @param request - RefreshTokenRequest
 //
@@ -32721,10 +37849,6 @@ func (client *Client) RefreshToken(request *RefreshTokenRequest) (_result *Refre
 // Summary:
 //
 // Removes a Logtail configuration from a machine group.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
 // @param headers - map
 //
@@ -32761,10 +37885,6 @@ func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, m
 // Summary:
 //
 // Removes a Logtail configuration from a machine group.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
 // @return RemoveConfigFromMachineGroupResponse
 func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
@@ -32868,6 +37988,59 @@ func (client *Client) SplitShard(project *string, logstore *string, shard *strin
 
 // Summary:
 //
+// 启动Azure blob文件导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAzureBlobIngestionResponse
+func (client *Client) StartAzureBlobIngestionWithOptions(project *string, azureBlobIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAzureBlobIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions/" + tea.StringValue(azureBlobIngestionName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动Azure blob文件导入任务
+//
+// @return StartAzureBlobIngestionResponse
+func (client *Client) StartAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *StartAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartAzureBlobIngestionResponse{}
+	_body, _err := client.StartAzureBlobIngestionWithOptions(project, azureBlobIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a data transformation job.
 //
 // @param headers - map
@@ -32912,6 +38085,112 @@ func (client *Client) StartETL(project *string, etlName *string) (_result *Start
 	headers := make(map[string]*string)
 	_result = &StartETLResponse{}
 	_body, _err := client.StartETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动ES导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartElasticsearchIngestionResponse
+func (client *Client) StartElasticsearchIngestionWithOptions(project *string, elasticsearchIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartElasticsearchIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartElasticsearchIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions/" + tea.StringValue(elasticsearchIngestionName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartElasticsearchIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动ES导入任务
+//
+// @return StartElasticsearchIngestionResponse
+func (client *Client) StartElasticsearchIngestion(project *string, elasticsearchIngestionName *string) (_result *StartElasticsearchIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartElasticsearchIngestionResponse{}
+	_body, _err := client.StartElasticsearchIngestionWithOptions(project, elasticsearchIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动GCP Cloud Storage文件导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartGCSIngestionResponse
+func (client *Client) StartGCSIngestionWithOptions(project *string, gcsIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartGCSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartGCSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gcsingestions/" + tea.StringValue(gcsIngestionName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &StartGCSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动GCP Cloud Storage文件导入任务
+//
+// @return StartGCSIngestionResponse
+func (client *Client) StartGCSIngestion(project *string, gcsIngestionName *string) (_result *StartGCSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartGCSIngestionResponse{}
+	_body, _err := client.StartGCSIngestionWithOptions(project, gcsIngestionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32994,7 +38273,7 @@ func (client *Client) StartMaxComputeExport(project *string, mcExportName *strin
 
 // Summary:
 //
-// 启动OSS投递任务
+// Starts an Object Storage Service (OSS) data shipping job.
 //
 // @param headers - map
 //
@@ -33030,7 +38309,7 @@ func (client *Client) StartOSSExportWithOptions(project *string, ossExportName *
 
 // Summary:
 //
-// 启动OSS投递任务
+// Starts an Object Storage Service (OSS) data shipping job.
 //
 // @return StartOSSExportResponse
 func (client *Client) StartOSSExport(project *string, ossExportName *string) (_result *StartOSSExportResponse, _err error) {
@@ -33047,7 +38326,7 @@ func (client *Client) StartOSSExport(project *string, ossExportName *string) (_r
 
 // Summary:
 //
-// 启动OSSHDFS投递任务
+// Starts an OSS-HDFS data shipping job.
 //
 // @param headers - map
 //
@@ -33083,7 +38362,7 @@ func (client *Client) StartOSSHDFSExportWithOptions(project *string, ossExportNa
 
 // Summary:
 //
-// 启动OSSHDFS投递任务
+// Starts an OSS-HDFS data shipping job.
 //
 // @return StartOSSHDFSExportResponse
 func (client *Client) StartOSSHDFSExport(project *string, ossExportName *string) (_result *StartOSSHDFSExportResponse, _err error) {
@@ -33153,6 +38432,59 @@ func (client *Client) StartOSSIngestion(project *string, ossIngestionName *strin
 
 // Summary:
 //
+// 启动Azure blob文件导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAzureBlobIngestionResponse
+func (client *Client) StopAzureBlobIngestionWithOptions(project *string, azureBlobIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAzureBlobIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions/" + tea.StringValue(azureBlobIngestionName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动Azure blob文件导入任务
+//
+// @return StopAzureBlobIngestionResponse
+func (client *Client) StopAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *StopAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopAzureBlobIngestionResponse{}
+	_body, _err := client.StopAzureBlobIngestionWithOptions(project, azureBlobIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a data transformation job.
 //
 // @param headers - map
@@ -33197,6 +38529,112 @@ func (client *Client) StopETL(project *string, etlName *string) (_result *StopET
 	headers := make(map[string]*string)
 	_result = &StopETLResponse{}
 	_body, _err := client.StopETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止ES导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopElasticsearchIngestionResponse
+func (client *Client) StopElasticsearchIngestionWithOptions(project *string, elasticsearchIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopElasticsearchIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopElasticsearchIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions/" + tea.StringValue(elasticsearchIngestionName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopElasticsearchIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止ES导入任务
+//
+// @return StopElasticsearchIngestionResponse
+func (client *Client) StopElasticsearchIngestion(project *string, elasticsearchIngestionName *string) (_result *StopElasticsearchIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopElasticsearchIngestionResponse{}
+	_body, _err := client.StopElasticsearchIngestionWithOptions(project, elasticsearchIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止GCP Cloud Storage文件导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopGCSIngestionResponse
+func (client *Client) StopGCSIngestionWithOptions(project *string, gcsIngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopGCSIngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopGCSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gcsingestions/" + tea.StringValue(gcsIngestionName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &StopGCSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止GCP Cloud Storage文件导入任务
+//
+// @return StopGCSIngestionResponse
+func (client *Client) StopGCSIngestion(project *string, gcsIngestionName *string) (_result *StopGCSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopGCSIngestionResponse{}
+	_body, _err := client.StopGCSIngestionWithOptions(project, gcsIngestionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33279,7 +38717,7 @@ func (client *Client) StopMaxComputeExport(project *string, mcExportName *string
 
 // Summary:
 //
-// 停止OSS投递任务
+// Stops an Object Storage Service (OSS) data shipping job.
 //
 // @param headers - map
 //
@@ -33315,7 +38753,7 @@ func (client *Client) StopOSSExportWithOptions(project *string, ossExportName *s
 
 // Summary:
 //
-// 停止OSS投递任务
+// Stops an Object Storage Service (OSS) data shipping job.
 //
 // @return StopOSSExportResponse
 func (client *Client) StopOSSExport(project *string, ossExportName *string) (_result *StopOSSExportResponse, _err error) {
@@ -33332,7 +38770,7 @@ func (client *Client) StopOSSExport(project *string, ossExportName *string) (_re
 
 // Summary:
 //
-// 停止OSSHDFS投递任务
+// Stops an OSS-HDFS data shipping job.
 //
 // @param headers - map
 //
@@ -33368,7 +38806,7 @@ func (client *Client) StopOSSHDFSExportWithOptions(project *string, ossExportNam
 
 // Summary:
 //
-// 停止OSSHDFS投递任务
+// Stops an OSS-HDFS data shipping job.
 //
 // @return StopOSSHDFSExportResponse
 func (client *Client) StopOSSHDFSExport(project *string, ossExportName *string) (_result *StopOSSHDFSExportResponse, _err error) {
@@ -33429,6 +38867,81 @@ func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string
 	headers := make(map[string]*string)
 	_result = &StopOSSIngestionResponse{}
 	_body, _err := client.StopOSSIngestionWithOptions(project, ossIngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交异步SQL请求
+//
+// @param request - SubmitAsyncSqlRequest
+//
+// @param headers - SubmitAsyncSqlHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAsyncSqlResponse
+func (client *Client) SubmitAsyncSqlWithOptions(project *string, request *SubmitAsyncSqlRequest, headers *SubmitAsyncSqlHeaders, runtime *util.RuntimeOptions) (_result *SubmitAsyncSqlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Accept)) {
+		realHeaders["Accept"] = util.ToJSONString(headers.Accept)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AcceptEncoding)) {
+		realHeaders["Accept-Encoding"] = util.ToJSONString(headers.AcceptEncoding)
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAsyncSql"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/asyncsql"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAsyncSqlResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交异步SQL请求
+//
+// @param request - SubmitAsyncSqlRequest
+//
+// @return SubmitAsyncSqlResponse
+func (client *Client) SubmitAsyncSql(project *string, request *SubmitAsyncSqlRequest) (_result *SubmitAsyncSqlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SubmitAsyncSqlHeaders{}
+	_result = &SubmitAsyncSqlResponse{}
+	_body, _err := client.SubmitAsyncSqlWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33963,6 +39476,85 @@ func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelReques
 
 // Summary:
 //
+// 更新Azure blob文件导入任务
+//
+// @param request - UpdateAzureBlobIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAzureBlobIngestionResponse
+func (client *Client) UpdateAzureBlobIngestionWithOptions(project *string, azureBlobIngestionName *string, request *UpdateAzureBlobIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAzureBlobIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAzureBlobIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/azureblobingestions/" + tea.StringValue(azureBlobIngestionName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateAzureBlobIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Azure blob文件导入任务
+//
+// @param request - UpdateAzureBlobIngestionRequest
+//
+// @return UpdateAzureBlobIngestionResponse
+func (client *Client) UpdateAzureBlobIngestion(project *string, azureBlobIngestionName *string, request *UpdateAzureBlobIngestionRequest) (_result *UpdateAzureBlobIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAzureBlobIngestionResponse{}
+	_body, _err := client.UpdateAzureBlobIngestionWithOptions(project, azureBlobIngestionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a Logtail configuration.
 //
 // Description:
@@ -34342,6 +39934,160 @@ func (client *Client) UpdateETL(project *string, etlName *string, request *Updat
 
 // Summary:
 //
+// 更新ES导入任务
+//
+// @param request - UpdateElasticsearchIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateElasticsearchIngestionResponse
+func (client *Client) UpdateElasticsearchIngestionWithOptions(project *string, elasticsearchIngestionName *string, request *UpdateElasticsearchIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateElasticsearchIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateElasticsearchIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/elasticsearchingestions/" + tea.StringValue(elasticsearchIngestionName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateElasticsearchIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新ES导入任务
+//
+// @param request - UpdateElasticsearchIngestionRequest
+//
+// @return UpdateElasticsearchIngestionResponse
+func (client *Client) UpdateElasticsearchIngestion(project *string, elasticsearchIngestionName *string, request *UpdateElasticsearchIngestionRequest) (_result *UpdateElasticsearchIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateElasticsearchIngestionResponse{}
+	_body, _err := client.UpdateElasticsearchIngestionWithOptions(project, elasticsearchIngestionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新GCP Cloud Storage文件导入任务
+//
+// @param request - UpdateGCSIngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGCSIngestionResponse
+func (client *Client) UpdateGCSIngestionWithOptions(project *string, gcsIngestionName *string, request *UpdateGCSIngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGCSIngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGCSIngestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gcsingestions/" + tea.StringValue(gcsIngestionName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &UpdateGCSIngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新GCP Cloud Storage文件导入任务
+//
+// @param request - UpdateGCSIngestionRequest
+//
+// @return UpdateGCSIngestionResponse
+func (client *Client) UpdateGCSIngestion(project *string, gcsIngestionName *string, request *UpdateGCSIngestionRequest) (_result *UpdateGCSIngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGCSIngestionResponse{}
+	_body, _err := client.UpdateGCSIngestionWithOptions(project, gcsIngestionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the indexes of a Logstore.
 //
 // Description:
@@ -34479,6 +40225,10 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
 		body["shardCount"] = request.ShardCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardingPolicy)) {
+		body["shardingPolicy"] = request.ShardingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TelemetryType)) {
@@ -35141,6 +40891,85 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 
 // Summary:
 //
+// 更新物化视图
+//
+// @param request - UpdateMaterializedViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMaterializedViewResponse
+func (client *Client) UpdateMaterializedViewWithOptions(project *string, name *string, request *UpdateMaterializedViewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMaterializedViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggIntervalMins)) {
+		body["aggIntervalMins"] = request.AggIntervalMins
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalSql)) {
+		body["originalSql"] = request.OriginalSql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		body["ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMaterializedView"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/materializedviews/" + tea.StringValue(name)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateMaterializedViewResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新物化视图
+//
+// @param request - UpdateMaterializedViewRequest
+//
+// @return UpdateMaterializedViewResponse
+func (client *Client) UpdateMaterializedView(project *string, name *string, request *UpdateMaterializedViewRequest) (_result *UpdateMaterializedViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMaterializedViewResponse{}
+	_body, _err := client.UpdateMaterializedViewWithOptions(project, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a MaxCompute data shipping job.
 //
 // Description:
@@ -35271,6 +41100,10 @@ func (client *Client) UpdateMetricStoreWithOptions(project *string, name *string
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppendMeta)) {
+		body["appendMeta"] = request.AppendMeta
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
 		body["autoSplit"] = request.AutoSplit
 	}
@@ -35289,6 +41122,10 @@ func (client *Client) UpdateMetricStoreWithOptions(project *string, name *string
 
 	if !tea.BoolValue(util.IsUnset(request.Mode)) {
 		body["mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardingPolicy)) {
+		body["shardingPolicy"] = request.ShardingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
@@ -35359,7 +41196,7 @@ func (client *Client) UpdateMetricStore(project *string, name *string, request *
 
 // Summary:
 //
-// 更新 MetricStore 计量模式
+// Updates the billing mode of a Metricstore.
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
 //
@@ -35407,7 +41244,7 @@ func (client *Client) UpdateMetricStoreMeteringModeWithOptions(project *string, 
 
 // Summary:
 //
-// 更新 MetricStore 计量模式
+// Updates the billing mode of a Metricstore.
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
 //
@@ -35493,7 +41330,7 @@ func (client *Client) UpdateMetricStoreProcessor(project *string, metricstore *s
 
 // Summary:
 //
-// 更新OSS投递任务
+// Updates an Object Storage Service (OSS) data shipping job.
 //
 // @param request - UpdateOSSExportRequest
 //
@@ -35549,7 +41386,7 @@ func (client *Client) UpdateOSSExportWithOptions(project *string, ossExportName 
 
 // Summary:
 //
-// 更新OSS投递任务
+// Updates an Object Storage Service (OSS) data shipping job.
 //
 // @param request - UpdateOSSExportRequest
 //
@@ -35568,7 +41405,7 @@ func (client *Client) UpdateOSSExport(project *string, ossExportName *string, re
 
 // Summary:
 //
-// 更新OSSHDFS投递任务
+// Updates an OSS-HDFS data shipping job.
 //
 // @param request - UpdateOSSHDFSExportRequest
 //
@@ -35624,7 +41461,7 @@ func (client *Client) UpdateOSSHDFSExportWithOptions(project *string, ossExportN
 
 // Summary:
 //
-// 更新OSSHDFS投递任务
+// Updates an OSS-HDFS data shipping job.
 //
 // @param request - UpdateOSSHDFSExportRequest
 //
