@@ -9,6 +9,8 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribeGlobalDesktopRecordsRequest
+	GetBusinessChannel() *string
 	SetDesktopId(v []*string) *DescribeGlobalDesktopRecordsRequest
 	GetDesktopId() []*string
 	SetDesktopName(v string) *DescribeGlobalDesktopRecordsRequest
@@ -46,6 +48,7 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 }
 
 type DescribeGlobalDesktopRecordsRequest struct {
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The cloud computer IDs. You can specify 1 to 100 office network IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The name of the cloud computer.
@@ -170,6 +173,10 @@ func (s DescribeGlobalDesktopRecordsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeGlobalDesktopRecordsRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeGlobalDesktopRecordsRequest) GetDesktopId() []*string {
 	return s.DesktopId
 }
@@ -236,6 +243,11 @@ func (s *DescribeGlobalDesktopRecordsRequest) GetStartTime() *string {
 
 func (s *DescribeGlobalDesktopRecordsRequest) GetSubPayType() *string {
 	return s.SubPayType
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) SetBusinessChannel(v string) *DescribeGlobalDesktopRecordsRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeGlobalDesktopRecordsRequest) SetDesktopId(v []*string) *DescribeGlobalDesktopRecordsRequest {

@@ -9761,6 +9761,10 @@ func (client *Client) DescribeGlobalDesktopRecordsWithContext(ctx context.Contex
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.DesktopId) {
 		query["DesktopId"] = request.DesktopId
 	}
@@ -16331,6 +16335,10 @@ func (client *Client) ModifyDesktopHostNameWithContext(ctx context.Context, requ
 		query["DesktopId"] = request.DesktopId
 	}
 
+	if !dara.IsNil(request.DesktopIds) {
+		query["DesktopIds"] = request.DesktopIds
+	}
+
 	if !dara.IsNil(request.NewHostName) {
 		query["NewHostName"] = request.NewHostName
 	}
@@ -16383,12 +16391,20 @@ func (client *Client) ModifyDesktopNameWithContext(ctx context.Context, request 
 		query["DesktopId"] = request.DesktopId
 	}
 
+	if !dara.IsNil(request.DesktopIds) {
+		query["DesktopIds"] = request.DesktopIds
+	}
+
 	if !dara.IsNil(request.NewDesktopName) {
 		query["NewDesktopName"] = request.NewDesktopName
 	}
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserAssignMode) {
+		query["UserAssignMode"] = request.UserAssignMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -18731,7 +18747,7 @@ func (client *Client) QueryHistoryMetricDistributionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询桌面历史使用时长排行榜
+// Query and sort historical usage duration by user or desktop dimension.
 //
 // @param request - QueryHistoryUsageDurationRankRequest
 //

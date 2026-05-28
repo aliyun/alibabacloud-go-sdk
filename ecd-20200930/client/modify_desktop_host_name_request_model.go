@@ -11,6 +11,8 @@ type iModifyDesktopHostNameRequest interface {
 	GoString() string
 	SetDesktopId(v string) *ModifyDesktopHostNameRequest
 	GetDesktopId() *string
+	SetDesktopIds(v []*string) *ModifyDesktopHostNameRequest
+	GetDesktopIds() []*string
 	SetNewHostName(v string) *ModifyDesktopHostNameRequest
 	GetNewHostName() *string
 	SetRegionId(v string) *ModifyDesktopHostNameRequest
@@ -20,12 +22,11 @@ type iModifyDesktopHostNameRequest interface {
 type ModifyDesktopHostNameRequest struct {
 	// The ID of the cloud computer.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
-	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopId  *string   `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
 	// The new hostname of the cloud computer. The hostname must meet the following requirements:
 	//
 	// 	- The hostname must be 2 to 15 characters in length.
@@ -60,6 +61,10 @@ func (s *ModifyDesktopHostNameRequest) GetDesktopId() *string {
 	return s.DesktopId
 }
 
+func (s *ModifyDesktopHostNameRequest) GetDesktopIds() []*string {
+	return s.DesktopIds
+}
+
 func (s *ModifyDesktopHostNameRequest) GetNewHostName() *string {
 	return s.NewHostName
 }
@@ -70,6 +75,11 @@ func (s *ModifyDesktopHostNameRequest) GetRegionId() *string {
 
 func (s *ModifyDesktopHostNameRequest) SetDesktopId(v string) *ModifyDesktopHostNameRequest {
 	s.DesktopId = &v
+	return s
+}
+
+func (s *ModifyDesktopHostNameRequest) SetDesktopIds(v []*string) *ModifyDesktopHostNameRequest {
+	s.DesktopIds = v
 	return s
 }
 
