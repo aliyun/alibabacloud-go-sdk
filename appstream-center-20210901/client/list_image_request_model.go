@@ -15,6 +15,8 @@ type iListImageRequest interface {
 	GetBizType() *int32
 	SetBizTypeList(v []*int32) *ListImageRequest
 	GetBizTypeList() []*int32
+	SetDistro(v string) *ListImageRequest
+	GetDistro() *string
 	SetFeatureList(v []*string) *ListImageRequest
 	GetFeatureList() []*string
 	SetFotaVersion(v string) *ListImageRequest
@@ -68,6 +70,7 @@ type ListImageRequest struct {
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The list of all service types. It is not available publicly.
 	BizTypeList []*int32 `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	Distro      *string  `json:"Distro,omitempty" xml:"Distro,omitempty"`
 	// The features supported by the image.
 	FeatureList []*string `json:"FeatureList,omitempty" xml:"FeatureList,omitempty" type:"Repeated"`
 	// The image version.
@@ -258,6 +261,10 @@ func (s *ListImageRequest) GetBizTypeList() []*int32 {
 	return s.BizTypeList
 }
 
+func (s *ListImageRequest) GetDistro() *string {
+	return s.Distro
+}
+
 func (s *ListImageRequest) GetFeatureList() []*string {
 	return s.FeatureList
 }
@@ -342,6 +349,11 @@ func (s *ListImageRequest) SetBizType(v int32) *ListImageRequest {
 
 func (s *ListImageRequest) SetBizTypeList(v []*int32) *ListImageRequest {
 	s.BizTypeList = v
+	return s
+}
+
+func (s *ListImageRequest) SetDistro(v string) *ListImageRequest {
+	s.Distro = &v
 	return s
 }
 

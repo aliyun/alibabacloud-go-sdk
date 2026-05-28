@@ -3296,6 +3296,10 @@ func (client *Client) ListImageWithOptions(request *ListImageRequest, runtime *d
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Distro) {
+		query["Distro"] = request.Distro
+	}
+
 	if !dara.IsNil(request.TagList) {
 		query["TagList"] = request.TagList
 	}
