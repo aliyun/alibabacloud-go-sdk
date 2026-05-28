@@ -360,6 +360,162 @@ func (client *Client) AddLargeModel(request *AddLargeModelRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增模型应用
+//
+// @param tmpReq - AddModelApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddModelApplicationResponse
+func (client *Client) AddModelApplicationWithOptions(tmpReq *AddModelApplicationRequest, runtime *dara.RuntimeOptions) (_result *AddModelApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddModelApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TtsConfig) {
+		request.TtsConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TtsConfig, dara.String("TtsConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCps) {
+		query["ApplicationCps"] = request.ApplicationCps
+	}
+
+	if !dara.IsNil(request.ApplicationName) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.CallConnectedTriggerModel) {
+		query["CallConnectedTriggerModel"] = request.CallConnectedTriggerModel
+	}
+
+	if !dara.IsNil(request.DyvmsSceneName) {
+		query["DyvmsSceneName"] = request.DyvmsSceneName
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		query["ModelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		query["ModelVersion"] = request.ModelVersion
+	}
+
+	if !dara.IsNil(request.MuteActive) {
+		query["MuteActive"] = request.MuteActive
+	}
+
+	if !dara.IsNil(request.MuteDuration) {
+		query["MuteDuration"] = request.MuteDuration
+	}
+
+	if !dara.IsNil(request.MuteHangupNum) {
+		query["MuteHangupNum"] = request.MuteHangupNum
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.QualificationId) {
+		query["QualificationId"] = request.QualificationId
+	}
+
+	if !dara.IsNil(request.QualificationName) {
+		query["QualificationName"] = request.QualificationName
+	}
+
+	if !dara.IsNil(request.RecordingFile) {
+		query["RecordingFile"] = request.RecordingFile
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.SpeechContent) {
+		query["SpeechContent"] = request.SpeechContent
+	}
+
+	if !dara.IsNil(request.SpeechId) {
+		query["SpeechId"] = request.SpeechId
+	}
+
+	if !dara.IsNil(request.StartWord) {
+		query["StartWord"] = request.StartWord
+	}
+
+	if !dara.IsNil(request.StartWordType) {
+		query["StartWordType"] = request.StartWordType
+	}
+
+	if !dara.IsNil(request.TtsConfigShrink) {
+		query["TtsConfig"] = request.TtsConfigShrink
+	}
+
+	if !dara.IsNil(request.UsageDesc) {
+		query["UsageDesc"] = request.UsageDesc
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddModelApplication"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddModelApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增模型应用
+//
+// @param request - AddModelApplicationRequest
+//
+// @return AddModelApplicationResponse
+func (client *Client) AddModelApplication(request *AddModelApplicationRequest) (_result *AddModelApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddModelApplicationResponse{}
+	_body, _err := client.AddModelApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - AddOuterAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13227,6 +13383,222 @@ func (client *Client) UpdateLargeModel(request *UpdateLargeModelRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateLargeModelResponse{}
 	_body, _err := client.UpdateLargeModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模型应用
+//
+// @param tmpReq - UpdateModelApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelApplicationResponse
+func (client *Client) UpdateModelApplicationWithOptions(tmpReq *UpdateModelApplicationRequest, runtime *dara.RuntimeOptions) (_result *UpdateModelApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateModelApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InterruptConfig) {
+		request.InterruptConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InterruptConfig, dara.String("InterruptConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TtsConfig) {
+		request.TtsConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TtsConfig, dara.String("TtsConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCode) {
+		query["ApplicationCode"] = request.ApplicationCode
+	}
+
+	if !dara.IsNil(request.ApplicationCps) {
+		query["ApplicationCps"] = request.ApplicationCps
+	}
+
+	if !dara.IsNil(request.ApplicationName) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.CallAssistantHangup) {
+		query["CallAssistantHangup"] = request.CallAssistantHangup
+	}
+
+	if !dara.IsNil(request.CallAssistantRecognize) {
+		query["CallAssistantRecognize"] = request.CallAssistantRecognize
+	}
+
+	if !dara.IsNil(request.CallConnectedTriggerModel) {
+		query["CallConnectedTriggerModel"] = request.CallConnectedTriggerModel
+	}
+
+	if !dara.IsNil(request.DtmfAllowedDigits) {
+		query["DtmfAllowedDigits"] = request.DtmfAllowedDigits
+	}
+
+	if !dara.IsNil(request.DtmfAutoValidateEnable) {
+		query["DtmfAutoValidateEnable"] = request.DtmfAutoValidateEnable
+	}
+
+	if !dara.IsNil(request.DtmfDigitCount) {
+		query["DtmfDigitCount"] = request.DtmfDigitCount
+	}
+
+	if !dara.IsNil(request.DtmfInputTimeout) {
+		query["DtmfInputTimeout"] = request.DtmfInputTimeout
+	}
+
+	if !dara.IsNil(request.DtmfOutOfRangeAction) {
+		query["DtmfOutOfRangeAction"] = request.DtmfOutOfRangeAction
+	}
+
+	if !dara.IsNil(request.DtmfRetryPlayTimes) {
+		query["DtmfRetryPlayTimes"] = request.DtmfRetryPlayTimes
+	}
+
+	if !dara.IsNil(request.DtmfRetryPromptText) {
+		query["DtmfRetryPromptText"] = request.DtmfRetryPromptText
+	}
+
+	if !dara.IsNil(request.DyvmsSceneName) {
+		query["DyvmsSceneName"] = request.DyvmsSceneName
+	}
+
+	if !dara.IsNil(request.EnableDtmfReceive) {
+		query["EnableDtmfReceive"] = request.EnableDtmfReceive
+	}
+
+	if !dara.IsNil(request.EnableMorse) {
+		query["EnableMorse"] = request.EnableMorse
+	}
+
+	if !dara.IsNil(request.InterruptConfigShrink) {
+		query["InterruptConfig"] = request.InterruptConfigShrink
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		query["ModelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		query["ModelVersion"] = request.ModelVersion
+	}
+
+	if !dara.IsNil(request.MuteActive) {
+		query["MuteActive"] = request.MuteActive
+	}
+
+	if !dara.IsNil(request.MuteDuration) {
+		query["MuteDuration"] = request.MuteDuration
+	}
+
+	if !dara.IsNil(request.MuteHangupNum) {
+		query["MuteHangupNum"] = request.MuteHangupNum
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.QualificationId) {
+		query["QualificationId"] = request.QualificationId
+	}
+
+	if !dara.IsNil(request.QualificationName) {
+		query["QualificationName"] = request.QualificationName
+	}
+
+	if !dara.IsNil(request.RecordingFile) {
+		query["RecordingFile"] = request.RecordingFile
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SessionTimeout) {
+		query["SessionTimeout"] = request.SessionTimeout
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.SpeechContent) {
+		query["SpeechContent"] = request.SpeechContent
+	}
+
+	if !dara.IsNil(request.SpeechId) {
+		query["SpeechId"] = request.SpeechId
+	}
+
+	if !dara.IsNil(request.StartWord) {
+		query["StartWord"] = request.StartWord
+	}
+
+	if !dara.IsNil(request.StartWordType) {
+		query["StartWordType"] = request.StartWordType
+	}
+
+	if !dara.IsNil(request.TtsConfigShrink) {
+		query["TtsConfig"] = request.TtsConfigShrink
+	}
+
+	if !dara.IsNil(request.UsageDesc) {
+		query["UsageDesc"] = request.UsageDesc
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelApplication"),
+		Version:     dara.String("2019-10-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模型应用
+//
+// @param request - UpdateModelApplicationRequest
+//
+// @return UpdateModelApplicationResponse
+func (client *Client) UpdateModelApplication(request *UpdateModelApplicationRequest) (_result *UpdateModelApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateModelApplicationResponse{}
+	_body, _err := client.UpdateModelApplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
