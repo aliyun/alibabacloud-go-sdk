@@ -13,8 +13,8 @@ type iScanFileInfo interface {
 	GetAngle() *int32
 	SetHeight(v int32) *ScanFileInfo
 	GetHeight() *int32
-	SetImageBase64(v []byte) *ScanFileInfo
-	GetImageBase64() []byte
+	SetImageBase64(v string) *ScanFileInfo
+	GetImageBase64() *string
 	SetWidth(v int32) *ScanFileInfo
 	GetWidth() *int32
 }
@@ -31,7 +31,7 @@ type ScanFileInfo struct {
 	// example:
 	//
 	// erwre
-	ImageBase64 []byte `json:"imageBase64,omitempty" xml:"imageBase64,omitempty"`
+	ImageBase64 *string `json:"imageBase64,omitempty" xml:"imageBase64,omitempty"`
 	// example:
 	//
 	// 100
@@ -54,7 +54,7 @@ func (s *ScanFileInfo) GetHeight() *int32 {
 	return s.Height
 }
 
-func (s *ScanFileInfo) GetImageBase64() []byte {
+func (s *ScanFileInfo) GetImageBase64() *string {
 	return s.ImageBase64
 }
 
@@ -72,8 +72,8 @@ func (s *ScanFileInfo) SetHeight(v int32) *ScanFileInfo {
 	return s
 }
 
-func (s *ScanFileInfo) SetImageBase64(v []byte) *ScanFileInfo {
-	s.ImageBase64 = v
+func (s *ScanFileInfo) SetImageBase64(v string) *ScanFileInfo {
+	s.ImageBase64 = &v
 	return s
 }
 
