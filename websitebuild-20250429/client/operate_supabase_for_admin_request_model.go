@@ -11,6 +11,8 @@ type iOperateSupabaseForAdminRequest interface {
 	GoString() string
 	SetBizId(v string) *OperateSupabaseForAdminRequest
 	GetBizId() *string
+	SetEnv(v string) *OperateSupabaseForAdminRequest
+	GetEnv() *string
 	SetExecuteSql(v string) *OperateSupabaseForAdminRequest
 	GetExecuteSql() *string
 	SetOperateType(v string) *OperateSupabaseForAdminRequest
@@ -40,6 +42,7 @@ type OperateSupabaseForAdminRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// example:
 	//
 	// select 	- from profiles
@@ -94,6 +97,10 @@ func (s *OperateSupabaseForAdminRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *OperateSupabaseForAdminRequest) GetEnv() *string {
+	return s.Env
+}
+
 func (s *OperateSupabaseForAdminRequest) GetExecuteSql() *string {
 	return s.ExecuteSql
 }
@@ -136,6 +143,11 @@ func (s *OperateSupabaseForAdminRequest) GetWhereClause() *string {
 
 func (s *OperateSupabaseForAdminRequest) SetBizId(v string) *OperateSupabaseForAdminRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *OperateSupabaseForAdminRequest) SetEnv(v string) *OperateSupabaseForAdminRequest {
+	s.Env = &v
 	return s
 }
 

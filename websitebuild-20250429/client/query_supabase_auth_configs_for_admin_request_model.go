@@ -13,6 +13,8 @@ type iQuerySupabaseAuthConfigsForAdminRequest interface {
 	GetAuthType() *string
 	SetBizId(v string) *QuerySupabaseAuthConfigsForAdminRequest
 	GetBizId() *string
+	SetEnv(v string) *QuerySupabaseAuthConfigsForAdminRequest
+	GetEnv() *string
 	SetOrderColumn(v string) *QuerySupabaseAuthConfigsForAdminRequest
 	GetOrderColumn() *string
 	SetOrderType(v string) *QuerySupabaseAuthConfigsForAdminRequest
@@ -38,6 +40,7 @@ type QuerySupabaseAuthConfigsForAdminRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// example:
 	//
 	// gmtCreated
@@ -76,6 +79,10 @@ func (s *QuerySupabaseAuthConfigsForAdminRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *QuerySupabaseAuthConfigsForAdminRequest) GetEnv() *string {
+	return s.Env
+}
+
 func (s *QuerySupabaseAuthConfigsForAdminRequest) GetOrderColumn() *string {
 	return s.OrderColumn
 }
@@ -103,6 +110,11 @@ func (s *QuerySupabaseAuthConfigsForAdminRequest) SetAuthType(v string) *QuerySu
 
 func (s *QuerySupabaseAuthConfigsForAdminRequest) SetBizId(v string) *QuerySupabaseAuthConfigsForAdminRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *QuerySupabaseAuthConfigsForAdminRequest) SetEnv(v string) *QuerySupabaseAuthConfigsForAdminRequest {
+	s.Env = &v
 	return s
 }
 

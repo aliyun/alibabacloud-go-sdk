@@ -77,6 +77,10 @@ func (client *Client) AllocateSupabaseForAdminWithOptions(request *AllocateSupab
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
 	if !dara.IsNil(request.OrderColumn) {
 		query["OrderColumn"] = request.OrderColumn
 	}
@@ -459,6 +463,149 @@ func (client *Client) CheckUserResourceMeasure(request *CheckUserResourceMeasure
 	runtime := &dara.RuntimeOptions{}
 	_result = &CheckUserResourceMeasureResponse{}
 	_body, _err := client.CheckUserResourceMeasureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步发起AI员工对话
+//
+// @param request - CreateAIStaffChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAIStaffChatResponse
+func (client *Client) CreateAIStaffChatWithOptions(request *CreateAIStaffChatRequest, runtime *dara.RuntimeOptions) (_result *CreateAIStaffChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		body["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ChatId) {
+		body["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["Messages"] = request.Messages
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.MetaData) {
+		bodyFlat["MetaData"] = request.MetaData
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAIStaffChat"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAIStaffChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步发起AI员工对话
+//
+// @param request - CreateAIStaffChatRequest
+//
+// @return CreateAIStaffChatResponse
+func (client *Client) CreateAIStaffChat(request *CreateAIStaffChatRequest) (_result *CreateAIStaffChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAIStaffChatResponse{}
+	_body, _err := client.CreateAIStaffChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI员工会话
+//
+// @param request - CreateAIStaffConversationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAIStaffConversationResponse
+func (client *Client) CreateAIStaffConversationWithOptions(request *CreateAIStaffConversationRequest, runtime *dara.RuntimeOptions) (_result *CreateAIStaffConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Text) {
+		body["Text"] = request.Text
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAIStaffConversation"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAIStaffConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI员工会话
+//
+// @param request - CreateAIStaffConversationRequest
+//
+// @return CreateAIStaffConversationResponse
+func (client *Client) CreateAIStaffConversation(request *CreateAIStaffConversationRequest) (_result *CreateAIStaffConversationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAIStaffConversationResponse{}
+	_body, _err := client.CreateAIStaffConversationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1558,6 +1705,72 @@ func (client *Client) ExportMaterialFile(request *ExportMaterialFileRequest) (_r
 
 // Summary:
 //
+// 获取AI员工站点预览地址
+//
+// @param request - GetAIStaffPreviewUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIStaffPreviewUrlResponse
+func (client *Client) GetAIStaffPreviewUrlWithOptions(request *GetAIStaffPreviewUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAIStaffPreviewUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		body["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIStaffPreviewUrl"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIStaffPreviewUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI员工站点预览地址
+//
+// @param request - GetAIStaffPreviewUrlRequest
+//
+// @return GetAIStaffPreviewUrlResponse
+func (client *Client) GetAIStaffPreviewUrl(request *GetAIStaffPreviewUrlRequest) (_result *GetAIStaffPreviewUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAIStaffPreviewUrlResponse{}
+	_body, _err := client.GetAIStaffPreviewUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Application Instance Details
 //
 // @param request - GetAppInstanceRequest
@@ -2398,6 +2611,158 @@ func (client *Client) IntrospectAppInstanceTicketForPreview(request *IntrospectA
 	runtime := &dara.RuntimeOptions{}
 	_result = &IntrospectAppInstanceTicketForPreviewResponse{}
 	_body, _err := client.IntrospectAppInstanceTicketForPreviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI员工对话增量SSE事件
+//
+// @param request - ListAIStaffChatEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAIStaffChatEventsResponse
+func (client *Client) ListAIStaffChatEventsWithOptions(request *ListAIStaffChatEventsRequest, runtime *dara.RuntimeOptions) (_result *ListAIStaffChatEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.LastEventId) {
+		body["LastEventId"] = request.LastEventId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAIStaffChatEvents"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAIStaffChatEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI员工对话增量SSE事件
+//
+// @param request - ListAIStaffChatEventsRequest
+//
+// @return ListAIStaffChatEventsResponse
+func (client *Client) ListAIStaffChatEvents(request *ListAIStaffChatEventsRequest) (_result *ListAIStaffChatEventsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAIStaffChatEventsResponse{}
+	_body, _err := client.ListAIStaffChatEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询AI员工对话消息列表
+//
+// @param request - ListAIStaffChatMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAIStaffChatMessagesResponse
+func (client *Client) ListAIStaffChatMessagesWithOptions(request *ListAIStaffChatMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListAIStaffChatMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartCreateTime) {
+		body["StartCreateTime"] = request.StartCreateTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAIStaffChatMessages"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAIStaffChatMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询AI员工对话消息列表
+//
+// @param request - ListAIStaffChatMessagesRequest
+//
+// @return ListAIStaffChatMessagesResponse
+func (client *Client) ListAIStaffChatMessages(request *ListAIStaffChatMessagesRequest) (_result *ListAIStaffChatMessagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAIStaffChatMessagesResponse{}
+	_body, _err := client.ListAIStaffChatMessagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3473,6 +3838,10 @@ func (client *Client) OperateSupabaseForAdminWithOptions(request *OperateSupabas
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
 	if !dara.IsNil(request.ExecuteSql) {
 		query["ExecuteSql"] = request.ExecuteSql
 	}
@@ -4420,6 +4789,10 @@ func (client *Client) QuerySupabaseAuthConfigsForAdminWithOptions(request *Query
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
 	if !dara.IsNil(request.OrderColumn) {
 		query["OrderColumn"] = request.OrderColumn
 	}
@@ -4500,6 +4873,10 @@ func (client *Client) QuerySupabaseConfigsForAdminWithOptions(request *QuerySupa
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
 	}
 
 	if !dara.IsNil(request.OrderColumn) {

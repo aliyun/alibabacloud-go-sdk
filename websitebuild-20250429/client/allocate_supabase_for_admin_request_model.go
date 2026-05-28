@@ -11,6 +11,8 @@ type iAllocateSupabaseForAdminRequest interface {
 	GoString() string
 	SetBizId(v string) *AllocateSupabaseForAdminRequest
 	GetBizId() *string
+	SetEnv(v string) *AllocateSupabaseForAdminRequest
+	GetEnv() *string
 	SetOrderColumn(v string) *AllocateSupabaseForAdminRequest
 	GetOrderColumn() *string
 	SetOrderType(v string) *AllocateSupabaseForAdminRequest
@@ -30,6 +32,7 @@ type AllocateSupabaseForAdminRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// example:
 	//
 	// gmtCreated
@@ -64,6 +67,10 @@ func (s *AllocateSupabaseForAdminRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *AllocateSupabaseForAdminRequest) GetEnv() *string {
+	return s.Env
+}
+
 func (s *AllocateSupabaseForAdminRequest) GetOrderColumn() *string {
 	return s.OrderColumn
 }
@@ -86,6 +93,11 @@ func (s *AllocateSupabaseForAdminRequest) GetUserId() *string {
 
 func (s *AllocateSupabaseForAdminRequest) SetBizId(v string) *AllocateSupabaseForAdminRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *AllocateSupabaseForAdminRequest) SetEnv(v string) *AllocateSupabaseForAdminRequest {
+	s.Env = &v
 	return s
 }
 

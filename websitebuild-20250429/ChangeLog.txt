@@ -1,3 +1,15 @@
+2026-05-28 Version: v2.22.0
+- Support API CreateAIStaffChat.
+- Support API CreateAIStaffConversation.
+- Support API GetAIStaffPreviewUrl.
+- Support API ListAIStaffChatEvents.
+- Support API ListAIStaffChatMessages.
+- Update API AllocateSupabaseForAdmin: add request parameters Env.
+- Update API OperateSupabaseForAdmin: add request parameters Env.
+- Update API QuerySupabaseAuthConfigsForAdmin: add request parameters Env.
+- Update API QuerySupabaseConfigsForAdmin: add request parameters Env.
+
+
 2026-05-19 Version: v2.21.0
 - Support API GetLlmProxyConfigForAdmin.
 
