@@ -529,7 +529,7 @@ func (client *Client) AssociateAdditionalCertificatesWithListener(request *Assoc
 
 // Summary:
 //
-// Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+// Associates an Internet Shared Bandwidth instance with an Application Load Balancer (ALB) instance.
 //
 // Description:
 //
@@ -597,7 +597,7 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 
 // Summary:
 //
-// Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+// Associates an Internet Shared Bandwidth instance with an Application Load Balancer (ALB) instance.
 //
 // Description:
 //
@@ -1244,6 +1244,10 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !dara.IsNil(request.SecurityGroupIds) {
+		query["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -1687,6 +1691,10 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 
 	if !dara.IsNil(request.HealthCheckConfig) {
 		query["HealthCheckConfig"] = request.HealthCheckConfig
+	}
+
+	if !dara.IsNil(request.IpVersionAffinityMode) {
+		query["IpVersionAffinityMode"] = request.IpVersionAffinityMode
 	}
 
 	if !dara.IsNil(request.Ipv6Enabled) {
@@ -2153,6 +2161,10 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 
 	if !dara.IsNil(request.LoadBalancerId) {
 		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !dara.IsNil(request.RetainResourceType) {
+		query["RetainResourceType"] = request.RetainResourceType
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2720,7 +2732,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
-// Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+// Disassociates an Internet Shared Bandwidth instance from an Application Load Balancer (ALB) instance.
 //
 // Description:
 //
@@ -2788,7 +2800,7 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 
 // Summary:
 //
-// Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+// Disassociates an Internet Shared Bandwidth instance from an Application Load Balancer (ALB) instance.
 //
 // Description:
 //
@@ -2884,7 +2896,7 @@ func (client *Client) DisableDeletionProtection(request *DisableDeletionProtecti
 
 // Summary:
 //
-// Disables the access log feature for a Server Load Balancer (SLB) instance.
+// Disables the access log feature for a Application Load Balancer (ALB) instance.
 //
 // @param request - DisableLoadBalancerAccessLogRequest
 //
@@ -2936,7 +2948,7 @@ func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLo
 
 // Summary:
 //
-// Disables the access log feature for a Server Load Balancer (SLB) instance.
+// Disables the access log feature for a Application Load Balancer (ALB) instance.
 //
 // @param request - DisableLoadBalancerAccessLogRequest
 //
@@ -4904,8 +4916,6 @@ func (client *Client) ListServerGroups(request *ListServerGroupsRequest) (_resul
 //
 // Queries system security policies in a region.
 //
-// @param request - ListSystemSecurityPoliciesRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSystemSecurityPoliciesResponse
@@ -6797,6 +6807,10 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 		query["LoadBalancerId"] = request.LoadBalancerId
 	}
 
+	if !dara.IsNil(request.RetainResourceType) {
+		query["RetainResourceType"] = request.RetainResourceType
+	}
+
 	if !dara.IsNil(request.ZoneMappings) {
 		query["ZoneMappings"] = request.ZoneMappings
 	}
@@ -7083,6 +7097,10 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 
 	if !dara.IsNil(request.LoadBalancerId) {
 		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !dara.IsNil(request.RetainResourceType) {
+		query["RetainResourceType"] = request.RetainResourceType
 	}
 
 	if !dara.IsNil(request.ZoneMappings) {
@@ -7461,7 +7479,7 @@ func (client *Client) UpdateSecurityPolicyAttribute(request *UpdateSecurityPolic
 
 // Summary:
 //
-// Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+// Modifies the configurations of a server group, such as health checks, session persistence, the server group name, the routing algorithm, and the protocol.
 //
 // Description:
 //
@@ -7504,6 +7522,10 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 	if !dara.IsNil(request.HealthCheckConfig) {
 		query["HealthCheckConfig"] = request.HealthCheckConfig
+	}
+
+	if !dara.IsNil(request.IpVersionAffinityMode) {
+		query["IpVersionAffinityMode"] = request.IpVersionAffinityMode
 	}
 
 	if !dara.IsNil(request.Scheduler) {
@@ -7563,7 +7585,7 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 // Summary:
 //
-// Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+// Modifies the configurations of a server group, such as health checks, session persistence, the server group name, the routing algorithm, and the protocol.
 //
 // Description:
 //

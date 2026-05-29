@@ -159,6 +159,10 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	CrossZoneEnabled *bool `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
 	// The health check configurations.
 	HealthCheckConfig *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// Affinity
+	IpVersionAffinityMode *string `json:"IpVersionAffinityMode,omitempty" xml:"IpVersionAffinityMode,omitempty"`
 	// Indicates whether IPv6 is supported. Valid values:
 	//
 	// 	- **true**
@@ -313,6 +317,10 @@ func (s *ListServerGroupsResponseBodyServerGroups) GetHealthCheckConfig() *ListS
 	return s.HealthCheckConfig
 }
 
+func (s *ListServerGroupsResponseBodyServerGroups) GetIpVersionAffinityMode() *string {
+	return s.IpVersionAffinityMode
+}
+
 func (s *ListServerGroupsResponseBodyServerGroups) GetIpv6Enabled() *bool {
 	return s.Ipv6Enabled
 }
@@ -403,6 +411,11 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetCrossZoneEnabled(v bool) *
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetHealthCheckConfig(v *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig) *ListServerGroupsResponseBodyServerGroups {
 	s.HealthCheckConfig = v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroups) SetIpVersionAffinityMode(v string) *ListServerGroupsResponseBodyServerGroups {
+	s.IpVersionAffinityMode = &v
 	return s
 }
 

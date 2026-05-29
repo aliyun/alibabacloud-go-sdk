@@ -31,6 +31,8 @@ type iCreateLoadBalancerRequest interface {
 	GetModificationProtectionConfig() *CreateLoadBalancerRequestModificationProtectionConfig
 	SetResourceGroupId(v string) *CreateLoadBalancerRequest
 	GetResourceGroupId() *string
+	SetSecurityGroupIds(v []*CreateLoadBalancerRequestSecurityGroupIds) *CreateLoadBalancerRequest
+	GetSecurityGroupIds() []*CreateLoadBalancerRequestSecurityGroupIds
 	SetTag(v []*CreateLoadBalancerRequestTag) *CreateLoadBalancerRequest
 	GetTag() []*CreateLoadBalancerRequestTag
 	SetVpcId(v string) *CreateLoadBalancerRequest
@@ -137,7 +139,8 @@ type CreateLoadBalancerRequest struct {
 	// example:
 	//
 	// rg-atstuj3rtop****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId  *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds []*CreateLoadBalancerRequestSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The tags.
 	Tag []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) in which you want to create the ALB instance.
@@ -204,6 +207,10 @@ func (s *CreateLoadBalancerRequest) GetModificationProtectionConfig() *CreateLoa
 
 func (s *CreateLoadBalancerRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *CreateLoadBalancerRequest) GetSecurityGroupIds() []*CreateLoadBalancerRequestSecurityGroupIds {
+	return s.SecurityGroupIds
 }
 
 func (s *CreateLoadBalancerRequest) GetTag() []*CreateLoadBalancerRequestTag {
@@ -273,6 +280,11 @@ func (s *CreateLoadBalancerRequest) SetResourceGroupId(v string) *CreateLoadBala
 	return s
 }
 
+func (s *CreateLoadBalancerRequest) SetSecurityGroupIds(v []*CreateLoadBalancerRequestSecurityGroupIds) *CreateLoadBalancerRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
 func (s *CreateLoadBalancerRequest) SetTag(v []*CreateLoadBalancerRequestTag) *CreateLoadBalancerRequest {
 	s.Tag = v
 	return s
@@ -297,6 +309,15 @@ func (s *CreateLoadBalancerRequest) Validate() error {
 	if s.ModificationProtectionConfig != nil {
 		if err := s.ModificationProtectionConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		for _, item := range s.SecurityGroupIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.Tag != nil {
@@ -421,6 +442,34 @@ func (s *CreateLoadBalancerRequestModificationProtectionConfig) SetStatus(v stri
 }
 
 func (s *CreateLoadBalancerRequestModificationProtectionConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateLoadBalancerRequestSecurityGroupIds struct {
+	// example:
+	//
+	// sg-gw82chzr7ru23iwbn9mu
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestSecurityGroupIds) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestSecurityGroupIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestSecurityGroupIds) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
+func (s *CreateLoadBalancerRequestSecurityGroupIds) SetSecurityGroupId(v string) *CreateLoadBalancerRequestSecurityGroupIds {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestSecurityGroupIds) Validate() error {
 	return dara.Validate(s)
 }
 

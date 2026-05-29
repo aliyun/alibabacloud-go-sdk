@@ -17,6 +17,8 @@ type iUpdateLoadBalancerAddressTypeConfigRequest interface {
 	GetDryRun() *string
 	SetLoadBalancerId(v string) *UpdateLoadBalancerAddressTypeConfigRequest
 	GetLoadBalancerId() *string
+	SetRetainResourceType(v []*string) *UpdateLoadBalancerAddressTypeConfigRequest
+	GetRetainResourceType() []*string
 	SetZoneMappings(v []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) *UpdateLoadBalancerAddressTypeConfigRequest
 	GetZoneMappings() []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings
 }
@@ -61,7 +63,8 @@ type UpdateLoadBalancerAddressTypeConfigRequest struct {
 	// example:
 	//
 	// lb-bp1o94dp5i6ea****
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerId     *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RetainResourceType []*string `json:"RetainResourceType,omitempty" xml:"RetainResourceType,omitempty" type:"Repeated"`
 	// The zones and the vSwitches in the zones. You can specify a maximum of 10 zones. If the selected region supports two or more zones, select at least two zones to ensure the high availability of your service.
 	ZoneMappings []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
@@ -90,6 +93,10 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequest) GetLoadBalancerId() *string
 	return s.LoadBalancerId
 }
 
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) GetRetainResourceType() []*string {
+	return s.RetainResourceType
+}
+
 func (s *UpdateLoadBalancerAddressTypeConfigRequest) GetZoneMappings() []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings {
 	return s.ZoneMappings
 }
@@ -111,6 +118,11 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetDryRun(v string) *Update
 
 func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetLoadBalancerId(v string) *UpdateLoadBalancerAddressTypeConfigRequest {
 	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetRetainResourceType(v []*string) *UpdateLoadBalancerAddressTypeConfigRequest {
+	s.RetainResourceType = v
 	return s
 }
 

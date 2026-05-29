@@ -15,6 +15,8 @@ type iUpdateLoadBalancerZonesRequest interface {
 	GetDryRun() *bool
 	SetLoadBalancerId(v string) *UpdateLoadBalancerZonesRequest
 	GetLoadBalancerId() *string
+	SetRetainResourceType(v []*string) *UpdateLoadBalancerZonesRequest
+	GetRetainResourceType() []*string
 	SetZoneMappings(v []*UpdateLoadBalancerZonesRequestZoneMappings) *UpdateLoadBalancerZonesRequest
 	GetZoneMappings() []*UpdateLoadBalancerZonesRequestZoneMappings
 }
@@ -47,7 +49,8 @@ type UpdateLoadBalancerZonesRequest struct {
 	// example:
 	//
 	// lb-bp1b6c719dfa08ex****
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerId     *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RetainResourceType []*string `json:"RetainResourceType,omitempty" xml:"RetainResourceType,omitempty" type:"Repeated"`
 	// The zones and the vSwitches in the zones. You can specify a maximum of 10 zones. If the selected region supports two or more zones, select at least two zones to ensure the high availability of your service. The specified zones and vSwitches overwrite the existing configurations.
 	//
 	// This parameter is required.
@@ -74,6 +77,10 @@ func (s *UpdateLoadBalancerZonesRequest) GetLoadBalancerId() *string {
 	return s.LoadBalancerId
 }
 
+func (s *UpdateLoadBalancerZonesRequest) GetRetainResourceType() []*string {
+	return s.RetainResourceType
+}
+
 func (s *UpdateLoadBalancerZonesRequest) GetZoneMappings() []*UpdateLoadBalancerZonesRequestZoneMappings {
 	return s.ZoneMappings
 }
@@ -90,6 +97,11 @@ func (s *UpdateLoadBalancerZonesRequest) SetDryRun(v bool) *UpdateLoadBalancerZo
 
 func (s *UpdateLoadBalancerZonesRequest) SetLoadBalancerId(v string) *UpdateLoadBalancerZonesRequest {
 	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerZonesRequest) SetRetainResourceType(v []*string) *UpdateLoadBalancerZonesRequest {
+	s.RetainResourceType = v
 	return s
 }
 

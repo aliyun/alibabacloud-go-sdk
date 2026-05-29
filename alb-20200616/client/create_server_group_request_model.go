@@ -19,6 +19,8 @@ type iCreateServerGroupRequest interface {
 	GetDryRun() *bool
 	SetHealthCheckConfig(v *CreateServerGroupRequestHealthCheckConfig) *CreateServerGroupRequest
 	GetHealthCheckConfig() *CreateServerGroupRequestHealthCheckConfig
+	SetIpVersionAffinityMode(v string) *CreateServerGroupRequest
+	GetIpVersionAffinityMode() *string
 	SetIpv6Enabled(v bool) *CreateServerGroupRequest
 	GetIpv6Enabled() *bool
 	SetProtocol(v string) *CreateServerGroupRequest
@@ -97,6 +99,10 @@ type CreateServerGroupRequest struct {
 	//
 	// This parameter is required.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// Affinity
+	IpVersionAffinityMode *string `json:"IpVersionAffinityMode,omitempty" xml:"IpVersionAffinityMode,omitempty"`
 	// Specifies whether to enable Ipv6.
 	//
 	// example:
@@ -225,6 +231,10 @@ func (s *CreateServerGroupRequest) GetHealthCheckConfig() *CreateServerGroupRequ
 	return s.HealthCheckConfig
 }
 
+func (s *CreateServerGroupRequest) GetIpVersionAffinityMode() *string {
+	return s.IpVersionAffinityMode
+}
+
 func (s *CreateServerGroupRequest) GetIpv6Enabled() *bool {
 	return s.Ipv6Enabled
 }
@@ -299,6 +309,11 @@ func (s *CreateServerGroupRequest) SetDryRun(v bool) *CreateServerGroupRequest {
 
 func (s *CreateServerGroupRequest) SetHealthCheckConfig(v *CreateServerGroupRequestHealthCheckConfig) *CreateServerGroupRequest {
 	s.HealthCheckConfig = v
+	return s
+}
+
+func (s *CreateServerGroupRequest) SetIpVersionAffinityMode(v string) *CreateServerGroupRequest {
+	s.IpVersionAffinityMode = &v
 	return s
 }
 

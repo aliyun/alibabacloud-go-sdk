@@ -19,6 +19,8 @@ type iUpdateServerGroupAttributeRequest interface {
 	GetDryRun() *bool
 	SetHealthCheckConfig(v *UpdateServerGroupAttributeRequestHealthCheckConfig) *UpdateServerGroupAttributeRequest
 	GetHealthCheckConfig() *UpdateServerGroupAttributeRequestHealthCheckConfig
+	SetIpVersionAffinityMode(v string) *UpdateServerGroupAttributeRequest
+	GetIpVersionAffinityMode() *string
 	SetScheduler(v string) *UpdateServerGroupAttributeRequest
 	GetScheduler() *string
 	SetServerGroupId(v string) *UpdateServerGroupAttributeRequest
@@ -84,6 +86,10 @@ type UpdateServerGroupAttributeRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The configuration of health checks.
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// Affinity
+	IpVersionAffinityMode *string `json:"IpVersionAffinityMode,omitempty" xml:"IpVersionAffinityMode,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
 	// 	- **Wrr**: the weighted round robin algorithm. Backend servers that have higher weights receive more requests than those that have lower weights.
@@ -168,6 +174,10 @@ func (s *UpdateServerGroupAttributeRequest) GetHealthCheckConfig() *UpdateServer
 	return s.HealthCheckConfig
 }
 
+func (s *UpdateServerGroupAttributeRequest) GetIpVersionAffinityMode() *string {
+	return s.IpVersionAffinityMode
+}
+
 func (s *UpdateServerGroupAttributeRequest) GetScheduler() *string {
 	return s.Scheduler
 }
@@ -222,6 +232,11 @@ func (s *UpdateServerGroupAttributeRequest) SetDryRun(v bool) *UpdateServerGroup
 
 func (s *UpdateServerGroupAttributeRequest) SetHealthCheckConfig(v *UpdateServerGroupAttributeRequestHealthCheckConfig) *UpdateServerGroupAttributeRequest {
 	s.HealthCheckConfig = v
+	return s
+}
+
+func (s *UpdateServerGroupAttributeRequest) SetIpVersionAffinityMode(v string) *UpdateServerGroupAttributeRequest {
+	s.IpVersionAffinityMode = &v
 	return s
 }
 

@@ -38,6 +38,8 @@ type UpdateRulesAttributeRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The forwarding rules.
+	//
 	// This parameter is required.
 	Rules []*UpdateRulesAttributeRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
@@ -91,11 +93,29 @@ func (s *UpdateRulesAttributeRequest) Validate() error {
 }
 
 type UpdateRulesAttributeRequestRules struct {
-	Priority       *int32                                            `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RuleActions    []*UpdateRulesAttributeRequestRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	// The priority of the forwarding rule.
+	//
+	// example:
+	//
+	// 10
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The forwarding rules.
+	RuleActions []*UpdateRulesAttributeRequestRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	// The match conditions of the forwarding rule.
 	RuleConditions []*UpdateRulesAttributeRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// The ID of the forwarding rule.
+	//
 	// This parameter is required.
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	//
+	// example:
+	//
+	// rule-cxjh7vazn2jpnl****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule.
+	//
+	// example:
+	//
+	// rule-instance-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -175,18 +195,39 @@ func (s *UpdateRulesAttributeRequestRules) Validate() error {
 }
 
 type UpdateRulesAttributeRequestRulesRuleActions struct {
-	CorsConfig          *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig          `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
+	// The cross-origin resource sharing (CORS) configuration.
+	CorsConfig *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
+	// The configuration of the action to return a custom response.
 	FixedResponseConfig *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	ForwardGroupConfig  *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	InsertHeaderConfig  *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	// The configuration of the action to forward requests to server groups.
+	ForwardGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	// The configuration of the action to insert a header.
+	InsertHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	// The priority of the action.
+	//
 	// This parameter is required.
-	Order               *int32                                                          `json:"Order,omitempty" xml:"Order,omitempty"`
-	RedirectConfig      *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	RemoveHeaderConfig  *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig  `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
-	RewriteConfig       *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	TrafficLimitConfig  *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The configuration of the redirect action.
+	RedirectConfig *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	// The configuration of the HTTP header to be removed.
+	RemoveHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
+	// The configuration of the rewrite action.
+	RewriteConfig *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	// The configuration of traffic throttling.
+	TrafficLimitConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	// The configuration of traffic mirroring.
 	TrafficMirrorConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
+	// The type of action.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Host
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -347,12 +388,26 @@ func (s *UpdateRulesAttributeRequestRulesRuleActions) Validate() error {
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsCorsConfig struct {
-	AllowCredentials *string   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
-	AllowHeaders     []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
-	AllowMethods     []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
-	AllowOrigin      []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
-	ExposeHeaders    []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
-	MaxAge           *int64    `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+	// Specifies whether to allow credentials to be carried in CORS requests.
+	//
+	// example:
+	//
+	// on
+	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	// The trusted headers of CORS requests.
+	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
+	// The trusted HTTP methods of CORS requests.
+	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	// The trusted origins.
+	AllowOrigin []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
+	// The headers that can be exposed.
+	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
+	// The maximum cache time for dry runs in the browser.
+	//
+	// example:
+	//
+	// 1000
+	MaxAge *int64 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) String() string {
@@ -422,9 +477,24 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) Validate() error
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the response.
+	//
+	// example:
+	//
+	// dssacav
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content type of the response.
+	//
+	// example:
+	//
+	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	HttpCode    *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The HTTP status code in the response.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) String() string {
@@ -467,8 +537,10 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) Validat
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig struct {
+	// The configuration of session persistence for server groups.
 	ServerGroupStickySession *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
-	ServerGroupTuples        []*UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples      `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+	// The server groups to which requests are forwarded.
+	ServerGroupTuples []*UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) String() string {
@@ -516,7 +588,17 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) Validate
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
-	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable session persistence.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The timeout period for sessions.
+	//
+	// example:
+	//
+	// 2
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -551,8 +633,18 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGrou
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
+	// The ID of the server group.
+	//
+	// example:
+	//
+	// sg-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The weight of the server group.
+	//
+	// example:
+	//
+	// 30
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -586,10 +678,30 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGrou
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig struct {
-	CoverEnabled *bool   `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	ValueType    *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// Specifies whether to overwrite the header in the request.
+	//
+	// example:
+	//
+	// false
+	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
+	// The key of the HTTP header.
+	//
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the HTTP header.
+	//
+	// example:
+	//
+	// UserDefined
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The type of the header value.
+	//
+	// example:
+	//
+	// UserDefined
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) String() string {
@@ -641,12 +753,42 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) Validate
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig struct {
-	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The hostname to which requests are redirected.
+	//
+	// example:
+	//
+	// www.example.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The HTTP status code that indicates the redirect type.
+	//
+	// example:
+	//
+	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The path of the destination to which requests are forwarded.
+	//
+	// example:
+	//
+	// /test
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port to which requests are forwarded.
+	//
+	// example:
+	//
+	// 10
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol of the destination to which requests are forwarded.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The query string to which requests are redirected.
+	//
+	// example:
+	//
+	// quert
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) String() string {
@@ -716,6 +858,11 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) Validate() e
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig struct {
+	// The key of the header.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -741,8 +888,23 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig) Validate
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig struct {
-	Host  *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The hostname of the destination to which requests are forwarded.
+	//
+	// example:
+	//
+	// www.example.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The path to which requests are forwarded.
+	//
+	// example:
+	//
+	// /tsdf
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The query string of the URL to which requests are forwarded.
+	//
+	// example:
+	//
+	// quedsa
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -786,8 +948,18 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) Validate() er
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig struct {
+	// The number of requests per IP address.
+	//
+	// example:
+	//
+	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
-	QPS      *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	// The number of queries per second (QPS).
+	//
+	// example:
+	//
+	// 2
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) String() string {
@@ -821,8 +993,14 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) Validate
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig struct {
+	// The configuration of the server group to which traffic is mirrored.
 	MirrorGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	TargetType        *string                                                                          `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The type of the target to which network traffic is mirrored.
+	//
+	// example:
+	//
+	// ForwardGroupMirror
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -861,6 +1039,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) Validat
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	// The server group to which traffic is mirrored.
 	ServerGroupTuples []*UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -895,6 +1074,11 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGro
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	// The server group ID.
+	//
+	// example:
+	//
+	// srg-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -920,16 +1104,30 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGro
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditions struct {
-	CookieConfig             *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig             `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	HeaderConfig             *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig             `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	HostConfig               *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig               `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	MethodConfig             *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig             `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	PathConfig               *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig               `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	QueryStringConfig        *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig        `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	ResponseHeaderConfig     *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig     `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	// The configuration of the cookie.
+	CookieConfig *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	// The configuration of the HTTP header.
+	HeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	// The match conditions for hostnames.
+	HostConfig *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	// The configuration of the HTTP request method.
+	MethodConfig *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	// The match conditions for query strings.
+	PathConfig *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	// The match conditions for query strings.
+	QueryStringConfig *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	// The HTTP response headers.
+	ResponseHeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	// The match conditions for response status codes.
 	ResponseStatusCodeConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	SourceIpConfig           *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig           `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	Type                     *string                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Traffic matching based on source IP addresses.
+	SourceIpConfig *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	// The condition type of the forwarding rule.
+	//
+	// example:
+	//
+	// ForwardGroup
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRulesAttributeRequestRulesRuleConditions) String() string {
@@ -1080,6 +1278,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditions) Validate() error {
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig struct {
+	// The key-value pairs of cookies.
 	Values []*UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1114,7 +1313,17 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) Validate() 
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The cookie key.
+	//
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The cookie value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1149,7 +1358,13 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) Valid
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the header.
+	//
+	// example:
+	//
+	// Port
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the HTTP header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1184,6 +1399,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) Validate() 
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsHostConfig struct {
+	// The hostnames.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1209,6 +1425,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig) Validate() er
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig struct {
+	// The HTTP request methods.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1234,6 +1451,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig) Validate() 
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsPathConfig struct {
+	// The paths to which requests are forwarded.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1259,6 +1477,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig) Validate() er
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig struct {
+	// The key-value pairs of query strings.
 	Values []*UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1293,7 +1512,17 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) Valida
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the query string.
+	//
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the query string.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1328,7 +1557,13 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) 
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the response header.
+	//
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the response header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1363,6 +1598,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) Val
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig struct {
+	// The match conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1388,6 +1624,7 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig)
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig struct {
+	// You can add one or more IP addresses, including CIDR blocks.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

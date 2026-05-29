@@ -15,6 +15,8 @@ type iDeleteLoadBalancerRequest interface {
 	GetDryRun() *bool
 	SetLoadBalancerId(v string) *DeleteLoadBalancerRequest
 	GetLoadBalancerId() *string
+	SetRetainResourceType(v []*string) *DeleteLoadBalancerRequest
+	GetRetainResourceType() []*string
 }
 
 type DeleteLoadBalancerRequest struct {
@@ -43,7 +45,8 @@ type DeleteLoadBalancerRequest struct {
 	// example:
 	//
 	// lb-bp1b6c719dfa08ex****
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerId     *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RetainResourceType []*string `json:"RetainResourceType,omitempty" xml:"RetainResourceType,omitempty" type:"Repeated"`
 }
 
 func (s DeleteLoadBalancerRequest) String() string {
@@ -66,6 +69,10 @@ func (s *DeleteLoadBalancerRequest) GetLoadBalancerId() *string {
 	return s.LoadBalancerId
 }
 
+func (s *DeleteLoadBalancerRequest) GetRetainResourceType() []*string {
+	return s.RetainResourceType
+}
+
 func (s *DeleteLoadBalancerRequest) SetClientToken(v string) *DeleteLoadBalancerRequest {
 	s.ClientToken = &v
 	return s
@@ -78,6 +85,11 @@ func (s *DeleteLoadBalancerRequest) SetDryRun(v bool) *DeleteLoadBalancerRequest
 
 func (s *DeleteLoadBalancerRequest) SetLoadBalancerId(v string) *DeleteLoadBalancerRequest {
 	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DeleteLoadBalancerRequest) SetRetainResourceType(v []*string) *DeleteLoadBalancerRequest {
+	s.RetainResourceType = v
 	return s
 }
 
