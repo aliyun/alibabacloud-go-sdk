@@ -58,6 +58,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 增加实例白名单
+//
+// @param tmpReq - AddInstanceWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddInstanceWhiteListResponse
+func (client *Client) AddInstanceWhiteListWithOptions(tmpReq *AddInstanceWhiteListRequest, runtime *dara.RuntimeOptions) (_result *AddInstanceWhiteListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddInstanceWhiteListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WhiteListItem) {
+		request.WhiteListItemShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WhiteListItem, dara.String("WhiteListItem"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.WhiteListItemShrink) {
+		query["WhiteListItem"] = request.WhiteListItemShrink
+	}
+
+	if !dara.IsNil(request.WhiteListType) {
+		query["WhiteListType"] = request.WhiteListType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddInstanceWhiteList"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddInstanceWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 增加实例白名单
+//
+// @param request - AddInstanceWhiteListRequest
+//
+// @return AddInstanceWhiteListResponse
+func (client *Client) AddInstanceWhiteList(request *AddInstanceWhiteListRequest) (_result *AddInstanceWhiteListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddInstanceWhiteListResponse{}
+	_body, _err := client.AddInstanceWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
 //
 // @param request - CreateAccountRequest
@@ -1476,6 +1552,72 @@ func (client *Client) ListExchanges(request *ListExchangesRequest) (_result *Lis
 
 // Summary:
 //
+// 查询实例ip/vpc白名单
+//
+// @param request - ListInstanceWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceWhiteListResponse
+func (client *Client) ListInstanceWhiteListWithOptions(request *ListInstanceWhiteListRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceWhiteListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.WhiteListType) {
+		query["whiteListType"] = request.WhiteListType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceWhiteList"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例ip/vpc白名单
+//
+// @param request - ListInstanceWhiteListRequest
+//
+// @return ListInstanceWhiteListResponse
+func (client *Client) ListInstanceWhiteList(request *ListInstanceWhiteListRequest) (_result *ListInstanceWhiteListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListInstanceWhiteListResponse{}
+	_body, _err := client.ListInstanceWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
 //
 // @param request - ListInstancesRequest
@@ -1765,6 +1907,76 @@ func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListVirtualHostsResponse{}
 	_body, _err := client.ListVirtualHostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例ip/vpc白名单
+//
+// @param request - RemoveInstanceWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveInstanceWhiteListResponse
+func (client *Client) RemoveInstanceWhiteListWithOptions(request *RemoveInstanceWhiteListRequest, runtime *dara.RuntimeOptions) (_result *RemoveInstanceWhiteListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.WhiteListItemId) {
+		query["whiteListItemId"] = request.WhiteListItemId
+	}
+
+	if !dara.IsNil(request.WhiteListType) {
+		query["whiteListType"] = request.WhiteListType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveInstanceWhiteList"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveInstanceWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例ip/vpc白名单
+//
+// @param request - RemoveInstanceWhiteListRequest
+//
+// @return RemoveInstanceWhiteListResponse
+func (client *Client) RemoveInstanceWhiteList(request *RemoveInstanceWhiteListRequest) (_result *RemoveInstanceWhiteListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveInstanceWhiteListResponse{}
+	_body, _err := client.RemoveInstanceWhiteListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
