@@ -181,6 +181,7 @@ type CreateCloudResourceRequestListen struct {
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	// The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite*	- to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	Domain        *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **true**
@@ -206,8 +207,6 @@ type CreateCloudResourceRequestListen struct {
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The port of the cloud service.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 80
@@ -218,15 +217,11 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// 	- **https**
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The instance ID of the cloud service.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -283,6 +278,10 @@ func (s *CreateCloudResourceRequestListen) GetCustomCiphers() []*string {
 	return s.CustomCiphers
 }
 
+func (s *CreateCloudResourceRequestListen) GetDomain() *string {
+	return s.Domain
+}
+
 func (s *CreateCloudResourceRequestListen) GetEnableTLSv3() *bool {
 	return s.EnableTLSv3
 }
@@ -327,6 +326,11 @@ func (s *CreateCloudResourceRequestListen) SetCipherSuite(v int32) *CreateCloudR
 
 func (s *CreateCloudResourceRequestListen) SetCustomCiphers(v []*string) *CreateCloudResourceRequestListen {
 	s.CustomCiphers = v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetDomain(v string) *CreateCloudResourceRequestListen {
+	s.Domain = &v
 	return s
 }
 

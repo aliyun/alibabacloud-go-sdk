@@ -23,6 +23,8 @@ type iDescribeCloudResourceListRequest interface {
 	GetPort() *string
 	SetRegionId(v string) *DescribeCloudResourceListRequest
 	GetRegionId() *string
+	SetResourceDomain(v string) *DescribeCloudResourceListRequest
+	GetResourceDomain() *string
 	SetResourceInstanceId(v string) *DescribeCloudResourceListRequest
 	GetResourceInstanceId() *string
 	SetResourceManagerResourceGroupId(v string) *DescribeCloudResourceListRequest
@@ -61,7 +63,8 @@ type DescribeCloudResourceListRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
 	// example:
 	//
 	// i-8vbdlsd********81e22
@@ -112,6 +115,10 @@ func (s *DescribeCloudResourceListRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeCloudResourceListRequest) GetResourceDomain() *string {
+	return s.ResourceDomain
+}
+
 func (s *DescribeCloudResourceListRequest) GetResourceInstanceId() *string {
 	return s.ResourceInstanceId
 }
@@ -156,6 +163,11 @@ func (s *DescribeCloudResourceListRequest) SetPort(v string) *DescribeCloudResou
 
 func (s *DescribeCloudResourceListRequest) SetRegionId(v string) *DescribeCloudResourceListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceListRequest) SetResourceDomain(v string) *DescribeCloudResourceListRequest {
+	s.ResourceDomain = &v
 	return s
 }
 

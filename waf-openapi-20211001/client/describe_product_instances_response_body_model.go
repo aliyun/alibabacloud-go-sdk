@@ -92,6 +92,7 @@ type DescribeProductInstancesResponseBodyProductInstances struct {
 	//
 	// 1704********9107
 	OwnerUserId                  *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	ResourceDomain               *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
 	ResourceInstanceAccessStatus *string `json:"ResourceInstanceAccessStatus,omitempty" xml:"ResourceInstanceAccessStatus,omitempty"`
 	ResourceInstanceEdition      *string `json:"ResourceInstanceEdition,omitempty" xml:"ResourceInstanceEdition,omitempty"`
 	// The ID of the instance.
@@ -194,6 +195,10 @@ func (s *DescribeProductInstancesResponseBodyProductInstances) GetOwnerUserId() 
 	return s.OwnerUserId
 }
 
+func (s *DescribeProductInstancesResponseBodyProductInstances) GetResourceDomain() *string {
+	return s.ResourceDomain
+}
+
 func (s *DescribeProductInstancesResponseBodyProductInstances) GetResourceInstanceAccessStatus() *string {
 	return s.ResourceInstanceAccessStatus
 }
@@ -251,6 +256,11 @@ func (s *DescribeProductInstancesResponseBodyProductInstances) SetAccessPorts(v 
 
 func (s *DescribeProductInstancesResponseBodyProductInstances) SetOwnerUserId(v string) *DescribeProductInstancesResponseBodyProductInstances {
 	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceDomain(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceDomain = &v
 	return s
 }
 

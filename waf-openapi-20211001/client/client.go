@@ -6491,6 +6491,10 @@ func (client *Client) DescribeCloudResourceListWithOptions(request *DescribeClou
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceDomain) {
+		query["ResourceDomain"] = request.ResourceDomain
+	}
+
 	if !dara.IsNil(request.ResourceInstanceId) {
 		query["ResourceInstanceId"] = request.ResourceInstanceId
 	}
@@ -11753,6 +11757,10 @@ func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProdu
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceDomain) {
+		query["ResourceDomain"] = request.ResourceDomain
 	}
 
 	if !dara.IsNil(request.ResourceInstanceAccessStatus) {

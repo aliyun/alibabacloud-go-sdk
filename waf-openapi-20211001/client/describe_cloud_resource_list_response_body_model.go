@@ -119,7 +119,8 @@ type DescribeCloudResourceListResponseBodyCloudResourceList struct {
 	// example:
 	//
 	// http
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
 	// example:
 	//
 	// i-8vbdlsd********81e22
@@ -158,6 +159,10 @@ func (s *DescribeCloudResourceListResponseBodyCloudResourceList) GetProtocol() *
 	return s.Protocol
 }
 
+func (s *DescribeCloudResourceListResponseBodyCloudResourceList) GetResourceDomain() *string {
+	return s.ResourceDomain
+}
+
 func (s *DescribeCloudResourceListResponseBodyCloudResourceList) GetResourceInstanceId() *string {
 	return s.ResourceInstanceId
 }
@@ -186,6 +191,11 @@ func (s *DescribeCloudResourceListResponseBodyCloudResourceList) SetPort(v int32
 
 func (s *DescribeCloudResourceListResponseBodyCloudResourceList) SetProtocol(v string) *DescribeCloudResourceListResponseBodyCloudResourceList {
 	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeCloudResourceListResponseBodyCloudResourceList) SetResourceDomain(v string) *DescribeCloudResourceListResponseBodyCloudResourceList {
+	s.ResourceDomain = &v
 	return s
 }
 

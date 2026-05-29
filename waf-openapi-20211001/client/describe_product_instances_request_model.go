@@ -19,6 +19,8 @@ type iDescribeProductInstancesRequest interface {
 	GetPageSize() *int64
 	SetRegionId(v string) *DescribeProductInstancesRequest
 	GetRegionId() *string
+	SetResourceDomain(v string) *DescribeProductInstancesRequest
+	GetResourceDomain() *string
 	SetResourceInstanceAccessStatus(v string) *DescribeProductInstancesRequest
 	GetResourceInstanceAccessStatus() *string
 	SetResourceInstanceId(v string) *DescribeProductInstancesRequest
@@ -78,6 +80,7 @@ type DescribeProductInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDomain               *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
 	ResourceInstanceAccessStatus *string `json:"ResourceInstanceAccessStatus,omitempty" xml:"ResourceInstanceAccessStatus,omitempty"`
 	// The ID of the instance.
 	//
@@ -187,6 +190,10 @@ func (s *DescribeProductInstancesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeProductInstancesRequest) GetResourceDomain() *string {
+	return s.ResourceDomain
+}
+
 func (s *DescribeProductInstancesRequest) GetResourceInstanceAccessStatus() *string {
 	return s.ResourceInstanceAccessStatus
 }
@@ -245,6 +252,11 @@ func (s *DescribeProductInstancesRequest) SetPageSize(v int64) *DescribeProductI
 
 func (s *DescribeProductInstancesRequest) SetRegionId(v string) *DescribeProductInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceDomain(v string) *DescribeProductInstancesRequest {
+	s.ResourceDomain = &v
 	return s
 }
 

@@ -371,7 +371,8 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainListen) Validate() e
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
-	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	BackendPorts []*DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
+	Backends     []*string                                                                  `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
@@ -399,7 +400,8 @@ type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
 	// example:
 	//
 	// iphash
-	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	Loadbalance   *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	ProxyProtocol *bool   `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// example:
 	//
 	// 1
@@ -435,6 +437,10 @@ func (s DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GoString() 
 	return s.String()
 }
 
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetBackendPorts() []*DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts {
+	return s.BackendPorts
+}
+
 func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetBackends() []*string {
 	return s.Backends
 }
@@ -467,6 +473,10 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetLoadbal
 	return s.Loadbalance
 }
 
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetProxyProtocol() *bool {
+	return s.ProxyProtocol
+}
+
 func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetReadTimeout() *int64 {
 	return s.ReadTimeout
 }
@@ -493,6 +503,11 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetSniHost
 
 func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) GetWriteTimeout() *int64 {
 	return s.WriteTimeout
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) SetBackendPorts(v []*DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect {
+	s.BackendPorts = v
+	return s
 }
 
 func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) SetBackends(v []*string) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect {
@@ -535,6 +550,11 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) SetLoadbal
 	return s
 }
 
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) SetProxyProtocol(v bool) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect {
+	s.ProxyProtocol = &v
+	return s
+}
+
 func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) SetReadTimeout(v int64) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect {
 	s.ReadTimeout = &v
 	return s
@@ -571,6 +591,15 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) SetWriteTi
 }
 
 func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) Validate() error {
+	if s.BackendPorts != nil {
+		for _, item := range s.BackendPorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RequestHeaders != nil {
 		for _, item := range s.RequestHeaders {
 			if item != nil {
@@ -581,6 +610,51 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) Validate()
 		}
 	}
 	return nil
+}
+
+type DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts struct {
+	BackendPort *int32  `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
+	ListenPort  *int32  `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) GetBackendPort() *int32 {
+	return s.BackendPort
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) GetListenPort() *int32 {
+	return s.ListenPort
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) SetBackendPort(v int32) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts {
+	s.BackendPort = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) SetListenPort(v int32) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts {
+	s.ListenPort = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) SetProtocol(v string) *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders struct {

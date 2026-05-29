@@ -5080,6 +5080,10 @@ func (client *Client) DescribeCloudResourceListWithContext(ctx context.Context, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceDomain) {
+		query["ResourceDomain"] = request.ResourceDomain
+	}
+
 	if !dara.IsNil(request.ResourceInstanceId) {
 		query["ResourceInstanceId"] = request.ResourceInstanceId
 	}
@@ -9172,6 +9176,10 @@ func (client *Client) DescribeProductInstancesWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceDomain) {
+		query["ResourceDomain"] = request.ResourceDomain
 	}
 
 	if !dara.IsNil(request.ResourceInstanceAccessStatus) {
