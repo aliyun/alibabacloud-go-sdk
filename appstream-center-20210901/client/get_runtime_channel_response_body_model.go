@@ -78,7 +78,8 @@ func (s *GetRuntimeChannelResponseBody) Validate() error {
 }
 
 type GetRuntimeChannelResponseBodyData struct {
-	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	AvatarUrl   *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// example:
 	//
 	// dingtalk-connector
@@ -118,6 +119,10 @@ func (s *GetRuntimeChannelResponseBodyData) GetAvatarUrl() *string {
 	return s.AvatarUrl
 }
 
+func (s *GetRuntimeChannelResponseBodyData) GetChannelType() *string {
+	return s.ChannelType
+}
+
 func (s *GetRuntimeChannelResponseBodyData) GetCode() *string {
 	return s.Code
 }
@@ -148,6 +153,11 @@ func (s *GetRuntimeChannelResponseBodyData) GetStatus() *string {
 
 func (s *GetRuntimeChannelResponseBodyData) SetAvatarUrl(v string) *GetRuntimeChannelResponseBodyData {
 	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetRuntimeChannelResponseBodyData) SetChannelType(v string) *GetRuntimeChannelResponseBodyData {
+	s.ChannelType = &v
 	return s
 }
 

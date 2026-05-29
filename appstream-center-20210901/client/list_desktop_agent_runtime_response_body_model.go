@@ -136,13 +136,16 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// true
 	ModelConfigure        *bool     `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
+	ModelTemplateId       *string   `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	ModelTemplateName     *string   `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
 	OsType                *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	QrCodeConfiguringList []*string `json:"QrCodeConfiguringList,omitempty" xml:"QrCodeConfiguringList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroup *ListDesktopAgentRuntimeResponseBodyDataResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
+	RegionId       *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionLocation *string                                               `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
+	ResourceGroup  *ListDesktopAgentRuntimeResponseBodyDataResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 	// example:
 	//
 	// ecd-xxxx
@@ -198,6 +201,14 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) GetModelConfigure() *bool {
 	return s.ModelConfigure
 }
 
+func (s *ListDesktopAgentRuntimeResponseBodyData) GetModelTemplateId() *string {
+	return s.ModelTemplateId
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) GetModelTemplateName() *string {
+	return s.ModelTemplateName
+}
+
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetOsType() *string {
 	return s.OsType
 }
@@ -208,6 +219,10 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) GetQrCodeConfiguringList() []*
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) GetRegionLocation() *string {
+	return s.RegionLocation
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetResourceGroup() *ListDesktopAgentRuntimeResponseBodyDataResourceGroup {
@@ -272,6 +287,16 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) SetModelConfigure(v bool) *Lis
 	return s
 }
 
+func (s *ListDesktopAgentRuntimeResponseBodyData) SetModelTemplateId(v string) *ListDesktopAgentRuntimeResponseBodyData {
+	s.ModelTemplateId = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) SetModelTemplateName(v string) *ListDesktopAgentRuntimeResponseBodyData {
+	s.ModelTemplateName = &v
+	return s
+}
+
 func (s *ListDesktopAgentRuntimeResponseBodyData) SetOsType(v string) *ListDesktopAgentRuntimeResponseBodyData {
 	s.OsType = &v
 	return s
@@ -284,6 +309,11 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) SetQrCodeConfiguringList(v []*
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) SetRegionId(v string) *ListDesktopAgentRuntimeResponseBodyData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) SetRegionLocation(v string) *ListDesktopAgentRuntimeResponseBodyData {
+	s.RegionLocation = &v
 	return s
 }
 

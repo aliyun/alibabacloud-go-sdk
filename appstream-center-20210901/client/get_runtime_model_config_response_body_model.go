@@ -71,7 +71,9 @@ type GetRuntimeModelConfigResponseBodyData struct {
 	// example:
 	//
 	// model-template-001
-	ModelTemplateName *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
+	ModelTemplateName    *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
+	ModelTemplateRefType *string `json:"ModelTemplateRefType,omitempty" xml:"ModelTemplateRefType,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s GetRuntimeModelConfigResponseBodyData) String() string {
@@ -98,6 +100,14 @@ func (s *GetRuntimeModelConfigResponseBodyData) GetModelTemplateName() *string {
 	return s.ModelTemplateName
 }
 
+func (s *GetRuntimeModelConfigResponseBodyData) GetModelTemplateRefType() *string {
+	return s.ModelTemplateRefType
+}
+
+func (s *GetRuntimeModelConfigResponseBodyData) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *GetRuntimeModelConfigResponseBodyData) SetDefaultModel(v string) *GetRuntimeModelConfigResponseBodyData {
 	s.DefaultModel = &v
 	return s
@@ -115,6 +125,16 @@ func (s *GetRuntimeModelConfigResponseBodyData) SetModelTemplateId(v string) *Ge
 
 func (s *GetRuntimeModelConfigResponseBodyData) SetModelTemplateName(v string) *GetRuntimeModelConfigResponseBodyData {
 	s.ModelTemplateName = &v
+	return s
+}
+
+func (s *GetRuntimeModelConfigResponseBodyData) SetModelTemplateRefType(v string) *GetRuntimeModelConfigResponseBodyData {
+	s.ModelTemplateRefType = &v
+	return s
+}
+
+func (s *GetRuntimeModelConfigResponseBodyData) SetResourceGroupId(v string) *GetRuntimeModelConfigResponseBodyData {
+	s.ResourceGroupId = &v
 	return s
 }
 

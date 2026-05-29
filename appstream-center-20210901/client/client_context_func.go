@@ -2716,6 +2716,62 @@ func (client *Client) ListLlmTemplatesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
+// 查询模型提供商 Endpoint 列表
+//
+// @param request - ListModelProviderEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelProviderEndpointsResponse
+func (client *Client) ListModelProviderEndpointsWithContext(ctx context.Context, request *ListModelProviderEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListModelProviderEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ProviderName) {
+		query["ProviderName"] = request.ProviderName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelProviderEndpoints"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelProviderEndpointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询模型提供商模板列表
 //
 // @param tmpReq - ListModelProviderTemplatesRequest
