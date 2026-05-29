@@ -6250,6 +6250,10 @@ func (client *Client) ListAvailableTtsWithContext(ctx context.Context, request *
 		query["TtsVoiceCode"] = request.TtsVoiceCode
 	}
 
+	if !dara.IsNil(request.VoiceType) {
+		query["VoiceType"] = request.VoiceType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

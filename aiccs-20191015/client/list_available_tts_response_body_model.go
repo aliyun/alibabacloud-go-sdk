@@ -153,6 +153,10 @@ type ListAvailableTtsResponseBodyData struct {
 	//
 	// 示例值示例值
 	TtsVoiceName *string `json:"TtsVoiceName,omitempty" xml:"TtsVoiceName,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
 }
 
 func (s ListAvailableTtsResponseBodyData) String() string {
@@ -183,6 +187,10 @@ func (s *ListAvailableTtsResponseBodyData) GetTtsVoiceName() *string {
 	return s.TtsVoiceName
 }
 
+func (s *ListAvailableTtsResponseBodyData) GetVoiceType() *string {
+	return s.VoiceType
+}
+
 func (s *ListAvailableTtsResponseBodyData) SetTtsAuditionFileUrl(v string) *ListAvailableTtsResponseBodyData {
 	s.TtsAuditionFileUrl = &v
 	return s
@@ -205,6 +213,11 @@ func (s *ListAvailableTtsResponseBodyData) SetTtsVoiceCode(v string) *ListAvaila
 
 func (s *ListAvailableTtsResponseBodyData) SetTtsVoiceName(v string) *ListAvailableTtsResponseBodyData {
 	s.TtsVoiceName = &v
+	return s
+}
+
+func (s *ListAvailableTtsResponseBodyData) SetVoiceType(v string) *ListAvailableTtsResponseBodyData {
+	s.VoiceType = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iListAvailableTtsRequest interface {
 	GetResourceOwnerId() *int64
 	SetTtsVoiceCode(v string) *ListAvailableTtsRequest
 	GetTtsVoiceCode() *string
+	SetVoiceType(v string) *ListAvailableTtsRequest
+	GetVoiceType() *string
 }
 
 type ListAvailableTtsRequest struct {
@@ -29,6 +31,10 @@ type ListAvailableTtsRequest struct {
 	//
 	// V123456789
 	TtsVoiceCode *string `json:"TtsVoiceCode,omitempty" xml:"TtsVoiceCode,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
 }
 
 func (s ListAvailableTtsRequest) String() string {
@@ -55,6 +61,10 @@ func (s *ListAvailableTtsRequest) GetTtsVoiceCode() *string {
 	return s.TtsVoiceCode
 }
 
+func (s *ListAvailableTtsRequest) GetVoiceType() *string {
+	return s.VoiceType
+}
+
 func (s *ListAvailableTtsRequest) SetOwnerId(v int64) *ListAvailableTtsRequest {
 	s.OwnerId = &v
 	return s
@@ -72,6 +82,11 @@ func (s *ListAvailableTtsRequest) SetResourceOwnerId(v int64) *ListAvailableTtsR
 
 func (s *ListAvailableTtsRequest) SetTtsVoiceCode(v string) *ListAvailableTtsRequest {
 	s.TtsVoiceCode = &v
+	return s
+}
+
+func (s *ListAvailableTtsRequest) SetVoiceType(v string) *ListAvailableTtsRequest {
+	s.VoiceType = &v
 	return s
 }
 
