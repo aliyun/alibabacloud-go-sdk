@@ -15,6 +15,8 @@ type iListAgentlessAssetRequest interface {
 	GetDiskType() *string
 	SetInstanceId(v string) *ListAgentlessAssetRequest
 	GetInstanceId() *string
+	SetInstanceIds(v []*string) *ListAgentlessAssetRequest
+	GetInstanceIds() []*string
 	SetInstanceName(v string) *ListAgentlessAssetRequest
 	GetInstanceName() *string
 	SetPageSize(v int32) *ListAgentlessAssetRequest
@@ -49,7 +51,8 @@ type ListAgentlessAssetRequest struct {
 	// example:
 	//
 	// s-bp1g6wxdwps7s9dz****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The name of the asset instance.
 	//
 	// example:
@@ -106,6 +109,10 @@ func (s *ListAgentlessAssetRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListAgentlessAssetRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *ListAgentlessAssetRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -138,6 +145,11 @@ func (s *ListAgentlessAssetRequest) SetDiskType(v string) *ListAgentlessAssetReq
 
 func (s *ListAgentlessAssetRequest) SetInstanceId(v string) *ListAgentlessAssetRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAgentlessAssetRequest) SetInstanceIds(v []*string) *ListAgentlessAssetRequest {
+	s.InstanceIds = v
 	return s
 }
 

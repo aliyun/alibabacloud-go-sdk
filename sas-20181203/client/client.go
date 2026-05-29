@@ -46334,6 +46334,10 @@ func (client *Client) ListAgentlessAssetWithOptions(request *ListAgentlessAssetR
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}

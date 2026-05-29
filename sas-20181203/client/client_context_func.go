@@ -32646,6 +32646,10 @@ func (client *Client) ListAgentlessAssetWithContext(ctx context.Context, request
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
