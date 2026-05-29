@@ -116,6 +116,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 设置自动销账
+//
+// @param request - AutomaticWriteOffRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AutomaticWriteOffResponse
+func (client *Client) AutomaticWriteOffWithOptions(request *AutomaticWriteOffRequest, runtime *dara.RuntimeOptions) (_result *AutomaticWriteOffResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutomaticWriteOffAmount) {
+		query["AutomaticWriteOffAmount"] = request.AutomaticWriteOffAmount
+	}
+
+	if !dara.IsNil(request.AutomaticWriteOffEnabled) {
+		query["AutomaticWriteOffEnabled"] = request.AutomaticWriteOffEnabled
+	}
+
+	if !dara.IsNil(request.CustomerUid) {
+		query["CustomerUid"] = request.CustomerUid
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AutomaticWriteOff"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AutomaticWriteOffResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置自动销账
+//
+// @param request - AutomaticWriteOffRequest
+//
+// @return AutomaticWriteOffResponse
+func (client *Client) AutomaticWriteOff(request *AutomaticWriteOffRequest) (_result *AutomaticWriteOffResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AutomaticWriteOffResponse{}
+	_body, _err := client.AutomaticWriteOffWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 作废优惠券
 //
 // @param request - CancelCouponRequest
@@ -2582,6 +2656,88 @@ func (client *Client) ProcessApproval(request *ProcessApprovalRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ProcessApprovalResponse{}
 	_body, _err := client.ProcessApprovalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自动销账变更记录
+//
+// @param request - QueryAutomaticWriteOffChangeRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAutomaticWriteOffChangeRecordsResponse
+func (client *Client) QueryAutomaticWriteOffChangeRecordsWithOptions(request *QueryAutomaticWriteOffChangeRecordsRequest, runtime *dara.RuntimeOptions) (_result *QueryAutomaticWriteOffChangeRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomerUid) {
+		query["CustomerUid"] = request.CustomerUid
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAutomaticWriteOffChangeRecords"),
+		Version:     dara.String("2022-12-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAutomaticWriteOffChangeRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自动销账变更记录
+//
+// @param request - QueryAutomaticWriteOffChangeRecordsRequest
+//
+// @return QueryAutomaticWriteOffChangeRecordsResponse
+func (client *Client) QueryAutomaticWriteOffChangeRecords(request *QueryAutomaticWriteOffChangeRecordsRequest) (_result *QueryAutomaticWriteOffChangeRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryAutomaticWriteOffChangeRecordsResponse{}
+	_body, _err := client.QueryAutomaticWriteOffChangeRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
