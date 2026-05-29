@@ -1379,6 +1379,8 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig struct {
 	//
 	// true
 	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
+	WantAssertionsSigned *bool `json:"WantAssertionsSigned,omitempty" xml:"WantAssertionsSigned,omitempty"`
+	WantResponseSigned   *bool `json:"WantResponseSigned,omitempty" xml:"WantResponseSigned,omitempty"`
 }
 
 func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) String() string {
@@ -1413,6 +1415,14 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetReq
 	return s.RequireRequestSigned
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetWantAssertionsSigned() *bool {
+	return s.WantAssertionsSigned
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetWantResponseSigned() *bool {
+	return s.WantResponseSigned
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetBindingMethod(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
 	s.BindingMethod = &v
 	return s
@@ -1440,6 +1450,16 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetMax
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetRequireRequestSigned(v bool) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
 	s.RequireRequestSigned = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetWantAssertionsSigned(v bool) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.WantAssertionsSigned = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetWantResponseSigned(v bool) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.WantResponseSigned = &v
 	return s
 }
 

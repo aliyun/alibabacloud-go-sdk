@@ -1418,6 +1418,8 @@ type CreateIdentityProviderRequestSamlConfig struct {
 	//
 	// true
 	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
+	WantAssertionsSigned *bool `json:"WantAssertionsSigned,omitempty" xml:"WantAssertionsSigned,omitempty"`
+	WantResponseSigned   *bool `json:"WantResponseSigned,omitempty" xml:"WantResponseSigned,omitempty"`
 }
 
 func (s CreateIdentityProviderRequestSamlConfig) String() string {
@@ -1452,6 +1454,14 @@ func (s *CreateIdentityProviderRequestSamlConfig) GetRequireRequestSigned() *boo
 	return s.RequireRequestSigned
 }
 
+func (s *CreateIdentityProviderRequestSamlConfig) GetWantAssertionsSigned() *bool {
+	return s.WantAssertionsSigned
+}
+
+func (s *CreateIdentityProviderRequestSamlConfig) GetWantResponseSigned() *bool {
+	return s.WantResponseSigned
+}
+
 func (s *CreateIdentityProviderRequestSamlConfig) SetBindingMethod(v string) *CreateIdentityProviderRequestSamlConfig {
 	s.BindingMethod = &v
 	return s
@@ -1479,6 +1489,16 @@ func (s *CreateIdentityProviderRequestSamlConfig) SetMaxClockSkew(v int64) *Crea
 
 func (s *CreateIdentityProviderRequestSamlConfig) SetRequireRequestSigned(v bool) *CreateIdentityProviderRequestSamlConfig {
 	s.RequireRequestSigned = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestSamlConfig) SetWantAssertionsSigned(v bool) *CreateIdentityProviderRequestSamlConfig {
+	s.WantAssertionsSigned = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestSamlConfig) SetWantResponseSigned(v bool) *CreateIdentityProviderRequestSamlConfig {
+	s.WantResponseSigned = &v
 	return s
 }
 
