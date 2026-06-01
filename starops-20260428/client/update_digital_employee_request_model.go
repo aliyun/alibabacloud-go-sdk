@@ -21,6 +21,8 @@ type iUpdateDigitalEmployeeRequest interface {
 	GetKnowledges() *UpdateDigitalEmployeeRequestKnowledges
 	SetRoleArn(v string) *UpdateDigitalEmployeeRequest
 	GetRoleArn() *string
+	SetToolPolicy(v *UpdateDigitalEmployeeRequestToolPolicy) *UpdateDigitalEmployeeRequest
+	GetToolPolicy() *UpdateDigitalEmployeeRequestToolPolicy
 }
 
 type UpdateDigitalEmployeeRequest struct {
@@ -42,6 +44,12 @@ type UpdateDigitalEmployeeRequest struct {
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// 数字员工工具调用安全策略配置。
+	//
+	// example:
+	//
+	// {"aliyun":{"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
+	ToolPolicy *UpdateDigitalEmployeeRequestToolPolicy `json:"toolPolicy,omitempty" xml:"toolPolicy,omitempty" type:"Struct"`
 }
 
 func (s UpdateDigitalEmployeeRequest) String() string {
@@ -76,6 +84,10 @@ func (s *UpdateDigitalEmployeeRequest) GetRoleArn() *string {
 	return s.RoleArn
 }
 
+func (s *UpdateDigitalEmployeeRequest) GetToolPolicy() *UpdateDigitalEmployeeRequestToolPolicy {
+	return s.ToolPolicy
+}
+
 func (s *UpdateDigitalEmployeeRequest) SetAttributes(v map[string]*string) *UpdateDigitalEmployeeRequest {
 	s.Attributes = v
 	return s
@@ -106,9 +118,19 @@ func (s *UpdateDigitalEmployeeRequest) SetRoleArn(v string) *UpdateDigitalEmploy
 	return s
 }
 
+func (s *UpdateDigitalEmployeeRequest) SetToolPolicy(v *UpdateDigitalEmployeeRequestToolPolicy) *UpdateDigitalEmployeeRequest {
+	s.ToolPolicy = v
+	return s
+}
+
 func (s *UpdateDigitalEmployeeRequest) Validate() error {
 	if s.Knowledges != nil {
 		if err := s.Knowledges.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ToolPolicy != nil {
+		if err := s.ToolPolicy.Validate(); err != nil {
 			return err
 		}
 	}
@@ -223,5 +245,169 @@ func (s *UpdateDigitalEmployeeRequestKnowledgesBailian) SetWorkspaceId(v string)
 }
 
 func (s *UpdateDigitalEmployeeRequestKnowledgesBailian) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateDigitalEmployeeRequestToolPolicy struct {
+	// Aliyun MCP 工具调用安全策略配置。
+	//
+	// example:
+	//
+	// {"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}
+	Aliyun *UpdateDigitalEmployeeRequestToolPolicyAliyun `json:"aliyun,omitempty" xml:"aliyun,omitempty" type:"Struct"`
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicy) GetAliyun() *UpdateDigitalEmployeeRequestToolPolicyAliyun {
+	return s.Aliyun
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicy) SetAliyun(v *UpdateDigitalEmployeeRequestToolPolicyAliyun) *UpdateDigitalEmployeeRequestToolPolicy {
+	s.Aliyun = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicy) Validate() error {
+	if s.Aliyun != nil {
+		if err := s.Aliyun.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateDigitalEmployeeRequestToolPolicyAliyun struct {
+	// 是否启用 Aliyun MCP 工具策略。
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Aliyun OpenAPI 工具策略语句列表。
+	//
+	// example:
+	//
+	// [{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]
+	Statements []*UpdateDigitalEmployeeRequestToolPolicyAliyunStatements `json:"statements,omitempty" xml:"statements,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicyAliyun) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicyAliyun) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) GetStatements() []*UpdateDigitalEmployeeRequestToolPolicyAliyunStatements {
+	return s.Statements
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) SetEnable(v bool) *UpdateDigitalEmployeeRequestToolPolicyAliyun {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) SetStatements(v []*UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) *UpdateDigitalEmployeeRequestToolPolicyAliyun {
+	s.Statements = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) Validate() error {
+	if s.Statements != nil {
+		for _, item := range s.Statements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
+	// Aliyun OpenAPI Action 列表，格式为 product:ApiName、product:Prefix	- 或 product:*。
+	//
+	// example:
+	//
+	// ["log:GetProject","log:CreateDashboard"]
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// 本条语句对应的 Aliyun OpenAPI API 版本。
+	//
+	// example:
+	//
+	// 2020-12-30
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	// 命中该 API 后的执行策略。
+	//
+	// example:
+	//
+	// user_ack
+	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
+	// 本条语句对应的 Aliyun OpenAPI 产品名。
+	//
+	// example:
+	//
+	// Sls
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) GetActions() []*string {
+	return s.Actions
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) GetApiVersion() *string {
+	return s.ApiVersion
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) GetDecision() *string {
+	return s.Decision
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) GetProduct() *string {
+	return s.Product
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) SetActions(v []*string) *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements {
+	s.Actions = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) SetApiVersion(v string) *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements {
+	s.ApiVersion = &v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) SetDecision(v string) *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements {
+	s.Decision = &v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) SetProduct(v string) *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements {
+	s.Product = &v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) Validate() error {
 	return dara.Validate(s)
 }

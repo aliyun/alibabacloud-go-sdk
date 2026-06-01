@@ -143,6 +143,10 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 		body["tags"] = request.Tags
 	}
 
+	if !dara.IsNil(request.ToolPolicy) {
+		body["toolPolicy"] = request.ToolPolicy
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -1304,6 +1308,10 @@ func (client *Client) UpdateDigitalEmployeeWithContext(ctx context.Context, name
 
 	if !dara.IsNil(request.RoleArn) {
 		body["roleArn"] = request.RoleArn
+	}
+
+	if !dara.IsNil(request.ToolPolicy) {
+		body["toolPolicy"] = request.ToolPolicy
 	}
 
 	req := &openapiutil.OpenApiRequest{
