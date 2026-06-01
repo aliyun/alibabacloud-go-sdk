@@ -9,6 +9,8 @@ type iModifyDeploymentSetAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAffinity(v int64) *ModifyDeploymentSetAttributeRequest
+	GetAffinity() *int64
 	SetDeploymentSetId(v string) *ModifyDeploymentSetAttributeRequest
 	GetDeploymentSetId() *string
 	SetDeploymentSetName(v string) *ModifyDeploymentSetAttributeRequest
@@ -28,6 +30,7 @@ type iModifyDeploymentSetAttributeRequest interface {
 }
 
 type ModifyDeploymentSetAttributeRequest struct {
+	Affinity *int64 `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
 	// The ID of the deployment set.
 	//
 	// This parameter is required.
@@ -70,6 +73,10 @@ func (s ModifyDeploymentSetAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDeploymentSetAttributeRequest) GetAffinity() *int64 {
+	return s.Affinity
+}
+
 func (s *ModifyDeploymentSetAttributeRequest) GetDeploymentSetId() *string {
 	return s.DeploymentSetId
 }
@@ -100,6 +107,11 @@ func (s *ModifyDeploymentSetAttributeRequest) GetResourceOwnerAccount() *string 
 
 func (s *ModifyDeploymentSetAttributeRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyDeploymentSetAttributeRequest) SetAffinity(v int64) *ModifyDeploymentSetAttributeRequest {
+	s.Affinity = &v
+	return s
 }
 
 func (s *ModifyDeploymentSetAttributeRequest) SetDeploymentSetId(v string) *ModifyDeploymentSetAttributeRequest {

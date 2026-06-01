@@ -3698,6 +3698,10 @@ func (client *Client) CreateDeploymentSetWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Affinity) {
+		query["Affinity"] = request.Affinity
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -25628,6 +25632,10 @@ func (client *Client) ModifyDeploymentSetAttributeWithContext(ctx context.Contex
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Affinity) {
+		query["Affinity"] = request.Affinity
+	}
+
 	if !dara.IsNil(request.DeploymentSetId) {
 		query["DeploymentSetId"] = request.DeploymentSetId
 	}

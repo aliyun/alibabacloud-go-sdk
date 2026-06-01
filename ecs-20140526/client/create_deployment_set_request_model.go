@@ -9,6 +9,8 @@ type iCreateDeploymentSetRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAffinity(v int64) *CreateDeploymentSetRequest
+	GetAffinity() *int64
 	SetClientToken(v string) *CreateDeploymentSetRequest
 	GetClientToken() *string
 	SetDeploymentSetName(v string) *CreateDeploymentSetRequest
@@ -40,6 +42,7 @@ type iCreateDeploymentSetRequest interface {
 }
 
 type CreateDeploymentSetRequest struct {
+	Affinity *int64 `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
 	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
@@ -131,6 +134,10 @@ func (s CreateDeploymentSetRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDeploymentSetRequest) GetAffinity() *int64 {
+	return s.Affinity
+}
+
 func (s *CreateDeploymentSetRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -185,6 +192,11 @@ func (s *CreateDeploymentSetRequest) GetStrategy() *string {
 
 func (s *CreateDeploymentSetRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateDeploymentSetRequest) SetAffinity(v int64) *CreateDeploymentSetRequest {
+	s.Affinity = &v
+	return s
 }
 
 func (s *CreateDeploymentSetRequest) SetClientToken(v string) *CreateDeploymentSetRequest {

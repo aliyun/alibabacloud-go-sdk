@@ -164,6 +164,7 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSets) Validate() error {
 
 type DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
 	AccountId                *int64                                                                    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Affinity                 *int64                                                                    `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
 	Capacities               *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities  `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
 	CreationTime             *string                                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DeploymentSetDescription *string                                                                   `json:"DeploymentSetDescription,omitempty" xml:"DeploymentSetDescription,omitempty"`
@@ -189,6 +190,10 @@ func (s DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GoString(
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetAccountId() *int64 {
 	return s.AccountId
+}
+
+func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetAffinity() *int64 {
+	return s.Affinity
 }
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetCapacities() *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities {
@@ -245,6 +250,11 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetType(
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetAccountId(v int64) *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
 	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetAffinity(v int64) *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.Affinity = &v
 	return s
 }
 
