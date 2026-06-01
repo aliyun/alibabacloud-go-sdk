@@ -23,6 +23,8 @@ type iUpdateTemplateInput interface {
 	GetDescription() *string
 	SetEnableAgent(v bool) *UpdateTemplateInput
 	GetEnableAgent() *bool
+	SetEnablePreStop(v bool) *UpdateTemplateInput
+	GetEnablePreStop() *bool
 	SetEnvironmentVariables(v map[string]*string) *UpdateTemplateInput
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *UpdateTemplateInput
@@ -37,6 +39,8 @@ type iUpdateTemplateInput interface {
 	GetNetworkConfiguration() *NetworkConfiguration
 	SetOssConfiguration(v []*OssConfiguration) *UpdateTemplateInput
 	GetOssConfiguration() []*OssConfiguration
+	SetPreStopTimeoutInSeconds(v int32) *UpdateTemplateInput
+	GetPreStopTimeoutInSeconds() *int32
 	SetSandboxIdleTimeoutInSeconds(v int32) *UpdateTemplateInput
 	GetSandboxIdleTimeoutInSeconds() *int32
 	SetSandboxTTLInSeconds(v int32) *UpdateTemplateInput
@@ -75,6 +79,7 @@ type UpdateTemplateInput struct {
 	//
 	// true
 	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
+	EnablePreStop        *bool              `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	// example:
 	//
@@ -86,10 +91,11 @@ type UpdateTemplateInput struct {
 	// example:
 	//
 	// 4
-	Memory               *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
-	NasConfig            *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	Memory                  *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
+	NasConfig               *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	NetworkConfiguration    *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
+	OssConfiguration        []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	PreStopTimeoutInSeconds *int32                `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
 	// 沙箱空闲超时时间（秒）
 	//
 	// example:
@@ -147,6 +153,10 @@ func (s *UpdateTemplateInput) GetEnableAgent() *bool {
 	return s.EnableAgent
 }
 
+func (s *UpdateTemplateInput) GetEnablePreStop() *bool {
+	return s.EnablePreStop
+}
+
 func (s *UpdateTemplateInput) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -173,6 +183,10 @@ func (s *UpdateTemplateInput) GetNetworkConfiguration() *NetworkConfiguration {
 
 func (s *UpdateTemplateInput) GetOssConfiguration() []*OssConfiguration {
 	return s.OssConfiguration
+}
+
+func (s *UpdateTemplateInput) GetPreStopTimeoutInSeconds() *int32 {
+	return s.PreStopTimeoutInSeconds
 }
 
 func (s *UpdateTemplateInput) GetSandboxIdleTimeoutInSeconds() *int32 {
@@ -230,6 +244,11 @@ func (s *UpdateTemplateInput) SetEnableAgent(v bool) *UpdateTemplateInput {
 	return s
 }
 
+func (s *UpdateTemplateInput) SetEnablePreStop(v bool) *UpdateTemplateInput {
+	s.EnablePreStop = &v
+	return s
+}
+
 func (s *UpdateTemplateInput) SetEnvironmentVariables(v map[string]*string) *UpdateTemplateInput {
 	s.EnvironmentVariables = v
 	return s
@@ -262,6 +281,11 @@ func (s *UpdateTemplateInput) SetNetworkConfiguration(v *NetworkConfiguration) *
 
 func (s *UpdateTemplateInput) SetOssConfiguration(v []*OssConfiguration) *UpdateTemplateInput {
 	s.OssConfiguration = v
+	return s
+}
+
+func (s *UpdateTemplateInput) SetPreStopTimeoutInSeconds(v int32) *UpdateTemplateInput {
+	s.PreStopTimeoutInSeconds = &v
 	return s
 }
 
