@@ -1147,6 +1147,94 @@ func (client *Client) CreateKeyPairWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
+// 创建套餐包
+//
+// @param request - CreateMobileAgentPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMobileAgentPackageResponse
+func (client *Client) CreateMobileAgentPackageWithContext(ctx context.Context, request *CreateMobileAgentPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateMobileAgentPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		query["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.CreditAmount) {
+		query["CreditAmount"] = request.CreditAmount
+	}
+
+	if !dara.IsNil(request.CreditConfig) {
+		query["CreditConfig"] = request.CreditConfig
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.MobileAgentPackageSpec) {
+		query["MobileAgentPackageSpec"] = request.MobileAgentPackageSpec
+	}
+
+	if !dara.IsNil(request.PaidCallbackUrl) {
+		query["PaidCallbackUrl"] = request.PaidCallbackUrl
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMobileAgentPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMobileAgentPackageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a policy.
 //
 // @param tmpReq - CreatePolicyGroupRequest
@@ -2803,6 +2891,70 @@ func (client *Client) DescribeMetricTopWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMetricTopResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点套餐详细信息
+//
+// @param request - DescribeMobileAgentPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMobileAgentPackageResponse
+func (client *Client) DescribeMobileAgentPackageWithContext(ctx context.Context, request *DescribeMobileAgentPackageRequest, runtime *dara.RuntimeOptions) (_result *DescribeMobileAgentPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.PackageIds) {
+		query["PackageIds"] = request.PackageIds
+	}
+
+	if !dara.IsNil(request.PackageSpec) {
+		query["PackageSpec"] = request.PackageSpec
+	}
+
+	if !dara.IsNil(request.PackageStatus) {
+		query["PackageStatus"] = request.PackageStatus
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMobileAgentPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMobileAgentPackageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5235,6 +5387,74 @@ func (client *Client) RenewCloudPhoneNodesWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewCloudPhoneNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 续费MobileAgent套餐包
+//
+// @param request - RenewMobileAgentPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewMobileAgentPackageResponse
+func (client *Client) RenewMobileAgentPackageWithContext(ctx context.Context, request *RenewMobileAgentPackageRequest, runtime *dara.RuntimeOptions) (_result *RenewMobileAgentPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.MobileAgentPackageIds) {
+		query["MobileAgentPackageIds"] = request.MobileAgentPackageIds
+	}
+
+	if !dara.IsNil(request.PaidCallbackUrl) {
+		query["PaidCallbackUrl"] = request.PaidCallbackUrl
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewMobileAgentPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewMobileAgentPackageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
