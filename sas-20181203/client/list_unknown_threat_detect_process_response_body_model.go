@@ -86,6 +86,8 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
+	ExplanationEn *string `json:"ExplanationEn,omitempty" xml:"ExplanationEn,omitempty"`
+	ExplanationZh *string `json:"ExplanationZh,omitempty" xml:"ExplanationZh,omitempty"`
 	// example:
 	//
 	// 1694576692000
@@ -124,6 +126,14 @@ func (s *ListUnknownThreatDetectProcessResponseBodyData) GetAnalyzeResult() *str
 	return s.AnalyzeResult
 }
 
+func (s *ListUnknownThreatDetectProcessResponseBodyData) GetExplanationEn() *string {
+	return s.ExplanationEn
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyData) GetExplanationZh() *string {
+	return s.ExplanationZh
+}
+
 func (s *ListUnknownThreatDetectProcessResponseBodyData) GetFirstTime() *int64 {
 	return s.FirstTime
 }
@@ -150,6 +160,16 @@ func (s *ListUnknownThreatDetectProcessResponseBodyData) GetSha256() *string {
 
 func (s *ListUnknownThreatDetectProcessResponseBodyData) SetAnalyzeResult(v string) *ListUnknownThreatDetectProcessResponseBodyData {
 	s.AnalyzeResult = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyData) SetExplanationEn(v string) *ListUnknownThreatDetectProcessResponseBodyData {
+	s.ExplanationEn = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyData) SetExplanationZh(v string) *ListUnknownThreatDetectProcessResponseBodyData {
+	s.ExplanationZh = &v
 	return s
 }
 

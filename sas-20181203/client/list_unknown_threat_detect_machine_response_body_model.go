@@ -82,6 +82,7 @@ func (s *ListUnknownThreatDetectMachineResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyData struct {
+	EffectDays *int64 `json:"EffectDays,omitempty" xml:"EffectDays,omitempty"`
 	// example:
 	//
 	// 12
@@ -93,7 +94,8 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// example:
 	//
 	// 10.42.XX.XX
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	PluginStatus *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
 	// example:
 	//
 	// 1
@@ -105,7 +107,8 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// example:
 	//
 	// hash
-	StudyMode *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
+	StudyMode       *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
+	StudyRemainDays *int64  `json:"StudyRemainDays,omitempty" xml:"StudyRemainDays,omitempty"`
 	// example:
 	//
 	// 1766988192
@@ -124,6 +127,10 @@ func (s ListUnknownThreatDetectMachineResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListUnknownThreatDetectMachineResponseBodyData) GetEffectDays() *int64 {
+	return s.EffectDays
+}
+
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -134,6 +141,10 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) GetInternetIp() *string
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetIntranetIp() *string {
 	return s.IntranetIp
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) GetPluginStatus() *string {
+	return s.PluginStatus
 }
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetProcessCount() *int32 {
@@ -148,12 +159,21 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) GetStudyMode() *string 
 	return s.StudyMode
 }
 
+func (s *ListUnknownThreatDetectMachineResponseBodyData) GetStudyRemainDays() *int64 {
+	return s.StudyRemainDays
+}
+
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetStudyStartTime() *int64 {
 	return s.StudyStartTime
 }
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) SetEffectDays(v int64) *ListUnknownThreatDetectMachineResponseBodyData {
+	s.EffectDays = &v
+	return s
 }
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) SetInstanceName(v string) *ListUnknownThreatDetectMachineResponseBodyData {
@@ -171,6 +191,11 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) SetIntranetIp(v string)
 	return s
 }
 
+func (s *ListUnknownThreatDetectMachineResponseBodyData) SetPluginStatus(v string) *ListUnknownThreatDetectMachineResponseBodyData {
+	s.PluginStatus = &v
+	return s
+}
+
 func (s *ListUnknownThreatDetectMachineResponseBodyData) SetProcessCount(v int32) *ListUnknownThreatDetectMachineResponseBodyData {
 	s.ProcessCount = &v
 	return s
@@ -183,6 +208,11 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) SetStatus(v string) *Li
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) SetStudyMode(v string) *ListUnknownThreatDetectMachineResponseBodyData {
 	s.StudyMode = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) SetStudyRemainDays(v int64) *ListUnknownThreatDetectMachineResponseBodyData {
+	s.StudyRemainDays = &v
 	return s
 }
 

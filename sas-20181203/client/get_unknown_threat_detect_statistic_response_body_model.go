@@ -61,6 +61,7 @@ func (s *GetUnknownThreatDetectStatisticResponseBody) Validate() error {
 }
 
 type GetUnknownThreatDetectStatisticResponseBodyData struct {
+	BlockEventMachineCount *int32 `json:"BlockEventMachineCount,omitempty" xml:"BlockEventMachineCount,omitempty"`
 	// example:
 	//
 	// 1
@@ -91,6 +92,10 @@ func (s GetUnknownThreatDetectStatisticResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetUnknownThreatDetectStatisticResponseBodyData) GetBlockEventMachineCount() *int32 {
+	return s.BlockEventMachineCount
+}
+
 func (s *GetUnknownThreatDetectStatisticResponseBodyData) GetBlockMachineCount() *int32 {
 	return s.BlockMachineCount
 }
@@ -109,6 +114,11 @@ func (s *GetUnknownThreatDetectStatisticResponseBodyData) GetOpenMachineCount() 
 
 func (s *GetUnknownThreatDetectStatisticResponseBodyData) GetStudyingMachineCount() *int32 {
 	return s.StudyingMachineCount
+}
+
+func (s *GetUnknownThreatDetectStatisticResponseBodyData) SetBlockEventMachineCount(v int32) *GetUnknownThreatDetectStatisticResponseBodyData {
+	s.BlockEventMachineCount = &v
+	return s
 }
 
 func (s *GetUnknownThreatDetectStatisticResponseBodyData) SetBlockMachineCount(v int32) *GetUnknownThreatDetectStatisticResponseBodyData {

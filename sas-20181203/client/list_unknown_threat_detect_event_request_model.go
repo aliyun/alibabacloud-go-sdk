@@ -9,10 +9,14 @@ type iListUnknownThreatDetectEventRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAnalyzeResult(v string) *ListUnknownThreatDetectEventRequest
+	GetAnalyzeResult() *string
 	SetCurrentPage(v int32) *ListUnknownThreatDetectEventRequest
 	GetCurrentPage() *int32
 	SetHashKey(v string) *ListUnknownThreatDetectEventRequest
 	GetHashKey() *string
+	SetLang(v string) *ListUnknownThreatDetectEventRequest
+	GetLang() *string
 	SetPageSize(v int32) *ListUnknownThreatDetectEventRequest
 	GetPageSize() *int32
 	SetParentProcessPath(v string) *ListUnknownThreatDetectEventRequest
@@ -28,6 +32,7 @@ type iListUnknownThreatDetectEventRequest interface {
 }
 
 type ListUnknownThreatDetectEventRequest struct {
+	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
 	// example:
 	//
 	// 1
@@ -36,6 +41,7 @@ type ListUnknownThreatDetectEventRequest struct {
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// example:
 	//
 	// 10
@@ -70,12 +76,20 @@ func (s ListUnknownThreatDetectEventRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListUnknownThreatDetectEventRequest) GetAnalyzeResult() *string {
+	return s.AnalyzeResult
+}
+
 func (s *ListUnknownThreatDetectEventRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
 func (s *ListUnknownThreatDetectEventRequest) GetHashKey() *string {
 	return s.HashKey
+}
+
+func (s *ListUnknownThreatDetectEventRequest) GetLang() *string {
+	return s.Lang
 }
 
 func (s *ListUnknownThreatDetectEventRequest) GetPageSize() *int32 {
@@ -102,6 +116,11 @@ func (s *ListUnknownThreatDetectEventRequest) GetUuid() *string {
 	return s.Uuid
 }
 
+func (s *ListUnknownThreatDetectEventRequest) SetAnalyzeResult(v string) *ListUnknownThreatDetectEventRequest {
+	s.AnalyzeResult = &v
+	return s
+}
+
 func (s *ListUnknownThreatDetectEventRequest) SetCurrentPage(v int32) *ListUnknownThreatDetectEventRequest {
 	s.CurrentPage = &v
 	return s
@@ -109,6 +128,11 @@ func (s *ListUnknownThreatDetectEventRequest) SetCurrentPage(v int32) *ListUnkno
 
 func (s *ListUnknownThreatDetectEventRequest) SetHashKey(v string) *ListUnknownThreatDetectEventRequest {
 	s.HashKey = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectEventRequest) SetLang(v string) *ListUnknownThreatDetectEventRequest {
+	s.Lang = &v
 	return s
 }
 

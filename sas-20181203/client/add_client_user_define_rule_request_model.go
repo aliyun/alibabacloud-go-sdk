@@ -41,6 +41,8 @@ type iAddClientUserDefineRuleRequest interface {
 	GetRegistryContent() *string
 	SetRegistryKey(v string) *AddClientUserDefineRuleRequest
 	GetRegistryKey() *string
+	SetTargetDefault(v string) *AddClientUserDefineRuleRequest
+	GetTargetDefault() *string
 	SetType(v int32) *AddClientUserDefineRuleRequest
 	GetType() *int32
 }
@@ -155,7 +157,8 @@ type AddClientUserDefineRuleRequest struct {
 	// example:
 	//
 	// HKEY_DYN_****
-	RegistryKey *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
+	RegistryKey   *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
+	TargetDefault *string `json:"TargetDefault,omitempty" xml:"TargetDefault,omitempty"`
 	// The type of the custom defense rule. Valid values:
 	//
 	// 	- **1**: Process hash
@@ -258,6 +261,10 @@ func (s *AddClientUserDefineRuleRequest) GetRegistryKey() *string {
 	return s.RegistryKey
 }
 
+func (s *AddClientUserDefineRuleRequest) GetTargetDefault() *string {
+	return s.TargetDefault
+}
+
 func (s *AddClientUserDefineRuleRequest) GetType() *int32 {
 	return s.Type
 }
@@ -339,6 +346,11 @@ func (s *AddClientUserDefineRuleRequest) SetRegistryContent(v string) *AddClient
 
 func (s *AddClientUserDefineRuleRequest) SetRegistryKey(v string) *AddClientUserDefineRuleRequest {
 	s.RegistryKey = &v
+	return s
+}
+
+func (s *AddClientUserDefineRuleRequest) SetTargetDefault(v string) *AddClientUserDefineRuleRequest {
+	s.TargetDefault = &v
 	return s
 }
 

@@ -82,6 +82,8 @@ func (s *ListUnknownThreatDetectEventResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectEventResponseBodyData struct {
+	AnalyzeDesc   *string `json:"AnalyzeDesc,omitempty" xml:"AnalyzeDesc,omitempty"`
+	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
 	// example:
 	//
 	// [{"5133":"pickup -l -t unix -u"},{"1077":"/usr/libexec/postfix/master -w"},{"1":"/usr/lib/systemd/systemd --switched-root --system --deserialize 22"}]
@@ -168,6 +170,14 @@ func (s ListUnknownThreatDetectEventResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListUnknownThreatDetectEventResponseBodyData) GetAnalyzeDesc() *string {
+	return s.AnalyzeDesc
+}
+
+func (s *ListUnknownThreatDetectEventResponseBodyData) GetAnalyzeResult() *string {
+	return s.AnalyzeResult
+}
+
 func (s *ListUnknownThreatDetectEventResponseBodyData) GetCmdChain() *string {
 	return s.CmdChain
 }
@@ -242,6 +252,16 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) GetStatus() *int32 {
 
 func (s *ListUnknownThreatDetectEventResponseBodyData) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *ListUnknownThreatDetectEventResponseBodyData) SetAnalyzeDesc(v string) *ListUnknownThreatDetectEventResponseBodyData {
+	s.AnalyzeDesc = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectEventResponseBodyData) SetAnalyzeResult(v string) *ListUnknownThreatDetectEventResponseBodyData {
+	s.AnalyzeResult = &v
+	return s
 }
 
 func (s *ListUnknownThreatDetectEventResponseBodyData) SetCmdChain(v string) *ListUnknownThreatDetectEventResponseBodyData {

@@ -486,6 +486,10 @@ func (client *Client) AddClientUserDefineRuleWithOptions(request *AddClientUserD
 		query["RegistryKey"] = request.RegistryKey
 	}
 
+	if !dara.IsNil(request.TargetDefault) {
+		query["TargetDefault"] = request.TargetDefault
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
@@ -54438,12 +54442,20 @@ func (client *Client) ListUnknownThreatDetectEventWithOptions(request *ListUnkno
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AnalyzeResult) {
+		query["AnalyzeResult"] = request.AnalyzeResult
+	}
+
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
 	}
 
 	if !dara.IsNil(request.HashKey) {
 		query["HashKey"] = request.HashKey
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
 	}
 
 	if !dara.IsNil(request.PageSize) {
