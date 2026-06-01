@@ -363,6 +363,96 @@ func (client *Client) CreateJobTemplate(request *CreateJobTemplateRequest) (_res
 
 // Summary:
 //
+// 创建 RayHistoryServer
+//
+// @param request - CreateRayHistoryServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRayHistoryServerResponse
+func (client *Client) CreateRayHistoryServerWithOptions(request *CreateRayHistoryServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRayHistoryServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.EcsSpec) {
+		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !dara.IsNil(request.MaxRuntimeMinutes) {
+		body["MaxRuntimeMinutes"] = request.MaxRuntimeMinutes
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.StoragePath) {
+		body["StoragePath"] = request.StoragePath
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRayHistoryServer"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/rayhistoryservers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRayHistoryServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 RayHistoryServer
+//
+// @param request - CreateRayHistoryServerRequest
+//
+// @return CreateRayHistoryServerResponse
+func (client *Client) CreateRayHistoryServer(request *CreateRayHistoryServerRequest) (_result *CreateRayHistoryServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRayHistoryServerResponse{}
+	_body, _err := client.CreateRayHistoryServerWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a TensorBoard by using a job or specifying a data source configuration.
 //
 // @param request - CreateTensorboardRequest
@@ -606,6 +696,66 @@ func (client *Client) DeleteJobTemplate(TemplateId *string, request *DeleteJobTe
 	headers := make(map[string]*string)
 	_result = &DeleteJobTemplateResponse{}
 	_body, _err := client.DeleteJobTemplateWithOptions(TemplateId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RayHistoryServer
+//
+// @param request - DeleteRayHistoryServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRayHistoryServerResponse
+func (client *Client) DeleteRayHistoryServerWithOptions(RayHistoryServerId *string, request *DeleteRayHistoryServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRayHistoryServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRayHistoryServer"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/rayhistoryservers/" + dara.PercentEncode(dara.StringValue(RayHistoryServerId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRayHistoryServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RayHistoryServer
+//
+// @param request - DeleteRayHistoryServerRequest
+//
+// @return DeleteRayHistoryServerResponse
+func (client *Client) DeleteRayHistoryServer(RayHistoryServerId *string, request *DeleteRayHistoryServerRequest) (_result *DeleteRayHistoryServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRayHistoryServerResponse{}
+	_body, _err := client.DeleteRayHistoryServerWithOptions(RayHistoryServerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1350,6 +1500,66 @@ func (client *Client) GetRayDashboard(jobId *string, request *GetRayDashboardReq
 	headers := make(map[string]*string)
 	_result = &GetRayDashboardResponse{}
 	_body, _err := client.GetRayDashboardWithOptions(jobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 RayHistoryServer
+//
+// @param request - GetRayHistoryServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRayHistoryServerResponse
+func (client *Client) GetRayHistoryServerWithOptions(RayHistoryServerId *string, request *GetRayHistoryServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayHistoryServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRayHistoryServer"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/rayhistoryservers/" + dara.PercentEncode(dara.StringValue(RayHistoryServerId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRayHistoryServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 RayHistoryServer
+//
+// @param request - GetRayHistoryServerRequest
+//
+// @return GetRayHistoryServerResponse
+func (client *Client) GetRayHistoryServer(RayHistoryServerId *string, request *GetRayHistoryServerRequest) (_result *GetRayHistoryServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRayHistoryServerResponse{}
+	_body, _err := client.GetRayHistoryServerWithOptions(RayHistoryServerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2105,6 +2315,132 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
+// 列出资源RayHistoryServer
+//
+// @param request - ListRayHistoryServersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRayHistoryServersResponse
+func (client *Client) ListRayHistoryServersWithOptions(request *ListRayHistoryServersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRayHistoryServersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IdPrefix) {
+		query["IdPrefix"] = request.IdPrefix
+	}
+
+	if !dara.IsNil(request.ModifiedAfter) {
+		query["ModifiedAfter"] = request.ModifiedAfter
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ShowOwn) {
+		query["ShowOwn"] = request.ShowOwn
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserIdForFilter) {
+		query["UserIdForFilter"] = request.UserIdForFilter
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRayHistoryServers"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/rayhistoryservers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRayHistoryServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出资源RayHistoryServer
+//
+// @param request - ListRayHistoryServersRequest
+//
+// @return ListRayHistoryServersResponse
+func (client *Client) ListRayHistoryServers(request *ListRayHistoryServersRequest) (_result *ListRayHistoryServersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRayHistoryServersResponse{}
+	_body, _err := client.ListRayHistoryServersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of TensorBoard instances.
 //
 // @param request - ListTensorboardsRequest
@@ -2313,6 +2649,66 @@ func (client *Client) SetJobTemplateDefaultVersion(TemplateId *string, request *
 
 // Summary:
 //
+// 启动 Ray History Server
+//
+// @param request - StartRayHistoryServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRayHistoryServerResponse
+func (client *Client) StartRayHistoryServerWithOptions(RayHistoryServerId *string, request *StartRayHistoryServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartRayHistoryServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartRayHistoryServer"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/rayhistoryservers/" + dara.PercentEncode(dara.StringValue(RayHistoryServerId)) + "/start"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartRayHistoryServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动 Ray History Server
+//
+// @param request - StartRayHistoryServerRequest
+//
+// @return StartRayHistoryServerResponse
+func (client *Client) StartRayHistoryServer(RayHistoryServerId *string, request *StartRayHistoryServerRequest) (_result *StartRayHistoryServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartRayHistoryServerResponse{}
+	_body, _err := client.StartRayHistoryServerWithOptions(RayHistoryServerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a TensorBoard instance.
 //
 // @param request - StartTensorboardRequest
@@ -2420,6 +2816,66 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 	headers := make(map[string]*string)
 	_result = &StopJobResponse{}
 	_body, _err := client.StopJobWithOptions(JobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止 Ray History Server
+//
+// @param request - StopRayHistoryServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRayHistoryServerResponse
+func (client *Client) StopRayHistoryServerWithOptions(RayHistoryServerId *string, request *StopRayHistoryServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopRayHistoryServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopRayHistoryServer"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/rayhistoryservers/" + dara.PercentEncode(dara.StringValue(RayHistoryServerId)) + "/stop"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopRayHistoryServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止 Ray History Server
+//
+// @param request - StopRayHistoryServerRequest
+//
+// @return StopRayHistoryServerResponse
+func (client *Client) StopRayHistoryServer(RayHistoryServerId *string, request *StopRayHistoryServerRequest) (_result *StopRayHistoryServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopRayHistoryServerResponse{}
+	_body, _err := client.StopRayHistoryServerWithOptions(RayHistoryServerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
