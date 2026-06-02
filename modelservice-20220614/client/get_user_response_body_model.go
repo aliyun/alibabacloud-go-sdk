@@ -15,6 +15,8 @@ type iGetUserResponseBody interface {
 	GetCode() *string
 	SetHost(v string) *GetUserResponseBody
 	GetHost() *string
+	SetInnerToken(v string) *GetUserResponseBody
+	GetInnerToken() *string
 	SetMessage(v string) *GetUserResponseBody
 	GetMessage() *string
 	SetRequestId(v string) *GetUserResponseBody
@@ -35,7 +37,8 @@ type GetUserResponseBody struct {
 	// example:
 	//
 	// ai-service.******.alicontainer.com
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InnerToken *string `json:"InnerToken,omitempty" xml:"InnerToken,omitempty"`
 	// example:
 	//
 	// success
@@ -70,6 +73,10 @@ func (s *GetUserResponseBody) GetHost() *string {
 	return s.Host
 }
 
+func (s *GetUserResponseBody) GetInnerToken() *string {
+	return s.InnerToken
+}
+
 func (s *GetUserResponseBody) GetMessage() *string {
 	return s.Message
 }
@@ -94,6 +101,11 @@ func (s *GetUserResponseBody) SetCode(v string) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetHost(v string) *GetUserResponseBody {
 	s.Host = &v
+	return s
+}
+
+func (s *GetUserResponseBody) SetInnerToken(v string) *GetUserResponseBody {
+	s.InnerToken = &v
 	return s
 }
 

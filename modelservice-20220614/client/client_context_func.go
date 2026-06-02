@@ -73,8 +73,12 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.SceneType) {
-		query["scene_type"] = request.SceneType
+	if !dara.IsNil(request.Channel) {
+		query["channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["region"] = request.Region
 	}
 
 	req := &openapiutil.OpenApiRequest{

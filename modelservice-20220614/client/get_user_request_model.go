@@ -9,15 +9,15 @@ type iGetUserRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetSceneType(v string) *GetUserRequest
-	GetSceneType() *string
+	SetChannel(v string) *GetUserRequest
+	GetChannel() *string
+	SetRegion(v string) *GetUserRequest
+	GetRegion() *string
 }
 
 type GetUserRequest struct {
-	// example:
-	//
-	// sales_pick
-	SceneType *string `json:"scene_type,omitempty" xml:"scene_type,omitempty"`
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	Region  *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s GetUserRequest) String() string {
@@ -28,12 +28,21 @@ func (s GetUserRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserRequest) GetSceneType() *string {
-	return s.SceneType
+func (s *GetUserRequest) GetChannel() *string {
+	return s.Channel
 }
 
-func (s *GetUserRequest) SetSceneType(v string) *GetUserRequest {
-	s.SceneType = &v
+func (s *GetUserRequest) GetRegion() *string {
+	return s.Region
+}
+
+func (s *GetUserRequest) SetChannel(v string) *GetUserRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *GetUserRequest) SetRegion(v string) *GetUserRequest {
+	s.Region = &v
 	return s
 }
 
