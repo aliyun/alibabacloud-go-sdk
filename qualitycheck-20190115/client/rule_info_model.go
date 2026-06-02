@@ -91,8 +91,8 @@ type iRuleInfo interface {
 	GetScoreId() *int64
 	SetScoreName(v string) *RuleInfo
 	GetScoreName() *string
-	SetScoreNum(v int32) *RuleInfo
-	GetScoreNum() *int32
+	SetScoreNum(v float32) *RuleInfo
+	GetScoreNum() *float32
 	SetScoreNumType(v int32) *RuleInfo
 	GetScoreNumType() *int32
 	SetScoreRuleHitType(v int32) *RuleInfo
@@ -165,7 +165,7 @@ type RuleInfo struct {
 	ScoreDeleted             *bool               `json:"ScoreDeleted,omitempty" xml:"ScoreDeleted,omitempty"`
 	ScoreId                  *int64              `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
 	ScoreName                *string             `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
-	ScoreNum                 *int32              `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	ScoreNum                 *float32            `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
 	ScoreNumType             *int32              `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
 	ScoreRuleHitType         *int32              `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
 	ScoreSubId               *int64              `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
@@ -354,7 +354,7 @@ func (s *RuleInfo) GetScoreName() *string {
 	return s.ScoreName
 }
 
-func (s *RuleInfo) GetScoreNum() *int32 {
+func (s *RuleInfo) GetScoreNum() *float32 {
 	return s.ScoreNum
 }
 
@@ -619,7 +619,7 @@ func (s *RuleInfo) SetScoreName(v string) *RuleInfo {
 	return s
 }
 
-func (s *RuleInfo) SetScoreNum(v int32) *RuleInfo {
+func (s *RuleInfo) SetScoreNum(v float32) *RuleInfo {
 	s.ScoreNum = &v
 	return s
 }
