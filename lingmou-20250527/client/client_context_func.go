@@ -695,6 +695,47 @@ func (client *Client) CreateTrainPicAvatarWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 删除播报贴图
+//
+// @param request - DeleteBroadcastStickerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBroadcastStickerResponse
+func (client *Client) DeleteBroadcastStickerWithContext(ctx context.Context, stickerId *string, request *DeleteBroadcastStickerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBroadcastStickerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBroadcastSticker"),
+		Version:     dara.String("2025-05-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/broadcast/materials/stickers/" + dara.PercentEncode(dara.StringValue(stickerId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBroadcastStickerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询播报模板详情
 //
 // @param request - GetBroadcastTemplateRequest
