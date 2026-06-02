@@ -1,3 +1,7 @@
+2026-06-02 Version: v2.54.0
+- Support API MeetingFlashMinutesText.
+
+
 2026-05-27 Version: v2.53.0
 - Support API BatchGetUserIdByOpenDingtalkId.
 
