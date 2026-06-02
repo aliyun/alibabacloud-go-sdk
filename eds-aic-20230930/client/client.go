@@ -1354,6 +1354,84 @@ func (client *Client) CreateCloudPhoneNode(request *CreateCloudPhoneNodeRequest)
 
 // Summary:
 //
+// 创建积分包
+//
+// @param request - CreateCreditPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCreditPackageResponse
+func (client *Client) CreateCreditPackageWithOptions(request *CreateCreditPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateCreditPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.CreditAmount) {
+		query["CreditAmount"] = request.CreditAmount
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCreditPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCreditPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建积分包
+//
+// @param request - CreateCreditPackageRequest
+//
+// @return CreateCreditPackageResponse
+func (client *Client) CreateCreditPackage(request *CreateCreditPackageRequest) (_result *CreateCreditPackageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCreditPackageResponse{}
+	_body, _err := client.CreateCreditPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom image from a cloud phone instance.
 //
 // @param request - CreateCustomImageRequest
@@ -3113,6 +3191,72 @@ func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeCloudPhoneNodesResponse{}
 	_body, _err := client.DescribeCloudPhoneNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询积分包
+//
+// @param request - DescribeCreditPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCreditPackageResponse
+func (client *Client) DescribeCreditPackageWithOptions(request *DescribeCreditPackageRequest, runtime *dara.RuntimeOptions) (_result *DescribeCreditPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreditPackageId) {
+		query["CreditPackageId"] = request.CreditPackageId
+	}
+
+	if !dara.IsNil(request.CreditPackageStatus) {
+		query["CreditPackageStatus"] = request.CreditPackageStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCreditPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCreditPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询积分包
+//
+// @param request - DescribeCreditPackageRequest
+//
+// @return DescribeCreditPackageResponse
+func (client *Client) DescribeCreditPackage(request *DescribeCreditPackageRequest) (_result *DescribeCreditPackageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCreditPackageResponse{}
+	_body, _err := client.DescribeCreditPackageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
