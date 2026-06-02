@@ -367,6 +367,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// 测试窗开启文本对话
+//
 // @param request - DebugBeginDialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -398,6 +402,10 @@ func (client *Client) DebugBeginDialogueWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ShouldUseSandBox) {
+		query["ShouldUseSandBox"] = request.ShouldUseSandBox
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -512,6 +512,10 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 测试窗开启文本对话
+//
 // @param request - DebugBeginDialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -545,6 +549,10 @@ func (client *Client) DebugBeginDialogueWithOptions(request *DebugBeginDialogueR
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.ShouldUseSandBox) {
+		query["ShouldUseSandBox"] = request.ShouldUseSandBox
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -568,6 +576,10 @@ func (client *Client) DebugBeginDialogueWithOptions(request *DebugBeginDialogueR
 	return _result, _err
 }
 
+// Summary:
+//
+// 测试窗开启文本对话
+//
 // @param request - DebugBeginDialogueRequest
 //
 // @return DebugBeginDialogueResponse

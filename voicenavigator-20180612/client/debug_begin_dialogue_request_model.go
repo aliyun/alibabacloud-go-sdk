@@ -19,6 +19,8 @@ type iDebugBeginDialogueRequest interface {
 	GetInitialContext() *string
 	SetInstanceId(v string) *DebugBeginDialogueRequest
 	GetInstanceId() *string
+	SetShouldUseSandBox(v bool) *DebugBeginDialogueRequest
+	GetShouldUseSandBox() *bool
 }
 
 type DebugBeginDialogueRequest struct {
@@ -47,7 +49,8 @@ type DebugBeginDialogueRequest struct {
 	// example:
 	//
 	// 8a503680-815d-473e-a9b0-e010f47a64d2
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ShouldUseSandBox *bool   `json:"ShouldUseSandBox,omitempty" xml:"ShouldUseSandBox,omitempty"`
 }
 
 func (s DebugBeginDialogueRequest) String() string {
@@ -78,6 +81,10 @@ func (s *DebugBeginDialogueRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DebugBeginDialogueRequest) GetShouldUseSandBox() *bool {
+	return s.ShouldUseSandBox
+}
+
 func (s *DebugBeginDialogueRequest) SetCalledNumber(v string) *DebugBeginDialogueRequest {
 	s.CalledNumber = &v
 	return s
@@ -100,6 +107,11 @@ func (s *DebugBeginDialogueRequest) SetInitialContext(v string) *DebugBeginDialo
 
 func (s *DebugBeginDialogueRequest) SetInstanceId(v string) *DebugBeginDialogueRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DebugBeginDialogueRequest) SetShouldUseSandBox(v bool) *DebugBeginDialogueRequest {
+	s.ShouldUseSandBox = &v
 	return s
 }
 
