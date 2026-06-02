@@ -232,14 +232,176 @@ func (client *Client) BindPasswordFreeLoginUserWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询设备座位
+// 解除桌面端、移动端纳管
 //
-// @param request - DescribeDeviceSeatsRequest
+// @param request - DeleteClientsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return DescribeDeviceSeatsResponse
-func (client *Client) DescribeDeviceSeatsWithContext(ctx context.Context, request *DescribeDeviceSeatsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeviceSeatsResponse, _err error) {
+// @return DeleteClientsResponse
+func (client *Client) DeleteClientsWithContext(ctx context.Context, request *DeleteClientsRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallerAliUid) {
+		query["CallerAliUid"] = request.CallerAliUid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InManage) {
+		body["InManage"] = request.InManage
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.Uuids) {
+		bodyFlat["Uuids"] = request.Uuids
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteClients"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteClientsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面端、移动端详细信息
+//
+// @param request - DescribeClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClientsResponse
+func (client *Client) DescribeClientsWithContext(ctx context.Context, request *DescribeClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallerAliUid) {
+		query["CallerAliUid"] = request.CallerAliUid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientType) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !dara.IsNil(request.CustomResourceId) {
+		body["CustomResourceId"] = request.CustomResourceId
+	}
+
+	if !dara.IsNil(request.CustomResourceStatus) {
+		body["CustomResourceStatus"] = request.CustomResourceStatus
+	}
+
+	if !dara.IsNil(request.InManage) {
+		body["InManage"] = request.InManage
+	}
+
+	if !dara.IsNil(request.IncludeSubGroups) {
+		body["IncludeSubGroups"] = request.IncludeSubGroups
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OnlineStatus) {
+		body["OnlineStatus"] = request.OnlineStatus
+	}
+
+	if !dara.IsNil(request.Platform) {
+		body["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.SearchKeyword) {
+		body["SearchKeyword"] = request.SearchKeyword
+	}
+
+	if !dara.IsNil(request.TerminalGroupId) {
+		body["TerminalGroupId"] = request.TerminalGroupId
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.Uuids) {
+		bodyFlat["Uuids"] = request.Uuids
+	}
+
+	if !dara.IsNil(request.WithBindUser) {
+		body["WithBindUser"] = request.WithBindUser
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClients"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClientsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取桌面端纳管邀请码
+//
+// @param request - GetOrCreateInvitationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrCreateInvitationCodeResponse
+func (client *Client) GetOrCreateInvitationCodeWithContext(ctx context.Context, request *GetOrCreateInvitationCodeRequest, runtime *dara.RuntimeOptions) (_result *GetOrCreateInvitationCodeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -247,46 +409,38 @@ func (client *Client) DescribeDeviceSeatsWithContext(ctx context.Context, reques
 		}
 	}
 	body := map[string]interface{}{}
-	if !dara.IsNil(request.PageNumber) {
-		body["PageNumber"] = request.PageNumber
+	if !dara.IsNil(request.ExpireDays) {
+		body["ExpireDays"] = request.ExpireDays
 	}
 
-	if !dara.IsNil(request.PageSize) {
-		body["PageSize"] = request.PageSize
+	if !dara.IsNil(request.ExpireMinutes) {
+		body["ExpireMinutes"] = request.ExpireMinutes
 	}
 
-	if !dara.IsNil(request.SerialNo) {
-		body["SerialNo"] = request.SerialNo
+	if !dara.IsNil(request.TerminalGroupId) {
+		body["TerminalGroupId"] = request.TerminalGroupId
 	}
 
-	if !dara.IsNil(request.SerialNoList) {
-		body["SerialNoList"] = request.SerialNoList
-	}
-
-	if !dara.IsNil(request.SiteId) {
-		body["SiteId"] = request.SiteId
-	}
-
-	if !dara.IsNil(request.TenantId) {
-		body["TenantId"] = request.TenantId
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
-		Action:      dara.String("DescribeDeviceSeats"),
+		Action:      dara.String("GetOrCreateInvitationCode"),
 		Version:     dara.String("2021-04-20"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
 		Method:      dara.String("POST"),
-		AuthType:    dara.String("Anonymous"),
+		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
-	_result = &DescribeDeviceSeatsResponse{}
-	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_result = &GetOrCreateInvitationCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -491,56 +645,6 @@ func (client *Client) UnbindAccountLessLoginUserWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindAccountLessLoginUserResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑设备座位
-//
-// @param tmpReq - UnbindDeviceSeatsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UnbindDeviceSeatsResponse
-func (client *Client) UnbindDeviceSeatsWithContext(ctx context.Context, tmpReq *UnbindDeviceSeatsRequest, runtime *dara.RuntimeOptions) (_result *UnbindDeviceSeatsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	request := &UnbindDeviceSeatsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.SerialNoList) {
-		request.SerialNoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SerialNoList, dara.String("SerialNoList"), dara.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.SerialNoListShrink) {
-		body["SerialNoList"] = request.SerialNoListShrink
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("UnbindDeviceSeats"),
-		Version:     dara.String("2021-04-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &UnbindDeviceSeatsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
