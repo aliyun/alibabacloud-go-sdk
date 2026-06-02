@@ -167,6 +167,10 @@ type DescribeCustomAgentResponseBodyData struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// example:
 	//
+	// 5xyz...
+	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
+	// example:
+	//
 	// 2025-12-11T14:04:32.000+00:00
 	ReleaseTime        *string                                                `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	ScheduleTaskConfig *DescribeCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
@@ -280,6 +284,10 @@ func (s *DescribeCustomAgentResponseBodyData) GetOfflineTime() *string {
 
 func (s *DescribeCustomAgentResponseBodyData) GetRegion() *string {
 	return s.Region
+}
+
+func (s *DescribeCustomAgentResponseBodyData) GetRelatedSessionId() *string {
+	return s.RelatedSessionId
 }
 
 func (s *DescribeCustomAgentResponseBodyData) GetReleaseTime() *string {
@@ -418,6 +426,11 @@ func (s *DescribeCustomAgentResponseBodyData) SetOfflineTime(v string) *Describe
 
 func (s *DescribeCustomAgentResponseBodyData) SetRegion(v string) *DescribeCustomAgentResponseBodyData {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeCustomAgentResponseBodyData) SetRelatedSessionId(v string) *DescribeCustomAgentResponseBodyData {
+	s.RelatedSessionId = &v
 	return s
 }
 

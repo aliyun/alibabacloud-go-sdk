@@ -27,6 +27,8 @@ type iCreateCustomAgentShrinkRequest interface {
 	GetKnowledgeConfigListShrink() *string
 	SetName(v string) *CreateCustomAgentShrinkRequest
 	GetName() *string
+	SetRelatedSessionId(v string) *CreateCustomAgentShrinkRequest
+	GetRelatedSessionId() *string
 	SetScheduleTaskConfigShrink(v string) *CreateCustomAgentShrinkRequest
 	GetScheduleTaskConfigShrink() *string
 	SetTextReportConfig(v string) *CreateCustomAgentShrinkRequest
@@ -50,6 +52,7 @@ type CreateCustomAgentShrinkRequest struct {
 	Knowledge                 *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	KnowledgeConfigListShrink *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
 	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RelatedSessionId          *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
 	ScheduleTaskConfigShrink  *string `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty"`
 	TextReportConfig          *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	WebReportConfig           *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
@@ -101,6 +104,10 @@ func (s *CreateCustomAgentShrinkRequest) GetKnowledgeConfigListShrink() *string 
 
 func (s *CreateCustomAgentShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateCustomAgentShrinkRequest) GetRelatedSessionId() *string {
+	return s.RelatedSessionId
 }
 
 func (s *CreateCustomAgentShrinkRequest) GetScheduleTaskConfigShrink() *string {
@@ -161,6 +168,11 @@ func (s *CreateCustomAgentShrinkRequest) SetKnowledgeConfigListShrink(v string) 
 
 func (s *CreateCustomAgentShrinkRequest) SetName(v string) *CreateCustomAgentShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCustomAgentShrinkRequest) SetRelatedSessionId(v string) *CreateCustomAgentShrinkRequest {
+	s.RelatedSessionId = &v
 	return s
 }
 

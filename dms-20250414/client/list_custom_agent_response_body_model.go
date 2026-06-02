@@ -250,7 +250,8 @@ type ListCustomAgentResponseBodyDataContent struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
@@ -366,6 +367,10 @@ func (s *ListCustomAgentResponseBodyDataContent) GetOfflineTime() *string {
 
 func (s *ListCustomAgentResponseBodyDataContent) GetRegion() *string {
 	return s.Region
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) GetRelatedSessionId() *string {
+	return s.RelatedSessionId
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) GetReleaseTime() *string {
@@ -504,6 +509,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetOfflineTime(v string) *ListC
 
 func (s *ListCustomAgentResponseBodyDataContent) SetRegion(v string) *ListCustomAgentResponseBodyDataContent {
 	s.Region = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) SetRelatedSessionId(v string) *ListCustomAgentResponseBodyDataContent {
+	s.RelatedSessionId = &v
 	return s
 }
 

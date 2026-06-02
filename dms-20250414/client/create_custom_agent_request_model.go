@@ -27,6 +27,8 @@ type iCreateCustomAgentRequest interface {
 	GetKnowledgeConfigList() []*CreateCustomAgentRequestKnowledgeConfigList
 	SetName(v string) *CreateCustomAgentRequest
 	GetName() *string
+	SetRelatedSessionId(v string) *CreateCustomAgentRequest
+	GetRelatedSessionId() *string
 	SetScheduleTaskConfig(v *CreateCustomAgentRequestScheduleTaskConfig) *CreateCustomAgentRequest
 	GetScheduleTaskConfig() *CreateCustomAgentRequestScheduleTaskConfig
 	SetTextReportConfig(v string) *CreateCustomAgentRequest
@@ -50,6 +52,7 @@ type CreateCustomAgentRequest struct {
 	Knowledge           *string                                        `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	KnowledgeConfigList []*CreateCustomAgentRequestKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	Name                *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	RelatedSessionId    *string                                        `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
 	ScheduleTaskConfig  *CreateCustomAgentRequestScheduleTaskConfig    `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
 	TextReportConfig    *string                                        `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	WebReportConfig     *string                                        `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
@@ -101,6 +104,10 @@ func (s *CreateCustomAgentRequest) GetKnowledgeConfigList() []*CreateCustomAgent
 
 func (s *CreateCustomAgentRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateCustomAgentRequest) GetRelatedSessionId() *string {
+	return s.RelatedSessionId
 }
 
 func (s *CreateCustomAgentRequest) GetScheduleTaskConfig() *CreateCustomAgentRequestScheduleTaskConfig {
@@ -161,6 +168,11 @@ func (s *CreateCustomAgentRequest) SetKnowledgeConfigList(v []*CreateCustomAgent
 
 func (s *CreateCustomAgentRequest) SetName(v string) *CreateCustomAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateCustomAgentRequest) SetRelatedSessionId(v string) *CreateCustomAgentRequest {
+	s.RelatedSessionId = &v
 	return s
 }
 

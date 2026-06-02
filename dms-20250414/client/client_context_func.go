@@ -583,6 +583,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.RelatedSessionId) {
+		query["RelatedSessionId"] = request.RelatedSessionId
+	}
+
 	if !dara.IsNil(request.ScheduleTaskConfigShrink) {
 		query["ScheduleTaskConfig"] = request.ScheduleTaskConfigShrink
 	}
@@ -1704,6 +1708,62 @@ func (client *Client) DeleteFileUploadWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 删除工作空间代码以及目录
+//
+// @param request - DeleteWorkspaceCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceCodeResponse
+func (client *Client) DeleteWorkspaceCodeWithContext(ctx context.Context, request *DeleteWorkspaceCodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.Repo) {
+		query["Repo"] = request.Repo
+	}
+
+	if !dara.IsNil(request.Symlink) {
+		query["Symlink"] = request.Symlink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkspaceCode"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkspaceCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # DescribeCustomAgent
 //
 // @param request - DescribeCustomAgentRequest
@@ -2669,6 +2729,58 @@ func (client *Client) GetNotebookTaskStatusWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNotebookTaskStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取工作空间的代码文件内容
+//
+// @param request - GetWorkspaceCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceCodeResponse
+func (client *Client) GetWorkspaceCodeWithContext(ctx context.Context, request *GetWorkspaceCodeRequest, runtime *dara.RuntimeOptions) (_result *GetWorkspaceCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Iac) {
+		query["Iac"] = request.Iac
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceCode"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceCodeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4273,6 +4385,54 @@ func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 列出工作空间目录下的code文件
+//
+// @param request - ListWorkspaceCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceCodeResponse
+func (client *Client) ListWorkspaceCodeWithContext(ctx context.Context, request *ListWorkspaceCodeRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspaceCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaceCode"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspaceCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # ModifyCustomAgent
 //
 // @param tmpReq - ModifyCustomAgentRequest
@@ -4344,6 +4504,10 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RelatedSessionId) {
+		query["RelatedSessionId"] = request.RelatedSessionId
 	}
 
 	if !dara.IsNil(request.ScheduleTaskConfigShrink) {
@@ -4529,6 +4693,76 @@ func (client *Client) RemoveUserToDataAgentWorkspaceWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveUserToDataAgentWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存工作空间代码，如果文件不存在则自动新建
+//
+// @param request - SaveWorkspaceCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveWorkspaceCodeResponse
+func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request *SaveWorkspaceCodeRequest, runtime *dara.RuntimeOptions) (_result *SaveWorkspaceCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Force) {
+		query["Force"] = request.Force
+	}
+
+	if !dara.IsNil(request.Iac) {
+		query["Iac"] = request.Iac
+	}
+
+	if !dara.IsNil(request.Mtime) {
+		query["Mtime"] = request.Mtime
+	}
+
+	if !dara.IsNil(request.Repo) {
+		query["Repo"] = request.Repo
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		body["Path"] = request.Path
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveWorkspaceCode"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveWorkspaceCodeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
