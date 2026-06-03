@@ -23,6 +23,8 @@ type iCustomDomain interface {
 	GetCreatedTime() *string
 	SetDomainName(v string) *CustomDomain
 	GetDomainName() *string
+	SetIsE2B(v bool) *CustomDomain
+	GetIsE2B() *bool
 	SetLastModifiedTime(v string) *CustomDomain
 	GetLastModifiedTime() *string
 	SetProtocol(v string) *CustomDomain
@@ -67,6 +69,7 @@ type CustomDomain struct {
 	//
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	IsE2B      *bool   `json:"isE2B,omitempty" xml:"isE2B,omitempty"`
 	// The time when the custom domain name was last updated.
 	//
 	// example:
@@ -129,6 +132,10 @@ func (s *CustomDomain) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *CustomDomain) GetIsE2B() *bool {
+	return s.IsE2B
+}
+
 func (s *CustomDomain) GetLastModifiedTime() *string {
 	return s.LastModifiedTime
 }
@@ -185,6 +192,11 @@ func (s *CustomDomain) SetCreatedTime(v string) *CustomDomain {
 
 func (s *CustomDomain) SetDomainName(v string) *CustomDomain {
 	s.DomainName = &v
+	return s
+}
+
+func (s *CustomDomain) SetIsE2B(v bool) *CustomDomain {
+	s.IsE2B = &v
 	return s
 }
 

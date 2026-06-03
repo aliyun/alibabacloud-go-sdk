@@ -17,6 +17,8 @@ type iCreateCustomDomainInput interface {
 	GetCorsConfig() *CORSConfig
 	SetDomainName(v string) *CreateCustomDomainInput
 	GetDomainName() *string
+	SetIsE2B(v bool) *CreateCustomDomainInput
+	GetIsE2B() *bool
 	SetProtocol(v string) *CreateCustomDomainInput
 	GetProtocol() *string
 	SetRouteConfig(v *RouteConfig) *CreateCustomDomainInput
@@ -41,6 +43,7 @@ type CreateCustomDomainInput struct {
 	//
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	IsE2B      *bool   `json:"isE2B,omitempty" xml:"isE2B,omitempty"`
 	// The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
 	//
 	// example:
@@ -79,6 +82,10 @@ func (s *CreateCustomDomainInput) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *CreateCustomDomainInput) GetIsE2B() *bool {
+	return s.IsE2B
+}
+
 func (s *CreateCustomDomainInput) GetProtocol() *string {
 	return s.Protocol
 }
@@ -112,6 +119,11 @@ func (s *CreateCustomDomainInput) SetCorsConfig(v *CORSConfig) *CreateCustomDoma
 
 func (s *CreateCustomDomainInput) SetDomainName(v string) *CreateCustomDomainInput {
 	s.DomainName = &v
+	return s
+}
+
+func (s *CreateCustomDomainInput) SetIsE2B(v bool) *CreateCustomDomainInput {
+	s.IsE2B = &v
 	return s
 }
 
