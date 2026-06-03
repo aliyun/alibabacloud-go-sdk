@@ -24,49 +24,23 @@ type iCreateIntentRequest interface {
 }
 
 type CreateIntentRequest struct {
-	// Instance ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Intent description
-	//
-	// example:
-	//
-	// 确定是本人的意图
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
-	// Intent name
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 是本人
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// Keyword
-	//
-	// example:
-	//
-	// ["是","是的"]
-	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	// Scenario ID
-	//
+	Keywords   *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	// b06fad9a-cc74-4ab6-b3a5-8d062adebf2c
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// User utterances
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ["是","是的","是啊","嗯嗯","是我","是我，有事吗","对，是","对的","对是我",""]
 	Utterances *string `json:"Utterances,omitempty" xml:"Utterances,omitempty"`
 }
 

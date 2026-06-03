@@ -24,34 +24,20 @@ type iSaveAnnotationMissionTagInfoListResponseBody interface {
 }
 
 type SaveAnnotationMissionTagInfoListResponseBody struct {
-	// API status code
-	//
 	// example:
 	//
 	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data
+	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *SaveAnnotationMissionTagInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code.
-	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API message
-	//
-	// example:
-	//
-	// 执行失败：查找元素或操作超时，outTaskId：trademark_regnew_public_cn-uax33hol2uu,flowId：null，nodeUUID：541b6c71-8cce-4ab0-af84-713ca9741821
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
-	//
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// 1B356EDC-F69A-53B0-B4AF-2AC42200684E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call succeeded. true: The call succeeded. false: The call failed.
-	//
 	// example:
 	//
 	// true
@@ -130,20 +116,8 @@ func (s *SaveAnnotationMissionTagInfoListResponseBody) Validate() error {
 }
 
 type SaveAnnotationMissionTagInfoListResponseBodyData struct {
-	// Number of successful executions
-	//
-	// example:
-	//
-	// 1
-	ExecCount *int32 `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
-	// API message
-	//
-	// example:
-	//
-	// 执行失败：查找元素或操作超时，outTaskId：trademark_regnew_public_cn-uax33hol2uu，flowId：null，nodeUUID：541b6c71-8cce-4ab0-af84-713ca9741821
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation succeeded.
-	//
+	ExecCount *int32  `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// true

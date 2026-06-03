@@ -18,29 +18,23 @@ type iDescribeIntentRequest interface {
 }
 
 type DescribeIntentRequest struct {
-	// instance ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// da37319b-6c83-4268-9f19-814aed62e401
+	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// intent ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10717802
+	// 0f8a0059-dc9c-4151-8378-4734bbadf3cc
 	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// scenario ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// aa279896-64a6-4182-864c-4f2b04ec8d17
+	// b9ff4e88-65f9-4eb3-987c-11ba51f3f24d
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 

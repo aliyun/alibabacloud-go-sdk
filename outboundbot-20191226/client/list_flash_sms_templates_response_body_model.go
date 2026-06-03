@@ -24,34 +24,20 @@ type iListFlashSmsTemplatesResponseBody interface {
 }
 
 type ListFlashSmsTemplatesResponseBody struct {
-	// Status code.
-	//
 	// example:
 	//
 	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListFlashSmsTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP status code.
-	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message.
-	//
-	// example:
-	//
-	// 无
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// EC08CC41-6870-5594-939A-F758F057898F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded. true: The invocation succeeded. false: Failed to invoke.
-	//
 	// example:
 	//
 	// true
@@ -134,23 +120,11 @@ func (s *ListFlashSmsTemplatesResponseBody) Validate() error {
 }
 
 type ListFlashSmsTemplatesResponseBodyData struct {
-	// Template Content.
-	//
-	// example:
-	//
-	// 您好，xxx来电。
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	// Flash SMS Template ID.
-	//
 	// example:
 	//
 	// 17*******************01
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// Template Name.
-	//
-	// example:
-	//
-	// 模板1
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

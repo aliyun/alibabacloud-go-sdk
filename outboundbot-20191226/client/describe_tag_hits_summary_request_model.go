@@ -16,21 +16,17 @@ type iDescribeTagHitsSummaryRequest interface {
 }
 
 type DescribeTagHitsSummaryRequest struct {
-	// Instance ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Task group ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 292eba45-df08-4065-87e7-7e587a1ce4ce
+	// 8a4c6d3d-5ed6-44ca-b779-16c20f8862be
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
 }
 

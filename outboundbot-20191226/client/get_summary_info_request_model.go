@@ -14,8 +14,6 @@ type iGetSummaryInfoRequest interface {
 }
 
 type GetSummaryInfoRequest struct {
-	// List of instance IDs
-	//
 	// example:
 	//
 	// []

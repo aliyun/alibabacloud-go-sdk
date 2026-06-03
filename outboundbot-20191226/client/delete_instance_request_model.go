@@ -14,8 +14,6 @@ type iDeleteInstanceRequest interface {
 }
 
 type DeleteInstanceRequest struct {
-	// ID of the instance to delete
-	//
 	// This parameter is required.
 	//
 	// example:

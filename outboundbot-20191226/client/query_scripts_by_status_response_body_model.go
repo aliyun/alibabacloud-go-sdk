@@ -24,34 +24,23 @@ type iQueryScriptsByStatusResponseBody interface {
 }
 
 type QueryScriptsByStatusResponseBody struct {
-	// API status code
-	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
-	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// API message
-	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
-	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Scenario List
-	Scripts *QueryScriptsByStatusResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Struct"`
-	// Indicates whether the operation succeeded.
-	//
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scripts   *QueryScriptsByStatusResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -130,25 +119,18 @@ func (s *QueryScriptsByStatusResponseBody) Validate() error {
 }
 
 type QueryScriptsByStatusResponseBodyScripts struct {
-	// List of scenario information
 	List []*QueryScriptsByStatusResponseBodyScriptsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// Page number
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total count
-	//
 	// example:
 	//
-	// 15
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -210,96 +192,38 @@ func (s *QueryScriptsByStatusResponseBodyScripts) Validate() error {
 }
 
 type QueryScriptsByStatusResponseBodyScriptsList struct {
-	// Version ID
-	//
 	// example:
 	//
 	// 1579055782000
 	AppliedVersion *string `json:"AppliedVersion,omitempty" xml:"AppliedVersion,omitempty"`
-	// Debug status
-	//
 	// example:
 	//
 	// PUBLISHED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
-	// Debug Version
-	//
 	// example:
 	//
-	// 01bb2df2-a273-42bb-a214-d3c626b13296
+	// 1579055782000
 	DebugVersion *string `json:"DebugVersion,omitempty" xml:"DebugVersion,omitempty"`
-	// Industry
-	//
-	// example:
-	//
-	// 通用
-	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	// Indicates whether the debug version is in Draft status
-	//
+	Industry     *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	// example:
 	//
 	// false
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
-	// Indicates whether the version is in Draft status
-	//
 	// example:
 	//
 	// false
-	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
-	// Scenario
-	//
-	// example:
-	//
-	// 电销
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// Script Description
-	//
-	// example:
-	//
-	// 销售话术
+	IsDrafted         *bool   `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	Scene             *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
-	// Scenario ID
-	//
 	// example:
 	//
 	// fa0e21e9-caab-4629-9121-1e341243d599
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// Scenario Name
-	//
-	// example:
-	//
-	// 销售话术
+	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// Status of the application version. Valid values:
-	//
-	// - **DRAFTED**: Draft
-	//
-	// - **INITIALIZE_IN_PROGRESS**: Initializing
-	//
-	// - **PUBLISHED**: Published
-	//
-	// - **PUBLISH_IN_PROGRESS**: Publishing
-	//
-	// - **ROLLBACK_IN_PROGRESS**: Rolling back
-	//
-	// - **EXAMINE_IN_PROGRESS**: Pending Review
-	//
-	// - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: Published and pending review
-	//
-	// - **PUBLISH_FAILED**: Publish failed
-	//
-	// - **ROLLBACK_FAILED**: Rollback failed
-	//
-	// - **IMPORT_IN_PROGRESS**: Importing
-	//
-	// - **IMPORT_FAILED**: Import failed
-	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Update Time
-	//
 	// example:
 	//
 	// 1579055782000

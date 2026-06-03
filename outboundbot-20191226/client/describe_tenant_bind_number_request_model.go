@@ -14,13 +14,9 @@ type iDescribeTenantBindNumberRequest interface {
 }
 
 type DescribeTenantBindNumberRequest struct {
-	// The bound number (Required)
-	//
-	// > Query the binding status of the specified number across all instances. Obtain the number from the response parameters of ListAllTenantBindNumberBinding.
-	//
 	// example:
 	//
-	// 15005059355
+	// 95187
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 

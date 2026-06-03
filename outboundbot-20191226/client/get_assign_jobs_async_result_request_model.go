@@ -14,8 +14,6 @@ type iGetAssignJobsAsyncResultRequest interface {
 }
 
 type GetAssignJobsAsyncResultRequest struct {
-	// Asynchronous task ID.
-	//
 	// This parameter is required.
 	//
 	// example:
