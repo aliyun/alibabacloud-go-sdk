@@ -153,6 +153,11 @@ type AddFilesFromAuthorizedOssRequestFileDetails struct {
 	//
 	// root/path/this_is_temp_xxxx.pdf
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// example:
+	//
+	// AUTO_SELECT
+	Parser       *string                                                  `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	ParserConfig *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig `json:"ParserConfig,omitempty" xml:"ParserConfig,omitempty" type:"Struct"`
 }
 
 func (s AddFilesFromAuthorizedOssRequestFileDetails) String() string {
@@ -171,6 +176,14 @@ func (s *AddFilesFromAuthorizedOssRequestFileDetails) GetOssKey() *string {
 	return s.OssKey
 }
 
+func (s *AddFilesFromAuthorizedOssRequestFileDetails) GetParser() *string {
+	return s.Parser
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetails) GetParserConfig() *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig {
+	return s.ParserConfig
+}
+
 func (s *AddFilesFromAuthorizedOssRequestFileDetails) SetFileName(v string) *AddFilesFromAuthorizedOssRequestFileDetails {
 	s.FileName = &v
 	return s
@@ -181,6 +194,62 @@ func (s *AddFilesFromAuthorizedOssRequestFileDetails) SetOssKey(v string) *AddFi
 	return s
 }
 
+func (s *AddFilesFromAuthorizedOssRequestFileDetails) SetParser(v string) *AddFilesFromAuthorizedOssRequestFileDetails {
+	s.Parser = &v
+	return s
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetails) SetParserConfig(v *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) *AddFilesFromAuthorizedOssRequestFileDetails {
+	s.ParserConfig = v
+	return s
+}
+
 func (s *AddFilesFromAuthorizedOssRequestFileDetails) Validate() error {
+	if s.ParserConfig != nil {
+		if err := s.ParserConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AddFilesFromAuthorizedOssRequestFileDetailsParserConfig struct {
+	// example:
+	//
+	// qwen-vl-max
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// #角色 你是一个专业的图片内容标注人员，擅长识别并描述出图片中的内容。 # 任务目标 请结合输入图片，详细描述图片中的内容。
+	ModelPrompt *string `json:"ModelPrompt,omitempty" xml:"ModelPrompt,omitempty"`
+}
+
+func (s AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) GetModelName() *string {
+	return s.ModelName
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) GetModelPrompt() *string {
+	return s.ModelPrompt
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) SetModelName(v string) *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig {
+	s.ModelName = &v
+	return s
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) SetModelPrompt(v string) *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig {
+	s.ModelPrompt = &v
+	return s
+}
+
+func (s *AddFilesFromAuthorizedOssRequestFileDetailsParserConfig) Validate() error {
 	return dara.Validate(s)
 }
