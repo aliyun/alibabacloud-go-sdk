@@ -66,7 +66,10 @@ type CreateAppAssistantAgentResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// example:
 	//
 	// True
@@ -193,7 +196,10 @@ type CreateAppAssistantAgentResponseBodyModule struct {
 	// example:
 	//
 	// duanwei@qianrutest
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// 测试业务空间
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// example:
 	//

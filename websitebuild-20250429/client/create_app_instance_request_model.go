@@ -15,12 +15,18 @@ type iCreateAppInstanceRequest interface {
 	GetAutoRenew() *bool
 	SetClientToken(v string) *CreateAppInstanceRequest
 	GetClientToken() *string
+	SetCreateAction(v string) *CreateAppInstanceRequest
+	GetCreateAction() *string
 	SetDeployArea(v string) *CreateAppInstanceRequest
 	GetDeployArea() *string
+	SetDescription(v string) *CreateAppInstanceRequest
+	GetDescription() *string
 	SetDuration(v int32) *CreateAppInstanceRequest
 	GetDuration() *int32
 	SetExtend(v string) *CreateAppInstanceRequest
 	GetExtend() *string
+	SetName(v string) *CreateAppInstanceRequest
+	GetName() *string
 	SetPaymentType(v string) *CreateAppInstanceRequest
 	GetPaymentType() *string
 	SetPricingCycle(v string) *CreateAppInstanceRequest
@@ -33,6 +39,8 @@ type iCreateAppInstanceRequest interface {
 	GetSiteVersion() *string
 	SetTags(v []*CreateAppInstanceRequestTags) *CreateAppInstanceRequest
 	GetTags() []*CreateAppInstanceRequestTags
+	SetVersion(v string) *CreateAppInstanceRequest
+	GetVersion() *string
 }
 
 type CreateAppInstanceRequest struct {
@@ -54,12 +62,20 @@ type CreateAppInstanceRequest struct {
 	//
 	// 210713a117660695309606626a
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// OPEN_SUBSCRIPTION
+	CreateAction *string `json:"CreateAction,omitempty" xml:"CreateAction,omitempty"`
 	// Deployment area
 	//
 	// example:
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
+	// example:
+	//
+	// go-to-the-docks-for-french-fries
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Required. The number of subscription periods
 	//
 	// example:
@@ -72,6 +88,10 @@ type CreateAppInstanceRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// example:
+	//
+	// docs
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Payment type
 	//
 	// example:
@@ -89,7 +109,10 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// 1
-	Quantity        *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// rg-aek2smovqqpvuly
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Site version
 	//
@@ -98,6 +121,10 @@ type CreateAppInstanceRequest struct {
 	// Basic_Edition
 	SiteVersion *string                         `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	Tags        []*CreateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-09-01
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateAppInstanceRequest) String() string {
@@ -120,8 +147,16 @@ func (s *CreateAppInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAppInstanceRequest) GetCreateAction() *string {
+	return s.CreateAction
+}
+
 func (s *CreateAppInstanceRequest) GetDeployArea() *string {
 	return s.DeployArea
+}
+
+func (s *CreateAppInstanceRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *CreateAppInstanceRequest) GetDuration() *int32 {
@@ -130,6 +165,10 @@ func (s *CreateAppInstanceRequest) GetDuration() *int32 {
 
 func (s *CreateAppInstanceRequest) GetExtend() *string {
 	return s.Extend
+}
+
+func (s *CreateAppInstanceRequest) GetName() *string {
+	return s.Name
 }
 
 func (s *CreateAppInstanceRequest) GetPaymentType() *string {
@@ -156,6 +195,10 @@ func (s *CreateAppInstanceRequest) GetTags() []*CreateAppInstanceRequestTags {
 	return s.Tags
 }
 
+func (s *CreateAppInstanceRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CreateAppInstanceRequest) SetApplicationType(v string) *CreateAppInstanceRequest {
 	s.ApplicationType = &v
 	return s
@@ -171,8 +214,18 @@ func (s *CreateAppInstanceRequest) SetClientToken(v string) *CreateAppInstanceRe
 	return s
 }
 
+func (s *CreateAppInstanceRequest) SetCreateAction(v string) *CreateAppInstanceRequest {
+	s.CreateAction = &v
+	return s
+}
+
 func (s *CreateAppInstanceRequest) SetDeployArea(v string) *CreateAppInstanceRequest {
 	s.DeployArea = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequest) SetDescription(v string) *CreateAppInstanceRequest {
+	s.Description = &v
 	return s
 }
 
@@ -183,6 +236,11 @@ func (s *CreateAppInstanceRequest) SetDuration(v int32) *CreateAppInstanceReques
 
 func (s *CreateAppInstanceRequest) SetExtend(v string) *CreateAppInstanceRequest {
 	s.Extend = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequest) SetName(v string) *CreateAppInstanceRequest {
+	s.Name = &v
 	return s
 }
 
@@ -216,6 +274,11 @@ func (s *CreateAppInstanceRequest) SetTags(v []*CreateAppInstanceRequestTags) *C
 	return s
 }
 
+func (s *CreateAppInstanceRequest) SetVersion(v string) *CreateAppInstanceRequest {
+	s.Version = &v
+	return s
+}
+
 func (s *CreateAppInstanceRequest) Validate() error {
 	if s.Tags != nil {
 		for _, item := range s.Tags {
@@ -230,7 +293,13 @@ func (s *CreateAppInstanceRequest) Validate() error {
 }
 
 type CreateAppInstanceRequestTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// Group
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// ufo
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

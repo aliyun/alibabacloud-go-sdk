@@ -29,6 +29,8 @@ type iAppInstanceProfile interface {
 	GetOrderId() *string
 	SetPayTime(v string) *AppInstanceProfile
 	GetPayTime() *string
+	SetPreviewUrl(v string) *AppInstanceProfile
+	GetPreviewUrl() *string
 	SetSeoSite(v string) *AppInstanceProfile
 	GetSeoSite() *string
 	SetSiteVersion(v string) *AppInstanceProfile
@@ -54,6 +56,7 @@ type AppInstanceProfile struct {
 	OrdTime             *string `json:"OrdTime,omitempty" xml:"OrdTime,omitempty"`
 	OrderId             *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PayTime             *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
+	PreviewUrl          *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
 	SeoSite             *string `json:"SeoSite,omitempty" xml:"SeoSite,omitempty"`
 	SiteVersion         *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	SiteVersionText     *string `json:"SiteVersionText,omitempty" xml:"SiteVersionText,omitempty"`
@@ -108,6 +111,10 @@ func (s *AppInstanceProfile) GetOrderId() *string {
 
 func (s *AppInstanceProfile) GetPayTime() *string {
 	return s.PayTime
+}
+
+func (s *AppInstanceProfile) GetPreviewUrl() *string {
+	return s.PreviewUrl
 }
 
 func (s *AppInstanceProfile) GetSeoSite() *string {
@@ -181,6 +188,11 @@ func (s *AppInstanceProfile) SetOrderId(v string) *AppInstanceProfile {
 
 func (s *AppInstanceProfile) SetPayTime(v string) *AppInstanceProfile {
 	s.PayTime = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetPreviewUrl(v string) *AppInstanceProfile {
+	s.PreviewUrl = &v
 	return s
 }
 

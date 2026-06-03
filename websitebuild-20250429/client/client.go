@@ -788,8 +788,16 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.CreateAction) {
+		query["CreateAction"] = request.CreateAction
+	}
+
 	if !dara.IsNil(request.DeployArea) {
 		query["DeployArea"] = request.DeployArea
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.Duration) {
@@ -798,6 +806,10 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 
 	if !dara.IsNil(request.Extend) {
 		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
 	}
 
 	if !dara.IsNil(request.PaymentType) {
@@ -814,6 +826,10 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 
 	if !dara.IsNil(request.SiteVersion) {
 		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
 	}
 
 	body := map[string]interface{}{}

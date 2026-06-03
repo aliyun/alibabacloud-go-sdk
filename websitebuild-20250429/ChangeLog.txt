@@ -1,3 +1,20 @@
+2026-06-03 Version: v2.22.0
+- Support API CreateAIStaffChat.
+- Support API CreateAIStaffConversation.
+- Support API GetAIStaffPreviewUrl.
+- Support API ListAIStaffChatEvents.
+- Support API ListAIStaffChatMessages.
+- Update API AllocateSupabaseForAdmin: add request parameters Env.
+- Update API CreateAppInstance: add request parameters CreateAction.
+- Update API CreateAppInstance: add request parameters Description.
+- Update API CreateAppInstance: add request parameters Name.
+- Update API CreateAppInstance: add request parameters Version.
+- Update API ListAppInstances: add response parameters Body.StartPosition.
+- Update API OperateSupabaseForAdmin: add request parameters Env.
+- Update API QuerySupabaseAuthConfigsForAdmin: add request parameters Env.
+- Update API QuerySupabaseConfigsForAdmin: add request parameters Env.
+
+
 2026-05-28 Version: v2.22.0
 - Support API CreateAIStaffChat.
 - Support API CreateAIStaffConversation.

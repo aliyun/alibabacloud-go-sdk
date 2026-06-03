@@ -43,6 +43,8 @@ type iListAppInstancesResponseBody interface {
 	GetRootErrorCode() *string
 	SetRootErrorMsg(v string) *ListAppInstancesResponseBody
 	GetRootErrorMsg() *string
+	SetStartPosition(v string) *ListAppInstancesResponseBody
+	GetStartPosition() *string
 	SetSynchro(v bool) *ListAppInstancesResponseBody
 	GetSynchro() *bool
 	SetTotalPageNum(v int32) *ListAppInstancesResponseBody
@@ -129,6 +131,10 @@ type ListAppInstancesResponseBody struct {
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// For the current query, apart from pagination limits, the server processes up to the most recent 1000 records. If the result exceeds 1000 records, **ResultLimit*	- is **true**, please narrow down the time range and search again; otherwise, **ResultLimit*	- is **false**.
+	//
+	// example:
+	//
+	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// Error code
 	//
@@ -142,6 +148,10 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// example:
+	//
+	// 1
+	StartPosition *string `json:"StartPosition,omitempty" xml:"StartPosition,omitempty"`
 	// Reserved parameter.
 	//
 	// example:
@@ -230,6 +240,10 @@ func (s *ListAppInstancesResponseBody) GetRootErrorCode() *string {
 
 func (s *ListAppInstancesResponseBody) GetRootErrorMsg() *string {
 	return s.RootErrorMsg
+}
+
+func (s *ListAppInstancesResponseBody) GetStartPosition() *string {
+	return s.StartPosition
 }
 
 func (s *ListAppInstancesResponseBody) GetSynchro() *bool {
@@ -322,6 +336,11 @@ func (s *ListAppInstancesResponseBody) SetRootErrorCode(v string) *ListAppInstan
 
 func (s *ListAppInstancesResponseBody) SetRootErrorMsg(v string) *ListAppInstancesResponseBody {
 	s.RootErrorMsg = &v
+	return s
+}
+
+func (s *ListAppInstancesResponseBody) SetStartPosition(v string) *ListAppInstancesResponseBody {
+	s.StartPosition = &v
 	return s
 }
 

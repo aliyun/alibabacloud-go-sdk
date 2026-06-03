@@ -15,12 +15,18 @@ type iCreateAppInstanceShrinkRequest interface {
 	GetAutoRenew() *bool
 	SetClientToken(v string) *CreateAppInstanceShrinkRequest
 	GetClientToken() *string
+	SetCreateAction(v string) *CreateAppInstanceShrinkRequest
+	GetCreateAction() *string
 	SetDeployArea(v string) *CreateAppInstanceShrinkRequest
 	GetDeployArea() *string
+	SetDescription(v string) *CreateAppInstanceShrinkRequest
+	GetDescription() *string
 	SetDuration(v int32) *CreateAppInstanceShrinkRequest
 	GetDuration() *int32
 	SetExtend(v string) *CreateAppInstanceShrinkRequest
 	GetExtend() *string
+	SetName(v string) *CreateAppInstanceShrinkRequest
+	GetName() *string
 	SetPaymentType(v string) *CreateAppInstanceShrinkRequest
 	GetPaymentType() *string
 	SetPricingCycle(v string) *CreateAppInstanceShrinkRequest
@@ -33,6 +39,8 @@ type iCreateAppInstanceShrinkRequest interface {
 	GetSiteVersion() *string
 	SetTagsShrink(v string) *CreateAppInstanceShrinkRequest
 	GetTagsShrink() *string
+	SetVersion(v string) *CreateAppInstanceShrinkRequest
+	GetVersion() *string
 }
 
 type CreateAppInstanceShrinkRequest struct {
@@ -54,12 +62,20 @@ type CreateAppInstanceShrinkRequest struct {
 	//
 	// 210713a117660695309606626a
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// OPEN_SUBSCRIPTION
+	CreateAction *string `json:"CreateAction,omitempty" xml:"CreateAction,omitempty"`
 	// Deployment area
 	//
 	// example:
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
+	// example:
+	//
+	// go-to-the-docks-for-french-fries
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Required. The number of subscription periods
 	//
 	// example:
@@ -72,6 +88,10 @@ type CreateAppInstanceShrinkRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// example:
+	//
+	// docs
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Payment type
 	//
 	// example:
@@ -89,7 +109,10 @@ type CreateAppInstanceShrinkRequest struct {
 	// example:
 	//
 	// 1
-	Quantity        *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// rg-aek2smovqqpvuly
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Site version
 	//
@@ -98,6 +121,10 @@ type CreateAppInstanceShrinkRequest struct {
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// 2023-09-01
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateAppInstanceShrinkRequest) String() string {
@@ -120,8 +147,16 @@ func (s *CreateAppInstanceShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAppInstanceShrinkRequest) GetCreateAction() *string {
+	return s.CreateAction
+}
+
 func (s *CreateAppInstanceShrinkRequest) GetDeployArea() *string {
 	return s.DeployArea
+}
+
+func (s *CreateAppInstanceShrinkRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *CreateAppInstanceShrinkRequest) GetDuration() *int32 {
@@ -130,6 +165,10 @@ func (s *CreateAppInstanceShrinkRequest) GetDuration() *int32 {
 
 func (s *CreateAppInstanceShrinkRequest) GetExtend() *string {
 	return s.Extend
+}
+
+func (s *CreateAppInstanceShrinkRequest) GetName() *string {
+	return s.Name
 }
 
 func (s *CreateAppInstanceShrinkRequest) GetPaymentType() *string {
@@ -156,6 +195,10 @@ func (s *CreateAppInstanceShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
 }
 
+func (s *CreateAppInstanceShrinkRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CreateAppInstanceShrinkRequest) SetApplicationType(v string) *CreateAppInstanceShrinkRequest {
 	s.ApplicationType = &v
 	return s
@@ -171,8 +214,18 @@ func (s *CreateAppInstanceShrinkRequest) SetClientToken(v string) *CreateAppInst
 	return s
 }
 
+func (s *CreateAppInstanceShrinkRequest) SetCreateAction(v string) *CreateAppInstanceShrinkRequest {
+	s.CreateAction = &v
+	return s
+}
+
 func (s *CreateAppInstanceShrinkRequest) SetDeployArea(v string) *CreateAppInstanceShrinkRequest {
 	s.DeployArea = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetDescription(v string) *CreateAppInstanceShrinkRequest {
+	s.Description = &v
 	return s
 }
 
@@ -183,6 +236,11 @@ func (s *CreateAppInstanceShrinkRequest) SetDuration(v int32) *CreateAppInstance
 
 func (s *CreateAppInstanceShrinkRequest) SetExtend(v string) *CreateAppInstanceShrinkRequest {
 	s.Extend = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetName(v string) *CreateAppInstanceShrinkRequest {
+	s.Name = &v
 	return s
 }
 
@@ -213,6 +271,11 @@ func (s *CreateAppInstanceShrinkRequest) SetSiteVersion(v string) *CreateAppInst
 
 func (s *CreateAppInstanceShrinkRequest) SetTagsShrink(v string) *CreateAppInstanceShrinkRequest {
 	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetVersion(v string) *CreateAppInstanceShrinkRequest {
+	s.Version = &v
 	return s
 }
 
