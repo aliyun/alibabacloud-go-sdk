@@ -215,6 +215,10 @@ func (s *ChatRequestInput) Validate() error {
 type ChatRequestInputContent struct {
 	// example:
 	//
+	// report.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
 	// /workspace/report.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
@@ -239,6 +243,10 @@ func (s ChatRequestInputContent) GoString() string {
 	return s.String()
 }
 
+func (s *ChatRequestInputContent) GetFileName() *string {
+	return s.FileName
+}
+
 func (s *ChatRequestInputContent) GetFileUrl() *string {
 	return s.FileUrl
 }
@@ -253,6 +261,11 @@ func (s *ChatRequestInputContent) GetText() *string {
 
 func (s *ChatRequestInputContent) GetType() *string {
 	return s.Type
+}
+
+func (s *ChatRequestInputContent) SetFileName(v string) *ChatRequestInputContent {
+	s.FileName = &v
+	return s
 }
 
 func (s *ChatRequestInputContent) SetFileUrl(v string) *ChatRequestInputContent {
