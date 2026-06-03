@@ -4560,6 +4560,10 @@ func (client *Client) CreateCapacityReservationWithOptions(request *CreateCapaci
 		query["InstanceAmount"] = request.InstanceAmount
 	}
 
+	if !dara.IsNil(request.InstanceChargeType) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
 	if !dara.IsNil(request.InstanceType) {
 		query["InstanceType"] = request.InstanceType
 	}

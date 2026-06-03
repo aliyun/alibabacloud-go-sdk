@@ -1383,6 +1383,7 @@ type DescribeInstancesResponseBodyInstancesInstanceMetadataOptions struct {
 	HttpEndpoint            *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
 	HttpPutResponseHopLimit *int32  `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
 	HttpTokens              *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	InstanceMetadataTags    *string `json:"InstanceMetadataTags,omitempty" xml:"InstanceMetadataTags,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) String() string {
@@ -1405,6 +1406,10 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) GetHttpT
 	return s.HttpTokens
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) GetInstanceMetadataTags() *string {
+	return s.InstanceMetadataTags
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) SetHttpEndpoint(v string) *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions {
 	s.HttpEndpoint = &v
 	return s
@@ -1417,6 +1422,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) SetHttpP
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) SetHttpTokens(v string) *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions {
 	s.HttpTokens = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions) SetInstanceMetadataTags(v string) *DescribeInstancesResponseBodyInstancesInstanceMetadataOptions {
+	s.InstanceMetadataTags = &v
 	return s
 }
 

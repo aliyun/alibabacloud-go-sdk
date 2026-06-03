@@ -21,6 +21,8 @@ type iCreateCapacityReservationRequest interface {
 	GetEndTimeType() *string
 	SetInstanceAmount(v int32) *CreateCapacityReservationRequest
 	GetInstanceAmount() *int32
+	SetInstanceChargeType(v string) *CreateCapacityReservationRequest
+	GetInstanceChargeType() *string
 	SetInstanceType(v string) *CreateCapacityReservationRequest
 	GetInstanceType() *string
 	SetOwnerAccount(v string) *CreateCapacityReservationRequest
@@ -84,7 +86,8 @@ type CreateCapacityReservationRequest struct {
 	// example:
 	//
 	// 2
-	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	InstanceAmount     *int32  `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance type. You can create a capacity reservation to reserve the capacity of only one instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the instance types provided by ECS.
 	//
 	// This parameter is required.
@@ -177,6 +180,10 @@ func (s *CreateCapacityReservationRequest) GetInstanceAmount() *int32 {
 	return s.InstanceAmount
 }
 
+func (s *CreateCapacityReservationRequest) GetInstanceChargeType() *string {
+	return s.InstanceChargeType
+}
+
 func (s *CreateCapacityReservationRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
@@ -248,6 +255,11 @@ func (s *CreateCapacityReservationRequest) SetEndTimeType(v string) *CreateCapac
 
 func (s *CreateCapacityReservationRequest) SetInstanceAmount(v int32) *CreateCapacityReservationRequest {
 	s.InstanceAmount = &v
+	return s
+}
+
+func (s *CreateCapacityReservationRequest) SetInstanceChargeType(v string) *CreateCapacityReservationRequest {
+	s.InstanceChargeType = &v
 	return s
 }
 

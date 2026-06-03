@@ -3384,6 +3384,10 @@ func (client *Client) CreateCapacityReservationWithContext(ctx context.Context, 
 		query["InstanceAmount"] = request.InstanceAmount
 	}
 
+	if !dara.IsNil(request.InstanceChargeType) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
 	if !dara.IsNil(request.InstanceType) {
 		query["InstanceType"] = request.InstanceType
 	}

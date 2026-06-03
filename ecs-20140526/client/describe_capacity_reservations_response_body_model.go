@@ -148,6 +148,7 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSet) Validat
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem struct {
 	AllocatedResources              *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResources `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty" type:"Struct"`
 	CapacityReservationOwnerId      *string                                                                                                  `json:"CapacityReservationOwnerId,omitempty" xml:"CapacityReservationOwnerId,omitempty"`
+	DeliveryTime                    *string                                                                                                  `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
 	Description                     *string                                                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndTime                         *string                                                                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EndTimeType                     *string                                                                                                  `json:"EndTimeType,omitempty" xml:"EndTimeType,omitempty"`
@@ -165,6 +166,7 @@ type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReser
 	Status                          *string                                                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                            *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TimeSlot                        *string                                                                                                  `json:"TimeSlot,omitempty" xml:"TimeSlot,omitempty"`
+	UnlockedTime                    *string                                                                                                  `json:"UnlockedTime,omitempty" xml:"UnlockedTime,omitempty"`
 }
 
 func (s DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) String() string {
@@ -181,6 +183,10 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) GetCapacityReservationOwnerId() *string {
 	return s.CapacityReservationOwnerId
+}
+
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) GetDeliveryTime() *string {
+	return s.DeliveryTime
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) GetDescription() *string {
@@ -251,6 +257,10 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 	return s.TimeSlot
 }
 
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) GetUnlockedTime() *string {
+	return s.UnlockedTime
+}
+
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetAllocatedResources(v *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResources) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
 	s.AllocatedResources = v
 	return s
@@ -258,6 +268,11 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetCapacityReservationOwnerId(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
 	s.CapacityReservationOwnerId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetDeliveryTime(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
+	s.DeliveryTime = &v
 	return s
 }
 
@@ -343,6 +358,11 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetTimeSlot(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
 	s.TimeSlot = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetUnlockedTime(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
+	s.UnlockedTime = &v
 	return s
 }
 
