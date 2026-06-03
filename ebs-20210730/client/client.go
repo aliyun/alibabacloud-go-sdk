@@ -168,8 +168,6 @@ func (client *Client) AddDiskReplicaPair(request *AddDiskReplicaPairRequest) (_r
 //
 // CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 //
-// @param request - ApplyLensServiceRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyLensServiceResponse
@@ -300,8 +298,6 @@ func (client *Client) BindEnterpriseSnapshotPolicy(request *BindEnterpriseSnapsh
 // ## Usage notes
 //
 // CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-//
-// @param request - CancelLensServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2030,108 +2026,6 @@ func (client *Client) DescribeDiagnoseReport(request *DescribeDiagnoseReportRequ
 
 // Summary:
 //
-// Queries the risk events of a disk. The operation is getting offline. Switch to the new operation DescribeEvents.
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-//
-// @param request - DescribeDiskEventsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeDiskEventsResponse
-func (client *Client) DescribeDiskEventsWithOptions(request *DescribeDiskEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskEventsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DiskCategory) {
-		query["DiskCategory"] = request.DiskCategory
-	}
-
-	if !dara.IsNil(request.DiskId) {
-		query["DiskId"] = request.DiskId
-	}
-
-	if !dara.IsNil(request.EndTime) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !dara.IsNil(request.MaxResults) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !dara.IsNil(request.NextToken) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.StartTime) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.Type) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeDiskEvents"),
-		Version:     dara.String("2021-07-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeDiskEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the risk events of a disk. The operation is getting offline. Switch to the new operation DescribeEvents.
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-//
-// @param request - DescribeDiskEventsRequest
-//
-// @return DescribeDiskEventsResponse
-func (client *Client) DescribeDiskEvents(request *DescribeDiskEventsRequest) (_result *DescribeDiskEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiskEventsResponse{}
-	_body, _err := client.DescribeDiskEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries fine-grained monitoring data of a disk.
 //
 // Description:
@@ -2225,104 +2119,6 @@ func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDiskMonitorDataResponse{}
 	_body, _err := client.DescribeDiskMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries fine-grained monitoring data of multiple disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-//
-// @param request - DescribeDiskMonitorDataListRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeDiskMonitorDataListResponse
-func (client *Client) DescribeDiskMonitorDataListWithOptions(request *DescribeDiskMonitorDataListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskMonitorDataListResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DiskIds) {
-		query["DiskIds"] = request.DiskIds
-	}
-
-	if !dara.IsNil(request.EndTime) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !dara.IsNil(request.MaxResults) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !dara.IsNil(request.NextToken) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !dara.IsNil(request.StartTime) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.Type) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeDiskMonitorDataList"),
-		Version:     dara.String("2021-07-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeDiskMonitorDataListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries fine-grained monitoring data of multiple disks. You can query only the burst performance data of ESSD AutoPL disks. The data is aggregated by hour.
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-//
-// @param request - DescribeDiskMonitorDataListRequest
-//
-// @return DescribeDiskMonitorDataListResponse
-func (client *Client) DescribeDiskMonitorDataList(request *DescribeDiskMonitorDataListRequest) (_result *DescribeDiskMonitorDataListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiskMonitorDataListResponse{}
-	_body, _err := client.DescribeDiskMonitorDataListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2923,8 +2719,6 @@ func (client *Client) DescribeLensMonitorDisks(request *DescribeLensMonitorDisks
 // ## Usage notes
 //
 // CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
-//
-// @param request - DescribeLensServiceStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
