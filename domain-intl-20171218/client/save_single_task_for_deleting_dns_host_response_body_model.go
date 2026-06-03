@@ -1,0 +1,51 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iSaveSingleTaskForDeletingDnsHostResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *SaveSingleTaskForDeletingDnsHostResponseBody
+	GetRequestId() *string
+	SetTaskNo(v string) *SaveSingleTaskForDeletingDnsHostResponseBody
+	GetTaskNo() *string
+}
+
+type SaveSingleTaskForDeletingDnsHostResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveSingleTaskForDeletingDnsHostResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SaveSingleTaskForDeletingDnsHostResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForDeletingDnsHostResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *SaveSingleTaskForDeletingDnsHostResponseBody) GetTaskNo() *string {
+	return s.TaskNo
+}
+
+func (s *SaveSingleTaskForDeletingDnsHostResponseBody) SetRequestId(v string) *SaveSingleTaskForDeletingDnsHostResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveSingleTaskForDeletingDnsHostResponseBody) SetTaskNo(v string) *SaveSingleTaskForDeletingDnsHostResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+func (s *SaveSingleTaskForDeletingDnsHostResponseBody) Validate() error {
+	return dara.Validate(s)
+}

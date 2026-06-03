@@ -2,66 +2,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("domain-intl"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // @param request - AcknowledgeTaskResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AcknowledgeTaskResultResponse
-func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskResultRequest, runtime *dara.RuntimeOptions) (_result *AcknowledgeTaskResultResponse, _err error) {
+func (client *Client) AcknowledgeTaskResultWithContext(ctx context.Context, request *AcknowledgeTaskResultRequest, runtime *dara.RuntimeOptions) (_result *AcknowledgeTaskResultResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -96,25 +47,11 @@ func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AcknowledgeTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AcknowledgeTaskResultRequest
-//
-// @return AcknowledgeTaskResultResponse
-func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultRequest) (_result *AcknowledgeTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AcknowledgeTaskResultResponse{}
-	_body, _err := client.AcknowledgeTaskResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -123,7 +60,7 @@ func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchFuzzyMatchDomainSensitiveWordResponse
-func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *BatchFuzzyMatchDomainSensitiveWordRequest, runtime *dara.RuntimeOptions) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
+func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithContext(ctx context.Context, request *BatchFuzzyMatchDomainSensitiveWordRequest, runtime *dara.RuntimeOptions) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -158,25 +95,11 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *Bat
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchFuzzyMatchDomainSensitiveWordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - BatchFuzzyMatchDomainSensitiveWordRequest
-//
-// @return BatchFuzzyMatchDomainSensitiveWordResponse
-func (client *Client) BatchFuzzyMatchDomainSensitiveWord(request *BatchFuzzyMatchDomainSensitiveWordRequest) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchFuzzyMatchDomainSensitiveWordResponse{}
-	_body, _err := client.BatchFuzzyMatchDomainSensitiveWordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -185,7 +108,7 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWord(request *BatchFuzzyMatc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelDomainVerificationResponse
-func (client *Client) CancelDomainVerificationWithOptions(request *CancelDomainVerificationRequest, runtime *dara.RuntimeOptions) (_result *CancelDomainVerificationResponse, _err error) {
+func (client *Client) CancelDomainVerificationWithContext(ctx context.Context, request *CancelDomainVerificationRequest, runtime *dara.RuntimeOptions) (_result *CancelDomainVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -224,25 +147,11 @@ func (client *Client) CancelDomainVerificationWithOptions(request *CancelDomainV
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelDomainVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CancelDomainVerificationRequest
-//
-// @return CancelDomainVerificationResponse
-func (client *Client) CancelDomainVerification(request *CancelDomainVerificationRequest) (_result *CancelDomainVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelDomainVerificationResponse{}
-	_body, _err := client.CancelDomainVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -251,7 +160,7 @@ func (client *Client) CancelDomainVerification(request *CancelDomainVerification
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelTaskResponse
-func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
+func (client *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -286,25 +195,11 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CancelTaskRequest
-//
-// @return CancelTaskResponse
-func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelTaskResponse{}
-	_body, _err := client.CancelTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -313,7 +208,7 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckDomainResponse
-func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtime *dara.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
+func (client *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomainRequest, runtime *dara.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -360,25 +255,11 @@ func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckDomainRequest
-//
-// @return CheckDomainResponse
-func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckDomainResponse{}
-	_body, _err := client.CheckDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -387,7 +268,7 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckDomainSunriseClaimResponse
-func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSunriseClaimRequest, runtime *dara.RuntimeOptions) (_result *CheckDomainSunriseClaimResponse, _err error) {
+func (client *Client) CheckDomainSunriseClaimWithContext(ctx context.Context, request *CheckDomainSunriseClaimRequest, runtime *dara.RuntimeOptions) (_result *CheckDomainSunriseClaimResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -422,25 +303,11 @@ func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSun
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckDomainSunriseClaimResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckDomainSunriseClaimRequest
-//
-// @return CheckDomainSunriseClaimResponse
-func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRequest) (_result *CheckDomainSunriseClaimResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckDomainSunriseClaimResponse{}
-	_body, _err := client.CheckDomainSunriseClaimWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -449,7 +316,7 @@ func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckTransferInFeasibilityResponse
-func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransferInFeasibilityRequest, runtime *dara.RuntimeOptions) (_result *CheckTransferInFeasibilityResponse, _err error) {
+func (client *Client) CheckTransferInFeasibilityWithContext(ctx context.Context, request *CheckTransferInFeasibilityRequest, runtime *dara.RuntimeOptions) (_result *CheckTransferInFeasibilityResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -488,25 +355,11 @@ func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransf
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckTransferInFeasibilityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckTransferInFeasibilityRequest
-//
-// @return CheckTransferInFeasibilityResponse
-func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibilityRequest) (_result *CheckTransferInFeasibilityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckTransferInFeasibilityResponse{}
-	_body, _err := client.CheckTransferInFeasibilityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -515,7 +368,7 @@ func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfirmTransferInEmailResponse
-func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransferInEmailRequest, runtime *dara.RuntimeOptions) (_result *ConfirmTransferInEmailResponse, _err error) {
+func (client *Client) ConfirmTransferInEmailWithContext(ctx context.Context, request *ConfirmTransferInEmailRequest, runtime *dara.RuntimeOptions) (_result *ConfirmTransferInEmailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -554,25 +407,11 @@ func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransfer
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfirmTransferInEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ConfirmTransferInEmailRequest
-//
-// @return ConfirmTransferInEmailResponse
-func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequest) (_result *ConfirmTransferInEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfirmTransferInEmailResponse{}
-	_body, _err := client.ConfirmTransferInEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -581,7 +420,7 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEmailVerificationResponse
-func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *DeleteEmailVerificationResponse, _err error) {
+func (client *Client) DeleteEmailVerificationWithContext(ctx context.Context, request *DeleteEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *DeleteEmailVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -616,25 +455,11 @@ func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVer
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEmailVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteEmailVerificationRequest
-//
-// @return DeleteEmailVerificationResponse
-func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRequest) (_result *DeleteEmailVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEmailVerificationResponse{}
-	_body, _err := client.DeleteEmailVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -643,7 +468,7 @@ func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistrantProfileResponse
-func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistrantProfileRequest, runtime *dara.RuntimeOptions) (_result *DeleteRegistrantProfileResponse, _err error) {
+func (client *Client) DeleteRegistrantProfileWithContext(ctx context.Context, request *DeleteRegistrantProfileRequest, runtime *dara.RuntimeOptions) (_result *DeleteRegistrantProfileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -678,25 +503,11 @@ func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistra
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRegistrantProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteRegistrantProfileRequest
-//
-// @return DeleteRegistrantProfileResponse
-func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRequest) (_result *DeleteRegistrantProfileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRegistrantProfileResponse{}
-	_body, _err := client.DeleteRegistrantProfileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -705,7 +516,7 @@ func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EmailVerifiedResponse
-func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, runtime *dara.RuntimeOptions) (_result *EmailVerifiedResponse, _err error) {
+func (client *Client) EmailVerifiedWithContext(ctx context.Context, request *EmailVerifiedRequest, runtime *dara.RuntimeOptions) (_result *EmailVerifiedResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -740,25 +551,11 @@ func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &EmailVerifiedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - EmailVerifiedRequest
-//
-// @return EmailVerifiedResponse
-func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *EmailVerifiedResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EmailVerifiedResponse{}
-	_body, _err := client.EmailVerifiedWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -767,7 +564,7 @@ func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *Ema
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FuzzyMatchDomainSensitiveWordResponse
-func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMatchDomainSensitiveWordRequest, runtime *dara.RuntimeOptions) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
+func (client *Client) FuzzyMatchDomainSensitiveWordWithContext(ctx context.Context, request *FuzzyMatchDomainSensitiveWordRequest, runtime *dara.RuntimeOptions) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -802,25 +599,11 @@ func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMat
 		BodyType:    dara.String("json"),
 	}
 	_result = &FuzzyMatchDomainSensitiveWordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - FuzzyMatchDomainSensitiveWordRequest
-//
-// @return FuzzyMatchDomainSensitiveWordResponse
-func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSensitiveWordRequest) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FuzzyMatchDomainSensitiveWordResponse{}
-	_body, _err := client.FuzzyMatchDomainSensitiveWordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -829,7 +612,7 @@ func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEmailVerificationResponse
-func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *ListEmailVerificationResponse, _err error) {
+func (client *Client) ListEmailVerificationWithContext(ctx context.Context, request *ListEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *ListEmailVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -884,25 +667,11 @@ func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerific
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEmailVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListEmailVerificationRequest
-//
-// @return ListEmailVerificationResponse
-func (client *Client) ListEmailVerification(request *ListEmailVerificationRequest) (_result *ListEmailVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEmailVerificationResponse{}
-	_body, _err := client.ListEmailVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -911,7 +680,7 @@ func (client *Client) ListEmailVerification(request *ListEmailVerificationReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LookupTmchNoticeResponse
-func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeRequest, runtime *dara.RuntimeOptions) (_result *LookupTmchNoticeResponse, _err error) {
+func (client *Client) LookupTmchNoticeWithContext(ctx context.Context, request *LookupTmchNoticeRequest, runtime *dara.RuntimeOptions) (_result *LookupTmchNoticeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -946,25 +715,11 @@ func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &LookupTmchNoticeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - LookupTmchNoticeRequest
-//
-// @return LookupTmchNoticeResponse
-func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_result *LookupTmchNoticeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LookupTmchNoticeResponse{}
-	_body, _err := client.LookupTmchNoticeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -973,7 +728,7 @@ func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PollTaskResultResponse
-func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, runtime *dara.RuntimeOptions) (_result *PollTaskResultResponse, _err error) {
+func (client *Client) PollTaskResultWithContext(ctx context.Context, request *PollTaskResultRequest, runtime *dara.RuntimeOptions) (_result *PollTaskResultResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1028,25 +783,11 @@ func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &PollTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - PollTaskResultRequest
-//
-// @return PollTaskResultResponse
-func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *PollTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PollTaskResultResponse{}
-	_body, _err := client.PollTaskResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1055,7 +796,7 @@ func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *P
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryArtExtensionResponse
-func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionRequest, runtime *dara.RuntimeOptions) (_result *QueryArtExtensionResponse, _err error) {
+func (client *Client) QueryArtExtensionWithContext(ctx context.Context, request *QueryArtExtensionRequest, runtime *dara.RuntimeOptions) (_result *QueryArtExtensionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1090,25 +831,11 @@ func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryArtExtensionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryArtExtensionRequest
-//
-// @return QueryArtExtensionResponse
-func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_result *QueryArtExtensionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryArtExtensionResponse{}
-	_body, _err := client.QueryArtExtensionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1117,7 +844,7 @@ func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryChangeLogListResponse
-func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListRequest, runtime *dara.RuntimeOptions) (_result *QueryChangeLogListResponse, _err error) {
+func (client *Client) QueryChangeLogListWithContext(ctx context.Context, request *QueryChangeLogListRequest, runtime *dara.RuntimeOptions) (_result *QueryChangeLogListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1168,25 +895,11 @@ func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryChangeLogListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryChangeLogListRequest
-//
-// @return QueryChangeLogListResponse
-func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_result *QueryChangeLogListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryChangeLogListResponse{}
-	_body, _err := client.QueryChangeLogListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1195,7 +908,7 @@ func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryContactInfoResponse
-func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryContactInfoResponse, _err error) {
+func (client *Client) QueryContactInfoWithContext(ctx context.Context, request *QueryContactInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryContactInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1234,25 +947,11 @@ func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryContactInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryContactInfoRequest
-//
-// @return QueryContactInfoResponse
-func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_result *QueryContactInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryContactInfoResponse{}
-	_body, _err := client.QueryContactInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1261,7 +960,7 @@ func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDSRecordResponse
-func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryDSRecordResponse, _err error) {
+func (client *Client) QueryDSRecordWithContext(ctx context.Context, request *QueryDSRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryDSRecordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1296,25 +995,11 @@ func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDSRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryDSRecordRequest
-//
-// @return QueryDSRecordResponse
-func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *QueryDSRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDSRecordResponse{}
-	_body, _err := client.QueryDSRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1323,7 +1008,7 @@ func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *Que
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDnsHostResponse
-func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runtime *dara.RuntimeOptions) (_result *QueryDnsHostResponse, _err error) {
+func (client *Client) QueryDnsHostWithContext(ctx context.Context, request *QueryDnsHostRequest, runtime *dara.RuntimeOptions) (_result *QueryDnsHostResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1358,25 +1043,11 @@ func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDnsHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryDnsHostRequest
-//
-// @return QueryDnsHostResponse
-func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *QueryDnsHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDnsHostResponse{}
-	_body, _err := client.QueryDnsHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1385,7 +1056,7 @@ func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *Query
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDomainByDomainNameResponse
-func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByDomainNameRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainByDomainNameResponse, _err error) {
+func (client *Client) QueryDomainByDomainNameWithContext(ctx context.Context, request *QueryDomainByDomainNameRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainByDomainNameResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1420,25 +1091,11 @@ func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByD
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDomainByDomainNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryDomainByDomainNameRequest
-//
-// @return QueryDomainByDomainNameResponse
-func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRequest) (_result *QueryDomainByDomainNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDomainByDomainNameResponse{}
-	_body, _err := client.QueryDomainByDomainNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1447,7 +1104,7 @@ func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDomainByInstanceIdResponse
-func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByInstanceIdRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainByInstanceIdResponse, _err error) {
+func (client *Client) QueryDomainByInstanceIdWithContext(ctx context.Context, request *QueryDomainByInstanceIdRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainByInstanceIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1482,25 +1139,11 @@ func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByI
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDomainByInstanceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryDomainByInstanceIdRequest
-//
-// @return QueryDomainByInstanceIdResponse
-func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRequest) (_result *QueryDomainByInstanceIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDomainByInstanceIdResponse{}
-	_body, _err := client.QueryDomainByInstanceIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1513,7 +1156,7 @@ func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDomainListResponse
-func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainListResponse, _err error) {
+func (client *Client) QueryDomainListWithContext(ctx context.Context, request *QueryDomainListRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1592,29 +1235,11 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDomainListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of domain names.
-//
-// @param request - QueryDomainListRequest
-//
-// @return QueryDomainListResponse
-func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result *QueryDomainListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDomainListResponse{}
-	_body, _err := client.QueryDomainListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1623,7 +1248,7 @@ func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDomainRealNameVerificationInfoResponse
-func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *QueryDomainRealNameVerificationInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
+func (client *Client) QueryDomainRealNameVerificationInfoWithContext(ctx context.Context, request *QueryDomainRealNameVerificationInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1662,25 +1287,11 @@ func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *Qu
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDomainRealNameVerificationInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryDomainRealNameVerificationInfoRequest
-//
-// @return QueryDomainRealNameVerificationInfoResponse
-func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRealNameVerificationInfoRequest) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDomainRealNameVerificationInfoResponse{}
-	_body, _err := client.QueryDomainRealNameVerificationInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1689,7 +1300,7 @@ func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryEnsAssociationResponse
-func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociationRequest, runtime *dara.RuntimeOptions) (_result *QueryEnsAssociationResponse, _err error) {
+func (client *Client) QueryEnsAssociationWithContext(ctx context.Context, request *QueryEnsAssociationRequest, runtime *dara.RuntimeOptions) (_result *QueryEnsAssociationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1724,25 +1335,11 @@ func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociatio
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryEnsAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryEnsAssociationRequest
-//
-// @return QueryEnsAssociationResponse
-func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (_result *QueryEnsAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryEnsAssociationResponse{}
-	_body, _err := client.QueryEnsAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1751,7 +1348,7 @@ func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryFailReasonForDomainRealNameVerificationResponse
-func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(request *QueryFailReasonForDomainRealNameVerificationRequest, runtime *dara.RuntimeOptions) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
+func (client *Client) QueryFailReasonForDomainRealNameVerificationWithContext(ctx context.Context, request *QueryFailReasonForDomainRealNameVerificationRequest, runtime *dara.RuntimeOptions) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1790,25 +1387,11 @@ func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryFailReasonForDomainRealNameVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryFailReasonForDomainRealNameVerificationRequest
-//
-// @return QueryFailReasonForDomainRealNameVerificationResponse
-func (client *Client) QueryFailReasonForDomainRealNameVerification(request *QueryFailReasonForDomainRealNameVerificationRequest) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryFailReasonForDomainRealNameVerificationResponse{}
-	_body, _err := client.QueryFailReasonForDomainRealNameVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1817,7 +1400,7 @@ func (client *Client) QueryFailReasonForDomainRealNameVerification(request *Quer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
-func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWithOptions(request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest, runtime *dara.RuntimeOptions) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
+func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWithContext(ctx context.Context, request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest, runtime *dara.RuntimeOptions) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1852,25 +1435,11 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWit
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryFailReasonForRegistrantProfileRealNameVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
-//
-// @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
-func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryFailReasonForRegistrantProfileRealNameVerificationResponse{}
-	_body, _err := client.QueryFailReasonForRegistrantProfileRealNameVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1879,7 +1448,7 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryLocalEnsAssociationResponse
-func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEnsAssociationRequest, runtime *dara.RuntimeOptions) (_result *QueryLocalEnsAssociationResponse, _err error) {
+func (client *Client) QueryLocalEnsAssociationWithContext(ctx context.Context, request *QueryLocalEnsAssociationRequest, runtime *dara.RuntimeOptions) (_result *QueryLocalEnsAssociationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1914,25 +1483,11 @@ func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEns
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryLocalEnsAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryLocalEnsAssociationRequest
-//
-// @return QueryLocalEnsAssociationResponse
-func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociationRequest) (_result *QueryLocalEnsAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryLocalEnsAssociationResponse{}
-	_body, _err := client.QueryLocalEnsAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1941,7 +1496,7 @@ func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociation
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRegistrantProfileRealNameVerificationInfoResponse
-func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(request *QueryRegistrantProfileRealNameVerificationInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
+func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithContext(ctx context.Context, request *QueryRegistrantProfileRealNameVerificationInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1980,25 +1535,11 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRegistrantProfileRealNameVerificationInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
-//
-// @return QueryRegistrantProfileRealNameVerificationInfoResponse
-func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *QueryRegistrantProfileRealNameVerificationInfoRequest) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRegistrantProfileRealNameVerificationInfoResponse{}
-	_body, _err := client.QueryRegistrantProfileRealNameVerificationInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2007,7 +1548,7 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *Qu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRegistrantProfilesResponse
-func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistrantProfilesRequest, runtime *dara.RuntimeOptions) (_result *QueryRegistrantProfilesResponse, _err error) {
+func (client *Client) QueryRegistrantProfilesWithContext(ctx context.Context, request *QueryRegistrantProfilesRequest, runtime *dara.RuntimeOptions) (_result *QueryRegistrantProfilesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2074,25 +1615,11 @@ func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistran
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRegistrantProfilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryRegistrantProfilesRequest
-//
-// @return QueryRegistrantProfilesResponse
-func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRequest) (_result *QueryRegistrantProfilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRegistrantProfilesResponse{}
-	_body, _err := client.QueryRegistrantProfilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2101,7 +1628,7 @@ func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTaskDetailHistoryResponse
-func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetailHistoryRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskDetailHistoryResponse, _err error) {
+func (client *Client) QueryTaskDetailHistoryWithContext(ctx context.Context, request *QueryTaskDetailHistoryRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskDetailHistoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2156,25 +1683,11 @@ func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetail
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTaskDetailHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTaskDetailHistoryRequest
-//
-// @return QueryTaskDetailHistoryResponse
-func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequest) (_result *QueryTaskDetailHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTaskDetailHistoryResponse{}
-	_body, _err := client.QueryTaskDetailHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2183,7 +1696,7 @@ func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTaskDetailListResponse
-func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailListRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskDetailListResponse, _err error) {
+func (client *Client) QueryTaskDetailListWithContext(ctx context.Context, request *QueryTaskDetailListRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskDetailListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2238,25 +1751,11 @@ func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTaskDetailListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTaskDetailListRequest
-//
-// @return QueryTaskDetailListResponse
-func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (_result *QueryTaskDetailListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTaskDetailListResponse{}
-	_body, _err := client.QueryTaskDetailListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2265,7 +1764,7 @@ func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTaskInfoHistoryResponse
-func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHistoryRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskInfoHistoryResponse, _err error) {
+func (client *Client) QueryTaskInfoHistoryWithContext(ctx context.Context, request *QueryTaskInfoHistoryRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskInfoHistoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2316,25 +1815,11 @@ func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHist
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTaskInfoHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTaskInfoHistoryRequest
-//
-// @return QueryTaskInfoHistoryResponse
-func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest) (_result *QueryTaskInfoHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTaskInfoHistoryResponse{}
-	_body, _err := client.QueryTaskInfoHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2343,7 +1828,7 @@ func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTaskListResponse
-func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskListResponse, _err error) {
+func (client *Client) QueryTaskListWithContext(ctx context.Context, request *QueryTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryTaskListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2390,25 +1875,11 @@ func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTaskListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTaskListRequest
-//
-// @return QueryTaskListResponse
-func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *QueryTaskListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTaskListResponse{}
-	_body, _err := client.QueryTaskListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2417,7 +1888,7 @@ func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *Que
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTransferInByInstanceIdResponse
-func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTransferInByInstanceIdRequest, runtime *dara.RuntimeOptions) (_result *QueryTransferInByInstanceIdResponse, _err error) {
+func (client *Client) QueryTransferInByInstanceIdWithContext(ctx context.Context, request *QueryTransferInByInstanceIdRequest, runtime *dara.RuntimeOptions) (_result *QueryTransferInByInstanceIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2452,25 +1923,11 @@ func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTrans
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTransferInByInstanceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTransferInByInstanceIdRequest
-//
-// @return QueryTransferInByInstanceIdResponse
-func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInstanceIdRequest) (_result *QueryTransferInByInstanceIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTransferInByInstanceIdResponse{}
-	_body, _err := client.QueryTransferInByInstanceIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2479,7 +1936,7 @@ func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTransferInListResponse
-func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInListRequest, runtime *dara.RuntimeOptions) (_result *QueryTransferInListResponse, _err error) {
+func (client *Client) QueryTransferInListWithContext(ctx context.Context, request *QueryTransferInListRequest, runtime *dara.RuntimeOptions) (_result *QueryTransferInListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2534,25 +1991,11 @@ func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTransferInListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTransferInListRequest
-//
-// @return QueryTransferInListResponse
-func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (_result *QueryTransferInListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTransferInListResponse{}
-	_body, _err := client.QueryTransferInListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2561,7 +2004,7 @@ func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryTransferOutInfoResponse
-func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryTransferOutInfoResponse, _err error) {
+func (client *Client) QueryTransferOutInfoWithContext(ctx context.Context, request *QueryTransferOutInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryTransferOutInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2596,25 +2039,11 @@ func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutI
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTransferOutInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryTransferOutInfoRequest
-//
-// @return QueryTransferOutInfoResponse
-func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest) (_result *QueryTransferOutInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryTransferOutInfoResponse{}
-	_body, _err := client.QueryTransferOutInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2623,7 +2052,7 @@ func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RegistrantProfileRealNameVerificationResponse
-func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *RegistrantProfileRealNameVerificationRequest, runtime *dara.RuntimeOptions) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
+func (client *Client) RegistrantProfileRealNameVerificationWithContext(ctx context.Context, request *RegistrantProfileRealNameVerificationRequest, runtime *dara.RuntimeOptions) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2672,25 +2101,11 @@ func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RegistrantProfileRealNameVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RegistrantProfileRealNameVerificationRequest
-//
-// @return RegistrantProfileRealNameVerificationResponse
-func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantProfileRealNameVerificationRequest) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RegistrantProfileRealNameVerificationResponse{}
-	_body, _err := client.RegistrantProfileRealNameVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2699,7 +2114,7 @@ func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResendEmailVerificationResponse
-func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *ResendEmailVerificationResponse, _err error) {
+func (client *Client) ResendEmailVerificationWithContext(ctx context.Context, request *ResendEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *ResendEmailVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2734,25 +2149,11 @@ func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVer
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResendEmailVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ResendEmailVerificationRequest
-//
-// @return ResendEmailVerificationResponse
-func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRequest) (_result *ResendEmailVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResendEmailVerificationResponse{}
-	_body, _err := client.ResendEmailVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2761,7 +2162,7 @@ func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForCreatingOrderActivateResponse
-func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *SaveBatchTaskForCreatingOrderActivateRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
+func (client *Client) SaveBatchTaskForCreatingOrderActivateWithContext(ctx context.Context, request *SaveBatchTaskForCreatingOrderActivateRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2812,25 +2213,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForCreatingOrderActivateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForCreatingOrderActivateRequest
-//
-// @return SaveBatchTaskForCreatingOrderActivateResponse
-func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTaskForCreatingOrderActivateRequest) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForCreatingOrderActivateResponse{}
-	_body, _err := client.SaveBatchTaskForCreatingOrderActivateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2839,7 +2226,7 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForCreatingOrderRedeemResponse
-func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *SaveBatchTaskForCreatingOrderRedeemRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
+func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithContext(ctx context.Context, request *SaveBatchTaskForCreatingOrderRedeemRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2890,25 +2277,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *Sa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForCreatingOrderRedeemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForCreatingOrderRedeemRequest
-//
-// @return SaveBatchTaskForCreatingOrderRedeemResponse
-func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTaskForCreatingOrderRedeemRequest) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForCreatingOrderRedeemResponse{}
-	_body, _err := client.SaveBatchTaskForCreatingOrderRedeemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2917,7 +2290,7 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForCreatingOrderRenewResponse
-func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *SaveBatchTaskForCreatingOrderRenewRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
+func (client *Client) SaveBatchTaskForCreatingOrderRenewWithContext(ctx context.Context, request *SaveBatchTaskForCreatingOrderRenewRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2968,25 +2341,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *Sav
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForCreatingOrderRenewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForCreatingOrderRenewRequest
-//
-// @return SaveBatchTaskForCreatingOrderRenewResponse
-func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskForCreatingOrderRenewRequest) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForCreatingOrderRenewResponse{}
-	_body, _err := client.SaveBatchTaskForCreatingOrderRenewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2995,7 +2354,7 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForCreatingOrderTransferResponse
-func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *SaveBatchTaskForCreatingOrderTransferRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
+func (client *Client) SaveBatchTaskForCreatingOrderTransferWithContext(ctx context.Context, request *SaveBatchTaskForCreatingOrderTransferRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3046,25 +2405,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForCreatingOrderTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForCreatingOrderTransferRequest
-//
-// @return SaveBatchTaskForCreatingOrderTransferResponse
-func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTaskForCreatingOrderTransferRequest) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForCreatingOrderTransferResponse{}
-	_body, _err := client.SaveBatchTaskForCreatingOrderTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3073,7 +2418,7 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForDomainNameProxyServiceResponse
-func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request *SaveBatchTaskForDomainNameProxyServiceRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
+func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithContext(ctx context.Context, request *SaveBatchTaskForDomainNameProxyServiceRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3112,25 +2457,11 @@ func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForDomainNameProxyServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForDomainNameProxyServiceRequest
-//
-// @return SaveBatchTaskForDomainNameProxyServiceResponse
-func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchTaskForDomainNameProxyServiceRequest) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForDomainNameProxyServiceResponse{}
-	_body, _err := client.SaveBatchTaskForDomainNameProxyServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3139,7 +2470,7 @@ func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForModifyingDomainDnsResponse
-func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *SaveBatchTaskForModifyingDomainDnsRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
+func (client *Client) SaveBatchTaskForModifyingDomainDnsWithContext(ctx context.Context, request *SaveBatchTaskForModifyingDomainDnsRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3182,25 +2513,11 @@ func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *Sav
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForModifyingDomainDnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForModifyingDomainDnsRequest
-//
-// @return SaveBatchTaskForModifyingDomainDnsResponse
-func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskForModifyingDomainDnsRequest) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForModifyingDomainDnsResponse{}
-	_body, _err := client.SaveBatchTaskForModifyingDomainDnsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3213,7 +2530,7 @@ func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForReserveDropListDomainResponse
-func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *SaveBatchTaskForReserveDropListDomainRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
+func (client *Client) SaveBatchTaskForReserveDropListDomainWithContext(ctx context.Context, request *SaveBatchTaskForReserveDropListDomainRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3244,29 +2561,11 @@ func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForReserveDropListDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 国际站删除抢注批量接口
-//
-// @param request - SaveBatchTaskForReserveDropListDomainRequest
-//
-// @return SaveBatchTaskForReserveDropListDomainResponse
-func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTaskForReserveDropListDomainRequest) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForReserveDropListDomainResponse{}
-	_body, _err := client.SaveBatchTaskForReserveDropListDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3275,7 +2574,7 @@ func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForTransferProhibitionLockResponse
-func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request *SaveBatchTaskForTransferProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
+func (client *Client) SaveBatchTaskForTransferProhibitionLockWithContext(ctx context.Context, request *SaveBatchTaskForTransferProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3314,25 +2613,11 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForTransferProhibitionLockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForTransferProhibitionLockRequest
-//
-// @return SaveBatchTaskForTransferProhibitionLockResponse
-func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatchTaskForTransferProhibitionLockRequest) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForTransferProhibitionLockResponse{}
-	_body, _err := client.SaveBatchTaskForTransferProhibitionLockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3341,7 +2626,7 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatch
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForUpdateProhibitionLockResponse
-func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *SaveBatchTaskForUpdateProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
+func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithContext(ctx context.Context, request *SaveBatchTaskForUpdateProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3380,25 +2665,11 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForUpdateProhibitionLockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForUpdateProhibitionLockRequest
-//
-// @return SaveBatchTaskForUpdateProhibitionLockResponse
-func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTaskForUpdateProhibitionLockRequest) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForUpdateProhibitionLockResponse{}
-	_body, _err := client.SaveBatchTaskForUpdateProhibitionLockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3407,7 +2678,7 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForUpdatingContactInfoResponse
-func (client *Client) SaveBatchTaskForUpdatingContactInfoWithOptions(request *SaveBatchTaskForUpdatingContactInfoRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoResponse, _err error) {
+func (client *Client) SaveBatchTaskForUpdatingContactInfoWithContext(ctx context.Context, request *SaveBatchTaskForUpdatingContactInfoRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3454,25 +2725,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoWithOptions(request *Sa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForUpdatingContactInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForUpdatingContactInfoRequest
-//
-// @return SaveBatchTaskForUpdatingContactInfoResponse
-func (client *Client) SaveBatchTaskForUpdatingContactInfo(request *SaveBatchTaskForUpdatingContactInfoRequest) (_result *SaveBatchTaskForUpdatingContactInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForUpdatingContactInfoResponse{}
-	_body, _err := client.SaveBatchTaskForUpdatingContactInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3481,7 +2738,7 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfo(request *SaveBatchTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveBatchTaskForUpdatingContactInfoByNewContactResponse
-func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions(request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
+func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithContext(ctx context.Context, request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest, runtime *dara.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3568,25 +2825,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveBatchTaskForUpdatingContactInfoByNewContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
-//
-// @return SaveBatchTaskForUpdatingContactInfoByNewContactResponse
-func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveBatchTaskForUpdatingContactInfoByNewContactResponse{}
-	_body, _err := client.SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3595,7 +2838,7 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveRegistrantProfileResponse
-func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantProfileRequest, runtime *dara.RuntimeOptions) (_result *SaveRegistrantProfileResponse, _err error) {
+func (client *Client) SaveRegistrantProfileWithContext(ctx context.Context, request *SaveRegistrantProfileRequest, runtime *dara.RuntimeOptions) (_result *SaveRegistrantProfileResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3686,25 +2929,11 @@ func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantPr
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveRegistrantProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveRegistrantProfileRequest
-//
-// @return SaveRegistrantProfileResponse
-func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileRequest) (_result *SaveRegistrantProfileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveRegistrantProfileResponse{}
-	_body, _err := client.SaveRegistrantProfileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3713,7 +2942,7 @@ func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForAddingDSRecordResponse
-func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSingleTaskForAddingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
+func (client *Client) SaveSingleTaskForAddingDSRecordWithContext(ctx context.Context, request *SaveSingleTaskForAddingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3764,25 +2993,11 @@ func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSi
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForAddingDSRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForAddingDSRecordRequest
-//
-// @return SaveSingleTaskForAddingDSRecordResponse
-func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskForAddingDSRecordRequest) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForAddingDSRecordResponse{}
-	_body, _err := client.SaveSingleTaskForAddingDSRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3791,7 +3006,7 @@ func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskFor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForApprovingTransferOutResponse
-func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *SaveSingleTaskForApprovingTransferOutRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
+func (client *Client) SaveSingleTaskForApprovingTransferOutWithContext(ctx context.Context, request *SaveSingleTaskForApprovingTransferOutRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3826,25 +3041,11 @@ func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForApprovingTransferOutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForApprovingTransferOutRequest
-//
-// @return SaveSingleTaskForApprovingTransferOutResponse
-func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleTaskForApprovingTransferOutRequest) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForApprovingTransferOutResponse{}
-	_body, _err := client.SaveSingleTaskForApprovingTransferOutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3853,7 +3054,7 @@ func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForAssociatingEnsResponse
-func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSingleTaskForAssociatingEnsRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
+func (client *Client) SaveSingleTaskForAssociatingEnsWithContext(ctx context.Context, request *SaveSingleTaskForAssociatingEnsRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3892,25 +3093,11 @@ func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSi
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForAssociatingEnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForAssociatingEnsRequest
-//
-// @return SaveSingleTaskForAssociatingEnsResponse
-func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskForAssociatingEnsRequest) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForAssociatingEnsResponse{}
-	_body, _err := client.SaveSingleTaskForAssociatingEnsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3919,7 +3106,7 @@ func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskFor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCancelingTransferInResponse
-func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *SaveSingleTaskForCancelingTransferInRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
+func (client *Client) SaveSingleTaskForCancelingTransferInWithContext(ctx context.Context, request *SaveSingleTaskForCancelingTransferInRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3954,25 +3141,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *S
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCancelingTransferInResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCancelingTransferInRequest
-//
-// @return SaveSingleTaskForCancelingTransferInResponse
-func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTaskForCancelingTransferInRequest) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCancelingTransferInResponse{}
-	_body, _err := client.SaveSingleTaskForCancelingTransferInWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3981,7 +3154,7 @@ func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCancelingTransferOutResponse
-func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *SaveSingleTaskForCancelingTransferOutRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
+func (client *Client) SaveSingleTaskForCancelingTransferOutWithContext(ctx context.Context, request *SaveSingleTaskForCancelingTransferOutRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4016,25 +3189,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCancelingTransferOutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCancelingTransferOutRequest
-//
-// @return SaveSingleTaskForCancelingTransferOutResponse
-func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleTaskForCancelingTransferOutRequest) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCancelingTransferOutResponse{}
-	_body, _err := client.SaveSingleTaskForCancelingTransferOutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4043,7 +3202,7 @@ func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCreatingDnsHostResponse
-func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveSingleTaskForCreatingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
+func (client *Client) SaveSingleTaskForCreatingDnsHostWithContext(ctx context.Context, request *SaveSingleTaskForCreatingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4086,25 +3245,11 @@ func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveS
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCreatingDnsHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCreatingDnsHostRequest
-//
-// @return SaveSingleTaskForCreatingDnsHostResponse
-func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskForCreatingDnsHostRequest) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCreatingDnsHostResponse{}
-	_body, _err := client.SaveSingleTaskForCreatingDnsHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4113,7 +3258,7 @@ func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskFo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCreatingOrderActivateResponse
-func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request *SaveSingleTaskForCreatingOrderActivateRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
+func (client *Client) SaveSingleTaskForCreatingOrderActivateWithContext(ctx context.Context, request *SaveSingleTaskForCreatingOrderActivateRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4244,25 +3389,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCreatingOrderActivateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCreatingOrderActivateRequest
-//
-// @return SaveSingleTaskForCreatingOrderActivateResponse
-func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingleTaskForCreatingOrderActivateRequest) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCreatingOrderActivateResponse{}
-	_body, _err := client.SaveSingleTaskForCreatingOrderActivateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4271,7 +3402,7 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCreatingOrderRedeemResponse
-func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *SaveSingleTaskForCreatingOrderRedeemRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
+func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithContext(ctx context.Context, request *SaveSingleTaskForCreatingOrderRedeemRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4326,25 +3457,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *S
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCreatingOrderRedeemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCreatingOrderRedeemRequest
-//
-// @return SaveSingleTaskForCreatingOrderRedeemResponse
-func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTaskForCreatingOrderRedeemRequest) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCreatingOrderRedeemResponse{}
-	_body, _err := client.SaveSingleTaskForCreatingOrderRedeemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4353,7 +3470,7 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCreatingOrderRenewResponse
-func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *SaveSingleTaskForCreatingOrderRenewRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
+func (client *Client) SaveSingleTaskForCreatingOrderRenewWithContext(ctx context.Context, request *SaveSingleTaskForCreatingOrderRenewRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4412,25 +3529,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *Sa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCreatingOrderRenewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCreatingOrderRenewRequest
-//
-// @return SaveSingleTaskForCreatingOrderRenewResponse
-func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTaskForCreatingOrderRenewRequest) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCreatingOrderRenewResponse{}
-	_body, _err := client.SaveSingleTaskForCreatingOrderRenewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4439,7 +3542,7 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForCreatingOrderTransferResponse
-func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request *SaveSingleTaskForCreatingOrderTransferRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
+func (client *Client) SaveSingleTaskForCreatingOrderTransferWithContext(ctx context.Context, request *SaveSingleTaskForCreatingOrderTransferRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4502,25 +3605,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForCreatingOrderTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForCreatingOrderTransferRequest
-//
-// @return SaveSingleTaskForCreatingOrderTransferResponse
-func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingleTaskForCreatingOrderTransferRequest) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForCreatingOrderTransferResponse{}
-	_body, _err := client.SaveSingleTaskForCreatingOrderTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4529,7 +3618,7 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForDeletingDSRecordResponse
-func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *SaveSingleTaskForDeletingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
+func (client *Client) SaveSingleTaskForDeletingDSRecordWithContext(ctx context.Context, request *SaveSingleTaskForDeletingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4568,25 +3657,11 @@ func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *Save
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForDeletingDSRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForDeletingDSRecordRequest
-//
-// @return SaveSingleTaskForDeletingDSRecordResponse
-func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskForDeletingDSRecordRequest) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForDeletingDSRecordResponse{}
-	_body, _err := client.SaveSingleTaskForDeletingDSRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4595,7 +3670,7 @@ func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForDeletingDnsHostResponse
-func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveSingleTaskForDeletingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
+func (client *Client) SaveSingleTaskForDeletingDnsHostWithContext(ctx context.Context, request *SaveSingleTaskForDeletingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4638,25 +3713,11 @@ func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveS
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForDeletingDnsHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForDeletingDnsHostRequest
-//
-// @return SaveSingleTaskForDeletingDnsHostResponse
-func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskForDeletingDnsHostRequest) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForDeletingDnsHostResponse{}
-	_body, _err := client.SaveSingleTaskForDeletingDnsHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4665,7 +3726,7 @@ func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskFo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForDisassociatingEnsResponse
-func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *SaveSingleTaskForDisassociatingEnsRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
+func (client *Client) SaveSingleTaskForDisassociatingEnsWithContext(ctx context.Context, request *SaveSingleTaskForDisassociatingEnsRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4700,25 +3761,11 @@ func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *Sav
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForDisassociatingEnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForDisassociatingEnsRequest
-//
-// @return SaveSingleTaskForDisassociatingEnsResponse
-func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTaskForDisassociatingEnsRequest) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForDisassociatingEnsResponse{}
-	_body, _err := client.SaveSingleTaskForDisassociatingEnsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4727,7 +3774,7 @@ func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForDomainNameProxyServiceResponse
-func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request *SaveSingleTaskForDomainNameProxyServiceRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
+func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithContext(ctx context.Context, request *SaveSingleTaskForDomainNameProxyServiceRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4766,25 +3813,11 @@ func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForDomainNameProxyServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForDomainNameProxyServiceRequest
-//
-// @return SaveSingleTaskForDomainNameProxyServiceResponse
-func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingleTaskForDomainNameProxyServiceRequest) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForDomainNameProxyServiceResponse{}
-	_body, _err := client.SaveSingleTaskForDomainNameProxyServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4793,7 +3826,7 @@ func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForModifyingDSRecordResponse
-func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *SaveSingleTaskForModifyingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
+func (client *Client) SaveSingleTaskForModifyingDSRecordWithContext(ctx context.Context, request *SaveSingleTaskForModifyingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4844,25 +3877,11 @@ func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *Sav
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForModifyingDSRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForModifyingDSRecordRequest
-//
-// @return SaveSingleTaskForModifyingDSRecordResponse
-func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTaskForModifyingDSRecordRequest) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForModifyingDSRecordResponse{}
-	_body, _err := client.SaveSingleTaskForModifyingDSRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4871,7 +3890,7 @@ func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForModifyingDnsHostResponse
-func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *SaveSingleTaskForModifyingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
+func (client *Client) SaveSingleTaskForModifyingDnsHostWithContext(ctx context.Context, request *SaveSingleTaskForModifyingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4914,25 +3933,11 @@ func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *Save
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForModifyingDnsHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForModifyingDnsHostRequest
-//
-// @return SaveSingleTaskForModifyingDnsHostResponse
-func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskForModifyingDnsHostRequest) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForModifyingDnsHostResponse{}
-	_body, _err := client.SaveSingleTaskForModifyingDnsHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4941,7 +3946,7 @@ func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForQueryingTransferAuthorizationCodeResponse
-func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOptions(request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
+func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithContext(ctx context.Context, request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -4976,25 +3981,11 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOpti
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForQueryingTransferAuthorizationCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
-//
-// @return SaveSingleTaskForQueryingTransferAuthorizationCodeResponse
-func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCode(request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForQueryingTransferAuthorizationCodeResponse{}
-	_body, _err := client.SaveSingleTaskForQueryingTransferAuthorizationCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5007,7 +3998,7 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCode(request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForReserveDropListDomainResponse
-func (client *Client) SaveSingleTaskForReserveDropListDomainWithOptions(request *SaveSingleTaskForReserveDropListDomainRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForReserveDropListDomainResponse, _err error) {
+func (client *Client) SaveSingleTaskForReserveDropListDomainWithContext(ctx context.Context, request *SaveSingleTaskForReserveDropListDomainRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForReserveDropListDomainResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5046,29 +4037,11 @@ func (client *Client) SaveSingleTaskForReserveDropListDomainWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForReserveDropListDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 单笔抢注批量接口
-//
-// @param request - SaveSingleTaskForReserveDropListDomainRequest
-//
-// @return SaveSingleTaskForReserveDropListDomainResponse
-func (client *Client) SaveSingleTaskForReserveDropListDomain(request *SaveSingleTaskForReserveDropListDomainRequest) (_result *SaveSingleTaskForReserveDropListDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForReserveDropListDomainResponse{}
-	_body, _err := client.SaveSingleTaskForReserveDropListDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5077,7 +4050,7 @@ func (client *Client) SaveSingleTaskForReserveDropListDomain(request *SaveSingle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForSaveArtExtensionResponse
-func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *SaveSingleTaskForSaveArtExtensionRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
+func (client *Client) SaveSingleTaskForSaveArtExtensionWithContext(ctx context.Context, request *SaveSingleTaskForSaveArtExtensionRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5148,25 +4121,11 @@ func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *Save
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForSaveArtExtensionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForSaveArtExtensionRequest
-//
-// @return SaveSingleTaskForSaveArtExtensionResponse
-func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskForSaveArtExtensionRequest) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForSaveArtExtensionResponse{}
-	_body, _err := client.SaveSingleTaskForSaveArtExtensionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5175,7 +4134,7 @@ func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForSynchronizingDSRecordResponse
-func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request *SaveSingleTaskForSynchronizingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
+func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithContext(ctx context.Context, request *SaveSingleTaskForSynchronizingDSRecordRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5210,25 +4169,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForSynchronizingDSRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForSynchronizingDSRecordRequest
-//
-// @return SaveSingleTaskForSynchronizingDSRecordResponse
-func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingleTaskForSynchronizingDSRecordRequest) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForSynchronizingDSRecordResponse{}
-	_body, _err := client.SaveSingleTaskForSynchronizingDSRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5237,7 +4182,7 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForSynchronizingDnsHostResponse
-func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *SaveSingleTaskForSynchronizingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
+func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithContext(ctx context.Context, request *SaveSingleTaskForSynchronizingDnsHostRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5272,25 +4217,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForSynchronizingDnsHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForSynchronizingDnsHostRequest
-//
-// @return SaveSingleTaskForSynchronizingDnsHostResponse
-func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleTaskForSynchronizingDnsHostRequest) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForSynchronizingDnsHostResponse{}
-	_body, _err := client.SaveSingleTaskForSynchronizingDnsHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5299,7 +4230,7 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForTransferProhibitionLockResponse
-func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(request *SaveSingleTaskForTransferProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
+func (client *Client) SaveSingleTaskForTransferProhibitionLockWithContext(ctx context.Context, request *SaveSingleTaskForTransferProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5338,25 +4269,11 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForTransferProhibitionLockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForTransferProhibitionLockRequest
-//
-// @return SaveSingleTaskForTransferProhibitionLockResponse
-func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSingleTaskForTransferProhibitionLockRequest) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForTransferProhibitionLockResponse{}
-	_body, _err := client.SaveSingleTaskForTransferProhibitionLockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5365,7 +4282,7 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSing
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForUpdateProhibitionLockResponse
-func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request *SaveSingleTaskForUpdateProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
+func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithContext(ctx context.Context, request *SaveSingleTaskForUpdateProhibitionLockRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5404,25 +4321,11 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForUpdateProhibitionLockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForUpdateProhibitionLockRequest
-//
-// @return SaveSingleTaskForUpdateProhibitionLockResponse
-func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingleTaskForUpdateProhibitionLockRequest) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForUpdateProhibitionLockResponse{}
-	_body, _err := client.SaveSingleTaskForUpdateProhibitionLockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5431,7 +4334,7 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveSingleTaskForUpdatingContactInfoResponse
-func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *SaveSingleTaskForUpdatingContactInfoRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
+func (client *Client) SaveSingleTaskForUpdatingContactInfoWithContext(ctx context.Context, request *SaveSingleTaskForUpdatingContactInfoRequest, runtime *dara.RuntimeOptions) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5482,25 +4385,11 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *S
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveSingleTaskForUpdatingContactInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveSingleTaskForUpdatingContactInfoRequest
-//
-// @return SaveSingleTaskForUpdatingContactInfoResponse
-func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTaskForUpdatingContactInfoRequest) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveSingleTaskForUpdatingContactInfoResponse{}
-	_body, _err := client.SaveSingleTaskForUpdatingContactInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5509,7 +4398,7 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTaskForSubmittingDomainDeleteResponse
-func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *SaveTaskForSubmittingDomainDeleteRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
+func (client *Client) SaveTaskForSubmittingDomainDeleteWithContext(ctx context.Context, request *SaveTaskForSubmittingDomainDeleteRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5544,25 +4433,11 @@ func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *Save
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTaskForSubmittingDomainDeleteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveTaskForSubmittingDomainDeleteRequest
-//
-// @return SaveTaskForSubmittingDomainDeleteResponse
-func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubmittingDomainDeleteRequest) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTaskForSubmittingDomainDeleteResponse{}
-	_body, _err := client.SaveTaskForSubmittingDomainDeleteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5571,7 +4446,7 @@ func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubm
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse
-func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialWithOptions(request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
+func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialWithContext(ctx context.Context, request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5620,25 +4495,11 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
-//
-// @return SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse
-func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredential(request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse{}
-	_body, _err := client.SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5647,7 +4508,7 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse
-func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDWithOptions(request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
+func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDWithContext(ctx context.Context, request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5690,25 +4551,11 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
-//
-// @return SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse
-func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileID(request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse{}
-	_body, _err := client.SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5717,7 +4564,7 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse
-func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithOptions(request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
+func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithContext(ctx context.Context, request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5818,25 +4665,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithO
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
-//
-// @return SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse
-func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse{}
-	_body, _err := client.SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5845,7 +4678,7 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse
-func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWithOptions(request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
+func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWithContext(ctx context.Context, request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest, runtime *dara.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5888,25 +4721,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWith
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
-//
-// @return SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse
-func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse{}
-	_body, _err := client.SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5915,7 +4734,7 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(req
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitEmailVerificationResponse
-func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *SubmitEmailVerificationResponse, _err error) {
+func (client *Client) SubmitEmailVerificationWithContext(ctx context.Context, request *SubmitEmailVerificationRequest, runtime *dara.RuntimeOptions) (_result *SubmitEmailVerificationResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -5954,25 +4773,11 @@ func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVer
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitEmailVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SubmitEmailVerificationRequest
-//
-// @return SubmitEmailVerificationResponse
-func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRequest) (_result *SubmitEmailVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitEmailVerificationResponse{}
-	_body, _err := client.SubmitEmailVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5981,7 +4786,7 @@ func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TransferInCheckMailTokenResponse
-func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInCheckMailTokenRequest, runtime *dara.RuntimeOptions) (_result *TransferInCheckMailTokenResponse, _err error) {
+func (client *Client) TransferInCheckMailTokenWithContext(ctx context.Context, request *TransferInCheckMailTokenRequest, runtime *dara.RuntimeOptions) (_result *TransferInCheckMailTokenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6016,25 +4821,11 @@ func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInChe
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransferInCheckMailTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - TransferInCheckMailTokenRequest
-//
-// @return TransferInCheckMailTokenResponse
-func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailTokenRequest) (_result *TransferInCheckMailTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TransferInCheckMailTokenResponse{}
-	_body, _err := client.TransferInCheckMailTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6043,7 +4834,7 @@ func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailToken
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TransferInReenterTransferAuthorizationCodeResponse
-func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(request *TransferInReenterTransferAuthorizationCodeRequest, runtime *dara.RuntimeOptions) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
+func (client *Client) TransferInReenterTransferAuthorizationCodeWithContext(ctx context.Context, request *TransferInReenterTransferAuthorizationCodeRequest, runtime *dara.RuntimeOptions) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6082,25 +4873,11 @@ func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransferInReenterTransferAuthorizationCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - TransferInReenterTransferAuthorizationCodeRequest
-//
-// @return TransferInReenterTransferAuthorizationCodeResponse
-func (client *Client) TransferInReenterTransferAuthorizationCode(request *TransferInReenterTransferAuthorizationCodeRequest) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TransferInReenterTransferAuthorizationCodeResponse{}
-	_body, _err := client.TransferInReenterTransferAuthorizationCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6109,7 +4886,7 @@ func (client *Client) TransferInReenterTransferAuthorizationCode(request *Transf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TransferInRefetchWhoisEmailResponse
-func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferInRefetchWhoisEmailRequest, runtime *dara.RuntimeOptions) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
+func (client *Client) TransferInRefetchWhoisEmailWithContext(ctx context.Context, request *TransferInRefetchWhoisEmailRequest, runtime *dara.RuntimeOptions) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6144,25 +4921,11 @@ func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransferInRefetchWhoisEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - TransferInRefetchWhoisEmailRequest
-//
-// @return TransferInRefetchWhoisEmailResponse
-func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoisEmailRequest) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TransferInRefetchWhoisEmailResponse{}
-	_body, _err := client.TransferInRefetchWhoisEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6171,7 +4934,7 @@ func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TransferInResendMailTokenResponse
-func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInResendMailTokenRequest, runtime *dara.RuntimeOptions) (_result *TransferInResendMailTokenResponse, _err error) {
+func (client *Client) TransferInResendMailTokenWithContext(ctx context.Context, request *TransferInResendMailTokenRequest, runtime *dara.RuntimeOptions) (_result *TransferInResendMailTokenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6206,25 +4969,11 @@ func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransferInResendMailTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - TransferInResendMailTokenRequest
-//
-// @return TransferInResendMailTokenResponse
-func (client *Client) TransferInResendMailToken(request *TransferInResendMailTokenRequest) (_result *TransferInResendMailTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TransferInResendMailTokenResponse{}
-	_body, _err := client.TransferInResendMailTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6233,7 +4982,7 @@ func (client *Client) TransferInResendMailToken(request *TransferInResendMailTok
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyContactFieldResponse
-func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldRequest, runtime *dara.RuntimeOptions) (_result *VerifyContactFieldResponse, _err error) {
+func (client *Client) VerifyContactFieldWithContext(ctx context.Context, request *VerifyContactFieldRequest, runtime *dara.RuntimeOptions) (_result *VerifyContactFieldResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6316,25 +5065,11 @@ func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldR
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyContactFieldResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - VerifyContactFieldRequest
-//
-// @return VerifyContactFieldResponse
-func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_result *VerifyContactFieldResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyContactFieldResponse{}
-	_body, _err := client.VerifyContactFieldWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6343,7 +5078,7 @@ func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyEmailResponse
-func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtime *dara.RuntimeOptions) (_result *VerifyEmailResponse, _err error) {
+func (client *Client) VerifyEmailWithContext(ctx context.Context, request *VerifyEmailRequest, runtime *dara.RuntimeOptions) (_result *VerifyEmailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -6378,24 +5113,10 @@ func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - VerifyEmailRequest
-//
-// @return VerifyEmailResponse
-func (client *Client) VerifyEmail(request *VerifyEmailRequest) (_result *VerifyEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyEmailResponse{}
-	_body, _err := client.VerifyEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

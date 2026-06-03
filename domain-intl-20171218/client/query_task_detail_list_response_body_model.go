@@ -1,0 +1,317 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iQueryTaskDetailListResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCurrentPageNum(v int32) *QueryTaskDetailListResponseBody
+	GetCurrentPageNum() *int32
+	SetData(v *QueryTaskDetailListResponseBodyData) *QueryTaskDetailListResponseBody
+	GetData() *QueryTaskDetailListResponseBodyData
+	SetNextPage(v bool) *QueryTaskDetailListResponseBody
+	GetNextPage() *bool
+	SetPageSize(v int32) *QueryTaskDetailListResponseBody
+	GetPageSize() *int32
+	SetPrePage(v bool) *QueryTaskDetailListResponseBody
+	GetPrePage() *bool
+	SetRequestId(v string) *QueryTaskDetailListResponseBody
+	GetRequestId() *string
+	SetTotalItemNum(v int32) *QueryTaskDetailListResponseBody
+	GetTotalItemNum() *int32
+	SetTotalPageNum(v int32) *QueryTaskDetailListResponseBody
+	GetTotalPageNum() *int32
+}
+
+type QueryTaskDetailListResponseBody struct {
+	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	Data           *QueryTaskDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	NextPage       *bool                                `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrePage        *bool                                `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalItemNum   *int32                               `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	TotalPageNum   *int32                               `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+}
+
+func (s QueryTaskDetailListResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryTaskDetailListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTaskDetailListResponseBody) GetCurrentPageNum() *int32 {
+	return s.CurrentPageNum
+}
+
+func (s *QueryTaskDetailListResponseBody) GetData() *QueryTaskDetailListResponseBodyData {
+	return s.Data
+}
+
+func (s *QueryTaskDetailListResponseBody) GetNextPage() *bool {
+	return s.NextPage
+}
+
+func (s *QueryTaskDetailListResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *QueryTaskDetailListResponseBody) GetPrePage() *bool {
+	return s.PrePage
+}
+
+func (s *QueryTaskDetailListResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *QueryTaskDetailListResponseBody) GetTotalItemNum() *int32 {
+	return s.TotalItemNum
+}
+
+func (s *QueryTaskDetailListResponseBody) GetTotalPageNum() *int32 {
+	return s.TotalPageNum
+}
+
+func (s *QueryTaskDetailListResponseBody) SetCurrentPageNum(v int32) *QueryTaskDetailListResponseBody {
+	s.CurrentPageNum = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetData(v *QueryTaskDetailListResponseBodyData) *QueryTaskDetailListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetNextPage(v bool) *QueryTaskDetailListResponseBody {
+	s.NextPage = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetPageSize(v int32) *QueryTaskDetailListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetPrePage(v bool) *QueryTaskDetailListResponseBody {
+	s.PrePage = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetRequestId(v string) *QueryTaskDetailListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetTotalItemNum(v int32) *QueryTaskDetailListResponseBody {
+	s.TotalItemNum = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) SetTotalPageNum(v int32) *QueryTaskDetailListResponseBody {
+	s.TotalPageNum = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type QueryTaskDetailListResponseBodyData struct {
+	TaskDetail []*QueryTaskDetailListResponseBodyDataTaskDetail `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty" type:"Repeated"`
+}
+
+func (s QueryTaskDetailListResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryTaskDetailListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTaskDetailListResponseBodyData) GetTaskDetail() []*QueryTaskDetailListResponseBodyDataTaskDetail {
+	return s.TaskDetail
+}
+
+func (s *QueryTaskDetailListResponseBodyData) SetTaskDetail(v []*QueryTaskDetailListResponseBodyDataTaskDetail) *QueryTaskDetailListResponseBodyData {
+	s.TaskDetail = v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyData) Validate() error {
+	if s.TaskDetail != nil {
+		for _, item := range s.TaskDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type QueryTaskDetailListResponseBodyDataTaskDetail struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	FailReason          *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	TaskResult          *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s QueryTaskDetailListResponseBodyDataTaskDetail) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryTaskDetailListResponseBodyDataTaskDetail) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetDomainName() *string {
+	return s.DomainName
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetErrorMsg() *string {
+	return s.ErrorMsg
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetFailReason() *string {
+	return s.FailReason
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskDetailNo() *string {
+	return s.TaskDetailNo
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskNo() *string {
+	return s.TaskNo
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskResult() *string {
+	return s.TaskResult
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskStatus() *string {
+	return s.TaskStatus
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskStatusCode() *int32 {
+	return s.TaskStatusCode
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskType() *string {
+	return s.TaskType
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTaskTypeDescription() *string {
+	return s.TaskTypeDescription
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetTryCount() *int32 {
+	return s.TryCount
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) GetUpdateTime() *string {
+	return s.UpdateTime
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetCreateTime(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetDomainName(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetErrorMsg(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetFailReason(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.FailReason = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetInstanceId(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskDetailNo(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskDetailNo = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskNo(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskNo = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskResult(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskResult = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskStatus(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskStatusCode(v int32) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskStatusCode = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskType(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskType = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTaskTypeDescription(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TaskTypeDescription = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetTryCount(v int32) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.TryCount = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetUpdateTime(v string) *QueryTaskDetailListResponseBodyDataTaskDetail {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *QueryTaskDetailListResponseBodyDataTaskDetail) Validate() error {
+	return dara.Validate(s)
+}
