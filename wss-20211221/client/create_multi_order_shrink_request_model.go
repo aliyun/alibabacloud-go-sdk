@@ -9,6 +9,8 @@ type iCreateMultiOrderShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChannelCookie(v string) *CreateMultiOrderShrinkRequest
+	GetChannelCookie() *string
 	SetOrderItems(v []*CreateMultiOrderShrinkRequestOrderItems) *CreateMultiOrderShrinkRequest
 	GetOrderItems() []*CreateMultiOrderShrinkRequestOrderItems
 	SetOrderType(v string) *CreateMultiOrderShrinkRequest
@@ -20,7 +22,8 @@ type iCreateMultiOrderShrinkRequest interface {
 }
 
 type CreateMultiOrderShrinkRequest struct {
-	OrderItems []*CreateMultiOrderShrinkRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
+	ChannelCookie *string                                    `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
+	OrderItems    []*CreateMultiOrderShrinkRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
 	// example:
 	//
 	// create
@@ -37,6 +40,10 @@ func (s CreateMultiOrderShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateMultiOrderShrinkRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
+}
+
 func (s *CreateMultiOrderShrinkRequest) GetOrderItems() []*CreateMultiOrderShrinkRequestOrderItems {
 	return s.OrderItems
 }
@@ -51,6 +58,11 @@ func (s *CreateMultiOrderShrinkRequest) GetPropertiesShrink() *string {
 
 func (s *CreateMultiOrderShrinkRequest) GetResellerOwnerUid() *int64 {
 	return s.ResellerOwnerUid
+}
+
+func (s *CreateMultiOrderShrinkRequest) SetChannelCookie(v string) *CreateMultiOrderShrinkRequest {
+	s.ChannelCookie = &v
+	return s
 }
 
 func (s *CreateMultiOrderShrinkRequest) SetOrderItems(v []*CreateMultiOrderShrinkRequestOrderItems) *CreateMultiOrderShrinkRequest {

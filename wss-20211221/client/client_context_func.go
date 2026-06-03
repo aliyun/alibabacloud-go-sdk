@@ -30,6 +30,10 @@ func (client *Client) CreateMultiOrderWithContext(ctx context.Context, tmpReq *C
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelCookie) {
+		query["ChannelCookie"] = request.ChannelCookie
+	}
+
 	if !dara.IsNil(request.OrderItems) {
 		query["OrderItems"] = request.OrderItems
 	}

@@ -79,6 +79,10 @@ func (client *Client) CreateMultiOrderWithOptions(tmpReq *CreateMultiOrderReques
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelCookie) {
+		query["ChannelCookie"] = request.ChannelCookie
+	}
+
 	if !dara.IsNil(request.OrderItems) {
 		query["OrderItems"] = request.OrderItems
 	}
