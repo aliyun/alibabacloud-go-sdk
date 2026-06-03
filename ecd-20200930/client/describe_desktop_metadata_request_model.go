@@ -13,6 +13,8 @@ type iDescribeDesktopMetadataRequest interface {
 	GetCreationTimeStart() *string
 	SetDesktopIds(v []*string) *DescribeDesktopMetadataRequest
 	GetDesktopIds() []*string
+	SetEndUserId(v string) *DescribeDesktopMetadataRequest
+	GetEndUserId() *string
 	SetGroupId(v string) *DescribeDesktopMetadataRequest
 	GetGroupId() *string
 	SetHostName(v string) *DescribeDesktopMetadataRequest
@@ -43,6 +45,7 @@ type DescribeDesktopMetadataRequest struct {
 	// 2025-01-01T12:00:00Z
 	CreationTimeStart *string   `json:"CreationTimeStart,omitempty" xml:"CreationTimeStart,omitempty"`
 	DesktopIds        []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	EndUserId         *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// example:
 	//
 	// dg-i1ruuudp92qpj****
@@ -105,6 +108,10 @@ func (s *DescribeDesktopMetadataRequest) GetDesktopIds() []*string {
 	return s.DesktopIds
 }
 
+func (s *DescribeDesktopMetadataRequest) GetEndUserId() *string {
+	return s.EndUserId
+}
+
 func (s *DescribeDesktopMetadataRequest) GetGroupId() *string {
 	return s.GroupId
 }
@@ -156,6 +163,11 @@ func (s *DescribeDesktopMetadataRequest) SetCreationTimeStart(v string) *Describ
 
 func (s *DescribeDesktopMetadataRequest) SetDesktopIds(v []*string) *DescribeDesktopMetadataRequest {
 	s.DesktopIds = v
+	return s
+}
+
+func (s *DescribeDesktopMetadataRequest) SetEndUserId(v string) *DescribeDesktopMetadataRequest {
+	s.EndUserId = &v
 	return s
 }
 

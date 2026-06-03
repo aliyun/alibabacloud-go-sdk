@@ -10612,6 +10612,10 @@ func (client *Client) DescribeDesktopMetadataWithOptions(request *DescribeDeskto
 		query["DesktopIds"] = request.DesktopIds
 	}
 
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
 	}

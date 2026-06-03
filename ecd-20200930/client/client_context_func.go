@@ -8375,6 +8375,10 @@ func (client *Client) DescribeDesktopMetadataWithContext(ctx context.Context, re
 		query["DesktopIds"] = request.DesktopIds
 	}
 
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
 	}
