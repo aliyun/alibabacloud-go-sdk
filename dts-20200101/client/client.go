@@ -11944,6 +11944,10 @@ func (client *Client) TransferInstanceClassWithOptions(request *TransferInstance
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseCount) {
+		query["DatabaseCount"] = request.DatabaseCount
+	}
+
 	if !dara.IsNil(request.DtsJobId) {
 		query["DtsJobId"] = request.DtsJobId
 	}

@@ -9,6 +9,8 @@ type iTransferInstanceClassRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDatabaseCount(v int32) *TransferInstanceClassRequest
+	GetDatabaseCount() *int32
 	SetDtsJobId(v string) *TransferInstanceClassRequest
 	GetDtsJobId() *string
 	SetInstanceClass(v string) *TransferInstanceClassRequest
@@ -22,6 +24,7 @@ type iTransferInstanceClassRequest interface {
 }
 
 type TransferInstanceClassRequest struct {
+	DatabaseCount *int32 `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
 	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// This parameter is required.
@@ -74,6 +77,10 @@ func (s TransferInstanceClassRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TransferInstanceClassRequest) GetDatabaseCount() *int32 {
+	return s.DatabaseCount
+}
+
 func (s *TransferInstanceClassRequest) GetDtsJobId() *string {
 	return s.DtsJobId
 }
@@ -92,6 +99,11 @@ func (s *TransferInstanceClassRequest) GetRegionId() *string {
 
 func (s *TransferInstanceClassRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *TransferInstanceClassRequest) SetDatabaseCount(v int32) *TransferInstanceClassRequest {
+	s.DatabaseCount = &v
+	return s
 }
 
 func (s *TransferInstanceClassRequest) SetDtsJobId(v string) *TransferInstanceClassRequest {
