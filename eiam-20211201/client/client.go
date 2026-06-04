@@ -16936,6 +16936,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}

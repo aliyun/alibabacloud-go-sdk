@@ -12578,6 +12578,10 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}

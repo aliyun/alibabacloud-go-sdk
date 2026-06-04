@@ -9,6 +9,8 @@ type iListInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *ListInstancesRequest
+	GetEdition() *string
 	SetInstanceIds(v []*string) *ListInstancesRequest
 	GetInstanceIds() []*string
 	SetPageNumber(v int64) *ListInstancesRequest
@@ -20,6 +22,7 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return.
@@ -54,6 +57,10 @@ func (s ListInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *ListInstancesRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -68,6 +75,11 @@ func (s *ListInstancesRequest) GetPageSize() *int64 {
 
 func (s *ListInstancesRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListInstancesRequest) SetEdition(v string) *ListInstancesRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetInstanceIds(v []*string) *ListInstancesRequest {
