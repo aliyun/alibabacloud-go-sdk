@@ -54,6 +54,8 @@ type CreateRayHistoryServerRequest struct {
 	//
 	// oss://bucket-test-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/tmp
 	StoragePath *string `json:"StoragePath,omitempty" xml:"StoragePath,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345

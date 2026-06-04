@@ -227,7 +227,7 @@ func (client *Client) CreateJobTemplateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建 RayHistoryServer
+// # Create RayHistoryServer
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -495,7 +495,7 @@ func (client *Client) DeleteJobTemplateWithContext(ctx context.Context, Template
 
 // Summary:
 //
-// 删除RayHistoryServer
+// # Delete RayHistoryServer
 //
 // @param request - DeleteRayHistoryServerRequest
 //
@@ -905,6 +905,89 @@ func (client *Client) GetJobTemplateWithContext(ctx context.Context, TemplateId 
 
 // Summary:
 //
+// 获取metrics数据
+//
+// @param request - GetMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetricsResponse
+func (client *Client) GetMetricsWithContext(ctx context.Context, request *GetMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Dimensions) {
+		query["Dimensions"] = request.Dimensions
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Length) {
+		query["Length"] = request.Length
+	}
+
+	if !dara.IsNil(request.MetricName) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMetrics"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cms/metrics"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMetricsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the system events of a specific node in a job to locate and troubleshoot issues.
 //
 // @param request - GetPodEventsRequest
@@ -1082,7 +1165,7 @@ func (client *Client) GetRayDashboardWithContext(ctx context.Context, jobId *str
 
 // Summary:
 //
-// 查询 RayHistoryServer
+// # Query RayHistoryServer
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1717,7 +1800,7 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 // Summary:
 //
-// 列出资源RayHistoryServer
+// # List resource RayHistoryServer
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -1994,7 +2077,7 @@ func (client *Client) SetJobTemplateDefaultVersionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 启动 Ray History Server
+// # Start Ray History Server
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -2115,7 +2198,7 @@ func (client *Client) StopJobWithContext(ctx context.Context, JobId *string, hea
 
 // Summary:
 //
-// 停止 Ray History Server
+// # Stop Ray History Server
 //
 // @param request - StopRayHistoryServerRequest
 //
