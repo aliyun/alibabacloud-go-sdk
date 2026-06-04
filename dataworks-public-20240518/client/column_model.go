@@ -230,6 +230,7 @@ func (s *Column) Validate() error {
 }
 
 type ColumnBusinessMetadata struct {
+	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
 	// A business-level description of the field (supported only by MaxCompute, HMS (EMR clusters) and DLF.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
@@ -242,8 +243,17 @@ func (s ColumnBusinessMetadata) GoString() string {
 	return s.String()
 }
 
+func (s *ColumnBusinessMetadata) GetCustomAttributes() map[string][]*string {
+	return s.CustomAttributes
+}
+
 func (s *ColumnBusinessMetadata) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ColumnBusinessMetadata) SetCustomAttributes(v map[string][]*string) *ColumnBusinessMetadata {
+	s.CustomAttributes = v
+	return s
 }
 
 func (s *ColumnBusinessMetadata) SetDescription(v string) *ColumnBusinessMetadata {

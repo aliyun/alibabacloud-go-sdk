@@ -9,6 +9,8 @@ type iUpdateTableBusinessMetadataRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomAttributes(v map[string][]*string) *UpdateTableBusinessMetadataRequest
+	GetCustomAttributes() map[string][]*string
 	SetId(v string) *UpdateTableBusinessMetadataRequest
 	GetId() *string
 	SetReadme(v string) *UpdateTableBusinessMetadataRequest
@@ -16,6 +18,10 @@ type iUpdateTableBusinessMetadataRequest interface {
 }
 
 type UpdateTableBusinessMetadataRequest struct {
+	// example:
+	//
+	// {"biz_owner":["张三"]}
+	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
 	// The table ID. You can refer to the format of the table ID returned by the ListTables operation.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s UpdateTableBusinessMetadataRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateTableBusinessMetadataRequest) GetCustomAttributes() map[string][]*string {
+	return s.CustomAttributes
+}
+
 func (s *UpdateTableBusinessMetadataRequest) GetId() *string {
 	return s.Id
 }
 
 func (s *UpdateTableBusinessMetadataRequest) GetReadme() *string {
 	return s.Readme
+}
+
+func (s *UpdateTableBusinessMetadataRequest) SetCustomAttributes(v map[string][]*string) *UpdateTableBusinessMetadataRequest {
+	s.CustomAttributes = v
+	return s
 }
 
 func (s *UpdateTableBusinessMetadataRequest) SetId(v string) *UpdateTableBusinessMetadataRequest {

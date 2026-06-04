@@ -571,6 +571,142 @@ func (client *Client) AttachDataQualityRulesToEvaluationTask(request *AttachData
 
 // Summary:
 //
+// 批量创建自定义实体
+//
+// @param tmpReq - BatchCreateMetaEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateMetaEntitiesResponse
+func (client *Client) BatchCreateMetaEntitiesWithOptions(tmpReq *BatchCreateMetaEntitiesRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateMetaEntitiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCreateMetaEntitiesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Entities) {
+		request.EntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entities, dara.String("Entities"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EntitiesShrink) {
+		body["Entities"] = request.EntitiesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCreateMetaEntities"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCreateMetaEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量创建自定义实体
+//
+// @param request - BatchCreateMetaEntitiesRequest
+//
+// @return BatchCreateMetaEntitiesResponse
+func (client *Client) BatchCreateMetaEntities(request *BatchCreateMetaEntitiesRequest) (_result *BatchCreateMetaEntitiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchCreateMetaEntitiesResponse{}
+	_body, _err := client.BatchCreateMetaEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除自定义实体
+//
+// @param tmpReq - BatchDeleteMetaEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteMetaEntitiesResponse
+func (client *Client) BatchDeleteMetaEntitiesWithOptions(tmpReq *BatchDeleteMetaEntitiesRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteMetaEntitiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchDeleteMetaEntitiesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ids) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, dara.String("Ids"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdsShrink) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeleteMetaEntities"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeleteMetaEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除自定义实体
+//
+// @param request - BatchDeleteMetaEntitiesRequest
+//
+// @return BatchDeleteMetaEntitiesResponse
+func (client *Client) BatchDeleteMetaEntities(request *BatchDeleteMetaEntitiesRequest) (_result *BatchDeleteMetaEntitiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchDeleteMetaEntitiesResponse{}
+	_body, _err := client.BatchDeleteMetaEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs incremental updates on multiple tasks at a time.
 //
 // Description:
@@ -1198,6 +1334,106 @@ func (client *Client) CreateComputeResource(request *CreateComputeResourceReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateComputeResourceResponse{}
 	_body, _err := client.CreateComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义属性定义
+//
+// @param tmpReq - CreateCustomAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomAttributeResponse
+func (client *Client) CreateCustomAttributeWithOptions(tmpReq *CreateCustomAttributeRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCustomAttributeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EntityTypes) {
+		request.EntityTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EntityTypes, dara.String("EntityTypes"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.ValueEnums) {
+		request.ValueEnumsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ValueEnums, dara.String("ValueEnums"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.DisplayEnabled) {
+		body["DisplayEnabled"] = request.DisplayEnabled
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.EntityTypesShrink) {
+		body["EntityTypes"] = request.EntityTypesShrink
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SearchFilterEnabled) {
+		body["SearchFilterEnabled"] = request.SearchFilterEnabled
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.ValueEnumsShrink) {
+		body["ValueEnums"] = request.ValueEnumsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomAttribute"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义属性定义
+//
+// @param request - CreateCustomAttributeRequest
+//
+// @return CreateCustomAttributeResponse
+func (client *Client) CreateCustomAttribute(request *CreateCustomAttributeRequest) (_result *CreateCustomAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCustomAttributeResponse{}
+	_body, _err := client.CreateCustomAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3299,6 +3535,90 @@ func (client *Client) CreateMetaCollection(request *CreateMetaCollectionRequest)
 
 // Summary:
 //
+// 创建自定义实体定义
+//
+// @param tmpReq - CreateMetaEntityDefRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMetaEntityDefResponse
+func (client *Client) CreateMetaEntityDefWithOptions(tmpReq *CreateMetaEntityDefRequest, runtime *dara.RuntimeOptions) (_result *CreateMetaEntityDefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateMetaEntityDefShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AttributeDefs) {
+		request.AttributeDefsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AttributeDefs, dara.String("AttributeDefs"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AttributeDefsShrink) {
+		body["AttributeDefs"] = request.AttributeDefsShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Extend) {
+		body["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMetaEntityDef"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMetaEntityDefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义实体定义
+//
+// @param request - CreateMetaEntityDefRequest
+//
+// @return CreateMetaEntityDefResponse
+func (client *Client) CreateMetaEntityDef(request *CreateMetaEntityDefRequest) (_result *CreateMetaEntityDefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMetaEntityDefResponse{}
+	_body, _err := client.CreateMetaEntityDefWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a network and associates the network with a general resource group.
 //
 // Description:
@@ -5183,6 +5503,68 @@ func (client *Client) DeleteComputeResource(request *DeleteComputeResourceReques
 
 // Summary:
 //
+// 删除自定义属性定义
+//
+// @param request - DeleteCustomAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomAttributeResponse
+func (client *Client) DeleteCustomAttributeWithOptions(request *DeleteCustomAttributeRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomAttribute"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义属性定义
+//
+// @param request - DeleteCustomAttributeRequest
+//
+// @return DeleteCustomAttributeResponse
+func (client *Client) DeleteCustomAttribute(request *DeleteCustomAttributeRequest) (_result *DeleteCustomAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCustomAttributeResponse{}
+	_body, _err := client.DeleteCustomAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an alert rule configured for a synchronization task.
 //
 // @param request - DeleteDIAlarmRuleRequest
@@ -6418,6 +6800,72 @@ func (client *Client) DeleteMetaCollection(request *DeleteMetaCollectionRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteMetaCollectionResponse{}
 	_body, _err := client.DeleteMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义实体定义
+//
+// @param request - DeleteMetaEntityDefRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMetaEntityDefResponse
+func (client *Client) DeleteMetaEntityDefWithOptions(request *DeleteMetaEntityDefRequest, runtime *dara.RuntimeOptions) (_result *DeleteMetaEntityDefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EntityType) {
+		body["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.Force) {
+		body["Force"] = request.Force
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMetaEntityDef"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMetaEntityDefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义实体定义
+//
+// @param request - DeleteMetaEntityDefRequest
+//
+// @return DeleteMetaEntityDefResponse
+func (client *Client) DeleteMetaEntityDef(request *DeleteMetaEntityDefRequest) (_result *DeleteMetaEntityDefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMetaEntityDefResponse{}
+	_body, _err := client.DeleteMetaEntityDefWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8518,6 +8966,68 @@ func (client *Client) GetCreateWorkflowInstancesResult(request *GetCreateWorkflo
 
 // Summary:
 //
+// # Obtain custom property definition details
+//
+// @param request - GetCustomAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomAttributeResponse
+func (client *Client) GetCustomAttributeWithOptions(request *GetCustomAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetCustomAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomAttribute"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Obtain custom property definition details
+//
+// @param request - GetCustomAttributeRequest
+//
+// @return GetCustomAttributeResponse
+func (client *Client) GetCustomAttribute(request *GetCustomAttributeRequest) (_result *GetCustomAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCustomAttributeResponse{}
+	_body, _err := client.GetCustomAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a synchronization task.
 //
 // Description:
@@ -10175,6 +10685,130 @@ func (client *Client) GetMetaCollection(request *GetMetaCollectionRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetMetaCollectionResponse{}
 	_body, _err := client.GetMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义实体详情
+//
+// @param request - GetMetaEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetaEntityResponse
+func (client *Client) GetMetaEntityWithOptions(request *GetMetaEntityRequest, runtime *dara.RuntimeOptions) (_result *GetMetaEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMetaEntity"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMetaEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义实体详情
+//
+// @param request - GetMetaEntityRequest
+//
+// @return GetMetaEntityResponse
+func (client *Client) GetMetaEntity(request *GetMetaEntityRequest) (_result *GetMetaEntityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMetaEntityResponse{}
+	_body, _err := client.GetMetaEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义实体定义详情
+//
+// @param request - GetMetaEntityDefRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetaEntityDefResponse
+func (client *Client) GetMetaEntityDefWithOptions(request *GetMetaEntityDefRequest, runtime *dara.RuntimeOptions) (_result *GetMetaEntityDefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EntityType) {
+		body["EntityType"] = request.EntityType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMetaEntityDef"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMetaEntityDefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义实体定义详情
+//
+// @param request - GetMetaEntityDefRequest
+//
+// @return GetMetaEntityDefResponse
+func (client *Client) GetMetaEntityDef(request *GetMetaEntityDefRequest) (_result *GetMetaEntityDefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMetaEntityDefResponse{}
+	_body, _err := client.GetMetaEntityDefWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12627,6 +13261,92 @@ func (client *Client) ListCrawlerTypes() (_result *ListCrawlerTypesResponse, _er
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCrawlerTypesResponse{}
 	_body, _err := client.ListCrawlerTypesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Querying a Custom Attribute Definition List
+//
+// @param request - ListCustomAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomAttributesResponse
+func (client *Client) ListCustomAttributesWithOptions(request *ListCustomAttributesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.EntityTypes) {
+		query["EntityTypes"] = request.EntityTypes
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomAttributes"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Querying a Custom Attribute Definition List
+//
+// @param request - ListCustomAttributesRequest
+//
+// @return ListCustomAttributesResponse
+func (client *Client) ListCustomAttributes(request *ListCustomAttributesRequest) (_result *ListCustomAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomAttributesResponse{}
+	_body, _err := client.ListCustomAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15386,6 +16106,196 @@ func (client *Client) ListMetaCollections(request *ListMetaCollectionsRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListMetaCollectionsResponse{}
 	_body, _err := client.ListMetaCollectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义实体列表
+//
+// @param tmpReq - ListMetaEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaEntitiesResponse
+func (client *Client) ListMetaEntitiesWithOptions(tmpReq *ListMetaEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListMetaEntitiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListMetaEntitiesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AttributeFilters) {
+		request.AttributeFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AttributeFilters, dara.String("AttributeFilters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CustomAttributeFilters) {
+		request.CustomAttributeFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomAttributeFilters, dara.String("CustomAttributeFilters"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AttributeFiltersShrink) {
+		body["AttributeFilters"] = request.AttributeFiltersShrink
+	}
+
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.CustomAttributeFiltersShrink) {
+		body["CustomAttributeFilters"] = request.CustomAttributeFiltersShrink
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		body["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		body["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMetaEntities"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMetaEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义实体列表
+//
+// @param request - ListMetaEntitiesRequest
+//
+// @return ListMetaEntitiesResponse
+func (client *Client) ListMetaEntities(request *ListMetaEntitiesRequest) (_result *ListMetaEntitiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMetaEntitiesResponse{}
+	_body, _err := client.ListMetaEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义实体定义列表
+//
+// @param request - ListMetaEntityDefsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaEntityDefsResponse
+func (client *Client) ListMetaEntityDefsWithOptions(request *ListMetaEntityDefsRequest, runtime *dara.RuntimeOptions) (_result *ListMetaEntityDefsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Extend) {
+		body["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.Order) {
+		body["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMetaEntityDefs"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMetaEntityDefsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义实体定义列表
+//
+// @param request - ListMetaEntityDefsRequest
+//
+// @return ListMetaEntityDefsResponse
+func (client *Client) ListMetaEntityDefs(request *ListMetaEntityDefsRequest) (_result *ListMetaEntityDefsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMetaEntityDefsResponse{}
+	_body, _err := client.ListMetaEntityDefsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20099,19 +21009,29 @@ func (client *Client) UpdateBusiness(request *UpdateBusinessRequest) (_result *U
 //
 // Updates the business metadata of a column in a table in Data Map. Only the business description of a column can be updated.
 //
-// @param request - UpdateColumnBusinessMetadataRequest
+// @param tmpReq - UpdateColumnBusinessMetadataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateColumnBusinessMetadataResponse
-func (client *Client) UpdateColumnBusinessMetadataWithOptions(request *UpdateColumnBusinessMetadataRequest, runtime *dara.RuntimeOptions) (_result *UpdateColumnBusinessMetadataResponse, _err error) {
+func (client *Client) UpdateColumnBusinessMetadataWithOptions(tmpReq *UpdateColumnBusinessMetadataRequest, runtime *dara.RuntimeOptions) (_result *UpdateColumnBusinessMetadataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateColumnBusinessMetadataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CustomAttributes) {
+		request.CustomAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomAttributes, dara.String("CustomAttributes"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAttributesShrink) {
+		body["CustomAttributes"] = request.CustomAttributesShrink
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -20312,6 +21232,102 @@ func (client *Client) UpdateComputeResource(request *UpdateComputeResourceReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateComputeResourceResponse{}
 	_body, _err := client.UpdateComputeResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义属性定义
+//
+// @param tmpReq - UpdateCustomAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomAttributeResponse
+func (client *Client) UpdateCustomAttributeWithOptions(tmpReq *UpdateCustomAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateCustomAttributeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EntityTypes) {
+		request.EntityTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EntityTypes, dara.String("EntityTypes"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.ValueEnums) {
+		request.ValueEnumsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ValueEnums, dara.String("ValueEnums"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.DisplayEnabled) {
+		body["DisplayEnabled"] = request.DisplayEnabled
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.EntityTypesShrink) {
+		body["EntityTypes"] = request.EntityTypesShrink
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SearchFilterEnabled) {
+		body["SearchFilterEnabled"] = request.SearchFilterEnabled
+	}
+
+	if !dara.IsNil(request.ValueEnumsShrink) {
+		body["ValueEnums"] = request.ValueEnumsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCustomAttribute"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCustomAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义属性定义
+//
+// @param request - UpdateCustomAttributeRequest
+//
+// @return UpdateCustomAttributeResponse
+func (client *Client) UpdateCustomAttribute(request *UpdateCustomAttributeRequest) (_result *UpdateCustomAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCustomAttributeResponse{}
+	_body, _err := client.UpdateCustomAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21988,6 +23004,178 @@ func (client *Client) UpdateMetaCollection(request *UpdateMetaCollectionRequest)
 
 // Summary:
 //
+// 更新自定义实体
+//
+// @param tmpReq - UpdateMetaEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetaEntityResponse
+func (client *Client) UpdateMetaEntityWithOptions(tmpReq *UpdateMetaEntityRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetaEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMetaEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Attributes) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, dara.String("Attributes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CustomAttributes) {
+		request.CustomAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomAttributes, dara.String("CustomAttributes"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AttributesShrink) {
+		body["Attributes"] = request.AttributesShrink
+	}
+
+	if !dara.IsNil(request.Comment) {
+		body["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.CustomAttributesShrink) {
+		body["CustomAttributes"] = request.CustomAttributesShrink
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMetaEntity"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMetaEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义实体
+//
+// @param request - UpdateMetaEntityRequest
+//
+// @return UpdateMetaEntityResponse
+func (client *Client) UpdateMetaEntity(request *UpdateMetaEntityRequest) (_result *UpdateMetaEntityResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMetaEntityResponse{}
+	_body, _err := client.UpdateMetaEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义实体定义
+//
+// @param tmpReq - UpdateMetaEntityDefRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetaEntityDefResponse
+func (client *Client) UpdateMetaEntityDefWithOptions(tmpReq *UpdateMetaEntityDefRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetaEntityDefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMetaEntityDefShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NewAttributeDefs) {
+		request.NewAttributeDefsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NewAttributeDefs, dara.String("NewAttributeDefs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UpdateAttributeDefs) {
+		request.UpdateAttributeDefsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateAttributeDefs, dara.String("UpdateAttributeDefs"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		body["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.NewAttributeDefsShrink) {
+		body["NewAttributeDefs"] = request.NewAttributeDefsShrink
+	}
+
+	if !dara.IsNil(request.UpdateAttributeDefsShrink) {
+		body["UpdateAttributeDefs"] = request.UpdateAttributeDefsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMetaEntityDef"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMetaEntityDefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义实体定义
+//
+// @param request - UpdateMetaEntityDefRequest
+//
+// @return UpdateMetaEntityDefResponse
+func (client *Client) UpdateMetaEntityDef(request *UpdateMetaEntityDefRequest) (_result *UpdateMetaEntityDefResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMetaEntityDefResponse{}
+	_body, _err := client.UpdateMetaEntityDefWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the basic information about a node in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
 //
 // @param request - UpdateNodeRequest
@@ -22645,19 +23833,29 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 //
 // Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
 //
-// @param request - UpdateTableBusinessMetadataRequest
+// @param tmpReq - UpdateTableBusinessMetadataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTableBusinessMetadataResponse
-func (client *Client) UpdateTableBusinessMetadataWithOptions(request *UpdateTableBusinessMetadataRequest, runtime *dara.RuntimeOptions) (_result *UpdateTableBusinessMetadataResponse, _err error) {
+func (client *Client) UpdateTableBusinessMetadataWithOptions(tmpReq *UpdateTableBusinessMetadataRequest, runtime *dara.RuntimeOptions) (_result *UpdateTableBusinessMetadataResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateTableBusinessMetadataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CustomAttributes) {
+		request.CustomAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomAttributes, dara.String("CustomAttributes"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAttributesShrink) {
+		body["CustomAttributes"] = request.CustomAttributesShrink
+	}
+
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
 	}

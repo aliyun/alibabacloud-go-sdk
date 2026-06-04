@@ -9,6 +9,8 @@ type iUpdateColumnBusinessMetadataRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomAttributes(v map[string][]*string) *UpdateColumnBusinessMetadataRequest
+	GetCustomAttributes() map[string][]*string
 	SetDescription(v string) *UpdateColumnBusinessMetadataRequest
 	GetDescription() *string
 	SetId(v string) *UpdateColumnBusinessMetadataRequest
@@ -16,6 +18,10 @@ type iUpdateColumnBusinessMetadataRequest interface {
 }
 
 type UpdateColumnBusinessMetadataRequest struct {
+	// example:
+	//
+	// {"biz_owner":["张三"]}
+	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
 	// The field business description.
 	//
 	// example:
@@ -40,12 +46,21 @@ func (s UpdateColumnBusinessMetadataRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateColumnBusinessMetadataRequest) GetCustomAttributes() map[string][]*string {
+	return s.CustomAttributes
+}
+
 func (s *UpdateColumnBusinessMetadataRequest) GetDescription() *string {
 	return s.Description
 }
 
 func (s *UpdateColumnBusinessMetadataRequest) GetId() *string {
 	return s.Id
+}
+
+func (s *UpdateColumnBusinessMetadataRequest) SetCustomAttributes(v map[string][]*string) *UpdateColumnBusinessMetadataRequest {
+	s.CustomAttributes = v
+	return s
 }
 
 func (s *UpdateColumnBusinessMetadataRequest) SetDescription(v string) *UpdateColumnBusinessMetadataRequest {

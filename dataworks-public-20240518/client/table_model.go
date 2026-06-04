@@ -276,7 +276,8 @@ func (s *Table) Validate() error {
 
 type TableBusinessMetadata struct {
 	// The categories.
-	Categories [][]*TableBusinessMetadataCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Categories       [][]*TableBusinessMetadataCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CustomAttributes map[string][]*string                 `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
 	// The extended information. Only MaxCompute tables supports this parameter.
 	Extension *TableBusinessMetadataExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
 	// The usage notes.
@@ -299,6 +300,10 @@ func (s *TableBusinessMetadata) GetCategories() [][]*TableBusinessMetadataCatego
 	return s.Categories
 }
 
+func (s *TableBusinessMetadata) GetCustomAttributes() map[string][]*string {
+	return s.CustomAttributes
+}
+
 func (s *TableBusinessMetadata) GetExtension() *TableBusinessMetadataExtension {
 	return s.Extension
 }
@@ -317,6 +322,11 @@ func (s *TableBusinessMetadata) GetUpstreamTasks() []*TableBusinessMetadataUpstr
 
 func (s *TableBusinessMetadata) SetCategories(v [][]*TableBusinessMetadataCategories) *TableBusinessMetadata {
 	s.Categories = v
+	return s
+}
+
+func (s *TableBusinessMetadata) SetCustomAttributes(v map[string][]*string) *TableBusinessMetadata {
+	s.CustomAttributes = v
 	return s
 }
 
