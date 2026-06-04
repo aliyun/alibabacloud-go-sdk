@@ -87,7 +87,8 @@ type RunSearchSimilarArticlesResponseBodyHeader struct {
 	// example:
 	//
 	// task-started
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -118,6 +119,10 @@ func (s *RunSearchSimilarArticlesResponseBodyHeader) GetEvent() *string {
 	return s.Event
 }
 
+func (s *RunSearchSimilarArticlesResponseBodyHeader) GetEventInfo() *string {
+	return s.EventInfo
+}
+
 func (s *RunSearchSimilarArticlesResponseBodyHeader) GetSessionId() *string {
 	return s.SessionId
 }
@@ -138,6 +143,11 @@ func (s *RunSearchSimilarArticlesResponseBodyHeader) SetErrorMessage(v string) *
 
 func (s *RunSearchSimilarArticlesResponseBodyHeader) SetEvent(v string) *RunSearchSimilarArticlesResponseBodyHeader {
 	s.Event = &v
+	return s
+}
+
+func (s *RunSearchSimilarArticlesResponseBodyHeader) SetEventInfo(v string) *RunSearchSimilarArticlesResponseBodyHeader {
+	s.EventInfo = &v
 	return s
 }
 

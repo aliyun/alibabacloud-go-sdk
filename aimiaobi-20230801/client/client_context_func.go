@@ -3060,6 +3060,54 @@ func (client *Client) FetchImportTermsTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 获取排版任务结果
+//
+// @param request - FetchParseDocumentLayoutTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchParseDocumentLayoutTaskResponse
+func (client *Client) FetchParseDocumentLayoutTaskWithContext(ctx context.Context, request *FetchParseDocumentLayoutTaskRequest, runtime *dara.RuntimeOptions) (_result *FetchParseDocumentLayoutTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FetchParseDocumentLayoutTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FetchParseDocumentLayoutTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成内容导出文档任务
 //
 // @param request - GenerateExportWordTaskRequest
@@ -13277,6 +13325,56 @@ func (client *Client) SubmitImportTermsTaskWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitImportTermsTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交版本任务
+//
+// @param request - SubmitParseDocumentLayoutTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitParseDocumentLayoutTaskResponse
+func (client *Client) SubmitParseDocumentLayoutTaskWithContext(ctx context.Context, request *SubmitParseDocumentLayoutTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitParseDocumentLayoutTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitParseDocumentLayoutTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitParseDocumentLayoutTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
