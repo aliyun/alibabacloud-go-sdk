@@ -2122,8 +2122,6 @@ func (client *Client) ListRestoreTasks(request *ListRestoreTasksRequest) (_resul
 //
 // Queries service categories.
 //
-// @param request - ListServiceCategoriesRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServiceCategoriesResponse
@@ -2962,6 +2960,72 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
 	_body, _err := client.ListTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 续费服务实例
+//
+// @param request - RenewServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewServiceInstanceResponse
+func (client *Client) RenewServiceInstanceWithOptions(request *RenewServiceInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewServiceInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.ServiceInstanceId) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewServiceInstance"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 续费服务实例
+//
+// @param request - RenewServiceInstanceRequest
+//
+// @return RenewServiceInstanceResponse
+func (client *Client) RenewServiceInstance(request *RenewServiceInstanceRequest) (_result *RenewServiceInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RenewServiceInstanceResponse{}
+	_body, _err := client.RenewServiceInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
