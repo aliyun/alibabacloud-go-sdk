@@ -21,10 +21,14 @@ type iCreateMobileAgentPackageRequest interface {
 	GetCreditAmount() *string
 	SetCreditConfig(v string) *CreateMobileAgentPackageRequest
 	GetCreditConfig() *string
+	SetImageId(v string) *CreateMobileAgentPackageRequest
+	GetImageId() *string
 	SetInstanceName(v string) *CreateMobileAgentPackageRequest
 	GetInstanceName() *string
 	SetMobileAgentPackageSpec(v string) *CreateMobileAgentPackageRequest
 	GetMobileAgentPackageSpec() *string
+	SetPackageSpecId(v int64) *CreateMobileAgentPackageRequest
+	GetPackageSpecId() *int64
 	SetPaidCallbackUrl(v string) *CreateMobileAgentPackageRequest
 	GetPaidCallbackUrl() *string
 	SetPeriod(v int32) *CreateMobileAgentPackageRequest
@@ -60,6 +64,7 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// 1
 	CreditConfig *string `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty"`
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// example:
 	//
 	// CloudPhone
@@ -68,6 +73,7 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// advanced
 	MobileAgentPackageSpec *string `json:"MobileAgentPackageSpec,omitempty" xml:"MobileAgentPackageSpec,omitempty"`
+	PackageSpecId          *int64  `json:"PackageSpecId,omitempty" xml:"PackageSpecId,omitempty"`
 	// example:
 	//
 	// https://aim.wuying.aliyun.com/nodes
@@ -118,12 +124,20 @@ func (s *CreateMobileAgentPackageRequest) GetCreditConfig() *string {
 	return s.CreditConfig
 }
 
+func (s *CreateMobileAgentPackageRequest) GetImageId() *string {
+	return s.ImageId
+}
+
 func (s *CreateMobileAgentPackageRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *CreateMobileAgentPackageRequest) GetMobileAgentPackageSpec() *string {
 	return s.MobileAgentPackageSpec
+}
+
+func (s *CreateMobileAgentPackageRequest) GetPackageSpecId() *int64 {
+	return s.PackageSpecId
 }
 
 func (s *CreateMobileAgentPackageRequest) GetPaidCallbackUrl() *string {
@@ -172,6 +186,11 @@ func (s *CreateMobileAgentPackageRequest) SetCreditConfig(v string) *CreateMobil
 	return s
 }
 
+func (s *CreateMobileAgentPackageRequest) SetImageId(v string) *CreateMobileAgentPackageRequest {
+	s.ImageId = &v
+	return s
+}
+
 func (s *CreateMobileAgentPackageRequest) SetInstanceName(v string) *CreateMobileAgentPackageRequest {
 	s.InstanceName = &v
 	return s
@@ -179,6 +198,11 @@ func (s *CreateMobileAgentPackageRequest) SetInstanceName(v string) *CreateMobil
 
 func (s *CreateMobileAgentPackageRequest) SetMobileAgentPackageSpec(v string) *CreateMobileAgentPackageRequest {
 	s.MobileAgentPackageSpec = &v
+	return s
+}
+
+func (s *CreateMobileAgentPackageRequest) SetPackageSpecId(v int64) *CreateMobileAgentPackageRequest {
+	s.PackageSpecId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iSendFileRequest interface {
 	GetAutoInstall() *bool
 	SetClientToken(v string) *SendFileRequest
 	GetClientToken() *string
+	SetFileMd5(v string) *SendFileRequest
+	GetFileMd5() *string
 	SetSourceFilePath(v string) *SendFileRequest
 	GetSourceFilePath() *string
 	SetTargetFileName(v string) *SendFileRequest
@@ -34,6 +36,7 @@ type SendFileRequest struct {
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
 	AutoInstall           *bool     `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	ClientToken           *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	FileMd5               *string   `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
 	// The path to which you want to upload the pushed file in the cloud phone instance.
 	//
 	// This parameter is required.
@@ -96,6 +99,10 @@ func (s *SendFileRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *SendFileRequest) GetFileMd5() *string {
+	return s.FileMd5
+}
+
 func (s *SendFileRequest) GetSourceFilePath() *string {
 	return s.SourceFilePath
 }
@@ -128,6 +135,11 @@ func (s *SendFileRequest) SetAutoInstall(v bool) *SendFileRequest {
 
 func (s *SendFileRequest) SetClientToken(v string) *SendFileRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileMd5(v string) *SendFileRequest {
+	s.FileMd5 = &v
 	return s
 }
 

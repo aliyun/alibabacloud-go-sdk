@@ -124,7 +124,8 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	// example:
 	//
 	// advanced
-	PackageSpec *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
+	PackageSpec     *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
+	PackageSpecName *string `json:"PackageSpecName,omitempty" xml:"PackageSpecName,omitempty"`
 	// example:
 	//
 	// ACTIVE
@@ -163,6 +164,10 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPackageSpec() *st
 	return s.PackageSpec
 }
 
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPackageSpecName() *string {
+	return s.PackageSpecName
+}
+
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPackageStatus() *string {
 	return s.PackageStatus
 }
@@ -193,6 +198,11 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPackageId(v strin
 
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPackageSpec(v string) *DescribeMobileAgentPackageResponseBodyPackageList {
 	s.PackageSpec = &v
+	return s
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPackageSpecName(v string) *DescribeMobileAgentPackageResponseBodyPackageList {
+	s.PackageSpecName = &v
 	return s
 }
 

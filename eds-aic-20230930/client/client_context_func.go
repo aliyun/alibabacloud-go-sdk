@@ -1246,12 +1246,20 @@ func (client *Client) CreateMobileAgentPackageWithContext(ctx context.Context, r
 		query["CreditConfig"] = request.CreditConfig
 	}
 
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
 
 	if !dara.IsNil(request.MobileAgentPackageSpec) {
 		query["MobileAgentPackageSpec"] = request.MobileAgentPackageSpec
+	}
+
+	if !dara.IsNil(request.PackageSpecId) {
+		query["PackageSpecId"] = request.PackageSpecId
 	}
 
 	if !dara.IsNil(request.PaidCallbackUrl) {
@@ -5886,6 +5894,10 @@ func (client *Client) SendFileWithContext(ctx context.Context, request *SendFile
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.FileMd5) {
+		query["FileMd5"] = request.FileMd5
 	}
 
 	if !dara.IsNil(request.SourceFilePath) {
