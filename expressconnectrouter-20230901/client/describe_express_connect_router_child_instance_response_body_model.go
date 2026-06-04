@@ -257,7 +257,8 @@ type DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList stru
 	// example:
 	//
 	// vbr-gw8vjq2zjux3ifsc9****
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceId   *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceName *string `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
 	// The ID of the Alibaba Cloud account that owns the VBR.
 	//
 	// example:
@@ -348,6 +349,10 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList)
 	return s.ChildInstanceId
 }
 
+func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) GetChildInstanceName() *string {
+	return s.ChildInstanceName
+}
+
 func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) GetChildInstanceOwnerId() *int64 {
 	return s.ChildInstanceOwnerId
 }
@@ -395,6 +400,11 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList)
 
 func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) SetChildInstanceId(v string) *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList {
 	s.ChildInstanceId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) SetChildInstanceName(v string) *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList {
+	s.ChildInstanceName = &v
 	return s
 }
 

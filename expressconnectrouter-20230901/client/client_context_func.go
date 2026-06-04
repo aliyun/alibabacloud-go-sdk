@@ -308,6 +308,10 @@ func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx conte
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
 	if !dara.IsNil(request.Version) {
 		query["Version"] = request.Version
 	}
@@ -978,6 +982,10 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
 	if !dara.IsNil(request.Version) {
 		query["Version"] = request.Version
 	}

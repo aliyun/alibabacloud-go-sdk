@@ -27,6 +27,8 @@ type iDescribeExpressConnectRouterAssociationRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeExpressConnectRouterAssociationRequest
 	GetNextToken() *string
+	SetTag(v []*DescribeExpressConnectRouterAssociationRequestTag) *DescribeExpressConnectRouterAssociationRequest
+	GetTag() []*DescribeExpressConnectRouterAssociationRequestTag
 	SetTransitRouterId(v string) *DescribeExpressConnectRouterAssociationRequest
 	GetTransitRouterId() *string
 	SetVersion(v string) *DescribeExpressConnectRouterAssociationRequest
@@ -107,7 +109,8 @@ type DescribeExpressConnectRouterAssociationRequest struct {
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Tag       []*DescribeExpressConnectRouterAssociationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The TR ID.
 	//
 	// example:
@@ -167,6 +170,10 @@ func (s *DescribeExpressConnectRouterAssociationRequest) GetNextToken() *string 
 	return s.NextToken
 }
 
+func (s *DescribeExpressConnectRouterAssociationRequest) GetTag() []*DescribeExpressConnectRouterAssociationRequestTag {
+	return s.Tag
+}
+
 func (s *DescribeExpressConnectRouterAssociationRequest) GetTransitRouterId() *string {
 	return s.TransitRouterId
 }
@@ -224,6 +231,11 @@ func (s *DescribeExpressConnectRouterAssociationRequest) SetNextToken(v string) 
 	return s
 }
 
+func (s *DescribeExpressConnectRouterAssociationRequest) SetTag(v []*DescribeExpressConnectRouterAssociationRequestTag) *DescribeExpressConnectRouterAssociationRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeExpressConnectRouterAssociationRequest) SetTransitRouterId(v string) *DescribeExpressConnectRouterAssociationRequest {
 	s.TransitRouterId = &v
 	return s
@@ -240,5 +252,49 @@ func (s *DescribeExpressConnectRouterAssociationRequest) SetVpcId(v string) *Des
 }
 
 func (s *DescribeExpressConnectRouterAssociationRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeExpressConnectRouterAssociationRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeExpressConnectRouterAssociationRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeExpressConnectRouterAssociationRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExpressConnectRouterAssociationRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeExpressConnectRouterAssociationRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeExpressConnectRouterAssociationRequestTag) SetKey(v string) *DescribeExpressConnectRouterAssociationRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationRequestTag) SetValue(v string) *DescribeExpressConnectRouterAssociationRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationRequestTag) Validate() error {
 	return dara.Validate(s)
 }

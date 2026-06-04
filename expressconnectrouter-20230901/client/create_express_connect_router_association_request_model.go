@@ -27,6 +27,8 @@ type iCreateExpressConnectRouterAssociationRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *CreateExpressConnectRouterAssociationRequest
 	GetEcrId() *string
+	SetTag(v []*CreateExpressConnectRouterAssociationRequestTag) *CreateExpressConnectRouterAssociationRequest
+	GetTag() []*CreateExpressConnectRouterAssociationRequestTag
 	SetTransitRouterId(v string) *CreateExpressConnectRouterAssociationRequest
 	GetTransitRouterId() *string
 	SetTransitRouterOwnerId(v int64) *CreateExpressConnectRouterAssociationRequest
@@ -109,7 +111,8 @@ type CreateExpressConnectRouterAssociationRequest struct {
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId *string                                            `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Tag   []*CreateExpressConnectRouterAssociationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The TR ID.
 	//
 	// example:
@@ -185,6 +188,10 @@ func (s *CreateExpressConnectRouterAssociationRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *CreateExpressConnectRouterAssociationRequest) GetTag() []*CreateExpressConnectRouterAssociationRequestTag {
+	return s.Tag
+}
+
 func (s *CreateExpressConnectRouterAssociationRequest) GetTransitRouterId() *string {
 	return s.TransitRouterId
 }
@@ -250,6 +257,11 @@ func (s *CreateExpressConnectRouterAssociationRequest) SetEcrId(v string) *Creat
 	return s
 }
 
+func (s *CreateExpressConnectRouterAssociationRequest) SetTag(v []*CreateExpressConnectRouterAssociationRequestTag) *CreateExpressConnectRouterAssociationRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateExpressConnectRouterAssociationRequest) SetTransitRouterId(v string) *CreateExpressConnectRouterAssociationRequest {
 	s.TransitRouterId = &v
 	return s
@@ -276,5 +288,49 @@ func (s *CreateExpressConnectRouterAssociationRequest) SetVpcOwnerId(v int64) *C
 }
 
 func (s *CreateExpressConnectRouterAssociationRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateExpressConnectRouterAssociationRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateExpressConnectRouterAssociationRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExpressConnectRouterAssociationRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExpressConnectRouterAssociationRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateExpressConnectRouterAssociationRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateExpressConnectRouterAssociationRequestTag) SetKey(v string) *CreateExpressConnectRouterAssociationRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateExpressConnectRouterAssociationRequestTag) SetValue(v string) *CreateExpressConnectRouterAssociationRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateExpressConnectRouterAssociationRequestTag) Validate() error {
 	return dara.Validate(s)
 }

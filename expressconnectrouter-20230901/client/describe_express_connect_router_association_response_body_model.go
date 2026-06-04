@@ -335,13 +335,15 @@ type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The TR ID.
 	//
 	// example:
 	//
 	// tr-2ze4i71c6be454e2l****
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId   *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 	// The ID of the Alibaba Cloud account that owns the TR.
 	//
 	// example:
@@ -353,7 +355,8 @@ type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
 	// example:
 	//
 	// vpc-2zeeaxet4i2j1a7n7****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 	// The ID of the Alibaba Cloud account to which the VPC belongs.
 	//
 	// example:
@@ -418,8 +421,16 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Get
 	return s.Status
 }
 
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetTags() []*DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags {
+	return s.Tags
+}
+
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetTransitRouterId() *string {
 	return s.TransitRouterId
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetTransitRouterName() *string {
+	return s.TransitRouterName
 }
 
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetTransitRouterOwnerId() *int64 {
@@ -428,6 +439,10 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Get
 
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetVpcName() *string {
+	return s.VpcName
 }
 
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) GetVpcOwnerId() *int64 {
@@ -494,8 +509,18 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Set
 	return s
 }
 
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetTags(v []*DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetTransitRouterId(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
 	s.TransitRouterId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetTransitRouterName(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
+	s.TransitRouterName = &v
 	return s
 }
 
@@ -509,11 +534,60 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Set
 	return s
 }
 
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetVpcName(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
+	s.VpcName = &v
+	return s
+}
+
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) SetVpcOwnerId(v int64) *DescribeExpressConnectRouterAssociationResponseBodyAssociationList {
 	s.VpcOwnerId = &v
 	return s
 }
 
 func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) SetKey(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) SetValue(v string) *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags) Validate() error {
 	return dara.Validate(s)
 }
