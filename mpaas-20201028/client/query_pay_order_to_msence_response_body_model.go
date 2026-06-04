@@ -106,6 +106,7 @@ func (s *QueryPayOrderToMsenceResponseBody) Validate() error {
 }
 
 type QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse struct {
+	CpExtra *string `json:"CpExtra,omitempty" xml:"CpExtra,omitempty"`
 	// example:
 	//
 	// 1
@@ -120,8 +121,17 @@ func (s QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusRe
 	return s.String()
 }
 
+func (s *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse) GetCpExtra() *string {
+	return s.CpExtra
+}
+
 func (s *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse) GetOrderStatus() *string {
 	return s.OrderStatus
+}
+
+func (s *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse) SetCpExtra(v string) *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse {
+	s.CpExtra = &v
+	return s
 }
 
 func (s *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse) SetOrderStatus(v string) *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse {

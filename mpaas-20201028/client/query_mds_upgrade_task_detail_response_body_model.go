@@ -231,6 +231,7 @@ type QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent struct {
 	PushContent         *string                                                                      `json:"PushContent,omitempty" xml:"PushContent,omitempty"`
 	QrcodeUrl           *string                                                                      `json:"QrcodeUrl,omitempty" xml:"QrcodeUrl,omitempty"`
 	ReleaseType         *string                                                                      `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	ReminderPeriod      *string                                                                      `json:"ReminderPeriod,omitempty" xml:"ReminderPeriod,omitempty"`
 	RuleJsonList        []*QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContentRuleJsonList `json:"RuleJsonList,omitempty" xml:"RuleJsonList,omitempty" type:"Repeated"`
 	SilentType          *int64                                                                       `json:"SilentType,omitempty" xml:"SilentType,omitempty"`
 	SyncMode            *string                                                                      `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
@@ -413,6 +414,10 @@ func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) GetQrcod
 
 func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) GetReleaseType() *string {
 	return s.ReleaseType
+}
+
+func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) GetReminderPeriod() *string {
+	return s.ReminderPeriod
 }
 
 func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) GetRuleJsonList() []*QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContentRuleJsonList {
@@ -657,6 +662,11 @@ func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) SetQrcod
 
 func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) SetReleaseType(v string) *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent {
 	s.ReleaseType = &v
+	return s
+}
+
+func (s *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent) SetReminderPeriod(v string) *QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent {
+	s.ReminderPeriod = &v
 	return s
 }
 
