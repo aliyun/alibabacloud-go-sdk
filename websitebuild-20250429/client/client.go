@@ -472,6 +472,72 @@ func (client *Client) CheckUserResourceMeasure(request *CheckUserResourceMeasure
 
 // Summary:
 //
+// 复制插件配置
+//
+// @param request - CopyAppPluginConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyAppPluginConfigResponse
+func (client *Client) CopyAppPluginConfigWithOptions(request *CopyAppPluginConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyAppPluginConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceBizId) {
+		query["SourceBizId"] = request.SourceBizId
+	}
+
+	if !dara.IsNil(request.TargetBizId) {
+		query["TargetBizId"] = request.TargetBizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CopyAppPluginConfig"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CopyAppPluginConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 复制插件配置
+//
+// @param request - CopyAppPluginConfigRequest
+//
+// @return CopyAppPluginConfigResponse
+func (client *Client) CopyAppPluginConfig(request *CopyAppPluginConfigRequest) (_result *CopyAppPluginConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CopyAppPluginConfigResponse{}
+	_body, _err := client.CopyAppPluginConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 异步发起AI员工对话
 //
 // @param request - CreateAIStaffChatRequest
@@ -755,6 +821,99 @@ func (client *Client) CreateAppAssistantAgentSsoLogin(request *CreateAppAssistan
 
 // Summary:
 //
+// 万小智发起AI对话
+//
+// @param request - CreateAppChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppChatResponse
+func (client *Client) CreateAppChatWithSSE(request *CreateAppChatRequest, runtime *dara.RuntimeOptions, _yield chan *CreateAppChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.createAppChatWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 万小智发起AI对话
+//
+// @param request - CreateAppChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppChatResponse
+func (client *Client) CreateAppChatWithOptions(request *CreateAppChatRequest, runtime *dara.RuntimeOptions) (_result *CreateAppChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BotId) {
+		query["BotId"] = request.BotId
+	}
+
+	if !dara.IsNil(request.ChatId) {
+		query["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Messages) {
+		query["Messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppChat"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	_result = &CreateAppChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 万小智发起AI对话
+//
+// @param request - CreateAppChatRequest
+//
+// @return CreateAppChatResponse
+func (client *Client) CreateAppChat(request *CreateAppChatRequest) (_result *CreateAppChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAppChatResponse{}
+	_body, _err := client.CreateAppChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create a website instance
 //
 // @param tmpReq - CreateAppInstanceRequest
@@ -942,6 +1101,80 @@ func (client *Client) CreateAppInstanceTicket(request *CreateAppInstanceTicketRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAppInstanceTicketResponse{}
 	_body, _err := client.CreateAppInstanceTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用实例创建 LLM 网关 API-KEY
+//
+// @param request - CreateAppLlmApiKeyForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppLlmApiKeyForPartnerResponse
+func (client *Client) CreateAppLlmApiKeyForPartnerWithOptions(request *CreateAppLlmApiKeyForPartnerRequest, runtime *dara.RuntimeOptions) (_result *CreateAppLlmApiKeyForPartnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		body["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.IpWhiteList) {
+		body["IpWhiteList"] = request.IpWhiteList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppLlmApiKeyForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppLlmApiKeyForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用实例创建 LLM 网关 API-KEY
+//
+// @param request - CreateAppLlmApiKeyForPartnerRequest
+//
+// @return CreateAppLlmApiKeyForPartnerResponse
+func (client *Client) CreateAppLlmApiKeyForPartner(request *CreateAppLlmApiKeyForPartnerRequest) (_result *CreateAppLlmApiKeyForPartnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAppLlmApiKeyForPartnerResponse{}
+	_body, _err := client.CreateAppLlmApiKeyForPartnerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1280,6 +1513,138 @@ func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAppDomainRedirectResponse{}
 	_body, _err := client.DeleteAppDomainRedirectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文件
+//
+// @param request - DeleteAppInstanceFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppInstanceFileResponse
+func (client *Client) DeleteAppInstanceFileWithOptions(request *DeleteAppInstanceFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstanceFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppInstanceFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppInstanceFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文件
+//
+// @param request - DeleteAppInstanceFileRequest
+//
+// @return DeleteAppInstanceFileResponse
+func (client *Client) DeleteAppInstanceFile(request *DeleteAppInstanceFileRequest) (_result *DeleteAppInstanceFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAppInstanceFileResponse{}
+	_body, _err := client.DeleteAppInstanceFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Supabase密钥
+//
+// @param request - DeleteAppSupabaseSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppSupabaseSecretsResponse
+func (client *Client) DeleteAppSupabaseSecretsWithOptions(request *DeleteAppSupabaseSecretsRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppSupabaseSecretsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.KeysJson) {
+		query["KeysJson"] = request.KeysJson
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppSupabaseSecrets"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppSupabaseSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Supabase密钥
+//
+// @param request - DeleteAppSupabaseSecretsRequest
+//
+// @return DeleteAppSupabaseSecretsResponse
+func (client *Client) DeleteAppSupabaseSecrets(request *DeleteAppSupabaseSecretsRequest) (_result *DeleteAppSupabaseSecretsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAppSupabaseSecretsResponse{}
+	_body, _err := client.DeleteAppSupabaseSecretsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1787,6 +2152,328 @@ func (client *Client) GetAIStaffPreviewUrl(request *GetAIStaffPreviewUrlRequest)
 
 // Summary:
 //
+// 获取代码工作区详情
+//
+// @param request - GetAppCodeWorkspaceDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppCodeWorkspaceDetailResponse
+func (client *Client) GetAppCodeWorkspaceDetailWithOptions(request *GetAppCodeWorkspaceDetailRequest, runtime *dara.RuntimeOptions) (_result *GetAppCodeWorkspaceDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppCodeWorkspaceDetail"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppCodeWorkspaceDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取代码工作区详情
+//
+// @param request - GetAppCodeWorkspaceDetailRequest
+//
+// @return GetAppCodeWorkspaceDetailResponse
+func (client *Client) GetAppCodeWorkspaceDetail(request *GetAppCodeWorkspaceDetailRequest) (_result *GetAppCodeWorkspaceDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppCodeWorkspaceDetailResponse{}
+	_body, _err := client.GetAppCodeWorkspaceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取对话详情
+//
+// @param request - GetAppConversationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppConversationResponse
+func (client *Client) GetAppConversationWithOptions(request *GetAppConversationRequest, runtime *dara.RuntimeOptions) (_result *GetAppConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BotId) {
+		query["BotId"] = request.BotId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppConversation"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取对话详情
+//
+// @param request - GetAppConversationRequest
+//
+// @return GetAppConversationResponse
+func (client *Client) GetAppConversation(request *GetAppConversationRequest) (_result *GetAppConversationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppConversationResponse{}
+	_body, _err := client.GetAppConversationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会话锁定状态
+//
+// @param request - GetAppConversationLockStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppConversationLockStatusResponse
+func (client *Client) GetAppConversationLockStatusWithOptions(request *GetAppConversationLockStatusRequest, runtime *dara.RuntimeOptions) (_result *GetAppConversationLockStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppConversationLockStatus"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppConversationLockStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取会话锁定状态
+//
+// @param request - GetAppConversationLockStatusRequest
+//
+// @return GetAppConversationLockStatusResponse
+func (client *Client) GetAppConversationLockStatus(request *GetAppConversationLockStatusRequest) (_result *GetAppConversationLockStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppConversationLockStatusResponse{}
+	_body, _err := client.GetAppConversationLockStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据库表结构
+//
+// @param request - GetAppDatabaseTableSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppDatabaseTableSchemasResponse
+func (client *Client) GetAppDatabaseTableSchemasWithOptions(request *GetAppDatabaseTableSchemasRequest, runtime *dara.RuntimeOptions) (_result *GetAppDatabaseTableSchemasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppDatabaseTableSchemas"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppDatabaseTableSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据库表结构
+//
+// @param request - GetAppDatabaseTableSchemasRequest
+//
+// @return GetAppDatabaseTableSchemasResponse
+func (client *Client) GetAppDatabaseTableSchemas(request *GetAppDatabaseTableSchemasRequest) (_result *GetAppDatabaseTableSchemasResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppDatabaseTableSchemasResponse{}
+	_body, _err := client.GetAppDatabaseTableSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取文件及修改时间
+//
+// @param request - GetAppFileContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppFileContentResponse
+func (client *Client) GetAppFileContentWithOptions(request *GetAppFileContentRequest, runtime *dara.RuntimeOptions) (_result *GetAppFileContentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppFileContent"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppFileContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取文件及修改时间
+//
+// @param request - GetAppFileContentRequest
+//
+// @return GetAppFileContentResponse
+func (client *Client) GetAppFileContent(request *GetAppFileContentRequest) (_result *GetAppFileContentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppFileContentResponse{}
+	_body, _err := client.GetAppFileContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Application Instance Details
 //
 // @param request - GetAppInstanceRequest
@@ -1840,6 +2527,68 @@ func (client *Client) GetAppInstance(request *GetAppInstanceRequest) (_result *G
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppInstanceResponse{}
 	_body, _err := client.GetAppInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetAppInstanceEntitlement
+//
+// @param request - GetAppInstanceEntitlementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppInstanceEntitlementResponse
+func (client *Client) GetAppInstanceEntitlementWithOptions(request *GetAppInstanceEntitlementRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceEntitlementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppInstanceEntitlement"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppInstanceEntitlementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetAppInstanceEntitlement
+//
+// @param request - GetAppInstanceEntitlementRequest
+//
+// @return GetAppInstanceEntitlementResponse
+func (client *Client) GetAppInstanceEntitlement(request *GetAppInstanceEntitlementRequest) (_result *GetAppInstanceEntitlementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppInstanceEntitlementResponse{}
+	_body, _err := client.GetAppInstanceEntitlementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1977,6 +2726,68 @@ func (client *Client) GetAppInstanceForPartner(request *GetAppInstanceForPartner
 
 // Summary:
 //
+// 获取应用临时短链
+//
+// @param request - GetAppInstanceTempShortUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppInstanceTempShortUrlResponse
+func (client *Client) GetAppInstanceTempShortUrlWithOptions(request *GetAppInstanceTempShortUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceTempShortUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		body["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppInstanceTempShortUrl"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppInstanceTempShortUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用临时短链
+//
+// @param request - GetAppInstanceTempShortUrlRequest
+//
+// @return GetAppInstanceTempShortUrlResponse
+func (client *Client) GetAppInstanceTempShortUrl(request *GetAppInstanceTempShortUrlRequest) (_result *GetAppInstanceTempShortUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppInstanceTempShortUrlResponse{}
+	_body, _err := client.GetAppInstanceTempShortUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 生码-获取插件配置信息
 //
 // @param request - GetAppPluginConfigRequest
@@ -2034,6 +2845,76 @@ func (client *Client) GetAppPluginConfig(request *GetAppPluginConfigRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppPluginConfigResponse{}
 	_body, _err := client.GetAppPluginConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布状态查询
+//
+// @param request - GetAppPublishStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppPublishStatusResponse
+func (client *Client) GetAppPublishStatusWithOptions(request *GetAppPublishStatusRequest, runtime *dara.RuntimeOptions) (_result *GetAppPublishStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DeployOrderId) {
+		query["DeployOrderId"] = request.DeployOrderId
+	}
+
+	if !dara.IsNil(request.WebsiteDomain) {
+		query["WebsiteDomain"] = request.WebsiteDomain
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppPublishStatus"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppPublishStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布状态查询
+//
+// @param request - GetAppPublishStatusRequest
+//
+// @return GetAppPublishStatusResponse
+func (client *Client) GetAppPublishStatus(request *GetAppPublishStatusRequest) (_result *GetAppPublishStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppPublishStatusResponse{}
+	_body, _err := client.GetAppPublishStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2117,6 +2998,600 @@ func (client *Client) GetAppRecommendedCommodities(request *GetAppRecommendedCom
 
 // Summary:
 //
+// 需求查询
+//
+// @param request - GetAppRequirementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppRequirementResponse
+func (client *Client) GetAppRequirementWithOptions(request *GetAppRequirementRequest, runtime *dara.RuntimeOptions) (_result *GetAppRequirementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppRequirement"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppRequirementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 需求查询
+//
+// @param request - GetAppRequirementRequest
+//
+// @return GetAppRequirementResponse
+func (client *Client) GetAppRequirement(request *GetAppRequirementRequest) (_result *GetAppRequirementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppRequirementResponse{}
+	_body, _err := client.GetAppRequirementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取沙箱预览地址
+//
+// @param request - GetAppSandboxPreviewUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSandboxPreviewUrlResponse
+func (client *Client) GetAppSandboxPreviewUrlWithOptions(request *GetAppSandboxPreviewUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAppSandboxPreviewUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		body["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSandboxPreviewUrl"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSandboxPreviewUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取沙箱预览地址
+//
+// @param request - GetAppSandboxPreviewUrlRequest
+//
+// @return GetAppSandboxPreviewUrlResponse
+func (client *Client) GetAppSandboxPreviewUrl(request *GetAppSandboxPreviewUrlRequest) (_result *GetAppSandboxPreviewUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSandboxPreviewUrlResponse{}
+	_body, _err := client.GetAppSandboxPreviewUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SEO索引状态
+//
+// @param request - GetAppSeoStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSeoStatusResponse
+func (client *Client) GetAppSeoStatusWithOptions(request *GetAppSeoStatusRequest, runtime *dara.RuntimeOptions) (_result *GetAppSeoStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.SeType) {
+		query["SeType"] = request.SeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSeoStatus"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSeoStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SEO索引状态
+//
+// @param request - GetAppSeoStatusRequest
+//
+// @return GetAppSeoStatusResponse
+func (client *Client) GetAppSeoStatus(request *GetAppSeoStatusRequest) (_result *GetAppSeoStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSeoStatusResponse{}
+	_body, _err := client.GetAppSeoStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # SEO索引图表
+//
+// @param request - GetAppSeoTrendsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSeoTrendsResponse
+func (client *Client) GetAppSeoTrendsWithOptions(request *GetAppSeoTrendsRequest, runtime *dara.RuntimeOptions) (_result *GetAppSeoTrendsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.SeType) {
+		query["SeType"] = request.SeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSeoTrends"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSeoTrendsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # SEO索引图表
+//
+// @param request - GetAppSeoTrendsRequest
+//
+// @return GetAppSeoTrendsResponse
+func (client *Client) GetAppSeoTrends(request *GetAppSeoTrendsRequest) (_result *GetAppSeoTrendsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSeoTrendsResponse{}
+	_body, _err := client.GetAppSeoTrendsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取站点地图
+//
+// @param request - GetAppSitemapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSitemapResponse
+func (client *Client) GetAppSitemapWithOptions(request *GetAppSitemapRequest, runtime *dara.RuntimeOptions) (_result *GetAppSitemapResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.SeType) {
+		query["SeType"] = request.SeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSitemap"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSitemapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取站点地图
+//
+// @param request - GetAppSitemapRequest
+//
+// @return GetAppSitemapResponse
+func (client *Client) GetAppSitemap(request *GetAppSitemapRequest) (_result *GetAppSitemapResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSitemapResponse{}
+	_body, _err := client.GetAppSitemapWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Supabase认证设置查询
+//
+// @param request - GetAppSupabaseAuthConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSupabaseAuthConfigResponse
+func (client *Client) GetAppSupabaseAuthConfigWithOptions(request *GetAppSupabaseAuthConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAppSupabaseAuthConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthType) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSupabaseAuthConfig"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSupabaseAuthConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Supabase认证设置查询
+//
+// @param request - GetAppSupabaseAuthConfigRequest
+//
+// @return GetAppSupabaseAuthConfigResponse
+func (client *Client) GetAppSupabaseAuthConfig(request *GetAppSupabaseAuthConfigRequest) (_result *GetAppSupabaseAuthConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSupabaseAuthConfigResponse{}
+	_body, _err := client.GetAppSupabaseAuthConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Supabase实例信息
+//
+// @param request - GetAppSupabaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSupabaseInstanceResponse
+func (client *Client) GetAppSupabaseInstanceWithOptions(request *GetAppSupabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetAppSupabaseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSupabaseInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSupabaseInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Supabase实例信息
+//
+// @param request - GetAppSupabaseInstanceRequest
+//
+// @return GetAppSupabaseInstanceResponse
+func (client *Client) GetAppSupabaseInstance(request *GetAppSupabaseInstanceRequest) (_result *GetAppSupabaseInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSupabaseInstanceResponse{}
+	_body, _err := client.GetAppSupabaseInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase密钥
+//
+// @param request - GetAppSupabaseSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSupabaseSecretsResponse
+func (client *Client) GetAppSupabaseSecretsWithOptions(request *GetAppSupabaseSecretsRequest, runtime *dara.RuntimeOptions) (_result *GetAppSupabaseSecretsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppSupabaseSecrets"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppSupabaseSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase密钥
+//
+// @param request - GetAppSupabaseSecretsRequest
+//
+// @return GetAppSupabaseSecretsResponse
+func (client *Client) GetAppSupabaseSecrets(request *GetAppSupabaseSecretsRequest) (_result *GetAppSupabaseSecretsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppSupabaseSecretsResponse{}
+	_body, _err := client.GetAppSupabaseSecretsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 模板详情查询
+//
+// @param request - GetAppTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppTemplateResponse
+func (client *Client) GetAppTemplateWithOptions(request *GetAppTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetAppTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppTemplate"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 模板详情查询
+//
+// @param request - GetAppTemplateRequest
+//
+// @return GetAppTemplateResponse
+func (client *Client) GetAppTemplate(request *GetAppTemplateRequest) (_result *GetAppTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppTemplateResponse{}
+	_body, _err := client.GetAppTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询万小智灵感值服务
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2153,6 +3628,76 @@ func (client *Client) GetAppTokenService() (_result *GetAppTokenServiceResponse,
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppTokenServiceResponse{}
 	_body, _err := client.GetAppTokenServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作区目录结构
+//
+// @param request - GetAppWorkspaceDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppWorkspaceDirectoryResponse
+func (client *Client) GetAppWorkspaceDirectoryWithOptions(request *GetAppWorkspaceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *GetAppWorkspaceDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Deep) {
+		body["Deep"] = request.Deep
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		body["FilePath"] = request.FilePath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppWorkspaceDirectory"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppWorkspaceDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作区目录结构
+//
+// @param request - GetAppWorkspaceDirectoryRequest
+//
+// @return GetAppWorkspaceDirectoryResponse
+func (client *Client) GetAppWorkspaceDirectory(request *GetAppWorkspaceDirectoryRequest) (_result *GetAppWorkspaceDirectoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppWorkspaceDirectoryResponse{}
+	_body, _err := client.GetAppWorkspaceDirectoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2852,6 +4397,84 @@ func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定聊天的消息列表
+//
+// @param request - ListAppChatMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppChatMessagesResponse
+func (client *Client) ListAppChatMessagesWithOptions(request *ListAppChatMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListAppChatMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		query["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SectionId) {
+		query["SectionId"] = request.SectionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppChatMessages"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppChatMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定聊天的消息列表
+//
+// @param request - ListAppChatMessagesRequest
+//
+// @return ListAppChatMessagesResponse
+func (client *Client) ListAppChatMessages(request *ListAppChatMessagesRequest) (_result *ListAppChatMessagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppChatMessagesResponse{}
+	_body, _err := client.ListAppChatMessagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI ListAppCommoditySpecificationsForPartner is deprecated, please use WebsiteBuild::2025-04-29::ListAppCommoditySpecificationsV2ForPartner instead.
 //
 // Summary:
@@ -2962,6 +4585,178 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartner(request *ListAp
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAppCommoditySpecificationsV2ForPartnerResponse{}
 	_body, _err := client.ListAppCommoditySpecificationsV2ForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询对话消息列表
+//
+// @param request - ListAppConversationMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppConversationMessagesResponse
+func (client *Client) ListAppConversationMessagesWithOptions(request *ListAppConversationMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListAppConversationMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StartCreateTime) {
+		query["StartCreateTime"] = request.StartCreateTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppConversationMessages"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppConversationMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询对话消息列表
+//
+// @param request - ListAppConversationMessagesRequest
+//
+// @return ListAppConversationMessagesResponse
+func (client *Client) ListAppConversationMessages(request *ListAppConversationMessagesRequest) (_result *ListAppConversationMessagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppConversationMessagesResponse{}
+	_body, _err := client.ListAppConversationMessagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索对话列表
+//
+// @param request - ListAppConversationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppConversationsResponse
+func (client *Client) ListAppConversationsWithOptions(request *ListAppConversationsRequest, runtime *dara.RuntimeOptions) (_result *ListAppConversationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BotId) {
+		query["BotId"] = request.BotId
+	}
+
+	if !dara.IsNil(request.EndModifyTime) {
+		query["EndModifyTime"] = request.EndModifyTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StartModifyTime) {
+		query["StartModifyTime"] = request.StartModifyTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppConversations"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppConversationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索对话列表
+//
+// @param request - ListAppConversationsRequest
+//
+// @return ListAppConversationsResponse
+func (client *Client) ListAppConversations(request *ListAppConversationsRequest) (_result *ListAppConversationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppConversationsResponse{}
+	_body, _err := client.ListAppConversationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3234,6 +5029,486 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAppInstancesResponse{}
 	_body, _err := client.ListAppInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取码农插件配置列表
+//
+// @param request - ListAppPluginConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppPluginConfigsResponse
+func (client *Client) ListAppPluginConfigsWithOptions(request *ListAppPluginConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListAppPluginConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppPluginConfigs"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppPluginConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取码农插件配置列表
+//
+// @param request - ListAppPluginConfigsRequest
+//
+// @return ListAppPluginConfigsResponse
+func (client *Client) ListAppPluginConfigs(request *ListAppPluginConfigsRequest) (_result *ListAppPluginConfigsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppPluginConfigsResponse{}
+	_body, _err := client.ListAppPluginConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用插件列表
+//
+// @param request - ListAppPluginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppPluginsResponse
+func (client *Client) ListAppPluginsWithOptions(request *ListAppPluginsRequest, runtime *dara.RuntimeOptions) (_result *ListAppPluginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Phase) {
+		query["Phase"] = request.Phase
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppPlugins"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用插件列表
+//
+// @param request - ListAppPluginsRequest
+//
+// @return ListAppPluginsResponse
+func (client *Client) ListAppPlugins(request *ListAppPluginsRequest) (_result *ListAppPluginsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppPluginsResponse{}
+	_body, _err := client.ListAppPluginsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布历史查询
+//
+// @param request - ListAppPublishHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppPublishHistoryResponse
+func (client *Client) ListAppPublishHistoryWithOptions(request *ListAppPublishHistoryRequest, runtime *dara.RuntimeOptions) (_result *ListAppPublishHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WebsiteDomain) {
+		query["WebsiteDomain"] = request.WebsiteDomain
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppPublishHistory"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppPublishHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布历史查询
+//
+// @param request - ListAppPublishHistoryRequest
+//
+// @return ListAppPublishHistoryResponse
+func (client *Client) ListAppPublishHistory(request *ListAppPublishHistoryRequest) (_result *ListAppPublishHistoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppPublishHistoryResponse{}
+	_body, _err := client.ListAppPublishHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 字典列表查询
+//
+// @param request - ListAppTemplateDictsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppTemplateDictsResponse
+func (client *Client) ListAppTemplateDictsWithOptions(request *ListAppTemplateDictsRequest, runtime *dara.RuntimeOptions) (_result *ListAppTemplateDictsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DictType) {
+		query["DictType"] = request.DictType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppTemplateDicts"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppTemplateDictsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 字典列表查询
+//
+// @param request - ListAppTemplateDictsRequest
+//
+// @return ListAppTemplateDictsResponse
+func (client *Client) ListAppTemplateDicts(request *ListAppTemplateDictsRequest) (_result *ListAppTemplateDictsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppTemplateDictsResponse{}
+	_body, _err := client.ListAppTemplateDictsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 模板列表查询
+//
+// @param request - ListAppTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppTemplatesResponse
+func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListAppTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppType) {
+		query["AppType"] = request.AppType
+	}
+
+	if !dara.IsNil(request.ColorScheme) {
+		query["ColorScheme"] = request.ColorScheme
+	}
+
+	if !dara.IsNil(request.Industry) {
+		query["Industry"] = request.Industry
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductVersion) {
+		query["ProductVersion"] = request.ProductVersion
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppTemplates"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 模板列表查询
+//
+// @param request - ListAppTemplatesRequest
+//
+// @return ListAppTemplatesResponse
+func (client *Client) ListAppTemplates(request *ListAppTemplatesRequest) (_result *ListAppTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppTemplatesResponse{}
+	_body, _err := client.ListAppTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询支付宝ISV插件配置
+//
+// @param request - ListIsvPaymentPluginConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIsvPaymentPluginConfigsResponse
+func (client *Client) ListIsvPaymentPluginConfigsWithOptions(request *ListIsvPaymentPluginConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListIsvPaymentPluginConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIsvPaymentPluginConfigs"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIsvPaymentPluginConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询支付宝ISV插件配置
+//
+// @param request - ListIsvPaymentPluginConfigsRequest
+//
+// @return ListIsvPaymentPluginConfigsResponse
+func (client *Client) ListIsvPaymentPluginConfigs(request *ListIsvPaymentPluginConfigsRequest) (_result *ListIsvPaymentPluginConfigsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListIsvPaymentPluginConfigsResponse{}
+	_body, _err := client.ListIsvPaymentPluginConfigsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3835,6 +6110,72 @@ func (client *Client) OperateAppServiceForPartner(request *OperateAppServiceForP
 
 // Summary:
 //
+// 切换模板点赞统计
+//
+// @param request - OperateAppTemplateLikeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateAppTemplateLikeResponse
+func (client *Client) OperateAppTemplateLikeWithOptions(request *OperateAppTemplateLikeRequest, runtime *dara.RuntimeOptions) (_result *OperateAppTemplateLikeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Liked) {
+		query["Liked"] = request.Liked
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateAppTemplateLike"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateAppTemplateLikeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 切换模板点赞统计
+//
+// @param request - OperateAppTemplateLikeRequest
+//
+// @return OperateAppTemplateLikeResponse
+func (client *Client) OperateAppTemplateLike(request *OperateAppTemplateLikeRequest) (_result *OperateAppTemplateLikeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateAppTemplateLikeResponse{}
+	_body, _err := client.OperateAppTemplateLikeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通用Supabase操作
 //
 // @param request - OperateSupabaseForAdminRequest
@@ -3932,6 +6273,88 @@ func (client *Client) OperateSupabaseForAdmin(request *OperateSupabaseForAdminRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &OperateSupabaseForAdminResponse{}
 	_body, _err := client.OperateSupabaseForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布应用实例
+//
+// @param request - PublishAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishAppInstanceResponse
+func (client *Client) PublishAppInstanceWithOptions(request *PublishAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *PublishAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DeployChannel) {
+		query["DeployChannel"] = request.DeployChannel
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.LogicalNumber) {
+		query["LogicalNumber"] = request.LogicalNumber
+	}
+
+	if !dara.IsNil(request.PublishNumber) {
+		query["PublishNumber"] = request.PublishNumber
+	}
+
+	if !dara.IsNil(request.WeappAction) {
+		query["WeappAction"] = request.WeappAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PublishAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PublishAppInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布应用实例
+//
+// @param request - PublishAppInstanceRequest
+//
+// @return PublishAppInstanceResponse
+func (client *Client) PublishAppInstance(request *PublishAppInstanceRequest) (_result *PublishAppInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PublishAppInstanceResponse{}
+	_body, _err := client.PublishAppInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5044,6 +7467,91 @@ func (client *Client) QuerySupabaseInstanceInfoForAdmin(request *QuerySupabaseIn
 
 // Summary:
 //
+// 重新连接AI对话
+//
+// @param request - ReconnectAppChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReconnectAppChatResponse
+func (client *Client) ReconnectAppChatWithSSE(request *ReconnectAppChatRequest, runtime *dara.RuntimeOptions, _yield chan *ReconnectAppChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.reconnectAppChatWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 重新连接AI对话
+//
+// @param request - ReconnectAppChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReconnectAppChatResponse
+func (client *Client) ReconnectAppChatWithOptions(request *ReconnectAppChatRequest, runtime *dara.RuntimeOptions) (_result *ReconnectAppChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		query["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.LastEventId) {
+		query["LastEventId"] = request.LastEventId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReconnectAppChat"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	_result = &ReconnectAppChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新连接AI对话
+//
+// @param request - ReconnectAppChatRequest
+//
+// @return ReconnectAppChatResponse
+func (client *Client) ReconnectAppChat(request *ReconnectAppChatRequest) (_result *ReconnectAppChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReconnectAppChatResponse{}
+	_body, _err := client.ReconnectAppChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Refresh ticket
 //
 // @param request - RefreshAppInstanceTicketRequest
@@ -5270,6 +7778,342 @@ func (client *Client) RenewAppInstance(request *RenewAppInstanceRequest) (_resul
 
 // Summary:
 //
+// 续期/刷新沙箱环境
+//
+// @param request - RenewAppSandboxRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewAppSandboxResponse
+func (client *Client) RenewAppSandboxWithOptions(request *RenewAppSandboxRequest, runtime *dara.RuntimeOptions) (_result *RenewAppSandboxResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewAppSandbox"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewAppSandboxResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 续期/刷新沙箱环境
+//
+// @param request - RenewAppSandboxRequest
+//
+// @return RenewAppSandboxResponse
+func (client *Client) RenewAppSandbox(request *RenewAppSandboxRequest) (_result *RenewAppSandboxResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RenewAppSandboxResponse{}
+	_body, _err := client.RenewAppSandboxWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 代码快照回滚
+//
+// @param request - RollbackAppCodeSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackAppCodeSnapshotResponse
+func (client *Client) RollbackAppCodeSnapshotWithOptions(request *RollbackAppCodeSnapshotRequest, runtime *dara.RuntimeOptions) (_result *RollbackAppCodeSnapshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.TargetLogicalNumber) {
+		query["TargetLogicalNumber"] = request.TargetLogicalNumber
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackAppCodeSnapshot"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackAppCodeSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 代码快照回滚
+//
+// @param request - RollbackAppCodeSnapshotRequest
+//
+// @return RollbackAppCodeSnapshotResponse
+func (client *Client) RollbackAppCodeSnapshot(request *RollbackAppCodeSnapshotRequest) (_result *RollbackAppCodeSnapshotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RollbackAppCodeSnapshotResponse{}
+	_body, _err := client.RollbackAppCodeSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚应用实例发布
+//
+// @param request - RollbackAppInstancePublishRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackAppInstancePublishResponse
+func (client *Client) RollbackAppInstancePublishWithOptions(request *RollbackAppInstancePublishRequest, runtime *dara.RuntimeOptions) (_result *RollbackAppInstancePublishResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DeployChannel) {
+		query["DeployChannel"] = request.DeployChannel
+	}
+
+	if !dara.IsNil(request.PublishNumber) {
+		query["PublishNumber"] = request.PublishNumber
+	}
+
+	if !dara.IsNil(request.QuickRollback) {
+		query["QuickRollback"] = request.QuickRollback
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackAppInstancePublish"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackAppInstancePublishResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚应用实例发布
+//
+// @param request - RollbackAppInstancePublishRequest
+//
+// @return RollbackAppInstancePublishResponse
+func (client *Client) RollbackAppInstancePublish(request *RollbackAppInstancePublishRequest) (_result *RollbackAppInstancePublishResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RollbackAppInstancePublishResponse{}
+	_body, _err := client.RollbackAppInstancePublishWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存需求
+//
+// @param request - SaveAppRequirementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveAppRequirementResponse
+func (client *Client) SaveAppRequirementWithOptions(request *SaveAppRequirementRequest, runtime *dara.RuntimeOptions) (_result *SaveAppRequirementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prd) {
+		body["Prd"] = request.Prd
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveAppRequirement"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveAppRequirementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存需求
+//
+// @param request - SaveAppRequirementRequest
+//
+// @return SaveAppRequirementResponse
+func (client *Client) SaveAppRequirement(request *SaveAppRequirementRequest) (_result *SaveAppRequirementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveAppRequirementResponse{}
+	_body, _err := client.SaveAppRequirementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存Supabase密钥
+//
+// @param request - SaveAppSupabaseSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveAppSupabaseSecretsResponse
+func (client *Client) SaveAppSupabaseSecretsWithOptions(request *SaveAppSupabaseSecretsRequest, runtime *dara.RuntimeOptions) (_result *SaveAppSupabaseSecretsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.SecretsJson) {
+		query["SecretsJson"] = request.SecretsJson
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveAppSupabaseSecrets"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveAppSupabaseSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存Supabase密钥
+//
+// @param request - SaveAppSupabaseSecretsRequest
+//
+// @return SaveAppSupabaseSecretsResponse
+func (client *Client) SaveAppSupabaseSecrets(request *SaveAppSupabaseSecretsRequest) (_result *SaveAppSupabaseSecretsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveAppSupabaseSecretsResponse{}
+	_body, _err := client.SaveAppSupabaseSecretsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 图片检索
 //
 // @param tmpReq - SearchImageRequest
@@ -5476,6 +8320,80 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 
 // Summary:
 //
+// 提交SEO索引
+//
+// @param request - SubmitAppSeoIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAppSeoIndexResponse
+func (client *Client) SubmitAppSeoIndexWithOptions(request *SubmitAppSeoIndexRequest, runtime *dara.RuntimeOptions) (_result *SubmitAppSeoIndexResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.SeType) {
+		query["SeType"] = request.SeType
+	}
+
+	if !dara.IsNil(request.SubmitLater) {
+		query["SubmitLater"] = request.SubmitLater
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAppSeoIndex"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAppSeoIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交SEO索引
+//
+// @param request - SubmitAppSeoIndexRequest
+//
+// @return SubmitAppSeoIndexResponse
+func (client *Client) SubmitAppSeoIndex(request *SubmitAppSeoIndexRequest) (_result *SubmitAppSeoIndexResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitAppSeoIndexResponse{}
+	_body, _err := client.SubmitAppSeoIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交素材生产任务
 //
 // @param request - SubmitMaterialTaskRequest
@@ -5533,6 +8451,76 @@ func (client *Client) SubmitMaterialTask(request *SubmitMaterialTaskRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitMaterialTaskResponse{}
 	_body, _err := client.SubmitMaterialTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 切换到指定对话
+//
+// @param request - SwitchAppConversationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchAppConversationResponse
+func (client *Client) SwitchAppConversationWithOptions(request *SwitchAppConversationRequest, runtime *dara.RuntimeOptions) (_result *SwitchAppConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.BotId) {
+		query["BotId"] = request.BotId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SwitchAppConversation"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SwitchAppConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 切换到指定对话
+//
+// @param request - SwitchAppConversationRequest
+//
+// @return SwitchAppConversationResponse
+func (client *Client) SwitchAppConversation(request *SwitchAppConversationRequest) (_result *SwitchAppConversationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SwitchAppConversationResponse{}
+	_body, _err := client.SwitchAppConversationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5692,6 +8680,638 @@ func (client *Client) UnbindAppDomain(request *UnbindAppDomainRequest) (_result 
 
 // Summary:
 //
+// 更新消息内容
+//
+// @param request - UpdateAppChatMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppChatMessageResponse
+func (client *Client) UpdateAppChatMessageWithOptions(request *UpdateAppChatMessageRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppChatMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddedMetaData) {
+		query["AddedMetaData"] = request.AddedMetaData
+	}
+
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.MessageId) {
+		query["MessageId"] = request.MessageId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppChatMessage"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppChatMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消息内容
+//
+// @param request - UpdateAppChatMessageRequest
+//
+// @return UpdateAppChatMessageResponse
+func (client *Client) UpdateAppChatMessage(request *UpdateAppChatMessageRequest) (_result *UpdateAppChatMessageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppChatMessageResponse{}
+	_body, _err := client.UpdateAppChatMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑JSX代码
+//
+// @param request - UpdateAppCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppCodeResponse
+func (client *Client) UpdateAppCodeWithOptions(request *UpdateAppCodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppCode"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑JSX代码
+//
+// @param request - UpdateAppCodeRequest
+//
+// @return UpdateAppCodeResponse
+func (client *Client) UpdateAppCode(request *UpdateAppCodeRequest) (_result *UpdateAppCodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppCodeResponse{}
+	_body, _err := client.UpdateAppCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件
+//
+// @param request - UpdateAppFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppFileResponse
+func (client *Client) UpdateAppFileWithOptions(request *UpdateAppFileRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文件
+//
+// @param request - UpdateAppFileRequest
+//
+// @return UpdateAppFileResponse
+func (client *Client) UpdateAppFile(request *UpdateAppFileRequest) (_result *UpdateAppFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppFileResponse{}
+	_body, _err := client.UpdateAppFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 建站实例变配
+//
+// @param tmpReq - UpdateAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppInstanceResponse
+func (client *Client) UpdateAppInstanceWithOptions(tmpReq *UpdateAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAppInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeployArea) {
+		query["DeployArea"] = request.DeployArea
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.IconUrl) {
+		query["IconUrl"] = request.IconUrl
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !dara.IsNil(request.ThumbnailUrl) {
+		query["ThumbnailUrl"] = request.ThumbnailUrl
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 建站实例变配
+//
+// @param request - UpdateAppInstanceRequest
+//
+// @return UpdateAppInstanceResponse
+func (client *Client) UpdateAppInstance(request *UpdateAppInstanceRequest) (_result *UpdateAppInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppInstanceResponse{}
+	_body, _err := client.UpdateAppInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update SEO Index Status
+//
+// Description:
+//
+// # WanXiaoZhi 2.0 AI Conversation
+//
+// @param request - UpdateAppSeoStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppSeoStatusResponse
+func (client *Client) UpdateAppSeoStatusWithOptions(request *UpdateAppSeoStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppSeoStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.SeType) {
+		query["SeType"] = request.SeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppSeoStatus"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppSeoStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update SEO Index Status
+//
+// Description:
+//
+// # WanXiaoZhi 2.0 AI Conversation
+//
+// @param request - UpdateAppSeoStatusRequest
+//
+// @return UpdateAppSeoStatusResponse
+func (client *Client) UpdateAppSeoStatus(request *UpdateAppSeoStatusRequest) (_result *UpdateAppSeoStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppSeoStatusResponse{}
+	_body, _err := client.UpdateAppSeoStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Supabase认证配置更新
+//
+// @param request - UpdateAppSupabaseAuthConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppSupabaseAuthConfigResponse
+func (client *Client) UpdateAppSupabaseAuthConfigWithOptions(request *UpdateAppSupabaseAuthConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppSupabaseAuthConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.ConfigsJson) {
+		query["ConfigsJson"] = request.ConfigsJson
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppSupabaseAuthConfig"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppSupabaseAuthConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Supabase认证配置更新
+//
+// @param request - UpdateAppSupabaseAuthConfigRequest
+//
+// @return UpdateAppSupabaseAuthConfigResponse
+func (client *Client) UpdateAppSupabaseAuthConfig(request *UpdateAppSupabaseAuthConfigRequest) (_result *UpdateAppSupabaseAuthConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppSupabaseAuthConfigResponse{}
+	_body, _err := client.UpdateAppSupabaseAuthConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Supabase密钥
+//
+// @param request - UpdateAppSupabaseSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppSupabaseSecretResponse
+func (client *Client) UpdateAppSupabaseSecretWithOptions(request *UpdateAppSupabaseSecretRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppSupabaseSecretResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.SecretKey) {
+		query["SecretKey"] = request.SecretKey
+	}
+
+	if !dara.IsNil(request.SecretName) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !dara.IsNil(request.SecretType) {
+		query["SecretType"] = request.SecretType
+	}
+
+	if !dara.IsNil(request.SecretValue) {
+		query["SecretValue"] = request.SecretValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppSupabaseSecret"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppSupabaseSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Supabase密钥
+//
+// @param request - UpdateAppSupabaseSecretRequest
+//
+// @return UpdateAppSupabaseSecretResponse
+func (client *Client) UpdateAppSupabaseSecret(request *UpdateAppSupabaseSecretRequest) (_result *UpdateAppSupabaseSecretResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAppSupabaseSecretResponse{}
+	_body, _err := client.UpdateAppSupabaseSecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传到站点根目录
+//
+// @param request - UploadAppSiteValidationFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadAppSiteValidationFileResponse
+func (client *Client) UploadAppSiteValidationFileWithOptions(request *UploadAppSiteValidationFileRequest, runtime *dara.RuntimeOptions) (_result *UploadAppSiteValidationFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.File) {
+		query["File"] = request.File
+	}
+
+	if !dara.IsNil(request.FileContent) {
+		query["FileContent"] = request.FileContent
+	}
+
+	if !dara.IsNil(request.FileType) {
+		query["FileType"] = request.FileType
+	}
+
+	if !dara.IsNil(request.SiteHost) {
+		query["SiteHost"] = request.SiteHost
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadAppSiteValidationFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadAppSiteValidationFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传到站点根目录
+//
+// @param request - UploadAppSiteValidationFileRequest
+//
+// @return UploadAppSiteValidationFileResponse
+func (client *Client) UploadAppSiteValidationFile(request *UploadAppSiteValidationFileRequest) (_result *UploadAppSiteValidationFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadAppSiteValidationFileResponse{}
+	_body, _err := client.UploadAppSiteValidationFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 上传素材文件
 //
 // @param request - UploadMaterialFileRequest
@@ -5762,4 +9382,124 @@ func (client *Client) UploadMaterialFile(request *UploadMaterialFileRequest) (_r
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) createAppChatWithSSE_opYieldFunc(_yield chan *CreateAppChatResponse, _yieldErr chan error, request *CreateAppChatRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BotId) {
+		query["BotId"] = request.BotId
+	}
+
+	if !dara.IsNil(request.ChatId) {
+		query["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Messages) {
+		query["Messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppChat"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.StringValue(resp.Event.Data)
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) reconnectAppChatWithSSE_opYieldFunc(_yield chan *ReconnectAppChatResponse, _yieldErr chan error, request *ReconnectAppChatRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		query["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		query["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.LastEventId) {
+		query["LastEventId"] = request.LastEventId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReconnectAppChat"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.StringValue(resp.Event.Data)
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

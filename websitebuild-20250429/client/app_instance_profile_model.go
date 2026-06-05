@@ -43,6 +43,10 @@ type iAppInstanceProfile interface {
 	GetTemplateEtag() *string
 	SetTemplateId(v string) *AppInstanceProfile
 	GetTemplateId() *string
+	SetChatbiTaskId(v string) *AppInstanceProfile
+	GetChatbiTaskId() *string
+	SetChatbiTaskStatus(v string) *AppInstanceProfile
+	GetChatbiTaskStatus() *string
 }
 
 type AppInstanceProfile struct {
@@ -63,6 +67,8 @@ type AppInstanceProfile struct {
 	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	TemplateEtag        *string `json:"TemplateEtag,omitempty" xml:"TemplateEtag,omitempty"`
 	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	ChatbiTaskId        *string `json:"chatbiTaskId,omitempty" xml:"chatbiTaskId,omitempty"`
+	ChatbiTaskStatus    *string `json:"chatbiTaskStatus,omitempty" xml:"chatbiTaskStatus,omitempty"`
 }
 
 func (s AppInstanceProfile) String() string {
@@ -139,6 +145,14 @@ func (s *AppInstanceProfile) GetTemplateEtag() *string {
 
 func (s *AppInstanceProfile) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *AppInstanceProfile) GetChatbiTaskId() *string {
+	return s.ChatbiTaskId
+}
+
+func (s *AppInstanceProfile) GetChatbiTaskStatus() *string {
+	return s.ChatbiTaskStatus
 }
 
 func (s *AppInstanceProfile) SetApplicationType(v string) *AppInstanceProfile {
@@ -223,6 +237,16 @@ func (s *AppInstanceProfile) SetTemplateEtag(v string) *AppInstanceProfile {
 
 func (s *AppInstanceProfile) SetTemplateId(v string) *AppInstanceProfile {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetChatbiTaskId(v string) *AppInstanceProfile {
+	s.ChatbiTaskId = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetChatbiTaskStatus(v string) *AppInstanceProfile {
+	s.ChatbiTaskStatus = &v
 	return s
 }
 
