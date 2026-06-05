@@ -278,7 +278,7 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithContext(ctx cont
 
 // Summary:
 //
-// 批量创建自定义实体
+// Create multiple metadata entities at a time. The metadata entities in a batch must be of the same type. Only the pure custom type and the extended table type (corresponding to Database/Table) are supported.
 //
 // @param tmpReq - BatchCreateMetaEntitiesRequest
 //
@@ -328,7 +328,7 @@ func (client *Client) BatchCreateMetaEntitiesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 批量删除自定义实体
+// Deletes metadata entity objects in batches. You can delete custom entities and extended table type objects (Database/Table). You cannot delete columns separately. To delete associated column objects, delete the table.
 //
 // @param tmpReq - BatchDeleteMetaEntitiesRequest
 //
@@ -540,6 +540,116 @@ func (client *Client) CloneDataSourceWithContext(ctx context.Context, request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloneDataSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 Agent
+//
+// @param tmpReq - CreateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentResponse
+func (client *Client) CreateAgentWithContext(ctx context.Context, tmpReq *CreateAgentRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CallableAgents) {
+		request.CallableAgentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallableAgents, dara.String("CallableAgents"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Metadata) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Model) {
+		request.ModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Model, dara.String("Model"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Skills) {
+		request.SkillsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Skills, dara.String("Skills"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tools) {
+		request.ToolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tools, dara.String("Tools"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibilityScope) {
+		request.VisibilityScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibilityScope, dara.String("VisibilityScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallableAgentsShrink) {
+		body["CallableAgents"] = request.CallableAgentsShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.MetadataShrink) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	if !dara.IsNil(request.ModelShrink) {
+		body["Model"] = request.ModelShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SkillsShrink) {
+		body["Skills"] = request.SkillsShrink
+	}
+
+	if !dara.IsNil(request.SystemPrompt) {
+		body["SystemPrompt"] = request.SystemPrompt
+	}
+
+	if !dara.IsNil(request.ToolsShrink) {
+		body["Tools"] = request.ToolsShrink
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		body["Visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibilityScopeShrink) {
+		body["VisibilityScope"] = request.VisibilityScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -858,7 +968,7 @@ func (client *Client) CreateComputeResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建自定义属性定义
+// # Create a custom attribute
 //
 // @param tmpReq - CreateCustomAttributeRequest
 //
@@ -2588,7 +2698,7 @@ func (client *Client) CreateMetaCollectionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建自定义实体定义
+// Creates metadata entity definitions (including pure custom types and extended table types)
 //
 // @param tmpReq - CreateMetaEntityDefRequest
 //
@@ -3670,6 +3780,50 @@ func (client *Client) CreateWorkflowInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// 删除 Agent
+//
+// @param request - DeleteAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentResponse
+func (client *Client) DeleteAgentWithContext(ctx context.Context, request *DeleteAgentRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a custom monitoring alert rule.
 //
 // @param request - DeleteAlertRuleRequest
@@ -3928,7 +4082,7 @@ func (client *Client) DeleteComputeResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除自定义属性定义
+// # Delete Custom Attribute
 //
 // @param request - DeleteCustomAttributeRequest
 //
@@ -4800,6 +4954,50 @@ func (client *Client) DeleteLineageRelationshipWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 删除 MCP Server
+//
+// @param request - DeleteMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcpServerResponse
+func (client *Client) DeleteMcpServerWithContext(ctx context.Context, request *DeleteMcpServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteMcpServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMcpServer"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMcpServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a collection in Data Map. Collections include categories and data albums. If you want to delete a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - DeleteMetaCollectionRequest
@@ -4844,7 +5042,7 @@ func (client *Client) DeleteMetaCollectionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除自定义实体定义
+// Delete metadata entity definitions (including pure custom types and extended table types)
 //
 // @param request - DeleteMetaEntityDefRequest
 //
@@ -5324,6 +5522,50 @@ func (client *Client) DeleteRouteWithContext(ctx context.Context, request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除 Skill
+//
+// @param request - DeleteSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSkillResponse
+func (client *Client) DeleteSkillWithContext(ctx context.Context, request *DeleteSkillRequest, runtime *dara.RuntimeOptions) (_result *DeleteSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSkill"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSkillResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5900,6 +6142,50 @@ func (client *Client) ExecuteAdhocWorkflowInstanceWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteAdhocWorkflowInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取 Agent 详情
+//
+// @param request - GetAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentResponse
+func (client *Client) GetAgentWithContext(ctx context.Context, request *GetAgentRequest, runtime *dara.RuntimeOptions) (_result *GetAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7592,7 +7878,7 @@ func (client *Client) GetMetaCollectionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取自定义实体详情
+// Obtains the details of a metadata entity. Currently, only pure custom types are supported.
 //
 // @param request - GetMetaEntityRequest
 //
@@ -7636,7 +7922,7 @@ func (client *Client) GetMetaEntityWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取自定义实体定义详情
+// # Queries the details of a custom entity definition
 //
 // @param request - GetMetaEntityDefRequest
 //
@@ -11400,7 +11686,7 @@ func (client *Client) ListMetaCollectionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询自定义实体列表
+// Queries the list of metadata entities. Currently, only custom types are supported.
 //
 // @param tmpReq - ListMetaEntitiesRequest
 //
@@ -11486,7 +11772,7 @@ func (client *Client) ListMetaEntitiesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 查询自定义实体定义列表
+// Queries a list of custom entity definitions (including custom entity types and extended table types).
 //
 // @param request - ListMetaEntityDefsRequest
 //
@@ -15258,7 +15544,7 @@ func (client *Client) UpdateComputeResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新自定义属性定义
+// # Updates custom attribute definitions
 //
 // @param tmpReq - UpdateCustomAttributeRequest
 //
@@ -16660,7 +16946,7 @@ func (client *Client) UpdateMetaCollectionWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 更新自定义实体
+// Updates metadata entities. You can update custom objects or extended table objects (Database, Table, and Column).
 //
 // @param tmpReq - UpdateMetaEntityRequest
 //
@@ -16726,7 +17012,7 @@ func (client *Client) UpdateMetaEntityWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// 更新自定义实体定义
+// Updates metadata entity definitions (including pure custom types and extended table types)
 //
 // @param tmpReq - UpdateMetaEntityDefRequest
 //
