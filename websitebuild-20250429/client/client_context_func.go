@@ -622,29 +622,29 @@ func (client *Client) CreateAppChatWithContext(ctx context.Context, request *Cre
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.BotId) {
-		query["BotId"] = request.BotId
+		body["BotId"] = request.BotId
 	}
 
 	if !dara.IsNil(request.ChatId) {
-		query["ChatId"] = request.ChatId
+		body["ChatId"] = request.ChatId
 	}
 
 	if !dara.IsNil(request.ConversationId) {
-		query["ConversationId"] = request.ConversationId
+		body["ConversationId"] = request.ConversationId
 	}
 
 	if !dara.IsNil(request.Messages) {
-		query["Messages"] = request.Messages
+		body["Messages"] = request.Messages
 	}
 
 	if !dara.IsNil(request.SiteId) {
-		query["SiteId"] = request.SiteId
+		body["SiteId"] = request.SiteId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateAppChat"),
@@ -7221,29 +7221,29 @@ func (client *Client) createAppChatWithSSECtx_opYieldFunc(_yield chan *CreateApp
 			return
 		}
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.BotId) {
-		query["BotId"] = request.BotId
+		body["BotId"] = request.BotId
 	}
 
 	if !dara.IsNil(request.ChatId) {
-		query["ChatId"] = request.ChatId
+		body["ChatId"] = request.ChatId
 	}
 
 	if !dara.IsNil(request.ConversationId) {
-		query["ConversationId"] = request.ConversationId
+		body["ConversationId"] = request.ConversationId
 	}
 
 	if !dara.IsNil(request.Messages) {
-		query["Messages"] = request.Messages
+		body["Messages"] = request.Messages
 	}
 
 	if !dara.IsNil(request.SiteId) {
-		query["SiteId"] = request.SiteId
+		body["SiteId"] = request.SiteId
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateAppChat"),
