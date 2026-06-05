@@ -96,6 +96,7 @@ func (s *GetMcpServerResponseBody) Validate() error {
 }
 
 type GetMcpServerResponseBodyData struct {
+	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
 	// The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
 	AssembledSources []*GetMcpServerResponseBodyDataAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	// The backend service of the route.
@@ -224,6 +225,10 @@ func (s GetMcpServerResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetMcpServerResponseBodyData) GetApiId() *string {
+	return s.ApiId
+}
+
 func (s *GetMcpServerResponseBodyData) GetAssembledSources() []*GetMcpServerResponseBodyDataAssembledSources {
 	return s.AssembledSources
 }
@@ -310,6 +315,11 @@ func (s *GetMcpServerResponseBodyData) GetRouteId() *string {
 
 func (s *GetMcpServerResponseBodyData) GetType() *string {
 	return s.Type
+}
+
+func (s *GetMcpServerResponseBodyData) SetApiId(v string) *GetMcpServerResponseBodyData {
+	s.ApiId = &v
+	return s
 }
 
 func (s *GetMcpServerResponseBodyData) SetAssembledSources(v []*GetMcpServerResponseBodyDataAssembledSources) *GetMcpServerResponseBodyData {
