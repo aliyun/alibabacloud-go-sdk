@@ -1171,6 +1171,150 @@ func (client *Client) DeleteStopGatewayWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 获取审计告警日志
+//
+// @param request - DescribeAuditLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAuditLogsResponse
+func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request *DescribeAuditLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuditLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AsyncRequestId) {
+		query["AsyncRequestId"] = request.AsyncRequestId
+	}
+
+	if !dara.IsNil(request.ClientIp) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !dara.IsNil(request.ClientUa) {
+		query["ClientUa"] = request.ClientUa
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DatabaseName) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !dara.IsNil(request.EffectRowRange) {
+		query["EffectRowRange"] = request.EffectRowRange
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.ExecuteTimeRange) {
+		query["ExecuteTimeRange"] = request.ExecuteTimeRange
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.IpType) {
+		query["IpType"] = request.IpType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.LoadWhiteList) {
+		query["LoadWhiteList"] = request.LoadWhiteList
+	}
+
+	if !dara.IsNil(request.LogSource) {
+		query["LogSource"] = request.LogSource
+	}
+
+	if !dara.IsNil(request.OperateType) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !dara.IsNil(request.OssObjectKey) {
+		query["OssObjectKey"] = request.OssObjectKey
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		query["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.RuleAggQuery) {
+		query["RuleAggQuery"] = request.RuleAggQuery
+	}
+
+	if !dara.IsNil(request.RuleCategory) {
+		query["RuleCategory"] = request.RuleCategory
+	}
+
+	if !dara.IsNil(request.RuleID) {
+		query["RuleID"] = request.RuleID
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SqlText) {
+		query["SqlText"] = request.SqlText
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAuditLogs"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAuditLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the configurations of the auto scaling feature for an instance.
 //
 // Description:
