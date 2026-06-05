@@ -153,14 +153,8 @@ func (s *DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerInterval) Validate()
 }
 
 type DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 1000
 	ReqBpsValue *string `json:"ReqBpsValue,omitempty" xml:"ReqBpsValue,omitempty"`
-	// example:
-	//
-	// 2021-12-24T16:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp   *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerIntervalDataModule) String() string {

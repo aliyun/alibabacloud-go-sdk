@@ -56,6 +56,90 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加负载到集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param tmpReq - AddHiveEdgeWorkersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddHiveEdgeWorkersResponse
+func (client *Client) AddHiveEdgeWorkersWithOptions(tmpReq *AddHiveEdgeWorkersRequest, runtime *dara.RuntimeOptions) (_result *AddHiveEdgeWorkersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddHiveEdgeWorkersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddHiveEdgeWorkers"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddHiveEdgeWorkersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加负载到集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - AddHiveEdgeWorkersRequest
+//
+// @return AddHiveEdgeWorkersResponse
+func (client *Client) AddHiveEdgeWorkers(request *AddHiveEdgeWorkersRequest) (_result *AddHiveEdgeWorkersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddHiveEdgeWorkersResponse{}
+	_body, _err := client.AddHiveEdgeWorkersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - AddVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1724,6 +1808,68 @@ func (client *Client) BindTemplate(request *BindTemplateRequest) (_result *BindT
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传用户数据文件
+//
+// @param request - CancelComfyTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelComfyTaskResponse
+func (client *Client) CancelComfyTaskWithOptions(request *CancelComfyTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelComfyTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelComfyTask"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelComfyTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传用户数据文件
+//
+// @param request - CancelComfyTaskRequest
+//
+// @return CancelComfyTaskResponse
+func (client *Client) CancelComfyTask(request *CancelComfyTaskRequest) (_result *CancelComfyTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelComfyTaskResponse{}
+	_body, _err := client.CancelComfyTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ContinuousAdjustRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1853,6 +1999,208 @@ func (client *Client) ContinuousMove(request *ContinuousMoveRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &ContinuousMoveResponse{}
 	_body, _err := client.ContinuousMoveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传用户数据文件
+//
+// @param request - CreateComfyTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateComfyTaskResponse
+func (client *Client) CreateComfyTaskWithOptions(request *CreateComfyTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateComfyTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	if !dara.IsNil(request.UserParameters) {
+		query["UserParameters"] = request.UserParameters
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateComfyTask"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateComfyTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传用户数据文件
+//
+// @param request - CreateComfyTaskRequest
+//
+// @return CreateComfyTaskResponse
+func (client *Client) CreateComfyTask(request *CreateComfyTaskRequest) (_result *CreateComfyTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateComfyTaskResponse{}
+	_body, _err := client.CreateComfyTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个用户数据的目录
+//
+// @param request - CreateComfyUserDataDirRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateComfyUserDataDirResponse
+func (client *Client) CreateComfyUserDataDirWithOptions(request *CreateComfyUserDataDirRequest, runtime *dara.RuntimeOptions) (_result *CreateComfyUserDataDirResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateComfyUserDataDir"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateComfyUserDataDirResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个用户数据的目录
+//
+// @param request - CreateComfyUserDataDirRequest
+//
+// @return CreateComfyUserDataDirResponse
+func (client *Client) CreateComfyUserDataDir(request *CreateComfyUserDataDirRequest) (_result *CreateComfyUserDataDirResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateComfyUserDataDirResponse{}
+	_body, _err := client.CreateComfyUserDataDirWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Comfy工作流
+//
+// @param request - CreateComfyWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateComfyWorkflowResponse
+func (client *Client) CreateComfyWorkflowWithOptions(request *CreateComfyWorkflowRequest, runtime *dara.RuntimeOptions) (_result *CreateComfyWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Workflow) {
+		query["Workflow"] = request.Workflow
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateComfyWorkflow"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateComfyWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Comfy工作流
+//
+// @param request - CreateComfyWorkflowRequest
+//
+// @return CreateComfyWorkflowResponse
+func (client *Client) CreateComfyWorkflow(request *CreateComfyWorkflowRequest) (_result *CreateComfyWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateComfyWorkflowResponse{}
+	_body, _err := client.CreateComfyWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2245,6 +2593,84 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateGroupResponse{}
 	_body, _err := client.CreateGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - CreateHiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHiveResponse
+func (client *Client) CreateHiveWithOptions(request *CreateHiveRequest, runtime *dara.RuntimeOptions) (_result *CreateHiveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateHive"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateHiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - CreateHiveRequest
+//
+// @return CreateHiveResponse
+func (client *Client) CreateHive(request *CreateHiveRequest) (_result *CreateHiveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateHiveResponse{}
+	_body, _err := client.CreateHiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2868,6 +3294,90 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 
 // Summary:
 //
+// 从集群删除负载
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param tmpReq - DelHiveEdgeWorkersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DelHiveEdgeWorkersResponse
+func (client *Client) DelHiveEdgeWorkersWithOptions(tmpReq *DelHiveEdgeWorkersRequest, runtime *dara.RuntimeOptions) (_result *DelHiveEdgeWorkersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DelHiveEdgeWorkersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DelHiveEdgeWorkers"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DelHiveEdgeWorkersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从集群删除负载
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - DelHiveEdgeWorkersRequest
+//
+// @return DelHiveEdgeWorkersResponse
+func (client *Client) DelHiveEdgeWorkers(request *DelHiveEdgeWorkersRequest) (_result *DelHiveEdgeWorkersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DelHiveEdgeWorkersResponse{}
+	_body, _err := client.DelHiveEdgeWorkersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除云应用
 //
 // @param request - DeleteCloudAppRequest
@@ -2921,6 +3431,192 @@ func (client *Client) DeleteCloudApp(request *DeleteCloudAppRequest) (_result *D
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteCloudAppResponse{}
 	_body, _err := client.DeleteCloudAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除用户的生成结果
+//
+// @param request - DeleteComfyProductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteComfyProductionResponse
+func (client *Client) DeleteComfyProductionWithOptions(request *DeleteComfyProductionRequest, runtime *dara.RuntimeOptions) (_result *DeleteComfyProductionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteComfyProduction"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteComfyProductionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除用户的生成结果
+//
+// @param request - DeleteComfyProductionRequest
+//
+// @return DeleteComfyProductionResponse
+func (client *Client) DeleteComfyProduction(request *DeleteComfyProductionRequest) (_result *DeleteComfyProductionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteComfyProductionResponse{}
+	_body, _err := client.DeleteComfyProductionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除用户数据的中的文件或目录
+//
+// @param request - DeleteComfyUserDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteComfyUserDataResponse
+func (client *Client) DeleteComfyUserDataWithOptions(request *DeleteComfyUserDataRequest, runtime *dara.RuntimeOptions) (_result *DeleteComfyUserDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteComfyUserData"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteComfyUserDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除用户数据的中的文件或目录
+//
+// @param request - DeleteComfyUserDataRequest
+//
+// @return DeleteComfyUserDataResponse
+func (client *Client) DeleteComfyUserData(request *DeleteComfyUserDataRequest) (_result *DeleteComfyUserDataResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteComfyUserDataResponse{}
+	_body, _err := client.DeleteComfyUserDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Comfy工作流
+//
+// @param request - DeleteComfyWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteComfyWorkflowResponse
+func (client *Client) DeleteComfyWorkflowWithOptions(request *DeleteComfyWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteComfyWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteComfyWorkflow"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteComfyWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Comfy工作流
+//
+// @param request - DeleteComfyWorkflowRequest
+//
+// @return DeleteComfyWorkflowResponse
+func (client *Client) DeleteComfyWorkflow(request *DeleteComfyWorkflowRequest) (_result *DeleteComfyWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteComfyWorkflowResponse{}
+	_body, _err := client.DeleteComfyWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3157,6 +3853,80 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
 	_body, _err := client.DeleteGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - DeleteHiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHiveResponse
+func (client *Client) DeleteHiveWithOptions(request *DeleteHiveRequest, runtime *dara.RuntimeOptions) (_result *DeleteHiveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteHive"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteHiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - DeleteHiveRequest
+//
+// @return DeleteHiveResponse
+func (client *Client) DeleteHive(request *DeleteHiveRequest) (_result *DeleteHiveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteHiveResponse{}
+	_body, _err := client.DeleteHiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3849,6 +4619,488 @@ func (client *Client) DescribeAccountStat(request *DescribeAccountStatRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeAccountStatResponse{}
 	_body, _err := client.DescribeAccountStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户生成结果的下载链接
+//
+// @param request - DescribeComfyProductionDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyProductionDownloadUrlResponse
+func (client *Client) DescribeComfyProductionDownloadUrlWithOptions(request *DescribeComfyProductionDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyProductionDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyProductionDownloadUrl"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyProductionDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户生成结果的下载链接
+//
+// @param request - DescribeComfyProductionDownloadUrlRequest
+//
+// @return DescribeComfyProductionDownloadUrlResponse
+func (client *Client) DescribeComfyProductionDownloadUrl(request *DescribeComfyProductionDownloadUrlRequest) (_result *DescribeComfyProductionDownloadUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyProductionDownloadUrlResponse{}
+	_body, _err := client.DescribeComfyProductionDownloadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 本接口支持根据不同请求条件查询Comfy生成物列表
+//
+// @param request - DescribeComfyProductionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyProductionsResponse
+func (client *Client) DescribeComfyProductionsWithOptions(request *DescribeComfyProductionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyProductionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyProductions"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyProductionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 本接口支持根据不同请求条件查询Comfy生成物列表
+//
+// @param request - DescribeComfyProductionsRequest
+//
+// @return DescribeComfyProductionsResponse
+func (client *Client) DescribeComfyProductions(request *DescribeComfyProductionsRequest) (_result *DescribeComfyProductionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyProductionsResponse{}
+	_body, _err := client.DescribeComfyProductionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举用户数据的中所有文件和目录的信息。
+//
+// @param request - DescribeComfyTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyTasksResponse
+func (client *Client) DescribeComfyTasksWithOptions(request *DescribeComfyTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskState) {
+		query["TaskState"] = request.TaskState
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyTasks"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举用户数据的中所有文件和目录的信息。
+//
+// @param request - DescribeComfyTasksRequest
+//
+// @return DescribeComfyTasksResponse
+func (client *Client) DescribeComfyTasks(request *DescribeComfyTasksRequest) (_result *DescribeComfyTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyTasksResponse{}
+	_body, _err := client.DescribeComfyTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传用户数据文件
+//
+// @param request - DescribeComfyUserDataDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyUserDataDownloadUrlResponse
+func (client *Client) DescribeComfyUserDataDownloadUrlWithOptions(request *DescribeComfyUserDataDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyUserDataDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyUserDataDownloadUrl"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyUserDataDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传用户数据文件
+//
+// @param request - DescribeComfyUserDataDownloadUrlRequest
+//
+// @return DescribeComfyUserDataDownloadUrlResponse
+func (client *Client) DescribeComfyUserDataDownloadUrl(request *DescribeComfyUserDataDownloadUrlRequest) (_result *DescribeComfyUserDataDownloadUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyUserDataDownloadUrlResponse{}
+	_body, _err := client.DescribeComfyUserDataDownloadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户数据文件上传的URL，进行用户文件上传
+//
+// @param request - DescribeComfyUserDataUploadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyUserDataUploadUrlResponse
+func (client *Client) DescribeComfyUserDataUploadUrlWithOptions(request *DescribeComfyUserDataUploadUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyUserDataUploadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		query["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.FileMd5) {
+		query["FileMd5"] = request.FileMd5
+	}
+
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FileSizeBytes) {
+		query["FileSizeBytes"] = request.FileSizeBytes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyUserDataUploadUrl"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyUserDataUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户数据文件上传的URL，进行用户文件上传
+//
+// @param request - DescribeComfyUserDataUploadUrlRequest
+//
+// @return DescribeComfyUserDataUploadUrlResponse
+func (client *Client) DescribeComfyUserDataUploadUrl(request *DescribeComfyUserDataUploadUrlRequest) (_result *DescribeComfyUserDataUploadUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyUserDataUploadUrlResponse{}
+	_body, _err := client.DescribeComfyUserDataUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举用户数据的中所有文件和目录的信息。
+//
+// @param request - DescribeComfyUserDatasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyUserDatasResponse
+func (client *Client) DescribeComfyUserDatasWithOptions(request *DescribeComfyUserDatasRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyUserDatasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyUserDatas"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyUserDatasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举用户数据的中所有文件和目录的信息。
+//
+// @param request - DescribeComfyUserDatasRequest
+//
+// @return DescribeComfyUserDatasResponse
+func (client *Client) DescribeComfyUserDatas(request *DescribeComfyUserDatasRequest) (_result *DescribeComfyUserDatasResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyUserDatasResponse{}
+	_body, _err := client.DescribeComfyUserDatasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Comfy工作流列表
+//
+// @param request - DescribeComfyWorkflowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyWorkflowsResponse
+func (client *Client) DescribeComfyWorkflowsWithOptions(request *DescribeComfyWorkflowsRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyWorkflowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyWorkflows"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyWorkflowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Comfy工作流列表
+//
+// @param request - DescribeComfyWorkflowsRequest
+//
+// @return DescribeComfyWorkflowsResponse
+func (client *Client) DescribeComfyWorkflows(request *DescribeComfyWorkflowsRequest) (_result *DescribeComfyWorkflowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeComfyWorkflowsResponse{}
+	_body, _err := client.DescribeComfyWorkflowsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8226,6 +9478,118 @@ func (client *Client) ListCloudApps(request *ListCloudAppsRequest) (_result *Lis
 
 // Summary:
 //
+// 查询所有负载信息，支持分页查询。
+//
+// @param tmpReq - ListEdgeWorkersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEdgeWorkersResponse
+func (client *Client) ListEdgeWorkersWithOptions(tmpReq *ListEdgeWorkersRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeWorkersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListEdgeWorkersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HiveIds) {
+		request.HiveIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HiveIds, dara.String("HiveIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.PlanIds) {
+		request.PlanIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PlanIds, dara.String("PlanIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Statuses) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, dara.String("Statuses"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.HiveIdsShrink) {
+		query["HiveIds"] = request.HiveIdsShrink
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PlanIdsShrink) {
+		query["PlanIds"] = request.PlanIdsShrink
+	}
+
+	if !dara.IsNil(request.Spec) {
+		query["Spec"] = request.Spec
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatusesShrink) {
+		query["Statuses"] = request.StatusesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEdgeWorkers"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEdgeWorkersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有负载信息，支持分页查询。
+//
+// @param request - ListEdgeWorkersRequest
+//
+// @return ListEdgeWorkersResponse
+func (client *Client) ListEdgeWorkers(request *ListEdgeWorkersRequest) (_result *ListEdgeWorkersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListEdgeWorkersResponse{}
+	_body, _err := client.ListEdgeWorkersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询文件的实例推送状态信息列表。
 //
 // @param request - ListFilePushStatusesRequest
@@ -8333,6 +9697,88 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListFilesResponse{}
 	_body, _err := client.ListFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有集群信息，支持分页查询。
+//
+// @param request - ListHivesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHivesResponse
+func (client *Client) ListHivesWithOptions(request *ListHivesRequest, runtime *dara.RuntimeOptions) (_result *ListHivesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListHives"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListHivesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有集群信息，支持分页查询。
+//
+// @param request - ListHivesRequest
+//
+// @return ListHivesResponse
+func (client *Client) ListHives(request *ListHivesRequest) (_result *ListHivesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListHivesResponse{}
+	_body, _err := client.ListHivesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8944,6 +10390,76 @@ func (client *Client) ListRenderingSessions(request *ListRenderingSessionsReques
 
 // Summary:
 //
+// 查询规格信息，支持分页查询。
+//
+// @param request - ListSpecificationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSpecificationsResponse
+func (client *Client) ListSpecificationsWithOptions(request *ListSpecificationsRequest, runtime *dara.RuntimeOptions) (_result *ListSpecificationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Specification) {
+		query["Specification"] = request.Specification
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSpecifications"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSpecificationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询规格信息，支持分页查询。
+//
+// @param request - ListSpecificationsRequest
+//
+// @return ListSpecificationsResponse
+func (client *Client) ListSpecifications(request *ListSpecificationsRequest) (_result *ListSpecificationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSpecificationsResponse{}
+	_body, _err := client.ListSpecificationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 安全登陆管理
 //
 // @param request - ManageLoginRequest
@@ -9009,6 +10525,76 @@ func (client *Client) ManageLogin(request *ManageLoginRequest) (_result *ManageL
 	runtime := &dara.RuntimeOptions{}
 	_result = &ManageLoginResponse{}
 	_body, _err := client.ManageLoginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Comfy的工作流详细信息
+//
+// @param request - ModifyComfyWorkflowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyComfyWorkflowResponse
+func (client *Client) ModifyComfyWorkflowWithOptions(request *ModifyComfyWorkflowRequest, runtime *dara.RuntimeOptions) (_result *ModifyComfyWorkflowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.WorkflowId) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	if !dara.IsNil(request.WorkflowName) {
+		query["WorkflowName"] = request.WorkflowName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyComfyWorkflow"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyComfyWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Comfy的工作流详细信息
+//
+// @param request - ModifyComfyWorkflowRequest
+//
+// @return ModifyComfyWorkflowResponse
+func (client *Client) ModifyComfyWorkflow(request *ModifyComfyWorkflowRequest) (_result *ModifyComfyWorkflowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyComfyWorkflowResponse{}
+	_body, _err := client.ModifyComfyWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9528,6 +11114,88 @@ func (client *Client) ModifyGroup(request *ModifyGroupRequest) (_result *ModifyG
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - ModifyHiveAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHiveAttributeResponse
+func (client *Client) ModifyHiveAttributeWithOptions(request *ModifyHiveAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHiveAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyHiveAttribute"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyHiveAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - ModifyHiveAttributeRequest
+//
+// @return ModifyHiveAttributeResponse
+func (client *Client) ModifyHiveAttribute(request *ModifyHiveAttributeRequest) (_result *ModifyHiveAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyHiveAttributeResponse{}
+	_body, _err := client.ModifyHiveAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ModifyParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10040,8 +11708,90 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 	return _result, _err
 }
 
-// @param request - OpenVsServiceRequest
+// Summary:
 //
+// 移动负载到集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param tmpReq - MoveHiveEdgeWorkersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveHiveEdgeWorkersResponse
+func (client *Client) MoveHiveEdgeWorkersWithOptions(tmpReq *MoveHiveEdgeWorkersRequest, runtime *dara.RuntimeOptions) (_result *MoveHiveEdgeWorkersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MoveHiveEdgeWorkersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MoveHiveEdgeWorkers"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MoveHiveEdgeWorkersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动负载到集群
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+//
+// @param request - MoveHiveEdgeWorkersRequest
+//
+// @return MoveHiveEdgeWorkersResponse
+func (client *Client) MoveHiveEdgeWorkers(request *MoveHiveEdgeWorkersRequest) (_result *MoveHiveEdgeWorkersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MoveHiveEdgeWorkersResponse{}
+	_body, _err := client.MoveHiveEdgeWorkersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenVsServiceResponse

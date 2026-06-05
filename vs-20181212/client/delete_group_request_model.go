@@ -21,11 +21,8 @@ type DeleteGroupRequest struct {
 	// example:
 	//
 	// 33763950751395843
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 123456
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DeleteGroupRequest) String() string {

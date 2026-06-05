@@ -153,13 +153,7 @@ func (s *DescribeVsDomainTrafficDataResponseBodyTrafficDataPerInterval) Validate
 }
 
 type DescribeVsDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 2021-09-20T07:10:42Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// example:
-	//
-	// 100
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
 }
 

@@ -153,58 +153,19 @@ func (s *DescribeVsStreamsPublishListResponseBodyPublishInfo) Validate() error {
 }
 
 type DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo struct {
-	// example:
-	//
-	// xxxApp
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// example:
-	//
-	// 192.168.0.1
-	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
-	// example:
-	//
-	// example.aliyundoc.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// 192.168.0.1
-	EdgeNodeAddr *string `json:"EdgeNodeAddr,omitempty" xml:"EdgeNodeAddr,omitempty"`
-	// example:
-	//
-	// example.aliyundoc.com
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClientAddr    *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EdgeNodeAddr  *string `json:"EdgeNodeAddr,omitempty" xml:"EdgeNodeAddr,omitempty"`
 	PublishDomain *string `json:"PublishDomain,omitempty" xml:"PublishDomain,omitempty"`
-	// example:
-	//
-	// 2016-06-29T19:00:00Z
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// example:
-	//
-	// center
-	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// example:
-	//
-	// https://example.aliyundoc.com/xxxApp/3402000****320000001.m3u8
-	PublishUrl *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
-	// example:
-	//
-	// 2016-06-29T19:00:00Z
-	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// example:
-	//
-	// xxxStream
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// example:
-	//
-	// https://example.aliyundoc.com/xxxApp/3402000****320000001.m3u8
-	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-	// example:
-	//
-	// 3888920****8138204-cn-qingdao
-	TranscodeId *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
-	// example:
-	//
-	// yes
-	Transcoded *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
+	PublishTime   *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishType   *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	PublishUrl    *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
+	StopTime      *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StreamUrl     *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	TranscodeId   *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
+	Transcoded    *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
 }
 
 func (s DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) String() string {

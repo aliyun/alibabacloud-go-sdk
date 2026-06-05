@@ -153,13 +153,7 @@ func (s *DescribeVsDomainBpsDataResponseBodyBpsDataPerInterval) Validate() error
 }
 
 type DescribeVsDomainBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 1000
-	BpsValue *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
+	BpsValue  *string `json:"BpsValue,omitempty" xml:"BpsValue,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 

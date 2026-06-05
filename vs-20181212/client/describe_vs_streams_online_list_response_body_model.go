@@ -153,42 +153,15 @@ func (s *DescribeVsStreamsOnlineListResponseBodyOnlineInfo) Validate() error {
 }
 
 type DescribeVsStreamsOnlineListResponseBodyOnlineInfoLiveStreamOnlineInfo struct {
-	// example:
-	//
-	// xxxApp
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// push.example.com
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	PublishDomain *string `json:"PublishDomain,omitempty" xml:"PublishDomain,omitempty"`
-	// example:
-	//
-	// 2015-12-02T06:58:04Z
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// example:
-	//
-	// edge
-	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// example:
-	//
-	// rtmp://example.com/xchen
-	PublishUrl *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
-	// example:
-	//
-	// testxchen_small
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// example:
-	//
-	// 123
-	TranscodeId *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
-	// example:
-	//
-	// no
-	Transcoded *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
+	PublishTime   *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishType   *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	PublishUrl    *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
+	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	TranscodeId   *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
+	Transcoded    *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
 }
 
 func (s DescribeVsStreamsOnlineListResponseBodyOnlineInfoLiveStreamOnlineInfo) String() string {

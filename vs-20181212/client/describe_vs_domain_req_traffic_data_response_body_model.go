@@ -153,14 +153,8 @@ func (s *DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerInterval) Va
 }
 
 type DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 10000
 	ReqTrafficValue *string `json:"ReqTrafficValue,omitempty" xml:"ReqTrafficValue,omitempty"`
-	// example:
-	//
-	// 2021-09-22T03:40:41Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp       *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerIntervalDataModule) String() string {

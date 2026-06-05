@@ -94,18 +94,9 @@ func (s *BatchForbidVsStreamResponseBodyForbidResult) Validate() error {
 
 type BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo struct {
 	Channels *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// example:
-	//
-	// ok
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// example:
-	//
-	// success
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Count    *int32                                                               `json:"Count,omitempty" xml:"Count,omitempty"`
+	Detail   *string                                                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Result   *string                                                              `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) String() string {

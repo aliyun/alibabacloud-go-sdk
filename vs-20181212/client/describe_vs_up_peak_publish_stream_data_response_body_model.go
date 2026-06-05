@@ -93,23 +93,11 @@ func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStr
 }
 
 type DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData struct {
-	BandWidth *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// example:
-	//
-	// 1522252320000
-	PeakTime *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
-	// example:
-	//
-	// 31
-	PublishStreamNum *int32 `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
-	// example:
-	//
-	// 1522166400000
-	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// example:
-	//
-	// example.com
-	StatName *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
+	BandWidth        *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
+	PeakTime         *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
+	PublishStreamNum *int32  `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
+	QueryTime        *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	StatName         *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
 }
 
 func (s DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData) String() string {

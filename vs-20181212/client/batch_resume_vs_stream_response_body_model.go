@@ -94,18 +94,9 @@ func (s *BatchResumeVsStreamResponseBodyResumeResult) Validate() error {
 
 type BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo struct {
 	Channels *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// example:
-	//
-	// ok
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// example:
-	//
-	// success
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Count    *int32                                                               `json:"Count,omitempty" xml:"Count,omitempty"`
+	Detail   *string                                                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Result   *string                                                              `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) String() string {

@@ -153,33 +153,12 @@ func (s *DescribeVsTopDomainsByFlowResponseBodyTopDomains) Validate() error {
 }
 
 type DescribeVsTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {
-	// example:
-	//
-	// example.aliyundoc.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// 100
-	MaxBps *int64 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// example:
-	//
-	// 1457111400
-	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// example:
-	//
-	// 1
-	Rank *int64 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// example:
-	//
-	// 100
-	TotalAccess *int64 `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// example:
-	//
-	// 100
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
-	// example:
-	//
-	// 30.64191989360235
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	MaxBps         *int64  `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	Rank           *int64  `json:"Rank,omitempty" xml:"Rank,omitempty"`
+	TotalAccess    *int64  `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
 }
 

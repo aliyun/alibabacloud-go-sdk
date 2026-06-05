@@ -153,18 +153,9 @@ func (s *DescribeVsDomainPvUvDataResponseBodyPvUvDataInfos) Validate() error {
 }
 
 type DescribeVsDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo struct {
-	// example:
-	//
-	// 100
-	PV *string `json:"PV,omitempty" xml:"PV,omitempty"`
-	// example:
-	//
-	// 2021-10-14T23:00:00Z
+	PV        *string `json:"PV,omitempty" xml:"PV,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// example:
-	//
-	// 100
-	UV *string `json:"UV,omitempty" xml:"UV,omitempty"`
+	UV        *string `json:"UV,omitempty" xml:"UV,omitempty"`
 }
 
 func (s DescribeVsDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo) String() string {

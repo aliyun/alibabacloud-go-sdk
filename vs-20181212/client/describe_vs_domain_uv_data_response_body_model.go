@@ -153,14 +153,8 @@ func (s *DescribeVsDomainUvDataResponseBodyUvDataInterval) Validate() error {
 }
 
 type DescribeVsDomainUvDataResponseBodyUvDataIntervalUsageData struct {
-	// example:
-	//
-	// 2015-11-29T15:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// example:
-	//
-	// 100
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVsDomainUvDataResponseBodyUvDataIntervalUsageData) String() string {

@@ -93,14 +93,8 @@ func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval) Valida
 }
 
 type DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 1
 	SnapshotValue *string `json:"SnapshotValue,omitempty" xml:"SnapshotValue,omitempty"`
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule) String() string {

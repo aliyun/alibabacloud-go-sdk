@@ -93,18 +93,9 @@ func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval) Validate()
 }
 
 type DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 100
-	RecordValue *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
-	// example:
-	//
-	// 1
+	RecordValue      *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
 	StreamCountValue *string `json:"StreamCountValue,omitempty" xml:"StreamCountValue,omitempty"`
-	// example:
-	//
-	// 2021-11-19T15:59:59Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) String() string {

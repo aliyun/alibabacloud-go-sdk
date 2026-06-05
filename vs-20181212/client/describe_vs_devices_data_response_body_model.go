@@ -93,14 +93,8 @@ func (s *DescribeVsDevicesDataResponseBodyDevicesDataPerInterval) Validate() err
 }
 
 type DescribeVsDevicesDataResponseBodyDevicesDataPerIntervalDataModule struct {
-	// example:
-	//
-	// 128
 	DevicesDataValue *string `json:"DevicesDataValue,omitempty" xml:"DevicesDataValue,omitempty"`
-	// example:
-	//
-	// 2022-01-04T16:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDevicesDataResponseBodyDevicesDataPerIntervalDataModule) String() string {

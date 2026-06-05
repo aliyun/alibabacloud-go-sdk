@@ -93,29 +93,11 @@ func (s *DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordList) Validate()
 }
 
 type DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordListLiveAppRecord struct {
-	// example:
-	//
-	// xxxApp
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// example:
-	//
-	// example.com
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// 2016-05-15T07:30:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// http://test
-	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	// example:
-	//
-	// 2016-05-15T01:30:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// xxxStream
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	SourceUrl  *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 

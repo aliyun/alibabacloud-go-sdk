@@ -153,51 +153,18 @@ func (s *DescribeVsDomainRegionDataResponseBodyValue) Validate() error {
 }
 
 type DescribeVsDomainRegionDataResponseBodyValueRegionProportionData struct {
-	// example:
-	//
-	// 2888253.7875
-	AvgObjectSize *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
-	// example:
-	//
-	// 154.3345765545624
+	AvgObjectSize   *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
 	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
-	// example:
-	//
-	// 5183.666666666667
 	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
-	// example:
-	//
-	// 380.9614285714286
-	Bps *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// example:
-	//
-	// 0.003544181046236794
+	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
-	// example:
-	//
-	// 0.01155980271270037
-	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	// example:
-	//
-	// 0.001746031746031746
-	Qps    *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// example:
-	//
-	// chongqing
-	RegionEname *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
-	// example:
-	//
-	// 0
-	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
-	// example:
-	//
-	// 2400057
-	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// example:
-	//
-	// 3
-	TotalQuery *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
+	Proportion      *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+	Qps             *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionEname     *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
+	ReqErrRate      *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
+	TotalBytes      *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalQuery      *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
 }
 
 func (s DescribeVsDomainRegionDataResponseBodyValueRegionProportionData) String() string {

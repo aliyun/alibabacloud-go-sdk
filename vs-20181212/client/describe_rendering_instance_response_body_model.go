@@ -37,6 +37,8 @@ type iDescribeRenderingInstanceResponseBody interface {
 	GetRequestId() *string
 	SetResourceAttributes(v *DescribeRenderingInstanceResponseBodyResourceAttributes) *DescribeRenderingInstanceResponseBody
 	GetResourceAttributes() *DescribeRenderingInstanceResponseBodyResourceAttributes
+	SetResourceStatus(v *DescribeRenderingInstanceResponseBodyResourceStatus) *DescribeRenderingInstanceResponseBody
+	GetResourceStatus() *DescribeRenderingInstanceResponseBodyResourceStatus
 	SetStorageSize(v int32) *DescribeRenderingInstanceResponseBody
 	GetStorageSize() *int32
 	SetSystemInfo(v *DescribeRenderingInstanceResponseBodySystemInfo) *DescribeRenderingInstanceResponseBody
@@ -73,6 +75,7 @@ type DescribeRenderingInstanceResponseBody struct {
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceAttributes *DescribeRenderingInstanceResponseBodyResourceAttributes `json:"ResourceAttributes,omitempty" xml:"ResourceAttributes,omitempty" type:"Struct"`
+	ResourceStatus     *DescribeRenderingInstanceResponseBodyResourceStatus     `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty" type:"Struct"`
 	StorageSize        *int32                                                   `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	SystemInfo         *DescribeRenderingInstanceResponseBodySystemInfo         `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Struct"`
 }
@@ -139,6 +142,10 @@ func (s *DescribeRenderingInstanceResponseBody) GetRequestId() *string {
 
 func (s *DescribeRenderingInstanceResponseBody) GetResourceAttributes() *DescribeRenderingInstanceResponseBodyResourceAttributes {
 	return s.ResourceAttributes
+}
+
+func (s *DescribeRenderingInstanceResponseBody) GetResourceStatus() *DescribeRenderingInstanceResponseBodyResourceStatus {
+	return s.ResourceStatus
 }
 
 func (s *DescribeRenderingInstanceResponseBody) GetStorageSize() *int32 {
@@ -219,6 +226,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetResourceAttributes(v *Describ
 	return s
 }
 
+func (s *DescribeRenderingInstanceResponseBody) SetResourceStatus(v *DescribeRenderingInstanceResponseBodyResourceStatus) *DescribeRenderingInstanceResponseBody {
+	s.ResourceStatus = v
+	return s
+}
+
 func (s *DescribeRenderingInstanceResponseBody) SetStorageSize(v int32) *DescribeRenderingInstanceResponseBody {
 	s.StorageSize = &v
 	return s
@@ -260,6 +272,11 @@ func (s *DescribeRenderingInstanceResponseBody) Validate() error {
 	}
 	if s.ResourceAttributes != nil {
 		if err := s.ResourceAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceStatus != nil {
+		if err := s.ResourceStatus.Validate(); err != nil {
 			return err
 		}
 	}
@@ -720,6 +737,34 @@ func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) SetZone(v stri
 }
 
 func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeRenderingInstanceResponseBodyResourceStatus struct {
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeRenderingInstanceResponseBodyResourceStatus) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeRenderingInstanceResponseBodyResourceStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceStatus) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceStatus) SetStatus(v string) *DescribeRenderingInstanceResponseBodyResourceStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyResourceStatus) Validate() error {
 	return dara.Validate(s)
 }
 

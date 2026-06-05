@@ -93,46 +93,16 @@ func (s *DescribeVsDomainCertificateInfoResponseBodyCertInfos) Validate() error 
 }
 
 type DescribeVsDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
-	// example:
-	//
-	// example.com
-	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
-	// example:
-	//
-	// 2018-06-03T22:03:39Z
-	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// example:
-	//
-	// months
-	CertLife *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
-	// example:
-	//
-	// myname
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// example:
-	//
-	// Let\\"s Encrypt
-	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
-	// example:
-	//
-	// free
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// asdadaxxxx
-	SSLPub *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
-	// example:
-	//
-	// on
+	CertDomainName          *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
+	CertExpireTime          *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	CertLife                *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
+	CertName                *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertOrg                 *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	CertType                *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	DomainName              *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	SSLPub                  *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
 	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeVsDomainCertificateInfoResponseBodyCertInfosCertInfo) String() string {

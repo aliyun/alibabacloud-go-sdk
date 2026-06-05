@@ -153,14 +153,8 @@ func (s *DescribeVsDomainPvDataResponseBodyPvDataInterval) Validate() error {
 }
 
 type DescribeVsDomainPvDataResponseBodyPvDataIntervalUsageData struct {
-	// example:
-	//
-	// 2021-11-22T00:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// example:
-	//
-	// 100
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVsDomainPvDataResponseBodyPvDataIntervalUsageData) String() string {
