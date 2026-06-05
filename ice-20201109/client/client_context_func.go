@@ -695,7 +695,7 @@ func (client *Client) AddTemplateWithContext(ctx context.Context, request *AddTe
 
 // Summary:
 //
-// 增加用户积分
+// Allocates points to a user.
 //
 // @param request - AddYikeUserCreditRequest
 //
@@ -953,7 +953,7 @@ func (client *Client) BatchGetMediaInfosWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 批量获取一刻AI应用生成任务
+// Retrieves information about multiple AI application jobs in WonderClip.
 //
 // @param request - BatchGetYikeAIAppJobRequest
 //
@@ -997,7 +997,7 @@ func (client *Client) BatchGetYikeAIAppJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -3575,7 +3575,7 @@ func (client *Client) CreateVodPackagingGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取一刻媒资上传凭证
+// Obtains the upload credential for a WonderClip media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
 //
@@ -3623,7 +3623,7 @@ func (client *Client) CreateYikeAssetUploadWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建一刻项目
+// Creates a WonderClip project.
 //
 // @param request - CreateYikeProductionRequest
 //
@@ -3671,7 +3671,7 @@ func (client *Client) CreateYikeProductionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建一刻子用户
+// Creates a sub-account in WonderClip.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -3731,7 +3731,7 @@ func (client *Client) CreateYikeUserWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建工作室
+// Creates a workspace in WonderClip.
 //
 // @param request - CreateYikeWorkspaceRequest
 //
@@ -6033,7 +6033,7 @@ func (client *Client) DeleteVodPackagingGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
 //
@@ -6769,7 +6769,7 @@ func (client *Client) ForbidMediaConnectFlowOutputWithContext(ctx context.Contex
 
 // Summary:
 //
-// 转呼通话到目标电话
+// Forwards an active call to a specified target phone number.
 //
 // @param request - ForwardAIAgentCallRequest
 //
@@ -6979,7 +6979,7 @@ func (client *Client) GenerateMessageChatTokenWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取智能体当前通话并发数
+// Gets the current active call parallelism for the specified agent. This operation is a lightweight query operation that returns the number of active instances. It does not return instance details or historical peaks.
 //
 // @param request - GetAIAgentConcurrencyRequest
 //
@@ -9049,7 +9049,7 @@ func (client *Client) GetMediaMarksWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
+// Retrieves details for an editing and composition job, such as its status, timeline, template, and data.
 //
 // @param request - GetMediaProducingJobRequest
 //
@@ -10279,7 +10279,7 @@ func (client *Client) GetWorkflowTaskWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves information about an AI application job in WonderClip.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -10323,7 +10323,7 @@ func (client *Client) GetYikeAIAppJobWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取一刻媒资内容信息
+// Retrieves information about the media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
 //
@@ -10367,7 +10367,7 @@ func (client *Client) GetYikeAssetMediaInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves storyboard jobs in WonderClip.
 //
 // @param request - GetYikeStoryboardJobRequest
 //
@@ -10411,7 +10411,7 @@ func (client *Client) GetYikeStoryboardJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取一刻子用户信息
+// Retrieves information about a WonderClip sub-account.
 //
 // @param request - GetYikeUserRequest
 //
@@ -10455,7 +10455,7 @@ func (client *Client) GetYikeUserWithContext(ctx context.Context, request *GetYi
 
 // Summary:
 //
-// 查询一刻用户积分
+// Queries the point balance of a WonderClip user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -14435,7 +14435,7 @@ func (client *Client) ListWorkflowTasksWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取一刻文件夹列表
+// Retrieves a list of WonderClip folders.
 //
 // @param request - ListYikeAssetFoldersRequest
 //
@@ -14487,7 +14487,7 @@ func (client *Client) ListYikeAssetFoldersWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取一刻项目列表
+// Retrieves a list of WonderClip projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -14597,7 +14597,7 @@ func (client *Client) OpenMediaConnectFlowFailoverWithContext(ctx context.Contex
 
 // Summary:
 //
-// 检查应用参数是否合法
+// Validates the parameters of an AI application.
 //
 // @param request - PrecheckYikeAIAppJobRequest
 //
@@ -15725,7 +15725,7 @@ func (client *Client) RegisterMediaStreamWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 注册一刻媒资
+// Registers a media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -15829,7 +15829,7 @@ func (client *Client) ResumeMediaConnectFlowOutputWithContext(ctx context.Contex
 
 // Summary:
 //
-// 故事板任务恢复继续执行任务
+// Resumes a storyboard job in WonderClip.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -17221,7 +17221,7 @@ func (client *Client) SetNotifyConfigWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 设置用户角色
+// Sets the user role.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -17359,7 +17359,7 @@ func (client *Client) StartAIAgentInstanceWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Initiates an outbound phone call for an AI agent.
+// Initiates an outbound phone call from an AI agent. The agent calls the specified phone number using the caller number and returns the instance ID of the call.
 //
 // @param tmpReq - StartAIAgentOutboundCallRequest
 //
@@ -17959,7 +17959,7 @@ func (client *Client) StopRtcRobotInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 扣减用户积分
+// Reclaims points from a user.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -18157,7 +18157,7 @@ func (client *Client) SubmitASRJobWithContext(ctx context.Context, request *Subm
 
 // Summary:
 //
-// Converts the provided text content into a high-quality audio file.
+// Submits an audio production job that converts text into an audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -18563,7 +18563,7 @@ func (client *Client) SubmitCopyrightJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Submits a basic voice cloning job.
+// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -20307,7 +20307,7 @@ func (client *Client) SubmitSmarttagJobWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Submits a snapshot job.
+// Submits a snapshot job. You can specify the ID or URL of a media file, as well as the time point and format of the snapshot. The system generates the snapshot based on these parameters and saves it to the specified position.
 //
 // @param tmpReq - SubmitSnapshotJobRequest
 //
@@ -20857,7 +20857,7 @@ func (client *Client) SubmitTraceM3u8JobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Submits a transcoding job.
+// Submits a transcoding job to IMS by specifying the source file, output format, and other related parameters.
 //
 // @param tmpReq - SubmitTranscodeJobRequest
 //
@@ -21097,7 +21097,7 @@ func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits a storyboard job in WonderClip.
 //
 // @param request - SubmitYikeAIAppJobRequest
 //
@@ -21153,7 +21153,7 @@ func (client *Client) SubmitYikeAIAppJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits a storyboard job in WonderClip.
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -23429,7 +23429,7 @@ func (client *Client) UpdateTemplateWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+// Uploads audio or video files from source URLs. Batch upload is supported. This operation is ideal for uploading files from a public URL rather than from a local server or device.
 //
 // Description:
 //

@@ -1042,7 +1042,7 @@ func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemp
 
 // Summary:
 //
-// 增加用户积分
+// Allocates points to a user.
 //
 // @param request - AddYikeUserCreditRequest
 //
@@ -1090,7 +1090,7 @@ func (client *Client) AddYikeUserCreditWithOptions(request *AddYikeUserCreditReq
 
 // Summary:
 //
-// 增加用户积分
+// Allocates points to a user.
 //
 // @param request - AddYikeUserCreditRequest
 //
@@ -1390,7 +1390,7 @@ func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_r
 
 // Summary:
 //
-// 批量获取一刻AI应用生成任务
+// Retrieves information about multiple AI application jobs in WonderClip.
 //
 // @param request - BatchGetYikeAIAppJobRequest
 //
@@ -1434,7 +1434,7 @@ func (client *Client) BatchGetYikeAIAppJobWithOptions(request *BatchGetYikeAIApp
 
 // Summary:
 //
-// 批量获取一刻AI应用生成任务
+// Retrieves information about multiple AI application jobs in WonderClip.
 //
 // @param request - BatchGetYikeAIAppJobRequest
 //
@@ -1452,7 +1452,7 @@ func (client *Client) BatchGetYikeAIAppJob(request *BatchGetYikeAIAppJobRequest)
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -1496,7 +1496,7 @@ func (client *Client) BatchGetYikeAssetMediaInfosWithOptions(request *BatchGetYi
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -4892,7 +4892,7 @@ func (client *Client) CreateVodPackagingGroup(request *CreateVodPackagingGroupRe
 
 // Summary:
 //
-// 获取一刻媒资上传凭证
+// Obtains the upload credential for a WonderClip media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
 //
@@ -4940,7 +4940,7 @@ func (client *Client) CreateYikeAssetUploadWithOptions(request *CreateYikeAssetU
 
 // Summary:
 //
-// 获取一刻媒资上传凭证
+// Obtains the upload credential for a WonderClip media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
 //
@@ -4958,7 +4958,7 @@ func (client *Client) CreateYikeAssetUpload(request *CreateYikeAssetUploadReques
 
 // Summary:
 //
-// 创建一刻项目
+// Creates a WonderClip project.
 //
 // @param request - CreateYikeProductionRequest
 //
@@ -5006,7 +5006,7 @@ func (client *Client) CreateYikeProductionWithOptions(request *CreateYikeProduct
 
 // Summary:
 //
-// 创建一刻项目
+// Creates a WonderClip project.
 //
 // @param request - CreateYikeProductionRequest
 //
@@ -5024,7 +5024,7 @@ func (client *Client) CreateYikeProduction(request *CreateYikeProductionRequest)
 
 // Summary:
 //
-// 创建一刻子用户
+// Creates a sub-account in WonderClip.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -5084,7 +5084,7 @@ func (client *Client) CreateYikeUserWithOptions(request *CreateYikeUserRequest, 
 
 // Summary:
 //
-// 创建一刻子用户
+// Creates a sub-account in WonderClip.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -5102,7 +5102,7 @@ func (client *Client) CreateYikeUser(request *CreateYikeUserRequest) (_result *C
 
 // Summary:
 //
-// 创建工作室
+// Creates a workspace in WonderClip.
 //
 // @param request - CreateYikeWorkspaceRequest
 //
@@ -5150,7 +5150,7 @@ func (client *Client) CreateYikeWorkspaceWithOptions(request *CreateYikeWorkspac
 
 // Summary:
 //
-// 创建工作室
+// Creates a workspace in WonderClip.
 //
 // @param request - CreateYikeWorkspaceRequest
 //
@@ -8322,7 +8322,7 @@ func (client *Client) DeleteVodPackagingGroup(request *DeleteVodPackagingGroupRe
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
 //
@@ -8370,7 +8370,7 @@ func (client *Client) DeleteYikeAssetMediaInfosWithOptions(request *DeleteYikeAs
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
 //
@@ -9322,7 +9322,7 @@ func (client *Client) ForbidMediaConnectFlowOutput(request *ForbidMediaConnectFl
 
 // Summary:
 //
-// 转呼通话到目标电话
+// Forwards an active call to a specified target phone number.
 //
 // @param request - ForwardAIAgentCallRequest
 //
@@ -9382,7 +9382,7 @@ func (client *Client) ForwardAIAgentCallWithOptions(request *ForwardAIAgentCallR
 
 // Summary:
 //
-// 转呼通话到目标电话
+// Forwards an active call to a specified target phone number.
 //
 // @param request - ForwardAIAgentCallRequest
 //
@@ -9639,7 +9639,7 @@ func (client *Client) GenerateMessageChatToken(request *GenerateMessageChatToken
 
 // Summary:
 //
-// 获取智能体当前通话并发数
+// Gets the current active call parallelism for the specified agent. This operation is a lightweight query operation that returns the number of active instances. It does not return instance details or historical peaks.
 //
 // @param request - GetAIAgentConcurrencyRequest
 //
@@ -9683,7 +9683,7 @@ func (client *Client) GetAIAgentConcurrencyWithOptions(request *GetAIAgentConcur
 
 // Summary:
 //
-// 获取智能体当前通话并发数
+// Gets the current active call parallelism for the specified agent. This operation is a lightweight query operation that returns the number of active instances. It does not return instance details or historical peaks.
 //
 // @param request - GetAIAgentConcurrencyRequest
 //
@@ -12769,7 +12769,7 @@ func (client *Client) GetMediaMarks(request *GetMediaMarksRequest) (_result *Get
 
 // Summary:
 //
-// Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
+// Retrieves details for an editing and composition job, such as its status, timeline, template, and data.
 //
 // @param request - GetMediaProducingJobRequest
 //
@@ -12813,7 +12813,7 @@ func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducing
 
 // Summary:
 //
-// Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
+// Retrieves details for an editing and composition job, such as its status, timeline, template, and data.
 //
 // @param request - GetMediaProducingJobRequest
 //
@@ -14471,7 +14471,7 @@ func (client *Client) GetWorkflowTask(request *GetWorkflowTaskRequest) (_result 
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves information about an AI application job in WonderClip.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -14515,7 +14515,7 @@ func (client *Client) GetYikeAIAppJobWithOptions(request *GetYikeAIAppJobRequest
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves information about an AI application job in WonderClip.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -14533,7 +14533,7 @@ func (client *Client) GetYikeAIAppJob(request *GetYikeAIAppJobRequest) (_result 
 
 // Summary:
 //
-// 获取一刻媒资内容信息
+// Retrieves information about the media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
 //
@@ -14577,7 +14577,7 @@ func (client *Client) GetYikeAssetMediaInfoWithOptions(request *GetYikeAssetMedi
 
 // Summary:
 //
-// 获取一刻媒资内容信息
+// Retrieves information about the media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
 //
@@ -14595,7 +14595,7 @@ func (client *Client) GetYikeAssetMediaInfo(request *GetYikeAssetMediaInfoReques
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves storyboard jobs in WonderClip.
 //
 // @param request - GetYikeStoryboardJobRequest
 //
@@ -14639,7 +14639,7 @@ func (client *Client) GetYikeStoryboardJobWithOptions(request *GetYikeStoryboard
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves storyboard jobs in WonderClip.
 //
 // @param request - GetYikeStoryboardJobRequest
 //
@@ -14657,7 +14657,7 @@ func (client *Client) GetYikeStoryboardJob(request *GetYikeStoryboardJobRequest)
 
 // Summary:
 //
-// 获取一刻子用户信息
+// Retrieves information about a WonderClip sub-account.
 //
 // @param request - GetYikeUserRequest
 //
@@ -14701,7 +14701,7 @@ func (client *Client) GetYikeUserWithOptions(request *GetYikeUserRequest, runtim
 
 // Summary:
 //
-// 获取一刻子用户信息
+// Retrieves information about a WonderClip sub-account.
 //
 // @param request - GetYikeUserRequest
 //
@@ -14719,7 +14719,7 @@ func (client *Client) GetYikeUser(request *GetYikeUserRequest) (_result *GetYike
 
 // Summary:
 //
-// 查询一刻用户积分
+// Queries the point balance of a WonderClip user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -14763,7 +14763,7 @@ func (client *Client) GetYikeUserCreditWithOptions(request *GetYikeUserCreditReq
 
 // Summary:
 //
-// 查询一刻用户积分
+// Queries the point balance of a WonderClip user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -19989,7 +19989,7 @@ func (client *Client) ListWorkflowTasks(request *ListWorkflowTasksRequest) (_res
 
 // Summary:
 //
-// 获取一刻文件夹列表
+// Retrieves a list of WonderClip folders.
 //
 // @param request - ListYikeAssetFoldersRequest
 //
@@ -20041,7 +20041,7 @@ func (client *Client) ListYikeAssetFoldersWithOptions(request *ListYikeAssetFold
 
 // Summary:
 //
-// 获取一刻文件夹列表
+// Retrieves a list of WonderClip folders.
 //
 // @param request - ListYikeAssetFoldersRequest
 //
@@ -20059,7 +20059,7 @@ func (client *Client) ListYikeAssetFolders(request *ListYikeAssetFoldersRequest)
 
 // Summary:
 //
-// 获取一刻项目列表
+// Retrieves a list of WonderClip projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -20119,7 +20119,7 @@ func (client *Client) ListYikeProductionsWithOptions(request *ListYikeProduction
 
 // Summary:
 //
-// 获取一刻项目列表
+// Retrieves a list of WonderClip projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -20211,7 +20211,7 @@ func (client *Client) OpenMediaConnectFlowFailover(request *OpenMediaConnectFlow
 
 // Summary:
 //
-// 检查应用参数是否合法
+// Validates the parameters of an AI application.
 //
 // @param request - PrecheckYikeAIAppJobRequest
 //
@@ -20259,7 +20259,7 @@ func (client *Client) PrecheckYikeAIAppJobWithOptions(request *PrecheckYikeAIApp
 
 // Summary:
 //
-// 检查应用参数是否合法
+// Validates the parameters of an AI application.
 //
 // @param request - PrecheckYikeAIAppJobRequest
 //
@@ -21719,7 +21719,7 @@ func (client *Client) RegisterMediaStream(request *RegisterMediaStreamRequest) (
 
 // Summary:
 //
-// 注册一刻媒资
+// Registers a media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -21775,7 +21775,7 @@ func (client *Client) RegisterYikeAssetMediaInfoWithOptions(request *RegisterYik
 
 // Summary:
 //
-// 注册一刻媒资
+// Registers a media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -21859,7 +21859,7 @@ func (client *Client) ResumeMediaConnectFlowOutput(request *ResumeMediaConnectFl
 
 // Summary:
 //
-// 故事板任务恢复继续执行任务
+// Resumes a storyboard job in WonderClip.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -21903,7 +21903,7 @@ func (client *Client) ResumeYikeStoryboardJobWithOptions(request *ResumeYikeStor
 
 // Summary:
 //
-// 故事板任务恢复继续执行任务
+// Resumes a storyboard job in WonderClip.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -23685,7 +23685,7 @@ func (client *Client) SetNotifyConfig(request *SetNotifyConfigRequest) (_result 
 
 // Summary:
 //
-// 设置用户角色
+// Sets the user role.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -23733,7 +23733,7 @@ func (client *Client) SetYikeUserRoleWithOptions(request *SetYikeUserRoleRequest
 
 // Summary:
 //
-// 设置用户角色
+// Sets the user role.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -23863,7 +23863,7 @@ func (client *Client) StartAIAgentInstance(request *StartAIAgentInstanceRequest)
 
 // Summary:
 //
-// Initiates an outbound phone call for an AI agent.
+// Initiates an outbound phone call from an AI agent. The agent calls the specified phone number using the caller number and returns the instance ID of the call.
 //
 // @param tmpReq - StartAIAgentOutboundCallRequest
 //
@@ -23937,7 +23937,7 @@ func (client *Client) StartAIAgentOutboundCallWithOptions(tmpReq *StartAIAgentOu
 
 // Summary:
 //
-// Initiates an outbound phone call for an AI agent.
+// Initiates an outbound phone call from an AI agent. The agent calls the specified phone number using the caller number and returns the instance ID of the call.
 //
 // @param request - StartAIAgentOutboundCallRequest
 //
@@ -24697,7 +24697,7 @@ func (client *Client) StopRtcRobotInstance(request *StopRtcRobotInstanceRequest)
 
 // Summary:
 //
-// 扣减用户积分
+// Reclaims points from a user.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -24745,7 +24745,7 @@ func (client *Client) SubYikeUserCreditWithOptions(request *SubYikeUserCreditReq
 
 // Summary:
 //
-// 扣减用户积分
+// Reclaims points from a user.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -24953,7 +24953,7 @@ func (client *Client) SubmitASRJob(request *SubmitASRJobRequest) (_result *Submi
 
 // Summary:
 //
-// Converts the provided text content into a high-quality audio file.
+// Submits an audio production job that converts text into an audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -25021,7 +25021,7 @@ func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProdu
 
 // Summary:
 //
-// Converts the provided text content into a high-quality audio file.
+// Submits an audio production job that converts text into an audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -25487,7 +25487,7 @@ func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_r
 
 // Summary:
 //
-// Submits a basic voice cloning job.
+// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -25535,7 +25535,7 @@ func (client *Client) SubmitCustomizedVoiceJobWithOptions(request *SubmitCustomi
 
 // Summary:
 //
-// Submits a basic voice cloning job.
+// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -27759,7 +27759,7 @@ func (client *Client) SubmitSmarttagJob(request *SubmitSmarttagJobRequest) (_res
 
 // Summary:
 //
-// Submits a snapshot job.
+// Submits a snapshot job. You can specify the ID or URL of a media file, as well as the time point and format of the snapshot. The system generates the snapshot based on these parameters and saves it to the specified position.
 //
 // @param tmpReq - SubmitSnapshotJobRequest
 //
@@ -27841,7 +27841,7 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 
 // Summary:
 //
-// Submits a snapshot job.
+// Submits a snapshot job. You can specify the ID or URL of a media file, as well as the time point and format of the snapshot. The system generates the snapshot based on these parameters and saves it to the specified position.
 //
 // @param request - SubmitSnapshotJobRequest
 //
@@ -28475,7 +28475,7 @@ func (client *Client) SubmitTraceM3u8Job(request *SubmitTraceM3u8JobRequest) (_r
 
 // Summary:
 //
-// Submits a transcoding job.
+// Submits a transcoding job to IMS by specifying the source file, output format, and other related parameters.
 //
 // @param tmpReq - SubmitTranscodeJobRequest
 //
@@ -28553,7 +28553,7 @@ func (client *Client) SubmitTranscodeJobWithOptions(tmpReq *SubmitTranscodeJobRe
 
 // Summary:
 //
-// Submits a transcoding job.
+// Submits a transcoding job to IMS by specifying the source file, output format, and other related parameters.
 //
 // @param request - SubmitTranscodeJobRequest
 //
@@ -28773,7 +28773,7 @@ func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJ
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits a storyboard job in WonderClip.
 //
 // @param request - SubmitYikeAIAppJobRequest
 //
@@ -28829,7 +28829,7 @@ func (client *Client) SubmitYikeAIAppJobWithOptions(request *SubmitYikeAIAppJobR
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits a storyboard job in WonderClip.
 //
 // @param request - SubmitYikeAIAppJobRequest
 //
@@ -28847,7 +28847,7 @@ func (client *Client) SubmitYikeAIAppJob(request *SubmitYikeAIAppJobRequest) (_r
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits a storyboard job in WonderClip.
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -28945,7 +28945,7 @@ func (client *Client) SubmitYikeStoryboardJobWithOptions(request *SubmitYikeStor
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits a storyboard job in WonderClip.
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -31839,7 +31839,7 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 
 // Summary:
 //
-// Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+// Uploads audio or video files from source URLs. Batch upload is supported. This operation is ideal for uploading files from a public URL rather than from a local server or device.
 //
 // Description:
 //
@@ -31921,7 +31921,7 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 
 // Summary:
 //
-// Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+// Uploads audio or video files from source URLs. Batch upload is supported. This operation is ideal for uploading files from a public URL rather than from a local server or device.
 //
 // Description:
 //
