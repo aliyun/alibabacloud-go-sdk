@@ -3971,6 +3971,222 @@ func (client *Client) GetLlmProxyConfigForAdmin(request *GetLlmProxyConfigForAdm
 
 // Summary:
 //
+// 获取小程序授权链接
+//
+// @param request - GetMiniAppAuthUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMiniAppAuthUrlResponse
+func (client *Client) GetMiniAppAuthUrlWithOptions(request *GetMiniAppAuthUrlRequest, runtime *dara.RuntimeOptions) (_result *GetMiniAppAuthUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.RedirectUri) {
+		query["RedirectUri"] = request.RedirectUri
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMiniAppAuthUrl"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMiniAppAuthUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取小程序授权链接
+//
+// @param request - GetMiniAppAuthUrlRequest
+//
+// @return GetMiniAppAuthUrlResponse
+func (client *Client) GetMiniAppAuthUrl(request *GetMiniAppAuthUrlRequest) (_result *GetMiniAppAuthUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMiniAppAuthUrlResponse{}
+	_body, _err := client.GetMiniAppAuthUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点绑定的小程序
+//
+// @param tmpReq - GetMiniAppBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMiniAppBindingResponse
+func (client *Client) GetMiniAppBindingWithOptions(tmpReq *GetMiniAppBindingRequest, runtime *dara.RuntimeOptions) (_result *GetMiniAppBindingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetMiniAppBindingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SettingKeys) {
+		request.SettingKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SettingKeys, dara.String("SettingKeys"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.SettingKeysShrink) {
+		query["SettingKeys"] = request.SettingKeysShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMiniAppBinding"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMiniAppBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点绑定的小程序
+//
+// @param request - GetMiniAppBindingRequest
+//
+// @return GetMiniAppBindingResponse
+func (client *Client) GetMiniAppBinding(request *GetMiniAppBindingRequest) (_result *GetMiniAppBindingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMiniAppBindingResponse{}
+	_body, _err := client.GetMiniAppBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据条件查询应用实例绑定的小程序
+//
+// @param request - GetMiniAppBindingForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMiniAppBindingForAdminResponse
+func (client *Client) GetMiniAppBindingForAdminWithOptions(request *GetMiniAppBindingForAdminRequest, runtime *dara.RuntimeOptions) (_result *GetMiniAppBindingForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.PlatformAppid) {
+		query["PlatformAppid"] = request.PlatformAppid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMiniAppBindingForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMiniAppBindingForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据条件查询应用实例绑定的小程序
+//
+// @param request - GetMiniAppBindingForAdminRequest
+//
+// @return GetMiniAppBindingForAdminResponse
+func (client *Client) GetMiniAppBindingForAdmin(request *GetMiniAppBindingForAdminRequest) (_result *GetMiniAppBindingForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMiniAppBindingForAdminResponse{}
+	_body, _err := client.GetMiniAppBindingForAdminWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通过授权码得到accessToken
 //
 // @param request - GetUserAccessTokenForPartnerRequest
@@ -9221,6 +9437,80 @@ func (client *Client) UpdateAppSupabaseSecret(request *UpdateAppSupabaseSecretRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAppSupabaseSecretResponse{}
 	_body, _err := client.UpdateAppSupabaseSecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新绑定小程序信息
+//
+// @param request - UpdateMiniAppBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMiniAppBindingResponse
+func (client *Client) UpdateMiniAppBindingWithOptions(request *UpdateMiniAppBindingRequest, runtime *dara.RuntimeOptions) (_result *UpdateMiniAppBindingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.SettingKey) {
+		query["SettingKey"] = request.SettingKey
+	}
+
+	if !dara.IsNil(request.SettingValue) {
+		query["SettingValue"] = request.SettingValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMiniAppBinding"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMiniAppBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新绑定小程序信息
+//
+// @param request - UpdateMiniAppBindingRequest
+//
+// @return UpdateMiniAppBindingResponse
+func (client *Client) UpdateMiniAppBinding(request *UpdateMiniAppBindingRequest) (_result *UpdateMiniAppBindingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMiniAppBindingResponse{}
+	_body, _err := client.UpdateMiniAppBindingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
