@@ -9,6 +9,10 @@ type iGetUserResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAnthropicHost(v string) *GetUserResponseBody
+	GetAnthropicHost() *string
+	SetApiKeys(v interface{}) *GetUserResponseBody
+	GetApiKeys() interface{}
 	SetAppId(v string) *GetUserResponseBody
 	GetAppId() *string
 	SetCode(v string) *GetUserResponseBody
@@ -26,6 +30,8 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
+	AnthropicHost *string     `json:"AnthropicHost,omitempty" xml:"AnthropicHost,omitempty"`
+	ApiKeys       interface{} `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty"`
 	// example:
 	//
 	// 20200425******
@@ -61,6 +67,14 @@ func (s GetUserResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetUserResponseBody) GetAnthropicHost() *string {
+	return s.AnthropicHost
+}
+
+func (s *GetUserResponseBody) GetApiKeys() interface{} {
+	return s.ApiKeys
+}
+
 func (s *GetUserResponseBody) GetAppId() *string {
 	return s.AppId
 }
@@ -87,6 +101,16 @@ func (s *GetUserResponseBody) GetRequestId() *string {
 
 func (s *GetUserResponseBody) GetToken() *string {
 	return s.Token
+}
+
+func (s *GetUserResponseBody) SetAnthropicHost(v string) *GetUserResponseBody {
+	s.AnthropicHost = &v
+	return s
+}
+
+func (s *GetUserResponseBody) SetApiKeys(v interface{}) *GetUserResponseBody {
+	s.ApiKeys = v
+	return s
 }
 
 func (s *GetUserResponseBody) SetAppId(v string) *GetUserResponseBody {
