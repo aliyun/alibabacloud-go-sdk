@@ -58,6 +58,158 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 批量取消任务
+//
+// @param tmpReq - BatchCancelTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCancelTasksResponse
+func (client *Client) BatchCancelTasksWithOptions(workspaceId *string, tmpReq *BatchCancelTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchCancelTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCancelTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TaskIds) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, dara.String("taskIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskCode) {
+		body["taskCode"] = request.TaskCode
+	}
+
+	if !dara.IsNil(request.TaskIdsShrink) {
+		body["taskIds"] = request.TaskIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCancelTasks"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/batchCancelTasks"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCancelTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量取消任务
+//
+// @param request - BatchCancelTasksRequest
+//
+// @return BatchCancelTasksResponse
+func (client *Client) BatchCancelTasks(workspaceId *string, request *BatchCancelTasksRequest) (_result *BatchCancelTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchCancelTasksResponse{}
+	_body, _err := client.BatchCancelTasksWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询任务状态
+//
+// @param tmpReq - BatchQueryTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchQueryTaskStatusResponse
+func (client *Client) BatchQueryTaskStatusWithOptions(workspaceId *string, tmpReq *BatchQueryTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchQueryTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchQueryTaskStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TaskIds) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, dara.String("taskIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskCode) {
+		body["taskCode"] = request.TaskCode
+	}
+
+	if !dara.IsNil(request.TaskIdsShrink) {
+		body["taskIds"] = request.TaskIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchQueryTaskStatus"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/batchQueryTaskStatus"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchQueryTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询任务状态
+//
+// @param request - BatchQueryTaskStatusRequest
+//
+// @return BatchQueryTaskStatusResponse
+func (client *Client) BatchQueryTaskStatus(workspaceId *string, request *BatchQueryTaskStatusRequest) (_result *BatchQueryTaskStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchQueryTaskStatusResponse{}
+	_body, _err := client.BatchQueryTaskStatusWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消异步任务
 //
 // @param request - CancelAsyncTaskRequest
@@ -613,6 +765,72 @@ func (client *Client) GetTagMiningAnalysisTask(workspaceId *string, request *Get
 	headers := make(map[string]*string)
 	_result = &GetTagMiningAnalysisTaskResponse{}
 	_body, _err := client.GetTagMiningAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务执行情况统计
+//
+// @param request - GetTaskExecutionStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskExecutionStatisticsResponse
+func (client *Client) GetTaskExecutionStatisticsWithOptions(workspaceId *string, request *GetTaskExecutionStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskExecutionStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskCode) {
+		query["taskCode"] = request.TaskCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTaskExecutionStatistics"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/getTaskExecutionStatistics"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTaskExecutionStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务执行情况统计
+//
+// @param request - GetTaskExecutionStatisticsRequest
+//
+// @return GetTaskExecutionStatisticsResponse
+func (client *Client) GetTaskExecutionStatistics(workspaceId *string, request *GetTaskExecutionStatisticsRequest) (_result *GetTaskExecutionStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTaskExecutionStatisticsResponse{}
+	_body, _err := client.GetTaskExecutionStatisticsWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
