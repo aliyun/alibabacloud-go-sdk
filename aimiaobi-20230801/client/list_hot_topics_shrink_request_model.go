@@ -11,6 +11,12 @@ type iListHotTopicsShrinkRequest interface {
 	GoString() string
 	SetAgentKey(v string) *ListHotTopicsShrinkRequest
 	GetAgentKey() *string
+	SetCreateTimeEnd(v string) *ListHotTopicsShrinkRequest
+	GetCreateTimeEnd() *string
+	SetCreateTimeStart(v string) *ListHotTopicsShrinkRequest
+	GetCreateTimeStart() *string
+	SetCustomField(v string) *ListHotTopicsShrinkRequest
+	GetCustomField() *string
 	SetMaxResults(v int32) *ListHotTopicsShrinkRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListHotTopicsShrinkRequest
@@ -36,6 +42,18 @@ type ListHotTopicsShrinkRequest struct {
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 2026-06-04 23:59:59
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 2026-06-01 00:00:00
+	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// example:
+	//
+	// biz-tag-001
+	CustomField *string `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
 	// example:
 	//
 	// 1
@@ -76,6 +94,18 @@ func (s *ListHotTopicsShrinkRequest) GetAgentKey() *string {
 	return s.AgentKey
 }
 
+func (s *ListHotTopicsShrinkRequest) GetCreateTimeEnd() *string {
+	return s.CreateTimeEnd
+}
+
+func (s *ListHotTopicsShrinkRequest) GetCreateTimeStart() *string {
+	return s.CreateTimeStart
+}
+
+func (s *ListHotTopicsShrinkRequest) GetCustomField() *string {
+	return s.CustomField
+}
+
 func (s *ListHotTopicsShrinkRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -110,6 +140,21 @@ func (s *ListHotTopicsShrinkRequest) GetWithNews() *bool {
 
 func (s *ListHotTopicsShrinkRequest) SetAgentKey(v string) *ListHotTopicsShrinkRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetCreateTimeEnd(v string) *ListHotTopicsShrinkRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetCreateTimeStart(v string) *ListHotTopicsShrinkRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *ListHotTopicsShrinkRequest) SetCustomField(v string) *ListHotTopicsShrinkRequest {
+	s.CustomField = &v
 	return s
 }
 

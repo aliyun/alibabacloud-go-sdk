@@ -174,8 +174,16 @@ type ListHotTopicsResponseBodyData struct {
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
 	// example:
 	//
+	// 2026-06-04 12:34:56
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
 	// 创建用户ID（自定义主题场景下使用）
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// biz-tag-001
+	CustomField *string `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
 	// example:
 	//
 	// 61
@@ -211,6 +219,10 @@ type ListHotTopicsResponseBodyData struct {
 	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
 	// example:
 	//
+	// https://www.example.com/topic/123
+	TopicUrl *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
+	// example:
+	//
 	// 数据版本
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -227,8 +239,16 @@ func (s *ListHotTopicsResponseBodyData) GetAsyncTaskId() *string {
 	return s.AsyncTaskId
 }
 
+func (s *ListHotTopicsResponseBodyData) GetCreateTime() *string {
+	return s.CreateTime
+}
+
 func (s *ListHotTopicsResponseBodyData) GetCreateUser() *string {
 	return s.CreateUser
+}
+
+func (s *ListHotTopicsResponseBodyData) GetCustomField() *string {
+	return s.CustomField
 }
 
 func (s *ListHotTopicsResponseBodyData) GetHotValue() *int64 {
@@ -267,6 +287,10 @@ func (s *ListHotTopicsResponseBodyData) GetTopicSource() *string {
 	return s.TopicSource
 }
 
+func (s *ListHotTopicsResponseBodyData) GetTopicUrl() *string {
+	return s.TopicUrl
+}
+
 func (s *ListHotTopicsResponseBodyData) GetVersion() *string {
 	return s.Version
 }
@@ -276,8 +300,18 @@ func (s *ListHotTopicsResponseBodyData) SetAsyncTaskId(v string) *ListHotTopicsR
 	return s
 }
 
+func (s *ListHotTopicsResponseBodyData) SetCreateTime(v string) *ListHotTopicsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *ListHotTopicsResponseBodyData) SetCreateUser(v string) *ListHotTopicsResponseBodyData {
 	s.CreateUser = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetCustomField(v string) *ListHotTopicsResponseBodyData {
+	s.CustomField = &v
 	return s
 }
 
@@ -323,6 +357,11 @@ func (s *ListHotTopicsResponseBodyData) SetTopic(v string) *ListHotTopicsRespons
 
 func (s *ListHotTopicsResponseBodyData) SetTopicSource(v string) *ListHotTopicsResponseBodyData {
 	s.TopicSource = &v
+	return s
+}
+
+func (s *ListHotTopicsResponseBodyData) SetTopicUrl(v string) *ListHotTopicsResponseBodyData {
+	s.TopicUrl = &v
 	return s
 }
 

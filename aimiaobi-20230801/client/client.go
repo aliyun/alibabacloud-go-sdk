@@ -9746,6 +9746,18 @@ func (client *Client) ListHotTopicsWithOptions(tmpReq *ListHotTopicsRequest, run
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateTimeEnd) {
+		body["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !dara.IsNil(request.CreateTimeStart) {
+		body["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !dara.IsNil(request.CustomField) {
+		body["CustomField"] = request.CustomField
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}

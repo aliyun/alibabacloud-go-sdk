@@ -11,6 +11,12 @@ type iListHotTopicsRequest interface {
 	GoString() string
 	SetAgentKey(v string) *ListHotTopicsRequest
 	GetAgentKey() *string
+	SetCreateTimeEnd(v string) *ListHotTopicsRequest
+	GetCreateTimeEnd() *string
+	SetCreateTimeStart(v string) *ListHotTopicsRequest
+	GetCreateTimeStart() *string
+	SetCustomField(v string) *ListHotTopicsRequest
+	GetCustomField() *string
 	SetMaxResults(v int32) *ListHotTopicsRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListHotTopicsRequest
@@ -36,6 +42,18 @@ type ListHotTopicsRequest struct {
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 2026-06-04 23:59:59
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 2026-06-01 00:00:00
+	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// example:
+	//
+	// biz-tag-001
+	CustomField *string `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
 	// example:
 	//
 	// 1
@@ -76,6 +94,18 @@ func (s *ListHotTopicsRequest) GetAgentKey() *string {
 	return s.AgentKey
 }
 
+func (s *ListHotTopicsRequest) GetCreateTimeEnd() *string {
+	return s.CreateTimeEnd
+}
+
+func (s *ListHotTopicsRequest) GetCreateTimeStart() *string {
+	return s.CreateTimeStart
+}
+
+func (s *ListHotTopicsRequest) GetCustomField() *string {
+	return s.CustomField
+}
+
 func (s *ListHotTopicsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -110,6 +140,21 @@ func (s *ListHotTopicsRequest) GetWithNews() *bool {
 
 func (s *ListHotTopicsRequest) SetAgentKey(v string) *ListHotTopicsRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetCreateTimeEnd(v string) *ListHotTopicsRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetCreateTimeStart(v string) *ListHotTopicsRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *ListHotTopicsRequest) SetCustomField(v string) *ListHotTopicsRequest {
+	s.CustomField = &v
 	return s
 }
 

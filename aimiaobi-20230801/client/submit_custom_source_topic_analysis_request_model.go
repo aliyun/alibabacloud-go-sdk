@@ -273,11 +273,19 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNewsComments) Validate() error {
 }
 
 type SubmitCustomSourceTopicAnalysisRequestTopics struct {
-	News []*HottopicNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// example:
+	//
+	// biz-tag-001
+	CustomField *string         `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
+	News        []*HottopicNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 话题名称
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// https://www.example.com/topic/123
+	TopicUrl *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
 }
 
 func (s SubmitCustomSourceTopicAnalysisRequestTopics) String() string {
@@ -288,12 +296,25 @@ func (s SubmitCustomSourceTopicAnalysisRequestTopics) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) GetCustomField() *string {
+	return s.CustomField
+}
+
 func (s *SubmitCustomSourceTopicAnalysisRequestTopics) GetNews() []*HottopicNews {
 	return s.News
 }
 
 func (s *SubmitCustomSourceTopicAnalysisRequestTopics) GetTopic() *string {
 	return s.Topic
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) GetTopicUrl() *string {
+	return s.TopicUrl
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetCustomField(v string) *SubmitCustomSourceTopicAnalysisRequestTopics {
+	s.CustomField = &v
+	return s
 }
 
 func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetNews(v []*HottopicNews) *SubmitCustomSourceTopicAnalysisRequestTopics {
@@ -303,6 +324,11 @@ func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetNews(v []*HottopicNews
 
 func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetTopic(v string) *SubmitCustomSourceTopicAnalysisRequestTopics {
 	s.Topic = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestTopics) SetTopicUrl(v string) *SubmitCustomSourceTopicAnalysisRequestTopics {
+	s.TopicUrl = &v
 	return s
 }
 
