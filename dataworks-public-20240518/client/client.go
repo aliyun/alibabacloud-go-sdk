@@ -3589,6 +3589,90 @@ func (client *Client) CreateLineageRelationship(request *CreateLineageRelationsh
 
 // Summary:
 //
+// 登记 MCP Server
+//
+// @param tmpReq - CreateMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcpServerResponse
+func (client *Client) CreateMcpServerWithOptions(tmpReq *CreateMcpServerRequest, runtime *dara.RuntimeOptions) (_result *CreateMcpServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateMcpServerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Config) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, dara.String("Config"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibilityScope) {
+		request.VisibilityScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibilityScope, dara.String("VisibilityScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigShrink) {
+		body["Config"] = request.ConfigShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		body["Visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibilityScopeShrink) {
+		body["VisibilityScope"] = request.VisibilityScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMcpServer"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 登记 MCP Server
+//
+// @param request - CreateMcpServerRequest
+//
+// @return CreateMcpServerResponse
+func (client *Client) CreateMcpServer(request *CreateMcpServerRequest) (_result *CreateMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMcpServerResponse{}
+	_body, _err := client.CreateMcpServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
 //
 // @param request - CreateMetaCollectionRequest
@@ -4948,6 +5032,106 @@ func (client *Client) CreateRoute(request *CreateRouteRequest) (_result *CreateR
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateRouteResponse{}
 	_body, _err := client.CreateRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 Skill
+//
+// @param tmpReq - CreateSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSkillResponse
+func (client *Client) CreateSkillWithOptions(tmpReq *CreateSkillRequest, runtime *dara.RuntimeOptions) (_result *CreateSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSkillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Extra) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, dara.String("Extra"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibilityScope) {
+		request.VisibilityScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibilityScope, dara.String("VisibilityScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BundleUrl) {
+		body["BundleUrl"] = request.BundleUrl
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExtraShrink) {
+		body["Extra"] = request.ExtraShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SkillMdOverride) {
+		body["SkillMdOverride"] = request.SkillMdOverride
+	}
+
+	if !dara.IsNil(request.VersionNote) {
+		body["VersionNote"] = request.VersionNote
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		body["Visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibilityScopeShrink) {
+		body["VisibilityScope"] = request.VisibilityScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSkill"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 Skill
+//
+// @param request - CreateSkillRequest
+//
+// @return CreateSkillResponse
+func (client *Client) CreateSkill(request *CreateSkillRequest) (_result *CreateSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSkillResponse{}
+	_body, _err := client.CreateSkillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11012,6 +11196,68 @@ func (client *Client) GetLineageRelationship(request *GetLineageRelationshipRequ
 
 // Summary:
 //
+// 读取 MCP Server 详情
+//
+// @param request - GetMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcpServerResponse
+func (client *Client) GetMcpServerWithOptions(request *GetMcpServerRequest, runtime *dara.RuntimeOptions) (_result *GetMcpServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMcpServer"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取 MCP Server 详情
+//
+// @param request - GetMcpServerRequest
+//
+// @return GetMcpServerResponse
+func (client *Client) GetMcpServer(request *GetMcpServerRequest) (_result *GetMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMcpServerResponse{}
+	_body, _err := client.GetMcpServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a collection in Data Map. Collections include categories and data albums.
 //
 // @param request - GetMetaCollectionRequest
@@ -12035,6 +12281,68 @@ func (client *Client) GetSchema(request *GetSchemaRequest) (_result *GetSchemaRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetSchemaResponse{}
 	_body, _err := client.GetSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取 Skill 详情
+//
+// @param request - GetSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillResponse
+func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dara.RuntimeOptions) (_result *GetSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSkill"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取 Skill 详情
+//
+// @param request - GetSkillRequest
+//
+// @return GetSkillResponse
+func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSkillResponse{}
+	_body, _err := client.GetSkillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13637,6 +13945,88 @@ func (client *Client) ListCrawlerTypes() (_result *ListCrawlerTypesResponse, _er
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCrawlerTypesResponse{}
 	_body, _err := client.ListCrawlerTypesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出 自定义 Agent
+//
+// @param tmpReq - ListCustomAgentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomAgentsResponse
+func (client *Client) ListCustomAgentsWithOptions(tmpReq *ListCustomAgentsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomAgentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListCustomAgentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Visibility) {
+		request.VisibilityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Visibility, dara.String("Visibility"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Q) {
+		body["Q"] = request.Q
+	}
+
+	if !dara.IsNil(request.VisibilityShrink) {
+		body["Visibility"] = request.VisibilityShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomAgents"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出 自定义 Agent
+//
+// @param request - ListCustomAgentsRequest
+//
+// @return ListCustomAgentsResponse
+func (client *Client) ListCustomAgents(request *ListCustomAgentsRequest) (_result *ListCustomAgentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCustomAgentsResponse{}
+	_body, _err := client.ListCustomAgentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16433,6 +16823,88 @@ func (client *Client) ListLineages(request *ListLineagesRequest) (_result *ListL
 
 // Summary:
 //
+// 分页列出 MCP Server
+//
+// @param tmpReq - ListMcpServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcpServersResponse
+func (client *Client) ListMcpServersWithOptions(tmpReq *ListMcpServersRequest, runtime *dara.RuntimeOptions) (_result *ListMcpServersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListMcpServersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Visibility) {
+		request.VisibilityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Visibility, dara.String("Visibility"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Q) {
+		body["Q"] = request.Q
+	}
+
+	if !dara.IsNil(request.VisibilityShrink) {
+		body["Visibility"] = request.VisibilityShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMcpServers"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMcpServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出 MCP Server
+//
+// @param request - ListMcpServersRequest
+//
+// @return ListMcpServersResponse
+func (client *Client) ListMcpServers(request *ListMcpServersRequest) (_result *ListMcpServersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMcpServersResponse{}
+	_body, _err := client.ListMcpServersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of collections in Data Map. Collections include categories and data albums.
 //
 // @param request - ListMetaCollectionsRequest
@@ -17934,6 +18406,88 @@ func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSch
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListSchemasResponse{}
 	_body, _err := client.ListSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出 Skill
+//
+// @param tmpReq - ListSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSkillsResponse
+func (client *Client) ListSkillsWithOptions(tmpReq *ListSkillsRequest, runtime *dara.RuntimeOptions) (_result *ListSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSkillsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Visibility) {
+		request.VisibilityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Visibility, dara.String("Visibility"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Q) {
+		body["Q"] = request.Q
+	}
+
+	if !dara.IsNil(request.VisibilityShrink) {
+		body["Visibility"] = request.VisibilityShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSkills"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页列出 Skill
+//
+// @param request - ListSkillsRequest
+//
+// @return ListSkillsResponse
+func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSkillsResponse{}
+	_body, _err := client.ListSkillsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23291,6 +23845,98 @@ func (client *Client) UpdateIDEEventResult(request *UpdateIDEEventResultRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateIDEEventResultResponse{}
 	_body, _err := client.UpdateIDEEventResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 MCP Server
+//
+// @param tmpReq - UpdateMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMcpServerResponse
+func (client *Client) UpdateMcpServerWithOptions(tmpReq *UpdateMcpServerRequest, runtime *dara.RuntimeOptions) (_result *UpdateMcpServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMcpServerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CustomHeaders) {
+		request.CustomHeadersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomHeaders, dara.String("CustomHeaders"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibilityScope) {
+		request.VisibilityScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibilityScope, dara.String("VisibilityScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomHeadersShrink) {
+		body["CustomHeaders"] = request.CustomHeadersShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Transport) {
+		body["Transport"] = request.Transport
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		body["Visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibilityScopeShrink) {
+		body["VisibilityScope"] = request.VisibilityScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMcpServer"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 MCP Server
+//
+// @param request - UpdateMcpServerRequest
+//
+// @return UpdateMcpServerResponse
+func (client *Client) UpdateMcpServer(request *UpdateMcpServerRequest) (_result *UpdateMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMcpServerResponse{}
+	_body, _err := client.UpdateMcpServerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
