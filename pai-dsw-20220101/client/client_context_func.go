@@ -2137,6 +2137,63 @@ func (client *Client) ListTempFilesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
+// 获取指定的运行中实例列表的自动关机策略。
+//
+// @param request - QueryAutoShutdownPoliciesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAutoShutdownPoliciesResponse
+func (client *Client) QueryAutoShutdownPoliciesWithContext(ctx context.Context, request *QueryAutoShutdownPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryAutoShutdownPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAutoShutdownPolicies"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/batch/autoshutdownpolicies/query"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAutoShutdownPoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动实例
 //
 // @param headers - map
