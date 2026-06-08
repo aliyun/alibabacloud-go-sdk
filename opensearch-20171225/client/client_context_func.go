@@ -1704,6 +1704,10 @@ func (client *Client) DescribeInterventionDictionaryWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the query analysis rule for a version of an OpenSearch application.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5361,6 +5365,53 @@ func (client *Client) UpdateABTestSceneWithContext(ctx context.Context, appGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateABTestSceneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用删除保护
+//
+// @param request - UpdateAppGroupDeleteProtectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppGroupDeleteProtectionResponse
+func (client *Client) UpdateAppGroupDeleteProtectionWithContext(ctx context.Context, appGroupIdentity *string, request *UpdateAppGroupDeleteProtectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAppGroupDeleteProtectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Body) {
+		body["body"] = request.Body
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppGroupDeleteProtection"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/delete-protection"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppGroupDeleteProtectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -2455,6 +2455,10 @@ func (client *Client) DescribeInterventionDictionary(name *string) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the query analysis rule for a version of an OpenSearch application.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2484,6 +2488,10 @@ func (client *Client) DescribeQueryProcessorWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the query analysis rule for a version of an OpenSearch application.
+//
 // @return DescribeQueryProcessorResponse
 func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *string, name *string) (_result *DescribeQueryProcessorResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -7637,6 +7645,72 @@ func (client *Client) UpdateABTestScene(appGroupIdentity *string, sceneId *strin
 	headers := make(map[string]*string)
 	_result = &UpdateABTestSceneResponse{}
 	_body, _err := client.UpdateABTestSceneWithOptions(appGroupIdentity, sceneId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用删除保护
+//
+// @param request - UpdateAppGroupDeleteProtectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppGroupDeleteProtectionResponse
+func (client *Client) UpdateAppGroupDeleteProtectionWithOptions(appGroupIdentity *string, request *UpdateAppGroupDeleteProtectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAppGroupDeleteProtectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Body) {
+		body["body"] = request.Body
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAppGroupDeleteProtection"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/delete-protection"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAppGroupDeleteProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用删除保护
+//
+// @param request - UpdateAppGroupDeleteProtectionRequest
+//
+// @return UpdateAppGroupDeleteProtectionResponse
+func (client *Client) UpdateAppGroupDeleteProtection(appGroupIdentity *string, request *UpdateAppGroupDeleteProtectionRequest) (_result *UpdateAppGroupDeleteProtectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAppGroupDeleteProtectionResponse{}
+	_body, _err := client.UpdateAppGroupDeleteProtectionWithOptions(appGroupIdentity, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -18,11 +18,23 @@ type iABTestScene interface {
 }
 
 type ABTestScene struct {
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The alias of the test scenario.
+	//
 	// example:
 	//
-	// 0 停止实验 1 开通实验
-	Status *int32    `json:"status,omitempty" xml:"status,omitempty"`
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status of the test scenario. Valid values:
+	//
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the test scenario
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

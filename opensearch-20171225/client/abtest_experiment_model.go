@@ -22,11 +22,23 @@ type iABTestExperiment interface {
 }
 
 type ABTestExperiment struct {
-	Name         *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Online       *bool              `json:"online,omitempty" xml:"online,omitempty"`
-	Params       map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	SerialNumber *int32             `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
-	Traffic      *int32             `json:"traffic,omitempty" xml:"traffic,omitempty"`
+	// example:
+	//
+	// my_test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// false
+	Online *bool              `json:"online,omitempty" xml:"online,omitempty"`
+	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
+	// example:
+	//
+	// 85373
+	SerialNumber *int32 `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	// example:
+	//
+	// 10
+	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
 }
 
 func (s ABTestExperiment) String() string {

@@ -16,8 +16,22 @@ type iABTestGroup interface {
 }
 
 type ABTestGroup struct {
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	Status *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	// The alias of the test group.
+	//
+	// example:
+	//
+	// “kevin_test”
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status of the test group. Valid values:
+	//
+	// 	- 0: not in effect
+	//
+	// 	- 1: in effect
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ABTestGroup) String() string {

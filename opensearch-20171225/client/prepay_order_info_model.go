@@ -18,8 +18,27 @@ type iPrepayOrderInfo interface {
 }
 
 type PrepayOrderInfo struct {
-	AutoRenew    *bool   `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	Duration     *int32  `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance.
+	//
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// The subscription duration.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The billing cycle. Valid values:
+	//
+	// 	- Year
+	//
+	// 	- Month
+	//
+	// example:
+	//
+	// Year
 	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
 }
 
