@@ -17,6 +17,10 @@ type iGetLoginTokenShrinkRequest interface {
 	GetAvailableFeaturesShrink() *string
 	SetChannel(v string) *GetLoginTokenShrinkRequest
 	GetChannel() *string
+	SetCipherEndUserId(v string) *GetLoginTokenShrinkRequest
+	GetCipherEndUserId() *string
+	SetCipherPassword(v string) *GetLoginTokenShrinkRequest
+	GetCipherPassword() *string
 	SetClientId(v string) *GetLoginTokenShrinkRequest
 	GetClientId() *string
 	SetClientName(v string) *GetLoginTokenShrinkRequest
@@ -95,6 +99,8 @@ type GetLoginTokenShrinkRequest struct {
 	AuthenticationCode      *string `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
 	AvailableFeaturesShrink *string `json:"AvailableFeatures,omitempty" xml:"AvailableFeatures,omitempty"`
 	Channel                 *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	CipherEndUserId         *string `json:"CipherEndUserId,omitempty" xml:"CipherEndUserId,omitempty"`
+	CipherPassword          *string `json:"CipherPassword,omitempty" xml:"CipherPassword,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -250,6 +256,14 @@ func (s *GetLoginTokenShrinkRequest) GetChannel() *string {
 	return s.Channel
 }
 
+func (s *GetLoginTokenShrinkRequest) GetCipherEndUserId() *string {
+	return s.CipherEndUserId
+}
+
+func (s *GetLoginTokenShrinkRequest) GetCipherPassword() *string {
+	return s.CipherPassword
+}
+
 func (s *GetLoginTokenShrinkRequest) GetClientId() *string {
 	return s.ClientId
 }
@@ -403,6 +417,16 @@ func (s *GetLoginTokenShrinkRequest) SetAvailableFeaturesShrink(v string) *GetLo
 
 func (s *GetLoginTokenShrinkRequest) SetChannel(v string) *GetLoginTokenShrinkRequest {
 	s.Channel = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetCipherEndUserId(v string) *GetLoginTokenShrinkRequest {
+	s.CipherEndUserId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetCipherPassword(v string) *GetLoginTokenShrinkRequest {
+	s.CipherPassword = &v
 	return s
 }
 

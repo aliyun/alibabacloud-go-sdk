@@ -190,6 +190,14 @@ func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetL
 		query["Channel"] = request.Channel
 	}
 
+	if !dara.IsNil(request.CipherEndUserId) {
+		query["CipherEndUserId"] = request.CipherEndUserId
+	}
+
+	if !dara.IsNil(request.CipherPassword) {
+		query["CipherPassword"] = request.CipherPassword
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["ClientId"] = request.ClientId
 	}

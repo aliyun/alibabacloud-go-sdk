@@ -17,6 +17,10 @@ type iGetLoginTokenRequest interface {
 	GetAvailableFeatures() map[string]*string
 	SetChannel(v string) *GetLoginTokenRequest
 	GetChannel() *string
+	SetCipherEndUserId(v string) *GetLoginTokenRequest
+	GetCipherEndUserId() *string
+	SetCipherPassword(v string) *GetLoginTokenRequest
+	GetCipherPassword() *string
 	SetClientId(v string) *GetLoginTokenRequest
 	GetClientId() *string
 	SetClientName(v string) *GetLoginTokenRequest
@@ -95,6 +99,8 @@ type GetLoginTokenRequest struct {
 	AuthenticationCode *string            `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
 	AvailableFeatures  map[string]*string `json:"AvailableFeatures,omitempty" xml:"AvailableFeatures,omitempty"`
 	Channel            *string            `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	CipherEndUserId    *string            `json:"CipherEndUserId,omitempty" xml:"CipherEndUserId,omitempty"`
+	CipherPassword     *string            `json:"CipherPassword,omitempty" xml:"CipherPassword,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -250,6 +256,14 @@ func (s *GetLoginTokenRequest) GetChannel() *string {
 	return s.Channel
 }
 
+func (s *GetLoginTokenRequest) GetCipherEndUserId() *string {
+	return s.CipherEndUserId
+}
+
+func (s *GetLoginTokenRequest) GetCipherPassword() *string {
+	return s.CipherPassword
+}
+
 func (s *GetLoginTokenRequest) GetClientId() *string {
 	return s.ClientId
 }
@@ -403,6 +417,16 @@ func (s *GetLoginTokenRequest) SetAvailableFeatures(v map[string]*string) *GetLo
 
 func (s *GetLoginTokenRequest) SetChannel(v string) *GetLoginTokenRequest {
 	s.Channel = &v
+	return s
+}
+
+func (s *GetLoginTokenRequest) SetCipherEndUserId(v string) *GetLoginTokenRequest {
+	s.CipherEndUserId = &v
+	return s
+}
+
+func (s *GetLoginTokenRequest) SetCipherPassword(v string) *GetLoginTokenRequest {
+	s.CipherPassword = &v
 	return s
 }
 

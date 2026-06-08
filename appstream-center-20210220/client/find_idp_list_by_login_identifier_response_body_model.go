@@ -344,8 +344,9 @@ type FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo struct {
 	// example:
 	//
 	// INTERNET
-	AccessType      *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	PreferVpcAccess *bool   `json:"PreferVpcAccess,omitempty" xml:"PreferVpcAccess,omitempty"`
+	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	IsLoginByCipherParam *string `json:"IsLoginByCipherParam,omitempty" xml:"IsLoginByCipherParam,omitempty"`
+	PreferVpcAccess      *bool   `json:"PreferVpcAccess,omitempty" xml:"PreferVpcAccess,omitempty"`
 	// example:
 	//
 	// Or09****
@@ -365,6 +366,10 @@ func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetAccessType(
 	return s.AccessType
 }
 
+func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetIsLoginByCipherParam() *string {
+	return s.IsLoginByCipherParam
+}
+
 func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetPreferVpcAccess() *bool {
 	return s.PreferVpcAccess
 }
@@ -379,6 +384,11 @@ func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetVpcAccessAd
 
 func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetAccessType(v string) *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo {
 	s.AccessType = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetIsLoginByCipherParam(v string) *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo {
+	s.IsLoginByCipherParam = &v
 	return s
 }
 
