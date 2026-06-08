@@ -17697,6 +17697,104 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
+// 获取指定ResourceServer下Scope列表。
+//
+// @param request - ListResourceServerScopesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceServerScopesResponse
+func (client *Client) ListResourceServerScopesWithOptions(request *ListResourceServerScopesRequest, runtime *dara.RuntimeOptions) (_result *ListResourceServerScopesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AuthorizationType) {
+		query["AuthorizationType"] = request.AuthorizationType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeIds) {
+		query["ResourceServerScopeIds"] = request.ResourceServerScopeIds
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeName) {
+		query["ResourceServerScopeName"] = request.ResourceServerScopeName
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeType) {
+		query["ResourceServerScopeType"] = request.ResourceServerScopeType
+	}
+
+	if !dara.IsNil(request.ResourceServerScopeValue) {
+		query["ResourceServerScopeValue"] = request.ResourceServerScopeValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResourceServerScopes"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResourceServerScopesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定ResourceServer下Scope列表。
+//
+// @param request - ListResourceServerScopesRequest
+//
+// @return ListResourceServerScopesResponse
+func (client *Client) ListResourceServerScopes(request *ListResourceServerScopesRequest) (_result *ListResourceServerScopesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListResourceServerScopesResponse{}
+	_body, _err := client.ListResourceServerScopesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询用户的被授予ResourceServers和Scopes的权限
 //
 // @param request - ListResourceServersForUserRequest
