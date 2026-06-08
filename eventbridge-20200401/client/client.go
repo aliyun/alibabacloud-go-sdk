@@ -58,6 +58,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 用自然语言查询事件数据。输入问题后系统自动生成SQL并执行，返回结构化结果；若问题含糊则返回澄清提示。支持通过ConversationId进行多轮追问。
+//
+// @param request - AskLumaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AskLumaResponse
+func (client *Client) AskLumaWithOptions(request *AskLumaRequest, runtime *dara.RuntimeOptions) (_result *AskLumaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.MaxRows) {
+		body["MaxRows"] = request.MaxRows
+	}
+
+	if !dara.IsNil(request.Question) {
+		body["Question"] = request.Question
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AskLuma"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AskLumaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用自然语言查询事件数据。输入问题后系统自动生成SQL并执行，返回结构化结果；若问题含糊则返回澄清提示。支持通过ConversationId进行多轮追问。
+//
+// @param request - AskLumaRequest
+//
+// @return AskLumaResponse
+func (client *Client) AskLuma(request *AskLumaRequest) (_result *AskLumaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AskLumaResponse{}
+	_body, _err := client.AskLumaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks whether a service-linked role is created for an Alibaba Cloud account.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
@@ -111,6 +185,86 @@ func (client *Client) CheckServiceLinkedRoleForProduct(request *CheckServiceLink
 	runtime := &dara.RuntimeOptions{}
 	_result = &CheckServiceLinkedRoleForProductResponse{}
 	_body, _err := client.CheckServiceLinkedRoleForProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史会话
+//
+// @param tmpReq - CreateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentResponse
+func (client *Client) CreateAgentWithOptions(tmpReq *CreateAgentRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Metadata) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MetadataShrink) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgent"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史会话
+//
+// @param request - CreateAgentRequest
+//
+// @return CreateAgentResponse
+func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgentResponse{}
+	_body, _err := client.CreateAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -807,6 +961,68 @@ func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLi
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleForProductResponse{}
 	_body, _err := client.CreateServiceLinkedRoleForProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteAgent
+//
+// @param request - DeleteAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentResponse
+func (client *Client) DeleteAgentWithOptions(request *DeleteAgentRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgent"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteAgent
+//
+// @param request - DeleteAgentRequest
+//
+// @return DeleteAgentResponse
+func (client *Client) DeleteAgent(request *DeleteAgentRequest) (_result *DeleteAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgentResponse{}
+	_body, _err := client.DeleteAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1626,6 +1842,68 @@ func (client *Client) EventCenterQueryEvents(request *EventCenterQueryEventsRequ
 
 // Summary:
 //
+// 获取当前Agent的基本信息，包括名称、描述和已绑定的数据目录列表。用于了解当前接入点的能力范围。
+//
+// @param request - GetAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentResponse
+func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dara.RuntimeOptions) (_result *GetAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgent"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前Agent的基本信息，包括名称、描述和已绑定的数据目录列表。用于了解当前接入点的能力范围。
+//
+// @param request - GetAgentRequest
+//
+// @return GetAgentResponse
+func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentResponse{}
+	_body, _err := client.GetAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about an API destination.
 //
 // Description:
@@ -1971,6 +2249,76 @@ func (client *Client) GetRule(request *GetRuleRequest) (_result *GetRuleResponse
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetRuleResponse{}
 	_body, _err := client.GetRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 Agent 列表
+//
+// @param request - ListAgentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentsResponse
+func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, runtime *dara.RuntimeOptions) (_result *ListAgentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.After) {
+		body["After"] = request.After
+	}
+
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Order) {
+		body["Order"] = request.Order
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgents"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 Agent 列表
+//
+// @param request - ListAgentsRequest
+//
+// @return ListAgentsResponse
+func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgentsResponse{}
+	_body, _err := client.ListAgentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2673,6 +3021,72 @@ func (client *Client) PauseEventStreaming(request *PauseEventStreamingRequest) (
 
 // Summary:
 //
+// 轮询AskLuma的异步查询结果。传入AskLuma返回的MessageId，获取执行状态和最终结果；状态为RUNNING时应立即重试，无需退避。
+//
+// @param request - PollAskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PollAskResultResponse
+func (client *Client) PollAskResultWithOptions(request *PollAskResultRequest, runtime *dara.RuntimeOptions) (_result *PollAskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.MessageId) {
+		body["MessageId"] = request.MessageId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PollAskResult"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PollAskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轮询AskLuma的异步查询结果。传入AskLuma返回的MessageId，获取执行状态和最终结果；状态为RUNNING时应立即重试，无需退避。
+//
+// @param request - PollAskResultRequest
+//
+// @return PollAskResultResponse
+func (client *Client) PollAskResult(request *PollAskResultRequest) (_result *PollAskResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PollAskResultResponse{}
+	_body, _err := client.PollAskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates or updates event targets under a rule.
 //
 // Description:
@@ -2748,6 +3162,76 @@ func (client *Client) PutTargets(request *PutTargetsRequest) (_result *PutTarget
 	runtime := &dara.RuntimeOptions{}
 	_result = &PutTargetsResponse{}
 	_body, _err := client.PutTargetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史会话
+//
+// @param request - QueryAskLumaLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAskLumaLogResponse
+func (client *Client) QueryAskLumaLogWithOptions(request *QueryAskLumaLogRequest, runtime *dara.RuntimeOptions) (_result *QueryAskLumaLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.After) {
+		body["After"] = request.After
+	}
+
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAskLumaLog"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAskLumaLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史会话
+//
+// @param request - QueryAskLumaLogRequest
+//
+// @return QueryAskLumaLogResponse
+func (client *Client) QueryAskLumaLog(request *QueryAskLumaLogRequest) (_result *QueryAskLumaLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryAskLumaLogResponse{}
+	_body, _err := client.QueryAskLumaLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3300,6 +3784,90 @@ func (client *Client) TestEventSourceConfig(request *TestEventSourceConfigReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &TestEventSourceConfigResponse{}
 	_body, _err := client.TestEventSourceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史会话
+//
+// @param tmpReq - UpdateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgentWithOptions(tmpReq *UpdateAgentRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Metadata) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MetadataShrink) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgent"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询历史会话
+//
+// @param request - UpdateAgentRequest
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.UpdateAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

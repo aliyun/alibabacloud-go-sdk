@@ -24,10 +24,19 @@ type iAguiMessage interface {
 }
 
 type AguiMessage struct {
-	Content    *string                 `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id         *string                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Metadata   *AguiMessageMetadata    `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
-	Role       *string                 `json:"Role,omitempty" xml:"Role,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// msg_123456_a1b2c3d4
+	Id       *string              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata *AguiMessageMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// example:
+	//
+	// assistant
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// call_xxx
 	ToolCallId *string                 `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
 	ToolCalls  []*AguiMessageToolCalls `json:"ToolCalls,omitempty" xml:"ToolCalls,omitempty" type:"Repeated"`
 }
@@ -143,7 +152,13 @@ func (s *AguiMessageMetadata) Validate() error {
 }
 
 type AguiMessageMetadataAttachments struct {
+	// example:
+	//
+	// acs:eventbridge:cn-hangzhou:12345:eventhouse/system-rocketmq/namespace/rmq-cn-xxx/table/order
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// inner-resource/event-table
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -179,8 +194,14 @@ func (s *AguiMessageMetadataAttachments) Validate() error {
 
 type AguiMessageToolCalls struct {
 	Function *AguiMessageToolCallsFunction `json:"Function,omitempty" xml:"Function,omitempty" type:"Struct"`
-	Id       *string                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Type     *string                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// call_xxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// function
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AguiMessageToolCalls) String() string {
@@ -228,8 +249,14 @@ func (s *AguiMessageToolCalls) Validate() error {
 }
 
 type AguiMessageToolCallsFunction struct {
+	// example:
+	//
+	// {}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// discoverMetadata
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s AguiMessageToolCallsFunction) String() string {

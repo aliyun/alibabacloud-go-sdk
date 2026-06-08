@@ -48,7 +48,13 @@ func (s *Metadata) Validate() error {
 }
 
 type MetadataAttachments struct {
-	Arn      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// example:
+	//
+	// acs:eventbridge:cn-hangzhou:12345:eventhouse/system-rocketmq/namespace/rmq-cn-xxx/table/order
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// example:
+	//
+	// inner-resource/event-table
 	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
 }
 
