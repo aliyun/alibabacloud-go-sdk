@@ -1641,7 +1641,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// You can call this operation to detect drift on a stack.
+// Performs drift detection on resources in a stack to check whether the resources have drifted from the expected template configurations.
 //
 // @param request - DetectStackDriftRequest
 //
@@ -1697,7 +1697,7 @@ func (client *Client) DetectStackDriftWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 对资源栈组进行偏差检测
+// Performs drift detection on stack groups to check whether the stack groups have drifted from the expected template configurations.
 //
 // @param tmpReq - DetectStackGroupDriftRequest
 //
@@ -2008,8 +2008,16 @@ func (client *Client) GenerateTemplatePolicyWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.GenerateOptions) {
+		query["GenerateOptions"] = request.GenerateOptions
+	}
+
 	if !dara.IsNil(request.OperationTypes) {
 		query["OperationTypes"] = request.OperationTypes
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
 	}
 
 	if !dara.IsNil(request.TemplateBody) {
@@ -2257,7 +2265,7 @@ func (client *Client) GetFeatureDetailsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// This topic provides an example on how to query the details of `ALIYUN::ROS::WaitConditionHandle`.
+// This topic provides an example on how to query the details of \\`ALIYUN::ROS::WaitConditionHandle\\`.
 //
 // Description:
 //
@@ -2555,7 +2563,7 @@ func (client *Client) GetStackDriftDetectionStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// In this example, the information about a stack group named \\`MyStackGroup\\` is queried. The stack group is granted self-managed permissions and created in the China (Hangzhou) region.
+// In this example, the information about a stack group named \\\\`MyStackGroup\\\\` is queried. The stack group is granted self-managed permissions and created in the China (Hangzhou) region.
 //
 // Description:
 //
@@ -2727,7 +2735,7 @@ func (client *Client) GetStackInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// You can call this operation to query information about a stack policy.
+// Queries the information about a stack policy in an Alibaba Cloud region.
 //
 // Description:
 //
@@ -3215,7 +3223,7 @@ func (client *Client) GetTemplateParameterConstraintsWithContext(ctx context.Con
 
 // Summary:
 //
-// 推荐参数
+// Queries recommended parameters.
 //
 // @param request - GetTemplateRecommendParametersRequest
 //
@@ -4379,7 +4387,7 @@ func (client *Client) ListStackResourceDriftsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// This topic provides an example on how to query the resources in a specified stack. In this example, the resources in the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691****` in the China (Hangzhou) region are queried.
+// This topic provides an example on how to query the resources in a specified stack. In this example, the resources in the stack whose ID is \\`4a6c9851-3b0f-4f5f-b4ca-a14bf691\\*\\*\\*\\*\\` in the China (Hangzhou) region are queried.
 //
 // Description:
 //
@@ -4529,7 +4537,7 @@ func (client *Client) ListStacksWithContext(ctx context.Context, request *ListSt
 
 // Summary:
 //
-// 查询总览
+// Queries summaries.
 //
 // @param request - ListSummariesRequest
 //
@@ -5213,7 +5221,7 @@ func (client *Client) RegisterResourceTypeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改资源栈的删除保护属性
+// Modifies the deletion protection setting for a stack.
 //
 // @param request - SetDeletionProtectionRequest
 //
@@ -5321,7 +5329,7 @@ func (client *Client) SetResourceTypeWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// You can call this operation to configure a stack policy.
+// Configures a stack policy for a stack.
 //
 // Description:
 //
@@ -5511,7 +5519,7 @@ func (client *Client) SignalResourceWithContext(ctx context.Context, request *Si
 
 // Summary:
 //
-// Stops a stack group operation.
+// Stops an ongoing operation in a stack group.
 //
 // Description:
 //
@@ -5831,7 +5839,7 @@ func (client *Client) UpdateStackWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// The region ID of the stack group. You can call the [DescribeRegions]\\(~~131035~~) operation to query the latest list of Alibaba Cloud regions.
+// Update an already created stack group.
 //
 // Description:
 //
@@ -6083,7 +6091,7 @@ func (client *Client) UpdateStackInstancesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Corrects a template to eliminate stack drift.
+// Eliminates stack drifts by performing drift detection.
 //
 // Description:
 //

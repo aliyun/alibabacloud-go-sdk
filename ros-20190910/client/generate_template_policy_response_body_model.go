@@ -11,13 +11,16 @@ type iGenerateTemplatePolicyResponseBody interface {
 	GoString() string
 	SetPolicy(v *GenerateTemplatePolicyResponseBodyPolicy) *GenerateTemplatePolicyResponseBody
 	GetPolicy() *GenerateTemplatePolicyResponseBodyPolicy
+	SetPolicyFunctions(v []*GenerateTemplatePolicyResponseBodyPolicyFunctions) *GenerateTemplatePolicyResponseBody
+	GetPolicyFunctions() []*GenerateTemplatePolicyResponseBodyPolicyFunctions
 	SetRequestId(v string) *GenerateTemplatePolicyResponseBody
 	GetRequestId() *string
 }
 
 type GenerateTemplatePolicyResponseBody struct {
 	// The information about the policy.
-	Policy *GenerateTemplatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	Policy          *GenerateTemplatePolicyResponseBodyPolicy            `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	PolicyFunctions []*GenerateTemplatePolicyResponseBodyPolicyFunctions `json:"PolicyFunctions,omitempty" xml:"PolicyFunctions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s *GenerateTemplatePolicyResponseBody) GetPolicy() *GenerateTemplatePolicy
 	return s.Policy
 }
 
+func (s *GenerateTemplatePolicyResponseBody) GetPolicyFunctions() []*GenerateTemplatePolicyResponseBodyPolicyFunctions {
+	return s.PolicyFunctions
+}
+
 func (s *GenerateTemplatePolicyResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *GenerateTemplatePolicyResponseBody) SetPolicy(v *GenerateTemplatePolicyResponseBodyPolicy) *GenerateTemplatePolicyResponseBody {
 	s.Policy = v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBody) SetPolicyFunctions(v []*GenerateTemplatePolicyResponseBodyPolicyFunctions) *GenerateTemplatePolicyResponseBody {
+	s.PolicyFunctions = v
 	return s
 }
 
@@ -56,6 +68,15 @@ func (s *GenerateTemplatePolicyResponseBody) Validate() error {
 	if s.Policy != nil {
 		if err := s.Policy.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.PolicyFunctions != nil {
+		for _, item := range s.PolicyFunctions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -191,5 +212,168 @@ func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetResource(v string
 }
 
 func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) Validate() error {
+	return dara.Validate(s)
+}
+
+type GenerateTemplatePolicyResponseBodyPolicyFunctions struct {
+	Action                *string                                                                   `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionPolicyFunctions []*GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions `json:"ActionPolicyFunctions,omitempty" xml:"ActionPolicyFunctions,omitempty" type:"Repeated"`
+	RequirementLevel      *string                                                                   `json:"RequirementLevel,omitempty" xml:"RequirementLevel,omitempty"`
+}
+
+func (s GenerateTemplatePolicyResponseBodyPolicyFunctions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GenerateTemplatePolicyResponseBodyPolicyFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) GetAction() *string {
+	return s.Action
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) GetActionPolicyFunctions() []*GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions {
+	return s.ActionPolicyFunctions
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) GetRequirementLevel() *string {
+	return s.RequirementLevel
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) SetAction(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctions {
+	s.Action = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) SetActionPolicyFunctions(v []*GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) *GenerateTemplatePolicyResponseBodyPolicyFunctions {
+	s.ActionPolicyFunctions = v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) SetRequirementLevel(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctions {
+	s.RequirementLevel = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctions) Validate() error {
+	if s.ActionPolicyFunctions != nil {
+		for _, item := range s.ActionPolicyFunctions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions struct {
+	Functions         []*GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
+	LogicalResourceId *string                                                                            `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	ResourceType      *string                                                                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) GetFunctions() []*GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions {
+	return s.Functions
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) GetLogicalResourceId() *string {
+	return s.LogicalResourceId
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) SetFunctions(v []*GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions {
+	s.Functions = v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) SetLogicalResourceId(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) SetResourceType(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctions) Validate() error {
+	if s.Functions != nil {
+		for _, item := range s.Functions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions struct {
+	Function          *string   `json:"Function,omitempty" xml:"Function,omitempty"`
+	OperationType     *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RelatedProperties []*string `json:"RelatedProperties,omitempty" xml:"RelatedProperties,omitempty" type:"Repeated"`
+	RequirementLevel  *string   `json:"RequirementLevel,omitempty" xml:"RequirementLevel,omitempty"`
+}
+
+func (s GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) GetFunction() *string {
+	return s.Function
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) GetOperationType() *string {
+	return s.OperationType
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) GetRelatedProperties() []*string {
+	return s.RelatedProperties
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) GetRequirementLevel() *string {
+	return s.RequirementLevel
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) SetFunction(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions {
+	s.Function = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) SetOperationType(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions {
+	s.OperationType = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) SetRelatedProperties(v []*string) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions {
+	s.RelatedProperties = v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) SetRequirementLevel(v string) *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions {
+	s.RequirementLevel = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyResponseBodyPolicyFunctionsActionPolicyFunctionsFunctions) Validate() error {
 	return dara.Validate(s)
 }

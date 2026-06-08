@@ -134,8 +134,15 @@ type CreateStackGroupRequest struct {
 	// MyStackGroup
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	// The tags of the stack group.
-	Tags         []*CreateStackGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody *string                        `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags []*CreateStackGroupRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	//
+	// example:
+	//
+	// {"ROSTemplateFormatVersion":"2015-09-01"}
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
 	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.

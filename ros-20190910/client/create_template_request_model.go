@@ -41,8 +41,35 @@ type CreateTemplateRequest struct {
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the template.
-	Tags         []*CreateTemplateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody *string                      `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags []*CreateTemplateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The structure of the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	// > You must specify TemplateBody or TemplateURL.
+	//
+	// You can create a Terraform template based on your business requirements. The following sample code provides an example on how to create a Terraform template:
+	//
+	//     {
+	//
+	//       "ROSTemplateFormatVersion": "2015-09-01",
+	//
+	//       "Transform": "Aliyun::Terraform-v1.0",
+	//
+	//       "Workspace": {
+	//
+	//         "main.tf": "variable  \\"name\\" {  default = \\"auto_provisioning_group\\"}"
+	//
+	//       },
+	//
+	//       "Outputs": {}
+	//
+	//     }
+	//
+	// For more information about Terraform templates, see [Structure of Terraform templates](https://help.aliyun.com/document_detail/184397.html).
+	//
+	// example:
+	//
+	// {"ROSTemplateFormatVersion":"2015-09-01"}
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The name of the template.\\
 	//
 	// The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.

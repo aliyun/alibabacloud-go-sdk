@@ -39,7 +39,16 @@ type ValidateTemplateRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\\
+	//
+	// If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.\\
+	//
+	// You can specify the TemplateBody or TemplateURL parameter, but not both parameters.
+	//
+	// example:
+	//
+	// {"ROSTemplateFormatVersion":"2015-09-01"}
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
 	//

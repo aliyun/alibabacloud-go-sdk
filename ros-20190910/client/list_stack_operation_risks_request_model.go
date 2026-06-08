@@ -95,7 +95,14 @@ type ListStackOperationRisksRequest struct {
 	// example:
 	//
 	// 4a6c9851-3b0f-4f5f-b4ca-a14bf691****
-	StackId      *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	// >  You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+	//
+	// example:
+	//
+	// {"ROSTemplateFormatVersion":"2015-09-01"}
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//

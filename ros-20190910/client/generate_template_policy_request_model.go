@@ -9,8 +9,12 @@ type iGenerateTemplatePolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetGenerateOptions(v []*string) *GenerateTemplatePolicyRequest
+	GetGenerateOptions() []*string
 	SetOperationTypes(v []*string) *GenerateTemplatePolicyRequest
 	GetOperationTypes() []*string
+	SetParameters(v []*GenerateTemplatePolicyRequestParameters) *GenerateTemplatePolicyRequest
+	GetParameters() []*GenerateTemplatePolicyRequestParameters
 	SetTemplateBody(v string) *GenerateTemplatePolicyRequest
 	GetTemplateBody() *string
 	SetTemplateId(v string) *GenerateTemplatePolicyRequest
@@ -22,6 +26,7 @@ type iGenerateTemplatePolicyRequest interface {
 }
 
 type GenerateTemplatePolicyRequest struct {
+	GenerateOptions []*string `json:"GenerateOptions,omitempty" xml:"GenerateOptions,omitempty" type:"Repeated"`
 	// The type of operation N for which you want to generate the policy information.
 	//
 	// Valid values:
@@ -45,7 +50,8 @@ type GenerateTemplatePolicyRequest struct {
 	// 	- SignalResource: sends a signal to a stack.
 	//
 	// >  The default value is the combination of all valid values.
-	OperationTypes []*string `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	OperationTypes []*string                                  `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	Parameters     []*GenerateTemplatePolicyRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
 	//
 	// If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
@@ -92,8 +98,16 @@ func (s GenerateTemplatePolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateTemplatePolicyRequest) GetGenerateOptions() []*string {
+	return s.GenerateOptions
+}
+
 func (s *GenerateTemplatePolicyRequest) GetOperationTypes() []*string {
 	return s.OperationTypes
+}
+
+func (s *GenerateTemplatePolicyRequest) GetParameters() []*GenerateTemplatePolicyRequestParameters {
+	return s.Parameters
 }
 
 func (s *GenerateTemplatePolicyRequest) GetTemplateBody() *string {
@@ -112,8 +126,18 @@ func (s *GenerateTemplatePolicyRequest) GetTemplateVersion() *string {
 	return s.TemplateVersion
 }
 
+func (s *GenerateTemplatePolicyRequest) SetGenerateOptions(v []*string) *GenerateTemplatePolicyRequest {
+	s.GenerateOptions = v
+	return s
+}
+
 func (s *GenerateTemplatePolicyRequest) SetOperationTypes(v []*string) *GenerateTemplatePolicyRequest {
 	s.OperationTypes = v
+	return s
+}
+
+func (s *GenerateTemplatePolicyRequest) SetParameters(v []*GenerateTemplatePolicyRequestParameters) *GenerateTemplatePolicyRequest {
+	s.Parameters = v
 	return s
 }
 
@@ -138,5 +162,49 @@ func (s *GenerateTemplatePolicyRequest) SetTemplateVersion(v string) *GenerateTe
 }
 
 func (s *GenerateTemplatePolicyRequest) Validate() error {
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GenerateTemplatePolicyRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s GenerateTemplatePolicyRequestParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GenerateTemplatePolicyRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplatePolicyRequestParameters) GetParameterKey() *string {
+	return s.ParameterKey
+}
+
+func (s *GenerateTemplatePolicyRequestParameters) GetParameterValue() *string {
+	return s.ParameterValue
+}
+
+func (s *GenerateTemplatePolicyRequestParameters) SetParameterKey(v string) *GenerateTemplatePolicyRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyRequestParameters) SetParameterValue(v string) *GenerateTemplatePolicyRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+func (s *GenerateTemplatePolicyRequestParameters) Validate() error {
 	return dara.Validate(s)
 }
