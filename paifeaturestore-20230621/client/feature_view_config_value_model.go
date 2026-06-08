@@ -21,6 +21,8 @@ type iFeatureViewConfigValue interface {
 	GetSnapshot() *FeatureViewConfigValueSnapshot
 	SetSecondJoinKey(v string) *FeatureViewConfigValue
 	GetSecondJoinKey() *string
+	SetJoinWithLabel(v bool) *FeatureViewConfigValue
+	GetJoinWithLabel() *bool
 }
 
 type FeatureViewConfigValue struct {
@@ -36,6 +38,7 @@ type FeatureViewConfigValue struct {
 	//
 	// request_id
 	SecondJoinKey *string `json:"SecondJoinKey,omitempty" xml:"SecondJoinKey,omitempty"`
+	JoinWithLabel *bool   `json:"JoinWithLabel,omitempty" xml:"JoinWithLabel,omitempty"`
 }
 
 func (s FeatureViewConfigValue) String() string {
@@ -70,6 +73,10 @@ func (s *FeatureViewConfigValue) GetSecondJoinKey() *string {
 	return s.SecondJoinKey
 }
 
+func (s *FeatureViewConfigValue) GetJoinWithLabel() *bool {
+	return s.JoinWithLabel
+}
+
 func (s *FeatureViewConfigValue) SetPartitions(v map[string]*FeatureViewConfigValuePartitionsValue) *FeatureViewConfigValue {
 	s.Partitions = v
 	return s
@@ -97,6 +104,11 @@ func (s *FeatureViewConfigValue) SetSnapshot(v *FeatureViewConfigValueSnapshot) 
 
 func (s *FeatureViewConfigValue) SetSecondJoinKey(v string) *FeatureViewConfigValue {
 	s.SecondJoinKey = &v
+	return s
+}
+
+func (s *FeatureViewConfigValue) SetJoinWithLabel(v bool) *FeatureViewConfigValue {
+	s.JoinWithLabel = &v
 	return s
 }
 

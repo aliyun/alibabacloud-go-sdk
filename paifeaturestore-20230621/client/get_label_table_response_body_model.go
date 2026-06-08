@@ -195,7 +195,11 @@ func (s *GetLabelTableResponseBody) Validate() error {
 }
 
 type GetLabelTableResponseBodyFields struct {
-	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// item
+	AlignedEntityName *string   `json:"AlignedEntityName,omitempty" xml:"AlignedEntityName,omitempty"`
+	Attributes        []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// field1
@@ -214,6 +218,10 @@ func (s GetLabelTableResponseBodyFields) GoString() string {
 	return s.String()
 }
 
+func (s *GetLabelTableResponseBodyFields) GetAlignedEntityName() *string {
+	return s.AlignedEntityName
+}
+
 func (s *GetLabelTableResponseBodyFields) GetAttributes() []*string {
 	return s.Attributes
 }
@@ -224,6 +232,11 @@ func (s *GetLabelTableResponseBodyFields) GetName() *string {
 
 func (s *GetLabelTableResponseBodyFields) GetType() *string {
 	return s.Type
+}
+
+func (s *GetLabelTableResponseBodyFields) SetAlignedEntityName(v string) *GetLabelTableResponseBodyFields {
+	s.AlignedEntityName = &v
+	return s
 }
 
 func (s *GetLabelTableResponseBodyFields) SetAttributes(v []*string) *GetLabelTableResponseBodyFields {

@@ -79,6 +79,10 @@ func (s *UpdateLabelTableRequest) Validate() error {
 }
 
 type UpdateLabelTableRequestFields struct {
+	// example:
+	//
+	// item
+	AlignedEntityName *string `json:"AlignedEntityName,omitempty" xml:"AlignedEntityName,omitempty"`
 	// This parameter is required.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -103,6 +107,10 @@ func (s UpdateLabelTableRequestFields) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateLabelTableRequestFields) GetAlignedEntityName() *string {
+	return s.AlignedEntityName
+}
+
 func (s *UpdateLabelTableRequestFields) GetAttributes() []*string {
 	return s.Attributes
 }
@@ -113,6 +121,11 @@ func (s *UpdateLabelTableRequestFields) GetName() *string {
 
 func (s *UpdateLabelTableRequestFields) GetType() *string {
 	return s.Type
+}
+
+func (s *UpdateLabelTableRequestFields) SetAlignedEntityName(v string) *UpdateLabelTableRequestFields {
+	s.AlignedEntityName = &v
+	return s
 }
 
 func (s *UpdateLabelTableRequestFields) SetAttributes(v []*string) *UpdateLabelTableRequestFields {
