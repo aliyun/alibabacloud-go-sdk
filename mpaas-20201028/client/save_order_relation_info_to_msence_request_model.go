@@ -17,6 +17,10 @@ type iSaveOrderRelationInfoToMsenceRequest interface {
 	GetBizOrderId() *string
 	SetBizOrderStatus(v int32) *SaveOrderRelationInfoToMsenceRequest
 	GetBizOrderStatus() *int32
+	SetClientType(v string) *SaveOrderRelationInfoToMsenceRequest
+	GetClientType() *string
+	SetCpExtra(v string) *SaveOrderRelationInfoToMsenceRequest
+	GetCpExtra() *string
 	SetCustomId(v string) *SaveOrderRelationInfoToMsenceRequest
 	GetCustomId() *string
 	SetMiniProgramId(v string) *SaveOrderRelationInfoToMsenceRequest
@@ -47,7 +51,9 @@ type SaveOrderRelationInfoToMsenceRequest struct {
 	// example:
 	//
 	// 2
-	BizOrderStatus *int32 `json:"BizOrderStatus,omitempty" xml:"BizOrderStatus,omitempty"`
+	BizOrderStatus *int32  `json:"BizOrderStatus,omitempty" xml:"BizOrderStatus,omitempty"`
+	ClientType     *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CpExtra        *string `json:"CpExtra,omitempty" xml:"CpExtra,omitempty"`
 	// example:
 	//
 	// test_custom_id
@@ -98,6 +104,14 @@ func (s *SaveOrderRelationInfoToMsenceRequest) GetBizOrderStatus() *int32 {
 	return s.BizOrderStatus
 }
 
+func (s *SaveOrderRelationInfoToMsenceRequest) GetClientType() *string {
+	return s.ClientType
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) GetCpExtra() *string {
+	return s.CpExtra
+}
+
 func (s *SaveOrderRelationInfoToMsenceRequest) GetCustomId() *string {
 	return s.CustomId
 }
@@ -139,6 +153,16 @@ func (s *SaveOrderRelationInfoToMsenceRequest) SetBizOrderId(v string) *SaveOrde
 
 func (s *SaveOrderRelationInfoToMsenceRequest) SetBizOrderStatus(v int32) *SaveOrderRelationInfoToMsenceRequest {
 	s.BizOrderStatus = &v
+	return s
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) SetClientType(v string) *SaveOrderRelationInfoToMsenceRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) SetCpExtra(v string) *SaveOrderRelationInfoToMsenceRequest {
+	s.CpExtra = &v
 	return s
 }
 

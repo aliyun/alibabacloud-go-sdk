@@ -9636,6 +9636,14 @@ func (client *Client) SaveOrderRelationInfoToMsenceWithOptions(request *SaveOrde
 		body["BizOrderStatus"] = request.BizOrderStatus
 	}
 
+	if !dara.IsNil(request.ClientType) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !dara.IsNil(request.CpExtra) {
+		body["CpExtra"] = request.CpExtra
+	}
+
 	if !dara.IsNil(request.CustomId) {
 		body["CustomId"] = request.CustomId
 	}
