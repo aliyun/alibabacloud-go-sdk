@@ -4090,6 +4090,10 @@ func (client *Client) Id3MetaVerifyWithContext(ctx context.Context, request *Id3
 		body["FaceFile"] = request.FaceFile
 	}
 
+	if !dara.IsNil(request.FacePicture) {
+		body["FacePicture"] = request.FacePicture
+	}
+
 	if !dara.IsNil(request.FaceUrl) {
 		body["FaceUrl"] = request.FaceUrl
 	}
@@ -4434,6 +4438,10 @@ func (client *Client) InitFaceVerifyWithContext(ctx context.Context, request *In
 
 	if !dara.IsNil(request.CertifyUrlType) {
 		query["CertifyUrlType"] = request.CertifyUrlType
+	}
+
+	if !dara.IsNil(request.EnableBeauty) {
+		query["EnableBeauty"] = request.EnableBeauty
 	}
 
 	if !dara.IsNil(request.EncryptType) {

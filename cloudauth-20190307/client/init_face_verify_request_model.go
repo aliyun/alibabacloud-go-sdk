@@ -35,6 +35,8 @@ type iInitFaceVerifyRequest interface {
 	GetCertifyUrlType() *string
 	SetCrop(v string) *InitFaceVerifyRequest
 	GetCrop() *string
+	SetEnableBeauty(v string) *InitFaceVerifyRequest
+	GetEnableBeauty() *string
 	SetEncryptType(v string) *InitFaceVerifyRequest
 	GetEncryptType() *string
 	SetFaceContrastPicture(v string) *InitFaceVerifyRequest
@@ -217,6 +219,10 @@ type InitFaceVerifyRequest struct {
 	//
 	// T
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// example:
+	//
+	// Y
+	EnableBeauty *string `json:"EnableBeauty,omitempty" xml:"EnableBeauty,omitempty"`
 	// Encryption algorithm to be used, currently supporting only the SM2 national encryption algorithm.
 	//
 	// After enabling encrypted transmission, you need to pass in the encrypted CertName and CertNo. For how to encrypt, please refer to [Parameter Encryption Instructions](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.1a9d566eWdqwy8#task-2229332).
@@ -553,6 +559,10 @@ func (s *InitFaceVerifyRequest) GetCrop() *string {
 	return s.Crop
 }
 
+func (s *InitFaceVerifyRequest) GetEnableBeauty() *string {
+	return s.EnableBeauty
+}
+
 func (s *InitFaceVerifyRequest) GetEncryptType() *string {
 	return s.EncryptType
 }
@@ -719,6 +729,11 @@ func (s *InitFaceVerifyRequest) SetCertifyUrlType(v string) *InitFaceVerifyReque
 
 func (s *InitFaceVerifyRequest) SetCrop(v string) *InitFaceVerifyRequest {
 	s.Crop = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetEnableBeauty(v string) *InitFaceVerifyRequest {
+	s.EnableBeauty = &v
 	return s
 }
 

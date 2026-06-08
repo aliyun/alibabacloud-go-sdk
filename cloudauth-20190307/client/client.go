@@ -6326,6 +6326,10 @@ func (client *Client) Id3MetaVerifyWithOptions(request *Id3MetaVerifyRequest, ru
 		body["FaceFile"] = request.FaceFile
 	}
 
+	if !dara.IsNil(request.FacePicture) {
+		body["FacePicture"] = request.FacePicture
+	}
+
 	if !dara.IsNil(request.FaceUrl) {
 		body["FaceUrl"] = request.FaceUrl
 	}
@@ -6998,6 +7002,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !dara.IsNil(request.CertifyUrlType) {
 		query["CertifyUrlType"] = request.CertifyUrlType
+	}
+
+	if !dara.IsNil(request.EnableBeauty) {
+		query["EnableBeauty"] = request.EnableBeauty
 	}
 
 	if !dara.IsNil(request.EncryptType) {
