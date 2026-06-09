@@ -6101,6 +6101,116 @@ func (client *Client) RemoveUserToDataAgentWorkspace(request *RemoveUserToDataAg
 
 // Summary:
 //
+// 检索知识库
+//
+// @param request - RetrieveKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetrieveKnowledgeBaseResponse
+func (client *Client) RetrieveKnowledgeBaseWithOptions(request *RetrieveKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *RetrieveKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		body["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.HybridSearch) {
+		body["HybridSearch"] = request.HybridSearch
+	}
+
+	if !dara.IsNil(request.HybridSearchArgs) {
+		body["HybridSearchArgs"] = request.HybridSearchArgs
+	}
+
+	if !dara.IsNil(request.IncludeMetadataFields) {
+		body["IncludeMetadataFields"] = request.IncludeMetadataFields
+	}
+
+	if !dara.IsNil(request.IncludeVector) {
+		body["IncludeVector"] = request.IncludeVector
+	}
+
+	if !dara.IsNil(request.KbUuid) {
+		body["KbUuid"] = request.KbUuid
+	}
+
+	if !dara.IsNil(request.Metrics) {
+		body["Metrics"] = request.Metrics
+	}
+
+	if !dara.IsNil(request.Offset) {
+		body["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		body["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RecallWindow) {
+		body["RecallWindow"] = request.RecallWindow
+	}
+
+	if !dara.IsNil(request.RerankFactor) {
+		body["RerankFactor"] = request.RerankFactor
+	}
+
+	if !dara.IsNil(request.TopK) {
+		body["TopK"] = request.TopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetrieveKnowledgeBase"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetrieveKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检索知识库
+//
+// @param request - RetrieveKnowledgeBaseRequest
+//
+// @return RetrieveKnowledgeBaseResponse
+func (client *Client) RetrieveKnowledgeBase(request *RetrieveKnowledgeBaseRequest) (_result *RetrieveKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RetrieveKnowledgeBaseResponse{}
+	_body, _err := client.RetrieveKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 保存工作空间代码，如果文件不存在则自动新建
 //
 // @param request - SaveWorkspaceCodeRequest
