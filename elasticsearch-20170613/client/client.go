@@ -10635,6 +10635,10 @@ func (client *Client) TurnOffZoneWithOptions(instanceId *string, request *TurnOf
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.HpAlbZoneDrained) {
+		query["hpAlbZoneDrained"] = request.HpAlbZoneDrained
+	}
+
 	if !dara.IsNil(request.Zone) {
 		query["zone"] = request.Zone
 	}
@@ -10701,6 +10705,10 @@ func (client *Client) TurnOnZoneWithOptions(instanceId *string, request *TurnOnZ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.HpAlbZoneDrained) {
+		query["hpAlbZoneDrained"] = request.HpAlbZoneDrained
+	}
+
 	if !dara.IsNil(request.Zone) {
 		query["zone"] = request.Zone
 	}

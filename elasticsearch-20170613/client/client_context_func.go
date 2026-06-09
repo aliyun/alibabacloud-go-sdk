@@ -7684,6 +7684,10 @@ func (client *Client) TurnOffZoneWithContext(ctx context.Context, instanceId *st
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.HpAlbZoneDrained) {
+		query["hpAlbZoneDrained"] = request.HpAlbZoneDrained
+	}
+
 	if !dara.IsNil(request.Zone) {
 		query["zone"] = request.Zone
 	}
@@ -7731,6 +7735,10 @@ func (client *Client) TurnOnZoneWithContext(ctx context.Context, instanceId *str
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.HpAlbZoneDrained) {
+		query["hpAlbZoneDrained"] = request.HpAlbZoneDrained
+	}
+
 	if !dara.IsNil(request.Zone) {
 		query["zone"] = request.Zone
 	}

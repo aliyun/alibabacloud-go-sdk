@@ -9,11 +9,14 @@ type iTurnOffZoneRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetHpAlbZoneDrained(v bool) *TurnOffZoneRequest
+	GetHpAlbZoneDrained() *bool
 	SetZone(v string) *TurnOffZoneRequest
 	GetZone() *string
 }
 
 type TurnOffZoneRequest struct {
+	HpAlbZoneDrained *bool `json:"hpAlbZoneDrained,omitempty" xml:"hpAlbZoneDrained,omitempty"`
 	// example:
 	//
 	// cn-hangzhou-i
@@ -28,8 +31,17 @@ func (s TurnOffZoneRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TurnOffZoneRequest) GetHpAlbZoneDrained() *bool {
+	return s.HpAlbZoneDrained
+}
+
 func (s *TurnOffZoneRequest) GetZone() *string {
 	return s.Zone
+}
+
+func (s *TurnOffZoneRequest) SetHpAlbZoneDrained(v bool) *TurnOffZoneRequest {
+	s.HpAlbZoneDrained = &v
+	return s
 }
 
 func (s *TurnOffZoneRequest) SetZone(v string) *TurnOffZoneRequest {
