@@ -295,9 +295,10 @@ type ListCallDetailRecordsV2ResponseBodyDataList struct {
 	// example:
 	//
 	// 0101257****
-	OffsiteAgentOriginatorNumbers *string `json:"OffsiteAgentOriginatorNumbers,omitempty" xml:"OffsiteAgentOriginatorNumbers,omitempty"`
-	OffsiteAgentReleaseReason     *string `json:"OffsiteAgentReleaseReason,omitempty" xml:"OffsiteAgentReleaseReason,omitempty"`
-	OutsideNumberReleaseReason    *string `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
+	OffsiteAgentOriginatorNumbers  *string `json:"OffsiteAgentOriginatorNumbers,omitempty" xml:"OffsiteAgentOriginatorNumbers,omitempty"`
+	OffsiteAgentReleaseReason      *string `json:"OffsiteAgentReleaseReason,omitempty" xml:"OffsiteAgentReleaseReason,omitempty"`
+	OutsideNumberDestinationNumber *string `json:"OutsideNumberDestinationNumber,omitempty" xml:"OutsideNumberDestinationNumber,omitempty"`
+	OutsideNumberReleaseReason     *string `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
 	// example:
 	//
 	// 0
@@ -527,6 +528,10 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetOffsiteAgentOriginatorN
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetOffsiteAgentReleaseReason() *string {
 	return s.OffsiteAgentReleaseReason
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetOutsideNumberDestinationNumber() *string {
+	return s.OutsideNumberDestinationNumber
 }
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetOutsideNumberReleaseReason() *string {
@@ -805,6 +810,11 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetOffsiteAgentOriginatorN
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetOffsiteAgentReleaseReason(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
 	s.OffsiteAgentReleaseReason = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetOutsideNumberDestinationNumber(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.OutsideNumberDestinationNumber = &v
 	return s
 }
 
