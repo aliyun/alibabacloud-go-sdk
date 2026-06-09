@@ -28,14 +28,50 @@ type iTable interface {
 }
 
 type Table struct {
-	Catalog         *string               `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	Columns         []*TableColumns       `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Comment         *string               `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime      *int64                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Name            *string               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace       *string               `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// 表所属的数据目录名称
+	//
+	// example:
+	//
+	// my_catalog
+	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// 表的列定义列表。每列包含 Name（列名）、Type（数据类型）、Comment（备注）
+	//
+	// example:
+	//
+	// [{"Name":"id","Type":"bigint","Comment":"主键"}]
+	Columns []*TableColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// 表的备注描述信息
+	//
+	// example:
+	//
+	// 测试事件表
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// 表的创建时间（Unix 时间戳，毫秒）
+	//
+	// example:
+	//
+	// 1717948800000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 事件表的唯一标识名称
+	//
+	// example:
+	//
+	// my_table
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 表所属的命名空间名称
+	//
+	// example:
+	//
+	// my_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// 数据保留策略。包含热数据和冷数据的保留天数
 	RetentionPolicy *TableRetentionPolicy `json:"RetentionPolicy,omitempty" xml:"RetentionPolicy,omitempty" type:"Struct"`
-	UpdateTime      *int64                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// 表的最后更新时间（Unix 时间戳，毫秒）
+	//
+	// example:
+	//
+	// 1717948800000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Table) String() string {
@@ -137,9 +173,18 @@ func (s *Table) Validate() error {
 }
 
 type TableColumns struct {
+	// example:
+	//
+	// 主键ID
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// id
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// bigint
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s TableColumns) String() string {
@@ -182,8 +227,18 @@ func (s *TableColumns) Validate() error {
 }
 
 type TableRetentionPolicy struct {
+	// 冷数据保留天数，低成本归档存储
+	//
+	// example:
+	//
+	// 30
 	ColdTTL *int32 `json:"ColdTTL,omitempty" xml:"ColdTTL,omitempty"`
-	HotTTL  *int32 `json:"HotTTL,omitempty" xml:"HotTTL,omitempty"`
+	// 热数据保留天数，高性能查询存储
+	//
+	// example:
+	//
+	// 7
+	HotTTL *int32 `json:"HotTTL,omitempty" xml:"HotTTL,omitempty"`
 }
 
 func (s TableRetentionPolicy) String() string {

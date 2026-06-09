@@ -15,6 +15,8 @@ type iListConnectionsRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListConnectionsRequest
 	GetNextToken() *string
+	SetType(v string) *ListConnectionsRequest
+	GetType() *string
 }
 
 type ListConnectionsRequest struct {
@@ -40,6 +42,12 @@ type ListConnectionsRequest struct {
 	//
 	// 0
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 按连接类型过滤查询结果。可选值：Http、MySQL、PostgreSQL、Elasticsearch。不传则返回所有类型
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListConnectionsRequest) String() string {
@@ -62,6 +70,10 @@ func (s *ListConnectionsRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListConnectionsRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *ListConnectionsRequest) SetConnectionNamePrefix(v string) *ListConnectionsRequest {
 	s.ConnectionNamePrefix = &v
 	return s
@@ -74,6 +86,11 @@ func (s *ListConnectionsRequest) SetMaxResults(v int64) *ListConnectionsRequest 
 
 func (s *ListConnectionsRequest) SetNextToken(v string) *ListConnectionsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetType(v string) *ListConnectionsRequest {
+	s.Type = &v
 	return s
 }
 

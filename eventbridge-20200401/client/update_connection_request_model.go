@@ -17,6 +17,10 @@ type iUpdateConnectionRequest interface {
 	GetDescription() *string
 	SetNetworkParameters(v *UpdateConnectionRequestNetworkParameters) *UpdateConnectionRequest
 	GetNetworkParameters() *UpdateConnectionRequestNetworkParameters
+	SetParameters(v interface{}) *UpdateConnectionRequest
+	GetParameters() interface{}
+	SetType(v string) *UpdateConnectionRequest
+	GetType() *string
 }
 
 type UpdateConnectionRequest struct {
@@ -40,6 +44,18 @@ type UpdateConnectionRequest struct {
 	//
 	// This parameter is required.
 	NetworkParameters *UpdateConnectionRequestNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
+	// 数据源连接参数（JSON 对象）。具体字段定义请调用 GetConnectionType 接口，参考返回结果中的 ParamsSchema
+	//
+	// example:
+	//
+	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
+	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// 连接类型。可选值：MySQL、PostgreSQL、Elasticsearch、Http
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateConnectionRequest) String() string {
@@ -66,6 +82,14 @@ func (s *UpdateConnectionRequest) GetNetworkParameters() *UpdateConnectionReques
 	return s.NetworkParameters
 }
 
+func (s *UpdateConnectionRequest) GetParameters() interface{} {
+	return s.Parameters
+}
+
+func (s *UpdateConnectionRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *UpdateConnectionRequest) SetAuthParameters(v *UpdateConnectionRequestAuthParameters) *UpdateConnectionRequest {
 	s.AuthParameters = v
 	return s
@@ -83,6 +107,16 @@ func (s *UpdateConnectionRequest) SetDescription(v string) *UpdateConnectionRequ
 
 func (s *UpdateConnectionRequest) SetNetworkParameters(v *UpdateConnectionRequestNetworkParameters) *UpdateConnectionRequest {
 	s.NetworkParameters = v
+	return s
+}
+
+func (s *UpdateConnectionRequest) SetParameters(v interface{}) *UpdateConnectionRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *UpdateConnectionRequest) SetType(v string) *UpdateConnectionRequest {
+	s.Type = &v
 	return s
 }
 

@@ -17,6 +17,10 @@ type iCreateConnectionRequest interface {
 	GetDescription() *string
 	SetNetworkParameters(v *CreateConnectionRequestNetworkParameters) *CreateConnectionRequest
 	GetNetworkParameters() *CreateConnectionRequestNetworkParameters
+	SetParameters(v interface{}) *CreateConnectionRequest
+	GetParameters() interface{}
+	SetType(v string) *CreateConnectionRequest
+	GetType() *string
 }
 
 type CreateConnectionRequest struct {
@@ -40,6 +44,18 @@ type CreateConnectionRequest struct {
 	//
 	// This parameter is required.
 	NetworkParameters *CreateConnectionRequestNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
+	// 数据源连接参数（JSON 对象），Type 为数据源类型时必填，Http 类型不需要。具体字段定义请调用 GetConnectionType 接口，参考返回结果中的 ParamsSchema
+	//
+	// example:
+	//
+	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
+	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// 连接类型。可选值：MySQL、PostgreSQL、Elasticsearch、Http。数据源类型连接必填，不传默认为 Http。Http 类型用于 API Destination 等 HTTP 协议目标；数据源类型用于集成广场的数据连接
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateConnectionRequest) String() string {
@@ -66,6 +82,14 @@ func (s *CreateConnectionRequest) GetNetworkParameters() *CreateConnectionReques
 	return s.NetworkParameters
 }
 
+func (s *CreateConnectionRequest) GetParameters() interface{} {
+	return s.Parameters
+}
+
+func (s *CreateConnectionRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *CreateConnectionRequest) SetAuthParameters(v *CreateConnectionRequestAuthParameters) *CreateConnectionRequest {
 	s.AuthParameters = v
 	return s
@@ -83,6 +107,16 @@ func (s *CreateConnectionRequest) SetDescription(v string) *CreateConnectionRequ
 
 func (s *CreateConnectionRequest) SetNetworkParameters(v *CreateConnectionRequestNetworkParameters) *CreateConnectionRequest {
 	s.NetworkParameters = v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetParameters(v interface{}) *CreateConnectionRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetType(v string) *CreateConnectionRequest {
+	s.Type = &v
 	return s
 }
 

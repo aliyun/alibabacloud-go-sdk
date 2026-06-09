@@ -176,6 +176,18 @@ type GetConnectionResponseBodyDataConnections struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The information about the network.
 	NetworkParameters *GetConnectionResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
+	// 数据源连接参数（JSON 对象）。仅数据源类型连接返回，Http 类型为空。字段定义参考 GetConnectionType 返回的 ParamsSchema
+	//
+	// example:
+	//
+	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
+	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// 连接类型。可选值：Http、MySQL、PostgreSQL、Elasticsearch
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetConnectionResponseBodyDataConnections) String() string {
@@ -210,6 +222,14 @@ func (s *GetConnectionResponseBodyDataConnections) GetNetworkParameters() *GetCo
 	return s.NetworkParameters
 }
 
+func (s *GetConnectionResponseBodyDataConnections) GetParameters() interface{} {
+	return s.Parameters
+}
+
+func (s *GetConnectionResponseBodyDataConnections) GetType() *string {
+	return s.Type
+}
+
 func (s *GetConnectionResponseBodyDataConnections) SetAuthParameters(v *GetConnectionResponseBodyDataConnectionsAuthParameters) *GetConnectionResponseBodyDataConnections {
 	s.AuthParameters = v
 	return s
@@ -237,6 +257,16 @@ func (s *GetConnectionResponseBodyDataConnections) SetId(v int64) *GetConnection
 
 func (s *GetConnectionResponseBodyDataConnections) SetNetworkParameters(v *GetConnectionResponseBodyDataConnectionsNetworkParameters) *GetConnectionResponseBodyDataConnections {
 	s.NetworkParameters = v
+	return s
+}
+
+func (s *GetConnectionResponseBodyDataConnections) SetParameters(v interface{}) *GetConnectionResponseBodyDataConnections {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetConnectionResponseBodyDataConnections) SetType(v string) *GetConnectionResponseBodyDataConnections {
+	s.Type = &v
 	return s
 }
 

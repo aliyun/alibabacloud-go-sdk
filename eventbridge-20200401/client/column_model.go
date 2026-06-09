@@ -20,10 +20,22 @@ type iColumn interface {
 }
 
 type Column struct {
-	IsNull *bool   `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// false
+	IsNull *bool `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
+	// example:
+	//
+	// index
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// product_info
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s Column) String() string {

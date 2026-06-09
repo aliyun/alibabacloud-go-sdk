@@ -390,6 +390,10 @@ func (client *Client) CreateConnectionWithOptions(tmpReq *CreateConnectionReques
 		request.NetworkParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkParameters, dara.String("NetworkParameters"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthParametersShrink) {
 		query["AuthParameters"] = request.AuthParametersShrink
@@ -405,6 +409,14 @@ func (client *Client) CreateConnectionWithOptions(tmpReq *CreateConnectionReques
 
 	if !dara.IsNil(request.NetworkParametersShrink) {
 		query["NetworkParameters"] = request.NetworkParametersShrink
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -804,6 +816,82 @@ func (client *Client) CreateEventStreaming(request *CreateEventStreamingRequest)
 
 // Summary:
 //
+// 创建命名空间
+//
+// @param request - CreateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNamespaceResponse
+func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNamespace"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建命名空间
+//
+// @param request - CreateNamespaceRequest
+//
+// @return CreateNamespaceResponse
+func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an event rule.
 //
 // Description:
@@ -961,6 +1049,102 @@ func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLi
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleForProductResponse{}
 	_body, _err := client.CreateServiceLinkedRoleForProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建表
+//
+// @param tmpReq - CreateTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTableResponse
+func (client *Client) CreateTableWithOptions(tmpReq *CreateTableRequest, runtime *dara.RuntimeOptions) (_result *CreateTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Columns) {
+		request.ColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Columns, dara.String("Columns"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RetentionPolicy) {
+		request.RetentionPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RetentionPolicy, dara.String("RetentionPolicy"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ColumnsShrink) {
+		query["Columns"] = request.ColumnsShrink
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.RetentionPolicyShrink) {
+		query["RetentionPolicy"] = request.RetentionPolicyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTable"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建表
+//
+// @param request - CreateTableRequest
+//
+// @return CreateTableResponse
+func (client *Client) CreateTable(request *CreateTableRequest) (_result *CreateTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTableResponse{}
+	_body, _err := client.CreateTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1386,6 +1570,78 @@ func (client *Client) DeleteEventStreaming(request *DeleteEventStreamingRequest)
 
 // Summary:
 //
+// 删除命名空间
+//
+// @param request - DeleteNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNamespaceResponse
+func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNamespace"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除命名空间
+//
+// @param request - DeleteNamespaceRequest
+//
+// @return DeleteNamespaceResponse
+func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an event rule.
 //
 // Description:
@@ -1451,6 +1707,82 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteRuleResponse{}
 	_body, _err := client.DeleteRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除表
+//
+// @param request - DeleteTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTableResponse
+func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTable"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除表
+//
+// @param request - DeleteTableRequest
+//
+// @return DeleteTableResponse
+func (client *Client) DeleteTable(request *DeleteTableRequest) (_result *DeleteTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteTableResponse{}
+	_body, _err := client.DeleteTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1974,6 +2306,74 @@ func (client *Client) GetApiDestination(request *GetApiDestinationRequest) (_res
 
 // Summary:
 //
+// 获取指定数据目录的详细信息，包括目录名称和描述。传入Name即可查询。
+//
+// @param request - GetCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogResponse
+func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCatalog"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定数据目录的详细信息，包括目录名称和描述。传入Name即可查询。
+//
+// @param request - GetCatalogRequest
+//
+// @return GetCatalogResponse
+func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCatalogResponse{}
+	_body, _err := client.GetCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the configurations of a connection.
 //
 // Description:
@@ -2184,6 +2584,78 @@ func (client *Client) GetEventStreaming(request *GetEventStreamingRequest) (_res
 
 // Summary:
 //
+// 获取指定命名空间的详细信息。需传入Catalog和Name。
+//
+// @param request - GetNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNamespaceResponse
+func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runtime *dara.RuntimeOptions) (_result *GetNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNamespace"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定命名空间的详细信息。需传入Catalog和Name。
+//
+// @param request - GetNamespaceRequest
+//
+// @return GetNamespaceResponse
+func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNamespaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetNamespaceResponse{}
+	_body, _err := client.GetNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of an event rule.
 //
 // Description:
@@ -2249,6 +2721,82 @@ func (client *Client) GetRule(request *GetRuleRequest) (_result *GetRuleResponse
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetRuleResponse{}
 	_body, _err := client.GetRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定数据表的完整结构，包括所有列的名称、类型和描述。在编写查询前调用此工具了解表结构。
+//
+// @param request - GetTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableResponse
+func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dara.RuntimeOptions) (_result *GetTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTable"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定数据表的完整结构，包括所有列的名称、类型和描述。在编写查询前调用此工具了解表结构。
+//
+// @param request - GetTableRequest
+//
+// @return GetTableResponse
+func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTableResponse{}
+	_body, _err := client.GetTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2463,6 +3011,72 @@ func (client *Client) ListApiDestinations(request *ListApiDestinationsRequest) (
 
 // Summary:
 //
+// 列出当前Agent可访问的所有数据目录。每个Catalog是一个独立的数据源，内含多个命名空间和表。支持分页。
+//
+// @param request - ListCatalogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCatalogsResponse
+func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, runtime *dara.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCatalogs"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCatalogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出当前Agent可访问的所有数据目录。每个Catalog是一个独立的数据源，内含多个命名空间和表。支持分页。
+//
+// @param request - ListCatalogsRequest
+//
+// @return ListCatalogsResponse
+func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListCatalogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCatalogsResponse{}
+	_body, _err := client.ListCatalogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries connections.
 //
 // Description:
@@ -2492,6 +3106,10 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 
 	if !dara.IsNil(request.NextToken) {
 		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2709,6 +3327,76 @@ func (client *Client) ListEventStreamings(request *ListEventStreamingsRequest) (
 
 // Summary:
 //
+// 列出指定数据目录下的所有命名空间。命名空间用于组织同一目录内的表，类似数据库中的schema。支持分页。
+//
+// @param request - ListNamespacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNamespacesResponse
+func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *dara.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNamespaces"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNamespacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出指定数据目录下的所有命名空间。命名空间用于组织同一目录内的表，类似数据库中的schema。支持分页。
+//
+// @param request - ListNamespacesRequest
+//
+// @return ListNamespacesResponse
+func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *ListNamespacesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListNamespacesResponse{}
+	_body, _err := client.ListNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all rules of an event bus.
 //
 // Description:
@@ -2782,6 +3470,80 @@ func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListRulesResponse{}
 	_body, _err := client.ListRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出指定命名空间下的数据表，支持按表名模糊搜索。返回表名和描述列表，支持分页。
+//
+// @param request - ListTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
+func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTables"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出指定命名空间下的数据表，支持按表名模糊搜索。返回表名和描述列表，支持分页。
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
+func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTablesResponse{}
+	_body, _err := client.ListTablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3310,6 +4072,72 @@ func (client *Client) QueryEvent(request *QueryEventRequest) (_result *QueryEven
 	runtime := &dara.RuntimeOptions{}
 	_result = &QueryEventResponse{}
 	_body, _err := client.QueryEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 直接执行SQL语句查询事件仓数据。适用于已知确切SQL的场景，无需自然语言转换，无对话上下文。返回结构化结果集。
+//
+// @param request - QueryEventHouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEventHouseResponse
+func (client *Client) QueryEventHouseWithOptions(request *QueryEventHouseRequest, runtime *dara.RuntimeOptions) (_result *QueryEventHouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryEventHouse"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryEventHouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 直接执行SQL语句查询事件仓数据。适用于已知确切SQL的场景，无需自然语言转换，无对话上下文。返回结构化结果集。
+//
+// @param request - QueryEventHouseRequest
+//
+// @return QueryEventHouseResponse
+func (client *Client) QueryEventHouse(request *QueryEventHouseRequest) (_result *QueryEventHouseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryEventHouseResponse{}
+	_body, _err := client.QueryEventHouseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3993,6 +4821,10 @@ func (client *Client) UpdateConnectionWithOptions(tmpReq *UpdateConnectionReques
 		request.NetworkParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkParameters, dara.String("NetworkParameters"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthParametersShrink) {
 		query["AuthParameters"] = request.AuthParametersShrink
@@ -4008,6 +4840,14 @@ func (client *Client) UpdateConnectionWithOptions(tmpReq *UpdateConnectionReques
 
 	if !dara.IsNil(request.NetworkParametersShrink) {
 		query["NetworkParameters"] = request.NetworkParametersShrink
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4477,6 +5317,82 @@ func (client *Client) UpdateEventStreamingBusinessOption(request *UpdateEventStr
 
 // Summary:
 //
+// 修改命名空间
+//
+// @param request - UpdateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNamespaceResponse
+func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNamespace"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改命名空间
+//
+// @param request - UpdateNamespaceRequest
+//
+// @return UpdateNamespaceResponse
+func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateNamespaceResponse{}
+	_body, _err := client.UpdateNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the configurations of an event rule.
 //
 // Description:
@@ -4554,6 +5470,134 @@ func (client *Client) UpdateRule(request *UpdateRuleRequest) (_result *UpdateRul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateRuleResponse{}
 	_body, _err := client.UpdateRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改表
+//
+// @param tmpReq - UpdateTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableResponse
+func (client *Client) UpdateTableWithOptions(tmpReq *UpdateTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddColumn) {
+		request.AddColumnShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddColumn, dara.String("AddColumn"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DeleteColumn) {
+		request.DeleteColumnShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteColumn, dara.String("DeleteColumn"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RenameColumn) {
+		request.RenameColumnShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenameColumn, dara.String("RenameColumn"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UpdateColumnComment) {
+		request.UpdateColumnCommentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateColumnComment, dara.String("UpdateColumnComment"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UpdateColumnType) {
+		request.UpdateColumnTypeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateColumnType, dara.String("UpdateColumnType"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UpdateRetentionPolicy) {
+		request.UpdateRetentionPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateRetentionPolicy, dara.String("UpdateRetentionPolicy"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddColumnShrink) {
+		query["AddColumn"] = request.AddColumnShrink
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeleteColumnShrink) {
+		query["DeleteColumn"] = request.DeleteColumnShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.RenameColumnShrink) {
+		query["RenameColumn"] = request.RenameColumnShrink
+	}
+
+	if !dara.IsNil(request.UpdateColumnCommentShrink) {
+		query["UpdateColumnComment"] = request.UpdateColumnCommentShrink
+	}
+
+	if !dara.IsNil(request.UpdateColumnTypeShrink) {
+		query["UpdateColumnType"] = request.UpdateColumnTypeShrink
+	}
+
+	if !dara.IsNil(request.UpdateComment) {
+		query["UpdateComment"] = request.UpdateComment
+	}
+
+	if !dara.IsNil(request.UpdateRetentionPolicyShrink) {
+		query["UpdateRetentionPolicy"] = request.UpdateRetentionPolicyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTable"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改表
+//
+// @param request - UpdateTableRequest
+//
+// @return UpdateTableResponse
+func (client *Client) UpdateTable(request *UpdateTableRequest) (_result *UpdateTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateTableResponse{}
+	_body, _err := client.UpdateTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

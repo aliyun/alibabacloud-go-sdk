@@ -204,6 +204,18 @@ type ListConnectionsResponseBodyDataConnections struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The parameters that are returned for the network.
 	NetworkParameters *ListConnectionsResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
+	// 数据源连接参数（JSON 对象）。仅数据源类型连接返回，Http 类型为空。字段定义参考 GetConnectionType 返回的 ParamsSchema
+	//
+	// example:
+	//
+	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
+	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// 连接类型。可选值：Http、MySQL、PostgreSQL、Elasticsearch
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListConnectionsResponseBodyDataConnections) String() string {
@@ -238,6 +250,14 @@ func (s *ListConnectionsResponseBodyDataConnections) GetNetworkParameters() *Lis
 	return s.NetworkParameters
 }
 
+func (s *ListConnectionsResponseBodyDataConnections) GetParameters() interface{} {
+	return s.Parameters
+}
+
+func (s *ListConnectionsResponseBodyDataConnections) GetType() *string {
+	return s.Type
+}
+
 func (s *ListConnectionsResponseBodyDataConnections) SetAuthParameters(v *ListConnectionsResponseBodyDataConnectionsAuthParameters) *ListConnectionsResponseBodyDataConnections {
 	s.AuthParameters = v
 	return s
@@ -265,6 +285,16 @@ func (s *ListConnectionsResponseBodyDataConnections) SetId(v int64) *ListConnect
 
 func (s *ListConnectionsResponseBodyDataConnections) SetNetworkParameters(v *ListConnectionsResponseBodyDataConnectionsNetworkParameters) *ListConnectionsResponseBodyDataConnections {
 	s.NetworkParameters = v
+	return s
+}
+
+func (s *ListConnectionsResponseBodyDataConnections) SetParameters(v interface{}) *ListConnectionsResponseBodyDataConnections {
+	s.Parameters = v
+	return s
+}
+
+func (s *ListConnectionsResponseBodyDataConnections) SetType(v string) *ListConnectionsResponseBodyDataConnections {
+	s.Type = &v
 	return s
 }
 

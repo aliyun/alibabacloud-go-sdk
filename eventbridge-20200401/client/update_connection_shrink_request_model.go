@@ -17,6 +17,10 @@ type iUpdateConnectionShrinkRequest interface {
 	GetDescription() *string
 	SetNetworkParametersShrink(v string) *UpdateConnectionShrinkRequest
 	GetNetworkParametersShrink() *string
+	SetParametersShrink(v string) *UpdateConnectionShrinkRequest
+	GetParametersShrink() *string
+	SetType(v string) *UpdateConnectionShrinkRequest
+	GetType() *string
 }
 
 type UpdateConnectionShrinkRequest struct {
@@ -40,6 +44,18 @@ type UpdateConnectionShrinkRequest struct {
 	//
 	// This parameter is required.
 	NetworkParametersShrink *string `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty"`
+	// 数据源连接参数（JSON 对象）。具体字段定义请调用 GetConnectionType 接口，参考返回结果中的 ParamsSchema
+	//
+	// example:
+	//
+	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// 连接类型。可选值：MySQL、PostgreSQL、Elasticsearch、Http
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateConnectionShrinkRequest) String() string {
@@ -66,6 +82,14 @@ func (s *UpdateConnectionShrinkRequest) GetNetworkParametersShrink() *string {
 	return s.NetworkParametersShrink
 }
 
+func (s *UpdateConnectionShrinkRequest) GetParametersShrink() *string {
+	return s.ParametersShrink
+}
+
+func (s *UpdateConnectionShrinkRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *UpdateConnectionShrinkRequest) SetAuthParametersShrink(v string) *UpdateConnectionShrinkRequest {
 	s.AuthParametersShrink = &v
 	return s
@@ -83,6 +107,16 @@ func (s *UpdateConnectionShrinkRequest) SetDescription(v string) *UpdateConnecti
 
 func (s *UpdateConnectionShrinkRequest) SetNetworkParametersShrink(v string) *UpdateConnectionShrinkRequest {
 	s.NetworkParametersShrink = &v
+	return s
+}
+
+func (s *UpdateConnectionShrinkRequest) SetParametersShrink(v string) *UpdateConnectionShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *UpdateConnectionShrinkRequest) SetType(v string) *UpdateConnectionShrinkRequest {
+	s.Type = &v
 	return s
 }
 
