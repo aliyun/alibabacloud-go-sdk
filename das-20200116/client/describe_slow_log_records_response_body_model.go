@@ -291,6 +291,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	DocsExamined *string `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
+	ExtText      *string `json:"ExtText,omitempty" xml:"ExtText,omitempty"`
 	Fail         *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// example:
 	//
@@ -486,6 +487,10 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetDbInstanceName() *string
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetDocsExamined() *string {
 	return s.DocsExamined
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetExtText() *string {
+	return s.ExtText
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetFail() *string {
@@ -716,6 +721,11 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetDbInstanceName(v string)
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetDocsExamined(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.DocsExamined = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetExtText(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.ExtText = &v
 	return s
 }
 

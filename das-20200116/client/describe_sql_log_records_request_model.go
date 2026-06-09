@@ -30,6 +30,8 @@ type iDescribeSqlLogRecordsRequest interface {
 type DescribeSqlLogRecordsRequest struct {
 	// The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1608888296000
@@ -77,6 +79,8 @@ type DescribeSqlLogRecordsRequest struct {
 	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

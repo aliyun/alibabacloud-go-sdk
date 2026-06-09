@@ -30,6 +30,8 @@ type iCreateSqlLogTaskRequest interface {
 type CreateSqlLogTaskRequest struct {
 	// The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1608888296000
@@ -67,6 +69,8 @@ type CreateSqlLogTaskRequest struct {
 	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
