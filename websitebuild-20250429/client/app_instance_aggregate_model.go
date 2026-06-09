@@ -73,6 +73,8 @@ type iAppInstanceAggregate interface {
 	GetThumbnailUrl() *string
 	SetUserId(v string) *AppInstanceAggregate
 	GetUserId() *string
+	SetVersion(v string) *AppInstanceAggregate
+	GetVersion() *string
 }
 
 type AppInstanceAggregate struct {
@@ -109,6 +111,7 @@ type AppInstanceAggregate struct {
 	Tags         []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	ThumbnailUrl *string                     `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
 	UserId       *string                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Version      *string                     `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AppInstanceAggregate) String() string {
@@ -245,6 +248,10 @@ func (s *AppInstanceAggregate) GetThumbnailUrl() *string {
 
 func (s *AppInstanceAggregate) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *AppInstanceAggregate) GetVersion() *string {
+	return s.Version
 }
 
 func (s *AppInstanceAggregate) SetAiStaffList(v []*AppAiStaff) *AppInstanceAggregate {
@@ -404,6 +411,11 @@ func (s *AppInstanceAggregate) SetThumbnailUrl(v string) *AppInstanceAggregate {
 
 func (s *AppInstanceAggregate) SetUserId(v string) *AppInstanceAggregate {
 	s.UserId = &v
+	return s
+}
+
+func (s *AppInstanceAggregate) SetVersion(v string) *AppInstanceAggregate {
+	s.Version = &v
 	return s
 }
 

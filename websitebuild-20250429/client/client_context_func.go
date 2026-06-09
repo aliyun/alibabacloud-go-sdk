@@ -334,6 +334,94 @@ func (client *Client) CheckUserResourceMeasureWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 试用转正
+//
+// @param request - ConfirmAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmAppInstanceResponse
+func (client *Client) ConfirmAppInstanceWithContext(ctx context.Context, request *ConfirmAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *ConfirmAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeployArea) {
+		query["DeployArea"] = request.DeployArea
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.Quantity) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !dara.IsNil(request.TrialBizId) {
+		query["TrialBizId"] = request.TrialBizId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmAppInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 复制插件配置
 //
 // @param request - CopyAppPluginConfigRequest
@@ -1122,6 +1210,54 @@ func (client *Client) DeleteAppDomainRedirectWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppDomainRedirectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文件
+//
+// @param request - DeleteAppFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppFileResponse
+func (client *Client) DeleteAppFileWithContext(ctx context.Context, request *DeleteAppFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		body["FilePath"] = request.FilePath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppFile"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3050,6 +3186,94 @@ func (client *Client) GetMiniAppBindingForAdminWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 生成文件上传策略
+//
+// @param request - GetOssUploadPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOssUploadPolicyResponse
+func (client *Client) GetOssUploadPolicyWithContext(ctx context.Context, request *GetOssUploadPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetOssUploadPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Scenario) {
+		body["Scenario"] = request.Scenario
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOssUploadPolicy"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOssUploadPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取临时下载地址
+//
+// @param request - GetTempDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTempDownloadUrlResponse
+func (client *Client) GetTempDownloadUrlWithContext(ctx context.Context, request *GetTempDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetTempDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OssKey) {
+		body["OssKey"] = request.OssKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTempDownloadUrl"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTempDownloadUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 通过授权码得到accessToken
 //
 // @param request - GetUserAccessTokenForPartnerRequest
@@ -3961,6 +4185,10 @@ func (client *Client) ListAppPublishHistoryWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DeployChannel) {
+		query["DeployChannel"] = request.DeployChannel
 	}
 
 	if !dara.IsNil(request.Keyword) {
@@ -6900,6 +7128,10 @@ func (client *Client) UpdateAppSeoStatusWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.Domain) {
 		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.SeAuthInfo) {
+		query["SeAuthInfo"] = request.SeAuthInfo
 	}
 
 	if !dara.IsNil(request.SeType) {

@@ -11,6 +11,8 @@ type iListAppPublishHistoryRequest interface {
 	GoString() string
 	SetBizId(v string) *ListAppPublishHistoryRequest
 	GetBizId() *string
+	SetDeployChannel(v string) *ListAppPublishHistoryRequest
+	GetDeployChannel() *string
 	SetKeyword(v string) *ListAppPublishHistoryRequest
 	GetKeyword() *string
 	SetMaxResults(v int32) *ListAppPublishHistoryRequest
@@ -33,8 +35,9 @@ type ListAppPublishHistoryRequest struct {
 	// example:
 	//
 	// WD20250703155602000001
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
+	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// example:
 	//
 	// 10
@@ -77,6 +80,10 @@ func (s *ListAppPublishHistoryRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *ListAppPublishHistoryRequest) GetDeployChannel() *string {
+	return s.DeployChannel
+}
+
 func (s *ListAppPublishHistoryRequest) GetKeyword() *string {
 	return s.Keyword
 }
@@ -111,6 +118,11 @@ func (s *ListAppPublishHistoryRequest) GetWebsiteDomain() *string {
 
 func (s *ListAppPublishHistoryRequest) SetBizId(v string) *ListAppPublishHistoryRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryRequest) SetDeployChannel(v string) *ListAppPublishHistoryRequest {
+	s.DeployChannel = &v
 	return s
 }
 
