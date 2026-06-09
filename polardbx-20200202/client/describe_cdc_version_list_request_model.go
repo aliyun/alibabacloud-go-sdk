@@ -11,6 +11,8 @@ type iDescribeCdcVersionListRequest interface {
 	GoString() string
 	SetDBInstanceName(v string) *DescribeCdcVersionListRequest
 	GetDBInstanceName() *string
+	SetInstanceName(v string) *DescribeCdcVersionListRequest
+	GetInstanceName() *string
 	SetRegionId(v string) *DescribeCdcVersionListRequest
 	GetRegionId() *string
 }
@@ -20,6 +22,7 @@ type DescribeCdcVersionListRequest struct {
 	//
 	// pxc-bjrl7****k2vp7
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -38,12 +41,21 @@ func (s *DescribeCdcVersionListRequest) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
 
+func (s *DescribeCdcVersionListRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
 func (s *DescribeCdcVersionListRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeCdcVersionListRequest) SetDBInstanceName(v string) *DescribeCdcVersionListRequest {
 	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeCdcVersionListRequest) SetInstanceName(v string) *DescribeCdcVersionListRequest {
+	s.InstanceName = &v
 	return s
 }
 

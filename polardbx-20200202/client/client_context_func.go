@@ -2768,6 +2768,10 @@ func (client *Client) DescribeCdcVersionListWithContext(ctx context.Context, req
 		query["DBInstanceName"] = request.DBInstanceName
 	}
 
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}

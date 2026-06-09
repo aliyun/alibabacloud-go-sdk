@@ -3648,6 +3648,10 @@ func (client *Client) DescribeCdcVersionListWithOptions(request *DescribeCdcVers
 		query["DBInstanceName"] = request.DBInstanceName
 	}
 
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
