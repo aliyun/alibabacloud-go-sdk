@@ -23,6 +23,8 @@ type iDescribeGlobalTimerRecordsRequest interface {
 	GetNextToken() *string
 	SetRegionId(v string) *DescribeGlobalTimerRecordsRequest
 	GetRegionId() *string
+	SetResourceTypes(v []*string) *DescribeGlobalTimerRecordsRequest
+	GetResourceTypes() []*string
 	SetResultCategory(v string) *DescribeGlobalTimerRecordsRequest
 	GetResultCategory() *string
 	SetRetryable(v bool) *DescribeGlobalTimerRecordsRequest
@@ -33,6 +35,8 @@ type iDescribeGlobalTimerRecordsRequest interface {
 	GetTimerResult() *string
 	SetTimerTypes(v []*string) *DescribeGlobalTimerRecordsRequest
 	GetTimerTypes() []*string
+	SetWuyingServerIds(v []*string) *DescribeGlobalTimerRecordsRequest
+	GetWuyingServerIds() []*string
 }
 
 type DescribeGlobalTimerRecordsRequest struct {
@@ -43,8 +47,11 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// ccg-****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The cloud computer IDs.
-	DesktopIds        []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	DisplayResultName *string   `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
+	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FAILED
+	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
 	// The ID of the scheduled task group.
 	//
 	// example:
@@ -72,7 +79,8 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 	// The type of the execution result. You can specify this parameter to filter the execution results.
 	//
 	// Valid values:
@@ -89,7 +97,10 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// SUCCEED
 	ResultCategory *string `json:"ResultCategory,omitempty" xml:"ResultCategory,omitempty"`
-	Retryable      *bool   `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
+	// example:
+	//
+	// true
+	Retryable *bool `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
 	// The ID of the searched region. You can specify this parameter to filter cloud computers in specific regions.
 	//
 	// example:
@@ -117,7 +128,8 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// RUNNING
 	TimerResult *string `json:"TimerResult,omitempty" xml:"TimerResult,omitempty"`
 	// The scheduled tasks.
-	TimerTypes []*string `json:"TimerTypes,omitempty" xml:"TimerTypes,omitempty" type:"Repeated"`
+	TimerTypes      []*string `json:"TimerTypes,omitempty" xml:"TimerTypes,omitempty" type:"Repeated"`
+	WuyingServerIds []*string `json:"WuyingServerIds,omitempty" xml:"WuyingServerIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGlobalTimerRecordsRequest) String() string {
@@ -156,6 +168,10 @@ func (s *DescribeGlobalTimerRecordsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeGlobalTimerRecordsRequest) GetResourceTypes() []*string {
+	return s.ResourceTypes
+}
+
 func (s *DescribeGlobalTimerRecordsRequest) GetResultCategory() *string {
 	return s.ResultCategory
 }
@@ -174,6 +190,10 @@ func (s *DescribeGlobalTimerRecordsRequest) GetTimerResult() *string {
 
 func (s *DescribeGlobalTimerRecordsRequest) GetTimerTypes() []*string {
 	return s.TimerTypes
+}
+
+func (s *DescribeGlobalTimerRecordsRequest) GetWuyingServerIds() []*string {
+	return s.WuyingServerIds
 }
 
 func (s *DescribeGlobalTimerRecordsRequest) SetBatchId(v string) *DescribeGlobalTimerRecordsRequest {
@@ -211,6 +231,11 @@ func (s *DescribeGlobalTimerRecordsRequest) SetRegionId(v string) *DescribeGloba
 	return s
 }
 
+func (s *DescribeGlobalTimerRecordsRequest) SetResourceTypes(v []*string) *DescribeGlobalTimerRecordsRequest {
+	s.ResourceTypes = v
+	return s
+}
+
 func (s *DescribeGlobalTimerRecordsRequest) SetResultCategory(v string) *DescribeGlobalTimerRecordsRequest {
 	s.ResultCategory = &v
 	return s
@@ -233,6 +258,11 @@ func (s *DescribeGlobalTimerRecordsRequest) SetTimerResult(v string) *DescribeGl
 
 func (s *DescribeGlobalTimerRecordsRequest) SetTimerTypes(v []*string) *DescribeGlobalTimerRecordsRequest {
 	s.TimerTypes = v
+	return s
+}
+
+func (s *DescribeGlobalTimerRecordsRequest) SetWuyingServerIds(v []*string) *DescribeGlobalTimerRecordsRequest {
+	s.WuyingServerIds = v
 	return s
 }
 

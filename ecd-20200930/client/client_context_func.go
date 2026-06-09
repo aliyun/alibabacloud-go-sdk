@@ -9893,6 +9893,10 @@ func (client *Client) DescribeGlobalTimerBatchesWithContext(ctx context.Context,
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceTypes) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !dara.IsNil(request.SearchRegionId) {
 		query["SearchRegionId"] = request.SearchRegionId
 	}
@@ -9969,6 +9973,10 @@ func (client *Client) DescribeGlobalTimerRecordsWithContext(ctx context.Context,
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceTypes) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !dara.IsNil(request.ResultCategory) {
 		query["ResultCategory"] = request.ResultCategory
 	}
@@ -9987,6 +9995,10 @@ func (client *Client) DescribeGlobalTimerRecordsWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.TimerTypes) {
 		query["TimerTypes"] = request.TimerTypes
+	}
+
+	if !dara.IsNil(request.WuyingServerIds) {
+		query["WuyingServerIds"] = request.WuyingServerIds
 	}
 
 	req := &openapiutil.OpenApiRequest{

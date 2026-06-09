@@ -12476,6 +12476,10 @@ func (client *Client) DescribeGlobalTimerBatchesWithOptions(request *DescribeGlo
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceTypes) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !dara.IsNil(request.SearchRegionId) {
 		query["SearchRegionId"] = request.SearchRegionId
 	}
@@ -12570,6 +12574,10 @@ func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlo
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceTypes) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !dara.IsNil(request.ResultCategory) {
 		query["ResultCategory"] = request.ResultCategory
 	}
@@ -12588,6 +12596,10 @@ func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlo
 
 	if !dara.IsNil(request.TimerTypes) {
 		query["TimerTypes"] = request.TimerTypes
+	}
+
+	if !dara.IsNil(request.WuyingServerIds) {
+		query["WuyingServerIds"] = request.WuyingServerIds
 	}
 
 	req := &openapiutil.OpenApiRequest{

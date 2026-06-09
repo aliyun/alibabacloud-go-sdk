@@ -100,6 +100,9 @@ func (s *DescribeGlobalTimerRecordsResponseBody) Validate() error {
 }
 
 type DescribeGlobalTimerRecordsResponseBodyResults struct {
+	// example:
+	//
+	// REBOOT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The ID of the batch in which the scheduled task is executed.
 	//
@@ -107,6 +110,9 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// ccg-0cvfvf6u1enx1****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// {}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	// The time when the execution record was created.
 	//
@@ -125,7 +131,10 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	// example:
 	//
 	// DesktopName
-	DesktopName       *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// example:
+	//
+	// SKIPPED
 	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
 	// The time when the scheduled task ended.
 	//
@@ -138,14 +147,24 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Retryable *bool   `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// p-xxx
+	ResourceParentId *string `json:"ResourceParentId,omitempty" xml:"ResourceParentId,omitempty"`
+	// example:
+	//
+	// true
+	Retryable *bool `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
 	// The ID of the scheduled task group.
 	//
 	// example:
 	//
 	// ccg-xxxx
-	TimerGroupId  *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	// example:
+	//
+	// t-xxx
 	TimerRecordId *string `json:"TimerRecordId,omitempty" xml:"TimerRecordId,omitempty"`
 	// The execution result of the scheduled task.
 	//
@@ -203,6 +222,10 @@ func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetFinishTime() *string 
 
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetResourceParentId() *string {
+	return s.ResourceParentId
 }
 
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) GetRetryable() *bool {
@@ -267,6 +290,11 @@ func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetFinishTime(v string) 
 
 func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetRegionId(v string) *DescribeGlobalTimerRecordsResponseBodyResults {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGlobalTimerRecordsResponseBodyResults) SetResourceParentId(v string) *DescribeGlobalTimerRecordsResponseBodyResults {
+	s.ResourceParentId = &v
 	return s
 }
 

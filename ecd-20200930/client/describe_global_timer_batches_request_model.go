@@ -17,6 +17,8 @@ type iDescribeGlobalTimerBatchesRequest interface {
 	GetNextToken() *string
 	SetRegionId(v string) *DescribeGlobalTimerBatchesRequest
 	GetRegionId() *string
+	SetResourceTypes(v []*string) *DescribeGlobalTimerBatchesRequest
+	GetResourceTypes() []*string
 	SetSearchRegionId(v string) *DescribeGlobalTimerBatchesRequest
 	GetSearchRegionId() *string
 	SetTimerType(v string) *DescribeGlobalTimerBatchesRequest
@@ -39,7 +41,8 @@ type DescribeGlobalTimerBatchesRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cn-hangzhou
@@ -74,6 +77,10 @@ func (s *DescribeGlobalTimerBatchesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeGlobalTimerBatchesRequest) GetResourceTypes() []*string {
+	return s.ResourceTypes
+}
+
 func (s *DescribeGlobalTimerBatchesRequest) GetSearchRegionId() *string {
 	return s.SearchRegionId
 }
@@ -99,6 +106,11 @@ func (s *DescribeGlobalTimerBatchesRequest) SetNextToken(v string) *DescribeGlob
 
 func (s *DescribeGlobalTimerBatchesRequest) SetRegionId(v string) *DescribeGlobalTimerBatchesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGlobalTimerBatchesRequest) SetResourceTypes(v []*string) *DescribeGlobalTimerBatchesRequest {
+	s.ResourceTypes = v
 	return s
 }
 
