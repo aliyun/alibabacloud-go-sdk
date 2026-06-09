@@ -23977,7 +23977,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
+// Queries the renewal prices of Elastic Computing Service (ECS) resources. Only the renewal prices of subscription resources can be queried.
 //
 // Description:
 //
@@ -24067,7 +24067,7 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 // Summary:
 //
-// Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
+// Queries the renewal prices of Elastic Computing Service (ECS) resources. Only the renewal prices of subscription resources can be queried.
 //
 // Description:
 //

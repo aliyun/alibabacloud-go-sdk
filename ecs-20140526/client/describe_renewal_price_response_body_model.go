@@ -63,8 +63,9 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// The price.
-	Price *DescribeRenewalPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	Rules *DescribeRenewalPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Price        *DescribeRenewalPriceResponseBodyPriceInfoPrice        `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	RelatedPrice *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
+	Rules        *DescribeRenewalPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenewalPriceResponseBodyPriceInfo) String() string {
@@ -79,12 +80,21 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) GetPrice() *DescribeRenewalP
 	return s.Price
 }
 
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) GetRelatedPrice() *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice {
+	return s.RelatedPrice
+}
+
 func (s *DescribeRenewalPriceResponseBodyPriceInfo) GetRules() *DescribeRenewalPriceResponseBodyPriceInfoRules {
 	return s.Rules
 }
 
 func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetPrice(v *DescribeRenewalPriceResponseBodyPriceInfoPrice) *DescribeRenewalPriceResponseBodyPriceInfo {
 	s.Price = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetRelatedPrice(v *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.RelatedPrice = v
 	return s
 }
 
@@ -96,6 +106,11 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetRules(v *DescribeRenewalP
 func (s *DescribeRenewalPriceResponseBodyPriceInfo) Validate() error {
 	if s.Price != nil {
 		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RelatedPrice != nil {
+		if err := s.RelatedPrice.Validate(); err != nil {
 			return err
 		}
 	}
@@ -371,6 +386,103 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubR
 }
 
 func (s *DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRulesRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice struct {
+	MarketplaceImagePrice *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice `json:"MarketplaceImagePrice,omitempty" xml:"MarketplaceImagePrice,omitempty" type:"Struct"`
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) GetMarketplaceImagePrice() *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	return s.MarketplaceImagePrice
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) SetMarketplaceImagePrice(v *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice {
+	s.MarketplaceImagePrice = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) Validate() error {
+	if s.MarketplaceImagePrice != nil {
+		if err := s.MarketplaceImagePrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 200
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// 200
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetDiscountPrice() *float32 {
+	return s.DiscountPrice
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetOriginalPrice() *float32 {
+	return s.OriginalPrice
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) GetTradePrice() *float32 {
+	return s.TradePrice
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetCurrency(v string) *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetDiscountPrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetOriginalPrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) SetTradePrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice {
+	s.TradePrice = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice) Validate() error {
 	return dara.Validate(s)
 }
 
