@@ -1227,6 +1227,14 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 		query["AndroidXiaomiBigPictureUrl"] = request.AndroidXiaomiBigPictureUrl
 	}
 
+	if !dara.IsNil(request.AndroidXiaomiFocusParam) {
+		query["AndroidXiaomiFocusParam"] = request.AndroidXiaomiFocusParam
+	}
+
+	if !dara.IsNil(request.AndroidXiaomiFocusPics) {
+		query["AndroidXiaomiFocusPics"] = request.AndroidXiaomiFocusPics
+	}
+
 	if !dara.IsNil(request.AndroidXiaomiImageUrl) {
 		query["AndroidXiaomiImageUrl"] = request.AndroidXiaomiImageUrl
 	}
@@ -2290,6 +2298,10 @@ func (client *Client) QueryDevicesByAlias(request *QueryDevicesByAliasRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取推送历史记录
+//
 // @param request - QueryPushRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2366,6 +2378,10 @@ func (client *Client) QueryPushRecordsWithOptions(request *QueryPushRecordsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取推送历史记录
+//
 // @param request - QueryPushRecordsRequest
 //
 // @return QueryPushRecordsResponse

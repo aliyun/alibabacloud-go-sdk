@@ -964,7 +964,9 @@ type PushTaskNotificationAndroidOptionsXiaomi struct {
 	// example:
 	//
 	// michannel
-	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Channel    *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	FocusParam *string `json:"FocusParam,omitempty" xml:"FocusParam,omitempty"`
+	FocusPics  *string `json:"FocusPics,omitempty" xml:"FocusPics,omitempty"`
 }
 
 func (s PushTaskNotificationAndroidOptionsXiaomi) String() string {
@@ -979,8 +981,26 @@ func (s *PushTaskNotificationAndroidOptionsXiaomi) GetChannel() *string {
 	return s.Channel
 }
 
+func (s *PushTaskNotificationAndroidOptionsXiaomi) GetFocusParam() *string {
+	return s.FocusParam
+}
+
+func (s *PushTaskNotificationAndroidOptionsXiaomi) GetFocusPics() *string {
+	return s.FocusPics
+}
+
 func (s *PushTaskNotificationAndroidOptionsXiaomi) SetChannel(v string) *PushTaskNotificationAndroidOptionsXiaomi {
 	s.Channel = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsXiaomi) SetFocusParam(v string) *PushTaskNotificationAndroidOptionsXiaomi {
+	s.FocusParam = &v
+	return s
+}
+
+func (s *PushTaskNotificationAndroidOptionsXiaomi) SetFocusPics(v string) *PushTaskNotificationAndroidOptionsXiaomi {
+	s.FocusPics = &v
 	return s
 }
 

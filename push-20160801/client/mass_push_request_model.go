@@ -236,6 +236,8 @@ type MassPushRequestPushTask struct {
 	//
 	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	AndroidXiaomiFocusParam    *string `json:"AndroidXiaomiFocusParam,omitempty" xml:"AndroidXiaomiFocusParam,omitempty"`
+	AndroidXiaomiFocusPics     *string `json:"AndroidXiaomiFocusPics,omitempty" xml:"AndroidXiaomiFocusPics,omitempty"`
 	// Deprecated
 	//
 	// example:
@@ -612,6 +614,14 @@ func (s *MassPushRequestPushTask) GetAndroidXiaoMiNotifyTitle() *string {
 
 func (s *MassPushRequestPushTask) GetAndroidXiaomiBigPictureUrl() *string {
 	return s.AndroidXiaomiBigPictureUrl
+}
+
+func (s *MassPushRequestPushTask) GetAndroidXiaomiFocusParam() *string {
+	return s.AndroidXiaomiFocusParam
+}
+
+func (s *MassPushRequestPushTask) GetAndroidXiaomiFocusPics() *string {
+	return s.AndroidXiaomiFocusPics
 }
 
 func (s *MassPushRequestPushTask) GetAndroidXiaomiImageUrl() *string {
@@ -1105,6 +1115,16 @@ func (s *MassPushRequestPushTask) SetAndroidXiaoMiNotifyTitle(v string) *MassPus
 
 func (s *MassPushRequestPushTask) SetAndroidXiaomiBigPictureUrl(v string) *MassPushRequestPushTask {
 	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaomiFocusParam(v string) *MassPushRequestPushTask {
+	s.AndroidXiaomiFocusParam = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaomiFocusPics(v string) *MassPushRequestPushTask {
+	s.AndroidXiaomiFocusPics = &v
 	return s
 }
 

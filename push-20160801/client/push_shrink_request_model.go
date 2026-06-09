@@ -117,6 +117,10 @@ type iPushShrinkRequest interface {
 	GetAndroidXiaoMiNotifyTitle() *string
 	SetAndroidXiaomiBigPictureUrl(v string) *PushShrinkRequest
 	GetAndroidXiaomiBigPictureUrl() *string
+	SetAndroidXiaomiFocusParam(v string) *PushShrinkRequest
+	GetAndroidXiaomiFocusParam() *string
+	SetAndroidXiaomiFocusPics(v string) *PushShrinkRequest
+	GetAndroidXiaomiFocusPics() *string
 	SetAndroidXiaomiImageUrl(v string) *PushShrinkRequest
 	GetAndroidXiaomiImageUrl() *string
 	SetAppKey(v int64) *PushShrinkRequest
@@ -395,6 +399,8 @@ type PushShrinkRequest struct {
 	//
 	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	AndroidXiaomiFocusParam    *string `json:"AndroidXiaomiFocusParam,omitempty" xml:"AndroidXiaomiFocusParam,omitempty"`
+	AndroidXiaomiFocusPics     *string `json:"AndroidXiaomiFocusPics,omitempty" xml:"AndroidXiaomiFocusPics,omitempty"`
 	// Deprecated
 	//
 	// example:
@@ -792,6 +798,14 @@ func (s *PushShrinkRequest) GetAndroidXiaoMiNotifyTitle() *string {
 
 func (s *PushShrinkRequest) GetAndroidXiaomiBigPictureUrl() *string {
 	return s.AndroidXiaomiBigPictureUrl
+}
+
+func (s *PushShrinkRequest) GetAndroidXiaomiFocusParam() *string {
+	return s.AndroidXiaomiFocusParam
+}
+
+func (s *PushShrinkRequest) GetAndroidXiaomiFocusPics() *string {
+	return s.AndroidXiaomiFocusPics
 }
 
 func (s *PushShrinkRequest) GetAndroidXiaomiImageUrl() *string {
@@ -1313,6 +1327,16 @@ func (s *PushShrinkRequest) SetAndroidXiaoMiNotifyTitle(v string) *PushShrinkReq
 
 func (s *PushShrinkRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushShrinkRequest {
 	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidXiaomiFocusParam(v string) *PushShrinkRequest {
+	s.AndroidXiaomiFocusParam = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidXiaomiFocusPics(v string) *PushShrinkRequest {
+	s.AndroidXiaomiFocusPics = &v
 	return s
 }
 

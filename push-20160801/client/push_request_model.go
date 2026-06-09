@@ -117,6 +117,10 @@ type iPushRequest interface {
 	GetAndroidXiaoMiNotifyTitle() *string
 	SetAndroidXiaomiBigPictureUrl(v string) *PushRequest
 	GetAndroidXiaomiBigPictureUrl() *string
+	SetAndroidXiaomiFocusParam(v string) *PushRequest
+	GetAndroidXiaomiFocusParam() *string
+	SetAndroidXiaomiFocusPics(v string) *PushRequest
+	GetAndroidXiaomiFocusPics() *string
 	SetAndroidXiaomiImageUrl(v string) *PushRequest
 	GetAndroidXiaomiImageUrl() *string
 	SetAppKey(v int64) *PushRequest
@@ -395,6 +399,8 @@ type PushRequest struct {
 	//
 	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	AndroidXiaomiFocusParam    *string `json:"AndroidXiaomiFocusParam,omitempty" xml:"AndroidXiaomiFocusParam,omitempty"`
+	AndroidXiaomiFocusPics     *string `json:"AndroidXiaomiFocusPics,omitempty" xml:"AndroidXiaomiFocusPics,omitempty"`
 	// Deprecated
 	//
 	// example:
@@ -792,6 +798,14 @@ func (s *PushRequest) GetAndroidXiaoMiNotifyTitle() *string {
 
 func (s *PushRequest) GetAndroidXiaomiBigPictureUrl() *string {
 	return s.AndroidXiaomiBigPictureUrl
+}
+
+func (s *PushRequest) GetAndroidXiaomiFocusParam() *string {
+	return s.AndroidXiaomiFocusParam
+}
+
+func (s *PushRequest) GetAndroidXiaomiFocusPics() *string {
+	return s.AndroidXiaomiFocusPics
 }
 
 func (s *PushRequest) GetAndroidXiaomiImageUrl() *string {
@@ -1313,6 +1327,16 @@ func (s *PushRequest) SetAndroidXiaoMiNotifyTitle(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushRequest {
 	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaomiFocusParam(v string) *PushRequest {
+	s.AndroidXiaomiFocusParam = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaomiFocusPics(v string) *PushRequest {
+	s.AndroidXiaomiFocusPics = &v
 	return s
 }
 
