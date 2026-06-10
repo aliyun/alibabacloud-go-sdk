@@ -1271,7 +1271,7 @@ func (client *Client) GetJobTemplate(TemplateId *string, request *GetJobTemplate
 
 // Summary:
 //
-// 获取metrics数据
+// Queries metrics data.
 //
 // @param request - GetMetricsRequest
 //
@@ -1354,7 +1354,7 @@ func (client *Client) GetMetricsWithOptions(request *GetMetricsRequest, headers 
 
 // Summary:
 //
-// 获取metrics数据
+// Queries metrics data.
 //
 // @param request - GetMetricsRequest
 //

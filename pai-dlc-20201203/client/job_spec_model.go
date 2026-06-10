@@ -17,6 +17,8 @@ type iJobSpec interface {
 	GetConsiderInSuccessPolicy() *bool
 	SetEcsSpec(v string) *JobSpec
 	GetEcsSpec() *string
+	SetElasticSpotSpecs(v []*ElasticSpotSpec) *JobSpec
+	GetElasticSpotSpecs() []*ElasticSpotSpec
 	SetExtraPodSpec(v *ExtraPodSpec) *JobSpec
 	GetExtraPodSpec() *ExtraPodSpec
 	SetImage(v string) *JobSpec
@@ -64,7 +66,8 @@ type JobSpec struct {
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec          *string            `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	ElasticSpotSpecs []*ElasticSpotSpec `json:"ElasticSpotSpecs,omitempty" xml:"ElasticSpotSpecs,omitempty" type:"Repeated"`
 	// The additional pod configurations.
 	ExtraPodSpec *ExtraPodSpec `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
 	// The address of the image that is run by the worker node. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image provided by PAI. You can also specify a third-party public image.
@@ -156,6 +159,10 @@ func (s *JobSpec) GetEcsSpec() *string {
 	return s.EcsSpec
 }
 
+func (s *JobSpec) GetElasticSpotSpecs() []*ElasticSpotSpec {
+	return s.ElasticSpotSpecs
+}
+
 func (s *JobSpec) GetExtraPodSpec() *ExtraPodSpec {
 	return s.ExtraPodSpec
 }
@@ -237,6 +244,11 @@ func (s *JobSpec) SetConsiderInSuccessPolicy(v bool) *JobSpec {
 
 func (s *JobSpec) SetEcsSpec(v string) *JobSpec {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *JobSpec) SetElasticSpotSpecs(v []*ElasticSpotSpec) *JobSpec {
+	s.ElasticSpotSpecs = v
 	return s
 }
 
@@ -329,6 +341,15 @@ func (s *JobSpec) Validate() error {
 	if s.AutoScalingSpec != nil {
 		if err := s.AutoScalingSpec.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.ElasticSpotSpecs != nil {
+		for _, item := range s.ElasticSpotSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.ExtraPodSpec != nil {

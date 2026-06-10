@@ -905,7 +905,7 @@ func (client *Client) GetJobTemplateWithContext(ctx context.Context, TemplateId 
 
 // Summary:
 //
-// 获取metrics数据
+// Queries metrics data.
 //
 // @param request - GetMetricsRequest
 //

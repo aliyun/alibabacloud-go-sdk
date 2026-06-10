@@ -11,6 +11,8 @@ type iJobReplicaStatus interface {
 	GoString() string
 	SetActive(v int32) *JobReplicaStatus
 	GetActive() *int32
+	SetCurrentSpotInstanceType(v string) *JobReplicaStatus
+	GetCurrentSpotInstanceType() *string
 	SetDequeued(v int32) *JobReplicaStatus
 	GetDequeued() *int32
 	SetEstimatedAutoScalingSpec(v *AutoScalingSpec) *JobReplicaStatus
@@ -26,8 +28,9 @@ type iJobReplicaStatus interface {
 }
 
 type JobReplicaStatus struct {
-	Active   *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
-	Dequeued *int32 `json:"Dequeued,omitempty" xml:"Dequeued,omitempty"`
+	Active                  *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
+	CurrentSpotInstanceType *string `json:"CurrentSpotInstanceType,omitempty" xml:"CurrentSpotInstanceType,omitempty"`
+	Dequeued                *int32  `json:"Dequeued,omitempty" xml:"Dequeued,omitempty"`
 	// if can be null:
 	// true
 	EstimatedAutoScalingSpec *AutoScalingSpec `json:"EstimatedAutoScalingSpec,omitempty" xml:"EstimatedAutoScalingSpec,omitempty"`
@@ -49,6 +52,10 @@ func (s JobReplicaStatus) GoString() string {
 
 func (s *JobReplicaStatus) GetActive() *int32 {
 	return s.Active
+}
+
+func (s *JobReplicaStatus) GetCurrentSpotInstanceType() *string {
+	return s.CurrentSpotInstanceType
 }
 
 func (s *JobReplicaStatus) GetDequeued() *int32 {
@@ -77,6 +84,11 @@ func (s *JobReplicaStatus) GetType() *string {
 
 func (s *JobReplicaStatus) SetActive(v int32) *JobReplicaStatus {
 	s.Active = &v
+	return s
+}
+
+func (s *JobReplicaStatus) SetCurrentSpotInstanceType(v string) *JobReplicaStatus {
+	s.CurrentSpotInstanceType = &v
 	return s
 }
 
