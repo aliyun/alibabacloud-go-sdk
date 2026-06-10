@@ -34,39 +34,62 @@ type iQueryInspirationBalanceResponseBody interface {
 }
 
 type QueryInspirationBalanceResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application name; query the application with this name
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message used to replace `%s` in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                    `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                              `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *QueryInspirationBalanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Fault parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *QueryInspirationBalanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Whether processing is synchronous
+	//
 	// example:
 	//
 	// True
@@ -190,18 +213,27 @@ func (s *QueryInspirationBalanceResponseBody) Validate() error {
 }
 
 type QueryInspirationBalanceResponseBodyModule struct {
+	// Remaining (totalQuota - totalUsed)
+	//
 	// example:
 	//
 	// 8
-	Remaining *int64 `json:"Remaining,omitempty" xml:"Remaining,omitempty"`
+	Remaining    *int64  `json:"Remaining,omitempty" xml:"Remaining,omitempty"`
+	RemainingStr *string `json:"RemainingStr,omitempty" xml:"RemainingStr,omitempty"`
+	// Total quota (sum of initQuota from all valid accounts)
+	//
 	// example:
 	//
 	// 10
-	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	TotalQuota    *int64  `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	TotalQuotaStr *string `json:"TotalQuotaStr,omitempty" xml:"TotalQuotaStr,omitempty"`
+	// Consumed amount (sum of used from all valid accounts)
+	//
 	// example:
 	//
 	// 1
-	TotalUsed *int64 `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
+	TotalUsed    *int64  `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
+	TotalUsedStr *string `json:"TotalUsedStr,omitempty" xml:"TotalUsedStr,omitempty"`
 }
 
 func (s QueryInspirationBalanceResponseBodyModule) String() string {
@@ -216,16 +248,33 @@ func (s *QueryInspirationBalanceResponseBodyModule) GetRemaining() *int64 {
 	return s.Remaining
 }
 
+func (s *QueryInspirationBalanceResponseBodyModule) GetRemainingStr() *string {
+	return s.RemainingStr
+}
+
 func (s *QueryInspirationBalanceResponseBodyModule) GetTotalQuota() *int64 {
 	return s.TotalQuota
+}
+
+func (s *QueryInspirationBalanceResponseBodyModule) GetTotalQuotaStr() *string {
+	return s.TotalQuotaStr
 }
 
 func (s *QueryInspirationBalanceResponseBodyModule) GetTotalUsed() *int64 {
 	return s.TotalUsed
 }
 
+func (s *QueryInspirationBalanceResponseBodyModule) GetTotalUsedStr() *string {
+	return s.TotalUsedStr
+}
+
 func (s *QueryInspirationBalanceResponseBodyModule) SetRemaining(v int64) *QueryInspirationBalanceResponseBodyModule {
 	s.Remaining = &v
+	return s
+}
+
+func (s *QueryInspirationBalanceResponseBodyModule) SetRemainingStr(v string) *QueryInspirationBalanceResponseBodyModule {
+	s.RemainingStr = &v
 	return s
 }
 
@@ -234,8 +283,18 @@ func (s *QueryInspirationBalanceResponseBodyModule) SetTotalQuota(v int64) *Quer
 	return s
 }
 
+func (s *QueryInspirationBalanceResponseBodyModule) SetTotalQuotaStr(v string) *QueryInspirationBalanceResponseBodyModule {
+	s.TotalQuotaStr = &v
+	return s
+}
+
 func (s *QueryInspirationBalanceResponseBodyModule) SetTotalUsed(v int64) *QueryInspirationBalanceResponseBodyModule {
 	s.TotalUsed = &v
+	return s
+}
+
+func (s *QueryInspirationBalanceResponseBodyModule) SetTotalUsedStr(v string) *QueryInspirationBalanceResponseBodyModule {
+	s.TotalUsedStr = &v
 	return s
 }
 

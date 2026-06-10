@@ -34,39 +34,68 @@ type iGetAppRecommendedCommoditiesResponseBody interface {
 }
 
 type GetAppRecommendedCommoditiesResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it means the provided request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                         `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                   `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppRecommendedCommoditiesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Data table module.
+	//
+	// - ABTest: Experiment Data Table
+	//
+	// - ExperimentTool: Experiment Tool Table
+	//
+	// - DataDiagnosis: Data Diagnosis
+	Module *GetAppRecommendedCommoditiesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Indicates whether processing is synchronous
+	//
 	// example:
 	//
 	// True
@@ -190,6 +219,7 @@ func (s *GetAppRecommendedCommoditiesResponseBody) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModule struct {
+	// Marketing product list
 	Commodities []*GetAppRecommendedCommoditiesResponseBodyModuleCommodities `json:"Commodities,omitempty" xml:"Commodities,omitempty" type:"Repeated"`
 }
 
@@ -224,27 +254,40 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModule) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
+	// Commodity code (used for both resource plans and Marketing Products)
+	//
 	// example:
 	//
 	// rds
-	CommodityCode *string            `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Extend        map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Extension fields (such as unsupportedReason)
+	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Order Type: BUY - Purchase, UPGRADE - upgrade
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Sorting Priority (the smaller the number, the higher the priority)
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Marketing Product ID (returned only for new purchases)
+	//
 	// example:
 	//
 	// 12345
 	PromotionCommodityId *string `json:"PromotionCommodityId,omitempty" xml:"PromotionCommodityId,omitempty"`
+	// Hyperlink URL (returned when a redirect is required, such as during an upgrade)
+	//
 	// example:
 	//
 	// https://ecs-workbench-disposable.aliyun.com/account/disposable/login/sst/1291612921555690/edvo2gevfh
 	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// Product Status
+	//
 	// example:
 	//
 	// Normal

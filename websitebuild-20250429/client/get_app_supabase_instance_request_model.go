@@ -14,6 +14,8 @@ type iGetAppSupabaseInstanceRequest interface {
 }
 
 type GetAppSupabaseInstanceRequest struct {
+	// business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001

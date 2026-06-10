@@ -28,31 +28,47 @@ type iQueryMaterialTaskListRequest interface {
 }
 
 type QueryMaterialTaskListRequest struct {
+	// Number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token indicating the start of the next query. This field is empty if there is no next query.
+	//
 	// example:
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Sorting field.
+	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type: ASC or DESC
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number. Default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StatusList   []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of task statuses.
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	// List of task types.
 	TaskTypeList []*string `json:"TaskTypeList,omitempty" xml:"TaskTypeList,omitempty" type:"Repeated"`
 }
 

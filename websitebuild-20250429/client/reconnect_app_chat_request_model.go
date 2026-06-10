@@ -18,14 +18,20 @@ type iReconnectAppChatRequest interface {
 }
 
 type ReconnectAppChatRequest struct {
+	// Chat record ID
+	//
 	// example:
 	//
 	// 20833ba4-d189-4c50-9a44-a6bcbda2c93b
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Last management event ID
+	//
 	// example:
 	//
 	// event-71ece53b7d474e01b755a9b5fa5305e6

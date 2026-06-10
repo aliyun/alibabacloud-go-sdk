@@ -36,6 +36,8 @@ type iOperateSupabaseForAdminRequest interface {
 }
 
 type OperateSupabaseForAdminRequest struct {
+	// Business ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43,42 +45,62 @@ type OperateSupabaseForAdminRequest struct {
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// SQL statement
+	//
 	// example:
 	//
 	// select 	- from profiles
 	ExecuteSql *string `json:"ExecuteSql,omitempty" xml:"ExecuteSql,omitempty"`
+	// Operation Type
+	//
 	// example:
 	//
 	// vul_fix
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// ORDER BY clause
+	//
 	// example:
 	//
 	// null
 	OrderByClause *string `json:"OrderByClause,omitempty" xml:"OrderByClause,omitempty"`
+	// Sorting field
+	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type: ASC|DESC
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Table name
+	//
 	// example:
 	//
 	// default.ai_advertising_material_rec_train_v1103
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 111
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// WHERE clause
+	//
 	// example:
 	//
 	// null

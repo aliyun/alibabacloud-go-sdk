@@ -34,39 +34,62 @@ type iGetAppSupabaseInstanceResponseBody interface {
 }
 
 type GetAppSupabaseInstanceResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                             `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppSupabaseInstanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Task object
+	Module *GetAppSupabaseInstanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Spare parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,40 +213,56 @@ func (s *GetAppSupabaseInstanceResponseBody) Validate() error {
 }
 
 type GetAppSupabaseInstanceResponseBodyModule struct {
+	// anonymity key
+	//
 	// example:
 	//
 	// 1111
 	AnonKey *string `json:"AnonKey,omitempty" xml:"AnonKey,omitempty"`
+	// application instance business ID
+	//
 	// example:
 	//
 	// WS20250915163734000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// database instance ID
+	//
 	// example:
 	//
 	// selectdb-cn-2bl4djolb02
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// Database public URL
+	//
 	// example:
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
+	// instance creation status
+	//
 	// example:
 	//
 	// 1111
 	InstanceCreateStatus *string `json:"InstanceCreateStatus,omitempty" xml:"InstanceCreateStatus,omitempty"`
+	// service key
+	//
 	// example:
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// trial,draft,live,refunded,expired,released
+	// trial, draft, live, refunded, expired, released
 	//
 	// example:
 	//
 	// NORMAL
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Supabase instance ID
+	//
 	// example:
 	//
 	// 1111
 	SupabaseInstanceId *string `json:"SupabaseInstanceId,omitempty" xml:"SupabaseInstanceId,omitempty"`
+	// Supabase public URL
+	//
 	// example:
 	//
 	// 111

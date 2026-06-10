@@ -14,6 +14,8 @@ type iGetAppTemplateRequest interface {
 }
 
 type GetAppTemplateRequest struct {
+	// Template ID
+	//
 	// example:
 	//
 	// JKSVNY04LH7DRI6F

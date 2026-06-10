@@ -18,14 +18,23 @@ type iGetMiniAppBindingRequest interface {
 }
 
 type GetMiniAppBindingRequest struct {
+	// Site ID
+	//
 	// example:
 	//
 	// WS20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// WECHAT
-	Channel     *string   `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// List of extension information keys
+	//
+	// example:
+	//
+	// SERVER_DOMAIN
 	SettingKeys []*string `json:"SettingKeys,omitempty" xml:"SettingKeys,omitempty" type:"Repeated"`
 }
 

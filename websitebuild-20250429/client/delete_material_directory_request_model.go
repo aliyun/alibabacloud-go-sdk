@@ -16,10 +16,14 @@ type iDeleteMaterialDirectoryRequest interface {
 }
 
 type DeleteMaterialDirectoryRequest struct {
+	// The business ID of the application instance.
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The folder ID.
+	//
 	// example:
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad

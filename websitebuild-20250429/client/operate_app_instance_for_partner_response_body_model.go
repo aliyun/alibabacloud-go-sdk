@@ -20,10 +20,14 @@ type iOperateAppInstanceForPartnerResponseBody interface {
 }
 
 type OperateAppInstanceForPartnerResponseBody struct {
+	// error code. The value is described as follows: If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code List in this topic.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message.
+	//
 	// example:
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
@@ -34,6 +38,8 @@ type OperateAppInstanceForPartnerResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true

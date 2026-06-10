@@ -38,32 +38,52 @@ type iListAppConversationMessagesResponseBody interface {
 }
 
 type ListAppConversationMessagesResponseBody struct {
+	// permission denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// faulty parameter(s).
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10–100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     []*ListAppConversationMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Response Data
+	Module []*ListAppConversationMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// Token for the start of the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
@@ -74,11 +94,20 @@ type ListAppConversationMessagesResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -224,62 +253,104 @@ func (s *ListAppConversationMessagesResponseBody) Validate() error {
 }
 
 type ListAppConversationMessagesResponseBodyModule struct {
+	// Bot ID
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Chat ID.
+	//
 	// example:
 	//
 	// chat-xrz3etcl2bsygwlx8g
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// Current chat status.
+	//
 	// example:
 	//
 	// created
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
+	// The ID of the data class API invoked.
+	//
 	// example:
 	//
 	// {\\"DeviceName\\": u\\"\\u667a\\u80fd\\u63d2\\u5ea716A\\", \\"BlidMac\\": \\"18bc5a53351c\\", \\"DeviceModel\\": \\"ABSP21-16M\\", \\"DeviceCategory\\": u\\"\\u63d2\\u5ea7\\", \\"DeviceManufacturer\\": \\"\\", \\"DeviceType\\": 140}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Message ID.
+	//
 	// example:
 	//
 	// 5f9e88ce-f223-4447-a23e-cb574df6c97a
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// Business extension metadata (in Map format, must be a JSON string).
+	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260507200853000001\\",\\"inputTokens\\":1411,\\"outputTokens\\":51}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Region ordinal number. This parameter is deprecated.
+	//
 	// example:
 	//
 	// 1
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
+	// Role of the conversation participant. Valid values include:
+	//
+	// - user: User
+	//
+	// - assistant: Assistant
+	//
+	// - system: System
+	//
+	// - function: Function
+	//
+	// - plugin: Plugin
+	//
+	// - tool: Tool
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Section ID of the inspection item.
+	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	// Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// File type
+	//
 	// example:
 	//
 	// IMAGE

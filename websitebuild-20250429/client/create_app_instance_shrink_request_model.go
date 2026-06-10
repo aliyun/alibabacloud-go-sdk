@@ -110,6 +110,8 @@ type CreateAppInstanceShrinkRequest struct {
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2smovqqpvuly
@@ -120,7 +122,8 @@ type CreateAppInstanceShrinkRequest struct {
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// List of tags
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// example:
 	//
 	// 2023-09-01

@@ -16,6 +16,7 @@ type iGetMiniAppBindingResponseBody interface {
 }
 
 type GetMiniAppBindingResponseBody struct {
+	// Request result.
 	Data *GetMiniAppBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,19 +62,44 @@ func (s *GetMiniAppBindingResponseBody) Validate() error {
 }
 
 type GetMiniAppBindingResponseBodyData struct {
+	// Authorization status
+	//
 	// example:
 	//
 	// disabled
 	AuthStatus *string `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// Business ID
+	//
 	// example:
 	//
 	// WS20260206134402000001
-	BizId               *string            `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	IcpFiled            *bool              `json:"IcpFiled,omitempty" xml:"IcpFiled,omitempty"`
-	PlatformAppid       *string            `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
-	PreviewQrCodeUrl    *string            `json:"PreviewQrCodeUrl,omitempty" xml:"PreviewQrCodeUrl,omitempty"`
-	ProductionQrCodeUrl *string            `json:"ProductionQrCodeUrl,omitempty" xml:"ProductionQrCodeUrl,omitempty"`
-	SettingValues       map[string]*string `json:"SettingValues,omitempty" xml:"SettingValues,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// ICP filing status
+	//
+	// example:
+	//
+	// false
+	IcpFiled *bool `json:"IcpFiled,omitempty" xml:"IcpFiled,omitempty"`
+	// Miniapp ID
+	//
+	// example:
+	//
+	// wx7f122a7d23fdxxxx
+	PlatformAppid *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
+	// Preview QR code
+	//
+	// example:
+	//
+	// http://xxxx
+	PreviewQrCodeUrl *string `json:"PreviewQrCodeUrl,omitempty" xml:"PreviewQrCodeUrl,omitempty"`
+	// Production QR code
+	//
+	// example:
+	//
+	// http://xxxx
+	ProductionQrCodeUrl *string `json:"ProductionQrCodeUrl,omitempty" xml:"ProductionQrCodeUrl,omitempty"`
+	// Extension information
+	SettingValues map[string]*string `json:"SettingValues,omitempty" xml:"SettingValues,omitempty"`
 }
 
 func (s GetMiniAppBindingResponseBodyData) String() string {

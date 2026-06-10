@@ -38,32 +38,52 @@ type iListAppPluginsResponseBody interface {
 }
 
 type ListAppPluginsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application name. Query the application with this name.
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     []*ListAppPluginsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Returned object.
+	Module []*ListAppPluginsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// Token for starting the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
@@ -74,14 +94,20 @@ type ListAppPluginsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// Abnormal message
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -227,66 +253,106 @@ func (s *ListAppPluginsResponseBody) Validate() error {
 }
 
 type ListAppPluginsResponseBodyModule struct {
+	// plugin code
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Configuration form in React JSON Schema format
+	//
 	// example:
 	//
 	// ***
 	ConfigItems *string `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty"`
+	// plugin Description
+	//
 	// example:
 	//
 	// fail to decode json
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Image display. Valid values:
+	//
+	// - **0*	- (None): Do not display.
+	//
+	// - **1*	- (Always): Always display.
+	//
 	// example:
 	//
 	// always
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Indicates whether scheduled delivery of resource snapshots is enabled.
+	//
+	// Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Shutdown.
+	//
 	// example:
 	//
 	// True
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// environment
+	//
 	// example:
 	//
 	// pre
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Creation Time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Updated At
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// hook definitions
+	//
 	// example:
 	//
 	// []
 	Hooks *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// plugin Description
+	//
 	// example:
 	//
 	// @lALPM2AwTOg9IUHNAUDNAUA
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// primary key
+	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the item has been deleted: 0—No, 1—Yes
+	//
 	// example:
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// plugin Name
+	//
 	// example:
 	//
 	// 文件名
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// skill header, used by the model for selection
+	//
 	// example:
 	//
 	// header
 	SkillHeader *string `json:"SkillHeader,omitempty" xml:"SkillHeader,omitempty"`
+	// Categorization label
+	//
 	// example:
 	//
 	// [{\\"Key\\": \\"kubernetes.io/cluster-id\\", \\"Value\\": \\"cc67198b13db948c9848599654da5586e\\"}, {\\"Key\\": \\"created-by\\", \\"Value\\": \\"alibabacloud-imagecache-controller\\"}]

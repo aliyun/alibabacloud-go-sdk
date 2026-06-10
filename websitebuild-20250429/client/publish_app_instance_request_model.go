@@ -24,26 +24,38 @@ type iPublishAppInstanceRequest interface {
 }
 
 type PublishAppInstanceRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Deployment channel
+	//
 	// example:
 	//
 	// PC
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
+	// Publish description
+	//
 	// example:
 	//
 	// CREATE_BY_NLB.nlb-jcvs5sm9l8um84zbfa
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Logical version number
+	//
 	// example:
 	//
 	// 111
 	LogicalNumber *int32 `json:"LogicalNumber,omitempty" xml:"LogicalNumber,omitempty"`
+	// Publish number
+	//
 	// example:
 	//
 	// 123
 	PublishNumber *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
+	// action
+	//
 	// example:
 	//
 	// BUILD

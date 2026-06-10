@@ -14,6 +14,8 @@ type iDeleteMaterialTaskRequest interface {
 }
 
 type DeleteMaterialTaskRequest struct {
+	// List of job IDs
+	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }

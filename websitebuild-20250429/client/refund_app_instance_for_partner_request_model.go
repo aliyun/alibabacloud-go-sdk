@@ -20,12 +20,26 @@ type iRefundAppInstanceForPartnerRequest interface {
 }
 
 type RefundAppInstanceForPartnerRequest struct {
+	// Website building business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
-	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Idempotent token
+	//
+	// example:
+	//
+	// c6f7e8b9-a0b1-4c2d-9e0f-1a2b3c4d5e6f
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Refund reason
+	//
+	// example:
+	//
+	// 渠道商退款
 	RefundReason *string `json:"RefundReason,omitempty" xml:"RefundReason,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 123456

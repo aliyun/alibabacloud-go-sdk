@@ -26,30 +26,44 @@ type iCheckUserResourceMeasureRequest interface {
 }
 
 type CheckUserResourceMeasureRequest struct {
+	// Belonging ID (site ID or Alibaba Cloud User ID)
+	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
+	// Belonging ID Type (siteId, uid)
+	//
 	// example:
 	//
 	// USER
 	BelongIdType *string `json:"BelongIdType,omitempty" xml:"BelongIdType,omitempty"`
+	// ESP business type
+	//
 	// example:
 	//
 	// 1
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// ESP business ID
+	//
 	// example:
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
+	// Order module information (espBizId and bizType cannot be empty when this is empty)
+	//
 	// example:
 	//
 	// {"siteversion":"test"}
 	OrderComponentParams *string `json:"OrderComponentParams,omitempty" xml:"OrderComponentParams,omitempty"`
+	// Resource identity
+	//
 	// example:
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// Resource value. Default is empty. Required only for feature-type resources. 0 means not supported, and 1 means supported.
+	//
 	// example:
 	//
 	// 1

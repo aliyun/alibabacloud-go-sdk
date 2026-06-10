@@ -18,18 +18,24 @@ type iGetDomainInfoForPartnerRequest interface {
 }
 
 type GetDomainInfoForPartnerRequest struct {
+	// Customer business ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yywq.qimengwenhua.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Alibaba Cloud pk
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,14 +18,20 @@ type iCreateAppAssistantAgentRequest interface {
 }
 
 type CreateAppAssistantAgentRequest struct {
+	// Agent name
+	//
 	// example:
 	//
 	// 测试业务空间
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Platform type
+	//
 	// example:
 	//
 	// LINUX64

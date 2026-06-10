@@ -20,17 +20,22 @@ type iGetUserAccessTokenForPartnerResponseBody interface {
 }
 
 type GetUserAccessTokenForPartnerResponseBody struct {
+	// Error code. The value is as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	//
 	// example:
 	//
 	// 0
-	ErrorCode *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Module    *GetUserAccessTokenForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Response data
+	Module *GetUserAccessTokenForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true

@@ -16,6 +16,7 @@ type iGetMiniAppBindingForAdminResponseBody interface {
 }
 
 type GetMiniAppBindingForAdminResponseBody struct {
+	// Request result.
 	Data *GetMiniAppBindingForAdminResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,14 +62,20 @@ func (s *GetMiniAppBindingForAdminResponseBody) Validate() error {
 }
 
 type GetMiniAppBindingForAdminResponseBodyData struct {
+	// Authorization status
+	//
 	// example:
 	//
 	// AUTHORIZED
 	AuthStatus *string `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250801004817000002
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Miniapp ID
+	//
 	// example:
 	//
 	// xxxx

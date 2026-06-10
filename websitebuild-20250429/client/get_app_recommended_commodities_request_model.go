@@ -20,12 +20,16 @@ type iGetAppRecommendedCommoditiesRequest interface {
 }
 
 type GetAppRecommendedCommoditiesRequest struct {
+	// Application instance business ID (required in scenario 1, used to filter instance versions during query)
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId              *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Extend             *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	ResourceConditions *string `json:"ResourceConditions,omitempty" xml:"ResourceConditions,omitempty"`
+	// Scenarios: ai_chat | inspiration
+	//
 	// example:
 	//
 	// DataworksManualTask

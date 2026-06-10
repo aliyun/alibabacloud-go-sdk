@@ -14,6 +14,8 @@ type iDeleteMaterialTaskShrinkRequest interface {
 }
 
 type DeleteMaterialTaskShrinkRequest struct {
+	// List of job IDs
+	//
 	// This parameter is required.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 }

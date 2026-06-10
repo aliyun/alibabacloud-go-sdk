@@ -30,38 +30,56 @@ type iPushResourceMeasureRequest interface {
 }
 
 type PushResourceMeasureRequest struct {
+	// Resource usage amount
+	//
 	// example:
 	//
 	// 100
 	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Belonging ID
+	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
+	// Belonging ID Type (siteId, uid)
+	//
 	// example:
 	//
 	// USER
 	BelongIdType *string `json:"BelongIdType,omitempty" xml:"BelongIdType,omitempty"`
+	// Business ID associated with this push, such as session ID, Job ID, or file ID
+	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Metering data, used to flexibly push multiple data points such as model invocation count and token usage (JSON string)
+	//
 	// example:
 	//
 	// {\\"MD5\\":\\"8ba46100bd898461f0f589704f2fad25\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"769\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":false,\\"uefi_preferred\\":false}
 	MeasureData *string `json:"MeasureData,omitempty" xml:"MeasureData,omitempty"`
+	// Business extension metadata (in Map format, must be a JSON string)
+	//
 	// example:
 	//
 	// {\\"MD5\\":\\"8ba46100bd898461f0f589704f2fad25\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"769\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":false,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Resource identity
+	//
 	// example:
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// Usage time, format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// yyyy-MM-dd HH:mm:ss
 	UseTime *string `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
+	// Usage type
+	//
 	// example:
 	//
 	// MANUAL_BIZ

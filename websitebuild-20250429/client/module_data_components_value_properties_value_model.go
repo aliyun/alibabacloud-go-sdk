@@ -20,18 +20,25 @@ type iModuleDataComponentsValuePropertiesValue interface {
 }
 
 type ModuleDataComponentsValuePropertiesValue struct {
+	// Property encoding (system internal identity)
+	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Property display name (User-visible name)
+	//
 	// example:
 	//
 	// placeholder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Attribute value code (internal system value)
+	//
 	// example:
 	//
 	// placeholder
-	Value  *string                                           `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// List of module attribute values
 	Values []*ModuleDataComponentsValuePropertiesValueValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -93,14 +100,20 @@ func (s *ModuleDataComponentsValuePropertiesValue) Validate() error {
 }
 
 type ModuleDataComponentsValuePropertiesValueValues struct {
+	// Attribute code (internal system identifier)
+	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Attribute value code (internal system value)
+	//
 	// example:
 	//
 	// placeholder
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Attribute display name (user-visible name)
+	//
 	// example:
 	//
 	// placeholder

@@ -28,34 +28,52 @@ type iListAppConversationsRequest interface {
 }
 
 type ListAppConversationsRequest struct {
+	// Bot ID
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// End modification time (ISO 8601 format)
+	//
 	// example:
 	//
 	// 20201212
 	EndModifyTime *string `json:"EndModifyTime,omitempty" xml:"EndModifyTime,omitempty"`
+	// The number of entries to return in each query result.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token indicating the start of the next query. It is empty when there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Site ID
+	//
 	// example:
 	//
 	// 1168642640022064
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Start modification time (ISO 8601 format)
+	//
 	// example:
 	//
 	// 20200101

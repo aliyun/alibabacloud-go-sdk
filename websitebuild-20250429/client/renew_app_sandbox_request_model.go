@@ -14,6 +14,8 @@ type iRenewAppSandboxRequest interface {
 }
 
 type RenewAppSandboxRequest struct {
+	// Session ID
+	//
 	// example:
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434

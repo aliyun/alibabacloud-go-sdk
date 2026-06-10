@@ -38,32 +38,56 @@ type iListAppPublishHistoryResponseBody interface {
 }
 
 type ListAppPublishHistoryResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// frontend application Name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic message, not currently used. Please ignore.
+	//
 	// example:
 	//
 	// abc
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// fault parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10 to 100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListAppPublishHistoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Data Table module.
+	//
+	// - ABTest: experiment Data Table
+	//
+	// - ExperimentTool: experiment tool table
+	//
+	// - DataDiagnosis: Data Diagnosis
+	Module *ListAppPublishHistoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Token for the start of the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
@@ -74,11 +98,20 @@ type ListAppPublishHistoryResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -220,19 +253,32 @@ func (s *ListAppPublishHistoryResponseBody) Validate() error {
 }
 
 type ListAppPublishHistoryResponseBodyModule struct {
+	// Current publish order ID
+	//
 	// example:
 	//
 	// 123
-	CurrentPublishOrderId *int64                                            `json:"CurrentPublishOrderId,omitempty" xml:"CurrentPublishOrderId,omitempty"`
-	History               []*ListAppPublishHistoryResponseBodyModuleHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
+	CurrentPublishOrderId *int64 `json:"CurrentPublishOrderId,omitempty" xml:"CurrentPublishOrderId,omitempty"`
+	// Indicates whether to display the history of applying the alert template to application groups. Valid values:
+	//
+	// - true: Display.
+	//
+	// - false (default): Do not display.
+	History []*ListAppPublishHistoryResponseBodyModuleHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
+	// Page number. Default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 0
@@ -306,58 +352,90 @@ func (s *ListAppPublishHistoryResponseBodyModule) Validate() error {
 }
 
 type ListAppPublishHistoryResponseBodyModuleHistory struct {
+	// Indicates whether quick rollback is supported.
+	//
 	// example:
 	//
 	// true
 	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
+	CommitHash     *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
+	// Current step.
+	//
 	// example:
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// Deployment channel.
+	//
 	// example:
 	//
 	// PC
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
+	// Application description.
+	//
 	// example:
 	//
 	// PSKB
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Publishing procedure.
+	//
 	// example:
 	//
 	// error
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
-	IsFinish  *bool   `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	// Indicates whether the process is complete.
+	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	// Indicates whether resource allocation to the cost center succeeded.
+	//
+	// - true indicates success.
+	//
+	// - false indicates failure.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Sorting type: ASC or DESC.
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Transcoding progress.
+	//
 	// example:
 	//
 	// true
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// Publish number.
+	//
 	// example:
 	//
 	// 123
 	PublishNumber *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
+	// Publish order ID.
+	//
 	// example:
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
+	// Published At.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2026
-	PublishTime *string   `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	Steps       []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// Specific widget configuration.
+	Steps      []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	Subchannel *string   `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }
 
 func (s ListAppPublishHistoryResponseBodyModuleHistory) String() string {
@@ -370,6 +448,10 @@ func (s ListAppPublishHistoryResponseBodyModuleHistory) GoString() string {
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCanQuickRevert() *string {
 	return s.CanQuickRevert
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCommitHash() *string {
+	return s.CommitHash
 }
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCurrentStep() *string {
@@ -424,8 +506,17 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetSteps() []*string {
 	return s.Steps
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetSubchannel() *string {
+	return s.Subchannel
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCanQuickRevert(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.CanQuickRevert = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCommitHash(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.CommitHash = &v
 	return s
 }
 
@@ -491,6 +582,11 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishTime(v string
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetSteps(v []*string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.Steps = v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetSubchannel(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.Subchannel = &v
 	return s
 }
 

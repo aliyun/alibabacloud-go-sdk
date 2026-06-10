@@ -18,14 +18,20 @@ type iUpdateAppFileRequest interface {
 }
 
 type UpdateAppFileRequest struct {
+	// File content
+	//
 	// example:
 	//
 	// verify_46630893e2b5efde444c82b4e3707adb
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// File Path
+	//
 	// example:
 	//
 	// pt3/01/31/pengpeixin.png

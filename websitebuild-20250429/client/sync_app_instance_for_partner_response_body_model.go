@@ -16,6 +16,7 @@ type iSyncAppInstanceForPartnerResponseBody interface {
 }
 
 type SyncAppInstanceForPartnerResponseBody struct {
+	// Request result.
 	Data *SyncAppInstanceForPartnerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,7 @@ func (s *SyncAppInstanceForPartnerResponseBody) Validate() error {
 }
 
 type SyncAppInstanceForPartnerResponseBodyData struct {
+	// Application instance information
 	AppInstance *SyncAppInstanceForPartnerResponseBodyDataAppInstance `json:"AppInstance,omitempty" xml:"AppInstance,omitempty" type:"Struct"`
 }
 
@@ -91,6 +93,8 @@ func (s *SyncAppInstanceForPartnerResponseBodyData) Validate() error {
 }
 
 type SyncAppInstanceForPartnerResponseBodyDataAppInstance struct {
+	// Customer business ID
+	//
 	// example:
 	//
 	// WD20250626114752000001

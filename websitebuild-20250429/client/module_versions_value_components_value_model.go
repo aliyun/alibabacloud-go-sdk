@@ -22,16 +22,24 @@ type iModuleVersionsValueComponentsValue interface {
 }
 
 type ModuleVersionsValueComponentsValue struct {
+	// Unique component code (system internal identity)
+	//
 	// example:
 	//
 	// ComponentCode
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
+	// Widget display name (user-visible name)
+	//
 	// example:
 	//
 	// ComponentName
-	ComponentName    *string                                                       `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	InstanceProperty []*ModuleVersionsValueComponentsValueInstanceProperty         `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
-	Properties       map[string]*ModuleVersionsValueComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// Component instance attribute configuration
+	InstanceProperty []*ModuleVersionsValueComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
+	// Widget instance attribute configuration
+	Properties map[string]*ModuleVersionsValueComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// Module property status
+	//
 	// example:
 	//
 	// attr
@@ -105,18 +113,25 @@ func (s *ModuleVersionsValueComponentsValue) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValueInstanceProperty struct {
+	// Property encoding (system internal identity)
+	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Attribute display name (user-visible name)
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Attribute Value encoding (internal System value)
+	//
 	// example:
 	//
 	// value
-	Value  *string                                                     `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// List of module Attribute Values
 	Values []*ModuleVersionsValueComponentsValueInstancePropertyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -178,14 +193,20 @@ func (s *ModuleVersionsValueComponentsValueInstanceProperty) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValueInstancePropertyValues struct {
+	// Property encoding (system internal identity)
+	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Attribute Value encoding (internal System value)
+	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Property display name (User-visible name)
+	//
 	// example:
 	//
 	// name

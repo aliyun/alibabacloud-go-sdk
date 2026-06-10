@@ -38,47 +38,74 @@ type iListAppConversationsResponseBody interface {
 }
 
 type ListAppConversationsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application name. Queries the application with this name.
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Faulty parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListAppConversationsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Response data
+	Module *ListAppConversationsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Token indicating the start of the next query. This field is empty if there is no next query.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -220,15 +247,22 @@ func (s *ListAppConversationsResponseBody) Validate() error {
 }
 
 type ListAppConversationsResponseBodyModule struct {
+	// Request result.
 	Data []*ListAppConversationsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page number. The default value is 1.
+	//
 	// example:
 	//
 	// 16
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Resource count that matches the filter condition.
+	//
 	// example:
 	//
 	// 30
@@ -299,46 +333,66 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// ***
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// Bot ID
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Chat records
+	//
 	// example:
 	//
 	// 1
 	ChatNum *int32 `json:"ChatNum,omitempty" xml:"ChatNum,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 799EAC1246C855CAC75B77955E43D841
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Creation Time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2026-01-27T17:51:25.415+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Update Time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2025-10-02T02:21:07Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Extension information (in JSON string format)
+	//
 	// example:
 	//
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Section ID of the checklist item.
+	//
 	// example:
 	//
 	// 255
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	// Site ID. You can obtain it by invoking the [ListSites](~~ListSites~~) API.
+	//
 	// example:
 	//
 	// 1068725896006128
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Current viewpoint, equivalent to the news title.
+	//
 	// example:
 	//
 	// Sometimes When We Touch
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 123456

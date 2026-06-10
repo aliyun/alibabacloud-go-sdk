@@ -34,39 +34,60 @@ type iGetAppPublishStatusResponseBody interface {
 }
 
 type GetAppPublishStatusResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App name.
+	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                          `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppPublishStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *GetAppPublishStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,62 +211,95 @@ func (s *GetAppPublishStatusResponseBody) Validate() error {
 }
 
 type GetAppPublishStatusResponseBodyModule struct {
+	// Indicates whether quick rollback is supported.
+	//
 	// example:
 	//
 	// true
 	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
+	// Current operation step of the job.
+	//
 	// example:
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// Deployment channel
+	//
 	// example:
 	//
 	// PC,WEAPP
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
+	// Application description
+	//
 	// example:
 	//
 	// /bak->serverless.handler(2020091300200279)
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Publishing procedure
+	//
 	// example:
 	//
 	// abc
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
-	IsFinish  *bool   `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	// Indicates whether the job is finished.
+	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	// Indicates whether the invocation succeeded. Valid values:
+	//
+	// - `true`: The invocation succeeded.
+	//
+	// - `false`: Failed to invoke.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Additional description information.
+	//
 	// example:
 	//
 	// common notify successfully.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Sorting type: ASC or DESC.
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Job completion percentage.
+	//
 	// example:
 	//
 	// 20
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// Publish number
+	//
 	// example:
 	//
 	// 123
 	PublishNumber *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
+	// Publish order ID
+	//
 	// example:
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
+	// Scheduled publish time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 123123
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	//
 	// example:
 	//
 	// 865181640657408
-	SiteId *string   `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	Steps  []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Error Level, including FATAL, ERROR, WARNING, and CRITICAL.
+	Steps      []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	Subchannel *string   `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }
 
 func (s GetAppPublishStatusResponseBodyModule) String() string {
@@ -314,6 +368,10 @@ func (s *GetAppPublishStatusResponseBodyModule) GetSiteId() *string {
 
 func (s *GetAppPublishStatusResponseBodyModule) GetSteps() []*string {
 	return s.Steps
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetSubchannel() *string {
+	return s.Subchannel
 }
 
 func (s *GetAppPublishStatusResponseBodyModule) SetCanQuickRevert(v string) *GetAppPublishStatusResponseBodyModule {
@@ -388,6 +446,11 @@ func (s *GetAppPublishStatusResponseBodyModule) SetSiteId(v string) *GetAppPubli
 
 func (s *GetAppPublishStatusResponseBodyModule) SetSteps(v []*string) *GetAppPublishStatusResponseBodyModule {
 	s.Steps = v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetSubchannel(v string) *GetAppPublishStatusResponseBodyModule {
+	s.Subchannel = &v
 	return s
 }
 

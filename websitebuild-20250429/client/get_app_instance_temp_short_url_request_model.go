@@ -14,6 +14,8 @@ type iGetAppInstanceTempShortUrlRequest interface {
 }
 
 type GetAppInstanceTempShortUrlRequest struct {
+	// Application business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001

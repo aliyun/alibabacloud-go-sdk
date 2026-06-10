@@ -20,18 +20,29 @@ type iModuleResultsValue interface {
 }
 
 type ModuleResultsValue struct {
+	// Whether the check is passed
+	//
 	// example:
 	//
 	// true
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Resource identity
+	//
 	// example:
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// Error code when failed; null when passed
+	//
 	// example:
 	//
 	// Resource.Control.No.Usage
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message when failed; null when passed
+	//
+	// example:
+	//
+	// 用量耗尽
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 

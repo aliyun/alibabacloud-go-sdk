@@ -18,19 +18,29 @@ type iModifyMaterialFileRequest interface {
 }
 
 type ModifyMaterialFileRequest struct {
+	// Application instance business ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WS12345678
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// File ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Modified file Name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试文件
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

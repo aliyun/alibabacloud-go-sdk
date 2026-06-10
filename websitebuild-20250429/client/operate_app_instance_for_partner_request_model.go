@@ -16,7 +16,14 @@ type iOperateAppInstanceForPartnerRequest interface {
 }
 
 type OperateAppInstanceForPartnerRequest struct {
+	// extension information
+	//
+	// example:
+	//
+	// {\\"deliveryNodeName\\":\\"交付质检\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// event type of the operation
+	//
 	// example:
 	//
 	// SERVICE_DELIVERY_PROCESS

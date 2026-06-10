@@ -38,32 +38,52 @@ type iListAppChatMessagesResponseBody interface {
 }
 
 type ListAppChatMessagesResponseBody struct {
+	// permission denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App name.
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic error message used to replace `%s` in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
-	// abc
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// xxx
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10 to 100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     []*ListAppChatMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Response data
+	Module []*ListAppChatMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// Token for starting the next query. It is empty when there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
@@ -74,14 +94,20 @@ type ListAppChatMessagesResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// abnormal message
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -227,66 +253,108 @@ func (s *ListAppChatMessagesResponseBody) Validate() error {
 }
 
 type ListAppChatMessagesResponseBodyModule struct {
+	// Bot ID
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Unique ID of a single message
+	//
 	// example:
 	//
 	// chat-xrz3etcl2bsygwlx8g
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// Current chat status
+	//
 	// example:
 	//
 	// created
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
+	// ID of the data class API being invoked.
+	//
 	// example:
 	//
 	// {\\"code\\": \\"200\\", \\"success\\": True, \\"content\\": True, \\"requestId\\": \\"028993DE-097E-5F4E-AC48-64A2D5ED5F30\\", \\"businessError\\": False, \\"message\\": \\"success\\", \\"httpStatusCode\\": 200}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Creation Time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Updated At
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Message ID
+	//
 	// example:
 	//
 	// ee60f5a6-88ca-4074-ad37-515f065bbbd2
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// Business extension metadata (in Map format, must be a JSON string)
+	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260506101154000001\\",\\"inputTokens\\":1148,\\"outputTokens\\":60}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Region ordinal number. This parameter is deprecated.
+	//
 	// example:
 	//
 	// 1
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
+	// Indicates the role of the participant in the conversation. Valid values include:
+	//
+	// - user: User
+	//
+	// - assistant: Assistant
+	//
+	// - system: System
+	//
+	// - function: Function
+	//
+	// - plugin: Plugin
+	//
+	// - tool: Tool
+	//
 	// example:
 	//
 	// LoC
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Section ID of the checklist item.
+	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	// Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// File type
+	//
 	// example:
 	//
 	// IMAGE

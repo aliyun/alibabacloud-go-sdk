@@ -34,39 +34,60 @@ type iGetAppSeoTrendsResponseBody interface {
 }
 
 type GetAppSeoTrendsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application name
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                      `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppSeoTrendsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *GetAppSeoTrendsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Backup parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,14 +211,20 @@ func (s *GetAppSeoTrendsResponseBody) Validate() error {
 }
 
 type GetAppSeoTrendsResponseBodyModule struct {
+	// Baidu
+	//
 	// example:
 	//
 	// baiduIndexTrends
 	BaiduIndexTrends *string `json:"BaiduIndexTrends,omitempty" xml:"BaiduIndexTrends,omitempty"`
+	// Bing
+	//
 	// example:
 	//
 	// bingIndexTrends
 	BingIndexTrends *string `json:"BingIndexTrends,omitempty" xml:"BingIndexTrends,omitempty"`
+	// Google
+	//
 	// example:
 	//
 	// googleIndexTrends

@@ -34,39 +34,62 @@ type iListAIStaffChatEventsResponseBody interface {
 }
 
 type ListAIStaffChatEventsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic error message, used to replace `%s` in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                            `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *ListAIStaffChatEventsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// faulty parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// returned object.
+	Module *ListAIStaffChatEventsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// is processed synchronously
+	//
 	// example:
 	//
 	// True
@@ -190,15 +213,22 @@ func (s *ListAIStaffChatEventsResponseBody) Validate() error {
 }
 
 type ListAIStaffChatEventsResponseBodyModule struct {
+	// Unique ID of the sentence
+	//
 	// example:
 	//
 	// chat-xrz3etcl2bsygwlx8g
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// session ID
+	//
 	// example:
 	//
 	// 872be9bc-3097-433d-b462-596202455102
-	ConversationId *string                                          `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	Events         []*ListAIStaffChatEventsResponseBodyModuleEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// object ID
+	Events []*ListAIStaffChatEventsResponseBodyModuleEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// ID of the last SSE event
+	//
 	// example:
 	//
 	// event-21dd6124760a4a259ae33bbd878f6e20
@@ -263,14 +293,23 @@ func (s *ListAIStaffChatEventsResponseBodyModule) Validate() error {
 }
 
 type ListAIStaffChatEventsResponseBodyModuleEvents struct {
+	// error message.
+	//
 	// example:
 	//
 	// {\\"Recorded\\": False}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// primary key
+	//
 	// example:
 	//
 	// 10426
-	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Website Name
+	//
+	// example:
+	//
+	// 文章素材2026050704
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

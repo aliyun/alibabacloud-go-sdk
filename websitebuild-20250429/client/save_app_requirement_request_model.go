@@ -16,10 +16,14 @@ type iSaveAppRequirementRequest interface {
 }
 
 type SaveAppRequirementRequest struct {
+	// Session ID
+	//
 	// example:
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Requirement document content
+	//
 	// example:
 	//
 	// prd

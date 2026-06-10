@@ -34,39 +34,62 @@ type iGetAppConversationResponseBody interface {
 }
 
 type GetAppConversationResponseBody struct {
+	// access denied details
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                         `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppConversationResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// response Data
+	Module *GetAppConversationResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// is processed synchronously
+	//
 	// example:
 	//
 	// True
@@ -190,50 +213,75 @@ func (s *GetAppConversationResponseBody) Validate() error {
 }
 
 type GetAppConversationResponseBodyModule struct {
+	// User ID
+	//
 	// example:
 	//
 	// 12343131221311
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// bot ID
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Chat record
+	//
 	// example:
 	//
 	// 123
 	ChatNum *int32 `json:"ChatNum,omitempty" xml:"ChatNum,omitempty"`
+	// session id
+	//
 	// example:
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Creation Time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// None
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Update Time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2025-10-29T10:34:13Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Extension information (in JSON string format)
+	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260507200853000001\\",\\"inputTokens\\":1411,\\"outputTokens\\":51}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Section ID of the checklist item.
+	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	// site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Current point, equivalent to news title
+	//
 	// example:
 	//
 	// Feel Like Makin\\" Love
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// User ID
+	//
+	// example:
+	//
+	// 用户id
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

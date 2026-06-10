@@ -22,19 +22,28 @@ type iSyncAppInstanceForPartnerRequest interface {
 }
 
 type SyncAppInstanceForPartnerRequest struct {
+	// Application instance object data
 	AppInstance *SyncAppInstanceForPartnerRequestAppInstance `json:"AppInstance,omitempty" xml:"AppInstance,omitempty" type:"Struct"`
+	// Type of system event. CREATE, UPDATE, COMPLETE
+	//
 	// example:
 	//
 	// CREATE
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// Operator ID
+	//
 	// example:
 	//
 	// system
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Source business ID.
+	//
 	// example:
 	//
 	// 31104757
 	SourceBizId *string `json:"SourceBizId,omitempty" xml:"SourceBizId,omitempty"`
+	// Source: MARKET_CLOUD_DREAM
+	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
@@ -104,39 +113,65 @@ func (s *SyncAppInstanceForPartnerRequest) Validate() error {
 }
 
 type SyncAppInstanceForPartnerRequestAppInstance struct {
+	// Application Type: WEBSITE
+	//
 	// example:
 	//
 	// WEBSITE
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// Website business ID
+	//
 	// example:
 	//
 	// WD20250711094503000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Logical deletion
+	//
 	// example:
 	//
 	// fase
 	Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// Domain name
+	//
 	// example:
 	//
 	// alliveout.xntv.tv
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Event end time (UNIX timestamp).
+	//
 	// example:
 	//
 	// 2024-08-23T02:14:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Deletion time
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
+	// Vulnerability published UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	GmtPublish *string `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
+	// Application icon URL.
+	//
 	// example:
 	//
 	// icon/WS20250626112715000001/thumbnail.jpg
-	IconUrl *string                                             `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	Name    *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// Website name
+	//
+	// example:
+	//
+	// AI建站
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Website configuration information
+	//
+	// example:
+	//
+	// 网站配置信息
 	Profile *SyncAppInstanceForPartnerRequestAppInstanceProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 	// siteId
 	//
@@ -144,18 +179,42 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// xxxx.scd.wezhan.cn
 	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
+	// Website SiteID
+	//
 	// example:
 	//
 	// 31104757
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
+	// Query start time. If no start and end times are provided, all historical deployment records of the instance are queried.
+	//
 	// example:
 	//
 	// 2025-07-15T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Instance running status.
+	//
+	// - NotRun: Not running
+	//
+	// - Running: Running
+	//
+	// - WaitTime: Waiting for TriggerTime
+	//
+	// - CheckingCondition: Checking branch conditions
+	//
+	// - WaitResource: Waiting for resources
+	//
+	// - Failure: Execution failed
+	//
+	// - Success: Execution succeeded
+	//
+	// - Checking: Sent to Data Quality check
+	//
 	// example:
 	//
 	// {\\"Phase\\": \\"Running\\", \\"SlotNum\\": 1, \\"UsedCapacity\\": \\"500.0Gi\\"}
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Thumbnail URL.
+	//
 	// example:
 	//
 	// thumbnails/WS20250626112715000001/thumbnail.jpg
@@ -330,26 +389,38 @@ func (s *SyncAppInstanceForPartnerRequestAppInstance) Validate() error {
 }
 
 type SyncAppInstanceForPartnerRequestAppInstanceProfile struct {
+	// Deployment region
+	//
 	// example:
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
+	// Lingxiao instance ID
+	//
 	// example:
 	//
 	// 12313213
 	LxInstanceId *string `json:"LxInstanceId,omitempty" xml:"LxInstanceId,omitempty"`
+	// Order ID
+	//
 	// example:
 	//
 	// 222217928591
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Version
+	//
 	// example:
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// DC4D30B7BADDAFE9928A6C36416A2A4C
 	TemplateEtag *string `json:"TemplateEtag,omitempty" xml:"TemplateEtag,omitempty"`
+	// Model template ID
+	//
 	// example:
 	//
 	// ST20211231160247sYG4

@@ -16,7 +16,10 @@ type iGetMiniAppAuthUrlResponseBody interface {
 }
 
 type GetMiniAppAuthUrlResponseBody struct {
+	// Result of the request.
 	Data *GetMiniAppAuthUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// request ID
+	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
@@ -59,6 +62,11 @@ func (s *GetMiniAppAuthUrlResponseBody) Validate() error {
 }
 
 type GetMiniAppAuthUrlResponseBodyData struct {
+	// authorized address
+	//
+	// example:
+	//
+	// https://nschiper.oneclick.accounts.logi.com/identity/oauth2/token
 	AuthUrl *string `json:"AuthUrl,omitempty" xml:"AuthUrl,omitempty"`
 }
 

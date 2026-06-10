@@ -110,6 +110,8 @@ type CreateAppInstanceRequest struct {
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2smovqqpvuly
@@ -119,8 +121,9 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// Basic_Edition
-	SiteVersion *string                         `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	Tags        []*CreateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// List of tags
+	Tags []*CreateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2023-09-01
@@ -293,10 +296,14 @@ func (s *CreateAppInstanceRequest) Validate() error {
 }
 
 type CreateAppInstanceRequestTags struct {
+	// tag key
+	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// value of tag 0
+	//
 	// example:
 	//
 	// ufo

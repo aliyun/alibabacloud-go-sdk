@@ -40,55 +40,86 @@ type iAppMaterialFile interface {
 }
 
 type AppMaterialFile struct {
+	// Application instance ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Content Type
+	//
 	// example:
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2025-11-03 02:05:01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Deletion Time
+	//
 	// example:
 	//
 	// 2025-11-03 02:05:01
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// Folder ID
+	//
 	// example:
 	//
 	// ddddwww
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// File ID
+	//
 	// example:
 	//
 	// d75e1e9693cc460da218419d67735567
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File URL
+	//
 	// example:
 	//
 	// https://demo-moshicloud-test.oss-cn-hangzhou-internal.aliyuncs.com/document/testcase/aliyun/api_case/pdf_angle90_page1.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Image height
+	//
 	// example:
 	//
 	// 1280
-	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// File name
+	//
+	// example:
+	//
+	// 文件名
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// File Status
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Bucket size.
+	//
 	// example:
 	//
 	// 23M
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// File suffix
+	//
 	// example:
 	//
 	// png
 	Suffix *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+	// File Type
+	//
 	// example:
 	//
 	// IMAGE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Image width
+	//
 	// example:
 	//
 	// 1920

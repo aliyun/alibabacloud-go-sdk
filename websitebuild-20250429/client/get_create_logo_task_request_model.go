@@ -14,6 +14,8 @@ type iGetCreateLogoTaskRequest interface {
 }
 
 type GetCreateLogoTaskRequest struct {
+	// The job ID returned upon successful invocation. Note: Keep this ID securely. You need this ID to query the device creation status.
+	//
 	// example:
 	//
 	// 20051349

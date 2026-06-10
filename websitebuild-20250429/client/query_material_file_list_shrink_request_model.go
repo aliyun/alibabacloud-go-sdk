@@ -40,54 +40,84 @@ type iQueryMaterialFileListShrinkRequest interface {
 }
 
 type QueryMaterialFileListShrinkRequest struct {
+	// Business ID of the application instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Folder ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Maximum file size
+	//
 	// example:
 	//
 	// 1024
 	MaxFileSize *int64 `json:"MaxFileSize,omitempty" xml:"MaxFileSize,omitempty"`
+	// Number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Minimum file size
+	//
 	// example:
 	//
 	// 0
-	MinFileSize *int64  `json:"MinFileSize,omitempty" xml:"MinFileSize,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MinFileSize *int64 `json:"MinFileSize,omitempty" xml:"MinFileSize,omitempty"`
+	// Website name
+	//
+	// example:
+	//
+	// 测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Token indicating the start of the next query. It is empty when there is no subsequent query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Sorting field
+	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type: ASC or DESC
+	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number. Default value is 1.
+	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Status range
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	// File suffix list
 	SuffixListShrink *string `json:"SuffixList,omitempty" xml:"SuffixList,omitempty"`
-	TypeListShrink   *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
+	// List of file types
+	TypeListShrink *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
 }
 
 func (s QueryMaterialFileListShrinkRequest) String() string {

@@ -18,14 +18,24 @@ type iCreateMaterialDirectoryRequest interface {
 }
 
 type CreateMaterialDirectoryRequest struct {
+	// Application instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WS20260206134746000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Folder name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 图片管理
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Parent folder ID
+	//
 	// This parameter is required.
 	//
 	// example:

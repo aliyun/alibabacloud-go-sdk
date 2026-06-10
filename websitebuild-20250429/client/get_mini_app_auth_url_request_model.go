@@ -18,14 +18,23 @@ type iGetMiniAppAuthUrlRequest interface {
 }
 
 type GetMiniAppAuthUrlRequest struct {
+	// Site ID
+	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Channel information
+	//
 	// example:
 	//
 	// WECHAT
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Hyperlink URL
+	//
+	// example:
+	//
+	// null
 	RedirectUri *string `json:"RedirectUri,omitempty" xml:"RedirectUri,omitempty"`
 }
 

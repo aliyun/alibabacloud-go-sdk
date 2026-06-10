@@ -16,10 +16,14 @@ type iGetAppSupabaseAuthConfigRequest interface {
 }
 
 type GetAppSupabaseAuthConfigRequest struct {
+	// Authentication type
+	//
 	// example:
 	//
 	// ALL_AUTH_FLAG
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250801152639000005

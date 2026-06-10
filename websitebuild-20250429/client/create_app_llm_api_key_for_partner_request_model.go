@@ -20,18 +20,25 @@ type iCreateAppLlmApiKeyForPartnerRequest interface {
 }
 
 type CreateAppLlmApiKeyForPartnerRequest struct {
+	// Business ID of the application instance
+	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Idempotent token (reserved)
+	//
 	// example:
 	//
 	// xxxxx-xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Description of the API key usage
+	//
 	// example:
 	//
 	// success
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Caller-defined IP address whitelist (the backend appends the system default IP segment)
 	IpWhiteList []*string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty" type:"Repeated"`
 }
 

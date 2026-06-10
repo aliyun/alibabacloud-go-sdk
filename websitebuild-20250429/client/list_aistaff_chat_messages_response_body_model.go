@@ -34,39 +34,60 @@ type iListAIStaffChatMessagesResponseBody interface {
 }
 
 type ListAIStaffChatMessagesResponseBody struct {
+	// Permission denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message. Not currently used. Please ignore.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                    `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                              `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *ListAIStaffChatMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *ListAIStaffChatMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,6 +211,15 @@ func (s *ListAIStaffChatMessagesResponseBody) Validate() error {
 }
 
 type ListAIStaffChatMessagesResponseBodyModule struct {
+	// Sender type.
+	//
+	// Enumeration values:
+	//
+	// - **ADMIN**: System
+	//
+	// - **CUSTOMER**: Visitor
+	//
+	// - **AGENT**: Agent
 	Messages []*ListAIStaffChatMessagesResponseBodyModuleMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 }
 
@@ -224,55 +254,94 @@ func (s *ListAIStaffChatMessagesResponseBodyModule) Validate() error {
 }
 
 type ListAIStaffChatMessagesResponseBodyModuleMessages struct {
+	// Bot ID.
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Current conversation round ID
+	//
 	// example:
 	//
 	// 54a0bfa0-41bd-4e96-acd9-fb13c0474452
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// Current session status
+	//
 	// example:
 	//
 	// success
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
+	// ID of the invoked data class API.
+	//
 	// example:
 	//
 	// domain cnamenwww.buyhao8.com www.buyhao8.com.a1.initrr.comn
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// application/octet-stream
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// job-675163021891846144
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1723532098
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1591339051000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Message ID
+	//
 	// example:
 	//
 	// 1dafa033-e72b-44c2-99b7-bc202c5b6198
-	MessageId *string                `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	MetaData  map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// Business extension metadata (in Map format, must be a JSON string)
+	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Indicates the role of the participant in the conversation. Valid values include:
+	//
+	// - user: User
+	//
+	// - assistant: Assistant
+	//
+	// - system: System
+	//
+	// - function: Function
+	//
+	// - plugin: Plugin
+	//
+	// - tool: Tool
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Section ID of the inspection item.
+	//
 	// example:
 	//
 	// 324
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	// Site ID.
+	//
 	// example:
 	//
 	// 928636774795776
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// File type
+	//
 	// example:
 	//
 	// SINGLE

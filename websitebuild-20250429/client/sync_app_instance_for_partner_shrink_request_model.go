@@ -22,19 +22,28 @@ type iSyncAppInstanceForPartnerShrinkRequest interface {
 }
 
 type SyncAppInstanceForPartnerShrinkRequest struct {
+	// Application instance object data
 	AppInstanceShrink *string `json:"AppInstance,omitempty" xml:"AppInstance,omitempty"`
+	// Type of system event. CREATE, UPDATE, COMPLETE
+	//
 	// example:
 	//
 	// CREATE
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// Operator ID
+	//
 	// example:
 	//
 	// system
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Source business ID.
+	//
 	// example:
 	//
 	// 31104757
 	SourceBizId *string `json:"SourceBizId,omitempty" xml:"SourceBizId,omitempty"`
+	// Source: MARKET_CLOUD_DREAM
+	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM

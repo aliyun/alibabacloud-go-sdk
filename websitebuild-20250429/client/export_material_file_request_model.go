@@ -16,12 +16,16 @@ type iExportMaterialFileRequest interface {
 }
 
 type ExportMaterialFileRequest struct {
+  // Business instance ID
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // WS20250801154628000001
   BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+  // List of file IDs
+  // 
   // This parameter is required.
   FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
 }

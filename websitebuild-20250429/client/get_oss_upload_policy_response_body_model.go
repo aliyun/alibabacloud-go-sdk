@@ -56,8 +56,6 @@ type GetOssUploadPolicyResponseBody struct {
 	DynamicMessage *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	ErrorArgs      []interface{}                         `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	Module         *GetOssUploadPolicyResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
@@ -66,7 +64,10 @@ type GetOssUploadPolicyResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// example:
 	//
 	// True
@@ -214,14 +215,10 @@ type GetOssUploadPolicyResponseBodyModule struct {
 	//
 	// 2019-04-02
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// x-oss-credential
-	//
 	// example:
 	//
 	// 123123
 	XossCredential *string `json:"XossCredential,omitempty" xml:"XossCredential,omitempty"`
-	// x-oss-date
-	//
 	// example:
 	//
 	// 20260101

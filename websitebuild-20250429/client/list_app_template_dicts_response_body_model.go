@@ -38,32 +38,52 @@ type iListAppTemplateDictsResponseBody interface {
 }
 
 type ListAppTemplateDictsResponseBody struct {
+	// Detailed reason why access was denied.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// application name; queries the application with this name
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// faulty parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10–100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     []*ListAppTemplateDictsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// response Data
+	Module []*ListAppTemplateDictsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// Token for the start of the next query. It is empty when there is no next query.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
@@ -74,11 +94,20 @@ type ListAppTemplateDictsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// is processing synchronous
+	//
 	// example:
 	//
 	// True
@@ -224,23 +253,40 @@ func (s *ListAppTemplateDictsResponseBody) Validate() error {
 }
 
 type ListAppTemplateDictsResponseBodyModule struct {
+	// Dictionary Code
+	//
 	// example:
 	//
 	// abc
 	DictCode *string `json:"DictCode,omitempty" xml:"DictCode,omitempty"`
+	// Dictionary label
+	//
 	// example:
 	//
 	// label
 	DictLabel *string `json:"DictLabel,omitempty" xml:"DictLabel,omitempty"`
+	// Enumeration of template dictionary types
+	//
 	// example:
 	//
 	// product_version
 	DictType *string `json:"DictType,omitempty" xml:"DictType,omitempty"`
+	// Dictionary value
+	//
 	// example:
 	//
 	// abc
-	DictValue    *string `json:"DictValue,omitempty" xml:"DictValue,omitempty"`
-	HasTemplates *bool   `json:"HasTemplates,omitempty" xml:"HasTemplates,omitempty"`
+	DictValue *string `json:"DictValue,omitempty" xml:"DictValue,omitempty"`
+	// Indicates whether a template exists.
+	HasTemplates *bool `json:"HasTemplates,omitempty" xml:"HasTemplates,omitempty"`
+	// Sorting order. The default is descending.
+	//
+	// Enumeration values:
+	//
+	// ASC: ascending.
+	//
+	// DESC: descending.
+	//
 	// example:
 	//
 	// desc

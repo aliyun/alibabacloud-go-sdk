@@ -16,10 +16,14 @@ type iListAppAssistantAgentsRequest interface {
 }
 
 type ListAppAssistantAgentsRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Platform Type
+	//
 	// example:
 	//
 	// ChannelOps

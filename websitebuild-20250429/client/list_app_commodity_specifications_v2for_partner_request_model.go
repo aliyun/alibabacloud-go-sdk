@@ -16,10 +16,16 @@ type iListAppCommoditySpecificationsV2ForPartnerRequest interface {
 }
 
 type ListAppCommoditySpecificationsV2ForPartnerRequest struct {
+	// Number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token indicating the start of the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==

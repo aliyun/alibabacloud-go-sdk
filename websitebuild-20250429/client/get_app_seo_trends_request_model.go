@@ -18,14 +18,20 @@ type iGetAppSeoTrendsRequest interface {
 }
 
 type GetAppSeoTrendsRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Domain name
+	//
 	// example:
 	//
 	// yjdw.bpu.edu.cn-waf
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Search engine type
+	//
 	// example:
 	//
 	// type

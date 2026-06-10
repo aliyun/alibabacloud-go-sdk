@@ -18,14 +18,20 @@ type iGetMiniAppBindingForAdminRequest interface {
 }
 
 type GetMiniAppBindingForAdminRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250801152639000005
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// WECHAT
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Miniapp ID
+	//
 	// example:
 	//
 	// xxxx

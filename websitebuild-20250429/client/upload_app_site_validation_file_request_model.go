@@ -24,26 +24,38 @@ type iUploadAppSiteValidationFileRequest interface {
 }
 
 type UploadAppSiteValidationFileRequest struct {
+	// business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// domain name
+	//
 	// example:
 	//
 	// yjdw.bpu.edu.cn-waf
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// file name
+	//
 	// example:
 	//
 	// {\\"URI\\": \\"oss://imm-test-co-cn-chengdu/zqh/input/Image/indexImage/nn1.jpg\\", \\"LatLong\\":\\"+39.998800,+116.480900\\"}
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// file content
+	//
 	// example:
 	//
 	// abc
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
+	// file type
+	//
 	// example:
 	//
 	// APP_MAPPING
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// site host
+	//
 	// example:
 	//
 	// www.aliyun.com

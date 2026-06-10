@@ -22,16 +22,24 @@ type iModuleNextComponentsValue interface {
 }
 
 type ModuleNextComponentsValue struct {
+	// Unique widget encoding (system internal identity)
+	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Widget display name (User-visible name)
+	//
 	// example:
 	//
 	// placeholder
-	Name             *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	InstanceProperty []*ModuleNextComponentsValueInstanceProperty         `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
-	Properties       map[string]*ModuleNextComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Widget instance property configuration
+	InstanceProperty []*ModuleNextComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
+	// widget instance attribute configuration
+	Properties map[string]*ModuleNextComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// Module attribute status
+	//
 	// example:
 	//
 	// placeholder
@@ -105,18 +113,25 @@ func (s *ModuleNextComponentsValue) Validate() error {
 }
 
 type ModuleNextComponentsValueInstanceProperty struct {
+	// Property encoding (system internal identity)
+	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Property display name (User-visible Name)
+	//
 	// example:
 	//
 	// placeholder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Attribute Value encoding (internal System value)
+	//
 	// example:
 	//
 	// placeholder
-	Value  *string                                            `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// List of module Attribute Values
 	Values []*ModuleNextComponentsValueInstancePropertyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -178,14 +193,20 @@ func (s *ModuleNextComponentsValueInstanceProperty) Validate() error {
 }
 
 type ModuleNextComponentsValueInstancePropertyValues struct {
+	// Property encoding (system internal identity)
+	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Attribute Value encoding (internal System value)
+	//
 	// example:
 	//
 	// placeholder
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Property display name (User-visible Name)
+	//
 	// example:
 	//
 	// placeholder

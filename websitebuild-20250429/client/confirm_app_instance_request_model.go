@@ -55,8 +55,11 @@ type ConfirmAppInstanceRequest struct {
 	// example:
 	//
 	// 1
-	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extend   *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// {\\"deliveryNodeName\\":\\"视觉设计确认\\",\\"deliveryNodeStatus\\":\\"Reject\\",\\"deliveryOperatorRole\\":\\"Customer\\"}
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// example:
 	//
 	// AUTO_PAY

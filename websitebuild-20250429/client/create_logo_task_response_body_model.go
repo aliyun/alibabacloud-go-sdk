@@ -22,10 +22,14 @@ type iCreateLogoTaskResponseBody interface {
 }
 
 type CreateLogoTaskResponseBody struct {
+	// Error code. The values are as follows: If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
@@ -36,10 +40,14 @@ type CreateLogoTaskResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The job ID returned when the invocation succeeds. Note: Keep this ID securely. You need this ID to query the logo creation status.
+	//
 	// example:
 	//
 	// c3r127e325at9yd

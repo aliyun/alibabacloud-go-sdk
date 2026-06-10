@@ -28,12 +28,16 @@ type iQuerySupabaseAuthConfigsForAdminRequest interface {
 }
 
 type QuerySupabaseAuthConfigsForAdminRequest struct {
+	// Authentication type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// key
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Business ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,22 +45,32 @@ type QuerySupabaseAuthConfigsForAdminRequest struct {
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Env   *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Sorting field
+	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type: ASC or DESC
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number, default is 1
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size, default is 10
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 111

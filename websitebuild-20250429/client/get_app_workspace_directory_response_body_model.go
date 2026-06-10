@@ -34,39 +34,60 @@ type iGetAppWorkspaceDirectoryResponseBody interface {
 }
 
 type GetAppWorkspaceDirectoryResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App name.
+	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message. Not currently used. Ignore it.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                               `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppWorkspaceDirectoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Returned object.
+	Module *GetAppWorkspaceDirectoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Spare parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,10 +211,13 @@ func (s *GetAppWorkspaceDirectoryResponseBody) Validate() error {
 }
 
 type GetAppWorkspaceDirectoryResponseBodyModule struct {
+	// Current time
+	//
 	// example:
 	//
 	// 2026
-	CurrentTime   *string                                                    `json:"CurrentTime,omitempty" xml:"CurrentTime,omitempty"`
+	CurrentTime *string `json:"CurrentTime,omitempty" xml:"CurrentTime,omitempty"`
+	// Directory structure
 	DirectoryList []*GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList `json:"DirectoryList,omitempty" xml:"DirectoryList,omitempty" type:"Repeated"`
 }
 
@@ -237,11 +261,16 @@ func (s *GetAppWorkspaceDirectoryResponseBodyModule) Validate() error {
 }
 
 type GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList struct {
+	// Child content
 	Children []interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// Full path (relative to workspace)
+	//
 	// example:
 	//
 	// PolarDBInnoDBRedoLogWrites
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Name
+	//
 	// example:
 	//
 	// Evaluable=true

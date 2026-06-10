@@ -30,37 +30,56 @@ type iQueryMaterialFileSummaryInfoShrinkRequest interface {
 }
 
 type QueryMaterialFileSummaryInfoShrinkRequest struct {
+	// Business instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WS20250801152639000005
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Folder ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// File name
+	//
+	// example:
+	//
+	// 文件名
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Sorting field
+	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type: ASC or DESC
+	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Default is 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// File status
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	TypeListShrink   *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
+	// File type
+	TypeListShrink *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
 }
 
 func (s QueryMaterialFileSummaryInfoShrinkRequest) String() string {

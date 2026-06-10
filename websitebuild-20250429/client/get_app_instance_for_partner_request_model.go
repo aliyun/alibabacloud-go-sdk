@@ -14,6 +14,8 @@ type iGetAppInstanceForPartnerRequest interface {
 }
 
 type GetAppInstanceForPartnerRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250814102215000001

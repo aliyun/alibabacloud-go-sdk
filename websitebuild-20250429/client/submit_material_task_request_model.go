@@ -16,8 +16,24 @@ type iSubmitMaterialTaskRequest interface {
 }
 
 type SubmitMaterialTaskRequest struct {
+	// Job parameters
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "brandName": "品牌名称",
+	//
+	//     "direction": "HORIZONTAL",
+	//
+	//     "userPrompt": "设计要求"
+	//
+	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// Task Type
+	//
 	// This parameter is required.
 	//
 	// example:

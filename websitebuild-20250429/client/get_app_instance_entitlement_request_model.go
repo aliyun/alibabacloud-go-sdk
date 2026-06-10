@@ -14,6 +14,8 @@ type iGetAppInstanceEntitlementRequest interface {
 }
 
 type GetAppInstanceEntitlementRequest struct {
+	// Application instance business ID
+	//
 	// example:
 	//
 	// WD20250814102215000001

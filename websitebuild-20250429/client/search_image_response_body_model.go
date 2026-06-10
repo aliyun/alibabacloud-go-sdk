@@ -22,14 +22,19 @@ type iSearchImageResponseBody interface {
 }
 
 type SearchImageResponseBody struct {
+	// Error code. The ErrorCode field is not returned if the request succeeded. If the request failed, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message.
+	//
 	// example:
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
-	ErrorMsg      *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Image search Result
 	ImageResponse *SearchImageResponseBodyImageResponse `json:"ImageResponse,omitempty" xml:"ImageResponse,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -37,6 +42,8 @@ type SearchImageResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -106,11 +113,18 @@ func (s *SearchImageResponseBody) Validate() error {
 }
 
 type SearchImageResponseBodyImageResponse struct {
+	// Image List
 	ImageList []*SearchImageResponseBodyImageResponseImageList `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10–100. Default Value: 20.
+	//
 	// example:
 	//
 	// 3
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token indicating the start of the next query. It is empty when there is no next query.
+	//
 	// example:
 	//
 	// 2c6b65b6f9d625d4e2514a628bde8eb2e0b5e8707e68181f
@@ -166,16 +180,38 @@ func (s *SearchImageResponseBodyImageResponse) Validate() error {
 }
 
 type SearchImageResponseBodyImageResponseImageList struct {
+	// Descriptive hues detected in the Image
+	//
+	// example:
+	//
+	// 冷色调 蓝色
 	DescriptiveTones *string `json:"DescriptiveTones,omitempty" xml:"DescriptiveTones,omitempty"`
+	// Image height
+	//
 	// example:
 	//
 	// 1000
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Image categorization. Valid values:
+	//
+	// - normal: Illustrations or article images.
+	//
+	// - banner: Background images or image carousels.
+	//
+	// - goods: Product or service images.
+	//
 	// example:
 	//
 	// normal
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	ImageRatio    *string `json:"ImageRatio,omitempty" xml:"ImageRatio,omitempty"`
+	// Aspect ratio
+	//
+	// example:
+	//
+	// 16:9
+	ImageRatio *string `json:"ImageRatio,omitempty" xml:"ImageRatio,omitempty"`
+	// Image UUID
+	//
 	// example:
 	//
 	// 70687446-821c-4ebd-9be6-b57dc0a3500a
@@ -185,13 +221,27 @@ type SearchImageResponseBodyImageResponseImageList struct {
 	// example:
 	//
 	// 1ad5/c728/cb40/2410/e01d/b24c/9acd/7d51/1ad5c728cb402410e01db24c9acd7d51
-	OssKey              *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// Quantized color palette (HEX, LAB) extracted by the algorithm
+	//
+	// example:
+	//
+	// [{"hex": "#3a3f58", "rgb": {"r": 58, "g": 63, "b": 88 }, "lab": {"l": 27.81, "a": 2.95, "b": -16.52 }, "percentage": 0.4521 }, {"hex": "#c8a16a", "rgb": {"r": 200, "g": 161, "b": 106 }, "lab": {"l": 69.35, "a": 11.23, "b": 35.18 }, "percentage": 0.2355 }, {"hex": "#f1e8da", "rgb": {"r": 241, "g": 232, "b": 218 }, "lab": {"l": 93.17, "a": 1.76, "b": 7.91 }, "percentage": 0.1873 } ]
 	QuantitativePalette *string `json:"QuantitativePalette,omitempty" xml:"QuantitativePalette,omitempty"`
-	TagsFromImage       *string `json:"TagsFromImage,omitempty" xml:"TagsFromImage,omitempty"`
+	// Image tags
+	//
+	// example:
+	//
+	// 日出、奔跑
+	TagsFromImage *string `json:"TagsFromImage,omitempty" xml:"TagsFromImage,omitempty"`
+	// Temporary access URL of the image
+	//
 	// example:
 	//
 	// https://other-general-huadong1.oss-cn-hangzhou.aliyuncs.com/uploadWidget/RollTicket_01.jpeg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Image width
+	//
 	// example:
 	//
 	// 154

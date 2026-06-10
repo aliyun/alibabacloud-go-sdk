@@ -34,39 +34,64 @@ type iQueryInspirationAccountDetailsResponseBody interface {
 }
 
 type QueryInspirationAccountDetailsResponseBody struct {
+	// Access denied details
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed. Valid values:
+	//
+	// - false: Retry is not allowed.
+	//
+	// - true: Retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application Name. Query the application with this name.
+	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                           `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                     `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *QueryInspirationAccountDetailsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *QueryInspirationAccountDetailsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Indicates whether processing is synchronous
+	//
 	// example:
 	//
 	// True
@@ -190,29 +215,44 @@ func (s *QueryInspirationAccountDetailsResponseBody) Validate() error {
 }
 
 type QueryInspirationAccountDetailsResponseBodyModule struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 12
-	CurrentPageNum *int32                                                  `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*QueryInspirationAccountDetailsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *QueryInspirationAccountDetailsResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// Request result.
+	Data []*QueryInspirationAccountDetailsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Decision weight
+	Next *QueryInspirationAccountDetailsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether there is a next page.
+	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists
+	//
 	// example:
 	//
 	// False
-	PrePage     *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// In addition to paging limits, the server-side processes at most the latest 1,000 records for the current query. If the result exceeds 1,000 records, **ResultLimit*	- is **true**. You can narrow the Time Range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -327,30 +367,46 @@ func (s *QueryInspirationAccountDetailsResponseBodyModule) Validate() error {
 }
 
 type QueryInspirationAccountDetailsResponseBodyModuleData struct {
+	// Acquisition Time
+	//
 	// example:
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
+	// Balance (initQuota - used)
+	//
 	// example:
 	//
 	// 12
-	Balance *int64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
+	// Validity Period expiration time
+	//
 	// example:
 	//
 	// 2025-04-11 10:26:27 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Indicates whether it has expired (endDate < current time). The frontend uses this to gray out the display.
+	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Quantity obtained (initial quota)
+	//
 	// example:
 	//
 	// 123123
-	InitQuota *int64 `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
+	// Source type code (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Source Type Display Name
+	//
 	// example:
 	//
 	// FREE_TRIAL_GIFT
@@ -374,6 +430,10 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetBalance() *int
 	return s.Balance
 }
 
+func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetBalanceStr() *string {
+	return s.BalanceStr
+}
+
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetEndDate() *string {
 	return s.EndDate
 }
@@ -384,6 +444,10 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetExpired() *boo
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetInitQuota() *int64 {
 	return s.InitQuota
+}
+
+func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetInitQuotaStr() *string {
+	return s.InitQuotaStr
 }
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) GetSourceType() *string {
@@ -408,6 +472,11 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetBalance(v int6
 	return s
 }
 
+func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetBalanceStr(v string) *QueryInspirationAccountDetailsResponseBodyModuleData {
+	s.BalanceStr = &v
+	return s
+}
+
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetEndDate(v string) *QueryInspirationAccountDetailsResponseBodyModuleData {
 	s.EndDate = &v
 	return s
@@ -420,6 +489,11 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetExpired(v bool
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetInitQuota(v int64) *QueryInspirationAccountDetailsResponseBodyModuleData {
 	s.InitQuota = &v
+	return s
+}
+
+func (s *QueryInspirationAccountDetailsResponseBodyModuleData) SetInitQuotaStr(v string) *QueryInspirationAccountDetailsResponseBodyModuleData {
+	s.InitQuotaStr = &v
 	return s
 }
 
@@ -443,30 +517,46 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleData) Validate() error 
 }
 
 type QueryInspirationAccountDetailsResponseBodyModuleNext struct {
+	// Acquisition time
+	//
 	// example:
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
+	// Balance (initQuota - used)
+	//
 	// example:
 	//
 	// 12
-	Balance *int64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
+	// Expiration time of the validity period
+	//
 	// example:
 	//
 	// 2026-02-25 10:11:25
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Indicates whether it has expired (endDate < current time). The frontend uses this to gray out the display.
+	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Quantity obtained (initial quota)
+	//
 	// example:
 	//
 	// 123123
-	InitQuota *int64 `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
+	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
+	// Source type code (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Display Name of the source type
+	//
 	// example:
 	//
 	// FREE_TRIAL_GIFT
@@ -489,6 +579,10 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetBalance() *int
 	return s.Balance
 }
 
+func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetBalanceStr() *string {
+	return s.BalanceStr
+}
+
 func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetEndDate() *string {
 	return s.EndDate
 }
@@ -499,6 +593,10 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetExpired() *boo
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetInitQuota() *int64 {
 	return s.InitQuota
+}
+
+func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetInitQuotaStr() *string {
+	return s.InitQuotaStr
 }
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) GetSourceType() *string {
@@ -519,6 +617,11 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) SetBalance(v int6
 	return s
 }
 
+func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) SetBalanceStr(v string) *QueryInspirationAccountDetailsResponseBodyModuleNext {
+	s.BalanceStr = &v
+	return s
+}
+
 func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) SetEndDate(v string) *QueryInspirationAccountDetailsResponseBodyModuleNext {
 	s.EndDate = &v
 	return s
@@ -531,6 +634,11 @@ func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) SetExpired(v bool
 
 func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) SetInitQuota(v int64) *QueryInspirationAccountDetailsResponseBodyModuleNext {
 	s.InitQuota = &v
+	return s
+}
+
+func (s *QueryInspirationAccountDetailsResponseBodyModuleNext) SetInitQuotaStr(v string) *QueryInspirationAccountDetailsResponseBodyModuleNext {
+	s.InitQuotaStr = &v
 	return s
 }
 

@@ -32,30 +32,66 @@ type iAppMaterialTask interface {
 }
 
 type AppMaterialTask struct {
+	// Job completion time
+	//
 	// example:
 	//
 	// 2025-12-26 11:30:05
-	CompleteTime       *string   `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CompleteTimeFormat *string   `json:"CompleteTimeFormat,omitempty" xml:"CompleteTimeFormat,omitempty"`
-	FailReason         *string   `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	FinalFileUrls      []*string `json:"FinalFileUrls,omitempty" xml:"FinalFileUrls,omitempty" type:"Repeated"`
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// Completion time display format
+	//
+	// example:
+	//
+	// 1分钟前
+	CompleteTimeFormat *string `json:"CompleteTimeFormat,omitempty" xml:"CompleteTimeFormat,omitempty"`
+	// Reason for failure
+	//
+	// example:
+	//
+	// 参数不合规
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// List of final files
+	FinalFileUrls []*string `json:"FinalFileUrls,omitempty" xml:"FinalFileUrls,omitempty" type:"Repeated"`
+	// Task Status
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Job substatus
+	//
 	// example:
 	//
 	// PENDING
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// Submitted At.
+	//
 	// example:
 	//
 	// 2025-12-26 11:30:05
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// 81d04d62c3483b32bacf1d306d2622b2
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Job parameter
+	//
+	// example:
+	//
+	// {
+	//
+	//     "brandName": "品牌名称",
+	//
+	//     "direction": "HORIZONTAL",
+	//
+	//     "userPrompt": "设计要求"
+	//
+	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// Task Type.
+	//
 	// example:
 	//
 	// IMAGE_LOGO

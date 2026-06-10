@@ -18,14 +18,20 @@ type iCreateAppAssistantAgentSsoLoginRequest interface {
 }
 
 type CreateAppAssistantAgentSsoLoginRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Platform Type
+	//
 	// example:
 	//
 	// all
 	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	// Target URL
+	//
 	// example:
 	//
 	// http://172.16.70.16:9410/metrics

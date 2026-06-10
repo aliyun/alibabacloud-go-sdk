@@ -16,10 +16,14 @@ type iGetAppSupabaseSecretsRequest interface {
 }
 
 type GetAppSupabaseSecretsRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Search keyword
+	//
 	// example:
 	//
 	// v2_

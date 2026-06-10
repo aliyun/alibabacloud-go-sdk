@@ -20,18 +20,26 @@ type iUpdateMiniAppBindingRequest interface {
 }
 
 type UpdateMiniAppBindingRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Channel
+	//
 	// example:
 	//
 	// WECHAT
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Configuration key
+	//
 	// example:
 	//
 	// xxxx
 	SettingKey *string `json:"SettingKey,omitempty" xml:"SettingKey,omitempty"`
+	// Configuration value
+	//
 	// example:
 	//
 	// xxxx

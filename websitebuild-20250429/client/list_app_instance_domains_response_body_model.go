@@ -414,7 +414,8 @@ type ListAppInstanceDomainsResponseBodyModuleData struct {
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
 	// Domain ownership information
-	Ownership     *ListAppInstanceDomainsResponseBodyModuleDataOwnership     `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	Ownership *ListAppInstanceDomainsResponseBodyModuleDataOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	// Domain name qualification information
 	Qualification *ListAppInstanceDomainsResponseBodyModuleDataQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
 	// Domain resolution information
 	Resolution *ListAppInstanceDomainsResponseBodyModuleDataResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
@@ -667,9 +668,12 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataOwnership) Validate() error
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataQualification struct {
-	IcpRecordNumber     *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
+	// ICP entity filing number
+	IcpRecordNumber *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
+	// ICP website filing number
 	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
-	PoliceRecordNumber  *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
+	// Public security filing number
+	PoliceRecordNumber *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
 }
 
 func (s ListAppInstanceDomainsResponseBodyModuleDataQualification) String() string {
@@ -990,7 +994,8 @@ type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
 	// Domain ownership information
-	Ownership     *ListAppInstanceDomainsResponseBodyModuleNextOwnership     `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	Ownership *ListAppInstanceDomainsResponseBodyModuleNextOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
+	// Domain name qualification information
 	Qualification *ListAppInstanceDomainsResponseBodyModuleNextQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
 	// Domain resolution information
 	Resolution *ListAppInstanceDomainsResponseBodyModuleNextResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
@@ -1228,9 +1233,12 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) Validate() error
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextQualification struct {
-	IcpRecordNumber     *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
+	// ICP filing number of the entity
+	IcpRecordNumber *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
+	// ICP filing number for the website
 	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
-	PoliceRecordNumber  *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
+	// Public security filing number
+	PoliceRecordNumber *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
 }
 
 func (s ListAppInstanceDomainsResponseBodyModuleNextQualification) String() string {

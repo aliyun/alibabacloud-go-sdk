@@ -22,11 +22,16 @@ type iGetUserTmpIdentityForPartnerResponseBody interface {
 }
 
 type GetUserTmpIdentityForPartnerResponseBody struct {
+	// Result of the request.
 	Data *GetUserTmpIdentityForPartnerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// error code. The value is interpreted as follows: If the request succeeded, the ErrorCode field is not returned. If the request failed, the ErrorCode field is returned. For more information, see the error code List in this topic.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message.
+	//
 	// example:
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
@@ -37,6 +42,8 @@ type GetUserTmpIdentityForPartnerResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -106,8 +113,10 @@ func (s *GetUserTmpIdentityForPartnerResponseBody) Validate() error {
 }
 
 type GetUserTmpIdentityForPartnerResponseBodyData struct {
-	Credentials       *GetUserTmpIdentityForPartnerResponseBodyDataCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
-	HasCustomRoleAuth *bool                                                    `json:"HasCustomRoleAuth,omitempty" xml:"HasCustomRoleAuth,omitempty"`
+	// Credential
+	Credentials *GetUserTmpIdentityForPartnerResponseBodyDataCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	// Indicates whether authorization from the Customer has been obtained.
+	HasCustomRoleAuth *bool `json:"HasCustomRoleAuth,omitempty" xml:"HasCustomRoleAuth,omitempty"`
 }
 
 func (s GetUserTmpIdentityForPartnerResponseBodyData) String() string {
@@ -146,18 +155,26 @@ func (s *GetUserTmpIdentityForPartnerResponseBodyData) Validate() error {
 }
 
 type GetUserTmpIdentityForPartnerResponseBodyDataCredentials struct {
+	// Encrypted temporary AccessKey ID
+	//
 	// example:
 	//
 	// 7t2Rzt37ND7-xxx
 	EncryptedAccessKeyId *string `json:"EncryptedAccessKeyId,omitempty" xml:"EncryptedAccessKeyId,omitempty"`
+	// Encrypted temporary AccessKey secret
+	//
 	// example:
 	//
 	// 7t2Rzt37ND7-xxx
 	EncryptedAccessKeySecret *string `json:"EncryptedAccessKeySecret,omitempty" xml:"EncryptedAccessKeySecret,omitempty"`
+	// Encrypted Security Token Service token
+	//
 	// example:
 	//
 	// 7t2Rzt37ND7-xxx
 	EncryptedSecurityToken *string `json:"EncryptedSecurityToken,omitempty" xml:"EncryptedSecurityToken,omitempty"`
+	// Expected expiration time of the certificate
+	//
 	// example:
 	//
 	// 2025-04-29T14:00:00Z

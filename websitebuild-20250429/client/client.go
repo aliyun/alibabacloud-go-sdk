@@ -58,7 +58,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 分配Supabase实例
+// # Assign a Supabase instance to a resource
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -126,7 +130,11 @@ func (client *Client) AllocateSupabaseForAdminWithOptions(request *AllocateSupab
 
 // Summary:
 //
-// 分配Supabase实例
+// # Assign a Supabase instance to a resource
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -144,7 +152,11 @@ func (client *Client) AllocateSupabaseForAdmin(request *AllocateSupabaseForAdmin
 
 // Summary:
 //
-// 批量校验资源计量
+// # Batch check resource usage
+//
+// Description:
+//
+// # Operation resource-related Supabase instance information
 //
 // @param request - BatchCheckResourceMeasureRequest
 //
@@ -208,7 +220,11 @@ func (client *Client) BatchCheckResourceMeasureWithOptions(request *BatchCheckRe
 
 // Summary:
 //
-// 批量校验资源计量
+// # Batch check resource usage
+//
+// Description:
+//
+// # Operation resource-related Supabase instance information
 //
 // @param request - BatchCheckResourceMeasureRequest
 //
@@ -300,7 +316,11 @@ func (client *Client) BindAppDomain(request *BindAppDomainRequest) (_result *Bin
 
 // Summary:
 //
-// 校验资源计量
+// # Check resource usage
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - CheckResourceMeasureRequest
 //
@@ -368,7 +388,11 @@ func (client *Client) CheckResourceMeasureWithOptions(request *CheckResourceMeas
 
 // Summary:
 //
-// 校验资源计量
+// # Check resource usage
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - CheckResourceMeasureRequest
 //
@@ -386,7 +410,11 @@ func (client *Client) CheckResourceMeasure(request *CheckResourceMeasureRequest)
 
 // Summary:
 //
-// 校验用户资源计量
+// # Validate user resource metering
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - CheckUserResourceMeasureRequest
 //
@@ -454,7 +482,11 @@ func (client *Client) CheckUserResourceMeasureWithOptions(request *CheckUserReso
 
 // Summary:
 //
-// 校验用户资源计量
+// # Validate user resource metering
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - CheckUserResourceMeasureRequest
 //
@@ -473,6 +505,10 @@ func (client *Client) CheckUserResourceMeasure(request *CheckUserResourceMeasure
 // Summary:
 //
 // 试用转正
+//
+// Description:
+//
+// 查询应用实例信息
 //
 // @param request - ConfirmAppInstanceRequest
 //
@@ -562,6 +598,10 @@ func (client *Client) ConfirmAppInstanceWithOptions(request *ConfirmAppInstanceR
 //
 // 试用转正
 //
+// Description:
+//
+// 查询应用实例信息
+//
 // @param request - ConfirmAppInstanceRequest
 //
 // @return ConfirmAppInstanceResponse
@@ -579,6 +619,10 @@ func (client *Client) ConfirmAppInstance(request *ConfirmAppInstanceRequest) (_r
 // Summary:
 //
 // 复制插件配置
+//
+// Description:
+//
+// 获取生码插件配置信息
 //
 // @param request - CopyAppPluginConfigRequest
 //
@@ -628,6 +672,10 @@ func (client *Client) CopyAppPluginConfigWithOptions(request *CopyAppPluginConfi
 //
 // 复制插件配置
 //
+// Description:
+//
+// 获取生码插件配置信息
+//
 // @param request - CopyAppPluginConfigRequest
 //
 // @return CopyAppPluginConfigResponse
@@ -644,7 +692,11 @@ func (client *Client) CopyAppPluginConfig(request *CopyAppPluginConfigRequest) (
 
 // Summary:
 //
-// 异步发起AI员工对话
+// # Initiate an AI employee conversation asynchronously
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 AI conversation
 //
 // @param request - CreateAIStaffChatRequest
 //
@@ -707,7 +759,11 @@ func (client *Client) CreateAIStaffChatWithOptions(request *CreateAIStaffChatReq
 
 // Summary:
 //
-// 异步发起AI员工对话
+// # Initiate an AI employee conversation asynchronously
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 AI conversation
 //
 // @param request - CreateAIStaffChatRequest
 //
@@ -725,7 +781,11 @@ func (client *Client) CreateAIStaffChat(request *CreateAIStaffChatRequest) (_res
 
 // Summary:
 //
-// 创建AI员工会话
+// # Create an AI agent session
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 API for creating an AI session
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -769,7 +829,11 @@ func (client *Client) CreateAIStaffConversationWithOptions(request *CreateAIStaf
 
 // Summary:
 //
-// 创建AI员工会话
+// # Create an AI agent session
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 API for creating an AI session
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -787,7 +851,11 @@ func (client *Client) CreateAIStaffConversation(request *CreateAIStaffConversati
 
 // Summary:
 //
-// 创建应用助手智能体
+// # Create Application Assistant Agent
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppAssistantAgentRequest
 //
@@ -839,7 +907,11 @@ func (client *Client) CreateAppAssistantAgentWithOptions(request *CreateAppAssis
 
 // Summary:
 //
-// 创建应用助手智能体
+// # Create Application Assistant Agent
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppAssistantAgentRequest
 //
@@ -857,7 +929,11 @@ func (client *Client) CreateAppAssistantAgent(request *CreateAppAssistantAgentRe
 
 // Summary:
 //
-// 生成应用助手SSO免登
+// # Generate application assistant SSO logon
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -909,7 +985,11 @@ func (client *Client) CreateAppAssistantAgentSsoLoginWithOptions(request *Create
 
 // Summary:
 //
-// 生成应用助手SSO免登
+// # Generate application assistant SSO logon
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -927,7 +1007,7 @@ func (client *Client) CreateAppAssistantAgentSsoLogin(request *CreateAppAssistan
 
 // Summary:
 //
-// 万小智发起AI对话
+// # Wan Xiaozhi initiates an AI conversation
 //
 // @param request - CreateAppChatRequest
 //
@@ -942,7 +1022,7 @@ func (client *Client) CreateAppChatWithSSE(request *CreateAppChatRequest, runtim
 
 // Summary:
 //
-// 万小智发起AI对话
+// # Wan Xiaozhi initiates an AI conversation
 //
 // @param request - CreateAppChatRequest
 //
@@ -1002,7 +1082,7 @@ func (client *Client) CreateAppChatWithOptions(request *CreateAppChatRequest, ru
 
 // Summary:
 //
-// 万小智发起AI对话
+// # Wan Xiaozhi initiates an AI conversation
 //
 // @param request - CreateAppChatRequest
 //
@@ -1216,7 +1296,11 @@ func (client *Client) CreateAppInstanceTicket(request *CreateAppInstanceTicketRe
 
 // Summary:
 //
-// 应用实例创建 LLM 网关 API-KEY
+// # Create an LLM gateway API key for an application instance
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppLlmApiKeyForPartnerRequest
 //
@@ -1272,7 +1356,11 @@ func (client *Client) CreateAppLlmApiKeyForPartnerWithOptions(request *CreateApp
 
 // Summary:
 //
-// 应用实例创建 LLM 网关 API-KEY
+// # Create an LLM gateway API key for an application instance
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppLlmApiKeyForPartnerRequest
 //
@@ -1290,7 +1378,11 @@ func (client *Client) CreateAppLlmApiKeyForPartner(request *CreateAppLlmApiKeyFo
 
 // Summary:
 //
-// # Activate the Wanxiaozhi Inspiration Value service
+// # Activate the Wanxiao Zhi Inspiration Value service
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppTokenServiceRequest
 //
@@ -1334,7 +1426,11 @@ func (client *Client) CreateAppTokenServiceWithOptions(request *CreateAppTokenSe
 
 // Summary:
 //
-// # Activate the Wanxiaozhi Inspiration Value service
+// # Activate the Wanxiao Zhi Inspiration Value service
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - CreateAppTokenServiceRequest
 //
@@ -1352,7 +1448,7 @@ func (client *Client) CreateAppTokenService(request *CreateAppTokenServiceReques
 
 // Summary:
 //
-// 提交创建Logo任务
+// Commit a job to create a logo.
 //
 // @param request - CreateLogoTaskRequest
 //
@@ -1408,7 +1504,7 @@ func (client *Client) CreateLogoTaskWithOptions(request *CreateLogoTaskRequest, 
 
 // Summary:
 //
-// 提交创建Logo任务
+// Commit a job to create a logo.
 //
 // @param request - CreateLogoTaskRequest
 //
@@ -1426,7 +1522,7 @@ func (client *Client) CreateLogoTask(request *CreateLogoTaskRequest) (_result *C
 
 // Summary:
 //
-// 创建素材中心文件夹
+// Create a subfolder under the parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -1478,7 +1574,7 @@ func (client *Client) CreateMaterialDirectoryWithOptions(request *CreateMaterial
 
 // Summary:
 //
-// 创建素材中心文件夹
+// Create a subfolder under the parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -1630,6 +1726,10 @@ func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRe
 //
 // 删除文件
 //
+// Description:
+//
+// 查询应用实例信息
+//
 // @param request - DeleteAppFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1678,6 +1778,10 @@ func (client *Client) DeleteAppFileWithOptions(request *DeleteAppFileRequest, ru
 //
 // 删除文件
 //
+// Description:
+//
+// 查询应用实例信息
+//
 // @param request - DeleteAppFileRequest
 //
 // @return DeleteAppFileResponse
@@ -1694,7 +1798,11 @@ func (client *Client) DeleteAppFile(request *DeleteAppFileRequest) (_result *Del
 
 // Summary:
 //
-// 删除文件
+// # Delete file
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - DeleteAppInstanceFileRequest
 //
@@ -1742,7 +1850,11 @@ func (client *Client) DeleteAppInstanceFileWithOptions(request *DeleteAppInstanc
 
 // Summary:
 //
-// 删除文件
+// # Delete file
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - DeleteAppInstanceFileRequest
 //
@@ -1760,7 +1872,11 @@ func (client *Client) DeleteAppInstanceFile(request *DeleteAppInstanceFileReques
 
 // Summary:
 //
-// 删除Supabase密钥
+// # Delete Supabase key
+//
+// Description:
+//
+// # Operation resource corresponds to the supabase instance information
 //
 // @param request - DeleteAppSupabaseSecretsRequest
 //
@@ -1808,7 +1924,11 @@ func (client *Client) DeleteAppSupabaseSecretsWithOptions(request *DeleteAppSupa
 
 // Summary:
 //
-// 删除Supabase密钥
+// # Delete Supabase key
+//
+// Description:
+//
+// # Operation resource corresponds to the supabase instance information
 //
 // @param request - DeleteAppSupabaseSecretsRequest
 //
@@ -1826,7 +1946,7 @@ func (client *Client) DeleteAppSupabaseSecrets(request *DeleteAppSupabaseSecrets
 
 // Summary:
 //
-// 删除素材中心文件夹
+// # Delete a material folder
 //
 // @param request - DeleteMaterialDirectoryRequest
 //
@@ -1874,7 +1994,7 @@ func (client *Client) DeleteMaterialDirectoryWithOptions(request *DeleteMaterial
 
 // Summary:
 //
-// 删除素材中心文件夹
+// # Delete a material folder
 //
 // @param request - DeleteMaterialDirectoryRequest
 //
@@ -1892,7 +2012,7 @@ func (client *Client) DeleteMaterialDirectory(request *DeleteMaterialDirectoryRe
 
 // Summary:
 //
-// 删除素材生产任务
+// # Delete Material Generation Job
 //
 // @param tmpReq - DeleteMaterialTaskRequest
 //
@@ -1942,7 +2062,7 @@ func (client *Client) DeleteMaterialTaskWithOptions(tmpReq *DeleteMaterialTaskRe
 
 // Summary:
 //
-// 删除素材生产任务
+// # Delete Material Generation Job
 //
 // @param request - DeleteMaterialTaskRequest
 //
@@ -2108,7 +2228,7 @@ func (client *Client) DispatchConsoleAPIForPartner(request *DispatchConsoleAPIFo
 
 // Summary:
 //
-// 编辑插件配置
+// Edit plugin configuration.
 //
 // @param request - EditPluginConfigRequest
 //
@@ -2168,7 +2288,7 @@ func (client *Client) EditPluginConfigWithOptions(request *EditPluginConfigReque
 
 // Summary:
 //
-// 编辑插件配置
+// Edit plugin configuration.
 //
 // @param request - EditPluginConfigRequest
 //
@@ -2186,7 +2306,7 @@ func (client *Client) EditPluginConfig(request *EditPluginConfigRequest) (_resul
 
 // Summary:
 //
-// 导出素材文件
+// # Export material files
 //
 // @param tmpReq - ExportMaterialFileRequest
 //
@@ -2240,7 +2360,7 @@ func (client *Client) ExportMaterialFileWithOptions(tmpReq *ExportMaterialFileRe
 
 // Summary:
 //
-// 导出素材文件
+// # Export material files
 //
 // @param request - ExportMaterialFileRequest
 //
@@ -2258,7 +2378,11 @@ func (client *Client) ExportMaterialFile(request *ExportMaterialFileRequest) (_r
 
 // Summary:
 //
-// 获取AI员工站点预览地址
+// # WanXiaoZhi 2.0 - Obtain Site Preview URL
+//
+// Description:
+//
+// # WanXiaoZhi 2.0 - Obtain Site Preview URL
 //
 // @param request - GetAIStaffPreviewUrlRequest
 //
@@ -2306,7 +2430,11 @@ func (client *Client) GetAIStaffPreviewUrlWithOptions(request *GetAIStaffPreview
 
 // Summary:
 //
-// 获取AI员工站点预览地址
+// # WanXiaoZhi 2.0 - Obtain Site Preview URL
+//
+// Description:
+//
+// # WanXiaoZhi 2.0 - Obtain Site Preview URL
 //
 // @param request - GetAIStaffPreviewUrlRequest
 //
@@ -2324,7 +2452,11 @@ func (client *Client) GetAIStaffPreviewUrl(request *GetAIStaffPreviewUrlRequest)
 
 // Summary:
 //
-// 获取代码工作区详情
+// # Retrieve code workspace details
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -2368,7 +2500,11 @@ func (client *Client) GetAppCodeWorkspaceDetailWithOptions(request *GetAppCodeWo
 
 // Summary:
 //
-// 获取代码工作区详情
+// # Retrieve code workspace details
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -2386,7 +2522,11 @@ func (client *Client) GetAppCodeWorkspaceDetail(request *GetAppCodeWorkspaceDeta
 
 // Summary:
 //
-// 获取对话详情
+// # Retrieve conversation details
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 API for creating an AI session
 //
 // @param request - GetAppConversationRequest
 //
@@ -2434,7 +2574,11 @@ func (client *Client) GetAppConversationWithOptions(request *GetAppConversationR
 
 // Summary:
 //
-// 获取对话详情
+// # Retrieve conversation details
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 API for creating an AI session
 //
 // @param request - GetAppConversationRequest
 //
@@ -2452,7 +2596,11 @@ func (client *Client) GetAppConversation(request *GetAppConversationRequest) (_r
 
 // Summary:
 //
-// 获取会话锁定状态
+// # Obtain session lock status
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 API for creating AI sessions
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -2496,7 +2644,11 @@ func (client *Client) GetAppConversationLockStatusWithOptions(request *GetAppCon
 
 // Summary:
 //
-// 获取会话锁定状态
+// # Obtain session lock status
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 API for creating AI sessions
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -2515,6 +2667,10 @@ func (client *Client) GetAppConversationLockStatus(request *GetAppConversationLo
 // Summary:
 //
 // 查询数据库表结构
+//
+// Description:
+//
+// 查询应用实例信息
 //
 // @param request - GetAppDatabaseTableSchemasRequest
 //
@@ -2564,6 +2720,10 @@ func (client *Client) GetAppDatabaseTableSchemasWithOptions(request *GetAppDatab
 //
 // 查询数据库表结构
 //
+// Description:
+//
+// 查询应用实例信息
+//
 // @param request - GetAppDatabaseTableSchemasRequest
 //
 // @return GetAppDatabaseTableSchemasResponse
@@ -2581,6 +2741,10 @@ func (client *Client) GetAppDatabaseTableSchemas(request *GetAppDatabaseTableSch
 // Summary:
 //
 // 读取文件及修改时间
+//
+// Description:
+//
+// 获取生码插件配置信息
 //
 // @param request - GetAppFileContentRequest
 //
@@ -2629,6 +2793,10 @@ func (client *Client) GetAppFileContentWithOptions(request *GetAppFileContentReq
 // Summary:
 //
 // 读取文件及修改时间
+//
+// Description:
+//
+// 获取生码插件配置信息
 //
 // @param request - GetAppFileContentRequest
 //
@@ -2710,6 +2878,10 @@ func (client *Client) GetAppInstance(request *GetAppInstanceRequest) (_result *G
 //
 // # GetAppInstanceEntitlement
 //
+// Description:
+//
+// # Query application instance information
+//
 // @param request - GetAppInstanceEntitlementRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2754,6 +2926,10 @@ func (client *Client) GetAppInstanceEntitlementWithOptions(request *GetAppInstan
 //
 // # GetAppInstanceEntitlement
 //
+// Description:
+//
+// # Query application instance information
+//
 // @param request - GetAppInstanceEntitlementRequest
 //
 // @return GetAppInstanceEntitlementResponse
@@ -2771,6 +2947,10 @@ func (client *Client) GetAppInstanceEntitlement(request *GetAppInstanceEntitleme
 // Summary:
 //
 // # Query application instance information
+//
+// Description:
+//
+// 查询应用实例信息
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -2820,6 +3000,10 @@ func (client *Client) GetAppInstanceForAdminWithOptions(request *GetAppInstanceF
 //
 // # Query application instance information
 //
+// Description:
+//
+// 查询应用实例信息
+//
 // @param request - GetAppInstanceForAdminRequest
 //
 // @return GetAppInstanceForAdminResponse
@@ -2837,6 +3021,10 @@ func (client *Client) GetAppInstanceForAdmin(request *GetAppInstanceForAdminRequ
 // Summary:
 //
 // # Query instance details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -2882,6 +3070,10 @@ func (client *Client) GetAppInstanceForPartnerWithOptions(request *GetAppInstanc
 //
 // # Query instance details
 //
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
+//
 // @param request - GetAppInstanceForPartnerRequest
 //
 // @return GetAppInstanceForPartnerResponse
@@ -2898,7 +3090,11 @@ func (client *Client) GetAppInstanceForPartner(request *GetAppInstanceForPartner
 
 // Summary:
 //
-// 获取应用临时短链
+// # Obtain a temporary short URL for the application
+//
+// Description:
+//
+// # Obtain configuration information of the code generation plugin
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -2942,7 +3138,11 @@ func (client *Client) GetAppInstanceTempShortUrlWithOptions(request *GetAppInsta
 
 // Summary:
 //
-// 获取应用临时短链
+// # Obtain a temporary short URL for the application
+//
+// Description:
+//
+// # Obtain configuration information of the code generation plugin
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -2960,7 +3160,11 @@ func (client *Client) GetAppInstanceTempShortUrl(request *GetAppInstanceTempShor
 
 // Summary:
 //
-// 生码-获取插件配置信息
+// Obtain plugin configuration information.
+//
+// Description:
+//
+// Obtain the configuration information of the code generation plugin.
 //
 // @param request - GetAppPluginConfigRequest
 //
@@ -3008,7 +3212,11 @@ func (client *Client) GetAppPluginConfigWithOptions(request *GetAppPluginConfigR
 
 // Summary:
 //
-// 生码-获取插件配置信息
+// Obtain plugin configuration information.
+//
+// Description:
+//
+// Obtain the configuration information of the code generation plugin.
 //
 // @param request - GetAppPluginConfigRequest
 //
@@ -3026,7 +3234,11 @@ func (client *Client) GetAppPluginConfig(request *GetAppPluginConfigRequest) (_r
 
 // Summary:
 //
-// 发布状态查询
+// # Query publishing status
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -3078,7 +3290,11 @@ func (client *Client) GetAppPublishStatusWithOptions(request *GetAppPublishStatu
 
 // Summary:
 //
-// 发布状态查询
+// # Query publishing status
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -3096,7 +3312,11 @@ func (client *Client) GetAppPublishStatus(request *GetAppPublishStatusRequest) (
 
 // Summary:
 //
-// 查询万小智推荐商品
+// # Query recommended products
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - GetAppRecommendedCommoditiesRequest
 //
@@ -3152,7 +3372,11 @@ func (client *Client) GetAppRecommendedCommoditiesWithOptions(request *GetAppRec
 
 // Summary:
 //
-// 查询万小智推荐商品
+// # Query recommended products
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - GetAppRecommendedCommoditiesRequest
 //
@@ -3170,7 +3394,11 @@ func (client *Client) GetAppRecommendedCommodities(request *GetAppRecommendedCom
 
 // Summary:
 //
-// 需求查询
+// # Requirement query
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - GetAppRequirementRequest
 //
@@ -3214,7 +3442,11 @@ func (client *Client) GetAppRequirementWithOptions(request *GetAppRequirementReq
 
 // Summary:
 //
-// 需求查询
+// # Requirement query
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - GetAppRequirementRequest
 //
@@ -3232,7 +3464,11 @@ func (client *Client) GetAppRequirement(request *GetAppRequirementRequest) (_res
 
 // Summary:
 //
-// 获取沙箱预览地址
+// # Obtain sandbox preview URL
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - Obtain site preview URL
 //
 // @param request - GetAppSandboxPreviewUrlRequest
 //
@@ -3280,7 +3516,11 @@ func (client *Client) GetAppSandboxPreviewUrlWithOptions(request *GetAppSandboxP
 
 // Summary:
 //
-// 获取沙箱预览地址
+// # Obtain sandbox preview URL
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - Obtain site preview URL
 //
 // @param request - GetAppSandboxPreviewUrlRequest
 //
@@ -3298,7 +3538,11 @@ func (client *Client) GetAppSandboxPreviewUrl(request *GetAppSandboxPreviewUrlRe
 
 // Summary:
 //
-// 查询SEO索引状态
+// # Query SEO index status
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppSeoStatusRequest
 //
@@ -3350,7 +3594,11 @@ func (client *Client) GetAppSeoStatusWithOptions(request *GetAppSeoStatusRequest
 
 // Summary:
 //
-// 查询SEO索引状态
+// # Query SEO index status
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppSeoStatusRequest
 //
@@ -3368,7 +3616,11 @@ func (client *Client) GetAppSeoStatus(request *GetAppSeoStatusRequest) (_result 
 
 // Summary:
 //
-// # SEO索引图表
+// # SEO Index Chart
+//
+// Description:
+//
+// # Obtain plugin configuration information
 //
 // @param request - GetAppSeoTrendsRequest
 //
@@ -3420,7 +3672,11 @@ func (client *Client) GetAppSeoTrendsWithOptions(request *GetAppSeoTrendsRequest
 
 // Summary:
 //
-// # SEO索引图表
+// # SEO Index Chart
+//
+// Description:
+//
+// # Obtain plugin configuration information
 //
 // @param request - GetAppSeoTrendsRequest
 //
@@ -3438,7 +3694,11 @@ func (client *Client) GetAppSeoTrends(request *GetAppSeoTrendsRequest) (_result 
 
 // Summary:
 //
-// 获取站点地图
+// # Retrieve site map
+//
+// Description:
+//
+// # Retrieve QR code plugin configuration information
 //
 // @param request - GetAppSitemapRequest
 //
@@ -3490,7 +3750,11 @@ func (client *Client) GetAppSitemapWithOptions(request *GetAppSitemapRequest, ru
 
 // Summary:
 //
-// 获取站点地图
+// # Retrieve site map
+//
+// Description:
+//
+// # Retrieve QR code plugin configuration information
 //
 // @param request - GetAppSitemapRequest
 //
@@ -3508,7 +3772,11 @@ func (client *Client) GetAppSitemap(request *GetAppSitemapRequest) (_result *Get
 
 // Summary:
 //
-// # Supabase认证设置查询
+// # Query Supabase authentication settings
+//
+// Description:
+//
+// Query the auth configuration information of the Supabase instance corresponding to the resource.
 //
 // @param request - GetAppSupabaseAuthConfigRequest
 //
@@ -3556,7 +3824,11 @@ func (client *Client) GetAppSupabaseAuthConfigWithOptions(request *GetAppSupabas
 
 // Summary:
 //
-// # Supabase认证设置查询
+// # Query Supabase authentication settings
+//
+// Description:
+//
+// Query the auth configuration information of the Supabase instance corresponding to the resource.
 //
 // @param request - GetAppSupabaseAuthConfigRequest
 //
@@ -3574,7 +3846,11 @@ func (client *Client) GetAppSupabaseAuthConfig(request *GetAppSupabaseAuthConfig
 
 // Summary:
 //
-// 获取Supabase实例信息
+// # Obtain Supabase instance information
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - GetAppSupabaseInstanceRequest
 //
@@ -3618,7 +3894,11 @@ func (client *Client) GetAppSupabaseInstanceWithOptions(request *GetAppSupabaseI
 
 // Summary:
 //
-// 获取Supabase实例信息
+// # Obtain Supabase instance information
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - GetAppSupabaseInstanceRequest
 //
@@ -3636,7 +3916,11 @@ func (client *Client) GetAppSupabaseInstance(request *GetAppSupabaseInstanceRequ
 
 // Summary:
 //
-// 查询Supabase密钥
+// # Query Supabase keys
+//
+// Description:
+//
+// # The supabase instance information corresponding to the operated resource
 //
 // @param request - GetAppSupabaseSecretsRequest
 //
@@ -3684,7 +3968,11 @@ func (client *Client) GetAppSupabaseSecretsWithOptions(request *GetAppSupabaseSe
 
 // Summary:
 //
-// 查询Supabase密钥
+// # Query Supabase keys
+//
+// Description:
+//
+// # The supabase instance information corresponding to the operated resource
 //
 // @param request - GetAppSupabaseSecretsRequest
 //
@@ -3702,7 +3990,11 @@ func (client *Client) GetAppSupabaseSecrets(request *GetAppSupabaseSecretsReques
 
 // Summary:
 //
-// 模板详情查询
+// # Query template details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppTemplateRequest
 //
@@ -3746,7 +4038,11 @@ func (client *Client) GetAppTemplateWithOptions(request *GetAppTemplateRequest, 
 
 // Summary:
 //
-// 模板详情查询
+// # Query template details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - GetAppTemplateRequest
 //
@@ -3764,7 +4060,11 @@ func (client *Client) GetAppTemplate(request *GetAppTemplateRequest) (_result *G
 
 // Summary:
 //
-// 查询万小智灵感值服务
+// # Query the Wan Xiaozhi Inspiration Value service
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3793,7 +4093,11 @@ func (client *Client) GetAppTokenServiceWithOptions(runtime *dara.RuntimeOptions
 
 // Summary:
 //
-// 查询万小智灵感值服务
+// # Query the Wan Xiaozhi Inspiration Value service
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @return GetAppTokenServiceResponse
 func (client *Client) GetAppTokenService() (_result *GetAppTokenServiceResponse, _err error) {
@@ -3809,7 +4113,11 @@ func (client *Client) GetAppTokenService() (_result *GetAppTokenServiceResponse,
 
 // Summary:
 //
-// 获取工作区目录结构
+// # Obtain the workspace directory structure
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -3861,7 +4169,11 @@ func (client *Client) GetAppWorkspaceDirectoryWithOptions(request *GetAppWorkspa
 
 // Summary:
 //
-// 获取工作区目录结构
+// # Obtain the workspace directory structure
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -3879,7 +4191,7 @@ func (client *Client) GetAppWorkspaceDirectory(request *GetAppWorkspaceDirectory
 
 // Summary:
 //
-// 查询Logo创建任务
+// # Query the Logo creation job
 //
 // @param request - GetCreateLogoTaskRequest
 //
@@ -3923,7 +4235,7 @@ func (client *Client) GetCreateLogoTaskWithOptions(request *GetCreateLogoTaskReq
 
 // Summary:
 //
-// 查询Logo创建任务
+// # Query the Logo creation job
 //
 // @param request - GetCreateLogoTaskRequest
 //
@@ -3941,7 +4253,7 @@ func (client *Client) GetCreateLogoTask(request *GetCreateLogoTaskRequest) (_res
 
 // Summary:
 //
-// 提供给服务商的域名查询接口
+// # Domain name query API provided to service providers
 //
 // @param request - GetDomainInfoForPartnerRequest
 //
@@ -3993,7 +4305,7 @@ func (client *Client) GetDomainInfoForPartnerWithOptions(request *GetDomainInfoF
 
 // Summary:
 //
-// 提供给服务商的域名查询接口
+// # Domain name query API provided to service providers
 //
 // @param request - GetDomainInfoForPartnerRequest
 //
@@ -4011,7 +4323,7 @@ func (client *Client) GetDomainInfoForPartner(request *GetDomainInfoForPartnerRe
 
 // Summary:
 //
-// 查询域名备案信息
+// # Query ICP filing information of a domain name
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
 //
@@ -4059,7 +4371,7 @@ func (client *Client) GetIcpFilingInfoForPartnerWithOptions(request *GetIcpFilin
 
 // Summary:
 //
-// 查询域名备案信息
+// # Query ICP filing information of a domain name
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
 //
@@ -4077,7 +4389,11 @@ func (client *Client) GetIcpFilingInfoForPartner(request *GetIcpFilingInfoForPar
 
 // Summary:
 //
-// 查询LLM Proxy配置
+// # Query LLM Proxy configuration
+//
+// Description:
+//
+// Query the Supabase instance configuration information corresponding to the resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -4125,7 +4441,11 @@ func (client *Client) GetLlmProxyConfigForAdminWithOptions(request *GetLlmProxyC
 
 // Summary:
 //
-// 查询LLM Proxy配置
+// # Query LLM Proxy configuration
+//
+// Description:
+//
+// Query the Supabase instance configuration information corresponding to the resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -4143,7 +4463,7 @@ func (client *Client) GetLlmProxyConfigForAdmin(request *GetLlmProxyConfigForAdm
 
 // Summary:
 //
-// 获取小程序授权链接
+// # Obtain miniapp authorization link
 //
 // @param request - GetMiniAppAuthUrlRequest
 //
@@ -4195,7 +4515,7 @@ func (client *Client) GetMiniAppAuthUrlWithOptions(request *GetMiniAppAuthUrlReq
 
 // Summary:
 //
-// 获取小程序授权链接
+// # Obtain miniapp authorization link
 //
 // @param request - GetMiniAppAuthUrlRequest
 //
@@ -4213,7 +4533,11 @@ func (client *Client) GetMiniAppAuthUrl(request *GetMiniAppAuthUrlRequest) (_res
 
 // Summary:
 //
-// 查询站点绑定的小程序
+// # Query the miniapp attached to a site
+//
+// Description:
+//
+// # Obtain the QR code plugin configuration information
 //
 // @param tmpReq - GetMiniAppBindingRequest
 //
@@ -4271,7 +4595,11 @@ func (client *Client) GetMiniAppBindingWithOptions(tmpReq *GetMiniAppBindingRequ
 
 // Summary:
 //
-// 查询站点绑定的小程序
+// # Query the miniapp attached to a site
+//
+// Description:
+//
+// # Obtain the QR code plugin configuration information
 //
 // @param request - GetMiniAppBindingRequest
 //
@@ -4289,7 +4617,7 @@ func (client *Client) GetMiniAppBinding(request *GetMiniAppBindingRequest) (_res
 
 // Summary:
 //
-// 根据条件查询应用实例绑定的小程序
+// # Query the miniapp attached to an application instance based on conditions
 //
 // @param request - GetMiniAppBindingForAdminRequest
 //
@@ -4341,7 +4669,7 @@ func (client *Client) GetMiniAppBindingForAdminWithOptions(request *GetMiniAppBi
 
 // Summary:
 //
-// 根据条件查询应用实例绑定的小程序
+// # Query the miniapp attached to an application instance based on conditions
 //
 // @param request - GetMiniAppBindingForAdminRequest
 //
@@ -4360,6 +4688,10 @@ func (client *Client) GetMiniAppBindingForAdmin(request *GetMiniAppBindingForAdm
 // Summary:
 //
 // 生成文件上传策略
+//
+// Description:
+//
+// 获取生码插件配置信息
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -4405,6 +4737,10 @@ func (client *Client) GetOssUploadPolicyWithOptions(request *GetOssUploadPolicyR
 //
 // 生成文件上传策略
 //
+// Description:
+//
+// 获取生码插件配置信息
+//
 // @param request - GetOssUploadPolicyRequest
 //
 // @return GetOssUploadPolicyResponse
@@ -4422,6 +4758,10 @@ func (client *Client) GetOssUploadPolicy(request *GetOssUploadPolicyRequest) (_r
 // Summary:
 //
 // 获取临时下载地址
+//
+// Description:
+//
+// 获取生码插件配置信息
 //
 // @param request - GetTempDownloadUrlRequest
 //
@@ -4467,6 +4807,10 @@ func (client *Client) GetTempDownloadUrlWithOptions(request *GetTempDownloadUrlR
 //
 // 获取临时下载地址
 //
+// Description:
+//
+// 获取生码插件配置信息
+//
 // @param request - GetTempDownloadUrlRequest
 //
 // @return GetTempDownloadUrlResponse
@@ -4483,7 +4827,7 @@ func (client *Client) GetTempDownloadUrl(request *GetTempDownloadUrlRequest) (_r
 
 // Summary:
 //
-// 通过授权码得到accessToken
+// # Exchange temporary AccessKey for accessToken
 //
 // @param request - GetUserAccessTokenForPartnerRequest
 //
@@ -4531,7 +4875,7 @@ func (client *Client) GetUserAccessTokenForPartnerWithOptions(request *GetUserAc
 
 // Summary:
 //
-// 通过授权码得到accessToken
+// # Exchange temporary AccessKey for accessToken
 //
 // @param request - GetUserAccessTokenForPartnerRequest
 //
@@ -4549,7 +4893,7 @@ func (client *Client) GetUserAccessTokenForPartner(request *GetUserAccessTokenFo
 
 // Summary:
 //
-// 合作伙伴获取用户SLR角色授权临时凭证
+// # Partnership obtains temporary credentials for User SLR role authorization
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
 //
@@ -4609,7 +4953,7 @@ func (client *Client) GetUserTmpIdentityForPartnerWithOptions(request *GetUserTm
 
 // Summary:
 //
-// 合作伙伴获取用户SLR角色授权临时凭证
+// # Partnership obtains temporary credentials for User SLR role authorization
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
 //
@@ -4627,7 +4971,7 @@ func (client *Client) GetUserTmpIdentityForPartner(request *GetUserTmpIdentityFo
 
 // Summary:
 //
-// 检查AccessToken
+// # Introspection analysis of免登 accessToken
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
 //
@@ -4675,7 +5019,7 @@ func (client *Client) IntrospectAppInstanceTicketForPreviewWithOptions(request *
 
 // Summary:
 //
-// 检查AccessToken
+// # Introspection analysis of免登 accessToken
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
 //
@@ -4693,7 +5037,11 @@ func (client *Client) IntrospectAppInstanceTicketForPreview(request *IntrospectA
 
 // Summary:
 //
-// 获取AI员工对话增量SSE事件
+// # Obtain incremental SSE events of AI employee conversations
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 – Retrieve streaming output results of AI sessions
 //
 // @param request - ListAIStaffChatEventsRequest
 //
@@ -4751,7 +5099,11 @@ func (client *Client) ListAIStaffChatEventsWithOptions(request *ListAIStaffChatE
 
 // Summary:
 //
-// 获取AI员工对话增量SSE事件
+// # Obtain incremental SSE events of AI employee conversations
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 – Retrieve streaming output results of AI sessions
 //
 // @param request - ListAIStaffChatEventsRequest
 //
@@ -4769,7 +5121,11 @@ func (client *Client) ListAIStaffChatEvents(request *ListAIStaffChatEventsReques
 
 // Summary:
 //
-// 分页查询AI员工对话消息列表
+// # Paged query of AI employee conversation message list
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - API for querying AI session history information
 //
 // @param request - ListAIStaffChatMessagesRequest
 //
@@ -4827,7 +5183,11 @@ func (client *Client) ListAIStaffChatMessagesWithOptions(request *ListAIStaffCha
 
 // Summary:
 //
-// 分页查询AI员工对话消息列表
+// # Paged query of AI employee conversation message list
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - API for querying AI session history information
 //
 // @param request - ListAIStaffChatMessagesRequest
 //
@@ -4845,7 +5205,11 @@ func (client *Client) ListAIStaffChatMessages(request *ListAIStaffChatMessagesRe
 
 // Summary:
 //
-// 查询应用助手智能体列表
+// # Query the list of application assistant agents
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - ListAppAssistantAgentsRequest
 //
@@ -4893,7 +5257,11 @@ func (client *Client) ListAppAssistantAgentsWithOptions(request *ListAppAssistan
 
 // Summary:
 //
-// 查询应用助手智能体列表
+// # Query the list of application assistant agents
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - ListAppAssistantAgentsRequest
 //
@@ -4911,7 +5279,11 @@ func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequ
 
 // Summary:
 //
-// 查询指定聊天的消息列表
+// # Query the message list of a specified chat
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - AI session history information query API
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -4971,7 +5343,11 @@ func (client *Client) ListAppChatMessagesWithOptions(request *ListAppChatMessage
 
 // Summary:
 //
-// 查询指定聊天的消息列表
+// # Query the message list of a specified chat
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - AI session history information query API
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -4991,7 +5367,11 @@ func (client *Client) ListAppChatMessages(request *ListAppChatMessagesRequest) (
 //
 // Summary:
 //
-// 获取商品配置信息
+// # Product information data
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -5023,7 +5403,11 @@ func (client *Client) ListAppCommoditySpecificationsForPartnerWithOptions(runtim
 //
 // Summary:
 //
-// 获取商品配置信息
+// # Product information data
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @return ListAppCommoditySpecificationsForPartnerResponse
 // Deprecated
@@ -5040,7 +5424,11 @@ func (client *Client) ListAppCommoditySpecificationsForPartner() (_result *ListA
 
 // Summary:
 //
-// 网站信息查询
+// # Query website building product details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
 //
@@ -5088,7 +5476,11 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartnerWithOptions(requ
 
 // Summary:
 //
-// 网站信息查询
+// # Query website building product details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
 //
@@ -5106,7 +5498,11 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartner(request *ListAp
 
 // Summary:
 //
-// 分页查询对话消息列表
+// # Paged query of conversation message list
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - AI session history information query API
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -5170,7 +5566,11 @@ func (client *Client) ListAppConversationMessagesWithOptions(request *ListAppCon
 
 // Summary:
 //
-// 分页查询对话消息列表
+// # Paged query of conversation message list
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - AI session history information query API
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -5188,7 +5588,11 @@ func (client *Client) ListAppConversationMessages(request *ListAppConversationMe
 
 // Summary:
 //
-// 搜索对话列表
+// # Search session list
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 Create AI Session API
 //
 // @param request - ListAppConversationsRequest
 //
@@ -5260,7 +5664,11 @@ func (client *Client) ListAppConversationsWithOptions(request *ListAppConversati
 
 // Summary:
 //
-// 搜索对话列表
+// # Search session list
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 Create AI Session API
 //
 // @param request - ListAppConversationsRequest
 //
@@ -5550,7 +5958,11 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 
 // Summary:
 //
-// 获取码农插件配置列表
+// # Retrieve the list of Code Farmer plugin configurations
+//
+// Description:
+//
+// # Retrieve the configuration information of the code generation plugin
 //
 // @param request - ListAppPluginConfigsRequest
 //
@@ -5602,7 +6014,11 @@ func (client *Client) ListAppPluginConfigsWithOptions(request *ListAppPluginConf
 
 // Summary:
 //
-// 获取码农插件配置列表
+// # Retrieve the list of Code Farmer plugin configurations
+//
+// Description:
+//
+// # Retrieve the configuration information of the code generation plugin
 //
 // @param request - ListAppPluginConfigsRequest
 //
@@ -5620,7 +6036,11 @@ func (client *Client) ListAppPluginConfigs(request *ListAppPluginConfigsRequest)
 
 // Summary:
 //
-// 应用插件列表
+// # List of code generation plugins
+//
+// Description:
+//
+// # Obtain configuration information of code generation plugins
 //
 // @param request - ListAppPluginsRequest
 //
@@ -5680,7 +6100,11 @@ func (client *Client) ListAppPluginsWithOptions(request *ListAppPluginsRequest, 
 
 // Summary:
 //
-// 应用插件列表
+// # List of code generation plugins
+//
+// Description:
+//
+// # Obtain configuration information of code generation plugins
 //
 // @param request - ListAppPluginsRequest
 //
@@ -5698,7 +6122,11 @@ func (client *Client) ListAppPlugins(request *ListAppPluginsRequest) (_result *L
 
 // Summary:
 //
-// 发布历史查询
+// # Query publish history
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - ListAppPublishHistoryRequest
 //
@@ -5741,12 +6169,20 @@ func (client *Client) ListAppPublishHistoryWithOptions(request *ListAppPublishHi
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.PublishEnv) {
+		query["PublishEnv"] = request.PublishEnv
+	}
+
 	if !dara.IsNil(request.Sort) {
 		query["Sort"] = request.Sort
 	}
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Subchannel) {
+		query["Subchannel"] = request.Subchannel
 	}
 
 	if !dara.IsNil(request.WebsiteDomain) {
@@ -5778,7 +6214,11 @@ func (client *Client) ListAppPublishHistoryWithOptions(request *ListAppPublishHi
 
 // Summary:
 //
-// 发布历史查询
+// # Query publish history
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - ListAppPublishHistoryRequest
 //
@@ -5796,7 +6236,11 @@ func (client *Client) ListAppPublishHistory(request *ListAppPublishHistoryReques
 
 // Summary:
 //
-// 字典列表查询
+// # Query dictionary list
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - ListAppTemplateDictsRequest
 //
@@ -5848,7 +6292,11 @@ func (client *Client) ListAppTemplateDictsWithOptions(request *ListAppTemplateDi
 
 // Summary:
 //
-// 字典列表查询
+// # Query dictionary list
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - ListAppTemplateDictsRequest
 //
@@ -5866,7 +6314,11 @@ func (client *Client) ListAppTemplateDicts(request *ListAppTemplateDictsRequest)
 
 // Summary:
 //
-// 模板列表查询
+// # Query template list
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - ListAppTemplatesRequest
 //
@@ -5946,7 +6398,11 @@ func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesReque
 
 // Summary:
 //
-// 模板列表查询
+// # Query template list
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - ListAppTemplatesRequest
 //
@@ -5964,7 +6420,11 @@ func (client *Client) ListAppTemplates(request *ListAppTemplatesRequest) (_resul
 
 // Summary:
 //
-// 查询支付宝ISV插件配置
+// # Query Alipay ISV plugin configuration
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - ListIsvPaymentPluginConfigsRequest
 //
@@ -6016,7 +6476,11 @@ func (client *Client) ListIsvPaymentPluginConfigsWithOptions(request *ListIsvPay
 
 // Summary:
 //
-// 查询支付宝ISV插件配置
+// # Query Alipay ISV plugin configuration
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - ListIsvPaymentPluginConfigsRequest
 //
@@ -6120,7 +6584,7 @@ func (client *Client) ModifyAppInstanceSpec(request *ModifyAppInstanceSpecReques
 
 // Summary:
 //
-// 修改素材中心文件夹
+// # Modify a material folder
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -6172,7 +6636,7 @@ func (client *Client) ModifyMaterialDirectoryWithOptions(request *ModifyMaterial
 
 // Summary:
 //
-// 修改素材中心文件夹
+// # Modify a material folder
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -6190,7 +6654,7 @@ func (client *Client) ModifyMaterialDirectory(request *ModifyMaterialDirectoryRe
 
 // Summary:
 //
-// 修改素材文件
+// # Modify a material file
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -6242,7 +6706,7 @@ func (client *Client) ModifyMaterialFileWithOptions(request *ModifyMaterialFileR
 
 // Summary:
 //
-// 修改素材文件
+// # Modify a material file
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -6260,7 +6724,7 @@ func (client *Client) ModifyMaterialFile(request *ModifyMaterialFileRequest) (_r
 
 // Summary:
 //
-// 修改素材文件状态
+// # Modify the status of a material file
 //
 // @param tmpReq - ModifyMaterialFileStatusRequest
 //
@@ -6318,7 +6782,7 @@ func (client *Client) ModifyMaterialFileStatusWithOptions(tmpReq *ModifyMaterial
 
 // Summary:
 //
-// 修改素材文件状态
+// # Modify the status of a material file
 //
 // @param request - ModifyMaterialFileStatusRequest
 //
@@ -6336,7 +6800,7 @@ func (client *Client) ModifyMaterialFileStatus(request *ModifyMaterialFileStatus
 
 // Summary:
 //
-// 移动素材中心文件夹
+// # Shift material folder
 //
 // @param request - MoveMaterialDirectoryRequest
 //
@@ -6392,7 +6856,7 @@ func (client *Client) MoveMaterialDirectoryWithOptions(request *MoveMaterialDire
 
 // Summary:
 //
-// 移动素材中心文件夹
+// # Shift material folder
 //
 // @param request - MoveMaterialDirectoryRequest
 //
@@ -6410,7 +6874,7 @@ func (client *Client) MoveMaterialDirectory(request *MoveMaterialDirectoryReques
 
 // Summary:
 //
-// 移动素材文件
+// # Shift material files
 //
 // @param tmpReq - MoveMaterialFileRequest
 //
@@ -6468,7 +6932,7 @@ func (client *Client) MoveMaterialFileWithOptions(tmpReq *MoveMaterialFileReques
 
 // Summary:
 //
-// 移动素材文件
+// # Shift material files
 //
 // @param request - MoveMaterialFileRequest
 //
@@ -6486,7 +6950,7 @@ func (client *Client) MoveMaterialFile(request *MoveMaterialFileRequest) (_resul
 
 // Summary:
 //
-// 合作伙伴操作应用
+// # Operate application for Partnership
 //
 // @param request - OperateAppInstanceForPartnerRequest
 //
@@ -6534,7 +6998,7 @@ func (client *Client) OperateAppInstanceForPartnerWithOptions(request *OperateAp
 
 // Summary:
 //
-// 合作伙伴操作应用
+// # Operate application for Partnership
 //
 // @param request - OperateAppInstanceForPartnerRequest
 //
@@ -6552,7 +7016,7 @@ func (client *Client) OperateAppInstanceForPartner(request *OperateAppInstanceFo
 
 // Summary:
 //
-// 合作伙伴操作应用服务
+// Partnership operates application services.
 //
 // @param request - OperateAppServiceForPartnerRequest
 //
@@ -6608,7 +7072,7 @@ func (client *Client) OperateAppServiceForPartnerWithOptions(request *OperateApp
 
 // Summary:
 //
-// 合作伙伴操作应用服务
+// Partnership operates application services.
 //
 // @param request - OperateAppServiceForPartnerRequest
 //
@@ -6626,7 +7090,11 @@ func (client *Client) OperateAppServiceForPartner(request *OperateAppServiceForP
 
 // Summary:
 //
-// 切换模板点赞统计
+// # Switch template like statistics
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - OperateAppTemplateLikeRequest
 //
@@ -6674,7 +7142,11 @@ func (client *Client) OperateAppTemplateLikeWithOptions(request *OperateAppTempl
 
 // Summary:
 //
-// 切换模板点赞统计
+// # Switch template like statistics
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - OperateAppTemplateLikeRequest
 //
@@ -6692,7 +7164,11 @@ func (client *Client) OperateAppTemplateLike(request *OperateAppTemplateLikeRequ
 
 // Summary:
 //
-// 通用Supabase操作
+// # Supabase instance information corresponding to the operation resource
+//
+// Description:
+//
+// # Supabase instance information corresponding to the operation resource
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -6780,7 +7256,11 @@ func (client *Client) OperateSupabaseForAdminWithOptions(request *OperateSupabas
 
 // Summary:
 //
-// 通用Supabase操作
+// # Supabase instance information corresponding to the operation resource
+//
+// Description:
+//
+// # Supabase instance information corresponding to the operation resource
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -6798,7 +7278,11 @@ func (client *Client) OperateSupabaseForAdmin(request *OperateSupabaseForAdminRe
 
 // Summary:
 //
-// 发布应用实例
+// # Publish application instance
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - PublishAppInstanceRequest
 //
@@ -6862,7 +7346,11 @@ func (client *Client) PublishAppInstanceWithOptions(request *PublishAppInstanceR
 
 // Summary:
 //
-// 发布应用实例
+// # Publish application instance
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - PublishAppInstanceRequest
 //
@@ -6880,7 +7368,11 @@ func (client *Client) PublishAppInstance(request *PublishAppInstanceRequest) (_r
 
 // Summary:
 //
-// 推送资源计量数据
+// # Push resource metering data
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - PushResourceMeasureRequest
 //
@@ -6956,7 +7448,11 @@ func (client *Client) PushResourceMeasureWithOptions(request *PushResourceMeasur
 
 // Summary:
 //
-// 推送资源计量数据
+// # Push resource metering data
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - PushResourceMeasureRequest
 //
@@ -6974,7 +7470,11 @@ func (client *Client) PushResourceMeasure(request *PushResourceMeasureRequest) (
 
 // Summary:
 //
-// 查询灵感值获取明细
+// Query the details of inspiration value acquisition (quota account list, including expiration mark)
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - QueryInspirationAccountDetailsRequest
 //
@@ -7042,7 +7542,11 @@ func (client *Client) QueryInspirationAccountDetailsWithOptions(request *QueryIn
 
 // Summary:
 //
-// 查询灵感值获取明细
+// Query the details of inspiration value acquisition (quota account list, including expiration mark)
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - QueryInspirationAccountDetailsRequest
 //
@@ -7060,7 +7564,11 @@ func (client *Client) QueryInspirationAccountDetails(request *QueryInspirationAc
 
 // Summary:
 //
-// 查询灵感值余额总览
+// # Query the overview of inspiration balance
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7089,7 +7597,11 @@ func (client *Client) QueryInspirationBalanceWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// 查询灵感值余额总览
+// # Query the overview of inspiration balance
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @return QueryInspirationBalanceResponse
 func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanceResponse, _err error) {
@@ -7105,7 +7617,11 @@ func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanc
 
 // Summary:
 //
-// 查询灵感值消耗明细
+// # Query inspiration value consumption details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - QueryInspirationConsumeRecordsRequest
 //
@@ -7173,7 +7689,11 @@ func (client *Client) QueryInspirationConsumeRecordsWithOptions(request *QueryIn
 
 // Summary:
 //
-// 查询灵感值消耗明细
+// # Query inspiration value consumption details
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - QueryInspirationConsumeRecordsRequest
 //
@@ -7191,7 +7711,7 @@ func (client *Client) QueryInspirationConsumeRecords(request *QueryInspirationCo
 
 // Summary:
 //
-// 查询素材中心文件夹树结构
+// # Query the material folder tree
 //
 // @param request - QueryMaterialDirectoryTreeRequest
 //
@@ -7243,7 +7763,7 @@ func (client *Client) QueryMaterialDirectoryTreeWithOptions(request *QueryMateri
 
 // Summary:
 //
-// 查询素材中心文件夹树结构
+// # Query the material folder tree
 //
 // @param request - QueryMaterialDirectoryTreeRequest
 //
@@ -7261,7 +7781,7 @@ func (client *Client) QueryMaterialDirectoryTree(request *QueryMaterialDirectory
 
 // Summary:
 //
-// 查询素材文件详情
+// # Query Material File Details
 //
 // @param request - QueryMaterialFileDetailRequest
 //
@@ -7309,7 +7829,7 @@ func (client *Client) QueryMaterialFileDetailWithOptions(request *QueryMaterialF
 
 // Summary:
 //
-// 查询素材文件详情
+// # Query Material File Details
 //
 // @param request - QueryMaterialFileDetailRequest
 //
@@ -7327,7 +7847,7 @@ func (client *Client) QueryMaterialFileDetail(request *QueryMaterialFileDetailRe
 
 // Summary:
 //
-// # Query Material File List
+// # Query the list of material files
 //
 // @param tmpReq - QueryMaterialFileListRequest
 //
@@ -7437,7 +7957,7 @@ func (client *Client) QueryMaterialFileListWithOptions(tmpReq *QueryMaterialFile
 
 // Summary:
 //
-// # Query Material File List
+// # Query the list of material files
 //
 // @param request - QueryMaterialFileListRequest
 //
@@ -7455,7 +7975,7 @@ func (client *Client) QueryMaterialFileList(request *QueryMaterialFileListReques
 
 // Summary:
 //
-// 查询素材中心文件概要信息
+// # Query file overview
 //
 // @param tmpReq - QueryMaterialFileSummaryInfoRequest
 //
@@ -7541,7 +8061,7 @@ func (client *Client) QueryMaterialFileSummaryInfoWithOptions(tmpReq *QueryMater
 
 // Summary:
 //
-// 查询素材中心文件概要信息
+// # Query file overview
 //
 // @param request - QueryMaterialFileSummaryInfoRequest
 //
@@ -7559,7 +8079,7 @@ func (client *Client) QueryMaterialFileSummaryInfo(request *QueryMaterialFileSum
 
 // Summary:
 //
-// 查询素材生产任务详情
+// # Query the details of a Material generation Job
 //
 // @param request - QueryMaterialTaskDetailRequest
 //
@@ -7603,7 +8123,7 @@ func (client *Client) QueryMaterialTaskDetailWithOptions(request *QueryMaterialT
 
 // Summary:
 //
-// 查询素材生产任务详情
+// # Query the details of a Material generation Job
 //
 // @param request - QueryMaterialTaskDetailRequest
 //
@@ -7621,7 +8141,7 @@ func (client *Client) QueryMaterialTaskDetail(request *QueryMaterialTaskDetailRe
 
 // Summary:
 //
-// 查询素材生产任务列表
+// # Query the list of Material generation Jobs
 //
 // @param tmpReq - QueryMaterialTaskListRequest
 //
@@ -7703,7 +8223,7 @@ func (client *Client) QueryMaterialTaskListWithOptions(tmpReq *QueryMaterialTask
 
 // Summary:
 //
-// 查询素材生产任务列表
+// # Query the list of Material generation Jobs
 //
 // @param request - QueryMaterialTaskListRequest
 //
@@ -7721,7 +8241,11 @@ func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListReques
 
 // Summary:
 //
-// 查询Supabase Auth配置信息
+// # Query the auth configuration information of the Supabase instance corresponding to the resource
+//
+// Description:
+//
+// # Query the auth configuration information of the Supabase instance corresponding to the resource
 //
 // @param request - QuerySupabaseAuthConfigsForAdminRequest
 //
@@ -7793,7 +8317,11 @@ func (client *Client) QuerySupabaseAuthConfigsForAdminWithOptions(request *Query
 
 // Summary:
 //
-// 查询Supabase Auth配置信息
+// # Query the auth configuration information of the Supabase instance corresponding to the resource
+//
+// Description:
+//
+// # Query the auth configuration information of the Supabase instance corresponding to the resource
 //
 // @param request - QuerySupabaseAuthConfigsForAdminRequest
 //
@@ -7811,7 +8339,11 @@ func (client *Client) QuerySupabaseAuthConfigsForAdmin(request *QuerySupabaseAut
 
 // Summary:
 //
-// 查询Supabase配置信息
+// Query the Supabase instance configuration information corresponding to the resource.
+//
+// Description:
+//
+// Query the Supabase instance configuration information corresponding to the resource.
 //
 // @param request - QuerySupabaseConfigsForAdminRequest
 //
@@ -7879,7 +8411,11 @@ func (client *Client) QuerySupabaseConfigsForAdminWithOptions(request *QuerySupa
 
 // Summary:
 //
-// 查询Supabase配置信息
+// Query the Supabase instance configuration information corresponding to the resource.
+//
+// Description:
+//
+// Query the Supabase instance configuration information corresponding to the resource.
 //
 // @param request - QuerySupabaseConfigsForAdminRequest
 //
@@ -7897,7 +8433,11 @@ func (client *Client) QuerySupabaseConfigsForAdmin(request *QuerySupabaseConfigs
 
 // Summary:
 //
-// 查询Supabase实例信息
+// # Query the Supabase instance information corresponding to the resource
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -7965,7 +8505,11 @@ func (client *Client) QuerySupabaseInstanceInfoForAdminWithOptions(request *Quer
 
 // Summary:
 //
-// 查询Supabase实例信息
+// # Query the Supabase instance information corresponding to the resource
+//
+// Description:
+//
+// # Query the Supabase instance information corresponding to the resource
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -7983,7 +8527,11 @@ func (client *Client) QuerySupabaseInstanceInfoForAdmin(request *QuerySupabaseIn
 
 // Summary:
 //
-// 重新连接AI对话
+// # Reconnect AI conversation
+//
+// Description:
+//
+// # Obtain QR code plugin Configuration Information
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -7998,7 +8546,11 @@ func (client *Client) ReconnectAppChatWithSSE(request *ReconnectAppChatRequest, 
 
 // Summary:
 //
-// 重新连接AI对话
+// # Reconnect AI conversation
+//
+// Description:
+//
+// # Obtain QR code plugin Configuration Information
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -8050,7 +8602,11 @@ func (client *Client) ReconnectAppChatWithOptions(request *ReconnectAppChatReque
 
 // Summary:
 //
-// 重新连接AI对话
+// # Reconnect AI conversation
+//
+// Description:
+//
+// # Obtain QR code plugin Configuration Information
 //
 // @param request - ReconnectAppChatRequest
 //
@@ -8138,7 +8694,7 @@ func (client *Client) RefreshAppInstanceTicket(request *RefreshAppInstanceTicket
 
 // Summary:
 //
-// 渠道业务退款接口
+// Refund for channel partner website building service.
 //
 // @param request - RefundAppInstanceForPartnerRequest
 //
@@ -8194,7 +8750,7 @@ func (client *Client) RefundAppInstanceForPartnerWithOptions(request *RefundAppI
 
 // Summary:
 //
-// 渠道业务退款接口
+// Refund for channel partner website building service.
 //
 // @param request - RefundAppInstanceForPartnerRequest
 //
@@ -8294,7 +8850,11 @@ func (client *Client) RenewAppInstance(request *RenewAppInstanceRequest) (_resul
 
 // Summary:
 //
-// 续期/刷新沙箱环境
+// Renewal/Purge Sandbox Environment
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - RenewAppSandboxRequest
 //
@@ -8338,7 +8898,11 @@ func (client *Client) RenewAppSandboxWithOptions(request *RenewAppSandboxRequest
 
 // Summary:
 //
-// 续期/刷新沙箱环境
+// Renewal/Purge Sandbox Environment
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - RenewAppSandboxRequest
 //
@@ -8356,7 +8920,11 @@ func (client *Client) RenewAppSandbox(request *RenewAppSandboxRequest) (_result 
 
 // Summary:
 //
-// 代码快照回滚
+// # Code snapshot rollback
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -8404,7 +8972,11 @@ func (client *Client) RollbackAppCodeSnapshotWithOptions(request *RollbackAppCod
 
 // Summary:
 //
-// 代码快照回滚
+// # Code snapshot rollback
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -8422,7 +8994,11 @@ func (client *Client) RollbackAppCodeSnapshot(request *RollbackAppCodeSnapshotRe
 
 // Summary:
 //
-// 回滚应用实例发布
+// # Roll back application instance deployment
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -8478,7 +9054,11 @@ func (client *Client) RollbackAppInstancePublishWithOptions(request *RollbackApp
 
 // Summary:
 //
-// 回滚应用实例发布
+// # Roll back application instance deployment
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -8496,7 +9076,11 @@ func (client *Client) RollbackAppInstancePublish(request *RollbackAppInstancePub
 
 // Summary:
 //
-// 保存需求
+// # Save requirements
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - SaveAppRequirementRequest
 //
@@ -8546,7 +9130,11 @@ func (client *Client) SaveAppRequirementWithOptions(request *SaveAppRequirementR
 
 // Summary:
 //
-// 保存需求
+// # Save requirements
+//
+// Description:
+//
+// # Obtain barcode generation plugin configuration information
 //
 // @param request - SaveAppRequirementRequest
 //
@@ -8564,7 +9152,11 @@ func (client *Client) SaveAppRequirement(request *SaveAppRequirementRequest) (_r
 
 // Summary:
 //
-// 保存Supabase密钥
+// # Save Supabase key
+//
+// Description:
+//
+// # The supabase instance information corresponding to the operation resource
 //
 // @param request - SaveAppSupabaseSecretsRequest
 //
@@ -8612,7 +9204,11 @@ func (client *Client) SaveAppSupabaseSecretsWithOptions(request *SaveAppSupabase
 
 // Summary:
 //
-// 保存Supabase密钥
+// # Save Supabase key
+//
+// Description:
+//
+// # The supabase instance information corresponding to the operation resource
 //
 // @param request - SaveAppSupabaseSecretsRequest
 //
@@ -8630,7 +9226,7 @@ func (client *Client) SaveAppSupabaseSecrets(request *SaveAppSupabaseSecretsRequ
 
 // Summary:
 //
-// 图片检索
+// # Image retrieval
 //
 // @param tmpReq - SearchImageRequest
 //
@@ -8736,7 +9332,7 @@ func (client *Client) SearchImageWithOptions(tmpReq *SearchImageRequest, runtime
 
 // Summary:
 //
-// 图片检索
+// # Image retrieval
 //
 // @param request - SearchImageRequest
 //
@@ -8838,6 +9434,10 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 //
 // 提交SEO索引
 //
+// Description:
+//
+// 获取生码插件配置信息
+//
 // @param request - SubmitAppSeoIndexRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8894,6 +9494,10 @@ func (client *Client) SubmitAppSeoIndexWithOptions(request *SubmitAppSeoIndexReq
 //
 // 提交SEO索引
 //
+// Description:
+//
+// 获取生码插件配置信息
+//
 // @param request - SubmitAppSeoIndexRequest
 //
 // @return SubmitAppSeoIndexResponse
@@ -8910,7 +9514,7 @@ func (client *Client) SubmitAppSeoIndex(request *SubmitAppSeoIndexRequest) (_res
 
 // Summary:
 //
-// 提交素材生产任务
+// # Submit a Material Generation Job
 //
 // @param request - SubmitMaterialTaskRequest
 //
@@ -8958,7 +9562,7 @@ func (client *Client) SubmitMaterialTaskWithOptions(request *SubmitMaterialTaskR
 
 // Summary:
 //
-// 提交素材生产任务
+// # Submit a Material Generation Job
 //
 // @param request - SubmitMaterialTaskRequest
 //
@@ -8977,6 +9581,10 @@ func (client *Client) SubmitMaterialTask(request *SubmitMaterialTaskRequest) (_r
 // Summary:
 //
 // 切换到指定对话
+//
+// Description:
+//
+// 万小智2.0创建AI会话接口
 //
 // @param request - SwitchAppConversationRequest
 //
@@ -9030,6 +9638,10 @@ func (client *Client) SwitchAppConversationWithOptions(request *SwitchAppConvers
 //
 // 切换到指定对话
 //
+// Description:
+//
+// 万小智2.0创建AI会话接口
+//
 // @param request - SwitchAppConversationRequest
 //
 // @return SwitchAppConversationResponse
@@ -9046,7 +9658,7 @@ func (client *Client) SwitchAppConversation(request *SwitchAppConversationReques
 
 // Summary:
 //
-// 合作伙伴同步应用实例
+// # Partnership synchronizes application instance
 //
 // @param tmpReq - SyncAppInstanceForPartnerRequest
 //
@@ -9112,7 +9724,7 @@ func (client *Client) SyncAppInstanceForPartnerWithOptions(tmpReq *SyncAppInstan
 
 // Summary:
 //
-// 合作伙伴同步应用实例
+// # Partnership synchronizes application instance
 //
 // @param request - SyncAppInstanceForPartnerRequest
 //
@@ -9196,7 +9808,11 @@ func (client *Client) UnbindAppDomain(request *UnbindAppDomainRequest) (_result 
 
 // Summary:
 //
-// 更新消息内容
+// # Update message content
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - AI session history query API
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -9252,7 +9868,11 @@ func (client *Client) UpdateAppChatMessageWithOptions(request *UpdateAppChatMess
 
 // Summary:
 //
-// 更新消息内容
+// # Update message content
+//
+// Description:
+//
+// # Wan Xiaozhi 2.0 - AI session history query API
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -9270,7 +9890,11 @@ func (client *Client) UpdateAppChatMessage(request *UpdateAppChatMessageRequest)
 
 // Summary:
 //
-// 编辑JSX代码
+// # Edit JSX Code
+//
+// Description:
+//
+// # Retrieve the configuration information of the code generation plugin
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -9318,7 +9942,11 @@ func (client *Client) UpdateAppCodeWithOptions(request *UpdateAppCodeRequest, ru
 
 // Summary:
 //
-// 编辑JSX代码
+// # Edit JSX Code
+//
+// Description:
+//
+// # Retrieve the configuration information of the code generation plugin
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -9336,7 +9964,11 @@ func (client *Client) UpdateAppCode(request *UpdateAppCodeRequest) (_result *Upd
 
 // Summary:
 //
-// 更新文件
+// # Update file
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - UpdateAppFileRequest
 //
@@ -9388,7 +10020,11 @@ func (client *Client) UpdateAppFileWithOptions(request *UpdateAppFileRequest, ru
 
 // Summary:
 //
-// 更新文件
+// # Update file
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - UpdateAppFileRequest
 //
@@ -9406,7 +10042,11 @@ func (client *Client) UpdateAppFile(request *UpdateAppFileRequest) (_result *Upd
 
 // Summary:
 //
-// 建站实例变配
+// Upgrade/Downgrade website instance.
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param tmpReq - UpdateAppInstanceRequest
 //
@@ -9506,7 +10146,11 @@ func (client *Client) UpdateAppInstanceWithOptions(tmpReq *UpdateAppInstanceRequ
 
 // Summary:
 //
-// 建站实例变配
+// Upgrade/Downgrade website instance.
+//
+// Description:
+//
+// # Query application instance information
 //
 // @param request - UpdateAppInstanceRequest
 //
@@ -9606,7 +10250,11 @@ func (client *Client) UpdateAppSeoStatus(request *UpdateAppSeoStatusRequest) (_r
 
 // Summary:
 //
-// # Supabase认证配置更新
+// # Update Supabase authentication configuration
+//
+// Description:
+//
+// # Query the auth configuration information of the Supabase instance corresponding to the resource
 //
 // @param request - UpdateAppSupabaseAuthConfigRequest
 //
@@ -9654,7 +10302,11 @@ func (client *Client) UpdateAppSupabaseAuthConfigWithOptions(request *UpdateAppS
 
 // Summary:
 //
-// # Supabase认证配置更新
+// # Update Supabase authentication configuration
+//
+// Description:
+//
+// # Query the auth configuration information of the Supabase instance corresponding to the resource
 //
 // @param request - UpdateAppSupabaseAuthConfigRequest
 //
@@ -9672,7 +10324,11 @@ func (client *Client) UpdateAppSupabaseAuthConfig(request *UpdateAppSupabaseAuth
 
 // Summary:
 //
-// 更新Supabase密钥
+// # Update Supabase key
+//
+// Description:
+//
+// # Operation resource corresponds to the supabase instance information
 //
 // @param request - UpdateAppSupabaseSecretRequest
 //
@@ -9732,7 +10388,11 @@ func (client *Client) UpdateAppSupabaseSecretWithOptions(request *UpdateAppSupab
 
 // Summary:
 //
-// 更新Supabase密钥
+// # Update Supabase key
+//
+// Description:
+//
+// # Operation resource corresponds to the supabase instance information
 //
 // @param request - UpdateAppSupabaseSecretRequest
 //
@@ -9750,7 +10410,7 @@ func (client *Client) UpdateAppSupabaseSecret(request *UpdateAppSupabaseSecretRe
 
 // Summary:
 //
-// 更新绑定小程序信息
+// # Update miniapp binding information
 //
 // @param request - UpdateMiniAppBindingRequest
 //
@@ -9806,7 +10466,7 @@ func (client *Client) UpdateMiniAppBindingWithOptions(request *UpdateMiniAppBind
 
 // Summary:
 //
-// 更新绑定小程序信息
+// # Update miniapp binding information
 //
 // @param request - UpdateMiniAppBindingRequest
 //
@@ -9824,7 +10484,11 @@ func (client *Client) UpdateMiniAppBinding(request *UpdateMiniAppBindingRequest)
 
 // Summary:
 //
-// 上传到站点根目录
+// # Upload to the site root directory
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - UploadAppSiteValidationFileRequest
 //
@@ -9888,7 +10552,11 @@ func (client *Client) UploadAppSiteValidationFileWithOptions(request *UploadAppS
 
 // Summary:
 //
-// 上传到站点根目录
+// # Upload to the site root directory
+//
+// Description:
+//
+// # Obtain the configuration information of the code generation plugin
 //
 // @param request - UploadAppSiteValidationFileRequest
 //
@@ -9906,7 +10574,7 @@ func (client *Client) UploadAppSiteValidationFile(request *UploadAppSiteValidati
 
 // Summary:
 //
-// 上传素材文件
+// # Upload material files
 //
 // @param request - UploadMaterialFileRequest
 //
@@ -9962,7 +10630,7 @@ func (client *Client) UploadMaterialFileWithOptions(request *UploadMaterialFileR
 
 // Summary:
 //
-// 上传素材文件
+// # Upload material files
 //
 // @param request - UploadMaterialFileRequest
 //

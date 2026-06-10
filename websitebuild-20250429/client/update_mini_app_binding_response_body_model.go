@@ -16,6 +16,7 @@ type iUpdateMiniAppBindingResponseBody interface {
 }
 
 type UpdateMiniAppBindingResponseBody struct {
+	// Request result.
 	Data *UpdateMiniAppBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,8 @@ func (s *UpdateMiniAppBindingResponseBody) Validate() error {
 }
 
 type UpdateMiniAppBindingResponseBodyData struct {
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true

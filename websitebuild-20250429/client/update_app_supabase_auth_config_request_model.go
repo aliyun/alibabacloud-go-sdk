@@ -16,10 +16,14 @@ type iUpdateAppSupabaseAuthConfigRequest interface {
 }
 
 type UpdateAppSupabaseAuthConfigRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Configuration JSON
+	//
 	// example:
 	//
 	// {"key":"value"}

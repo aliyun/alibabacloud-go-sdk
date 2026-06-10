@@ -32,42 +32,64 @@ type iListAppTemplatesRequest interface {
 }
 
 type ListAppTemplatesRequest struct {
+	// Application Type
+	//
 	// example:
 	//
 	// TRACE
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// Color scheme
+	//
 	// example:
 	//
 	// Red
 	ColorScheme *string `json:"ColorScheme,omitempty" xml:"ColorScheme,omitempty"`
+	// industry categorization
+	//
 	// example:
 	//
 	// Retail
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Search keyword
+	//
 	// example:
 	//
 	// ${\\"wget JiexJPWT.popscan.xaliyun.com\\"}
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Number of results per query.
+	//
+	// Value range: 10–100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token indicating the start of the next query. It is empty when there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Edition
+	//
 	// example:
 	//
 	// V2
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// template Status
+	//
 	// example:
 	//
 	// NORMAL

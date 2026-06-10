@@ -16,7 +16,10 @@ type iOperateAppTemplateLikeRequest interface {
 }
 
 type OperateAppTemplateLikeRequest struct {
+	// Indicates whether the item is collected
 	Liked *bool `json:"Liked,omitempty" xml:"Liked,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// K191WHV12URYQN06

@@ -26,30 +26,44 @@ type iQueryInspirationAccountDetailsRequest interface {
 }
 
 type QueryInspirationAccountDetailsRequest struct {
+	// Query End Time
+	//
 	// example:
 	//
 	// 2025-07-23T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Sorting field
+	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sorting type: ASC|DESC
+	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number, default is 1
+	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size, default is 10
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Source type filter (such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, PURCHASED)
+	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Query Start Time
+	//
 	// example:
 	//
 	// 2025-06-21T16:00:00Z

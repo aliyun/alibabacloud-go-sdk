@@ -38,32 +38,52 @@ type iListAppCommoditySpecificationsV2ForPartnerResponseBody interface {
 }
 
 type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
+	// permission denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// faulty parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10–100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Response data
+	Module *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Token for the start of the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
@@ -74,11 +94,20 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// is synchronous processing enabled
+	//
 	// example:
 	//
 	// True
@@ -220,29 +249,44 @@ func (s *ListAppCommoditySpecificationsV2ForPartnerResponseBody) Validate() erro
 }
 
 type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 12
-	CurrentPageNum *int32                                                              `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// Request result.
+	Data []*ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Next feature ID
+	Next *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether there is a next page.
+	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether there is a previous page.
+	//
 	// example:
 	//
 	// False
-	PrePage     *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// For the current query, aside from pagination limits, the server-side processes at most the latest 1 000 records. If the result exceeds 1 000 records, **ResultLimit*	- is **true**. You can narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -357,12 +401,21 @@ func (s *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule) Validate(
 }
 
 type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData struct {
+	// API status or POP error code.
+	//
 	// example:
 	//
 	// 200
-	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Default Value
 	Components map[string]*ModuleDataComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
-	Name       *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	// File name.
+	//
+	// example:
+	//
+	// 文件名
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Duration.
 	Properties map[string]*ModuleDataPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
 }
 
@@ -415,15 +468,21 @@ func (s *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData) Valid
 }
 
 type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext struct {
+	// API status or POP error code
+	//
 	// example:
 	//
 	// OK
-	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Default Value
 	Components map[string]*ModuleNextComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
+	// Website Name
+	//
 	// example:
 	//
 	// docs
-	Name       *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Frame rate.
 	Properties map[string]*ModuleNextPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
 }
 

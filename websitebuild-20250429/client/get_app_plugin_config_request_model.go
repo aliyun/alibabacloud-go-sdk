@@ -16,12 +16,16 @@ type iGetAppPluginConfigRequest interface {
 }
 
 type GetAppPluginConfigRequest struct {
+	// Customer business ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Gateway plugin ID
+	//
 	// This parameter is required.
 	//
 	// example:

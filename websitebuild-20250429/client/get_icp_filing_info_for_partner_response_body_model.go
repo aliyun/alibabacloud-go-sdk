@@ -16,6 +16,7 @@ type iGetIcpFilingInfoForPartnerResponseBody interface {
 }
 
 type GetIcpFilingInfoForPartnerResponseBody struct {
+	// Request result.
 	Data *GetIcpFilingInfoForPartnerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,8 +62,19 @@ func (s *GetIcpFilingInfoForPartnerResponseBody) Validate() error {
 }
 
 type GetIcpFilingInfoForPartnerResponseBodyData struct {
-	IcpNumber        *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
-	Recorded         *bool   `json:"Recorded,omitempty" xml:"Recorded,omitempty"`
+	// The ICP filing number associated with the domain name. Supports entity ICP filing numbers and website ICP filing numbers.
+	//
+	// example:
+	//
+	// 京ICP备15023563号-3
+	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
+	// Whether the domain is filed for ICP
+	Recorded *bool `json:"Recorded,omitempty" xml:"Recorded,omitempty"`
+	// The website ICP filing number corresponding to the domain name
+	//
+	// example:
+	//
+	// 湘ICP备14011526号-3A
 	SiteRecordNumber *string `json:"SiteRecordNumber,omitempty" xml:"SiteRecordNumber,omitempty"`
 }
 

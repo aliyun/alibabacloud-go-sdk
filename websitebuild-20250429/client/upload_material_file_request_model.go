@@ -20,25 +20,36 @@ type iUploadMaterialFileRequest interface {
 }
 
 type UploadMaterialFileRequest struct {
+	// Application Instance Business ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WS20250801152639000005
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Parent Folder ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// File Path
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/4a7f_209934244261306272_14fd429b731245a79f291c64acf3ac77
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// File Name
+	//
+	// example:
+	//
+	// 测试文件
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UploadMaterialFileRequest) String() string {

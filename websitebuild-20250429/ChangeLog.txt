@@ -1,3 +1,89 @@
+2026-06-10 Version: v2.22.0
+- Support API ConfirmAppInstance.
+- Support API CopyAppPluginConfig.
+- Support API CreateAIStaffChat.
+- Support API CreateAIStaffConversation.
+- Support API CreateAppChat.
+- Support API CreateAppLlmApiKeyForPartner.
+- Support API DeleteAppFile.
+- Support API DeleteAppInstanceFile.
+- Support API DeleteAppSupabaseSecrets.
+- Support API GetAIStaffPreviewUrl.
+- Support API GetAppCodeWorkspaceDetail.
+- Support API GetAppConversation.
+- Support API GetAppConversationLockStatus.
+- Support API GetAppDatabaseTableSchemas.
+- Support API GetAppFileContent.
+- Support API GetAppInstanceEntitlement.
+- Support API GetAppInstanceTempShortUrl.
+- Support API GetAppPublishStatus.
+- Support API GetAppRequirement.
+- Support API GetAppSandboxPreviewUrl.
+- Support API GetAppSeoStatus.
+- Support API GetAppSeoTrends.
+- Support API GetAppSitemap.
+- Support API GetAppSupabaseAuthConfig.
+- Support API GetAppSupabaseInstance.
+- Support API GetAppSupabaseSecrets.
+- Support API GetAppTemplate.
+- Support API GetAppWorkspaceDirectory.
+- Support API GetMiniAppAuthUrl.
+- Support API GetMiniAppBinding.
+- Support API GetMiniAppBindingForAdmin.
+- Support API GetOssUploadPolicy.
+- Support API GetTempDownloadUrl.
+- Support API ListAIStaffChatEvents.
+- Support API ListAIStaffChatMessages.
+- Support API ListAppChatMessages.
+- Support API ListAppConversationMessages.
+- Support API ListAppConversations.
+- Support API ListAppPluginConfigs.
+- Support API ListAppPlugins.
+- Support API ListAppPublishHistory.
+- Support API ListAppTemplateDicts.
+- Support API ListAppTemplates.
+- Support API ListIsvPaymentPluginConfigs.
+- Support API OperateAppTemplateLike.
+- Support API PublishAppInstance.
+- Support API ReconnectAppChat.
+- Support API RenewAppSandbox.
+- Support API RollbackAppCodeSnapshot.
+- Support API RollbackAppInstancePublish.
+- Support API SaveAppRequirement.
+- Support API SaveAppSupabaseSecrets.
+- Support API SubmitAppSeoIndex.
+- Support API SwitchAppConversation.
+- Support API UpdateAppChatMessage.
+- Support API UpdateAppCode.
+- Support API UpdateAppFile.
+- Support API UpdateAppInstance.
+- Support API UpdateAppSeoStatus.
+- Support API UpdateAppSupabaseAuthConfig.
+- Support API UpdateAppSupabaseSecret.
+- Support API UpdateMiniAppBinding.
+- Support API UploadAppSiteValidationFile.
+- Update API AllocateSupabaseForAdmin: add request parameters Env.
+- Update API CreateAppInstance: add request parameters CreateAction.
+- Update API CreateAppInstance: add request parameters Description.
+- Update API CreateAppInstance: add request parameters Name.
+- Update API CreateAppInstance: add request parameters Version.
+- Update API ListAppInstances: add response parameters Body.StartPosition.
+- Update API OperateSupabaseForAdmin: add request parameters Env.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.BalanceStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.InitQuotaStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Next.BalanceStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Next.InitQuotaStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.RemainingStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.TotalQuotaStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.TotalUsedStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.AmountStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.ConsumeType.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Next.AmountStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Next.ConsumeType.
+- Update API QuerySupabaseAuthConfigsForAdmin: add request parameters Env.
+- Update API QuerySupabaseConfigsForAdmin: add request parameters Env.
+
+
 2026-06-09 Version: v2.22.0
 - Support API ConfirmAppInstance.
 - Support API CopyAppPluginConfig.

@@ -22,22 +22,32 @@ type iEditPluginConfigRequest interface {
 }
 
 type EditPluginConfigRequest struct {
+  // Business ID
+  // 
   // example:
   // 
   // WD20250703155602000001
   BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+  // Plugin configuration
+  // 
   // example:
   // 
   // {}
   PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
+  // Plugin description
+  // 
   // example:
   // 
-  // 通义万相通过文字描述生成图片
+  // 根据关键字查询相关的Github Repositories
   PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
+  // Plugin ID
+  // 
   // example:
   // 
   // aliplayer-react
   PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+  // Plugin name
+  // 
   // example:
   // 
   // alisecguard

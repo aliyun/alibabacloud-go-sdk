@@ -34,39 +34,60 @@ type iQueryInspirationConsumeRecordsResponseBody interface {
 }
 
 type QueryInspirationConsumeRecordsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application Name. Query the application with this name.
+	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic message. Not currently used. Please ignore.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                           `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                     `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *QueryInspirationConsumeRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Whether the deletion succeeded
+	Module *QueryInspirationConsumeRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Is processed synchronously
+	//
 	// example:
 	//
 	// True
@@ -190,29 +211,44 @@ func (s *QueryInspirationConsumeRecordsResponseBody) Validate() error {
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModule struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPageNum *int32                                                  `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*QueryInspirationConsumeRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *QueryInspirationConsumeRecordsResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// Request Result.
+	Data []*QueryInspirationConsumeRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Next feature ID
+	Next *QueryInspirationConsumeRecordsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether there is a next page.
+	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Whether there is a previous page.
+	//
 	// example:
 	//
 	// False
-	PrePage     *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// In addition to paging limits, the server-side processes at most the latest 1 000 records for the current query. If the result exceeds 1 000 records, **ResultLimit*	- is **true**; you should narrow the Time Range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -327,18 +363,31 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModule) Validate() error {
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
+	// Quantity of inspiration value consumed
+	//
 	// example:
 	//
 	// 120
-	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount    *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AmountStr *string `json:"AmountStr,omitempty" xml:"AmountStr,omitempty"`
+	// Consumption time
+	//
 	// example:
 	//
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
+	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
+	// Extension information (in JSON string format)
+	//
 	// example:
 	//
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
-	MetaData  *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
+	//
+	// example:
+	//
+	// 家装
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
@@ -354,8 +403,16 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetAmount() *int6
 	return s.Amount
 }
 
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetAmountStr() *string {
+	return s.AmountStr
+}
+
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetConsumeTime() *string {
 	return s.ConsumeTime
+}
+
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetConsumeType() *string {
+	return s.ConsumeType
 }
 
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetMetaData() *string {
@@ -371,8 +428,18 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetAmount(v int64
 	return s
 }
 
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetAmountStr(v string) *QueryInspirationConsumeRecordsResponseBodyModuleData {
+	s.AmountStr = &v
+	return s
+}
+
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetConsumeTime(v string) *QueryInspirationConsumeRecordsResponseBodyModuleData {
 	s.ConsumeTime = &v
+	return s
+}
+
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetConsumeType(v string) *QueryInspirationConsumeRecordsResponseBodyModuleData {
+	s.ConsumeType = &v
 	return s
 }
 
@@ -391,18 +458,31 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) Validate() error 
 }
 
 type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
+	// Quantity of inspiration value consumed
+	//
 	// example:
 	//
 	// 2
-	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount    *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AmountStr *string `json:"AmountStr,omitempty" xml:"AmountStr,omitempty"`
+	// Consumption Time
+	//
 	// example:
 	//
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
+	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
+	// Extension information (in JSON string format)
+	//
 	// example:
 	//
 	// {\\"MD5\\":\\"1042e65a2b7cdd3059b6a873ee1a3260\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
-	MetaData  *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
+	//
+	// example:
+	//
+	// 家装
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
@@ -418,8 +498,16 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) GetAmount() *int6
 	return s.Amount
 }
 
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) GetAmountStr() *string {
+	return s.AmountStr
+}
+
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) GetConsumeTime() *string {
 	return s.ConsumeTime
+}
+
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) GetConsumeType() *string {
+	return s.ConsumeType
 }
 
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) GetMetaData() *string {
@@ -435,8 +523,18 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) SetAmount(v int64
 	return s
 }
 
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) SetAmountStr(v string) *QueryInspirationConsumeRecordsResponseBodyModuleNext {
+	s.AmountStr = &v
+	return s
+}
+
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) SetConsumeTime(v string) *QueryInspirationConsumeRecordsResponseBodyModuleNext {
 	s.ConsumeTime = &v
+	return s
+}
+
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleNext) SetConsumeType(v string) *QueryInspirationConsumeRecordsResponseBodyModuleNext {
+	s.ConsumeType = &v
 	return s
 }
 

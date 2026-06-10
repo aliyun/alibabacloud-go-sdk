@@ -34,42 +34,62 @@ type iCreateAppAssistantAgentResponseBody interface {
 }
 
 type CreateAppAssistantAgentResponseBody struct {
+	// Permission denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App name.
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                    `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                              `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *CreateAppAssistantAgentResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *CreateAppAssistantAgentResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// Abnormal message
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -193,41 +213,62 @@ func (s *CreateAppAssistantAgentResponseBody) Validate() error {
 }
 
 type CreateAppAssistantAgentResponseBodyModule struct {
+	// Agent ID (returned by platform)
+	//
 	// example:
 	//
 	// duanwei@qianrutest
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent Name
+	//
 	// example:
 	//
 	// 测试业务空间
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Associated application instance bizId
+	//
 	// example:
 	//
 	// WD20250703155602000001
-	BizId       *string                                               `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Credential  *CreateAppAssistantAgentResponseBodyModuleCredential  `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Credential
+	Credential *CreateAppAssistantAgentResponseBodyModuleCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
+	// Embed Configuration
 	EmbedConfig *CreateAppAssistantAgentResponseBodyModuleEmbedConfig `json:"EmbedConfig,omitempty" xml:"EmbedConfig,omitempty" type:"Struct"`
-	ExtraParams map[string]*string                                    `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
+	// Extension parameters
+	ExtraParams map[string]*string `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Agent platform appId
+	//
 	// example:
 	//
 	// WA12313131313
 	PlatformAppId *string `json:"PlatformAppId,omitempty" xml:"PlatformAppId,omitempty"`
+	// Platform Type
+	//
 	// example:
 	//
 	// VMWARE
 	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	// Status
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 1231313131
@@ -365,7 +406,10 @@ func (s *CreateAppAssistantAgentResponseBodyModule) Validate() error {
 }
 
 type CreateAppAssistantAgentResponseBodyModuleCredential struct {
+	// Extension field
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Username
+	//
 	// example:
 	//
 	// Test
@@ -403,8 +447,10 @@ func (s *CreateAppAssistantAgentResponseBodyModuleCredential) Validate() error {
 }
 
 type CreateAppAssistantAgentResponseBodyModuleEmbedConfig struct {
-	Extra     map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	RawScript *string            `json:"RawScript,omitempty" xml:"RawScript,omitempty"`
+	// Extension Fields
+	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Raw embed script
+	RawScript *string `json:"RawScript,omitempty" xml:"RawScript,omitempty"`
 }
 
 func (s CreateAppAssistantAgentResponseBodyModuleEmbedConfig) String() string {

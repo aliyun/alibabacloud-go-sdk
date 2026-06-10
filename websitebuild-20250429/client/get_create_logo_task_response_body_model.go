@@ -22,10 +22,14 @@ type iGetCreateLogoTaskResponseBody interface {
 }
 
 type GetCreateLogoTaskResponseBody struct {
+	// The error code. The ErrorCode field is not returned if the request succeeds. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
@@ -36,11 +40,14 @@ type GetCreateLogoTaskResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
-	Success *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Task    *GetCreateLogoTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Job information
+	Task *GetCreateLogoTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s GetCreateLogoTaskResponseBody) String() string {
@@ -106,15 +113,30 @@ func (s *GetCreateLogoTaskResponseBody) Validate() error {
 }
 
 type GetCreateLogoTaskResponseBodyTask struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// 604860995
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The current status of the job:
+	//
+	// - pending: Pending execution
+	//
+	// - configuring: Configuring
+	//
+	// - success: Succeeded
+	//
+	// - failed: Failed
+	//
+	// - partialFailed: Partially failed
+	//
 	// example:
 	//
 	// SUCCESS
-	TaskStatus *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	Urls       []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The URLs of the prefetched resources.
+	Urls []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
 }
 
 func (s GetCreateLogoTaskResponseBodyTask) String() string {

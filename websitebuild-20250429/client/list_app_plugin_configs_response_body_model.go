@@ -38,32 +38,52 @@ type iListAppPluginConfigsResponseBody interface {
 }
 
 type ListAppPluginConfigsResponseBody struct {
+	// The detailed reason why access was denied.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// is retry allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// Application Name. Query the application with this name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The number of results returned per query.
+	//
+	// Valid range: 10 to 100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     []*ListAppPluginConfigsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// task object
+	Module []*ListAppPluginConfigsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// The token to start the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
@@ -74,11 +94,20 @@ type ListAppPluginConfigsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// is synchronous processing enabled
+	//
 	// example:
 	//
 	// True
@@ -224,55 +253,86 @@ func (s *ListAppPluginConfigsResponseBody) Validate() error {
 }
 
 type ListAppPluginConfigsResponseBodyModule struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Indicates whether to display.
+	//
 	// example:
 	//
 	// always
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Indicates whether scheduled delivery of resource snapshots is enabled.
+	//
+	// Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Shutdown.
+	//
 	// example:
 	//
 	// True
-	Enabled *int32             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Extend  map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Extension information
+	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Creation Time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2025-10-11T06:25:13Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Updated At
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2026-05-20T01:59:17.000Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// primary key
+	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Plugin configuration
+	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
+	// Plugin description
+	//
 	// example:
 	//
 	// a simple test plugin
 	PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
+	// Plugin ID
+	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Plugin name
+	//
 	// example:
 	//
 	// tf_testaccapigatewayplugin29311
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	// Site name
+	//
 	// example:
 	//
 	// wkweb.cn
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 123456

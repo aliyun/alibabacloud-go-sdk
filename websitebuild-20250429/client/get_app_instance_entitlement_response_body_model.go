@@ -34,39 +34,62 @@ type iGetAppInstanceEntitlementResponseBody interface {
 }
 
 type GetAppInstanceEntitlementResponseBody struct {
+	// Permission denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App Name.
+	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message, used to replace `%s` in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                      `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetAppInstanceEntitlementResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Response data
+	Module *GetAppInstanceEntitlementResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	RootErrorMsg  *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Abnormal message
+	//
+	// example:
+	//
+	// 系统异常
+	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -190,10 +213,13 @@ func (s *GetAppInstanceEntitlementResponseBody) Validate() error {
 }
 
 type GetAppInstanceEntitlementResponseBodyModule struct {
+	// BizId of the associated application instance
+	//
 	// example:
 	//
 	// WD20250703155602000001
-	BizId *string                                             `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// All entitlements
 	Items []*GetAppInstanceEntitlementResponseBodyModuleItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -237,64 +263,96 @@ func (s *GetAppInstanceEntitlementResponseBodyModule) Validate() error {
 }
 
 type GetAppInstanceEntitlementResponseBodyModuleItems struct {
+	// Indicates whether an instance has been assigned
 	Allocated *bool `json:"Allocated,omitempty" xml:"Allocated,omitempty"`
+	// Is this item currently active?
+	//
 	// example:
 	//
 	// on
 	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
+	// Authorization item identity
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether configuration has been completed
+	//
 	// example:
 	//
 	// true
 	Configured *bool `json:"Configured,omitempty" xml:"Configured,omitempty"`
-	Entitled   *bool `json:"Entitled,omitempty" xml:"Entitled,omitempty"`
+	// Is this item entitled in the version?
+	Entitled *bool `json:"Entitled,omitempty" xml:"Entitled,omitempty"`
+	// Feature source type (PLUGIN/SKILL/CHANNEL/SYSTEM)
+	//
 	// example:
 	//
 	// 5
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// Runtime instance ID
+	//
 	// example:
 	//
 	// waf_v2intl_public_intl-sg-i5c43rcpw04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Authorization item Name
+	//
 	// example:
 	//
 	// 4e46d24b56bfa944b5e6f2305715bc4e.jpg
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Plugin ID
+	//
 	// example:
 	//
 	// alipay-isv
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Total quota
+	//
 	// example:
 	//
 	// 10
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// Remaining quantity
+	//
 	// example:
 	//
 	// 1234
 	Remaining *int64 `json:"Remaining,omitempty" xml:"Remaining,omitempty"`
+	// Resource domain association identity
+	//
 	// example:
 	//
 	// SmsCount
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// Resource type (QUOTA/LIMIT)
+	//
 	// example:
 	//
 	// filesystem
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Is it running?
+	//
 	// example:
 	//
 	// 0
 	Running *bool `json:"Running,omitempty" xml:"Running,omitempty"`
+	// Authorization Type (FEATURE / RESOURCE / RUNTIME)
+	//
 	// example:
 	//
 	// question
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Usage percentage
+	//
 	// example:
 	//
 	// 10
 	UsagePercent *int32 `json:"UsagePercent,omitempty" xml:"UsagePercent,omitempty"`
+	// Usage
+	//
 	// example:
 	//
 	// 3295422523872

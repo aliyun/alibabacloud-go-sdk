@@ -38,32 +38,52 @@ type iListIsvPaymentPluginConfigsResponseBody interface {
 }
 
 type ListIsvPaymentPluginConfigsResponseBody struct {
+	// Detailed reason for access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// App name.
+	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Dynamic code; currently unused. Ignore this field.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// abc
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// Returned error parameters
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// Number of results per query.
+	//
+	// Value range: 10–100. Default Value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     []*ListIsvPaymentPluginConfigsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Response data
+	Module []*ListIsvPaymentPluginConfigsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// Token for starting the next query. It is empty if there is no next query.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
@@ -74,14 +94,20 @@ type ListIsvPaymentPluginConfigsResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// abnormal message
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -227,47 +253,68 @@ func (s *ListIsvPaymentPluginConfigsResponseBody) Validate() error {
 }
 
 type ListIsvPaymentPluginConfigsResponseBodyModule struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WS20250915163734000001
-	BizId  *string            `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Extension information
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Creation Time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Updated At
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Primary key
+	//
 	// example:
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Plugin configuration
+	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
+	// Plugin description
+	//
 	// example:
 	//
 	// a simple test plugin
 	PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
+	// Plugin ID
+	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Plugin name
+	//
 	// example:
 	//
 	// tf_testaccapigatewayplugin29311
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	// Site name
+	//
 	// example:
 	//
 	// jugaocai.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 123456

@@ -34,27 +34,40 @@ type iEditPluginConfigResponseBody interface {
 }
 
 type EditPluginConfigResponseBody struct {
+  // Detailed reason for access denial.
+  // 
   // example:
   // 
   // {}
   AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+  // Whether retry is allowed
+  // 
   // example:
   // 
   // False
   AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+  // The application name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). It supports up to 36 characters.
+  // 
   // example:
   // 
   // spring-cloud-b
   AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+  // Dynamic code, currently unused. Please ignore.
+  // 
   // example:
   // 
   // ERROR-oo1
   DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+  // Error message
+  // 
   // example:
   // 
   // SYSTEM_ERROR
   DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+  // Faulty parameters.
   ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+  // Response data
+  // 
   // example:
   // 
   // true
@@ -65,14 +78,20 @@ type EditPluginConfigResponseBody struct {
   // 
   // 6C6B99AC-39EC-5350-874C-204128C905E6
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Error code
+  // 
   // example:
   // 
   // SYSTEM.ERROR
   RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+  // Abnormal message
+  // 
   // example:
   // 
   // 系统异常
   RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+  // Whether processing is synchronous
+  // 
   // example:
   // 
   // True

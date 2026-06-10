@@ -38,48 +38,76 @@ type iUpdateAppInstanceShrinkRequest interface {
 }
 
 type UpdateAppInstanceShrinkRequest struct {
+	// Application type
+	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// Business ID
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Ensures the idempotence of the request. Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters and must not exceed 64 characters.
+	//
 	// example:
 	//
 	// 123
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Deployment area
+	//
 	// example:
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
+	// Application description
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Extension information
+	//
 	// example:
 	//
 	// {\\"user_device_id\\":\\"6bef45cb0c76de284d24de074c088b73\\"}\\n
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Application icon
+	//
 	// example:
 	//
 	// https://app-center-icon-prod-shanghai.oss-cn-shanghai.aliyuncs.com/tenant/1864953777494693/1753841032702_WX20250729-171155%402x.png
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Application name
+	//
+	// example:
+	//
+	// 大角鹿
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Payment type
+	//
 	// example:
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
 	// rg-aek3cqkrqibqkby
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Website version
+	//
 	// example:
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Application thumbnail
+	//
 	// example:
 	//
 	// http://www.aliyun.com

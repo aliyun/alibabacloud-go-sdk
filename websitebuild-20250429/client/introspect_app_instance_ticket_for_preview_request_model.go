@@ -16,10 +16,14 @@ type iIntrospectAppInstanceTicketForPreviewRequest interface {
 }
 
 type IntrospectAppInstanceTicketForPreviewRequest struct {
+	// Business ID
+	//
 	// example:
 	//
 	// WS12345678
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Password-free login access token
+	//
 	// example:
 	//
 	// ogxMqT04nnZOqdIqJZldbm-ZNsAVDz5mcqdCSudfX0SL61jjyWfV-ZnAO-OVpCt_aDl8xaaIO1OVkuvEcMn-HR_QddvaxMqIdsMY1cHdD4SDiRfOBGNdnpSdX9gG_Hi_.ab9c10816d913b51d87520ce0a72b2970668144c552689e9d9e211eb4529f0ea
