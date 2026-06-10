@@ -18,15 +18,15 @@ type iDescribeAutoSnapshotPolicyResponseBody interface {
 }
 
 type DescribeAutoSnapshotPolicyResponseBody struct {
-	// The details of the queried automatic snapshot policies.
+	// The automatic snapshot policies.
 	AutoSnapshotPolicies []*DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies `json:"AutoSnapshotPolicies,omitempty" xml:"AutoSnapshotPolicies,omitempty" type:"Repeated"`
-	// The token that is used to start the next query. If this parameter is empty, all results haven been returned.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the return value is empty, no more results are returned.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeAutoSnapshotPolicyResponseBody) Validate() error {
 }
 
 type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
-	// The time when the automatic snapshot policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+	// The time when the policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-01-11T09:14:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cron expression that specifies when Elastic Desktop Service creates snapshots on the cloud computers.
+	// The cron expression that is used to create snapshots.
 	//
 	// example:
 	//
@@ -99,9 +99,16 @@ type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
 	//
 	// example:
 	//
-	// 5
-	DesktopNum *int32  `json:"DesktopNum,omitempty" xml:"DesktopNum,omitempty"`
-	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// 1
+	DesktopNum *int32 `json:"DesktopNum,omitempty" xml:"DesktopNum,omitempty"`
+	// The disk type for which the automatic snapshot policy is created.
+	//
+	// Valid values:
+	//
+	// - SYSTEM: system disk
+	//
+	// - DATA: data disk
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the automatic snapshot policy.
 	//
 	// example:
@@ -114,45 +121,27 @@ type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
 	//
 	// snapshot01
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The ID of the region to which the automatic snapshot policy belongs.
+	// The ID of the region where the automatic snapshot policy resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+	// The retention period of automatic snapshots. Unit: days. Valid values: 1 to 180.
 	//
 	// example:
 	//
-	// 3
+	// 2
 	RetentionDays *string `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	// The status of the automatic snapshot policy.
-	//
-	// Valid values:
-	//
-	// 	- Expire: The automatic snapshot policy cannot be used because you have overdue payments in your account.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Normal: The automatic snapshot policy is normal.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The points in time at which the auto snapshots were created.
+	// The points in time when automatic snapshots are created.
 	//
-	// The parameter values are a JSON array. Example: `["0", "1", ... "23"]`. A maximum of 24 points in time are returned. The points in time are separated with commas (,).
+	// The value is a JSON array of integers. Example: `["0", "1", ... "23"]`. A maximum of 24 points in time can be specified.
 	//
 	// example:
 	//

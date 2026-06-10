@@ -64,7 +64,7 @@ type DescribeCdsFileShareLinksRequest struct {
 	//
 	// example:
 	//
-	// disabled
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

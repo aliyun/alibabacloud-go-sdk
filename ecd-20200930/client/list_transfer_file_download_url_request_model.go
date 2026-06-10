@@ -16,7 +16,10 @@ type iListTransferFileDownloadUrlRequest interface {
 }
 
 type ListTransferFileDownloadUrlRequest struct {
+	// The list of file IDs to query.
 	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
+	// The task ID.
+	//
 	// example:
 	//
 	// trt-hffhi4nmqoi4****

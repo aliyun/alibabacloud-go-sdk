@@ -36,7 +36,7 @@ type RemoveFilePermissionShrinkRequest struct {
 	//
 	// example:
 	//
-	// user01
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
 	//

@@ -30,7 +30,7 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// 04f314****
 	FileSystemId []*string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty" type:"Repeated"`
-	// Specifies whether to include only NAS file systems that support the User Profile Management (UPM) feature in the query results.
+	// Specifies whether to return only NAS file systems that are compatible with User Profile Management (UPM).
 	//
 	// example:
 	//
@@ -38,15 +38,15 @@ type DescribeNASFileSystemsRequest struct {
 	MatchCompatibleProfile *bool `json:"MatchCompatibleProfile,omitempty" xml:"MatchCompatibleProfile,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// Maximum value: 100.
+	// - Maximum value: 100.
 	//
-	// Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions where Elastic Desktop Service (EDS) is available.
 	//
 	// This parameter is required.
 	//

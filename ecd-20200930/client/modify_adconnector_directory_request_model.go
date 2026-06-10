@@ -132,7 +132,7 @@ type ModifyADConnectorDirectoryRequest struct {
 	//
 	// example:
 	//
-	// childexample.com
+	// child.example.com
 	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
 }
 

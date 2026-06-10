@@ -38,7 +38,7 @@ type DescribeFlowStatisticRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The number of the page to return.\\
+	// The number of the page to return.<br>
 	//
 	// Default value: 1.
 	//
@@ -56,11 +56,11 @@ type DescribeFlowStatisticRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- 3600: 1 hour
+	// - 3600: 1 hour
 	//
-	// 	- 10800: 3 hours
+	// - 10800: 3 hours
 	//
-	// 	- 86400: 24 hours
+	// - 86400: 24 hours
 	//
 	// This parameter is required.
 	//

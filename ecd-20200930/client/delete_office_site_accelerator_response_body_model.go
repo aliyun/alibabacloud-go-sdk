@@ -14,7 +14,7 @@ type iDeleteOfficeSiteAcceleratorResponseBody interface {
 }
 
 type DeleteOfficeSiteAcceleratorResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

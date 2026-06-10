@@ -22,19 +22,19 @@ type iModifyTemplateResponseBody interface {
 }
 
 type ModifyTemplateResponseBody struct {
-	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The result of the operation. A value of `success` indicates that the operation was successful. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned if the value of Code is `success`.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyTemplateResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values: true false
+	// Indicates whether the operation was successful. Valid values: true and false.
 	//
 	// example:
 	//

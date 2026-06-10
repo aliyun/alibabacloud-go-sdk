@@ -49,69 +49,78 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 
 type DescribeGlobalDesktopRecordsRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The cloud computer IDs. You can specify 1 to 100 office network IDs.
+	// The IDs of the cloud desktops. You can specify up to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// DemoComputer
-	DesktopName       *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The ID of the resource group.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by the cloud computer.
+	// The desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the supported desktop types.
 	//
 	// example:
 	//
 	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The end time. The interval between the start time and end time can be up to 30 days. Supported formats:
+	// The end time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format. The interval between the start and end times cannot exceed 30 days.
 	//
-	// 	- Format: YYYY-MM-DDThh:mm:ssZ.
+	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-08-31T06:56:45Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end user ID.
+	// The ID of the end user.
+	//
+	// - Asc: ascending order
+	//
+	// - Desc: descending order
 	//
 	// example:
 	//
 	// TestUser
 	EndUserId                *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	ExcludeDesktopStatusList []*string `json:"ExcludeDesktopStatusList,omitempty" xml:"ExcludeDesktopStatusList,omitempty" type:"Repeated"`
-	// The office network IDs.
+	// The ID of the office site.
+	//
+	// - China (Shanghai)
+	//
+	// - Singapore
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The sorting field. If this parameter is not provided, results are sorted by creation time in descending order. Valid values:
+	// The field by which to sort the results. If you do not specify this parameter, the results are sorted by creation time in descending order. Valid value:
 	//
-	// 	- uptime: indicates that the cloud computers are sorted by startup duration.
+	// - `uptime`: Sorts the results by cloud desktop uptime.
 	//
 	// example:
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number of the current page.\\
+	// The page number to return.<br>Default value: 1.<br>
 	//
-	// Default value: 1
+	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
-	// 	- China (Shanghai)
+	// - Shanghai
 	//
-	// 	- Singapore
+	// - Singapore
 	//
 	// This parameter is required.
 	//
@@ -125,39 +134,33 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The query range. This parameter is empty by default. Optional values are:
+	// The query scope. This parameter is empty by default. Valid value:
 	//
-	// 	- ADVANCED: indicates that statistics such as the connection duration are queried.
+	// - `ADVANCED`: Queries statistical records, such as connection duration.
+	//
+	// - postPaid: Pay-as-you-go.
+	//
+	// - monthPackage: monthly time-based package.
 	//
 	// example:
 	//
 	// ADVANCED
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sorting method. Default value: ascending. Valid value:
+	// The sort order. The default is `Asc`. Valid values:
 	//
-	// 	- Asc: ascending order
-	//
-	// 	- Desc: descending.
+	// - `Asc`: ascending order
 	//
 	// example:
 	//
 	// Asc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The start time. Supported formats:
-	//
-	// 	- Format: YYYY-MM-DDThh:mm:ssZ.
+	// The start time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-03-23T04:10:21Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The way to purchase cloud computers. Valid values:
-	//
-	// 	- prePaid: The monthly purchase is unlimited.
-	//
-	// 	- postPaid: pay-as-you-go
-	//
-	// 	- monthPackage: monthly duration.
+	// The billing method of the cloud desktop. Valid values:
 	//
 	// example:
 	//

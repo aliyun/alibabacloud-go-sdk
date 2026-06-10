@@ -20,24 +20,6 @@ type iModifyNetworkPackageEnabledRequest interface {
 type ModifyNetworkPackageEnabledRequest struct {
 	// Specifies whether to restore the premium bandwidth plan of the cloud computer.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// true
@@ -50,7 +32,7 @@ type ModifyNetworkPackageEnabledRequest struct {
 	//
 	// np-cfedn7r2pe48g****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [](t2167755.xdita#)operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

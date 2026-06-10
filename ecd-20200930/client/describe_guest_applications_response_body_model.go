@@ -82,13 +82,13 @@ type DescribeGuestApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// 89
+	// 0
 	CpuPercent *float64 `json:"CpuPercent,omitempty" xml:"CpuPercent,omitempty"`
 	// The GPU utilization (%).
 	//
 	// example:
 	//
-	// 15
+	// 0
 	GpuPercent *float64 `json:"GpuPercent,omitempty" xml:"GpuPercent,omitempty"`
 	// The icon URL of the application.
 	//
@@ -100,13 +100,13 @@ type DescribeGuestApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// 124906.0
+	// 8919266
 	IoSpeed *float64 `json:"IoSpeed,omitempty" xml:"IoSpeed,omitempty"`
 	// The memory utilization (%).
 	//
 	// example:
 	//
-	// 34
+	// 1.8368155
 	MemPercent *float64 `json:"MemPercent,omitempty" xml:"MemPercent,omitempty"`
 	// The process ID (PID).
 	//
@@ -120,7 +120,7 @@ type DescribeGuestApplicationsResponseBodyApplications struct {
 	//
 	// example:
 	//
-	// C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\ch****.exe
+	// C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
 	// The status of the application.
 	//
@@ -273,25 +273,25 @@ type DescribeGuestApplicationsResponseBodyApplicationsProcessData struct {
 	//
 	// example:
 	//
-	// 89
+	// 0
 	CpuPercent *float64 `json:"CpuPercent,omitempty" xml:"CpuPercent,omitempty"`
 	// The GPU usage (%).
 	//
 	// example:
 	//
-	// 15
+	// 0
 	GpuPercent *float64 `json:"GpuPercent,omitempty" xml:"GpuPercent,omitempty"`
 	// The I/O read and write performance. Unit: byte/s.
 	//
 	// example:
 	//
-	// 124906.0
+	// 8919266
 	Iospeed *float64 `json:"Iospeed,omitempty" xml:"Iospeed,omitempty"`
 	// The memory usage (%).
 	//
 	// example:
 	//
-	// 34
+	// 1.8368155
 	MemPercent *float64 `json:"MemPercent,omitempty" xml:"MemPercent,omitempty"`
 	// The PID.
 	//
@@ -303,7 +303,7 @@ type DescribeGuestApplicationsResponseBodyApplicationsProcessData struct {
 	//
 	// example:
 	//
-	// C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\ch****.exe
+	// C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
 }
 

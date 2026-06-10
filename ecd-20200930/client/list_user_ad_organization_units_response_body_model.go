@@ -22,7 +22,7 @@ type ListUserAdOrganizationUnitsResponseBody struct {
 	//
 	// example:
 	//
-	// CAAAAA==
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The OUs of the AD domain.
 	OUNames []*ListUserAdOrganizationUnitsResponseBodyOUNames `json:"OUNames,omitempty" xml:"OUNames,omitempty" type:"Repeated"`

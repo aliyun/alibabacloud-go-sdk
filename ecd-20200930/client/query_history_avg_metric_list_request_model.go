@@ -28,28 +28,42 @@ type iQueryHistoryAvgMetricListRequest interface {
 }
 
 type QueryHistoryAvgMetricListRequest struct {
+	// The start date of the statistics. The format is `YYYY-MM-DD`. The default value is T-1.
+	//
 	// example:
 	//
 	// 2026-04-01
-	DataDate  *string   `json:"DataDate,omitempty" xml:"DataDate,omitempty"`
+	DataDate *string `json:"DataDate,omitempty" xml:"DataDate,omitempty"`
+	// The desktop ID list. A maximum of 100 IDs are supported.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// The metric to query.
+	//
 	// example:
 	//
 	// LOAD_SCORE
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The page number, which must be greater than 0. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size. Valid values: 1 to 200. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Range    *QueryHistoryAvgMetricListRequestRange `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of custom numeric ranges.
+	Range *QueryHistoryAvgMetricListRequestRange `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
+	// The desktop region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The sorting method.
+	//
 	// example:
 	//
 	// ASC
@@ -146,22 +160,32 @@ func (s *QueryHistoryAvgMetricListRequest) Validate() error {
 }
 
 type QueryHistoryAvgMetricListRequestRange struct {
+	// Specifies whether to include the maximum value. Default value: false.
+	//
 	// example:
 	//
 	// false
 	IncludeMax *bool `json:"IncludeMax,omitempty" xml:"IncludeMax,omitempty"`
+	// Specifies whether to include the minimum value. Default value: true.
+	//
 	// example:
 	//
 	// true
 	IncludeMin *bool `json:"IncludeMin,omitempty" xml:"IncludeMin,omitempty"`
+	// The range label, which is used for the return value.
+	//
 	// example:
 	//
 	// label-02\\"
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 20
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 0

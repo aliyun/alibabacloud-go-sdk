@@ -32,19 +32,13 @@ type iDescribeUsersInGroupRequest interface {
 }
 
 type DescribeUsersInGroupRequest struct {
-	// The status of the desktop connection for the end user.
-	//
-	// Valid values:
-	//
-	// - 0: Disconnected.
-	//
-	// - 1: Connected.
+	// The connection status of the user.
 	//
 	// example:
 	//
 	// 1
 	ConnectState *int32 `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
-	// The ID of the cloud computer share.
+	// The shared cloud desktop ID.
 	//
 	// This parameter is required.
 	//
@@ -58,31 +52,31 @@ type DescribeUsersInGroupRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The IDs of the authorized users.
+	// A list of authorized user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The query string for fuzzy match. If you specify this parameter, the system returns all results that contain the string.
+	// The string for a partial match query. Results that contain this string are returned.
 	//
 	// example:
 	//
 	// alice
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// 	- Maximum value: 100.
+	// - Maximum value: 100.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+	// The token to start the next query. An empty value indicates that all results have been returned.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the organization to which the end user belongs.
+	// The ID of the organization to which the user belongs.
 	//
 	// example:
 	//
@@ -90,17 +84,11 @@ type DescribeUsersInGroupRequest struct {
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// Specifies whether to query user details.
 	//
-	// Valid values:
-	//
-	// 	- true (default)
-	//
-	// 	- false
-	//
 	// example:
 	//
-	// false
+	// true
 	QueryUserDetail *bool `json:"QueryUserDetail,omitempty" xml:"QueryUserDetail,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
 	//
 	// This parameter is required.
 	//

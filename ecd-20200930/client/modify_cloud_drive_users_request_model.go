@@ -22,14 +22,20 @@ type iModifyCloudDriveUsersRequest interface {
 }
 
 type ModifyCloudDriveUsersRequest struct {
+	// The enterprise cloud disk ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-596198****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// A list of end user IDs.
+	//
 	// This parameter is required.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain the list of regions supported by WUYING Workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

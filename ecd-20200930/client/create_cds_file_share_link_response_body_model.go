@@ -46,21 +46,21 @@ type CreateCdsFileShareLinkResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type DescribeFotaTasksResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// The parameter is not specified.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//

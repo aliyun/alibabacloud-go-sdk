@@ -22,19 +22,28 @@ type iDescribeCloudDiskGroupDrivesResponseBody interface {
 }
 
 type DescribeCloudDiskGroupDrivesResponseBody struct {
+	// The list of cloud disk team drives.
 	CloudDriveGroups []*DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups `json:"CloudDriveGroups,omitempty" xml:"CloudDriveGroups,omitempty" type:"Repeated"`
+	// The total number of results.
+	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The token that marks the start of the next query. An empty NextToken means no more results.
+	//
 	// example:
 	//
 	// MTA0MjA=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B9F9CBBE-8A9F-5FE5-8A72-0E81C2401A91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// True
@@ -108,35 +117,56 @@ func (s *DescribeCloudDiskGroupDrivesResponseBody) Validate() error {
 }
 
 type DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups struct {
+	// The time the drive was created.
+	//
 	// example:
 	//
 	// 2022-04-11T07:44:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-959593****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The drive ID.
+	//
 	// example:
 	//
 	// 1234
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// The team drive ID.
+	//
 	// example:
 	//
 	// cg-e70ga4ixp30ur****
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The team drive name.
+	//
+	// example:
+	//
+	// Test team 1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The organization ID of the team.
+	//
 	// example:
 	//
 	// org-aliyun-wy-org-id
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The status of the team drive.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total capacity of the cloud disk team drive.
+	//
 	// example:
 	//
 	// 5368709120
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The used space size, in bytes.
+	//
 	// example:
 	//
 	// 1024000000

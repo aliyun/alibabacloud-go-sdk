@@ -181,6 +181,10 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	// ecd-7o96aa08fr****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource name.
+	//
+	// example:
+	//
+	// O&M
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The region ID of the resource.
 	//

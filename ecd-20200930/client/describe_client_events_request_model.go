@@ -44,147 +44,81 @@ type iDescribeClientEventsRequest interface {
 }
 
 type DescribeClientEventsRequest struct {
-	// The cloud desktop ID. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
+	// The ID of the cloud desktop. If you omit this parameter, the operation returns events for all cloud desktops in the region.
 	//
 	// example:
 	//
 	// ecd-8fupvkhg0aayu****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The IP address of the cloud desktop. If you do not specify a value for this parameter, the events of all cloud desktops in the specified region are queried.
+	// The IP address of the cloud desktop. If you omit this parameter, the operation returns events for all cloud desktops in the region.
 	//
 	// example:
 	//
 	// 10.10.*.*
 	DesktopIp *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	// The cloud desktop name.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// test
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// This parameter is not available to the public.
+	// > This parameter is not in use.
 	//
 	// example:
 	//
-	// cn-hangzhou+dir-bh77qa8nmjot4****
+	// To be hidden.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\\
+	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.<br>
 	//
-	// If you do not specify a value for this parameter, the current time is used.
+	// If you omit this parameter, the operation uses the current time.<br>
 	//
 	// example:
 	//
 	// 2020-11-31T06:32:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The information about the end user that connects to the cloud desktop from the Elastic Desktop Service (EDS) client. The information can be a Resource Access Management (RAM) user ID or an Active Directory (AD) username. If you do not specify a value for this parameter, the events of all end users in the specified region are queried.
+	// The ID of the end user, which can be a RAM user ID or an AD username. If you omit this parameter, the operation returns events for all users in the region.
 	//
 	// example:
 	//
 	// 28961708130834****
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The type of the events that you want to query. If you specify multiple values for the EventTypes parameter, the events of all specified types are returned. If you do not specify values for the EventTypes and EventType parameters, all events of end users in the specified region are returned.
-	//
-	// Valid values:
-	//
-	// 	- DESKTOP_STOP: End users stop the cloud desktop.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- GET_LITE_CONNECTION_TICKET: End users obtain the credential for reconnecting to the cloud desktop upon disconnection.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DESKTOP_DISCONNECT: End users disconnect desktop sessions.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- GET_CONNECTION_TICKET: End users request to connect to the cloud desktop.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CLIENT_LOGIN: End users log on to the cloud desktop.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DESKTOP_REBOOT: End users restart the cloud desktop.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DESKTOP_CONNECT: End users establish desktop sessions.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DESKTOP_START: End users start the cloud desktop.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The event type to query. If EventTypes is specified, this parameter is ignored. If you omit both this parameter and EventTypes, the operation returns all events.
 	//
 	// example:
 	//
 	// DESKTOP_DISCONNECT
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The array of event types that you want to query. You can specify multiple event types. The response contains all or specified types of events.
+	// An array of event types to query. The operation returns events that match any of the specified types.
 	EventTypes       []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
 	FillHardwareInfo *bool     `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
 	Language         *string   `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The number of entries per page.\\
+	// The maximum number of entries to return on each page.<br>
 	//
-	// Default value: 100.
+	// Default value: 100.<br>
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous response to retrieve the next page of results.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, the events of all workspaces in the specified region are queried.
+	// The ID of the office network to which the cloud desktop belongs. If you omit this parameter, the operation returns events for users in all office networks in the region.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-bh77qa8nmjot4****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The workspace name.
+	// The name of the office network.
 	//
 	// example:
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -192,9 +126,9 @@ type DescribeClientEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\\
+	// The start of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.<br>
 	//
-	// If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
+	// If you omit this parameter, the query returns events that occurred before the time specified by `EndTime`.<br>
 	//
 	// example:
 	//

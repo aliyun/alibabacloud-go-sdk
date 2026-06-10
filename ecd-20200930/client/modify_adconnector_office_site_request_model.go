@@ -112,7 +112,7 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// example:
 	//
-	// oldad.com/Domain Controllers
+	// example.com/Domain Controllers
 	OUName *string `json:"OUName,omitempty" xml:"OUName,omitempty"`
 	// The office network ID.
 	//
@@ -146,7 +146,7 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// example:
 	//
-	// childexample.com
+	// child.example.com
 	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
 }
 

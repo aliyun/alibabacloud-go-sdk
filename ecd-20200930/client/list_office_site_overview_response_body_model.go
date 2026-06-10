@@ -111,77 +111,77 @@ type ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults struct {
 	//
 	// Default values:
 	//
-	// 	- CONFIGUSERFAILED
+	// - CONFIGUSERFAILED
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- REGISTERING
+	// - REGISTERING
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- REGISTERED
+	// - REGISTERED
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- NEEDCONFIGTRUST
+	// - NEEDCONFIGTRUST
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- CONFIGUSERING
+	// - CONFIGUSERING
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- CONFIGTRUSTFAILED
+	// - CONFIGTRUSTFAILED
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- ERROR
+	// - ERROR
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- CONFIGTRUSTING
+	// - CONFIGTRUSTING
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- NEEDCONFIGUSER
+	// - NEEDCONFIGUSER
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -221,11 +221,11 @@ type ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults struct {
 	//
 	// Valid values:
 	//
-	// 	- standard (default): standard, exclusive VPC
+	// - standard (default): standard, exclusive VPC
 	//
-	// 	- customized: custom, user VPC
+	// - customized: custom, user VPC
 	//
-	// 	- basic: basic, shared VPC
+	// - basic: basic, shared VPC
 	//
 	// example:
 	//

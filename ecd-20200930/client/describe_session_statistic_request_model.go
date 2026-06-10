@@ -38,9 +38,9 @@ type DescribeSessionStatisticRequest struct {
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The query interval. Unit: seconds. Valid values:
 	//
-	// 	- 60
+	// - 60
 	//
-	// 	- 120
+	// - 120
 	//
 	// example:
 	//

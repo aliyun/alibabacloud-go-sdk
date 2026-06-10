@@ -33,12 +33,6 @@ type DescribeCenterPolicyListRequest struct {
 	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
 	// The business type.
 	//
-	// Valid values:
-	//
-	// 	- 1: public cloud
-	//
-	// 	- 8: commercial edition.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -46,30 +40,22 @@ type DescribeCenterPolicyListRequest struct {
 	// 1
 	BusinessType *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	// The page number.\\
-	//
-	// Default value: 1.
+	// The page number to return in a paged query.<br>Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the cloud computer policies.
+	// The list of Cloud Desktop policy IDs.
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
 	PortProxy     *string   `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
 	// The resource type.
-	//
-	// Valid values:
-	//
-	// 	- app: cloud applications.
-	//
-	// 	- desktop: cloud computers.
 	//
 	// This parameter is required.
 	//
@@ -77,13 +63,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The effective scope of the cloud computer policy.
-	//
-	// Valid values:
-	//
-	// 	- IP: The policy applies to specific IP addresses.
-	//
-	// 	- GLOBAL: The policy applies globally.
+	// The scope where the Cloud Desktop policy takes effect.
 	//
 	// example:
 	//

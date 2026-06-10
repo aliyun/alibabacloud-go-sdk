@@ -34,21 +34,21 @@ type CopyCdsFileRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -76,11 +76,9 @@ type CopyCdsFileRequest struct {
 	//
 	// 640985a0ca2f71f489d2497682ca0bf468de****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// 目标复制文件所在的个人空间ID（即UserId，您可以在DescribeCloudDriveUsers接口返回的报文中获取。）或者目标复制文件所在的团队空间ID（即GroupId，您可以在DescribeCloudDriveGroups接口返回的报文中获取。）
+	// 目标复制文件所在的个人空间 ID（即 UserId，您可以在 DescribeCloudDriveUsers 接口返回的报文中获取。）或者目标复制文件所在的团队空间 ID（即 GroupId，您可以在 DescribeCloudDriveGroups 接口返回的报文中获取。）
 	//
-	// > FileReceiverId和FileReceiverType都为空时，默认复制到文件所在的个人空间。
-	//
-	// >
+	// > FileReceiverId 和 FileReceiverType 都为空时，默认复制到文件所在的个人空间。
 	//
 	// example:
 	//
@@ -92,7 +90,12 @@ type CopyCdsFileRequest struct {
 	//
 	// user
 	FileReceiverType *string `json:"FileReceiverType,omitempty" xml:"FileReceiverType,omitempty"`
-	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The team Space ID.
+	//
+	// example:
+	//
+	// cg-hs3i1w39o68ma****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the parent folder of the folder to which you want to copy the file. If you want to copy the file to the root directory, set this parameter to root.
 	//
 	// This parameter is required.

@@ -16,13 +16,13 @@ type iRenewNetworkPackagesResponseBody interface {
 }
 
 type RenewNetworkPackagesResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 214726268900640
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

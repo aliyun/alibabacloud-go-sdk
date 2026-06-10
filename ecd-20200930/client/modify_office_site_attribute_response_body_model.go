@@ -14,7 +14,7 @@ type iModifyOfficeSiteAttributeResponseBody interface {
 }
 
 type ModifyOfficeSiteAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

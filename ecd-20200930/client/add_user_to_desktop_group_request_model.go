@@ -17,6 +17,8 @@ type iAddUserToDesktopGroupRequest interface {
 	GetDesktopGroupIds() []*string
 	SetEndUserIds(v []*string) *AddUserToDesktopGroupRequest
 	GetEndUserIds() []*string
+	SetOrgId(v string) *AddUserToDesktopGroupRequest
+	GetOrgId() *string
 	SetRegionId(v string) *AddUserToDesktopGroupRequest
 	GetRegionId() *string
 	SetSimpleUserGroupId(v string) *AddUserToDesktopGroupRequest
@@ -28,23 +30,24 @@ type iAddUserToDesktopGroupRequest interface {
 }
 
 type AddUserToDesktopGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25693.html).
+	// A client token that ensures the idempotence of a request. Generate a unique value for this parameter from your client. The token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the cloud computer share.
+	// The ID of the shared cloud desktop to which to add an authorized user.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the cloud computer shares.
+	// A list of shared cloud desktop group IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The IDs of the users to whom you want to grant permissions.
+	// A list of users to authorize.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The ID of the region.
+	OrgId      *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions where WUYING Workspace is available.
 	//
 	// This parameter is required.
 	//
@@ -81,6 +84,10 @@ func (s *AddUserToDesktopGroupRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
 
+func (s *AddUserToDesktopGroupRequest) GetOrgId() *string {
+	return s.OrgId
+}
+
 func (s *AddUserToDesktopGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -114,6 +121,11 @@ func (s *AddUserToDesktopGroupRequest) SetDesktopGroupIds(v []*string) *AddUserT
 
 func (s *AddUserToDesktopGroupRequest) SetEndUserIds(v []*string) *AddUserToDesktopGroupRequest {
 	s.EndUserIds = v
+	return s
+}
+
+func (s *AddUserToDesktopGroupRequest) SetOrgId(v string) *AddUserToDesktopGroupRequest {
+	s.OrgId = &v
 	return s
 }
 

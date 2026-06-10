@@ -34,37 +34,35 @@ type iDescribeDesktopsInGroupResponseBody interface {
 }
 
 type DescribeDesktopsInGroupResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
-	//
-	// If NextToken is empty, no next page exists.
+	// The token to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of subscription cloud computers that are in the Connected state.
+	// The number of connected subscription cloud desktops.
 	//
 	// example:
 	//
 	// 100
 	OnlinePrePaidDesktopsCount *int32 `json:"OnlinePrePaidDesktopsCount,omitempty" xml:"OnlinePrePaidDesktopsCount,omitempty"`
-	// The subscription cloud computers.
+	// A list of subscription cloud desktops.
 	PaidDesktops []*DescribeDesktopsInGroupResponseBodyPaidDesktops `json:"PaidDesktops,omitempty" xml:"PaidDesktops,omitempty" type:"Repeated"`
-	// The total number of subscription cloud computers.
+	// The total number of subscription cloud desktops.
 	//
 	// example:
 	//
 	// 10
 	PaidDesktopsCount *int32 `json:"PaidDesktopsCount,omitempty" xml:"PaidDesktopsCount,omitempty"`
-	// The pay-as-you-go cloud computers.
+	// A list of pay-as-you-go cloud desktops.
 	PostPaidDesktops []*DescribeDesktopsInGroupResponseBodyPostPaidDesktops `json:"PostPaidDesktops,omitempty" xml:"PostPaidDesktops,omitempty" type:"Repeated"`
-	// The total number of pay-as-you-go cloud computers.
+	// The total number of pay-as-you-go cloud desktops.
 	//
 	// example:
 	//
 	// 10
 	PostPaidDesktopsCount *int32 `json:"PostPaidDesktopsCount,omitempty" xml:"PostPaidDesktopsCount,omitempty"`
-	// The total amount of bills for pay-as-you-go cloud computers.
+	// The total billed amount for the pay-as-you-go cloud desktops.
 	//
 	// example:
 	//
@@ -76,19 +74,19 @@ type DescribeDesktopsInGroupResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of subscription cloud computers that are in the Running state.
+	// The number of running subscription cloud desktops.
 	//
 	// example:
 	//
 	// 100
 	RunningPrePaidDesktopsCount *int32 `json:"RunningPrePaidDesktopsCount,omitempty" xml:"RunningPrePaidDesktopsCount,omitempty"`
-	// The number of subscription cloud computers that are in the Stopped state.
+	// Deprecated. This parameter is misspelled. Use `StoppedPrePaidDesktopsCount` instead.
 	//
 	// example:
 	//
 	// 100
 	StopedPrePaidDesktopsCount *int32 `json:"StopedPrePaidDesktopsCount,omitempty" xml:"StopedPrePaidDesktopsCount,omitempty"`
-	// The number of subscription cloud computers that are in the Stopped state.
+	// The number of stopped subscription cloud desktops.
 	//
 	// example:
 	//
@@ -226,170 +224,61 @@ func (s *DescribeDesktopsInGroupResponseBody) Validate() error {
 }
 
 type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
-	// The connection status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Unknown
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Connected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Disconnected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The connection status of the cloud desktop.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The ID of the cloud computer.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
 	// ud-7ftf5b6yu77b0****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
-	// testName
+	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Stopped
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Starting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Rebuilding
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Stopping
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Expired
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Deleted
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Pending
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the cloud desktop.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The type of the disk.
-	//
-	// Valid values:
-	//
-	// 	- SYSTEM: system disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DATA: data disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The disk type.
 	//
 	// example:
 	//
 	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the authorized user.
+	// The ID of the authorized end user.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The IDs of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
+	// The IDs of end users connected to the cloud desktop. If no end user is connected, the array is empty.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The username of the authorized user.
+	// The name of the authorized end user.
 	//
 	// example:
 	//
 	// alice
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The usernames of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
+	// The usernames of end users connected to the cloud desktop. If no end user is connected, the array is empty.
 	EndUserNames []*string `json:"EndUserNames,omitempty" xml:"EndUserNames,omitempty" type:"Repeated"`
-	ExpiredTime  *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The expiration time of the subscription cloud desktop.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The image version.
 	//
 	// example:
 	//
 	// 0.1.0-R-20220914.17****
 	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
-	// The version of the GPU driver.
+	// The GPU driver version.
 	//
 	// example:
 	//
@@ -407,99 +296,45 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	//
 	// Win10_ZC
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The flag that is used to manage the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Updating: The configurations of the cloud computer are being updated.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NoFlag: No flags are attached to the cloud computer.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The management flag.
 	//
 	// example:
 	//
 	// NoFlag
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	// The flags that are used to manage the cloud computers.
+	// The management flags.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
-	// The IP address of the member network interface controller (NIC) of the instance.
+	// The IP address of the secondary elastic network interface of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	MemberEniIp *string `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
-	// The OS.
-	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of the operating system.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The IP address of the primary NIC of the instance.
+	// The IP address of the primary network interface of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	PrimaryEniIp *string `json:"PrimaryEniIp,omitempty" xml:"PrimaryEniIp,omitempty"`
-	// The protocol.
-	//
-	// Valid values:
-	//
-	// 	- HDX: High-definition Experience (HDX) protocol
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- ASP: Adaptive Streaming Protocol (ASP) protocol provided by Alibaba Cloud
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The session protocol.
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The time when the cloud computer was reset.
+	// The time when the cloud desktop was last reset.
 	//
 	// example:
 	//
 	// 2021-03-03 08:48:08
 	ResetTime *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	// The system disk size. Unit: GiB.
+	// The size of the system disk, in GiB.
 	//
 	// example:
 	//
@@ -718,173 +553,63 @@ func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) Validate() error {
 }
 
 type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
-	// The connection status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Unknown
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Connected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Disconnected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The connection status of the cloud desktop.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The retention period. Unit: milliseconds.
+	// The retention period of the cloud desktop, in milliseconds.
 	//
 	// example:
 	//
 	// 4153958447
 	CreateDuration *string `json:"CreateDuration,omitempty" xml:"CreateDuration,omitempty"`
-	// The time when the cloud computer was created.
+	// The creation time of the cloud desktop.
 	//
 	// example:
 	//
 	// 2022-01-21T06:34:57Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the cloud computer.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
 	// ud-2i8qxpv6t1a07****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
-	// testName
+	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Stopped
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Starting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Rebuilding
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Stopping
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Expired
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Deleted
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Pending
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the cloud desktop.
 	//
 	// example:
 	//
 	// Stopped
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The type of the disk.
-	//
-	// Valid values:
-	//
-	// 	- SYSTEM: system disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DATA: data disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The disk type.
 	//
 	// example:
 	//
 	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the authorized user.
+	// The ID of the authorized end user.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The IDs of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+	// The IDs of end users connected to the cloud desktop. If no end user is connected, the array is empty.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The username of the authorized user.
+	// The name of the authorized end user.
 	//
 	// example:
 	//
 	// alice
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The usernames of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+	// The usernames of end users connected to the cloud desktop. If no end user is connected, the array is empty.
 	EndUserNames []*string `json:"EndUserNames,omitempty" xml:"EndUserNames,omitempty" type:"Repeated"`
 	// The image version.
 	//
@@ -892,7 +617,7 @@ type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
 	//
 	// 0.1.0-R-20220914.17****
 	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
-	// The version of the GPU driver.
+	// The GPU driver version.
 	//
 	// example:
 	//
@@ -910,105 +635,51 @@ type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
 	//
 	// Win10_ZC
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The flag that is used to manage the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Updating: The configurations of the cloud computer are being updated.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NoFlag: No flags are attached to the cloud computer.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The management flag.
 	//
 	// example:
 	//
 	// NoFlag
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	// The flags that are used to manage the cloud computers.
+	// The management flags.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
-	// The IP address of the member NIC of the instance.
+	// The IP address of the secondary elastic network interface of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	MemberEniIp *string `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
-	// The OS.
-	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of the operating system.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The IP address of the primary NIC of the instance.
+	// The IP address of the primary network interface of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	PrimaryEniIp *string `json:"PrimaryEniIp,omitempty" xml:"PrimaryEniIp,omitempty"`
-	// The protocol.
-	//
-	// Valid values:
-	//
-	// 	- HDX: HDX protocol
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- ASP: ASP protocol provided by Alibaba Cloud
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The session protocol.
 	//
 	// example:
 	//
 	// HDX
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The time when the cloud computer was released.
+	// The release time of the cloud desktop.
 	//
 	// example:
 	//
 	// 2022-01-21T16:34:57Z
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The time when the cloud computer was reset.
+	// The time when the cloud desktop was last reset.
 	//
 	// example:
 	//
 	// 2021-03-03 08:48:08
 	ResetTime *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	// The system disk size. Unit: GiB.
+	// The size of the system disk, in GiB.
 	//
 	// example:
 	//

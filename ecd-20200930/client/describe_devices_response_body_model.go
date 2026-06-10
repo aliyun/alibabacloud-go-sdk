@@ -132,7 +132,7 @@ type DescribeDevicesResponseBodyDevicesEndUserList struct {
 	//
 	// example:
 	//
-	// moli
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The account type of the user.
 	//

@@ -16,9 +16,9 @@ type iRebuildDesktopsResponseBody interface {
 }
 
 type RebuildDesktopsResponseBody struct {
-	// The recreation results.
+	// The rebuild results.
 	RebuildResults []*RebuildDesktopsResponseBodyRebuildResults `json:"RebuildResults,omitempty" xml:"RebuildResults,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *RebuildDesktopsResponseBody) Validate() error {
 }
 
 type RebuildDesktopsResponseBodyRebuildResults struct {
-	// The recreation result code. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The operation result. A value of `Success` indicates the rebuild was initiated. Otherwise, an error code is returned.
 	//
 	// example:
 	//
 	// IncorrectDesktopStatus
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The IDs of the cloud computers.
+	// The desktop ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The error message. This parameter is invalid if the value of `Code` is `success`.
+	// The error message. This parameter is returned only if the value of `Code` is not `Success`.
 	//
 	// example:
 	//

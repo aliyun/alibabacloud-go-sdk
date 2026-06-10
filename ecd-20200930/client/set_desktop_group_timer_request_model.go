@@ -28,7 +28,7 @@ type SetDesktopGroupTimerRequest struct {
 	//
 	// example:
 	//
-	// 0 0 2 ? 	- 1-7
+	// 0 0 9 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// The ID of the cloud computer share.
 	//

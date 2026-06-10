@@ -40,19 +40,19 @@ type iDescribeGlobalTimerRecordsRequest interface {
 }
 
 type DescribeGlobalTimerRecordsRequest struct {
-	// The ID of the batch in which the scheduled task is executed.
+	// The batch ID for a scheduled task execution.
 	//
 	// example:
 	//
 	// ccg-****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The cloud computer IDs.
+	// A list of cloud desktop IDs.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// FAILED
 	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
-	// The ID of the scheduled task group.
+	// The scheduled task group ID.
 	//
 	// example:
 	//
@@ -68,30 +68,20 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to list the regions available in Elastic Desktop Service.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The type of the execution result. You can specify this parameter to filter the execution results.
-	//
-	// Valid values:
-	//
-	// 	- FAILED: The execution is successful.
-	//
-	// 	- FAILED: The execution failed.
-	//
-	// 	- RUNNING: The execution is in progress.
-	//
-	// 	- SKIPPED: The execution is skipped.
+	// Filters the results by execution status. Valid values:
 	//
 	// example:
 	//
@@ -101,33 +91,19 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// true
 	Retryable *bool `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
-	// The ID of the searched region. You can specify this parameter to filter cloud computers in specific regions.
+	// The ID of the region to filter by. Only records for cloud desktops in this region are returned.
 	//
 	// example:
 	//
 	// cn-shanghai
 	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
-	// The execution result of the scheduled task.
-	//
-	// Valid values:
-	//
-	// 	- CONNECTED_NOT_RUN: The cloud computer is connected, but the scheduled task is not executed.
-	//
-	// 	- PAUSED: The scheduled task is suspended.
-	//
-	// 	- COMPLETED: The scheduled task is executed.
-	//
-	// 	- FAILED: The scheduled task failed to be executed.
-	//
-	// 	- RUNNING: The scheduled task is being executed.
-	//
-	// 	- TERMINATED: The scheduled task is stopped.
+	// The execution result of the scheduled task. Valid values:
 	//
 	// example:
 	//
 	// RUNNING
 	TimerResult *string `json:"TimerResult,omitempty" xml:"TimerResult,omitempty"`
-	// The scheduled tasks.
+	// The types of scheduled tasks.
 	TimerTypes      []*string `json:"TimerTypes,omitempty" xml:"TimerTypes,omitempty" type:"Repeated"`
 	WuyingServerIds []*string `json:"WuyingServerIds,omitempty" xml:"WuyingServerIds,omitempty" type:"Repeated"`
 }

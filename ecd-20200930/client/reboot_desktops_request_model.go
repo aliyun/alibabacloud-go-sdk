@@ -23,7 +23,7 @@ type iRebootDesktopsRequest interface {
 
 type RebootDesktopsRequest struct {
 	CreateSnapshot *bool `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
-	// The IDs of the cloud computers. You can specify 1 to 100 IDs.
+	// An array of 1 to 100 desktop IDs.
 	//
 	// This parameter is required.
 	//
@@ -31,12 +31,13 @@ type RebootDesktopsRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	OsUpdate  *bool     `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
+	// Specifies whether to install system patches.
+	OsUpdate *bool `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
 	// example:
 	//
 	// KB5082063
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the region. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where Elastic Desktop Service is available.
 	//
 	// This parameter is required.
 	//

@@ -93,21 +93,21 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// Valid values:
 	//
-	// 	- Expired
+	// - Expired
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Normal
+	// - Normal
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	EipAddresses []*string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Repeated"`
 	// The time when the premium bandwidth plan expires.
 	//
-	// 	- If the plan is a subscription one, the time when the plan expires is returned.
+	// - If the plan is a subscription one, the time when the plan expires is returned.
 	//
-	// 	- If the plan is a pay-as-you-go one, `2099-12-31T15:59:59Z` is returned.
+	// - If the plan is a pay-as-you-go one, `2099-12-31T15:59:59Z` is returned.
 	//
 	// example:
 	//
@@ -133,15 +133,15 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The charge type of the premium bandwidth plan.
 	//
-	// 	- Valid value when the `PayType` parameter is set to `PrePaid`:
+	// - Valid value when the `PayType` parameter is set to `PrePaid`:
 	//
-	//     	- PayByBandwidth: charges by fixed bandwidth.
+	//   - PayByBandwidth: charges by fixed bandwidth.
 	//
-	// 	- Valid values when the `PayType` parameter is set to `PostPaid`:
+	// - Valid values when the `PayType` parameter is set to `PostPaid`:
 	//
-	//     	- PayByTraffic: charges by data transfer.
+	//   - PayByTraffic: charges by data transfer.
 	//
-	//     	- PayByBandwidth: charges by fixed bandwidth.
+	//   - PayByBandwidth: charges by fixed bandwidth.
 	//
 	// example:
 	//
@@ -157,37 +157,37 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// Valid values:
 	//
-	// 	- Creating
+	// - Creating
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Released
+	// - Released
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- InUse
+	// - InUse
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Releasing
+	// - Releasing
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -203,17 +203,17 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// example:
 	//
-	// test
+	// default
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The type of the office network.
 	//
 	// Valid values:
 	//
-	// 	- standard: advanced office network
+	// - standard: advanced office network
 	//
-	// 	- customized: custom office network
+	// - customized: custom office network
 	//
-	// 	- basic: basic office network
+	// - basic: basic office network
 	//
 	// example:
 	//
@@ -223,9 +223,9 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// Valid values:
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go
 	//
-	// 	- PrePaid: subscription
+	// - PrePaid: subscription
 	//
 	// example:
 	//
@@ -247,9 +247,9 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// Valid values:
 	//
-	// 	- PayByTraffic: charges by data transfer.
+	// - PayByTraffic: charges by data transfer.
 	//
-	// 	- PayByBandwidth: charges by fixed bandwidth.
+	// - PayByBandwidth: charges by fixed bandwidth.
 	//
 	// example:
 	//

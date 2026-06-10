@@ -24,7 +24,7 @@ type iModifyAutoSnapshotPolicyRequest interface {
 }
 
 type ModifyAutoSnapshotPolicyRequest struct {
-	// The CRON expression.
+	// The cron expression.
 	//
 	// example:
 	//
@@ -39,13 +39,13 @@ type ModifyAutoSnapshotPolicyRequest struct {
 	//
 	// sp-itcmrhqt01tdo****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters long, start with a letter or a Chinese character, and must not start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-). The default is an empty string.
 	//
 	// example:
 	//
-	// Automatic system snapshot
+	// SystemAutoSnapshot
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where Elastic Desktop Service is available.
 	//
 	// This parameter is required.
 	//
@@ -53,11 +53,11 @@ type ModifyAutoSnapshotPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+	// The number of days to retain automatic snapshots. The value must be an integer from 1 to 180.
 	//
 	// example:
 	//
-	// 5
+	// 2
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 }
 

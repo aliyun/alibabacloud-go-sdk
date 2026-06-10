@@ -20,17 +20,17 @@ type iCreateDesktopGroupResponseBody interface {
 }
 
 type CreateDesktopGroupResponseBody struct {
-	// The ID of the shared group.
+	// The ID of the desktop group.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the shared groups.
+	// The desktop group IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The IDs of the orders.
+	// The order IDs.
 	OrderIds []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

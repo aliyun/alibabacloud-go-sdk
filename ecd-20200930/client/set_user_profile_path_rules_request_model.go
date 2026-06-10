@@ -20,54 +20,11 @@ type iSetUserProfilePathRulesRequest interface {
 }
 
 type SetUserProfilePathRulesRequest struct {
-	// The desktop group ID.
-	//
-	// example:
-	//
-	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The region ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The directories that you want to configure in the blacklist and whitelist.
+	RegionId            *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserProfilePathRule []*SetUserProfilePathRulesRequestUserProfilePathRule `json:"UserProfilePathRule,omitempty" xml:"UserProfilePathRule,omitempty" type:"Repeated"`
-	// The directory type that you want to configure.
-	//
-	// Valid values:
-	//
-	// 	- Both_Default_DesktopGroup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DesktopGroup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Default
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// DesktopGroup
-	UserProfileRuleType *string `json:"UserProfileRuleType,omitempty" xml:"UserProfileRuleType,omitempty"`
+	UserProfileRuleType *string                                              `json:"UserProfileRuleType,omitempty" xml:"UserProfileRuleType,omitempty"`
 }
 
 func (s SetUserProfilePathRulesRequest) String() string {
@@ -128,9 +85,7 @@ func (s *SetUserProfilePathRulesRequest) Validate() error {
 }
 
 type SetUserProfilePathRulesRequestUserProfilePathRule struct {
-	// The directory in the blacklist.
-	BlackPath *SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath `json:"BlackPath,omitempty" xml:"BlackPath,omitempty" type:"Struct"`
-	// The directories that you want to configure in the whitelist.
+	BlackPath  *SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath    `json:"BlackPath,omitempty" xml:"BlackPath,omitempty" type:"Struct"`
 	WhitePaths []*SetUserProfilePathRulesRequestUserProfilePathRuleWhitePaths `json:"WhitePaths,omitempty" xml:"WhitePaths,omitempty" type:"Repeated"`
 }
 
@@ -179,35 +134,7 @@ func (s *SetUserProfilePathRulesRequestUserProfilePathRule) Validate() error {
 }
 
 type SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath struct {
-	// The blacklist path.
-	//
-	// example:
-	//
-	// AppLocal/Data
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The path type.
-	//
-	// Valid values:
-	//
-	// 	- file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- folder
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// folder
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -242,35 +169,7 @@ func (s *SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath) Validate() 
 }
 
 type SetUserProfilePathRulesRequestUserProfilePathRuleWhitePaths struct {
-	// The whitelist path.
-	//
-	// example:
-	//
-	// whitePath
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The path type.
-	//
-	// Valid values:
-	//
-	// 	- file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- folder
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

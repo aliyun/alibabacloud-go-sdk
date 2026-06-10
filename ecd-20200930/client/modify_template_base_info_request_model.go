@@ -33,6 +33,10 @@ type ModifyTemplateBaseInfoRequest struct {
 	// b-0caoeogs88y*****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// Shanghai template1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

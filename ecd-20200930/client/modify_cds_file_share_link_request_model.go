@@ -138,13 +138,13 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 10
 	DownloadCount *int64 `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
 	// The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
 	//
 	// example:
 	//
-	// 0
+	// 10
 	DownloadLimit *int64 `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
 	// The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
 	//
@@ -156,7 +156,7 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 10
 	PreviewCount *int64 `json:"PreviewCount,omitempty" xml:"PreviewCount,omitempty"`
 	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
 	//
@@ -168,13 +168,13 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 10
 	ReportCount *int64 `json:"ReportCount,omitempty" xml:"ReportCount,omitempty"`
 	// The number of times that the shared files are dumped. The value of this parameter must be equal to or greater than 0.
 	//
 	// example:
 	//
-	// 0
+	// 10
 	SaveCount *int64 `json:"SaveCount,omitempty" xml:"SaveCount,omitempty"`
 	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
 	//
@@ -193,6 +193,10 @@ type ModifyCdsFileShareLinkRequest struct {
 	// The name of the file sharing task. If you do not configure this parameter, the sharing task name is the first ID that is returned in the file_id_list value.
 	//
 	// >  The sharing task name must be 0 to 128 characters in length.
+	//
+	// example:
+	//
+	// File sharing
 	ShareName *string `json:"ShareName,omitempty" xml:"ShareName,omitempty"`
 	// The length of the access code. Valid values: 6 to 8. Unit: bytes. If you leave this parameter empty or set it to null, no access code is required. If you use a token to share files, you do not need to configure this parameter. The access code can contain only visible ASCII characters.
 	//
@@ -228,7 +232,7 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 10
 	VideoPreviewCount *int64 `json:"VideoPreviewCount,omitempty" xml:"VideoPreviewCount,omitempty"`
 }
 

@@ -76,13 +76,13 @@ type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {
 	//
 	// Valid values:
 	//
-	// 	- COORDINATING: The collaboration task is being executed.
+	// - COORDINATING: The collaboration task is being executed.
 	//
-	// 	- TERMINATING: The collaboration task is being terminated.
+	// - TERMINATING: The collaboration task is being terminated.
 	//
-	// 	- TERMINATED: The collaboration task is terminated.
+	// - TERMINATED: The collaboration task is terminated.
 	//
-	// 	- PENDING: The collaboration task is pending to be executed.
+	// - PENDING: The collaboration task is pending to be executed.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {
 	//
 	// Valid values:
 	//
-	// 	- ADMIN_INITIATE_FORCE: The administrator forcibly initiates the collaboration request.
+	// - ADMIN_INITIATE_FORCE: The administrator forcibly initiates the collaboration request.
 	//
-	// 	- ADMIN_INITIATE: The administrator initiates the collaboration request.
+	// - ADMIN_INITIATE: The administrator initiates the collaboration request.
 	//
-	// 	- COORDINATOR_INITIATE_FORCE: The coordinator forcibly initiates the collaboration request.
+	// - COORDINATOR_INITIATE_FORCE: The coordinator forcibly initiates the collaboration request.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {
 	//
 	// example:
 	//
-	// TestDesktop
+	// DemoComputer
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 

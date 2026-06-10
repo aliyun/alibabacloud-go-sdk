@@ -26,27 +26,55 @@ type iDescribeGlobalTimerBatchesRequest interface {
 }
 
 type DescribeGlobalTimerBatchesRequest struct {
+	// The ID of the scheduled task group.
+	//
 	// example:
 	//
 	// ccg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results. Set this parameter to the `NextToken` value from a previous response.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// - China (Shanghai)
+	//
+	// - Singapore (Singapore)
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	// The ID of the region where the cloud computers are located. This parameter filters the results to include only cloud computers in the specified region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
+	// The type of the scheduled task. This operation returns batch information for timer-based scheduled tasks only.
+	//
+	// - `TimerBoot`: scheduled startup
+	//
+	// - `TimerShutdown`: scheduled shutdown
+	//
+	// - `TimerReboot`: scheduled reboot
+	//
+	// - `TimerReset`: scheduled reset
+	//
+	// - `TimerMaintenance`: scheduled maintenance
+	//
+	// - `TimerHibernate`: scheduled hibernation
+	//
 	// example:
 	//
 	// 1

@@ -20,20 +20,28 @@ type iModifyQosRuleRequest interface {
 }
 
 type ModifyQosRuleRequest struct {
+	// The maximum downstream bandwidth. The unit is Mbps.
+	//
 	// example:
 	//
 	// 10
 	Download *int32 `json:"Download,omitempty" xml:"Download,omitempty"`
+	// The ID of the QoS rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qos-5605u0gelk200****
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	// The name of the QoS rule.
+	//
 	// example:
 	//
 	// test
 	QosRuleName *string `json:"QosRuleName,omitempty" xml:"QosRuleName,omitempty"`
+	// The maximum upstream bandwidth. The unit is Mbps.
+	//
 	// example:
 	//
 	// 10

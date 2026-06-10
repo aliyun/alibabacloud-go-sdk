@@ -16,7 +16,7 @@ type iCreateADConnectorOfficeSiteResponseBody interface {
 }
 
 type CreateADConnectorOfficeSiteResponseBody struct {
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//

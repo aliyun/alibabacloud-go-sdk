@@ -38,9 +38,9 @@ type UpdateFotaTaskRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Running: automatically pushes the image update task.
+	// - Running: automatically pushes the image update task.
 	//
-	// 	- Pending: does not automatically push the image update task.
+	// - Pending: does not automatically push the image update task.
 	//
 	// example:
 	//

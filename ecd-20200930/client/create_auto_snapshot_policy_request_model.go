@@ -22,7 +22,7 @@ type iCreateAutoSnapshotPolicyRequest interface {
 }
 
 type CreateAutoSnapshotPolicyRequest struct {
-	// The CRON expression for periodic scheduling.
+	// The cron expression for the recurring schedule.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	// 0 0 2 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	DiskType       *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
+	// The name of the automatic snapshot policy. It can contain 2 to 128 English or Chinese characters. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: empty.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// test_auto_policy
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -47,13 +47,13 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+	// The retention period of the automatic snapshot, in days. Valid values: 1 to 180.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 30
+	// 2
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 }
 

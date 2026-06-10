@@ -30,7 +30,7 @@ type iDescribeDesktopsInGroupRequest interface {
 type DescribeDesktopsInGroupRequest struct {
 	CustomEndTimePeriod   *int64 `json:"CustomEndTimePeriod,omitempty" xml:"CustomEndTimePeriod,omitempty"`
 	CustomStartTimePeriod *int64 `json:"CustomStartTimePeriod,omitempty" xml:"CustomStartTimePeriod,omitempty"`
-	// The ID of the cloud computer share.
+	// The ID of the desktop group.
 	//
 	// This parameter is required.
 	//
@@ -38,41 +38,35 @@ type DescribeDesktopsInGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// Specifies whether to ignore deletion flags.
-	//
-	// Default value: true. Valid values:
-	//
-	// 	- true: ignores deletion flags. The cloud computers that were deleted are returned.
-	//
-	// 	- false: does not ignore deletion flags. The cloud computers that were deleted are not returned.
+	// Specifies whether to return deleted desktops.
 	//
 	// example:
 	//
 	// true
 	IgnoreDeleted *bool `json:"IgnoreDeleted,omitempty" xml:"IgnoreDeleted,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return on a single page.
 	//
-	// 	- Default value: 10.
+	// - Maximum value: 100.
 	//
-	// 	- Maximum value: 100.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to start the next query. If this parameter is empty, all results are returned.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The billing method of the cloud computer share.
+	// The billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

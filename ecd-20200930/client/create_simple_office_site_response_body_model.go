@@ -16,17 +16,17 @@ type iCreateSimpleOfficeSiteResponseBody interface {
 }
 
 type CreateSimpleOfficeSiteResponseBody struct {
-	// The office network ID.
+	// The office site ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+os-c5cy7q578s8jc****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

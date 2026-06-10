@@ -20,7 +20,7 @@ type iModifyDesktopChargeTypeResponseBody interface {
 }
 
 type ModifyDesktopChargeTypeResponseBody struct {
-	// The IDs of the cloud computers.
+	// The IDs of the cloud desktops.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The ID of the order.
 	//
@@ -28,7 +28,7 @@ type ModifyDesktopChargeTypeResponseBody struct {
 	//
 	// 123456789
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

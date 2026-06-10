@@ -58,9 +58,9 @@ type DescribePriceRequest struct {
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The maximum public bandwidth. Unit: Mbit/s.
 	//
-	// 	- Valid values if you set InternetChargeType to PayByBandwidth: 10 to 1000.
+	// - Valid values if you set InternetChargeType to PayByBandwidth: 10 to 1000.
 	//
-	// 	- Valid values if you set InternetChargeType to InternetChargeType: 10 to 200.
+	// - Valid values if you set InternetChargeType to InternetChargeType: 10 to 200.
 	//
 	// example:
 	//
@@ -68,19 +68,13 @@ type DescribePriceRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The type of hourly plan if you use the Monthly Subscription billing method. If you set `ResourceType` to `DesktopMonthPackage`, you must specify this parameter.
 	//
-	// Valid values:
-	//
-	// 	- 120: the 120-hour computing plan.
-	//
-	// 	- 250: the 250-hour computing plan.
-	//
 	// example:
 	//
 	// 120
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The number of cloud computer shares. Default value: 1.
 	//
-	// >  This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
+	// > This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
 	//
 	// example:
 	//
@@ -88,11 +82,11 @@ type DescribePriceRequest struct {
 	GroupDesktopCount *int32 `json:"GroupDesktopCount,omitempty" xml:"GroupDesktopCount,omitempty"`
 	// The specifications of the resource.
 	//
-	// 	- This parameter is required if you set `ResourceType` to `Desktop`. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the available cloud computer types that correspond to the value of `DesktopTypeId`.
+	// - This parameter is required if you set `ResourceType` to `Desktop`. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the available cloud computer types that correspond to the value of `DesktopTypeId`.
 	//
-	// 	- If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
+	// - If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
 	//
-	// 	- If you set `ResourceType` to `Bandwidth`, you can leave this parameter empty.
+	// - If you set `ResourceType` to `Bandwidth`, you can leave this parameter empty.
 	//
 	// example:
 	//
@@ -100,23 +94,11 @@ type DescribePriceRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The metering method for network traffic.
 	//
-	// Valid values:
-	//
-	// 	- PayByTraffic: You are charged for the actually consumed traffic.
-	//
-	// 	- PayByBandwidth: You are charged by a fixed bandwidth.
-	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The OS type.
-	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	// 	- Windows (default)
 	//
 	// example:
 	//
@@ -124,11 +106,11 @@ type DescribePriceRequest struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The subscription duration. The valid values of this parameter vary based on the value of `PeriodUnit`.
 	//
-	// 	- If you set `PeriodUnit` to `Hour`, set the value of this parameter to 1.
+	// - If you set `PeriodUnit` to `Hour`, set the value of this parameter to 1.
 	//
-	// 	- If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
+	// - If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
 	//
-	// 	- If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
+	// - If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
 	//
 	// Default value: 1.
 	//
@@ -137,14 +119,6 @@ type DescribePriceRequest struct {
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The billing cycle.
-	//
-	// Valid values:
-	//
-	// 	- Month
-	//
-	// 	- Year
-	//
-	// 	- Hour (default)
 	//
 	// example:
 	//
@@ -156,26 +130,21 @@ type DescribePriceRequest struct {
 	//
 	// 123456
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by EDS.
+	// The region ID. You can call the [](t2167755.xdita#)operation to query the regions supported by EDS.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// User ID of the resource owner in resale mode. This parameter is not required in non-resale mode.
+	//
+	// example:
+	//
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// 	- DesktopMonthPackage: monthly subscription cloud computers that use hourly limit plans.
-	//
-	// 	- Desktop (default): pay-as-you-go cloud computers/monthly subscription cloud computers that use unlimited plans.
-	//
-	// 	- Bandwidth: premium bandwidth plans.
-	//
-	// 	- DesktopGroup: cloud computer shares.
 	//
 	// example:
 	//
@@ -183,18 +152,15 @@ type DescribePriceRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The category of the system disk.
 	//
-	// Valid values:
-	//
-	// 	- cloud_efficiency: the ultra disk
-	//
-	// 	- cloud_auto: the standard SSD.
-	//
-	// 	- cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
-	//
 	// example:
 	//
 	// 40
-	RootDiskCategory         *string `json:"RootDiskCategory,omitempty" xml:"RootDiskCategory,omitempty"`
+	RootDiskCategory *string `json:"RootDiskCategory,omitempty" xml:"RootDiskCategory,omitempty"`
+	// Performance level of the system disk. You can configure the disk performance level when the cloud desktop instance type is graphics-optimized or high clock speed. For differences among performance levels of disks, see [](t583241.xdita#).
+	//
+	// example:
+	//
+	// PL0
 	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB. If you set `ResourceType` to `Desktop`, you must specify this parameter.
 	//
@@ -204,18 +170,15 @@ type DescribePriceRequest struct {
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
 	// The category of the data disk.
 	//
-	// Valid values:
-	//
-	// 	- cloud_efficiency: the ultra disk
-	//
-	// 	- cloud_auto: the standard SSD.
-	//
-	// 	- cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
-	//
 	// example:
 	//
 	// 80
-	UserDiskCategory         *string `json:"UserDiskCategory,omitempty" xml:"UserDiskCategory,omitempty"`
+	UserDiskCategory *string `json:"UserDiskCategory,omitempty" xml:"UserDiskCategory,omitempty"`
+	// Performance level of the data disk. You can specify the disk performance level when the WUYING Workspace instance type is set to graphics-optimized or high clock speed. For differences between performance levels of disks, see [](t583241.xdita#).
+	//
+	// example:
+	//
+	// PL0
 	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
 	// The size of the data disk. Unit: GiB.
 	//

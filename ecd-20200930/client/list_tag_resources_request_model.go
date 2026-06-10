@@ -54,7 +54,7 @@ type ListTagResourcesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ALIYUN::GWS::INSTANCE: cloud computer.
+	// - ALIYUN::GWS::INSTANCE: cloud computer.
 	//
 	// This parameter is required.
 	//
@@ -146,13 +146,13 @@ type ListTagResourcesRequestTag struct {
 	//
 	// example:
 	//
-	// TestKey
+	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag values. You can specify 1 to 20 tag values.
 	//
 	// example:
 	//
-	// TestValue
+	// design
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

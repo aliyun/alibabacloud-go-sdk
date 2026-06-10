@@ -16,9 +16,9 @@ type iDescribeDesktopInfoResponseBody interface {
 }
 
 type DescribeDesktopInfoResponseBody struct {
-	// The basic information about cloud computers.
+	// Basic desktop information.
 	Desktops []*DescribeDesktopInfoResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -66,81 +66,57 @@ func (s *DescribeDesktopInfoResponseBody) Validate() error {
 }
 
 type DescribeDesktopInfoResponseBodyDesktops struct {
-	// The connection status of the user.
-	//
-	// Valid values:
-	//
-	// 	- Connected
-	//
-	// 	- Disconnected
+	// User connection status.
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The version of the cloud computer image.
+	// Desktop image version number.
 	//
 	// example:
 	//
 	// 1.4.0-R-***
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	// The ID of the cloud computer pool.
+	// Desktop group ID.
 	//
 	// example:
 	//
 	// dg-3uiojcc0j4kh7****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The ID of the cloud computer.
+	// Desktop ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Stopped
-	//
-	// 	- Failed
-	//
-	// 	- Starting
-	//
-	// 	- Running
-	//
-	// 	- Stopping
-	//
-	// 	- Expired
-	//
-	// 	- Deleted
-	//
-	// 	- Pending
+	// The status of the cloud desktop.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The information about flags that are used to manage cloud computers.
+	// The management flag.
 	ManagementFlag []*string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty" type:"Repeated"`
-	// The size of the update package. Unit: KB.
+	// Upgrade package size, in KB.
 	//
 	// example:
 	//
 	// 568533470
 	NewAppSize *int64 `json:"NewAppSize,omitempty" xml:"NewAppSize,omitempty"`
-	// The version number of the image that can be updated on the cloud computer.
+	// Desktop upgradable image version number.
 	//
 	// example:
 	//
 	// 1.6.0-R-***
 	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
-	// The description of the image version that can be updated.
+	// Description of the upgradable image version.
 	//
 	// example:
 	//
-	// Test package 03-07
+	// Test upgrade package 03-07
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The time when the cloud computer was first started.
+	// Desktop first startup time.
 	//
 	// example:
 	//

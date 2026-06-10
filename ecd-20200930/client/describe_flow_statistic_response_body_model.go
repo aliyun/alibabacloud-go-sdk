@@ -22,7 +22,7 @@ type DescribeFlowStatisticResponseBody struct {
 	//
 	// example:
 	//
-	// 10
+	// 2
 	DesktopCount *int32 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
 	// The traffic statistics.
 	DesktopFlowStatistic []*DescribeFlowStatisticResponseBodyDesktopFlowStatistic `json:"DesktopFlowStatistic,omitempty" xml:"DesktopFlowStatistic,omitempty" type:"Repeated"`

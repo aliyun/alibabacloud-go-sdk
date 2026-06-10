@@ -24,32 +24,32 @@ type iDescribeVirtualMFADevicesRequest interface {
 }
 
 type DescribeVirtualMFADevicesRequest struct {
-	// The names of the AD users.
+	// The list of Active Directory (AD) account usernames.
 	//
 	// example:
 	//
 	// testuser
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
 	Filter    *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The number of entries per page. Valid values: 1 to 500. Default value: 100.
+	// The maximum number of entries to return. Valid values: 1 to 500. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. If a response is truncated, use the returned `NextToken` to retrieve the next page of results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the workspace.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-269345****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. Call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
 	//
 	// This parameter is required.
 	//

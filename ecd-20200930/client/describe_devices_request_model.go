@@ -48,7 +48,7 @@ type DescribeDevicesRequest struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The ID of the device. The serial number (SN) of the hardware client or the UUID of the software client.
 	//
@@ -66,19 +66,19 @@ type DescribeDevicesRequest struct {
 	//
 	// example:
 	//
-	// moli
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The page number.
 	//
 	// example:
 	//
-	// 10
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
 	// example:
 	//
-	// 1
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
 	//

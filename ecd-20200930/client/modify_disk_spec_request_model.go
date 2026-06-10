@@ -26,37 +26,31 @@ type iModifyDiskSpecRequest interface {
 }
 
 type ModifyDiskSpecRequest struct {
-	// Specifies whether to enable the automatic payment feature.
+	// Specifies whether to enable automatic payment.
 	//
-	// 	- If you set the value to `true`, ensure your account has sufficient balance to avoid generating abnormal orders.
+	// - If set to `true`, ensure your account has a sufficient balance. Otherwise, an abnormal order is generated.
 	//
-	// 	- If you set the value to `false`, go to the **Expenses and Costs*	- page to complete the payment based on the order number.
-	//
-	// Valid values:
-	//
-	// 	- true (default): enables the automatic payment feature.
-	//
-	// 	- false: generates the order and manually complete the payment.
+	// - If set to `false`, log on to the console. Then, go to the **Expenses and Costs*	- page to pay for the order using the returned order ID.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The ID of the cloud computer.
+	// The ID of the cloud desktop.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecd-2yjhqxo1monxxxxxx
+	// ecd-2yjhqxo1monbf****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The ID of the sales promotion activity. You can call the DescribePrice operation to obtain the IDs of matching sales promotion activities.
+	// The promotion ID. Call a pricing inquiry API to get a list of applicable promotion IDs.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of supported regions for WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -65,33 +59,13 @@ type ModifyDiskSpecRequest struct {
 	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// The PL of the system disk. Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
-	//
-	// Valid values:
-	//
-	// 	- PL1
-	//
-	// 	- PL0
-	//
-	// 	- PL3
-	//
-	// 	- PL2
+	// The performance level of the system disk. You can set the performance level for Graphics or High-frequency workspaces.
 	//
 	// example:
 	//
 	// PL1
 	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
-	// The PL of the data disk. Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
-	//
-	// Valid values:
-	//
-	// 	- PL1
-	//
-	// 	- PL0
-	//
-	// 	- PL3
-	//
-	// 	- PL2
+	// The performance level of the data disk. You can set the performance level for Graphics or High-frequency workspaces.
 	//
 	// example:
 	//

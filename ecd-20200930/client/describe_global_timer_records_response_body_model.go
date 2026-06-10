@@ -26,7 +26,7 @@ type DescribeGlobalTimerRecordsResponseBody struct {
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeGlobalTimerRecordsResponseBody struct {
 	//
 	// 63740E03-1B4B-5A18-AC27-2745A4F2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response parameters.
+	// The returned results.
 	Results []*DescribeGlobalTimerRecordsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -100,33 +100,37 @@ func (s *DescribeGlobalTimerRecordsResponseBody) Validate() error {
 }
 
 type DescribeGlobalTimerRecordsResponseBodyResults struct {
+	// The type of action performed.
+	//
 	// example:
 	//
 	// REBOOT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The ID of the batch in which the scheduled task is executed.
+	// The batch ID of the scheduled task execution.
 	//
 	// example:
 	//
 	// ccg-0cvfvf6u1enx1****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The recorded information during the execution of the scheduled task.
+	//
 	// example:
 	//
 	// {}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The time when the execution record was created.
+	// The time when the record was created.
 	//
 	// example:
 	//
 	// 2023-08-03T08:27:29Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cloud computer ID.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-0c951fy9arnk9****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud computer name.
+	// The cloud desktop name.
 	//
 	// example:
 	//
@@ -136,7 +140,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// SKIPPED
 	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
-	// The time when the scheduled task ended.
+	// The time when the task ended.
 	//
 	// example:
 	//
@@ -156,7 +160,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// true
 	Retryable *bool `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
-	// The ID of the scheduled task group.
+	// The scheduled task group ID.
 	//
 	// example:
 	//

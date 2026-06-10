@@ -26,23 +26,37 @@ type iCreateQosRuleRequest interface {
 }
 
 type CreateQosRuleRequest struct {
+	// The IDs of the cloud phones to include in this rule.
 	AuthAndroidId      []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
 	AuthDesktopGroupId []*string `json:"AuthDesktopGroupId,omitempty" xml:"AuthDesktopGroupId,omitempty" type:"Repeated"`
-	AuthDesktopId      []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
+	// The IDs of the cloud desktops to include in this rule.
+	AuthDesktopId []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
+	// The maximum downstream bandwidth. Unit: Mbps.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	Download *int32 `json:"Download,omitempty" xml:"Download,omitempty"`
+	// The ID of the premium bandwidth plan.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// np-cfedn7r2pe48g****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
+	// The name of the QoS rule.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test
 	QosRuleName *string `json:"QosRuleName,omitempty" xml:"QosRuleName,omitempty"`
+	// The maximum upstream bandwidth. Unit: Mbps.
+	//
 	// This parameter is required.
 	//
 	// example:

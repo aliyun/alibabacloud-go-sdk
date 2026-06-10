@@ -32,7 +32,7 @@ type DeleteDevicesRequest struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The IDs of the devices. You can specify up to 200 IDs.
 	//
@@ -50,7 +50,7 @@ type DeleteDevicesRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 0
 	Force *int32 `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
 	//

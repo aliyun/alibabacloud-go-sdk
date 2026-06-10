@@ -58,11 +58,7 @@ type iCreateTemplateRequest interface {
 type CreateTemplateRequest struct {
 	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// >  This parameter is not publicly available.
-	//
-	// Valid values:
-	//
-	// 	- 1: the Enterprise edition.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -79,9 +75,13 @@ type CreateTemplateRequest struct {
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
 	// The template description. It must meet the following criteria:
 	//
-	// 	- It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// - It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// 	- It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
+	// - It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
+	//
+	// example:
+	//
+	// Design department template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
 	//
@@ -100,15 +100,13 @@ type CreateTemplateRequest struct {
 	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
 	// The service type. Set the value to `CloudDesktop`.
 	//
-	// *
-	//
 	// example:
 	//
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The regions of the template. You can create cloud computers by using a template only within the same region as the template itself.
 	//
-	// >  You can specify up to 20 regions.
+	// > You can specify up to 20 regions.
 	RegionConfigList []*CreateTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
 	// The ID of the resource group.
 	//
@@ -118,19 +116,11 @@ type CreateTemplateRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags added to cloud computers. Specify tags in key-value pairs. You can specify up to 20 tags.
 	ResourceTagList []*CreateTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
-	// 区域配置管理
+	// The site configurations.
 	SiteConfigList []*CreateTemplateRequestSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
 	// The performance level (PL) of the system disk.
 	//
-	// >  Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
-	//
-	// Valid values:
-	//
-	// 	- PL1: a PL1 ESSD.
-	//
-	// 	- PL0: a PL0 ESSD.
-	//
-	// 	- AutoPL: an AutoPL ESSD.
+	// > Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
 	//
 	// example:
 	//
@@ -138,7 +128,7 @@ type CreateTemplateRequest struct {
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB. Valid values: 40 to 500. Increments: 10 GiB.
 	//
-	// >  The system disk size must be at least as large as the configured image size.
+	// > The system disk size must be at least as large as the configured image size.
 	//
 	// example:
 	//
@@ -146,13 +136,17 @@ type CreateTemplateRequest struct {
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The template name. It must meet the following criteria:
 	//
-	// 	- It can be 2 to 126 characters in length.
+	// - It can be 2 to 126 characters in length.
 	//
-	// 	- It must begin with a letter and cannot start with `http://` or `https://`.
+	// - It must begin with a letter and cannot start with `http://` or `https://`.
 	//
-	// 	- It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
+	// - It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// My cloud desktop template 001
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The ID of the scheduled task group.
 	//
@@ -418,9 +412,9 @@ type CreateTemplateRequestDataDiskList struct {
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The size of the data disk. Unit: GiB. Valid values: 40 to 2040. Increments: 10 GiB.
 	//
-	// **
+	// 	Notice:
 	//
-	// **Keep in mind*	- that the larger the ESSD disk capacity, the higher the available PL (for example, PL2 is available for disks larger than 460 GiB). A higher PL comes with a higher cost. Select an ESSD based on your specific needs.
+	// The larger the ESSD disk capacity, the higher the available PL (for example, PL2 is available for disks larger than 460 GiB). A higher PL comes with a higher cost. Select an ESSD based on your specific needs.
 	//
 	// example:
 	//
@@ -465,7 +459,7 @@ type CreateTemplateRequestRegionConfigList struct {
 	//
 	// cn-hangzhou+dir-709******
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// example:
 	//
@@ -491,17 +485,11 @@ type CreateTemplateRequestRegionConfigList struct {
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// Specifies whether to enable disk encryption.
 	//
-	// Valid values:
-	//
-	// 	- false (default): disables disk encryption.
-	//
-	// 	- true: enables disk encryption.
-	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
-	// The ID of the Key Management Service (KMS) key that you want to use to encrypt disks. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query KMS keys.
+	// The ID of the Key Management Service (KMS) key that you want to use to encrypt disks. You can call the [](t22712.xdita#)operation to query KMS keys.
 	//
 	// example:
 	//
@@ -630,13 +618,13 @@ func (s *CreateTemplateRequestResourceTagList) Validate() error {
 }
 
 type CreateTemplateRequestSiteConfigList struct {
-	// 应用管控策略ID
+	// The application control policy ID.
 	//
 	// example:
 	//
 	// bwr-5a5371e0db954d********
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
-	// 站点ID。
+	// The site ID.
 	//
 	// example:
 	//

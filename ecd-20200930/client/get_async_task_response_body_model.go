@@ -118,7 +118,7 @@ type GetAsyncTaskResponseBodyData struct {
 	//
 	// example:
 	//
-	// The request has been failed due to some unknown error. Please try again later.
+	// The request failed due to some unknown errors. Please try again later.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The task status.
 	//

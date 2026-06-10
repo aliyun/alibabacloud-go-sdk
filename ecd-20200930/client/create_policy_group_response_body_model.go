@@ -16,13 +16,13 @@ type iCreatePolicyGroupResponseBody interface {
 }
 
 type CreatePolicyGroupResponseBody struct {
-	// The cloud computer policy ID.
+	// The ID of the cloud computer policy.
 	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

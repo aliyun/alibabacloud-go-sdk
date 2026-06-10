@@ -74,7 +74,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// example:
 	//
-	// test1
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// Specifies whether to return the execution results of the remote command on all cloud computers when executed across multiple cloud computers.
 	//

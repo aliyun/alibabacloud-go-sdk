@@ -92,12 +92,17 @@ type iCreateDesktopsRequest interface {
 }
 
 type CreateDesktopsRequest struct {
-	// The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: 1.
+	// The number of cloud desktops to create. Valid values: 1 to 300. Default value: 1.
 	//
 	// example:
 	//
 	// 1
-	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The ID of the application control policy.
+	//
+	// example:
+	//
+	// bwr-245d4e0e6b7d42f5afa97eb3fbc7e488
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
 	// Specifies whether to enable automatic payment.
 	//
@@ -105,167 +110,141 @@ type CreateDesktopsRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
+	// Specifies whether to enable auto-renewal for the cloud desktops. This parameter is valid only when `ChargeType` is set to `PrePaid`.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the cloud computer template.
+	// The bundle ID. If you do not specify this parameter, you must use the `DesktopAttachment` parameter to configure the cloud desktop.
 	//
 	// example:
 	//
 	// b-je9hani001wfn****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The cloud computer templates.
+	// An array of bundle objects. Use this parameter to create cloud desktops from one or more bundles in a single call.
 	//
 	// if can be null:
 	// true
-	BundleModels  []*CreateDesktopsRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
-	ChannelCookie *string                              `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The billing method of the cloud computers.
+	BundleModels []*CreateDesktopsRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	// > This parameter is for internal use only.
 	//
-	// Default value: PostPaid. Valid values:
+	// example:
 	//
-	// 	- Postpaid: pay-as-you-go
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PrePaid: subscription
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// PBKB1QbqEl2tslEuU6gRrLxvCFBU2M%2FVD0Eru6Oo%2FI9LTU3XQhvq3PGMWarE%2BPJdkNvCqT3blqlRSthNy4A%2BJQ%3D%3D
+	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
+	// The billing method of the cloud desktops.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The input parameters used when no templates are used.
+	// The parameters for creating a cloud desktop without a bundle. This parameter is used only if `BundleId` is not specified.
 	DesktopAttachment *CreateDesktopsRequestDesktopAttachment `json:"DesktopAttachment,omitempty" xml:"DesktopAttachment,omitempty" type:"Struct"`
-	// The private IP address of the cloud computer.
+	// The private IP address of the cloud desktop.
 	//
 	// example:
 	//
 	// 10.0.0.1
 	DesktopMemberIp *string `json:"DesktopMemberIp,omitempty" xml:"DesktopMemberIp,omitempty"`
-	// The name of the cloud computer. The name must meet the following requirements:
+	// The name of the cloud desktop. The name must meet the following requirements:
 	//
-	// 	- The name must be 1 to 64 characters in length.
+	// - The name must be 1 to 64 characters in length.
 	//
-	// 	- The name must start with a letter but cannot start with `http://` or `https://`.
+	// - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
-	// 	- The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// - The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
-	// testDesktopName
+	// DemoComputer01
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// Specifies whether to automatically add suffixes to the names of cloud computers when you create multiple cloud computers at the same time.
-	//
-	// Default value: true. Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- False
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Specifies whether to automatically append a suffix to the value of `DesktopName` when you create multiple cloud desktops.
 	//
 	// example:
 	//
 	// false
 	DesktopNameSuffix *bool `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
-	// The details of the scheduled task on cloud computers.
+	// The details of the scheduled tasks for the cloud desktops. This parameter is being deprecated. We recommend that you use `TimerGroupId` instead.
 	//
 	// if can be null:
 	// true
 	DesktopTimers []*CreateDesktopsRequestDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
-	// >  This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
-	// To be hidden.
+	// cn-hangzhou+dir-300943****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The IDs of the end users to which you want to assign the cloud computers. You can specify 1 to 100 IDs.
+	// The IDs of the end users to assign to the cloud desktops. You can specify up to 100 IDs.
 	//
 	// example:
 	//
 	// 123456789
-	EndUserId  []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	ExtendInfo *string   `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// The ID of the cloud computer pool.
+	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The extended information in a JSON string. This parameter is for internal use only.
+	//
+	// example:
+	//
+	// {}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// The ID of the desktop pool.
 	//
 	// example:
 	//
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+	// The custom hostname of the cloud desktop. This parameter is supported only for Windows cloud desktops that are in an AD office network.
 	//
-	// The hostnames must meet the following requirements:
+	// The hostname must meet the following requirements:
 	//
-	// 	- The hostnames must be 2 to 15 characters in length.
+	// - The hostname must be 2 to 15 characters in length.
 	//
-	// 	- The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+	// - The hostname can contain letters, digits, and hyphens (-). The hostname cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
 	//
-	// When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+	// If you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to specify sequential hostnames for the cloud desktops. For example, if you set the `Hostname` parameter to `ecd-[1,4]-test`, the hostname of the first cloud desktop is `ecd-0001-test`, the second is `ecd-0002-test`, and so on.
 	//
-	// 	- `name_prefix`: the prefix of the hostname.
+	// - `name_prefix`: the prefix of the hostname.
 	//
-	// 	- `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+	// - `[begin_number,bits]`: The sequential part of the hostname.
 	//
-	// 	- `name_suffix`: the suffix of the hostname.
+	// - `name_suffix`: the suffix of the hostname.
 	//
 	// example:
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// > This parameter is not publicly available.
+	// The parameters for purchasing a monthly usage package.
 	MonthDesktopSetting *CreateDesktopsRequestMonthDesktopSetting `json:"MonthDesktopSetting,omitempty" xml:"MonthDesktopSetting,omitempty" type:"Struct"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
-	// cn-hangzhou+os-c5cy7q578s8jc****
+	// cn-hangzhou+dir-387822****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The subscription duration of the cloud desktop that you want to create. The unit is specified by the `PeriodUnit` parameter. This parameter takes effect and is required only when the `ChargeType` parameter is set to `PrePaid`.
+	// The subscription duration. The unit is specified by the `PeriodUnit` parameter. This parameter is required only when `ChargeType` is set to `PrePaid`.
 	//
-	// 	- Valid values if the `PeriodUnit` parameter is set to `Month`:
+	// - If `PeriodUnit` is set to `Month`, valid values are:
 	//
-	//     	- 1
+	//   - 1
 	//
-	//     	- 2
+	//   - 2
 	//
-	//     	- 3
+	//   - 3
 	//
-	//     	- 6
+	//   - 6
 	//
-	// 	- Valid values if the `PeriodUnit` parameter is set to `Year`:
+	// - If `PeriodUnit` is set to `Year`, valid values are:
 	//
-	//     	- 1
+	//   - 1
 	//
-	//     	- 2
+	//   - 2
 	//
-	//     	- 3
+	//   - 3
 	//
-	//     	- 4
+	//   - 4
 	//
-	//     	- 5
+	//   - 5
 	//
 	// example:
 	//
@@ -283,85 +262,81 @@ type CreateDesktopsRequest struct {
 	//
 	// system-all-enabled-policy
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The ID of the sales promotion.
+	// The promotion ID.
 	//
 	// example:
 	//
 	// 23141
-	PromotionId     *string                               `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The additional parameters for a specific purchase type.
 	PurchaseOptions *CreateDesktopsRequestPurchaseOptions `json:"PurchaseOptions,omitempty" xml:"PurchaseOptions,omitempty" type:"Struct"`
-	QosRuleId       *string                               `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the bandwidth QoS policy.
+	//
+	// example:
+	//
+	// qos-52fqmg6kvyro7zu4l
+	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions that support Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The UID of the resource owner in reseller mode. This parameter is required only in reseller mode.
+	//
+	// example:
+	//
+	// 1828644634819902
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the saving plan.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
-	// spn-4b945dc4Wktd****
+	// spn-26c1b7bcrjcI****
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
-	// The ID of the auto-snapshot policy.
+	// The ID of the automatic snapshot policy.
 	//
 	// example:
 	//
 	// sp-28mp6my0l6zow****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
-	SubnetId         *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	// The tags that you want to add to the cloud desktop.
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bp1m*****
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The tags to add to the cloud desktops. A resource can have up to 20 tags.
 	Tag []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the timer group.
+	// The ID of the scheduled task group.
 	//
 	// example:
 	//
 	// ccg-0caoeogrk9m5****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	// How the cloud computers are assigned.
+	// The user assignment mode for the cloud desktops.
 	//
-	// >  If you do not specify the `EndUserId` parameter, the cloud computers are not assigned to end users after the cloud computers are created.
-	//
-	// Default value: ALL. Valid values:
-	//
-	// 	- ALL: If you specify the EndUserId parameter, the cloud computers are assigned to all specified end users after the cloud computers are created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PER_USER: If you specify the EndUserId parameter, the cloud computers are evenly assigned to the specified end users after the cloud computers are created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     In this case, you must make sure that the value of the Amount parameter can be divided by the N value of the EndUserId.N parameter that you specify.
-	//
-	//     <!-- -->
+	// > If you do not specify the `EndUserId` parameter, the created cloud desktops are unassigned.
 	//
 	// example:
 	//
 	// ALL
 	UserAssignMode *string `json:"UserAssignMode,omitempty" xml:"UserAssignMode,omitempty"`
-	// Details about the custom command scripts.
+	// The custom scripts to run on the cloud desktops after they start.
 	UserCommands []*CreateDesktopsRequestUserCommands `json:"UserCommands,omitempty" xml:"UserCommands,omitempty" type:"Repeated"`
-	// >  This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
-	// To be hidden.
+	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// Specifies whether to enable disk encryption.
 	//
@@ -369,17 +344,17 @@ type CreateDesktopsRequest struct {
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
+	// The ID of the KMS key to use for disk encryption. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of key IDs.
 	//
 	// example:
 	//
 	// 08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****
 	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
-	// To be hidden.
+	// vpc-uf6w8u60n8xbkg5el****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -807,47 +782,47 @@ func (s *CreateDesktopsRequest) Validate() error {
 }
 
 type CreateDesktopsRequestBundleModels struct {
-	// The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: null.
+	// The number of cloud desktops to create. Valid values: 1 to 300. Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The ID of a cloud computer template.
+	// The bundle ID.
 	//
 	// example:
 	//
 	// b-je9hani001wfn****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The name of the cloud computer. The name must meet the following requirements:
+	// The name of the cloud desktop. The name must meet the following requirements:
 	//
-	// 	- The name must be 1 to 64 characters in length.
+	// - The name must be 1 to 64 characters in length.
 	//
-	// 	- The name must start with a letter but cannot start with `http://` or `https://`.
+	// - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
-	// 	- The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// - The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
-	// testDesktopName
+	// DemoComputer02
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The IDs of the end users to whom the cloud computer are assigned.
+	// The list of end user IDs to whom the cloud desktops are assigned.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+	// The custom hostname of the cloud desktop. This parameter is supported only for Windows cloud desktops that are in an AD office network.
 	//
-	// The hostnames must meet the following requirements:
+	// The hostname must meet the following requirements:
 	//
-	// 	- The hostnames must be 2 to 15 characters in length.
+	// - The hostname must be 2 to 15 characters in length.
 	//
-	// 	- The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+	// - The hostname can contain letters, digits, and hyphens (-). The hostname cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
 	//
-	// When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+	// If you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to specify sequential hostnames for the cloud desktops. For example, if you set the `Hostname` parameter to `ecd-[1,4]-test`, the hostname of the first cloud desktop is `ecd-0001-test`, the second is `ecd-0002-test`, and so on.
 	//
-	// 	- `name_prefix`: the prefix of the hostname.
+	// - `name_prefix`: the prefix of the hostname.
 	//
-	// 	- `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+	// - `[begin_number,bits]`: The sequential part of the hostname.
 	//
-	// 	- `name_suffix`: the suffix of the hostname.
+	// - `name_suffix`: the suffix of the hostname.
 	//
 	// example:
 	//
@@ -859,7 +834,7 @@ type CreateDesktopsRequestBundleModels struct {
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+	// The ID of the KMS key to use for disk encryption. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of key IDs.
 	//
 	// example:
 	//
@@ -943,19 +918,19 @@ func (s *CreateDesktopsRequestBundleModels) Validate() error {
 }
 
 type CreateDesktopsRequestDesktopAttachment struct {
-	// The category of the data disk. Valid values:
+	// The type of the data disk. The system disk and data disk must be of the same type. Valid values:
 	//
-	// 	- cloud_auto: SSD
+	// - cloud_auto: AutoPL SSD
 	//
-	// 	- cloud_essd: ESSD
+	// - cloud_essd: enhanced SSD (ESSD)
 	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The performance level of the data disk. Valid values:
+	// The PL of the ESSD. This parameter is required only when `DataDiskCategory` is set to `cloud_essd`. Valid values:
 	//
-	// - PL0 (default)
+	// - PL0
 	//
 	// - PL1
 	//
@@ -963,19 +938,19 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// PL0
 	DataDiskPerLevel *string `json:"DataDiskPerLevel,omitempty" xml:"DataDiskPerLevel,omitempty"`
-	// The size of the data disk. Unit: GiB.
+	// The capacity of the data disk, in GiB. Valid values: 40 to 2,040. The value must be a multiple of 10.
 	//
 	// example:
 	//
 	// 40
 	DataDiskSize *int32 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	// The default display language:
+	// The display language of the cloud desktop\\"s operating system. Valid values:
 	//
 	// - zh-CN: Simplified Chinese
 	//
-	// - zh-HK: Traditional Chinese
+	// - zh-HK: Traditional Chinese (Hong Kong)
 	//
-	// - en-US: English
+	// - en-US: American English
 	//
 	// - ja-JP: Japanese
 	//
@@ -983,31 +958,31 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// zh-CN
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
-	// The desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the IDs of supported desktop types.
+	// The desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the supported desktop types.
 	//
 	// example:
 	//
 	// eds.enterprise_office.8c16g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-39ddhdb0ggzjx*****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The category of the system disk. Valid values:
+	// The type of the system disk. The system disk and data disk must be of the same type. Valid values:
 	//
-	// 	- cloud_auto: SSD
+	// - cloud_auto: AutoPL SSD
 	//
-	// 	- cloud_essd: ESSD
+	// - cloud_essd: enhanced SSD (ESSD)
 	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The performance level of the system disk. Valid values:
+	// The performance level (PL) of the ESSD. This parameter is required only when `SystemDiskCategory` is set to `cloud_essd`. Valid values:
 	//
-	// - PL0 (default)
+	// - PL0
 	//
 	// - PL1
 	//
@@ -1015,7 +990,7 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// PL0
 	SystemDiskPerLevel *string `json:"SystemDiskPerLevel,omitempty" xml:"SystemDiskPerLevel,omitempty"`
-	// The size of the system disk. Unit: GiB.
+	// The capacity of the system disk, in GiB. Valid values: 60 to 500. The value must be a multiple of 10.
 	//
 	// example:
 	//
@@ -1117,7 +1092,7 @@ func (s *CreateDesktopsRequestDesktopAttachment) Validate() error {
 }
 
 type CreateDesktopsRequestDesktopTimers struct {
-	// Specifies whether to allow the end user to configure the scheduled task.
+	// Specifies whether to allow end users to configure the scheduled task.
 	//
 	// example:
 	//
@@ -1125,7 +1100,9 @@ type CreateDesktopsRequestDesktopTimers struct {
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
 	// The cron expression for the scheduled task.
 	//
-	// >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\	- 1,2,3,4,5,6,7
+	// 	Notice:
+	//
+	// The cron expression is evaluated in UTC. For example, to specify 00:00 (UTC+8) every day, set the value to `0 0 16 ? 	- 1,2,3,4,5,6,7`.
 	//
 	// example:
 	//
@@ -1133,77 +1110,23 @@ type CreateDesktopsRequestDesktopTimers struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// Specifies whether to forcibly execute the scheduled task.
 	//
-	// Valid values:
-	//
-	// 	- true: forcibly executes the scheduled task regardless of the status and connection of the cloud computers.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false: does not forcibly execute the scheduled task.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
-	// True
+	// true
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The interval at which cloud computers are created. Unit: minutes.
+	// The interval in minutes.
 	//
 	// example:
 	//
 	// 10
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The operations that scheduled tasks support. This parameter is valid only when TimerType is set to NoConnect.
-	//
-	// Valid values:
-	//
-	// 	- Hibernate: hibernates the cloud computers.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Shutdown: stops the cloud computers.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The operation to perform for the scheduled task. This parameter is valid only for scheduled tasks that are triggered by user disconnection.
 	//
 	// example:
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The reset type of the cloud computers.
-	//
-	// Valid values:
-	//
-	// 	- RESET_TYPE_SYSTEM: resets the system disks.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- RESET_TYPE_BOTH: resets the system disks and data disks.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The disk reset type.
 	//
 	// example:
 	//
@@ -1293,19 +1216,19 @@ func (s *CreateDesktopsRequestDesktopTimers) Validate() error {
 }
 
 type CreateDesktopsRequestMonthDesktopSetting struct {
-	// > This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
 	// null
 	BuyerId *int64 `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is for internal use only.
 	//
 	// example:
 	//
 	// null
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// > This parameter is not publicly available.
+	// The duration in hours for the monthly usage package. Valid values: 120, 250, and 360.
 	//
 	// example:
 	//
@@ -1353,6 +1276,11 @@ func (s *CreateDesktopsRequestMonthDesktopSetting) Validate() error {
 }
 
 type CreateDesktopsRequestPurchaseOptions struct {
+	// The monthly credit package. This parameter is used to select a credit package when you purchase agent resources. Valid values: 200, 1600, and 4000.
+	//
+	// example:
+	//
+	// 200
 	MonthlyCredits *int32 `json:"MonthlyCredits,omitempty" xml:"MonthlyCredits,omitempty"`
 }
 
@@ -1378,13 +1306,13 @@ func (s *CreateDesktopsRequestPurchaseOptions) Validate() error {
 }
 
 type CreateDesktopsRequestTag struct {
-	// The key of the tag. You can specify 1 to 20 keys for a tag.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify 1 to 20 values for a tag.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -1423,63 +1351,19 @@ func (s *CreateDesktopsRequestTag) Validate() error {
 }
 
 type CreateDesktopsRequestUserCommands struct {
-	// The command content.
+	// The content of the script.
 	//
 	// example:
 	//
 	// bmV3LWl0ZW0gZDpcdGVzdF91c2VyX2NvbW1hbmRzLnR4dCAtdHlwZSBm****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The encoding mode of the command content.
-	//
-	// Valid values:
-	//
-	// 	- Base64: encodes the command content in Base64.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PlainText: does not encode the command content.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The encoding format of the script content specified in the `Content` parameter.
 	//
 	// example:
 	//
 	// Base64
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// The language type of the command.
-	//
-	// Valid values:
-	//
-	// 	- RunPowerShellScript: PowerShell commands (applicable to Windows cloud computers).
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- RunShellScript: shell commands (applicable to Linux cloud computers).
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- RunBatScript: batch commands (applicable to Windows cloud computers).
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The script type.
 	//
 	// example:
 	//

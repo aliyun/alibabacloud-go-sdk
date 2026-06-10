@@ -16,13 +16,13 @@ type iRunCommandResponseBody interface {
 }
 
 type RunCommandResponseBody struct {
-	// The ID of the command execution.
+	// The script execution ID. You can use this ID with the [DescribeInvocations](~~DescribeInvocations~~) operation to query the script\\"s execution status.
 	//
 	// example:
 	//
 	// t-hz01qgsqj2n****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

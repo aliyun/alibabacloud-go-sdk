@@ -30,13 +30,13 @@ type iListDirectoryUsersRequest interface {
 }
 
 type ListDirectoryUsersRequest struct {
-	// > This parameter is not publicly available. The value can be 1 or left empty.
+	// > This parameter is not publicly available. You can only set this parameter to `1` or leave it empty.
 	//
 	// example:
 	//
 	// 1
 	AssignedInfo *string `json:"AssignedInfo,omitempty" xml:"AssignedInfo,omitempty"`
-	// The ID of the AD directory.
+	// The AD directory ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListDirectoryUsersRequest struct {
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The query string for fuzzy match. If you specify this parameter, the system returns all results that contain the string.
+	// The string for a fuzzy search. The operation returns all results that contain this string.
 	//
 	// example:
 	//
 	// alice
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// Specifies whether to return the users with assigned cloud computers only.
+	// Specifies whether to return only users who are assigned cloud desktops.
 	//
 	// example:
 	//
@@ -58,27 +58,27 @@ type ListDirectoryUsersRequest struct {
 	IncludeAssignedUser *bool `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// Valid values: 1 to 100.
+	// - Maximum value: 100.
 	//
-	// Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. If the value of this parameter is empty, all results are returned.
+	// The token used to start the next query. If this value is empty, no more results are available.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The organizational unit (OU) in the specified AD domain.
+	// The path of the organizational unit (OU) in the AD domain. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the OU path.
 	//
 	// example:
 	//
 	// example.com/Domain Controllers
 	OUPath *string `json:"OUPath,omitempty" xml:"OUPath,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. To get a list of regions that WUYING Workspace supports, call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html).
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,7 @@ type ListDirectoryUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sort type.
-	//
-	// Valide values:
-	//
-	// - asc: cloud computers assigned to users on bottom
-	//
-	// - desc: cloud computers assigned to users on top
+	// The sorting method.
 	//
 	// example:
 	//

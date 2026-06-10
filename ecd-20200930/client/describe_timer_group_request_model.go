@@ -24,11 +24,11 @@ type DescribeTimerGroupRequest struct {
 	//
 	// cg-hs3i1w39o68ma****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the region. Set the value to `cn-shanghai`.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

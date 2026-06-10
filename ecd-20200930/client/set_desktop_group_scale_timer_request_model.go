@@ -105,15 +105,15 @@ type SetDesktopGroupScaleTimerRequestScaleTimerInfos struct {
 	//
 	// example:
 	//
-	// 1000
+	// 180000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
 	// The load balancing policy for the multi-session cloud computer pool.
 	//
 	// Valid values:
 	//
-	// 	- 0: depth-first
+	// - 0: depth-first
 	//
-	// 	- 1: breadth first.
+	// - 1: breadth first.
 	//
 	// example:
 	//
@@ -139,43 +139,43 @@ type SetDesktopGroupScaleTimerRequestScaleTimerInfos struct {
 	//
 	// example:
 	//
-	// 0.9
+	// 0.85
 	RatioThreshold *float32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
 	// The type of the auto scaling policy.
 	//
 	// Valid values:
 	//
-	// 	- drop
+	// - drop
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- normal
+	// - normal
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- peak
+	// - peak
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- rise
+	// - rise
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type ListCdsFilesResponseBody struct {
 	//
 	// example:
 	//
-	// 0
+	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The files.
 	FileModels []*ListCdsFilesResponseBodyFileModels `json:"FileModels,omitempty" xml:"FileModels,omitempty" type:"Repeated"`
@@ -50,7 +50,7 @@ type ListCdsFilesResponseBody struct {
 	//
 	// example:
 	//
-	// WyI2MzhmMjA2ZTFmZGZlZGVjZDk3OTRlNzVhZmIwMDFiZmM5NWQ3YTgwIiwibiIsIm4iLDEsLTEsMTY3MDMyNDMzNTAzMSwiNjM4ZjIwNmZjNDFkMzIwOTZmZWU0NGYxODkwY2I5ZjI0Mjg0NzM2****
+	// aGN4YzAxQGNuLWhhbmd6aG91LjExNzU5NTMyNjgzMTQ1****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Request ID.
 	//
@@ -179,7 +179,7 @@ type ListCdsFilesResponseBodyFileModels struct {
 	//
 	// example:
 	//
-	// user01
+	// demo_user01@cn-shanghai.148875033399****
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// The file description.
 	//
@@ -239,13 +239,13 @@ type ListCdsFilesResponseBodyFileModels struct {
 	//
 	// example:
 	//
-	// user02
+	// demo_user02@cn-shanghai.148875033399****
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	// The name of the file.
 	//
 	// example:
 	//
-	// fvt-appcenterp4qwa
+	// SampleFile.pdf
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The time when the file was last opened.
 	//

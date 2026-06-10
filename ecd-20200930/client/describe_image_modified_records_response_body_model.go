@@ -20,21 +20,21 @@ type iDescribeImageModifiedRecordsResponseBody interface {
 }
 
 type DescribeImageModifiedRecordsResponseBody struct {
-	// The image change records.
+	// Collection of image modification records.
 	ImageModifiedRecords []*DescribeImageModifiedRecordsResponseBodyImageModifiedRecords `json:"ImageModifiedRecords,omitempty" xml:"ImageModifiedRecords,omitempty" type:"Repeated"`
-	// If the NextToken parameter is empty, no next page exists.
+	// Token for the next page of results. An empty NextToken means no more results.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6koN7RqHg3d2z8LKmSoe821
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// DC40EE61-7E83-59ED-AEA6-7EE9C437F352
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of image modification records.
+	// Total number of image modification records.
 	//
 	// example:
 	//
@@ -100,46 +100,38 @@ func (s *DescribeImageModifiedRecordsResponseBody) Validate() error {
 }
 
 type DescribeImageModifiedRecordsResponseBodyImageModifiedRecords struct {
-	// The ID of the original image.
+	// ID of the original image before modification.
 	//
 	// example:
 	//
-	// m-8rnz2imrpcfuh****
+	// desktopimage-windows-server-2019-64-ch-asp
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the original image.
+	// Name of the original image before modification.
 	//
 	// example:
 	//
-	// win10-0307
+	// Windows server 2019 Mainland
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The ID of the new image after the image was modified.
+	// ID of the new image after modification.
 	//
 	// example:
 	//
-	// xxxNewImageID
+	// desktopimage-windows-server-2022-64-ch-asp
 	NewImageId *string `json:"NewImageId,omitempty" xml:"NewImageId,omitempty"`
-	// The name of the new image after the image was modified.
+	// Name of the new image after modification.
 	//
 	// example:
 	//
-	// xxxxImageID
+	// Windows server 2022 Mainland asp
 	NewImageName *string `json:"NewImageName,omitempty" xml:"NewImageName,omitempty"`
 	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the image modification.
-	//
-	// Valid values:
-	//
-	// 	- 0: The image is being modified.
-	//
-	// 	- 1: The image is successfully modified.
-	//
-	// 	- 2: The image fails to be modified.
+	// Status of the image modification.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the image was last modified.
+	// Time when the image was last modified.
 	//
 	// example:
 	//

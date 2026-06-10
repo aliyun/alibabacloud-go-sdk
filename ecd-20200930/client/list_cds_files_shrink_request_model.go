@@ -44,7 +44,7 @@ type ListCdsFilesShrinkRequest struct {
 	//
 	// example:
 	//
-	// testUser
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The IDs of the files to be queried.
 	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
@@ -64,7 +64,7 @@ type ListCdsFilesShrinkRequest struct {
 	//
 	// example:
 	//
-	// WyI2Mzg4MjAwMzFhNGQwZWVmN2I3MjRkZjZhZjAyMWU4YzY1MmRjZmUyIiwibiIsIm4iLDEsLTEsMTY2OTg2NTQ3NTMxMiwiNjM4ODIwMDNlNTU0YmZiZjFkYTk0MmEyYTZhMjEyZDkxODdjMjAy****
+	// aGN4YzAxQGNuLWhhbmd6aG91LjExNzU5NTMyNjgzMTQ1****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sorting method of the files.
 	//

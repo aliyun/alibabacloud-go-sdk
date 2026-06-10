@@ -139,7 +139,7 @@ type CreateDriveResponseBodyDrive struct {
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
 	// The ID of the external user-level storage resource.
 	//
-	// >  A value is returned for this parameter only if ResourceType is set to PDS.
+	// > A value is returned for this parameter only if ResourceType is set to PDS.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -185,17 +185,17 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// Valid values:
 	//
-	// 	- INIT: initializing
+	// - INIT: initializing
 	//
-	// 	- MAINTAIN: maintaining
+	// - MAINTAIN: maintaining
 	//
-	// 	- DELETING
+	// - DELETING
 	//
-	// 	- INVALID
+	// - INVALID
 	//
-	// 	- NORMAL
+	// - NORMAL
 	//
-	// 	- FAIL: failed
+	// - FAIL: failed
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type CreateDriveResponseBodyDrive struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total amount of the user-level storage resource capacity.
 	//
-	// >  Unit: bytes.
+	// > Unit: bytes.
 	//
 	// example:
 	//
@@ -213,9 +213,9 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// Valid values:
 	//
-	// 	- DESKTOP: data disk space
+	// - DESKTOP: data disk space
 	//
-	// 	- USER_PROFILE: space for personal data of the user
+	// - USER_PROFILE: space for personal data of the user
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type CreateDriveResponseBodyDrive struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The amount of user-level storage resource capacity used.
 	//
-	// >  Unit: bytes.
+	// > Unit: bytes.
 	//
 	// example:
 	//

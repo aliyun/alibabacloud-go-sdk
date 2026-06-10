@@ -20,18 +20,25 @@ type iQueryHistoryUsageDurationRankResponseBody interface {
 }
 
 type QueryHistoryUsageDurationRankResponseBody struct {
+	// The token used to retrieve the next page of results. If this parameter is not returned, there are no more results.
+	//
 	// example:
 	//
 	// AAAAAWvmfbFWy0uSlxZ6pIAKAnuwt1ezsRqxI6hPibm27fMH
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 94
-	TotalCount        *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of usage duration metrics.
 	UsageDurationList []*QueryHistoryUsageDurationRankResponseBodyUsageDurationList `json:"UsageDurationList,omitempty" xml:"UsageDurationList,omitempty" type:"Repeated"`
 }
 
@@ -93,26 +100,38 @@ func (s *QueryHistoryUsageDurationRankResponseBody) Validate() error {
 }
 
 type QueryHistoryUsageDurationRankResponseBodyUsageDurationList struct {
+	// The **charge type**. Valid values: `POST_PAID` (post-paid), `PRE_PAID` (pre-paid), `MONTH_PACKAGE` (monthly subscription), and `DURATION` (duration package).
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// **The ID of the cloud desktop.**
+	//
 	// example:
 	//
 	// ecd-8cndajrdrd424sb99
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// **The name of the cloud desktop.**
+	//
 	// example:
 	//
 	// TestName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// **The end user ID.**
+	//
 	// example:
 	//
 	// endUserId
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The **usage duration**, in seconds. Note: This is a `Long` value. Ensure your client can handle the precision.
+	//
 	// example:
 	//
 	// 20000

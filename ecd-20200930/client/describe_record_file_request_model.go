@@ -38,42 +38,76 @@ type iDescribeRecordFileRequest interface {
 }
 
 type DescribeRecordFileRequest struct {
+	// The ID of the cloud desktop.
+	//
 	// example:
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 20251218205715
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the end user.
+	//
 	// example:
 	//
 	// Alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The name of the recording file.
+	//
 	// example:
 	//
 	// Task7
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The sorting basis. If you do not specify this parameter, the results are sorted by screen recording start time in descending order. Valid value:
+	//
+	// - `startTime`: the start time of a screen recording.
+	//
 	// example:
 	//
 	// startTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// - `asc`: ascending
+	//
+	// - `desc`: descending
+	//
 	// example:
 	//
 	// asc
 	OrderSort *string `json:"OrderSort,omitempty" xml:"OrderSort,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the screen recording. Valid values:
+	//
+	// - `alltime`: full-time recording
+	//
+	// - `period`: recording at intervals
+	//
+	// - `event`: event-triggered recording
+	//
+	// - `session`: session-based recording
+	//
 	// example:
 	//
 	// alltime
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that are supported by Elastic Desktop Service.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -81,10 +115,18 @@ type DescribeRecordFileRequest struct {
 	// cn-shanghai
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 20251218175715
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the screen recording file. Valid values:
+	//
+	// - `0`: The file is uploaded.
+	//
+	// - `1`: The file is being uploaded.
+	//
 	// example:
 	//
 	// 1

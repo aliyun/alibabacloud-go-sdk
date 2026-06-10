@@ -100,7 +100,7 @@ func (s *DescribeDesktopGroupSessionsResponseBody) Validate() error {
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessions struct {
-	// 账号类型
+	// The account type.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// example:
 	//
-	// windows_\\"Windows10Enterprise\\"10.0(Build22000)
+	// windows
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
 	// The version of the client.
 	//
 	// example:
 	//
-	// 2.0.0-R-20221030.08****
+	// 7.8.0
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// The ID of the shared cloud computer.
 	//
@@ -134,7 +134,7 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// example:
 	//
-	// Test
+	// DemoCCGroup
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
 	// If the session status is Connected, it indicates the ID of the cloud computer that is currently connected. If the session status is Disconnected, it indicates the ID of the cloud computer that was last connected.
 	//
@@ -142,7 +142,7 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// ecd-g6t1ukbaea****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// 办公网络类型
+	// The office network type.
 	//
 	// example:
 	//
@@ -158,13 +158,13 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// example:
 	//
-	// xianqiu
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The end time of the most recent connection.
 	//
 	// example:
 	//
-	// 2022-08-31 06:56:45
+	// 2022-08-31 07:56:45
 	LastSessionEndTime *string `json:"LastSessionEndTime,omitempty" xml:"LastSessionEndTime,omitempty"`
 	// The start time of the most recent connection.
 	//
@@ -188,15 +188,9 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// example:
 	//
-	// Test
+	// DemoOfficeNetwork
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The operating system type of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- linux.
-	//
-	// 	- Windows.
 	//
 	// example:
 	//
@@ -204,23 +198,11 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The type of the session.
 	//
-	// Valid values:
-	//
-	// 	- 0: single-session
-	//
-	// 	- 1: multi-session
-	//
 	// example:
 	//
 	// 0
 	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
 	// The protocol type supported by the rule.
-	//
-	// Valid value:
-	//
-	// 	- High-definition Experience (HDX).
-	//
-	// 	- ASP.
 	//
 	// example:
 	//
@@ -233,24 +215,6 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	// 120
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
 	// The state of the session.
-	//
-	// Valid values:
-	//
-	// 	- Connected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Disconnected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

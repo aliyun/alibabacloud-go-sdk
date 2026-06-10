@@ -93,7 +93,7 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// Valid values:
 	//
-	// 	- ALIYUN::GWS::INSTANCE: cloud computer.
+	// - ALIYUN::GWS::INSTANCE: cloud computer.
 	//
 	// example:
 	//
@@ -103,13 +103,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// example:
 	//
-	// TestKey
+	// department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag values.
 	//
 	// example:
 	//
-	// TestValue
+	// design
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

@@ -18,11 +18,11 @@ type iDeleteDesktopsRequest interface {
 }
 
 type DeleteDesktopsRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 100 IDs.
+	// A list of 1 to 100 cloud computer IDs.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. Call [](t2167755.xdita#)to get a list of regions that Elastic Desktop Service (EDS) supports.
 	//
 	// This parameter is required.
 	//

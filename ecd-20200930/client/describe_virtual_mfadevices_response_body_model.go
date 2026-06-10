@@ -18,7 +18,7 @@ type iDescribeVirtualMFADevicesResponseBody interface {
 }
 
 type DescribeVirtualMFADevicesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.If NextToken is empty, no next page exists.
+	// The token to retrieve the next page of results. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeVirtualMFADevicesResponseBody struct {
 	//
 	// FB550AAB-FB36-4A91-93F6-F4374AF65403
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the virtual MFA devices.
+	// A list of virtual MFA devices.
 	VirtualMFADevices []*DescribeVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Repeated"`
 }
 
@@ -84,75 +84,49 @@ func (s *DescribeVirtualMFADevicesResponseBody) Validate() error {
 
 type DescribeVirtualMFADevicesResponseBodyVirtualMFADevices struct {
 	AdUser *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser `json:"AdUser,omitempty" xml:"AdUser,omitempty" type:"Struct"`
-	// The number of consecutive failures to bind the virtual MFA device, or the number of failures on the verification of the virtual MFA device.
+	// The number of consecutive failed attempts to bind or authenticate the virtual MFA device.
 	//
 	// example:
 	//
 	// 1
 	ConsecutiveFails *int32 `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in private preview.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-gx2x1dhsmu52rd****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The name of the AD user who uses the virtual MFA device.
+	// The AD username of the bound user.
 	//
 	// example:
 	//
 	// usertest
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the virtual MFA device was started. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the virtual MFA device was enabled. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC, as specified by the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
 	//
 	// example:
 	//
 	// 2020-12-20T14:52:28Z
 	GmtEnabled *string `json:"GmtEnabled,omitempty" xml:"GmtEnabled,omitempty"`
-	// The time when a locked virtual MFA device was automatically unlocked. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the locked virtual MFA device is automatically unlocked. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC, as specified by the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
 	//
 	// example:
 	//
 	// 2020-12-21T15:21:28Z
 	GmtUnlock *string `json:"GmtUnlock,omitempty" xml:"GmtUnlock,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-269345****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The serial number of the virtual MFA device, which is a unique identifier.
+	// The serial number of the virtual MFA device.
 	//
 	// example:
 	//
 	// a25f297f-f2e1-4a44-bbf1-5f48a6e5****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The status of the virtual MFA device.
-	//
-	// Valid values:
-	//
-	// 	- LOCKED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- UNBOUND
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NORMAL
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

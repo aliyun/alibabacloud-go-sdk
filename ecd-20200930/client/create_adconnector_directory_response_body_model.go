@@ -104,7 +104,7 @@ type CreateADConnectorDirectoryResponseBodyAdConnectors struct {
 	//
 	// example:
 	//
-	// ``127.0.**.**``
+	// 127.0.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 }
 

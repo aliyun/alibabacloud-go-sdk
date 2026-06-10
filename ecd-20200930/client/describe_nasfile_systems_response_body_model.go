@@ -18,15 +18,15 @@ type iDescribeNASFileSystemsResponseBody interface {
 }
 
 type DescribeNASFileSystemsResponseBody struct {
-	// The NAS file systems.
+	// The details of the NAS file systems.
 	FileSystems []*DescribeNASFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
-	// The token that determines the start point of the next query. This parameter is empty if no additional results exist.
+	// The token for the next page of results. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,21 +83,21 @@ func (s *DescribeNASFileSystemsResponseBody) Validate() error {
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystems struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	AllowOperateUserDrive *bool `json:"AllowOperateUserDrive,omitempty" xml:"AllowOperateUserDrive,omitempty"`
-	// The application delivery groups that are associated with the UPM-supported NAS file systems.
+	// The application delivery groups associated with the UPM-supported NAS file system.
 	AppInstanceGroups []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups `json:"AppInstanceGroups,omitempty" xml:"AppInstanceGroups,omitempty" type:"Repeated"`
-	// The total capacity of the NAS file system. Unit: GiB.
+	// The storage capacity of the NAS file system, in GiB.
 	//
-	// 	- The Capacity type has 10 PiB of storage, which is equal to 10,485,760 GiB.
+	// - If the storage type is capacity type, the capacity is 10 PiB (10,485,760 GiB).
 	//
-	// 	- The Performance type has 1 PiB of storage, which is equal to 1,048,576 GiB.
+	// - If the storage type is performance type, the capacity is 1 PiB (1,048,576 GiB).
 	//
 	// example:
 	//
 	// 10485760
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The time when the NAS file system was created.
+	// The creation time of the NAS file system.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The cloud computer shares that are associated with the UPM-supported NAS file systems.
+	// The desktop groups associated with the UPM-supported NAS file system.
 	DesktopGroups []*DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
 	// Indicates whether disk encryption is enabled.
 	//
@@ -129,31 +129,19 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// testNAS
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	// The status of the NAS file system. The possible values include:
-	//
-	// 	- Pending: The NAS file system is being created.
-	//
-	// 	- Running: The NAS file system is running.
-	//
-	// 	- Stopped: The NAS file system is stopped.
-	//
-	// 	- Deleting: The NAS file system is being deleted.
-	//
-	// 	- Deleted: The NAS file system is deleted.
-	//
-	// 	- Invalid: The NAS file system is invalid.
+	// The status of the NAS file system.
 	//
 	// example:
 	//
 	// Running
 	FileSystemStatus *string `json:"FileSystemStatus,omitempty" xml:"FileSystemStatus,omitempty"`
-	// The type of the NAS file system. The only valid value is `standard`.
+	// The type of the NAS file system. Currently, only the standard type is supported. The value is always `standard`.
 	//
 	// example:
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The used capacity of the NAS file system. Unit: bytes.
+	// The amount of storage used by the NAS file system, in bytes.
 	//
 	// example:
 	//
@@ -165,17 +153,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// 04f314****-at***.cn-hangzhou.nas.aliyuncs.com
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// The status of the mount target. The possible values include:
-	//
-	// 	- Pending: The mount target is being created.
-	//
-	// 	- Active: The mount target is enabled.
-	//
-	// 	- Inactive: The mount target is disabled.
-	//
-	// 	- Deleting: The mount target is being deleted.
-	//
-	// 	- Invalid: The mount target is invalid.
+	// The status of the mount target.
 	//
 	// example:
 	//
@@ -193,7 +171,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The office networks.
+	// The office networks associated with the file system.
 	OfficeSites []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	ProductType *string                                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Indicates whether the User Profile Management (UPM) feature is supported.
@@ -202,42 +180,32 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// false
 	ProfileCompatible *bool `json:"ProfileCompatible,omitempty" xml:"ProfileCompatible,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The storage type of the NAS file system.
-	//
-	// Valid values:
-	//
-	// 	- Upm: the UPM-supported NAS file system.
-	//
-	// 	- ShareNas: the shared NAS file system.
+	// The use case of the NAS file system.
 	//
 	// example:
 	//
 	// Upm
 	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SizeQuota *int64  `json:"SizeQuota,omitempty" xml:"SizeQuota,omitempty"`
-	// The storage type of the NAS file system. Valid values:
-	//
-	// 	- Capacity
-	//
-	// 	- Performance
+	// The storage type of the NAS file system.
 	//
 	// example:
 	//
 	// Capacity
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// Indicates whether the Server Message Block (SMB) access control list (ACL) feature was enabled.
+	// Indicates whether the Server Message Block (SMB) access control list (ACL) feature is supported.
 	//
 	// example:
 	//
 	// false
 	SupportAcl *bool `json:"SupportAcl,omitempty" xml:"SupportAcl,omitempty"`
-	// The ID of the zone where the NAS file system resides.
+	// The ID of the zone.
 	//
 	// example:
 	//
@@ -510,13 +478,13 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) Validate() error {
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups struct {
-	// The ID of the delivery group.
+	// The ID of the application delivery group.
 	//
 	// example:
 	//
 	// aig-0bz55ibznu9p7****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the delivery group.
+	// The name of the application delivery group.
 	//
 	// example:
 	//
@@ -555,13 +523,13 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) Validat
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups struct {
-	// The ID of the cloud computer share.
+	// The ID of the desktop group.
 	//
 	// example:
 	//
 	// dg-9eeyf15b25nyl****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer share.
+	// The name of the desktop group.
 	//
 	// example:
 	//

@@ -70,19 +70,19 @@ type DescribeUsersPasswordResponseBodyDesktopUsers struct {
 	//
 	// example:
 	//
-	// alice_1365*****
+	// demo_user01_1488****
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the end user.
 	//
 	// example:
 	//
-	// alice
+	// demo_user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The password of the end user.
 	//
 	// example:
 	//
-	// tes123
+	// 3q8p-NDey-2Nac-TWcQ-****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 

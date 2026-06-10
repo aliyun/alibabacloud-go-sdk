@@ -46,7 +46,7 @@ type VerifyCenRequest struct {
 	//
 	// example:
 	//
-	// 47.100.XX.XX
+	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//

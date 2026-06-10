@@ -16,12 +16,16 @@ type iDeleteOfficeSiteAcceleratorRequest interface {
 }
 
 type DeleteOfficeSiteAcceleratorRequest struct {
+	// The office network ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-885351****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

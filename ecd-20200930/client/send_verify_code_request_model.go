@@ -20,11 +20,11 @@ type iSendVerifyCodeRequest interface {
 type SendVerifyCodeRequest struct {
 	// The information that is required to send the verification code, in JSON format. When you verify the CEN instance of another Alibaba Cloud account, you must provide the ID of the CEN instance and the ID of the Alibaba Cloud account to which the instance belongs.
 	//
-	// 	- CenId: the ID of the CEN instance.
+	// - CenId: the ID of the CEN instance.
 	//
-	// 	- CenOwnerId: the ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// - CenOwnerId: the ID of the Alibaba Cloud account to which the CEN instance belongs.
 	//
-	// >  If you own the CEN instance, skip this parameter. If you do not own the CEN instance, specify the ID of the Alibaba Cloud account that owns the CEN instance.
+	// > If you own the CEN instance, skip this parameter. If you do not own the CEN instance, specify the ID of the Alibaba Cloud account that owns the CEN instance.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type SendVerifyCodeRequest struct {
 	//
 	// Valid value:
 	//
-	// 	- eds_cenID_securityverification: Use the verification code to verify the CEN instance.
+	// - eds_cenID_securityverification: Use the verification code to verify the CEN instance.
 	//
 	// This parameter is required.
 	//

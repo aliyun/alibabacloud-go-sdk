@@ -32,7 +32,7 @@ type iCreateCdsFileRequest interface {
 }
 
 type CreateCdsFileRequest struct {
-	// The ID of the cloud disk.
+	// Enterprise cloud disk ID.
 	//
 	// This parameter is required.
 	//
@@ -40,91 +40,33 @@ type CreateCdsFileRequest struct {
 	//
 	// cn-hangzhou+cds-82414*****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The policy that is used when the file that you want to upload has the same name as an existing file in the cloud disk.
-	//
-	// Valid values:
-	//
-	// 	- refuse
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     denies creating the file
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- auto_rename
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     automatically renames the file
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- ignore
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     allows the file to use the same name as the existing file in the cloud disk
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- over_write
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     overwrites the existing file in the cloud disk
-	//
-	//     <!-- -->
-	//
-	//     .
+	// How to handle files with the same name.
 	//
 	// example:
 	//
 	// ignore
 	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
-	// The user ID.
+	// User ID.
 	//
 	// example:
 	//
 	// test1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The hash value of the SHA1 algorithm that is used by the file.
+	// SHA-1 hash value of the file.
 	//
 	// example:
 	//
 	// 7C4A8D09CA3762AF61E59520943DC26494F8****
 	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	// The file size. Unit: bytes.
+	// File size. Unit: Byte.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2048
+	// 1048576
 	FileLength *int64 `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
-	// The file name.
+	// File name.
 	//
 	// This parameter is required.
 	//
@@ -132,25 +74,7 @@ type CreateCdsFileRequest struct {
 	//
 	// testFile.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file type.
-	//
-	// Valid values:
-	//
-	// 	- file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- folder
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// File type.
 	//
 	// This parameter is required.
 	//
@@ -158,14 +82,19 @@ type CreateCdsFileRequest struct {
 	//
 	// file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the parent folder.
+	// Team space ID.
+	//
+	// example:
+	//
+	// cg-i1ruuudp92qpj****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Parent file ID. Get this from the `FileId` parameter returned by the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) API.
 	//
 	// example:
 	//
 	// 637c9163b453b1a384874264ba79f3f9eab9****
 	ParentFileId *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
-	// The region ID.
+	// Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

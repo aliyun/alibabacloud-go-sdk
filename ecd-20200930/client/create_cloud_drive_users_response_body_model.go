@@ -14,7 +14,7 @@ type iCreateCloudDriveUsersResponseBody interface {
 }
 
 type CreateCloudDriveUsersResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

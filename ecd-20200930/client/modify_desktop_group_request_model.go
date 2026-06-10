@@ -66,55 +66,43 @@ type iModifyDesktopGroupRequest interface {
 }
 
 type ModifyDesktopGroupRequest struct {
-	// Specifies whether to enable auto-creation of cloud computers for the subscription cloud computer share. You must specify this parameter when `ChargeType` is set to `PrePaid`.
-	//
-	// Valid values:
-	//
-	// 	- 0: disable auto-creation of cloud computers.
-	//
-	// 	- 1: enables auto-creation of cloud computers.
+	// Specifies whether to enable automatic creation of cloud computers in a subscription shared cloud computer group. This parameter is required and takes effect only when `ChargeType` is set to `PrePaid`.
 	//
 	// example:
 	//
 	// 1
 	AllowAutoSetup *int32 `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
-	// The maximum number of standby cloud computers that can be reserved within the pay-as-you-go cloud computer share. You must specify this property only when `ChargeType` is set to `PostPaid`. Valid values:
+	// The number of cloud computers to reserve in a pay-as-you-go shared cloud computer group. This parameter is required and takes effect only when `ChargeType` is set to `PostPaid`. Valid values:
 	//
-	// 	- 0: does not reserve any cloud computer.
+	// - 0: No cloud computers are reserved.
 	//
-	// 	- N: reserves N cloud computers (1≤ N ≤ 100).
+	// - N: N cloud computers are reserved (1 ≤ N ≤ 100).
 	//
-	// >  Setting this parameter to 0 means no cloud computers will be reserved within the cloud computer share. In this case, the system must create, start, and assign cloud computers to end users upon request, which can be time-consuming. To improve user experience, we recommend that you reserve a specific number of cloud computers.
+	// > If you do not reserve any cloud computers, the system must create and start one when an end user requests a connection. This process takes longer. Reserve a specific number of cloud computers to ensure a good user experience.
 	//
 	// example:
 	//
 	// 1
 	AllowBufferCount *int32 `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
-	// The number of concurrent sessions allowed for each cloud computer within the multi-session many-to-many share.
+	// The number of concurrent sessions that each cloud computer in a multi-session shared cloud computer group can support.
 	//
-	// >  This parameter is not publicly available.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
-	// 1
+	// 2
 	BindAmount *int64 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	// 	- For subscription cloud computer shares, this parameter specifies the number of purchased cloud computers. Valid values: 0 to 200.
+	// - For a subscription shared cloud computer group: the number of cloud computers to purchase. Valid values: 0 to 200.
 	//
-	// 	- For pay-as-you-go cloud computer shares, this parameter specifies the minimum number of cloud computers created in the initial batch. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+	// - For a pay-as-you-go shared cloud computer group: the minimum number of cloud computers to create in the pool. Default value: 1. Valid values: 0 to the value of `MaxDesktopsCount`.
 	//
 	// example:
 	//
 	// 5
 	BuyDesktopsCount *int32 `json:"BuyDesktopsCount,omitempty" xml:"BuyDesktopsCount,omitempty"`
-	// The type of the cloud computer share.
+	// The type of the shared cloud computer group.
 	//
-	// >  This parameter is not publicly available.
-	//
-	// Valid values:
-	//
-	// 	- teacher: teacher-oriented.
-	//
-	// 	- student: student-oriented.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
@@ -124,16 +112,16 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// example:
 	//
-	// test
+	// comment
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. Valid values: 900000 to 345600000. That is, the session can be connected for 15 to 5,760 minutes (4 days).
+	// The maximum duration of a session. When the session duration reaches this value, the session is automatically disconnected. Unit: milliseconds. Valid values: 900000 (15 minutes) to 345600000 (4 days).
 	//
 	// example:
 	//
-	// 600000
+	// 900000
 	ConnectDuration *int64 `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
 	DeleteDuration  *int64 `json:"DeleteDuration,omitempty" xml:"DeleteDuration,omitempty"`
-	// The ID of the cloud computer share.
+	// The ID of the shared cloud computer group.
 	//
 	// This parameter is required.
 	//
@@ -141,7 +129,7 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer share.
+	// Shared cloud desktop name.
 	//
 	// example:
 	//
@@ -153,99 +141,93 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// true
 	DisableSessionConfig *bool `json:"DisableSessionConfig,omitempty" xml:"DisableSessionConfig,omitempty"`
-	// The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
+	// The ID of the NAS file system used for user data roaming.
 	//
-	// >  This parameter is unavailable.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// 04f314****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// After an end user connects to a cloud computer, the session is established. If the system does not detect inputs from the keyboard or mouse within the specified period of time, the session is closed. Unit: milliseconds. Valid values: 360000 to 3600000 (6 minutes to 60 minutes)
+	// The maximum idle time for a session. If there is no keyboard or mouse input within this time, the session disconnects. Unit: milliseconds. Valid values: 360000 (6 minutes) to 3600000 (60 minutes).
 	//
-	// End users can receive a prompt to save data before sessions are disconnected. The system sends the prompt 30 seconds before the specified period of time is reached. To prevent data loss, end users must save the data of the sessions.
+	// Thirty seconds before the session disconnects, the end user receives a message to save their data. The end user must save their data to prevent data loss.
 	//
-	// >  This parameter is suitable only for cloud computers whose image version is v1.0.2 or later.
+	// > This parameter is applicable only to cloud computers with an image version of 1.0.2 or later.
 	//
 	// example:
 	//
-	// 120000
+	// 360000
 	IdleDisconnectDuration *int64 `json:"IdleDisconnectDuration,omitempty" xml:"IdleDisconnectDuration,omitempty"`
-	// The IDs of the images.
+	// The image ID.
 	//
 	// example:
 	//
 	// desktopimage-windows-server-2016-64-ch
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The retention period of a session after it is disconnected. Unit: milliseconds. Valid values: 180000 to 345600000. That is, the session can be retained for 3 to 5,760 minutes (4 days) after it is disconnected. If you set this parameter to 0, the session is permanently retained after it is disconnected.
+	// The duration to keep a session active after it disconnects. Unit: milliseconds. Valid values range from 180000 (3 minutes) to 345600000 (4 days). A value of 0 means the session is always kept active.
 	//
-	// When a session is disconnected, take note of the following situations: If an end user does not resume the session within the specified duration, the session is closed and all unsaved data is cleared. If the end user resumes the session within the specified duration, the end user can continue to access data of the session.
+	// When a session disconnects, either intentionally or unexpectedly, a timer begins. If the user fails to reconnect within this duration, the session is logged off, and any unsaved data is destroyed. If the user reconnects within this duration, they can resume the original session and access the data from before the disconnection.
 	//
 	// example:
 	//
-	// 1000
+	// 180000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	// The load balancing policy for the multi-session many-to-many share.
+	// The load balancing policy for a multi-session shared cloud computer group that contains multiple cloud computers.
 	//
-	// >  This parameter is not publicly available.
-	//
-	// Valid values:
-	//
-	// 	- 0: depth first.
-	//
-	// 	- 1: breadth first.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// 0
 	LoadPolicy *int64 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	// The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share. Valid values: 0 to 500.
+	// The maximum number of cloud computers that a pay-as-you-go shared cloud computer group can contain. Valid values: 0 to 500.
 	//
 	// example:
 	//
 	// 10
 	MaxDesktopsCount *int32 `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
-	// The maximum number of auto-created cloud computers allowed in the subscription cloud computer share. You must specify this parameter when `ChargeType` is set to `PrePaid`. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+	// The maximum number of cloud computers that are automatically created in a subscription shared cloud computer group. This parameter is required and takes effect only when `ChargeType` is set to `PrePaid`. Default value: 1. Valid values: 0 to the value of `MaxDesktopsCount`.
 	//
 	// example:
 	//
 	// 1
 	MinDesktopsCount *int32 `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
-	// The ID of the cloud computer template.
+	// The cloud computer template ID.
 	//
 	// example:
 	//
 	// b-7t275tpgjueeu****
 	OwnBundleId *string `json:"OwnBundleId,omitempty" xml:"OwnBundleId,omitempty"`
-	// The ID of the security policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-53iyi2aar0nd6****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The IDs of policy groups.
+	// The list of policy group IDs.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable user data roaming.
 	//
-	// >  This parameter is unavailable.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// false
 	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
-	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
+	// The session usage threshold. This threshold is a condition for triggering auto scaling in a multi-session shared cloud computer group. The session usage is calculated using the following formula:
 	//
-	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
+	// `Session usage = Number of active sessions / (Total number of cloud computers × Maximum number of sessions per cloud computer) × 100%`
 	//
-	// If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
+	// When the session usage reaches this threshold, new cloud computers are created. If the session usage is below this threshold, idle cloud computers are deleted.
 	//
-	// >  This parameter is not publicly available.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
-	// 0.5
+	// 0.85
 	RatioThreshold *float32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions that WUYING Workspace supports.
 	//
 	// This parameter is required.
 	//
@@ -253,35 +235,25 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The disk reset type of cloud computers.
-	//
-	// Valid values:
-	//
-	// 	- 0: does not reset disks.
-	//
-	// 	- 1: resets only the system disks.
-	//
-	// 	- 2: resets only the user disks.
-	//
-	// 	- 3: resets the system disks and user disks.
+	// The reset type for the cloud computers.
 	//
 	// example:
 	//
 	// 0
 	ResetType *int64 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The ID of the scaling policy group.
+	// The ID of the auto scaling policy group.
 	//
-	// >  This parameter is unavailable.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// s-kakowkdl****
 	ScaleStrategyId *string `json:"ScaleStrategyId,omitempty" xml:"ScaleStrategyId,omitempty"`
-	// The period of time before the idle cloud computer enters the Stopped state. When the specified period of time is reached, the cloud computer is automatically stopped. If an end user connects to the stopped cloud computer, the cloud computer automatically starts. Unit: milliseconds.
+	// The idle shutdown time. The cloud computer automatically shuts down when it is idle for this amount of time. If a user connects to a shutdown cloud computer, it automatically starts. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 180000
+	// 300000
 	StopDuration *int64 `json:"StopDuration,omitempty" xml:"StopDuration,omitempty"`
 }
 

@@ -22,20 +22,21 @@ type iMigrateDesktopsRequest interface {
 }
 
 type MigrateDesktopsRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 100 IDs.
+	// The IDs of the cloud computers to migrate. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. To get a list of supported regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is not publicly available.
 	TargetMemberIp *string `json:"TargetMemberIp,omitempty" xml:"TargetMemberIp,omitempty"`
-	// The ID of the destination office network.
+	// The ID of the target office network.
 	//
 	// This parameter is required.
 	//
@@ -43,11 +44,7 @@ type MigrateDesktopsRequest struct {
 	//
 	// cn-shenzhen+dir-388505****
 	TargetOfficeSiteId *string `json:"TargetOfficeSiteId,omitempty" xml:"TargetOfficeSiteId,omitempty"`
-	// > This parameter is for internal use only.
-	//
-	// example:
-	//
-	// null
+	// This parameter is not publicly available.
 	TargetSubnetId *string `json:"TargetSubnetId,omitempty" xml:"TargetSubnetId,omitempty"`
 }
 

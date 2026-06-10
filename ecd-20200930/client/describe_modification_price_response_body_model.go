@@ -113,7 +113,7 @@ func (s *DescribeModificationPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPrice struct {
-	// The unit of currency (USD).
+	// <props="china">The unit of currency (CNY).<props="intl">The unit of currency (USD).
 	//
 	// example:
 	//
@@ -226,6 +226,10 @@ type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
 	// test
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	// The promotion description.
+	//
+	// example:
+	//
+	// 新品上市，立享优惠
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The ID of the promotion activity.
 	//
@@ -234,6 +238,10 @@ type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
 	// promo_option
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The name of the promotion activity.
+	//
+	// example:
+	//
+	// Featured deals
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// Indicates whether an item is selected.
 	//
@@ -302,6 +310,10 @@ func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) Validate
 
 type DescribeModificationPriceResponseBodyPriceInfoRules struct {
 	// The rule description.
+	//
+	// example:
+	//
+	// 买满1年，立享官网价格8.5折优惠。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

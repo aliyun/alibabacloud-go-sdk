@@ -31,19 +31,19 @@ type iDescribePolicyGroupsRequest interface {
 
 type DescribePolicyGroupsRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The array of cloud computer policy IDs to be excluded.
+	// The list of cloud computer policy IDs to exclude from the query results.
 	ExternalPolicyGroupIds []*string `json:"ExternalPolicyGroupIds,omitempty" xml:"ExternalPolicyGroupIds,omitempty" type:"Repeated"`
 	// The number of entries per page.
 	//
-	// 	- Valid values: 1 to 100
+	// - Maximum value: 100
 	//
-	// 	- Default value: 10
+	// - Default value: 10
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous response. Do not set this parameter for the first request.
 	//
 	// example:
 	//
@@ -51,13 +51,13 @@ type DescribePolicyGroupsRequest struct {
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of the cloud computer policies.
+	// The list of cloud computer policy IDs.
 	//
 	// example:
 	//
 	// system-all-enabled-policy
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -67,17 +67,9 @@ type DescribePolicyGroupsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The effective scope of the cloud computer policy.
 	//
-	// Valid values:
-	//
-	// 	- ALL
-	//
-	// 	- IP
-	//
-	// 	- GLOBAL
-	//
 	// example:
 	//
-	// ALL
+	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 

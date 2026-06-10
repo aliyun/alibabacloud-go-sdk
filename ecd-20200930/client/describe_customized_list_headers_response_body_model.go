@@ -16,7 +16,10 @@ type iDescribeCustomizedListHeadersResponseBody interface {
 }
 
 type DescribeCustomizedListHeadersResponseBody struct {
+	// The list of table headers.
 	Headers []*DescribeCustomizedListHeadersResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -63,14 +66,23 @@ func (s *DescribeCustomizedListHeadersResponseBody) Validate() error {
 }
 
 type DescribeCustomizedListHeadersResponseBodyHeaders struct {
+	// The display type of the table header. You can invoke [ModifyCustomizedListHeaders](https://help.aliyun.com/document_detail/452324.html) to change it.
+	//
 	// example:
 	//
 	// display
 	DisplayType *string `json:"DisplayType,omitempty" xml:"DisplayType,omitempty"`
+	// The key of the table header.
+	//
 	// example:
 	//
-	// pay_type
-	HeaderKey  *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	// system_data_disk
+	HeaderKey *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	// The name of the table header.
+	//
+	// example:
+	//
+	// System disk/Data disk
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
 }
 

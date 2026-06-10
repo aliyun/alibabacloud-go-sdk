@@ -28,13 +28,13 @@ type ApplyCoordinatePrivilegeRequest struct {
 	//
 	// example:
 	//
-	// co-fqsm6e8ee75w61fp9
+	// co-fqsm6e8ee75w6****
 	CoId *string `json:"CoId,omitempty" xml:"CoId,omitempty"`
 	// The ID of the end user.
 	//
 	// example:
 	//
-	// zhangsan
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
@@ -58,7 +58,7 @@ type ApplyCoordinatePrivilegeRequest struct {
 	//
 	// example:
 	//
-	// 8b241d415da244a6936d6d6fa4f20f4d
+	// 3E14A18BD4D088504B9F8A8751AB****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 

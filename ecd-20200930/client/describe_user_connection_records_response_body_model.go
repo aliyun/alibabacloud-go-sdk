@@ -87,7 +87,7 @@ type DescribeUserConnectionRecordsResponseBodyConnectionRecords struct {
 	//
 	// example:
 	//
-	// 3405035000
+	// 1800000
 	ConnectDuration *string `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
 	// The time when the end user disconnected from the cloud computer.
 	//
@@ -111,13 +111,13 @@ type DescribeUserConnectionRecordsResponseBodyConnectionRecords struct {
 	//
 	// example:
 	//
-	// ud-2hawufy3uedi1****
+	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	// The name of the cloud computer to which the end user connected.
 	//
 	// example:
 	//
-	// testName
+	// demoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 }
 

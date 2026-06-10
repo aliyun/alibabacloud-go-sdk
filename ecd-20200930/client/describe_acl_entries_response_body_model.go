@@ -87,9 +87,9 @@ type DescribeAclEntriesResponseBodyAclEntries struct {
 	//
 	// Valid values:
 	//
-	// 	- allow: whitelist
+	// - allow: whitelist
 	//
-	// 	- disable: blacklist
+	// - disable: blacklist
 	//
 	// example:
 	//
@@ -99,15 +99,15 @@ type DescribeAclEntriesResponseBodyAclEntries struct {
 	//
 	// example:
 	//
-	// ecd-fsafeweh***
+	// ecd-22poqua477xo4****
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The granularity of the ACL.
 	//
 	// Valid values:
 	//
-	// 	- desktop: cloud computer
+	// - desktop: cloud computer
 	//
-	// 	- vpc: office network
+	// - vpc: office network
 	//
 	// example:
 	//

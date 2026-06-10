@@ -18,13 +18,18 @@ type iModifyOfficeSiteAcceleratorRequest interface {
 }
 
 type ModifyOfficeSiteAcceleratorRequest struct {
+	// The information about the regions to accelerate.
 	AccelerateRegion []*ModifyOfficeSiteAcceleratorRequestAccelerateRegion `json:"AccelerateRegion,omitempty" xml:"AccelerateRegion,omitempty" type:"Repeated"`
+	// The office network ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -82,22 +87,52 @@ func (s *ModifyOfficeSiteAcceleratorRequest) Validate() error {
 }
 
 type ModifyOfficeSiteAcceleratorRequestAccelerateRegion struct {
+	// The ID of the region to accelerate.
+	//
+	// The number of regions that you can add is limited by the total bandwidth and the instance type of the GA instance. For more information about the number of access regions supported by each instance type, see [Overview of GA instances](t1855472.xdita#).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
+	// The peak public bandwidth. Unit: Mbps.
+	//
+	// > For the pay-by-bandwidth metering method, the value ranges from 10 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The IP protocol version used to access GA instances. Valid values:
+	//
+	// - **IPv4*	- (default)
+	//
+	// - **IPv6**
+	//
+	// - **DUAL_STACK**: IPv4 and IPv6
+	//
+	// > 	- Only standard pay-as-you-go GA instances support the DUAL_STACK option.
+	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The Internet line type in the acceleration region. Valid values:
+	//
+	// - **BGP**: BGP (Multi-ISP) lines.
+	//
+	// - **BGP_PRO**: BGP (Multi-ISP) Pro lines.
+	//
+	// > 	- This parameter is required for GA instances that use the pay-by-data-transfer metering method.
+	//
+	// >
+	//
+	// > 	- The supported line types vary based on the acceleration region.
+	//
 	// This parameter is required.
 	//
 	// example:

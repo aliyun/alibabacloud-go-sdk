@@ -62,24 +62,6 @@ type DescribeBundlesRequest struct {
 	BundleId []*string `json:"BundleId,omitempty" xml:"BundleId,omitempty" type:"Repeated"`
 	// The type of the cloud computer template.
 	//
-	// Valid values:
-	//
-	// 	- SYSTEM: system template
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CUSTOM: custom template
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// SYSTEM
@@ -98,43 +80,17 @@ type DescribeBundlesRequest struct {
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
 	// The instance family of the cloud computers.
 	//
-	// Valid values:
-	//
-	// 	- eds.graphics: graphical instance families
-	//
-	// 	- eds.hf: instance families with high clock speeds
-	//
-	// 	- eds.general: general-purpose instance families
-	//
 	// example:
 	//
 	// eds.general
 	DesktopTypeFamily *string `json:"DesktopTypeFamily,omitempty" xml:"DesktopTypeFamily,omitempty"`
-	// >  This parameter is not available for public use.
+	// > This parameter is not available for public use.
 	//
 	// example:
 	//
-	// This parameter is now in invitational preview and unavailable.
+	// example
 	FotaChannel *string `json:"FotaChannel,omitempty" xml:"FotaChannel,omitempty"`
 	// Specifies whether the cloud computers in the template belong to a cloud computer pool.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -147,16 +103,6 @@ type DescribeBundlesRequest struct {
 	// 1
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
 	// The GPU driver type.
-	//
-	// Valid values:
-	//
-	// 	- T4
-	//
-	// 	- A10
-	//
-	// 	- G28
-	//
-	// 	- G39
 	//
 	// example:
 	//
@@ -188,41 +134,17 @@ type DescribeBundlesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the OS.
 	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// 	- HDX: High-definition Experience (HDX) protocol
-	//
-	// 	- ASP: in-house Adaptive Streaming Protocol (ASP) (recommend)
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. You can call the [](t2167755.xdita#)operation to query the regions supported by Elastic Desktop Service (EDS).
 	//
 	// This parameter is required.
 	//
@@ -242,11 +164,7 @@ type DescribeBundlesRequest struct {
 	//
 	// true
 	SelectedBundle *bool `json:"SelectedBundle,omitempty" xml:"SelectedBundle,omitempty"`
-	// The type of the session. Valide values:
-	//
-	// - SingleSession
-	//
-	// - MultipleSession
+	// The type of the session.
 	//
 	// example:
 	//

@@ -40,52 +40,82 @@ type iDescribeDesktopMetadataRequest interface {
 }
 
 type DescribeDesktopMetadataRequest struct {
+	// The creation time of the cloud computer. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
+	//
 	// example:
 	//
 	// 2025-01-01T12:00:00Z
-	CreationTimeStart *string   `json:"CreationTimeStart,omitempty" xml:"CreationTimeStart,omitempty"`
-	DesktopIds        []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	EndUserId         *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	CreationTimeStart *string `json:"CreationTimeStart,omitempty" xml:"CreationTimeStart,omitempty"`
+	// A list of cloud computer IDs.
+	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	// The ID of the end user.
+	//
+	// example:
+	//
+	// test-user
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the cloud computer share.
+	//
 	// example:
 	//
 	// dg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The hostname.
+	//
 	// example:
 	//
 	// ASW-2F-SRV-YXYZ-4.SHPTG
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the image.
+	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Specifies whether to include cloud computers in cloud computer shares in the response.
+	//
 	// example:
 	//
 	// false
 	IncludeDesktopGroup *bool `json:"IncludeDesktopGroup,omitempty" xml:"IncludeDesktopGroup,omitempty"`
+	// > This parameter is not yet available.
+	//
 	// example:
 	//
 	// ecd
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The maximum number of entries to return per page. Maximum: 100. Default: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token returned from the previous call to retrieve the next page of results.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the office network.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-778418****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The start of the time range to query for operations. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
+	//
 	// example:
 	//
 	// 2025-01-01T12:00:00Z
 	OperationTimeStart *string `json:"OperationTimeStart,omitempty" xml:"OperationTimeStart,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region to search.
+	//
 	// example:
 	//
 	// cn-hangzhou

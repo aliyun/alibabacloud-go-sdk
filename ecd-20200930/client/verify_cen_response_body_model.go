@@ -114,7 +114,7 @@ type VerifyCenResponseBodyRouteEntries struct {
 	//
 	// example:
 	//
-	// 172.16.111.3****
+	// 172.16.XX.XX
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// The ID of the instance corresponding to the route.
 	//

@@ -30,7 +30,7 @@ type DescribeFotaTasksRequest struct {
 	//
 	// example:
 	//
-	// To be hidden.
+	// windows
 	FotaStatus *string `json:"FotaStatus,omitempty" xml:"FotaStatus,omitempty"`
 	// The language of the image version to update.
 	//

@@ -16,12 +16,16 @@ type iDescribeQosRulesRequest interface {
 }
 
 type DescribeQosRulesRequest struct {
+	// The network package ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// np-cxj99qb8d34vo****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
+	// The QoS rule name.
+	//
 	// example:
 	//
 	// test

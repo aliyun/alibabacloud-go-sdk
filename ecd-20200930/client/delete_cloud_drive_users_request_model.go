@@ -18,13 +18,18 @@ type iDeleteCloudDriveUsersRequest interface {
 }
 
 type DeleteCloudDriveUsersRequest struct {
+	// WUYING Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-64326*****
-	CdsId     *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// List of end user IDs.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// Region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain the list of regions supported by WUYING Workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

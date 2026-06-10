@@ -104,16 +104,12 @@ type DescribeRecordingsResponseBodyRecordings struct {
 	// The end user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The file path.
-	//
-	// example:
-	//
-	// pg-4w5nk44zo5yl129dd/1mk78dugw344.mp4
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// The policy ID.
 	//
 	// example:
 	//
-	// pg-6dn811rzrwh9ws4z6
+	// pg-6dn811rzrwh9w****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	// The size of the screen recording file. Unit: bytes.
 	//

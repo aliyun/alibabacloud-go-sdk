@@ -26,9 +26,9 @@ type iDescribeAclEntriesRequest interface {
 type DescribeAclEntriesRequest struct {
 	// The number of entries per page.
 	//
-	// 	- Maximum value: 1600.
+	// - Maximum value: 1600.
 	//
-	// 	- Default value: 1600.
+	// - Default value: 1600.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type DescribeAclEntriesRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou+dir-****
+	// ecd-22poqua477xo4****
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The granularity of the ACL.
 	//
 	// Valid values:
 	//
-	// 	- desktop: cloud computer
+	// - desktop: cloud computer
 	//
-	// 	- vpc: office network
+	// - vpc: office network
 	//
 	// example:
 	//

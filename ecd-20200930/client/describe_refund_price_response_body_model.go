@@ -16,9 +16,9 @@ type iDescribeRefundPriceResponseBody interface {
 }
 
 type DescribeRefundPriceResponseBody struct {
-	// The price details.
+	// Price details.
 	PriceInfo *DescribeRefundPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,15 @@ func (s *DescribeRefundPriceResponseBody) Validate() error {
 }
 
 type DescribeRefundPriceResponseBodyPriceInfo struct {
-	// The unit of currency (USD).
+	// <props="china">Currency unit (CNY).
+	//
+	// <props="intl">Currency unit (USD).
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount of the refund.
+	// This refund amount.
 	//
 	// example:
 	//

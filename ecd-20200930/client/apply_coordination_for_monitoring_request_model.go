@@ -28,13 +28,13 @@ type ApplyCoordinationForMonitoringRequest struct {
 	//
 	// Set the value to FULL_CONTROL.
 	//
-	// 	- The value FULL_CONTROL specifies that the cloud desktop is shared and remote access to the cloud desktop is allowed.
+	// - The value FULL_CONTROL specifies that the cloud desktop is shared and remote access to the cloud desktop is allowed.
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ApplyCoordinationForMonitoringRequest struct {
 	//
 	// Set the value to ADMIN_INITIATE.
 	//
-	// 	- The value ADMIN_INITIATE specifies that the administrator initiates the coordination request.
+	// - The value ADMIN_INITIATE specifies that the administrator initiates the coordination request.
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ApplyCoordinationForMonitoringRequest struct {
 	//
 	// example:
 	//
-	// 62f2f1f252f04e0e9d8bc****
+	// 3E14A18BD4D088504B9F8A8751AB****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -190,7 +190,7 @@ type ApplyCoordinationForMonitoringRequestResourceCandidates struct {
 	//
 	// example:
 	//
-	// TestDesktop
+	// DemoComputer
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The properties of the cloud desktop.
 	//
@@ -210,13 +210,13 @@ type ApplyCoordinationForMonitoringRequestResourceCandidates struct {
 	//
 	// Set the value to CLOUD_DESKTOP.
 	//
-	// 	- The value CLOUD_DESKTOP specifies that the resource is a cloud desktop.
+	// - The value CLOUD_DESKTOP specifies that the resource is a cloud desktop.
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// This parameter is required.
 	//

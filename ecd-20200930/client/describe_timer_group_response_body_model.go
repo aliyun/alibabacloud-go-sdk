@@ -16,9 +16,9 @@ type iDescribeTimerGroupResponseBody interface {
 }
 
 type DescribeTimerGroupResponseBody struct {
-	// The configuration group.
+	// The details of the timer group.
 	Data *DescribeTimerGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,67 +62,63 @@ func (s *DescribeTimerGroupResponseBody) Validate() error {
 }
 
 type DescribeTimerGroupResponseBodyData struct {
-	// The number of resources that are bound to the configuration group.
+	// The number of resources associated with the timer group.
 	//
 	// example:
 	//
 	// 50
 	BindCount *int32 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	// The number of bound resources.
+	// A map of associated resource counts, categorized by resource type.
 	BindCountMap map[string]*int32 `json:"BindCountMap,omitempty" xml:"BindCountMap,omitempty"`
-	// The scheduled tasks.
+	// The configurations of the scheduled tasks.
 	ConfigTimers []*DescribeTimerGroupResponseBodyDataConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
-	// The description of the configuration group.
+	// The description of the timer group.
+	//
+	// example:
+	//
+	// Scheduled task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the configuration group.
+	// The ID of the timer group.
 	//
 	// example:
 	//
 	// cg-75aazkg2tnqb2*****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// An internal code used by the frontend to display the description of a system-scheduled task.
+	//
 	// example:
 	//
 	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE_DESC
 	InnerTimerDesc *string `json:"InnerTimerDesc,omitempty" xml:"InnerTimerDesc,omitempty"`
+	// An internal code used by the frontend to display the name of a system-scheduled task.
+	//
 	// example:
 	//
 	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE
 	InnerTimerName *string `json:"InnerTimerName,omitempty" xml:"InnerTimerName,omitempty"`
-	IsBind         *bool   `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
-	IsUpdate       *bool   `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
-	// The name of the configuration group.
+	// Indicates that resources cannot be bound to or unbound from this timer group.
+	IsBind *bool `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
+	// Indicates that this timer group cannot be modified.
+	IsUpdate *bool `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
+	// The name of the timer group.
+	//
+	// example:
+	//
+	// Scheduled task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The service type of the configuration group.
-	//
-	// Valid value:
-	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// The product type that the timer group supports.
 	//
 	// example:
 	//
 	// CLOUD_DESKTOP
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The state of the configuration group.
-	//
-	// Valid values:
-	//
-	// 	- AVAILABLE: The configuration group is available.
-	//
-	// 	- UNAVAILABLE: The configuration group is deleted.
-	//
-	// 	- DELETING: The configuration group is being deleted.
-	//
-	// 	- UPDATING: The configuration group is being modified.
+	// The status of the timer group.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the configuration group.
-	//
-	// Valid value:
-	//
-	// 	- Timer: the scheduled task type.
+	// The type of the timer group.
 	//
 	// example:
 	//
@@ -269,54 +265,40 @@ func (s *DescribeTimerGroupResponseBodyData) Validate() error {
 }
 
 type DescribeTimerGroupResponseBodyDataConfigTimers struct {
-	// Indicates whether end users can configure scheduled tasks.
+	// Whether to allow end users to configure the scheduled task.
 	//
 	// example:
 	//
 	// true
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	// The CRON expression for the scheduled task.
+	// The cron expression for the scheduled task.
 	//
 	// example:
 	//
 	// 0 0 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to forcibly execute the scheduled task. A value of true specifies the scheduled task will run forcefully, ignoring the cloud computer and connection status.
+	// Specifies whether to force the execution of the scheduled task. If set to `true`, the task runs regardless of the cloud computer\\"s status or connection state.
 	//
 	// example:
 	//
 	// false
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The interval at which the scheduled task is executed. Unit: minutes.
+	// The interval. Unit: minutes.
 	//
 	// example:
 	//
 	// 10
 	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	// The type of the scheduled disconnection task.
-	//
-	// Valid values:
-	//
-	// 	- Hibernate: scheduled hibernation.
-	//
-	// 	- Shutdown: scheduled shutdown.
+	// The operation to perform when `TimerType` is set to `NoConnect`.
 	//
 	// example:
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
+	// The process whitelist for smart detection. A scheduled task based on user inactivity does not run if a whitelisted process is running.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	// The reset operation of the scheduled task.
-	//
-	// Valid values:
-	//
-	// 	- RESET_TYPE_SYSTEM: resets the system disk.
-	//
-	// 	- RESET_TYPE_USER_DISK: resets the data disk.
-	//
-	// 	- RESET_TYPE_BOTH: resets the system disk and data disk.
+	// The reset type for the scheduled reset task.
 	//
 	// example:
 	//
@@ -325,37 +307,11 @@ type DescribeTimerGroupResponseBodyDataConfigTimers struct {
 	SegmentTimers []*DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
 	// The type of the scheduled task.
 	//
-	// Valid values:
-	//
-	// 	- NoOperationDisconnect: scheduled disconnection upon inactivity.
-	//
-	// 	- NoConnect: scheduled disconnection upon specified operation (OperationType).
-	//
-	// 	- TimerBoot: scheduled start.
-	//
-	// 	- TimerReset: scheduled reset.
-	//
-	// 	- NoOperationShutdown: scheduled shutdown upon inactivity.
-	//
-	// 	- NoOperationHibernate: scheduled hibernation upon inactivity.
-	//
-	// 	- TimerShutdown: scheduled shutdown.
-	//
-	// 	- NoOperationReboot: scheduled restart upon inactivity.
-	//
-	// 	- TimerReboot: scheduled restart.
-	//
 	// example:
 	//
 	// TimerBoot
 	TimerType *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
-	// The method to trigger the scheduled task upon inactivity.
-	//
-	// Valid values:
-	//
-	// 	- Advanced: intelligent detection.
-	//
-	// 	- Standard: standard detection.
+	// The detection method for user inactivity.
 	//
 	// example:
 	//
@@ -484,6 +440,8 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimers) Validate() error {
 }
 
 type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
+	// The time to execute the scheduled task, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1764660600967
@@ -491,11 +449,16 @@ type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
 	CreateSnapshot    *bool   `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
 	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// The image ID for a scheduled image-change task.
+	//
 	// example:
 	//
 	// m-5b0vjqbiqu010XXXXXX
-	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	ImageId    *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Interval   *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IpSegments []*string `json:"IpSegments,omitempty" xml:"IpSegments,omitempty" type:"Repeated"`
+	// The duration of user inactivity, in seconds, before the screen locks. This feature applies only to cloud computers joined to an Active Directory (AD) domain.
+	//
 	// example:
 	//
 	// 1800
@@ -546,6 +509,10 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetImageId
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetInterval() *int32 {
 	return s.Interval
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetIpSegments() []*string {
+	return s.IpSegments
 }
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetLockScreenTime() *int32 {
@@ -623,6 +590,11 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetImageId
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetInterval(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.Interval = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetIpSegments(v []*string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.IpSegments = v
 	return s
 }
 

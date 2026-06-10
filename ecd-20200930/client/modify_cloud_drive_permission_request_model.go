@@ -33,7 +33,8 @@ type ModifyCloudDrivePermissionRequest struct {
 	// The IDs of the users who have the download permissions.
 	DownloadEndUserIds []*string `json:"DownloadEndUserIds,omitempty" xml:"DownloadEndUserIds,omitempty" type:"Repeated"`
 	// The IDs of the users who have the upload and download permissions.
-	DownloadUploadEndUserIds     []*string `json:"DownloadUploadEndUserIds,omitempty" xml:"DownloadUploadEndUserIds,omitempty" type:"Repeated"`
+	DownloadUploadEndUserIds []*string `json:"DownloadUploadEndUserIds,omitempty" xml:"DownloadUploadEndUserIds,omitempty" type:"Repeated"`
+	// List of end user IDs with neither upload nor download permissions. These users cannot download files from the enterprise file storage to on-premises devices or upload files from on-premises devices to the enterprise file storage.
 	NoDownloadNoUploadEndUserIds []*string `json:"NoDownloadNoUploadEndUserIds,omitempty" xml:"NoDownloadNoUploadEndUserIds,omitempty" type:"Repeated"`
 	// The region ID.
 	//

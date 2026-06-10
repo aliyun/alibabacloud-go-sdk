@@ -58,9 +58,9 @@ type DeleteTemplatesResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- true: The request is successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

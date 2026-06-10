@@ -14,6 +14,11 @@ type iDeleteCloudDriveUsersResponseBody interface {
 }
 
 type DeleteCloudDriveUsersResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// EAEFFE4B-E87B-5F76-B165-9248F377****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

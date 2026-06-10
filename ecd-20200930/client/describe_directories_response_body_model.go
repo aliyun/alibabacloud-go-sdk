@@ -644,7 +644,7 @@ type DescribeDirectoriesResponseBodyDirectoriesADConnectors struct {
 	//
 	// example:
 	//
-	// ``172.17.**.**``
+	// 172.17.XX.XX
 	ADConnectorAddress *string `json:"ADConnectorAddress,omitempty" xml:"ADConnectorAddress,omitempty"`
 	// Valid values:
 	//

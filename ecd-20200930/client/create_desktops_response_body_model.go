@@ -18,17 +18,17 @@ type iCreateDesktopsResponseBody interface {
 }
 
 type CreateDesktopsResponseBody struct {
-	// The IDs of the cloud computers that are created. If multiple cloud computers are created, multiple IDs are returned.
+	// An array of cloud desktop IDs. An ID is returned for each cloud desktop created in the call.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The order ID.
 	//
-	// > This parameter is returned only when you set the ChargeType parameter to PrePaid.
+	// > This parameter is returned only when the `ChargeType` request parameter is set to `PrePaid`.
 	//
 	// example:
 	//
 	// 123456789
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

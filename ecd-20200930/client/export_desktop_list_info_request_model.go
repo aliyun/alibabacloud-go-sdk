@@ -72,7 +72,7 @@ type ExportDesktopListInfoRequest struct {
   // 
   // example:
   // 
-  // testName
+  // DemoComputer01
   DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
   // The status of the cloud computers.
   // 

@@ -93,6 +93,10 @@ type MoveCdsFileRequest struct {
 	// 63f3257b68b018170b194d87b875512d108f****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The group ID.
+	//
+	// example:
+	//
+	// cg-hvyou5jbob3b0****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the parent folder that you want to move. If you want to remove the root folder, set the value to root.
 	//

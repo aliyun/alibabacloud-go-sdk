@@ -42,7 +42,7 @@ type DescribeConfigGroupRequest struct {
 	//
 	// example:
 	//
-	// ScheduledTask
+	// Scheduled task configuration
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number.
 	//
@@ -70,7 +70,7 @@ type DescribeConfigGroupRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the configuration groups.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`

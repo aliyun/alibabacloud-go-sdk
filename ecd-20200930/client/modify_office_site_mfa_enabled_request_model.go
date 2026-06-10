@@ -22,21 +22,21 @@ type ModifyOfficeSiteMfaEnabledRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// This parameter is required.
 	//

@@ -38,25 +38,25 @@ type iDescribeSnapshotsRequest interface {
 }
 
 type DescribeSnapshotsRequest struct {
-	// The user who creates the snapshot.
+	// The creator.
 	//
 	// example:
 	//
 	// Administrator
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the cloud computer.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// testName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The end time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
 	//
 	// example:
 	//
@@ -64,25 +64,27 @@ type DescribeSnapshotsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of entries per page.
 	//
-	// 	- Maximum value: 100.
+	// - Maximum value: 100.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token for the next page of results. This is the NextToken value from the previous API call.
 	//
 	// example:
 	//
 	// 8051af8d01b5479bec9f5ddf02e4a8fbd0ab6e7e43f8****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The operating system type.
+	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The ID of the region. Call [](t2167755.xdita#)to get a list of regions that support Elastic Desktop Service (EDS).
 	//
 	// This parameter is required.
 	//
@@ -96,59 +98,27 @@ type DescribeSnapshotsRequest struct {
 	//
 	// s-2ze81owrnv9pity4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The name of the snapshot. The name must be 2 to 127 characters in length. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-). The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
+	// The display name of the snapshot. The name must be 2 to 127 characters long. It must start with a letter. It can contain digits, underscores (_), and hyphens (-). The name cannot start with `auto` to avoid naming conflicts with automatic snapshots.
 	//
 	// example:
 	//
-	// test_data_disk
+	// Test data disk
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The category of the snapshots.
-	//
-	// Default value: all. Valid values:
-	//
-	// 	- all: all snapshot categories
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- auto: automatic snapshots
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- user: manual snapshots
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The snapshot type.
 	//
 	// example:
 	//
 	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The disk for which you want to create a snapshot.
+	// The disk from which to create the snapshot.
 	//
-	// >  The value of this parameter is not case-sensitive.
-	//
-	// Valid values:
-	//
-	// 	- Data: the data disk.
-	//
-	// 	- System: the system disk.
+	// > The value is case-insensitive.
 	//
 	// example:
 	//
 	// system
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The start time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
 	//
 	// example:
 	//

@@ -29,23 +29,17 @@ type CreateEcdReportTaskRequest struct {
 	FilterList []*CreateEcdReportTaskRequestFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
 	// The language of the report. An enumerated type.
 	//
-	// Valid values:
-	//
-	// 	- zh-CN (default): Chinese
-	//
-	// 	- en-GB: English
-	//
 	// example:
 	//
 	// zh-CN
 	LangType *string `json:"LangType,omitempty" xml:"LangType,omitempty"`
 	// The name of the report file.
+	//
+	// example:
+	//
+	// Test report name
 	ReportFileName *string `json:"ReportFileName,omitempty" xml:"ReportFileName,omitempty"`
 	// The sub-type of the report export task.
-	//
-	// Valid value:
-	//
-	// 	- DESKTOP: cloud computer
 	//
 	// This parameter is required.
 	//
@@ -57,7 +51,7 @@ type CreateEcdReportTaskRequest struct {
 	//
 	// Valid value:
 	//
-	// 	- RESOURCE_REPORT
+	// - RESOURCE_REPORT
 	//
 	// This parameter is required.
 	//
@@ -145,39 +139,39 @@ func (s *CreateEcdReportTaskRequest) Validate() error {
 type CreateEcdReportTaskRequestFilterList struct {
 	// The key of the filter condition for filtering query results. When SubType is set to:
 	//
-	// 1.  DESKTOP (indicating a cloud computer report), the following filter conditions are available:
+	// 1. DESKTOP (indicating a cloud computer report), the following filter conditions are available:
 	//
-	// 	- KeyWord: cloud computer keyword (supports automatic recognition)
+	// - KeyWord: cloud computer keyword (supports automatic recognition)
 	//
-	// 	- RegionId: region ID
+	// - RegionId: region ID
 	//
-	// 	- DesktopId: cloud computer ID
+	// - DesktopId: cloud computer ID
 	//
-	// 	- DesktopName: cloud computer name (supports fuzzy matching)
+	// - DesktopName: cloud computer name (supports fuzzy matching)
 	//
-	// 	- OfficeSiteId: office network ID
+	// - OfficeSiteId: office network ID
 	//
-	// 	- OfficeSiteName: office network name (supports fuzzy matching)
+	// - OfficeSiteName: office network name (supports fuzzy matching)
 	//
-	// 	- Status: cloud computer status
+	// - Status: cloud computer status
 	//
-	// 	- DesktopType: desktop type
+	// - DesktopType: desktop type
 	//
-	// 	- DesktopIP: cloud computer IP address
+	// - DesktopIP: cloud computer IP address
 	//
-	// 	- SubPayType: billing method
+	// - SubPayType: billing method
 	//
-	// 	- EndUserId: user name (supports fuzzy matching)
+	// - EndUserId: user name (supports fuzzy matching)
 	//
-	// 	- ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
+	// - ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
 	//
-	// 	- IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
+	// - IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
 	//
-	// 	- ResourceGroupId: resource group ID
+	// - ResourceGroupId: resource group ID
 	//
-	// 	- PolicyId: policy ID
+	// - PolicyId: policy ID
 	//
-	// 	- Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
+	// - Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
 	//
 	// example:
 	//
@@ -185,19 +179,23 @@ type CreateEcdReportTaskRequestFilterList struct {
 	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
 	// The value of the filter condition. Only the first value of the FilterValues parameter is used, if FilterKey is set to one of the following values:
 	//
-	// 	- KeyWord
+	// - KeyWord
 	//
-	// 	- DesktopName
+	// - DesktopName
 	//
-	// 	- OfficeSiteName
+	// - OfficeSiteName
 	//
-	// 	- DesktopIP
+	// - DesktopIP
 	//
-	// 	- EndUserId
+	// - EndUserId
 	//
-	// 	- ExpireTime
+	// - ExpireTime
 	//
-	// 	- IncludeAssignedUser
+	// - IncludeAssignedUser
+	//
+	// example:
+	//
+	// Test cloud desktop name
 	FilterValues []*string `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Repeated"`
 }
 

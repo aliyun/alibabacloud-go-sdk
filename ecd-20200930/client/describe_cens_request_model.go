@@ -18,17 +18,13 @@ type iDescribeCensRequest interface {
 }
 
 type DescribeCensRequest struct {
-	// The page number.\\
-	//
-	// Default value: 1.
+	// The page number.<br>Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
-	//
-	// Default value: 50.
+	// The number of entries per page.<br>Default value: 50.
 	//
 	// example:
 	//

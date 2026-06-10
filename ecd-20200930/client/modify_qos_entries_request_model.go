@@ -26,18 +26,24 @@ type iModifyQosEntriesRequest interface {
 }
 
 type ModifyQosEntriesRequest struct {
+	// The IDs of the cloud phones to bind to the QoS rule.
 	AuthAndroidId      []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
 	AuthDesktopGroupId []*string `json:"AuthDesktopGroupId,omitempty" xml:"AuthDesktopGroupId,omitempty" type:"Repeated"`
-	AuthDesktopId      []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
+	// The IDs of the cloud desktops to bind to the QoS rule.
+	AuthDesktopId []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
+	// The ID of the QoS rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qos-5605u0gelk200****
-	QosRuleId            *string   `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	// The IDs of the cloud phones to unbind from the QoS rule.
 	RevokeAndroidId      []*string `json:"RevokeAndroidId,omitempty" xml:"RevokeAndroidId,omitempty" type:"Repeated"`
 	RevokeDesktopGroupId []*string `json:"RevokeDesktopGroupId,omitempty" xml:"RevokeDesktopGroupId,omitempty" type:"Repeated"`
-	RevokeDesktopId      []*string `json:"RevokeDesktopId,omitempty" xml:"RevokeDesktopId,omitempty" type:"Repeated"`
+	// The IDs of the cloud desktops to unbind from the QoS rule.
+	RevokeDesktopId []*string `json:"RevokeDesktopId,omitempty" xml:"RevokeDesktopId,omitempty" type:"Repeated"`
 }
 
 func (s ModifyQosEntriesRequest) String() string {

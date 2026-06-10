@@ -18,9 +18,9 @@ type iDescribeClientEventsResponseBody interface {
 }
 
 type DescribeClientEventsResponseBody struct {
-	// The user events.
+	// The list of user events.
 	Events []*DescribeClientEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *DescribeClientEventsResponseBody) Validate() error {
 }
 
 type DescribeClientEventsResponseBodyEvents struct {
-	// The ID of the Alibaba Cloud account with which the event is associated.
+	// The ID of the Alibaba Cloud account associated with the event.
 	//
 	// example:
 	//
 	// 112259558861****
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The number of bytes that are received.
+	// The number of bytes received.
 	//
 	// example:
 	//
 	// 8665
 	BytesReceived *string `json:"BytesReceived,omitempty" xml:"BytesReceived,omitempty"`
-	// The number of bytes that are sent.
+	// The number of bytes sent.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 100.68.*.*
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The OS that the client runs.
+	// The operating system of the client.
 	//
 	// example:
 	//
@@ -119,25 +119,25 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 1.0.4 202012021700
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The description.
+	// The description of the event.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The desktop group ID.
+	// The ID of the desktop group.
 	//
 	// example:
 	//
 	// dg-kadkdfaf****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The desktop group name.
+	// The name of the desktop group.
 	//
 	// example:
 	//
 	// testName
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The cloud desktop ID.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
@@ -147,15 +147,15 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// 10.10.*.*
+	// 10.10.XX.XX
 	DesktopIp *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	// The cloud desktop name.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// test
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The ID of the directory to which the cloud desktop belongs.
+	// The ID of the cloud desktop\\"s directory.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// RAM
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The information about the end user that connects to the cloud desktop from the EDS client. The information can be a RAM user ID or an AD username.
+	// The ID of the end user. The value can be the ID of a RAM user or the username of an AD user.
 	//
 	// example:
 	//
@@ -179,49 +179,31 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 5651188b-3070-d1cc-5311-75753d59****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The time when the event occurred.
+	// The time the event occurred.
 	//
 	// example:
 	//
 	// 2020-11-30T06:32:31Z
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	// The event type. Valid values:
+	// The event type.
 	//
 	// example:
 	//
 	// DESKTOP_DISCONNECT
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the workspace to which the cloud desktop belongs.
+	// The ID of the cloud desktop\\"s office site.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-bh77qa8nmjot4****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The workspace name.
+	// The name of the office site.
 	//
 	// example:
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The account type of the workspace.
-	//
-	// Valid values:
-	//
-	// 	- SIMPLE: convenience account
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- AD_CONNECTOR: enterprise AD account
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of account system for the office site.
 	//
 	// example:
 	//
@@ -233,11 +215,11 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the event. If you set the EventType parameter to `DESKTOP_DISCONNECT` or `GET_CONNECTION_TICKET`, this parameter is returned. Valid values:
+	// The status of the event. This parameter is returned for `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
 	//
-	// 	- 200\\. The value indicates that the request is successful.
+	// - `200`: Success.
 	//
-	// 	- An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
+	// - An error message, such as `FailedToGetConnectionTicket`.
 	//
 	// example:
 	//

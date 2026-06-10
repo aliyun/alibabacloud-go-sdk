@@ -26,9 +26,9 @@ type CloneCenterPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- 1: public cloud
+	// - 1: public cloud
 	//
-	// 	- 8: commercial edition.
+	// - 8: commercial edition.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type CloneCenterPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- app: cloud applications.
+	// - app: cloud applications.
 	//
-	// 	- desktop: cloud computers.
+	// - desktop: cloud computers.
 	//
 	// This parameter is required.
 	//

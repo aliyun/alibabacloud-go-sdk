@@ -16,8 +16,9 @@ type iCreateCdsFileResponseBody interface {
 }
 
 type CreateCdsFileResponseBody struct {
+	// File upload response object.
 	FileModel *CreateCdsFileResponseBodyFileModel `json:"FileModel,omitempty" xml:"FileModel,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -61,8 +62,23 @@ func (s *CreateCdsFileResponseBody) Validate() error {
 }
 
 type CreateCdsFileResponseBodyFileModel struct {
-	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	UploadId  *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// File ID.
+	//
+	// example:
+	//
+	// 646ec2f662b1e08f7a2b4d648982f906****
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File upload task ID.
+	//
+	// example:
+	//
+	// 20BE155AC20943BE9D405B0997A9****
+	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// File upload URL. Valid for 15 minutes by default.
+	//
+	// example:
+	//
+	// https://data.aliyunpds.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E26977****
 	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
 }
 

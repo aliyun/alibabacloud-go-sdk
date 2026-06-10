@@ -58,9 +58,9 @@ type DescribeCloudDriveGroupsRequest struct {
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 	// The team space status. Valid values:
 	//
-	// 	- enabled
+	// - enabled
 	//
-	// 	- disabled
+	// - disabled
 	//
 	// Default value: enabled.
 	//
@@ -70,9 +70,9 @@ type DescribeCloudDriveGroupsRequest struct {
 	DriveStatus *string `json:"DriveStatus,omitempty" xml:"DriveStatus,omitempty"`
 	// Specifies whether the space is increased.
 	//
-	// 	- binding: increased
+	// - binding: increased
 	//
-	// 	- unbound: not increased
+	// - unbound: not increased
 	//
 	// Default value: null. The default value indicates that all spaces are queried.
 	//
@@ -89,13 +89,13 @@ type DescribeCloudDriveGroupsRequest struct {
 	//
 	// example:
 	//
-	// Test Team 1
+	// Test team 1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The team type.
 	//
-	// 	- org: organizational structure
+	// - org: organizational structure
 	//
-	// 	- directory: workspace
+	// - directory: workspace
 	//
 	// Default value: null. The default value indicates that all types of teams are queried.
 	//
@@ -105,9 +105,9 @@ type DescribeCloudDriveGroupsRequest struct {
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// 	- Valid values: 1 to 100
+	// - Valid values: 1 to 100
 	//
-	// 	- Default value: 20
+	// - Default value: 20
 	//
 	// example:
 	//

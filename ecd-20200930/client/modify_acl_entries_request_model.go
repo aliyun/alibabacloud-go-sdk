@@ -24,9 +24,9 @@ type ModifyAclEntriesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- allow: allows access to the Internet.
+	// - allow: allows access to the Internet.
 	//
-	// 	- disable: forbids access to the Internet.
+	// - disable: forbids access to the Internet.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type ModifyAclEntriesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- desktop: cloud computer granularity.
+	// - desktop: cloud computer granularity.
 	//
-	// 	- vpc: office network granularity.
+	// - vpc: office network granularity.
 	//
 	// This parameter is required.
 	//

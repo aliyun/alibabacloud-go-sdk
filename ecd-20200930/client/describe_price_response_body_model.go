@@ -147,13 +147,13 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// example:
 	//
-	// CNY
+	// CNY/USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The discounted amount.
 	//
 	// example:
 	//
-	// 0
+	// 15.8
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	// The orders.
 	OrderLines map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
@@ -161,7 +161,7 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// example:
 	//
-	// 2.796
+	// 79.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The promotions.
 	Promotions []*DescribePriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
@@ -175,7 +175,7 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// example:
 	//
-	// 2.796
+	// 63.2
 	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
@@ -274,7 +274,7 @@ type DescribePriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// Get started with new services with a discount.
+	// 新品上市，立享优惠
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The promotion ID.
 	//
@@ -286,7 +286,7 @@ type DescribePriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// Special Offer
+	// Featured deals
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// Indicates whether an item is selected.
 	//
@@ -358,7 +358,7 @@ type DescribePriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Receive a 15% discount on a one-year subscription.
+	// 买满1年，立享官网价格8.5折优惠。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

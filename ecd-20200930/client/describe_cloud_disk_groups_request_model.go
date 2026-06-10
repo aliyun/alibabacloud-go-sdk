@@ -22,18 +22,30 @@ type iDescribeCloudDiskGroupsRequest interface {
 }
 
 type DescribeCloudDiskGroupsRequest struct {
+	// The ID of the enterprise cloud drive that you created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-0456357992
-	CdsId     *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	GroupId   []*string `json:"GroupId,omitempty" xml:"GroupId,omitempty" type:"Repeated"`
-	GroupName *string   `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The group ID.
+	GroupId []*string `json:"GroupId,omitempty" xml:"GroupId,omitempty" type:"Repeated"`
+	// The team space name.
+	//
+	// example:
+	//
+	// Test team 1
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The parent organization ID.
+	//
 	// example:
 	//
 	// root
 	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

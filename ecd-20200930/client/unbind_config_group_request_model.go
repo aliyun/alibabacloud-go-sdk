@@ -22,7 +22,7 @@ type UnbindConfigGroupRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resources from which you want to unbind the configuration group.
 	//

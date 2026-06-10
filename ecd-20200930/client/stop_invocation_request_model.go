@@ -30,7 +30,7 @@ type StopInvocationRequest struct {
 	//
 	// example:
 	//
-	// t-7d2a745b412b4601b2d47f6a768d****
+	// t-hz059ngm63k****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 	// The region ID.
 	//

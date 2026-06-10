@@ -18,7 +18,7 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
-	// If the NextToken parameter is empty, no next page exists.
+	// The token that marks the start of the next page of results. If NextToken is empty, no more pages exist.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeSnapshotsResponseBody struct {
 	//
 	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The snapshots.
+	// A collection of snapshots.
 	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *DescribeSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeSnapshotsResponseBodySnapshots struct {
-	// The point in time at which the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+	// The point in time at which the snapshot was created. The time follows the [ISO 8601](t10049.xdita#) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Administrator
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The time when the snapshot was deleted. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+	// The snapshot creation time follows the [ISO 8601](t10049.xdita#) standard. It uses UTC+0 time and is formatted as `yyyy-mm-ddThh:mm:ssZ`.
 	//
 	// example:
 	//
@@ -107,48 +107,34 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud computer to which the snapshot belongs.
+	// The ID of the cloud desktop to which the snapshot belongs.
 	//
 	// example:
 	//
 	// ecd-g03l3tlm8djoj****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// test
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- Stopped
-	//
-	// 	- Starting
-	//
-	// 	- Rebuilding
-	//
-	// 	- Running
-	//
-	// 	- Stopping
-	//
-	// 	- Expired
-	//
-	// 	- Deleted
-	//
-	// 	- Pending
+	// The status of the cloud desktop.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	// Status of the disk to which the snapshot belongs.
+	//
 	// example:
 	//
 	// Available
 	DiskStatus *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
 	EnvId      *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The operating system type.
+	//
 	// example:
 	//
 	// Windows
@@ -161,31 +147,13 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// 	- HDX: High-definition Experience (HDX) protocol
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- ASP: in-house Adaptive Streaming Protocol (ASP)
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The remaining time that is required to complete the snapshot creation. Unit: seconds.
+	// The remaining time to complete snapshot creation. Unit: seconds.
 	//
-	// >  When the `Status` value is `PROGRESSING`, the `RemainTime` value is `-1`. A value of -1 indicates that the system is calculating the remaining time.
+	// > When `Status` is `PROGRESSING`, the value of `RemainTime` is `-1`. This indicates that the system is calculating the remaining time.
 	//
 	// example:
 	//
@@ -201,7 +169,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// example:
 	//
-	// DataDiskBackup
+	// 数据盘备份
 	RestorePointName *string `json:"RestorePointName,omitempty" xml:"RestorePointName,omitempty"`
 	// The snapshot ID.
 	//
@@ -217,24 +185,6 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 	// The type of the snapshot.
 	//
-	// Valid values:
-	//
-	// 	- AUTO: automatic snapshot
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- USER: manual snapshot
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// USER
@@ -247,55 +197,11 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	SourceDiskSize *string `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
 	// The type of the source disk.
 	//
-	// Valid values:
-	//
-	// 	- SYSTEM: system disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DATA: data disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// SYSTEM
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
 	// The status of the snapshot.
-	//
-	// Valid values:
-	//
-	// 	- PROGRESSING: The snapshot is being created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- FAILED: The snapshot fails to be created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- ACCOMPLISHED: The snapshot is created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -307,7 +213,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+	// The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [](t22712.xdita#)operation to query the list of KMS keys.
 	//
 	// example:
 	//

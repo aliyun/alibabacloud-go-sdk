@@ -32,7 +32,7 @@ type ModifyCdsFileRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou+cds-64326*****
+	// cn-hangzhou+cds-643267****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
 	// The processing policy when a file with the same name appears.
 	//
@@ -70,7 +70,7 @@ type ModifyCdsFileRequest struct {
 	//
 	// example:
 	//
-	// test.txt
+	// NewFileName.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The ID of the team space.
 	//

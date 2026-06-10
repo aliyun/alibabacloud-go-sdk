@@ -14,7 +14,7 @@ type iRemoveUserFromDesktopGroupResponseBody interface {
 }
 
 type RemoveUserFromDesktopGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

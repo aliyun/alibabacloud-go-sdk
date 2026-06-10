@@ -18,19 +18,19 @@ type iListDirectoryUsersResponseBody interface {
 }
 
 type ListDirectoryUsersResponseBody struct {
-	// The token used to start the next query. If the value of this parameter is empty, all results are returned.
+	// The token that is used to start the next query. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The usernames corresponding to the AD directory. If the AD directory contains only the Administrator and Guest accounts, the Users array will be empty.
+	// An array that consists of the users in the AD directory. If the AD directory contains only the Administrator and Guest users, an empty \\`Users\\` array is returned.
 	Users []*ListDirectoryUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,13 +83,13 @@ func (s *ListDirectoryUsersResponseBody) Validate() error {
 }
 
 type ListDirectoryUsersResponseBodyUsers struct {
-	// The number of assigned cloud computers.
+	// The number of assigned cloud desktops.
 	//
 	// example:
 	//
 	// 2
 	AssignedDesktopNumber *int32 `json:"AssignedDesktopNumber,omitempty" xml:"AssignedDesktopNumber,omitempty"`
-	// The display name of the user.
+	// The display name.
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type ListDirectoryUsersResponseBodyUsers struct {
 	//
 	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The name of the user.
+	// The username.
 	//
 	// example:
 	//
 	// Alice
 	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
-	// The mobile number.
+	// The mobile phone number.
 	//
 	// example:
 	//

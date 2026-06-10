@@ -18,11 +18,11 @@ type iDeleteNetworkPackagesRequest interface {
 }
 
 type DeleteNetworkPackagesRequest struct {
-	// The IDs of premium bandwidth plans. You can specify one or more IDs.
+	// List of public network premium bandwidth IDs. You can specify one or more IDs.
 	//
 	// This parameter is required.
 	NetworkPackageId []*string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions where WUYING Workspace is available.
 	//
 	// This parameter is required.
 	//

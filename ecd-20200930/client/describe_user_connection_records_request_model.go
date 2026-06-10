@@ -100,21 +100,21 @@ type DescribeUserConnectionRecordsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- SIMPLE: convenience account
+	// - SIMPLE: convenience account
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- AD_CONNECTOR: enterprise AD account
+	// - AD_CONNECTOR: enterprise AD account
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

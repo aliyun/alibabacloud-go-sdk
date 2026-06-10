@@ -18,7 +18,7 @@ type iDeleteDesktopGroupRequest interface {
 }
 
 type DeleteDesktopGroupRequest struct {
-	// The ID of the cloud computer share.
+	// Shared desktop group ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteDesktopGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The region ID.
+	// Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

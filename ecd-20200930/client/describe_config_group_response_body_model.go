@@ -129,7 +129,7 @@ type DescribeConfigGroupResponseBodyData struct {
 	//
 	// example:
 	//
-	// ScheduledTask
+	// Scheduled task information
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the configuration group.
 	//
@@ -137,21 +137,27 @@ type DescribeConfigGroupResponseBodyData struct {
 	//
 	// ccg-0cid8v30an12****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Used for frontend display. The system scheduled task description uses a code.
+	//
 	// example:
 	//
 	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE_DESC
 	InnerTimerDesc *string `json:"InnerTimerDesc,omitempty" xml:"InnerTimerDesc,omitempty"`
+	// Used for frontend display; maps the system scheduled task name to a code.
+	//
 	// example:
 	//
 	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE
 	InnerTimerName *string `json:"InnerTimerName,omitempty" xml:"InnerTimerName,omitempty"`
-	IsBind         *bool   `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
-	IsUpdate       *bool   `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
+	// Used for system scheduled task checks. The current scheduled task does not support detach or attach operations.
+	IsBind *bool `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
+	// Used for system scheduled task checks. The current scheduled task does not support modification.
+	IsUpdate *bool `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
 	// The name of the configuration group.
 	//
 	// example:
 	//
-	// ScheduledTask
+	// Scheduled task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The service type of the configuration group.
 	//

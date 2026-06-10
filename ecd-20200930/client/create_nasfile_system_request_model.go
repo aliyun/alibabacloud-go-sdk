@@ -30,13 +30,7 @@ type CreateNASFileSystemRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data. Possible values and their meanings:
-	//
-	// - 0: Not encrypted.
-	//
-	// - 1: Encrypted using NAS-managed keys.
-	//
-	// Default value: 0
+	// Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data.
 	//
 	// example:
 	//
@@ -48,7 +42,7 @@ type CreateNASFileSystemRequest struct {
 	//
 	// - Length: 2 to 128 English or Chinese characters.
 	//
-	// - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http:// or https://.
+	// - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http\\:// or https\\://.
 	//
 	// - Can include numbers, underscores (_), or hyphens (-).
 	//
@@ -72,13 +66,7 @@ type CreateNASFileSystemRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Storage specification type of the NAS file system. Allowed values:
-	//
-	// - Capacity: Capacity type.
-	//
-	// - Performance: Performance type.
-	//
-	// Default value: Capacity
+	// Storage specification type of the NAS file system.
 	//
 	// example:
 	//

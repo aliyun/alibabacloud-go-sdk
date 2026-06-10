@@ -18,13 +18,16 @@ type iDescribeRecordFileResponseBody interface {
 }
 
 type DescribeRecordFileResponseBody struct {
+	// Details of the screen recording files.
 	RecordFiles []*DescribeRecordFileResponseBodyRecordFiles `json:"RecordFiles,omitempty" xml:"RecordFiles,omitempty" type:"Repeated"`
-	// RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 05C2791F-41A7-5E7C-B5E4-1401FD0E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -80,59 +83,100 @@ func (s *DescribeRecordFileResponseBody) Validate() error {
 }
 
 type DescribeRecordFileResponseBodyRecordFiles struct {
+	// The ID of the cloud desktop.
+	//
 	// example:
 	//
 	// ecd-7yulhw1g1attet7d2
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The name of the cloud desktop.
+	//
 	// example:
 	//
 	// fvt-ecd
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The name of the end user.
+	//
 	// example:
 	//
 	// Alice
-	EndUserId    *string                                                  `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The event details.
 	EventDetails []*DescribeRecordFileResponseBodyRecordFilesEventDetails `json:"EventDetails,omitempty" xml:"EventDetails,omitempty" type:"Repeated"`
+	// The name of the screen recording file.
+	//
 	// example:
 	//
 	// Task3
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 139
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The ID of the policy.
+	//
 	// example:
 	//
 	// pg-**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The time when the screen recording ended. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-12-18T06:02:25Z
 	RecordEndTime *string `json:"RecordEndTime,omitempty" xml:"RecordEndTime,omitempty"`
+	// The expiration time of the screen recording file.
+	//
 	// example:
 	//
 	// 1774656000000
 	RecordExpire *int64 `json:"RecordExpire,omitempty" xml:"RecordExpire,omitempty"`
+	// The time when the screen recording started. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-12-18T06:02:25Z
 	RecordStartTime *string `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
+	// The recording type. Valid values:
+	//
+	// - `alltime`: continuous screen recording.
+	//
+	// - `period`: interval screen recording.
+	//
+	// - `event`: event-triggered screen recording.
+	//
+	// - `session`: session-based screen recording.
+	//
 	// example:
 	//
 	// period
 	RecordType *int32 `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The ID of the region where the cloud desktop resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// resource
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The upload status of the screen recording file. Valid values:
+	//
+	// - `0`: uploaded.
+	//
+	// - `1`: uploading.
+	//
 	// example:
 	//
 	// 1
@@ -296,14 +340,20 @@ func (s *DescribeRecordFileResponseBodyRecordFiles) Validate() error {
 }
 
 type DescribeRecordFileResponseBodyRecordFilesEventDetails struct {
+	// The event details.
+	//
 	// example:
 	//
 	// {\\n\\t\\"messageInfo\\" : \\"mouse_move\\",\\n\\t\\"messageType\\" : \\"UserInput\\"\\n}\\n"
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The time when the event occurred.
+	//
 	// example:
 	//
 	// 60
 	EventTime *int32 `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// UserInput

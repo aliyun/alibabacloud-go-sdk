@@ -24,9 +24,9 @@ type DescribeDesktopSessionsResponseBody struct {
 	//
 	// 3EC4A6DB-EC8D-55B0-9038-543DE671****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of sessions.
+	// The session details.
 	Sessions []*DescribeDesktopSessionsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -83,6 +83,8 @@ func (s *DescribeDesktopSessionsResponseBody) Validate() error {
 }
 
 type DescribeDesktopSessionsResponseBodySessions struct {
+	// The type of the account.
+	//
 	// example:
 	//
 	// SIMPLE
@@ -93,13 +95,13 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// 172.21.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The client OS.
+	// The operating system of the client.
 	//
 	// example:
 	//
 	// windows_\\"Windows10Enterprise\\"10.0(Build22000)
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The client version.
+	// The version of the client.
 	//
 	// example:
 	//
@@ -115,13 +117,15 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// example:
 	//
-	// testDesktop
+	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The type of the office network.
+	//
 	// example:
 	//
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The duration of the remote assistance. Unit: seconds.
+	// The duration of remote assistance initiated by the end user. Unit: seconds.
 	//
 	// example:
 	//
@@ -131,7 +135,7 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// example:
 	//
-	// testUser
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The duration of the last connection to the cloud computer. Unit: seconds.
 	//
@@ -139,31 +143,25 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// 120
 	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
-	// The ID of the office network.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the office network.
+	// The name of the office site.
 	//
 	// example:
 	//
-	// DemoOfficeSite
+	// TestOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// Indicates whether the switch to check session status of cloud computers is turned on.
+	// Indicates the session status of the cloud desktop.
 	//
 	// example:
 	//
 	// true
 	OsSessionStatus *string `json:"OsSessionStatus,omitempty" xml:"OsSessionStatus,omitempty"`
-	// The OS.
-	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	// 	- Windows
+	// The operating system type.
 	//
 	// example:
 	//
@@ -171,63 +169,43 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// 	- HDX
-	//
-	// 	- ASP
-	//
 	// example:
 	//
 	// ASP
-	ProtocolType   *string                                                      `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The information about the resource group.
 	ResourceGroups []*DescribeDesktopSessionsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The end time of the session.
+	// The time when the session ended.
 	//
 	// example:
 	//
 	// 2023-01-28T02:31:43Z
 	SessionEndTime *string `json:"SessionEndTime,omitempty" xml:"SessionEndTime,omitempty"`
-	// The idle duration of the session. Unit: seconds.
+	// The duration for which the session was idle. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
-	// The start time of the session.
+	// The time when the session started.
 	//
 	// example:
 	//
 	// 2023-01-28T02:31:43Z
 	SessionStartTime *string `json:"SessionStartTime,omitempty" xml:"SessionStartTime,omitempty"`
-	// The state of the session.
-	//
-	// Valid values:
-	//
-	// 	- Connected
-	//
-	// 	- Disconnected
+	// The connection status of the session.
 	//
 	// example:
 	//
 	// Connected
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The billing method of cloud computers.
-	//
-	// Valid values:
-	//
-	// 	- duration: hourly plan (available for users in the whitelist)
-	//
-	// 	- postPaid: pay-as-you-go
-	//
-	// 	- monthPackage: monthly subscription (120-hour computing plan and 250-hour computing plan)
-	//
-	// 	- prePaid: monthly subscription (Unlimited computing plan)
+	// The billing method of the cloud computer.
 	//
 	// example:
 	//
 	// monthPackage
-	SubPayType   *string                                                  `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// The description of the terminal device.
 	TerminalInfo *DescribeDesktopSessionsResponseBodySessionsTerminalInfo `json:"TerminalInfo,omitempty" xml:"TerminalInfo,omitempty" type:"Struct"`
 	// The total connection duration. Unit: seconds.
 	//
@@ -471,10 +449,14 @@ func (s *DescribeDesktopSessionsResponseBodySessions) Validate() error {
 }
 
 type DescribeDesktopSessionsResponseBodySessionsResourceGroups struct {
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-8whrmo2gtsb8bxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// RgTest
@@ -512,18 +494,26 @@ func (s *DescribeDesktopSessionsResponseBodySessionsResourceGroups) Validate() e
 }
 
 type DescribeDesktopSessionsResponseBodySessionsTerminalInfo struct {
+	// The model of the terminal device.
+	//
 	// example:
 	//
 	// Mac
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The type of the terminal device.
+	//
 	// example:
 	//
 	// Mac
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The serial number of the terminal device.
+	//
 	// example:
 	//
 	// 96c530bc-6095-4014-8bbc-d461b8ac****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The universally unique identifier (UUID) of the logon device.
+	//
 	// example:
 	//
 	// EBFDC7773BEBAD418A9F89429652****

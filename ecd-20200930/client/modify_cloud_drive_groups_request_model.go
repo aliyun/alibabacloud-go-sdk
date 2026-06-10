@@ -56,7 +56,7 @@ type ModifyCloudDriveGroupsRequest struct {
 	//
 	// example:
 	//
-	// 32212254720
+	// 1073741824
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 

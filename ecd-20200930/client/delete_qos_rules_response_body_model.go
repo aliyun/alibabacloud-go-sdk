@@ -14,6 +14,8 @@ type iDeleteQosRulesResponseBody interface {
 }
 
 type DeleteQosRulesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E54EB497-D7B7-5F04-B744-D8DFA7B******

@@ -54,99 +54,87 @@ type iDescribeDesktopGroupsRequest interface {
 }
 
 type DescribeDesktopGroupsRequest struct {
-	// The IDs of the cloud computer templates.
+	// The cloud computer template IDs.
 	BundleId []*string `json:"BundleId,omitempty" xml:"BundleId,omitempty" type:"Repeated"`
-	// The ID of the cloud computer share.
+	// The ID of the cloud computer pool.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the cloud computer shares.
+	// The IDs of cloud computer pools.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The name of the cloud computer share that you want to query. Fuzzy search is supported.
+	// The name of the cloud computer pool. Fuzzy search is supported.
 	//
 	// example:
 	//
-	// testName
+	// CloudComputerPool01
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
 	DesktopType      *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The IDs of the users who can access the cloud computer share.
+	// The IDs of the authorized users of the cloud computer pool.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The authorized users that you want to exclude.
+	// The IDs of the users that you want to exclude from the authorized user list.
 	ExcludedEndUserIds []*string `json:"ExcludedEndUserIds,omitempty" xml:"ExcludedEndUserIds,omitempty" type:"Repeated"`
-	// The IDs of the images.
+	// The image IDs.
 	//
 	// if can be null:
 	// false
 	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries to return on each page.<br>Maximum value: 100.<br>Default value: 10.<br><br>
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether the cloud computer share is a many-to-many share.
-	//
-	// Valid values:
-	//
-	// 	- true: The cloud computer share is a many-to-many share.
-	//
-	// 	- false: The cloud computer share is a one-to-many share.
+	// Specifies whether to query multi-desktop cloud computer pools.
 	//
 	// example:
 	//
 	// true
 	MultiResource *bool `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If NextToken is empty, no next page exists.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network in which the cloud computer share resides.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-467671****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The type of the cloud computer share.
+	// The type of the cloud computer pool.
 	//
-	// >  This parameter is not publicly available.
-	//
-	// Valid values:
-	//
-	// 	- 0: a single-session many-to-many share.
-	//
-	// 	- 1: a multi-session many-to-many share.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 0
 	OwnType *int64 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The subscription duration of the cloud computer share. The unit is specified by `PeriodUnit`.
+	// The subscription duration of the subscription cloud computer pool. The unit is specified by the `PeriodUnit` parameter.
 	//
-	// 	- Valid values if you set `PeriodUnit` to `Month`:
+	// - Valid values when `PeriodUnit` is set to `Month`:
 	//
-	//     	- 1
+	//   - 1
 	//
-	//     	- 2
+	//   - 2
 	//
-	//     	- 3
+	//   - 3
 	//
-	//     	- 6
+	//   - 6
 	//
-	// 	- Valid values if you set `PeriodUnit` to `Year`:
+	// - Valid values when `PeriodUnit` is set to `Year`:
 	//
-	//     	- 1
+	//   - 1
 	//
-	//     	- 2
+	//   - 2
 	//
-	//     	- 3
+	//   - 3
 	//
-	//     	- 4
+	//   - 4
 	//
-	//     	- 5
+	//   - 5
 	//
 	// example:
 	//
@@ -158,7 +146,7 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the applied policy.
+	// The ID of the policy that is associated with the cloud computer pool.
 	//
 	// example:
 	//
@@ -166,30 +154,12 @@ type DescribeDesktopGroupsRequest struct {
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// 	- High-definition Experience (HDX)
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Adaptive Streaming Protocol (ASP)
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	QosRuleId    *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -197,21 +167,13 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the cloud computer share.
-	//
-	// Valid values:
-	//
-	// 	- 0: The cloud computer share is unpaid.
-	//
-	// 	- 1: The cloud computer share is normal.
-	//
-	// 	- 2: The cloud computer share expired, or your account has an overdue payment.
+	// The status of the cloud computer pool.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that you want to add to the cloud computer share. You can specify 1 to 20 tags.
+	// The tags. You can specify up to 20 tags.
 	Tag []*DescribeDesktopGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -426,13 +388,13 @@ func (s *DescribeDesktopGroupsRequest) Validate() error {
 }
 
 type DescribeDesktopGroupsRequestTag struct {
-	// The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The key of the tag. The key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The value of the tag. The value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

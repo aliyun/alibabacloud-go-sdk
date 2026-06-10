@@ -46,7 +46,7 @@ type CreateDriveRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the storage resource.
 	//
-	// >  Call the DescribeDrives operation to retrieve the storage resource ID.
+	// > Call the DescribeDrives operation to retrieve the storage resource ID.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type CreateDriveRequest struct {
 	DriveName *string `json:"DriveName,omitempty" xml:"DriveName,omitempty"`
 	// The ID of the external storage resource.
 	//
-	// >  Call the DescribeDrives operation to retrieve the external storage resource ID.
+	// > Call the DescribeDrives operation to retrieve the external storage resource ID.
 	//
 	// example:
 	//
 	// 1234****
 	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type CreateDriveRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- NAS: File Storage NAS
+	// - NAS: File Storage NAS
 	//
-	// 	- PDS: Drive and Photo Service
+	// - PDS: Drive and Photo Service
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type CreateDriveRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- DESKTOP: data disk space
+	// - DESKTOP: data disk space
 	//
-	// 	- USER_PROFILE: space for personal data of the user
+	// - USER_PROFILE: space for personal data of the user
 	//
 	// example:
 	//

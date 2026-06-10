@@ -54,7 +54,7 @@ type DescribeDesktopGroupSessionsRequest struct {
 	//
 	// example:
 	//
-	// xianqiu
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// Whether to supplement terminal information.
 	FillTerminalInfo *bool `json:"FillTerminalInfo,omitempty" xml:"FillTerminalInfo,omitempty"`
@@ -74,45 +74,21 @@ type DescribeDesktopGroupSessionsRequest struct {
 	//
 	// example:
 	//
-	// "asdfdfsdfsdfds"
+	// AAAAAV3MpHK1AP0pfERHZN5pu6ljnKKgSRjo8yXAIT5QSvkU
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the session.
-	//
-	// Valid values:
-	//
-	// 	- 0: single-session
-	//
-	// 	- 1: multi-session
 	//
 	// example:
 	//
 	// 1
 	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The ID of the region. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the session.
-	//
-	// Valid values:
-	//
-	// 	- Connected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Disconnected
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

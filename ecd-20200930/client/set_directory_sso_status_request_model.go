@@ -28,9 +28,9 @@ type SetDirectorySsoStatusRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// Specifies whether to enable SSO. Valid values:
 	//
-	// 	- true: enables SSO.
+	// - true: enables SSO.
 	//
-	// 	- false: disables SSO.
+	// - false: disables SSO.
 	//
 	// This parameter is required.
 	//

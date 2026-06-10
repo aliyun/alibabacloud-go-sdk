@@ -15,6 +15,8 @@ type iRemoveUserFromDesktopGroupRequest interface {
 	GetDesktopGroupIds() []*string
 	SetEndUserIds(v []*string) *RemoveUserFromDesktopGroupRequest
 	GetEndUserIds() []*string
+	SetOrgId(v string) *RemoveUserFromDesktopGroupRequest
+	GetOrgId() *string
 	SetRegionId(v string) *RemoveUserFromDesktopGroupRequest
 	GetRegionId() *string
 	SetSimpleUserGroupId(v string) *RemoveUserFromDesktopGroupRequest
@@ -26,17 +28,18 @@ type iRemoveUserFromDesktopGroupRequest interface {
 }
 
 type RemoveUserFromDesktopGroupRequest struct {
-	// The ID of the cloud computer share.
+	// The ID of the shared cloud desktop from which you revoke the user’s permission.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the cloud computer shares.
+	// A list of shared desktop group IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The IDs of the authorized users that you want to remove.
+	// The list of authorized users to remove.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	OrgId      *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
 	//
 	// This parameter is required.
 	//
@@ -69,6 +72,10 @@ func (s *RemoveUserFromDesktopGroupRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
 
+func (s *RemoveUserFromDesktopGroupRequest) GetOrgId() *string {
+	return s.OrgId
+}
+
 func (s *RemoveUserFromDesktopGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -97,6 +104,11 @@ func (s *RemoveUserFromDesktopGroupRequest) SetDesktopGroupIds(v []*string) *Rem
 
 func (s *RemoveUserFromDesktopGroupRequest) SetEndUserIds(v []*string) *RemoveUserFromDesktopGroupRequest {
 	s.EndUserIds = v
+	return s
+}
+
+func (s *RemoveUserFromDesktopGroupRequest) SetOrgId(v string) *RemoveUserFromDesktopGroupRequest {
+	s.OrgId = &v
 	return s
 }
 

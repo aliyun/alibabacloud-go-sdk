@@ -18,7 +18,7 @@ type iResetSnapshotRequest interface {
 }
 
 type ResetSnapshotRequest struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -26,15 +26,16 @@ type ResetSnapshotRequest struct {
 	//
 	// cn-hzngahou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the snapshot.
+	// The ID of the snapshot used to recover disk data.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// s-2zeipxmnhej803x7****
-	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	StopDesktop *bool   `json:"StopDesktop,omitempty" xml:"StopDesktop,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// Indicates whether to shut down and recover the disk using the snapshot.
+	StopDesktop *bool `json:"StopDesktop,omitempty" xml:"StopDesktop,omitempty"`
 }
 
 func (s ResetSnapshotRequest) String() string {

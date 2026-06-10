@@ -24,25 +24,25 @@ type ExportDesktopGroupInfoResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // The download URL of the XLSX file that contains cloud computer shares. The XLSX file provides the following information:
   // 
-  // 	- Cloud computer share ID/name
+  // - Cloud computer share ID/name
   // 
-  // 	- Office network ID/name
+  // - Office network ID/name
   // 
-  // 	- Cloud computer share template
+  // - Cloud computer share template
   // 
-  // 	- vCPUs/Memory size
+  // - vCPUs/Memory size
   // 
-  // 	- System disk/Data disk
+  // - System disk/Data disk
   // 
-  // 	- Security policy name
+  // - Security policy name
   // 
-  // 	- Number of authorized users
+  // - Number of authorized users
   // 
-  // 	- Billing method
+  // - Billing method
   // 
-  // 	- Creation time
+  // - Creation time
   // 
-  // 	- Expiration time
+  // - Expiration time
   // 
   // example:
   // 

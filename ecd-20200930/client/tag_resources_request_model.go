@@ -40,7 +40,7 @@ type TagResourcesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ALIYUN::GWS::INSTANCE: cloud computer.
+	// - ALIYUN::GWS::INSTANCE: cloud computer.
 	//
 	// This parameter is required.
 	//
@@ -116,13 +116,13 @@ type TagResourcesRequestTag struct {
 	//
 	// example:
 	//
-	// TestKey
+	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag values. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
-	// TestValue
+	// design
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

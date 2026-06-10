@@ -56,7 +56,7 @@ type iDescribeDesktopTypesRequest interface {
 }
 
 type DescribeDesktopTypesRequest struct {
-	// Applicable Scope of specifications. Default value: `Public`
+	// The scope of the instance types to query. Default value: `Public`.
 	//
 	// example:
 	//
@@ -69,78 +69,30 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// 2
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The ID of the cloud computer share you want to modify. If this parameter is provided, the response will include compatibility information for the specified specification.
+	// The ID of the desktop group to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified group.
 	//
 	// example:
 	//
 	// dg-abcdefg****
 	DesktopGroupIdForModify *string `json:"DesktopGroupIdForModify,omitempty" xml:"DesktopGroupIdForModify,omitempty"`
-	// The ID of the cloud computer when you change instance types of cloud computers. If you specify this parameter, the information about whether the instance type is compatible with the cloud computer is included in the response.
+	// The ID of the WUYING Workspace to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified workspace.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopIdForModify *string `json:"DesktopIdForModify,omitempty" xml:"DesktopIdForModify,omitempty"`
 	DesktopScenario    *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
-	// The specification ID.
+	// The ID of the instance type.
 	//
-	// >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all cloud computer specifications will be queried.
-	//
-	// Valid values:
-	//
-	// 	- eds.enterprise_office.4c8g
-	//
-	// 	- eds.hf.4c8g
-	//
-	// 	- ecd.basic.large
-	//
-	// 	- ecd.advanced.large
-	//
-	// 	- eds.enterprise_office.8c16g
-	//
-	// 	- ecd.basic.small
-	//
-	// 	- ecd.graphics.2xlarge
-	//
-	// 	- eds.hf.8c16g
-	//
-	// 	- eds.hf.12c24g
-	//
-	// 	- eds.general.8c16g
-	//
-	// 	- eds.general.16c32g
-	//
-	// 	- ecd.advanced.xlarge
-	//
-	// 	- eds.graphics.16c1t4
-	//
-	// 	- ecd.graphics.xlarge
-	//
-	// 	- ecd.performance.2xlarge
-	//
-	// 	- eds.general.8c32g
-	//
-	// 	- eds.general.2c2g
-	//
-	// 	- eds.general.2c4g
-	//
-	// 	- eds.graphics.24c1t4
-	//
-	// 	- eds.general.4c8g
-	//
-	// 	- eds.enterprise_office.2c4g
-	//
-	// 	- eds.general.4c16g
-	//
-	// 	- eds.general.2c8g
+	// > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
 	//
 	// example:
 	//
 	// ecd.graphics.xlarge
 	DesktopTypeId *string `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
-	// The specification IDs.
+	// An array of instance type IDs.
 	DesktopTypeIdList []*string `json:"DesktopTypeIdList,omitempty" xml:"DesktopTypeIdList,omitempty" type:"Repeated"`
-	// The number of GPUs.
+	// The number of vGPUs.
 	//
 	// example:
 	//
@@ -148,66 +100,27 @@ type DescribeDesktopTypesRequest struct {
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
 	// The GPU driver type.
 	//
-	// Valid values:
-	//
-	// 	- T4
-	//
-	// 	- A10
-	//
-	// 	- G28
-	//
-	// 	- G39
-	//
 	// example:
 	//
 	// A10
 	GpuDriverType *string `json:"GpuDriverType,omitempty" xml:"GpuDriverType,omitempty"`
-	// The GPU memory size. Unit: MB.
+	GpuMemory     *int32  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// The instance type family.
 	//
-	// example:
-	//
-	// 2048
-	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The name of the specification family.
-	//
-	// >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all specification families will be queried.
-	//
-	// Valid values:
-	//
-	// 	- ecd.advanced
-	//
-	// 	- eds.graphics
-	//
-	// 	- ecd.basic
-	//
-	// 	- eds.enterprise_office
-	//
-	// 	- eds.hf
-	//
-	// 	- ecd.graphics
-	//
-	// 	- eds.general
-	//
-	// 	- ecd.performance
+	// > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
 	//
 	// example:
 	//
 	// ecd.graphics
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The memory size. Unit: MiB.
+	// The memory size, in MiB.
 	//
 	// example:
 	//
-	// 4
+	// 4096
 	MemorySize   *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The sorting field. If this parameter is not provided, results are sorted by creation time in descending order.
-	//
-	// Valid values:
-	//
-	// 	- Memory: sorts by memory size.
-	//
-	// 	- Cpu: sorts by the number of vCPUs.
+	// The property by which to sort the results. If you omit this parameter, the results are sorted by creation time in descending order.
 	//
 	// example:
 	//
@@ -219,7 +132,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// DOWNGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that Elastic Desktop Service supports.
 	//
 	// This parameter is required.
 	//
@@ -227,42 +140,30 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sales mode of the specification.
-	//
-	// Valid values:
-	//
-	// 	- MonthPackage: the monthly subscription mode.
-	//
-	// 	- FastBuy: the quick purchase mode.
+	// The billing method of the instance types.
 	//
 	// example:
 	//
 	// FastBuy
 	Scope    *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	ScopeSet []*string `json:"ScopeSet,omitempty" xml:"ScopeSet,omitempty" type:"Repeated"`
-	// The sorting order.
-	//
-	// Valid values:
-	//
-	// 	- ASC (default): the ascending order.
-	//
-	// 	- DESC: the descending order.
+	// The sort order.
 	//
 	// example:
 	//
 	// ASC
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The number of sessions supported by the specification.
+	// Filters for instance types that support at least the specified number of concurrent sessions. This parameter applies only to multi-session instance types.
 	//
 	// example:
 	//
 	// 2
 	SupportMinSessionCount *int32 `json:"SupportMinSessionCount,omitempty" xml:"SupportMinSessionCount,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
-	// null
+	// 无
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

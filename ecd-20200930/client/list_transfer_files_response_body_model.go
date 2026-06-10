@@ -108,9 +108,9 @@ type ListTransferFilesResponseBodyFiles struct {
 	//
 	// >
 	//
-	// 	- For image file types (.png, .jpg, .jpeg, .gif, .webp, and .svg), the URL of the specific image is returned.
+	// - For image file types (.png, .jpg, .jpeg, .gif, .webp, and .svg), the URL of the specific image is returned.
 	//
-	// 	- For other file types, the URL of the default image is returned.
+	// - For other file types, the URL of the default image is returned.
 	//
 	// example:
 	//
@@ -123,18 +123,26 @@ type ListTransferFilesResponseBodyFiles struct {
 	// trf-a213msf****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The file name.
+	//
+	// example:
+	//
+	// Test file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the object stored in OSS.
 	//
 	// >
 	//
-	// 	- A value is returned for this parameter only when the object is stored in a custom OSS bucket.
+	// - A value is returned for this parameter only when the object is stored in a custom OSS bucket.
+	//
+	// example:
+	//
+	// Test file_0982836423402342
 	OssFileName *string `json:"OssFileName,omitempty" xml:"OssFileName,omitempty"`
 	// The path of the object in the OSS bucket.
 	//
 	// >
 	//
-	// 	- A value is returned for this parameter only when the object is stored in a custom OSS bucket.
+	// - A value is returned for this parameter only when the object is stored in a custom OSS bucket.
 	//
 	// example:
 	//
@@ -150,11 +158,11 @@ type ListTransferFilesResponseBodyFiles struct {
 	//
 	// Valid values:
 	//
-	// 	- DELETING
+	// - DELETING
 	//
-	// 	- DELETED
+	// - DELETED
 	//
-	// 	- UPLOADED
+	// - UPLOADED
 	//
 	// example:
 	//

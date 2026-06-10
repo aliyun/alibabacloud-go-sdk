@@ -18,43 +18,9 @@ type iDescribeUserProfilePathRulesRequest interface {
 }
 
 type DescribeUserProfilePathRulesRequest struct {
-	// The desktop group ID. This parameter is required when you set RuleType parameter to DesktopGroup.
-	//
-	// example:
-	//
-	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The region ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The rule type that you want to configure for the directory.
-	//
-	// Valid values:
-	//
-	// 	- DesktopGroup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Default
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// DesktopGroup
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 

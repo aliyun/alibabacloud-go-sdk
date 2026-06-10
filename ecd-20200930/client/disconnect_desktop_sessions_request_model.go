@@ -91,13 +91,13 @@ type DisconnectDesktopSessionsRequestSessions struct {
 	//
 	// example:
 	//
-	// ecd-90g15fkhsxxxn0unj
+	// ecd-90g15fkhsxxxn****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	// The end user ID.
 	//
 	// example:
 	//
-	// wy01
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 

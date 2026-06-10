@@ -137,17 +137,7 @@ type DescribeCensResponseBodyCens struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IPv6 level.
 	//
-	// >  IPv6 is not supported.
-	//
-	// Valid value:
-	//
-	// 	- DISABLED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// > IPv6 is not supported.
 	//
 	// example:
 	//
@@ -165,7 +155,7 @@ type DescribeCensResponseBodyCens struct {
 	//
 	// Valid value:
 	//
-	// 	- REDUCED: CIDR block conflicts are allowed, but the conflicting CIDR blocks cannot be identical.
+	// - REDUCED: CIDR block conflicts are allowed, but the conflicting CIDR blocks cannot be identical.
 	//
 	// example:
 	//
@@ -175,29 +165,11 @@ type DescribeCensResponseBodyCens struct {
 	//
 	// Valid values:
 	//
-	// 	- Creating
+	// - Creating
 	//
-	//     <!-- -->
+	// - Active
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Active
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Deleting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// - Deleting
 	//
 	// example:
 	//

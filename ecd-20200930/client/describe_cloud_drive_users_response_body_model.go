@@ -18,11 +18,16 @@ type iDescribeCloudDriveUsersResponseBody interface {
 }
 
 type DescribeCloudDriveUsersResponseBody struct {
+	// A list of user personal drives.
 	CloudDriveUsers []*DescribeCloudDriveUsersResponseBodyCloudDriveUsers `json:"CloudDriveUsers,omitempty" xml:"CloudDriveUsers,omitempty" type:"Repeated"`
+	// The token for the next page of results. An empty value indicates that all results have been returned.
+	//
 	// example:
 	//
 	// aGN4YzAxQGNuLWhhbmd6aG91LjExNzU5NTMyNjgzMTQ1****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F083AAE5-7AA9-53BB-9060-AFFB2C18****
@@ -78,30 +83,47 @@ func (s *DescribeCloudDriveUsersResponseBody) Validate() error {
 }
 
 type DescribeCloudDriveUsersResponseBodyCloudDriveUsers struct {
+	// The ID of the user personal drive.
+	//
 	// example:
 	//
 	// 8
-	DriveId   *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// The ID of the end user.
+	//
+	// example:
+	//
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The status of the user personal drive.
+	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Maximum storage capacity for the user’s personal drive, in bytes.
+	//
 	// example:
 	//
-	// 10240000
+	// 104857600
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The used storage space, in bytes.
+	//
 	// example:
 	//
-	// 20490
+	// 10485760
 	UsedSize *int64 `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	// The internal ID of the user.
+	//
 	// example:
 	//
-	// abc
+	// alice@cn-shanghai.148875033399****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the end user.
+	//
 	// example:
 	//
-	// abc
+	// alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

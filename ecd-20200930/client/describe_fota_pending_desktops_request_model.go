@@ -36,7 +36,7 @@ type DescribeFotaPendingDesktopsRequest struct {
 	//
 	// example:
 	//
-	// testName
+	// demo-computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// The number of entries per page.
 	//
@@ -58,7 +58,7 @@ type DescribeFotaPendingDesktopsRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou+dir-363353****
+	// cn-shanghai+dir-428216****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
 	//

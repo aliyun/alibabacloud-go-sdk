@@ -26,7 +26,7 @@ type iModifyResourceCenterPolicyRequest interface {
 type ModifyResourceCenterPolicyRequest struct {
 	// The IDs of the cloud computer policies that you want to associate with cloud computers.
 	//
-	// >  You can specify up to one cloud computer policy that takes effect globally, and up to four cloud computer policies that apply to specific IP addresses. If multiple cloud computer policies are configured for global enforcement, only the earliest-associated policy will take effect
+	// > You can specify up to one cloud computer policy that takes effect globally, and up to four cloud computer policies that apply to specific IP addresses. If multiple cloud computer policies are configured for global enforcement, only the earliest-associated policy will take effect
 	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
@@ -34,7 +34,7 @@ type ModifyResourceCenterPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- general: a general policy.
+	// - general: a general policy.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ModifyResourceCenterPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- app: cloud applications.
+	// - app: cloud applications.
 	//
-	// 	- resourceGroup: resource groups.
+	// - resourceGroup: resource groups.
 	//
-	// 	- desktop: cloud computers.
+	// - desktop: cloud computers.
 	//
-	// 	- desktopGroup: cloud computer shares.
+	// - desktopGroup: cloud computer shares.
 	//
 	// This parameter is required.
 	//
@@ -76,9 +76,9 @@ type ModifyResourceCenterPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- app: cloud applications.
+	// - app: cloud applications.
 	//
-	// 	- desktop: cloud computers.
+	// - desktop: cloud computers.
 	//
 	// This parameter is required.
 	//

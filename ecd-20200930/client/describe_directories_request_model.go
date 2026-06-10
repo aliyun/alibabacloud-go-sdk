@@ -48,7 +48,7 @@ type DescribeDirectoriesRequest struct {
 	//
 	// example:
 	//
-	// RAM
+	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
 	// The number of entries to return on each page.
 	//

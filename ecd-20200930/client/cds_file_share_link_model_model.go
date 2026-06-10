@@ -84,7 +84,7 @@ type CdsFileShareLinkModel struct {
 	//
 	// example:
 	//
-	// newDescription
+	// 文件分享链接。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The shared file is forbidden from being downloaded.
 	//

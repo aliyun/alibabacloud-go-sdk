@@ -18,15 +18,15 @@ type iModifyDesktopSpecResponseBody interface {
 }
 
 type ModifyDesktopSpecResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 123456789
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The array of order IDs.
+	// A list of order IDs.
 	OrderIds []*int64 `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

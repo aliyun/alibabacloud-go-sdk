@@ -26,9 +26,9 @@ type DescribeNetworkPackagesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- PayByTraffic: charges by data transfer.
+	// - PayByTraffic: charges by data transfer.
 	//
-	// 	- PayByBandwidth: charges by fixed bandwidth.
+	// - PayByBandwidth: charges by fixed bandwidth.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type DescribeNetworkPackagesRequest struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// 	- Maximum value: 100
+	// - Maximum value: 100
 	//
-	// 	- Default value: 10
+	// - Default value: 10
 	//
 	// example:
 	//

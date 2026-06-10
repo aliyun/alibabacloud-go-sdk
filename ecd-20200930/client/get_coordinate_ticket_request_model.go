@@ -34,7 +34,7 @@ type GetCoordinateTicketRequest struct {
 	//
 	// example:
 	//
-	// Alice
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
 	//
@@ -54,17 +54,17 @@ type GetCoordinateTicketRequest struct {
 	//
 	// Set the value to TENANT_ADMIN.
 	//
-	// 	- The value of
+	// - The value of
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     TENANT_ADMIN
+	//   TENANT_ADMIN
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     specifies an administrator.
+	//   specifies an administrator.
 	//
 	// This parameter is required.
 	//

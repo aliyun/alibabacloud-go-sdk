@@ -20,54 +20,11 @@ type iSetUserProfilePathRulesShrinkRequest interface {
 }
 
 type SetUserProfilePathRulesShrinkRequest struct {
-	// The desktop group ID.
-	//
-	// example:
-	//
-	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The region ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The directories that you want to configure in the blacklist and whitelist.
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserProfilePathRuleShrink *string `json:"UserProfilePathRule,omitempty" xml:"UserProfilePathRule,omitempty"`
-	// The directory type that you want to configure.
-	//
-	// Valid values:
-	//
-	// 	- Both_Default_DesktopGroup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DesktopGroup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Default
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// DesktopGroup
-	UserProfileRuleType *string `json:"UserProfileRuleType,omitempty" xml:"UserProfileRuleType,omitempty"`
+	UserProfileRuleType       *string `json:"UserProfileRuleType,omitempty" xml:"UserProfileRuleType,omitempty"`
 }
 
 func (s SetUserProfilePathRulesShrinkRequest) String() string {

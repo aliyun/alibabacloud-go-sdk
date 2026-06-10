@@ -30,7 +30,7 @@ type BindConfigGroupRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resources to which you want to bind the configuration group.
 	//
@@ -91,7 +91,7 @@ type BindConfigGroupRequestResourceInfos struct {
 	//
 	// Valid value:
 	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// - CLOUD_DESKTOP: the cloud computer service.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type BindConfigGroupRequestResourceInfos struct {
 	//
 	// Valid values:
 	//
-	// 	- RESOURCE_GROUP: the resource group
+	// - RESOURCE_GROUP: the resource group
 	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// - CLOUD_DESKTOP: the cloud computer service.
 	//
 	// example:
 	//

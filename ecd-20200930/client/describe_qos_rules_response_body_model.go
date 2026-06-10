@@ -16,7 +16,10 @@ type iDescribeQosRulesResponseBody interface {
 }
 
 type DescribeQosRulesResponseBody struct {
+	// A list of QoS rules.
 	QosRules []*DescribeQosRulesResponseBodyQosRules `json:"QosRules,omitempty" xml:"QosRules,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -63,27 +66,39 @@ func (s *DescribeQosRulesResponseBody) Validate() error {
 }
 
 type DescribeQosRulesResponseBodyQosRules struct {
+	// The number of associated cloud desktops.
+	//
 	// example:
 	//
 	// 0
 	DesktopCount      *string `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
 	DesktopGroupCount *int32  `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	// The download bandwidth.
+	//
 	// example:
 	//
 	// 10
 	Download *string `json:"Download,omitempty" xml:"Download,omitempty"`
+	// The network package ID.
+	//
 	// example:
 	//
 	// np-5cjh3sqs1ty3s02xq
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
+	// The QoS rule ID.
+	//
 	// example:
 	//
 	// qos-chvkz5ekzgcb6bo0f
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	// The QoS rule name.
+	//
 	// example:
 	//
 	// test
 	QosRuleName *string `json:"QosRuleName,omitempty" xml:"QosRuleName,omitempty"`
+	// The upload bandwidth.
+	//
 	// example:
 	//
 	// 10

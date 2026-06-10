@@ -26,21 +26,21 @@ type iDescribeUsersInGroupResponseBody interface {
 }
 
 type DescribeUsersInGroupResponseBody struct {
-	// The authorized users.
+	// A list of authorized user information.
 	EndUsers []*DescribeUsersInGroupResponseBodyEndUsers `json:"EndUsers,omitempty" xml:"EndUsers,omitempty" type:"Repeated"`
-	// The token that is used to start the next query.
+	// The token to start the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of authorized users that are connected to cloud computers of the cloud computer share.
+	// The total number of authorized users in the cloud desktop group who meet the query conditions and are connected to a cloud desktop.
 	//
 	// example:
 	//
 	// 0
 	OnlineUsersCount *int32 `json:"OnlineUsersCount,omitempty" xml:"OnlineUsersCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeUsersInGroupResponseBody struct {
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
-	// The total number of authorized users of the cloud computer share.
+	// The total number of authorized users in the cloud desktop group who meet the query conditions.
 	//
 	// example:
 	//
@@ -143,23 +143,17 @@ func (s *DescribeUsersInGroupResponseBody) Validate() error {
 type DescribeUsersInGroupResponseBodyEndUsers struct {
 	// The connection status.
 	//
-	// Valid values:
-	//
-	// 	- 0: disconnected
-	//
-	// 	- 1: connecting
-	//
 	// example:
 	//
 	// 1
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The ID of the cloud computer.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
@@ -190,13 +184,13 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	//
 	// alice
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The mobile number of the authorized user.
+	// The phone number of the authorized user.
 	//
 	// example:
 	//
 	// 1381111****
 	EndUserPhone *string `json:"EndUserPhone,omitempty" xml:"EndUserPhone,omitempty"`
-	// The remarks.
+	// The user remarks.
 	//
 	// example:
 	//
@@ -204,26 +198,20 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	EndUserRemark *string `json:"EndUserRemark,omitempty" xml:"EndUserRemark,omitempty"`
 	// The user account type.
 	//
-	// Valid values:
-	//
-	// 	- SIMPLE: convenience account
-	//
-	// 	- AD_CONNECTOR: enterprise Active Directory (AD) account
-	//
 	// example:
 	//
 	// SIMPLE
 	EndUserType *string `json:"EndUserType,omitempty" xml:"EndUserType,omitempty"`
-	// The appended information.
+	// Additional information.
 	ExternalInfo *DescribeUsersInGroupResponseBodyEndUsersExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
-	// The ID of the cloud computer that is used by the user.
+	// The ID of the virtual cloud desktop assigned to the user.
 	//
 	// example:
 	//
 	// ud-i896ze8hazpvl****
 	UserDesktopId     *string `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
-	// Details about the seats of users.
+	// A list of user seat information.
 	UserSetPropertiesModels []*DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
 
@@ -448,17 +436,11 @@ type DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels struct {
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
 	// The property type.
 	//
-	// Valid values:
-	//
-	// 	- 1: system property
-	//
-	// 	- 2: custom property
-	//
 	// example:
 	//
 	// 1
 	PropertyType *int32 `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// Details about property values.
+	// An array of property values.
 	PropertyValues []*DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModelsPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -556,7 +538,7 @@ type DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModelsPropertyValu
 	//
 	// value
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	//
 	// example:
 	//

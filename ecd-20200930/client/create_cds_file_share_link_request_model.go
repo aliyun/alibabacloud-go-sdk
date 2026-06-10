@@ -49,38 +49,42 @@ type CreateCdsFileShareLinkRequest struct {
 	// cn-shanghai+cds-135515****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
 	// The description of the file sharing task. The description must be 0 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// SharedFile
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to prohibit the download of the files that are being shared.
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     prohibits file download
+	//   prohibits file download
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     .
+	//   .
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     allows file download
+	//   allows file download
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     .
+	//   .
 	//
 	// example:
 	//
@@ -90,33 +94,33 @@ type CreateCdsFileShareLinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     prohibits file preview
+	//   prohibits file preview
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     .
+	//   .
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     allows file preview
+	//   allows file preview
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     .
+	//   .
 	//
 	// example:
 	//
@@ -126,33 +130,33 @@ type CreateCdsFileShareLinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     prohibits file dump
+	//   prohibits file dump
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     .
+	//   .
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     :
+	//   :
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     allows file dump
+	//   allows file dump
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     .
+	//   .
 	//
 	// example:
 	//
@@ -168,7 +172,7 @@ type CreateCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// user01
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
 	//
@@ -178,7 +182,12 @@ type CreateCdsFileShareLinkRequest struct {
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	// The file IDs.
 	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
-	GroupId *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Team space ID.
+	//
+	// example:
+	//
+	// cg-i1ruuudp92qpj****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
 	//
 	// example:

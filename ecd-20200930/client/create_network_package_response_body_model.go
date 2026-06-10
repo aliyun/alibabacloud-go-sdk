@@ -18,13 +18,13 @@ type iCreateNetworkPackageResponseBody interface {
 }
 
 type CreateNetworkPackageResponseBody struct {
-	// The ID of the premium bandwidth plan.
+	// The ID of the created network package.
 	//
 	// example:
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The ID of the bill.
+	// The ID of the order.
 	//
 	// example:
 	//

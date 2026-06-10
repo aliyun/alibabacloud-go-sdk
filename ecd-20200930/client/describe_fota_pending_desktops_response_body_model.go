@@ -34,7 +34,7 @@ type DescribeFotaPendingDesktopsResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// Succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//
@@ -133,19 +133,19 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
 	//
 	// example:
 	//
-	// TestDesktop
+	// demo-computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
 	//
-	// To be hidden
+	// windows
 	FotaProject *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
 	// The ID of the office network.
 	//
 	// example:
 	//
-	// cn-hangzhou+dir-815419****
+	// cn-shanghai+dir-428216****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The connected sessions.
 	Sessions []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
@@ -264,7 +264,7 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions struct {
 	//
 	// example:
 	//
-	// end user id
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 

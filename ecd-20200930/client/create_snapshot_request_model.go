@@ -56,21 +56,21 @@ type CreateSnapshotRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- system: system disk
+	// - system: system disk
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- data: data disk
+	// - data: data disk
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// This parameter is required.
 	//

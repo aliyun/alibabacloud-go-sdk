@@ -32,9 +32,9 @@ type ListOfficeSiteOverviewRequest struct {
 	ForceRefresh *bool `json:"ForceRefresh,omitempty" xml:"ForceRefresh,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// 	- Valid values: 1 to 100
+	// - Valid values: 1 to 100
 	//
-	// 	- Default value: 10
+	// - Default value: 10
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type ListOfficeSiteOverviewRequest struct {
 	//
 	// Default values:
 	//
-	// 	- 1 (default): queries non-pooled cloud computers in the office network.
+	// - 1 (default): queries non-pooled cloud computers in the office network.
 	//
-	// 	- 2: queries pooled cloud computers in the office network.
+	// - 2: queries pooled cloud computers in the office network.
 	//
-	// 	- 3: queries all cloud computers in the office network.
+	// - 3: queries all cloud computers in the office network.
 	//
 	// example:
 	//

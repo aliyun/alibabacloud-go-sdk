@@ -117,7 +117,13 @@ func (s *DescribeCloudDriveGroupsResponseBody) Validate() error {
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
-	AdminUserIds   *string                                                               `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty"`
+	// List of group administrators.
+	//
+	// example:
+	//
+	// ["user01"]
+	AdminUserIds *string `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty"`
+	// Administrator information for the group space.
 	AdminUserInfos []*DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos `json:"AdminUserInfos,omitempty" xml:"AdminUserInfos,omitempty" type:"Repeated"`
 	// The time when the team space was created.
 	//
@@ -147,15 +153,25 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
 	//
 	// example:
 	//
-	// Test Team 1
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// Test team 1
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Organization ID of the team.
+	//
+	// example:
+	//
+	// org-aliyun-wy-org-id
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// Size of the recycle bin for the team space. Unit: Byte.
+	//
+	// example:
+	//
+	// 1024000
 	RecycleBinSize *string `json:"RecycleBinSize,omitempty" xml:"RecycleBinSize,omitempty"`
 	// The team space status. Valid values:
 	//
-	// 	- enabled
+	// - enabled
 	//
-	// 	- disabled
+	// - disabled
 	//
 	// Default value: enabled.
 	//
@@ -307,13 +323,48 @@ func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) Validate() error 
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos struct {
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	JobNumber    *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
-	NickName     *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// Mailbox.
+	//
+	// example:
+	//
+	// 123@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Administrator username (may be unreadable when imported from a third party).
+	//
+	// example:
+	//
+	// user01
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// Job number (DingTalk)
+	//
+	// example:
+	//
+	// 12345
+	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
+	// Administrator nickname.
+	//
+	// example:
+	//
+	// John Doe
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// Phone number.
+	//
+	// example:
+	//
+	// 12345678
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// Administrator nickname.
+	//
+	// example:
+	//
+	// John Doe
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Remark.
+	//
+	// example:
+	//
+	// John Doe
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) String() string {

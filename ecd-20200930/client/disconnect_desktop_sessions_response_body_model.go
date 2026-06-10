@@ -70,13 +70,13 @@ type DisconnectDesktopSessionsResponseBodyInvalidSessions struct {
 	//
 	// example:
 	//
-	// ecd-2jv6wugbkp65pxxxx
+	// ecd-2jv6wugbkp65p****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	// The end user ID.
 	//
 	// example:
 	//
-	// wy01
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 

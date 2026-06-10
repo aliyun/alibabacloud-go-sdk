@@ -20,21 +20,26 @@ type iDescribeGlobalTimerBatchesResponseBody interface {
 }
 
 type DescribeGlobalTimerBatchesResponseBody struct {
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The token to use to retrieve the next page of results. This parameter is returned only when more results are available.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E54EB497-D7B7-5F04-B744-D8DFA7B******
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*DescribeGlobalTimerBatchesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of batches.
+	Results []*DescribeGlobalTimerBatchesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGlobalTimerBatchesResponseBody) String() string {
@@ -95,30 +100,44 @@ func (s *DescribeGlobalTimerBatchesResponseBody) Validate() error {
 }
 
 type DescribeGlobalTimerBatchesResponseBodyResults struct {
+	// The ID of the batch.
+	//
 	// example:
 	//
 	// ccg-0cvfvf6u1enx1****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The time when the batch was created.
+	//
 	// example:
 	//
 	// 2023-08-03T08:27:29Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of failed tasks.
+	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The number of running tasks.
+	//
 	// example:
 	//
 	// 0
 	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
+	// The number of skipped tasks.
+	//
 	// example:
 	//
 	// 0
 	SkippedCount *int32 `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
+	// The number of successfully executed tasks.
+	//
 	// example:
 	//
 	// 0
 	SucceedCount *int32 `json:"SucceedCount,omitempty" xml:"SucceedCount,omitempty"`
+	// The type of the scheduled task.
+	//
 	// example:
 	//
 	// TimerBoot

@@ -131,7 +131,7 @@ type DescribeEcdReportTasksResponseBodyExportTaskList struct {
 	//
 	// Valid value:
 	//
-	// 	- DESKTOP: cloud computer
+	// - DESKTOP: cloud computer
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type DescribeEcdReportTasksResponseBodyExportTaskList struct {
 	//
 	// Valid value:
 	//
-	// 	- RESOURCE_REPORT
+	// - RESOURCE_REPORT
 	//
 	// example:
 	//

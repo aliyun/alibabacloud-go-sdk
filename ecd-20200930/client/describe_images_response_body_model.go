@@ -129,21 +129,21 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// Valid values:
 	//
-	// 	- SYSTEM
+	// - SYSTEM
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- CUSTOM
+	// - CUSTOM
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -165,61 +165,61 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// Valid values:
 	//
-	// 	- Ubuntu
+	// - Ubuntu
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Windows Server 2022
+	// - Windows Server 2022
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- UOS
+	// - UOS
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- CentOS
+	// - CentOS
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Windows Server 2019
+	// - Windows Server 2019
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- SQL Server 2016
+	// - SQL Server 2016
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Windows 10
+	// - Windows 10
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -235,9 +235,9 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// Valid values:
 	//
-	// 	- HDX: High-definition Experience (HDX) protocol
+	// - HDX: High-definition Experience (HDX) protocol
 	//
-	// 	- ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
+	// - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
 	//
 	// example:
 	//
@@ -247,9 +247,9 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// Valid values:
 	//
-	// 	- SINGLE_SESSION: single-session image.
+	// - SINGLE_SESSION: single-session image.
 	//
-	// 	- MULTIPLE_SESSION: multi-session image.
+	// - MULTIPLE_SESSION: multi-session image.
 	//
 	// example:
 	//
@@ -271,29 +271,29 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// Valid values:
 	//
-	// 	- Creating
+	// - Creating
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Available
+	// - Available
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- CreateFailed
+	// - CreateFailed
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

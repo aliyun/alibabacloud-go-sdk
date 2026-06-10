@@ -40,9 +40,9 @@ type ExportDesktopGroupInfoRequest struct {
   // 
   // Valid values:
   // 
-  // 	- PostPaid: pay-as-you-go.
+  // - PostPaid: pay-as-you-go.
   // 
-  // 	- PrePaid: subscription.
+  // - PrePaid: subscription.
   // 
   // example:
   // 
@@ -54,7 +54,7 @@ type ExportDesktopGroupInfoRequest struct {
   // 
   // example:
   // 
-  // test
+  // CloudComputerPool01
   DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
   // The IDs of the users to be authorized.
   EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`

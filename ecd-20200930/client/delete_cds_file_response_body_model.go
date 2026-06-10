@@ -32,9 +32,9 @@ type DeleteCdsFileResponseBody struct {
 	//
 	// Valid value:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DeleteCdsFileResponseBody struct {
 	//
 	// Valid value:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

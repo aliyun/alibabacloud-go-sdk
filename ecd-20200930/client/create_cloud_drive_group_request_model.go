@@ -22,6 +22,8 @@ type iCreateCloudDriveGroupRequest interface {
 }
 
 type CreateCloudDriveGroupRequest struct {
+	// List of user IDs to be set as team space administrators.
+	//
 	// if can be null:
 	// true
 	AdminUserIds []*string `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty" type:"Repeated"`

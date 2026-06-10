@@ -40,23 +40,27 @@ type GetConnectionTicketResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
 	//
-	//     import base64
+	// ```
 	//
-	//     response = {
+	// import base64
 	//
-	//         "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
+	// response = {
 	//
-	//         "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
+	//     "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
 	//
-	//     }
+	//     "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
 	//
-	//     f = open (\\"xxx.ica\\", \\"w\\")
+	// }
 	//
-	//     out = base64.b64decode(response[\\"Ticket\\"])
+	// f = open (\\"xxx.ica\\", \\"w\\")
 	//
-	//     f.write(out)
+	// out = base64.b64decode(response[\\"Ticket\\"])
 	//
-	//     f.close()
+	// f.write(out)
+	//
+	// f.close()
+	//
+	// ```
 	//
 	// example:
 	//
@@ -78,29 +82,29 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- FAILED: The credential fails to be obtained.
+	// - FAILED: The credential fails to be obtained.
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- RUNNING: The credential is being obtained.
+	// - RUNNING: The credential is being obtained.
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- FINISHED: The credential is obtained.
+	// - FINISHED: The credential is obtained.
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

@@ -18,11 +18,16 @@ type iDescribeDesktopMetadataResponseBody interface {
 }
 
 type DescribeDesktopMetadataResponseBody struct {
+	// The details of the cloud desktops.
 	Desktops []*DescribeDesktopMetadataResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
+	// The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -78,60 +83,128 @@ func (s *DescribeDesktopMetadataResponseBody) Validate() error {
 }
 
 type DescribeDesktopMetadataResponseBodyDesktops struct {
+	// A list of agents that the cloud computer supports.
 	AgentProviderList []*string `json:"AgentProviderList,omitempty" xml:"AgentProviderList,omitempty" type:"Repeated"`
+	// The billing method of the cloud desktop. Valid values:
+	//
+	// - `PostPaid`: pay-as-you-go
+	//
+	// - `PrePaid`: subscription
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The creation time of the cloud desktop.
+	//
 	// example:
 	//
 	// 2020-11-06T08:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the desktop group.
+	//
 	// example:
 	//
 	// dg-3uiojcc0j4kh7****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The ID of the cloud desktop.
+	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The name of the cloud desktop.
+	//
 	// example:
 	//
 	// testDesktopName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The status of the cloud desktop. Valid values:
+	//
+	// - `Stopped`
+	//
+	// - `Starting`
+	//
+	// - `Rebuilding`
+	//
+	// - `Running`
+	//
+	// - `Stopping`
+	//
+	// - `Expired`
+	//
+	// - `Deleted`
+	//
+	// - `Pending`
+	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	DesktopType   *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The instance type of the cloud desktop.
+	//
+	// example:
+	//
+	// eds.general.2c8g
+	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The expiration time of the cloud desktop. This parameter is returned only for cloud desktops that use the subscription billing method.
+	//
 	// example:
 	//
 	// 2021-12-31T15:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the image.
+	//
 	// example:
 	//
 	// m-4zfb6zj728hhr****
-	ImageId         *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	LocalName       *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// 华东2（上海）
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The management flags for the cloud computer.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
-	MemberEniIp     *string   `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
+	// The private IP address of the instance\\"s network interface.
+	//
+	// example:
+	//
+	// 192.168.2.1
+	MemberEniIp *string `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
+	// The ID of the office network.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The operating system of the cloud desktop.
+	//
+	// example:
+	//
+	// Ubuntu
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// serverless_new
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The time when the cloud desktop started.
+	//
 	// example:
 	//
 	// 2020-11-06T08:31Z

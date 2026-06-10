@@ -22,22 +22,32 @@ type iDescribeOnlineUserCountResponseBody interface {
 }
 
 type DescribeOnlineUserCountResponseBody struct {
+	// The number of AD users who have been assigned a cloud desktop.
+	//
 	// example:
 	//
 	// 2
 	AdAssignedUserCount *int64 `json:"AdAssignedUserCount,omitempty" xml:"AdAssignedUserCount,omitempty"`
+	// The number of users who have been assigned a cloud desktop.
+	//
 	// example:
 	//
 	// 10
 	AssignedUserCount *int64 `json:"AssignedUserCount,omitempty" xml:"AssignedUserCount,omitempty"`
+	// The number of online users. Online users include convenience users and AD users.
+	//
 	// example:
 	//
 	// 1
 	OnlineUserCount *int64 `json:"OnlineUserCount,omitempty" xml:"OnlineUserCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of convenience users who have been assigned a cloud desktop.
+	//
 	// example:
 	//
 	// 8

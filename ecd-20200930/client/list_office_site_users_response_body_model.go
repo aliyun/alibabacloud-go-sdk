@@ -18,7 +18,7 @@ type iListOfficeSiteUsersResponseBody interface {
 }
 
 type ListOfficeSiteUsersResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token to start the next query. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type ListOfficeSiteUsersResponseBody struct {
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The usernames of the AD accounts.\\
+	// An array that consists of the AD accounts.<br>
 	//
-	// If the only Administrator and Guest users exist in the enterprise AD directory, an empty User array is returned.
+	// If the enterprise AD contains only the Administrator and Guest users, an empty Users array is returned.<br>
 	Users []*ListOfficeSiteUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -90,7 +90,7 @@ type ListOfficeSiteUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// Alice
+	// aduser
 	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
@@ -98,7 +98,7 @@ type ListOfficeSiteUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// Alice
+	// aduser
 	EndUser           *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
 	Phone             *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`

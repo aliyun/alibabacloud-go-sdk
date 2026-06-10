@@ -97,24 +97,6 @@ type DescribeBundlesResponseBodyBundles struct {
 	BundleName *string `json:"BundleName,omitempty" xml:"BundleName,omitempty"`
 	// The type of the cloud computer template.
 	//
-	// Valid values:
-	//
-	// 	- SYSTEM: system template
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CUSTOM: custom template
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// SYSTEM
@@ -126,14 +108,6 @@ type DescribeBundlesResponseBodyBundles struct {
 	// 2021-09-30T06:09Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The category of the data disk.
-	//
-	// Valid values:
-	//
-	// 	- cloud_efficiency: the ultra disk
-	//
-	// 	- cloud_auto: the standard SSD.
-	//
-	// 	- cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
 	//
 	// example:
 	//
@@ -154,14 +128,6 @@ type DescribeBundlesResponseBodyBundles struct {
 	// The details of the cloud computer instance type.
 	DesktopTypeAttribute *DescribeBundlesResponseBodyBundlesDesktopTypeAttribute `json:"DesktopTypeAttribute,omitempty" xml:"DesktopTypeAttribute,omitempty" type:"Struct"`
 	// The instance family of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- eds.graphics: graphical instance family
-	//
-	// 	- eds.hf: instance family with a high clock speed
-	//
-	// 	- eds.general: general-purpose instance family
 	//
 	// example:
 	//
@@ -189,39 +155,11 @@ type DescribeBundlesResponseBodyBundles struct {
 	ImageStatus *string `json:"ImageStatus,omitempty" xml:"ImageStatus,omitempty"`
 	// The OS language of the image.
 	//
-	// Valid values:
-	//
-	// 	- en-US: English
-	//
-	// 	- zh-HK: Chinese, Traditional (Hong Kong, China)
-	//
-	// 	- zh-CN: Simplified Chinese
-	//
-	// 	- ja-JP: Japanese
-	//
 	// example:
 	//
 	// en-US
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The type of the OS.
-	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -229,79 +167,17 @@ type DescribeBundlesResponseBodyBundles struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The OS.
 	//
-	// Valid values:
-	//
-	// 	- Ubuntu
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows Server 2022
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- UOS
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CentOS
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows Server 2019
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Windows Server 2016
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// Windows Server 2019
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// 	- HDX: HDX protocol
-	//
-	// 	- ASP: in-house ASP
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The session type.
-	//
-	// Valid values:
-	//
-	// 	- 0: single-session
-	//
-	// 	- 1: multi-session
 	//
 	// example:
 	//
@@ -314,14 +190,6 @@ type DescribeBundlesResponseBodyBundles struct {
 	// Sufficient
 	StockState *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
 	// The category of the system disk.
-	//
-	// Valid values:
-	//
-	// 	- cloud_efficiency: the ultra disk
-	//
-	// 	- cloud_auto: the standard SSD.
-	//
-	// 	- cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
 	//
 	// example:
 	//
@@ -588,7 +456,7 @@ type DescribeBundlesResponseBodyBundlesDesktopTypeAttribute struct {
 	//
 	// example:
 	//
-	// 47104
+	// 4096
 	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 }
 
@@ -643,40 +511,6 @@ func (s *DescribeBundlesResponseBodyBundlesDesktopTypeAttribute) Validate() erro
 type DescribeBundlesResponseBodyBundlesDisks struct {
 	// The PL of the disk.
 	//
-	// Valid values:
-	//
-	// 	- PL1
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PL0
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PL3
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PL2
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// PL0
@@ -688,24 +522,6 @@ type DescribeBundlesResponseBodyBundlesDisks struct {
 	// 150
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The type of the disk.
-	//
-	// Valid values:
-	//
-	// 	- SYSTEM: system disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DATA: data disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

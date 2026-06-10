@@ -16,9 +16,9 @@ type iDescribeDesktopTypesResponseBody interface {
 }
 
 type DescribeDesktopTypesResponseBody struct {
-	// The specifications.
+	// The details of the specifications.
 	DesktopTypes []*DescribeDesktopTypesResponseBodyDesktopTypes `json:"DesktopTypes,omitempty" xml:"DesktopTypes,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,20 +72,20 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// 2
 	CpuCount *string `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The size of the data disk. Unit: GiB.
+	// The size of the data disk, in GiB.
 	//
 	// example:
 	//
 	// 150
 	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud desktop type.
+	// The specification ID.
 	//
 	// example:
 	//
 	// ecd.graphics.xlarge
 	DesktopTypeId *string `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
-	// The status of the cloud desktop type. If SUFFICIENT is returned, the number of cloud desktops of the type is sufficient.
+	// The availability of the specification. A value of `SUFFICIENT` indicates that the specification is in stock.
 	//
 	// example:
 	//
@@ -93,57 +93,51 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	DesktopTypeStatus *string `json:"DesktopTypeStatus,omitempty" xml:"DesktopTypeStatus,omitempty"`
 	EnvId             *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	EnvType           *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The number of GPUs.
+	// The number of GPU cores.
 	//
 	// example:
 	//
 	// 1
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	// The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
+	// The GPU memory size in MiB. This parameter is valid only for GPU-accelerated cloud desktops.
 	//
 	// example:
 	//
 	// 2048
 	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The GPU memory.
+	// The GPU memory size.
 	//
 	// example:
 	//
 	// 16 GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The family of the cloud desktop type.
+	// The instance type family.
 	//
 	// example:
 	//
 	// ecd.graphics
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The number of sessions supported by the specification.
+	// The maximum number of concurrent sessions that is supported by the cloud desktop specification.
 	//
 	// example:
 	//
 	// 4
 	MaxSessionCount *int32 `json:"MaxSessionCount,omitempty" xml:"MaxSessionCount,omitempty"`
-	// The memory size. Unit: MiB.
+	// The memory size, in MiB.
 	//
 	// example:
 	//
 	// 23552
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The sales modes of the specifications.
+	// The purchase options for the specification.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// The inventory status of the specification.
-	//
-	// Valid values:
-	//
-	// 	- Insufficient
-	//
-	// 	- Sufficient
+	// The inventory status.
 	//
 	// example:
 	//
 	// Sufficient
 	StockState *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
-	// The size of the system disk. Unit: GiB.
+	// The size of the system disk, in GiB.
 	//
 	// example:
 	//

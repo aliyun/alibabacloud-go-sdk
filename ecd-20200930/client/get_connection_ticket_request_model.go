@@ -34,9 +34,9 @@ type iGetConnectionTicketRequest interface {
 type GetConnectionTicketRequest struct {
 	// The command that you want to run to configure a custom application in user mode. After you obtain the credential, the application is automatically started. Parameter description in the command:
 	//
-	// 	- appPath: the path of the application startup file. Example: `"C:\\\\Program Files (x86)\\\\000\\\\000.exe"`. Use double slashes (\\\\\\) as the delimiter. Type of the parameter value: string.
+	// - appPath: the path of the application startup file. Example: `"C:\\Program Files (x86)\\000\\000.exe"`. Use double slashes (\\) as the delimiter. Type of the parameter value: string.
 	//
-	// 	- appParameter: the startup arguments of the application. Example: `"meetingid 000 meetingname aaa"`. Separate multiple arguments with spaces. Type of the parameter value: string.
+	// - appParameter: the startup arguments of the application. Example: `"meetingid 000 meetingname aaa"`. Separate multiple arguments with spaces. Type of the parameter value: string.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetConnectionTicketRequest struct {
 	//
 	// example:
 	//
-	// Alice
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password of the current end user of the cloud computer.
@@ -103,7 +103,7 @@ type GetConnectionTicketRequest struct {
 	//
 	// example:
 	//
-	// 2afbad19-778a-4fc5-9674-1f19c63862da
+	// 2afbad19-778a-4fc5-9674-1f19c638****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The unique identifier of the client. If you use an Alibaba Cloud Workspace client, click **About*	- on the client logon page to view the identifier of the client.
 	//

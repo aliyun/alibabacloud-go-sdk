@@ -46,13 +46,13 @@ type CreateBundleRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance type of the cloud computers. You can call the [DescribeBundles](https://help.aliyun.com/document_detail/436974.html) operation to query cloud computer templates and obtain the instance types supported by the cloud computers from the `DesktopType` response parameter.
 	//
-	// >  If you want the template to use a non-GPU-accelerated image, you can only select a non-GPU-accelerated instance type. If you want the template to use a GPU-accelerated image, you can only select a GPU-accelerated instance type.
+	// > If you want the template to use a non-GPU-accelerated image, you can only select a non-GPU-accelerated instance type. If you want the template to use a GPU-accelerated image, you can only select a GPU-accelerated instance type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecd.basic.large
+	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
 	// The ID of the image.
 	//
@@ -64,13 +64,13 @@ type CreateBundleRequest struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The OS language. This parameter is available only for system images. Valid values:
 	//
-	// 	- zh-CN: Simplified Chinese
+	// - zh-CN: Simplified Chinese
 	//
-	// 	- zh-HK: Traditional Chinese (Hong Kong)
+	// - zh-HK: Traditional Chinese (Hong Kong)
 	//
-	// 	- en-US: American English
+	// - en-US: American English
 	//
-	// 	- ja-JP: Japanese
+	// - ja-JP: Japanese
 	//
 	// example:
 	//
@@ -88,37 +88,37 @@ type CreateBundleRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- PL1
+	// - PL1
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- PL0
+	// - PL0
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- PL3
+	// - PL3
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- PL2
+	// - PL2
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -136,37 +136,37 @@ type CreateBundleRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- PL1
+	// - PL1
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- PL0
+	// - PL0
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- PL3
+	// - PL3
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- PL2
+	// - PL2
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

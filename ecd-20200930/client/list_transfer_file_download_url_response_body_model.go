@@ -16,11 +16,14 @@ type iListTransferFileDownloadUrlResponseBody interface {
 }
 
 type ListTransferFileDownloadUrlResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F1F01499-8F3D-5657-91AD-48177EB****
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Urls      []*ListTransferFileDownloadUrlResponseBodyUrls `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of download URL information for the files.
+	Urls []*ListTransferFileDownloadUrlResponseBodyUrls `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
 }
 
 func (s ListTransferFileDownloadUrlResponseBody) String() string {
@@ -63,18 +66,26 @@ func (s *ListTransferFileDownloadUrlResponseBody) Validate() error {
 }
 
 type ListTransferFileDownloadUrlResponseBodyUrls struct {
+	// The file ID.
+	//
 	// example:
 	//
 	// trf-i4pz8emx2k2fr****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// document.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The status of the file.
+	//
 	// example:
 	//
 	// DELETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The download URL of the file.
+	//
 	// example:
 	//
 	// http://xxsy-transfer.oss-cn-beijing.aliyuncs.com/xxxx

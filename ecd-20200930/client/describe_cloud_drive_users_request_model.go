@@ -22,24 +22,40 @@ type iDescribeCloudDriveUsersRequest interface {
 }
 
 type DescribeCloudDriveUsersRequest struct {
+	// The ID of the enterprise network drive.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-066224****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The end user ID.
+	//
+	// If specified, the query returns only the personal drive of that user. If left empty, the query returns the personal drives of all users.
+	//
 	// example:
 	//
-	// abc
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The number of entries per page.
+	//
+	// - Maximum: 100.
+	//
+	// - Default: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. This is the `NextToken` value from the previous response. Leave this parameter empty for the first request.
+	//
 	// example:
 	//
 	// aGN4YzAxQGNuLWhhbmd6aG91LjExNzU5NTMyNjgzMTQ1****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID. To obtain a list of supported regions, call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html).
+	//
 	// This parameter is required.
 	//
 	// example:

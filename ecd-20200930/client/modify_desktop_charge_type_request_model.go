@@ -30,37 +30,19 @@ type iModifyDesktopChargeTypeRequest interface {
 }
 
 type ModifyDesktopChargeTypeRequest struct {
-	// Specifies whether to enable automatic payment if you specify subscription as the new billing method for the cloud desktop.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The new billing method that you want to apply.
-	//
-	// Valid values:
-	//
-	// 	- PostPaid: changes the billing method from subscription to pay-as-you-go.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PrePaid: changes the billing method from pay-as-you-go to subscription.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The new billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The IDs of the cloud computers. You can specify 1 to 20 IDs.
+	// The IDs of the cloud desktops. You can specify 1 to 20 IDs.
 	//
 	// This parameter is required.
 	//
@@ -68,31 +50,31 @@ type ModifyDesktopChargeTypeRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The subscription duration of the cloud computers if you set the ChargeType parameter to PrePaid. The unit is specified by the `PeriodUnit` parameter. This parameter is valid only when the `ChargeType` parameter is set to `PrePaid`. In this case, you must specify this parameter.
+	// The subscription duration. This parameter is required only when you set the `ChargeType` parameter to `PrePaid`. The unit of the duration is specified by the `PeriodUnit` parameter.
 	//
-	// 	- If the `PeriodUnit` parameter is set to `Week`, set the Period parameter to 1.
+	// - If you set the `PeriodUnit` parameter to `Week`, you can set this parameter only to 1.
 	//
-	// 	- If the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, and 6.
+	// - If you set the `PeriodUnit` parameter to `Month`, you can set this parameter to 1, 2, 3, or 6.
 	//
-	// 	- If the `PeriodUnit` parameter is set to `Year`, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
+	// - If you set the `PeriodUnit` parameter to `Year`, you can set this parameter to 1, 2, 3, 4, or 5.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
+	// The unit of the subscription duration.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the promotional activity.
+	// The promotion ID.
 	//
 	// example:
 	//
-	// 500038360030606
+	// 50003836003****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -101,11 +83,11 @@ type ModifyDesktopChargeTypeRequest struct {
 	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// >  This parameter is in invitational preview and not publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
-	// internal only
+	// sample
 	UseDuration *int32 `json:"UseDuration,omitempty" xml:"UseDuration,omitempty"`
 }
 

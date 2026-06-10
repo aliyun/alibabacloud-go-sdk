@@ -68,15 +68,15 @@ type BatchModifyEntitlementResponseBodyEntitlements struct {
 	//
 	// Valid values:
 	//
-	// 	- FAILED
+	// - FAILED
 	//
-	// 	- NOT_STARTED
+	// - NOT_STARTED
 	//
-	// 	- STARTED
+	// - STARTED
 	//
-	// 	- PROCESSING
+	// - PROCESSING
 	//
-	// 	- FINISHED
+	// - FINISHED
 	//
 	// example:
 	//
@@ -151,15 +151,15 @@ type BatchModifyEntitlementResponseBodyEntitlementsAssignModels struct {
 	//
 	// Valid values:
 	//
-	// 	- FAILED
+	// - FAILED
 	//
-	// 	- NOT_STARTED
+	// - NOT_STARTED
 	//
-	// 	- STARTED
+	// - STARTED
 	//
-	// 	- PROCESSING
+	// - PROCESSING
 	//
-	// 	- FINISHED
+	// - FINISHED
 	//
 	// example:
 	//

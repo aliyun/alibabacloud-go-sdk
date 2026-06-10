@@ -22,21 +22,38 @@ type iDescribeCloudDiskGroupDrivesRequest interface {
 }
 
 type DescribeCloudDiskGroupDrivesRequest struct {
+	// The enterprise cloud disk ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-6805637***
-	CdsId     *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The team drive name.
+	//
+	// example:
+	//
+	// Team 1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The number of entries per page for paged queries.
+	//
+	// - Maximum: 100
+	//
+	// - Default: 20
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that marks the start of the next query. An empty NextToken means no more results.
+	//
 	// example:
 	//
 	// MTA0MjA=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

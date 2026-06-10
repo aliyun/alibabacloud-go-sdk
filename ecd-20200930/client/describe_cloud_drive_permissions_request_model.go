@@ -16,12 +16,16 @@ type iDescribeCloudDrivePermissionsRequest interface {
 }
 
 type DescribeCloudDrivePermissionsRequest struct {
+	// ID of the created enterprise cloud drive.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-82414*****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

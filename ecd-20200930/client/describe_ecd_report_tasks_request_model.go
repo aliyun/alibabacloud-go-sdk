@@ -40,24 +40,8 @@ type DescribeEcdReportTasksRequest struct {
 	// 20。
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The task status.
-	//
-	// Valid values:
-	//
-	// 	- INIT: initializing
-	//
-	// 	- FAILED
-	//
-	// 	- RUNNING
-	//
-	// 	- EXPIRED
-	//
-	// 	- FINISHED
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// The sub-type of the report export task.
-	//
-	// Valid value:
-	//
-	// 	- DESKTOP: cloud computer
 	//
 	// example:
 	//
@@ -73,7 +57,7 @@ type DescribeEcdReportTasksRequest struct {
 	//
 	// Valid value:
 	//
-	// 	- RESOURCE_REPORT
+	// - RESOURCE_REPORT
 	//
 	// example:
 	//

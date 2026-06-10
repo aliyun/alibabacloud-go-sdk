@@ -16,7 +16,7 @@ type iDeleteTemplatesRequest interface {
 }
 
 type DeleteTemplatesRequest struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//

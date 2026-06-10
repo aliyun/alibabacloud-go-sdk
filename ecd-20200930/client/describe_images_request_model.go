@@ -58,21 +58,21 @@ type DescribeImagesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- false
+	// - false
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -116,9 +116,9 @@ type DescribeImagesRequest struct {
 	LanguageType *string `json:"LanguageType,omitempty" xml:"LanguageType,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
-	// 	- Maximum value: 100.
+	// - Maximum value: 100.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
@@ -134,21 +134,21 @@ type DescribeImagesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Linux
+	// - Linux
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- Windows
+	// - Windows
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -158,9 +158,9 @@ type DescribeImagesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- HDX: High-definition Experience (HDX) protocol
+	// - HDX: High-definition Experience (HDX) protocol
 	//
-	// 	- ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
+	// - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
 	//
 	// example:
 	//

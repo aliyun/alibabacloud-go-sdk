@@ -16,13 +16,7 @@ type iDescribeUserProfilePathRulesResponseBody interface {
 }
 
 type DescribeUserProfilePathRulesResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// A87DBB05-653A-5E4B-B72B-5F4A1E07****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The directory blacklist and whitelist.
+	RequestId           *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserProfilePathRule *DescribeUserProfilePathRulesResponseBodyUserProfilePathRule `json:"UserProfilePathRule,omitempty" xml:"UserProfilePathRule,omitempty" type:"Struct"`
 }
 
@@ -62,38 +56,9 @@ func (s *DescribeUserProfilePathRulesResponseBody) Validate() error {
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRule struct {
-	// The desktop group ID.
-	//
-	// example:
-	//
-	// dg-4i8fvpv6tfs03****
-	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The directory rules.
-	Rules []*DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The directory type that is configured for the directory.
-	//
-	// Valid values:
-	//
-	// 	- DesktopGroup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Default
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// Default
-	UserProfileRuleType *string `json:"UserProfileRuleType,omitempty" xml:"UserProfileRuleType,omitempty"`
+	DesktopGroupId      *string                                                             `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	Rules               []*DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	UserProfileRuleType *string                                                             `json:"UserProfileRuleType,omitempty" xml:"UserProfileRuleType,omitempty"`
 }
 
 func (s DescribeUserProfilePathRulesResponseBodyUserProfilePathRule) String() string {
@@ -145,9 +110,7 @@ func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRule) Validate()
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules struct {
-	// The blacklist that is configured.
-	BlackPath *DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath `json:"BlackPath,omitempty" xml:"BlackPath,omitempty" type:"Struct"`
-	// The directories in the whitelist.
+	BlackPath  *DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath    `json:"BlackPath,omitempty" xml:"BlackPath,omitempty" type:"Struct"`
 	WhitePaths []*DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesWhitePaths `json:"WhitePaths,omitempty" xml:"WhitePaths,omitempty" type:"Repeated"`
 }
 
@@ -196,35 +159,7 @@ func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules) Valid
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath struct {
-	// The path.
-	//
-	// example:
-	//
-	// AppLocal/Data
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The path type.
-	//
-	// Valid values:
-	//
-	// 	- file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- folder
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -259,35 +194,7 @@ func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPa
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesWhitePaths struct {
-	// The path.
-	//
-	// example:
-	//
-	// games
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The path type.
-	//
-	// Valid values:
-	//
-	// 	- file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- folder
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// folder
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
