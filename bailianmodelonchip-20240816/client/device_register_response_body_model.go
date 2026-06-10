@@ -137,7 +137,8 @@ type DeviceRegisterResponseBodyData struct {
 	// example:
 	//
 	// s8wPO/w79jP7sz6OaHkixAje2GmgzmZiCuCZZ+J8w77ICTyqD30lL6rUhnXwwx4MyGF62DRPFnpXtJ6c5mlmt6QdML3FkjGn+i/wR5T6QMkVDW6YRPWsx3jkIWRQ2sDnmVNBtixo2s9w3RJrnddRzVCaR/WeLOfiVLWcrLcJditzO/1YXBZ9vuRKQ4iperfhZvw372N/m8/1qtjJl+FUe2+wxK6RMxr03K7R
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	Signature   *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s DeviceRegisterResponseBodyData) String() string {
@@ -168,6 +169,10 @@ func (s *DeviceRegisterResponseBodyData) GetSignature() *string {
 	return s.Signature
 }
 
+func (s *DeviceRegisterResponseBodyData) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *DeviceRegisterResponseBodyData) SetAppId(v string) *DeviceRegisterResponseBodyData {
 	s.AppId = &v
 	return s
@@ -190,6 +195,11 @@ func (s *DeviceRegisterResponseBodyData) SetResponseTime(v string) *DeviceRegist
 
 func (s *DeviceRegisterResponseBodyData) SetSignature(v string) *DeviceRegisterResponseBodyData {
 	s.Signature = &v
+	return s
+}
+
+func (s *DeviceRegisterResponseBodyData) SetWorkspaceId(v string) *DeviceRegisterResponseBodyData {
+	s.WorkspaceId = &v
 	return s
 }
 

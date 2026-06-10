@@ -17,6 +17,8 @@ type iDeviceRegisterRequest interface {
 	GetRequestTime() *string
 	SetSignature(v string) *DeviceRegisterRequest
 	GetSignature() *string
+	SetWorkspaceId(v string) *DeviceRegisterRequest
+	GetWorkspaceId() *string
 }
 
 type DeviceRegisterRequest struct {
@@ -29,9 +31,18 @@ type DeviceRegisterRequest struct {
 	// 2a64edd96296880f55aa61987b
 	Nonce *string `json:"nonce,omitempty" xml:"nonce,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1748312544852
 	RequestTime *string `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
 	// This parameter is required.
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	//
+	// example:
+	//
+	// 3spKwUgUpAGsXbbrHKnpVJPlI9wamoyhh96uqJuSyCKyJ7oscLAHRcz15dSzLG5L+ywFgYXSQNqdRtsn/Ri0j7pD0IuoKt9R7EnNo/U6viPvWD3Ldp3ehDDtOFtSrpUg6LTedvGtUWYU4x/zSD2jgCXijEdZCCMGCypcheMHRXfInYWF1xFtnCEXJfxtrBrnCk1p/pW3JSmdHJzmInnUEO3dWbNe3A==
+	Signature   *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s DeviceRegisterRequest) String() string {
@@ -58,6 +69,10 @@ func (s *DeviceRegisterRequest) GetSignature() *string {
 	return s.Signature
 }
 
+func (s *DeviceRegisterRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *DeviceRegisterRequest) SetAppId(v string) *DeviceRegisterRequest {
 	s.AppId = &v
 	return s
@@ -75,6 +90,11 @@ func (s *DeviceRegisterRequest) SetRequestTime(v string) *DeviceRegisterRequest 
 
 func (s *DeviceRegisterRequest) SetSignature(v string) *DeviceRegisterRequest {
 	s.Signature = &v
+	return s
+}
+
+func (s *DeviceRegisterRequest) SetWorkspaceId(v string) *DeviceRegisterRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

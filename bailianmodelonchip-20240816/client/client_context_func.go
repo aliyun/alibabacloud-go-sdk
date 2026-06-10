@@ -136,6 +136,10 @@ func (client *Client) DeviceRegisterWithContext(ctx context.Context, request *De
 		body["signature"] = request.Signature
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),

@@ -223,6 +223,10 @@ func (client *Client) DeviceRegisterWithOptions(request *DeviceRegisterRequest, 
 		body["signature"] = request.Signature
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
