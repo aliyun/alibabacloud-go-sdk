@@ -382,7 +382,8 @@ type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
 	// example:
 	//
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
-	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	MetaData  *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	RecordKey *string `json:"RecordKey,omitempty" xml:"RecordKey,omitempty"`
 	// Consumption scenario Name (such as AI application development, AI creative image generation, AI Video creation, AI Content creation)
 	//
 	// example:
@@ -419,6 +420,10 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetMetaData() *st
 	return s.MetaData
 }
 
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetRecordKey() *string {
+	return s.RecordKey
+}
+
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) GetSceneName() *string {
 	return s.SceneName
 }
@@ -445,6 +450,11 @@ func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetConsumeType(v 
 
 func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetMetaData(v string) *QueryInspirationConsumeRecordsResponseBodyModuleData {
 	s.MetaData = &v
+	return s
+}
+
+func (s *QueryInspirationConsumeRecordsResponseBodyModuleData) SetRecordKey(v string) *QueryInspirationConsumeRecordsResponseBodyModuleData {
+	s.RecordKey = &v
 	return s
 }
 

@@ -25,6 +25,8 @@ type iAppService interface {
 	GetInstanceBizId() *string
 	SetName(v string) *AppService
 	GetName() *string
+	SetNodeList(v []*TreeNode) *AppService
+	GetNodeList() []*TreeNode
 	SetProfile(v *AppServiceProfile) *AppService
 	GetProfile() *AppServiceProfile
 	SetServiceType(v string) *AppService
@@ -50,6 +52,7 @@ type AppService struct {
 	GmtModified     *string            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	InstanceBizId   *string            `json:"InstanceBizId,omitempty" xml:"InstanceBizId,omitempty"`
 	Name            *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeList        []*TreeNode        `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
 	Profile         *AppServiceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	ServiceType     *string            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	ServiceTypeText *string            `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
@@ -97,6 +100,10 @@ func (s *AppService) GetInstanceBizId() *string {
 
 func (s *AppService) GetName() *string {
 	return s.Name
+}
+
+func (s *AppService) GetNodeList() []*TreeNode {
+	return s.NodeList
 }
 
 func (s *AppService) GetProfile() *AppServiceProfile {
@@ -167,6 +174,11 @@ func (s *AppService) SetName(v string) *AppService {
 	return s
 }
 
+func (s *AppService) SetNodeList(v []*TreeNode) *AppService {
+	s.NodeList = v
+	return s
+}
+
 func (s *AppService) SetProfile(v *AppServiceProfile) *AppService {
 	s.Profile = v
 	return s
@@ -203,6 +215,15 @@ func (s *AppService) SetUserId(v string) *AppService {
 }
 
 func (s *AppService) Validate() error {
+	if s.NodeList != nil {
+		for _, item := range s.NodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Profile != nil {
 		if err := s.Profile.Validate(); err != nil {
 			return err

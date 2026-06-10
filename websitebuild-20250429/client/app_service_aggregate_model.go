@@ -21,10 +21,14 @@ type iAppServiceAggregate interface {
 	GetGmtCreate() *string
 	SetGmtModified(v string) *AppServiceAggregate
 	GetGmtModified() *string
+	SetGroup(v *AppServiceGroup) *AppServiceAggregate
+	GetGroup() *AppServiceGroup
 	SetInstanceBizId(v string) *AppServiceAggregate
 	GetInstanceBizId() *string
 	SetName(v string) *AppServiceAggregate
 	GetName() *string
+	SetNodeList(v []*TreeNode) *AppServiceAggregate
+	GetNodeList() []*TreeNode
 	SetOperationAddress(v *AppOperationAddress) *AppServiceAggregate
 	GetOperationAddress() *AppOperationAddress
 	SetProfile(v *AppServiceProfile) *AppServiceAggregate
@@ -50,8 +54,10 @@ type AppServiceAggregate struct {
 	EspBizId         *string              `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
 	GmtCreate        *string              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Group            *AppServiceGroup     `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceBizId    *string              `json:"InstanceBizId,omitempty" xml:"InstanceBizId,omitempty"`
 	Name             *string              `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeList         []*TreeNode          `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
 	OperationAddress *AppOperationAddress `json:"OperationAddress,omitempty" xml:"OperationAddress,omitempty"`
 	Profile          *AppServiceProfile   `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	ServiceType      *string              `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
@@ -94,12 +100,20 @@ func (s *AppServiceAggregate) GetGmtModified() *string {
 	return s.GmtModified
 }
 
+func (s *AppServiceAggregate) GetGroup() *AppServiceGroup {
+	return s.Group
+}
+
 func (s *AppServiceAggregate) GetInstanceBizId() *string {
 	return s.InstanceBizId
 }
 
 func (s *AppServiceAggregate) GetName() *string {
 	return s.Name
+}
+
+func (s *AppServiceAggregate) GetNodeList() []*TreeNode {
+	return s.NodeList
 }
 
 func (s *AppServiceAggregate) GetOperationAddress() *AppOperationAddress {
@@ -164,6 +178,11 @@ func (s *AppServiceAggregate) SetGmtModified(v string) *AppServiceAggregate {
 	return s
 }
 
+func (s *AppServiceAggregate) SetGroup(v *AppServiceGroup) *AppServiceAggregate {
+	s.Group = v
+	return s
+}
+
 func (s *AppServiceAggregate) SetInstanceBizId(v string) *AppServiceAggregate {
 	s.InstanceBizId = &v
 	return s
@@ -171,6 +190,11 @@ func (s *AppServiceAggregate) SetInstanceBizId(v string) *AppServiceAggregate {
 
 func (s *AppServiceAggregate) SetName(v string) *AppServiceAggregate {
 	s.Name = &v
+	return s
+}
+
+func (s *AppServiceAggregate) SetNodeList(v []*TreeNode) *AppServiceAggregate {
+	s.NodeList = v
 	return s
 }
 
@@ -215,6 +239,20 @@ func (s *AppServiceAggregate) SetUserId(v string) *AppServiceAggregate {
 }
 
 func (s *AppServiceAggregate) Validate() error {
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodeList != nil {
+		for _, item := range s.NodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.OperationAddress != nil {
 		if err := s.OperationAddress.Validate(); err != nil {
 			return err
