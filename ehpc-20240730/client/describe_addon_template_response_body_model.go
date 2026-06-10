@@ -114,6 +114,10 @@ func (s *DescribeAddonTemplateResponseBody) Validate() error {
 
 type DescribeAddonTemplateResponseBodyAddon struct {
 	// The addon description.
+	//
+	// example:
+	//
+	// Logon node, mainly used for connecting to the E-HPC cluster environment and submitting user tasks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The addon icon.
 	//
@@ -122,6 +126,10 @@ type DescribeAddonTemplateResponseBodyAddon struct {
 	// /assets/icons/your_icon.svg
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	// The addon label.
+	//
+	// example:
+	//
+	// Logon node
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The date when the addon template was last updated.
 	//
@@ -506,8 +514,16 @@ func (s *DescribeAddonTemplateResponseBodyAddonServicesSpec) Validate() error {
 
 type DescribeAddonTemplateResponseBodyAddonServicesSpecInputParams struct {
 	// The help information of the parameter.
+	//
+	// example:
+	//
+	// MySQL installation root directory
 	HelpText *string `json:"HelpText,omitempty" xml:"HelpText,omitempty"`
 	// The parameter label.
+	//
+	// example:
+	//
+	// MySQL installation path
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The parameter name.
 	//

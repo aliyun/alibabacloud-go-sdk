@@ -71,6 +71,10 @@ type GetAddonResponseBodyAddon struct {
 	// Login-1.0-W2g****
 	AddonId *string `json:"AddonId,omitempty" xml:"AddonId,omitempty"`
 	// The addon description.
+	//
+	// example:
+	//
+	// Logon node, mainly used for connecting to the E-HPC cluster environment and submitting user tasks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The addon icon.
 	//
@@ -85,6 +89,10 @@ type GetAddonResponseBodyAddon struct {
 	// 2024-08-22 18:11:17
 	InstallTime *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
 	// The addon label.
+	//
+	// example:
+	//
+	// Logon node
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The addon name.
 	//
@@ -502,8 +510,16 @@ func (s *GetAddonResponseBodyAddonServicesSpec) Validate() error {
 
 type GetAddonResponseBodyAddonServicesSpecInputParams struct {
 	// The help information of the parameter.
+	//
+	// example:
+	//
+	// MySQL installation root directory
 	HelpText *string `json:"HelpText,omitempty" xml:"HelpText,omitempty"`
 	// The parameter label.
+	//
+	// example:
+	//
+	// MySQL installation path
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The parameter name.
 	//

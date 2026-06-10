@@ -62,31 +62,31 @@ type iGetClusterResponseBody interface {
 }
 
 type GetClusterResponseBody struct {
-	// The E-HPC Util version.
+	// The E-HPC Util version used by the cluster.
 	//
 	// example:
 	//
 	// 2.0.31
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The cluster type. Valid values:
+	// The cluster series. Valid values:
 	//
-	// 	- Standard
+	// - Standard
 	//
-	// 	- Serverless
+	// - Serverless
 	//
 	// example:
 	//
 	// Standard
 	ClusterCategory *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The cluster creation time. The time follows the ISO 8601 standard and is in UTC+0. The format is yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
 	// 2024-08-06T12:43:01.000Z
 	ClusterCreateTime *string `json:"ClusterCreateTime,omitempty" xml:"ClusterCreateTime,omitempty"`
-	// The post-processing script of the cluster.
+	// The cluster post-processing script.
 	ClusterCustomConfiguration *GetClusterResponseBodyClusterCustomConfiguration `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty" type:"Struct"`
-	// The cluster ID.
+	// The E-HPC cluster ID.
 	//
 	// example:
 	//
@@ -94,127 +94,127 @@ type GetClusterResponseBody struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The deployment type of the cluster. Valid values:
 	//
-	// 	- Integrated: The cluster is deployed on a public cloud.
+	// - Integrated: Public cloud
 	//
-	// 	- Hybrid: The cluster is deployed on a hybrid cloud.
+	// - Hybrid: Hybrid cloud
 	//
-	// 	- Custom: The cluster is a custom cluster.
+	// - Custom: Custom cluster
 	//
 	// example:
 	//
 	// Integrated
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// The time when the cluster was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The cluster modification time. The time follows the ISO 8601 standard and is in UTC+0. The format is yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
 	// 2024-08-06T12:43:01.000Z
 	ClusterModifyTime *string `json:"ClusterModifyTime,omitempty" xml:"ClusterModifyTime,omitempty"`
-	// The cluster name.
+	// The E-HPC cluster name.
 	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240614
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The cluster state. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- uninit: The cluster is being installed.
+	// - uninit: Installing
 	//
-	// 	- creating: The cluster is being created.
+	// - creating: Creating
 	//
-	// 	- initing: The cluster is being initialized.
+	// - initing: Initializing
 	//
-	// 	- running: The cluster is running.
+	// - running: Running
 	//
-	// 	- exception: The cluster has run into an exception.
+	// - exception: Abnormal
 	//
-	// 	- raleasing: The cluster is being released.
+	// - releasing: Releasing
 	//
-	// 	- stopping: The cluster is being stopped.
+	// - stopping: Stopping
 	//
-	// 	- stopped: The cluster is stopped.
+	// - stopped: Stopped
 	//
-	// 	- pending: The cluster is waiting to be configured.
+	// - pending: Pending configuration
 	//
 	// example:
 	//
 	// running
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// The ID of the vSwitch used by the cluster.
+	// The virtual switch ID used by the cluster.
 	//
 	// example:
 	//
 	// vsw-bp1p2uugqsjppno******
 	ClusterVSwitchId *string `json:"ClusterVSwitchId,omitempty" xml:"ClusterVSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) used by the cluster.
+	// The Virtual Private Cloud (VPC) ID used by the cluster.
 	//
 	// example:
 	//
 	// vpc-uf6u3lk1pjy28eg*****
 	ClusterVpcId *string `json:"ClusterVpcId,omitempty" xml:"ClusterVpcId,omitempty"`
-	// Indicates whether deletion protection is enabled for the cluster. Valid values:
+	// Indicates whether delete protection is enabled for the cluster. Valid values:
 	//
-	// 	- true
+	// - true: Enable delete protection.
 	//
-	// 	- false
+	// - false: Do not enable delete protection.
 	//
 	// example:
 	//
 	// true
 	DeleteProtection *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	// The E-HPC version.
+	// The E-HPC product version number.
 	//
 	// example:
 	//
 	// 2.0.0
 	EhpcVersion *string `json:"EhpcVersion,omitempty" xml:"EhpcVersion,omitempty"`
-	// Indicates whether automatic scale-in is enabled for the cluster. Valid values:
+	// Indicates whether auto scale-in is enabled for the cluster. Valid values:
 	//
-	// 	- true
+	// - true: Enable
 	//
-	// 	- false
+	// - false: Disable
 	//
 	// example:
 	//
 	// true
 	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
-	// Indicates whether automatic scale-out is enabled for the cluster. Valid values:
+	// Indicates whether auto scale-out is enabled for the cluster. Valid values:
 	//
-	// 	- true
+	// - true: Enable
 	//
-	// 	- false
+	// - false: Disable
 	//
 	// example:
 	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
-	// The interval at which the cluster is automatically scaled out.
+	// The interval for cluster auto scale-out.
 	//
 	// example:
 	//
 	// 2
 	GrowInterval *int32 `json:"GrowInterval,omitempty" xml:"GrowInterval,omitempty"`
-	// The idle duration of the compute nodes allowed by the cluster.
+	// The idle time of the cluster\\"s compute nodes.
 	//
 	// example:
 	//
 	// 4
 	IdleInterval *int32 `json:"IdleInterval,omitempty" xml:"IdleInterval,omitempty"`
-	// The management node configurations.
+	// The cluster control plane node configuration.
 	Manager *GetClusterResponseBodyManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
-	// The maximum total number of vCPUs that can be used by all compute nodes managed by the cluster.
+	// The total number of cores of compute nodes the cluster can manage.
 	//
 	// example:
 	//
 	// 10000
 	MaxCoreCount *string `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
-	// The maximum number of compute nodes that the cluster can manage.
+	// The number of compute nodes the cluster can manage.
 	//
 	// example:
 	//
 	// 100
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The monitoring details of the cluster.
+	// The cluster monitoring details.
 	MonitorSpec *GetClusterResponseBodyMonitorSpec `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -228,7 +228,7 @@ type GetClusterResponseBody struct {
 	//
 	// rg-acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The scheduler specifications of the cluster.
+	// The cluster scheduling details.
 	SchedulerSpec *GetClusterResponseBodySchedulerSpec `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty" type:"Struct"`
 	// The security group ID.
 	//
@@ -496,13 +496,13 @@ func (s *GetClusterResponseBody) Validate() error {
 }
 
 type GetClusterResponseBodyClusterCustomConfiguration struct {
-	// The arguments that are used to run the script after the scrip is installed.
+	// The runtime parameters of the post-installation script.
 	//
 	// example:
 	//
 	// E-HPC cn-hangzhou
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The URL that is used to download the post-processing script.
+	// The download URL of the post-processing script.
 	//
 	// example:
 	//
@@ -541,13 +541,13 @@ func (s *GetClusterResponseBodyClusterCustomConfiguration) Validate() error {
 }
 
 type GetClusterResponseBodyManager struct {
-	// The configurations of the domain name resolution service.
+	// The domain name resolution service configuration.
 	DNS *GetClusterResponseBodyManagerDNS `json:"DNS,omitempty" xml:"DNS,omitempty" type:"Struct"`
-	// The information about the domain account service.
+	// The domain account service information.
 	DirectoryService *GetClusterResponseBodyManagerDirectoryService `json:"DirectoryService,omitempty" xml:"DirectoryService,omitempty" type:"Struct"`
-	// The configurations of the management node.
+	// The control plane node configuration.
 	ManagerNode *GetClusterResponseBodyManagerManagerNode `json:"ManagerNode,omitempty" xml:"ManagerNode,omitempty" type:"Struct"`
-	// The information about the scheduler.
+	// The scheduler service information.
 	Scheduler *GetClusterResponseBodyManagerScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 }
 
@@ -620,33 +620,33 @@ func (s *GetClusterResponseBodyManager) Validate() error {
 }
 
 type GetClusterResponseBodyManagerDNS struct {
-	// The state of the domain name resolution service. Valid values:
+	// The domain name resolution service status. Valid values:
 	//
-	// 	- uninit: The service is being installed.
+	// - uninit: Installing
 	//
-	// 	- initing: The service is being initialized.
+	// - initing: Initializing
 	//
-	// 	- running: The service is running.
+	// - running: Running
 	//
-	// 	- exception: The service has run into an exception.
+	// - exception: Abnormal
 	//
-	// 	- releasing: The service is being released.
+	// - releasing: Releasing
 	//
-	// 	- stopped: The service is stopped.
+	// - stopped: Stopped
 	//
-	// 	- pending: The service is waiting to be configured.
+	// - pending: Pending configuration
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The resolution type.
+	// The domain name resolution type.
 	//
 	// example:
 	//
 	// nis
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the resolution service.
+	// The domain name resolution version.
 	//
 	// example:
 	//
@@ -694,33 +694,33 @@ func (s *GetClusterResponseBodyManagerDNS) Validate() error {
 }
 
 type GetClusterResponseBodyManagerDirectoryService struct {
-	// The state of the domain account service. Valid values:
+	// The domain account service status. Valid values:
 	//
-	// 	- uninit: The service is being installed.
+	// - uninit: Installing
 	//
-	// 	- initing: The service is being initialized.
+	// - initing: Initializing
 	//
-	// 	- running: The service is running.
+	// - running: Running
 	//
-	// 	- exception: The service has run into an exception.
+	// - exception: Abnormal
 	//
-	// 	- releasing: The service is being released.
+	// - releasing: Releasing
 	//
-	// 	- stopped: The service is stopped.
+	// - stopped: Stopped
 	//
-	// 	- pending: The service is waiting to be configured.
+	// - pending: Pending configuration
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the domain account.
+	// The domain account type.
 	//
 	// example:
 	//
 	// nis
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the domain account service.
+	// The domain account version.
 	//
 	// example:
 	//
@@ -778,7 +778,7 @@ type GetClusterResponseBodyManagerManagerNode struct {
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EnableHt *bool  `json:"EnableHt,omitempty" xml:"EnableHt,omitempty"`
-	// The expiration time of the management node.
+	// The expiration time of the control plane node.
 	//
 	// example:
 	//
@@ -788,23 +788,23 @@ type GetClusterResponseBodyManagerManagerNode struct {
 	//
 	// aliyun_2_1903_x64_20G_alibase_20200324.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance billing method of the management node. Valid values:
+	// The billing method of the control plane node instance. Valid values:
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: Pay-as-you-go
 	//
-	// 	- PrePaid: subscription
+	// - PrePaid: Subscription
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The instance ID of the management node.
+	// The control plane node instance ID.
 	//
 	// example:
 	//
 	// i-bp1a170jgea1vl******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type of the management node.
+	// The control plane node instance type.
 	//
 	// example:
 	//
@@ -1027,21 +1027,21 @@ func (s *GetClusterResponseBodyManagerManagerNodeSystemDisk) Validate() error {
 }
 
 type GetClusterResponseBodyManagerScheduler struct {
-	// The scheduler state. Valid values:
+	// The scheduler service status. Valid values:
 	//
-	// 	- uninit: The scheduler is being installed.
+	// - uninit: Installing
 	//
-	// 	- initing: The scheduler is being initialized.
+	// - initing: Initializing
 	//
-	// 	- running: The scheduler is running.
+	// - running: Running
 	//
-	// 	- exception: The scheduler has run into an exception.
+	// - exception: Abnormal
 	//
-	// 	- releasing: The scheduler is being released.
+	// - releasing: Releasing
 	//
-	// 	- stopped: The scheduler is stopped.
+	// - stopped: Stopped
 	//
-	// 	- pending: The scheduler is waiting to be configured.
+	// - pending: Pending configuration
 	//
 	// example:
 	//
@@ -1049,15 +1049,15 @@ type GetClusterResponseBodyManagerScheduler struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The scheduler type. Valid values:
 	//
-	// 	- SLURM
+	// - SLURM
 	//
-	// 	- PBS
+	// - PBS
 	//
-	// 	- OPENGRIDSCHEDULER
+	// - OPENGRIDSCHEDULER
 	//
-	// 	- LSF_PLUGIN
+	// - LSF_PLUGIN
 	//
-	// 	- PBS_PLUGIN
+	// - PBS_PLUGIN
 	//
 	// example:
 	//
@@ -1111,11 +1111,11 @@ func (s *GetClusterResponseBodyManagerScheduler) Validate() error {
 }
 
 type GetClusterResponseBodyMonitorSpec struct {
-	// Indicates whether the monitoring component of compute nodes is enabled for the cluster. Valid values:
+	// Indicates whether the monitoring component for compute nodes is enabled for the cluster. Valid values:
 	//
-	// 	- true
+	// - true: Enable
 	//
-	// 	- false
+	// - false: Disable
 	//
 	// example:
 	//
@@ -1148,9 +1148,9 @@ type GetClusterResponseBodySchedulerSpec struct {
 	EnablePowerSaving *bool `json:"EnablePowerSaving,omitempty" xml:"EnablePowerSaving,omitempty"`
 	// Indicates whether the topology awareness feature is enabled for the cluster. Valid values:
 	//
-	// 	- true
+	// - true: Enable
 	//
-	// 	- false
+	// - false: Disable
 	//
 	// example:
 	//

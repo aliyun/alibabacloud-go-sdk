@@ -590,8 +590,16 @@ type ListClustersResponseBodyClustersAddons struct {
 	// Login-1.0-W2g****
 	AddonId *string `json:"AddonId,omitempty" xml:"AddonId,omitempty"`
 	// The addon description.
+	//
+	// example:
+	//
+	// Logon node, mainly used for connecting to the E-HPC cluster environment and submitting user tasks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The addon label.
+	//
+	// example:
+	//
+	// Logon node
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The addon name.
 	//

@@ -33,6 +33,10 @@ type iCreateClusterRequest interface {
 	GetClusterVpcId() *string
 	SetDeletionProtection(v bool) *CreateClusterRequest
 	GetDeletionProtection() *bool
+	SetGrowInterval(v int32) *CreateClusterRequest
+	GetGrowInterval() *int32
+	SetIdleInterval(v int32) *CreateClusterRequest
+	GetIdleInterval() *int32
 	SetIsEnterpriseSecurityGroup(v bool) *CreateClusterRequest
 	GetIsEnterpriseSecurityGroup() *bool
 	SetManager(v *CreateClusterRequestManager) *CreateClusterRequest
@@ -54,95 +58,97 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
-	// The list of software that you want to install in the cluster. Valid values of N: 0 to 10.
+	// A list of software to install in the cluster. You can specify up to 10 packages.
 	AdditionalPackages []*CreateClusterRequestAdditionalPackages `json:"AdditionalPackages,omitempty" xml:"AdditionalPackages,omitempty" type:"Repeated"`
-	// The configurations of the custom addons in the cluster. Only one addon is supported.
+	// The configuration of the custom service component for the cluster. Only one component is supported.
 	Addons []*CreateClusterRequestAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	// The client version. By default, the latest version is used.
+	// The version of the E-HPC client. By default, the latest version is used.
 	//
 	// example:
 	//
 	// 2.1.0
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The cluster type. Valid values:
+	// The edition of the cluster. Valid values:
 	//
-	// 	- Standard
+	// - Standard
 	//
-	// 	- Serverless
+	// - Serverless
 	//
 	// example:
 	//
 	// Standard
 	ClusterCategory *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
-	// The access credentials of the cluster.
+	// The security credentials for the cluster.
 	ClusterCredentials *CreateClusterRequestClusterCredentials `json:"ClusterCredentials,omitempty" xml:"ClusterCredentials,omitempty" type:"Struct"`
-	// The post-processing script of the cluster.
+	// The post-processing script for the cluster.
 	ClusterCustomConfiguration *CreateClusterRequestClusterCustomConfiguration `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty" type:"Struct"`
-	// The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The description of the cluster. The description must be 2 to 128 characters long and can contain letters, Chinese characters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240718
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	// The deployment mode of the cluster. Valid values:
+	// The cluster\\"s deployment type. Valid values:
 	//
-	// 	- Integrated
+	// - Integrated: An integrated cluster.
 	//
-	// 	- Hybrid
+	// - Hybrid: A hybrid cloud cluster.
 	//
-	// 	- Custom
+	// - Custom: A custom cluster.
 	//
 	// example:
 	//
 	// Integrated
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name of the cluster. The name must be 2 to 128 characters long and can contain letters, Chinese characters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240718
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
+	// The ID of the VSwitch for the cluster. The VSwitch must be in the VPC specified by `ClusterVpcId`.
 	//
-	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to query information about the created VPCs and vSwitches.
+	// Call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to find available VPCs and VSwitches.
 	//
 	// example:
 	//
 	// vsw-f8za5p0mwzgdu3wgx****
 	ClusterVSwitchId *string `json:"ClusterVSwitchId,omitempty" xml:"ClusterVSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the cluster resides.
+	// The ID of the VPC for the cluster.
 	//
 	// example:
 	//
 	// vpc-m5efjevmclc0xdmys****
 	ClusterVpcId *string `json:"ClusterVpcId,omitempty" xml:"ClusterVpcId,omitempty"`
-	// Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation. Valid values:
+	// Specifies whether to enable deletion protection for the cluster. This feature prevents the cluster from being deleted via the console or the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation.
 	//
-	// 	- true
+	// - true: Enables deletion protection.
 	//
-	// 	- false
+	// - false: Disables deletion protection.
 	//
 	// Default value: false.
 	//
 	// example:
 	//
 	// false
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to use an advanced security group. Valid values:
+	DeletionProtection *bool  `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	GrowInterval       *int32 `json:"GrowInterval,omitempty" xml:"GrowInterval,omitempty"`
+	IdleInterval       *int32 `json:"IdleInterval,omitempty" xml:"IdleInterval,omitempty"`
+	// Specifies whether to use an enterprise security group. Valid values:
 	//
-	// 	- true: automatically creates and uses an advanced security group.
+	// - true: The system automatically creates and uses an enterprise security group.
 	//
-	// 	- false: automatically creates and uses a basic security group.
+	// - false: The system automatically creates and uses a security group.
 	//
-	// For more information, see [Basic security groups and advanced security groups](https://help.aliyun.com/document_detail/605897.html).
+	// For more information about how to select a security group type, see [Security groups and enterprise security groups](https://help.aliyun.com/document_detail/605897.html).
 	//
 	// example:
 	//
 	// false
 	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
-	// The configurations of the cluster management node.
+	// Configuration for the cluster manager node.
 	Manager *CreateClusterRequestManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
-	// The maximum number of vCPUs that can be used by compute nodes in the cluster. Valid values: 0 to 100,000.
+	// The maximum number of CPU cores that the cluster can manage across all compute nodes. Valid values: 0 to 100,000.
 	//
 	// example:
 	//
@@ -154,27 +160,27 @@ type CreateClusterRequest struct {
 	//
 	// 500
 	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The queues in the cluster. The number of queues can be 0 to 8.
+	// Configuration for the cluster queues. You can specify up to 8 queues.
 	Queues []*QueueTemplate `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the cluster belongs.
+	// The ID of the resource group.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the IDs of the resource groups.
+	// Call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to find resource group IDs.
 	//
 	// example:
 	//
 	// rg-acfmxazb4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group to which the cluster belongs.
+	// The ID of the security group for the cluster.
 	//
-	// You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
+	// Call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to find available security groups in the current region.
 	//
 	// example:
 	//
 	// sg-bp13n61xsydodfyg****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The shared storage resources of the cluster.
+	// Configuration for the cluster\\"s shared storage.
 	SharedStorages []*SharedStorageTemplate `json:"SharedStorages,omitempty" xml:"SharedStorages,omitempty" type:"Repeated"`
-	// The tags of the cluster.
+	// The list of tags to add to the cluster. You can add up to 20 tags.
 	Tags []*CreateClusterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -232,6 +238,14 @@ func (s *CreateClusterRequest) GetClusterVpcId() *string {
 
 func (s *CreateClusterRequest) GetDeletionProtection() *bool {
 	return s.DeletionProtection
+}
+
+func (s *CreateClusterRequest) GetGrowInterval() *int32 {
+	return s.GrowInterval
+}
+
+func (s *CreateClusterRequest) GetIdleInterval() *int32 {
+	return s.IdleInterval
 }
 
 func (s *CreateClusterRequest) GetIsEnterpriseSecurityGroup() *bool {
@@ -327,6 +341,16 @@ func (s *CreateClusterRequest) SetClusterVpcId(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetDeletionProtection(v bool) *CreateClusterRequest {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetGrowInterval(v int32) *CreateClusterRequest {
+	s.GrowInterval = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetIdleInterval(v int32) *CreateClusterRequest {
+	s.IdleInterval = &v
 	return s
 }
 
@@ -440,13 +464,13 @@ func (s *CreateClusterRequest) Validate() error {
 }
 
 type CreateClusterRequestAdditionalPackages struct {
-	// The name of the software that you want to install in the cluster.
+	// The name of the software.
 	//
 	// example:
 	//
 	// mpich
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version of the software that you want to install in the cluster.
+	// The version of the software.
 	//
 	// example:
 	//
@@ -485,7 +509,7 @@ func (s *CreateClusterRequestAdditionalPackages) Validate() error {
 }
 
 type CreateClusterRequestAddons struct {
-	// The addon name.
+	// The name of the custom service component.
 	//
 	// This parameter is required.
 	//
@@ -493,19 +517,19 @@ type CreateClusterRequestAddons struct {
 	//
 	// Login
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The resource configurations of the addon.
+	// The resource configuration of the custom service component.
 	//
 	// example:
 	//
 	// "{\\\\"EipResource\\\\": {\\\\"AutoCreate\\\\": true}, \\\\"EcsResources\\\\": [{\\\\"InstanceType\\\\": \\\\"ecs.c7.xlarge\\\\", \\\\"ImageId\\\\": \\\\"centos_7_6_x64_20G_alibase_20211130.vhd\\\\", \\\\"SystemDisk\\\\": {\\\\"Category\\\\": \\\\"cloud_essd\\\\", \\\\"Size\\\\": 40, \\\\"Level\\\\": \\\\"PL0\\\\"}, \\\\"EnableHT\\\\": true, \\\\"InstanceChargeType\\\\": \\\\"PostPaid\\\\", \\\\"SpotStrategy\\\\": \\\\"NoSpot\\\\"}]}"
 	ResourcesSpec *string `json:"ResourcesSpec,omitempty" xml:"ResourcesSpec,omitempty"`
-	// The service configurations of the addon.
+	// The service configuration of the custom service component.
 	//
 	// example:
 	//
 	// "[{\\\\"ServiceName\\\\": \\\\"SSH\\\\", \\\\"ServiceAccessType\\\\": null, \\\\"ServiceAccessUrl\\\\": null, \\\\"NetworkACL\\\\": [{\\\\"IpProtocol\\\\": \\\\"TCP\\\\", \\\\"Port\\\\": 22, \\\\"SourceCidrIp\\\\": \\\\"0.0.0.0/0\\\\"}]}, {\\\\"ServiceName\\\\": \\\\"VNC\\\\", \\\\"ServiceAccessType\\\\": null, \\\\"ServiceAccessUrl\\\\": null, \\\\"NetworkACL\\\\": [{\\\\"IpProtocol\\\\": \\\\"TCP\\\\", \\\\"Port\\\\": 12016, \\\\"SourceCidrIp\\\\": \\\\"0.0.0.0/0\\\\"}]}, {\\\\"ServiceName\\\\": \\\\"CLIENT\\\\", \\\\"ServiceAccessType\\\\": \\\\"URL\\\\", \\\\"ServiceAccessUrl\\\\": \\\\"\\\\", \\\\"NetworkACL\\\\": [{\\\\"IpProtocol\\\\": \\\\"TCP\\\\", \\\\"Port\\\\": 12011, \\\\"SourceCidrIp\\\\": \\\\"0.0.0.0/0\\\\"}]}]"
 	ServicesSpec *string `json:"ServicesSpec,omitempty" xml:"ServicesSpec,omitempty"`
-	// The addon version.
+	// The version of the custom service component.
 	//
 	// This parameter is required.
 	//
@@ -564,17 +588,17 @@ func (s *CreateClusterRequestAddons) Validate() error {
 }
 
 type CreateClusterRequestClusterCredentials struct {
-	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+	// The key pair name. The name must be 2 to 128 characters long, start with a letter or a Chinese character, and not start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
-	// >  For more information, see [Create a key pair](https://help.aliyun.com/document_detail/51793.html).
+	// > To use an ECS key pair, see [Create a key pair](https://help.aliyun.com/document_detail/51793.html).
 	//
 	// example:
 	//
 	// ali0824
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The password for the root user to log on to the node. The password must be 8 to 20 characters in length, and must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: `() ~ ! @ # $ % ^ & 	- - = + { } [ ] : ; \\" < > , . ? /`
+	// The root password of the login node. The password must be 8 to 20 characters long and include characters from at least three of the following categories: uppercase letters, lowercase letters, digits, and special characters. The supported special characters are: `() ~ ! @ # $ % ^ & 	- - = + { } [ ] : ; ‘ < > , . ? /`
 	//
-	// >  We recommend that you use HTTPS to call the API operation to prevent password leakage.
+	// > Use HTTPS when calling the API to prevent password exposure.
 	//
 	// example:
 	//
@@ -613,13 +637,13 @@ func (s *CreateClusterRequestClusterCredentials) Validate() error {
 }
 
 type CreateClusterRequestClusterCustomConfiguration struct {
-	// The runtime parameters of the script after the cluster is created.
+	// The execution parameters for the post-processing script.
 	//
 	// example:
 	//
 	// E-HPC cn-hangzhou
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The URL that is used to download the post-processing script.
+	// The download URL for the post-processing script.
 	//
 	// example:
 	//
@@ -658,13 +682,13 @@ func (s *CreateClusterRequestClusterCustomConfiguration) Validate() error {
 }
 
 type CreateClusterRequestManager struct {
-	// The configurations of the domain name resolution service.
+	// Configuration for the DNS service.
 	DNS *CreateClusterRequestManagerDNS `json:"DNS,omitempty" xml:"DNS,omitempty" type:"Struct"`
-	// The configurations of the domain account service.
+	// Configuration for the directory service.
 	DirectoryService *CreateClusterRequestManagerDirectoryService `json:"DirectoryService,omitempty" xml:"DirectoryService,omitempty" type:"Struct"`
-	// The hardware configurations of the management node.
+	// Hardware configuration for the manager node.
 	ManagerNode *NodeTemplate `json:"ManagerNode,omitempty" xml:"ManagerNode,omitempty"`
-	// The configurations of the scheduler service.
+	// Configuration for the scheduler.
 	Scheduler *CreateClusterRequestManagerScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 }
 
@@ -737,17 +761,13 @@ func (s *CreateClusterRequestManager) Validate() error {
 }
 
 type CreateClusterRequestManagerDNS struct {
-	// The domain name resolution type.
-	//
-	// Valid values:
-	//
-	// 	- NIS
+	// The DNS service type.
 	//
 	// example:
 	//
 	// NIS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the domain name resolution service.
+	// The DNS service version.
 	//
 	// example:
 	//
@@ -786,17 +806,13 @@ func (s *CreateClusterRequestManagerDNS) Validate() error {
 }
 
 type CreateClusterRequestManagerDirectoryService struct {
-	// The type of the domain account.
-	//
-	// Valid values:
-	//
-	// 	- NIS
+	// The directory service type.
 	//
 	// example:
 	//
 	// NIS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the domain account service.
+	// The directory service version.
 	//
 	// example:
 	//
@@ -837,15 +853,15 @@ func (s *CreateClusterRequestManagerDirectoryService) Validate() error {
 type CreateClusterRequestManagerScheduler struct {
 	// The scheduler type. Valid values:
 	//
-	// 	- SLURM
+	// - SLURM
 	//
-	// 	- PBS
+	// - PBS
 	//
-	// 	- OPENGRIDSCHEDULER
+	// - OPENGRIDSCHEDULER
 	//
-	// 	- LSF_PLUGIN
+	// - LSF_PLUGIN
 	//
-	// 	- PBS_PLUGIN
+	// - PBS_PLUGIN
 	//
 	// example:
 	//
@@ -890,13 +906,13 @@ func (s *CreateClusterRequestManagerScheduler) Validate() error {
 }
 
 type CreateClusterRequestTags struct {
-	// The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	// The tag key. The key cannot be an empty string. The key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// ClusterId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value. The value can be an empty string. The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

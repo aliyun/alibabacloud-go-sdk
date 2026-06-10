@@ -22,7 +22,6 @@ type iListInstalledSoftwaresResponseBody interface {
 }
 
 type ListInstalledSoftwaresResponseBody struct {
-	// The list of installed software.
 	AdditionalPackages *ListInstalledSoftwaresResponseBodyAdditionalPackages `json:"AdditionalPackages,omitempty" xml:"AdditionalPackages,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,54 +146,13 @@ func (s *ListInstalledSoftwaresResponseBodyAdditionalPackages) Validate() error 
 }
 
 type ListInstalledSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos struct {
-	// The category into which the software falls.
-	//
-	// example:
-	//
-	// NWP
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the software was installed.
-	//
-	// example:
-	//
-	// 2024-03-05 18:24:08
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The software description.
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the software icon.
-	//
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i2/O1CN01FIkxZ81LmE0fvrAyR_!!6000000001341-55-tps-6349-1603.svg
-	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The software name.
-	//
-	// example:
-	//
-	// gromacs
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The installation status of the software.
-	//
-	// Valid values:
-	//
-	// 	- Installed
-	//
-	// 	- Uninstalled
-	//
-	// 	- Installing
-	//
-	// 	- Exception
-	//
-	// example:
-	//
-	// Installed
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The software version.
-	//
-	// example:
-	//
-	// 2024.1
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Icon        *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListInstalledSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos) String() string {

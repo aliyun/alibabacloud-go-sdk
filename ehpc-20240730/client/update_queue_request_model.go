@@ -18,13 +18,13 @@ type iUpdateQueueRequest interface {
 type UpdateQueueRequest struct {
 	// The cluster ID.
 	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	// Call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to get the cluster ID.
 	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The information about the queue to be updated.
+	// The queue information to update.
 	Queue *UpdateQueueRequestQueue `json:"Queue,omitempty" xml:"Queue,omitempty" type:"Struct"`
 }
 
@@ -64,43 +64,43 @@ func (s *UpdateQueueRequest) Validate() error {
 }
 
 type UpdateQueueRequestQueue struct {
-	// The policy based on which instance types are selected for compute nodes during auto scale-outs. Valid values:
+	// The strategy for selecting instance types when the queue scales out automatically. Valid values:
 	//
-	// 	- PriorityInstanceType
+	// - PriorityInstanceType
 	//
 	// example:
 	//
 	// PriorityInstanceType
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
-	// The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10.
+	// The hardware configuration of compute nodes in the queue. Valid values for N: 1 to 10.
 	ComputeNodes []*NodeTemplate `json:"ComputeNodes,omitempty" xml:"ComputeNodes,omitempty" type:"Repeated"`
-	// Specifies whether to enable auto scale-in for the queue. Valid values:
+	// Enable auto scale-in for the queue. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
-	// Specifies whether to enable auto scale-out for the queue. Valid values:
+	// Enable auto scale-out for the queue. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
-	// The hostname prefix of the added compute nodes.
+	// The hostname prefix for compute nodes in the queue.
 	//
 	// example:
 	//
 	// compute
 	HostnamePrefix *string `json:"HostnamePrefix,omitempty" xml:"HostnamePrefix,omitempty"`
-	// The hostname suffix of the compute nodes in the queue.
+	// The hostname suffix for compute nodes in the queue.
 	//
 	// example:
 	//
@@ -112,27 +112,27 @@ type UpdateQueueRequestQueue struct {
 	//
 	// 0
 	InitialCount *int32 `json:"InitialCount,omitempty" xml:"InitialCount,omitempty"`
-	// The type of the network for interconnecting compute nodes in the queue.
+	// The interconnect network type for compute nodes in the queue.
 	//
 	// example:
 	//
 	// erdma
 	InterConnect *string `json:"InterConnect,omitempty" xml:"InterConnect,omitempty"`
-	// List of excluded compute nodes in the queue.
+	// The list of exceptional compute nodes in the queue.
 	KeepAliveNodes []*string `json:"KeepAliveNodes,omitempty" xml:"KeepAliveNodes,omitempty" type:"Repeated"`
-	// The maximum number of compute nodes that the queue can contain.
+	// The maximum number of compute nodes that the queue can retain.
 	//
 	// example:
 	//
 	// 1000
 	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The minimum number of compute nodes that are added to the queue during an automatic scale-out.
+	// The minimum number of compute nodes created during auto scale-out.
 	//
 	// example:
 	//
 	// 99
 	MaxCountPerCycle *int64 `json:"MaxCountPerCycle,omitempty" xml:"MaxCountPerCycle,omitempty"`
-	// The minimum number of compute nodes that the queue must contain.
+	// The minimum number of nodes that the queue retains.
 	//
 	// example:
 	//
@@ -146,14 +146,14 @@ type UpdateQueueRequestQueue struct {
 	//
 	// comp
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
+	// The name of the instance role attached to compute nodes in the queue.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForEHPCRole
 	RamRole            *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
-	// The vSwitches available for use by compute nodes in the queue.
+	// The list of vSwitches available for compute nodes in the queue.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

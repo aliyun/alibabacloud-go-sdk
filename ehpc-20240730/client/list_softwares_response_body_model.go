@@ -22,7 +22,6 @@ type iListSoftwaresResponseBody interface {
 }
 
 type ListSoftwaresResponseBody struct {
-	// The information about the software that can be installed in the cluster.
 	AdditionalPackages *ListSoftwaresResponseBodyAdditionalPackages `json:"AdditionalPackages,omitempty" xml:"AdditionalPackages,omitempty" type:"Struct"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
@@ -147,28 +146,11 @@ func (s *ListSoftwaresResponseBodyAdditionalPackages) Validate() error {
 }
 
 type ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos struct {
-	// The application category.
-	//
-	// example:
-	//
-	// NWP
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The software description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the software icon.
-	//
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i2/O1CN01FIkxZ81LmE0fvrAyR_!!6000000001341-55-tps-6349-1603.svg
-	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The software name.
-	//
-	// example:
-	//
-	// gromacs
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about the software versions that can be installed in the cluster.
-	Versions *ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Struct"`
+	Category    *string                                                                    `json:"Category,omitempty" xml:"Category,omitempty"`
+	Description *string                                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	Icon        *string                                                                    `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Name        *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Versions    *ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Struct"`
 }
 
 func (s ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos) String() string {
@@ -268,20 +250,9 @@ func (s *ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersio
 }
 
 type ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsVersionInfos struct {
-	// Indicates whether the version is the latest.
-	//
-	// example:
-	//
-	// false
-	Latest *string `json:"Latest,omitempty" xml:"Latest,omitempty"`
-	// The information about the supported OSs.
+	Latest    *string                                                                                         `json:"Latest,omitempty" xml:"Latest,omitempty"`
 	SupportOs *ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsVersionInfosSupportOs `json:"SupportOs,omitempty" xml:"SupportOs,omitempty" type:"Struct"`
-	// The software version.
-	//
-	// example:
-	//
-	// 2024.1
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version   *string                                                                                         `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsVersionInfos) String() string {
@@ -363,22 +334,8 @@ func (s *ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersio
 }
 
 type ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsVersionInfosSupportOsSupportOsInfos struct {
-	// The OS architecture. Valid values:
-	//
-	// 	- x86_64
-	//
-	// 	- arm64
-	//
-	// example:
-	//
-	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The image tag.
-	//
-	// example:
-	//
-	// Alibaba Cloud Linux  3.2104 LTS 64 bit ARM Edition
-	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	OsTag        *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 }
 
 func (s ListSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfosVersionsVersionInfosSupportOsSupportOsInfos) String() string {

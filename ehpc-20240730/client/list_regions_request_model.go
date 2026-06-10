@@ -20,18 +20,38 @@ type iListRegionsRequest interface {
 }
 
 type ListRegionsRequest struct {
+	// The language of the response. The default value is zh-CN. Valid values:
+	//
+	// - zh-CN (default): Chinese.
+	//
+	// - en-US: English.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0axxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The product name. The default value is Next. Valid values:
+	//
+	// - Next: The E-HPC Cluster product, formerly known as E-HPC NEXT.
+	//
+	// - Instant: The E-HPC Instant product.
+	//
 	// example:
 	//
 	// Next

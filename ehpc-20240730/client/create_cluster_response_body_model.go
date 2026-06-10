@@ -32,11 +32,11 @@ type CreateClusterResponseBody struct {
 	//
 	// F6757FA4-8FED-4602-B7F5-3550C0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request succeeded.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

@@ -24,26 +24,42 @@ type iSharedStorageTemplate interface {
 }
 
 type SharedStorageTemplate struct {
+	// The ID of the mounted file system.
+	//
 	// example:
 	//
 	// 008b63****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The local mount directory of the attached file system.
+	//
 	// example:
 	//
 	// /home
 	MountDirectory *string `json:"MountDirectory,omitempty" xml:"MountDirectory,omitempty"`
+	// The storage mount options of the mounted file system.
+	//
 	// example:
 	//
 	// -t nfs -o vers=3,nolock,noresvport
 	MountOptions *string `json:"MountOptions,omitempty" xml:"MountOptions,omitempty"`
+	// The address of the mount point of the file system.
+	//
 	// example:
 	//
 	// 008b****-sihc.cn-hangzhou.extreme.nas.aliyuncs.com
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
+	// The remote mount directory of the mounted file system.
+	//
 	// example:
 	//
 	// /
 	NASDirectory *string `json:"NASDirectory,omitempty" xml:"NASDirectory,omitempty"`
+	// The protocol type of the mounted file system. Valid values:
+	//
+	// 	- NFS
+	//
+	// 	- SMB
+	//
 	// example:
 	//
 	// NFS

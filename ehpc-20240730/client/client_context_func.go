@@ -151,13 +151,13 @@ func (client *Client) AttachSharedStoragesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+// Create a pay-as-you-go or subscription cluster.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## API
 //
-// Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
+// Before using this interface, ensure you understand the E-HPC billing method and pricing. For more information, see [billing overview](https://help.aliyun.com/document_detail/2842985.html).
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -252,6 +252,14 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 	if !dara.IsNil(request.DeletionProtection) {
 		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !dara.IsNil(request.GrowInterval) {
+		query["GrowInterval"] = request.GrowInterval
+	}
+
+	if !dara.IsNil(request.IdleInterval) {
+		query["IdleInterval"] = request.IdleInterval
 	}
 
 	if !dara.IsNil(request.IsEnterpriseSecurityGroup) {
@@ -377,11 +385,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 // Summary:
 //
-// Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster.
-//
-// Description:
-//
-// ## [](#)
+// Creates a batch of compute nodes for an E-HPC cluster.
 //
 // @param tmpReq - CreateNodesRequest
 //
@@ -541,7 +545,7 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// 创建预设节点池
+// Creates a reserved node pool. A reserved node pool reserves a batch of active IP addresses from a vSwitch. It maps each IP address to a hostname based on a rule and maintains the resources for the node pool. When you use the reserved node pool to scale nodes, the corresponding resources are allocated or released.
 //
 // @param request - CreateReservedNodePoolRequest
 //
@@ -835,7 +839,7 @@ func (client *Client) DeleteQueuesWithContext(ctx context.Context, tmpReq *Delet
 
 // Summary:
 //
-// 删除集群预设节点池
+// Deletes the specified reserved node pool.
 //
 // @param request - DeleteReservedNodePoolRequest
 //
@@ -1095,7 +1099,7 @@ func (client *Client) GetAddonWithContext(ctx context.Context, request *GetAddon
 
 // Summary:
 //
-// Queries information about an Elastic High Performance Computing (E-HPC) cluster.
+// Query information about a specified E-HPC cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1309,7 +1313,7 @@ func (client *Client) GetJobLogWithContext(ctx context.Context, request *GetJobL
 
 // Summary:
 //
-// Queries the details of a queue in an Elastic High Performance Computing (E-HPC) cluster.
+// Query the details of a specified queue in an E-HPC cluster.
 //
 // @param request - GetQueueRequest
 //
@@ -2117,7 +2121,7 @@ func (client *Client) ListQueuesWithContext(ctx context.Context, tmpReq *ListQue
 
 // Summary:
 //
-// 查询产品支持的地域列表。
+// Queries the available regions for the product.
 //
 // @param request - ListRegionsRequest
 //
@@ -2645,7 +2649,11 @@ func (client *Client) UpdateNodesWithContext(ctx context.Context, tmpReq *Update
 
 // Summary:
 //
-// Modifies the configurations of a queue in an Elastic High Performance Computing (E-HPC) cluster.
+// Updates the configuration of a specified queue in an E-HPC cluster.
+//
+// Description:
+//
+// When you update a queue configuration, the system sets all fields based on the parameters in your current request. If you call this operation multiple times, only the parameters from the last call take effect.
 //
 // @param tmpReq - UpdateQueueRequest
 //

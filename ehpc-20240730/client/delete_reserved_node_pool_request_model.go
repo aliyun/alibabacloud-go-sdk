@@ -16,10 +16,14 @@ type iDeleteReservedNodePoolRequest interface {
 }
 
 type DeleteReservedNodePoolRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The reserved node pool ID.
+	//
 	// example:
 	//
 	// rnp-cdx****

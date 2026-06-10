@@ -18,7 +18,7 @@ type iCreateNodesResponseBody interface {
 }
 
 type CreateNodesResponseBody struct {
-	// The IDs of the compute nodes to be created.
+	// A list of instance IDs for the created compute nodes.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,11 +26,11 @@ type CreateNodesResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

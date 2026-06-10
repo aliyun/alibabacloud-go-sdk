@@ -22,19 +22,32 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
+	// The maximum number of entries returned per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0axxxx
-	NextToken *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Regions   []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of available regions.
+	Regions []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that meet the query conditions.<br>This parameter is optional and may not be returned.
+	//
 	// example:
 	//
 	// 16
@@ -108,7 +121,14 @@ func (s *ListRegionsResponseBody) Validate() error {
 }
 
 type ListRegionsResponseBodyRegions struct {
+	// The name of the region.
+	//
+	// example:
+	//
+	// 华东1（杭州）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

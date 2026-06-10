@@ -45,9 +45,8 @@ type ListUsersResponseBody struct {
 	// example:
 	//
 	// 15
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the users.
-	Users *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Users      *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -147,39 +146,10 @@ func (s *ListUsersResponseBodyUsers) Validate() error {
 }
 
 type ListUsersResponseBodyUsersUserInfo struct {
-	// The time when the user was first added.
-	//
-	// example:
-	//
-	// 2014-08-22T17:46:47
-	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The name of the permission group. Valid values:
-	//
-	// users: ordinary permissions, which are suitable for regular users that need only to submit and debug jobs.
-	//
-	// wheel: sudo permissions, which are suitable for administrators who need to manage clusters. In addition to submitting and debugging jobs, you can also run sudo commands to install software and restart nodes.
-	//
-	// example:
-	//
-	// users
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The permission group ID.
-	//
-	// example:
-	//
-	// 100
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The user ID.
-	//
-	// example:
-	//
-	// 1001
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username.
-	//
-	// example:
-	//
-	// testuser
+	AddTime  *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	Group    *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

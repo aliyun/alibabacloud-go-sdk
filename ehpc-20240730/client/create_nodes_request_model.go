@@ -40,58 +40,59 @@ type iCreateNodesRequest interface {
 }
 
 type CreateNodesRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	// You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to obtain the cluster ID.
 	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The hardware configurations of the compute nodes.
+	// Specifies the hardware configuration of the compute node.
 	ComputeNode *NodeTemplate `json:"ComputeNode,omitempty" xml:"ComputeNode,omitempty"`
-	// The number of compute nodes that you want to add. Valid values: 1 to 99. The MinCount value must be smaller than the Count value.
+	// The number of compute nodes to add. Valid values: 1 to 99. The value of MinCount must be less than the value of Count.
 	//
-	// 	- If the number of available Elastic Compute Service (ECS) instances is smaller than the MinCount value, the nodes fail to be added.
+	// - If the ECS inventory is less than MinCount, the operation fails.
 	//
-	// 	- If the number of available ECS instances is larger than the MinCount value but smaller than the Count value, nodes are added based on the MinCount value.
+	// - If the ECS inventory is between MinCount and Count, the number of nodes specified by MinCount is added.
 	//
-	// 	- If the number of available ECS instances is larger than the Count value, nodes are added based on the Count value.
+	// - If the ECS inventory is greater than Count, the number of nodes specified by Count is added.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Deployment set ID. You can obtain the deployment set ID through [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html). Currently, only deployment sets with a low network latency strategy are supported.
+	// The ID of the deployment set. You can call the [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html) operation to obtain the ID. Only deployment sets that use the low-latency network policy are supported.
 	//
 	// example:
 	//
 	// ds-bp1frxuzdg87zh4pzq****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The type of the network between compute nodes. Valid values:
+	// Specifies the network type for communication between compute nodes. Valid values:
 	//
-	// 	- vpc
+	// - vpc
 	//
-	// 	- eRDMA
+	// - eRDMA
 	//
 	// example:
 	//
 	// vpc
 	HPCInterConnect *string `json:"HPCInterConnect,omitempty" xml:"HPCInterConnect,omitempty"`
-	// The hostname prefix of the added compute nodes.
+	// The hostname prefix for the compute nodes in the queue.
 	//
 	// example:
 	//
 	// compute
 	HostnamePrefix *string `json:"HostnamePrefix,omitempty" xml:"HostnamePrefix,omitempty"`
-	// The hostname suffix of the added compute nodes.
+	// The hostname suffix of the compute nodes in the queue.
 	//
 	// example:
 	//
 	// demo
-	HostnameSuffix *string   `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
-	Hostnames      []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// Specifies whether to enable deletion protection for the added compute nodes.
+	HostnameSuffix *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
+	// The ID of the reserved node pool.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// Specifies whether deletion protection is enabled for the compute node.
 	//
 	// example:
 	//
@@ -101,25 +102,25 @@ type CreateNodesRequest struct {
 	//
 	// 10
 	MinCount *int32 `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	// The name of the queue for which you want to create compute nodes.
+	// The name of the queue to which the compute nodes belong.
 	//
 	// example:
 	//
 	// test1
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The Resource Access Management (RAM) role to be assumed by the added nodes.
+	// The name of the authorized instance role to be attached to the compute nodes in the queue.
 	//
 	// example:
 	//
 	// AliyunServiceRoleForOOSBandwidthScheduler
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
-	// Preset node pool ID.
+	// The ID of the reserved node pool.
 	//
 	// example:
 	//
 	// rnp-756vlp7a
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
-	// The ID of the vSwitch to be used by the added nodes.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

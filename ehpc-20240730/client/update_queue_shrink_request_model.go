@@ -18,13 +18,13 @@ type iUpdateQueueShrinkRequest interface {
 type UpdateQueueShrinkRequest struct {
 	// The cluster ID.
 	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	// Call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to get the cluster ID.
 	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The information about the queue to be updated.
+	// The queue information to update.
 	QueueShrink *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
 }
 

@@ -126,6 +126,10 @@ type ListAddonsResponseBodyAddons struct {
 	// Login-1.0-W4g****
 	AddonId *string `json:"AddonId,omitempty" xml:"AddonId,omitempty"`
 	// The addon description.
+	//
+	// example:
+	//
+	// Logon node, mainly used for connecting to the E-HPC cluster environment and submitting user tasks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the addon was installed.
 	//
@@ -134,6 +138,10 @@ type ListAddonsResponseBodyAddons struct {
 	// 2024-08-22 18:11:17
 	InstallTime *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
 	// The addon label.
+	//
+	// example:
+	//
+	// Logon node.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The addon name.
 	//

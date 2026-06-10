@@ -26,30 +26,44 @@ type iCreateReservedNodePoolRequest interface {
 }
 
 type CreateReservedNodePoolRequest struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of reserved nodes.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The description of the reserved node pool.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The suffix of the hostnames for the reserved nodes.
+	//
 	// example:
 	//
 	// ed
 	HostPostfix *string `json:"HostPostfix,omitempty" xml:"HostPostfix,omitempty"`
+	// The prefix of the hostnames for the reserved nodes.
+	//
 	// example:
 	//
 	// cloud
 	HostPrefix *string `json:"HostPrefix,omitempty" xml:"HostPrefix,omitempty"`
+	// The name of the reserved node pool.
+	//
 	// example:
 	//
 	// nodepool
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-bp1lfcjbfb099rrjn****

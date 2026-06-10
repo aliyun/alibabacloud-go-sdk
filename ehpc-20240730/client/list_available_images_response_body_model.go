@@ -195,6 +195,10 @@ type ListAvailableImagesResponseBodyImages struct {
 	// self
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
 	// The OS name in Chinese.
+	//
+	// example:
+	//
+	// CentOS  7.9 64位
 	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
 	// The OS name in English.
 	//

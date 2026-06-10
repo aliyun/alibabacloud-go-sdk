@@ -16,15 +16,15 @@ type iGetQueueRequest interface {
 }
 
 type GetQueueRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	// You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
 	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//

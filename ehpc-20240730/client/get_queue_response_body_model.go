@@ -16,9 +16,9 @@ type iGetQueueResponseBody interface {
 }
 
 type GetQueueResponseBody struct {
-	// The queue configurations.
+	// The configuration of the queue.
 	Queue *GetQueueResponseBodyQueue `json:"Queue,omitempty" xml:"Queue,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,45 +62,45 @@ func (s *GetQueueResponseBody) Validate() error {
 }
 
 type GetQueueResponseBodyQueue struct {
-	// The auto scale-out policy of the queue.
+	// The strategy used for automatic scale-out of the queue.
 	//
 	// example:
 	//
 	// PriorityInstanceType
 	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
-	// The hardware configurations of the compute nodes in the queue.
+	// The hardware configurations of compute nodes in the queue.
 	ComputeNodes []*NodeTemplate `json:"ComputeNodes,omitempty" xml:"ComputeNodes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2025-01-01T12:05:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether auto scale-in is enabled for the queue. Valid values:
+	// Specifies whether automatic scale-in is enabled for the queue. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
-	// Indicates whether auto scale-out is enabled for the queue. Valid values:
+	// Specifies whether automatic scale-out is enabled for the queue. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
-	// The hostname prefix of the compute nodes in the queue.
+	// The hostname prefix for compute nodes in the queue.
 	//
 	// example:
 	//
 	// compute
 	HostnamePrefix *string `json:"HostnamePrefix,omitempty" xml:"HostnamePrefix,omitempty"`
-	// The hostname suffix of the compute nodes in the queue.
+	// The hostname suffix for compute nodes in the queue.
 	//
 	// example:
 	//
@@ -112,37 +112,37 @@ type GetQueueResponseBodyQueue struct {
 	//
 	// 0
 	InitialCount *int32 `json:"InitialCount,omitempty" xml:"InitialCount,omitempty"`
-	// The type of the network between compute nodes in the queue. Valid values:
+	// The network type between compute nodes in the queue. Valid values:
 	//
-	// 	- vpc
+	// - vpc
 	//
-	// 	- eRDMA
+	// - eRDMA
 	//
 	// example:
 	//
 	// erdma
 	InterConnect *string `json:"InterConnect,omitempty" xml:"InterConnect,omitempty"`
-	// The nodes for which deletion protection is enabled in the queue.
+	// The list of nodes with deletion protection enabled in the queue.
 	KeepAliveNodes []*string `json:"KeepAliveNodes,omitempty" xml:"KeepAliveNodes,omitempty" type:"Repeated"`
-	// The maximum number of compute nodes that the queue can contain.
+	// The maximum number of compute nodes that the queue maintains.
 	//
 	// example:
 	//
 	// 1000
 	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The minimum number of nodes that are delivered to the queue in each scale-out cycle.
+	// The minimum number of nodes delivered per scale-out cycle.
 	//
 	// example:
 	//
 	// 99
 	MaxCountPerCycle *int64 `json:"MaxCountPerCycle,omitempty" xml:"MaxCountPerCycle,omitempty"`
-	// The minimum number of compute nodes that the queue must contain.
+	// The minimum number of compute nodes that the queue maintains.
 	//
 	// example:
 	//
 	// 0
 	MinCount *int32 `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// This parameter is required.
 	//
@@ -150,13 +150,13 @@ type GetQueueResponseBodyQueue struct {
 	//
 	// comp
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
+	// The name of the RAM role attached to compute nodes in the queue.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForEHPCRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
-	// Preset node pool ID.
+	// The ID of the reserved node pool.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type GetQueueResponseBodyQueue struct {
 	//
 	// 2025-01-01T12:05:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
+	// The list of virtual switches available to compute nodes in the queue. N ranges from 1 to 5.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

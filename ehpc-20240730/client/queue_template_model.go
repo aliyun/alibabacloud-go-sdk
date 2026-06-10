@@ -44,60 +44,110 @@ type iQueueTemplate interface {
 }
 
 type QueueTemplate struct {
+	// The auto scale-out policy for the queue.
+	//
 	// example:
 	//
 	// PriorityInstanceType
-	AllocationStrategy *string         `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
-	ComputeNodes       []*NodeTemplate `json:"ComputeNodes,omitempty" xml:"ComputeNodes,omitempty" type:"Repeated"`
+	AllocationStrategy *string `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
+	// The list of hardware configurations for the compute nodes in the queue. You can specify 0 to 10 configurations.
+	ComputeNodes []*NodeTemplate `json:"ComputeNodes,omitempty" xml:"ComputeNodes,omitempty" type:"Repeated"`
+	// Indicates whether to enable auto scale-in for the queue. Valid values:
+	//
+	// - true: enabled
+	//
+	// - false: disabled
+	//
 	// example:
 	//
 	// true
 	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
+	// Indicates whether to enable auto scale-out for the queue. Valid values:
+	//
+	// - true: enabled
+	//
+	// - false: disabled
+	//
 	// example:
 	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
+	// The hostname prefix of the compute nodes in the queue.
+	//
+	// 	Notice:
+	//
+	// The prefix can be up to 8 characters in length for Windows operating systems and up to 32 characters in length for Linux operating systems. The prefix can contain only lowercase letters, digits, and hyphens (-).
+	//
 	// example:
 	//
 	// compute
 	HostnamePrefix *string `json:"HostnamePrefix,omitempty" xml:"HostnamePrefix,omitempty"`
+	// The hostname suffix of the compute nodes in the queue.
+	//
+	// example:
+	//
+	// demo
 	HostnameSuffix *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
+	// The initial number of compute nodes in the queue.
+	//
 	// example:
 	//
 	// 0
 	InitialCount *int32 `json:"InitialCount,omitempty" xml:"InitialCount,omitempty"`
+	// The network type of the compute nodes in the queue. Valid values:
+	//
+	// - vpc
+	//
+	// - eRDMA
+	//
 	// example:
 	//
 	// erdma
-	InterConnect   *string   `json:"InterConnect,omitempty" xml:"InterConnect,omitempty"`
+	InterConnect *string `json:"InterConnect,omitempty" xml:"InterConnect,omitempty"`
+	// The list of nodes in the queue that have deletion protection enabled.
 	KeepAliveNodes []*string `json:"KeepAliveNodes,omitempty" xml:"KeepAliveNodes,omitempty" type:"Repeated"`
+	// The maximum number of compute nodes in the queue.
+	//
 	// example:
 	//
 	// 1000
 	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The maximum number of compute nodes that can be scaled out in each cycle.
+	//
 	// example:
 	//
 	// 99
 	MaxCountPerCycle *int64 `json:"MaxCountPerCycle,omitempty" xml:"MaxCountPerCycle,omitempty"`
+	// The minimum number of compute nodes in the queue.
+	//
 	// example:
 	//
 	// 0
 	MinCount *int32 `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
+	// The queue name. The name must be 1 to 15 characters long. It can contain letters from the Unicode letter category, such as English letters and digits, and periods (.).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// comp
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The name of the instance role attached to the compute nodes in the queue.
+	//
 	// example:
 	//
 	// AliyunECSInstanceForEHPCRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	// The ID of the reserved node pool that the queue uses.
+	//
+	// > If this parameter is specified, allocatable nodes from the reserved node pool are used to create compute nodes. The `VSwitchIds`, `HostnamePrefix`, and `HostnameSuffix` parameters are ignored.
+	//
 	// example:
 	//
 	// rnp-756vlp7a
-	ReservedNodePoolId *string   `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
-	VSwitchIds         []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
+	// A list of virtual switches available to the compute nodes in the queue. You can specify 1 to 5 virtual switches.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s QueueTemplate) String() string {
