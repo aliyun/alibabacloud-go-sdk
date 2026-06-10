@@ -16,10 +16,14 @@ type iListSimQuestionRequest interface {
 }
 
 type ListSimQuestionRequest struct {
+	// The key for the business space. If you do not specify this parameter, the default business space is used. You can get the key from the Business Management Page of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The knowledge entry ID.
+	//
 	// This parameter is required.
 	//
 	// example:

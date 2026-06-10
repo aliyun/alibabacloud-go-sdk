@@ -14,6 +14,8 @@ type iListSaasPermissionGroupInfosRequest interface {
 }
 
 type ListSaasPermissionGroupInfosRequest struct {
+	// The key for the business space. If unspecified, the default business space is used. You can find this key on the Business Management page of your main account.
+	//
 	// This parameter is required.
 	//
 	// example:

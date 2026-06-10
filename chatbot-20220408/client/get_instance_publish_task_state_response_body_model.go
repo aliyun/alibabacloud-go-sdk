@@ -32,33 +32,77 @@ type iGetInstancePublishTaskStateResponseBody interface {
 }
 
 type GetInstancePublishTaskStateResponseBody struct {
+	// The list of business types.
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// The UTC time when the task was created.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
-	CreateTime *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error      *string                `json:"Error,omitempty" xml:"Error,omitempty"`
-	Errors     map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message if the task fails.
+	//
+	// example:
+	//
+	// 检查待发布模块是否空闲发生错误，faq
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// A map of error messages for each submodule, where the key is the submodule and the value is an array of errors.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "robot_ds": [
+	//
+	//         "{\\"dialogName\\":\\"TEST\\",\\"errorMessage\\":[\\"medusa@invocation.error.service.offline@请发布对话流所引用服务后重试！\\"],\\"needRefresh\\":false,\\"success\\":false}"
+	//
+	//     ]
+	//
+	// }
+	Errors map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 8522
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UTC time when the task was last modified.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:33Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID, returned as a string.
+	//
 	// example:
 	//
 	// 8522
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// FE_RUNNING
-	Status   *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A map of warning messages for each submodule, where the key is the submodule and the value is an array of warnings.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "category_bind_faq": [
+	//
+	//         "以下类目没有发布到正式环境：项目交付类目"
+	//
+	//     ]
+	//
+	// }
 	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 

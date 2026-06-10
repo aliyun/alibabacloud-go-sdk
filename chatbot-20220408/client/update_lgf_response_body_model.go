@@ -16,10 +16,14 @@ type iUpdateLgfResponseBody interface {
 }
 
 type UpdateLgfResponseBody struct {
+	// The unique ID of the LGF.
+	//
 	// example:
 	//
 	// 2342556223532
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 289dfa131adf23wqe2r

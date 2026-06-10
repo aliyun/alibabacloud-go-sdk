@@ -24,25 +24,40 @@ type iUpdateSolutionRequest interface {
 }
 
 type UpdateSolutionRequest struct {
+	// The agent key. If you omit this parameter, the default agent is used. You can obtain the key on the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The content of the solution.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 修改的答案内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content type. Valid values: 0 for plain text and 1 for rich text.
+	//
 	// example:
 	//
 	// 1
 	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// A list of perspective codes.
+	//
 	// This parameter is required.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
+	// The ID of the solution.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100001333260
-	SolutionId *int64   `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	TagIdList  []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// A list of tag IDs.
+	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSolutionRequest) String() string {

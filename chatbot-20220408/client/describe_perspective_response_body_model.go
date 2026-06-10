@@ -28,34 +28,50 @@ type iDescribePerspectiveResponseBody interface {
 }
 
 type DescribePerspectiveResponseBody struct {
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2021-07-27T07:05:37Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The modification time in UTC.
+	//
 	// example:
 	//
 	// 2021-07-26T07:05:37Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the perspective.
+	//
 	// example:
 	//
 	// 移动端视角
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The perspective code (used for the Q\\&A API).
+	//
 	// example:
 	//
 	// FZJBY3raWr
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
+	// The ID of the perspective.
+	//
 	// example:
 	//
 	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F285D735-D580-18A8-B97F-B2E72B00F101
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the perspective is user-defined.
+	//
 	// example:
 	//
 	// true
 	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
+	// The status of the perspective. Valid values: 3 (Enabled) and 1 (Disabled).
+	//
 	// example:
 	//
 	// 1

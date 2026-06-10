@@ -22,19 +22,28 @@ type iListDSEntityValueResponseBody interface {
 }
 
 type ListDSEntityValueResponseBody struct {
+	// A list of entity values.
 	EntityValues []*ListDSEntityValueResponseBodyEntityValues `json:"EntityValues,omitempty" xml:"EntityValues,omitempty" type:"Repeated"`
+	// The page number of the returned results.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the returned page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// n3fg34gbfj8adf2gj923
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of matching entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,24 +117,38 @@ func (s *ListDSEntityValueResponseBody) Validate() error {
 }
 
 type ListDSEntityValueResponseBodyEntityValues struct {
+	// The content of the entity value, which can be a standard value or a regular expression.
+	//
+	// example:
+	//
+	// 书类型
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creation time of the entity value in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// 34313785463
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the entity value.
+	//
 	// example:
 	//
 	// 3467858234534534532
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// The last modification time of the entity value in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
-	ModifyTime *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Synonyms   []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// A list of synonyms for the entity value.
+	Synonyms []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
 
 func (s ListDSEntityValueResponseBodyEntityValues) String() string {

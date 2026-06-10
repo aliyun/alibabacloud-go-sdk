@@ -22,19 +22,28 @@ type iListLgfResponseBody interface {
 }
 
 type ListLgfResponseBody struct {
+	// A list of advanced semantic configurations.
 	Lgfs []*ListLgfResponseBodyLgfs `json:"Lgfs,omitempty" xml:"Lgfs,omitempty" type:"Repeated"`
+	// The returned page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34fg57h2gh5783
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of matching entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,25 +117,36 @@ func (s *ListLgfResponseBody) Validate() error {
 }
 
 type ListLgfResponseBodyLgfs struct {
+	// The creation time, in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the intent.
+	//
 	// example:
 	//
 	// 256756734345
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// LGF ID
+	// The LGF ID.
 	//
 	// example:
 	//
 	// 123
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// The modification time, in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RuleText   *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
+	// The LGF rule.
+	//
+	// example:
+	//
+	// .{0,5}北京天气
+	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 
 func (s ListLgfResponseBodyLgfs) String() string {

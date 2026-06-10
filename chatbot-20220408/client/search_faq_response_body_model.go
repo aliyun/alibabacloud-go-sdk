@@ -22,19 +22,28 @@ type iSearchFaqResponseBody interface {
 }
 
 type SearchFaqResponseBody struct {
+	// The list of matching FAQs.
 	FaqHits []*SearchFaqResponseBodyFaqHits `json:"FaqHits,omitempty" xml:"FaqHits,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E45491D5-7E0A-42C6-9B21-91D1066B1475
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matched entries.
+	//
 	// example:
 	//
 	// 1075
@@ -108,49 +117,76 @@ func (s *SearchFaqResponseBody) Validate() error {
 }
 
 type SearchFaqResponseBodyFaqHits struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 30000055639
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The creation time (UTC).
+	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 18453
 	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The creator\\"s username.
+	//
 	// example:
 	//
 	// test01
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The effective status of the FAQ. This status is determined by the StartDate and EndDate parameters.
+	//
 	// example:
 	//
 	// 20
-	EffectStatus     *int32    `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// A list of matched similar titles.
 	HitSimilarTitles []*string `json:"HitSimilarTitles,omitempty" xml:"HitSimilarTitles,omitempty" type:"Repeated"`
-	HitSolutions     []*string `json:"HitSolutions,omitempty" xml:"HitSolutions,omitempty" type:"Repeated"`
+	// A list of matched answers.
+	HitSolutions []*string `json:"HitSolutions,omitempty" xml:"HitSolutions,omitempty" type:"Repeated"`
+	// The FAQ ID.
+	//
 	// example:
 	//
 	// 30002145804
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The modification time (UTC).
+	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The modifier ID.
+	//
 	// example:
 	//
 	// 18453
 	ModifyUserId *int64 `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The modifier\\"s username.
+	//
 	// example:
 	//
 	// test01
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// The FAQ status.
+	//
 	// example:
 	//
 	// 3
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The title of the FAQ.
+	//
+	// example:
+	//
+	// 测试标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SearchFaqResponseBodyFaqHits) String() string {

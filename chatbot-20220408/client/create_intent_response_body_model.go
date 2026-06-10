@@ -16,10 +16,14 @@ type iCreateIntentResponseBody interface {
 }
 
 type CreateIntentResponseBody struct {
+	// The intent ID.
+	//
 	// example:
 	//
 	// 43546474
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// df56gjh5et34g3g3

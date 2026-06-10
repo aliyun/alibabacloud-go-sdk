@@ -18,17 +18,27 @@ type iCreateSimQuestionRequest interface {
 }
 
 type CreateSimQuestionRequest struct {
+	// The business space key. If omitted, the default business space is used. You can find the key on the business management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The knowledge ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The similar question title. Maximum length: 120 characters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试相似问标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

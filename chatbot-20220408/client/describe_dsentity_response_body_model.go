@@ -34,43 +34,71 @@ type iDescribeDSEntityResponseBody interface {
 }
 
 type DescribeDSEntityResponseBody struct {
+	// The time when the entity was created, in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the entity.
+	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The name of the user who created the entity.
+	//
 	// example:
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The entity ID.
+	//
 	// example:
 	//
 	// 123
-	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity name. The name can contain only Chinese characters, letters, digits, and underscores (_).
+	//
+	// example:
+	//
+	// 书类型
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The entity type. Valid values are `synonyms` and `regex`.
+	//
 	// example:
 	//
 	// synonyms
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The time when the entity was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the user who last modified the entity.
+	//
 	// example:
 	//
 	// 123231
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The name of the user who last modified the entity.
+	//
 	// example:
 	//
 	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ad23234dsf234fga
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The code of the system entity, such as sys.date. This parameter is empty for user-defined entities.
+	//
+	// example:
+	//
+	// sys.date
 	SysEntityCode *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
 }
 

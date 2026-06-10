@@ -16,10 +16,14 @@ type iUpdateIntentResponseBody interface {
 }
 
 type UpdateIntentResponseBody struct {
+	// The ID of the updated intent.
+	//
 	// example:
 	//
 	// 234234234534
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// dfaf23dfas234234234534

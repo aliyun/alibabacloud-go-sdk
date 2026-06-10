@@ -22,19 +22,28 @@ type iListIntentResponseBody interface {
 }
 
 type ListIntentResponseBody struct {
+	// A list of intents.
 	Intents []*ListIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of intents per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 23dsfa34r2s2s2sd12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of intents.
+	//
 	// example:
 	//
 	// 1
@@ -108,37 +117,62 @@ func (s *ListIntentResponseBody) Validate() error {
 }
 
 type ListIntentResponseBodyIntents struct {
+	// The intent alias.
+	//
+	// example:
+	//
+	// 查天气意图
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The time at which the intent was created, in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the intent.
+	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The name of the user who created the intent.
+	//
 	// example:
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The intent ID.
+	//
 	// example:
 	//
 	// 234234234234
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The intent name.
+	//
+	// example:
+	//
+	// 查天气意图
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// The time at which the intent was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the user who last modified the intent.
+	//
 	// example:
 	//
 	// 123231
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The name of the user who last modified the intent.
+	//
 	// example:
 	//
 	// test
-	ModifyUserName *string                                   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	SlotInfos      []*ListIntentResponseBodyIntentsSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// A list of slots associated with the intent.
+	SlotInfos []*ListIntentResponseBodyIntentsSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
 func (s ListIntentResponseBodyIntents) String() string {
@@ -253,24 +287,42 @@ func (s *ListIntentResponseBodyIntents) Validate() error {
 }
 
 type ListIntentResponseBodyIntentsSlotInfos struct {
+	// Indicates whether the slot can accept multiple values.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// Indicates whether the slot contains sensitive data.
+	//
 	// example:
 	//
 	// false
 	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// Indicates whether the slot value is collected interactively.
+	//
 	// example:
 	//
 	// false
-	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	// The slot name.
+	//
+	// example:
+	//
+	// 天气
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The slot ID.
+	//
 	// example:
 	//
 	// 12134223
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The slot value (entity name).
+	//
+	// example:
+	//
+	// 天气
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListIntentResponseBodyIntentsSlotInfos) String() string {

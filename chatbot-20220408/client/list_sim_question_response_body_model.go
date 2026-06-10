@@ -16,10 +16,13 @@ type iListSimQuestionResponseBody interface {
 }
 
 type ListSimQuestionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 15CD94CC-CBEB-4189-806C-A132D1F45D51
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of similar questions.
 	SimQuestions []*ListSimQuestionResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
 }
 
@@ -63,19 +66,30 @@ func (s *ListSimQuestionResponseBody) Validate() error {
 }
 
 type ListSimQuestionResponseBodySimQuestions struct {
+	// The creation time of the similar question, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-30T02:08:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The modification time of the similar question, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-13T03:49:28Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The similar question ID.
+	//
 	// example:
 	//
 	// 30001979424
-	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	// The title of the similar question.
+	//
+	// example:
+	//
+	// 相似问
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListSimQuestionResponseBodySimQuestions) String() string {

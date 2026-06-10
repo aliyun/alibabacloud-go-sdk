@@ -22,16 +22,24 @@ type iChatResponseBody interface {
 }
 
 type ChatResponseBody struct {
+	// The unique message ID.
+	//
 	// example:
 	//
 	// A2315C4B-A872-5DEE-9DAD-D73B194A4AEC
-	MessageId    *string                     `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Messages     []*ChatResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	QuerySegList []*string                   `json:"QuerySegList,omitempty" xml:"QuerySegList,omitempty" type:"Repeated"`
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// A list of message objects.
+	Messages []*ChatResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The words segmented from the query. This field may be empty.
+	QuerySegList []*string `json:"QuerySegList,omitempty" xml:"QuerySegList,omitempty" type:"Repeated"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// A2315C4B-A872-5DEE-9DAD-D73B194A4AEC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique session ID.
+	//
 	// example:
 	//
 	// a6f216a0685c4c8baa0e8beb6d5ec6db
@@ -105,19 +113,36 @@ func (s *ChatResponseBody) Validate() error {
 }
 
 type ChatResponseBodyMessages struct {
+	// Indicates the source of the recommended answer if `AnswerType` is `Recommend`.
+	//
 	// example:
 	//
 	// KNOWLEDGE
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	// Type of the message.
+	//
 	// example:
 	//
 	// Text
-	AnswerType *string                               `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	Knowledge  *ChatResponseBodyMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
+	AnswerType *string `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	// Contains the `Knowledge` object if `AnswerType` is `Knowledge`.
+	Knowledge *ChatResponseBodyMessagesKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
+	// Contains a list of `Recommend` objects if `AnswerType` is `Recommend`.
 	Recommends []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	Text       *ChatResponseBodyMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-	Title      *string                               `json:"Title,omitempty" xml:"Title,omitempty"`
-	VoiceTitle *string                               `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
+	// Contains the `Text` object if `AnswerType` is `Text`.
+	Text *ChatResponseBodyMessagesText `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
+	// The title of the clarification question for text-based chat scenarios.
+	//
+	// example:
+	//
+	// 请问您想咨询的是哪个投保年龄区间呢？
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The clarification content for voice-based scenarios.
+	//
+	// example:
+	//
+	// 请问你说的是公积金查询，还是公积金提取
+	VoiceTitle *string `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessages) String() string {
@@ -215,28 +240,64 @@ func (s *ChatResponseBodyMessages) Validate() error {
 }
 
 type ChatResponseBodyMessagesKnowledge struct {
+	// The source of the answer.
+	//
+	// `KnowledgeBase`: The answer is from the knowledge base.
+	//
 	// example:
 	//
 	// KnowledgeBase
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The category of the knowledge entry.
+	//
+	// example:
+	//
+	// 公积金
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The content of the matched knowledge entry.
+	//
+	// example:
+	//
+	// 公积金提取，请在首页搜索公积金提取，提交办事的表单
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content format of the answer.
+	//
 	// example:
 	//
 	// PLAIN_TEXT
-	ContentType  *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The hit statement matching the query.
+	//
+	// example:
+	//
+	// 公积金
 	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	// ID of the matched knowledge entry in the knowledge base.
+	//
 	// example:
 	//
 	// 735898
-	Id                *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// A list of related knowledge objects.
 	RelatedKnowledges []*ChatResponseBodyMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
+	// The confidence score.
+	//
 	// example:
 	//
 	// 0.998
-	Score   *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Summary *string  `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title   *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Summary of the matched knowledge entry.
+	//
+	// example:
+	//
+	// 公积金提取
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The title of the matched knowledge entry.
+	//
+	// example:
+	//
+	// 公积金提取
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesKnowledge) String() string {
@@ -351,11 +412,18 @@ func (s *ChatResponseBodyMessagesKnowledge) Validate() error {
 }
 
 type ChatResponseBodyMessagesKnowledgeRelatedKnowledges struct {
+	// The ID of the related knowledge entry.
+	//
 	// example:
 	//
 	// 735899
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the related knowledge entry.
+	//
+	// example:
+	//
+	// 公积金查询
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesKnowledgeRelatedKnowledges) String() string {
@@ -389,19 +457,30 @@ func (s *ChatResponseBodyMessagesKnowledgeRelatedKnowledges) Validate() error {
 }
 
 type ChatResponseBodyMessagesRecommends struct {
+	// Source of the clarification.
+	//
 	// example:
 	//
 	// KNOWLEDGE
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	// The knowledge ID for the clarification.
+	//
 	// example:
 	//
 	// 4548
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The score of the recommended content. Returned only if `AnswerSource` is `KNOWLEDGE`.
+	//
 	// example:
 	//
 	// 0.46
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Title *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Clarification content. This can be an entity from knowledge graph QA, a knowledge title from FAQ-based QA, or a column value from table QA.
+	//
+	// example:
+	//
+	// 测试纯文本
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesRecommends) String() string {
@@ -453,11 +532,20 @@ func (s *ChatResponseBodyMessagesRecommends) Validate() error {
 }
 
 type ChatResponseBodyMessagesText struct {
+	// The source of the answer.
+	//
 	// example:
 	//
 	// BotFramework
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	// Title of the matched article. Returned only if `AnswerSource` is `MACHINE_READ`.
+	//
+	// example:
+	//
+	// 备案十一
 	ArticleTitle *string `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
+	// Command parameters, such as the skill group for transferring to a human agent.
+	//
 	// example:
 	//
 	// {
@@ -466,32 +554,110 @@ type ChatResponseBodyMessagesText struct {
 	//
 	// }
 	Commands map[string]interface{} `json:"Commands,omitempty" xml:"Commands,omitempty"`
-	Content  *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the text message.
+	//
+	// example:
+	//
+	// 请问您要查哪里的天气？
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content format of the answer.
+	//
 	// example:
 	//
 	// PLAIN_TEXT
-	ContentType   *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DialogName    *string                `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
-	Ext           map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Name of the dialog. Returned only if `AnswerSource` is `BotFramework`.
+	//
+	// example:
+	//
+	// 示例_查天气
+	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
+	// Contains passthrough parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"MATCHED_INTENT_SOURCE": "",
+	//
+	// 	"INTENT_ID": 724414,
+	//
+	// 	"IntentName": "查天气意图",
+	//
+	// 	"INTENT_DETAIL": "[我想|我要]查天气",
+	//
+	// 	"LGF_EXPRESSION": "[我想|我要]查天气",
+	//
+	// 	"IS_SESSION_FINISHED": false,
+	//
+	// 	"DsScore": 100.0,
+	//
+	// 	"DIALOG_ID": "299034",
+	//
+	// 	"FINISH_LABEL": false,
+	//
+	// 	"MODULE_START": false,
+	//
+	// 	"INTENT_NAME": "查天气意图",
+	//
+	// 	"INTENT_SOURCE": "Lgf",
+	//
+	// 	"DIALOG_NAME": "示例_查天气"
+	//
+	// }
+	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// Passthrough parameters. Returned only if `AnswerSource` is `BotFramework`.
 	ExternalFlags map[string]interface{} `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
-	HitStatement  *string                `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	IntentName    *string                `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	MetaData      *string                `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// The hit statement.
+	//
+	// example:
+	//
+	// 查天气
+	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	// The name of the intent. This field is returned when `AnswerSource` is `BotFramework`.
+	//
+	// example:
+	//
+	// 查天气意图
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// Metadata.
+	//
+	// example:
+	//
+	// [[{\\"columnName\\":\\"姓名\\",\\"stringValue\\":\\"王珊珊\\"}]]
+	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// The node ID. Returned only if `AnswerSource` is `BotFramework`.
+	//
 	// example:
 	//
 	// 1410-c7a72a78.__city
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node. This field is returned when `AnswerSource` is `BotFramework`.
+	//
+	// example:
+	//
+	// 示例_查天气.查天气填槽.__city
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// A value of `SSML` indicates that an interactive slot-filling process has started in the dialog factory. This field is returned only if `AnswerSource` is `BotFramework`.
+	//
 	// example:
 	//
 	// SSML
 	ResponseType *string `json:"ResponseType,omitempty" xml:"ResponseType,omitempty"`
+	// The confidence score.
+	//
 	// example:
 	//
 	// 100.0
-	Score                *float64                             `json:"Score,omitempty" xml:"Score,omitempty"`
-	Slots                []*ChatResponseBodyMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
-	UserDefinedChatTitle *string                              `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// A list of slot objects. Returned only if `AnswerSource` is `BotFramework`.
+	Slots []*ChatResponseBodyMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
+	// The title of a custom chit-chat topic.
+	//
+	// example:
+	//
+	// 问候
+	UserDefinedChatTitle *string `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesText) String() string {
@@ -669,13 +835,30 @@ func (s *ChatResponseBodyMessagesText) Validate() error {
 }
 
 type ChatResponseBodyMessagesTextSlots struct {
+	// Indicates whether the slot was filled.
+	//
 	// example:
 	//
 	// false
-	Hit    *bool   `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Hit *bool `json:"Hit,omitempty" xml:"Hit,omitempty"`
+	// The name of the slot.
+	//
+	// example:
+	//
+	// 查天气意图.city
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The original value from the user\\"s input.
+	//
+	// example:
+	//
+	// 北京
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Extracted value of the slot.
+	//
+	// example:
+	//
+	// 北京
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesTextSlots) String() string {

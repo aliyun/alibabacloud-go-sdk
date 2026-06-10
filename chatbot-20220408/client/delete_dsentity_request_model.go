@@ -18,16 +18,22 @@ type iDeleteDSEntityRequest interface {
 }
 
 type DeleteDSEntityRequest struct {
+	// If unspecified, the default agent is used. You can get the key from the agent management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The chatbot ID.
+	//
 	// This parameter is required.
 	//
 	// example:

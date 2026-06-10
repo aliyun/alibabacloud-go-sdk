@@ -16,10 +16,14 @@ type iCancelPublishTaskRequest interface {
 }
 
 type CancelPublishTaskRequest struct {
+	// The key of the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your master account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the publish task.
+	//
 	// example:
 	//
 	// 8521

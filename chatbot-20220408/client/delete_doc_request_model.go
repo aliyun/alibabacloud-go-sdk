@@ -16,10 +16,14 @@ type iDeleteDocRequest interface {
 }
 
 type DeleteDocRequest struct {
+	// The business space key. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the knowledge.
+	//
 	// This parameter is required.
 	//
 	// if can be null:

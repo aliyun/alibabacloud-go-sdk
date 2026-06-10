@@ -18,16 +18,22 @@ type iDescribeIntentRequest interface {
 }
 
 type DescribeIntentRequest struct {
+	// The key for the business space. If you omit this parameter, the system uses the default business space. You can obtain the key from the Business Management page of the primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The chatbot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent ID.
+	//
 	// This parameter is required.
 	//
 	// example:

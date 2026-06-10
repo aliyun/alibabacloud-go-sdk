@@ -20,18 +20,33 @@ type iUpdateCategoryRequest interface {
 }
 
 type UpdateCategoryRequest struct {
+	// The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key on the **Business Management*	- page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizCode  *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business code.
+	//
+	// example:
+	//
+	// bizcode123
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The category ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 231001028593
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 类目名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

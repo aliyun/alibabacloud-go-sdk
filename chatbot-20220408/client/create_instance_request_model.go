@@ -22,22 +22,32 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	// The key of the agent. If you omit this parameter, the default agent is used. You can find the key on the Business Management page of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// A description of the robot. The description can be up to 50 characters long.
+	//
 	// example:
 	//
 	// 用于手机app的小蜜机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// The language of the robot, such as `zh-cn` or `en-us`. The language must be supported by the agent. If you omit this parameter, the agent\\"s default language is used.
+	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The name of the robot. The maximum length is 50 characters.
+	//
 	// example:
 	//
 	// 小蜜机器人
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The robot type. The default value is `scenario_im`.
+	//
 	// example:
 	//
 	// scenario_im

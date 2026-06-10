@@ -16,10 +16,14 @@ type iCreateSolutionResponseBody interface {
 }
 
 type CreateSolutionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F55D90C1-31BE-4B2A-AA3F-25EFC36F9419
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the knowledge answer.
+	//
 	// example:
 	//
 	// 100001089003

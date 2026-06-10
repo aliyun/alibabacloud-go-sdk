@@ -16,10 +16,14 @@ type iUpdateDSEntityResponseBody interface {
 }
 
 type UpdateDSEntityResponseBody struct {
+	// The ID of the updated entity.
+	//
 	// example:
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// df23fgh4hyj67hn56

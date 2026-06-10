@@ -18,14 +18,20 @@ type iContinueInstancePublishTaskRequest interface {
 }
 
 type ContinueInstancePublishTaskRequest struct {
+	// The key for the business space. If you omit this parameter, the default business space is used. You can find this key on the Business Management page of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 8521
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique identifier of the chatbot.
+	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050

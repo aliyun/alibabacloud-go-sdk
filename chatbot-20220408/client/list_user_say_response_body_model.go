@@ -22,23 +22,32 @@ type iListUserSayResponseBody interface {
 }
 
 type ListUserSayResponseBody struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// fs1fg4512v43572v23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 1
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserSays   []*ListUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of user says.
+	UserSays []*ListUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
 }
 
 func (s ListUserSayResponseBody) String() string {
@@ -108,20 +117,34 @@ func (s *ListUserSayResponseBody) Validate() error {
 }
 
 type ListUserSayResponseBodyUserSays struct {
+	// The content of the user say.
+	//
+	// example:
+	//
+	// 您做核酸了嘛
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the user say was created. The time is in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the intent.
+	//
 	// example:
 	//
 	// 235564564
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The time when the user say was last modified. The time is in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
-	ModifyTime *string                                     `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	SlotInfos  []*ListUserSayResponseBodyUserSaysSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// A list of associated slots.
+	SlotInfos []*ListUserSayResponseBodyUserSaysSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	// The ID of the user say.
+	//
 	// example:
 	//
 	// 3453452138
@@ -204,14 +227,20 @@ func (s *ListUserSayResponseBodyUserSays) Validate() error {
 }
 
 type ListUserSayResponseBodyUserSaysSlotInfos struct {
+	// The zero-based end index of the slot in the user say. This value is exclusive.
+	//
 	// example:
 	//
 	// 4
 	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// The ID of the intent slot.
+	//
 	// example:
 	//
 	// 3456sdfg3tu
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// The zero-based start index of the slot in the user say. This value is inclusive.
+	//
 	// example:
 	//
 	// 2

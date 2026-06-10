@@ -14,6 +14,8 @@ type iGetAgentInfoRequest interface {
 }
 
 type GetAgentInfoRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// beebot_bot_public_cn-ca36x8v3n1x

@@ -14,6 +14,8 @@ type iDeleteFaqResponseBody interface {
 }
 
 type DeleteFaqResponseBody struct {
+	// A unique identifier for the request.
+	//
 	// example:
 	//
 	// F79E7305-5314-5069-A701-9591AD051902

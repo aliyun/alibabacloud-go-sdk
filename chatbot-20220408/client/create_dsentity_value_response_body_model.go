@@ -16,10 +16,14 @@ type iCreateDSEntityValueResponseBody interface {
 }
 
 type CreateDSEntityValueResponseBody struct {
+	// The entity member ID.
+	//
 	// example:
 	//
 	// 2434543453
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// g763hg48j3f3

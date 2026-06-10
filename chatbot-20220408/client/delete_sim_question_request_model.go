@@ -16,10 +16,14 @@ type iDeleteSimQuestionRequest interface {
 }
 
 type DeleteSimQuestionRequest struct {
+	// The key for the business space. If you omit this parameter, the default business space is used. You can find the key on the business management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the similar question.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,18 +20,26 @@ type iUpdateInstanceRequest interface {
 }
 
 type UpdateInstanceRequest struct {
+	// The workspace key. If you omit this parameter, the default workspace is used. You can get this key from the Business Management page in your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The unique ID of the chatbot instance.
+	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new description of the chatbot.
+	//
 	// example:
 	//
 	// 用于C端问答的机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// The new name of the chatbot. The maximum length is 50 characters.
+	//
 	// example:
 	//
 	// 智能客服-小C

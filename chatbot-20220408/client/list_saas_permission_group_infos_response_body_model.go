@@ -16,8 +16,9 @@ type iListSaasPermissionGroupInfosResponseBody interface {
 }
 
 type ListSaasPermissionGroupInfosResponseBody struct {
+	// The permission details for integrated SaaS pages.
 	Data []*ListSaasPermissionGroupInfosResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -65,12 +66,22 @@ func (s *ListSaasPermissionGroupInfosResponseBody) Validate() error {
 }
 
 type ListSaasPermissionGroupInfosResponseBodyData struct {
+	// The name of the page in English.
+	//
 	// example:
 	//
 	// Release Center
-	EnName  *string                                                `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	Name    *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// The name of the page.
+	//
+	// example:
+	//
+	// 发布中心
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The SaaS permission groups.
 	PgInfos []*ListSaasPermissionGroupInfosResponseBodyDataPgInfos `json:"PgInfos,omitempty" xml:"PgInfos,omitempty" type:"Repeated"`
+	// The unique code for the SaaS page.
+	//
 	// example:
 	//
 	// FAQ
@@ -135,15 +146,24 @@ func (s *ListSaasPermissionGroupInfosResponseBodyData) Validate() error {
 }
 
 type ListSaasPermissionGroupInfosResponseBodyDataPgInfos struct {
+	// The unique permission group code.
+	//
 	// example:
 	//
 	// FAQ
 	PgCode *string `json:"PgCode,omitempty" xml:"PgCode,omitempty"`
+	// The English name of the permission group.
+	//
 	// example:
 	//
 	// FAQ
 	PgEnName *string `json:"PgEnName,omitempty" xml:"PgEnName,omitempty"`
-	PgName   *string `json:"PgName,omitempty" xml:"PgName,omitempty"`
+	// The name of the permission group.
+	//
+	// example:
+	//
+	// FAQ管理
+	PgName *string `json:"PgName,omitempty" xml:"PgName,omitempty"`
 }
 
 func (s ListSaasPermissionGroupInfosResponseBodyDataPgInfos) String() string {

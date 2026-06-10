@@ -16,10 +16,14 @@ type iCreateFaqResponseBody interface {
 }
 
 type CreateFaqResponseBody struct {
+	// The ID of the newly created knowledge.
+	//
 	// example:
 	//
 	// 30001979424
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 28805A7C-D695-548C-A31B-67E52C2C274F

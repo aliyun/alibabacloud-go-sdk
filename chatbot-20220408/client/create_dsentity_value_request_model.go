@@ -22,29 +22,38 @@ type iCreateDSEntityValueRequest interface {
 }
 
 type CreateDSEntityValueRequest struct {
+	// The business space key. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The entity value (or regular expression).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ada
+	// 书类型
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The robot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Synonyms   []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of synonyms for the entity value.
+	Synonyms []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
 
 func (s CreateDSEntityValueRequest) String() string {

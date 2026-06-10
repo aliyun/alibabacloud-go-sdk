@@ -20,22 +20,30 @@ type iDeleteDSEntityValueRequest interface {
 }
 
 type DeleteDSEntityValueRequest struct {
+	// The Agent key. If omitted, the system uses the default Agent. You can get this key from the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The unique identifier of the entity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 345346223452
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The unique identifier of the entity value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3453453452
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// The unique identifier of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

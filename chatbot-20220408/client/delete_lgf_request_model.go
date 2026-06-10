@@ -20,23 +20,29 @@ type iDeleteLgfRequest interface {
 }
 
 type DeleteLgfRequest struct {
+	// The key of the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The robot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23242342
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// lgf Id
+	// The ID of the LGF configuration.
 	//
 	// This parameter is required.
 	//

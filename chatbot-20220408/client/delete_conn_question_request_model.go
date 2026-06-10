@@ -16,10 +16,14 @@ type iDeleteConnQuestionRequest interface {
 }
 
 type DeleteConnQuestionRequest struct {
+	// The business space key. If you do not set this parameter, the default business space is used. You can find the key on the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The unique ID of the association.
+	//
 	// This parameter is required.
 	//
 	// example:

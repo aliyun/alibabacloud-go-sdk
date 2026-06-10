@@ -16,12 +16,14 @@ type iDeleteLgfResponseBody interface {
 }
 
 type DeleteLgfResponseBody struct {
-	// LGF ID
+	// The ID of the LGF configuration.
 	//
 	// example:
 	//
 	// 2342424
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// dgw2342424qw42

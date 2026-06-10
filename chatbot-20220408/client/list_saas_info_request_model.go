@@ -18,14 +18,20 @@ type iListSaasInfoRequest interface {
 }
 
 type ListSaasInfoRequest struct {
+	// The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The codes of the user\\"s SaaS permission groups. Separate multiple codes with a comma.
+	//
 	// example:
 	//
 	// DS,FAQ
 	SaasGroupCodes *string `json:"SaasGroupCodes,omitempty" xml:"SaasGroupCodes,omitempty"`
+	// The username of the business user.
+	//
 	// This parameter is required.
 	//
 	// example:

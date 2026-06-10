@@ -16,10 +16,14 @@ type iCreateUserSayResponseBody interface {
 }
 
 type CreateUserSayResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8g4n8bnd236fg79
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique ID of the intent-user say pair.
+	//
 	// example:
 	//
 	// 46456176856

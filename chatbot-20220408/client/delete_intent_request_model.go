@@ -18,16 +18,22 @@ type iDeleteIntentRequest interface {
 }
 
 type DeleteIntentRequest struct {
+	// The key that identifies the business space. If you omit this parameter, the service uses the default business space. You can get this key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The robot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent ID.
+	//
 	// This parameter is required.
 	//
 	// example:

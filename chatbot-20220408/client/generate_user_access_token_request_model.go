@@ -26,18 +26,22 @@ type iGenerateUserAccessTokenRequest interface {
 }
 
 type GenerateUserAccessTokenRequest struct {
+	// The key of the business space. If you do not specify this parameter, the system accesses the default business space. You can obtain the key from the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// example:
-	//
-	// a***bcx@gmail.com
+	// The user\\"s email address.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is reserved. You do not need to specify it.
+	//
 	// example:
 	//
 	// 1000
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Additional information formatted as a JSON string.
+	//
 	// example:
 	//
 	// {
@@ -76,21 +80,23 @@ type GenerateUserAccessTokenRequest struct {
 	//
 	// }
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The external user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8882022040000000171
 	ForeignId *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
+	// The visitor\\"s nickname.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 张三
 	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	// example:
-	//
-	// 1381111****
+	// The user\\"s telephone number.
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 }
 

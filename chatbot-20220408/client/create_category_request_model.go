@@ -22,14 +22,34 @@ type iCreateCategoryRequest interface {
 }
 
 type CreateCategoryRequest struct {
+	// The key of the business space. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizCode       *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	KnowledgeType *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The business code.
+	//
+	// example:
+	//
+	// bizcode123
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The knowledge type. Valid values are 1 for an FAQ category and 3 for a document category. The default value is 1.
+	//
+	// example:
+	//
+	// 1
+	KnowledgeType *int32 `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
+	// The category name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent category. Defaults to -1, which indicates the root category.
+	//
 	// example:
 	//
 	// -1

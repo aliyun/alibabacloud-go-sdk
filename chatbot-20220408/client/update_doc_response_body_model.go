@@ -16,11 +16,13 @@ type iUpdateDocResponseBody interface {
 }
 
 type UpdateDocResponseBody struct {
+	// The knowledge ID of the document.
+	//
 	// example:
 	//
 	// 30002406051
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

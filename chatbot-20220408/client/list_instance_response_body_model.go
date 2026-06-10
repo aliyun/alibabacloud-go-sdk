@@ -22,19 +22,28 @@ type iListInstanceResponseBody interface {
 }
 
 type ListInstanceResponseBody struct {
+	// The list of chatbots.
 	Instances []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 92B81548-42B9-4B34-924B-4E778AEB412B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 23
@@ -108,30 +117,44 @@ func (s *ListInstanceResponseBody) Validate() error {
 }
 
 type ListInstanceResponseBodyInstances struct {
+	// The URL of the chatbot avatar.
+	//
 	// example:
 	//
 	// /alimefe/meebot/robot/0.0.5/img/xxx-90-97.png
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// The time when the chatbot was created. The time is in the UTC format.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The unique ID of the chatbot.
+	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The remarks on the chatbot.
+	//
 	// example:
 	//
 	// 用于C端问答的机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// The language of the chatbot, such as zh-cn and en-us. For more information, see http\\://www\\.lingoes.net/en/translator/langcode.htm.
+	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The name of the chatbot.
+	//
 	// example:
 	//
 	// 智能客服-小C
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the chatbot.
+	//
 	// example:
 	//
 	// scenario_im

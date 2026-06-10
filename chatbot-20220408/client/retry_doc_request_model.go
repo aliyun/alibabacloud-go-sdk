@@ -16,10 +16,14 @@ type iRetryDocRequest interface {
 }
 
 type RetryDocRequest struct {
+	// The key for the business space. If you do not specify this parameter, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// e2a20f74cd9042558002c0f7dc873739_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The knowledge ID.
+	//
 	// This parameter is required.
 	//
 	// example:

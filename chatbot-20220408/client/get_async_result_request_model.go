@@ -16,11 +16,19 @@ type iGetAsyncResultRequest interface {
 }
 
 type GetAsyncResultRequest struct {
+	// The key for the business space. If unspecified, the default business space is used. This key is available on the Business Management page of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 从Chat接口中获取TASK_ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

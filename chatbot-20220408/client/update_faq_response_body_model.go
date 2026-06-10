@@ -14,6 +14,8 @@ type iUpdateFaqResponseBody interface {
 }
 
 type UpdateFaqResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 736994BD-AA35-4742-88C9-E64BE4BAA14B

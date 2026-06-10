@@ -24,22 +24,32 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
+	// The key of the business space. You can obtain the key on the Business Management page of the primary account. If you do not set this parameter, the default business space is accessed.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The name of the chatbot. A fuzzy search is supported.
+	//
 	// example:
 	//
-	// scenario_im
+	// 售前客服
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of instances to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the chatbot.
+	//
 	// example:
 	//
 	// scenario_im

@@ -34,37 +34,69 @@ type iCreateDocRequest interface {
 }
 
 type CreateDocRequest struct {
+	// The key for the business space. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The document category ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000049006
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The configuration for document splitting. Set the key to `Splitter`. Valid values are `paragraphSplitter` (identifies content hierarchy) and `treeSplitter` (uses a rule-based hierarchy).
+	//
+	// The document chunk size. Set the key to `ChunkSize`. The default value is 500. The value must be in the range of 200 to 800.
+	//
+	// The patterns for the rule-based hierarchy. Set the key to `TreePatterns`. The default value is an empty array (`[]`).
+	//
+	// The document title source. Set the key to `TitleSource`. Valid values are `ocrTitle` (default), which uses the title recognized by Optical Character Recognition (OCR), and `docName`, which uses the document name as the title.
+	//
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config      *string                        `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The document content. You must specify either this parameter or `Url`.
+	//
+	// example:
+	//
+	// 测试内容
 	Content     *string                        `json:"Content,omitempty" xml:"Content,omitempty"`
 	DocMetadata []*CreateDocRequestDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
+	// The time when the document expires. The time is in UTC.
+	//
 	// example:
 	//
 	// 2032-05-25T16:28:36Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The passthrough data of the document.
+	//
 	// example:
 	//
 	// {"code":"xxx"}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The time when the document takes effect. The time is in UTC.
+	//
 	// example:
 	//
 	// 2022-05-25T16:28:36Z
-	StartDate *string  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TagIds    []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// A list of tag IDs.
+	TagIds []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The document title.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the document. You must specify either this parameter or `Content`. Supported formats include .txt, .pdf, .markdown, .doc, and .docx. The following limits apply to a single file: a maximum of 100 pages, less than 200 KB for .txt and .markdown files, and less than 100 MB for .pdf, .doc, and .docx files.
+	//
 	// example:
 	//
 	// https://example.com/example.pdf

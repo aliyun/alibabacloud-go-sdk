@@ -16,10 +16,14 @@ type iCreateConnQuestionResponseBody interface {
 }
 
 type CreateConnQuestionResponseBody struct {
+	// The outline ID.
+	//
 	// example:
 	//
 	// 1000002123
 	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C191B48B-9268-4FB1-A3C2-5143B4A91D0C

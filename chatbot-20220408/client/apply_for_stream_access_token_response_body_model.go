@@ -20,10 +20,14 @@ type iApplyForStreamAccessTokenResponseBody interface {
 }
 
 type ApplyForStreamAccessTokenResponseBody struct {
+	// Request token for the service.
+	//
 	// example:
 	//
 	// 63ba97b4f18a4a04f715c81e8e643938
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// Channel ID
+	//
 	// example:
 	//
 	// cc9e88c0-4f41-4f1d-a1a9-91a72d2aa27d
@@ -34,6 +38,8 @@ type ApplyForStreamAccessTokenResponseBody struct {
 	//
 	// 736994BD-AA35-4742-88C9-E64BE4BAA14B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Key of the workspace, used to add signature to stream requests
+	//
 	// example:
 	//
 	// cc9e88c0-4f41-4f1d-a1a9-91a72d2aa27d

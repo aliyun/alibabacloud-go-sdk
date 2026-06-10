@@ -16,10 +16,14 @@ type iUpdateUserSayResponseBody interface {
 }
 
 type UpdateUserSayResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2356fg3wf34634vdt23wef2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the updated user say.
+	//
 	// example:
 	//
 	// 34512323

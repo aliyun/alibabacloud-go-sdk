@@ -34,40 +34,67 @@ type iDescribeIntentResponseBody interface {
 }
 
 type DescribeIntentResponseBody struct {
+	// The intent alias.
+	//
+	// example:
+	//
+	// 查天气意图
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The time when the intent was created, in UTC format.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The creator name.
+	//
 	// example:
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The intent ID.
+	//
 	// example:
 	//
 	// 84243341
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The intent name.
+	//
+	// example:
+	//
+	// 查天气意图
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// The time when the intent was last modified, in UTC format.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The modifier ID.
+	//
 	// example:
 	//
 	// 123231
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The modifier name.
+	//
 	// example:
 	//
 	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// a22afaf2adfasf2gr345fga45ada
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of objects that contain the slot information for the intent.
 	SlotInfos []*DescribeIntentResponseBodySlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -192,24 +219,42 @@ func (s *DescribeIntentResponseBody) Validate() error {
 }
 
 type DescribeIntentResponseBodySlotInfos struct {
+	// Indicates whether the slot can contain an array of values.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// Indicates whether the slot is configured to encrypt its value.
+	//
 	// example:
 	//
 	// false
 	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// Indicates whether interactive slot filling is enabled. Default value: false.
+	//
 	// example:
 	//
 	// false
-	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	// The slot name.
+	//
+	// example:
+	//
+	// 天气
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The slot ID.
+	//
 	// example:
 	//
 	// aa4d2a343a3ad4afad
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value extracted for the slot.
+	//
+	// example:
+	//
+	// 天气
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeIntentResponseBodySlotInfos) String() string {

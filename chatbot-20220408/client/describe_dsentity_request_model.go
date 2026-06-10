@@ -18,16 +18,22 @@ type iDescribeDSEntityRequest interface {
 }
 
 type DescribeDSEntityRequest struct {
+	// The key for the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The robot ID.
+	//
 	// This parameter is required.
 	//
 	// example:

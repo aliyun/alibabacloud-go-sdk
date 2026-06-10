@@ -16,11 +16,13 @@ type iRetryDocResponseBody interface {
 }
 
 type RetryDocResponseBody struct {
+	// The knowledge ID.
+	//
 	// example:
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

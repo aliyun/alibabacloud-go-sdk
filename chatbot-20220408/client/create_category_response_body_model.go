@@ -16,7 +16,10 @@ type iCreateCategoryResponseBody interface {
 }
 
 type CreateCategoryResponseBody struct {
+	// Details of the created category.
 	Category *CreateCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A629A28F-F25E-5572-A679-FA46FB0151D6
@@ -59,16 +62,32 @@ func (s *CreateCategoryResponseBody) Validate() error {
 }
 
 type CreateCategoryResponseBodyCategory struct {
+	// The business code.
+	//
+	// example:
+	//
+	// bizcode123
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 30000049006
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
+	// example:
+	//
+	// 类目名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent category.
+	//
 	// example:
 	//
 	// -1
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// The category status. A value of -1 indicates that the category has been deleted, but this change has not been published. A value of 0 indicates Normal.
+	//
 	// example:
 	//
 	// 0

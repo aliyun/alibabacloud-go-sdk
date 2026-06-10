@@ -20,19 +20,25 @@ type iUpdateLgfRequest interface {
 }
 
 type UpdateLgfRequest struct {
+	// The key for the business space. If omitted, the default business space is used. You can get the key on the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The bot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The LGF definition.
+	//
 	// This parameter is required.
 	LgfDefinition *UpdateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
-	// LGF ID
+	// The LGF ID.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +102,21 @@ func (s *UpdateLgfRequest) Validate() error {
 }
 
 type UpdateLgfRequestLgfDefinition struct {
+	// The intent ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23234523522
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The LGF configuration.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// .{0,10}[天气]
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 

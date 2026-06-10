@@ -14,6 +14,8 @@ type iUpdateCategoryResponseBody interface {
 }
 
 type UpdateCategoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F79E7305-5314-5069-A701-9591AD051902

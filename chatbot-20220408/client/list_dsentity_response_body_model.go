@@ -22,19 +22,28 @@ type iListDSEntityResponseBody interface {
 }
 
 type ListDSEntityResponseBody struct {
+	// The list of entities.
 	Entities []*ListDSEntityResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ga4h345defgwet2sdf223
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of matching entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,40 +117,66 @@ func (s *ListDSEntityResponseBody) Validate() error {
 }
 
 type ListDSEntityResponseBodyEntities struct {
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the entity.
+	//
 	// example:
 	//
 	// 123231
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The name of the user who created the entity.
+	//
 	// example:
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// 234564567445
-	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity name.
+	//
+	// example:
+	//
+	// 书实体
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The entity type. Valid values: `synonyms`, `regex`, and `system`.
+	//
 	// example:
 	//
 	// synonyms
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The update time in UTC.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the user who last modified the entity.
+	//
 	// example:
 	//
 	// 123231
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The name of the user who last modified the entity.
+	//
 	// example:
 	//
 	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	SysEntityCode  *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
+	// The code for the system entity, such as `sys_date`. This parameter is blank for custom entities.
+	//
+	// example:
+	//
+	// sys_date
+	SysEntityCode *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
 }
 
 func (s ListDSEntityResponseBodyEntities) String() string {

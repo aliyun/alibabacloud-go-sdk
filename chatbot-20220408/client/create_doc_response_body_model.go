@@ -16,10 +16,14 @@ type iCreateDocResponseBody interface {
 }
 
 type CreateDocResponseBody struct {
+	// The knowledge ID.
+	//
 	// example:
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 07B270A4-61D8-57F6-A609-A3C216CFB872

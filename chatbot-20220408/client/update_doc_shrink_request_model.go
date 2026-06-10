@@ -36,41 +36,77 @@ type iUpdateDocShrinkRequest interface {
 }
 
 type UpdateDocShrinkRequest struct {
+	// The key for the business space. If this parameter is not specified, the default business space is used. You can obtain the key on the Business Management page of your master account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The document category ID.
+	//
 	// example:
 	//
 	// 231001028593
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// **Splitter**: The method used to split the document. Valid values: `paragraphSplitter` (splits by paragraph, default) and `treeSplitter` (splits by hierarchical rules).
+	//
+	// **ChunkSize**: The chunk size. The value must be an integer from 200 to 800. The default value is 500.
+	//
+	// **TreePatterns**: An array of regular expressions that define the structure for rule-based splitting. The default value is `[]`.
+	//
+	// **TitleSource**: The source of the document title. Valid values: `ocrTitle` (uses the OCR-recognized title, default) and `docName` (uses the document name as the title).
+	//
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The document content.
+	//
+	// example:
+	//
+	// 文档内容
 	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	DocMetadataShrink *string `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty"`
-	DocName           *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// The document name.
+	//
+	// example:
+	//
+	// 文档问答模块功能说明文档
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// The time when the document expires. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
+	//
 	// example:
 	//
 	// 2023-03-11T23:59:59Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The metadata of the document, specified as a JSON string.
+	//
 	// example:
 	//
 	// {"code":"xxx"}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The time when the document becomes effective. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
+	//
 	// example:
 	//
 	// 2022-05-25T16:28:36Z
-	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The tag IDs to associate with the document. Passing an empty array removes all existing tag associations.
 	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The document title.
+	//
+	// example:
+	//
+	// 文档问答功能说明
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateDocShrinkRequest) String() string {

@@ -16,12 +16,14 @@ type iCreateLgfResponseBody interface {
 }
 
 type CreateLgfResponseBody struct {
-	// LGF ID
+	// The LGF ID.
 	//
 	// example:
 	//
 	// 123453433453
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// af5fg3sdf457j5

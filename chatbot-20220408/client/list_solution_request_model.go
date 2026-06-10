@@ -16,10 +16,14 @@ type iListSolutionRequest interface {
 }
 
 type ListSolutionRequest struct {
+	// The agent key. If omitted, the default agent is used. You can find the key on the agent management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The knowledge ID.
+	//
 	// This parameter is required.
 	//
 	// example:

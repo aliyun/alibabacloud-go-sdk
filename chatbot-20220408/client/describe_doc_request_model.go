@@ -18,16 +18,22 @@ type iDescribeDocRequest interface {
 }
 
 type DescribeDocRequest struct {
+	// The key that identifies the workspace. If this parameter is omitted, the default workspace is used. You can find this key on the workspace management page of your root account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The knowledge ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001979424
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// Specifies whether to return detailed information for paragraphs. true: Detailed information is returned. false: Detailed information is not returned (default).
+	//
 	// example:
 	//
 	// false

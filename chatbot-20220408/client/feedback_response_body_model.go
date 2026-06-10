@@ -18,14 +18,22 @@ type iFeedbackResponseBody interface {
 }
 
 type FeedbackResponseBody struct {
+	// The feedback rating.
+	//
+	// Enumerated values: \\"good\\" (a positive rating) or \\"bad\\" (a negative rating).
+	//
 	// example:
 	//
 	// good
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// The unique identifier of a single message within the session.
+	//
 	// example:
 	//
 	// 5ca40988-4f99-47ad-ac96-9060d0f81db9
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4e5eea71-f326-450c-8849-49515473ef64

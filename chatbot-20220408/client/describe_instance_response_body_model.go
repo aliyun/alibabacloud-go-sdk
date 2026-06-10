@@ -34,43 +34,64 @@ type iDescribeInstanceResponseBody interface {
 }
 
 type DescribeInstanceResponseBody struct {
+	// The URL of the robot\\"s avatar.
+	//
 	// example:
 	//
 	// /alimefe/meebot/robot/0.0.5/img/xxx-90-97.png
-	Avatar     *string                                   `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// A list of categories.
 	Categories []*DescribeInstanceResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The UTC time when the robot was created.
+	//
 	// example:
 	//
 	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The status of the robot.
+	//
 	// example:
 	//
 	// PUBLISHED
 	EditStatus *string `json:"EditStatus,omitempty" xml:"EditStatus,omitempty"`
+	// The unique identifier of the robot instance.
+	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The robot\\"s introduction.
+	//
 	// example:
 	//
 	// 用于C端问答的机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// The language of the robot, such as zh-cn and en-us.
+	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The robot name.
+	//
 	// example:
 	//
 	// 智能客服-小C
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 907AA5F2-0521-49AB-80AB-1ADEFAB2B901
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The robot type.
+	//
 	// example:
 	//
 	// scenario_im
 	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	// The time zone of the robot. For more information, see Time zone codes.
+	//
 	// example:
 	//
 	// Asia/Chongqing
@@ -198,15 +219,26 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyCategories struct {
+	// The ability type of the category, such as FAQ or MRC.
+	//
+	// example:
+	//
+	// FAQ
 	AbilityType *string `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 30000066832
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// 杭州市防疫政策
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent category ID. A value of -1 indicates the root directory.
+	//
 	// example:
 	//
 	// -1

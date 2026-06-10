@@ -16,7 +16,10 @@ type iListCategoryResponseBody interface {
 }
 
 type ListCategoryResponseBody struct {
+	// An array of categories.
 	Categories []*ListCategoryResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C5F8186-2D22-433E-9545-606D344F30B5
@@ -63,16 +66,32 @@ func (s *ListCategoryResponseBody) Validate() error {
 }
 
 type ListCategoryResponseBodyCategories struct {
+	// The business code.
+	//
+	// example:
+	//
+	// bizcode123
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 231001028593
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
+	// example:
+	//
+	// 类目名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent category ID.
+	//
 	// example:
 	//
 	// -1
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// The status of the category. Valid values: `0` (Normal) and `-1` (Deleted).
+	//
 	// example:
 	//
 	// 0

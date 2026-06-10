@@ -20,22 +20,30 @@ type iGetBotSessionDataRequest interface {
 }
 
 type GetBotSessionDataRequest struct {
+	// The key for the workspace. If you omit this parameter, the operation uses the default workspace. You can find the key on the business management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The end time for the query. The format must be `yyyyMMdd`. For example: `20240605`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20240605
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the bot instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-7QuUfaqMQe
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
+	// The start time for the query. The format must be `yyyyMMdd`. For example: `20240505`.
+	//
 	// This parameter is required.
 	//
 	// example:

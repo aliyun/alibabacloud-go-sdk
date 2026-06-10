@@ -18,16 +18,21 @@ type iCreateUserSayRequest interface {
 }
 
 type CreateUserSayRequest struct {
+	// The key of the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the chatbot instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
-	InstanceId        *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The definition of the user say.
 	UserSayDefinition *CreateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
 }
 
@@ -76,14 +81,23 @@ func (s *CreateUserSayRequest) Validate() error {
 }
 
 type CreateUserSayRequestUserSayDefinition struct {
+	// The content of the user say.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 请问明天北京的天气
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the intent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123232
-	IntentId  *int64                                            `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// An array of objects, each containing information about a slot.
 	SlotInfos []*CreateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -136,14 +150,20 @@ func (s *CreateUserSayRequestUserSayDefinition) Validate() error {
 }
 
 type CreateUserSayRequestUserSayDefinitionSlotInfos struct {
+	// The zero-based end index of the slot in the user say content. This index is exclusive.
+	//
 	// example:
 	//
 	// 6
 	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// The ID of the slot.
+	//
 	// example:
 	//
 	// fb34adf2fv43f2
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// The zero-based start index of the slot in the user say content.
+	//
 	// example:
 	//
 	// 4

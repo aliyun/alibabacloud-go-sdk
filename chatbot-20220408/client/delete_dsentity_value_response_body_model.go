@@ -16,10 +16,14 @@ type iDeleteDSEntityValueResponseBody interface {
 }
 
 type DeleteDSEntityValueResponseBody struct {
+	// The ID of the deleted entity value.
+	//
 	// example:
 	//
 	// 3453453452
 	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// dfdf2t3rfvb45y

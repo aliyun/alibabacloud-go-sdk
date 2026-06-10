@@ -24,23 +24,38 @@ type iCancelChatRequest interface {
 }
 
 type CancelChatRequest struct {
+	// The agent key. If unspecified, the default agent is used. You can obtain the key on the Business Management page of your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Answer   *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The content of the answer.
+	//
+	// example:
+	//
+	// <这个答案被打>
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The ID that identifies a single chat turn.
+	//
 	// example:
 	//
 	// 7105a351-b2e7-4c9e-8437-c43a043c0a4e
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// The ID of the chatbot instance.
+	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The session ID is used to identify a visitor\\"s session and maintain context. For a new visitor, omit this parameter in the first call to the chat operation. The chatbot starts a session and returns the session ID in the response. For subsequent turns, you must pass the session ID to maintain context. The value can be up to 64 characters in length.
+	//
 	// example:
 	//
 	// c1187530338311ebade7cf3eaeb3668a
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The cancellation type.
+	//
 	// example:
 	//
 	// Canceled

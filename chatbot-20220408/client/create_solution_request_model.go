@@ -24,25 +24,40 @@ type iCreateSolutionRequest interface {
 }
 
 type CreateSolutionRequest struct {
+	// The key of the business space. If this parameter is omitted, the system uses the default business space. You can obtain the key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The content of the knowledge answer.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 答案内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The answer type. Valid values: `0` (plain text) and `1` (rich text).
+	//
 	// example:
 	//
 	// 1
 	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The ID of the knowledge.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// A list of perspective codes.
+	//
 	// This parameter is required.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	TagIdList        []*int64  `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
+	// A list of tag IDs.
+	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateSolutionRequest) String() string {

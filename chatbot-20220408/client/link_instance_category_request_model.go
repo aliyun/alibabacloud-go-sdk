@@ -20,18 +20,26 @@ type iLinkInstanceCategoryRequest interface {
 }
 
 type LinkInstanceCategoryRequest struct {
+	// The category\\"s ability type. Valid values: `FAQ` and `MRC` (machine reading comprehension). Defaults to `FAQ`.
+	//
 	// example:
 	//
 	// FAQ,MRC
 	AbilityType *string `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
+	// The key for the business space. If you do not specify this parameter, the default business space is used. You can obtain the key on the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// An array of FAQ category IDs to link to the chatbot.
+	//
 	// example:
 	//
 	// [\\"30000065789\\"]
 	CategoryIds *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	// The unique identifier of the chatbot.
+	//
 	// example:
 	//
 	// chatbot-cn-mp90s2lrk00050

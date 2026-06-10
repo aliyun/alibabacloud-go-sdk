@@ -16,10 +16,14 @@ type iCreatePerspectiveResponseBody interface {
 }
 
 type CreatePerspectiveResponseBody struct {
+	// The perspective ID.
+	//
 	// example:
 	//
 	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F285D735-D580-18A8-B97F-B2E72B00F101

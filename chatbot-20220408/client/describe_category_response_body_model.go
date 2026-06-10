@@ -16,7 +16,10 @@ type iDescribeCategoryResponseBody interface {
 }
 
 type DescribeCategoryResponseBody struct {
+	// The category information.
 	Category *DescribeCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2B0304FD-3804-5C06-9A83-77F5523664AF
@@ -59,16 +62,32 @@ func (s *DescribeCategoryResponseBody) Validate() error {
 }
 
 type DescribeCategoryResponseBodyCategory struct {
+	// The business code.
+	//
+	// example:
+	//
+	// bizcode123
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The ID of the category.
+	//
 	// example:
 	//
 	// 30000049006
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// 类目名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent category. A value of -1 indicates the root directory.
+	//
 	// example:
 	//
 	// -1
 	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// The status of the category. Valid values: 0 (Normal) or -1 (Deleted).
+	//
 	// example:
 	//
 	// 0

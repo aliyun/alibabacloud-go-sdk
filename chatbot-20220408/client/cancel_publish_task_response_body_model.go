@@ -28,28 +28,48 @@ type iCancelPublishTaskResponseBody interface {
 }
 
 type CancelPublishTaskResponseBody struct {
+	// A list of business types.
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// The time when the task was created, in UTC.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The error message returned if the task fails.
+	//
+	// example:
+	//
+	// 检查待发布模块是否空闲发生错误，faq
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the publish task.
+	//
 	// example:
 	//
 	// 8522
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the task was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:33Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the publish task. This is a redundant field. We recommend that you use the `Id` field instead.
+	//
 	// example:
 	//
 	// 8522
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status. Valid values:
+	//
+	// `FE_RUNNING`: in progress, `FE_SUCCESS`: succeeded, `FE_FAILED`: failed, `FE_ABORTED`: aborted.
+	//
 	// example:
 	//
 	// FE_ABORTED

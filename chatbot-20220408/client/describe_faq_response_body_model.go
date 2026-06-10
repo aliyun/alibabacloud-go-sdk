@@ -44,55 +44,86 @@ type iDescribeFaqResponseBody interface {
 }
 
 type DescribeFaqResponseBody struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 30000055617
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The time the knowledge was created, in UTC.
+	//
 	// example:
 	//
 	// 2020-11-30T03:03:37Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the knowledge.
+	//
 	// example:
 	//
 	// test01
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The validity status of the knowledge, calculated based on `StartDate` and `EndDate`. Valid values: `20` (Active), `21` (Expired), and `22` (Pending).
+	//
 	// example:
 	//
 	// 20
 	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// The expiration time of the knowledge, in UTC.
+	//
 	// example:
 	//
 	// 2023-04-27T06:08:54Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The knowledge ID.
+	//
 	// example:
 	//
 	// 30001979424
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The time the knowledge was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2020-12-02T06:35:50Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The user who last modified the knowledge.
+	//
 	// example:
 	//
 	// test01
-	ModifyUserName *string                            `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	Outlines       []*DescribeFaqResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// A list of related questions.
+	Outlines []*DescribeFaqResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8AD9FA10-7780-5E12-B701-13C928524F32
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of similar questions.
 	SimQuestions []*DescribeFaqResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
-	Solutions    []*DescribeFaqResponseBodySolutions    `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	// A list of solutions.
+	Solutions []*DescribeFaqResponseBodySolutions `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	// The effective start time of the knowledge, in UTC.
+	//
 	// example:
 	//
 	// 2022-04-27T07:04:39Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The knowledge status. Valid values: `-1` (Deleted and unpublished), `1` (Unpublished), `2` (Published), and `3` (Updated and unpublished).
+	//
 	// example:
 	//
 	// 3
-	Status    *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of tag IDs associated with the knowledge.
 	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
-	Title     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The knowledge title.
+	//
+	// example:
+	//
+	// 测试标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBody) String() string {
@@ -279,23 +310,36 @@ func (s *DescribeFaqResponseBody) Validate() error {
 }
 
 type DescribeFaqResponseBodyOutlines struct {
+	// The related knowledge ID.
+	//
 	// example:
 	//
 	// 1000098002
 	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	// The time the related question was created, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-26T10:24:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time the related question was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-26T18:12:02Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The relationship ID.
+	//
 	// example:
 	//
 	// 797
-	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// The related knowledge title.
+	//
+	// example:
+	//
+	// 测试关联问标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBodyOutlines) String() string {
@@ -356,19 +400,30 @@ func (s *DescribeFaqResponseBodyOutlines) Validate() error {
 }
 
 type DescribeFaqResponseBodySimQuestions struct {
+	// The time the similar question was created, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-26T10:24:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time the similar question was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-29T03:55:07Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The similar question ID.
+	//
 	// example:
 	//
 	// 10000000581
-	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	// The similar question title.
+	//
+	// example:
+	//
+	// 测试相似问标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBodySimQuestions) String() string {
@@ -420,26 +475,46 @@ func (s *DescribeFaqResponseBodySimQuestions) Validate() error {
 }
 
 type DescribeFaqResponseBodySolutions struct {
+	// The solution content.
+	//
+	// example:
+	//
+	// 测试答案内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The solution content type. Valid values: `0` (plain text) and `1` (rich text).
+	//
 	// example:
 	//
 	// 0
 	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The time the solution was created, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-26T10:24:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time the solution was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2022-05-29T07:07:13Z
-	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// A list of perspective codes.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	PlainText        *string   `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
+	// The plain text content of the solution.
+	//
+	// example:
+	//
+	// 测试答案内容
+	PlainText *string `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
+	// The solution ID.
+	//
 	// example:
 	//
 	// 10000003071
-	SolutionId *int64   `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	TagIdList  []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// A list of tag IDs.
+	TagIdList []*int64 `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFaqResponseBodySolutions) String() string {

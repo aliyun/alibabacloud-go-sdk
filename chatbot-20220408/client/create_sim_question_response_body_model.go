@@ -16,10 +16,14 @@ type iCreateSimQuestionResponseBody interface {
 }
 
 type CreateSimQuestionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 16AC1B3C-66E0-438B-BB7C-71B692407B67
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The similar question ID.
+	//
 	// example:
 	//
 	// 1000002788

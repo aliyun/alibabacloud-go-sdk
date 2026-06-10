@@ -20,15 +20,22 @@ type iListTongyiConversationLogsResponseBody interface {
 }
 
 type ListTongyiConversationLogsResponseBody struct {
+	// The request processing time, in milliseconds.
+	//
 	// example:
 	//
 	// 66
-	CostTime *string                  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	Datas    []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	CostTime *string `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// An array of conversation log entries.
+	Datas []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 28805A7C-D695-548C-A31B-67E52C2C274F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The debug information for the session flow.
+	//
 	// if can be null:
 	// true
 	SessionFlowDebugInfo *ListTongyiConversationLogsResponseBodySessionFlowDebugInfo `json:"SessionFlowDebugInfo,omitempty" xml:"SessionFlowDebugInfo,omitempty" type:"Struct"`
@@ -88,7 +95,9 @@ func (s *ListTongyiConversationLogsResponseBody) Validate() error {
 }
 
 type ListTongyiConversationLogsResponseBodySessionFlowDebugInfo struct {
-	ApiParams  map[string]interface{} `json:"ApiParams,omitempty" xml:"ApiParams,omitempty"`
+	// The API parameters from the session flow.
+	ApiParams map[string]interface{} `json:"ApiParams,omitempty" xml:"ApiParams,omitempty"`
+	// The slot parameters from the session flow.
 	SlotParams map[string]interface{} `json:"SlotParams,omitempty" xml:"SlotParams,omitempty"`
 }
 

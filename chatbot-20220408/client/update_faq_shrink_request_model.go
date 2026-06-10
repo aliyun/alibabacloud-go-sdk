@@ -26,32 +26,49 @@ type iUpdateFaqShrinkRequest interface {
 }
 
 type UpdateFaqShrinkRequest struct {
+	// The key for the business space. If this parameter is omitted, the default business space is used. You can find this key on the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the knowledge entry\\"s category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000049006
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The expiration date and time. The value must be in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2030-12-31T16:00:00Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The ID of the knowledge entry.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The effective start date and time. The value must be in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2022-05-27T05:18:20Z
-	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// A list of tag IDs.
 	TagIdListShrink *string `json:"TagIdList,omitempty" xml:"TagIdList,omitempty"`
+	// The knowledge title.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

@@ -18,16 +18,21 @@ type iCreateIntentRequest interface {
 }
 
 type CreateIntentRequest struct {
+	// The key of the business space. If you do not specify this parameter, the default business space is used. You can get the key from the business management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
-	InstanceId       *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent definition.
 	IntentDefinition *CreateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
 }
 
@@ -76,10 +81,22 @@ func (s *CreateIntentRequest) Validate() error {
 }
 
 type CreateIntentRequestIntentDefinition struct {
+	// The intent alias.
+	//
+	// example:
+	//
+	// 查天气意图
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The intent name.
+	//
 	// This parameter is required.
-	IntentName *string                                         `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	SlotInfos  []*CreateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 查天气意图
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// An array of objects, each defining a slot for the intent.
+	SlotInfos []*CreateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
 func (s CreateIntentRequestIntentDefinition) String() string {
@@ -131,27 +148,47 @@ func (s *CreateIntentRequestIntentDefinition) Validate() error {
 }
 
 type CreateIntentRequestIntentDefinitionSlotInfos struct {
+	// Specifies whether the slot can have multiple values.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// Specifies whether to encrypt the slot value.
+	//
 	// example:
 	//
 	// false
 	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// Specifies whether the slot is interactive.
+	//
 	// example:
 	//
 	// false
 	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	// The slot name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 天气
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The slot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fg452dfg3df23
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// The name of the associated entity.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 天气
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

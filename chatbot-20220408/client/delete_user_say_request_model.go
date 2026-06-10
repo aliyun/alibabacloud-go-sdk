@@ -20,22 +20,30 @@ type iDeleteUserSayRequest interface {
 }
 
 type DeleteUserSayRequest struct {
+	// The key of the business space. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The instance ID of the bot.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 343df2sdf23
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the intent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5564564546
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The ID of the user say.
+	//
 	// This parameter is required.
 	//
 	// example:

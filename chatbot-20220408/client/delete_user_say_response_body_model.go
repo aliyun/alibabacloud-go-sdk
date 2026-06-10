@@ -16,10 +16,14 @@ type iDeleteUserSayResponseBody interface {
 }
 
 type DeleteUserSayResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// dfgdg324gf34t34g34g3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the user say.
+	//
 	// example:
 	//
 	// 4562121234

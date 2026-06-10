@@ -18,17 +18,27 @@ type iUpdateSimQuestionRequest interface {
 }
 
 type UpdateSimQuestionRequest struct {
+	// The key of the workspace. If you do not specify this parameter, the default workspace is used. You can find the key on the Business Management page of your master account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the similar question that you want to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000002788
 	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	// The new title of the similar question. The title can be up to 120 characters long.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试相似问标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

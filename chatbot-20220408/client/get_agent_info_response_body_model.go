@@ -20,17 +20,22 @@ type iGetAgentInfoResponseBody interface {
 }
 
 type GetAgentInfoResponseBody struct {
+	// The agent details.
 	Data *GetAgentInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Parameter.Invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FC384CE1-8D42-1900-84E1-F33F990F2B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,10 +96,17 @@ func (s *GetAgentInfoResponseBody) Validate() error {
 }
 
 type GetAgentInfoResponseBodyData struct {
+	// The agent key. It is used to specify the agent in Platform as a Service (PaaS) API calls.
+	//
 	// example:
 	//
 	// 4e7400028e6f4a7393ed3acf6a7b8927_p_beebot_public
-	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The agent name.
+	//
+	// example:
+	//
+	// 业务空间_881
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 }
 

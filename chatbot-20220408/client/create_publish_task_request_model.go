@@ -18,14 +18,20 @@ type iCreatePublishTaskRequest interface {
 }
 
 type CreatePublishTaskRequest struct {
+	// The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The type of content to publish. To publish a bot, use the `CreateInstancePublishTask` API.
+	//
 	// example:
 	//
 	// faq
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Specifies data to publish by ID. This parameter is used only when `BizType` is set to `faq`. In this case, provide one or more category IDs to publish knowledge exclusively from the specified categories.
+	//
 	// example:
 	//
 	// ["8521"]

@@ -16,10 +16,14 @@ type iDeleteDocResponseBody interface {
 }
 
 type DeleteDocResponseBody struct {
+	// The ID of the knowledge.
+	//
 	// example:
 	//
 	// 30002406051
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// DFB71B34-4188-4EA2-9988-EF3014E75910

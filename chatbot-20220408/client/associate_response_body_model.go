@@ -20,15 +20,22 @@ type iAssociateResponseBody interface {
 }
 
 type AssociateResponseBody struct {
+	// A list of suggested FAQs.
 	Associate []*AssociateResponseBodyAssociate `json:"Associate,omitempty" xml:"Associate,omitempty" type:"Repeated"`
+	// The response message ID.
+	//
 	// example:
 	//
 	// 5ADF0EBD-7C50-1922-A28B-43215B47CC1A
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5C20F0D4-9721-178A-8236-3BF990634962
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 1531ded6b3df4afca4be63943f708bb7
@@ -93,10 +100,14 @@ func (s *AssociateResponseBody) Validate() error {
 }
 
 type AssociateResponseBodyAssociate struct {
+	// Additional information.
+	//
 	// example:
 	//
 	// {}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The title of the suggested FAQ.
+	//
 	// example:
 	//
 	// 公积金提取的政策

@@ -20,17 +20,24 @@ type iUpdateUserSayRequest interface {
 }
 
 type UpdateUserSayRequest struct {
+	// The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the bot.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbot-cn-yjzbyrEvqd
-	InstanceId        *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The definition of the user say.
 	UserSayDefinition *UpdateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
+	// The ID of the user say.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -93,14 +100,23 @@ func (s *UpdateUserSayRequest) Validate() error {
 }
 
 type UpdateUserSayRequestUserSayDefinition struct {
+	// The content of the user say.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 做核酸了吗您
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the intent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
-	IntentId  *int64                                            `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// An array that contains information for each slot.
 	SlotInfos []*UpdateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -153,14 +169,20 @@ func (s *UpdateUserSayRequestUserSayDefinition) Validate() error {
 }
 
 type UpdateUserSayRequestUserSayDefinitionSlotInfos struct {
+	// The zero-based end index (exclusive) of the slot within the content of the user say.
+	//
 	// example:
 	//
 	// 3
 	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// The ID of the slot.
+	//
 	// example:
 	//
 	// 346ffg3q23dv
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// The zero-based start index of the slot within the content of the user say.
+	//
 	// example:
 	//
 	// 1

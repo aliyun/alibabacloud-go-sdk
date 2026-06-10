@@ -22,18 +22,32 @@ type iBeginSessionResponseBody interface {
 }
 
 type BeginSessionResponseBody struct {
+	// The ASR end-pointing detection time, in milliseconds.
+	//
+	// example:
+	//
+	// 700
 	AsrMaxEndSilence *int32 `json:"AsrMaxEndSilence,omitempty" xml:"AsrMaxEndSilence,omitempty"`
-	Interruptible    *bool  `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// Indicates whether voice playback is interruptible.
+	//
+	// example:
+	//
+	// false
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 149C7528-C104-1B50-A4F9-0C5907A8AD9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 静默超时时间
+	// The silence timeout, in seconds.
 	//
 	// example:
 	//
 	// 5
 	SilenceReplyTimeout *int32 `json:"SilenceReplyTimeout,omitempty" xml:"SilenceReplyTimeout,omitempty"`
+	// The welcome message.
+	//
 	// example:
 	//
 	// 智能对话机器人为您服务，请问有什么可以帮您？

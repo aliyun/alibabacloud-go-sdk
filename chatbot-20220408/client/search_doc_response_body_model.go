@@ -22,21 +22,28 @@ type iSearchDocResponseBody interface {
 }
 
 type SearchDocResponseBody struct {
+	// A list of matching documents.
 	DocHits []*SearchDocResponseBodyDocHits `json:"DocHits,omitempty" xml:"DocHits,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// E3E5C779-A630-45AC-B0F2-A4506A4212F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 141
@@ -110,72 +117,134 @@ func (s *SearchDocResponseBody) Validate() error {
 }
 
 type SearchDocResponseBodyDocHits struct {
+	// The business code.
+	//
 	// example:
 	//
 	// cn_dytns
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 30000135654
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The splitter for the document. Key: `Splitter`. Valid values:<br>• `paragraphSplitter` (default): Splits the document by paragraph.<br>• `treeSplitter`: Splits the document based on a rule-based hierarchy.<br><br>
+	//
+	// The size of each document chunk. Key: `ChunkSize`. Default value: 500. Value range: [200, 800].
+	//
+	// The patterns for the rule-based hierarchy. Key: `TreePatterns`. Default value: `[]`.
+	//
+	// The source of the document title. Key: `TitleSource`. Valid values:<br>• `ocrTitle` (default): Uses the OCR-identified title.<br>• `docName`: Uses the document name as the title.<br><br>
+	//
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":"docName"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The time the document was created (UTC).
+	//
 	// example:
 	//
 	// 2023-06-22T03:53:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 111111111
-	CreateUserId   *int64                                 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string                                `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocName        *string                                `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	DocTags        []*SearchDocResponseBodyDocHitsDocTags `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
+	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The name of the creator.
+	//
+	// example:
+	//
+	// 张三
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The document name.
+	//
+	// example:
+	//
+	// 文档名称
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// A list of the document\\"s tags.
+	DocTags []*SearchDocResponseBodyDocHitsDocTags `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
+	// The knowledge\\"s effective status, calculated based on `StartDate` and `EndDate`. Valid values:<br>• 20: Active<br>• 21: Expired<br>• 22: Pending<br><br><br>
+	//
 	// example:
 	//
 	// 20
 	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// The time the knowledge expires (UTC).
+	//
 	// example:
 	//
 	// 2099-12-31T16:00:00Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The knowledge ID.
+	//
 	// example:
 	//
 	// 30002692007
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The document metadata.
+	//
 	// example:
 	//
 	// {"code":"xxx"}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The time the document was last modified (UTC).
+	//
 	// example:
 	//
 	// 2023-06-25T02:27:42Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The modifier ID.
+	//
 	// example:
 	//
 	// 222222222
-	ModifyUserId   *int64  `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserId *int64 `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The name of the last modifier.
+	//
+	// example:
+	//
+	// 李四
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// Indicates whether the task can be retried.<br>• `true`: The task can be retried.<br>• `false`: The task cannot be retried.<br><br>
+	//
 	// example:
 	//
 	// true
-	ProcessCanRetry *bool   `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
-	ProcessMessage  *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	ProcessCanRetry *bool `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
+	// The processing message for the task.
+	//
+	// example:
+	//
+	// 任务处理成功
+	ProcessMessage *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	// The task\\"s processing status. Valid values:<br>• -1: Queued<br>• 0: Succeeded<br>• 1: Parsing<br>• 2: Processing<br>• 3: Failed<br><br><br><br><br>
+	//
 	// example:
 	//
 	// 0
 	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// The time the knowledge takes effect (UTC).
+	//
 	// example:
 	//
 	// 2023-02-28T11:40:18Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The editing status of the document. Valid values:<br>• 1: Unpublished<br>• 2: Published<br>• 3: Updated but not published<br><br><br>
+	//
 	// example:
 	//
 	// 1
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The OSS URL of the object.
+	//
+	// example:
+	//
+	// https://doc2bot-bucket-cloud.oss-cn-shanghai.aliyuncs.com/doc2bot/input/文档问答说明书_V1.pdf
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SearchDocResponseBodyDocHits) String() string {
@@ -389,11 +458,36 @@ func (s *SearchDocResponseBodyDocHits) Validate() error {
 }
 
 type SearchDocResponseBodyDocHitsDocTags struct {
-	DefaultTag *bool   `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty"`
-	GroupId    *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	TagId      *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName    *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Indicates whether this is a default tag.
+	//
+	// example:
+	//
+	// false
+	DefaultTag *bool `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty"`
+	// The tag group ID.
+	//
+	// example:
+	//
+	// 3610
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The tag group name.
+	//
+	// example:
+	//
+	// 文章
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag ID.
+	//
+	// example:
+	//
+	// 1201
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The tag name.
+	//
+	// example:
+	//
+	// 小说
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s SearchDocResponseBodyDocHitsDocTags) String() string {

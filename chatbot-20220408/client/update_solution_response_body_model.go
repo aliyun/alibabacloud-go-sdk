@@ -14,6 +14,8 @@ type iUpdateSolutionResponseBody interface {
 }
 
 type UpdateSolutionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8B8F098D-A338-54DD-B19C-24BBBCBD8498

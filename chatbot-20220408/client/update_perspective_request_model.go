@@ -18,14 +18,20 @@ type iUpdatePerspectiveRequest interface {
 }
 
 type UpdatePerspectiveRequest struct {
+	// The business space key. If not specified, the default business space is used. You can get the key from the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The name of the perspective. The name must be 50 characters or fewer.
+	//
 	// example:
 	//
 	// 客户端视角
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The perspective ID.
+	//
 	// example:
 	//
 	// 3001

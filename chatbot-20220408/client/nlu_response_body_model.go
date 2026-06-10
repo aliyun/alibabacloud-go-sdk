@@ -18,11 +18,16 @@ type iNluResponseBody interface {
 }
 
 type NluResponseBody struct {
+	// The ID of the natural language understanding response.
+	//
 	// example:
 	//
 	// 2828708A-2C7A-1BAE-B810-87DB9DA9C661
-	MessageId *string                    `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Messages  []*NluResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The list of messages.
+	Messages []*NluResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A6357C1B-1D79-1382-B259-BD9E80751B42
@@ -78,8 +83,10 @@ func (s *NluResponseBody) Validate() error {
 }
 
 type NluResponseBodyMessages struct {
+	// The natural language understanding information from DialogHub.
 	DialogHubNluInfo *NluResponseBodyMessagesDialogHubNluInfo `json:"DialogHubNluInfo,omitempty" xml:"DialogHubNluInfo,omitempty" type:"Struct"`
-	DsNluInfo        *NluResponseBodyMessagesDsNluInfo        `json:"DsNluInfo,omitempty" xml:"DsNluInfo,omitempty" type:"Struct"`
+	// The natural language understanding information from Dialog Studio.
+	DsNluInfo *NluResponseBodyMessagesDsNluInfo `json:"DsNluInfo,omitempty" xml:"DsNluInfo,omitempty" type:"Struct"`
 }
 
 func (s NluResponseBodyMessages) String() string {
@@ -123,7 +130,9 @@ func (s *NluResponseBodyMessages) Validate() error {
 }
 
 type NluResponseBodyMessagesDialogHubNluInfo struct {
-	GlobalDictList          []*NluResponseBodyMessagesDialogHubNluInfoGlobalDictList          `json:"GlobalDictList,omitempty" xml:"GlobalDictList,omitempty" type:"Repeated"`
+	// The list of global dictionary entries.
+	GlobalDictList []*NluResponseBodyMessagesDialogHubNluInfoGlobalDictList `json:"GlobalDictList,omitempty" xml:"GlobalDictList,omitempty" type:"Repeated"`
+	// The list of global sensitive words.
 	GlobalSensitiveWordList []*NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList `json:"GlobalSensitiveWordList,omitempty" xml:"GlobalSensitiveWordList,omitempty" type:"Repeated"`
 }
 
@@ -176,10 +185,14 @@ func (s *NluResponseBodyMessagesDialogHubNluInfo) Validate() error {
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalDictList struct {
+	// The standard word.
+	//
 	// example:
 	//
 	// 天气
 	StandardWord *string `json:"StandardWord,omitempty" xml:"StandardWord,omitempty"`
+	// The synonym.
+	//
 	// example:
 	//
 	// 天气
@@ -217,10 +230,14 @@ func (s *NluResponseBodyMessagesDialogHubNluInfoGlobalDictList) Validate() error
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList struct {
+	// The standard word.
+	//
 	// example:
 	//
 	// 天气
 	StandardWord *string `json:"StandardWord,omitempty" xml:"StandardWord,omitempty"`
+	// The synonym.
+	//
 	// example:
 	//
 	// 天气
@@ -258,7 +275,9 @@ func (s *NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList) Validat
 }
 
 type NluResponseBodyMessagesDsNluInfo struct {
+	// The list of entities.
 	EntityList []*NluResponseBodyMessagesDsNluInfoEntityList `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
+	// The list of intents.
 	IntentList []*NluResponseBodyMessagesDsNluInfoIntentList `json:"IntentList,omitempty" xml:"IntentList,omitempty" type:"Repeated"`
 }
 
@@ -311,18 +330,26 @@ func (s *NluResponseBodyMessagesDsNluInfo) Validate() error {
 }
 
 type NluResponseBodyMessagesDsNluInfoEntityList struct {
+	// The name of the entity.
+	//
 	// example:
 	//
 	// @城市
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The original word for the entity, also known as an entity member.
+	//
 	// example:
 	//
 	// 北京
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The type of the entity. Currently, only the `text` type is supported.
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The entity\\"s synonym.
+	//
 	// example:
 	//
 	// 首都
@@ -378,26 +405,37 @@ func (s *NluResponseBodyMessagesDsNluInfoEntityList) Validate() error {
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentList struct {
+	// The intent ID.
+	//
 	// example:
 	//
 	// 724387
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The details of the matching process.
+	//
 	// example:
 	//
 	// classifierType=Fewshot,from=Fewshot,content=[我要查北京的天气, 帮我查北京的天气, 北京天气怎么样, 北京今天下雨吗, 北京今天多少度]
 	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	// The match type. Valid values are `Similarity` (match by utterance similarity), `Lgf` (match by LGF), `Classify` (match by model training), `FewShotLearning` (match by the built-in few-shot learning model), and `BuildIn` (match with a built-in intent).
+	//
 	// example:
 	//
 	// FewShotLearning
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The name of the intent.
+	//
 	// example:
 	//
 	// 查天气意图
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The confidence score of the match.
+	//
 	// example:
 	//
 	// 0.995
-	Score    *float64                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The list of slots for the matched intent.
 	SlotList []*NluResponseBodyMessagesDsNluInfoIntentListSlotList `json:"SlotList,omitempty" xml:"SlotList,omitempty" type:"Repeated"`
 }
 
@@ -477,18 +515,26 @@ func (s *NluResponseBodyMessagesDsNluInfoIntentList) Validate() error {
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentListSlotList struct {
+	// The name of the entity.
+	//
 	// example:
 	//
 	// @城市
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The original word for the entity, also known as an entity member.
+	//
 	// example:
 	//
 	// 北京
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The type of the entity. Currently, only the `text` type is supported.
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The entity\\"s synonym.
+	//
 	// example:
 	//
 	// 首都

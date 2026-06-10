@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// # Apply for Streaming Gateway AccessToken
+// Obtain the Connection information for stream invocation.
 //
 // @param request - ApplyForStreamAccessTokenRequest
 //
@@ -102,7 +102,7 @@ func (client *Client) ApplyForStreamAccessTokenWithOptions(request *ApplyForStre
 
 // Summary:
 //
-// # Apply for Streaming Gateway AccessToken
+// Obtain the Connection information for stream invocation.
 //
 // @param request - ApplyForStreamAccessTokenRequest
 //
@@ -120,7 +120,7 @@ func (client *Client) ApplyForStreamAccessToken(request *ApplyForStreamAccessTok
 
 // Summary:
 //
-// 会话-联想API
+// Suggests FAQs from the knowledge base based on a user\\"s utterance.
 //
 // @param tmpReq - AssociateRequest
 //
@@ -190,7 +190,7 @@ func (client *Client) AssociateWithOptions(tmpReq *AssociateRequest, runtime *da
 
 // Summary:
 //
-// 会话-联想API
+// Suggests FAQs from the knowledge base based on a user\\"s utterance.
 //
 // @param request - AssociateRequest
 //
@@ -208,7 +208,7 @@ func (client *Client) Associate(request *AssociateRequest) (_result *AssociateRe
 
 // Summary:
 //
-// 获取欢迎语
+// Initiates a session and retrieves a welcome message.
 //
 // @param request - BeginSessionRequest
 //
@@ -270,7 +270,7 @@ func (client *Client) BeginSessionWithOptions(request *BeginSessionRequest, runt
 
 // Summary:
 //
-// 获取欢迎语
+// Initiates a session and retrieves a welcome message.
 //
 // @param request - BeginSessionRequest
 //
@@ -288,7 +288,11 @@ func (client *Client) BeginSession(request *BeginSessionRequest) (_result *Begin
 
 // Summary:
 //
-// 取消对应对话
+// Cancels or interrupts an ongoing chat.
+//
+// Description:
+//
+// This operation supports only the new version of chatbots. You can query data only from the last 90 days.
 //
 // @param request - CancelChatRequest
 //
@@ -352,7 +356,11 @@ func (client *Client) CancelChatWithOptions(request *CancelChatRequest, runtime 
 
 // Summary:
 //
-// 取消对应对话
+// Cancels or interrupts an ongoing chat.
+//
+// Description:
+//
+// This operation supports only the new version of chatbots. You can query data only from the last 90 days.
 //
 // @param request - CancelChatRequest
 //
@@ -370,7 +378,7 @@ func (client *Client) CancelChat(request *CancelChatRequest) (_result *CancelCha
 
 // Summary:
 //
-// 取消机器人发布
+// Cancels a publishing task for a chatbot.
 //
 // @param request - CancelInstancePublishTaskRequest
 //
@@ -422,7 +430,7 @@ func (client *Client) CancelInstancePublishTaskWithOptions(request *CancelInstan
 
 // Summary:
 //
-// 取消机器人发布
+// Cancels a publishing task for a chatbot.
 //
 // @param request - CancelInstancePublishTaskRequest
 //
@@ -440,7 +448,7 @@ func (client *Client) CancelInstancePublishTask(request *CancelInstancePublishTa
 
 // Summary:
 //
-// # Cancel Publishing Task
+// Cancels a publish task that is in progress.
 //
 // @param request - CancelPublishTaskRequest
 //
@@ -488,7 +496,7 @@ func (client *Client) CancelPublishTaskWithOptions(request *CancelPublishTaskReq
 
 // Summary:
 //
-// # Cancel Publishing Task
+// Cancels a publish task that is in progress.
 //
 // @param request - CancelPublishTaskRequest
 //
@@ -506,7 +514,7 @@ func (client *Client) CancelPublishTask(request *CancelPublishTaskRequest) (_res
 
 // Summary:
 //
-// 会话API
+// Starts a conversation with a bot by specifying its Bot ID. This applies only to Chatbot (Legacy).
 //
 // @param tmpReq - ChatRequest
 //
@@ -596,7 +604,7 @@ func (client *Client) ChatWithOptions(tmpReq *ChatRequest, runtime *dara.Runtime
 
 // Summary:
 //
-// 会话API
+// Starts a conversation with a bot by specifying its Bot ID. This applies only to Chatbot (Legacy).
 //
 // @param request - ChatRequest
 //
@@ -614,7 +622,7 @@ func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err er
 
 // Summary:
 //
-// 继续机器人发布
+// Ignores an alarm and continues a chatbot publish task.
 //
 // @param request - ContinueInstancePublishTaskRequest
 //
@@ -666,7 +674,7 @@ func (client *Client) ContinueInstancePublishTaskWithOptions(request *ContinueIn
 
 // Summary:
 //
-// 继续机器人发布
+// Ignores an alarm and continues a chatbot publish task.
 //
 // @param request - ContinueInstancePublishTaskRequest
 //
@@ -684,7 +692,7 @@ func (client *Client) ContinueInstancePublishTask(request *ContinueInstancePubli
 
 // Summary:
 //
-// # Create Category
+// Creates a category.
 //
 // @param request - CreateCategoryRequest
 //
@@ -746,7 +754,7 @@ func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, 
 
 // Summary:
 //
-// # Create Category
+// Creates a category.
 //
 // @param request - CreateCategoryRequest
 //
@@ -764,7 +772,7 @@ func (client *Client) CreateCategory(request *CreateCategoryRequest) (_result *C
 
 // Summary:
 //
-// # Create FAQ Connection Question
+// Creates a connected question for a knowledge item.
 //
 // @param request - CreateConnQuestionRequest
 //
@@ -818,7 +826,7 @@ func (client *Client) CreateConnQuestionWithOptions(request *CreateConnQuestionR
 
 // Summary:
 //
-// # Create FAQ Connection Question
+// Creates a connected question for a knowledge item.
 //
 // @param request - CreateConnQuestionRequest
 //
@@ -836,7 +844,7 @@ func (client *Client) CreateConnQuestion(request *CreateConnQuestionRequest) (_r
 
 // Summary:
 //
-// 实体-创建
+// Creates an `entity` and its metadata, such as the `entity name` and `entity type`.
 //
 // @param request - CreateDSEntityRequest
 //
@@ -892,7 +900,7 @@ func (client *Client) CreateDSEntityWithOptions(request *CreateDSEntityRequest, 
 
 // Summary:
 //
-// 实体-创建
+// Creates an `entity` and its metadata, such as the `entity name` and `entity type`.
 //
 // @param request - CreateDSEntityRequest
 //
@@ -910,7 +918,7 @@ func (client *Client) CreateDSEntity(request *CreateDSEntityRequest) (_result *C
 
 // Summary:
 //
-// 实体成员-创建
+// Adds an entity member to a specified entity. An entity member includes an entity value and a synonym list. All entity values and synonyms must be unique within the same entity.
 //
 // @param tmpReq - CreateDSEntityValueRequest
 //
@@ -978,7 +986,7 @@ func (client *Client) CreateDSEntityValueWithOptions(tmpReq *CreateDSEntityValue
 
 // Summary:
 //
-// 实体成员-创建
+// Adds an entity member to a specified entity. An entity member includes an entity value and a synonym list. All entity values and synonyms must be unique within the same entity.
 //
 // @param request - CreateDSEntityValueRequest
 //
@@ -996,7 +1004,7 @@ func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (
 
 // Summary:
 //
-// # Create Document
+// Creates a document.
 //
 // @param tmpReq - CreateDocRequest
 //
@@ -1090,7 +1098,7 @@ func (client *Client) CreateDocWithOptions(tmpReq *CreateDocRequest, runtime *da
 
 // Summary:
 //
-// # Create Document
+// Creates a document.
 //
 // @param request - CreateDocRequest
 //
@@ -1108,7 +1116,7 @@ func (client *Client) CreateDoc(request *CreateDocRequest) (_result *CreateDocRe
 
 // Summary:
 //
-// # New FAQ
+// Creates a knowledge item.
 //
 // @param tmpReq - CreateFaqRequest
 //
@@ -1188,7 +1196,7 @@ func (client *Client) CreateFaqWithOptions(tmpReq *CreateFaqRequest, runtime *da
 
 // Summary:
 //
-// # New FAQ
+// Creates a knowledge item.
 //
 // @param request - CreateFaqRequest
 //
@@ -1206,7 +1214,7 @@ func (client *Client) CreateFaq(request *CreateFaqRequest) (_result *CreateFaqRe
 
 // Summary:
 //
-// 机器人-创建
+// Creates a robot in the sandbox environment.
 //
 // @param request - CreateInstanceRequest
 //
@@ -1266,7 +1274,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// 机器人-创建
+// Creates a robot in the sandbox environment.
 //
 // @param request - CreateInstanceRequest
 //
@@ -1284,7 +1292,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建机器人发布任务
+// Publishes a sandbox robot to the production environment.
 //
 // @param request - CreateInstancePublishTaskRequest
 //
@@ -1332,7 +1340,7 @@ func (client *Client) CreateInstancePublishTaskWithOptions(request *CreateInstan
 
 // Summary:
 //
-// 创建机器人发布任务
+// Publishes a sandbox robot to the production environment.
 //
 // @param request - CreateInstancePublishTaskRequest
 //
@@ -1350,7 +1358,7 @@ func (client *Client) CreateInstancePublishTask(request *CreateInstancePublishTa
 
 // Summary:
 //
-// 意图-创建
+// Creates an intent. This operation defines an intent\\"s metadata, such as its name, alias, and associated slots. It does not include utterances or LGF.
 //
 // @param tmpReq - CreateIntentRequest
 //
@@ -1408,7 +1416,7 @@ func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runti
 
 // Summary:
 //
-// 意图-创建
+// Creates an intent. This operation defines an intent\\"s metadata, such as its name, alias, and associated slots. It does not include utterances or LGF.
 //
 // @param request - CreateIntentRequest
 //
@@ -1426,7 +1434,7 @@ func (client *Client) CreateIntent(request *CreateIntentRequest) (_result *Creat
 
 // Summary:
 //
-// 意图-LGF-创建
+// Creates an advanced semantic configuration (LGF) for a specified intent.
 //
 // @param tmpReq - CreateLgfRequest
 //
@@ -1484,7 +1492,7 @@ func (client *Client) CreateLgfWithOptions(tmpReq *CreateLgfRequest, runtime *da
 
 // Summary:
 //
-// 意图-LGF-创建
+// Creates an advanced semantic configuration (LGF) for a specified intent.
 //
 // @param request - CreateLgfRequest
 //
@@ -1502,7 +1510,7 @@ func (client *Client) CreateLgf(request *CreateLgfRequest) (_result *CreateLgfRe
 
 // Summary:
 //
-// 视角-创建
+// Creates a perspective.
 //
 // @param request - CreatePerspectiveRequest
 //
@@ -1554,7 +1562,7 @@ func (client *Client) CreatePerspectiveWithOptions(request *CreatePerspectiveReq
 
 // Summary:
 //
-// 视角-创建
+// Creates a perspective.
 //
 // @param request - CreatePerspectiveRequest
 //
@@ -1572,7 +1580,7 @@ func (client *Client) CreatePerspective(request *CreatePerspectiveRequest) (_res
 
 // Summary:
 //
-// # Create Publishing Task
+// Creates a publish task in the publishing center.
 //
 // @param tmpReq - CreatePublishTaskRequest
 //
@@ -1630,7 +1638,7 @@ func (client *Client) CreatePublishTaskWithOptions(tmpReq *CreatePublishTaskRequ
 
 // Summary:
 //
-// # Create Publishing Task
+// Creates a publish task in the publishing center.
 //
 // @param request - CreatePublishTaskRequest
 //
@@ -1648,7 +1656,7 @@ func (client *Client) CreatePublishTask(request *CreatePublishTaskRequest) (_res
 
 // Summary:
 //
-// # Create FAQ Similar Question
+// Creates a similar question.
 //
 // @param request - CreateSimQuestionRequest
 //
@@ -1702,7 +1710,7 @@ func (client *Client) CreateSimQuestionWithOptions(request *CreateSimQuestionReq
 
 // Summary:
 //
-// # Create FAQ Similar Question
+// Creates a similar question.
 //
 // @param request - CreateSimQuestionRequest
 //
@@ -1720,7 +1728,7 @@ func (client *Client) CreateSimQuestion(request *CreateSimQuestionRequest) (_res
 
 // Summary:
 //
-// # Create New FAQ Answer
+// Creates a knowledge answer.
 //
 // @param tmpReq - CreateSolutionRequest
 //
@@ -1792,7 +1800,7 @@ func (client *Client) CreateSolutionWithOptions(tmpReq *CreateSolutionRequest, r
 
 // Summary:
 //
-// # Create New FAQ Answer
+// Creates a knowledge answer.
 //
 // @param request - CreateSolutionRequest
 //
@@ -1958,7 +1966,7 @@ func (client *Client) CreateTagGroup(request *CreateTagGroupRequest) (_result *C
 
 // Summary:
 //
-// 意图-话术-创建
+// Adds a user say to a specified intent.
 //
 // @param tmpReq - CreateUserSayRequest
 //
@@ -2016,7 +2024,7 @@ func (client *Client) CreateUserSayWithOptions(tmpReq *CreateUserSayRequest, run
 
 // Summary:
 //
-// 意图-话术-创建
+// Adds a user say to a specified intent.
 //
 // @param request - CreateUserSayRequest
 //
@@ -2034,7 +2042,7 @@ func (client *Client) CreateUserSay(request *CreateUserSayRequest) (_result *Cre
 
 // Summary:
 //
-// # Delete Category
+// Deletes a category. A published category is marked as deleted and unpublished, while an unpublished category is deleted permanently.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -2084,7 +2092,7 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 
 // Summary:
 //
-// # Delete Category
+// Deletes a category. A published category is marked as deleted and unpublished, while an unpublished category is deleted permanently.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -2102,7 +2110,7 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 
 // Summary:
 //
-// # Delete FAQ Connection Question
+// Deletes a knowledge association.
 //
 // @param request - DeleteConnQuestionRequest
 //
@@ -2152,7 +2160,7 @@ func (client *Client) DeleteConnQuestionWithOptions(request *DeleteConnQuestionR
 
 // Summary:
 //
-// # Delete FAQ Connection Question
+// Deletes a knowledge association.
 //
 // @param request - DeleteConnQuestionRequest
 //
@@ -2170,7 +2178,7 @@ func (client *Client) DeleteConnQuestion(request *DeleteConnQuestionRequest) (_r
 
 // Summary:
 //
-// 实体-删除
+// Deletes an entity. This operation also cascade-deletes all associated entity members, synonyms, and regular expressions.
 //
 // @param request - DeleteDSEntityRequest
 //
@@ -2222,7 +2230,7 @@ func (client *Client) DeleteDSEntityWithOptions(request *DeleteDSEntityRequest, 
 
 // Summary:
 //
-// 实体-删除
+// Deletes an entity. This operation also cascade-deletes all associated entity members, synonyms, and regular expressions.
 //
 // @param request - DeleteDSEntityRequest
 //
@@ -2240,7 +2248,7 @@ func (client *Client) DeleteDSEntity(request *DeleteDSEntityRequest) (_result *D
 
 // Summary:
 //
-// 实体成员-删除
+// Deletes a specific entity value from an entity. If the entity is a standard entity, its synonyms (if any) are also deleted.
 //
 // @param request - DeleteDSEntityValueRequest
 //
@@ -2296,7 +2304,7 @@ func (client *Client) DeleteDSEntityValueWithOptions(request *DeleteDSEntityValu
 
 // Summary:
 //
-// 实体成员-删除
+// Deletes a specific entity value from an entity. If the entity is a standard entity, its synonyms (if any) are also deleted.
 //
 // @param request - DeleteDSEntityValueRequest
 //
@@ -2314,7 +2322,7 @@ func (client *Client) DeleteDSEntityValue(request *DeleteDSEntityValueRequest) (
 
 // Summary:
 //
-// # Document Deletion
+// Deletes a document.
 //
 // @param request - DeleteDocRequest
 //
@@ -2362,7 +2370,7 @@ func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *d
 
 // Summary:
 //
-// # Document Deletion
+// Deletes a document.
 //
 // @param request - DeleteDocRequest
 //
@@ -2380,7 +2388,7 @@ func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocRe
 
 // Summary:
 //
-// Delete FAQ. If it is published knowledge, after deletion, it becomes deleted but not published, and requires publishing to be truly deleted.
+// Deletes a knowledge item.
 //
 // @param request - DeleteFaqRequest
 //
@@ -2430,7 +2438,7 @@ func (client *Client) DeleteFaqWithOptions(request *DeleteFaqRequest, runtime *d
 
 // Summary:
 //
-// Delete FAQ. If it is published knowledge, after deletion, it becomes deleted but not published, and requires publishing to be truly deleted.
+// Deletes a knowledge item.
 //
 // @param request - DeleteFaqRequest
 //
@@ -2448,7 +2456,7 @@ func (client *Client) DeleteFaq(request *DeleteFaqRequest) (_result *DeleteFaqRe
 
 // Summary:
 //
-// 机器人-删除
+// Deletes an instance from the sandbox and online environments.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2496,7 +2504,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// 机器人-删除
+// Deletes an instance from the sandbox and online environments.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2514,7 +2522,7 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 
 // Summary:
 //
-// 意图-删除
+// Deletes a specified intent and its associated user utterances and advanced semantic configurations (LGF).
 //
 // @param request - DeleteIntentRequest
 //
@@ -2566,7 +2574,7 @@ func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runt
 
 // Summary:
 //
-// 意图-删除
+// Deletes a specified intent and its associated user utterances and advanced semantic configurations (LGF).
 //
 // @param request - DeleteIntentRequest
 //
@@ -2584,7 +2592,7 @@ func (client *Client) DeleteIntent(request *DeleteIntentRequest) (_result *Delet
 
 // Summary:
 //
-// 意图-LGF-删除
+// Deletes the specified LGF configuration.
 //
 // @param request - DeleteLgfRequest
 //
@@ -2640,7 +2648,7 @@ func (client *Client) DeleteLgfWithOptions(request *DeleteLgfRequest, runtime *d
 
 // Summary:
 //
-// 意图-LGF-删除
+// Deletes the specified LGF configuration.
 //
 // @param request - DeleteLgfRequest
 //
@@ -2658,7 +2666,7 @@ func (client *Client) DeleteLgf(request *DeleteLgfRequest) (_result *DeleteLgfRe
 
 // Summary:
 //
-// 视角-删除
+// Deletes a perspective.
 //
 // @param request - DeletePerspectiveRequest
 //
@@ -2706,7 +2714,7 @@ func (client *Client) DeletePerspectiveWithOptions(request *DeletePerspectiveReq
 
 // Summary:
 //
-// 视角-删除
+// Deletes a perspective.
 //
 // @param request - DeletePerspectiveRequest
 //
@@ -2724,7 +2732,7 @@ func (client *Client) DeletePerspective(request *DeletePerspectiveRequest) (_res
 
 // Summary:
 //
-// # Delete FAQ Similar Question
+// Deletes a similar question.
 //
 // @param request - DeleteSimQuestionRequest
 //
@@ -2774,7 +2782,7 @@ func (client *Client) DeleteSimQuestionWithOptions(request *DeleteSimQuestionReq
 
 // Summary:
 //
-// # Delete FAQ Similar Question
+// Deletes a similar question.
 //
 // @param request - DeleteSimQuestionRequest
 //
@@ -2792,7 +2800,7 @@ func (client *Client) DeleteSimQuestion(request *DeleteSimQuestionRequest) (_res
 
 // Summary:
 //
-// # Delete FAQ Solution
+// Deletes the specified solution.
 //
 // @param request - DeleteSolutionRequest
 //
@@ -2842,7 +2850,7 @@ func (client *Client) DeleteSolutionWithOptions(request *DeleteSolutionRequest, 
 
 // Summary:
 //
-// # Delete FAQ Solution
+// Deletes the specified solution.
 //
 // @param request - DeleteSolutionRequest
 //
@@ -3008,7 +3016,7 @@ func (client *Client) DeleteTagGroup(request *DeleteTagGroupRequest) (_result *D
 
 // Summary:
 //
-// 意图-用户话术-删除
+// Deletes a user say from a specified intent.
 //
 // @param request - DeleteUserSayRequest
 //
@@ -3064,7 +3072,7 @@ func (client *Client) DeleteUserSayWithOptions(request *DeleteUserSayRequest, ru
 
 // Summary:
 //
-// 意图-用户话术-删除
+// Deletes a user say from a specified intent.
 //
 // @param request - DeleteUserSayRequest
 //
@@ -3082,7 +3090,7 @@ func (client *Client) DeleteUserSay(request *DeleteUserSayRequest) (_result *Del
 
 // Summary:
 //
-// # View Single Category Information
+// Gets information about a specific category.
 //
 // @param request - DescribeCategoryRequest
 //
@@ -3132,7 +3140,7 @@ func (client *Client) DescribeCategoryWithOptions(request *DescribeCategoryReque
 
 // Summary:
 //
-// # View Single Category Information
+// Gets information about a specific category.
 //
 // @param request - DescribeCategoryRequest
 //
@@ -3150,7 +3158,7 @@ func (client *Client) DescribeCategory(request *DescribeCategoryRequest) (_resul
 
 // Summary:
 //
-// 实体-详情
+// Retrieves metadata for a specified entity associated with a robot, such as the entity type, entity name, creation time, and modification time.
 //
 // @param request - DescribeDSEntityRequest
 //
@@ -3202,7 +3210,7 @@ func (client *Client) DescribeDSEntityWithOptions(request *DescribeDSEntityReque
 
 // Summary:
 //
-// 实体-详情
+// Retrieves metadata for a specified entity associated with a robot, such as the entity type, entity name, creation time, and modification time.
 //
 // @param request - DescribeDSEntityRequest
 //
@@ -3220,7 +3228,7 @@ func (client *Client) DescribeDSEntity(request *DescribeDSEntityRequest) (_resul
 
 // Summary:
 //
-// # Document Details
+// Document details.
 //
 // @param request - DescribeDocRequest
 //
@@ -3272,7 +3280,7 @@ func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtim
 
 // Summary:
 //
-// # Document Details
+// Document details.
 //
 // @param request - DescribeDocRequest
 //
@@ -3290,7 +3298,7 @@ func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *Describ
 
 // Summary:
 //
-// # Knowledge Details
+// Retrieves knowledge details.
 //
 // @param request - DescribeFaqRequest
 //
@@ -3340,7 +3348,7 @@ func (client *Client) DescribeFaqWithOptions(request *DescribeFaqRequest, runtim
 
 // Summary:
 //
-// # Knowledge Details
+// Retrieves knowledge details.
 //
 // @param request - DescribeFaqRequest
 //
@@ -3358,7 +3366,7 @@ func (client *Client) DescribeFaq(request *DescribeFaqRequest) (_result *Describ
 
 // Summary:
 //
-// 机器人-详情
+// Queries the details of a robot.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3406,7 +3414,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// 机器人-详情
+// Queries the details of a robot.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3424,7 +3432,7 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 
 // Summary:
 //
-// 意图-详情
+// Returns metadata for a specified intent, including its type, name, creation time, and modification time.
 //
 // @param request - DescribeIntentRequest
 //
@@ -3478,7 +3486,7 @@ func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, 
 
 // Summary:
 //
-// 意图-详情
+// Returns metadata for a specified intent, including its type, name, creation time, and modification time.
 //
 // @param request - DescribeIntentRequest
 //
@@ -3496,7 +3504,7 @@ func (client *Client) DescribeIntent(request *DescribeIntentRequest) (_result *D
 
 // Summary:
 //
-// 视角-详情
+// Retrieves the details of a specified perspective.
 //
 // @param request - DescribePerspectiveRequest
 //
@@ -3544,7 +3552,7 @@ func (client *Client) DescribePerspectiveWithOptions(request *DescribePerspectiv
 
 // Summary:
 //
-// 视角-详情
+// Retrieves the details of a specified perspective.
 //
 // @param request - DescribePerspectiveRequest
 //
@@ -3710,7 +3718,7 @@ func (client *Client) DescribeTagGroup(request *DescribeTagGroupRequest) (_resul
 
 // Summary:
 //
-// 问答点赞、点踩API
+// Saves user feedback on chatbot responses.
 //
 // @param request - FeedbackRequest
 //
@@ -3774,7 +3782,7 @@ func (client *Client) FeedbackWithOptions(request *FeedbackRequest, runtime *dar
 
 // Summary:
 //
-// 问答点赞、点踩API
+// Saves user feedback on chatbot responses.
 //
 // @param request - FeedbackRequest
 //
@@ -3792,7 +3800,11 @@ func (client *Client) Feedback(request *FeedbackRequest) (_result *FeedbackRespo
 
 // Summary:
 //
-// 生成用户免登Token
+// Generates a user access token to enable single sign-on for a chat window. The token associates the user with their corporate identity.
+//
+// Description:
+//
+// For security, each generated token is single-use and must be used before it expires. If a user signs in from multiple browsers, you must call this operation for each session to get a unique token.
 //
 // @param request - GenerateUserAccessTokenRequest
 //
@@ -3862,7 +3874,11 @@ func (client *Client) GenerateUserAccessTokenWithOptions(request *GenerateUserAc
 
 // Summary:
 //
-// 生成用户免登Token
+// Generates a user access token to enable single sign-on for a chat window. The token associates the user with their corporate identity.
+//
+// Description:
+//
+// For security, each generated token is single-use and must be used before it expires. If a user signs in from multiple browsers, you must call this operation for each session to get a unique token.
 //
 // @param request - GenerateUserAccessTokenRequest
 //
@@ -3880,7 +3896,7 @@ func (client *Client) GenerateUserAccessToken(request *GenerateUserAccessTokenRe
 
 // Summary:
 //
-// 获取业务空间信息
+// Retrieves details for a specified agent.
 //
 // @param request - GetAgentInfoRequest
 //
@@ -3924,7 +3940,7 @@ func (client *Client) GetAgentInfoWithOptions(request *GetAgentInfoRequest, runt
 
 // Summary:
 //
-// 获取业务空间信息
+// Retrieves details for a specified agent.
 //
 // @param request - GetAgentInfoRequest
 //
@@ -3942,7 +3958,11 @@ func (client *Client) GetAgentInfo(request *GetAgentInfoRequest) (_result *GetAg
 
 // Summary:
 //
-// 获取异步函数执行结果接口
+// Retrieves the execution result of an asynchronous service. This API is used in conjunction with the Chat API.
+//
+// Description:
+//
+// Retrieves the execution result of an asynchronous service.
 //
 // @param request - GetAsyncResultRequest
 //
@@ -3990,7 +4010,11 @@ func (client *Client) GetAsyncResultWithOptions(request *GetAsyncResultRequest, 
 
 // Summary:
 //
-// 获取异步函数执行结果接口
+// Retrieves the execution result of an asynchronous service. This API is used in conjunction with the Chat API.
+//
+// Description:
+//
+// Retrieves the execution result of an asynchronous service.
 //
 // @param request - GetAsyncResultRequest
 //
@@ -4008,7 +4032,11 @@ func (client *Client) GetAsyncResult(request *GetAsyncResultRequest) (_result *G
 
 // Summary:
 //
-// 查询机器人接待人次和对话轮次
+// Retrieves overview metrics for a bot.
+//
+// Description:
+//
+// This operation retrieves data for the previous day (T-1) only. Data for the current day is not available.
 //
 // @param request - GetBotSessionDataRequest
 //
@@ -4064,7 +4092,11 @@ func (client *Client) GetBotSessionDataWithOptions(request *GetBotSessionDataReq
 
 // Summary:
 //
-// 查询机器人接待人次和对话轮次
+// Retrieves overview metrics for a bot.
+//
+// Description:
+//
+// This operation retrieves data for the previous day (T-1) only. Data for the current day is not available.
 //
 // @param request - GetBotSessionDataRequest
 //
@@ -4082,7 +4114,7 @@ func (client *Client) GetBotSessionData(request *GetBotSessionDataRequest) (_res
 
 // Summary:
 //
-// 查询机器人发布进度
+// Checks the status of a bot publishing task.
 //
 // @param request - GetInstancePublishTaskStateRequest
 //
@@ -4134,7 +4166,7 @@ func (client *Client) GetInstancePublishTaskStateWithOptions(request *GetInstanc
 
 // Summary:
 //
-// 查询机器人发布进度
+// Checks the status of a bot publishing task.
 //
 // @param request - GetInstancePublishTaskStateRequest
 //
@@ -4152,7 +4184,7 @@ func (client *Client) GetInstancePublishTaskState(request *GetInstancePublishTas
 
 // Summary:
 //
-// # Query Publishing Progress
+// Gets the progress of a publish task.
 //
 // @param request - GetPublishTaskStateRequest
 //
@@ -4200,7 +4232,7 @@ func (client *Client) GetPublishTaskStateWithOptions(request *GetPublishTaskStat
 
 // Summary:
 //
-// # Query Publishing Progress
+// Gets the progress of a publish task.
 //
 // @param request - GetPublishTaskStateRequest
 //
@@ -4218,7 +4250,7 @@ func (client *Client) GetPublishTaskState(request *GetPublishTaskStateRequest) (
 
 // Summary:
 //
-// 初始化im连接信息
+// Initializes the Instant Messaging (IM) connection using the `From` value configured in the channel console. This operation lets you pass a user authentication token during initialization.
 //
 // @param request - InitIMConnectRequest
 //
@@ -4272,7 +4304,7 @@ func (client *Client) InitIMConnectWithOptions(request *InitIMConnectRequest, ru
 
 // Summary:
 //
-// 初始化im连接信息
+// Initializes the Instant Messaging (IM) connection using the `From` value configured in the channel console. This operation lets you pass a user authentication token during initialization.
 //
 // @param request - InitIMConnectRequest
 //
@@ -4290,7 +4322,7 @@ func (client *Client) InitIMConnect(request *InitIMConnectRequest) (_result *Ini
 
 // Summary:
 //
-// 机器人-绑定类目
+// Links knowledge categories to a chatbot.
 //
 // @param request - LinkInstanceCategoryRequest
 //
@@ -4348,7 +4380,7 @@ func (client *Client) LinkInstanceCategoryWithOptions(request *LinkInstanceCateg
 
 // Summary:
 //
-// 机器人-绑定类目
+// Links knowledge categories to a chatbot.
 //
 // @param request - LinkInstanceCategoryRequest
 //
@@ -4366,7 +4398,7 @@ func (client *Client) LinkInstanceCategory(request *LinkInstanceCategoryRequest)
 
 // Summary:
 //
-// 获取业务空间列表
+// Lists the business spaces for your Alibaba Cloud account.
 //
 // @param request - ListAgentRequest
 //
@@ -4422,7 +4454,7 @@ func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *d
 
 // Summary:
 //
-// 获取业务空间列表
+// Lists the business spaces for your Alibaba Cloud account.
 //
 // @param request - ListAgentRequest
 //
@@ -4440,7 +4472,7 @@ func (client *Client) ListAgent(request *ListAgentRequest) (_result *ListAgentRe
 
 // Summary:
 //
-// # Category List
+// Lists categories.
 //
 // @param request - ListCategoryRequest
 //
@@ -4494,7 +4526,7 @@ func (client *Client) ListCategoryWithOptions(request *ListCategoryRequest, runt
 
 // Summary:
 //
-// # Category List
+// Lists categories.
 //
 // @param request - ListCategoryRequest
 //
@@ -4512,7 +4544,7 @@ func (client *Client) ListCategory(request *ListCategoryRequest) (_result *ListC
 
 // Summary:
 //
-// # Query FAQ Connection Questions List
+// Lists the connected questions for a knowledge item.
 //
 // @param request - ListConnQuestionRequest
 //
@@ -4562,7 +4594,7 @@ func (client *Client) ListConnQuestionWithOptions(request *ListConnQuestionReque
 
 // Summary:
 //
-// # Query FAQ Connection Questions List
+// Lists the connected questions for a knowledge item.
 //
 // @param request - ListConnQuestionRequest
 //
@@ -4580,7 +4612,7 @@ func (client *Client) ListConnQuestion(request *ListConnQuestionRequest) (_resul
 
 // Summary:
 //
-// 实体-列表
+// Lists the entities for a specified robot. This operation returns only entity metadata, such as the entity type, name, creation time, and update time.
 //
 // @param request - ListDSEntityRequest
 //
@@ -4644,7 +4676,7 @@ func (client *Client) ListDSEntityWithOptions(request *ListDSEntityRequest, runt
 
 // Summary:
 //
-// 实体-列表
+// Lists the entities for a specified robot. This operation returns only entity metadata, such as the entity type, name, creation time, and update time.
 //
 // @param request - ListDSEntityRequest
 //
@@ -4662,7 +4694,7 @@ func (client *Client) ListDSEntity(request *ListDSEntityRequest) (_result *ListD
 
 // Summary:
 //
-// 实体成员-列表
+// Retrieves the list of entity values for a specified entity. You can filter by keyword using a `contains` match. The search covers both entity values and their synonyms.
 //
 // @param request - ListDSEntityValueRequest
 //
@@ -4732,7 +4764,7 @@ func (client *Client) ListDSEntityValueWithOptions(request *ListDSEntityValueReq
 
 // Summary:
 //
-// 实体成员-列表
+// Retrieves the list of entity values for a specified entity. You can filter by keyword using a `contains` match. The search covers both entity values and their synonyms.
 //
 // @param request - ListDSEntityValueRequest
 //
@@ -4750,7 +4782,7 @@ func (client *Client) ListDSEntityValue(request *ListDSEntityValueRequest) (_res
 
 // Summary:
 //
-// 机器人-修改
+// Queries a list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -4814,7 +4846,7 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 
 // Summary:
 //
-// 机器人-修改
+// Queries a list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -4832,7 +4864,7 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 
 // Summary:
 //
-// 意图-列表
+// Retrieves metadata for all intents in a specified bot, including the intent type, intent name, creation time, and modification time.
 //
 // @param request - ListIntentRequest
 //
@@ -4892,7 +4924,7 @@ func (client *Client) ListIntentWithOptions(request *ListIntentRequest, runtime 
 
 // Summary:
 //
-// 意图-列表
+// Retrieves metadata for all intents in a specified bot, including the intent type, intent name, creation time, and modification time.
 //
 // @param request - ListIntentRequest
 //
@@ -4910,7 +4942,7 @@ func (client *Client) ListIntent(request *ListIntentRequest) (_result *ListInten
 
 // Summary:
 //
-// 意图-LGF-列表
+// Queries the advanced semantic configurations (LGF) for a specified intent.
 //
 // @param request - ListLgfRequest
 //
@@ -4974,7 +5006,7 @@ func (client *Client) ListLgfWithOptions(request *ListLgfRequest, runtime *dara.
 
 // Summary:
 //
-// 意图-LGF-列表
+// Queries the advanced semantic configurations (LGF) for a specified intent.
 //
 // @param request - ListLgfRequest
 //
@@ -4992,7 +5024,7 @@ func (client *Client) ListLgf(request *ListLgfRequest) (_result *ListLgfResponse
 
 // Summary:
 //
-// 获取业务空间下可集成的SaaS信息列表
+// Lists SaaS integration information.
 //
 // @param request - ListSaasInfoRequest
 //
@@ -5044,7 +5076,7 @@ func (client *Client) ListSaasInfoWithOptions(request *ListSaasInfoRequest, runt
 
 // Summary:
 //
-// 获取业务空间下可集成的SaaS信息列表
+// Lists SaaS integration information.
 //
 // @param request - ListSaasInfoRequest
 //
@@ -5062,7 +5094,7 @@ func (client *Client) ListSaasInfo(request *ListSaasInfoRequest) (_result *ListS
 
 // Summary:
 //
-// 获取业务空间下可集成的权限组信息
+// Lists the permission groups for integrated SaaS applications. Use these groups to grant permissions to users.
 //
 // @param request - ListSaasPermissionGroupInfosRequest
 //
@@ -5106,7 +5138,7 @@ func (client *Client) ListSaasPermissionGroupInfosWithOptions(request *ListSaasP
 
 // Summary:
 //
-// 获取业务空间下可集成的权限组信息
+// Lists the permission groups for integrated SaaS applications. Use these groups to grant permissions to users.
 //
 // @param request - ListSaasPermissionGroupInfosRequest
 //
@@ -5124,7 +5156,7 @@ func (client *Client) ListSaasPermissionGroupInfos(request *ListSaasPermissionGr
 
 // Summary:
 //
-// # FAQ Similar Questions List
+// Queries the list of similar questions for a knowledge entry.
 //
 // @param request - ListSimQuestionRequest
 //
@@ -5174,7 +5206,7 @@ func (client *Client) ListSimQuestionWithOptions(request *ListSimQuestionRequest
 
 // Summary:
 //
-// # FAQ Similar Questions List
+// Queries the list of similar questions for a knowledge entry.
 //
 // @param request - ListSimQuestionRequest
 //
@@ -5192,7 +5224,7 @@ func (client *Client) ListSimQuestion(request *ListSimQuestionRequest) (_result 
 
 // Summary:
 //
-// # FAQ Solution List
+// Lists the solutions for a knowledge entry.
 //
 // @param request - ListSolutionRequest
 //
@@ -5242,7 +5274,7 @@ func (client *Client) ListSolutionWithOptions(request *ListSolutionRequest, runt
 
 // Summary:
 //
-// # FAQ Solution List
+// Lists the solutions for a knowledge entry.
 //
 // @param request - ListSolutionRequest
 //
@@ -5424,7 +5456,7 @@ func (client *Client) ListTagGroup(request *ListTagGroupRequest) (_result *ListT
 
 // Summary:
 //
-// # Tongyi对话明细查询接口
+// Retrieves chat history details.
 //
 // @param request - ListTongyiChatHistorysRequest
 //
@@ -5484,7 +5516,7 @@ func (client *Client) ListTongyiChatHistorysWithOptions(request *ListTongyiChatH
 
 // Summary:
 //
-// # Tongyi对话明细查询接口
+// Retrieves chat history details.
 //
 // @param request - ListTongyiChatHistorysRequest
 //
@@ -5502,7 +5534,11 @@ func (client *Client) ListTongyiChatHistorys(request *ListTongyiChatHistorysRequ
 
 // Summary:
 //
-// 查询通义晓蜜的单个会话对话记录
+// Retrieves the conversation logs for a single session of a Tongyi chatbot.
+//
+// Description:
+//
+// This operation retrieves conversation logs generated within the past two hours.
 //
 // @param request - ListTongyiConversationLogsRequest
 //
@@ -5554,7 +5590,11 @@ func (client *Client) ListTongyiConversationLogsWithOptions(request *ListTongyiC
 
 // Summary:
 //
-// 查询通义晓蜜的单个会话对话记录
+// Retrieves the conversation logs for a single session of a Tongyi chatbot.
+//
+// Description:
+//
+// This operation retrieves conversation logs generated within the past two hours.
 //
 // @param request - ListTongyiConversationLogsRequest
 //
@@ -5572,7 +5612,7 @@ func (client *Client) ListTongyiConversationLogs(request *ListTongyiConversation
 
 // Summary:
 //
-// 话术-列表
+// Queries the user says and their associated slot information for a specified intent. You can filter the results by keywords.
 //
 // @param request - ListUserSayRequest
 //
@@ -5636,7 +5676,7 @@ func (client *Client) ListUserSayWithOptions(request *ListUserSayRequest, runtim
 
 // Summary:
 //
-// 话术-列表
+// Queries the user says and their associated slot information for a specified intent. You can filter the results by keywords.
 //
 // @param request - ListUserSayRequest
 //
@@ -5654,7 +5694,7 @@ func (client *Client) ListUserSay(request *ListUserSayRequest) (_result *ListUse
 
 // Summary:
 //
-// 统一NLU接口
+// Returns the natural language understanding (NLU) results for a user query. Currently, this feature only supports NLU from Conversation Factory and Central Control. Support for other engines will be added as needed.
 //
 // @param request - NluRequest
 //
@@ -5706,7 +5746,7 @@ func (client *Client) NluWithOptions(request *NluRequest, runtime *dara.RuntimeO
 
 // Summary:
 //
-// 统一NLU接口
+// Returns the natural language understanding (NLU) results for a user query. Currently, this feature only supports NLU from Conversation Factory and Central Control. Support for other engines will be added as needed.
 //
 // @param request - NluRequest
 //
@@ -5724,7 +5764,7 @@ func (client *Client) Nlu(request *NluRequest) (_result *NluResponse, _err error
 
 // Summary:
 //
-// 视角-列表
+// Queries a list of perspectives.
 //
 // @param request - QueryPerspectivesRequest
 //
@@ -5768,7 +5808,7 @@ func (client *Client) QueryPerspectivesWithOptions(request *QueryPerspectivesReq
 
 // Summary:
 //
-// 视角-列表
+// Queries a list of perspectives.
 //
 // @param request - QueryPerspectivesRequest
 //
@@ -5786,7 +5826,7 @@ func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_res
 
 // Summary:
 //
-// # Document Retry
+// Retries a document processing task.
 //
 // @param request - RetryDocRequest
 //
@@ -5834,7 +5874,7 @@ func (client *Client) RetryDocWithOptions(request *RetryDocRequest, runtime *dar
 
 // Summary:
 //
-// # Document Retry
+// Retries a document processing task.
 //
 // @param request - RetryDocRequest
 //
@@ -5852,7 +5892,7 @@ func (client *Client) RetryDoc(request *RetryDocRequest) (_result *RetryDocRespo
 
 // Summary:
 //
-// # Document Search
+// Search the documentation.
 //
 // @param tmpReq - SearchDocRequest
 //
@@ -5978,7 +6018,7 @@ func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *da
 
 // Summary:
 //
-// # Document Search
+// Search the documentation.
 //
 // @param request - SearchDocRequest
 //
@@ -5996,7 +6036,7 @@ func (client *Client) SearchDoc(request *SearchDocRequest) (_result *SearchDocRe
 
 // Summary:
 //
-// # Knowledge Search
+// Search the knowledge base.
 //
 // @param tmpReq - SearchFaqRequest
 //
@@ -6112,7 +6152,7 @@ func (client *Client) SearchFaqWithOptions(tmpReq *SearchFaqRequest, runtime *da
 
 // Summary:
 //
-// # Knowledge Search
+// Search the knowledge base.
 //
 // @param request - SearchFaqRequest
 //
@@ -6130,7 +6170,11 @@ func (client *Client) SearchFaq(request *SearchFaqRequest) (_result *SearchFaqRe
 
 // Summary:
 //
-// 大模型问答调试信息
+// This operation returns debugging information for the large language model (LLM) Q&A process.
+//
+// Description:
+//
+// This operation supports only the latest version of chatbots and can query data from only the last 90 days.
 //
 // @param request - TongyiChatDebugInfoRequest
 //
@@ -6182,7 +6226,11 @@ func (client *Client) TongyiChatDebugInfoWithOptions(request *TongyiChatDebugInf
 
 // Summary:
 //
-// 大模型问答调试信息
+// This operation returns debugging information for the large language model (LLM) Q&A process.
+//
+// Description:
+//
+// This operation supports only the latest version of chatbots and can query data from only the last 90 days.
 //
 // @param request - TongyiChatDebugInfoRequest
 //
@@ -6200,7 +6248,7 @@ func (client *Client) TongyiChatDebugInfo(request *TongyiChatDebugInfoRequest) (
 
 // Summary:
 //
-// # Edit Category
+// Updates a category.
 //
 // @param request - UpdateCategoryRequest
 //
@@ -6258,7 +6306,7 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 
 // Summary:
 //
-// # Edit Category
+// Updates a category.
 //
 // @param request - UpdateCategoryRequest
 //
@@ -6276,7 +6324,7 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 
 // Summary:
 //
-// # Update FAQ Connection Question
+// Updates a connection.
 //
 // @param request - UpdateConnQuestionRequest
 //
@@ -6330,7 +6378,7 @@ func (client *Client) UpdateConnQuestionWithOptions(request *UpdateConnQuestionR
 
 // Summary:
 //
-// # Update FAQ Connection Question
+// Updates a connection.
 //
 // @param request - UpdateConnQuestionRequest
 //
@@ -6348,7 +6396,7 @@ func (client *Client) UpdateConnQuestion(request *UpdateConnQuestionRequest) (_r
 
 // Summary:
 //
-// 实体-更新
+// Updates the metadata of an entity. You can modify the entity name, but not the entity type.
 //
 // @param request - UpdateDSEntityRequest
 //
@@ -6408,7 +6456,7 @@ func (client *Client) UpdateDSEntityWithOptions(request *UpdateDSEntityRequest, 
 
 // Summary:
 //
-// 实体-更新
+// Updates the metadata of an entity. You can modify the entity name, but not the entity type.
 //
 // @param request - UpdateDSEntityRequest
 //
@@ -6426,7 +6474,7 @@ func (client *Client) UpdateDSEntity(request *UpdateDSEntityRequest) (_result *U
 
 // Summary:
 //
-// 实体成员-更新
+// Modifies an entity value. This applies to entity values that use synonyms or regular expressions. Note: You cannot add a regular expression to a standard entity, and vice versa.
 //
 // @param tmpReq - UpdateDSEntityValueRequest
 //
@@ -6498,7 +6546,7 @@ func (client *Client) UpdateDSEntityValueWithOptions(tmpReq *UpdateDSEntityValue
 
 // Summary:
 //
-// 实体成员-更新
+// Modifies an entity value. This applies to entity values that use synonyms or regular expressions. Note: You cannot add a regular expression to a standard entity, and vice versa.
 //
 // @param request - UpdateDSEntityValueRequest
 //
@@ -6516,7 +6564,7 @@ func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (
 
 // Summary:
 //
-// # Document Update
+// Updates a document.
 //
 // @param tmpReq - UpdateDocRequest
 //
@@ -6614,7 +6662,7 @@ func (client *Client) UpdateDocWithOptions(tmpReq *UpdateDocRequest, runtime *da
 
 // Summary:
 //
-// # Document Update
+// Updates a document.
 //
 // @param request - UpdateDocRequest
 //
@@ -6632,7 +6680,7 @@ func (client *Client) UpdateDoc(request *UpdateDocRequest) (_result *UpdateDocRe
 
 // Summary:
 //
-// # Update FAQ
+// Updates an existing knowledge entry.
 //
 // @param tmpReq - UpdateFaqRequest
 //
@@ -6708,7 +6756,7 @@ func (client *Client) UpdateFaqWithOptions(tmpReq *UpdateFaqRequest, runtime *da
 
 // Summary:
 //
-// # Update FAQ
+// Updates an existing knowledge entry.
 //
 // @param request - UpdateFaqRequest
 //
@@ -6726,7 +6774,7 @@ func (client *Client) UpdateFaq(request *UpdateFaqRequest) (_result *UpdateFaqRe
 
 // Summary:
 //
-// 机器人-修改
+// Updates a chatbot\\"s name and description.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -6782,7 +6830,7 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 // Summary:
 //
-// 机器人-修改
+// Updates a chatbot\\"s name and description.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -6800,7 +6848,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 
 // Summary:
 //
-// 意图-更新
+// Updates the metadata of a specified intent, including the intent name, alias name, and associated slots. This operation does not modify the intent\\"s utterances or LGF.
 //
 // @param tmpReq - UpdateIntentRequest
 //
@@ -6862,7 +6910,7 @@ func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runti
 
 // Summary:
 //
-// 意图-更新
+// Updates the metadata of a specified intent, including the intent name, alias name, and associated slots. This operation does not modify the intent\\"s utterances or LGF.
 //
 // @param request - UpdateIntentRequest
 //
@@ -6880,7 +6928,7 @@ func (client *Client) UpdateIntent(request *UpdateIntentRequest) (_result *Updat
 
 // Summary:
 //
-// 意图-LGF-更新
+// Updates the advanced semantic feature (LGF) for a specified intent.
 //
 // @param tmpReq - UpdateLgfRequest
 //
@@ -6942,7 +6990,7 @@ func (client *Client) UpdateLgfWithOptions(tmpReq *UpdateLgfRequest, runtime *da
 
 // Summary:
 //
-// 意图-LGF-更新
+// Updates the advanced semantic feature (LGF) for a specified intent.
 //
 // @param request - UpdateLgfRequest
 //
@@ -6960,7 +7008,7 @@ func (client *Client) UpdateLgf(request *UpdateLgfRequest) (_result *UpdateLgfRe
 
 // Summary:
 //
-// 视角-修改
+// Updates a perspective\\"s name and description.
 //
 // @param request - UpdatePerspectiveRequest
 //
@@ -7012,7 +7060,7 @@ func (client *Client) UpdatePerspectiveWithOptions(request *UpdatePerspectiveReq
 
 // Summary:
 //
-// 视角-修改
+// Updates a perspective\\"s name and description.
 //
 // @param request - UpdatePerspectiveRequest
 //
@@ -7030,7 +7078,7 @@ func (client *Client) UpdatePerspective(request *UpdatePerspectiveRequest) (_res
 
 // Summary:
 //
-// # Update FAQ Similar Questions
+// Updates a similar question.
 //
 // @param request - UpdateSimQuestionRequest
 //
@@ -7084,7 +7132,7 @@ func (client *Client) UpdateSimQuestionWithOptions(request *UpdateSimQuestionReq
 
 // Summary:
 //
-// # Update FAQ Similar Questions
+// Updates a similar question.
 //
 // @param request - UpdateSimQuestionRequest
 //
@@ -7102,7 +7150,7 @@ func (client *Client) UpdateSimQuestion(request *UpdateSimQuestionRequest) (_res
 
 // Summary:
 //
-// # Update FAQ Answer
+// Updates a solution.
 //
 // @param tmpReq - UpdateSolutionRequest
 //
@@ -7174,7 +7222,7 @@ func (client *Client) UpdateSolutionWithOptions(tmpReq *UpdateSolutionRequest, r
 
 // Summary:
 //
-// # Update FAQ Answer
+// Updates a solution.
 //
 // @param request - UpdateSolutionRequest
 //
@@ -7348,7 +7396,7 @@ func (client *Client) UpdateTagGroup(request *UpdateTagGroupRequest) (_result *U
 
 // Summary:
 //
-// 意图-话术-更新
+// Modifies an existing user say.
 //
 // @param tmpReq - UpdateUserSayRequest
 //
@@ -7410,7 +7458,7 @@ func (client *Client) UpdateUserSayWithOptions(tmpReq *UpdateUserSayRequest, run
 
 // Summary:
 //
-// 意图-话术-更新
+// Modifies an existing user say.
 //
 // @param request - UpdateUserSayRequest
 //

@@ -16,10 +16,14 @@ type iDeleteIntentResponseBody interface {
 }
 
 type DeleteIntentResponseBody struct {
+	// The ID of the deleted intent.
+	//
 	// example:
 	//
 	// 12345
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3464dfg3qwr34tf34

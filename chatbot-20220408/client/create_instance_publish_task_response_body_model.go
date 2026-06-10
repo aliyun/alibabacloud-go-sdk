@@ -28,28 +28,46 @@ type iCreateInstancePublishTaskResponseBody interface {
 }
 
 type CreateInstancePublishTaskResponseBody struct {
+	// A list of business types.
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// The UTC time when the task was created.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The error message for the publish task.
+	//
+	// example:
+	//
+	// 检查待发布模块是否空闲发生错误,faq
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 8522
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UTC time when the task was last modified.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:33Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID, returned as a string.
+	//
 	// example:
 	//
 	// 8522
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// FE_RUNNING

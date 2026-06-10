@@ -62,81 +62,150 @@ type iDescribeDocResponseBody interface {
 }
 
 type DescribeDocResponseBody struct {
+	// The business code.
+	//
 	// example:
 	//
 	// bizcode123
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 30000049006
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The configuration for document parsing and splitting. Key: `Splitter`. Valid values: `paragraphSplitter` (splits by recognition level, default) and `treeSplitter` (splits by rule level).
+	//
+	// Key: `ChunkSize`. The size of each document chunk, which must be between 200 and 800. The default value is 500.
+	//
+	// Key: `TreePatterns`. The patterns for the rule-based hierarchy. The default value is [].
+	//
+	// Key: `TitleSource`. The source of the document title. Valid values: `ocrTitle` (OCR-recognized title, default) and `docName` (document name).
+	//
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":"docName"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 1111111111
-	CreateUserId   *int64                                `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string                               `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocInfo        *DescribeDocResponseBodyDocInfo       `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
-	DocMetadata    []*DescribeDocResponseBodyDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
-	DocName        *string                               `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	DocTags        []*DescribeDocResponseBodyDocTags     `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
+	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The creator name.
+	//
+	// example:
+	//
+	// 张三
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The document details.
+	DocInfo *DescribeDocResponseBodyDocInfo `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
+	// A list of metadata sets, where each set corresponds to a business view.
+	DocMetadata []*DescribeDocResponseBodyDocMetadata `json:"DocMetadata,omitempty" xml:"DocMetadata,omitempty" type:"Repeated"`
+	// The document name.
+	//
+	// example:
+	//
+	// 文档名称
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// A list of document tags.
+	DocTags []*DescribeDocResponseBodyDocTags `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
+	// The effective status, calculated from `StartDate` and `EndDate`.<br>20: Active<br>21: Expired<br>22: Pending<br><br><br>
+	//
 	// example:
 	//
 	// 20
 	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// The end time in UTC format.
+	//
 	// example:
 	//
 	// 2023-04-27T06:08:54Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The knowledge ID.
+	//
 	// example:
 	//
 	// 30001979424
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// The document\\"s metadata.
+	//
 	// example:
 	//
 	// {"code":"xxx"}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2020-11-25T08:56:55Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The modifier ID.
+	//
 	// example:
 	//
 	// 2222222222
-	ModifyUserId   *int64  `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserId *int64 `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// The modifier name.
+	//
+	// example:
+	//
+	// 李四
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// Indicates whether a failed task can be retried.<br>`true`: The task can be retried.<br>`false`: The task cannot be retried.<br><br>
+	//
 	// example:
 	//
 	// true
-	ProcessCanRetry *bool   `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
-	ProcessMessage  *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	ProcessCanRetry *bool `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
+	// The processing message.
+	//
+	// example:
+	//
+	// 任务处理成功
+	ProcessMessage *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	// The processing status of the task.<br>-1: Queued<br>0: Succeeded<br>1: Parsing<br>2: Processing<br>3: Failed<br><br><br><br><br>
+	//
 	// example:
 	//
 	// 0
 	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 7F132693-212A-40A9-8A81-11E7694E478B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time in UTC format.
+	//
 	// example:
 	//
 	// 1979-12-31T16:00:00Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The edit status.<br>1: Unpublished<br>2: Published<br>3: Updated but not published<br><br><br>
+	//
 	// example:
 	//
 	// 1
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The document title.
+	//
+	// example:
+	//
+	// 测试标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The OSS address of the document.
+	//
+	// example:
+	//
+	// https://doc2bot-bucket-cloud.oss-cn-shanghai.aliyuncs.com/doc2bot/input/文档问答说明书_V1.pdf
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeDocResponseBody) String() string {
@@ -400,6 +469,7 @@ func (s *DescribeDocResponseBody) Validate() error {
 }
 
 type DescribeDocResponseBodyDocInfo struct {
+	// The paragraphs of the document.
 	DocParas []*DescribeDocResponseBodyDocInfoDocParas `json:"DocParas,omitempty" xml:"DocParas,omitempty" type:"Repeated"`
 }
 
@@ -434,15 +504,26 @@ func (s *DescribeDocResponseBodyDocInfo) Validate() error {
 }
 
 type DescribeDocResponseBodyDocInfoDocParas struct {
+	// The paragraph level.
+	//
 	// example:
 	//
 	// 1
 	ParaLevel *int32 `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
+	// The paragraph number.
+	//
 	// example:
 	//
 	// 1
-	ParaNo   *int32  `json:"ParaNo,omitempty" xml:"ParaNo,omitempty"`
+	ParaNo *int32 `json:"ParaNo,omitempty" xml:"ParaNo,omitempty"`
+	// The paragraph content. The content can be plain text, text extracted from an image using optical character recognition (OCR), or a table in Markdown format.
+	//
+	// example:
+	//
+	// 内容
 	ParaText *string `json:"ParaText,omitempty" xml:"ParaText,omitempty"`
+	// The paragraph type.<br>text: Text<br>figure: Image<br>table: Table<br><br><br>
+	//
 	// example:
 	//
 	// text
@@ -498,8 +579,11 @@ func (s *DescribeDocResponseBodyDocInfoDocParas) Validate() error {
 }
 
 type DescribeDocResponseBodyDocMetadata struct {
-	BusinessViewId      *string                                                  `json:"BusinessViewId,omitempty" xml:"BusinessViewId,omitempty"`
-	BusinessViewName    *string                                                  `json:"BusinessViewName,omitempty" xml:"BusinessViewName,omitempty"`
+	// The ID of the business view.
+	BusinessViewId *string `json:"BusinessViewId,omitempty" xml:"BusinessViewId,omitempty"`
+	// The business view name.
+	BusinessViewName *string `json:"BusinessViewName,omitempty" xml:"BusinessViewName,omitempty"`
+	// A list of metadata cells.
 	MetaCellInfoDTOList []*DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList `json:"MetaCellInfoDTOList,omitempty" xml:"MetaCellInfoDTOList,omitempty" type:"Repeated"`
 }
 
@@ -552,9 +636,12 @@ func (s *DescribeDocResponseBodyDocMetadata) Validate() error {
 }
 
 type DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList struct {
+	// The code of the field.
 	FieldCode *string `json:"FieldCode,omitempty" xml:"FieldCode,omitempty"`
+	// The field name.
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the field.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) String() string {
@@ -597,11 +684,36 @@ func (s *DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList) Validate() error
 }
 
 type DescribeDocResponseBodyDocTags struct {
-	DefaultTag *bool   `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty"`
-	GroupId    *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	TagId      *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName    *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Indicates whether the tag represents all items by default.
+	//
+	// example:
+	//
+	// false
+	DefaultTag *bool `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty"`
+	// The tag\\"s group ID.
+	//
+	// example:
+	//
+	// 3610
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The tag group name.
+	//
+	// example:
+	//
+	// 文章
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag ID.
+	//
+	// example:
+	//
+	// 1201
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The tag name.
+	//
+	// example:
+	//
+	// 小说
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s DescribeDocResponseBodyDocTags) String() string {

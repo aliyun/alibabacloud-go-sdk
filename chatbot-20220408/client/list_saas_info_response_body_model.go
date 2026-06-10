@@ -18,13 +18,16 @@ type iListSaasInfoResponseBody interface {
 }
 
 type ListSaasInfoResponseBody struct {
+	// A list of SaaS integrations.
 	Data []*ListSaasInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// A629A28F-F25E-5572-A679-FA46FB0151D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SaaS integration token issued by Chatbot.
+	//
 	// example:
 	//
 	// 06614fdb-c72f-436e-8003-dfe8a2854a15
@@ -80,19 +83,32 @@ func (s *ListSaasInfoResponseBody) Validate() error {
 }
 
 type ListSaasInfoResponseBodyData struct {
+	// The unique identifier of the SaaS atomic page. Use this code to reference the page and query its information.
+	//
 	// example:
 	//
 	// GLOBAL_SERVICE
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The English name of the atomic page.
+	//
 	// example:
 	//
 	// GLOBAL SERVICE
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Chinese name of the atomic page.
+	//
+	// example:
+	//
+	// 全局服务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The URL to embed the SaaS page in an iframe.
+	//
 	// example:
 	//
 	// https://pre-alime4service.console.aliyun.com/?productCode=p_beebot_public&switchAgent=1204001&saasCode=Robot&saasToken=06614fdb-c72f-436e-8003-dfe8a2854a15&saasName=123#/robot
 	ServiceUrl *string `json:"ServiceUrl,omitempty" xml:"ServiceUrl,omitempty"`
+	// The URL of the atomic page.
+	//
 	// example:
 	//
 	// https://alime.console.aliyun.com/?productCode=p_beebot_public&switchAgent=1204001&saasCode=Robot&saasToken=06614fdb-c72f-436e-8003-dfe8a2854a15&saasName=123#/robot

@@ -46,64 +46,100 @@ type iSearchFaqShrinkRequest interface {
 }
 
 type SearchFaqShrinkRequest struct {
+	// The key for the workspace. If this parameter is not specified, the default workspace is used. You can get the key on the Business Management page of your main account.
+	//
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
-	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// An array of category IDs to filter the search results.
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	// The start of the creation period.
+	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	// The end of the creation period.
+	//
 	// example:
 	//
 	// 2022-05-02T03:09:30Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The creator\\"s username.
+	//
 	// example:
 	//
 	// test01
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The start of the expiration period.
+	//
 	// example:
 	//
 	// 2023-04-02T03:09:30Z
 	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	// The end of the expiration period.
+	//
 	// example:
 	//
 	// 2023-05-02T03:09:30Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The search keyword.
+	//
+	// example:
+	//
+	// 搜索标题
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The start of the modification period.
+	//
 	// example:
 	//
 	// 2023-04-02T03:09:30Z
 	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	// The end of the modification period.
+	//
 	// example:
 	//
 	// 2023-05-02T03:09:30Z
 	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	// The modifier\\"s username.
+	//
 	// example:
 	//
 	// test01
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// The number of the page to return. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The default value is 10, and the maximum value is 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search scope.
+	//
 	// example:
 	//
 	// 1
 	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	// The start of the effective period.
+	//
 	// example:
 	//
 	// 2022-04-02T03:09:30Z
 	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	// The end of the effective period.
+	//
 	// example:
 	//
 	// 2022-04-03T03:09:30Z
 	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	// The status of the knowledge item.
+	//
 	// example:
 	//
 	// 1

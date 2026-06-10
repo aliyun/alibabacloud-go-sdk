@@ -16,7 +16,10 @@ type iQueryPerspectivesResponseBody interface {
 }
 
 type QueryPerspectivesResponseBody struct {
+	// A list of perspectives.
 	Perspectives []*QueryPerspectivesResponseBodyPerspectives `json:"Perspectives,omitempty" xml:"Perspectives,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F285D735-D580-18A8-B97F-B2E72B00F101
@@ -63,30 +66,44 @@ func (s *QueryPerspectivesResponseBody) Validate() error {
 }
 
 type QueryPerspectivesResponseBodyPerspectives struct {
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2022-04-12T06:30:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The modification time in UTC.
+	//
 	// example:
 	//
 	// 2022-04-29T03:38:54Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The perspective name.
+	//
 	// example:
 	//
 	// 移动端视角
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The perspective code (used for the Q\\&A API).
+	//
 	// example:
 	//
 	// FZJBY3raWr
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
+	// The perspective ID.
+	//
 	// example:
 	//
 	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	// Indicates whether the perspective is custom-defined.
+	//
 	// example:
 	//
 	// true
 	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
+	// The status of the perspective. Valid values are 3 (enabled) and 1 (disabled).
+	//
 	// example:
 	//
 	// 1
