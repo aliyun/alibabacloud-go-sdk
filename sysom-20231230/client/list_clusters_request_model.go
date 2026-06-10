@@ -26,30 +26,56 @@ type iListClustersRequest interface {
 }
 
 type ListClustersRequest struct {
+	// Filter by cluster ID
+	//
+	// > This cluster ID is not the ACK cluster ID, but the `id` field in the data returned by this API
+	//
 	// example:
 	//
 	// cb7d4cc26c8f845fb8a8255ffd394820e
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// - `Running`: Cluster management is Normal;
+	//
+	// - `Installing`: An install Job is in progress for the cluster;
+	//
+	// - `Uninstalling`: An uninstall Job is in progress for the cluster;
+	//
+	// - `Upgrading`: An Update Job is in progress for the cluster;
+	//
+	// - `Offline`: The cluster is offline and management is abnormal.
+	//
 	// example:
 	//
 	// Running
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
+	// - `ACK`: ACK cluster
+	//
+	// - `CUSTOM`: Custom cluster (default clusters are classified as custom clusters)
+	//
 	// example:
 	//
 	// ACK
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// Current page number (starting from page 1)
+	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// This field is deprecated. Use the `cluster_id` field for filtering instead.
+	//
 	// example:
 	//
 	// cb7d4cc26c8f845fb8a8255ffd394820e
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Filter plugins by plugin name
+	//
 	// example:
 	//
 	// proxy-next-upstream
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10

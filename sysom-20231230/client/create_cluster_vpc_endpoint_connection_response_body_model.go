@@ -29,8 +29,6 @@ type CreateClusterVpcEndpointConnectionResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822

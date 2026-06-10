@@ -20,15 +20,22 @@ type iCreateAlertDestinationRequest interface {
 }
 
 type CreateAlertDestinationRequest struct {
+	// Alert contact name
+	//
 	// example:
 	//
 	// test_name
-	Name   *string                              `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Configuration parameters for the alert contact
 	Params *CreateAlertDestinationRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// Configuration source
+	//
 	// example:
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Push Target. Currently, only DingTalk Robot is supported.
+	//
 	// example:
 	//
 	// dingtalk
@@ -89,18 +96,26 @@ func (s *CreateAlertDestinationRequest) Validate() error {
 }
 
 type CreateAlertDestinationRequestParams struct {
+	// Email
+	//
 	// example:
 	//
 	// xxx@email.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Phone number
+	//
 	// example:
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// Robot key
+	//
 	// example:
 	//
 	// SECxxx
 	Sec *string `json:"sec,omitempty" xml:"sec,omitempty"`
+	// Robot link
+	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=xxx

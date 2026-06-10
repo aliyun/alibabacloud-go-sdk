@@ -18,14 +18,22 @@ type iUninstallAgentForClusterRequest interface {
 }
 
 type UninstallAgentForClusterRequest struct {
+	// Widget ID
+	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
+	// Widget version
+	//
 	// example:
 	//
 	// 3.4.0-1
 	AgentVersion *string `json:"agent_version,omitempty" xml:"agent_version,omitempty"`
+	// Cluster ID.
+	//
+	// > This cluster ID must be the ID of an ACK cluster.
+	//
 	// example:
 	//
 	// c822f83bb45994ddbac9326b4c2f04f35

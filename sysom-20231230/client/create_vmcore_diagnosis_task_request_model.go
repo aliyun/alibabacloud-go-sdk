@@ -22,24 +22,42 @@ type iCreateVmcoreDiagnosisTaskRequest interface {
 }
 
 type CreateVmcoreDiagnosisTaskRequest struct {
+	// Download link for the debuginfo-common file. This parameter is optional when the diagnosis type is vmcore.
+	//
+	// For CentOS or Alinux kernel diagnosis, the corresponding debuginfo-common file is automatically downloaded, so you do not need to provide this parameter. For kernels of other distributions, you must manually provide the download link for the debuginfo-common file that matches the kernel version.
+	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo-common/file/path
 	DebuginfoCommonUrl *string `json:"debuginfoCommonUrl,omitempty" xml:"debuginfoCommonUrl,omitempty"`
+	// The download link of the debuginfo file corresponding to the vmcore file. This parameter is optional when the diagnosis type is vmcore.
+	//
+	// For CentOS or Alinux kernel diagnosis, the corresponding debuginfo file is automatically downloaded, so you do not need to provide this parameter. For kernels from other distributions, you must manually provide the download link for the debuginfo file that matches the kernel version.
+	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo/file/path
 	DebuginfoUrl *string `json:"debuginfoUrl,omitempty" xml:"debuginfoUrl,omitempty"`
+	// Download link for the dmesg log file. This parameter is required when the diagnosis type is dmesg.
+	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/dmesg/file/path
 	DmesgUrl *string `json:"dmesgUrl,omitempty" xml:"dmesgUrl,omitempty"`
+	// Task Type
+	//
+	// vmcore: vmcore file diagnosis task
+	//
+	// dmesg: dmesg log diagnosis task
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vmcore
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// The download link of the vmcore file. This parameter is required when the diagnosis type is vmcore.
+	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/vmcore/file/path

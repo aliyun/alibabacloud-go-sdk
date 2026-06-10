@@ -22,19 +22,36 @@ type iListClusterAgentInstallRecordsResponseBody interface {
 }
 
 type ListClusterAgentInstallRecordsResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - `code == Success` indicates authorization succeeded;
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error message;
+	//
 	// example:
 	//
 	// Success
-	Code *string                                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Result.
 	Data []*ListClusterAgentInstallRecordsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 42
@@ -110,23 +127,40 @@ func (s *ListClusterAgentInstallRecordsResponseBody) Validate() error {
 type ListClusterAgentInstallRecordsResponseBodyData struct {
 	AgentConfigId   *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
 	AgentConfigName *string `json:"agent_config_name,omitempty" xml:"agent_config_name,omitempty"`
+	// Cluster ID.
+	//
+	// > This cluster ID is not the ACK cluster ID
+	//
 	// example:
 	//
 	// cbf7a37bc905d4682a3338b3744810269
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2024-12-25T15:08:19
-	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Canary release environment
+	//
+	// example:
+	//
+	// {}
 	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
+	// Widget ID
+	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// Plugin version
+	//
 	// example:
 	//
 	// 3.4.0-1
 	PluginVersion *string `json:"plugin_version,omitempty" xml:"plugin_version,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 2024-12-25T15:08:19

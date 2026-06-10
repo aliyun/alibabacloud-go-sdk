@@ -14,6 +14,8 @@ type iGetAlertDestinationRequest interface {
 }
 
 type GetAlertDestinationRequest struct {
+	// Alert contact ID
+	//
 	// example:
 	//
 	// 1

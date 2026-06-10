@@ -20,16 +20,38 @@ type iInstallAgentRequest interface {
 }
 
 type InstallAgentRequest struct {
+	// ID of the widget to install
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
+	// Version of the widget to install
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3.4.0-1
 	AgentVersion *string `json:"agent_version,omitempty" xml:"agent_version,omitempty"`
+	// Installation Type:
+	//
+	// - InstallAndUpgrade: Install if not present; update if present.
+	//
+	// - OnlyInstallNotHasAgent: Install if not present; do nothing if present.
+	//
+	// - OnlyUpgradeHasAgent: Do nothing if not present; update if present.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// InstallAndUpgrade
 	InstallType *string `json:"install_type,omitempty" xml:"install_type,omitempty"`
+	// List of instances on which to install the widget
+	//
 	// This parameter is required.
 	Instances []*InstallAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
@@ -92,12 +114,16 @@ func (s *InstallAgentRequest) Validate() error {
 }
 
 type InstallAgentRequestInstances struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-wz9b9vucz1iubsz8sjqo
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

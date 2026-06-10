@@ -20,15 +20,30 @@ type iCreateVmcoreDiagnosisTaskResponseBody interface {
 }
 
 type CreateVmcoreDiagnosisTaskResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *CreateVmcoreDiagnosisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
@@ -89,6 +104,8 @@ func (s *CreateVmcoreDiagnosisTaskResponseBody) Validate() error {
 }
 
 type CreateVmcoreDiagnosisTaskResponseBodyData struct {
+	// ID of the created diagnostic task
+	//
 	// example:
 	//
 	// bbe94a98-4192-4172-b856-95777e0a55d7

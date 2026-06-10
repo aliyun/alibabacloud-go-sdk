@@ -20,10 +20,34 @@ type iInitialSysomResponseBody interface {
 }
 
 type InitialSysomResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                       `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *InitialSysomResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, which can be used for end-to-end diagnosis
+	//
+	// example:
+	//
+	// 3FCA2E38-2A8E-5501-93BD-5CE1BA58F2EF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Any other status code indicates a failed authorization. In such cases, view the `message` field for detailed error information.
+	//
+	// example:
+	//
+	// Success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Result.
+	Data *InitialSysomResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the error message.
+	//
+	// example:
+	//
+	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
 func (s InitialSysomResponseBody) String() string {
@@ -80,6 +104,11 @@ func (s *InitialSysomResponseBody) Validate() error {
 }
 
 type InitialSysomResponseBodyData struct {
+	// Indicates whether the service role exists
+	//
+	// example:
+	//
+	// true
 	RoleExist *bool `json:"role_exist,omitempty" xml:"role_exist,omitempty"`
 }
 

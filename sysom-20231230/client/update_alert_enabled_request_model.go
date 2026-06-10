@@ -16,10 +16,14 @@ type iUpdateAlertEnabledRequest interface {
 }
 
 type UpdateAlertEnabledRequest struct {
+	// Indicates whether the alert policy is enabled
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Alert policy ID
+	//
 	// example:
 	//
 	// 1

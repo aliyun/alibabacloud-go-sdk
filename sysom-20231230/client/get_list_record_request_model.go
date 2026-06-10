@@ -18,15 +18,24 @@ type iGetListRecordRequest interface {
 }
 
 type GetListRecordRequest struct {
+	// Current page number
+	//
 	// example:
 	//
 	// 5
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// Number of data entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s GetListRecordRequest) String() string {

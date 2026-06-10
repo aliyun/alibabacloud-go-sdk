@@ -30,38 +30,58 @@ type iListAllInstancesRequest interface {
 }
 
 type ListAllInstancesRequest struct {
+	// Current page
+	//
 	// example:
 	//
 	// 1
 	Current *string `json:"current,omitempty" xml:"current,omitempty"`
+	// List of filter information.
+	//
 	// example:
 	//
 	// {}
 	Filters *string `json:"filters,omitempty" xml:"filters,omitempty"`
+	// Instance type.
+	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Managed type.
+	//
 	// example:
 	//
 	// managed
 	ManagedType *string `json:"managedType,omitempty" xml:"managedType,omitempty"`
+	// Maximum number of records to retrieve in a single request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Paging cursor.
+	//
+	// > If this parameter is not empty, it indicates that more data is available.
+	//
 	// example:
 	//
 	// U+w1wv2R4ZWR5oZLXD0+Dp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Number of entries returned per page. Default value: pageSize=10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Plugin ID
+	//
 	// example:
 	//
 	// 01fc4a0b-f199-4885-9861-b4054a310fe7
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

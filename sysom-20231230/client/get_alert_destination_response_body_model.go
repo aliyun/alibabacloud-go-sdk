@@ -20,15 +20,30 @@ type iGetAlertDestinationResponseBody interface {
 }
 
 type GetAlertDestinationResponseBody struct {
+	// Status code.
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error information.
+	//
 	// example:
 	//
 	// Success or Sysom.ServerError
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetAlertDestinationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message.
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
@@ -89,18 +104,26 @@ func (s *GetAlertDestinationResponseBody) Validate() error {
 }
 
 type GetAlertDestinationResponseBodyData struct {
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1751520976660
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Alert contact ID
+	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// Alert contact name
+	//
 	// example:
 	//
 	// name1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Configuration Parameter
+	//
 	// example:
 	//
 	// {
@@ -111,18 +134,26 @@ type GetAlertDestinationResponseBodyData struct {
 	//
 	// }
 	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// Configuration source
+	//
 	// example:
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Alert push target. Currently, only DingTalk Robot is supported.
+	//
 	// example:
 	//
 	// dingtalk
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 1234123412352311
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	// Update Time.
+	//
 	// example:
 	//
 	// 1751254826285

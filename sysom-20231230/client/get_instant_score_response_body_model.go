@@ -20,13 +20,24 @@ type iGetInstantScoreResponseBody interface {
 }
 
 type GetInstantScoreResponseBody struct {
-	// 集群ID
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
 	//
 	// example:
 	//
 	// Success
-	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetInstantScoreResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// Query no data
@@ -93,23 +104,36 @@ func (s *GetInstantScoreResponseBody) Validate() error {
 }
 
 type GetInstantScoreResponseBodyData struct {
+	// Error score
+	//
 	// example:
 	//
 	// 100
 	Error *float32 `json:"error,omitempty" xml:"error,omitempty"`
+	// Latency score
+	//
 	// example:
 	//
 	// 100
 	Latency *float32 `json:"latency,omitempty" xml:"latency,omitempty"`
+	// Load score
+	//
 	// example:
 	//
 	// 100
 	Load *float32 `json:"load,omitempty" xml:"load,omitempty"`
+	// Saturation score
+	//
 	// example:
 	//
 	// 100
 	Saturation *float32 `json:"saturation,omitempty" xml:"saturation,omitempty"`
-	Total      *float32 `json:"total,omitempty" xml:"total,omitempty"`
+	// Total score
+	//
+	// example:
+	//
+	// 100
+	Total *float32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s GetInstantScoreResponseBodyData) String() string {

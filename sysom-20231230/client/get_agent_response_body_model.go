@@ -20,12 +20,30 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
+	// Request ID, which can be used for end-to-end Diagnosis
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - `code == Success` indicates that authorization succeeded.
+	//
+	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                   `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the Request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
@@ -86,14 +104,50 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyData struct {
-	CreatedAt   *string                             `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description *string                             `json:"description,omitempty" xml:"description,omitempty"`
-	Id          *string                             `json:"id,omitempty" xml:"id,omitempty"`
-	Name        *string                             `json:"name,omitempty" xml:"name,omitempty"`
-	SupportArch *string                             `json:"support_arch,omitempty" xml:"support_arch,omitempty"`
-	Type        *string                             `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt   *string                             `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	Versions    []*GetAgentResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	// Creation Time of the widget
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Description of the widget
+	//
+	// example:
+	//
+	// SysOM Agent
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Widget ID
+	//
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Name of the widget
+	//
+	// example:
+	//
+	// SysOM
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Supported architecture
+	//
+	// example:
+	//
+	// x86
+	SupportArch *string `json:"support_arch,omitempty" xml:"support_arch,omitempty"`
+	// Type of the Agent
+	//
+	// example:
+	//
+	// control
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Update Time
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// Widget version information
+	Versions []*GetAgentResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s GetAgentResponseBodyData) String() string {
@@ -190,12 +244,42 @@ func (s *GetAgentResponseBodyData) Validate() error {
 }
 
 type GetAgentResponseBodyDataVersions struct {
-	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	InstallScript   *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
+	// Creation Time of the Agent version
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Installation script for this version of the Agent
+	//
+	// example:
+	//
+	// sysom.sh install
+	InstallScript *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
+	// Uninstall script for this Agent version
+	//
+	// example:
+	//
+	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	UpdatedAt       *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UpgradeScript   *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	Version         *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Update Time of the Agent version
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// Upgrade script for this Agent version
+	//
+	// example:
+	//
+	// sysom.sh upgrade
+	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
+	// Version number of the Agent
+	//
+	// example:
+	//
+	// 3.4.0-1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetAgentResponseBodyDataVersions) String() string {

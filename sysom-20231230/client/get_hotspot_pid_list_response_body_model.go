@@ -20,11 +20,16 @@ type iGetHotspotPidListResponseBody interface {
 }
 
 type GetHotspotPidListResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// SysomOpenAPI.InvalidParameter
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data returned
 	Data *GetHotspotPidListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message
+	//
 	// example:
 	//
 	// Success
@@ -91,8 +96,10 @@ func (s *GetHotspotPidListResponseBody) Validate() error {
 }
 
 type GetHotspotPidListResponseBodyData struct {
-	Columns []*string   `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	Values  [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	// List of column names
+	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// List of process information
+	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s GetHotspotPidListResponseBodyData) String() string {

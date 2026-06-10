@@ -14,6 +14,8 @@ type iGetCopilotHistoryRequest interface {
 }
 
 type GetCopilotHistoryRequest struct {
+	// Quantity of historical chat records to request, typically fewer than 100 records
+	//
 	// This parameter is required.
 	//
 	// example:

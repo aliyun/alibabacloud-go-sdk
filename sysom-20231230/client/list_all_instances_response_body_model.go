@@ -26,19 +26,34 @@ type iListAllInstancesResponseBody interface {
 }
 
 type ListAllInstancesResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// Success
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data []*ListAllInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Maximum number of returned items
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Error message:
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the error message of the request.
+	//
 	// example:
 	//
 	// instance not exists
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Paging cursor.
+	//
+	// > If not empty, more data is available.
+	//
 	// example:
 	//
 	// c2f78a783f49457caba6bace6f6f79e4
@@ -49,6 +64,8 @@ type ListAllInstancesResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 2
@@ -140,81 +157,136 @@ func (s *ListAllInstancesResponseBody) Validate() error {
 }
 
 type ListAllInstancesResponseBodyData struct {
-	AgentConfigId   *string                                       `json:"agentConfigId,omitempty" xml:"agentConfigId,omitempty"`
-	AgentConfigName *string                                       `json:"agentConfigName,omitempty" xml:"agentConfigName,omitempty"`
-	Attributes      []*ListAllInstancesResponseBodyDataAttributes `json:"attributes,omitempty" xml:"attributes,omitempty" type:"Repeated"`
+	// Agent configuration ID
+	//
+	// example:
+	//
+	// test_id
+	AgentConfigId *string `json:"agentConfigId,omitempty" xml:"agentConfigId,omitempty"`
+	// Agent configuration name
+	//
+	// example:
+	//
+	// test_name
+	AgentConfigName *string `json:"agentConfigName,omitempty" xml:"agentConfigName,omitempty"`
+	// Extension information.
+	Attributes []*ListAllInstancesResponseBodyDataAttributes `json:"attributes,omitempty" xml:"attributes,omitempty" type:"Repeated"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// 3b24a621-acb3-11ef-8c90-00163e1029af
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// zjk_vpc_domain_1
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	// Image ID.
+	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20250117.vhd
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+	// Installation level
+	//
 	// example:
 	//
 	// Cluster
 	InstallLevel *string `json:"installLevel,omitempty" xml:"installLevel,omitempty"`
+	// Installation type
+	//
 	// example:
 	//
 	// console
 	InstallType *string `json:"installType,omitempty" xml:"installType,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// i-bp17uabeke9v7n30abm2
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// Instance type
+	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Milvus version
+	//
 	// example:
 	//
 	// 5.10.134-18.al8.x86_64
 	KernelVersion *string `json:"kernelVersion,omitempty" xml:"kernelVersion,omitempty"`
+	// Management level
+	//
 	// example:
 	//
 	// cluster
 	ManageLevel *string `json:"manageLevel,omitempty" xml:"manageLevel,omitempty"`
+	// Management type
+	//
 	// example:
 	//
 	// managed
 	ManageType *string `json:"manageType,omitempty" xml:"manageType,omitempty"`
+	// Operating system architecture
+	//
 	// example:
 	//
 	// x86_64
 	OsArch *string `json:"osArch,omitempty" xml:"osArch,omitempty"`
+	// Operating system health score
+	//
 	// example:
 	//
 	// 100
 	OsHealthScore *int32 `json:"osHealthScore,omitempty" xml:"osHealthScore,omitempty"`
+	// Operating system name
+	//
 	// example:
 	//
 	// alios
 	OsName *string `json:"osName,omitempty" xml:"osName,omitempty"`
+	// Private IP address.
+	//
 	// example:
 	//
 	// 172.21.172.7
 	PrivateIp *string `json:"privateIp,omitempty" xml:"privateIp,omitempty"`
+	// Public IP address.
+	//
 	// example:
 	//
 	// 47.98.215.58
 	PublicIp *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// 3b24a621-acb3-11ef-8c90-00163e1029af
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Resource group name
+	//
 	// example:
 	//
 	// xxxx
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
+	// The running status of the instance. Valid values:
+	//
+	// - **Running**: The instance is running.
+	//
+	// - **Offline**: The instance is offline.
+	//
+	// > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. It does not mean that the corresponding ECS instance is not running.
+	//
 	// example:
 	//
 	// Running
@@ -441,14 +513,20 @@ func (s *ListAllInstancesResponseBodyData) Validate() error {
 }
 
 type ListAllInstancesResponseBodyDataAttributes struct {
+	// information key
+	//
 	// example:
 	//
 	// sysom
 	InfoKey *string `json:"infoKey,omitempty" xml:"infoKey,omitempty"`
+	// information type
+	//
 	// example:
 	//
 	// instance_tag
 	InfoType *string `json:"infoType,omitempty" xml:"infoType,omitempty"`
+	// information value
+	//
 	// example:
 	//
 	// diagnosis

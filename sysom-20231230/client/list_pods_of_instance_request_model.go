@@ -20,18 +20,26 @@ type iListPodsOfInstanceRequest interface {
 }
 
 type ListPodsOfInstanceRequest struct {
+	// Cluster identity
+	//
 	// example:
 	//
 	// c96e34d74eb6748f3b2a46552d5d653f6
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// Current page number (starting from 1)
+	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// instance ID.
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Page size; default value is 10
+	//
 	// example:
 	//
 	// 10

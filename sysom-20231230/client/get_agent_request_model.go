@@ -14,6 +14,11 @@ type iGetAgentRequest interface {
 }
 
 type GetAgentRequest struct {
+	// Widget ID
+	//
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
 }
 

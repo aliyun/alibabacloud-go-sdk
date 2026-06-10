@@ -28,28 +28,50 @@ type iGetAbnormalEventsCountRequest interface {
 }
 
 type GetAbnormalEventsCountRequest struct {
+	// cluster ID
+	//
 	// example:
 	//
-	// 1808078950770264
+	// 2ijff4be-bf24-4070-89ca-c47c879b0g32
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	// instance ID.
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	Level    *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Level of the anomalous activity
+	//
+	// example:
+	//
+	// potential
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Namespace where the pod is located
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Name of the pod
+	//
 	// example:
 	//
 	// test-pod
-	Pod     *string `json:"pod,omitempty" xml:"pod,omitempty"`
-	ShowPod *int32  `json:"showPod,omitempty" xml:"showPod,omitempty"`
+	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
+	// is whether to display pod anomalous activity
+	//
+	// example:
+	//
+	// 1
+	ShowPod *int32 `json:"showPod,omitempty" xml:"showPod,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 1725797727754

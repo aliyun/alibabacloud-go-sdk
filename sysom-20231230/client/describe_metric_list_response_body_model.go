@@ -20,11 +20,24 @@ type iDescribeMetricListResponseBody interface {
 }
 
 type DescribeMetricListResponseBody struct {
+	// Status code
+	//
+	// - `code == Success` indicates successful authorization;
+	//
+	// - Any other status code indicates authorization failure. When authorization fails, check the `message` field for detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data []*DescribeMetricListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// 分析ID: 56dae746-ef55-4f77-8373-cb3594c41457
@@ -97,15 +110,20 @@ func (s *DescribeMetricListResponseBody) Validate() error {
 }
 
 type DescribeMetricListResponseBodyData struct {
+	// Metric labels
+	//
 	// example:
 	//
 	// {\\"taskExecName\\": \\"build-and-deploy\\", \\"pipelineName\\": \\"pipeline-run-1722909642357\\"}
 	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// Metric name
+	//
 	// example:
 	//
 	// sysom_cpu_usage_idle
-	MetricName *string     `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Values     [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// Metric data
+	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMetricListResponseBodyData) String() string {

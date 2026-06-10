@@ -18,18 +18,24 @@ type iGetHotspotInstanceListRequest interface {
 }
 
 type GetHotspotInstanceListRequest struct {
+	// stop time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725413947000
 	BegEnd *int64 `json:"beg_end,omitempty" xml:"beg_end,omitempty"`
+	// start time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725413647000
 	BegStart *int64 `json:"beg_start,omitempty" xml:"beg_start,omitempty"`
+	// Query table name
+	//
 	// This parameter is required.
 	//
 	// example:

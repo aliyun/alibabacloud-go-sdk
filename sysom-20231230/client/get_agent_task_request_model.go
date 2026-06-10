@@ -14,6 +14,11 @@ type iGetAgentTaskRequest interface {
 }
 
 type GetAgentTaskRequest struct {
+	// Job ID.
+	//
+	// example:
+	//
+	// 42172120177e4b3abd6fabb3a6b5e2dd
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

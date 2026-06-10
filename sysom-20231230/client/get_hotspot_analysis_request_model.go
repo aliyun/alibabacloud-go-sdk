@@ -24,34 +24,46 @@ type iGetHotspotAnalysisRequest interface {
 }
 
 type GetHotspotAnalysisRequest struct {
+	// Application Type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GR
 	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
+	// End time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725413948000
 	BegEnd *int64 `json:"beg_end,omitempty" xml:"beg_end,omitempty"`
+	// Start time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725410348000
 	BegStart *int64 `json:"beg_start,omitempty" xml:"beg_start,omitempty"`
+	// instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-2ze5ru5rjurix7f71sxv
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Process PID
+	//
 	// example:
 	//
 	// 1657494
 	Pid *int64 `json:"pid,omitempty" xml:"pid,omitempty"`
+	// Name of the queried Table
+	//
 	// example:
 	//
 	// prof_on

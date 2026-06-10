@@ -20,12 +20,30 @@ type iUninstallAgentResponseBody interface {
 }
 
 type UninstallAgentResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
+	// example:
+	//
+	// 13772206-1162-5A0F-81F0-79A10C249A5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - `code == Success` indicates that authorization succeeded.
+	//
+	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data *UninstallAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
@@ -86,6 +104,11 @@ func (s *UninstallAgentResponseBody) Validate() error {
 }
 
 type UninstallAgentResponseBodyData struct {
+	// Job ID.
+	//
+	// example:
+	//
+	// 63fc5acb99e642d793f42912612e8001
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

@@ -34,43 +34,68 @@ type iListAbnormalyEventsRequest interface {
 }
 
 type ListAbnormalyEventsRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
-	// 1808078950770264
+	// 2d33d4be-bf54-4070-82ca-c1dc2d8b1562
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// This field is present when paging is used and indicates the current page.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 1725801327754
-	End   *float32 `json:"end,omitempty" xml:"end,omitempty"`
-	Event *string  `json:"event,omitempty" xml:"event,omitempty"`
+	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	// Anomalous activity name
+	//
+	// example:
+	//
+	// 节点根文件系统使用检测
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Level of the anomalous activity
+	//
 	// example:
 	//
 	// potential
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Namespace where the pod is located
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Page size. The default value is 5. Valid values are in the range [1,100].
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Pod name
+	//
 	// example:
 	//
 	// test-pod
 	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
+	// Whether to display anomalous activities of the pod
+	//
 	// example:
 	//
 	// 1
 	ShowPod *int32 `json:"showPod,omitempty" xml:"showPod,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 1725797727754

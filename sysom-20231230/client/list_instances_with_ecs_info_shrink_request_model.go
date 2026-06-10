@@ -42,61 +42,90 @@ type iListInstancesWithEcsInfoShrinkRequest interface {
 }
 
 type ListInstancesWithEcsInfoShrinkRequest struct {
+	// This field exists when using paging and indicates the current page.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
+	// Filter instances by health status.
+	//
 	// example:
 	//
 	// healthy
 	HealthStatus *string `json:"health_status,omitempty" xml:"health_status,omitempty"`
+	// If this field is specified, filter the Agent installation status for the specified instance.
+	//
 	// example:
 	//
 	// i-bp118piqcio9tiwgh84b
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// Filter by instance name or instance ID. Fuzzy query is supported.
+	//
 	// example:
 	//
 	// 84b
 	InstanceIdName *string `json:"instance_id_name,omitempty" xml:"instance_id_name,omitempty"`
+	// Widget instance name.
+	//
 	// example:
 	//
 	// block-load-balancer-hjdm9
-	InstanceName      *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	// Filter by tags of instances.
 	InstanceTagShrink *string `json:"instance_tag,omitempty" xml:"instance_tag,omitempty"`
+	// Filter instances by managed status.
+	//
 	// example:
 	//
 	// 1
 	IsManaged *int32 `json:"is_managed,omitempty" xml:"is_managed,omitempty"`
+	// Filter instances by operating system name.
+	//
 	// example:
 	//
 	// Alibaba Cloud Linux  3.2104 LTS 64bit
 	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// Page size. Default value is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Filter instances by private IP address.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// Filter instances by public IP address.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// Filter instances by region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Filter instances by resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxxxx
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// Filter by resource group name or resource group ID. Fuzzy query is supported.
+	//
 	// example:
 	//
 	// default
 	ResourceGroupIdName *string `json:"resource_group_id_name,omitempty" xml:"resource_group_id_name,omitempty"`
+	// Filter instances by resource group name.
+	//
 	// example:
 	//
 	// default resource group

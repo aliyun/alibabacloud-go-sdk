@@ -16,9 +16,21 @@ type iStartAIDiffAnalysisRequest interface {
 }
 
 type StartAIDiffAnalysisRequest struct {
+	// task1 parameters
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// task1参数
 	Task1 *StartAIDiffAnalysisRequestTask1 `json:"task1,omitempty" xml:"task1,omitempty" type:"Struct"`
+	// task2 parameters
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// task2参数，目前只支持相同analysisId和pid的对比
 	Task2 *StartAIDiffAnalysisRequestTask2 `json:"task2,omitempty" xml:"task2,omitempty" type:"Struct"`
 }
 
@@ -63,15 +75,22 @@ func (s *StartAIDiffAnalysisRequest) Validate() error {
 }
 
 type StartAIDiffAnalysisRequestTask1 struct {
+	// AI analysis ID
+	//
 	// example:
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
-	AnalysisId *string   `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
-	Pids       []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
+	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
+	// PIDs of AI job processes; batch input is supported, separated by commas
+	Pids []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
+	// Step end time, computed based on the selected step number
+	//
 	// example:
 	//
 	// 4660551334179.955
 	StepEnd *float32 `json:"step_end,omitempty" xml:"step_end,omitempty"`
+	// Step start time, computed based on the selected step number
+	//
 	// example:
 	//
 	// 4660550379415.497
@@ -127,24 +146,32 @@ func (s *StartAIDiffAnalysisRequestTask1) Validate() error {
 }
 
 type StartAIDiffAnalysisRequestTask2 struct {
+	// AI analysis ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
+	// Process IDs (PIDs) of AI jobs. Batch input is supported, with PIDs separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 452651:python3 ./test.py
 	Pids []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
+	// Step end time, computed based on the selected step number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4660551334179.955
 	StepEnd *float32 `json:"step_end,omitempty" xml:"step_end,omitempty"`
+	// Step start time, computed based on the selected step number.
+	//
 	// This parameter is required.
 	//
 	// example:

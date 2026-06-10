@@ -18,14 +18,20 @@ type iUpdateFuncSwitchRecordRequest interface {
 }
 
 type UpdateFuncSwitchRecordRequest struct {
+	// Diagnosis channel (currently fixed to the ecs channel)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// Diagnosis parameters. Different diagnosis types require different diagnosis parameters. You can use this field to filter records whose parameters match specified values.
+	//
 	// This parameter is required.
 	Params *UpdateFuncSwitchRecordRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// Service Name
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,22 +85,36 @@ func (s *UpdateFuncSwitchRecordRequest) Validate() error {
 }
 
 type UpdateFuncSwitchRecordRequestParams struct {
+	// Configuration Parameter
 	Args *UpdateFuncSwitchRecordRequestParamsArgs `json:"args,omitempty" xml:"args,omitempty" type:"Struct"`
+	// Feature Name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mullprof
 	FunctionName *string `json:"function_name,omitempty" xml:"function_name,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// i-2zei55fwj8nnu31h3z46
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Operation Type
+	//
 	// example:
 	//
 	// restart
-	Op     *string `json:"op,omitempty" xml:"op,omitempty"`
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// Region to which the instance belongs. Ensure that all instance IDs passed in the instances field belong to the same region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 1664516888213680
@@ -173,32 +193,56 @@ func (s *UpdateFuncSwitchRecordRequestParams) Validate() error {
 }
 
 type UpdateFuncSwitchRecordRequestParamsArgs struct {
+	// Configuration process
+	//
 	// example:
 	//
 	// java
 	AddCmd *string `json:"add_cmd,omitempty" xml:"add_cmd,omitempty"`
+	// ONCPU tracing Toggle
+	//
 	// example:
 	//
 	// true
-	Cpu      *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Duration *int32  `json:"duration,omitempty" xml:"duration,omitempty"`
+	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Duration in seconds (s)
+	//
+	// example:
+	//
+	// 3600
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Storage Path
+	//
 	// example:
 	//
 	// /tmp/sysom/java-profiler
 	JavaStorePath *string `json:"java_store_path,omitempty" xml:"java_store_path,omitempty"`
+	// Edit Lock tracing Toggle
+	//
 	// example:
 	//
 	// true
 	Locks *string `json:"locks,omitempty" xml:"locks,omitempty"`
+	// Tracing epoch
+	//
 	// example:
 	//
 	// -1
 	Loop *int32 `json:"loop,omitempty" xml:"loop,omitempty"`
+	// Memory tracing Toggle
+	//
 	// example:
 	//
 	// true
 	Mem *string `json:"mem,omitempty" xml:"mem,omitempty"`
-	Pid *int32  `json:"pid,omitempty" xml:"pid,omitempty"`
+	// Process PID
+	//
+	// example:
+	//
+	// 1243
+	Pid *int32 `json:"pid,omitempty" xml:"pid,omitempty"`
+	// System tracing toggle
+	//
 	// example:
 	//
 	// true

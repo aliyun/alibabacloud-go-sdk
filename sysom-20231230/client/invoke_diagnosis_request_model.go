@@ -18,12 +18,18 @@ type iInvokeDiagnosisRequest interface {
 }
 
 type InvokeDiagnosisRequest struct {
+	// Diagnosis channel (currently fixed as the ECS channel)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cloud_assist
+	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// Diagnosis parameters. Different diagnosis types require different parameters. For the required parameters of each diagnosis type, see the Request Parameters supplement below.
+	//
+	// 	Notice: Please pass a string in JSON format
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38,6 +44,8 @@ type InvokeDiagnosisRequest struct {
 	//
 	// }
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
+	// Diagnosis type, used to distinguish between different types of diagnosis
+	//
 	// This parameter is required.
 	//
 	// example:

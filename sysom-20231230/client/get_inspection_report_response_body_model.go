@@ -32,8 +32,6 @@ type GetInspectionReportResponseBody struct {
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822

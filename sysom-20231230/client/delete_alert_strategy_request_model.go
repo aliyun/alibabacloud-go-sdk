@@ -14,6 +14,8 @@ type iDeleteAlertStrategyRequest interface {
 }
 
 type DeleteAlertStrategyRequest struct {
+	// Alert policy ID
+	//
 	// This parameter is required.
 	//
 	// example:

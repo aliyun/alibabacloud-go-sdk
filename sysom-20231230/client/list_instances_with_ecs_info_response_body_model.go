@@ -22,19 +22,28 @@ type iListInstancesWithEcsInfoResponseBody interface {
 }
 
 type ListInstancesWithEcsInfoResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data []*ListInstancesWithEcsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message. An empty value indicates that the data has been read completely.
+	//
 	// example:
 	//
 	// result: code=1 msg=(Request failed, status_code != 200)
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 319
@@ -108,48 +117,82 @@ func (s *ListInstancesWithEcsInfoResponseBody) Validate() error {
 }
 
 type ListInstancesWithEcsInfoResponseBodyData struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// cbf7a37bc905d4682a3338b3744810269
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// instance ID
+	//
 	// example:
 	//
 	// i-bp118piqcio9tiwgh84b
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// Instance Name.
+	//
 	// example:
 	//
 	// allowed-repos-r2tzl
-	InstanceName  *string                                                `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	InstanceTag   []*ListInstancesWithEcsInfoResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
-	KernelVersion *string                                                `json:"kernel_version,omitempty" xml:"kernel_version,omitempty"`
+	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	// tags of instances
+	InstanceTag []*ListInstancesWithEcsInfoResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
+	// Milvus version
+	//
+	// example:
+	//
+	// 5.10.134-14.an8.x86_64
+	KernelVersion *string `json:"kernel_version,omitempty" xml:"kernel_version,omitempty"`
+	// ECS instance architecture
+	//
 	// example:
 	//
 	// x86
 	OsArch *string `json:"os_arch,omitempty" xml:"os_arch,omitempty"`
+	// Instance health score
+	//
 	// example:
 	//
 	// 100
 	OsHealthScore *string `json:"os_health_score,omitempty" xml:"os_health_score,omitempty"`
+	// The operating system name of the instance
+	//
 	// example:
 	//
 	// Alibaba Cloud Linux  3.2104 LTS 64bit
 	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// Instance private IP
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// Instance Internet IP
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxxx
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// Resource group name
+	//
 	// example:
 	//
 	// default resource group
 	ResourceGroupName *string `json:"resource_group_name,omitempty" xml:"resource_group_name,omitempty"`
+	// The running status of the instance. Valid values:
+	//
+	// - **Running**: The instance is running.
+	//
+	// - **Offline**: The instance is offline.
+	//
+	// > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. This does not mean that the corresponding ECS instance is not running.
+	//
 	// example:
 	//
 	// Running
@@ -295,10 +338,14 @@ func (s *ListInstancesWithEcsInfoResponseBodyData) Validate() error {
 }
 
 type ListInstancesWithEcsInfoResponseBodyDataInstanceTag struct {
+	// Name of the tag.
+	//
 	// example:
 	//
 	// test_tag_key
 	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// test_tag_value

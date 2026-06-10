@@ -26,13 +26,48 @@ type iListAgentInstallRecordsRequest interface {
 }
 
 type ListAgentInstallRecordsRequest struct {
-	Current       *int64  `json:"current,omitempty" xml:"current,omitempty"`
-	InstanceId    *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	PageSize      *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PluginId      *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// Current page number (starting from 1)
+	//
+	// example:
+	//
+	// 1
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// If this field is specified, the response filters the Agent installation status for the specified instance.
+	//
+	// example:
+	//
+	// i-bp118piqcio9tiwgh84b
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// Page size
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// If this parameter is specified, the response filters the installation list for the specified Agent. It can be used together with the plugin_version parameter.
+	//
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
+	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// This parameter cannot be used alone. It must be used together with plugin_id to filter the installation list for a specified version of the specified Agent.
+	//
+	// example:
+	//
+	// 3.4.0-1
 	PluginVersion *string `json:"plugin_version,omitempty" xml:"plugin_version,omitempty"`
-	Region        *string `json:"region,omitempty" xml:"region,omitempty"`
-	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Filter widget installation records by status
+	//
+	// example:
+	//
+	// Installed
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAgentInstallRecordsRequest) String() string {

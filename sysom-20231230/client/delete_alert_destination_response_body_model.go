@@ -20,18 +20,34 @@ type iDeleteAlertDestinationResponseBody interface {
 }
 
 type DeleteAlertDestinationResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822

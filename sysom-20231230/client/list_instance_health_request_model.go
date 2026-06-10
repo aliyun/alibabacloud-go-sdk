@@ -24,28 +24,40 @@ type iListInstanceHealthRequest interface {
 }
 
 type ListInstanceHealthRequest struct {
+	// cluster ID
+	//
 	// example:
 	//
-	// 1808078950770264
+	// 2dc6f3be-bf24-4070-8d3a-c03c26850532
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// Current page number for paging
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
+	// End Time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	// instance ID.
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Page size. Default value is 5. Valid range: [1,100]
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Start Time
+	//
 	// This parameter is required.
 	//
 	// example:

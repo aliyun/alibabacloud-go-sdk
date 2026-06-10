@@ -20,11 +20,16 @@ type iGetHotspotInstanceListResponseBody interface {
 }
 
 type GetHotspotInstanceListResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetHotspotInstanceListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Description
+	//
 	// example:
 	//
 	// success
@@ -91,8 +96,10 @@ func (s *GetHotspotInstanceListResponseBody) Validate() error {
 }
 
 type GetHotspotInstanceListResponseBodyData struct {
+	// Column Name
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	Values  []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	// Instance List
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s GetHotspotInstanceListResponseBodyData) String() string {

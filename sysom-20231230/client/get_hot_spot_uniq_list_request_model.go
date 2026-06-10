@@ -24,33 +24,49 @@ type iGetHotSpotUniqListRequest interface {
 }
 
 type GetHotSpotUniqListRequest struct {
+	// End time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1735010351000
 	BegEnd *int64 `json:"beg_end,omitempty" xml:"beg_end,omitempty"`
+	// Start time
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1735008551000
 	BegStart *int64 `json:"beg_start,omitempty" xml:"beg_start,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp1g2i0siirefgwnnnvy
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Process ID
+	//
 	// example:
 	//
 	// 12345
 	Pid *int64 `json:"pid,omitempty" xml:"pid,omitempty"`
+	// Table name
+	//
 	// example:
 	//
 	// prof_on
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	// Identity flag
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 默认需要为"flag"，待查询的字段
 	Uniq *string `json:"uniq,omitempty" xml:"uniq,omitempty"`
 }
 

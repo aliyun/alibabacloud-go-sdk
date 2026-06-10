@@ -22,22 +22,32 @@ type iListAlertStrategiesRequest interface {
 }
 
 type ListAlertStrategiesRequest struct {
+	// Current page number (starting from 1)
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
+	// Maximum number of records to retrieve in a single request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Alert policy name
+	//
 	// example:
 	//
 	// strategy1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Pagination token for the next request.
+	//
 	// example:
 	//
 	// c2f78a783f49457caba6bace6f6f79e4
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10

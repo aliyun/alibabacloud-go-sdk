@@ -20,15 +20,26 @@ type iCreateAlertDestinationResponseBody interface {
 }
 
 type CreateAlertDestinationResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// Success
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *CreateAlertDestinationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
@@ -89,31 +100,46 @@ func (s *CreateAlertDestinationResponseBody) Validate() error {
 }
 
 type CreateAlertDestinationResponseBodyData struct {
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1753669116286
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Policy ID
+	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// Policy Name
+	//
 	// example:
 	//
 	// SysOM
-	Name   *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Configuration Parameter of alert contact
 	Params *CreateAlertDestinationResponseBodyDataParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// Configuration Source
+	//
 	// example:
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Push Target. Currently, only DingTalk Robot is supported.
+	//
 	// example:
 	//
 	// dingtalk
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 1222933234714935
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 1751254826285
@@ -210,18 +236,26 @@ func (s *CreateAlertDestinationResponseBodyData) Validate() error {
 }
 
 type CreateAlertDestinationResponseBodyDataParams struct {
+	// mailbox
+	//
 	// example:
 	//
 	// xxx@email.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Phone
+	//
 	// example:
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// Robot key
+	//
 	// example:
 	//
 	// SECxxx
 	Sec *string `json:"sec,omitempty" xml:"sec,omitempty"`
+	// Robot address
+	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=xxx

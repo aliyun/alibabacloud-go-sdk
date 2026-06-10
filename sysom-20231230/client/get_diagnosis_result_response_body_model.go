@@ -20,15 +20,30 @@ type iGetDiagnosisResultResponseBody interface {
 }
 
 type GetDiagnosisResultResponseBody struct {
+	// Status code
+	//
+	// - If `code == "Success"`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetDiagnosisResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// 9515E5A0-8905-59B0-9BBF-5F0BE568C3A0
@@ -89,10 +104,14 @@ func (s *GetDiagnosisResultResponseBody) Validate() error {
 }
 
 type GetDiagnosisResultResponseBodyData struct {
+	// Error code (0 indicates no error)
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// Diagnosis command
+	//
 	// example:
 	//
 	// {
@@ -122,12 +141,21 @@ type GetDiagnosisResultResponseBodyData struct {
 	//     ]
 	//
 	// }
-	Command   interface{} `json:"command,omitempty" xml:"command,omitempty"`
-	CreatedAt *string     `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Command interface{} `json:"command,omitempty" xml:"command,omitempty"`
+	// Creation Time
+	//
+	// example:
+	//
+	// 2025-12-03 16:30:28
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// Diagnosis failed
 	ErrMsg *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+	// Diagnosis parameters
+	//
 	// example:
 	//
 	// {
@@ -144,6 +172,8 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// }
 	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// Diagnosis result
+	//
 	// example:
 	//
 	// {
@@ -580,19 +610,42 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// }
 	Result interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// Diagnosis Type
+	//
 	// example:
 	//
 	// memgraph
 	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
+	// The execution status of the diagnostic task.
+	//
+	// Valid values:
+	//
+	// - **Ready**: Ready
+	//
+	// - **Running**: Running
+	//
+	// - **Success**: Succeeded
+	//
+	// - **Fail**: Failed
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// grcuU21a
-	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	// Update Time
+	//
+	// example:
+	//
+	// 2025-12-03 16:30:28
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// Diagnosis details URL
+	//
 	// example:
 	//
 	// /diagnose/detail/qe3Z34sa

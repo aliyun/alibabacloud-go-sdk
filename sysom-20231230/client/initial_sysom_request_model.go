@@ -16,8 +16,14 @@ type iInitialSysomRequest interface {
 }
 
 type InitialSysomRequest struct {
-	CheckOnly *bool   `json:"check_only,omitempty" xml:"check_only,omitempty"`
-	Source    *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Specifies whether to only check if the service role exists
+	CheckOnly *bool `json:"check_only,omitempty" xml:"check_only,omitempty"`
+	// Source, which is fixed as console.
+	//
+	// example:
+	//
+	// console
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s InitialSysomRequest) String() string {

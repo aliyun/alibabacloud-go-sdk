@@ -20,14 +20,28 @@ type iCpuHighAgentStreamResponseResponseBody interface {
 }
 
 type CpuHighAgentStreamResponseResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error message.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
+	//
 	// example:
 	//
 	// <SSEResponse>
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom

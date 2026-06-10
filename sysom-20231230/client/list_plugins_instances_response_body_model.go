@@ -22,19 +22,32 @@ type iListPluginsInstancesResponseBody interface {
 }
 
 type ListPluginsInstancesResponseBody struct {
+	// Status code
+	//
+	// - `code == Success` indicates successful authorization;
+	//
+	// - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Result.
 	Data []*ListPluginsInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Description
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 42
@@ -108,35 +121,52 @@ func (s *ListPluginsInstancesResponseBody) Validate() error {
 }
 
 type ListPluginsInstancesResponseBodyData struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// i-bp118piqcio9tiwgh84b
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	// Widget instance name.
+	//
 	// example:
 	//
 	// allowed-repos-qmf8w
-	InstanceName *string                                            `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	InstanceTag  []*ListPluginsInstancesResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
+	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+	// Tags of instances
+	InstanceTag []*ListPluginsInstancesResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
+	// Operating system name of the instance
+	//
 	// example:
 	//
 	// Alibaba Cloud Linux  3.2104 LTS 64 bit
 	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
+	// Private IP address
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
+	// Internet IP address
+	//
 	// example:
 	//
 	// 1.1.1.1
 	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
+	// Area where the instance resides
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// Resource group name
+	//
 	// example:
 	//
 	// default resource group
@@ -246,10 +276,14 @@ func (s *ListPluginsInstancesResponseBodyData) Validate() error {
 }
 
 type ListPluginsInstancesResponseBodyDataInstanceTag struct {
+	// Name of the tag.
+	//
 	// example:
 	//
 	// test_tag_key
 	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// test_tag_value

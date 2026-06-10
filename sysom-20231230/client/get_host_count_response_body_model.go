@@ -22,19 +22,36 @@ type iGetHostCountResponseBody interface {
 }
 
 type GetHostCountResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data []*GetHostCountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// “”
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// 43A910E9-A739-525E-855D-A32C257F1826
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// Total number of entries.
+	//
 	// example:
 	//
 	// 3
@@ -108,10 +125,14 @@ func (s *GetHostCountResponseBody) Validate() error {
 }
 
 type GetHostCountResponseBodyData struct {
+	// Time point
+	//
 	// example:
 	//
 	// 1725797727754
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// Quantity
+	//
 	// example:
 	//
 	// 5

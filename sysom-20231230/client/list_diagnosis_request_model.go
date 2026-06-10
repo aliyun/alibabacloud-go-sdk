@@ -22,14 +22,46 @@ type iListDiagnosisRequest interface {
 }
 
 type ListDiagnosisRequest struct {
+	// Current page number
+	//
+	// example:
+	//
+	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
-	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Params      *string `json:"params,omitempty" xml:"params,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Diagnostic parameters. Different diagnosis types require different diagnostic parameters. You can use this field to filter records whose parameter values match the specified value.
+	//
+	// example:
+	//
+	// [{\\"key\\":\\"region\\",\\"value\\":\\"cn-beijing\\"}]
+	Params *string `json:"params,omitempty" xml:"params,omitempty"`
+	// Diagnosis type
+	//
+	// example:
+	//
+	// memgraph
 	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Status of the diagnostic task execution.
+	//
+	// Valid values:
+	//
+	// - **Ready**: Ready
+	//
+	// - **Running**: Running
+	//
+	// - **Success**: Succeeded
+	//
+	// - **Fail**: Failed
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDiagnosisRequest) String() string {

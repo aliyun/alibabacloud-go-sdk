@@ -22,21 +22,36 @@ type iGetRangeScoreResponseBody interface {
 }
 
 type GetRangeScoreResponseBody struct {
-	// 代表资源一级ID的资源属性字段
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
 	//
 	// example:
 	//
 	// Success
-	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data []*GetRangeScoreResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// Total data volume.
+	//
 	// example:
 	//
 	// 2
@@ -110,14 +125,20 @@ func (s *GetRangeScoreResponseBody) Validate() error {
 }
 
 type GetRangeScoreResponseBodyData struct {
+	// Time point
+	//
 	// example:
 	//
 	// 1725797727754
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// Metric type
+	//
 	// example:
 	//
 	// saturation
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Score
+	//
 	// example:
 	//
 	// 100

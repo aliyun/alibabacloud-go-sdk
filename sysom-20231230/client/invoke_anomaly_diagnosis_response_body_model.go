@@ -18,10 +18,22 @@ type iInvokeAnomalyDiagnosisResponseBody interface {
 }
 
 type InvokeAnomalyDiagnosisResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Any other status code indicates a failed authorization. When authorization fails, view the `message` field to obtain the detailed error message.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// success

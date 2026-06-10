@@ -20,11 +20,24 @@ type iGetAlertStrategyResponseBody interface {
 }
 
 type GetAlertStrategyResponseBody struct {
+	// Status code:
+	//
+	// - `code == Success` indicates successful authorization;
+	//
+	// - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetAlertStrategyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// success
@@ -91,28 +104,42 @@ func (s *GetAlertStrategyResponseBody) Validate() error {
 }
 
 type GetAlertStrategyResponseBodyData struct {
+	// Creation Time.
+	//
 	// example:
 	//
 	// 1751520976660
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Indicates whether the alert policy is enabled
+	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Alert policy ID
+	//
 	// example:
 	//
 	// 1
-	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// k8s label
+	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
+	// Policy Name
+	//
 	// example:
 	//
 	// strategy1
-	Name     *string                                   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Details of the alert policy
 	Strategy *GetAlertStrategyResponseBodyDataStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
+	// User ID
+	//
 	// example:
 	//
 	// 1222933234714935
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	// Update Time.
+	//
 	// example:
 	//
 	// 1751254826285
@@ -209,9 +236,15 @@ func (s *GetAlertStrategyResponseBodyData) Validate() error {
 }
 
 type GetAlertStrategyResponseBodyDataStrategy struct {
+	// Set of clusters that accept alerts
 	Clusters     []*string   `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	Destinations interface{} `json:"destinations,omitempty" xml:"destinations,omitempty"`
-	Items        interface{} `json:"items,omitempty" xml:"items,omitempty"`
+	// List of abnormal items that accept alerts
+	//
+	// example:
+	//
+	// 节点CPU使用率检测
+	Items interface{} `json:"items,omitempty" xml:"items,omitempty"`
 }
 
 func (s GetAlertStrategyResponseBodyDataStrategy) String() string {

@@ -20,14 +20,25 @@ type iGetAIQueryResultResponseBody interface {
 }
 
 type GetAIQueryResultResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Result, with large Data Volume
+	//
 	// example:
 	//
 	// {\\"task_id\\": \\"y4ba8uRV\\"}
-	Data    *string `json:"data,omitempty" xml:"data,omitempty"`
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// error message.
+	//
+	// example:
+	//
+	// 分析ID: 56dae746-ef55-4f77-8373-cb3594c41457
+	//
+	// 机器i-bp164ns76pzirbwv0snt分析失败, 失败原因: Not get GPU trace data for \\"56dae746-ef55-4f77-8373-cb3594c41457\\" \\"[\\"93811\\"]\\"!
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//

@@ -14,6 +14,8 @@ type iGetAIQueryResultRequest interface {
 }
 
 type GetAIQueryResultRequest struct {
+	// AI analysis ID
+	//
 	// example:
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426

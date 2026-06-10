@@ -20,15 +20,30 @@ type iUninstallAgentForClusterResponseBody interface {
 }
 
 type UninstallAgentForClusterResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
 	// example:
 	//
 	// 44841312-7227-55C9-AE03-D59729BFAE38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - `code == Success` indicates that authorization succeeded.
+	//
+	// - Any other status code indicates that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data *UninstallAgentForClusterResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.NotAuthorizedInstance Instance 21 is not authorized
@@ -89,6 +104,10 @@ func (s *UninstallAgentForClusterResponseBody) Validate() error {
 }
 
 type UninstallAgentForClusterResponseBodyData struct {
+	// Job ID.
+	//
+	// You can use this job ID to invoke GetAgentTask to query the execution status of the job.
+	//
 	// example:
 	//
 	// 049ea0609515414b9e19c3389d7ba638

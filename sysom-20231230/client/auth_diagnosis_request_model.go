@@ -18,9 +18,12 @@ type iAuthDiagnosisRequest interface {
 }
 
 type AuthDiagnosisRequest struct {
-	AutoCreateRole   *bool                            `json:"autoCreateRole,omitempty" xml:"autoCreateRole,omitempty"`
-	AutoInstallAgent *bool                            `json:"autoInstallAgent,omitempty" xml:"autoInstallAgent,omitempty"`
-	Instances        []*AuthDiagnosisRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// Automatic creation of role
+	AutoCreateRole *bool `json:"autoCreateRole,omitempty" xml:"autoCreateRole,omitempty"`
+	// Automatic installation of agent
+	AutoInstallAgent *bool `json:"autoInstallAgent,omitempty" xml:"autoInstallAgent,omitempty"`
+	// List of instances to authorize for diagnosis
+	Instances []*AuthDiagnosisRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 
 func (s AuthDiagnosisRequest) String() string {
@@ -72,8 +75,18 @@ func (s *AuthDiagnosisRequest) Validate() error {
 }
 
 type AuthDiagnosisRequestInstances struct {
+	// Instance ID.
+	//
+	// example:
+	//
+	// i-wz9b9vucz1iubsz8sjqo
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s AuthDiagnosisRequestInstances) String() string {

@@ -22,19 +22,32 @@ type iGetHotSpotUniqListResponseBody interface {
 }
 
 type GetHotSpotUniqListResponseBody struct {
+	// Status code
+	//
+	// - `code == Success` indicates successful authorization;
+	//
+	// - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data *GetHotSpotUniqListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Return message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true if the API call succeeded; false if the API call failed
+	//
 	// example:
 	//
 	// true
@@ -104,8 +117,10 @@ func (s *GetHotSpotUniqListResponseBody) Validate() error {
 }
 
 type GetHotSpotUniqListResponseBodyData struct {
+	// List of data names
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	Values  []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	// List of data values
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s GetHotSpotUniqListResponseBodyData) String() string {

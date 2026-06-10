@@ -20,15 +20,30 @@ type iGetResourcesResponseBody interface {
 }
 
 type GetResourcesResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *GetResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// result: code=1 msg=(Request failed, status_code != 200)
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
@@ -89,14 +104,20 @@ func (s *GetResourcesResponseBody) Validate() error {
 }
 
 type GetResourcesResponseBodyData struct {
+	// Total amount of resources
+	//
 	// example:
 	//
 	// 2354
 	Total *float32 `json:"total,omitempty" xml:"total,omitempty"`
+	// Unit
+	//
 	// example:
 	//
 	// Kbytes
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// Resource usage
+	//
 	// example:
 	//
 	// 100

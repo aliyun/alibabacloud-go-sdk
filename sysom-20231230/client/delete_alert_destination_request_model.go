@@ -14,6 +14,8 @@ type iDeleteAlertDestinationRequest interface {
 }
 
 type DeleteAlertDestinationRequest struct {
+	// Alert contact ID
+	//
 	// example:
 	//
 	// 1

@@ -26,34 +26,48 @@ type iListPluginsInstancesRequest interface {
 }
 
 type ListPluginsInstancesRequest struct {
+	// This field exists when paging is used and indicates the current page number.
+	//
 	// example:
 	//
 	// 5
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// Filter by instance ID or instance name. Fuzzy query is supported.
+	//
 	// example:
 	//
 	// i-bpxx
 	InstanceIdName *string `json:"instance_id_name,omitempty" xml:"instance_id_name,omitempty"`
+	// Filter by instance tags.
+	//
 	// example:
 	//
 	// {"key":"app","value":"sysom-aliyun-com"}
 	InstanceTag *string `json:"instance_tag,omitempty" xml:"instance_tag,omitempty"`
+	// Filter instances by plugin installation status.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// install
 	OperationType *string `json:"operation_type,omitempty" xml:"operation_type,omitempty"`
+	// Page size. Default value is 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// If this parameter is specified, the response filters and returns the instance list for the specified agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// Filter instances by area.
+	//
 	// This parameter is required.
 	//
 	// example:

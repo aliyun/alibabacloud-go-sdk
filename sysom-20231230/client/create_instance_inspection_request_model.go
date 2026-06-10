@@ -13,6 +13,8 @@ type iCreateInstanceInspectionRequest interface {
 	GetInstance() *string
 	SetItems(v []*string) *CreateInstanceInspectionRequest
 	GetItems() []*string
+	SetMetricSource(v string) *CreateInstanceInspectionRequest
+	GetMetricSource() *string
 	SetRegion(v string) *CreateInstanceInspectionRequest
 	GetRegion() *string
 	SetSource(v string) *CreateInstanceInspectionRequest
@@ -23,8 +25,9 @@ type CreateInstanceInspectionRequest struct {
 	// example:
 	//
 	// i-2ze5ru5rjurix7f71sxv
-	Instance *string   `json:"instance,omitempty" xml:"instance,omitempty"`
-	Items    []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Instance     *string   `json:"instance,omitempty" xml:"instance,omitempty"`
+	Items        []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	MetricSource *string   `json:"metricSource,omitempty" xml:"metricSource,omitempty"`
 	// example:
 	//
 	// cn-shenzhen
@@ -51,6 +54,10 @@ func (s *CreateInstanceInspectionRequest) GetItems() []*string {
 	return s.Items
 }
 
+func (s *CreateInstanceInspectionRequest) GetMetricSource() *string {
+	return s.MetricSource
+}
+
 func (s *CreateInstanceInspectionRequest) GetRegion() *string {
 	return s.Region
 }
@@ -66,6 +73,11 @@ func (s *CreateInstanceInspectionRequest) SetInstance(v string) *CreateInstanceI
 
 func (s *CreateInstanceInspectionRequest) SetItems(v []*string) *CreateInstanceInspectionRequest {
 	s.Items = v
+	return s
+}
+
+func (s *CreateInstanceInspectionRequest) SetMetricSource(v string) *CreateInstanceInspectionRequest {
+	s.MetricSource = &v
 	return s
 }
 

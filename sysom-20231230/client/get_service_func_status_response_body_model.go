@@ -20,12 +20,24 @@ type iGetServiceFuncStatusResponseBody interface {
 }
 
 type GetServiceFuncStatusResponseBody struct {
+	// Status code
+	//
+	// - `code == Success` indicates that authorization succeeded.
+	//
+	// - Any other status code indicates that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code    *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *GetServiceFuncStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Result
+	Data *GetServiceFuncStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the request error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -88,6 +100,7 @@ func (s *GetServiceFuncStatusResponseBody) Validate() error {
 }
 
 type GetServiceFuncStatusResponseBodyData struct {
+	// Configuration Parameter
 	Args *GetServiceFuncStatusResponseBodyDataArgs `json:"args,omitempty" xml:"args,omitempty" type:"Struct"`
 }
 
@@ -118,30 +131,44 @@ func (s *GetServiceFuncStatusResponseBodyData) Validate() error {
 }
 
 type GetServiceFuncStatusResponseBodyDataArgs struct {
+	// Configuration process
+	//
 	// example:
 	//
 	// java
 	AddCmd *string `json:"add_cmd,omitempty" xml:"add_cmd,omitempty"`
+	// ONCPU tracing Toggle
+	//
 	// example:
 	//
 	// true
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Storage Path
+	//
 	// example:
 	//
 	// /tmp/sysom/java-profiler
 	JavaStorePath *string `json:"java_store_path,omitempty" xml:"java_store_path,omitempty"`
+	// Edit Lock tracing Toggle
+	//
 	// example:
 	//
 	// true
 	Locks *string `json:"locks,omitempty" xml:"locks,omitempty"`
+	// Tracing epoch
+	//
 	// example:
 	//
 	// -1
 	Loop *int32 `json:"loop,omitempty" xml:"loop,omitempty"`
+	// Memory tracing Toggle
+	//
 	// example:
 	//
 	// true
 	Mem *string `json:"mem,omitempty" xml:"mem,omitempty"`
+	// System profiling Toggle
+	//
 	// example:
 	//
 	// true

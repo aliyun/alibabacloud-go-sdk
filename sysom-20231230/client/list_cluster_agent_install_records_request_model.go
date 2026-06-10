@@ -25,22 +25,34 @@ type iListClusterAgentInstallRecordsRequest interface {
 
 type ListClusterAgentInstallRecordsRequest struct {
 	AgentConfigId *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
+	// Filter by cluster ID.
+	//
+	// > This cluster ID is not the ACK cluster ID. Instead, it refers to the `cluster_id` field in the data returned by this API or the `id` field in the data returned by the ListCluster API.
+	//
 	// example:
 	//
 	// cbd80af02b9d6454ebdc579c5e022d0c8
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// Current page number (starting from 1)
+	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// If this parameter is specified, the response filters the installation list for the specified agent. It can be used together with the plugin_version parameter.
+	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
+	// This parameter cannot be used alone. It must be used together with plugin_id to filter the installation list for a specific agent version.
+	//
 	// example:
 	//
 	// 3.4.0-1

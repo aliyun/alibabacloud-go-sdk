@@ -20,11 +20,20 @@ type iGetCopilotHistoryResponseBody interface {
 }
 
 type GetCopilotHistoryResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// SysomOpenAPI.InvalidParameter
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// List of chat records. The length equals the requested quantity. If the actual number of chat records is less than the requested quantity, the list contains all available records. Format: [{"user": "", "content": "", "time": ""}, {...}]
 	Data []*GetCopilotHistoryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
@@ -95,11 +104,20 @@ func (s *GetCopilotHistoryResponseBody) Validate() error {
 }
 
 type GetCopilotHistoryResponseBodyData struct {
+	// Text content of the chat
+	//
+	// example:
+	//
+	// copilot回复的具体内容
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Time of the chat record, string type
+	//
 	// example:
 	//
 	// 2024-09-02 10:02:39
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// user/copilot; user indicates the User, and copilot indicates the bot
+	//
 	// example:
 	//
 	// user

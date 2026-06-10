@@ -22,19 +22,36 @@ type iListClustersResponseBody interface {
 }
 
 type ListClustersResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data []*ListClustersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 64
@@ -108,34 +125,64 @@ func (s *ListClustersResponseBody) Validate() error {
 }
 
 type ListClustersResponseBodyData struct {
+	// Actual cluster ID.
+	//
+	// > - For `ACK` type clusters, this ID is the ACK cluster ID.
+	//
+	// > - For `CUSTOM` type clusters, this ID serves as a UUID and has no additional meaning.
+	//
 	// example:
 	//
 	// c666d4774f0e2440b979bf917bf100e40
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// - `Running`: Cluster management is normal.
+	//
+	// - `Installing`: An install job is in progress for the cluster.
+	//
+	// - `Uninstalling`: An uninstall job is in progress for the cluster.
+	//
+	// - `Upgrading`: An update job is in progress for the cluster.
+	//
+	// - `Offline`: The cluster is offline and cluster management is abnormal.
+	//
 	// example:
 	//
 	// Running
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
+	// - `ACK`: ACK cluster
+	//
+	// - `CUSTOM`: Custom cluster (default clusters are classified as custom clusters)
+	//
 	// example:
 	//
 	// ACK
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2024-12-25T15:08:19
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// 5389fba5-92a1-4ff4-9b26-773b97828144
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Cluster Name
+	//
 	// example:
 	//
 	// auto-name-sbvCT
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2024-12-25T15:08:19

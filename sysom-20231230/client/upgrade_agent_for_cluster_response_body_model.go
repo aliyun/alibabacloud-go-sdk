@@ -20,15 +20,30 @@ type iUpgradeAgentForClusterResponseBody interface {
 }
 
 type UpgradeAgentForClusterResponseBody struct {
+	// Request ID, which can be used for end-to-end Diagnosis
+	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - `code == Success` indicates successful authorization;
+	//
+	// - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error message;
+	//
 	// example:
 	//
 	// Success
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned Data.
 	Data *UpgradeAgentForClusterResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// success
@@ -89,6 +104,10 @@ func (s *UpgradeAgentForClusterResponseBody) Validate() error {
 }
 
 type UpgradeAgentForClusterResponseBodyData struct {
+	// Job ID.
+	//
+	// You can use this job ID to invoke the GetAgentTask API to view the execution status of the job.
+	//
 	// example:
 	//
 	// 7523e9e0ddc74d99a5236f4f4d5056e6

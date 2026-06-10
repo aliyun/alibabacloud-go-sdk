@@ -18,11 +18,20 @@ type iListInstancesEcsInfoListResponseBody interface {
 }
 
 type ListInstancesEcsInfoListResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// SysomOpenAPI.InvalidParameter
-	Code *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Data.
 	Data []*ListInstancesEcsInfoListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// error message
+	//
+	// - If `code == Success`, this field is empty;
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// ""
@@ -78,18 +87,26 @@ func (s *ListInstancesEcsInfoListResponseBody) Validate() error {
 }
 
 type ListInstancesEcsInfoListResponseBodyData struct {
+	// IP address of the machine.
+	//
 	// example:
 	//
 	// 11.193.52.91
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// Name of the tag.
+	//
 	// example:
 	//
 	// sysom
 	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
+	// tag value.
+	//
 	// example:
 	//
 	// diagnosis
 	TagValue *string `json:"tag_value,omitempty" xml:"tag_value,omitempty"`
+	// IP type
+	//
 	// example:
 	//
 	// public

@@ -20,11 +20,20 @@ type iCheckInstanceSupportResponseBody interface {
 }
 
 type CheckInstanceSupportResponseBody struct {
+	// Status code
+	//
+	// - `code == Success` indicates that authorization succeeded.
+	//
+	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data []*CheckInstanceSupportResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message. When code != Success, the error message is stored here.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
@@ -95,14 +104,24 @@ func (s *CheckInstanceSupportResponseBody) Validate() error {
 }
 
 type CheckInstanceSupportResponseBodyData struct {
+	// ECS instance ID
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// When `success` is false, this value is not empty and indicates the reason why the instance cannot be managed by SysOM.
+	//
 	// example:
 	//
 	// instance not found in ecs
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// Indicates whether the instance can be managed by SysOM.
+	//
+	// - **true**: The instance can be managed by SysOM.
+	//
+	// - **false**: The instance cannot be managed by SysOM.
+	//
 	// example:
 	//
 	// true

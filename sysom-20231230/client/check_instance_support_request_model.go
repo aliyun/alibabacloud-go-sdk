@@ -16,10 +16,14 @@ type iCheckInstanceSupportRequest interface {
 }
 
 type CheckInstanceSupportRequest struct {
+	// List of instance IDs to check
+	//
 	// example:
 	//
 	// ["i-2zxxxxxx"]
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// Region to which the instances belong. Ensure that all instance IDs passed in the instances list belong to the same region.
+	//
 	// example:
 	//
 	// cn-hangzhou

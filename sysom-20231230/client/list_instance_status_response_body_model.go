@@ -22,16 +22,36 @@ type iListInstanceStatusResponseBody interface {
 }
 
 type ListInstanceStatusResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
+	// example:
+	//
+	// 5BC79EF5-798B-5499-9683-4E14EBBBF712
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data []*ListInstanceStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 218
@@ -105,8 +125,26 @@ func (s *ListInstanceStatusResponseBody) Validate() error {
 }
 
 type ListInstanceStatusResponseBodyData struct {
+	// Instance ID.
+	//
+	// example:
+	//
+	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Instance running status. Valid values:
+	//
+	// - **Running**: Running
+	//
+	// - **Offline**: Offline
+	//
+	// > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM server is lost. This does not mean that the corresponding ECS instance is not running.
+	//
 	// example:
 	//
 	// Running

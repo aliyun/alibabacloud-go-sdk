@@ -14,6 +14,8 @@ type iGetDiagnosisResultRequest interface {
 }
 
 type GetDiagnosisResultRequest struct {
+	// Diagnostic task ID
+	//
 	// This parameter is required.
 	//
 	// example:

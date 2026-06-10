@@ -22,17 +22,40 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
+	// Request ID, which can be used for end-to-end Diagnosis
+	//
+	// example:
+	//
+	// 66EAED72-542B-583B-BCED-64433DC27AD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - `code == Success` indicates successful authorization;
+	//
+	// - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error message;
+	//
 	// example:
 	//
 	// Success
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned Data
 	Data []*ListAgentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Total   *int64  `json:"total,omitempty" xml:"total,omitempty"`
+	// Total number of records.
+	//
+	// example:
+	//
+	// 2
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAgentsResponseBody) String() string {
@@ -102,23 +125,54 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyData struct {
-	CreatedAt   *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Widget creation time
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// Widget description
+	//
+	// example:
+	//
+	// SysOM Agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Widget ID
+	//
+	// example:
+	//
+	// 74a86327-3170-412c-8e67-da3389ec56a9
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Widget name
+	//
 	// example:
 	//
 	// SysOM Agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Supported architecture (multiple architectures separated by commas)
+	//
 	// example:
 	//
 	// x86
 	SupportArch *string `json:"support_arch,omitempty" xml:"support_arch,omitempty"`
+	// Widget type
+	//
+	// - Control: control-type widget
+	//
+	// - AI: AI widget
+	//
 	// example:
 	//
 	// Control
-	Type      *string                               `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt *string                               `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	Versions  []*ListAgentsResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Widget Update Time
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// Widget Version List
+	Versions []*ListAgentsResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s ListAgentsResponseBodyData) String() string {
@@ -215,12 +269,42 @@ func (s *ListAgentsResponseBodyData) Validate() error {
 }
 
 type ListAgentsResponseBodyDataVersions struct {
-	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	InstallScript   *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
+	// Widget version creation time
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// The widget\\"s install script
+	//
+	// example:
+	//
+	// sysom.sh install
+	InstallScript *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
+	// Widget uninstall script
+	//
+	// example:
+	//
+	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	UpdatedAt       *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UpgradeScript   *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	Version         *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Widget version update time
+	//
+	// example:
+	//
+	// 2024-09-14T20:46:08
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// Widget upgrade script
+	//
+	// example:
+	//
+	// sysom.sh upgrade
+	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
+	// Widget version number
+	//
+	// example:
+	//
+	// 3.4.0-1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListAgentsResponseBodyDataVersions) String() string {

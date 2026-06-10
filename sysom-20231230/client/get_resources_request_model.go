@@ -18,14 +18,20 @@ type iGetResourcesRequest interface {
 }
 
 type GetResourcesRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// 1808078950770264
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Resource type
+	//
 	// example:
 	//
 	// mem

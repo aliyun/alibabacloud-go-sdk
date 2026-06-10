@@ -20,12 +20,30 @@ type iUpgradeAgentResponseBody interface {
 }
 
 type UpgradeAgentResponseBody struct {
+	// Request ID, which can be used for end-to-end Diagnosis
+	//
+	// example:
+	//
+	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code
+	//
+	// - If `code == Success`, authorization Succeeded.
+	//
+	// - Other status codes indicate Failed to Authorize. When authorization fails, view the `message` field to obtain the detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned Data
 	Data *UpgradeAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
@@ -86,6 +104,11 @@ func (s *UpgradeAgentResponseBody) Validate() error {
 }
 
 type UpgradeAgentResponseBodyData struct {
+	// Job ID.
+	//
+	// example:
+	//
+	// 391f5aeba2054f66b3aaef0136142fe2
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

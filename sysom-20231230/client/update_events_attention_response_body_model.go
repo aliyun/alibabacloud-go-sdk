@@ -20,15 +20,26 @@ type iUpdateEventsAttentionResponseBody interface {
 }
 
 type UpdateEventsAttentionResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
 	// example:
 	//
 	// 44841312-7227-55C9-AE03-D59729BFAE38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status code:
+	//
+	// - `code == Success` indicates that authorization succeeded;
+	//
+	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain the detailed error message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *UpdateEventsAttentionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error message
+	//
 	// example:
 	//
 	// Instance not belong to current user
@@ -89,6 +100,8 @@ func (s *UpdateEventsAttentionResponseBody) Validate() error {
 }
 
 type UpdateEventsAttentionResponseBodyData struct {
+	// Updated follow level value
+	//
 	// example:
 	//
 	// 1

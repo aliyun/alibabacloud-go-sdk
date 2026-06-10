@@ -20,18 +20,26 @@ type iGetHostCountRequest interface {
 }
 
 type GetHostCountRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// 1808078950770264
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// End Time
+	//
 	// example:
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 1725797727754

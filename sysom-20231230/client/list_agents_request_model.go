@@ -20,10 +20,30 @@ type iListAgentsRequest interface {
 }
 
 type ListAgentsRequest struct {
-	Current  *int64  `json:"current,omitempty" xml:"current,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	PageSize *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Current page number (starting from page 1)
+	//
+	// example:
+	//
+	// 1
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// Filter plugins by plugin name
+	//
+	// example:
+	//
+	// SysOM
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page size
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Retrieve the list based on the Agent Type. For example, passing "control" retrieves all control-type Agents.
+	//
+	// example:
+	//
+	// control
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListAgentsRequest) String() string {

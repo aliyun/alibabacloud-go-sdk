@@ -20,18 +20,37 @@ type iAuthDiagnosisResponseBody interface {
 }
 
 type AuthDiagnosisResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, the authorization succeeded.
+	//
+	// - Any other status code indicates that the authorization failed. In this case, check the `message` field for detailed error information.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This API returns no data.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the error message.
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request RequestId
+	//
+	// example:
+	//
+	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 }
 

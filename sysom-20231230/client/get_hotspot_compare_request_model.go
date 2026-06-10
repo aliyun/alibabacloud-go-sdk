@@ -32,51 +32,74 @@ type iGetHotspotCompareRequest interface {
 }
 
 type GetHotspotCompareRequest struct {
+	// End time 1
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725415774000
 	Beg1End *int64 `json:"beg1_end,omitempty" xml:"beg1_end,omitempty"`
+	// Start time 1
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725415474000
 	Beg1Start *int64 `json:"beg1_start,omitempty" xml:"beg1_start,omitempty"`
+	// End time 2
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725415774000
 	Beg2End *int64 `json:"beg2_end,omitempty" xml:"beg2_end,omitempty"`
+	// Start time 2
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1725415474000
-	Beg2Start *int64  `json:"beg2_start,omitempty" xml:"beg2_start,omitempty"`
-	HotType   *string `json:"hot_type,omitempty" xml:"hot_type,omitempty"`
+	Beg2Start *int64 `json:"beg2_start,omitempty" xml:"beg2_start,omitempty"`
+	// Hot spot type
+	//
+	// example:
+	//
+	// alloc
+	HotType *string `json:"hot_type,omitempty" xml:"hot_type,omitempty"`
+	// Instance 1
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-2zei55fwj8nnu31h3z46"
 	Instance1 *string `json:"instance1,omitempty" xml:"instance1,omitempty"`
+	// Instance 2
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Instance2 *string `json:"instance2,omitempty" xml:"instance2,omitempty"`
+	// Process of instance 1
+	//
 	// example:
 	//
 	// 0
 	Pid1 *int64 `json:"pid1,omitempty" xml:"pid1,omitempty"`
+	// Process of instance 2
+	//
 	// example:
 	//
 	// i-2zei55fwj8nnu31h3z46
 	Pid2 *int64 `json:"pid2,omitempty" xml:"pid2,omitempty"`
+	// Query table name
+	//
 	// This parameter is required.
 	//
 	// example:

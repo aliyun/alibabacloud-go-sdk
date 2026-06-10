@@ -20,10 +20,18 @@ type iUpdateAlertStrategyResponseBody interface {
 }
 
 type UpdateAlertStrategyResponseBody struct {
+	// Status code
+	//
+	// - If `code == Success`, authorization succeeded.
+	//
+	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return Result.
+	//
 	// example:
 	//
 	// {
@@ -43,8 +51,17 @@ type UpdateAlertStrategyResponseBody struct {
 	//             "enabled": True
 	//
 	// }
-	Data    interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	Message *string     `json:"message,omitempty" xml:"message,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// Error message
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
+	// example:
+	//
+	// 更新告警策略失败
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//
 	// example:

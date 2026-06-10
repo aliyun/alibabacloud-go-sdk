@@ -20,15 +20,26 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
+	// Request ID, which can be used for end-to-end diagnosis
+	//
+	// example:
+	//
+	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// List of areas
+	//
 	// example:
 	//
 	// ["cn-hangzhou", "cn-shengzhen"]
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Description of the error code; empty if no error occurred
+	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom

@@ -22,19 +22,37 @@ type iInstallAgentForClusterRequest interface {
 }
 
 type InstallAgentForClusterRequest struct {
+	// Widget ID
+	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
+	// Widget version
+	//
 	// example:
 	//
 	// 3.4.0-1
 	AgentVersion *string `json:"agent_version,omitempty" xml:"agent_version,omitempty"`
+	// Cluster ID.
+	//
+	// > You must pass the ID of the ACK cluster here.
+	//
 	// example:
 	//
 	// c9d7f3fc3d42942afbcb65c1100ffb19d
-	ClusterId       *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	ConfigId        *string `json:"config_id,omitempty" xml:"config_id,omitempty"`
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// Widget configuration ID
+	//
+	// example:
+	//
+	// 8gj86wrt7-3170-412c-8e67-da3389ecg6a9
+	ConfigId *string `json:"config_id,omitempty" xml:"config_id,omitempty"`
+	// Canary release environment
+	//
+	// example:
+	//
+	// {"type":"numeric","config":{"value":2}}
 	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
 }
 
