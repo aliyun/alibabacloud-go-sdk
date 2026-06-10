@@ -20,13 +20,13 @@ type DeleteClusterNodepoolResponseBody struct {
 	//
 	// example:
 	//
-	// 7263C978-3DBD-4E06-B319-793B38A2F388
+	// 7263C978-3DBD-4E06-B319-793B38******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// task IDs
 	//
 	// example:
 	//
-	// T-655ace947e0e6603af000004
+	// T-655ace947e0e6603af******
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

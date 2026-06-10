@@ -100,7 +100,7 @@ type DescribeUserPermissionResponseBody struct {
 	//
 	// example:
 	//
-	// view
+	// terway-pod-reader
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
 	// The type of predefined role. Valid values:
 	//

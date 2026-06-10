@@ -22,13 +22,13 @@ type DescribeSubaccountK8sClusterUserConfigResponseBody struct {
 	//
 	// example:
 	//
-	// apiVersion: v1****
+	// apiVersion: v1\\nclusters:\\n- cluster:\\n    server: https://114.55.xx.xx:6443\\n    certificate-authority-data: LS0tLS****
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// The expiration date of the kubeconfig file. The value is the UTC time displayed in RFC3339 format.
 	//
 	// example:
 	//
-	// 2024-03-10T09:56:17Z
+	// 2028-04-09T06:20:47Z
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
 }
 

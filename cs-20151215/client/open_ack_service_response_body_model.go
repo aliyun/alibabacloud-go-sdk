@@ -26,7 +26,7 @@ type OpenAckServiceResponseBody struct {
 	//
 	// example:
 	//
-	// 20758A-585D-4A41-A9B2-28DA8F4F534F
+	// 20758A-585D-4A41-A9B2-28DA8F*******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 }
 

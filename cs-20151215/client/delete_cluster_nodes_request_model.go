@@ -28,7 +28,7 @@ type DeleteClusterNodesRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
 	// The list of nodes to remove. You must specify the node names used in the cluster, for example, `cn-hangzhou.192.168.xx.xx`.
 	//

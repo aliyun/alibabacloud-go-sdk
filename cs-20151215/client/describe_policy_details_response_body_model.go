@@ -92,7 +92,7 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// example:
 	//
-	// For more information, see sample requests.
+	// 详情请参见请求示例
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
 }
 

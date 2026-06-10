@@ -26,7 +26,7 @@ type DescribeClusterUserKubeconfigRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The validity period of the temporary kubeconfig file. Unit: minutes. Valid values: 15 to 4320 (3 days).
 	//

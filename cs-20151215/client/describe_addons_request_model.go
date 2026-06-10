@@ -52,7 +52,7 @@ type DescribeAddonsRequest struct {
 	//
 	// example:
 	//
-	// kubernetes
+	// ManagedKubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
 	// The cluster version.
 	//

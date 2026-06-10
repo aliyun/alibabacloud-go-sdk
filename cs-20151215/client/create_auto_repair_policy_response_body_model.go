@@ -16,10 +16,14 @@ type iCreateAutoRepairPolicyResponseBody interface {
 }
 
 type CreateAutoRepairPolicyResponseBody struct {
+	// The auto-repair policy ID.
+	//
 	// example:
 	//
 	// r-xxxxxxx
 	PolicyId *string `json:"policy_id,omitempty" xml:"policy_id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E368C761-F8F6-4A36-9B58-BD53D5******

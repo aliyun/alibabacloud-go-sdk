@@ -112,7 +112,7 @@ type AttachInstancesRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
 	// The name of the key pair used to log on to the ECS instances. You must specify this parameter or `login_password`.
 	//
@@ -120,7 +120,7 @@ type AttachInstancesRequest struct {
 	//
 	// example:
 	//
-	// secrity-key
+	// security-key
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
 	// The ID of the node pool to which the node is added. If you do not specify this parameter, the node is added to the default node pool.
 	//

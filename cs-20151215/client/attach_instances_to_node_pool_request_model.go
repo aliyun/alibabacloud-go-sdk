@@ -58,7 +58,7 @@ type AttachInstancesToNodePoolRequest struct {
 	//
 	// example:
 	//
-	// Hello1234
+	// ******
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 }
 

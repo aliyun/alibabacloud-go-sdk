@@ -71,7 +71,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// example:
 	//
-	// 2020-08-25T11:25:35+08:00
+	// 2025-04-16T07:28:00Z
 	CreationTime *string `json:"creation_time,omitempty" xml:"creation_time,omitempty"`
 	// The error message generated when the node was created.
 	//
@@ -83,7 +83,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// example:
 	//
-	// 2099-12-31T23:59:00+08:00
+	// 2099-12-31T15:59:00Z
 	ExpiredTime *string `json:"expired_time,omitempty" xml:"expired_time,omitempty"`
 	// The name of the host.
 	//
@@ -95,7 +95,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// example:
 	//
-	// aliyun_2_1903_x64_20G_alibase_20200529.vhd
+	// aliyun_3_x64_20G_alibase_20241218.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// The billing method of the node. Valid values:
 	//
@@ -163,7 +163,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// example:
 	//
-	// cn-chengdu.192.168.0.36
+	// cn-chengdu.192.168xx.xx
 	NodeName *string `json:"node_name,omitempty" xml:"node_name,omitempty"`
 	// Indicates whether the node is ready. Valid values:
 	//
@@ -189,7 +189,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// example:
 	//
-	// ess_attach
+	// ess
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The type of preemptible instance. Valid values:
 	//

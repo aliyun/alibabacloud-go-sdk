@@ -18,24 +18,9 @@ type iScaleOutClusterResponseBody interface {
 }
 
 type ScaleOutClusterResponseBody struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 687C5BAA-D103-4993-884B-C35E4314A1E1
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// T-5a54309c80282e39ea00002f
-	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s ScaleOutClusterResponseBody) String() string {

@@ -50,7 +50,7 @@ type MaintenanceWindow struct {
 	//
 	// example:
 	//
-	// 03:00:00Z
+	// 2020-10-15T12:31:00.000+08:00
 	MaintenanceTime *string `json:"maintenance_time,omitempty" xml:"maintenance_time,omitempty"`
 	// Defines a maintenance window recurrence rule by using the RFC5545 recurrence rule. Currently, only FREQ=WEEKLY is supported, and you cannot specify COUNT or UNTIL.
 	//

@@ -132,13 +132,13 @@ type DescribeTemplateAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// 2020-09-16T19:21:29+08:00
+	// 2025-04-25T16:56:33+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// The time when the template was updated.
 	//
 	// example:
 	//
-	// 2020-09-16T19:21:29+08:00
+	// 2025-04-25T16:56:33+08:00
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 

@@ -18,23 +18,23 @@ type iCreateClusterResponseBody interface {
 }
 
 type CreateClusterResponseBody struct {
-	// The ID of the cluster.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// cb95aa626a47740afbf6aa099b650****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
-	// 687C5BAA-D103-4993-884B-C35E4314A1E1
+	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// Task ID.
 	//
 	// example:
 	//
-	// T-5a54309c80282e39ea00002f
+	// T-5a54309c80282e39ea****
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

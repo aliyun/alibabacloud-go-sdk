@@ -28,7 +28,7 @@ type UpgradeClusterAddonsResponseBody struct {
 	//
 	// example:
 	//
-	// bfd12953-31cb-42f1-8a36-7b80ec345094
+	// bfd12953-31cb-42f1-8a36-7b80ec34****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	//

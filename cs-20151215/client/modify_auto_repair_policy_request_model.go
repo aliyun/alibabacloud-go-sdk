@@ -16,10 +16,13 @@ type iModifyAutoRepairPolicyRequest interface {
 }
 
 type ModifyAutoRepairPolicyRequest struct {
+	// The name of the self-healing rule.
+	//
 	// example:
 	//
 	// test
-	Name  *string                               `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// A list of self-healing sub-rules.
 	Rules []*ModifyAutoRepairPolicyRequestRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
@@ -63,7 +66,9 @@ func (s *ModifyAutoRepairPolicyRequest) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRules struct {
-	Incidents       []*ModifyAutoRepairPolicyRequestRulesIncidents       `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
+	// A list of identified incidents.
+	Incidents []*ModifyAutoRepairPolicyRequestRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
+	// A list of repair procedures.
 	RepairProcedure []*ModifyAutoRepairPolicyRequestRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
 }
 
@@ -116,10 +121,14 @@ func (s *ModifyAutoRepairPolicyRequestRules) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesIncidents struct {
+	// The incident name.
+	//
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The incident type.
+	//
 	// example:
 	//
 	// system
@@ -157,8 +166,12 @@ func (s *ModifyAutoRepairPolicyRequestRulesIncidents) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedure struct {
-	Config       map[string]interface{}                                         `json:"config,omitempty" xml:"config,omitempty"`
+	// Configuration parameters for the procedure.
+	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// The configuration for the manual intervention procedure.
 	Intervention *ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
+	// The procedure name.
+	//
 	// example:
 	//
 	// QuarantineGPU
@@ -210,12 +223,18 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedure) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
+	// The label configuration for authorization confirmation. Add this label to the node to authorize ACK to proceed with this stage. After the stage completes, ACK automatically removes the inquiry and confirmation labels. If you do not add this label in time, ACK will not proceed with this or subsequent stages, leaving the node in an unhealthy state.
 	ApprovedLabel *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
+	// Specifies whether to enable manual approval.
+	//
 	// example:
 	//
 	// true
-	Enable         *bool                                                                        `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The label configuration for the authorization inquiry. At this stage, ACK adds this label to the node and waits for your authorization before proceeding.
 	InquiringLabel *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
+	// The approval type.
+	//
 	// example:
 	//
 	// label
@@ -281,10 +300,14 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention) Validate
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel struct {
+	// The label `key`.
+	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label `value`.
+	//
 	// example:
 	//
 	// approved
@@ -322,10 +345,14 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLa
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel struct {
+	// The label `key`.
+	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label `value`.
+	//
 	// example:
 	//
 	// inquiring

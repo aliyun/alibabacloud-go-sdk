@@ -32,7 +32,7 @@ type UpdateK8sClusterUserConfigExpireRequest struct {
 	//
 	// example:
 	//
-	// The ID of the Resource Access Management (RAM) user that you use.
+	// 206945240368******
 	User *string `json:"user,omitempty" xml:"user,omitempty"`
 }
 

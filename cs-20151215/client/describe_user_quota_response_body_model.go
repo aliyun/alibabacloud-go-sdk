@@ -49,10 +49,7 @@ type DescribeUserQuotaResponseBody struct {
 	// example:
 	//
 	// 50
-	ClusterQuota *int64 `json:"cluster_quota,omitempty" xml:"cluster_quota,omitempty"`
-	// This parameter is discontinued.
-	//
-	// The quotas of enhanced edge node pools.
+	ClusterQuota              *int64                                                  `json:"cluster_quota,omitempty" xml:"cluster_quota,omitempty"`
 	EdgeImprovedNodepoolQuota *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota `json:"edge_improved_nodepool_quota,omitempty" xml:"edge_improved_nodepool_quota,omitempty" type:"Struct"`
 	// The quota of nodes in an ACK cluster. Default value: 100. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
 	//
@@ -145,32 +142,9 @@ func (s *DescribeUserQuotaResponseBody) Validate() error {
 }
 
 type DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota struct {
-	// This parameter is discontinued.
-	//
-	// The maximum bandwidth of each enhanced edge node pool. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 10
 	Bandwidth *int32 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
-	// This parameter is discontinued.
-	//
-	// The maximum number of enhanced edge node pools that you can create within an Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 3
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// This parameter is discontinued.
-	//
-	// The maximum subscription duration of an enhanced edge node pool. Unit: months.
-	//
-	// >  You are charged for enhanced edge node pools based on the pay-as-you-go billing method. Therefore, you can ignore this parameter.
-	//
-	// example:
-	//
-	// 3
-	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	Count     *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	Period    *int32 `json:"period,omitempty" xml:"period,omitempty"`
 }
 
 func (s DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) String() string {

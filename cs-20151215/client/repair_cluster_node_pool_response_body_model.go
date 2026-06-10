@@ -20,13 +20,13 @@ type RepairClusterNodePoolResponseBody struct {
 	//
 	// example:
 	//
-	// db82195b-75a8-40e5-9be4-16f1829dc624
+	// db82195b-75a8-40e5-9be4-16f182******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The ID of the task.
 	//
 	// example:
 	//
-	// T-613b19bbd160ad4928000001
+	// T-613b19bbd160ad2800******
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

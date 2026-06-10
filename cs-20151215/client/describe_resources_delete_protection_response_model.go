@@ -78,7 +78,7 @@ type DescribeResourcesDeleteProtectionResponseBody struct {
 	//
 	// example:
 	//
-	// test
+	// arms-prom
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The namespace to which the resource belongs.
 	//

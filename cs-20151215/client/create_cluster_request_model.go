@@ -220,61 +220,63 @@ type iCreateClusterRequest interface {
 type CreateClusterRequest struct {
 	// Deprecated
 	//
-	// The network access control list (ACL) rule of the SLB instance associated with the API server if the cluster is a registered cluster.
+	// **[Deprecated]*	- Access control list for the registered cluster API Server SLB.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
-	// The components that you want to install in the cluster. When you create a cluster, you can configure the `addons` parameter to specify the components that you want to install.
+	// List of cluster components. Specify components to install during cluster creation using the `addons` parameter.
 	//
-	// **Network plug-in**: required. The Flannel and Terway plug-ins are supported. Select one of the plug-ins for the cluster.
+	// **Network components**: Required. Choose between Flannel and Terway:
 	//
-	// 	- If you want to use the Terway component, specify the network plug-in in the [{"name":"flannel","config":""}] format.
+	// - Flannel network: [{"name":"flannel","config":""}].
 	//
-	// 	- If you want to use the Terway component, specify the value network plug-in in the [{"name": "terway-eniip","Config": ""}] format.
+	// - Terway network: [{"name": "terway-eniip","config": ""}].
 	//
-	// **Volume plug-in**: optional. Only the `Container Storage Interface (CSI)` plug-in is supported.
+	// **Storage components**: Optional. Only `csi` is supported:
 	//
-	// Specify the `CSI` plug-in in the following format: [{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}].
+	// `csi`: [{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}].
 	//
-	// **Simple Log Service component**: optional. We recommend that you enable Simple Log Service. If Simple Log Service is disabled, you cannot use the cluster auditing feature.
+	// **Logging components**: Optional. We recommend enabling this. Without SLS, you cannot use cluster audit features.
 	//
-	// 	- Specify an existing `Simple Log Service project` in the following format: [{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true","sls_project_name":"your_sls_project_name"}"}].
+	// - Use an existing `SLS Project`: [{"name": "loongcollector","config": "{"IngressDashboardEnabled":"true","sls_project_name":"your_sls_project_name"}"}].
 	//
-	// 	- To create a `Simple Log Service project`, specify the component in the following format: [{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true"}"}].
+	// - Create a new `SLS Project`: [{"name": "loongcollector","config": "{"IngressDashboardEnabled":"true"}"}].
 	//
-	// **Ingress controller**: optional. By default, the `nginx-ingress-controller` component is installed in ACK dedicated clusters.
+	// **Ingress components**: Optional. ACK dedicated clusters install the `nginx-ingress-controller` by default.
 	//
-	// 	- To install nginx-ingress-controller and enable Internet access, specify the Ingress controller in the following format: [{"name":"nginx-ingress-controller","config":"{"IngressSlbNetworkType":"internet"}"}].
+	// - Install Ingress with public network access: [{"name":"nginx-ingress-controller","config":"{"IngressSlbNetworkType":"internet"}"}].
 	//
-	// 	- To disable the automatic installation of nginx-ingress-controller, specify the Ingress controller in the following format: [{"name": "nginx-ingress-controller","config": "","disabled": true}].
+	// - Disable default Ingress installation: [{"name": "nginx-ingress-controller","config": "","disabled": true}].
 	//
-	// **Event center**: optional. By default, the event center feature is enabled.
+	// **Event Hub**: Optional. Enabled by default.
 	//
-	// You can use ACK event centers to store and query events and configure alerts. You can use the Logstores that are associated with ACK event centers free of charge within 90 days. For more information, see [Create and use an event center](https://help.aliyun.com/document_detail/150476.html).
+	// Event Hub provides storage, querying, and alerting for Kubernetes events. The associated Logstore is free for 90 days. For more information about the free policy, see [Create and use Kubernetes Event Hub](https://help.aliyun.com/document_detail/150476.html).
 	//
-	// To enable the event center feature, specify the event center component in the following format: [{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
+	// Example to enable Event Hub: [{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
 	Addons []*Addon `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
-	// Service accounts provide identities for pods when pods communicate with the `API server` of the cluster. The `api-audiences` parameter validates `tokens` and is used by the `API server` to check whether the `tokens` of requests are valid. Separate multiple values with commas (,).``
+	// ServiceAccount is the access credential used by pods to communicate with the cluster API Server. The `api-audiences` specifies valid `token` identities for authenticating requests on the `apiserver` side. You can configure multiple `audience` values separated by commas (,).
 	//
-	// For more information about `service accounts`, see [Enable service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
+	// For more information about `ServiceAccount`, see [Deploy service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
 	//
 	// example:
 	//
 	// kubernetes.default.svc
-	ApiAudiences   *string                             `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
+	ApiAudiences *string `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
+	// Cluster audit log configuration.
 	AuditLogConfig *CreateClusterRequestAuditLogConfig `json:"audit_log_config,omitempty" xml:"audit_log_config,omitempty" type:"Struct"`
-	AutoMode       *CreateClusterRequestAutoMode       `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
+	// [Intelligent Managed Mode](https://help.aliyun.com/document_detail/2938898.html) configuration.
+	AutoMode *CreateClusterRequestAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// [**Deprecated**]
+	// **[Deprecated]**
 	//
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+	// Whether to enable auto-renewal. Valid only when `charge_type` is `PrePaid`. Valid values:
 	//
-	// 	- `true`: enables auto-renewal.
+	// - `true`: Enable auto-renewal.
 	//
-	// 	- `false`: disables auto-renewal.
+	// - `false`: Disable auto-renewal.
 	//
 	// Default value: `false`.
 	//
-	// This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+	// This parameter changed on October 15, 2024. For more information, see [Announcement on Changes to CreateCluster API Parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
 	// example:
 	//
@@ -282,13 +284,13 @@ type CreateClusterRequest struct {
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**]
+	// **[Deprecated]**
 	//
-	// The auto-renewal duration. This parameter takes effect only if charge_type is set to PrePaid and auto_renew is set to true. If you set `period_unit` to Month, the valid values of auto_renew_period are 1, 2, 3, 6, and 12.
+	// Auto-renewal period in months. Valid only when prepaid and auto-renewal are enabled. When `PeriodUnit=Month`, valid values are {1, 2, 3, 6, 12}.
 	//
 	// Default value: 1.
 	//
-	// This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+	// This parameter changed on October 15, 2024. For more information, see [Announcement on Changes to CreateCluster API Parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
 	// example:
 	//
@@ -296,29 +298,31 @@ type CreateClusterRequest struct {
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**]
+	// **[Deprecated]**
 	//
-	// The billing method of the CLB instance that is used by the API server. Default value: PostPaid. Valid values:
+	// Billing type for the CLB instance used by the API Server. Default value: PostPaid. Valid values:
 	//
-	// 	- PostPaid: pay-as-you-go.
+	// - PostPaid: Pay-as-you-go.
 	//
-	// 	- PrePaid: subscription. This billing method is not supported by newly created CLB instances. Existing CLB instances are not affected.
+	// - PrePaid: Subscription. New CLB instances no longer support subscription billing, but existing instances are unaffected.
 	//
-	// >
+	// 	Notice:
 	//
-	// 	- This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+	// - This parameter changed on October 15, 2024. For more information, see [Announcement on Changes to CreateCluster API Parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
-	// 	- Starting from December 1, 2024, newly created CLB instances no longer support the subscription billing method, and an instance fee will be charged for newly created CLB instances
+	// - Starting December 1, 2024, new CLB instances will no longer support subscription billing and will incur an instance fee.
 	//
-	// For more information, see [CLB billing adjustments](https://help.aliyun.com/document_detail/2839797.html).
+	// <props="china">For details, see [[Product Announcement\\] Discontinuation of Subscription Billing for API Server CLB in New Clusters](~~2851191~~) and [Adjustment of Classic Load Balancer Billing Items](https://help.aliyun.com/document_detail/2839797.html).
+	//
+	// <props="intl">For details, see [Adjustment of Classic Load Balancer Billing Items](https://help.aliyun.com/document_detail/2839797.html).
 	//
 	// example:
 	//
-	// 1
+	// PostPaid
 	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
 	// Deprecated
 	//
-	// [Deprecated] When you configure the control plane, use the `security_hardening_os` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `security_hardening_os` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `security_hardening_os` parameter under `control_plane_config`. For node pool configuration, use the `security_hardening_os` parameter under `scaling_group` in `nodepool`.
 	//
 	// example:
 	//
@@ -326,72 +330,83 @@ type CreateClusterRequest struct {
 	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `cloud_monitor_flags` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `cms_enabled` parameter of the `kubernetes_config` field in the nodepool section instead.
+	// **[Deprecated]*	- For control plane node configuration, use the cloud_monitor_flags parameter under `control_plane_config`. For node pool configuration, use the `cms_enabled` parameter under `kubernetes_config` in `nodepool`.
 	//
-	// Specifies whether to install the CloudMonitor agent. Valid values:
+	// Whether to install the CloudMonitor agent on the cluster. Valid values:
 	//
-	// 	- `true`: installs the CloudMonitor agent.
+	// - `true`: Install the CloudMonitor agent.
 	//
-	// 	- `false`: does not install the CloudMonitor agent.
+	// - `false`: Do not install the CloudMonitor agent.
 	//
 	// Default value: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// The domain name of the cluster.
+	// Cluster local domain name.
 	//
-	// The domain name can contain one or more parts that are separated by periods (.). Each part cannot exceed 63 characters in length, and can contain lowercase letters, digits, and hyphens (-). Each part must start and end with a lowercase letter or digit.
+	// Naming rules: The domain name consists of one or more parts separated by dots (.). Each part can be up to 63 characters long and can contain lowercase letters, digits, and hyphens (-). Each part must start and end with a lowercase letter or digit.
 	//
 	// example:
 	//
 	// cluster.local
 	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
-	// If you set `cluster_type` to `ManagedKubernetes` and specify `profile`, you can further specify the edition of the cluster. Valid values:
+	// When you set `cluster_type` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification. Valid values:
 	//
-	// 	- `ack.pro.small`: Pro Edition.
+	// - `ack.standard`: Basic Edition (default when this parameter is empty)
 	//
-	// 	- `ack.standard`: Basic Edition. If you leave the parameter empty, an ACK Basic cluster is created.
+	// - `ack.pro.small`: Pro Edition
+	//
+	// - `ack.pro.xlarge`: Pro XL
+	//
+	// - `ack.pro.2xlarge`: Pro 2XL
+	//
+	// - `ack.pro.4xlarge`: Pro 4XL (requires whitelist approval from customer service)
+	//
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	//
+	// For cluster management fees for Pro Edition and provisioned control plane clusters, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// 	- `Kubernetes`: ACK dedicated cluster.
+	// - `Kubernetes`: ACK dedicated cluster.
 	//
-	// 	- `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless clusters (Basic Edition and Pro Edition), ACK Edge clusters (Basic Edition and Pro Edition), and ACK Lingjun clusters (Pro Edition).
+	// - `ManagedKubernetes`: ACK managed clusters, including ACK managed clusters (Pro Edition, Basic Edition), ACK serverless clusters (Pro Edition, Basic Edition), ACK Edge clusters (Pro Edition, Basic Edition), and ACK LINGJUN clusters (Pro Edition).
 	//
-	// 	- `ExternalKubernetes`: registered cluster.
+	// - `ExternalKubernetes`: registered cluster.
 	//
 	// example:
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// The pod CIDR block. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the pod CIDR block. The pod CIDR block cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after you create the cluster.
+	// Pod network CIDR block. It must be a valid private CIDR block: 10.0.0.0/8, 172.16.0.0/12 to 172.31.0.0/16, or 192.168.0.0/16. It cannot overlap with the VPC or existing Kubernetes cluster CIDR blocks in the VPC. This cannot be modified after cluster creation.
 	//
-	// For more information about how to plan the network of an ACK cluster, see [Plan the network of an ACK cluster](https://help.aliyun.com/document_detail/86500.html).
+	// For cluster network planning, see [Network planning for ACK managed clusters](https://help.aliyun.com/document_detail/86500.html).
 	//
-	// >  This parameter is required if the cluster uses the Flannel plug-in.
+	// > This field is required for Flannel clusters.
 	//
 	// example:
 	//
 	// 172.20.0.0/16
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	// The control plane configurations of an ACK dedicated cluster.
-	ControlPlaneConfig          *CreateClusterRequestControlPlaneConfig          `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	// Control plane configuration for ACK dedicated clusters.
+	ControlPlaneConfig *CreateClusterRequestControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	// Cluster connection configuration.
 	ControlPlaneEndpointsConfig *CreateClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
-	// The control plane components for which you want to enable log collection.
+	// List of component names specifying which control plane component logs to collect.
 	//
-	// By default, the logs of kube-apiserver, kube-controller-manager, and kube-scheduler are collected.
+	// By default, logs are collected for kube-apiserver, kube-controller-manager, kube-scheduler, and cloud-controller-manager.
 	ControlplaneLogComponents []*string `json:"controlplane_log_components,omitempty" xml:"controlplane_log_components,omitempty" type:"Repeated"`
-	// The Simple Log Service project that is used to store the logs of control plane components. You can use an existing project or create one. If you choose to create a Simple Log Service project, the created project is named in the `k8s-log-{ClusterID}` format.
+	// SLS Project for control plane component logs. You can use an existing Project for log storage or let the system automatically create one. If auto-created, the Project name will be `k8s-log-{ClusterID}`.
 	//
 	// example:
 	//
 	// k8s-log-xxx
 	ControlplaneLogProject *string `json:"controlplane_log_project,omitempty" xml:"controlplane_log_project,omitempty"`
-	// The retention period of control plane logs in days.
+	// Number of days to retain control plane component logs.
 	//
 	// example:
 	//
@@ -399,13 +414,13 @@ type CreateClusterRequest struct {
 	ControlplaneLogTtl *string `json:"controlplane_log_ttl,omitempty" xml:"controlplane_log_ttl,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `cpu_policy` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `cpu_policy` parameter of the `kubernetes_config` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `cpu_policy` parameter under `control_plane_config`. For node pool configuration, use the `cpu_policy` parameter under `kubernetes_config` in `nodepool`.
 	//
-	// The CPU management policy of the node. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
+	// Node CPU management policy. Supported for cluster versions 1.12.6 and later:
 	//
-	// 	- `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
+	// - `static`: Enhances CPU affinity and exclusivity for pods with specific resource characteristics on the node.
 	//
-	// 	- `none`: specifies that the default CPU affinity is used.
+	// - `none`: Uses the default CPU affinity scheme.
 	//
 	// Default value: `none`.
 	//
@@ -415,17 +430,19 @@ type CreateClusterRequest struct {
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// Deprecated
 	//
-	// The custom subject alternative names (SANs) for the API server certificate to accept requests from specified IP addresses or domain names. Separate multiple IP addresses and domain names with commas (,).
+	// **[Deprecated]*	- Use the `extra_sans` parameter instead.
+	//
+	// Custom certificate SAN. Separate multiple IP addresses or domain names with commas (,).
 	//
 	// example:
 	//
 	// cs.aliyun.com
 	CustomSan *string `json:"custom_san,omitempty" xml:"custom_san,omitempty"`
-	// Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. Valid values:
+	// Cluster deletion protection prevents accidental cluster deletion through the console or API. Valid values:
 	//
-	// 	- `true`: enables cluster deletion protection.
+	// - `true`: Enable deletion protection. You cannot delete the cluster through the console or API.
 	//
-	// 	- `false`: disables cluster deletion protection.
+	// - `false`: Disable deletion protection. You can delete the cluster through the console or API.
 	//
 	// Default value: `false`.
 	//
@@ -435,13 +452,13 @@ type CreateClusterRequest struct {
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] By default, the system does not perform a rollback when the cluster fails to be created. You must manually delete the cluster that fails to be created.
+	// **[Deprecated]*	- By default, clusters are not rolled back on creation failure. You must manually clean up failed clusters.
 	//
-	// Specifies whether to perform a rollback when the cluster fails to be created. Valid values:
+	// Whether to roll back on cluster creation failure. Valid values:
 	//
-	// 	- `true`: performs a rollback when the cluster fails to be created.
+	// - `true`: Roll back on failure.
 	//
-	// 	- `false`: does not perform a rollback when the cluster fails to be created.
+	// - `false`: Do not roll back on failure.
 	//
 	// Default value: `true`.
 	//
@@ -451,50 +468,57 @@ type CreateClusterRequest struct {
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to enable the RAM Roles for Service Accounts (RRSA) feature.
+	// **[Deprecated]*	- Use the `rrsa_config` parameter instead.
+	//
+	// Whether to enable RRSA.
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
 	//
 	// example:
 	//
-	// true
+	// false
 	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used to encrypt the system disk. For more information, see [What is KMS?](https://help.aliyun.com/document_detail/28935.html)
+	// KMS key ID used to encrypt data disks. For more information, see [Key Management Service](https://help.aliyun.com/document_detail/28935.html).
 	//
-	// >  The key can be used only in ACK Pro clusters.
+	// > This feature is available only for professional managed clusters (ACK Pro clusters).
 	//
 	// example:
 	//
 	// 0fe64791-55eb-4fc7-84c5-c6c7cdca****
 	EncryptionProviderKey *string `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
-	// Specifies whether to enable Internet access for the cluster. You can use an elastic IP address (EIP) to expose the API server. This way, you can access the cluster over the Internet. Valid values:
+	// Whether to enable public network access. Expose the API Server through an EIP to allow public network access to the cluster.
 	//
-	// 	- `true`: enables Internet access for the cluster.
+	// - `true`: Enable public network access.
 	//
-	// 	- `false`: disables Internet access for the cluster. If you set the value to false, the API server cannot be accessed over the Internet.
+	// - `false`: Disable public network access. If disabled, you cannot access the cluster API Server from external networks.
 	//
 	// Default value: `false`.
 	//
 	// example:
 	//
 	// true
-	EndpointPublicAccess *bool     `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
-	ExtraSans            []*string `json:"extra_sans,omitempty" xml:"extra_sans,omitempty" type:"Repeated"`
+	EndpointPublicAccess *bool `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
+	// Custom API Server certificate SAN (Subject Alternative Name).
+	ExtraSans []*string `json:"extra_sans,omitempty" xml:"extra_sans,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, you cannot add existing nodes to the cluster. If you want to add existing nodes, you must first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+	// **[Deprecated]*	- Adding existing nodes during cluster creation is not supported. To add existing nodes to a cluster, first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) API.
 	//
-	// Specifies whether to mount a data disk to a node that is created based on an existing ECS instance. Valid values:
+	// When using existing instances to create a cluster, whether to mount data disks. Valid values:
 	//
-	// 	- `true`: stores the data of containers and images on a data disk. The existing data stored in the data disk is lost. Back up the existing data first.
+	// - `true`: Store containers and images on the data disk. Existing data on the data disk will be lost. Back up your data.
 	//
-	// 	- `false`: does not store the data of containers and images on a data disk.
+	// - `false`: Do not store containers and images on the data disk.
 	//
 	// Default value: `false`.
 	//
-	// How data disks are mounted:
+	// Data disk mounting rules:
 	//
-	// 	- If an ECS instance has data disks mounted and the file system of the last data disk is not initialized, the system automatically formats the data disk to ext4. Then, the system mounts the data disk to /var/lib/docker and /var/lib/kubelet.
+	// - If the ECS instance has a mounted data disk and the file system of the last data disk is uninitialized, the system automatically formats it as ext4 to store /var/lib/docker and /var/lib/kubelet.
 	//
-	// 	- If no data disk is mounted to the ECS instance, the system does not purchase a new data disk.
+	// - If the ECS instance has no mounted data disks, no new data disks are mounted.
 	//
 	// example:
 	//
@@ -502,9 +526,9 @@ type CreateClusterRequest struct {
 	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `image_id` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `image_id` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `image_id` parameter under `control_plane_config`. For node pool configuration, use the `image_id` parameter under `scaling_group` in `nodepool`.
 	//
-	// The custom image for nodes. By default, the image provided by ACK is used. You can select a custom image to replace the default image. For more information, see [Use a custom image to create an ACK cluster](https://help.aliyun.com/document_detail/146647.html).
+	// Custom node image. By default, the system image is used. When you select a custom image, it replaces the default system image. See [Custom images](https://help.aliyun.com/document_detail/146647.html).
 	//
 	// example:
 	//
@@ -512,27 +536,27 @@ type CreateClusterRequest struct {
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `image_type` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `image_type` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `image_type` parameter under `control_plane_config`. For node pool configuration, use the `image_type` parameter under `scaling_group` in `nodepool`.
 	//
-	// The type of OS distribution that you want to use. To specify the node OS, we recommend that you use this parameter. Valid values:
+	// Operating system distribution type. We recommend using this parameter to specify the node operating system. Valid values:
 	//
-	// 	- CentOS
+	// - CentOS
 	//
-	// 	- AliyunLinux
+	// - AliyunLinux
 	//
-	// 	- AliyunLinux Qboot
+	// - AliyunLinux Qboot
 	//
-	// 	- AliyunLinuxUEFI
+	// - AliyunLinuxUEFI
 	//
-	// 	- AliyunLinux3
+	// - AliyunLinux3
 	//
-	// 	- Windows
+	// - Windows
 	//
-	// 	- WindowsCore
+	// - WindowsCore
 	//
-	// 	- AliyunLinux3Arm64
+	// - AliyunLinux3Arm64
 	//
-	// 	- ContainerOS
+	// - ContainerOS
 	//
 	// Default value: `CentOS`.
 	//
@@ -542,27 +566,29 @@ type CreateClusterRequest struct {
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, you cannot add existing nodes to the cluster. If you want to add existing nodes, you must first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+	// **[Deprecated]*	- Adding existing nodes during cluster creation is not supported. To add existing nodes to a cluster, first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) API.
 	//
-	// The existing ECS instances that are specified as worker nodes for the cluster.
+	// When using existing nodes to create a cluster, specify the ECS instance list. These instances are added as worker nodes to the cluster.
 	//
-	// >  This parameter is required if you create worker nodes on existing ECS instances.
+	// > This field is required when using existing instances to create a cluster.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// The IP stack of the cluster.
+	// Cluster IP stack.
 	//
 	// example:
 	//
-	// Optional value: ipv4 (Single stack) or ipv6 (Dual Stack)
+	// 可选值：
 	//
-	// Default value: IPV4
+	// ipv4（单栈）
+	//
+	// dual（双栈），默认值为ipv4。
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
-	// Specifies whether to create an advanced security group. This parameter takes effect only if `security_group_id` is left empty.
+	// Automatically create an advanced security group. This takes effect when `security_group_id` is empty.
 	//
-	// >  To use a basic security group, make sure that the sum of the number of nodes in the cluster and the number of pods that use Terway does not exceed 2,000. Therefore, we recommend that you specify an advanced security group for a cluster that uses Terway.
+	// > With basic security groups, the total number of nodes and Terway pods in a cluster cannot exceed 2,000. We recommend using advanced security groups for Terway network clusters.
 	//
-	// 	- `true`: creates an advanced security group.
+	// - `true`: Create and use an advanced security group.
 	//
-	// 	- `false`: does not create an advanced security group.
+	// - `false`: Use a basic security group.
 	//
 	// Default value: `true`.
 	//
@@ -572,13 +598,13 @@ type CreateClusterRequest struct {
 	IsEnterpriseSecurityGroup *bool `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, you cannot add existing nodes to the cluster. If you want to add existing nodes, you must first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+	// **[Deprecated]*	- Adding existing nodes during cluster creation is not supported. To add existing nodes to a cluster, first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) API.
 	//
-	// Specifies whether to retain the names of existing ECS instances that are used in the cluster. Valid values:
+	// When using existing instances to create a cluster, whether to keep the instance names.
 	//
-	// 	- `true`: retains the names.
+	// - `true`: Keep.
 	//
-	// 	- `false`: does not retain the names. The system assigns new names.
+	// - `false`: Replace with system-generated names.
 	//
 	// Default value: `true`.
 	//
@@ -588,25 +614,27 @@ type CreateClusterRequest struct {
 	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `key_pair` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `key_pair` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `key_pair` parameter under `control_plane_config`. For node pool configuration, use the `key_pair` parameter under `scaling_group` in `nodepool`.
 	//
-	// The name of the key pair. You must configure this parameter or `login_password`.
+	// Key pair name. Choose either this parameter or `login_password`.
 	//
 	// example:
 	//
-	// secrity-key
+	// security-key
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// The Kubernetes version of the cluster. The Kubernetes versions supported by ACK are the same as the Kubernetes versions supported by open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not specify this parameter, the latest Kubernetes version is used.
+	// Cluster version, aligned with the Kubernetes community baseline version. We recommend selecting the latest version. If not specified, the latest version is used by default.
 	//
-	// You can create ACK clusters of the latest three Kubernetes versions in the ACK console. If you want to create clusters that run earlier Kubernetes versions, use the ACK API. For more information about the Kubernetes versions supported by ACK, see [Support for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
+	// You can create clusters using any of the three most recent versions. Use the [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) API to query supported cluster versions.
+	//
+	// For more information about Kubernetes versions supported by ACK, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
-	// 1.16.9-aliyun.1
+	// 1.32.1-aliyun.1
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
-	// Specifies the ID of the CLB instance for accessing the API server. If this parameter is specified, the system does not automatically create a CLB instance for the API server.
+	// Specify the CLB instance ID for API Server access. If specified, no new API Server CLB is automatically created.
 	//
-	// >  Make sure that the CLB instance does not have other dependencies, such as listeners and backend servers. You cannot specify shared-resource or Internet-facing CLB instances.
+	// > Ensure the CLB instance has no dependencies (such as listeners or backend servers). Shared and public CLB instances are not supported.
 	//
 	// example:
 	//
@@ -614,21 +642,21 @@ type CreateClusterRequest struct {
 	LoadBalancerId *string `json:"load_balancer_id,omitempty" xml:"load_balancer_id,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] The pay-as-you-go billing method is used by Classic Load Balancer (CLB) instances. This parameter does not take effect.
+	// **[Deprecated]*	- CLB is billed based on usage. This parameter has no effect.
 	//
-	// The specification of the Server Load Balancer (SLB) instance. Valid values:
+	// Load Balancer specification. Valid values:
 	//
-	// 	- slb.s1.small
+	// - slb.s1.small
 	//
-	// 	- slb.s2.small
+	// - slb.s2.small
 	//
-	// 	- slb.s2.medium
+	// - slb.s2.medium
 	//
-	// 	- slb.s3.small
+	// - slb.s3.small
 	//
-	// 	- slb.s3.medium
+	// - slb.s3.medium
 	//
-	// 	- slb.s3.large
+	// - slb.s3.large
 	//
 	// Default value: `slb.s2.small`.
 	//
@@ -638,7 +666,7 @@ type CreateClusterRequest struct {
 	LoadBalancerSpec *string `json:"load_balancer_spec,omitempty" xml:"load_balancer_spec,omitempty"`
 	// Deprecated
 	//
-	// Enables Simple Log Service for the cluster. This parameter takes effect only for ACK Serverless clusters. Set the value to `SLS`.
+	// **[Deprecated]*	- Enables SLS for the cluster. Applies only to ACK Serverless clusters and must be set to `SLS`.
 	//
 	// example:
 	//
@@ -646,25 +674,25 @@ type CreateClusterRequest struct {
 	LoggingType *string `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `login_password` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `login_password` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `login_password` parameter under `control_plane_config`. For node pool configuration, use the `login_password` parameter under `scaling_group` in `nodepool`.
 	//
-	// The password for SSH logon. You must set this parameter or `key_pair`. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// SSH login password. Choose either this parameter or `key_pair`. Password rules: 8–30 characters, containing at least three of the following: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// example:
 	//
-	// Hello@1234
+	// null
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// The configurations of the cluster maintenance window.
+	// Cluster maintenance window.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `auto-renew` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `auto_renew` parameter under `control_plane_config`.
 	//
-	// Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only when `master_instance_charge_type` is set to `PrePaid`. Valid values:
+	// Whether to enable auto-renewal for master nodes. Valid only when `master_instance_charge_type` is `PrePaid`. Valid values:
 	//
-	// 	- `true`: enables auto-renewal.
+	// - `true`: Enable auto-renewal.
 	//
-	// 	- `false`: disables auto-renewal.
+	// - `false`: Disable auto-renewal.
 	//
 	// Default value: `true`.
 	//
@@ -674,11 +702,11 @@ type CreateClusterRequest struct {
 	MasterAutoRenew *bool `json:"master_auto_renew,omitempty" xml:"master_auto_renew,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `auto-renew_period` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `auto_renew_period` parameter under `control_plane_config`.
 	//
-	// The auto-renewal duration. This parameter takes effect and is required only when the subscription billing method is selected for master nodes.
+	// Auto-renewal period for master nodes in months. Required and valid only when subscription billing is selected.
 	//
-	// Valid values: 1, 2, 3, 6, and 12.
+	// Valid values: {1, 2, 3, 6, 12}.
 	//
 	// Default value: 1.
 	//
@@ -688,9 +716,9 @@ type CreateClusterRequest struct {
 	MasterAutoRenewPeriod *int64 `json:"master_auto_renew_period,omitempty" xml:"master_auto_renew_period,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `size` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `size` parameter under `control_plane_config`.
 	//
-	// The number of master nodes. Valid values: `3` and `5`.
+	// Number of master nodes. Valid values: `3` or `5`.
 	//
 	// Default value: `3`.
 	//
@@ -700,13 +728,13 @@ type CreateClusterRequest struct {
 	MasterCount *int64 `json:"master_count,omitempty" xml:"master_count,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `instance_charge_type` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `instance_charge_type` parameter under `control_plane_config`.
 	//
-	// The billing method of master nodes. Valid values:
+	// Master node billing type. Valid values:
 	//
-	// 	- `PrePaid`: subscription.
+	// - `PrePaid`: Subscription.
 	//
-	// 	- `PostPaid`: pay-as-you-go.
+	// - `PostPaid`: Pay-as-you-go.
 	//
 	// Default value: `PostPaid`.
 	//
@@ -716,17 +744,17 @@ type CreateClusterRequest struct {
 	MasterInstanceChargeType *string `json:"master_instance_charge_type,omitempty" xml:"master_instance_charge_type,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `instance_types` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `instance_types` parameter under `control_plane_config`.
 	//
-	// The instance types of master nodes. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// Master node instance types. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	MasterInstanceTypes []*string `json:"master_instance_types,omitempty" xml:"master_instance_types,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `unit` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `unit` parameter under `control_plane_config`.
 	//
-	// The subscription duration of master nodes. This parameter takes effect and is required only when `master_instance_charge_type` is set to `PrePaid`.
+	// Subscription duration for master nodes in months. Required and valid only when `master_instance_charge_type` is `PrePaid`.
 	//
-	// Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	//
 	// Default value: 1.
 	//
@@ -736,11 +764,11 @@ type CreateClusterRequest struct {
 	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `period_unit` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `period_unit` parameter under `control_plane_config`.
 	//
-	// The billing cycle of the master nodes in the cluster. This parameter is required if master_instance_charge_type is set to `PrePaid`.
+	// Master node billing cycle. Required when master_instance_charge_type is `PrePaid`.
 	//
-	// Valid value: `Month`, which indicates that master nodes are billed only on a monthly basis.
+	// Valid value: `Month`. Only monthly billing is supported.
 	//
 	// example:
 	//
@@ -748,17 +776,17 @@ type CreateClusterRequest struct {
 	MasterPeriodUnit *string `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `system_disk_category` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `system_disk_category` parameter under `control_plane_config`.
 	//
-	// The system disk category of master nodes. Valid values:
+	// Master node system disk type. Valid values:
 	//
-	// 	- `cloud_efficiency`: ultra disk.
+	// - `cloud_efficiency`: Ultra disk.
 	//
-	// 	- `cloud_ssd`: standard SSD.
+	// - `cloud_ssd`: Standard SSD.
 	//
-	// 	- `cloud_essd`: Enterprise SSD (ESSD).
+	// - `cloud_essd`: ESSD.
 	//
-	// Default value: `cloud_ssd`. The default value may vary in different zones.
+	// Default value: `cloud_ssd`. The default may vary by zone.
 	//
 	// example:
 	//
@@ -766,9 +794,9 @@ type CreateClusterRequest struct {
 	MasterSystemDiskCategory *string `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `system_disk_performance_level` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `system_disk_performance_level` parameter under `control_plane_config`.
 	//
-	// The performance level (PL) of the system disk that you want to use for master nodes. This parameter takes effect only for ESSDs. For more information about the relationship between disk PLs and disk sizes, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// Performance level for master node system disks. Applies only to ESSD disks. Disk performance levels depend on disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -776,9 +804,9 @@ type CreateClusterRequest struct {
 	MasterSystemDiskPerformanceLevel *string `json:"master_system_disk_performance_level,omitempty" xml:"master_system_disk_performance_level,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `system_disk_disk` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `system_disk_size` parameter under `control_plane_config`.
 	//
-	// The system disk size of master nodes. Valid values: 40 to 500. Unit: GiB.
+	// Valid range: [40,500].
 	//
 	// Default value: `120`.
 	//
@@ -788,9 +816,9 @@ type CreateClusterRequest struct {
 	MasterSystemDiskSize *int64 `json:"master_system_disk_size,omitempty" xml:"master_system_disk_size,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `system_disk_snapshot_policy_id` parameter in the `control_plane_config` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `system_disk_snapshot_policy_id` parameter under `control_plane_config`.
 	//
-	// The ID of the automatic snapshot policy that is used by the system disk specified for master nodes.
+	// Automatic snapshot policy ID for master node system disks.
 	//
 	// example:
 	//
@@ -798,15 +826,13 @@ type CreateClusterRequest struct {
 	MasterSystemDiskSnapshotPolicyId *string `json:"master_system_disk_snapshot_policy_id,omitempty" xml:"master_system_disk_snapshot_policy_id,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] Use the `vswitch_ids` parameter instead.
+	// **[Deprecated]*	- Use the `vswitch_ids` parameter instead.
 	//
-	// The IDs of the vSwitches that are specified for master nodes. You can specify up to three vSwitches. We recommend that you specify three vSwitches in different zones to ensure high availability.
+	// List of master node vSwitch IDs. The number of vSwitches must be in the range [1,3]. For high availability, we recommend selecting three vSwitches in different zones.
 	//
-	// The number of vSwitches must be the same as the value of the `master_count` parameter and also the same as the number of vSwitches specified in the `master_vswitch_ids` parameter.
+	// The number of specified instance types must match `master_count` and correspond one-to-one with elements in `master_vswitch_ids`.
 	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
-	// The cluster name.
-	//
-	// The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
+	// Custom cluster name. It can contain digits, letters, Chinese characters, or hyphens (-). The name must be 1 to 63 characters long and cannot start with a hyphen (-).
 	//
 	// This parameter is required.
 	//
@@ -816,13 +842,13 @@ type CreateClusterRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Deprecated
 	//
-	// [Deprecated] Use the `snat_entry` parameter instead.
+	// **[Deprecated]*	- Use the `snat_entry` parameter instead.
 	//
 	// example:
 	//
 	// true
 	NatGateway *bool `json:"nat_gateway,omitempty" xml:"nat_gateway,omitempty"`
-	// The maximum number of IP addresses that can be assigned to each node. This number is determined by the subnet mask of the specified CIDR block. This parameter takes effect only if the cluster uses the Flannel plug-in.
+	// Number of node IP addresses, determined by the specified CIDR mask. This applies only to Flannel network clusters.
 	//
 	// Default value: `26`.
 	//
@@ -832,25 +858,15 @@ type CreateClusterRequest struct {
 	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `node_name_mode` parameter of the `kubernetes_config` field in the `nodepool` section instead.
-	//
-	// The custom node name.
-	//
-	// A custom node name consists of a prefix, a node IP address, and a suffix.
-	//
-	// 	- The prefix and suffix can contain multiple parts that are separated by periods (.). Each part can contain lowercase letters, digits, and hyphens (-), and must start and end with a lowercase letter or digit.
-	//
-	// 	- The IP substring length specifies the number of digits to be truncated from the end of the node IP address. The IP substring length ranges from 5 to 12.
-	//
-	// For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, the IP substring length is 5, and the suffix is test, the node name will aliyun.com00055test.
+	// **[Deprecated]*	- Use the `node_name_mode` parameter under `kubernetes_config` in `nodepool` instead.
 	//
 	// example:
 	//
-	// aliyun.com00055test
+	// null
 	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
 	// Deprecated
 	//
-	// The node port range. Valid values: 30000 to 65535.
+	// Node service port range: [30000,65535].
 	//
 	// Default value: `30000-32767`.
 	//
@@ -858,29 +874,29 @@ type CreateClusterRequest struct {
 	//
 	// 30000~32767
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// The list of node pools.
+	// List of node pools.
 	Nodepools []*Nodepool `json:"nodepools,omitempty" xml:"nodepools,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `desired_size` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `desired_size` parameter under `scaling_group` in `nodepool`.
 	//
-	// The number of worker nodes. Valid values: 0 to 100.
+	// Number of worker nodes. Range: [0,100].
 	//
 	// example:
 	//
 	// 3
 	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
-	// The automatic O\\&M policy of the cluster.
+	// Cluster automated operations policy.
 	OperationPolicy *CreateClusterRequestOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `image_type` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `image_type` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane node configuration, use the `image_type` parameter under `control_plane_config`. For node pool configuration, use the `image_type` parameter under `scaling_group` in `nodepool`.
 	//
-	// The type of OS. Valid values:
+	// Operating system platform type. Valid values:
 	//
-	// 	- Windows
+	// - Windows
 	//
-	// 	- Linux
+	// - Linux
 	//
 	// Default value: `Linux`.
 	//
@@ -890,29 +906,29 @@ type CreateClusterRequest struct {
 	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**]
+	// **[Deprecated]**
 	//
-	// The subscription duration. This parameter takes effect and is required only when you set charge_type to PrePaid.
+	// Subscription duration in months. Required and valid only when charge_type is PrePaid.
 	//
-	// Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	//
 	// Default value: 1.
 	//
-	// This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+	// This parameter changed on October 15, 2024. For more information, see [Announcement on Changes to CreateCluster API Parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
 	// example:
 	//
-	// FY2023
+	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**]
+	// **[Deprecated]**
 	//
-	// The billing cycle. This parameter is required if charge_type is set to PrePaid.
+	// Billing cycle. Required when the billing type is PrePaid.
 	//
-	// Valid value: Month, which indicates that resources are billed only on a monthly basis.
+	// Valid value: Month. Only monthly billing is supported.
 	//
-	// This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+	// This parameter changed on October 15, 2024. For more information, see [Announcement on Changes to CreateCluster API Parameters](https://help.aliyun.com/document_detail/2849194.html).
 	//
 	// example:
 	//
@@ -920,21 +936,21 @@ type CreateClusterRequest struct {
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `platform` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `platform` parameter under `scaling_group` in `nodepool`.
 	//
-	// The OS distribution that is used. Valid values:
+	// Operating system distribution. Valid values:
 	//
-	// 	- CentOS
+	// - CentOS
 	//
-	// 	- AliyunLinux
+	// - AliyunLinux
 	//
-	// 	- QbootAliyunLinux
+	// - QbootAliyunLinux
 	//
-	// 	- Qboot
+	// - Qboot
 	//
-	// 	- Windows
+	// - Windows
 	//
-	// 	- WindowsCore
+	// - WindowsCore
 	//
 	// Default value: `CentOS`.
 	//
@@ -944,29 +960,33 @@ type CreateClusterRequest struct {
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// Deprecated
 	//
-	// If you select Terway as the network plug-in, you must allocate vSwitches to pods. For each vSwitch that allocates IP addresses to worker nodes, you must select a vSwitch in the same zone to allocate IP addresses to pods.
+	// **[Deprecated]*	- When using the Terway network plugin, specify virtual switches to assign IP addresses to pods. Each pod virtual switch corresponds to a worker node virtual switch, and both must be in the same zone.
 	//
-	// >  We recommend that you select pod vSwitches whose subnet masks do not exceed 19 bits in length. The maximum subnet mask length of a pod vSwitch is 25 bits. If you select a pod vSwitch whose subnet mask exceeds 25 bits in length, the IP addresses that can be allocated to pods may be insufficient.
+	// > We recommend that the pod virtual switch CIDR mask not exceed /19 and must not exceed /25. Otherwise, the number of assignable pod IP addresses becomes very limited, affecting normal cluster operation.
 	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
-	// If you set `cluster_type` to `ManagedKubernetes`, an ACK managed cluster is created. In this case, you can further specify the cluster edition. Valid values:
+	// When you set `cluster_type` to `ManagedKubernetes` (ACK managed cluster), you can further specify the cluster subtype.
 	//
-	// 	- `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// - `Default`: ACK managed cluster, including ACK clusters (Pro Edition, Basic Edition).
 	//
-	// 	- `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// - `Edge`: ACK Edge cluster, including ACK Edge clusters (Pro Edition, Basic Edition).
 	//
-	// 	- `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// - `Serverless`: ACK serverless cluster, including ACK serverless clusters (Pro Edition, Basic Edition).
 	//
-	// 	- `Lingjun`: ACK Lingjun Pro cluster.
+	// - `Lingjun`: ACK LINGJUN cluster, available only in Pro Edition.
 	//
 	// example:
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// The kube-proxy mode. Valid values:
+	// kube-proxy proxy mode
 	//
-	// 	- `iptables`: a mature and stable mode that uses iptables rules to conduct service discovery and load balancing. The performance of this mode is limited by the size of the cluster. This mode is suitable for clusters that run a small number of Services.
+	// - `iptables`: A mature and stable kube-proxy mode. Kubernetes Service discovery and load balancing use iptables rules. Performance is moderate and scales poorly with large numbers of Services. Suitable for clusters with few Services.
 	//
-	// 	- `ipvs`: a mode that provides high performance and uses IP Virtual Server (IPVS) to conduct service discovery and load balancing. This mode is suitable for clusters that run a large number of Services. We recommend that you use this mode in scenarios that require high-performance load balancing.
+	// - `ipvs`: A high-performance kube-proxy mode. Kubernetes Service discovery and load balancing use the Linux IPVS module. Suitable for clusters with many Services requiring high-performance load balancing.
+	//
+	// - `nftables`: A next-generation kube-proxy mode based on Linux nftables for Service discovery and load balancing. It is the modern replacement for iptables. Compared to iptables, nftables offers better network performance, faster rule updates, and superior scalability for large numbers of Services.<br>
+	//
+	//   Supported only for clusters running Kubernetes version 1.35 or later. The Kubernetes community deprecated IPVS starting in version 1.35. We recommend using nftables for new clusters to ensure long-term community support.<br>
 	//
 	// Default value: `ipvs`.
 	//
@@ -976,11 +996,11 @@ type CreateClusterRequest struct {
 	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `rds_instances` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `rds_instances` parameter under `scaling_group` in `nodepool`.
 	//
-	// The ApsaraDB RDS instances. The pod CIDR block and node CIDR block are added to the whitelists of the ApsaraDB RDS instances. We recommend that you add the pod CIDR block and node CIDR block to the whitelists of the ApsaraDB RDS instances in the ApsaraDB RDS console. If the RDS instances are not in the Running state, new nodes cannot be added to the cluster.
+	// List of RDS instances to add to the whitelist. We recommend adding the pod and node CIDR blocks of your container cluster to the RDS whitelist. Setting RDS instances might fail if they are not in the Running state.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// The ID of the region in which the cluster is deployed. For more information about the regions supported by ACK, see [Regions supported by ACK](https://help.aliyun.com/document_detail/216938.html).
+	// The region ID where the cluster is deployed. For more information, see [Regions supported by Container Service for Kubernetes](https://help.aliyun.com/document_detail/216938.html).
 	//
 	// This parameter is required.
 	//
@@ -988,20 +1008,23 @@ type CreateClusterRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The ID of the resource group to which the cluster belongs. You can use resource groups to isolate clusters.
+	// The resource group ID to which the cluster belongs, used to isolate different resources.
 	//
 	// example:
 	//
 	// rg-acfm3mkrure****
-	ResourceGroupId *string                         `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	RrsaConfig      *CreateClusterRequestRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// RRSA feature configuration.
+	RrsaConfig *CreateClusterRequestRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
+	// Container runtime for the cluster. Supports containerd, sandboxed containers, and Docker.
 	//
-	// For more information about how to select a proper container runtime, see [Comparison among Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
+	// > Kubernetes 1.24 no longer supports Docker as a built-in container runtime.
+	//
+	// For more information, see [Comparison of Docker, containerd, and sandboxed container runtimes](https://help.aliyun.com/document_detail/160313.html).
 	Runtime *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The ID of an existing security group. You must specify this parameter or `is_enterprise_security_group`. Cluster nodes are automatically added to the security group.
+	// Specify an existing security group ID when creating a cluster. Choose either this parameter or `is_enterprise_security_group`. Cluster nodes are automatically added to this security group.
 	//
 	// example:
 	//
@@ -1009,13 +1032,13 @@ type CreateClusterRequest struct {
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `security_hardening_os` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `security_hardening_os` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane configuration, use the `security_hardening_os` parameter under `control_plane_config`. For node pool configuration, use the `security_hardening_os` parameter under `scaling_group` in `nodepool`.
 	//
-	// Specifies whether to enable Alibaba Cloud Linux Security Hardening. Valid values:
+	// Alibaba Cloud OS security hardening. Valid values:
 	//
-	// 	- `true`: enables Alibaba Cloud Linux Security Hardening.
+	// - `true`: Enable Alibaba Cloud OS security hardening.
 	//
-	// 	- `false`: disables Alibaba Cloud Linux Security Hardening.
+	// - `false`: Disable Alibaba Cloud OS security hardening.
 	//
 	// Default value: `false`.
 	//
@@ -1023,17 +1046,19 @@ type CreateClusterRequest struct {
 	//
 	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	// Service accounts provide identities for pods when pods communicate with the `API server` of the cluster. `service-account-issuer` specifies the issuer of the `serviceaccount token`, which is specified by using the `iss` field in the `token payload`.
+	// ServiceAccount is the access credential used by pods to communicate with the cluster API Server. The `service-account-issuer` is the issuer identity in the `serviceaccount token`, represented by the `iss` field in the `token payload`.
 	//
-	// For more information about `ServiceAccount`, see [Enable service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
+	// For more information about `ServiceAccount`, see [Deploy service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
 	//
 	// example:
 	//
 	// kubernetes.default.svc
 	ServiceAccountIssuer *string `json:"service_account_issuer,omitempty" xml:"service_account_issuer,omitempty"`
-	// The Service CIDR block. Valid values: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The Service CIDR block cannot overlap with the VPC CIDR block (10.1.0.0/21) or the CIDR blocks of existing clusters in the VPC. You cannot modify the Service CIDR block after the cluster is created.
+	// Service network CIDR block. Valid ranges: 10.0.0.0/16-24, 172.16.0.0/16-24 to 172.31.0.0/16-24, 192.168.0.0/16-24.
 	//
-	// By default, the Service CIDR block is set to 172.19.0.0/20.
+	// It cannot overlap with the VPC CIDR block 10.1.0.0/21 or existing Kubernetes cluster CIDR blocks in the VPC. This cannot be modified after cluster creation.
+	//
+	// Default value: 172.19.0.0/20.
 	//
 	// example:
 	//
@@ -1041,39 +1066,39 @@ type CreateClusterRequest struct {
 	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
 	// Deprecated
 	//
-	// The methods for implementing service discovery in `ACK Serverless` clusters.
+	// **[Deprecated]*	- Service discovery type for the cluster, used to specify the service discovery method in `ACK Serverless` clusters.
 	//
-	// 	- `CoreDNS`: a standard service discovery plug-in that is provided by open source Kubernetes. To use DNS resolution, you must provision pods. By default, two elastic container instances are used. The specification of each instance is 0.25 vCores and 512 MiB of memory.
+	// - `CoreDNS`: Uses the standard Kubernetes service discovery component CoreDNS. Requires deploying a set of containers for DNS resolution. Defaults to two ECI instances with 0.25 vCPU and 512 MiB memory each.
 	//
-	// 	- `PrivateZone`: a DNS resolution service provided by Alibaba Cloud. You must activate Alibaba Cloud DNS PrivateZone before you can use it for service discovery.
+	// - `PrivateZone`: Uses Alibaba Cloud PrivateZone for service discovery. Requires enabling the PrivateZone service.
 	//
-	// By default, this parameter is not specified.
+	// Default value: Disabled.
 	ServiceDiscoveryTypes []*string `json:"service_discovery_types,omitempty" xml:"service_discovery_types,omitempty" type:"Repeated"`
-	// Specifies whether to configure SNAT rules for the VPC in which your cluster is deployed. Valid values:
+	// Configure SNAT for the VPC. Valid values:
 	//
-	// 	- `true`: automatically creates a NAT gateway and configures SNAT rules. Set the value to `true` if nodes and applications in the cluster need to access the Internet.
+	// - `true`: Automatically create a NAT Gateway and configure SNAT rules. Set this to `true` if nodes or applications in the cluster need public network access.
 	//
-	// 	- `false`: does not create a NAT gateway or configure SNAT rules. In this case, nodes and applications in the cluster cannot access the Internet.
+	// - `false`: Do not create a NAT Gateway or SNAT rules. Nodes and applications in the cluster cannot access the public network.
 	//
-	// >  If this feature is disabled when you create the cluster, you can also manually enable this feature after you create the cluster. For more information, see [Enable an existing ACK cluster to access the Internet](https://help.aliyun.com/document_detail/178480.html).
+	// > If you do not enable this during cluster creation but later need public network access, you can [enable it manually](https://help.aliyun.com/document_detail/178480.html).
 	//
-	// Default value: `true`.
+	// Default value: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure the control plane, use the `soc_enabled` parameter in the `control_plane_config` section instead. When you configure a node pool, use the `soc_enabled` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For control plane node configuration, use the `soc_enabled` parameter under `control_plane_config`. For node pool configuration, use the `soc_enabled` parameter under `scaling_group` in `nodepool`.
 	//
-	// Specifies whether to enable Multi-Level Protection Scheme (MLPS) security hardening. For more information, see [ACK security hardening based on MLPS](https://help.aliyun.com/document_detail/196148.html).
+	// MLPS 2.0 security hardening. For more information, see [Using MLPS 2.0 security hardening in ACK](https://help.aliyun.com/document_detail/196148.html).
 	//
 	// Valid values:
 	//
-	// 	- `true`: enables MLPS security hardening.
+	// - `true`: Enable MLPS 2.0 security hardening.
 	//
-	// 	- `false`: disables MLPS security hardening.
+	// - `false`: Disable MLPS 2.0 security hardening.
 	//
 	// Default value: `false`.
 	//
@@ -1081,11 +1106,11 @@ type CreateClusterRequest struct {
 	//
 	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// Specifies whether to enable SSH logon. If this parameter is set to true, you can log on to master nodes in an ACK dedicated cluster over the Internet. This parameter does not take effect for ACK managed clusters. Valid values:
+	// Whether to enable public SSH logon. Used to log on to master nodes of ACK dedicated clusters. This parameter does not take effect for managed clusters.
 	//
-	// 	- `true`: enables SSH logon.
+	// - `true`: Enable.
 	//
-	// 	- `false`: disables SSH logon.
+	// - `false`: Disable.
 	//
 	// Default value: `false`.
 	//
@@ -1093,23 +1118,23 @@ type CreateClusterRequest struct {
 	//
 	// true
 	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
-	// The labels that you want to add to nodes. You must add labels based on the following rules:
+	// Node labels. Label rules:
 	//
-	// 	- A label is a case-sensitive key-value pair. You can add up to 20 labels.
+	// - Labels consist of case-sensitive key-value pairs. You can add up to 20 tags.
 	//
-	// 	- When you add a label, you must specify a unique key, but you can leave the value empty. A key cannot exceed 64 characters in length, and a value cannot exceed 128 characters in length. Keys and values cannot start with aliyun, acs:, https://, or http://. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+	// - Tag keys must be unique and up to 64 characters long. Tag values can be empty and up to 128 characters long. Neither tag keys nor tag values can start with "aliyun", "acs:", "https\\://", or "http\\://". For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `taints` parameter of the `kubernetes_config` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `taints` parameter under `kubernetes_config` in `nodepool`.
 	//
-	// The taints that you want to add to nodes. Taints can be used together with tolerations to avoid scheduling pods to specific nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// Node taint information. Taints and tolerations work together to prevent pods from being scheduled onto unsuitable nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] By default, the system does not perform a rollback when the cluster fails to be created. You must manually delete the cluster that fails to be created.
+	// **[Deprecated]*	- By default, clusters are not rolled back on creation failure. You must manually clean up failed clusters.
 	//
-	// Specifies the timeout period of cluster creation. Unit: minutes.
+	// Cluster creation timeout in minutes.
 	//
 	// Default value: `60`.
 	//
@@ -1117,13 +1142,13 @@ type CreateClusterRequest struct {
 	//
 	// 60
 	TimeoutMins *int64 `json:"timeout_mins,omitempty" xml:"timeout_mins,omitempty"`
-	// The time zone of the cluster.
+	// Time zone used by the cluster. See [Supported time zones](https://help.aliyun.com/document_detail/354879.html).
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The custom Certificate Authority (CA) certificate used by the cluster.
+	// Custom cluster CA.
 	//
 	// example:
 	//
@@ -1131,29 +1156,29 @@ type CreateClusterRequest struct {
 	UserCa *string `json:"user_ca,omitempty" xml:"user_ca,omitempty"`
 	// Deprecated
 	//
-	// The user data of nodes.
+	// **[Deprecated]*	- Custom node data.
 	//
 	// example:
 	//
 	// IyEvdXNyL2Jpbi9iYXNoCmVjaG8gIkhlbGxvIEFD****
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	// The virtual private cloud (VPC) in which you want to deploy the cluster. This parameter is required.
+	// The VPC used by the cluster. You must provide this when creating a cluster.
 	//
 	// example:
 	//
 	// vpc-2zeik9h3ahvv2zz95****
 	Vpcid *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
-	// The vSwitches for nodes in the cluster. This parameter is required if you create an ACK managed cluster that does not contain nodes.
+	// Virtual switches for cluster nodes. This field is required when creating a zero-node managed cluster.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `auto_renew` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `auto_renew` parameter under `scaling_group` in `nodepool`.
 	//
-	// Specifies whether to enable auto-renewal for worker nodes. This parameter takes effect and is required only when `worker_instance_charge_type` is set to `PrePaid`. Valid values:
+	// Whether to enable auto-renewal for worker nodes. Valid only when `worker_instance_charge_type` is `PrePaid`. Valid values:
 	//
-	// 	- `true`: enables auto-renewal.
+	// - `true`: Enable auto-renewal.
 	//
-	// 	- `false`: disables auto-renewal.
+	// - `false`: Disable auto-renewal.
 	//
 	// Default value: `true`.
 	//
@@ -1163,11 +1188,11 @@ type CreateClusterRequest struct {
 	WorkerAutoRenew *bool `json:"worker_auto_renew,omitempty" xml:"worker_auto_renew,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `auto_renew_period` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `auto_renew_period` parameter under `scaling_group` in `nodepool`.
 	//
-	// The auto-renewal duration of worker nodes. This parameter takes effect and is required only if the subscription billing method is selected for worker nodes.
+	// Auto-renewal period for worker nodes in months. Required and valid only when subscription billing is selected.
 	//
-	// Valid values: 1, 2, 3, 6, and 12.
+	// Valid values: {1, 2, 3, 6, 12}.
 	//
 	// example:
 	//
@@ -1175,21 +1200,21 @@ type CreateClusterRequest struct {
 	WorkerAutoRenewPeriod *int64 `json:"worker_auto_renew_period,omitempty" xml:"worker_auto_renew_period,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `data_disks` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `data_disks` parameter under `scaling_group` in `nodepool`.
 	//
-	// The configurations of the data disks that you want to mount to worker nodes. The configurations include the disk category and disk size.
+	// Configuration for worker node data disks, including type and size.
 	WorkerDataDisks []*CreateClusterRequestWorkerDataDisks `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `instance_charge_type` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `instance_charge_type` parameter under `scaling_group` in `nodepool`.
 	//
-	// The billing method of worker nodes. Valid values:
+	// Worker node billing type. Valid values:
 	//
-	// 	- `PrePaid`: subscription.
+	// - `PrePaid`: Subscription.
 	//
-	// 	- `PostPaid`: pay-as-you-go.
+	// - `PostPaid`: Pay-as-you-go.
 	//
-	// Default value: PostPaid.
+	// Default value: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -1197,17 +1222,17 @@ type CreateClusterRequest struct {
 	WorkerInstanceChargeType *string `json:"worker_instance_charge_type,omitempty" xml:"worker_instance_charge_type,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `instance_types` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `instance_types` parameter under `scaling_group` in `nodepool`.
 	//
-	// The instance configurations of worker nodes.
+	// Worker node instance configuration.
 	WorkerInstanceTypes []*string `json:"worker_instance_types,omitempty" xml:"worker_instance_types,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `period` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `period` parameter under `scaling_group` in `nodepool`.
 	//
-	// The subscription duration of worker nodes. This parameter takes effect and is required only when `worker_instance_charge_type` is set to `PrePaid`.
+	// Subscription duration for worker nodes in months. Required and valid only when `worker_instance_charge_type` is `PrePaid`.
 	//
-	// Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	//
 	// Default value: 1.
 	//
@@ -1217,11 +1242,11 @@ type CreateClusterRequest struct {
 	WorkerPeriod *int64 `json:"worker_period,omitempty" xml:"worker_period,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `period_unit` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `period_unit` parameter under `scaling_group` in `nodepool`.
 	//
-	// The billing cycle of worker nodes. This parameter is required if worker_instance_charge_type is set to `PrePaid`.
+	// Worker node billing cycle. Required when worker_instance_charge_type is `PrePaid`.
 	//
-	// Valid value: `Month`, which indicates that worker nodes are billed only on a monthly basis.
+	// Valid value: `Month`. Only monthly billing is supported.
 	//
 	// example:
 	//
@@ -1229,15 +1254,15 @@ type CreateClusterRequest struct {
 	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `system_disk_category` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `system_disk_category` parameter under `scaling_group` in `nodepool`.
 	//
-	// The system disk category of worker nodes. For more information, see [Elastic Block Storage devices](https://help.aliyun.com/document_detail/63136.html).
+	// Worker node system disk type. For more information, see [Overview of Elastic Block Storage](https://help.aliyun.com/document_detail/63136.html).
 	//
 	// Valid values:
 	//
-	// 	- `cloud_efficiency`: ultra disk.
+	// - `cloud_efficiency`: Ultra disk.
 	//
-	// 	- `cloud_ssd`: standard SSD.
+	// - `cloud_ssd`: Standard SSD.
 	//
 	// Default value: `cloud_ssd`.
 	//
@@ -1247,19 +1272,19 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskCategory *string `json:"worker_system_disk_category,omitempty" xml:"worker_system_disk_category,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `system_disk_performance_level` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `system_disk_performance_level` parameter under `scaling_group` in `nodepool`.
 	//
-	// If the system disk is an ESSD, you can specify the PL of the ESSD. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+	// When the system disk is an ESSD, you can set the performance level (PL). For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// Valid values:
 	//
-	// 	- PL0
+	// - PL0
 	//
-	// 	- PL1
+	// - PL1
 	//
-	// 	- PL2
+	// - PL2
 	//
-	// 	- PL3
+	// - PL3
 	//
 	// example:
 	//
@@ -1267,13 +1292,13 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskPerformanceLevel *string `json:"worker_system_disk_performance_level,omitempty" xml:"worker_system_disk_performance_level,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `system_disk_size` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `system_disk_size` parameter under `scaling_group` in `nodepool`.
 	//
-	// The system disk size of worker nodes. Unit: GiB.
+	// Worker node system disk size in GiB.
 	//
-	// Valid values: 40 to 500.
+	// Valid range: [40,500].
 	//
-	// The value of this parameter must be at least 40 and greater than or equal to the image size.
+	// This value must be greater than or equal to max{40, ImageSize}.
 	//
 	// Default value: `120`.
 	//
@@ -1283,9 +1308,9 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `system_disk_snapshot_policy_id` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `system_disk_snapshot_policy_id` parameter under `scaling_group` in `nodepool`.
 	//
-	// The ID of the automatic snapshot policy that is used by the system disk specified for worker nodes.
+	// Automatic snapshot policy ID for worker node system disks.
 	//
 	// example:
 	//
@@ -1293,27 +1318,25 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskSnapshotPolicyId *string `json:"worker_system_disk_snapshot_policy_id,omitempty" xml:"worker_system_disk_snapshot_policy_id,omitempty"`
 	// Deprecated
 	//
-	// [**Deprecated**] When you configure a node pool, use the `vswitch_ids` parameter of the `scaling_group` field in the `nodepool` section instead.
+	// **[Deprecated]*	- For node pool configuration, use the `vswitch_ids` parameter under `scaling_group` in `nodepool`.
 	//
-	// The vSwitches for worker nodes. Each worker node is allocated a vSwitch.
+	// List of vSwitches used by cluster nodes. One node corresponds to one value.
 	//
-	// `worker_vswitch_ids` is optional, but `vswitch_ids` is required if you create an ACK managed cluster that does not contain nodes.
+	// When creating a zero-node managed cluster, `worker_vswitch_ids` is optional, but you must provide `vswitch_ids`.
 	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [Deprecated] Use the `zone_ids` parameter instead.
+	// **[Deprecated]*	- Use the `zone_ids` parameter instead.
 	//
-	// The ID of the zone to which the cluster belongs. This parameter is specific to ACK Serverless clusters.
+	// The zone ID in the cluster region. This parameter applies only to ACK managed clusters.
 	//
-	// When you create an ACK managed cluster, you must set the `zone_id` parameter if `vpc_id` and `vswitch_ids` are not specified. This way, the system automatically creates a VPC in the specified zone. This parameter is invalid if you specify the `vpc_id` and `vswitch_ids` parameters.
+	// When creating an ACK managed cluster, if you do not specify `vpc_id` and `vswitch_ids`, you must specify `zone_id` to automatically create VPC network resources in this zone. This parameter is ignored if you specify `vpc_id` and `vswitch_ids`.
 	//
 	// example:
 	//
 	// cn-beiji****
 	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
-	// The IDs of the zone in which the cluster is deployed. This parameter is specific to ACK managed clusters.
-	//
-	// When you create an ACK managed cluster, you must set the `zone_id` parameter if `vpc_id` and `vswitch_ids` are not specified. This way, the system automatically creates a VPC in the specified zone. This parameter is invalid if you specify the `vpc_id` and `vswitch_ids` parameters.
+	// A list of zone IDs in the cluster region. This parameter applies only to ACK managed clusters.
 	ZoneIds []*string `json:"zone_ids,omitempty" xml:"zone_ids,omitempty" type:"Repeated"`
 }
 
@@ -2342,7 +2365,25 @@ func (s *CreateClusterRequest) Validate() error {
 }
 
 type CreateClusterRequestAuditLogConfig struct {
-	Enabled        *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Whether to enable cluster audit logging.
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The [SLS Project](https://help.aliyun.com/document_detail/48873.html) containing the [Logstore](https://help.aliyun.com/document_detail/48873.html) for cluster audit logs.
+	//
+	// - Default value: `k8s-log-{clusterid}`.
+	//
+	// - When audit logging is enabled, a Logstore for audit logs is created in the specified SLS Project.
+	//
+	// example:
+	//
+	// k8s-log-c2345xxxxxxxxxxxx
 	SlsProjectName *string `json:"sls_project_name,omitempty" xml:"sls_project_name,omitempty"`
 }
 
@@ -2377,6 +2418,15 @@ func (s *CreateClusterRequestAuditLogConfig) Validate() error {
 }
 
 type CreateClusterRequestAutoMode struct {
+	// Whether to enable Intelligent Managed Mode.
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 }
 
@@ -2402,142 +2452,221 @@ func (s *CreateClusterRequestAutoMode) Validate() error {
 }
 
 type CreateClusterRequestControlPlaneConfig struct {
-	// Specifies whether to enable auto-renewal for the node.
+	// Whether to enable auto-renewal for control plane nodes. Valid only when charge_type is `PrePaid`.
+	//
+	// - true: Enable auto-renewal.
+	//
+	// - false: Disable auto-renewal.
+	//
+	// Default value: true.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// The auto-renewal duration for the node.
+	// Auto-renewal duration for control plane nodes in months.
+	//
+	// Valid values: {1, 2, 3, 6, 12}.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	// The billing method of the node.
+	// Control plane node billing type.
+	//
+	// - `PrePaid`: Subscription.
+	//
+	// - `PostPaid`: Pay-as-you-go.
+	//
+	// Default value: `PostPaid`.
 	//
 	// example:
 	//
-	// PrePaid
+	// PostPaid
 	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
-	// Specifies whether to install CloudMonitor on the node.
+	// Whether to install Cloud Monitor on nodes.
+	//
+	// - true: Install the CloudMonitor agent.
+	//
+	// - false: Do not install the CloudMonitor agent.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
-	// true
+	// false
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// The CPU management policy of the node.
+	// Node CPU management policy.
+	//
+	// - static: Enhances CPU affinity and exclusivity for pods with specific resource characteristics on the node.
+	//
+	// - none: Uses the default CPU affinity scheme.
+	//
+	// Default value: none.
 	//
 	// example:
 	//
 	// none
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// The ID of the deployment set.
+	// Deployment set ID.
 	//
 	// example:
 	//
 	// ds-bp10b35imuam5amw****
 	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	// The image ID.
+	// Image ID.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20240819.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The type of the OS image.
+	// Operating system image type.
 	//
 	// example:
 	//
 	// AliyunLinux3
-	ImageType               *string                  `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	// ECS instance metadata access configuration.
 	InstanceMetadataOptions *InstanceMetadataOptions `json:"instance_metadata_options,omitempty" xml:"instance_metadata_options,omitempty"`
-	// The instance types of the nodes.
+	// Node instance types.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// The name of the key pair. You must set this parameter or login_password.
+	// Key pair name. Choose either this parameter or login_password.
 	//
 	// example:
 	//
 	// ack
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// The SSH logon password. The password must be 8 to 30 characters in length and contain a minimum of three of the following character types: uppercase letters, lowercase letters, digits, and special characters. You must set this parameter or key_pair.
+	// SSH login password. Password rules: 8–30 characters, containing at least three of the following: uppercase letters, lowercase letters, digits, and special characters. Choose either this parameter or key_pair.
 	//
 	// example:
 	//
-	// ack@Test
+	// ********
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// The node port range.
+	// **[Deprecated]*	- Node service port range.
 	//
 	// example:
 	//
 	// 30000-32767
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// The subscription duration of the node.
+	// Subscription duration for control plane nodes in months. Required and valid only when charge_type is `PrePaid`.
+	//
+	// Valid values: {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The unit of the subscription duration of the node.
+	// Billing cycle unit for control plane nodes. Required and valid only when charge_type is `PrePaid`.
+	//
+	// Valid value: `Month`. Only monthly billing is supported.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	// The container runtime.
+	// **[Deprecated]*	- Control plane node runtime name. Valid value:
+	//
+	// containerd: Containerd runtime, supported for all cluster versions.
 	//
 	// example:
 	//
 	// containerd
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// Specifies whether to enable Alibaba Cloud Linux Security Hardening.
+	// Whether to enable Alibaba Cloud OS security hardening.
+	//
+	// - true: Enable Alibaba Cloud OS security hardening.
+	//
+	// - false: Disable Alibaba Cloud OS security hardening.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
-	// true
+	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	// The number of control plane nodes.
+	// Number of control plane nodes.
+	//
+	// Valid values: `3` or `5`.
 	//
 	// example:
 	//
 	// 3
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// Specifies whether to enable MLPS security hardening.
+	// Whether to enable MLPS 2.0 security hardening.
+	//
+	// - true: Enable MLPS 2.0 security hardening.
+	//
+	// - false: Disable MLPS 2.0 security hardening.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
-	// true
+	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// Specifies whether to enable the burst feature for the system disk.
+	// Whether to enable performance burst for node system disks.
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
+	//
+	// This parameter is supported only when `system_disk_category` is `cloud_auto`.
 	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// The system disk category for the node.
+	// Node system disk type.
+	//
+	// - `cloud_efficiency`: Ultra disk.
+	//
+	// - `cloud_ssd`: Standard SSD.
+	//
+	// - `cloud_essd`: ESSD.
+	//
+	// - `cloud_auto`: ESSD AutoPL.
+	//
+	// - `cloud_essd_entry`: ESSD Entry.
+	//
+	// Default value: `cloud_ssd`. The default may vary by zone.
 	//
 	// example:
 	//
-	// cloud_essd
+	// cloud_ssd
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	// The PL of the system disk that you want to use for the node. This parameter takes effect only for ESSDs.
+	// Node system disk performance level. Applies only to ESSD disks.
+	//
+	// Disk performance levels depend on disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// The preset read/write IOPS of the system disk.
+	// Provisioned read/write IOPS for node system disks.
+	//
+	// Valid range: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}.
+	//
+	// This parameter is supported only when `system_disk_category` is `cloud_auto`.
 	//
 	// example:
 	//
 	// 1000
 	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	// The system disk size of the node. The value must be at least 40 GB.
+	// Node system disk size in GiB.
+	//
+	// Valid range: [40,500].
+	//
+	// Default value: `120`.
 	//
 	// example:
 	//
 	// 120
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	// The automatic snapshot policy of the node.
+	// Automatic snapshot backup policy for node system disks.
 	//
 	// example:
 	//
@@ -2788,6 +2917,7 @@ func (s *CreateClusterRequestControlPlaneConfig) Validate() error {
 }
 
 type CreateClusterRequestControlPlaneEndpointsConfig struct {
+	// Internal domain name configuration for the cluster, applicable to ACK managed clusters. Internal domain names allow node-side system components such as kubelet and kube-proxy to access the API Server. Without internal domain name access, node-side components access the API Server through the CLB IP address.
 	InternalDnsConfig *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
 }
 
@@ -2818,6 +2948,7 @@ func (s *CreateClusterRequestControlPlaneEndpointsConfig) Validate() error {
 }
 
 type CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig struct {
+	// VPCs where the internal domain name resolution takes effect.
 	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
 }
 
@@ -2843,7 +2974,7 @@ func (s *CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) Valid
 }
 
 type CreateClusterRequestOperationPolicy struct {
-	// The configurations of auto cluster upgrade.
+	// Cluster automatic upgrade.
 	ClusterAutoUpgrade *CreateClusterRequestOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
 }
 
@@ -2874,19 +3005,23 @@ func (s *CreateClusterRequestOperationPolicy) Validate() error {
 }
 
 type CreateClusterRequestOperationPolicyClusterAutoUpgrade struct {
-	// The automatic update frequency. Valid values:
+	// Cluster automatic upgrade frequency. Valid values:
 	//
-	// 	- patch
+	// - patch: Automatically upgrade to the latest patch version within the current minor version. New Kubernetes versions do not include breaking changes.
 	//
-	// 	- stable
+	// - stable: Automatically upgrade to the latest patch version of the second-newest minor version. New Kubernetes versions may include API and feature changes but have undergone extensive stability validation.
 	//
-	// 	- rapid
+	// - rapid: Automatically upgrade to the latest patch version of the newest minor version to quickly access new Kubernetes community features.
 	//
 	// example:
 	//
-	// patch
+	// stable
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Specifies whether to enable auto cluster update.
+	// Whether to enable cluster automatic upgrade.
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
 	//
 	// example:
 	//
@@ -2925,6 +3060,15 @@ func (s *CreateClusterRequestOperationPolicyClusterAutoUpgrade) Validate() error
 }
 
 type CreateClusterRequestRrsaConfig struct {
+	// Whether to enable RRSA.
+	//
+	// - true: Enable.
+	//
+	// - false: Disable.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -2950,7 +3094,7 @@ func (s *CreateClusterRequestRrsaConfig) Validate() error {
 }
 
 type CreateClusterRequestWorkerDataDisks struct {
-	// The data disk category.
+	// Data disk type.
 	//
 	// This parameter is required.
 	//
@@ -2958,11 +3102,11 @@ type CreateClusterRequestWorkerDataDisks struct {
 	//
 	// cloud_essd
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Specifies whether to encrypt the data disk. Valid values:
+	// Whether to encrypt the data disk. Valid values:
 	//
-	// 	- `true`: encrypts the data disk.
+	// - `true`: Encrypt the data disk.
 	//
-	// 	- `false`: does not encrypt the data disk.
+	// - `false`: Do not encrypt the data disk.
 	//
 	// Default value: `false`.
 	//
@@ -2970,13 +3114,13 @@ type CreateClusterRequestWorkerDataDisks struct {
 	//
 	// true
 	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// The PL of the data disk. This parameter takes effect only for ESSDs. You can specify a higher PL if you increase the size of a data disk. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+	// Data disk performance level. Applies only to [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"performance_level,omitempty" xml:"performance_level,omitempty"`
-	// The data disk size. Valid values: 40 to 32767. Unit: GiB.
+	// Data disk size in GiB. Valid range: 40–32767.
 	//
 	// This parameter is required.
 	//

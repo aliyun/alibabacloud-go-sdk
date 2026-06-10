@@ -22,7 +22,7 @@ type AttachInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// T-5a544aff80282e39ea000039
+	// T-5a544aff80282e39ea00****
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

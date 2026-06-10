@@ -76,7 +76,7 @@ type DescribeClusterLogsResponseBody struct {
 	//
 	// example:
 	//
-	// 590749245
+	// 73117232145******
 	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
 	// The cluster ID.
 	//
@@ -94,13 +94,13 @@ type DescribeClusterLogsResponseBody struct {
 	//
 	// example:
 	//
-	// 2020-09-11T10:11:51+08:00
+	// 2025-04-10T17:54:26+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// The time when the log entry was updated.
 	//
 	// example:
 	//
-	// 2020-09-11T10:11:51+08:00
+	// 2025-04-10T17:54:26+08:00
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 

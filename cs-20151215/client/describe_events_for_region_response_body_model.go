@@ -18,10 +18,11 @@ type iDescribeEventsForRegionResponseBody interface {
 }
 
 type DescribeEventsForRegionResponseBody struct {
-	// The events.
-	Events    []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	NextToken *string                                      `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The pagination details.
+	// A list of events.
+	Events []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The pagination information.
 	PageInfo *DescribeEventsForRegionResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
 
@@ -83,29 +84,33 @@ type DescribeEventsForRegionResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// cluster-id
+	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The description of the event.
+	// The event data.
 	Data *DescribeEventsForRegionResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The event ID.
 	//
 	// example:
 	//
-	// A234-1234-1234
+	// e-9ad04f72-8ee7-46bf-a02c-e4a06b39****
 	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
 	// The event source.
+	//
+	// example:
+	//
+	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The object associated with the event.
+	// The event subject.
 	//
 	// example:
 	//
-	// nodePool-id
+	// npdd89dc2b76c04f14b06774883b******
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The time when the event was generated.
+	// The time when the event occurred.
 	//
 	// example:
 	//
-	// 2020-12-01T17:31:00Z
+	// 2025-05-14T10:00:56+08:00
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type.
 	//
@@ -196,19 +201,19 @@ func (s *DescribeEventsForRegionResponseBodyEvents) Validate() error {
 }
 
 type DescribeEventsForRegionResponseBodyEventsData struct {
-	// The severity level of the event.
+	// The event level.
 	//
 	// example:
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The details of the event.
+	// The event message.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/nodePool-A
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The event status.
+	// The reason for the event.
 	//
 	// example:
 	//
@@ -256,19 +261,19 @@ func (s *DescribeEventsForRegionResponseBodyEventsData) Validate() error {
 }
 
 type DescribeEventsForRegionResponseBodyPageInfo struct {
-	// The number of pages.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of records on each page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

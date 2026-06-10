@@ -26,7 +26,7 @@ type DescribeSubaccountK8sClusterUserConfigRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The validity period of the temporary kubeconfig file. Unit: minutes.
 	//

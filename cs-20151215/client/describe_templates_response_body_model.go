@@ -145,7 +145,7 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	//
 	// example:
 	//
-	// 2020-06-10T16:30:16+08:00
+	// 2025-04-25T16:56:33+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// The description of the template.
 	//
@@ -157,7 +157,7 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	//
 	// example:
 	//
-	// 874ec485-e7e6-4373-8a3b-47bde8ae789f
+	// 874ec485-e7e6-4373-8a3b-47bde8******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the template.
 	//
@@ -191,13 +191,13 @@ type DescribeTemplatesResponseBodyTemplates struct {
 	//
 	// example:
 	//
-	// ad81d115-7c8b-47e7-a222-9c28d7f6e588
+	// ad81d115-7c8b-47e7-a222-9c28d7******
 	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
 	// The time when the template was updated.
 	//
 	// example:
 	//
-	// 2020-06-10T16:30:16+08:00
+	// 2025-04-25T16:56:33+08:00
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 

@@ -82,81 +82,81 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// 2020-09-11T10:11:54+08:00
+	// 2023-08-15T14:34:42+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// The resource ID.
 	//
 	// example:
 	//
-	// lb-wz9poz4r0ymh8u0uf****
+	// ngw-wz9sphwk42sdtjixo****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The resource information. For more information about how to query the source information about the resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+	// Information about the resource. For more details about its source, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
 	//
 	// example:
 	//
-	// {\\"Id\\":\\"k8s_master_slb\\",\\"Name\\":\\"k8s_master_slb\\",\\"Type\\":\\"ALIYUN::SLB::LoadBalancer\\",\\"Status\\":\\"CREATE_COMPLETE\\",\\"StatusReason\\":\\"state changed\\",\\"Updated\\":\\"2020-05-21T13:25:02\\",\\"PhysicalId\\":\\"lb-wz9poz4r0ymh8u0uf****\\"}
+	// {\\"Id\\":\\"KubernetesWorkerRole\\",\\"Name\\":\\"KubernetesWorkerRole\\",\\"Type\\":\\"ALIYUN::RAM::Role\\",\\"Status\\":\\"CREATE_COMPLETE\\",\\"StatusReason\\":\\"state changed\\",\\"Updated\\":\\"2025-04-10T06:21:17\\",\\"PhysicalId\\":\\"KubernetesWorkerRole-7e611193-225f-40f6-bc3c-ea8633******\\"}
 	ResourceInfo *string `json:"resource_info,omitempty" xml:"resource_info,omitempty"`
 	// The resource type.
 	//
 	// example:
 	//
-	// ALIYUN::SLB::LoadBalancer
+	// ALIYUN::VPC::NatGateway
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The resource status. Valid values:
+	// The state of the resource. Valid values:
 	//
-	// 	- `CREATE_COMPLETE`: the resource is created.
+	// - `CREATE_COMPLETE`: The resource is successfully created.
 	//
-	// 	- `CREATE_FAILED`: the resource failed to be created.
+	// - `CREATE_FAILED`: The resource fails to be created.
 	//
-	// 	- `CREATE_IN_PROGRESS`: the resource is being created.
+	// - `CREATE_IN_PROGRESS`: The resource is being created.
 	//
-	// 	- `DELETE_FAILED`: the resource failed to be deleted.
+	// - `DELETE_FAILED`: The resource fails to be deleted.
 	//
-	// 	- `DELETE_IN_PROGRESS`: the resource is being deleted.
+	// - `DELETE_IN_PROGRESS`: The resource is being deleted.
 	//
-	// 	- `ROLLBACK_COMPLETE`: the resource is rolled back.
+	// - `ROLLBACK_COMPLETE`: The rollback is successful.
 	//
-	// 	- `ROLLBACK_FAILED`: the resource failed to be rolled back.
+	// - `ROLLBACK_FAILED`: The rollback fails.
 	//
-	// 	- `ROLLBACK_IN_PROGRESS`: the resource is being rolled back.
+	// - `ROLLBACK_IN_PROGRESS`: The rollback is in progress.
 	//
 	// example:
 	//
 	// CREATE_COMPLETE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Specifies whether the resource is created by Container Service for Kubernetes (ACK). Valid values:
+	// Indicates whether the resource is created by ACK. Valid values:
 	//
-	// 	- 1: the resource is created by ACK.
+	// - 1: The resource is created by ACK.
 	//
-	// 	- 0: the resource is an existing resource.
+	// - 0: The resource is an existing resource.
 	//
 	// example:
 	//
 	// 1
 	AutoCreate *int64 `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
-	// The dependent resources.
+	// The list of dependent resources.
 	Dependencies []*DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	// The Kubernetes object with which the resource is associated.
+	// The Kubernetes object that is associated with the resource.
 	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
 	// The deletion behavior of the resource when the cluster is deleted.
 	DeleteBehavior *DescribeClusterResourcesResponseBodyDeleteBehavior `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
-	// The type of the resource creator. Valid values:
+	// The type of the creator of the resource. Valid values:
 	//
-	// 	- user: The resource is created by the user.
+	// - user: The resource is created by a user.
 	//
-	// 	- system: The resource is created by the ACK management system.
+	// - system: The resource is created by the ACK control plane.
 	//
-	// 	- addon: The resource is created by a cluster component.
+	// - addon: The resource is created by an add-on.
 	//
 	// example:
 	//
 	// addon
 	CreatorType *string `json:"creator_type,omitempty" xml:"creator_type,omitempty"`
-	// The additional information about the resource.
+	// Extra information about the resource.
 	//
 	// example:
 	//
-	// {"IP": "xx.xx.xx.xx"}
+	// { "type": "SLS_Data" }
 	ExtraInfo map[string]interface{} `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
@@ -300,19 +300,19 @@ func (s *DescribeClusterResourcesResponseBody) Validate() error {
 }
 
 type DescribeClusterResourcesResponseBodyDependencies struct {
-	// The ID of the cluster to which the dependent resource is related.
+	// The cluster ID of the dependent resource.
 	//
 	// example:
 	//
 	// cc5ee03f63e43425cb6f71f1a1756****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The dependent resource type.
+	// The type of the dependent resource.
 	//
 	// example:
 	//
 	// ALIYUN::VPC::NatGateway
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The dependent resource ID.
+	// The instance ID of the dependent resource.
 	//
 	// example:
 	//
@@ -360,19 +360,19 @@ func (s *DescribeClusterResourcesResponseBodyDependencies) Validate() error {
 }
 
 type DescribeClusterResourcesResponseBodyAssociatedObject struct {
-	// The Kubernetes object type.
+	// The type of the Kubernetes object.
 	//
 	// example:
 	//
 	// Service
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The namespace in which the Kubernetes object resides.
+	// The namespace of the Kubernetes object.
 	//
 	// example:
 	//
 	// kube-system
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The Kubernetes object name.
+	// The name of the Kubernetes object.
 	//
 	// example:
 	//
@@ -420,13 +420,21 @@ func (s *DescribeClusterResourcesResponseBodyAssociatedObject) Validate() error 
 }
 
 type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
-	// Specifies whether to delete the resource by default when the cluster is deleted.
+	// Indicates whether to delete the resource by default when the cluster is deleted. Valid values:
+	//
+	// - true: The resource is deleted by default.
+	//
+	// - false: The resource is not deleted by default.
 	//
 	// example:
 	//
 	// false
 	DeleteByDefault *bool `json:"delete_by_default,omitempty" xml:"delete_by_default,omitempty"`
-	// Specifies whether the default behavior returned in delete_by_default can be changed.
+	// Indicates whether the default behavior specified by the `delete_by_default` parameter can be changed. Valid values:
+	//
+	// - true: The default behavior can be changed.
+	//
+	// - false: The default behavior cannot be changed.
 	//
 	// example:
 	//

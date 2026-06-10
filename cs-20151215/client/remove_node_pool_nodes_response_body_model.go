@@ -20,7 +20,7 @@ type RemoveNodePoolNodesResponseBody struct {
 	//
 	// example:
 	//
-	// A9891419-D125-4D89-AFCA-68846675E2F7
+	// A9891419-D125-4D89-AFCA-68846675****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	//

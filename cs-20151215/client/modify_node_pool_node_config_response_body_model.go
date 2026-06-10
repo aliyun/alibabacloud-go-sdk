@@ -28,13 +28,13 @@ type ModifyNodePoolNodeConfigResponseBody struct {
 	//
 	// example:
 	//
-	// D7631D83-6E98-1949-B665-766A62xxxxxx
+	// D7631D83-6E98-1949-B665-766A62****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// T-5fd211e924e1d00787xxxxxx
+	// T-5fd211e924e1d00787****
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

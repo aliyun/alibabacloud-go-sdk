@@ -212,7 +212,16 @@ type KubeletConfig struct {
 	//
 	// true
 	SerializeImagePulls *bool `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
-	ServerTLSBootstrap  *bool `json:"serverTLSBootstrap,omitempty" xml:"serverTLSBootstrap,omitempty"`
+	// 启用 kubelet 服务端证书的自动签发与轮换功能。启用时，需同时在 kubelet 的 featureGates 中配置 "RotateKubeletServerCertificate": true
+	//
+	// > - 仅 1.30 及以上版本的集群可用。
+	//
+	// > - 1.30 至 v1.33 版本的集群需提交工单申请。
+	//
+	// example:
+	//
+	// true
+	ServerTLSBootstrap *bool `json:"serverTLSBootstrap,omitempty" xml:"serverTLSBootstrap,omitempty"`
 	// A set of configurations that specify reserved resources for the system.
 	SystemReserved map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
 	// The name of the Topology Manager policy that you want to use.

@@ -106,19 +106,19 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// example:
 	//
-	// 1.16.9-aliyun.1
+	// 1.31.1-aliyun.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// The release date of the Kubernetes version.
 	//
 	// example:
 	//
-	// 2023-04-30T00:00:00Z
+	// 2025-01-30T00:00:00Z
 	ReleaseDate *string `json:"release_date,omitempty" xml:"release_date,omitempty"`
 	// The expiration date of the Kubernetes version.
 	//
 	// example:
 	//
-	// 2025-04-30T00:00:00Z
+	// 2026-01-30T00:00:00Z
 	ExpirationDate *string `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
 	// Indicates whether you can create clusters that run the Kubernetes version.
 	//
@@ -246,13 +246,13 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// example:
 	//
-	// centos_7_7_x64_20G_alibase_20200426.vhd
+	// aliyun_3_x64_20G_alibase_20241218.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// The image name.
 	//
 	// example:
 	//
-	// CentOS 7.7
+	// Alibaba Cloud Linux 3.2104
 	ImageName *string `json:"image_name,omitempty" xml:"image_name,omitempty"`
 	// The OS platform. You can obtain the terminal ID by calling one of the following operations:
 	//
@@ -266,13 +266,13 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// example:
 	//
-	// CentOS
+	// AliyunLinux
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// The version of the image.
 	//
 	// example:
 	//
-	// 7.7
+	// 3.2104
 	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
 	// The type of operating system distribution that you want to use. We recommend that you use this parameter to specify the node operating system. You can obtain the terminal ID by calling one of the following operations:
 	//
@@ -296,7 +296,7 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// example:
 	//
-	// centos_7_7_20
+	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The type of OS. Examples:
 	//

@@ -196,8 +196,16 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	// APIServerClbInstanceStatus
 	CheckItemUid *string `json:"checkItemUid,omitempty" xml:"checkItemUid,omitempty"`
 	// The description of the inspection item.
+	//
+	// example:
+	//
+	// 集群API Server负载均衡实例异常会影响集群可用性，请检查负载均衡实例状态是否正常。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The fixing suggestion.
+	//
+	// example:
+	//
+	// 请提交工单处理。
 	Fix *string `json:"fix,omitempty" xml:"fix,omitempty"`
 	// The level of the inspection item. Valid values:
 	//
@@ -214,6 +222,10 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	// critical
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 	// The name of the inspection item.
+	//
+	// example:
+	//
+	// API Server CLB 实例状态异常
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The inspection results. Valid values:
 	//

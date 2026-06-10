@@ -44,6 +44,7 @@ type iCreateClusterNodePoolRequest interface {
 }
 
 type CreateClusterNodePoolRequest struct {
+	// Intelligent managed configuration for the node pool.
 	AutoMode *CreateClusterNodePoolRequestAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// The configurations of auto scaling.
 	AutoScaling *CreateClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
@@ -55,8 +56,9 @@ type CreateClusterNodePoolRequest struct {
 	//
 	// example:
 	//
-	// 1
-	Count         *int64                                     `json:"count,omitempty" xml:"count,omitempty"`
+	// null
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// Lingjun node pool configuration.
 	EfloNodeGroup *CreateClusterNodePoolRequestEfloNodeGroup `json:"eflo_node_group,omitempty" xml:"eflo_node_group,omitempty" type:"Struct"`
 	// Specifies whether to set the network type of the pod to host network.
 	//
@@ -106,8 +108,9 @@ type CreateClusterNodePoolRequest struct {
 	//
 	// example:
 	//
-	// 10
-	MaxNodes       *int64                                        `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	// null
+	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	// List of edge zone widgets.
 	NodeComponents []*CreateClusterNodePoolRequestNodeComponents `json:"node_components,omitempty" xml:"node_components,omitempty" type:"Repeated"`
 	// The node configurations.
 	NodeConfig *CreateClusterNodePoolRequestNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
@@ -335,6 +338,17 @@ func (s *CreateClusterNodePoolRequest) Validate() error {
 }
 
 type CreateClusterNodePoolRequestAutoMode struct {
+	// Whether to enable the intelligent managed mode.
+	//
+	// Valid values:
+	//
+	// - true: Enables the intelligent managed mode. This can be enabled only when the cluster has the intelligent managed mode enabled.
+	//
+	// - false: Disables the intelligent managed mode.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 }
 
@@ -372,7 +386,7 @@ type CreateClusterNodePoolRequestAutoScaling struct {
 	//
 	// example:
 	//
-	// 5
+	// null
 	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
 	// Deprecated
 	//
@@ -392,7 +406,7 @@ type CreateClusterNodePoolRequestAutoScaling struct {
 	//
 	// example:
 	//
-	// PayByBandwidth
+	// null
 	EipInternetChargeType *string `json:"eip_internet_charge_type,omitempty" xml:"eip_internet_charge_type,omitempty"`
 	// Specifies whether to enable auto scaling for the node pool. Valid values:
 	//
@@ -404,7 +418,7 @@ type CreateClusterNodePoolRequestAutoScaling struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// Deprecated
 	//
@@ -424,7 +438,7 @@ type CreateClusterNodePoolRequestAutoScaling struct {
 	//
 	// example:
 	//
-	// true
+	// null
 	IsBondEip *bool `json:"is_bond_eip,omitempty" xml:"is_bond_eip,omitempty"`
 	// The maximum number to which the Elastic Compute Service (ECS) instances in the node pool can be scaled. The number of nodes in the node pool cannot be greater than this value. This parameter takes effect only when `enable` is set to true. Valid values: [min_instances, 2000]. Default value: 0.
 	//
@@ -534,8 +548,18 @@ func (s *CreateClusterNodePoolRequestAutoScaling) Validate() error {
 }
 
 type CreateClusterNodePoolRequestEfloNodeGroup struct {
+	// The Lingjun cluster ID that must be associated when creating a Lingjun node pool.
+	//
+	// example:
+	//
+	// i1169130516633730****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	GroupId   *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	// The ID of the Lingjun group in the Lingjun cluster to associate when creating a Lingjun node pool.
+	//
+	// example:
+	//
+	// ng-ec3c96ff0aa****
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 }
 
 func (s CreateClusterNodePoolRequestEfloNodeGroup) String() string {
@@ -575,7 +599,7 @@ type CreateClusterNodePoolRequestInterconnectConfig struct {
 	//
 	// example:
 	//
-	// 10
+	// null
 	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
 	// This parameter is deprecated.
 	//
@@ -583,7 +607,7 @@ type CreateClusterNodePoolRequestInterconnectConfig struct {
 	//
 	// example:
 	//
-	// ccn-qm5i0i0q9yi*******
+	// null
 	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
 	// This parameter is deprecated.
 	//
@@ -591,7 +615,7 @@ type CreateClusterNodePoolRequestInterconnectConfig struct {
 	//
 	// example:
 	//
-	// cn-shanghai
+	// null
 	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
 	// This parameter is deprecated.
 	//
@@ -599,7 +623,7 @@ type CreateClusterNodePoolRequestInterconnectConfig struct {
 	//
 	// example:
 	//
-	// cen-ey9k9nfhz0f*******
+	// null
 	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
 	// This parameter is deprecated.
 	//
@@ -607,7 +631,7 @@ type CreateClusterNodePoolRequestInterconnectConfig struct {
 	//
 	// example:
 	//
-	// 1
+	// null
 	ImprovedPeriod *string `json:"improved_period,omitempty" xml:"improved_period,omitempty"`
 }
 
@@ -679,7 +703,7 @@ type CreateClusterNodePoolRequestKubernetesConfig struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	CmsEnabled *bool `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
 	// The CPU management policy of nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
 	//
@@ -705,7 +729,7 @@ type CreateClusterNodePoolRequestKubernetesConfig struct {
 	//
 	// example:
 	//
-	// customized,aliyun,ip,com
+	// aliyun.com192.XX.YY.55test
 	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
 	// The user-defined data of nodes. You can specify custom scripts that are automatically executed before the nodes are initialized.
 	//
@@ -725,13 +749,13 @@ type CreateClusterNodePoolRequestKubernetesConfig struct {
 	//
 	// example:
 	//
-	// docker
+	// containerd
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The version of the container runtime.
 	//
 	// example:
 	//
-	// 19.03.5
+	// 1.6.38
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// The configurations of the taints.
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
@@ -870,6 +894,7 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) Validate() error {
 }
 
 type CreateClusterNodePoolRequestManagement struct {
+	AutoFaultDiagnosis *bool `json:"auto_fault_diagnosis,omitempty" xml:"auto_fault_diagnosis,omitempty"`
 	// Specifies whether to enable auto node repair. This parameter takes effect only when `enable` is set to true.
 	//
 	// 	- `true`: enables auto node repair.
@@ -880,7 +905,7 @@ type CreateClusterNodePoolRequestManagement struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	AutoRepair *bool `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
 	// The auto node repair policy.
 	AutoRepairPolicy *CreateClusterNodePoolRequestManagementAutoRepairPolicy `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
@@ -938,6 +963,10 @@ func (s CreateClusterNodePoolRequestManagement) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterNodePoolRequestManagement) GetAutoFaultDiagnosis() *bool {
+	return s.AutoFaultDiagnosis
+}
+
 func (s *CreateClusterNodePoolRequestManagement) GetAutoRepair() *bool {
 	return s.AutoRepair
 }
@@ -968,6 +997,11 @@ func (s *CreateClusterNodePoolRequestManagement) GetEnable() *bool {
 
 func (s *CreateClusterNodePoolRequestManagement) GetUpgradeConfig() *CreateClusterNodePoolRequestManagementUpgradeConfig {
 	return s.UpgradeConfig
+}
+
+func (s *CreateClusterNodePoolRequestManagement) SetAutoFaultDiagnosis(v bool) *CreateClusterNodePoolRequestManagement {
+	s.AutoFaultDiagnosis = &v
+	return s
 }
 
 func (s *CreateClusterNodePoolRequestManagement) SetAutoRepair(v bool) *CreateClusterNodePoolRequestManagement {
@@ -1035,6 +1069,7 @@ func (s *CreateClusterNodePoolRequestManagement) Validate() error {
 }
 
 type CreateClusterNodePoolRequestManagementAutoRepairPolicy struct {
+	// Whether manual approval is required for edge zone repair.
 	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
 	// Specifies whether to allow node restart. This parameter takes effect only when `auto_repair` is set to true. Valid values:
 	//
@@ -1159,6 +1194,13 @@ func (s *CreateClusterNodePoolRequestManagementAutoUpgradePolicy) Validate() err
 }
 
 type CreateClusterNodePoolRequestManagementAutoVulFixPolicy struct {
+	// Packages to exclude during vulnerability remediation.
+	//
+	// Default Value: `kernel`.
+	//
+	// example:
+	//
+	// kernel
 	ExcludePackages *string `json:"exclude_packages,omitempty" xml:"exclude_packages,omitempty"`
 	// Specifies whether to allow node restart. This parameter takes effect only when `auto_vul_fix` is set to true. Valid values:
 	//
@@ -1168,7 +1210,7 @@ type CreateClusterNodePoolRequestManagementAutoVulFixPolicy struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
 	// The severity levels of CVEs that can be automatically patched. Separate multiple levels with commas (,). Example: `asap,later`. Valid values:
 	//
@@ -1240,7 +1282,7 @@ type CreateClusterNodePoolRequestManagementUpgradeConfig struct {
 	//
 	// example:
 	//
-	// false
+	// null
 	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
 	// The maximum number of nodes that can be in the Unavailable state. Valid values: 1 to 1000.
 	//
@@ -1313,11 +1355,16 @@ func (s *CreateClusterNodePoolRequestManagementUpgradeConfig) Validate() error {
 }
 
 type CreateClusterNodePoolRequestNodeComponents struct {
+	// Configuration of the edge zone widget.
 	Config *CreateClusterNodePoolRequestNodeComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// Name of the edge zone widget.
+	//
 	// example:
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Version of the edge zone widget.
+	//
 	// example:
 	//
 	// 1.33.3-aliyun.1
@@ -1369,6 +1416,7 @@ func (s *CreateClusterNodePoolRequestNodeComponents) Validate() error {
 }
 
 type CreateClusterNodePoolRequestNodeComponentsConfig struct {
+	// Custom Configuration of the edge zone widget.
 	CustomConfig map[string]*string `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
 }
 
@@ -1431,7 +1479,7 @@ type CreateClusterNodePoolRequestNodepoolInfo struct {
 	//
 	// example:
 	//
-	// cluster-demo
+	// nodepool-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the resource group to which the node pool belongs. Instances that are added to the node pool belong to this resource group.
 	//
@@ -1523,7 +1571,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// example:
 	//
-	// false
+	// null
 	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as the price or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values:
 	//
@@ -1548,8 +1596,9 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// 0
-	DesiredSize *int64      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	DiskInit    []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
+	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	// Block device initialization configuration.
+	DiskInit []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
 	// The custom image ID. By default, the image provided by Container Service for Kubernetes (ACK) is used.
 	//
 	// example:
@@ -1580,7 +1629,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// example:
 	//
-	// AliyunLinux
+	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The billing method of nodes in the node pool. Valid values:
 	//
@@ -1594,8 +1643,9 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// example:
 	//
-	// PrePaid
-	InstanceChargeType      *string                  `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	// PostPaid
+	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	// Access configuration for ECS instance metadata.
 	InstanceMetadataOptions *InstanceMetadataOptions `json:"instance_metadata_options,omitempty" xml:"instance_metadata_options,omitempty"`
 	// The instance attributes.
 	InstancePatterns []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
@@ -1639,7 +1689,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// example:
 	//
-	// Hello1234
+	// ****
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// The ECS instance scaling policy for the multi-zone scaling group. Valid values:
 	//
@@ -1709,7 +1759,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// example:
 	//
-	// AliyunLinux
+	// null
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// The configurations of the private node pool.
 	PrivatePoolOptions *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
@@ -1726,7 +1776,12 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// example-role
 	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
 	// The IDs of ApsaraDB RDS instances.
-	RdsInstances        []*string                                                    `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// The resource pool and resource pool policy used when creating instances. After you set this parameter, note the following:
+	//
+	// This parameter takes effect only when pay-as-you-go instances are created.
+	//
+	// This parameter cannot be set together with `private_pool_options.match_criteria` or `private_pool_options.id`.
 	ResourcePoolOptions *CreateClusterNodePoolRequestScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
 	// The scaling mode of the scaling group. Valid values:
 	//
@@ -1895,7 +1950,12 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// 120
-	SystemDiskSize             *int64  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	// Snapshot policy for the system disk.
+	//
+	// example:
+	//
+	// sp-0jl6xnmme8v7o935****
 	SystemDiskSnapshotPolicyId *string `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
 	// The tags that you want to add only to ECS instances.
 	//
@@ -2448,7 +2508,7 @@ type CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions struct {
 	//
 	// example:
 	//
-	// Open
+	// Target
 	MatchCriteria *string `json:"match_criteria,omitempty" xml:"match_criteria,omitempty"`
 }
 
@@ -2483,7 +2543,18 @@ func (s *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) Validate() 
 }
 
 type CreateClusterNodePoolRequestScalingGroupResourcePoolOptions struct {
+	// A list of private pool IDs, which are either Elasticity Assurance service IDs or Capacity Reservation service IDs. This parameter accepts only private pool IDs in Target pattern. The value range for N is 1 to 20.
 	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
+	// The resource pool policy used when creating an instance. Resource pools include private pools generated after Elasticity Assurance or Capacity Reservation services take effect, as well as the public pool, which are available for selection when starting an instance. Valid values:
+	//
+	// PrivatePoolFirst: Private pool first. With this policy, if `resource_pool_options.private_pool_ids` is specified, the specified private pool is used first. If no private pool is specified or the specified private pool lacks sufficient capacity, an open-type private pool is automatically matched. If no eligible private pool exists, the instance is created using the public pool.
+	//
+	// PrivatePoolOnly: Private pool only. With this policy, you must specify `resource_pool_options.private_pool_ids`. If the specified private pool lacks sufficient capacity, instance startup fails.
+	//
+	// None: Do not use a resource pool policy.
+	//
+	// Default Value: None.
+	//
 	// example:
 	//
 	// PrivatePoolFirst

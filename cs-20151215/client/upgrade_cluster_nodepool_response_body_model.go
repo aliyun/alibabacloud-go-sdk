@@ -26,7 +26,7 @@ type UpgradeClusterNodepoolResponseBody struct {
 	//
 	// example:
 	//
-	// T-5fd211e924e1d0078700xxxx
+	// T-5fd211e924e1d0078700****
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

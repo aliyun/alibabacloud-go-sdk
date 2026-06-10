@@ -26,14 +26,19 @@ type iContainerdConfig interface {
 }
 
 type ContainerdConfig struct {
+	// Whether to ignore volumes defined in the image.
 	IgnoreImageDefinedVolume *bool `json:"ignoreImageDefinedVolume,omitempty" xml:"ignoreImageDefinedVolume,omitempty"`
-	// Insecure image repositories that skipped the TLS certificate verification.
-	InsecureRegistries     []*string `json:"insecureRegistries,omitempty" xml:"insecureRegistries,omitempty" type:"Repeated"`
-	LimitCore              *int64    `json:"limitCore,omitempty" xml:"limitCore,omitempty"`
-	LimitMemLock           *int64    `json:"limitMemLock,omitempty" xml:"limitMemLock,omitempty"`
-	LimitNoFile            *int64    `json:"limitNoFile,omitempty" xml:"limitNoFile,omitempty"`
-	MaxConcurrentDownloads *int64    `json:"maxConcurrentDownloads,omitempty" xml:"maxConcurrentDownloads,omitempty"`
-	// The image accelerator configuration.
+	// A list of insecure registries that skip TLS certificate verification.
+	InsecureRegistries []*string `json:"insecureRegistries,omitempty" xml:"insecureRegistries,omitempty" type:"Repeated"`
+	// Maximum core dump size in bytes.
+	LimitCore *int64 `json:"limitCore,omitempty" xml:"limitCore,omitempty"`
+	// Maximum locked memory in bytes.
+	LimitMemLock *int64 `json:"limitMemLock,omitempty" xml:"limitMemLock,omitempty"`
+	// Maximum number of open file handles.
+	LimitNoFile *int64 `json:"limitNoFile,omitempty" xml:"limitNoFile,omitempty"`
+	// The maximum number of concurrent image layer downloads.
+	MaxConcurrentDownloads *int64 `json:"maxConcurrentDownloads,omitempty" xml:"maxConcurrentDownloads,omitempty"`
+	// A list of registry mirrors to accelerate image pulls.
 	RegistryMirrors []*string `json:"registryMirrors,omitempty" xml:"registryMirrors,omitempty" type:"Repeated"`
 }
 

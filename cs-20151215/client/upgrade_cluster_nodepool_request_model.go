@@ -30,13 +30,13 @@ type UpgradeClusterNodepoolRequest struct {
 	//
 	// example:
 	//
-	// aliyun_2_1903_x64_20G_alibase_20200529.vhd
+	// aliyun_3_x64_20G_container_optimized_20241226.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// The Kubernetes version used by the nodes. You can call the [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) operation and get the Kubernetes version of the current cluster in the current_version field.
 	//
 	// example:
 	//
-	// 1.22.15-aliyun.1
+	// 1.32.1-aliyun.1
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
 	// The nodes you want to update. If you do not specify this parameter, all nodes in the node pool are updated by default.
 	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
@@ -52,7 +52,7 @@ type UpgradeClusterNodepoolRequest struct {
 	//
 	// example:
 	//
-	// 1.5.10
+	// 1.6.36
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// Specifies whether to perform the update by replacing the system disk. Valid values:
 	//
@@ -153,13 +153,13 @@ type UpgradeClusterNodepoolRequestRollingPolicy struct {
 	//
 	// example:
 	//
-	// 5 minutes
+	// 5
 	BatchInterval *int32 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
 	// The maximum number of nodes per batch.
 	//
 	// example:
 	//
-	// 3
+	// 2
 	MaxParallelism *int32 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
 	// The policy used to pause the update. Valid values:
 	//

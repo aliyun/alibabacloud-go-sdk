@@ -22,19 +22,19 @@ type MigrateClusterResponseBody struct {
 	//
 	// example:
 	//
-	// c8155823d057948c69a****
+	// c21e0591548ba4c10bdb535d657******
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 20758A-585D-4A41-A9B2-28DA8F4F534F
+	// 687C5BAA-D103-4993-884B-C35E43******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// T-62ccd14aacb8db06ca00****
+	// T-62ccd14aacb8db06ca******
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

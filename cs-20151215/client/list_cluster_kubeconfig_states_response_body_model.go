@@ -186,8 +186,14 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	// example:
 	//
 	// Expired
-	CertState         *string                                                           `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
-	CloudServiceName  *string                                                           `json:"cloud_service_name,omitempty" xml:"cloud_service_name,omitempty"`
+	CertState *string `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	// Cloud service name.
+	//
+	// example:
+	//
+	// cs/ecs/sls
+	CloudServiceName *string `json:"cloud_service_name,omitempty" xml:"cloud_service_name,omitempty"`
+	// List of cluster roles associated with the cluster cloud product service roles.
 	CloudServiceRoles []*ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles `json:"cloud_service_roles,omitempty" xml:"cloud_service_roles,omitempty" type:"Repeated"`
 	// Indicates whether the client certificate for the kubeconfig file can be revoked.
 	//
@@ -309,10 +315,30 @@ func (s *ListClusterKubeconfigStatesResponseBodyStates) Validate() error {
 }
 
 type ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles struct {
-	IsDefaultTemplate *bool   `json:"is_default_template,omitempty" xml:"is_default_template,omitempty"`
-	RoleName          *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
-	RoleNamespace     *string `json:"role_namespace,omitempty" xml:"role_namespace,omitempty"`
-	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Indicates whether the content matches the default cluster role template.
+	//
+	// - true: Matches
+	//
+	// - false: Does not match
+	IsDefaultTemplate *bool `json:"is_default_template,omitempty" xml:"is_default_template,omitempty"`
+	// Name of the cluster role associated with the cluster cloud product service role.
+	//
+	// example:
+	//
+	// cluster-admin
+	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+	// Namespace of the cluster role associated with the cluster cloud product service role.
+	//
+	// example:
+	//
+	// kube-system
+	RoleNamespace *string `json:"role_namespace,omitempty" xml:"role_namespace,omitempty"`
+	// The type of the cluster role associated with the cloud service role of the cluster.
+	//
+	// example:
+	//
+	// ClusterRole
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles) String() string {

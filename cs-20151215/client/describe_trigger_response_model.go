@@ -76,7 +76,7 @@ type DescribeTriggerResponseBody struct {
 	//
 	// example:
 	//
-	// 1234
+	// 75973497486******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the trigger.
 	//

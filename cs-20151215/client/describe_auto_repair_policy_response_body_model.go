@@ -24,24 +24,34 @@ type iDescribeAutoRepairPolicyResponseBody interface {
 }
 
 type DescribeAutoRepairPolicyResponseBody struct {
+	// The ID of the auto-repair rule.
+	//
 	// example:
 	//
 	// r-xxx
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the auto-repair rule.
+	//
 	// example:
 	//
 	// test
-	Name        *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The IDs of resources affected by the auto-repair rule.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
+	// The subtype of the resource affected by the auto-repair rule.
+	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
+	// The resource type affected by the auto-repair rule.
+	//
 	// example:
 	//
 	// nodepool
-	ResourceType *string                                      `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	Rules        []*DescribeAutoRepairPolicyResponseBodyRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// The list of rules.
+	Rules []*DescribeAutoRepairPolicyResponseBodyRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAutoRepairPolicyResponseBody) String() string {
@@ -120,7 +130,9 @@ func (s *DescribeAutoRepairPolicyResponseBody) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRules struct {
-	Incidents       []*DescribeAutoRepairPolicyResponseBodyRulesIncidents       `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
+	// The detected incidents that trigger the rule.
+	Incidents []*DescribeAutoRepairPolicyResponseBodyRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
+	// The repair procedure, which contains a list of repair actions.
 	RepairProcedure []*DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
 }
 
@@ -173,10 +185,14 @@ func (s *DescribeAutoRepairPolicyResponseBodyRules) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesIncidents struct {
+	// The incident name.
+	//
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The incident type.
+	//
 	// example:
 	//
 	// system
@@ -214,8 +230,12 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure struct {
-	Config       map[string]interface{}                                                `json:"config,omitempty" xml:"config,omitempty"`
+	// The configuration parameters for the repair action.
+	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// The manual approval configuration.
 	Intervention *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
+	// The name of the repair action.
+	//
 	// example:
 	//
 	// QuarantineGPU
@@ -267,12 +287,18 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure) Validate() er
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention struct {
+	// The label you add to a node to approve a repair action. When ACK detects this label, it proceeds with the current repair step. After the action is complete, ACK automatically removes both the inquiring and approved labels. If you do not add this label promptly, the repair procedure is paused, and the node may remain unhealthy.
 	ApprovedLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
+	// Specifies whether to enable manual approval.
+	//
 	// example:
 	//
 	// true
-	Enable         *bool                                                                               `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// When a repair procedure reaches this step, ACK applies this label to the affected node and pauses until you grant approval.
 	InquiringLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
+	// The manual approval type.
+	//
 	// example:
 	//
 	// label
@@ -338,10 +364,14 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) V
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel struct {
+	// The label\\"s `key`.
+	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label\\"s value.
+	//
 	// example:
 	//
 	// approved
@@ -379,10 +409,14 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApp
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel struct {
+	// The label key.
+	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// inquiring

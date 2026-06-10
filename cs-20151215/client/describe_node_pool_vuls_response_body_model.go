@@ -168,7 +168,8 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	// example:
 	//
 	// false
-	NeedReboot  *bool                                                           `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
+	NeedReboot *bool `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
+	// List of packages affected by the vulnerability.
 	PackageList []*DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList `json:"package_list,omitempty" xml:"package_list,omitempty" type:"Repeated"`
 }
 
@@ -248,6 +249,11 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList struct {
+	// Package name.
+	//
+	// example:
+	//
+	// WebLogic
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

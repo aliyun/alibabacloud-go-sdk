@@ -18,14 +18,10 @@ type iRemoveClusterNodesRequest interface {
 }
 
 type RemoveClusterNodesRequest struct {
-	// Specifies whether to evict all pods from the nodes that you want to remove.
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
-	// The list of nodes to be removed.
-	//
 	// This parameter is required.
-	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// Specifies whether to release the Elastic Compute Service (ECS) instances when they are removed from the cluster.
-	ReleaseNode *bool `json:"release_node,omitempty" xml:"release_node,omitempty"`
+	Nodes       []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	ReleaseNode *bool     `json:"release_node,omitempty" xml:"release_node,omitempty"`
 }
 
 func (s RemoveClusterNodesRequest) String() string {

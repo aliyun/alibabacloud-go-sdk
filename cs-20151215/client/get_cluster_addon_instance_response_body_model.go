@@ -137,7 +137,7 @@ type GetClusterAddonInstanceResponseBodyLogging struct {
 	//
 	// example:
 	//
-	// my-log-project
+	// k8s-log-c02b3e03be10643e8a644a843ffcb****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
 	// The Simple Log Service Logstore that is used to collect logs for the component.
 	//

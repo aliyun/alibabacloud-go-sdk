@@ -131,7 +131,7 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// example:
 	//
-	// 2026-11-30T07:41:50Z
+	// 2028-04-09T06:20:47Z
 	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
 	// The current status of the certificate used in a kubeconfig file. Valid values:
 	//

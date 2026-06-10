@@ -26,7 +26,7 @@ type RunClusterCheckRequest struct {
 	//
 	// example:
 	//
-	// np1f6779297c4444a3a1cdd29be8e5****
+	// np1f6779297c4444a3a1cdd29be8******
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
 	// The check type.
 	//
@@ -44,7 +44,7 @@ type RunClusterCheckRequest struct {
 	//
 	// example:
 	//
-	// ClusterUpgrade
+	// NodePoolUpgrade
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

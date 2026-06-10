@@ -32,7 +32,7 @@ type DescribeClusterNodesRequest struct {
 	//
 	// example:
 	//
-	// np****
+	// npe25633140a7d4fbea56cd0479c******
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
 	// The page number.
 	//

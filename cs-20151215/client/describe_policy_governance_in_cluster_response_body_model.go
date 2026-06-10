@@ -18,10 +18,11 @@ type iDescribePolicyGovernanceInClusterResponseBody interface {
 }
 
 type DescribePolicyGovernanceInClusterResponseBody struct {
+	// A summary of policy violations, grouped by severity.
 	Violation *DescribePolicyGovernanceInClusterResponseBodyViolation `json:"Violation,omitempty" xml:"Violation,omitempty" type:"Struct"`
-	// The audit logs of the policies in the cluster.
+	// The audit log for policy governance in the cluster.
 	AdmitLog *DescribePolicyGovernanceInClusterResponseBodyAdmitLog `json:"admit_log,omitempty" xml:"admit_log,omitempty" type:"Struct"`
-	// Details about the policies of different severity levels that are enabled for the cluster.
+	// The statistics for enabled policies in the cluster, categorized by severity.
 	OnState []*DescribePolicyGovernanceInClusterResponseBodyOnState `json:"on_state,omitempty" xml:"on_state,omitempty" type:"Repeated"`
 }
 
@@ -84,8 +85,10 @@ func (s *DescribePolicyGovernanceInClusterResponseBody) Validate() error {
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolation struct {
+	// A summary of all policy violations.
 	TotalViolations *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations `json:"totalViolations,omitempty" xml:"totalViolations,omitempty" type:"Struct"`
-	Violations      *DescribePolicyGovernanceInClusterResponseBodyViolationViolations      `json:"violations,omitempty" xml:"violations,omitempty" type:"Struct"`
+	// A summary of violations, grouped by policy name.
+	Violations *DescribePolicyGovernanceInClusterResponseBodyViolationViolations `json:"violations,omitempty" xml:"violations,omitempty" type:"Struct"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyViolation) String() string {
@@ -129,7 +132,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) Validate() erro
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations struct {
+	// A summary of deny actions.
 	Deny []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Repeated"`
+	// A summary of warn actions.
 	Warn []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Repeated"`
 }
 
@@ -182,7 +187,17 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations) 
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny struct {
-	Severity   *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The severity level. Valid values: `low`, `medium`, and `high`.
+	//
+	// example:
+	//
+	// medium
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The number of violations.
+	//
+	// example:
+	//
+	// 2
 	Violations *string `json:"violations,omitempty" xml:"violations,omitempty"`
 }
 
@@ -217,8 +232,18 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDe
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn struct {
-	Severity   *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	Violations *int64  `json:"violations,omitempty" xml:"violations,omitempty"`
+	// The severity level. Valid values: `low`, `medium`, and `high`.
+	//
+	// example:
+	//
+	// high
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The number of violations.
+	//
+	// example:
+	//
+	// 0
+	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn) String() string {
@@ -252,7 +277,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWa
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationViolations struct {
+	// A summary of deny actions.
 	Deny []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Repeated"`
+	// A summary of warn actions.
 	Warn []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Repeated"`
 }
 
@@ -305,10 +332,30 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolations) Valid
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny struct {
+	// The policy description.
+	//
+	// example:
+	//
+	// Prevent specific namespaces from being deleted.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	PolicyName        *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	Severity          *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	Violations        *int64  `json:"violations,omitempty" xml:"violations,omitempty"`
+	// The policy name.
+	//
+	// example:
+	//
+	// ACKNamespacesDeleteProtection
+	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The severity level.
+	//
+	// example:
+	//
+	// medium
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The number of violations.
+	//
+	// example:
+	//
+	// 1
+	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) String() string {
@@ -360,10 +407,14 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) V
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn struct {
+	// The policy description.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	PolicyName        *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	Severity          *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	Violations        *int64  `json:"violations,omitempty" xml:"violations,omitempty"`
+	// The policy name.
+	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The severity level.
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The number of violations.
+	Violations *int64 `json:"violations,omitempty" xml:"violations,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) String() string {
@@ -415,20 +466,31 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn) V
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyAdmitLog struct {
-	// The number of audit log entries.
+	// The total number of logs returned by the current query.
 	//
 	// example:
 	//
 	// 100
-	Count      *int64                                                       `json:"count,omitempty" xml:"count,omitempty"`
-	LogProject *string                                                      `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	LogStore   *string                                                      `json:"log_store,omitempty" xml:"log_store,omitempty"`
-	Logs       []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The log project that stores policy enforcement information.
+	//
+	// example:
+	//
+	// k8s-log-clusterid
+	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
+	// The log store that stores policy enforcement information.
+	//
+	// example:
+	//
+	// policyadmit-clusterid
+	LogStore *string `json:"log_store,omitempty" xml:"log_store,omitempty"`
+	// The log entries for policy violations.
+	Logs []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
 	// The status of the query. Valid values:
 	//
-	// 	- `Complete`: The query succeeded and the complete query result is returned.
+	// - `Complete`: All query results are returned.
 	//
-	// 	- `Incomplete`: The query succeeded but the query result is incomplete. To obtain the complete query result, you must repeat the request.
+	// - `Incomplete`: The query returned a partial result set. Send the request again to retrieve the remaining results.
 	//
 	// example:
 	//
@@ -503,21 +565,100 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLog) Validate() error
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
-	ClusterId            *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	ConstraintAction     *string `json:"constraint_action,omitempty" xml:"constraint_action,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// hash code
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The enforcement action of the policy. Valid values:
+	//
+	// - `warn`: Logs a warning for the violating request but allows it to proceed.
+	//
+	// - deny: Deny requests that violate the policy.
+	//
+	// example:
+	//
+	// deny
+	ConstraintAction *string `json:"constraint_action,omitempty" xml:"constraint_action,omitempty"`
+	// The API version of the policy.
+	//
+	// example:
+	//
+	// v1beta1
 	ConstraintApiVersion *string `json:"constraint_api_version,omitempty" xml:"constraint_api_version,omitempty"`
-	ConstraintCategory   *string `json:"constraint_category,omitempty" xml:"constraint_category,omitempty"`
-	ConstraintGroup      *string `json:"constraint_group,omitempty" xml:"constraint_group,omitempty"`
-	ConstraintKind       *string `json:"constraint_kind,omitempty" xml:"constraint_kind,omitempty"`
-	ConstraintName       *string `json:"constraint_name,omitempty" xml:"constraint_name,omitempty"`
-	EventMsg             *string `json:"event_msg,omitempty" xml:"event_msg,omitempty"`
-	EventType            *string `json:"event_type,omitempty" xml:"event_type,omitempty"`
-	RequestUid           *string `json:"request_uid,omitempty" xml:"request_uid,omitempty"`
-	RequestUserinfo      *string `json:"request_userinfo,omitempty" xml:"request_userinfo,omitempty"`
-	RequestUsername      *string `json:"request_username,omitempty" xml:"request_username,omitempty"`
-	ResourceKind         *string `json:"resource_kind,omitempty" xml:"resource_kind,omitempty"`
-	ResourceName         *string `json:"resource_name,omitempty" xml:"resource_name,omitempty"`
-	Time                 *string `json:"time,omitempty" xml:"time,omitempty"`
+	// The policy type.
+	//
+	// example:
+	//
+	// cis-k8s
+	ConstraintCategory *string `json:"constraint_category,omitempty" xml:"constraint_category,omitempty"`
+	// The API group of the policy.
+	//
+	// example:
+	//
+	// constraints.gatekeeper.sh
+	ConstraintGroup *string `json:"constraint_group,omitempty" xml:"constraint_group,omitempty"`
+	// The kind of the policy constraint.
+	//
+	// example:
+	//
+	// ACKNamespacesDeleteProtection
+	ConstraintKind *string `json:"constraint_kind,omitempty" xml:"constraint_kind,omitempty"`
+	// The name of the policy instance.
+	//
+	// example:
+	//
+	// namespace-delete-protection-jpjwv
+	ConstraintName *string `json:"constraint_name,omitempty" xml:"constraint_name,omitempty"`
+	// The message generated by the policy enforcement.
+	//
+	// example:
+	//
+	// Admission webhook \\"validation.gatekeeper.sh\\" denied request, Resource Namespace: , Constraint: namespace-delete-protection-jpjwv, Message: not allow to delete protection namespace test.
+	EventMsg *string `json:"event_msg,omitempty" xml:"event_msg,omitempty"`
+	// The type of the logged event, such as `violation`.
+	//
+	// example:
+	//
+	// violation
+	EventType *string `json:"event_type,omitempty" xml:"event_type,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// hash code
+	RequestUid *string `json:"request_uid,omitempty" xml:"request_uid,omitempty"`
+	// Information about the user who made the request that violated the policy.
+	//
+	// example:
+	//
+	// account id
+	RequestUserinfo *string `json:"request_userinfo,omitempty" xml:"request_userinfo,omitempty"`
+	// The name of the user who made the request that violated the policy.
+	//
+	// example:
+	//
+	// account user name
+	RequestUsername *string `json:"request_username,omitempty" xml:"request_username,omitempty"`
+	// The type of the violating resource. For example, if a request to operate on a namespace is denied, the value is `Namespace`.
+	//
+	// example:
+	//
+	// Namespace
+	ResourceKind *string `json:"resource_kind,omitempty" xml:"resource_kind,omitempty"`
+	// The name of the violating resource.
+	//
+	// example:
+	//
+	// test
+	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty"`
+	// The time when the policy violation occurred.
+	//
+	// example:
+	//
+	// 2025-10-27T11:31:40Z
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) String() string {
@@ -668,7 +809,7 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) Validate() e
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyOnState struct {
-	// The number of policies that are enabled.
+	// The number of enabled policy types.
 	//
 	// example:
 	//
@@ -680,7 +821,7 @@ type DescribePolicyGovernanceInClusterResponseBodyOnState struct {
 	//
 	// high
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The total number of policies of the severity level.
+	// The total number of policy types for this severity.
 	//
 	// example:
 	//

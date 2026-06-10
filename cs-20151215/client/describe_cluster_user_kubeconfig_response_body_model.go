@@ -20,7 +20,7 @@ type DescribeClusterUserKubeconfigResponseBody struct {
 	//
 	// example:
 	//
-	// apiVersion: v1****
+	// apiVersion: v1\\nclusters:\\n- cluster:\\n    server: https://114.55.xx.xx:6443\\n    certificate-authority-data: LS0tLS****
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// The expiration time of the kubeconfig file. Format: the UTC time in the RFC3339 format.
 	//

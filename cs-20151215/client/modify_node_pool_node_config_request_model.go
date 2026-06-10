@@ -26,7 +26,8 @@ type ModifyNodePoolNodeConfigRequest struct {
 	ContainerdConfig *ContainerdConfig `json:"containerd_config,omitempty" xml:"containerd_config,omitempty"`
 	// The kubelet configurations.
 	KubeletConfig *KubeletConfig `json:"kubelet_config,omitempty" xml:"kubelet_config,omitempty"`
-	NodeNames     []*string      `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
+	// List of nodes to upgrade.
+	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
 	// The OS configuration.
 	OsConfig *ModifyNodePoolNodeConfigRequestOsConfig `json:"os_config,omitempty" xml:"os_config,omitempty" type:"Struct"`
 	// The rolling policy configuration.
@@ -111,6 +112,7 @@ func (s *ModifyNodePoolNodeConfigRequest) Validate() error {
 }
 
 type ModifyNodePoolNodeConfigRequestOsConfig struct {
+	// Hugepage configuration.
 	Hugepage *Hugepage `json:"hugepage,omitempty" xml:"hugepage,omitempty"`
 	// The sysctl configuration.
 	Sysctl map[string]interface{} `json:"sysctl,omitempty" xml:"sysctl,omitempty"`

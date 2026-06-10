@@ -61,7 +61,7 @@ type UpgradeClusterAddonsRequestBody struct {
 	//
 	// example:
 	//
-	// {\\"CpuRequest\\":\\"800m\\"}
+	// {"CpuRequest":"800m"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// The version to which the component can be updated. You can call the `DescribeClusterAddonsVersion` operation to query the version to which the component can be updated.
 	//
@@ -69,7 +69,7 @@ type UpgradeClusterAddonsRequestBody struct {
 	//
 	// example:
 	//
-	// 1.6.7
+	// v1.11.3.5-5321daf49-aliyun
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// The update policy. Valid values:
 	//
@@ -85,7 +85,7 @@ type UpgradeClusterAddonsRequestBody struct {
 	//
 	// example:
 	//
-	// v1.6.2
+	// v1.11.3.2-f57ea7ed6-aliyun
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

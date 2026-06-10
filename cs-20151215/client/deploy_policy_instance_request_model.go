@@ -18,23 +18,23 @@ type iDeployPolicyInstanceRequest interface {
 }
 
 type DeployPolicyInstanceRequest struct {
-	// The action of the policy. Valid values:
+	// The governance action. Valid values:
 	//
-	// 	- `deny`: Deployments that match the policy are denied.
+	// - `deny`: Denies deployments that violate the rule.
 	//
-	// 	- `warn`: Alerts are generated for Deployments that match the policy.
+	// - `warn`: Generates an alert for deployments that violate the rule.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The namespaces to which the policy applies. If you leave this parameter empty, the policy is applicable to all namespaces of the cluster.
+	// The namespaces where the policy applies. If you omit this parameter, the policy applies to all namespaces.
 	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
-	// The parameter settings of the policy. For more information about the parameters supported by each policy, see [Predefined security policies of ACK](https://www.alibabacloud.com/help/doc-detail/359819.html).
+	// For details on the parameters supported by each policy governance rule, see [Container security policy rules](https://www.alibabacloud.com/help/doc-detail/359819.html).
 	//
 	// example:
 	//
-	// {"restrictedNamespaces": [ "test" ]}
+	// {   "repos": [     "registry-vpc.cn-hangzhou.aliyuncs.com/acs/",     "registry.cn-hangzhou.aliyuncs.com/acs/"   ] }
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 }
 

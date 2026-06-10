@@ -14,6 +14,8 @@ type iDeleteAutoRepairPolicyResponseBody interface {
 }
 
 type DeleteAutoRepairPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A9891419-D125-4D89-AFCA-68846675****

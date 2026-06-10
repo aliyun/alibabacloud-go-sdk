@@ -18,6 +18,15 @@ type iListClusterKubeconfigStatesRequest interface {
 }
 
 type ListClusterKubeconfigStatesRequest struct {
+	// Whether to query the KubeConfig list of service roles for cloud products within the cluster.
+	//
+	// - true: Query the KubeConfig list of service roles for cloud products within the cluster.
+	//
+	// - false: Query the KubeConfig list of Resource Access Management (RAM) users or roles within the cluster.
+	//
+	// example:
+	//
+	// true
 	CloudServiceKubeConfig *bool `json:"cloudServiceKubeConfig,omitempty" xml:"cloudServiceKubeConfig,omitempty"`
 	// The page number.
 	//

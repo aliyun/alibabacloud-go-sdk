@@ -26,61 +26,71 @@ type iDescribeClustersForRegionRequest interface {
 }
 
 type DescribeClustersForRegionRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// c8155823d057948c69a****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The specification of the clusters to query. Valid values:
+	// The specification of the cluster. Valid values:
 	//
-	// 	- ack.pro.small: ACK Pro clusters.
+	// - `ack.standard`: Standard Edition
 	//
-	// 	- ack.standard: ACK Basic clusters.
+	// - `ack.pro.small`: Pro Edition
+	//
+	// - `ack.pro.xlarge`: Pro XL
+	//
+	// - `ack.pro.2xlarge`: Pro 2XL
+	//
+	// - `ack.pro.4xlarge`: Pro 4XL (To use this specification, you must submit a ticket.)
+	//
+	// Pro XL, Pro 2XL, and Pro 4XL are three specifications available for the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These specifications ensure a high and deterministic level of API concurrency and Pod scheduling capabilities by pre-allocating and dedicating control plane resources. They are suitable for AI training and inference, large-scale clusters, and mission-critical workloads.
+	//
+	// For information about the cluster management fees for Pro Edition and provisioned control plane clusters, see <props="china">[cluster management fee](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[cluster management fee](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
 	// ack.standard
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The type of the clusters to query. Valid values:
+	// The type of the cluster. Valid values:
 	//
-	// 	- Kubernetes: ACK dedicated clusters.
+	// - `Kubernetes`: an ACK dedicated cluster.
 	//
-	// 	- ManagedKubernetes: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+	// - `ManagedKubernetes`: an ACK managed cluster. This includes ACK managed clusters (Pro and Standard Editions), ACK Serverless clusters (Pro and Standard Editions), ACK Edge clusters (Pro and Standard Editions), and ACK Lingjun clusters (Pro Edition).
 	//
-	// 	- ExternalKubernetes: registered clusters.
+	// - `ExternalKubernetes`: a registered cluster.
 	//
 	// example:
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// Perform a fuzzy search by using the cluster name.
+	// The name of the cluster. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// test-cluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of pages.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of records on each page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 3
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The subtype of the clusters to query. Valid values:
+	// The subtype of the cluster. Valid values:
 	//
-	// 	- Default: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// - `Default`: ACK managed clusters, including Pro and Standard Editions.
 	//
-	// 	- Edge: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// - `Edge`: ACK Edge clusters, including Pro and Standard Editions.
 	//
-	// 	- Serverless: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// - `Serverless`: ACK Serverless clusters, including Pro and Standard Editions.
 	//
-	// 	- Lingjun: ACK Lingjun Pro clusters.
+	// - `LingJun`: ACK Lingjun clusters, available in the Pro Edition.
 	//
 	// example:
 	//

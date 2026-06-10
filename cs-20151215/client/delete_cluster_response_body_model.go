@@ -18,7 +18,7 @@ type iDeleteClusterResponseBody interface {
 }
 
 type DeleteClusterResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DeleteClusterResponseBody struct {
 	//
 	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

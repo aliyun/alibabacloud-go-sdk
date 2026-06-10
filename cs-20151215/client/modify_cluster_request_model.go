@@ -54,55 +54,73 @@ type iModifyClusterRequest interface {
 type ModifyClusterRequest struct {
 	// Deprecated
 	//
-	// The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
+	// The access control list for the API server SLB of registered clusters.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
-	// The custom subject alternative names (SANs) for the API server certificate to accept requests from specified IP addresses or domain names. This parameter is available only for ACK managed clusters.
+	// This parameter adds custom IP addresses or domain names to the SAN field of the API server certificate to control client access.
+	//
+	// Only managed clusters support this parameter.
 	ApiServerCustomCertSans *ModifyClusterRequestApiServerCustomCertSans `json:"api_server_custom_cert_sans,omitempty" xml:"api_server_custom_cert_sans,omitempty" type:"Struct"`
-	// Specifies whether to associate an elastic IP address (EIP) with the cluster. This EIP is used to enable access to the API server over the Internet. Valid values:
+	// Specifies whether to bind an EIP to the cluster for public network access to the API server. Valid values:
 	//
-	// 	- `true`: associates an EIP with the cluster.
+	// - `true`: Binds an EIP to the cluster.
 	//
-	// 	- `false`: does not associate an EIP with the cluster.
+	// - `false`: Does not bind an EIP to the cluster.
 	//
 	// example:
 	//
 	// true
 	ApiServerEip *bool `json:"api_server_eip,omitempty" xml:"api_server_eip,omitempty"`
-	// The ID of the EIP that you want to associate with the API server of the cluster. This parameter takes effect when `api_server_eip` is set to `true`.
+	// The EIP instance ID bound to the cluster API server. This parameter takes effect only when `api_server_eip` is set to `true`.
 	//
 	// example:
 	//
 	// eip-wz9fnasl6dsfhmvci****
 	ApiServerEipId *string `json:"api_server_eip_id,omitempty" xml:"api_server_eip_id,omitempty"`
-	// The cluster name.
-	//
-	// The cluster name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The cluster name cannot start with a hyphen (-).
+	// The custom cluster name. The name can contain digits, letters, Chinese characters, and hyphens (-). It must be 1 to 63 characters in length and cannot start with a hyphen (-).
 	//
 	// example:
 	//
 	// cluster-new-name
 	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
-	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The control plane configurations of an ACK dedicated cluster.
-	ControlPlaneConfig          *ModifyClusterRequestControlPlaneConfig          `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
-	ControlPlaneEndpointsConfig *ModifyClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
-	// Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. Valid values:
+	// The cluster specification when you set `cluster_type` to `ManagedKubernetes` and configure `profile`. Valid values:
 	//
-	// 	- `true`: enables cluster deletion protection.
+	// - `ack.pro.small`: Pro
 	//
-	// 	- `false`: disables cluster deletion protection.
+	// - `ack.pro.xlarge`: Pro XL
 	//
-	// Default value: `false`
+	// - `ack.pro.2xlarge`: Pro 2XL
+	//
+	// - `ack.pro.4xlarge`: Pro 4XL (requires approval from customer service to enable)
+	//
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These tiers pre-allocate and dedicate control plane resources to ensure consistent high performance for API concurrency and pod scheduling. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	//
+	// For cluster management fees for Pro and provisioned control plane clusters, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
-	// true
+	// ack.pro.small
+	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	// Control plane configuration for dedicated clusters.
+	ControlPlaneConfig *ModifyClusterRequestControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
+	// Cluster connection configuration.
+	ControlPlaneEndpointsConfig *ModifyClusterRequestControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
+	// Enables or disables cluster deletion protection to prevent accidental cluster deletion from the console or using APIs. Valid values:
+	//
+	// - `true`: Enables cluster deletion protection. You cannot delete the cluster from the console or using APIs.
+	//
+	// - `false`: Disables cluster deletion protection. You can delete the cluster from the console or using APIs.
+	//
+	// Default value: `false`.
+	//
+	// example:
+	//
+	// false
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
-	// Specifies whether to enable the RAM Roles for Service Accounts (RRSA) feature. This parameter is available only for ACK managed clusters. Valid values:
+	// Enables or disables the RRSA feature. Only managed clusters support this parameter. Valid values:
 	//
-	// 	- `true`: enables the RRSA feature.
+	// - `true`: Enables RRSA.
 	//
-	// 	- `false`: disables the RRSA feature.
+	// - `false`: Disables RRSA.
 	//
 	// example:
 	//
@@ -110,21 +128,21 @@ type ModifyClusterRequest struct {
 	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to remap the test domain name of the cluster. Valid values:
+	// Specifies whether to rebind the cluster test domain name. Valid values:
 	//
-	// 	- `true`: remaps the test domain name of the cluster.
+	// - `true`: Rebinds the cluster test domain name.
 	//
-	// 	- `false`: does not remap the test domain name of the cluster.
+	// - `false`: Does not rebind the cluster test domain name.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	IngressDomainRebinding *bool `json:"ingress_domain_rebinding,omitempty" xml:"ingress_domain_rebinding,omitempty"`
 	// Deprecated
 	//
-	// The ID of the Server Load Balancer (SLB) instance of the cluster to be modified.
+	// The SLB instance ID of the cluster to be modified.
 	//
 	// example:
 	//
@@ -132,21 +150,21 @@ type ModifyClusterRequest struct {
 	IngressLoadbalancerId *string `json:"ingress_loadbalancer_id,omitempty" xml:"ingress_loadbalancer_id,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to enable instance deletion protection. If you enable this option, the instance cannot be deleted in the console or by calling API operations. Valid values:
+	// Enables or disables instance deletion protection to prevent accidental release of nodes from the console or using APIs. Valid values:
 	//
-	// 	- `true`: enables instance deletion protection.
+	// - `true`: Prevents accidental node deletion from the console or using APIs.
 	//
-	// 	- `false`: disables instance deletion protection.
+	// - `false`: Allows accidental node deletion from the console or using APIs.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	InstanceDeletionProtection *bool `json:"instance_deletion_protection,omitempty" xml:"instance_deletion_protection,omitempty"`
-	// The cluster maintenance window. This feature takes effect only for ACK Pro clusters.
+	// The maintenance window of the cluster. This feature is available only for ACK managed clusters Pro.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
-	// The automatic O\\&M policy of the cluster.
+	// Automatic O\\&M policy for the cluster.
 	OperationPolicy *ModifyClusterRequestOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// The resource group ID of the cluster.
 	//
@@ -154,63 +172,41 @@ type ModifyClusterRequest struct {
 	//
 	// rg-acfmyvw3wjm****
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// The ID of the security group for the control plane.
+	// The security group ID for the control plane.
 	//
-	// - If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters?spm=a2c63.p38356.help-menu-85222.d_2_0_4_3.43e35d09s8oSlR).
+	// - If you configure blocking rules in the security group, ensure that the security group rules allow the protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage cluster security groups](https://help.aliyun.com/document_detail/353191.html).
 	//
-	// - For non-ACK dedicated clusters:
+	// - For non-dedicated ACK clusters, the control plane and installed managed components (such as terway-controlplane) restart briefly during the update. Perform this operation during off-peak hours. After you change the control plane security group, the ENIs used by the control plane and managed components are automatically added to the new security group.
 	//
-	//   - During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
-	//
-	//   - After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
-	//
-	// - For ACK dedicated clusters:
-	//
-	//    - After updating the control plane security group, newly scaled-out master nodes will automatically apply the new security group. Existing control plane nodes remain unaffected.
+	// - For ACK dedicated clusters, newly scaled-out master nodes automatically apply the new control plane security group. Existing control plane nodes are unaffected.
 	//
 	// example:
 	//
 	// sg-bp1h6rk3pgct2a08***
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// The storage configurations of system events.
+	// System event logging configuration.
 	SystemEventsLogging *ModifyClusterRequestSystemEventsLogging `json:"system_events_logging,omitempty" xml:"system_events_logging,omitempty" type:"Struct"`
-	// The time zone configuration for the cluster.
+	// The cluster time zone. For more information, see [Supported time zones](https://help.aliyun.com/document_detail/354879.html).
 	//
-	// - After modifying the time zone, cluster inspection configurations will adopt the new time zone.
+	// - After you change the time zone, cluster inspection configurations use the new time zone.
 	//
-	// - For ACK managed clusters:
+	// - For managed clusters, the control plane and installed managed components (such as terway-controlplane) restart briefly during the update. Perform this operation during off-peak hours. Newly scaled-out nodes automatically apply the new time zone. Existing nodes are unaffected. You can reset nodes in node pools to apply the new time zone to existing nodes.
 	//
-	//    - During time zone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
-	//
-	//    - After updating the time zone:
-	//
-	//       - Newly scaled-out nodes will automatically apply the new time zone.
-	//
-	//       - Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
-	//
-	// - For ACK dedicated clusters:
-	//
-	//    - After updating the time zone:
-	//
-	//       - Newly scaled-out nodes (including control plane nodes) automatically apply the new time zone.
-	//
-	//       - Existing nodes (including control plane nodes) remain unaffected. Reset the node to apply changes to existing nodes.
-	//
-	//       - For control plane nodes, perform a scale-out followed by a scale-in to apply the new time zone to all control plane nodes.
+	// - For dedicated clusters, newly scaled-out nodes (including control plane nodes) automatically apply the new time zone. Existing nodes (including control plane nodes) are unaffected. You can reset nodes in node pools to apply the new time zone to existing nodes. For control plane nodes, scale out and then scale in to apply the new time zone to all control plane nodes.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The vSwitches of the control plane. This parameter can be used to change the vSwitches of the control plane in an ACK managed cluster. Take note of the following items:
+	// The vSwitches for the cluster control plane. For dedicated clusters, the change applies only to newly scaled-out control plane nodes. When you change the control plane vSwitches for managed clusters, note the following:
 	//
-	// 	- This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+	// - This parameter performs an overwrite update. You must specify the complete target vSwitch list.
 	//
-	// 	- The control plane components restarts during the change process. Exercise caution when you perform this operation.
+	// - Control plane components restart briefly during the update. Proceed with caution.
 	//
-	// 	- Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// - Ensure that all security groups (including those for the control plane, all node pools, and container networking) allow inbound and outbound traffic for the IP CIDR blocks of the new vSwitches. Otherwise, nodes and containers cannot connect to the API server.
 	//
-	// 	- If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+	// - If the new control plane vSwitches have ACL rules configured, ensure that these rules allow communication between the vSwitches and the IP CIDR blocks of cluster nodes and container networks.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
@@ -437,11 +433,11 @@ func (s *ModifyClusterRequest) Validate() error {
 }
 
 type ModifyClusterRequestApiServerCustomCertSans struct {
-	// Specifies whether to overwrite or add SANs. Valid values:
+	// Specifies whether to overwrite or append the SAN configuration. Valid values:
 	//
-	// 	- overwrite: overwrites SANs.
+	// - overwrite: Overwrites the existing configuration.
 	//
-	// 	- append: adds SANs.
+	// - append: Appends to the existing configuration.
 	//
 	// example:
 	//
@@ -482,19 +478,21 @@ func (s *ModifyClusterRequestApiServerCustomCertSans) Validate() error {
 }
 
 type ModifyClusterRequestControlPlaneConfig struct {
-	// Specifies whether to enable auto-renewal for control plane nodes. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+	// Specifies whether to enable auto-renewal for control plane node instances. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
 	//
-	// 	- `true`: enables auto-renewal.
+	// - `true`: Enables auto-renewal.
 	//
-	// 	- `false`: disables auto-renewal.
+	// - `false`: Disables auto-renewal.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// The auto-renewal period of control plane nodes. Valid values: 1, 2, 3, 6, and 12.
+	// The auto-renewal duration for each renewal of control plane node instances.
+	//
+	// Valid values: {1, 2, 3, 6, 12}. Unit: months.
 	//
 	// Default value: 1.
 	//
@@ -502,33 +500,33 @@ type ModifyClusterRequestControlPlaneConfig struct {
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	// The billing method of control plane nodes. Valid values:
+	// The billing method for control plane node instances. Valid values:
 	//
-	// 	- `PrePaid`: subscription.
+	// - `PrePaid`: Subscription.
 	//
-	// 	- `PostPaid`: pay-as-you-go.
+	// - `PostPaid`: Pay-as-you-go.
 	//
 	// Default value: `PostPaid`.
 	//
 	// example:
 	//
-	// PrePaid
+	// PostPaid
 	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
-	// Specifies whether to install the CloudMonitor agent. Valid values:
+	// Specifies whether to install the CloudMonitor agent on control plane nodes. Valid values:
 	//
-	// 	- `true`: installs the CloudMonitor agent.
+	// - `true`: Installs the CloudMonitor agent.
 	//
-	// 	- `false`: does not install the CloudMonitor agent.
+	// - `false`: Does not install the CloudMonitor agent.
 	//
 	// example:
 	//
 	// true
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// The CPU management policy of nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
+	// The CPU management policy for nodes. Clusters of version 1.12.6 or later support the following policies:
 	//
-	// 	- `static`: allows pods with specific resource characteristics on the node to be granted with enhanced CPU affinity and exclusivity.
+	// - `static`: Enhances CPU affinity and exclusivity for pods with specific resource characteristics on nodes.
 	//
-	// 	- `none`: specifies that the default CPU affinity is used.
+	// - `none`: Uses the default CPU affinity scheme.
 	//
 	// Default value: `none`.
 	//
@@ -536,67 +534,69 @@ type ModifyClusterRequestControlPlaneConfig struct {
 	//
 	// none
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// The ID of the deployment set.
+	// The deployment set ID.
 	//
 	// example:
 	//
 	// ds-bp10b35imuam5amw****
 	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	// The custom image ID. You must configure this parameter if you use a custom image.
+	// The custom image ID. Specify this parameter when you use a custom image.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20240819.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The type of the OS image. Valid values:
+	// The operating system image type. Valid values:
 	//
-	// 	- `AliyunLinux3`: Alibaba Cloud Linux 3.
+	// - `AliyunLinux3`: Alinux3 image.
 	//
-	// 	- `Custom`: the custom image.
+	// - `Custom`: Custom image.
 	//
 	// example:
 	//
 	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The type of instance. For more information, see [Overview of ECS instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance types. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// The name of the key pair. You must configure either this parameter or the `login_password` parameter.
+	// The key pair name. Specify either this parameter or `login_password`.
 	//
 	// example:
 	//
 	// ack
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// The password for SSH logon. You must configure either this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. To log on with a password, you must specify this parameter during the scale-out.
+	// The SSH logon password. Specify either this parameter or `key_pair`. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. To use password-based logon, specify this parameter during scale-out.
 	//
 	// example:
 	//
 	// Ack@2000.
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// The node port range.
+	// Valid port range: [30000,65535].
+	//
+	// Default value: 30000-32767.
 	//
 	// example:
 	//
 	// 30000-32767
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// The subscription duration of the instance. This parameter takes effect and is required only when `charge_type` is set to `PrePaid`.
+	// The subscription duration for control plane node instances. This parameter is required and takes effect only when `charge_type` is set to `PrePaid`.
 	//
-	// If `PeriodUnit=Month` is specified, the valid values are 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// When `period_unit=Month`, valid values are {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The billing cycle of control plane nodes. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`.
+	// The billing cycle for control plane node instances. This parameter takes effect only when `charge_type` is set to `PrePaid`.
 	//
-	// Set the value to `Month`.
+	// `Month`: Billing by month. Only monthly billing is supported.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	// The type of the container runtime. Valid values:
+	// The container runtime. Valid values:
 	//
-	// 	- `containerd`: supports all Kubernetes versions. We recommend that you set the parameter to this value.
+	// - `containerd`: Recommended. Supported by all cluster versions.
 	//
 	// Default value: containerd.
 	//
@@ -604,31 +604,31 @@ type ModifyClusterRequestControlPlaneConfig struct {
 	//
 	// containerd
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// Specifies whether to enable Alibaba Cloud Linux Security Hardening. Valid values:
+	// Alibaba Cloud OS security hardening. Valid values:
 	//
-	// 	- `true`: enables Alibaba Cloud Linux Security Hardening.
+	// - `true`: Enables Alibaba Cloud OS security hardening.
 	//
-	// 	- `false`: disables Alibaba Cloud Linux Security Hardening.
+	// - `false`: Disables Alibaba Cloud OS security hardening.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
-	// true
+	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	// The number of control plane nodes. If you want to scale out the control plane in an ACK dedicated cluster, set this parameter to the desired number of nodes. This parameter must be greater than the current number of nodes.
+	// The number of control plane nodes. To scale out the control plane of a dedicated cluster, set this parameter to the target number of control plane nodes, which must be greater than the current number.
 	//
 	// example:
 	//
 	// 5
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// Specifies whether to enable Multi-Level Protection Scheme (MLPS) security hardening. For more information, see [ACK security hardening based on MLPS](https://help.aliyun.com/document_detail/196148.html).
+	// MLPS 2.0 security hardening. For more information, see [Use MLPS 2.0 security hardening for ACK](https://help.aliyun.com/document_detail/196148.html).
 	//
 	// Valid values:
 	//
-	// 	- `true`: enables MLPS security hardening.
+	// - `true`: Enables MLPS 2.0 security hardening.
 	//
-	// 	- `false`: disables MLPS security hardening.
+	// - `false`: Disables MLPS 2.0 security hardening.
 	//
 	// Default value: `false`.
 	//
@@ -636,57 +636,55 @@ type ModifyClusterRequestControlPlaneConfig struct {
 	//
 	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// Specifies whether to enable the burst feature for the system disk. Valid values:
+	// Specifies whether to enable performance burst for node system disks. Valid values:
 	//
-	// 	- `true`: enables the burst feature.
+	// - `true`: Enables performance burst.
 	//
-	// 	- `false`: disables the burst feature.
+	// - `false`: Disables performance burst.
 	//
-	// This parameter is effective only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// You can set this parameter only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// The category of the system disk for nodes. Valid values:
+	// The system disk category for nodes. Valid values:
 	//
-	// 	- `cloud`: basic disk.
+	// - `cloud_efficiency`: Ultra disk.
 	//
-	// 	- `cloud_efficiency`: ultra disk.
+	// - `cloud_ssd`: Standard SSD.
 	//
-	// 	- `cloud_ssd`: standard SSD.
+	// - `cloud_essd`: ESSD.
 	//
-	// 	- `cloud_essd`: Enterprise ESSD (ESSD).
+	// - `cloud_auto`: ESSD AutoPL.
 	//
-	// 	- `cloud_auto`: ESSD AutoPL disk.
-	//
-	// 	- `cloud_essd_entry`: ESSD Entry disk.
+	// - `cloud_essd_entry`: ESSD Entry.
 	//
 	// example:
 	//
 	// cloud_essd
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	// The performance level (PL) of the system disk that you want to use for the node. This parameter is effective only for ESSDs. This parameter is related to the disk size. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// The performance level of node system disks. This parameter applies only to ESSDs. The performance level depends on the disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// The preset read/write input/output operations per second (IOPS) of the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	// The provisioned read/write IOPS for node system disks. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}.
 	//
-	// This parameter is effective only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// You can set this parameter only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 1000
 	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	// The type of the system disk. Valid values: [40,500]. Unit: GiB.
+	// The system disk size for nodes. Valid values: [40,500]. Unit: GiB.
 	//
 	// example:
 	//
 	// 120
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	// The ID of the automatic snapshot policy applied to the node system disk.
+	// The automatic snapshot policy ID for node system disks.
 	//
 	// example:
 	//
@@ -923,6 +921,7 @@ func (s *ModifyClusterRequestControlPlaneConfig) Validate() error {
 }
 
 type ModifyClusterRequestControlPlaneEndpointsConfig struct {
+	// Internal domain name configuration for the cluster. This feature is available for ACK managed clusters. Cluster internal domain names allow node-side system components such as kubelet and kube-proxy to access the API server. If this feature is disabled, node-side system components access the API server through the CLB IP address.
 	InternalDnsConfig *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
 }
 
@@ -953,8 +952,16 @@ func (s *ModifyClusterRequestControlPlaneEndpointsConfig) Validate() error {
 }
 
 type ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig struct {
+	// The VPCs where cluster internal domain name resolution takes effect.
 	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
-	Enabled  *bool     `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Specifies whether to enable cluster internal domain name access. Valid values:
+	//
+	// - true: Enables cluster internal domain name access. Node-side components (kubelet, kube-proxy) access the API server through the cluster internal domain name.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
 func (s ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) String() string {
@@ -988,7 +995,7 @@ func (s *ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig) Valid
 }
 
 type ModifyClusterRequestOperationPolicy struct {
-	// The configurations of automatic update.
+	// Automatic cluster upgrade.
 	ClusterAutoUpgrade *ModifyClusterRequestOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
 }
 
@@ -1019,21 +1026,25 @@ func (s *ModifyClusterRequestOperationPolicy) Validate() error {
 }
 
 type ModifyClusterRequestOperationPolicyClusterAutoUpgrade struct {
-	// The frequency of auto cluster update. For more information, see [Update frequency](https://help.aliyun.com/document_detail/2712866.html).
+	// The frequency of automatic cluster upgrades. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
 	//
 	// Valid values:
 	//
-	// 	- patch: the latest patch version.
+	// - patch: Latest patch version.
 	//
-	// 	- stables: the second-latest minor version.
+	// - stable: Second latest minor version.
 	//
-	// 	- rapid: the latest minor version.
+	// - rapid: Latest minor version.
 	//
 	// example:
 	//
 	// patch
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Specifies whether to enable automatic update.
+	// Specifies whether to enable automatic cluster upgrades.
+	//
+	// - true: Enables automatic upgrades.
+	//
+	// - false: Disables automatic upgrades.
 	//
 	// example:
 	//
@@ -1072,13 +1083,17 @@ func (s *ModifyClusterRequestOperationPolicyClusterAutoUpgrade) Validate() error
 }
 
 type ModifyClusterRequestSystemEventsLogging struct {
-	// Specifies whether to enable system event storage.
+	// Specifies whether to enable system event logging.
+	//
+	// - true: Enables system event logging.
+	//
+	// - false: Disables system event logging.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The name of the Simple Log Service project that stores system events.
+	// The LogProject name for system event logging.
 	//
 	// example:
 	//

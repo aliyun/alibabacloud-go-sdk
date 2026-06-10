@@ -75,7 +75,7 @@ type DescribeClusterVulsResponseBodyVulRecords struct {
 	//
 	// example:
 	//
-	// np0156da1082b54fa987e32618dd45f5d3
+	// np0156da1082b54fa987e32618dd******
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
 	// The name of the node pool.
 	//
@@ -87,7 +87,7 @@ type DescribeClusterVulsResponseBodyVulRecords struct {
 	//
 	// example:
 	//
-	// CVE-2022-xxxx:rsync Security vulnerabilities
+	// CVE-2022-xxxx:rsync 安全漏洞
 	VulAliasName *string `json:"vul_alias_name,omitempty" xml:"vul_alias_name,omitempty"`
 	// The name of the vulnerability.
 	//

@@ -20,18 +20,26 @@ type iCreateAutoRepairPolicyRequest interface {
 }
 
 type CreateAutoRepairPolicyRequest struct {
+	// The name of the auto repair policy.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The resource subtype to which the auto repair policy applies.
+	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
+	// The resource type to which the auto repair policy applies.
+	//
 	// example:
 	//
 	// nodepool
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// The sub-rules for the auto repair policy.
+	//
 	// example:
 	//
 	// ["np-xxx"]
@@ -96,7 +104,9 @@ func (s *CreateAutoRepairPolicyRequest) Validate() error {
 }
 
 type CreateAutoRepairPolicyRequestRules struct {
-	Incidents       []*CreateAutoRepairPolicyRequestRulesIncidents       `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
+	// The incidents that the rule detects.
+	Incidents []*CreateAutoRepairPolicyRequestRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
+	// The repair procedure.
 	RepairProcedure []*CreateAutoRepairPolicyRequestRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
 }
 
@@ -149,10 +159,14 @@ func (s *CreateAutoRepairPolicyRequestRules) Validate() error {
 }
 
 type CreateAutoRepairPolicyRequestRulesIncidents struct {
+	// The incident name.
+	//
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The incident type.
+	//
 	// example:
 	//
 	// system
@@ -190,8 +204,12 @@ func (s *CreateAutoRepairPolicyRequestRulesIncidents) Validate() error {
 }
 
 type CreateAutoRepairPolicyRequestRulesRepairProcedure struct {
-	Config       map[string]interface{}                                         `json:"config,omitempty" xml:"config,omitempty"`
+	// Configuration parameters for the repair step.
+	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// Settings for manual intervention.
 	Intervention *CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
+	// The name of the repair step.
+	//
 	// example:
 	//
 	// Drain
@@ -243,12 +261,18 @@ func (s *CreateAutoRepairPolicyRequestRulesRepairProcedure) Validate() error {
 }
 
 type CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
+	// The label that grants authorization for the repair step. To approve the step, add this label to the node. After the action is complete, ACK automatically removes both the inquiry and approval labels for this step. If this label is not added promptly, the repair procedure halts and the node remains impaired.
 	ApprovedLabel *CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
+	// Specifies whether to enable manual approval.
+	//
 	// example:
 	//
 	// true
-	Enable         *bool                                                                        `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The label used to request authorization for the repair step. When this step begins, ACK applies this label to the node and waits for approval before performing the action.
 	InquiringLabel *CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
+	// The manual approval type.
+	//
 	// example:
 	//
 	// label
@@ -314,10 +338,14 @@ func (s *CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention) Validate
 }
 
 type CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel struct {
+	// The label key.
+	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// approved
@@ -355,10 +383,14 @@ func (s *CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLa
 }
 
 type CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel struct {
+	// The label key.
+	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// inquiring

@@ -46,7 +46,7 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// example:
 	//
-	// 1.16.9-aliyun.1
+	// 1.32.1-aliyun.1
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
 	// The query mode. Valid values:
 	//
@@ -108,7 +108,7 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// example:
 	//
-	// docker
+	// containerd
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 }
 

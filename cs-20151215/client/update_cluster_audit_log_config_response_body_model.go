@@ -28,7 +28,7 @@ type UpdateClusterAuditLogConfigResponseBody struct {
 	//
 	// example:
 	//
-	// 48BD70F6-A7E6-543D-9F23-08DEB764C92E
+	// 48BD70F6-A7E6-543D-9F23-08DEB764****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The ID of the task.
 	//

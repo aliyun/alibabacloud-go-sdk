@@ -28,7 +28,7 @@ type UpgradeClusterRequest struct {
 	//
 	// example:
 	//
-	// k8s
+	// null
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
 	// Specifies whether to upgrade only master nodes. Valid values:
 	//
@@ -44,7 +44,7 @@ type UpgradeClusterRequest struct {
 	//
 	// example:
 	//
-	// 1.16.9-aliyun.1
+	// 1.32.1-aliyun.1
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// Deprecated
 	//
@@ -56,7 +56,7 @@ type UpgradeClusterRequest struct {
 	//
 	// example:
 	//
-	// 1.14.8-aliyun.1
+	// null
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

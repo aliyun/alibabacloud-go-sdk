@@ -18,9 +18,14 @@ type iDescribeEventsResponseBody interface {
 }
 
 type DescribeEventsResponseBody struct {
-	// The details of the events.
-	Events    []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	NextToken *string                             `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// A list of events.
+	Events []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// The token to retrieve the next page of results. If this parameter is absent from the response, all results have been returned.
+	//
+	// example:
+	//
+	// 5c0a1c0f91c14c6****
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -79,13 +84,13 @@ func (s *DescribeEventsResponseBody) Validate() error {
 }
 
 type DescribeEventsResponseBodyEvents struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// cf62854ac2130470897be7a27ed1f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The description of the event.
+	// The event details.
 	Data *DescribeEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The event ID.
 	//
@@ -99,13 +104,13 @@ type DescribeEventsResponseBodyEvents struct {
 	//
 	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The subject of the event.
+	// The object that the event is about.
 	//
 	// example:
 	//
 	// np6a5c86f4ecae436f8f4a3dc034a7****
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The time when the event started.
+	// The event timestamp.
 	//
 	// example:
 	//
@@ -113,37 +118,37 @@ type DescribeEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// 	- `cluster_create`: cluster creation.
+	// - `cluster_create`: A cluster is created.
 	//
-	// 	- `cluster_scaleout`: cluster scale-out.
+	// - `cluster_scaleout`: A cluster is scaled out.
 	//
-	// 	- `cluster_attach`: node addition.
+	// - `cluster_attach`: An existing node is added.
 	//
-	// 	- `cluster_delete`: cluster deletion.
+	// - `cluster_delete`: A cluster is deleted.
 	//
-	// 	- `cluster_upgrade`: cluster upgrades.
+	// - `cluster_upgrade`: A cluster is upgraded.
 	//
-	// 	- `cluster_migrate`: cluster migration.
+	// - `cluster_migrate`: A cluster is migrated.
 	//
-	// 	- `cluster_node_delete`: node removal.
+	// - `cluster_node_delete`: A node is removed.
 	//
-	// 	- `cluster_node_drain`: node draining.
+	// - `cluster_node_drain`: A node is drained.
 	//
-	// 	- `cluster_modify`: cluster modifications.
+	// - `cluster_modify`: A cluster is modified.
 	//
-	// 	- `cluster_configuration_modify`: modifications of control plane configurations.
+	// - `cluster_configuration_modify`: The control plane configuration of a cluster is modified.
 	//
-	// 	- `cluster_addon_install`: component installation.
+	// - `cluster_addon_install`: An add-on is installed.
 	//
-	// 	- `cluster_addon_upgrade`: component updates.
+	// - `cluster_addon_upgrade`: An add-on is upgraded.
 	//
-	// 	- `cluster_addon_uninstall`: component uninstallation.
+	// - `cluster_addon_uninstall`: An add-on is uninstalled.
 	//
-	// 	- `runtime_upgrade`: runtime updates.
+	// - `runtime_upgrade`: The runtime is upgraded.
 	//
-	// 	- `nodepool_upgrade`: node pool upgrades.
+	// - `nodepool_upgrade`: A node pool is upgraded.
 	//
-	// 	- `nodepool_update`: node pool updates.
+	// - `nodepool_update`: A node pool is updated.
 	//
 	// example:
 	//
@@ -234,23 +239,23 @@ func (s *DescribeEventsResponseBodyEvents) Validate() error {
 type DescribeEventsResponseBodyEventsData struct {
 	// The severity level of the event. Valid values:
 	//
-	// 	- info
+	// - info: An informational message.
 	//
-	// 	- warning
+	// - warning: A warning.
 	//
-	// 	- error
+	// - error: An error.
 	//
 	// example:
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The details of the event.
+	// A human-readable description of the event.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/nodePool-A
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the event.
+	// A brief, machine-readable string that describes the reason for the event.
 	//
 	// example:
 	//
@@ -298,19 +303,19 @@ func (s *DescribeEventsResponseBodyEventsData) Validate() error {
 }
 
 type DescribeEventsResponseBodyPageInfo struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//

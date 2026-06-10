@@ -26,7 +26,7 @@ type AttachInstancesToNodePoolResponseBody struct {
 	//
 	// example:
 	//
-	// T-5a54309c80282e39ea00002f
+	// T-5a54309c80282e39eaxxxxxx
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

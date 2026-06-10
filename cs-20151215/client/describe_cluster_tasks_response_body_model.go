@@ -29,7 +29,7 @@ type DescribeClusterTasksResponseBody struct {
 	//
 	// 0527ac9a-c899-4341-a21a-xxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the tasks.
+	// The tasks.
 	Tasks []*DescribeClusterTasksResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
 }
 
@@ -96,19 +96,19 @@ func (s *DescribeClusterTasksResponseBody) Validate() error {
 }
 
 type DescribeClusterTasksResponseBodyPageInfo struct {
-	// The number of the page returned.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -162,9 +162,9 @@ type DescribeClusterTasksResponseBodyTasks struct {
 	//
 	// 2022-08-03T10:11:33+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The error returned for the task.
+	// The error message.
 	Error *DescribeClusterTasksResponseBodyTasksError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	// The status of the task.
+	// The task state.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type DescribeClusterTasksResponseBodyTasks struct {
 	//
 	// install-addons-c3xxxxxx
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
-	// The type of task.
+	// The task type.
 	//
 	// example:
 	//
@@ -262,13 +262,13 @@ func (s *DescribeClusterTasksResponseBodyTasks) Validate() error {
 }
 
 type DescribeClusterTasksResponseBodyTasksError struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// BadRequest
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//

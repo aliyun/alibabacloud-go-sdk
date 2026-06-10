@@ -22,19 +22,19 @@ type UnInstallClusterAddonsResponseBody struct {
 	//
 	// example:
 	//
-	// c5b5e80b0b64a4bf6939d2d8fbbc5****
+	// c5b5e80b0b64a4bf6939d2d8fbb******
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 74D1512F-67DA-54E8-99EA-4D50EB4898F4
+	// 74D1512F-67DA-54E8-99EA-4D50EB******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// T-66e39b39c0fdd001320005c0
+	// T-66e39b39c0fdd00132******
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

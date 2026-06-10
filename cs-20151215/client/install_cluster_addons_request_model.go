@@ -65,7 +65,7 @@ type InstallClusterAddonsRequestBody struct {
 	//
 	// example:
 	//
-	// logtail-ds
+	// storage-operato
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 组件版本。您可以通过[ListAddons](https://help.aliyun.com/document_detail/2667939.html)接口查询可用组件的信息，包括组件名称及版本等。
 	//
@@ -73,7 +73,7 @@ type InstallClusterAddonsRequestBody struct {
 	//
 	// example:
 	//
-	// v1.7.3.0-aliyun
+	// v1.32.9
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

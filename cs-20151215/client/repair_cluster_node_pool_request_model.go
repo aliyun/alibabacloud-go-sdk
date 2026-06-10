@@ -28,7 +28,7 @@ type RepairClusterNodePoolRequest struct {
 	//
 	// example:
 	//
-	// true
+	// null
 	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
 	// The list of nodes. If not specified, all nodes in the node pool are selected.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`

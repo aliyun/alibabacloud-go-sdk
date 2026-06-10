@@ -19,8 +19,9 @@ type iDescribeClusterEventsResponseBody interface {
 
 type DescribeClusterEventsResponseBody struct {
 	// The list of events.
-	Events    []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	NextToken *string                                    `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	Events []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// The token used to retrieve the next page of results. If this parameter is empty, there are no more results to return.
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeClusterEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -79,13 +80,13 @@ func (s *DescribeClusterEventsResponseBody) Validate() error {
 }
 
 type DescribeClusterEventsResponseBodyEvents struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The description of the event.
+	// The event data.
 	Data *DescribeClusterEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The event ID.
 	//
@@ -97,21 +98,53 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// cluster
+	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The subject related to the event.
+	// The object associated with the event.
 	//
 	// example:
 	//
 	// npdd89dc2b76c04f14b06774883b******
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The time when the event started.
+	// The time the event occurred.
 	//
 	// example:
 	//
-	// 2020-12-01T17:31:00Z
+	// 2025-05-14T10:00:56+08:00
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// The type of event. Valid values:
+	// The event type. Valid values:
+	//
+	// - `cluster_create`: Cluster creation.
+	//
+	// - `cluster_scaleout`: Cluster scale-out.
+	//
+	// - `cluster_attach`: Attaching existing nodes to a cluster.
+	//
+	// - `cluster_delete`: Cluster deletion.
+	//
+	// - `cluster_upgrade`: Cluster upgrade.
+	//
+	// - `cluster_migrate`: Cluster migration.
+	//
+	// - `cluster_node_delete`: Node removal.
+	//
+	// - `cluster_node_drain`: Node drain.
+	//
+	// - `cluster_modify`: Cluster modification.
+	//
+	// - `cluster_configuration_modify`: Control plane configuration modification.
+	//
+	// - `cluster_addon_install`: Add-on installation.
+	//
+	// - `cluster_addon_upgrade`: Add-on upgrade.
+	//
+	// - `cluster_addon_uninstall`: Add-on uninstallation.
+	//
+	// - `runtime_upgrade`: Container runtime upgrade.
+	//
+	// - `nodepool_upgrade`: Node pool upgrade.
+	//
+	// - `nodepool_update`: Node pool update.
 	//
 	// example:
 	//
@@ -202,43 +235,17 @@ func (s *DescribeClusterEventsResponseBodyEvents) Validate() error {
 type DescribeClusterEventsResponseBodyEventsData struct {
 	// The severity level of the event.
 	//
-	// Valid values:
-	//
-	// 	- warning
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- error
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- info
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The details of the event.
+	// The event message.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/npdd89dc2b76c04f14b06774883b******
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the event.
+	// The event status.
 	//
 	// example:
 	//
@@ -286,23 +293,23 @@ func (s *DescribeClusterEventsResponseBodyEventsData) Validate() error {
 }
 
 type DescribeClusterEventsResponseBodyPageInfo struct {
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50. Default value: 50.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//
-	// 3
+	// 126
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
 

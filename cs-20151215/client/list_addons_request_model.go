@@ -46,7 +46,7 @@ type ListAddonsRequest struct {
 	//
 	// example:
 	//
-	// 1.26.3-aliyun.1
+	// 1.32.1-aliyun.1
 	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
 	// The subtype of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
 	//

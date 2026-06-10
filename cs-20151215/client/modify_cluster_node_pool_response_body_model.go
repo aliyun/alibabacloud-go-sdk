@@ -24,7 +24,7 @@ type ModifyClusterNodePoolResponseBody struct {
 	//
 	// np737c3ac1ac684703b9e10673aa2c****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

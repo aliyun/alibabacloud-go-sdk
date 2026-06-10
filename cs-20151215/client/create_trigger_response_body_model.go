@@ -38,7 +38,7 @@ type CreateTriggerResponseBody struct {
 	//
 	// example:
 	//
-	// 102536
+	// 75973497486******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the trigger project.
 	//

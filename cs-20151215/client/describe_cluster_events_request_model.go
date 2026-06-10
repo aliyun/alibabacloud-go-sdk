@@ -24,23 +24,27 @@ type iDescribeClusterEventsRequest interface {
 type DescribeClusterEventsRequest struct {
 	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
 	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50. Default value: 50.
+	// The number of entries to return per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The ID of the query task.
+	// The task ID. If specified, only events associated with this task are returned.
 	//
 	// example:
 	//
-	// T-xascadasd*****
+	// T-6823f946ffadbb0106****
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 

@@ -30,13 +30,17 @@ type DescribeEventsForRegionRequest struct {
 	ClusterId  *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
 	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The number of pages.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of records on each page.
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 50.
 	//
 	// example:
 	//

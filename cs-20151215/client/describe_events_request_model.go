@@ -29,54 +29,68 @@ type DescribeEventsRequest struct {
 	// example:
 	//
 	// cf62854ac2130470897be7a27ed1f****
-	ClusterId  *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
-	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The page number.
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The maximum number of results to return.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token. Set this parameter to the value of `NextToken` returned by the previous API call.
+	//
+	// example:
+	//
+	// 5c0a1c0f91c14c6****
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The maximum number of results per page.
+	//
+	// Valid values: [1,100].
+	//
+	// Default: 50.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The event type. Valid values:
+	// The event type. If you do not specify this parameter, events of all types are returned. Valid values:
 	//
-	// 	- `cluster_create`: cluster creation.
+	// - `cluster_create`: Create a cluster.
 	//
-	// 	- `cluster_scaleout`: cluster scale-out.
+	// - `cluster_scaleout`: Scale out a cluster.
 	//
-	// 	- `cluster_attach`: node addition.
+	// - `cluster_attach`: Attach an existing node.
 	//
-	// 	- `cluster_delete`: cluster deletion.
+	// - `cluster_delete`: Delete a cluster.
 	//
-	// 	- `cluster_upgrade`: cluster upgrades.
+	// - `cluster_upgrade`: Upgrade a cluster.
 	//
-	// 	- `cluster_migrate`: cluster migration.
+	// - `cluster_migrate`: Migrate a cluster.
 	//
-	// 	- `cluster_node_delete`: node removal.
+	// - `cluster_node_delete`: Remove a node.
 	//
-	// 	- `cluster_node_drain`: node draining.
+	// - `cluster_node_drain`: Drain a node.
 	//
-	// 	- `cluster_modify`: cluster modifications.
+	// - `cluster_modify`: Modify a cluster.
 	//
-	// 	- `cluster_configuration_modify`: modifications of control plane configurations.
+	// - `cluster_configuration_modify`: Modify the control plane configuration of a cluster.
 	//
-	// 	- `cluster_addon_install`: component installation.
+	// - `cluster_addon_install`: Install an add-on.
 	//
-	// 	- `cluster_addon_upgrade`: component updates.
+	// - `cluster_addon_upgrade`: Upgrade an add-on.
 	//
-	// 	- `cluster_addon_uninstall`: component uninstallation.
+	// - `cluster_addon_uninstall`: Uninstall an add-on.
 	//
-	// 	- `runtime_upgrade`: runtime updates.
+	// - `runtime_upgrade`: Upgrade the runtime.
 	//
-	// 	- `nodepool_upgrade`: node pool upgrades.
+	// - `nodepool_upgrade`: Upgrade a node pool.
 	//
-	// 	- `nodepool_update`: node pool updates.
+	// - `nodepool_update`: Update a node pool.
 	//
 	// example:
 	//
