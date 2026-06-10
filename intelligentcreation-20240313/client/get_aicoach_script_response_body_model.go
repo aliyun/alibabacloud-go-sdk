@@ -1186,6 +1186,7 @@ type GetAICoachScriptResponseBodyPoints struct {
 	//
 	// test
 	QuestionDescription *string `json:"questionDescription,omitempty" xml:"questionDescription,omitempty"`
+	QuestionSample      *string `json:"questionSample,omitempty" xml:"questionSample,omitempty"`
 	ScriptPointId       *string `json:"scriptPointId,omitempty" xml:"scriptPointId,omitempty"`
 	// example:
 	//
@@ -1225,6 +1226,10 @@ func (s *GetAICoachScriptResponseBodyPoints) GetQuestionDescription() *string {
 	return s.QuestionDescription
 }
 
+func (s *GetAICoachScriptResponseBodyPoints) GetQuestionSample() *string {
+	return s.QuestionSample
+}
+
 func (s *GetAICoachScriptResponseBodyPoints) GetScriptPointId() *string {
 	return s.ScriptPointId
 }
@@ -1259,6 +1264,11 @@ func (s *GetAICoachScriptResponseBodyPoints) SetPointId(v string) *GetAICoachScr
 
 func (s *GetAICoachScriptResponseBodyPoints) SetQuestionDescription(v string) *GetAICoachScriptResponseBodyPoints {
 	s.QuestionDescription = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPoints) SetQuestionSample(v string) *GetAICoachScriptResponseBodyPoints {
+	s.QuestionSample = &v
 	return s
 }
 

@@ -93,6 +93,7 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyList struct {
+	AgentIconUrl *string `json:"agentIconUrl,omitempty" xml:"agentIconUrl,omitempty"`
 	// example:
 	//
 	// 840016700254633984
@@ -102,6 +103,8 @@ type ListAgentsResponseBodyList struct {
 	//
 	// text
 	AgentScene            *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
+	CharacterAgeStage     *string `json:"characterAgeStage,omitempty" xml:"characterAgeStage,omitempty"`
+	CharacterName         *string `json:"characterName,omitempty" xml:"characterName,omitempty"`
 	CharactersDescription *string `json:"charactersDescription,omitempty" xml:"charactersDescription,omitempty"`
 	// example:
 	//
@@ -147,6 +150,10 @@ func (s ListAgentsResponseBodyList) GoString() string {
 	return s.String()
 }
 
+func (s *ListAgentsResponseBodyList) GetAgentIconUrl() *string {
+	return s.AgentIconUrl
+}
+
 func (s *ListAgentsResponseBodyList) GetAgentId() *string {
 	return s.AgentId
 }
@@ -157,6 +164,14 @@ func (s *ListAgentsResponseBodyList) GetAgentName() *string {
 
 func (s *ListAgentsResponseBodyList) GetAgentScene() *string {
 	return s.AgentScene
+}
+
+func (s *ListAgentsResponseBodyList) GetCharacterAgeStage() *string {
+	return s.CharacterAgeStage
+}
+
+func (s *ListAgentsResponseBodyList) GetCharacterName() *string {
+	return s.CharacterName
 }
 
 func (s *ListAgentsResponseBodyList) GetCharactersDescription() *string {
@@ -195,6 +210,11 @@ func (s *ListAgentsResponseBodyList) GetViewer() *string {
 	return s.Viewer
 }
 
+func (s *ListAgentsResponseBodyList) SetAgentIconUrl(v string) *ListAgentsResponseBodyList {
+	s.AgentIconUrl = &v
+	return s
+}
+
 func (s *ListAgentsResponseBodyList) SetAgentId(v string) *ListAgentsResponseBodyList {
 	s.AgentId = &v
 	return s
@@ -207,6 +227,16 @@ func (s *ListAgentsResponseBodyList) SetAgentName(v string) *ListAgentsResponseB
 
 func (s *ListAgentsResponseBodyList) SetAgentScene(v string) *ListAgentsResponseBodyList {
 	s.AgentScene = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetCharacterAgeStage(v string) *ListAgentsResponseBodyList {
+	s.CharacterAgeStage = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetCharacterName(v string) *ListAgentsResponseBodyList {
+	s.CharacterName = &v
 	return s
 }
 
