@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/modelservice-20220614/v3
+module github.com/alibabacloud-go/modelservice-20220614/v4
 
 go 1.14
 

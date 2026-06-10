@@ -11,8 +11,8 @@ type iGetUserResponseBody interface {
 	GoString() string
 	SetAnthropicHost(v string) *GetUserResponseBody
 	GetAnthropicHost() *string
-	SetApiKeys(v interface{}) *GetUserResponseBody
-	GetApiKeys() interface{}
+	SetApiKeys(v []*GetUserResponseBodyApiKeys) *GetUserResponseBody
+	GetApiKeys() []*GetUserResponseBodyApiKeys
 	SetAppId(v string) *GetUserResponseBody
 	GetAppId() *string
 	SetCode(v string) *GetUserResponseBody
@@ -30,33 +30,15 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	AnthropicHost *string     `json:"AnthropicHost,omitempty" xml:"AnthropicHost,omitempty"`
-	ApiKeys       interface{} `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty"`
-	// example:
-	//
-	// 20200425******
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// ai-service.******.alicontainer.com
-	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	InnerToken *string `json:"InnerToken,omitempty" xml:"InnerToken,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 897658D5-1FB8-5CFA-A030-727CCAE59EB0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// Njk0Njk******
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AnthropicHost *string                       `json:"AnthropicHost,omitempty" xml:"AnthropicHost,omitempty"`
+	ApiKeys       []*GetUserResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	AppId         *string                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code          *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Host          *string                       `json:"Host,omitempty" xml:"Host,omitempty"`
+	InnerToken    *string                       `json:"InnerToken,omitempty" xml:"InnerToken,omitempty"`
+	Message       *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId     *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Token         *string                       `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -71,7 +53,7 @@ func (s *GetUserResponseBody) GetAnthropicHost() *string {
 	return s.AnthropicHost
 }
 
-func (s *GetUserResponseBody) GetApiKeys() interface{} {
+func (s *GetUserResponseBody) GetApiKeys() []*GetUserResponseBodyApiKeys {
 	return s.ApiKeys
 }
 
@@ -108,7 +90,7 @@ func (s *GetUserResponseBody) SetAnthropicHost(v string) *GetUserResponseBody {
 	return s
 }
 
-func (s *GetUserResponseBody) SetApiKeys(v interface{}) *GetUserResponseBody {
+func (s *GetUserResponseBody) SetApiKeys(v []*GetUserResponseBodyApiKeys) *GetUserResponseBody {
 	s.ApiKeys = v
 	return s
 }
@@ -149,5 +131,49 @@ func (s *GetUserResponseBody) SetToken(v string) *GetUserResponseBody {
 }
 
 func (s *GetUserResponseBody) Validate() error {
+	if s.ApiKeys != nil {
+		for _, item := range s.ApiKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetUserResponseBodyApiKeys struct {
+	ApiKey      *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	InnerApiKey *string `json:"InnerApiKey,omitempty" xml:"InnerApiKey,omitempty"`
+}
+
+func (s GetUserResponseBodyApiKeys) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetUserResponseBodyApiKeys) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyApiKeys) GetApiKey() *string {
+	return s.ApiKey
+}
+
+func (s *GetUserResponseBodyApiKeys) GetInnerApiKey() *string {
+	return s.InnerApiKey
+}
+
+func (s *GetUserResponseBodyApiKeys) SetApiKey(v string) *GetUserResponseBodyApiKeys {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *GetUserResponseBodyApiKeys) SetInnerApiKey(v string) *GetUserResponseBodyApiKeys {
+	s.InnerApiKey = &v
+	return s
+}
+
+func (s *GetUserResponseBodyApiKeys) Validate() error {
 	return dara.Validate(s)
 }
