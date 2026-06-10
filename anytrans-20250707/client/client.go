@@ -1211,3 +1211,77 @@ func (client *Client) TextTranslate(request *TextTranslateRequest) (_result *Tex
 	_result = _body
 	return _result, _err
 }
+
+// Summary:
+//
+// 通义多模态文档翻译查询Usage
+//
+// @param request - UsageQueryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UsageQueryResponse
+func (client *Client) UsageQueryWithOptions(request *UsageQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UsageQueryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UsageQuery"),
+		Version:     dara.String("2025-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/anytrans/translate/doc/usage/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UsageQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通义多模态文档翻译查询Usage
+//
+// @param request - UsageQueryRequest
+//
+// @return UsageQueryResponse
+func (client *Client) UsageQuery(request *UsageQueryRequest) (_result *UsageQueryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UsageQueryResponse{}
+	_body, _err := client.UsageQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
