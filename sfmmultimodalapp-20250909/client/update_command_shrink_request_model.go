@@ -15,6 +15,8 @@ type iUpdateCommandShrinkRequest interface {
 	GetDomainCode() *string
 	SetDomainName(v string) *UpdateCommandShrinkRequest
 	GetDomainName() *string
+	SetReplyMode(v string) *UpdateCommandShrinkRequest
+	GetReplyMode() *string
 	SetToolDescription(v string) *UpdateCommandShrinkRequest
 	GetToolDescription() *string
 	SetToolExamplesShrink(v string) *UpdateCommandShrinkRequest
@@ -44,6 +46,7 @@ type UpdateCommandShrinkRequest struct {
 	//
 	// shopping_t
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ReplyMode  *string `json:"ReplyMode,omitempty" xml:"ReplyMode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -90,6 +93,10 @@ func (s *UpdateCommandShrinkRequest) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *UpdateCommandShrinkRequest) GetReplyMode() *string {
+	return s.ReplyMode
+}
+
 func (s *UpdateCommandShrinkRequest) GetToolDescription() *string {
 	return s.ToolDescription
 }
@@ -126,6 +133,11 @@ func (s *UpdateCommandShrinkRequest) SetDomainCode(v string) *UpdateCommandShrin
 
 func (s *UpdateCommandShrinkRequest) SetDomainName(v string) *UpdateCommandShrinkRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateCommandShrinkRequest) SetReplyMode(v string) *UpdateCommandShrinkRequest {
+	s.ReplyMode = &v
 	return s
 }
 

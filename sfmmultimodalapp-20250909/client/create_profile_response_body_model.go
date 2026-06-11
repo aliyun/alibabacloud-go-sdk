@@ -24,27 +24,12 @@ type iCreateProfileResponseBody interface {
 }
 
 type CreateProfileResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *CreateProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 400
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// F62225F8-DDE4-526E-A88B-08906DED5060
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *CreateProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateProfileResponseBody) String() string {
@@ -119,20 +104,9 @@ func (s *CreateProfileResponseBody) Validate() error {
 }
 
 type CreateProfileResponseBodyData struct {
-	// example:
-	//
-	// 210235A52L5248C0000N
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// ST-JobTemplate
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// schema id
-	//
-	// example:
-	//
-	// 33440
-	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SchemaId    *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s CreateProfileResponseBodyData) String() string {

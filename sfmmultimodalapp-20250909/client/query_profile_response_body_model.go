@@ -24,27 +24,12 @@ type iQueryProfileResponseBody interface {
 }
 
 type QueryProfileResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QueryProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// EDD6123F-0122-5FBF-9A7E-097F319CF478
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *QueryProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryProfileResponseBody) String() string {
@@ -119,19 +104,10 @@ func (s *QueryProfileResponseBody) Validate() error {
 }
 
 type QueryProfileResponseBodyData struct {
-	Attributes []*QueryProfileResponseBodyDataAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 29C606055
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// ttt
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 384dc4786b9d4f5a8cab0d83112cd5a8
-	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	Attributes  []*QueryProfileResponseBodyDataAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	Description *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	SchemaId    *string                                   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s QueryProfileResponseBodyData) String() string {
@@ -192,26 +168,11 @@ func (s *QueryProfileResponseBodyData) Validate() error {
 }
 
 type QueryProfileResponseBodyDataAttributes struct {
-	// example:
-	//
-	// 147235
-	AttributeId *string `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
-	// example:
-	//
-	// []
+	AttributeId  *string `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// example:
-	//
-	// 21D419945-01
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// False
-	Immutable *string `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
-	// example:
-	//
-	// 20250724
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Immutable    *string `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s QueryProfileResponseBodyDataAttributes) String() string {

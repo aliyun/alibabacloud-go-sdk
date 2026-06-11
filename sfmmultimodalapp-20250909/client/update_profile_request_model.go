@@ -25,26 +25,12 @@ type iUpdateProfileRequest interface {
 
 type UpdateProfileRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId                *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AttributesOperations []*UpdateProfileRequestAttributesOperations `json:"AttributesOperations,omitempty" xml:"AttributesOperations,omitempty" type:"Repeated"`
 	Description          *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 10b6d435
-	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
+	Name                 *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserDefinedId        *string                                     `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -124,20 +110,11 @@ func (s *UpdateProfileRequest) Validate() error {
 }
 
 type UpdateProfileRequestAttributesOperations struct {
-	// example:
-	//
-	// 48944
-	AttributeId *string `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
-	// example:
-	//
-	// 18
+	AttributeId  *string `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// add
-	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	Op           *string `json:"Op,omitempty" xml:"Op,omitempty"`
 }
 
 func (s UpdateProfileRequestAttributesOperations) String() string {

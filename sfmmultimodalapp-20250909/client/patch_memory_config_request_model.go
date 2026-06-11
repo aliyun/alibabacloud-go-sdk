@@ -29,37 +29,14 @@ type iPatchMemoryConfigRequest interface {
 
 type PatchMemoryConfigRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// true
-	AutoUpdate *bool `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
-	// example:
-	//
-	// 30
-	ExpirationTime *int32  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// example:
-	//
-	// 0.03
-	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// example:
-	//
-	// 3
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// example:
-	//
-	// 110b6d4359977d1
-	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
+	AppId          *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AutoUpdate     *bool    `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
+	ExpirationTime *int32   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	Prompt         *string  `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Threshold      *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	TopK           *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UserDefinedId  *string  `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

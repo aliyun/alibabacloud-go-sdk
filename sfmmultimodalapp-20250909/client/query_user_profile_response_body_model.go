@@ -24,29 +24,12 @@ type iQueryUserProfileResponseBody interface {
 }
 
 type QueryUserProfileResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QueryUserProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// BE6BCB9B-7D90-5A56-96C8-A5E990D85B21
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *QueryUserProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserProfileResponseBody) String() string {
@@ -121,15 +104,9 @@ func (s *QueryUserProfileResponseBody) Validate() error {
 }
 
 type QueryUserProfileResponseBodyData struct {
-	Attributes []*QueryUserProfileResponseBodyDataAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// project name pass the check
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// cert-15192707
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Attributes  []*QueryUserProfileResponseBodyDataAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	Description *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s QueryUserProfileResponseBodyData) String() string {
@@ -181,19 +158,8 @@ func (s *QueryUserProfileResponseBodyData) Validate() error {
 }
 
 type QueryUserProfileResponseBodyDataAttributes struct {
-	// id
-	//
-	// example:
-	//
-	// babadd60b9e74d4f9d12cdf954f2c667
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 18
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

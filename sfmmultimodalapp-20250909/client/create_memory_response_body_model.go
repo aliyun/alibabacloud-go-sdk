@@ -24,27 +24,12 @@ type iCreateMemoryResponseBody interface {
 }
 
 type CreateMemoryResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *CreateMemoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// Instance instance-002\\"`curl h33E1En5.popscan.xaliyun.com` does not exist.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 31033EC0-6968-5610-8328-708B59508E5A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *CreateMemoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMemoryResponseBody) String() string {
@@ -153,14 +138,8 @@ func (s *CreateMemoryResponseBodyData) Validate() error {
 }
 
 type CreateMemoryResponseBodyDataMemoryNodes struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// ADD
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// example:
-	//
-	// 384dc4786b9d4f5a8cab0d83112cd5a8
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Event        *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	MemoryNodeId *string `json:"MemoryNodeId,omitempty" xml:"MemoryNodeId,omitempty"`
 	OldContent   *string `json:"OldContent,omitempty" xml:"OldContent,omitempty"`
 }

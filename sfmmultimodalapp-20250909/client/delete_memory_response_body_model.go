@@ -24,29 +24,12 @@ type iDeleteMemoryResponseBody interface {
 }
 
 type DeleteMemoryResponseBody struct {
-	// example:
-	//
-	// SUCCEED
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DeleteMemoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 5979B783-0AF5-547E-A549-8659F8A2A12A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DeleteMemoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMemoryResponseBody) String() string {
@@ -121,9 +104,6 @@ func (s *DeleteMemoryResponseBody) Validate() error {
 }
 
 type DeleteMemoryResponseBodyData struct {
-	// example:
-	//
-	// A90B1930-D2CC-57ED-A2F6-079466EB16F6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

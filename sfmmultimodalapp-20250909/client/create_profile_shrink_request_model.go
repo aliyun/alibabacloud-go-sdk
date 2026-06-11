@@ -25,26 +25,15 @@ type iCreateProfileShrinkRequest interface {
 
 type CreateProfileShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 6e18191727f747ec9de06a2
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

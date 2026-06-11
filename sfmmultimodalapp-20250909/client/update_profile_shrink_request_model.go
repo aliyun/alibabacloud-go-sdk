@@ -25,26 +25,12 @@ type iUpdateProfileShrinkRequest interface {
 
 type UpdateProfileShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AttributesOperationsShrink *string `json:"AttributesOperations,omitempty" xml:"AttributesOperations,omitempty"`
 	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 10b6d435
-	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
+	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserDefinedId              *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -24,27 +24,12 @@ type iDeleteProfileResponseBody interface {
 }
 
 type DeleteProfileResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DeleteProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// EC4762F9-8109-5DE0-A3E2-27957A4F4183
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DeleteProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteProfileResponseBody) String() string {
@@ -121,12 +106,7 @@ func (s *DeleteProfileResponseBody) Validate() error {
 type DeleteProfileResponseBodyData struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// schema id
-	//
-	// example:
-	//
-	// f7e110b6d4359977d1
-	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaId    *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s DeleteProfileResponseBodyData) String() string {

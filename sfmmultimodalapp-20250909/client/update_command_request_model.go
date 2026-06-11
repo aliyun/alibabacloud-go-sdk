@@ -15,6 +15,8 @@ type iUpdateCommandRequest interface {
 	GetDomainCode() *string
 	SetDomainName(v string) *UpdateCommandRequest
 	GetDomainName() *string
+	SetReplyMode(v string) *UpdateCommandRequest
+	GetReplyMode() *string
 	SetToolDescription(v string) *UpdateCommandRequest
 	GetToolDescription() *string
 	SetToolExamples(v []*UpdateCommandRequestToolExamples) *UpdateCommandRequest
@@ -44,6 +46,7 @@ type UpdateCommandRequest struct {
 	//
 	// shopping_t
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ReplyMode  *string `json:"ReplyMode,omitempty" xml:"ReplyMode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -90,6 +93,10 @@ func (s *UpdateCommandRequest) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *UpdateCommandRequest) GetReplyMode() *string {
+	return s.ReplyMode
+}
+
 func (s *UpdateCommandRequest) GetToolDescription() *string {
 	return s.ToolDescription
 }
@@ -126,6 +133,11 @@ func (s *UpdateCommandRequest) SetDomainCode(v string) *UpdateCommandRequest {
 
 func (s *UpdateCommandRequest) SetDomainName(v string) *UpdateCommandRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateCommandRequest) SetReplyMode(v string) *UpdateCommandRequest {
+	s.ReplyMode = &v
 	return s
 }
 
@@ -182,6 +194,7 @@ func (s *UpdateCommandRequest) Validate() error {
 }
 
 type UpdateCommandRequestToolExamples struct {
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// 给我xxx
@@ -196,8 +209,17 @@ func (s UpdateCommandRequestToolExamples) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateCommandRequestToolExamples) GetParameters() map[string]*string {
+	return s.Parameters
+}
+
 func (s *UpdateCommandRequestToolExamples) GetQuery() *string {
 	return s.Query
+}
+
+func (s *UpdateCommandRequestToolExamples) SetParameters(v map[string]*string) *UpdateCommandRequestToolExamples {
+	s.Parameters = v
+	return s
 }
 
 func (s *UpdateCommandRequestToolExamples) SetQuery(v string) *UpdateCommandRequestToolExamples {
@@ -222,6 +244,8 @@ type UpdateCommandRequestToolParams struct {
 	//
 	// xxxx
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	Required  *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s UpdateCommandRequestToolParams) String() string {
@@ -244,6 +268,14 @@ func (s *UpdateCommandRequestToolParams) GetParamName() *string {
 	return s.ParamName
 }
 
+func (s *UpdateCommandRequestToolParams) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *UpdateCommandRequestToolParams) GetRequired() *bool {
+	return s.Required
+}
+
 func (s *UpdateCommandRequestToolParams) SetParamDesc(v string) *UpdateCommandRequestToolParams {
 	s.ParamDesc = &v
 	return s
@@ -256,6 +288,16 @@ func (s *UpdateCommandRequestToolParams) SetParamExample(v string) *UpdateComman
 
 func (s *UpdateCommandRequestToolParams) SetParamName(v string) *UpdateCommandRequestToolParams {
 	s.ParamName = &v
+	return s
+}
+
+func (s *UpdateCommandRequestToolParams) SetParamType(v string) *UpdateCommandRequestToolParams {
+	s.ParamType = &v
+	return s
+}
+
+func (s *UpdateCommandRequestToolParams) SetRequired(v bool) *UpdateCommandRequestToolParams {
+	s.Required = &v
 	return s
 }
 

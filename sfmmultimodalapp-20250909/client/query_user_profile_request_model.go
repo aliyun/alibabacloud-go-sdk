@@ -19,22 +19,10 @@ type iQueryUserProfileRequest interface {
 
 type QueryUserProfileRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// f7e110b6d435
 	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

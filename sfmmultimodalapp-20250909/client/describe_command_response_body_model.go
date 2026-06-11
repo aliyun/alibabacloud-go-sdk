@@ -29,6 +29,8 @@ type iDescribeCommandResponseBody interface {
 	GetModifyUserId() *string
 	SetModifyUserName(v string) *DescribeCommandResponseBody
 	GetModifyUserName() *string
+	SetReplyMode(v string) *DescribeCommandResponseBody
+	GetReplyMode() *string
 	SetRequestId(v string) *DescribeCommandResponseBody
 	GetRequestId() *string
 	SetToolExamples(v []*DescribeCommandResponseBodyToolExamples) *DescribeCommandResponseBody
@@ -82,6 +84,7 @@ type DescribeCommandResponseBody struct {
 	//
 	// xxx
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	ReplyMode      *string `json:"ReplyMode,omitempty" xml:"ReplyMode,omitempty"`
 	// example:
 	//
 	// xxxx
@@ -144,6 +147,10 @@ func (s *DescribeCommandResponseBody) GetModifyUserId() *string {
 
 func (s *DescribeCommandResponseBody) GetModifyUserName() *string {
 	return s.ModifyUserName
+}
+
+func (s *DescribeCommandResponseBody) GetReplyMode() *string {
+	return s.ReplyMode
 }
 
 func (s *DescribeCommandResponseBody) GetRequestId() *string {
@@ -216,6 +223,11 @@ func (s *DescribeCommandResponseBody) SetModifyUserName(v string) *DescribeComma
 	return s
 }
 
+func (s *DescribeCommandResponseBody) SetReplyMode(v string) *DescribeCommandResponseBody {
+	s.ReplyMode = &v
+	return s
+}
+
 func (s *DescribeCommandResponseBody) SetRequestId(v string) *DescribeCommandResponseBody {
 	s.RequestId = &v
 	return s
@@ -264,6 +276,7 @@ func (s *DescribeCommandResponseBody) Validate() error {
 }
 
 type DescribeCommandResponseBodyToolExamples struct {
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// xxx
@@ -278,8 +291,17 @@ func (s DescribeCommandResponseBodyToolExamples) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCommandResponseBodyToolExamples) GetParameters() map[string]*string {
+	return s.Parameters
+}
+
 func (s *DescribeCommandResponseBodyToolExamples) GetQuery() *string {
 	return s.Query
+}
+
+func (s *DescribeCommandResponseBodyToolExamples) SetParameters(v map[string]*string) *DescribeCommandResponseBodyToolExamples {
+	s.Parameters = v
+	return s
 }
 
 func (s *DescribeCommandResponseBodyToolExamples) SetQuery(v string) *DescribeCommandResponseBodyToolExamples {
@@ -304,6 +326,8 @@ type DescribeCommandResponseBodyToolParams struct {
 	//
 	// xxx
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	Required  *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s DescribeCommandResponseBodyToolParams) String() string {
@@ -326,6 +350,14 @@ func (s *DescribeCommandResponseBodyToolParams) GetParamName() *string {
 	return s.ParamName
 }
 
+func (s *DescribeCommandResponseBodyToolParams) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *DescribeCommandResponseBodyToolParams) GetRequired() *bool {
+	return s.Required
+}
+
 func (s *DescribeCommandResponseBodyToolParams) SetParamDesc(v string) *DescribeCommandResponseBodyToolParams {
 	s.ParamDesc = &v
 	return s
@@ -338,6 +370,16 @@ func (s *DescribeCommandResponseBodyToolParams) SetParamExample(v string) *Descr
 
 func (s *DescribeCommandResponseBodyToolParams) SetParamName(v string) *DescribeCommandResponseBodyToolParams {
 	s.ParamName = &v
+	return s
+}
+
+func (s *DescribeCommandResponseBodyToolParams) SetParamType(v string) *DescribeCommandResponseBodyToolParams {
+	s.ParamType = &v
+	return s
+}
+
+func (s *DescribeCommandResponseBodyToolParams) SetRequired(v bool) *DescribeCommandResponseBodyToolParams {
+	s.Required = &v
 	return s
 }
 

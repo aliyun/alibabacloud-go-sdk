@@ -23,32 +23,13 @@ type iUpdateMmAppRagConfigRequest interface {
 
 type UpdateMmAppRagConfigRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_a2eb4e04b48041108edb1f6de815
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// top_k
 	PromptStrategy *string `json:"PromptStrategy,omitempty" xml:"PromptStrategy,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000
 	RetrieveMaxLength *int32 `json:"RetrieveMaxLength,omitempty" xml:"RetrieveMaxLength,omitempty"`
-	// example:
-	//
-	// 5
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	TopK              *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-6uhm7nfev4k8pwcz
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -19,17 +19,9 @@ type iMmAppBindingRagRequest interface {
 
 type MmAppBindingRagRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_a2eb4e04b48041108edb1f6de815
 	AppId                 *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	KnowledgeBaseCodeList []*string `json:"KnowledgeBaseCodeList,omitempty" xml:"KnowledgeBaseCodeList,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-6uhm7nfev4k8pwcz
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -33,32 +33,17 @@ type iCreateMemoryShrinkRequest interface {
 
 type CreateMemoryShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AutoUpdate     *bool   `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
 	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ExpirationTime *int32  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	MessagesJson   *string `json:"MessagesJson,omitempty" xml:"MessagesJson,omitempty"`
 	MetaDataShrink *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// example:
-	//
-	// profile_project
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Prompt    *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CD51C0ED-4666-13DA-BC7D-C0D21CBE16C9
 	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -19,17 +19,9 @@ type iMmAppBindingMcpRequest interface {
 
 type MmAppBindingMcpRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_a2eb4e04b48041108edb1f6de815
 	AppId *string                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Mcps  []*MmAppBindingMcpRequestMcps `json:"Mcps,omitempty" xml:"Mcps,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-o8ixktz41iyd2b6p
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -82,15 +74,9 @@ func (s *MmAppBindingMcpRequest) Validate() error {
 }
 
 type MmAppBindingMcpRequestMcps struct {
-	// example:
-	//
-	// mcp-ZDI1MDU2ZTExZGZh
 	Code     *string   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ToolList []*string `json:"ToolList,omitempty" xml:"ToolList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// CUSTOM
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s MmAppBindingMcpRequestMcps) String() string {

@@ -24,29 +24,12 @@ type iUpdateProfileResponseBody interface {
 }
 
 type UpdateProfileResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *UpdateProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 539759F7-A281-577D-9962-6E69AEBD3AB9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *UpdateProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateProfileResponseBody) String() string {
@@ -121,18 +104,9 @@ func (s *UpdateProfileResponseBody) Validate() error {
 }
 
 type UpdateProfileResponseBodyData struct {
-	// example:
-	//
-	// M21436N3000X
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// ceshi
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 39536
-	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SchemaId    *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateProfileResponseBodyData) String() string {

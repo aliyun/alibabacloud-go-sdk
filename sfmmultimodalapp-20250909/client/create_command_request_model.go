@@ -15,6 +15,8 @@ type iCreateCommandRequest interface {
 	GetDomainCode() *string
 	SetDomainName(v string) *CreateCommandRequest
 	GetDomainName() *string
+	SetReplyMode(v string) *CreateCommandRequest
+	GetReplyMode() *string
 	SetToolDescription(v string) *CreateCommandRequest
 	GetToolDescription() *string
 	SetToolExamples(v []*CreateCommandRequestToolExamples) *CreateCommandRequest
@@ -42,6 +44,7 @@ type CreateCommandRequest struct {
 	//
 	// shopping_t
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ReplyMode  *string `json:"ReplyMode,omitempty" xml:"ReplyMode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -82,6 +85,10 @@ func (s *CreateCommandRequest) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *CreateCommandRequest) GetReplyMode() *string {
+	return s.ReplyMode
+}
+
 func (s *CreateCommandRequest) GetToolDescription() *string {
 	return s.ToolDescription
 }
@@ -114,6 +121,11 @@ func (s *CreateCommandRequest) SetDomainCode(v string) *CreateCommandRequest {
 
 func (s *CreateCommandRequest) SetDomainName(v string) *CreateCommandRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *CreateCommandRequest) SetReplyMode(v string) *CreateCommandRequest {
+	s.ReplyMode = &v
 	return s
 }
 
@@ -165,6 +177,7 @@ func (s *CreateCommandRequest) Validate() error {
 }
 
 type CreateCommandRequestToolExamples struct {
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// 给我xxx
@@ -179,8 +192,17 @@ func (s CreateCommandRequestToolExamples) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCommandRequestToolExamples) GetParameters() map[string]*string {
+	return s.Parameters
+}
+
 func (s *CreateCommandRequestToolExamples) GetQuery() *string {
 	return s.Query
+}
+
+func (s *CreateCommandRequestToolExamples) SetParameters(v map[string]*string) *CreateCommandRequestToolExamples {
+	s.Parameters = v
+	return s
 }
 
 func (s *CreateCommandRequestToolExamples) SetQuery(v string) *CreateCommandRequestToolExamples {
@@ -205,6 +227,8 @@ type CreateCommandRequestToolParams struct {
 	//
 	// xxxx
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	Required  *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s CreateCommandRequestToolParams) String() string {
@@ -227,6 +251,14 @@ func (s *CreateCommandRequestToolParams) GetParamName() *string {
 	return s.ParamName
 }
 
+func (s *CreateCommandRequestToolParams) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *CreateCommandRequestToolParams) GetRequired() *bool {
+	return s.Required
+}
+
 func (s *CreateCommandRequestToolParams) SetParamDesc(v string) *CreateCommandRequestToolParams {
 	s.ParamDesc = &v
 	return s
@@ -239,6 +271,16 @@ func (s *CreateCommandRequestToolParams) SetParamExample(v string) *CreateComman
 
 func (s *CreateCommandRequestToolParams) SetParamName(v string) *CreateCommandRequestToolParams {
 	s.ParamName = &v
+	return s
+}
+
+func (s *CreateCommandRequestToolParams) SetParamType(v string) *CreateCommandRequestToolParams {
+	s.ParamType = &v
+	return s
+}
+
+func (s *CreateCommandRequestToolParams) SetRequired(v bool) *CreateCommandRequestToolParams {
+	s.Required = &v
 	return s
 }
 

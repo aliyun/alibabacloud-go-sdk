@@ -19,22 +19,10 @@ type iUpdateMmAppRagRequest interface {
 
 type UpdateMmAppRagRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_c617650fbd9e49e8916189e23c62
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-6uhm7nfev4k8pwcz
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

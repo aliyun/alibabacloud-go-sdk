@@ -88,8 +88,6 @@ type DescribeMmAppResponseBody struct {
 	//
 	// 1
 	PublishVersion *int64 `json:"PublishVersion,omitempty" xml:"PublishVersion,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// xxxx
@@ -277,9 +275,6 @@ func (s *DescribeMmAppResponseBody) Validate() error {
 }
 
 type DescribeMmAppResponseBodyAppConfig struct {
-	// example:
-	//
-	// true
 	EnableTransition *bool `json:"EnableTransition,omitempty" xml:"EnableTransition,omitempty"`
 }
 
@@ -426,7 +421,7 @@ func (s *DescribeMmAppResponseBodyBindingConfigCommands) Validate() error {
 type DescribeMmAppResponseBodyBindingConfigMcps struct {
 	// example:
 	//
-	// mcp-xxxx
+	// xxx
 	Code     *string   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ToolList []*string `json:"ToolList,omitempty" xml:"ToolList,omitempty" type:"Repeated"`
 }

@@ -19,17 +19,9 @@ type iMmAppBindingMcpShrinkRequest interface {
 
 type MmAppBindingMcpShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_a2eb4e04b48041108edb1f6de815
 	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	McpsShrink *string `json:"Mcps,omitempty" xml:"Mcps,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-o8ixktz41iyd2b6p
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

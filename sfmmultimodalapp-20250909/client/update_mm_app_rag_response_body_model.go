@@ -24,29 +24,12 @@ type iUpdateMmAppRagResponseBody interface {
 }
 
 type UpdateMmAppRagResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *UpdateMmAppRagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 31033EC0-6968-5610-8328-708B59508E5A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *UpdateMmAppRagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateMmAppRagResponseBody) String() string {
@@ -121,9 +104,6 @@ func (s *UpdateMmAppRagResponseBody) Validate() error {
 }
 
 type UpdateMmAppRagResponseBodyData struct {
-	// example:
-	//
-	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

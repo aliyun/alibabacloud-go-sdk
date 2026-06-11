@@ -27,35 +27,14 @@ type iUpdateMemoryShrinkRequest interface {
 
 type UpdateMemoryShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// True
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// 384dc4786b9d4f5a8cab0d83112cd5a8
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	MemoryNodeId   *string `json:"MemoryNodeId,omitempty" xml:"MemoryNodeId,omitempty"`
 	MetaDataShrink *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// example:
-	//
-	// []
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// bfaf7e110b6d435997
 	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-jb5sabg80b4ts71g
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

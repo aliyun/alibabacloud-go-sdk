@@ -24,29 +24,12 @@ type iMmAppBindingRagResponseBody interface {
 }
 
 type MmAppBindingRagResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *MmAppBindingRagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 539759F7-A281-577D-9962-6E69AEBD3AB9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *MmAppBindingRagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MmAppBindingRagResponseBody) String() string {
@@ -121,9 +104,6 @@ func (s *MmAppBindingRagResponseBody) Validate() error {
 }
 
 type MmAppBindingRagResponseBodyData struct {
-	// example:
-	//
-	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

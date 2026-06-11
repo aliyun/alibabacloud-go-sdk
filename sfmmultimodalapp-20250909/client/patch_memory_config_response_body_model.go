@@ -24,27 +24,12 @@ type iPatchMemoryConfigResponseBody interface {
 }
 
 type PatchMemoryConfigResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *PatchMemoryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 82296D89-6895-574B-8AA1-64959957CB41
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *PatchMemoryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PatchMemoryConfigResponseBody) String() string {
@@ -119,35 +104,14 @@ func (s *PatchMemoryConfigResponseBody) Validate() error {
 }
 
 type PatchMemoryConfigResponseBodyData struct {
-	// example:
-	//
-	// 1020d93c-9f17-4a39-9fe8-50b1fb1198d7
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// true
-	AutoUpdate *bool `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
-	// example:
-	//
-	// 30
-	ExpirationTime *int32  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// example:
-	//
-	// 0.03
-	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// example:
-	//
-	// 3
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// example:
-	//
-	// 4a39-9fe8-50b1fb1
-	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
-	// example:
-	//
-	// llm-ycc5m37pi2if9nwu
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppId          *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AutoUpdate     *bool    `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
+	ExpirationTime *int32   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	Prompt         *string  `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Threshold      *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	TopK           *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UserDefinedId  *string  `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
+	WorkspaceId    *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PatchMemoryConfigResponseBodyData) String() string {

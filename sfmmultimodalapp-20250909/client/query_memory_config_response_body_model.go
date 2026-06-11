@@ -24,27 +24,12 @@ type iQueryMemoryConfigResponseBody interface {
 }
 
 type QueryMemoryConfigResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QueryMemoryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// B075711B-7857-5BC3-A953-F04B1755EF67
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *QueryMemoryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMemoryConfigResponseBody) String() string {
@@ -119,35 +104,14 @@ func (s *QueryMemoryConfigResponseBody) Validate() error {
 }
 
 type QueryMemoryConfigResponseBodyData struct {
-	// example:
-	//
-	// mm_bfaf7e110b6d4359977d1686a3f8
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// true
-	AutoUpdate *bool `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
-	// example:
-	//
-	// 30
-	ExpirationTime *int32  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// example:
-	//
-	// 0.03
-	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// example:
-	//
-	// 10
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// example:
-	//
-	// we4m6373
-	UserDefinedId *string `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
-	// example:
-	//
-	// llm-956eawe4m6373633
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppId          *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AutoUpdate     *bool    `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
+	ExpirationTime *int32   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	Prompt         *string  `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Threshold      *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	TopK           *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UserDefinedId  *string  `json:"UserDefinedId,omitempty" xml:"UserDefinedId,omitempty"`
+	WorkspaceId    *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryMemoryConfigResponseBodyData) String() string {

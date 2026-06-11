@@ -24,27 +24,12 @@ type iQueryMemoryListResponseBody interface {
 }
 
 type QueryMemoryListResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QueryMemoryListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// A42FFCBD-33A9-54AA-9351-86E3C3B316A7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *QueryMemoryListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMemoryListResponseBody) String() string {
@@ -120,18 +105,9 @@ func (s *QueryMemoryListResponseBody) Validate() error {
 
 type QueryMemoryListResponseBodyData struct {
 	MemoryNodes []*QueryMemoryListResponseBodyDataMemoryNodes `json:"MemoryNodes,omitempty" xml:"MemoryNodes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 60
-	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageNum     *string                                       `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *string                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total       *string                                       `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryMemoryListResponseBodyData) String() string {
@@ -192,43 +168,16 @@ func (s *QueryMemoryListResponseBodyData) Validate() error {
 }
 
 type QueryMemoryListResponseBodyDataMemoryNodes struct {
-	// example:
-	//
-	// []
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// 1743991502383
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// ADD
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// example:
-	//
-	// 384dc4786b9d4f5a8cab0d83112cd5a8
+	Content      *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateTime   *int64                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Event        *string                `json:"Event,omitempty" xml:"Event,omitempty"`
 	MemoryNodeId *string                `json:"MemoryNodeId,omitempty" xml:"MemoryNodeId,omitempty"`
 	MetaData     map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// example:
-	//
-	// []
-	MetaDataJson *string `json:"MetaDataJson,omitempty" xml:"MetaDataJson,omitempty"`
-	// example:
-	//
-	// []
-	OldContent *string `json:"OldContent,omitempty" xml:"OldContent,omitempty"`
-	// example:
-	//
-	// profile_project
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// example:
-	//
-	// 1743991502383
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// example:
-	//
-	// 1743991502383
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	MetaDataJson *string                `json:"MetaDataJson,omitempty" xml:"MetaDataJson,omitempty"`
+	OldContent   *string                `json:"OldContent,omitempty" xml:"OldContent,omitempty"`
+	ProjectId    *string                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Timestamp    *int64                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	UpdateTime   *int64                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryMemoryListResponseBodyDataMemoryNodes) String() string {

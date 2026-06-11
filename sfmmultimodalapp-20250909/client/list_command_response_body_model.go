@@ -148,6 +148,7 @@ type ListCommandResponseBodyToolInfoList struct {
 	//
 	// xxx
 	ModifyUserName *string                                            `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	ReplyMode      *string                                            `json:"ReplyMode,omitempty" xml:"ReplyMode,omitempty"`
 	ToolExamples   []*ListCommandResponseBodyToolInfoListToolExamples `json:"ToolExamples,omitempty" xml:"ToolExamples,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -206,6 +207,10 @@ func (s *ListCommandResponseBodyToolInfoList) GetModifyUserId() *string {
 
 func (s *ListCommandResponseBodyToolInfoList) GetModifyUserName() *string {
 	return s.ModifyUserName
+}
+
+func (s *ListCommandResponseBodyToolInfoList) GetReplyMode() *string {
+	return s.ReplyMode
 }
 
 func (s *ListCommandResponseBodyToolInfoList) GetToolExamples() []*ListCommandResponseBodyToolInfoListToolExamples {
@@ -274,6 +279,11 @@ func (s *ListCommandResponseBodyToolInfoList) SetModifyUserName(v string) *ListC
 	return s
 }
 
+func (s *ListCommandResponseBodyToolInfoList) SetReplyMode(v string) *ListCommandResponseBodyToolInfoList {
+	s.ReplyMode = &v
+	return s
+}
+
 func (s *ListCommandResponseBodyToolInfoList) SetToolExamples(v []*ListCommandResponseBodyToolInfoListToolExamples) *ListCommandResponseBodyToolInfoList {
 	s.ToolExamples = v
 	return s
@@ -317,6 +327,7 @@ func (s *ListCommandResponseBodyToolInfoList) Validate() error {
 }
 
 type ListCommandResponseBodyToolInfoListToolExamples struct {
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// xxx
@@ -331,8 +342,17 @@ func (s ListCommandResponseBodyToolInfoListToolExamples) GoString() string {
 	return s.String()
 }
 
+func (s *ListCommandResponseBodyToolInfoListToolExamples) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
 func (s *ListCommandResponseBodyToolInfoListToolExamples) GetQuery() *string {
 	return s.Query
+}
+
+func (s *ListCommandResponseBodyToolInfoListToolExamples) SetParameters(v map[string]interface{}) *ListCommandResponseBodyToolInfoListToolExamples {
+	s.Parameters = v
+	return s
 }
 
 func (s *ListCommandResponseBodyToolInfoListToolExamples) SetQuery(v string) *ListCommandResponseBodyToolInfoListToolExamples {
@@ -357,6 +377,8 @@ type ListCommandResponseBodyToolInfoListToolParams struct {
 	//
 	// xxxx
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	Required  *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s ListCommandResponseBodyToolInfoListToolParams) String() string {
@@ -379,6 +401,14 @@ func (s *ListCommandResponseBodyToolInfoListToolParams) GetParamName() *string {
 	return s.ParamName
 }
 
+func (s *ListCommandResponseBodyToolInfoListToolParams) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *ListCommandResponseBodyToolInfoListToolParams) GetRequired() *bool {
+	return s.Required
+}
+
 func (s *ListCommandResponseBodyToolInfoListToolParams) SetParamDesc(v string) *ListCommandResponseBodyToolInfoListToolParams {
 	s.ParamDesc = &v
 	return s
@@ -391,6 +421,16 @@ func (s *ListCommandResponseBodyToolInfoListToolParams) SetParamExample(v string
 
 func (s *ListCommandResponseBodyToolInfoListToolParams) SetParamName(v string) *ListCommandResponseBodyToolInfoListToolParams {
 	s.ParamName = &v
+	return s
+}
+
+func (s *ListCommandResponseBodyToolInfoListToolParams) SetParamType(v string) *ListCommandResponseBodyToolInfoListToolParams {
+	s.ParamType = &v
+	return s
+}
+
+func (s *ListCommandResponseBodyToolInfoListToolParams) SetRequired(v bool) *ListCommandResponseBodyToolInfoListToolParams {
+	s.Required = &v
 	return s
 }
 
