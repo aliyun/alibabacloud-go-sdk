@@ -3,6 +3,11 @@
 - Update API DescribeZones: add request parameters CrossRegionSide.
 
 
+2026-06-11 Version: v5.0.10
+- Update API DescribeZones: add request parameters CrossRegion.
+- Update API DescribeZones: add request parameters CrossRegionSide.
+
+
 2026-02-05 Version: v5.0.9
 - Update API CreateVpcEndpointService: add response parameters Body.SupportedRegionSet.$.SupportedRegionId.
 - Update API GetVpcEndpointServiceAttribute: add response parameters Body.SupportedRegionSet.$.SupportedRegionId.
