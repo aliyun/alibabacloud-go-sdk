@@ -28,11 +28,11 @@ type ListVpcEndpointServicesResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// A pagination token for the next query. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	// - If **NextToken*	- is empty, no further results exist.
 	//
-	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// - If **NextToken*	- has a value, use it as the starting token for the next query.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ListVpcEndpointServicesResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The endpoint services.
+	// The collection of endpoint services.
 	Services []*ListVpcEndpointServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -121,45 +121,45 @@ func (s *ListVpcEndpointServicesResponseBody) Validate() error {
 }
 
 type ListVpcEndpointServicesResponseBodyServices struct {
-	// The protocol. Valid values:
+	// The IP address version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**: IPv4 type.
 	//
-	// 	- **DualStack**
+	// - **DualStack**: Dual-stack type.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// Indicates whether endpoint connection requests are automatically accepted. Valid values:
+	// Specifies whether to automatically accept endpoint connections. Valid values:
 	//
-	// 	- **true**: Endpoint connection requests are automatically accepted.
+	// - **true**: Automatically accept endpoint connections.
 	//
-	// 	- **false**: Endpoint connection requests are not automatically accepted.
+	// - **false**: Do not automatically accept endpoint connections.
 	//
 	// example:
 	//
 	// true
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	// The default maximum bandwidth of the endpoint connection. Unit: Mbit/s.
+	// The default maximum bandwidth. Unit: Mbps.
 	//
 	// example:
 	//
 	// 1024
 	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
-	// The time when the endpoint service was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the endpoint service was created.
 	//
 	// example:
 	//
 	// 2021-09-24T17:15:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The maximum bandwidth of the endpoint connection. Unit: Mbit/s.
+	// The maximum bandwidth of the endpoint connection. Unit: Mbps.
 	//
 	// example:
 	//
 	// 1024
 	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
-	// The minimum bandwidth of the endpoint connection. Unit: Mbit/s.
+	// The minimum bandwidth of the endpoint connection. Unit: Mbps.
 	//
 	// example:
 	//
@@ -167,15 +167,15 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	MinBandwidth *int32 `json:"MinBandwidth,omitempty" xml:"MinBandwidth,omitempty"`
 	// The payer. Valid values:
 	//
-	// 	- **Endpoint**: service consumer
+	// - **Endpoint**: the service consumer.
 	//
-	// 	- **EndpointService**: service provider
+	// - **EndpointService**: the service provider.
 	//
 	// example:
 	//
 	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
-	// The region ID of the endpoint service.
+	// The region where the endpoint service is deployed.
 	//
 	// example:
 	//
@@ -187,11 +187,11 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	//
 	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The service state of the endpoint service. Valid values:
+	// The business status of the endpoint service. Valid values:
 	//
-	// 	- **Normal**: The endpoint service runs as expected.
+	// - **Normal**: The endpoint service is running as expected.
 	//
-	// 	- **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	// - **FinancialLocked**: The endpoint service is locked due to an overdue payment.
 	//
 	// example:
 	//
@@ -223,25 +223,27 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// 	- **slb**: Classic Load Balancer (CLB) instance
+	// - **slb**: The service resource is a CLB instance.
 	//
-	// 	- **alb**: Application Load Balancer (ALB) instance
+	// - **alb**: The service resource is an ALB instance.
 	//
-	// 	- **nlb**: Network Load Balancer (NLB) instance
+	// - **nlb**: The service resource is an NLB instance.
+	//
+	// - **gwlb**: The service resource is a GWLB instance.
 	//
 	// example:
 	//
 	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
-	// The state of the endpoint service. Valid values:
+	// The status of the endpoint service. Valid values:
 	//
-	// 	- **Creating**: The endpoint service is being created.
+	// - **Creating**: The endpoint service is being created.
 	//
-	// 	- **Pending**: The endpoint service is being modified.
+	// - **Pending**: The endpoint service is being modified.
 	//
-	// 	- **Active**: The endpoint service is available.
+	// - **Active**: The endpoint service is available.
 	//
-	// 	- **Deleting**: The endpoint service is being deleted.
+	// - **Deleting**: The endpoint service is being deleted.
 	//
 	// example:
 	//
@@ -251,30 +253,33 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	//
 	// Indicates whether the endpoint service supports IPv6. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
-	// The type of the endpoint service.
+	// The type of the endpoint service. Valid values:
 	//
-	// 	- Only **Interface*	- may be returned. You can specify CLB, ALB, and NLB instances as the service resources of the endpoint service.
+	// - **Interface**: an interface endpoint. You can add CLB, ALB, and NLB instances as service resources.
+	//
+	// - **GatewayLoadBalancer**: a Gateway Load Balancer endpoint. You can add GWLB instances as service resources.
 	//
 	// example:
 	//
 	// Interface
-	ServiceType        *string                                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The list of regions supported by the endpoint service. Service consumers can initiate endpoint connections from these regions.
 	SupportedRegionSet []*ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet `json:"SupportedRegionSet,omitempty" xml:"SupportedRegionSet,omitempty" type:"Repeated"`
-	// The tags added to the resource.
+	// The list of tags.
 	Tags []*ListVpcEndpointServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Indicates whether zone affinity is enabled. Valid values:
+	// Specifies whether zonal affinity is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -502,10 +507,39 @@ func (s *ListVpcEndpointServicesResponseBodyServices) Validate() error {
 }
 
 type ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet struct {
+	// The business status of the region supported by the endpoint service. Valid values:
+	//
+	// - **Normal**: Normal.
+	//
+	// - **FinancialLocked**: Locked due to an overdue payment.
+	//
+	// example:
+	//
+	// Normal
 	RegionBusinessStatus *string `json:"RegionBusinessStatus,omitempty" xml:"RegionBusinessStatus,omitempty"`
-	RegionServiceStatus  *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
+	// The status of the region supported by the endpoint service. Valid values:
+	//
+	// - **Pending**: The status is being updated.
+	//
+	// - **Available**: The region is available.
+	//
+	// - **Deleting**: The region is being deleted.
+	//
+	// - **Failed**: The operation failed.
+	//
+	// - **Closed**: The region is closed.
+	//
+	// example:
+	//
+	// Available
+	RegionServiceStatus *string `json:"RegionServiceStatus,omitempty" xml:"RegionServiceStatus,omitempty"`
 	// Deprecated
-	ServiceRegionId   *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The ID of the region supported by the endpoint service.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	SupportedRegionId *string `json:"SupportedRegionId,omitempty" xml:"SupportedRegionId,omitempty"`
 }
 
@@ -558,13 +592,13 @@ func (s *ListVpcEndpointServicesResponseBodyServicesSupportedRegionSet) Validate
 }
 
 type ListVpcEndpointServicesResponseBodyServicesTags struct {
-	// The key of the tag added to the resource.
+	// The tag key of the instance.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag added to the resource.
+	// The tag value of the instance.
 	//
 	// example:
 	//

@@ -40,31 +40,31 @@ type iListVpcEndpointsRequest interface {
 }
 
 type ListVpcEndpointsRequest struct {
-	// The protocol. Valid values:
+	// The IP version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**: IPv4
 	//
-	// 	- **DualStack**
+	// - **DualStack**: dual stack
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The state of the endpoint connection. Valid values:
+	// The connection state of the endpoint. Valid values:
 	//
-	// 	- **Pending**: The endpoint connection is being modified.
+	// - **Pending**: The endpoint connection is being modified.
 	//
-	// 	- **Connecting**: The endpoint connection is being established.
+	// - **Connecting**: The endpoint is connecting.
 	//
-	// 	- **Connected**: The endpoint connection is established.
+	// - **Connected**: The endpoint is connected.
 	//
-	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	// - **Disconnecting**: The endpoint is disconnecting.
 	//
-	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	// - **Disconnected**: The endpoint is disconnected.
 	//
-	// 	- **Deleting**: The connection is being deleted.
+	// - **Deleting**: The endpoint is being deleted.
 	//
-	// 	- **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	// - **ServiceDeleted**: The endpoint service with which the endpoint is associated has been deleted.
 	//
 	// example:
 	//
@@ -82,15 +82,15 @@ type ListVpcEndpointsRequest struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The state of the endpoint. Valid values:
+	// The status of the endpoint. Valid values:
 	//
-	// 	- **Creating**: The endpoint is being created.
+	// - **Creating**: The endpoint is being created.
 	//
-	// 	- **Active**: The endpoint is available.
+	// - **Active**: The endpoint is available.
 	//
-	// 	- **Pending**: The endpoint is being modified.
+	// - **Pending**: The endpoint is being modified.
 	//
-	// 	- **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: The endpoint is being deleted.
 	//
 	// example:
 	//
@@ -98,33 +98,35 @@ type ListVpcEndpointsRequest struct {
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// 	- **Interface**: interface endpoint
+	// - **Interface**: an interface endpoint
 	//
-	// 	- **Reverse**: reverse endpoint
+	// - **Reverse**: a reverse endpoint
+	//
+	// - **GatewayLoadBalancer**: a Gateway Load Balancer-type endpoint
 	//
 	// example:
 	//
 	// Interface
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **1000**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **1000**. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used to retrieve the next page of results.
 	//
-	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	// - If this is your first query or no next page is available, you do not need to specify this parameter.
 	//
-	// 	- If a next request is to be performed, set the parameter to the value of **NextToken*	- that is returned from the last call.
+	// - If a next page is available, set the value to the **NextToken*	- value that is returned from the previous call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the endpoint.
+	// The ID of the region where the endpoint is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -143,7 +145,12 @@ type ListVpcEndpointsRequest struct {
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
-	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The ID of the region where the endpoint service is deployed.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 	// The tags.
 	Tag []*ListVpcEndpointsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -303,9 +310,9 @@ func (s *ListVpcEndpointsRequest) Validate() error {
 }
 
 type ListVpcEndpointsRequestTag struct {
-	// The key of the tag added to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -313,7 +320,7 @@ type ListVpcEndpointsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

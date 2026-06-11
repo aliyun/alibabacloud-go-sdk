@@ -36,53 +36,55 @@ type iUpdateVpcEndpointServiceAttributeRequest interface {
 }
 
 type UpdateVpcEndpointServiceAttributeRequest struct {
+	// The remote regions to add to the list of supported regions.
 	AddSupportedRegionSet []*string `json:"AddSupportedRegionSet,omitempty" xml:"AddSupportedRegionSet,omitempty" type:"Repeated"`
-	// The protocol. Valid values:
+	// The IP version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**: IPv4.
 	//
-	// 	- **DualStack**
+	// - **DualStack**: dual-stack.
 	//
-	// >  You can set the protocol to DualStack only for endpoint services whose backend resource type is NLB.
+	// > Only endpoint services that use an NLB or GWLB instance as the service resource support the **DualStack*	- IP version.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// Specifies whether to automatically accept endpoint connection requests. Valid values:
+	// Specifies whether to automatically accept endpoint connections. Valid values:
 	//
-	// 	- **true**
+	// - **true**: automatically accepts endpoint connections.
 	//
-	// 	- **false**
+	// - **false**: does not automatically accept endpoint connections.
 	//
 	// example:
 	//
 	// false
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client-generated token that ensures the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Your client must generate a unique token for each request. **ClientToken*	- can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The default maximum bandwidth of the endpoint connection. Unit: Mbit/s. Default value: **3072**.
+	// The default maximum connection bandwidth. The default value is **3072**. Unit: Mbps.
 	//
 	// Valid values: **100*	- to **10240**.
 	//
-	// >  You can specify this parameter only if you specify Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances as service resources.
+	// > You can set this parameter only if the service resource is a CLB or ALB instance, but not an NLB instance.
 	//
 	// example:
 	//
-	// 200
-	ConnectBandwidth         *int32    `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
+	// 3072
+	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
+	// The remote regions to remove from the list of supported regions.
 	DeleteSupportedRegionSet []*string `json:"DeleteSupportedRegionSet,omitempty" xml:"DeleteSupportedRegionSet,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, the system returns an error message. If the request passes the dry run, the system returns the `DryRunOperation` error code.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request. If the request passes the check, the system returns a 2xx HTTP status code and performs the operation.
 	//
 	// example:
 	//
@@ -90,7 +92,7 @@ type UpdateVpcEndpointServiceAttributeRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the endpoint service.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to get the region ID.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +106,7 @@ type UpdateVpcEndpointServiceAttributeRequest struct {
 	//
 	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
-	// The endpoint service ID.
+	// The ID of the endpoint service.
 	//
 	// This parameter is required.
 	//
@@ -114,21 +116,21 @@ type UpdateVpcEndpointServiceAttributeRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to enable IPv6. Valid values:
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enables IPv6.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Disables IPv6.
 	//
 	// example:
 	//
 	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
-	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// Specifies whether to enable zone affinity for the endpoint service. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true*	- (default): Enables zone affinity.
 	//
-	// 	- **false**
+	// - **false**: Disables zone affinity.
 	//
 	// example:
 	//

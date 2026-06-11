@@ -28,25 +28,25 @@ type iAttachResourceToVpcEndpointServiceRequest interface {
 type AttachResourceToVpcEndpointServiceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Performs a dry run to check the request for potential issues, including required parameters, request format, and service limits. The system does not add the service resource. If the check fails, an error message is returned. If the check passes, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): Sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the service resource is added.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the endpoint service to which you want to add the service resource.
+	// The ID of the region where the endpoint service is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AttachResourceToVpcEndpointServiceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service resource ID.
+	// The ID of the service resource.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type AttachResourceToVpcEndpointServiceRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// 	- **slb**: Classic Load Balancer (CLB) instance
+	// - **slb**: Classic Load Balancer (CLB).
 	//
-	// 	- **alb**: Application Load Balancer (ALB) instance
+	// - **alb**: Application Load Balancer (ALB).
 	//
-	// 	- **nlb**: Network Load Balancer (NLB) instance
+	// - **nlb**: Network Load Balancer (NLB).
 	//
-	// >  You cannot access TCP/SSL listeners configured for NLB instances.
+	// - **gwlb**: Gateway Load Balancer (GWLB).
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type AttachResourceToVpcEndpointServiceRequest struct {
 	//
 	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the endpoint service to which you want to add the service resource.
+	// The endpoint service to which you want to add the service resource.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type AttachResourceToVpcEndpointServiceRequest struct {
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The zone ID of the service resource.
+	// The zone where the service resource is located. This parameter is required if the service resource is an ALB, NLB, or GWLB instance.
 	//
 	// example:
 	//

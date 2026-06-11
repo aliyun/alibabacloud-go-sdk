@@ -46,52 +46,57 @@ type iCreateVpcEndpointResponseBody interface {
 }
 
 type CreateVpcEndpointResponseBody struct {
-	// The protocol. Valid values:
+	// The IP version of the endpoint. Valid values:
 	//
-	// 	- **IPv4*	- (default)
+	// - **IPv4**: IPv4 (default).
 	//
-	// 	- **DualStack**
+	// - **DualStack**: Dual-stack.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	// The bandwidth of the endpoint connection, in Mbps.
 	//
 	// example:
 	//
 	// 200
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The state of the endpoint connection. Valid values:
+	// The connection status of the endpoint. Valid values:
 	//
-	// 	- **Pending**: The connection is being modified.
+	// - **Pending**: The endpoint is being modified.
 	//
-	// 	- **Connecting**: The connection is being established.
+	// - **Connecting**: The endpoint is being connected.
 	//
-	// 	- **Connected**: The connection is established.
+	// - **Connected**: The endpoint is connected.
 	//
-	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	// - **Disconnecting**: The endpoint is being disconnected.
 	//
-	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	// - **Disconnected**: The endpoint is disconnected.
 	//
-	// 	- **Deleting**: The connection is being deleted.
+	// - **Deleting**: The endpoint is being deleted.
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The time when the endpoint was created.
+	// The time the endpoint was created.
 	//
 	// example:
 	//
 	// 2022-01-02T19:11:12Z
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossRegionBandwidth *int32  `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
-	// The service state of the endpoint. Valid values:
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cross-region bandwidth in Mbps. This parameter is returned only when the endpoint and the endpoint service are in different regions.
 	//
-	// 	- **Normal**: The endpoint runs as expected.
+	// example:
 	//
-	// 	- **FinancialLocked**: The endpoint is locked due to overdue payments.
+	// 1000
+	CrossRegionBandwidth *int32 `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
+	// The business status of the endpoint. Valid values:
+	//
+	// - **Normal**: The endpoint is running as expected.
+	//
+	// - **FinancialLocked**: The endpoint is locked due to overdue payments.
 	//
 	// example:
 	//
@@ -103,13 +108,13 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The domain name of the endpoint.
+	// The endpoint domain name.
 	//
 	// example:
 	//
 	// ep-hp33b2e43fays7s8****.epsrv-hp3xdsq46ael67lo****.cn-huhehaote.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
@@ -121,15 +126,15 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The state of the endpoint. Valid values:
+	// The status of the endpoint. Valid values:
 	//
-	// 	- **Creating**: The endpoint is being created.
+	// - **Creating**: The endpoint is being created.
 	//
-	// 	- **Active**: The endpoint is available.
+	// - **Active**: The endpoint is available.
 	//
-	// 	- **Pending**: The endpoint is being modified.
+	// - **Pending**: The endpoint is being modified.
 	//
-	// 	- **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: The endpoint is being deleted.
 	//
 	// example:
 	//
@@ -141,26 +146,40 @@ type CreateVpcEndpointResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the endpoint service with which the endpoint is associated.
+	// The ID of the associated endpoint service.
 	//
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the endpoint service with which the endpoint is associated.
+	// The name of the associated endpoint service.
 	//
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
-	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The region ID of the endpoint service.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the VPC to which the endpoint belongs.
+	// The ID of the VPC that contains the endpoint.
 	//
 	// example:
 	//
 	// vpc-hp356stwkxg3fn2xe****
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneAffinityEnabled *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Indicates whether zone affinity is enabled. Valid values:
+	//
+	// - **true**: Zone affinity is enabled.
+	//
+	// - **false**: Zone affinity is disabled.
+	//
+	// example:
+	//
+	// false
+	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
 func (s CreateVpcEndpointResponseBody) String() string {

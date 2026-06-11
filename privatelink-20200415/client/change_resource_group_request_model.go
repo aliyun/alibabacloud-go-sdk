@@ -36,9 +36,9 @@ type ChangeResourceGroupRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of resource. Valid values:
 	//
-	// 	- **VpcEndpoint**: endpoint
+	// - **VpcEndpoint**: endpoint
 	//
-	// 	- **VpcEndpointService**: endpoint service
+	// - **VpcEndpointService**: endpoint service
 	//
 	// example:
 	//

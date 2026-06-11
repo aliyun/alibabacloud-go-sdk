@@ -62,9 +62,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//	  Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+// - You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
 //
 // @param request - AddUserToVpcEndpointServiceRequest
 //
@@ -136,9 +136,9 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 //
 // Description:
 //
-//	  Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+// - You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
 //
 // @param request - AddUserToVpcEndpointServiceRequest
 //
@@ -160,13 +160,13 @@ func (client *Client) AddUserToVpcEndpointService(request *AddUserToVpcEndpointS
 //
 // Description:
 //
-//	  **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+// - **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
 //
-//	    	- If the zone is in the **Creating*	- state, the zone is being added.
+//   - If the zone is in the **Creating*	- state, the zone is being added.
 //
-//	    	- If the zone is in the Wait state, the zone is added.
+//   - If the zone is in the Wait state, the zone is added.
 //
-//		- You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
+// - You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
 //
 // @param request - AddZoneToVpcEndpointRequest
 //
@@ -246,13 +246,13 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 //
 // Description:
 //
-//	  **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+// - **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
 //
-//	    	- If the zone is in the **Creating*	- state, the zone is being added.
+//   - If the zone is in the **Creating*	- state, the zone is being added.
 //
-//	    	- If the zone is in the Wait state, the zone is added.
+//   - If the zone is in the Wait state, the zone is added.
 //
-//		- You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
+// - You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
 //
 // @param request - AddZoneToVpcEndpointRequest
 //
@@ -274,9 +274,9 @@ func (client *Client) AddZoneToVpcEndpoint(request *AddZoneToVpcEndpointRequest)
 //
 // Description:
 //
-//	  Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you add a service resource to an endpoint service, ensure that the endpoint service is in the **Active*	- state. Call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **AttachResourceToVpcEndpointService*	- operation to add a service resource to an endpoint service within a specified period of time.
+// - The **AttachResourceToVpcEndpointService*	- operation does not support concurrently adding service resources to the same endpoint service instance.
 //
 // @param request - AttachResourceToVpcEndpointServiceRequest
 //
@@ -352,9 +352,9 @@ func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *Att
 //
 // Description:
 //
-//	  Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you add a service resource to an endpoint service, ensure that the endpoint service is in the **Active*	- state. Call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **AttachResourceToVpcEndpointService*	- operation to add a service resource to an endpoint service within a specified period of time.
+// - The **AttachResourceToVpcEndpointService*	- operation does not support concurrently adding service resources to the same endpoint service instance.
 //
 // @param request - AttachResourceToVpcEndpointServiceRequest
 //
@@ -376,13 +376,13 @@ func (client *Client) AttachResourceToVpcEndpointService(request *AttachResource
 //
 // Description:
 //
-//	  **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+// - **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
 //
-//	    	- If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
+//   - If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
 //
-//	    	- If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
+//   - If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
 //
-//		- You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
+// - You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
 //
 // @param request - AttachSecurityGroupToVpcEndpointRequest
 //
@@ -450,13 +450,13 @@ func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *Attac
 //
 // Description:
 //
-//	  **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+// - **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
 //
-//	    	- If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
+//   - If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
 //
-//	    	- If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
+//   - If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
 //
-//		- You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
+// - You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
 //
 // @param request - AttachSecurityGroupToVpcEndpointRequest
 //
@@ -546,8 +546,6 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // Queries whether PrivateLink is activated.
 //
-// @param request - CheckProductOpenRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckProductOpenResponse
@@ -595,11 +593,11 @@ func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _er
 //
 // Description:
 //
-// *CreateVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+// *CreateVpcEndpoint*	- is an asynchronous operation. After you send the request, the system returns an instance ID and starts creating the endpoint in the background. You can call [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/469349.html) to check the endpoint\\"s creation status:
 //
-//   - If the endpoint is in the **Creating*	- state, the endpoint is being created.
+// - **Creating**: The endpoint is being created.
 //
-//   - If the endpoint is in the **Active*	- state, the endpoint is created.
+// - **Active**: The endpoint is available.
 //
 // @param request - CreateVpcEndpointRequest
 //
@@ -727,11 +725,11 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 //
 // Description:
 //
-// *CreateVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+// *CreateVpcEndpoint*	- is an asynchronous operation. After you send the request, the system returns an instance ID and starts creating the endpoint in the background. You can call [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/469349.html) to check the endpoint\\"s creation status:
 //
-//   - If the endpoint is in the **Creating*	- state, the endpoint is being created.
+// - **Creating**: The endpoint is being created.
 //
-//   - If the endpoint is in the **Active*	- state, the endpoint is created.
+// - **Active**: The endpoint is available.
 //
 // @param request - CreateVpcEndpointRequest
 //
@@ -749,17 +747,17 @@ func (client *Client) CreateVpcEndpoint(request *CreateVpcEndpointRequest) (_res
 
 // Summary:
 //
-// Creates an endpoint service.
+// Creates an endpoint service by calling the CreateVpcEndpointService operation.
 //
 // Description:
 //
-//	  Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+// - Before you create an endpoint service, make sure that you have created a load balancer resource that supports PrivateLink. For more information, see [Create a load balancer instance](https://help.aliyun.com/document_detail/174064.html).
 //
-//		- **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+// - **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The endpoint service is not created at the time the request is returned. You can call [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) to query the creation status of the endpoint service:
 //
-//	    	- If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
+//   - If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
 //
-//	    	- If the endpoint service is in the **Active*	- state, the endpoint service is created.
+//   - If the endpoint service is in the **Active*	- state, the endpoint service is created.
 //
 // @param request - CreateVpcEndpointServiceRequest
 //
@@ -859,17 +857,17 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 
 // Summary:
 //
-// Creates an endpoint service.
+// Creates an endpoint service by calling the CreateVpcEndpointService operation.
 //
 // Description:
 //
-//	  Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+// - Before you create an endpoint service, make sure that you have created a load balancer resource that supports PrivateLink. For more information, see [Create a load balancer instance](https://help.aliyun.com/document_detail/174064.html).
 //
-//		- **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+// - **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The endpoint service is not created at the time the request is returned. You can call [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) to query the creation status of the endpoint service:
 //
-//	    	- If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
+//   - If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
 //
-//	    	- If the endpoint service is in the **Active*	- state, the endpoint service is created.
+//   - If the endpoint service is in the **Active*	- state, the endpoint service is created.
 //
 // @param request - CreateVpcEndpointServiceRequest
 //
@@ -891,13 +889,13 @@ func (client *Client) CreateVpcEndpointService(request *CreateVpcEndpointService
 //
 // Description:
 //
-//	  Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+// - Before you delete an endpoint, make sure that all zones associated with the endpoint have been deleted.
 //
-//		- **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+// - **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and deletes the endpoint in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/469349.html) operation to query the status of the endpoint.
 //
-//	    	- If the endpoint is in the **Deleting*	- state, the endpoint is being deleted.
+//   - If the endpoint status is **Deleting**, the endpoint is being deleted.
 //
-//	    	- If the endpoint cannot be queried, the endpoint is deleted.
+//   - If the endpoint cannot be queried, the endpoint has been deleted.
 //
 // @param request - DeleteVpcEndpointRequest
 //
@@ -961,13 +959,13 @@ func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointReq
 //
 // Description:
 //
-//	  Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+// - Before you delete an endpoint, make sure that all zones associated with the endpoint have been deleted.
 //
-//		- **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+// - **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and deletes the endpoint in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/469349.html) operation to query the status of the endpoint.
 //
-//	    	- If the endpoint is in the **Deleting*	- state, the endpoint is being deleted.
+//   - If the endpoint status is **Deleting**, the endpoint is being deleted.
 //
-//	    	- If the endpoint cannot be queried, the endpoint is deleted.
+//   - If the endpoint cannot be queried, the endpoint has been deleted.
 //
 // @param request - DeleteVpcEndpointRequest
 //
@@ -989,15 +987,15 @@ func (client *Client) DeleteVpcEndpoint(request *DeleteVpcEndpointRequest) (_res
 //
 // Description:
 //
-//	  Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+// - Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
 //
-//		- **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+// - **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
 //
-//	    	- If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
+//   - If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
 //
-//	    	- If the endpoint service cannot be queried, the endpoint service is deleted.
+//   - If the endpoint service cannot be queried, the endpoint service is deleted.
 //
-//		- You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+// - You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
 //
 // @param request - DeleteVpcEndpointServiceRequest
 //
@@ -1061,15 +1059,15 @@ func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndp
 //
 // Description:
 //
-//	  Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+// - Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
 //
-//		- **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+// - **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
 //
-//	    	- If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
+//   - If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
 //
-//	    	- If the endpoint service cannot be queried, the endpoint service is deleted.
+//   - If the endpoint service cannot be queried, the endpoint service is deleted.
 //
-//		- You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+// - You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
 //
 // @param request - DeleteVpcEndpointServiceRequest
 //
@@ -1087,7 +1085,7 @@ func (client *Client) DeleteVpcEndpointService(request *DeleteVpcEndpointService
 
 // Summary:
 //
-// Queries available regions and zones.
+// Calls the DescribeRegions operation to query the list of regions supported by PrivateLink.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1139,7 +1137,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries available regions and zones.
+// Calls the DescribeRegions operation to query the list of regions supported by PrivateLink.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1157,7 +1155,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of zones in a specified region.
+// Queries the zones supported by PrivateLink in a specified region. In cross-region scenarios, the supported zones on the endpoint side and the endpoint service side are independent of each other. This operation allows you to query the supported zones for the endpoint side and the endpoint service side separately.
 //
 // @param request - DescribeZonesRequest
 //
@@ -1172,6 +1170,14 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CrossRegion) {
+		query["CrossRegion"] = request.CrossRegion
+	}
+
+	if !dara.IsNil(request.CrossRegionSide) {
+		query["CrossRegionSide"] = request.CrossRegionSide
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -1209,7 +1215,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 // Summary:
 //
-// Queries a list of zones in a specified region.
+// Queries the zones supported by PrivateLink in a specified region. In cross-region scenarios, the supported zones on the endpoint side and the endpoint service side are independent of each other. This operation allows you to query the supported zones for the endpoint side and the endpoint service side separately.
 //
 // @param request - DescribeZonesRequest
 //
@@ -1231,9 +1237,9 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 //
 // Description:
 //
-//	  Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- status. Call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **DetachResourceFromVpcEndpointService*	- operation to remove a service resource from an endpoint service within a specified period of time.
+// - The **DetachResourceFromVpcEndpointService*	- operation does not support the concurrent removal of service resources from the same endpoint service instance.
 //
 // @param request - DetachResourceFromVpcEndpointServiceRequest
 //
@@ -1309,9 +1315,9 @@ func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *D
 //
 // Description:
 //
-//	  Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- status. Call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **DetachResourceFromVpcEndpointService*	- operation to remove a service resource from an endpoint service within a specified period of time.
+// - The **DetachResourceFromVpcEndpointService*	- operation does not support the concurrent removal of service resources from the same endpoint service instance.
 //
 // @param request - DetachResourceFromVpcEndpointServiceRequest
 //
@@ -1333,13 +1339,13 @@ func (client *Client) DetachResourceFromVpcEndpointService(request *DetachResour
 //
 // Description:
 //
-//	  **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+// - **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
 //
-//	    	- If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
+//   - If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
 //
-//	    	- If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+//   - If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
 //
-//		- You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
+// - You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
 //
 // @param request - DetachSecurityGroupFromVpcEndpointRequest
 //
@@ -1407,13 +1413,13 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 //
 // Description:
 //
-//	  **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+// - **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
 //
-//	    	- If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
+//   - If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
 //
-//	    	- If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+//   - If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
 //
-//		- You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
+// - You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
 //
 // @param request - DetachSecurityGroupFromVpcEndpointRequest
 //
@@ -1435,13 +1441,13 @@ func (client *Client) DetachSecurityGroupFromVpcEndpoint(request *DetachSecurity
 //
 // Description:
 //
-//	  **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+// - **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
 //
-//	    	- If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
+//   - If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
 //
-//	    	- If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
+//   - If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
 //
-//		- You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+// - You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
 //
 // @param request - DisableVpcEndpointConnectionRequest
 //
@@ -1509,13 +1515,13 @@ func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVp
 //
 // Description:
 //
-//	  **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+// - **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
 //
-//	    	- If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
+//   - If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
 //
-//	    	- If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
+//   - If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
 //
-//		- You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+// - You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
 //
 // @param request - DisableVpcEndpointConnectionRequest
 //
@@ -1537,15 +1543,15 @@ func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointCo
 //
 // Description:
 //
-//	  You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
+// - You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
 //
-//		- **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+// - **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
 //
-//	    	- If the zone is in the **Disconnecting*	- state, the task is running.
+//   - If the zone is in the **Disconnecting*	- state, the task is running.
 //
-//	    	- If the zone is in the **Disconnected*	- state, the task is successful.
+//   - If the zone is in the **Disconnected*	- state, the task is successful.
 //
-//		- You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+// - You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
 //
 // @param request - DisableVpcEndpointZoneConnectionRequest
 //
@@ -1621,15 +1627,15 @@ func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *Disab
 //
 // Description:
 //
-//	  You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
+// - You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
 //
-//		- **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+// - **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
 //
-//	    	- If the zone is in the **Disconnecting*	- state, the task is running.
+//   - If the zone is in the **Disconnecting*	- state, the task is running.
 //
-//	    	- If the zone is in the **Disconnected*	- state, the task is successful.
+//   - If the zone is in the **Disconnected*	- state, the task is successful.
 //
-//		- You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+// - You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
 //
 // @param request - DisableVpcEndpointZoneConnectionRequest
 //
@@ -1647,17 +1653,17 @@ func (client *Client) DisableVpcEndpointZoneConnection(request *DisableVpcEndpoi
 
 // Summary:
 //
-// Accepts connection requests from an endpoint.
+// Calls the EnableVpcEndpointConnection operation, and the endpoint service accepts the connection request from the endpoint.
 //
 // Description:
 //
-//	  **EnableVpcEndpointConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+// - **EnableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID. However, the endpoint service connection is not yet established, and the connection task is still being run in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the status of the endpoint service connection:
 //
-//	    	- If the state is **Connecting**, the endpoint connection is being established.
+//   - If the connection is in the **Connecting*	- state, the endpoint service connection is being established.
 //
-//	    	- If the state is **Connected**, the endpoint connection is established.
+//   - If the connection is in the **Connected*	- state, the endpoint service connection is established.
 //
-//		- You cannot repeatedly call the **EnableVpcEndpointConnection*	- operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+// - The **EnableVpcEndpointConnection*	- operation does not support concurrently accepting endpoint connection requests under the same Alibaba Cloud account (primary account).
 //
 // @param request - EnableVpcEndpointConnectionRequest
 //
@@ -1729,17 +1735,17 @@ func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcE
 
 // Summary:
 //
-// Accepts connection requests from an endpoint.
+// Calls the EnableVpcEndpointConnection operation, and the endpoint service accepts the connection request from the endpoint.
 //
 // Description:
 //
-//	  **EnableVpcEndpointConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+// - **EnableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID. However, the endpoint service connection is not yet established, and the connection task is still being run in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the status of the endpoint service connection:
 //
-//	    	- If the state is **Connecting**, the endpoint connection is being established.
+//   - If the connection is in the **Connecting*	- state, the endpoint service connection is being established.
 //
-//	    	- If the state is **Connected**, the endpoint connection is established.
+//   - If the connection is in the **Connected*	- state, the endpoint service connection is established.
 //
-//		- You cannot repeatedly call the **EnableVpcEndpointConnection*	- operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+// - The **EnableVpcEndpointConnection*	- operation does not support concurrently accepting endpoint connection requests under the same Alibaba Cloud account (primary account).
 //
 // @param request - EnableVpcEndpointConnectionRequest
 //
@@ -1761,15 +1767,15 @@ func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConn
 //
 // Description:
 //
-//	  You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
+// - You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
 //
-//		- **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+// - **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
 //
-//	    	- If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
+//   - If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
 //
-//	    	- If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
+//   - If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
 //
-//		- You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+// - You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
 //
 // @param request - EnableVpcEndpointZoneConnectionRequest
 //
@@ -1841,15 +1847,15 @@ func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *Enable
 //
 // Description:
 //
-//	  You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
+// - You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
 //
-//		- **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+// - **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
 //
-//	    	- If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
+//   - If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
 //
-//	    	- If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
+//   - If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
 //
-//		- You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+// - You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
 //
 // @param request - EnableVpcEndpointZoneConnectionRequest
 //
@@ -1867,7 +1873,7 @@ func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpoint
 
 // Summary:
 //
-// Queries the attributes of an endpoint.
+// Use `GetVpcEndpointAttribute` to query the attributes of a specified endpoint.
 //
 // @param request - GetVpcEndpointAttributeRequest
 //
@@ -1919,7 +1925,7 @@ func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpoint
 
 // Summary:
 //
-// Queries the attributes of an endpoint.
+// Use `GetVpcEndpointAttribute` to query the attributes of a specified endpoint.
 //
 // @param request - GetVpcEndpointAttributeRequest
 //
@@ -1937,7 +1943,7 @@ func (client *Client) GetVpcEndpointAttribute(request *GetVpcEndpointAttributeRe
 
 // Summary:
 //
-// Queries the attributes of an endpoint service.
+// Call `GetVpcEndpointServiceAttribute` to retrieve the properties of an endpoint service in your account.
 //
 // @param request - GetVpcEndpointServiceAttributeRequest
 //
@@ -1989,7 +1995,7 @@ func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcE
 
 // Summary:
 //
-// Queries the attributes of an endpoint service.
+// Call `GetVpcEndpointServiceAttribute` to retrieve the properties of an endpoint service in your account.
 //
 // @param request - GetVpcEndpointServiceAttributeRequest
 //
@@ -2011,13 +2017,13 @@ func (client *Client) GetVpcEndpointServiceAttribute(request *GetVpcEndpointServ
 //
 // Description:
 //
-//	  You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
+// - You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
 //
-//		- **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+// - **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
 //
-//		- If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+// - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
 //
-//		- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2085,13 +2091,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 //
 // Description:
 //
-//	  You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
+// - You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
 //
-//		- **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+// - **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
 //
-//		- If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+// - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
 //
-//		- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2109,7 +2115,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries endpoint connections.
+// Queries endpoint connections by calling the ListVpcEndpointConnections operation.
 //
 // @param request - ListVpcEndpointConnectionsRequest
 //
@@ -2197,7 +2203,7 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 
 // Summary:
 //
-// Queries endpoint connections.
+// Queries endpoint connections by calling the ListVpcEndpointConnections operation.
 //
 // @param request - ListVpcEndpointConnectionsRequest
 //
@@ -2215,7 +2221,7 @@ func (client *Client) ListVpcEndpointConnections(request *ListVpcEndpointConnect
 
 // Summary:
 //
-// Queries the security groups that are associated with an endpoint.
+// Queries the security group that is associated with an endpoint.
 //
 // @param request - ListVpcEndpointSecurityGroupsRequest
 //
@@ -2275,7 +2281,7 @@ func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcE
 
 // Summary:
 //
-// Queries the security groups that are associated with an endpoint.
+// Queries the security group that is associated with an endpoint.
 //
 // @param request - ListVpcEndpointSecurityGroupsRequest
 //
@@ -2457,7 +2463,7 @@ func (client *Client) ListVpcEndpointServiceUsers(request *ListVpcEndpointServic
 
 // Summary:
 //
-// Queries a list of endpoint services.
+// Call the ListVpcEndpointServices operation to query the endpoint services owned by your account.
 //
 // @param request - ListVpcEndpointServicesRequest
 //
@@ -2557,7 +2563,7 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 
 // Summary:
 //
-// Queries a list of endpoint services.
+// Call the ListVpcEndpointServices operation to query the endpoint services owned by your account.
 //
 // @param request - ListVpcEndpointServicesRequest
 //
@@ -2575,7 +2581,7 @@ func (client *Client) ListVpcEndpointServices(request *ListVpcEndpointServicesRe
 
 // Summary:
 //
-// Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+// Call the ListVpcEndpointServicesByEndUser operation to retrieve a list of endpoint services for which the current account is whitelisted. This list includes services that you can connect to by creating new endpoints, as well as services that are already connected to your existing ones.
 //
 // @param request - ListVpcEndpointServicesByEndUserRequest
 //
@@ -2655,7 +2661,7 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 
 // Summary:
 //
-// Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+// Call the ListVpcEndpointServicesByEndUser operation to retrieve a list of endpoint services for which the current account is whitelisted. This list includes services that you can connect to by creating new endpoints, as well as services that are already connected to your existing ones.
 //
 // @param request - ListVpcEndpointServicesByEndUserRequest
 //
@@ -2673,7 +2679,7 @@ func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointS
 
 // Summary:
 //
-// Queries the zones of an endpoint.
+// Call the ListVpcEndpointZones operation to query the zones of an endpoint.
 //
 // @param request - ListVpcEndpointZonesRequest
 //
@@ -2733,7 +2739,7 @@ func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZo
 
 // Summary:
 //
-// Queries the zones of an endpoint.
+// Call the ListVpcEndpointZones operation to query the zones of an endpoint.
 //
 // @param request - ListVpcEndpointZonesRequest
 //
@@ -2751,7 +2757,7 @@ func (client *Client) ListVpcEndpointZones(request *ListVpcEndpointZonesRequest)
 
 // Summary:
 //
-// Queries a list of endpoints.
+// The `ListVpcEndpoints` operation lists endpoints.
 //
 // @param request - ListVpcEndpointsRequest
 //
@@ -2851,7 +2857,7 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 
 // Summary:
 //
-// Queries a list of endpoints.
+// The `ListVpcEndpoints` operation lists endpoints.
 //
 // @param request - ListVpcEndpointsRequest
 //
@@ -2935,9 +2941,9 @@ func (client *Client) OpenPrivateLinkService(request *OpenPrivateLinkServiceRequ
 //
 // Description:
 //
-//	  Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+// - You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
 //
 // @param request - RemoveUserFromVpcEndpointServiceRequest
 //
@@ -3009,9 +3015,9 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 //
 // Description:
 //
-//	  Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+// - Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
 //
-//		- You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+// - You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
 //
 // @param request - RemoveUserFromVpcEndpointServiceRequest
 //
@@ -3033,13 +3039,13 @@ func (client *Client) RemoveUserFromVpcEndpointService(request *RemoveUserFromVp
 //
 // Description:
 //
-//	  **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+// - **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
 //
-//	    	- If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
+//   - If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
 //
-//	    	- If the zone cannot be queried, the zone is deleted.
+//   - If the zone cannot be queried, the zone is deleted.
 //
-//		- You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
+// - You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
 //
 // @param request - RemoveZoneFromVpcEndpointRequest
 //
@@ -3107,13 +3113,13 @@ func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFr
 //
 // Description:
 //
-//	  **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+// - **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
 //
-//	    	- If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
+//   - If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
 //
-//	    	- If the zone cannot be queried, the zone is deleted.
+//   - If the zone cannot be queried, the zone is deleted.
 //
-//		- You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
+// - You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
 //
 // @param request - RemoveZoneFromVpcEndpointRequest
 //
@@ -3317,11 +3323,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Modifies the attributes of an endpoint.
+// The `UpdateVpcEndpointAttribute` operation modifies the properties of an endpoint.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointAttribute*	- operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+// The **UpdateVpcEndpointAttribute*	- operation cannot be called concurrently to modify endpoint properties for the same Alibaba Cloud main account.
 //
 // @param request - UpdateVpcEndpointAttributeRequest
 //
@@ -3409,11 +3415,11 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 
 // Summary:
 //
-// Modifies the attributes of an endpoint.
+// The `UpdateVpcEndpointAttribute` operation modifies the properties of an endpoint.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointAttribute*	- operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+// The **UpdateVpcEndpointAttribute*	- operation cannot be called concurrently to modify endpoint properties for the same Alibaba Cloud main account.
 //
 // @param request - UpdateVpcEndpointAttributeRequest
 //
@@ -3431,11 +3437,11 @@ func (client *Client) UpdateVpcEndpointAttribute(request *UpdateVpcEndpointAttri
 
 // Summary:
 //
-// Modifies the attributes of an endpoint connection.
+// Calls the UpdateVpcEndpointConnectionAttribute operation to modify the attributes of an endpoint connection.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute*	- operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+// The **UpdateVpcEndpointConnectionAttribute*	- operation does not support concurrent modifications of the endpoint connection bandwidth within the same Alibaba Cloud account (primary account).
 //
 // @param request - UpdateVpcEndpointConnectionAttributeRequest
 //
@@ -3507,11 +3513,11 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 
 // Summary:
 //
-// Modifies the attributes of an endpoint connection.
+// Calls the UpdateVpcEndpointConnectionAttribute operation to modify the attributes of an endpoint connection.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute*	- operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+// The **UpdateVpcEndpointConnectionAttribute*	- operation does not support concurrent modifications of the endpoint connection bandwidth within the same Alibaba Cloud account (primary account).
 //
 // @param request - UpdateVpcEndpointConnectionAttributeRequest
 //
@@ -3529,11 +3535,13 @@ func (client *Client) UpdateVpcEndpointConnectionAttribute(request *UpdateVpcEnd
 
 // Summary:
 //
-// Modifies the attributes of an endpoint service.
+// The UpdateVpcEndpointServiceAttribute operation modifies the attributes of an endpoint service.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute*	- operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+// - Before you modify the attributes of an endpoint service, ensure that the service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check the status of the endpoint service.
+//
+// - The **UpdateVpcEndpointServiceAttribute*	- operation does not support concurrent modifications to the attributes of an endpoint service within the same Alibaba Cloud account (root user).
 //
 // @param request - UpdateVpcEndpointServiceAttributeRequest
 //
@@ -3625,11 +3633,13 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 
 // Summary:
 //
-// Modifies the attributes of an endpoint service.
+// The UpdateVpcEndpointServiceAttribute operation modifies the attributes of an endpoint service.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute*	- operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+// - Before you modify the attributes of an endpoint service, ensure that the service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check the status of the endpoint service.
+//
+// - The **UpdateVpcEndpointServiceAttribute*	- operation does not support concurrent modifications to the attributes of an endpoint service within the same Alibaba Cloud account (root user).
 //
 // @param request - UpdateVpcEndpointServiceAttributeRequest
 //
@@ -3647,11 +3657,13 @@ func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpoi
 
 // Summary:
 //
-// Modifies the attributes of a service resource that is added to an endpoint service.
+// The UpdateVpcEndpointServiceResourceAttribute operation enables or disables automatic allocation for a service resource of an endpoint service.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute*	- operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+// - Before you modify the properties of a service resource, ensure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// - The **UpdateVpcEndpointServiceResourceAttribute*	- operation does not support concurrent modifications to the properties of service resources that belong to the same endpoint service.
 //
 // @param request - UpdateVpcEndpointServiceResourceAttributeRequest
 //
@@ -3723,11 +3735,13 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(reque
 
 // Summary:
 //
-// Modifies the attributes of a service resource that is added to an endpoint service.
+// The UpdateVpcEndpointServiceResourceAttribute operation enables or disables automatic allocation for a service resource of an endpoint service.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute*	- operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+// - Before you modify the properties of a service resource, ensure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// - The **UpdateVpcEndpointServiceResourceAttribute*	- operation does not support concurrent modifications to the properties of service resources that belong to the same endpoint service.
 //
 // @param request - UpdateVpcEndpointServiceResourceAttributeRequest
 //
@@ -3755,17 +3769,17 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttribute(request *UpdateV
 //
 // ### Usage notes
 //
-//   - If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
+// - If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
 //
-//   - If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+// - If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
 //
-//   - **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+// - **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
 //
 //   - If the endpoint service is in the **Pending*	- state, the service resource is being modified.
 //
 //   - If the endpoint service is in the **Active*	- state, the service resource is modified.
 //
-//   - You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+// - You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
 //
 // @param request - UpdateVpcEndpointZoneConnectionResourceAttributeRequest
 //
@@ -3859,17 +3873,17 @@ func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithOption
 //
 // ### Usage notes
 //
-//   - If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
+// - If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
 //
-//   - If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+// - If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
 //
-//   - **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+// - **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
 //
 //   - If the endpoint service is in the **Pending*	- state, the service resource is being modified.
 //
 //   - If the endpoint service is in the **Active*	- state, the service resource is modified.
 //
-//   - You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+// - You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
 //
 // @param request - UpdateVpcEndpointZoneConnectionResourceAttributeRequest
 //

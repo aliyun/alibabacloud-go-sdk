@@ -28,11 +28,11 @@ type ListVpcEndpointZonesResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	// - If this parameter is empty, no next page exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// - If a value is returned, use the value to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListVpcEndpointZonesResponseBody struct {
 	//
 	// example:
 	//
-	// 3
+	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the zones.
+	// The collection of zone information.
 	Zones []*ListVpcEndpointZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -133,13 +133,13 @@ type ListVpcEndpointZonesResponseBodyZones struct {
 	//
 	// 192.168.2.23
 	EniIp *string `json:"EniIp,omitempty" xml:"EniIp,omitempty"`
-	// The region ID of the endpoint.
+	// The ID of the region where the endpoint is deployed.
 	//
 	// example:
 	//
 	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the vSwitch in the zone. The system automatically creates an endpoint elastic network interface (ENI) in the vSwitch.
+	// The vSwitch in the zone. The system automatically creates an endpoint elastic network interface (ENI) in the vSwitch.
 	//
 	// example:
 	//
@@ -147,11 +147,11 @@ type ListVpcEndpointZonesResponseBodyZones struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The domain name of the zone.
 	//
-	// After the endpoint in the zone is connected to the endpoint service, you can access the service resources of the endpoint service by using the domain name of the zone.
+	// After an endpoint connection is established, use this domain name to access the service resources of the endpoint service.
 	//
 	// example:
 	//
-	// ep-hp3f033dp24c5yc9****-cn-huhehaote.epsrv-hp3itcpowf37m3d5****.cn-huhehaote-a.privatelink.aliyuncs.com
+	// ep-hp3f033dp24c5yc9****-cn-huhehaote-a.epsrv-hp3itcpowf37m3d5****.cn-huhehaote.privatelink.aliyuncs.com
 	ZoneDomain *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
 	// The zone ID.
 	//
@@ -159,31 +159,27 @@ type ListVpcEndpointZonesResponseBodyZones struct {
 	//
 	// cn-huhehaote-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// Indicates whether the endpoint service supports IPv6. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
+	// The IPv6 address of the endpoint ENI.
 	//
 	// example:
 	//
-	// false
+	// 2408:4005:3b6:****:6955:c3cb:34c:****
 	ZoneIpv6Address *string `json:"ZoneIpv6Address,omitempty" xml:"ZoneIpv6Address,omitempty"`
-	// The state of the zone. Valid values:
+	// The status of the zone. Valid values:
 	//
-	// 	- **Creating**: The zone is being created.
+	// - **Creating**: The zone is being created.
 	//
-	// 	- **Wait**: The zone is to be connected.
+	// - **Wait**: The zone is waiting to be connected.
 	//
-	// 	- **Connected**: The zone is connected.
+	// - **Connected**: The zone is connected.
 	//
-	// 	- **Deleting**: The zone is being deleted.
+	// - **Deleting**: The zone is being deleted.
 	//
-	// 	- **Disconnecting**: The zone is being disconnected.
+	// - **Disconnecting**: The zone is being disconnected.
 	//
-	// 	- **Disconnected**: The zone is disconnected.
+	// - **Disconnected**: The zone is disconnected.
 	//
-	// 	- **Connecting**: The zone is being connected.
+	// - **Connecting**: The zone is being connected.
 	//
 	// example:
 	//

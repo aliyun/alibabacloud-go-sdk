@@ -16,14 +16,13 @@ type iDescribeZonesResponseBody interface {
 }
 
 type DescribeZonesResponseBody struct {
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// 611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned zones.
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -96,18 +95,8 @@ func (s *DescribeZonesResponseBodyZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// The name of the zone.
-	//
-	// example:
-	//
-	// Hangzhou Zone B
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {

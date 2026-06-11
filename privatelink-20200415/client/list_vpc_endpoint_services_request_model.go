@@ -40,45 +40,45 @@ type iListVpcEndpointServicesRequest interface {
 }
 
 type ListVpcEndpointServicesRequest struct {
-	// The protocol. Valid values:
+	// The IP address version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**: IPv4 type.
 	//
-	// 	- **DualStack**
+	// - **DualStack**: Dual-stack type.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// Specifies whether to automatically accept endpoint connection requests. Valid values:
+	// Specifies whether to automatically accept endpoint connections. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Automatically accept endpoint connections.
 	//
-	// 	- **false*	- (default)
+	// - **false**: Do not automatically accept endpoint connections.
 	//
 	// example:
 	//
 	// false
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **1000**. Default value: **50**.
+	// The number of entries to return per page. Valid values: **1*	- to **1000**. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// A pagination token for the next query. Valid values:
 	//
-	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	// - Leave this parameter empty for the first query or when no further results exist.
 	//
-	// 	- If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	// - If another query is needed, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the endpoint service.
+	// The ID of the region where the endpoint service is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -86,29 +86,29 @@ type ListVpcEndpointServicesRequest struct {
 	//
 	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The service resource ID.
+	// The ID of the service resource.
 	//
 	// example:
 	//
 	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The service state of the endpoint service. Valid values:
+	// The business status of the endpoint service. Valid values:
 	//
-	// 	- **Normal**: The endpoint service runs as expected.
+	// - **Normal**: The endpoint service is running as expected.
 	//
-	// 	- **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	// - **FinancialLocked**: The endpoint service is locked due to an overdue payment.
 	//
 	// example:
 	//
 	// Normal
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
-	// The endpoint service ID.
+	// The ID of the endpoint service.
 	//
 	// example:
 	//
@@ -122,35 +122,39 @@ type ListVpcEndpointServicesRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// 	- **slb**: a Classic Load Balancer (CLB) instance
+	// - **slb**: The service resource is a Classic Load Balancer (CLB) instance.
 	//
-	// 	- **alb**: an Application Load Balancer (ALB) instance
+	// - **alb**: The service resource is an Application Load Balancer (ALB) instance.
+	//
+	// - **nlb**: The service resource is a Network Load Balancer (NLB) instance.
+	//
+	// - **gwlb**: The service resource is a Gateway Load Balancer (GWLB) instance.
 	//
 	// example:
 	//
 	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
-	// The state of the endpoint service. Valid values:
+	// The status of the endpoint service. Valid values:
 	//
-	// 	- **Creating**: The endpoint service is being created.
+	// - **Creating**: The endpoint service is being created.
 	//
-	// 	- **Pending**: The endpoint service is being modified.
+	// - **Pending**: The endpoint service is being modified.
 	//
-	// 	- **Active**: The endpoint service is available.
+	// - **Active**: The endpoint service is available.
 	//
-	// 	- **Deleting**: The endpoint service is being deleted
+	// - **Deleting**: The endpoint service is being deleted.
 	//
 	// example:
 	//
 	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*ListVpcEndpointServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// Specifies whether zonal affinity is enabled for domain name resolution. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -306,17 +310,17 @@ func (s *ListVpcEndpointServicesRequest) Validate() error {
 }
 
 type ListVpcEndpointServicesRequestTag struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the instance. You can specify up to 20 tag keys. The key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the instance. You can specify up to 20 tag values. The value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

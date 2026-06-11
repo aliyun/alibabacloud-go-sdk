@@ -60,17 +60,17 @@ type iGetVpcEndpointAttributeResponseBody interface {
 }
 
 type GetVpcEndpointAttributeResponseBody struct {
-	// The protocol. Valid values:
+	// The IP version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**: Supports IPv4 only.
 	//
-	// 	- **DualStack**
+	// - **DualStack**: Supports both IPv4 and IPv6.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	// The connection bandwidth of the endpoint, in Mbps.
 	//
 	// example:
 	//
@@ -78,34 +78,41 @@ type GetVpcEndpointAttributeResponseBody struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
-	// 	- **Pending**: The connection is being modified.
+	// - **Pending**: The connection is being modified.
 	//
-	// 	- **Connecting**: The connection is being established.
+	// - **Connecting**: The endpoint is connecting to the endpoint service.
 	//
-	// 	- **Connected**: The connection is established.
+	// - **Connected**: The endpoint is connected to the endpoint service.
 	//
-	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	// - **Disconnecting**: The endpoint is disconnecting from the endpoint service.
 	//
-	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	// - **Disconnected**: The endpoint is not connected to the endpoint service.
 	//
-	// 	- **Deleting**: The connection is being deleted.
+	// - **Deleting**: The endpoint is being deleted.
+	//
+	// - **ServiceDeleted**: The associated endpoint service has been deleted.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The time when the endpoint was created.
+	// The time the endpoint was created.
 	//
 	// example:
 	//
 	// 2021-09-24T18:00:07Z
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossRegionBandwidth *int32  `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
-	// The service state of the endpoint. Valid values:
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cross-region bandwidth, in Mbps.
 	//
-	// 	- **Normal**: The endpoint runs as expected.
+	// example:
 	//
-	// 	- **FinancialLocked**: The endpoint is locked due to overdue payments.
+	// 1000
+	CrossRegionBandwidth *int32 `json:"CrossRegionBandwidth,omitempty" xml:"CrossRegionBandwidth,omitempty"`
+	// The business status of the endpoint. Valid values:
+	//
+	// - **Normal**: The endpoint is running as expected.
+	//
+	// - **FinancialLocked**: The endpoint is locked due to an overdue payment.
 	//
 	// example:
 	//
@@ -135,23 +142,27 @@ type GetVpcEndpointAttributeResponseBody struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The state of the endpoint. Valid values:
+	// The status of the endpoint. Valid values:
 	//
-	// 	- **Creating**: The endpoint is being created.
+	// - **Creating**: The endpoint is being created.
 	//
-	// 	- **Active**: The endpoint is available.
+	// - **Active**: The endpoint is available.
 	//
-	// 	- **Pending**: The endpoint is being modified.
+	// - **Pending**: The endpoint is being modified.
 	//
-	// 	- **Deleting**: The endpoint is being deleted.
+	// - **Deleting**: The endpoint is being deleted.
 	//
 	// example:
 	//
 	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
-	// The type of the endpoint.
+	// The type of the endpoint. Valid values:
 	//
-	// **Interface*	- is returned. The value indicates the interface endpoint with which the Classic Load Balancer (CLB) instances are associated.
+	// - **Interface**: an interface endpoint.
+	//
+	// - **Reverse**: a reverse endpoint.
+	//
+	// - **GatewayLoadBalancer**: a Gateway Load Balancer endpoint (GWLBe).
 	//
 	// example:
 	//
@@ -159,14 +170,16 @@ type GetVpcEndpointAttributeResponseBody struct {
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The payer. Valid values:
 	//
-	// 	- **Endpoint**: the service consumer.
+	// - **Endpoint**: the service consumer.
 	//
-	// 	- **EndpointService**: the service provider.
+	// - **EndpointService**: the service provider.
 	//
 	// example:
 	//
 	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	// The RAM policy. For more information about policy elements, see [Basic elements of a policy](https://help.aliyun.com/document_detail/93738.html).
+	//
 	// example:
 	//
 	// {
@@ -211,7 +224,7 @@ type GetVpcEndpointAttributeResponseBody struct {
 	//
 	// }
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The region ID of the endpoint.
+	// The ID of the region where the endpoint is located.
 	//
 	// example:
 	//
@@ -231,44 +244,49 @@ type GetVpcEndpointAttributeResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
 	//
-	// 	- **true**: The endpoint and the endpoint service belong to the same Alibaba Cloud account.
+	// - **true**: Yes.
 	//
-	// 	- **false**: The endpoint and the endpoint service do not belong to the same Alibaba Cloud account.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	ResourceOwner *bool `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// The ID of the endpoint service with which the endpoint is associated.
+	// The ID of the associated endpoint service.
 	//
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the endpoint service with which the endpoint is associated.
+	// The name of the associated endpoint service.
 	//
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
-	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The region ID of the associated endpoint service.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	// The ID of the VPC to which the endpoint belongs.
 	//
 	// example:
 	//
 	// vpc-fdfhkjafhjvcvdjf****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
+	// Indicates whether the endpoint service\\"s domain name resolves to the endpoint\\"s IP address in the nearest zone. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
-	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only **1*	- is returned.
+	// The number of private IP addresses for the elastic network interface (ENI) in each zone. This value is always **1**.
 	//
 	// example:
 	//

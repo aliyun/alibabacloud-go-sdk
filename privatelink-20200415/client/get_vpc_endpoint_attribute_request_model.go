@@ -16,7 +16,7 @@ type iGetVpcEndpointAttributeRequest interface {
 }
 
 type GetVpcEndpointAttributeRequest struct {
-	// The ID of the endpoint whose attributes you want to query.
+	// The ID of the endpoint.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +24,9 @@ type GetVpcEndpointAttributeRequest struct {
 	//
 	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The region ID of the endpoint whose attributes you want to query.
+	// The region ID of the endpoint.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

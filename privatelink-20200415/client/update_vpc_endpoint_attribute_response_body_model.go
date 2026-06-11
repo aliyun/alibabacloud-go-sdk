@@ -14,7 +14,7 @@ type iUpdateVpcEndpointAttributeResponseBody interface {
 }
 
 type UpdateVpcEndpointAttributeResponseBody struct {
-	// The request ID.
+	// The unique identifier for the request.
 	//
 	// example:
 	//

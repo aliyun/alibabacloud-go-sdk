@@ -22,19 +22,19 @@ type iListVpcEndpointConnectionsResponseBody interface {
 }
 
 type ListVpcEndpointConnectionsResponseBody struct {
-	// The endpoint connections.
+	// The information about the endpoint connections.
 	Connections []*ListVpcEndpointConnectionsResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	// - If **NextToken*	- is empty, no next query is to be sent.
 	//
-	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// - If a value of **NextToken*	- is returned, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListVpcEndpointConnectionsResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of entries returned in the endpoint connection list.
 	//
 	// example:
 	//
@@ -121,27 +121,27 @@ func (s *ListVpcEndpointConnectionsResponseBody) Validate() error {
 }
 
 type ListVpcEndpointConnectionsResponseBodyConnections struct {
-	// The bandwidth of the endpoint connection. Valid values: **1024 to 10240**. Unit: Mbit/s.
+	// The bandwidth of the endpoint connection. Unit: Mbit/s.
 	//
 	// example:
 	//
-	// 1024
+	// 3072
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
-	// 	- **Pending**: The connection is being modified.
+	// - **Pending**: The endpoint connection is being modified.
 	//
-	// 	- **Connecting**: The connection is being established.
+	// - **Connecting**: The endpoint connection is being established.
 	//
-	// 	- **Connected**: The connection is established.
+	// - **Connected**: The endpoint is connected to the endpoint service.
 	//
-	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	// - **Disconnecting**: The endpoint is being disconnected from the endpoint service.
 	//
-	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	// - **Disconnected**: The endpoint is disconnected from the endpoint service.
 	//
-	// 	- **Deleting**: The connection is being deleted.
+	// - **Deleting**: The endpoint connection is being deleted.
 	//
-	// 	- **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	// - **ServiceDeleted**: The corresponding endpoint service is deleted.
 	//
 	// example:
 	//
@@ -158,7 +158,12 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	// example:
 	//
 	// 25346073170691****
-	EndpointOwnerId  *int64  `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
+	EndpointOwnerId *int64 `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
+	// The region ID of the endpoint.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	EndpointRegionId *string `json:"EndpointRegionId,omitempty" xml:"EndpointRegionId,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
 	//
@@ -166,7 +171,7 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	//
 	// vpc-hp356stwkxg3fn2xe****
 	EndpointVpcId *string `json:"EndpointVpcId,omitempty" xml:"EndpointVpcId,omitempty"`
-	// The time when the endpoint connection was modified.
+	// The time when the connection was modified.
 	//
 	// example:
 	//
@@ -180,9 +185,9 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -193,10 +198,22 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
-	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceRegionId    *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The region ID of the endpoint service.
+	//
+	// example:
+	//
+	// cn-huhehaote
+	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// - Scalability: automatic scaling. In this mode, the bandwidth configured for the endpoint connection does not take effect.
+	//
+	// - BandwidthLimit: the bandwidth limit of the endpoint connection. The bandwidth limit is the value of Bandwidth.
+	//
+	// example:
+	//
+	// BandwidthLimit
 	TrafficControlMode *string `json:"TrafficControlMode,omitempty" xml:"TrafficControlMode,omitempty"`
-	// The zones.
+	// The zone information.
 	Zones []*ListVpcEndpointConnectionsResponseBodyConnectionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -345,13 +362,13 @@ type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
 	//
 	// eni-hp32lk0pyv6o94hs****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The ID of the replaced endpoint ENI in smooth migration scenarios.
+	// The ID of the endpoint ENI that is replaced in the smooth migration scenario.
 	//
 	// example:
 	//
 	// eni-hp32lk0pyv6o94hs****
 	ReplacedEniId *string `json:"ReplacedEniId,omitempty" xml:"ReplacedEniId,omitempty"`
-	// The ID of the replaced service resource in smooth migration scenarios.
+	// The ID of the service resource that is replaced in the smooth migration scenario.
 	//
 	// example:
 	//
@@ -363,7 +380,7 @@ type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
 	//
 	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the vSwitch to which the endpoint belongs.
+	// The vSwitch to which the endpoint belongs.
 	//
 	// example:
 	//
@@ -383,23 +400,23 @@ type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The state of the zone. Valid values:
 	//
-	// 	- **Creating**: The zone is being created.
+	// - **Creating**: The zone is being created.
 	//
-	// 	- **Wait**: The zone is to be connected.
+	// - **Wait**: The zone is waiting to be connected.
 	//
-	// 	- **Connected**: The zone is connected.
+	// - **Connected**: The zone is connected.
 	//
-	// 	- **Deleting**: The zone is being deleted.
+	// - **Deleting**: The zone is being deleted.
 	//
-	// 	- **Disconnecting**: The zone is being disconnected.
+	// - **Disconnecting**: The zone is being disconnected.
 	//
-	// 	- **Disconnected**: The zone is disconnected.
+	// - **Disconnected**: The zone is disconnected.
 	//
-	// 	- **Connecting**: The zone is being connected.
+	// - **Connecting**: The zone is being connected.
 	//
-	// 	- **Migrating**: The zone is being migrated.
+	// - **Migrating**: The zone is being migrated.
 	//
-	// 	- **Migrated**: The zone is migrated.
+	// - **Migrated**: The zone is migrated.
 	//
 	// example:
 	//

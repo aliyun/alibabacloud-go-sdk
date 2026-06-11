@@ -34,9 +34,9 @@ type ListTagResourcesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// 	- If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
+	// - If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
 	//
-	// 	- If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
+	// - If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ListTagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// 	- **vpcendpoint**: endpoint
+	// - **vpcendpoint**: endpoint
 	//
-	// 	- **vpcendpointservice**: endpoint service
+	// - **vpcendpointservice**: endpoint service
 	//
 	// This parameter is required.
 	//

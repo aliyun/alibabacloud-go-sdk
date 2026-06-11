@@ -28,11 +28,11 @@ type ListVpcEndpointServicesByEndUserResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	// - If this parameter is empty, all results have been returned.
 	//
-	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// - If a value is returned, use it in a subsequent request to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ListVpcEndpointServicesByEndUserResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about endpoint services.
+	// The endpoint services.
 	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,68 +121,77 @@ func (s *ListVpcEndpointServicesByEndUserResponseBody) Validate() error {
 }
 
 type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
-	// The protocol. Valid values:
+	// The IP version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**: The service supports IPv4.
 	//
-	// 	- **DualStack**
+	// - **DualStack**: The service supports both IPv4 and IPv6 (dual stack).
 	//
 	// example:
 	//
 	// IPv4
-	AddressIpVersion  *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AutoAcceptEnabled *bool   `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	// Specifies whether connection requests are automatically accepted. Valid values:
+	//
+	// - **true**: Connection requests are automatically accepted.
+	//
+	// - **false**: Connection requests must be manually accepted.
+	//
+	// example:
+	//
+	// true
+	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	// The payer. Valid values:
 	//
-	// 	- **Endpoint**: the service consumer
+	// - **Endpoint**: the service consumer.
 	//
-	// 	- **EndpointService**: the service provider
+	// - **EndpointService**: the service provider.
 	//
 	// example:
 	//
 	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The domain name of the endpoint service that can be associated with the endpoint.
+	// The domain name of the endpoint service.
 	//
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****.cn-huhehaote.privatelink.aliyuncs.com
 	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
-	// The ID of the endpoint service that can be associated with the endpoint.
+	// The ID of the endpoint service.
 	//
 	// example:
 	//
 	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the endpoint service that can be associated with the endpoint.
+	// The name of the endpoint service.
 	//
 	// example:
 	//
 	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The type of the service resource. Valid values:
+	// The service resource type.
 	//
-	// 	- **slb**: Classic Load Balancer (CLB) instance
+	// - **slb**: A Classic Load Balancer (CLB) instance.
 	//
-	// 	- **alb**: Application Load Balancer (ALB) instance
+	// - **alb**: An Application Load Balancer (ALB) instance.
 	//
-	// 	- **nlb**: Network Load Balancer (NLB) instance
+	// - **nlb**: A Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//
 	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
-	// Indicates whether IPv6 is enabled. Valid values:
+	// Specifies whether the endpoint service supports IPv6. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The endpoint service supports IPv6.
 	//
-	// 	- **false**
+	// - **false**: The endpoint service does not support IPv6.
 	//
 	// example:
 	//
@@ -190,17 +199,26 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// The type of the endpoint service.
 	//
-	// Only **Interface*	- is returned, which indicates an interface endpoint. You can specify **CLB*	- and **ALB*	- instances as service resources.
+	// The value is always **Interface**. This indicates an interface endpoint where you can add service resources such as Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 	//
 	// example:
 	//
 	// Interface
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The list of tags.
+	// A list of tags.
 	Tags                       []*ListVpcEndpointServicesByEndUserResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	VpcEndpointPolicySupported *bool                                                       `json:"VpcEndpointPolicySupported,omitempty" xml:"VpcEndpointPolicySupported,omitempty"`
-	ZoneAffinityEnabled        *bool                                                       `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
-	// The zones of the endpoint service that can be associated with the endpoint.
+	// Specifies whether zone affinity is enabled. Valid values:
+	//
+	// - **true**: Zone affinity is enabled.
+	//
+	// - **false**: Zone affinity is disabled.
+	//
+	// example:
+	//
+	// false
+	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
+	// The zones where the endpoint service is available.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -352,13 +370,13 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) Validate() error 
 }
 
 type ListVpcEndpointServicesByEndUserResponseBodyServicesTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
