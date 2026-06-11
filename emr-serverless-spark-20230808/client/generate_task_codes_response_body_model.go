@@ -26,27 +26,40 @@ type iGenerateTaskCodesResponseBody interface {
 }
 
 type GenerateTaskCodesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 1000000
-	Code *int32   `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data []*int64 `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Indicates whether the request failed.
+	//
 	// example:
 	//
 	// false
 	Failed *bool `json:"failed,omitempty" xml:"failed,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// No permission for resource action
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

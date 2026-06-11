@@ -14,6 +14,8 @@ type iGetRunConfigurationRequest interface {
 }
 
 type GetRunConfigurationRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

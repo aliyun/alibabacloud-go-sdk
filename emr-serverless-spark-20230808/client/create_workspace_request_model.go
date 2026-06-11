@@ -50,62 +50,63 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
-	// Specifies whether to enable auto-renewal. This parameter is required only if the paymentType parameter is set to Pre.
+	// Specifies whether to enable auto-renewal. This parameter is required if you set `paymentType` to `Pre`.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+	// The auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
 	//
 	// example:
 	//
 	// 100
 	AutoRenewPeriod *string `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+	// The unit of the auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
 	//
 	// example:
 	//
 	// month
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
-	// Specifies whether to automatically start a session.
+	// Specifies whether to automatically start a session cluster when the workspace is created.
 	//
 	// example:
 	//
 	// false
 	AutoStartSessionCluster *bool `json:"autoStartSessionCluster,omitempty" xml:"autoStartSessionCluster,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A token that ensures the idempotency of the request.
 	//
 	// example:
 	//
 	// 8e6aae2810c8f67229ca70bb31cd****
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The information of the Data Lake Formation (DLF) catalog.
+	// The DLF Catalog ID.
 	//
 	// example:
 	//
 	// 123xxxxx
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
-	// The version of DLF.
+	// The DLF type.
 	//
 	// example:
 	//
 	// dlf1.0
 	DlfType *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
-	// The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
+	// The subscription duration. This parameter is required if you set `paymentType` to `Pre`.
 	//
 	// example:
 	//
 	// 12452
-	Duration *string   `json:"duration,omitempty" xml:"duration,omitempty"`
-	GpuSpec  []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	// The name of the Object Storage Service (OSS) bucket.
+	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The specifications for the GPU resources.
+	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	// The OSS bucket for the workspace. The path must be in the `oss://<bucket-name>/` format.
 	//
 	// example:
 	//
 	// oss://test-bucket/
 	OssBucket *string `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription duration. This parameter is required if you set `paymentType` to `Pre`.
 	//
 	// example:
 	//
@@ -113,36 +114,40 @@ type CreateWorkspaceRequest struct {
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PayAsYouGo
+	// - `PayAsYouGo`: pay-as-you-go
 	//
-	// 	- Pre
+	// - `Pre`: subscription
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The name of the role used to run Spark jobs.
+	// The name of the RAM role used to run Spark jobs.
 	//
 	// example:
 	//
 	// AliyunEMRSparkJobRunDefaultRole
 	RamRoleName *string `json:"ramRoleName,omitempty" xml:"ramRoleName,omitempty"`
-	// The type of the version.
+	// The release type.
 	//
 	// example:
 	//
 	// pro
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
-	// rg-xxxxxxx
+	// rg-acfmwpi66knkxny
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The resource specifications.
 	ResourceSpec *CreateWorkspaceRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
+	// The tags to add to the workspace.
+	//
 	// if can be null:
 	// false
 	Tag []*CreateWorkspaceRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//
@@ -354,12 +359,14 @@ func (s *CreateWorkspaceRequest) Validate() error {
 }
 
 type CreateWorkspaceRequestResourceSpec struct {
-	// The maximum resource quota for a workspace.
+	// The resource quota for the workspace.
 	//
 	// example:
 	//
 	// 1000
 	Cu *string `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The GPU resource quota for the workspace.
+	//
 	// example:
 	//
 	// 100
@@ -397,7 +404,17 @@ func (s *CreateWorkspaceRequestResourceSpec) Validate() error {
 }
 
 type CreateWorkspaceRequestTag struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

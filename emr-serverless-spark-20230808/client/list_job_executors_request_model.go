@@ -22,22 +22,32 @@ type iListJobExecutorsRequest interface {
 }
 
 type ListJobExecutorsRequest struct {
+	// The executor type.
+	//
 	// example:
 	//
 	// driver
 	ExecutorType *string `json:"executorType,omitempty" xml:"executorType,omitempty"`
+	// The maximum number of records to return in a single request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// 2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The executor status.
+	//
 	// example:
 	//
 	// Dead

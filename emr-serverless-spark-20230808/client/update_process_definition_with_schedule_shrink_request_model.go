@@ -48,13 +48,13 @@ type iUpdateProcessDefinitionWithScheduleShrinkRequest interface {
 }
 
 type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
-	// The email address to receive alerts.
+	// The email address for alerts.
 	//
 	// example:
 	//
 	// foo_bar@spark.alert.invalid.com
 	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
-	// The description of the workflow.
+	// The workflow description.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
 	// PARALLEL
 	ExecutionType      *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
 	GlobalParamsShrink *string `json:"globalParams,omitempty" xml:"globalParams,omitempty"`
-	// The name of the workflow.
+	// The workflow name.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +77,7 @@ type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
 	//
 	// ods_batch_workflow
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The status of the workflow.
+	// The release state of the workflow.
 	//
 	// example:
 	//
@@ -115,31 +115,31 @@ type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
 	//
 	// 1
 	RetryTimes *int32 `json:"retryTimes,omitempty" xml:"retryTimes,omitempty"`
-	// The execution user.
+	// The user to run the workflow.
 	//
 	// example:
 	//
 	// 113***************
 	RunAs *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
-	// The scheduling settings.
+	// The scheduling configuration.
 	ScheduleShrink *string `json:"schedule,omitempty" xml:"schedule,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The descriptions of all nodes in the workflow.
+	// A JSON array of task definitions. This array contains the descriptive information for all tasks in the workflow.
 	//
 	// This parameter is required.
 	TaskDefinitionJsonShrink *string `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty"`
-	// The node parallelism.
+	// The degree of concurrent execution for workflow nodes.
 	//
 	// example:
 	//
 	// 1
 	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
-	// The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+	// A JSON array that defines the dependencies between tasks in the workflow. \\`preTaskCode\\` specifies the upstream task ID, and \\`postTaskCode\\` specifies the downstream task ID. Each task must have a unique ID. For a task node without an upstream task, add a dependency and set \\`preTaskCode\\` to 0.
 	//
 	// This parameter is required.
 	TaskRelationJsonShrink *string `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty"`
-	// The default timeout period of the workflow.
+	// The default timeout period for the workflow execution.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iListCatalogsRequest interface {
 }
 
 type ListCatalogsRequest struct {
+	// The environment type.
+	//
 	// example:
 	//
 	// dev
 	Environment *string `json:"environment,omitempty" xml:"environment,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

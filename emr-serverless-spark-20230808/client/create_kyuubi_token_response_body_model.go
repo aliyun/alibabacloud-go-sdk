@@ -16,7 +16,10 @@ type iCreateKyuubiTokenResponseBody interface {
 }
 
 type CreateKyuubiTokenResponseBody struct {
+	// The returned data.
 	Data *CreateKyuubiTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -59,7 +62,7 @@ func (s *CreateKyuubiTokenResponseBody) Validate() error {
 }
 
 type CreateKyuubiTokenResponseBodyData struct {
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//

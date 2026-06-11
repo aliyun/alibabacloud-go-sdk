@@ -36,13 +36,13 @@ type iListKyuubiSparkApplicationsShrinkRequest interface {
 }
 
 type ListKyuubiSparkApplicationsShrinkRequest struct {
-	// The ID of the application that is submitted by using a Kyuubi gateway.
+	// The ID of the Spark application submitted by Kyuubi, used for searching.
 	//
 	// example:
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	// The name of the Spark application that is submitted by using a Kyuubi gateway.
+	// The name of the Spark application submitted by Kyuubi, used for searching.
 	//
 	// example:
 	//
@@ -53,7 +53,7 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	//
 	// ["SUCCESS"]
 	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of records to return.
 	//
 	// example:
 	//
@@ -63,7 +63,7 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	//
 	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	//
 	// asc
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
-	// The range of start time.
+	// The time range when the task started.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// example:
 	//

@@ -14,6 +14,8 @@ type iListKyuubiTokenRequest interface {
 }
 
 type ListKyuubiTokenRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

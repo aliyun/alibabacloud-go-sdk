@@ -16,12 +16,13 @@ type iGetRunConfigurationResponseBody interface {
 }
 
 type GetRunConfigurationResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId        *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The run configuration.
 	RunConfiguration *GetRunConfigurationResponseBodyRunConfiguration `json:"runConfiguration,omitempty" xml:"runConfiguration,omitempty" type:"Struct"`
 }
 
@@ -61,10 +62,11 @@ func (s *GetRunConfigurationResponseBody) Validate() error {
 }
 
 type GetRunConfigurationResponseBodyRunConfiguration struct {
-	// 应用配置项
+	// The list of Spark configuration parameters.
 	ApplicationConfigs []*GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
-	LogConfig          *GetRunConfigurationResponseBodyRunConfigurationLogConfig            `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// 运行配置。
+	// The log configuration.
+	LogConfig *GetRunConfigurationResponseBodyRunConfigurationLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	// The list of runtime parameters.
 	RuntimeConfigs []*Tag `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -131,19 +133,19 @@ func (s *GetRunConfigurationResponseBodyRunConfiguration) Validate() error {
 }
 
 type GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs struct {
-	// 应用配置文件名。 应用配置文件名。 ```spark-defaults.conf```
+	// The name of the application configuration file.
 	//
 	// example:
 	//
 	// spark-defaults.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	// 配置项键。 配置项键。 ```dfs.namenode.checkpoint.period```
+	// The key of the configuration item.
 	//
 	// example:
 	//
 	// spark.driver.cores
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
-	// 配置项值。 配置项值。 ```3600s```
+	// The value of the configuration item.
 	//
 	// example:
 	//
@@ -191,10 +193,14 @@ func (s *GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs) Vali
 }
 
 type GetRunConfigurationResponseBodyRunConfigurationLogConfig struct {
+	// The log level.
+	//
 	// example:
 	//
 	// INFO
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	// The log path.
+	//
 	// example:
 	//
 	// oss://test

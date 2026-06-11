@@ -18,14 +18,20 @@ type iUpdateLivyComputeResponseBody interface {
 }
 
 type UpdateLivyComputeResponseBody struct {
+	// The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For more information about the cause of the error, see the message parameter.
+	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****

@@ -22,19 +22,19 @@ type iListReleaseVersionsResponseBody interface {
 }
 
 type ListReleaseVersionsResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of records to return on a single page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The versions.
+	// The list of versions.
 	ReleaseVersions []*ListReleaseVersionsResponseBodyReleaseVersions `json:"releaseVersions,omitempty" xml:"releaseVersions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListReleaseVersionsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListReleaseVersionsResponseBody) Validate() error {
 }
 
 type ListReleaseVersionsResponseBodyReleaseVersions struct {
-	// The version number of open source Spark.
+	// The community version number of Spark.
 	//
 	// example:
 	//
 	// Spark 3.3.1
 	CommunityVersion *string `json:"communityVersion,omitempty" xml:"communityVersion,omitempty"`
-	// The CPU architectures.
+	// The list of CPU architectures.
 	CpuArchitectures []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
 	// The version number.
 	//
@@ -131,19 +131,19 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Indicates whether the Fusion engine is used for acceleration.
+	// Indicates whether the Fusion engine is enabled for acceleration.
 	//
 	// example:
 	//
 	// true
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The creation time.
+	// The time when the version was created.
 	//
 	// example:
 	//
 	// 1716215854101
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The type of the Infrastructure as a Service (IaaS) layer.
+	// The type of the IaaS layer.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The version of Scala.
+	// The Scala version.
 	//
 	// example:
 	//

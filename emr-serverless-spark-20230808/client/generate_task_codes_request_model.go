@@ -18,18 +18,24 @@ type iGenerateTaskCodesRequest interface {
 }
 
 type GenerateTaskCodesRequest struct {
+	// The number of codes to generate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	GenNum *int32 `json:"genNum,omitempty" xml:"genNum,omitempty"`
+	// The product namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SS
 	ProductNamespace *string `json:"productNamespace,omitempty" xml:"productNamespace,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

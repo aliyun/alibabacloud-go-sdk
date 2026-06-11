@@ -22,21 +22,28 @@ type iListExecutorLogsResponseBody interface {
 }
 
 type ListExecutorLogsResponseBody struct {
+	// The retrieved logs, sorted in contextual order. If no contextual logs are found based on the specified starting log, this parameter is empty.
 	Logs []*ListExecutorLogsResponseBodyLogs `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
+	// The maximum number of results returned per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. This value is null when there are no more results to return.
+	//
 	// example:
 	//
 	// 2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total count of log files.
+	//
 	// example:
 	//
 	// 200
@@ -110,19 +117,28 @@ func (s *ListExecutorLogsResponseBody) Validate() error {
 }
 
 type ListExecutorLogsResponseBodyLogs struct {
+	// The full path of the log file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// The size of the file, in bytes.
+	//
 	// example:
 	//
 	// 6383327
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The log name.
+	//
 	// example:
 	//
 	// log4j.log
 	LogName *string `json:"logName,omitempty" xml:"logName,omitempty"`
+	// The log type.
+	//
 	// example:
 	//
 	// log4j
 	LogType *string `json:"logType,omitempty" xml:"logType,omitempty"`
+	// The time the log file was last updated, as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1745390462

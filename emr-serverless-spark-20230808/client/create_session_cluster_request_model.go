@@ -38,46 +38,46 @@ type iCreateSessionClusterRequest interface {
 }
 
 type CreateSessionClusterRequest struct {
-	// The Spark configurations.
+	// The Spark application configurations.
 	ApplicationConfigs []*CreateSessionClusterRequestApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
-	// Specifies whether to enable automatic startup.
+	// The automatic startup configuration.
 	//
-	// 	- true
+	// - true: Yes.
 	//
-	// 	- false
+	// - false: No.
 	AutoStartConfiguration *CreateSessionClusterRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	// The automatic termination configuration.
+	// The automatic stop configuration.
 	AutoStopConfiguration *CreateSessionClusterRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
 	ClientToken           *string                                           `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The version of the Spark engine.
+	// The version that is displayed in the console.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The ID of the Python environment. This parameter takes effect only for notebook sessions.
+	// The ID of the Python environment. This parameter applies only to Notebook sessions.
 	//
 	// example:
 	//
 	// env-cpv569tlhtgndjl86t40
 	EnvId *string `json:"envId,omitempty" xml:"envId,omitempty"`
-	// Specifies whether to enable Fusion engine for acceleration.
+	// Specifies whether to enable the Fusion engine for acceleration.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The session type.
+	// The type of the session. Valid values:
 	//
-	// 	- SQL
+	// - SQL: an SQL session.
 	//
-	// 	- NOTEBOOK
+	// - NOTEBOOK: a Notebook session.
 	//
 	// example:
 	//
 	// SQL
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The name of the job.
+	// The name of the task.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateSessionClusterRequest struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The version number of Spark.
+	// The version of the Spark engine.
 	//
 	// example:
 	//
@@ -259,13 +259,13 @@ type CreateSessionClusterRequestApplicationConfigs struct {
 	//
 	// spark-defaults.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	// The key of SparkConf.
+	// The key of a Spark configuration item.
 	//
 	// example:
 	//
 	// spark.app.name
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
-	// The value of SparkConf.
+	// The value of a Spark configuration item.
 	//
 	// example:
 	//
@@ -315,9 +315,9 @@ func (s *CreateSessionClusterRequestApplicationConfigs) Validate() error {
 type CreateSessionClusterRequestAutoStartConfiguration struct {
 	// Specifies whether to enable automatic startup.
 	//
-	// 	- true
+	// - true: Enables automatic startup.
 	//
-	// 	- false
+	// - false: Disables automatic startup.
 	//
 	// example:
 	//
@@ -347,17 +347,17 @@ func (s *CreateSessionClusterRequestAutoStartConfiguration) Validate() error {
 }
 
 type CreateSessionClusterRequestAutoStopConfiguration struct {
-	// Specifies whether to enable automatic termination.
+	// Specifies whether to enable automatic stop.
 	//
-	// 	- true
+	// - true: Enables automatic stop.
 	//
-	// 	- false
+	// - false: Disables automatic stop.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
+	// The idle timeout period of the session. The session is automatically stopped after it is idle for the specified period. Unit: minutes.
 	//
 	// example:
 	//

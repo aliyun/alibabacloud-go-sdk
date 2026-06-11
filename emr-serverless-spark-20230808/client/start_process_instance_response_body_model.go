@@ -26,19 +26,19 @@ type iStartProcessInstanceResponseBody interface {
 }
 
 type StartProcessInstanceResponseBody struct {
-	// The code that is returned by the backend server.
+	// The return code from the backend.
 	//
 	// example:
 	//
 	// 1400009
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
-	// {\\"sessionBizId\\": \\"sc-dc85644dba1c8c63\\", \\"bizId\\": \\"st-aeed3b0d4f87418a9a9dcbd757477658\\", \\"gmtCreated\\": \\"Thu Sep 12 02:28:45 UTC 2024\\"}
+	// null
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Indicates whether the workflow fails to be run manually.
+	// Indicates whether the manual workflow run failed.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type StartProcessInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The description of the returned code.
+	// The detailed description of the return code.
 	//
 	// example:
 	//
 	// No permission for resource action
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

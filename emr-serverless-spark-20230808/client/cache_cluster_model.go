@@ -11,6 +11,10 @@ type iCacheCluster interface {
 	GoString() string
 	SetBindedWorkspaces(v []*string) *CacheCluster
 	GetBindedWorkspaces() []*string
+	SetCacheClusterId(v string) *CacheCluster
+	GetCacheClusterId() *string
+	SetCacheClusterName(v string) *CacheCluster
+	GetCacheClusterName() *string
 	SetCachesets(v []*CacheClusterCachesets) *CacheCluster
 	GetCachesets() []*CacheClusterCachesets
 	SetClusterId(v string) *CacheCluster
@@ -19,6 +23,8 @@ type iCacheCluster interface {
 	GetConfiguration() *string
 	SetConfigurations(v []*CacheClusterConfigurations) *CacheCluster
 	GetConfigurations() []*CacheClusterConfigurations
+	SetCreateTime(v string) *CacheCluster
+	GetCreateTime() *string
 	SetCreator(v string) *CacheCluster
 	GetCreator() *string
 	SetGmtCreated(v int64) *CacheCluster
@@ -33,30 +39,59 @@ type iCacheCluster interface {
 	GetPaymentType() *string
 	SetRegionId(v string) *CacheCluster
 	GetRegionId() *string
+	SetResourceGroupId(v string) *CacheCluster
+	GetResourceGroupId() *string
 	SetResourceSpec(v *CacheClusterResourceSpec) *CacheCluster
 	GetResourceSpec() *CacheClusterResourceSpec
 	SetState(v string) *CacheCluster
 	GetState() *string
+	SetTables(v []*CacheClusterTables) *CacheCluster
+	GetTables() []*CacheClusterTables
+	SetTags(v []*CacheClusterTags) *CacheCluster
+	GetTags() []*CacheClusterTags
 	SetUsedResourceSpec(v *CacheClusterUsedResourceSpec) *CacheCluster
 	GetUsedResourceSpec() *CacheClusterUsedResourceSpec
+	SetVersion(v string) *CacheCluster
+	GetVersion() *string
 }
 
 type CacheCluster struct {
-	BindedWorkspaces []*string                     `json:"bindedWorkspaces,omitempty" xml:"bindedWorkspaces,omitempty" type:"Repeated"`
-	Cachesets        []*CacheClusterCachesets      `json:"cachesets,omitempty" xml:"cachesets,omitempty" type:"Repeated"`
-	ClusterId        *string                       `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	Configuration    *string                       `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Configurations   []*CacheClusterConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
-	Creator          *string                       `json:"creator,omitempty" xml:"creator,omitempty"`
-	GmtCreated       *int64                        `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	GmtModified      *int64                        `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Modifier         *string                       `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Name             *string                       `json:"name,omitempty" xml:"name,omitempty"`
-	PaymentType      *string                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId         *string                       `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ResourceSpec     *CacheClusterResourceSpec     `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
-	State            *string                       `json:"state,omitempty" xml:"state,omitempty"`
+	// An array of workspace IDs that are bound to the cache cluster.
+	BindedWorkspaces []*string                `json:"bindedWorkspaces,omitempty" xml:"bindedWorkspaces,omitempty" type:"Repeated"`
+	CacheClusterId   *string                  `json:"cacheClusterId,omitempty" xml:"cacheClusterId,omitempty"`
+	CacheClusterName *string                  `json:"cacheClusterName,omitempty" xml:"cacheClusterName,omitempty"`
+	Cachesets        []*CacheClusterCachesets `json:"cachesets,omitempty" xml:"cachesets,omitempty" type:"Repeated"`
+	// The unique identifier of the cache cluster.
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The configuration of the cache cluster.
+	Configuration *string `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// An array of configuration objects.
+	Configurations []*CacheClusterConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
+	CreateTime     *string                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The user who created the cache cluster.
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The creation time of the cache cluster, provided as a UNIX timestamp.
+	GmtCreated *int64 `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// The last modification time of the cache cluster, provided as a UNIX timestamp.
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The user who last modified the cache cluster.
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The name of the cache cluster.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The billing method for the cache cluster.
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the region where the cache cluster is located.
+	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The resource specifications of the cache cluster.
+	ResourceSpec *CacheClusterResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
+	// The current state of the cache cluster.
+	State  *string               `json:"state,omitempty" xml:"state,omitempty"`
+	Tables []*CacheClusterTables `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	Tags   []*CacheClusterTags   `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The resource specifications currently in use by the cache cluster.
 	UsedResourceSpec *CacheClusterUsedResourceSpec `json:"usedResourceSpec,omitempty" xml:"usedResourceSpec,omitempty" type:"Struct"`
+	Version          *string                       `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s CacheCluster) String() string {
@@ -69,6 +104,14 @@ func (s CacheCluster) GoString() string {
 
 func (s *CacheCluster) GetBindedWorkspaces() []*string {
 	return s.BindedWorkspaces
+}
+
+func (s *CacheCluster) GetCacheClusterId() *string {
+	return s.CacheClusterId
+}
+
+func (s *CacheCluster) GetCacheClusterName() *string {
+	return s.CacheClusterName
 }
 
 func (s *CacheCluster) GetCachesets() []*CacheClusterCachesets {
@@ -85,6 +128,10 @@ func (s *CacheCluster) GetConfiguration() *string {
 
 func (s *CacheCluster) GetConfigurations() []*CacheClusterConfigurations {
 	return s.Configurations
+}
+
+func (s *CacheCluster) GetCreateTime() *string {
+	return s.CreateTime
 }
 
 func (s *CacheCluster) GetCreator() *string {
@@ -115,6 +162,10 @@ func (s *CacheCluster) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CacheCluster) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CacheCluster) GetResourceSpec() *CacheClusterResourceSpec {
 	return s.ResourceSpec
 }
@@ -123,12 +174,34 @@ func (s *CacheCluster) GetState() *string {
 	return s.State
 }
 
+func (s *CacheCluster) GetTables() []*CacheClusterTables {
+	return s.Tables
+}
+
+func (s *CacheCluster) GetTags() []*CacheClusterTags {
+	return s.Tags
+}
+
 func (s *CacheCluster) GetUsedResourceSpec() *CacheClusterUsedResourceSpec {
 	return s.UsedResourceSpec
 }
 
+func (s *CacheCluster) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CacheCluster) SetBindedWorkspaces(v []*string) *CacheCluster {
 	s.BindedWorkspaces = v
+	return s
+}
+
+func (s *CacheCluster) SetCacheClusterId(v string) *CacheCluster {
+	s.CacheClusterId = &v
+	return s
+}
+
+func (s *CacheCluster) SetCacheClusterName(v string) *CacheCluster {
+	s.CacheClusterName = &v
 	return s
 }
 
@@ -149,6 +222,11 @@ func (s *CacheCluster) SetConfiguration(v string) *CacheCluster {
 
 func (s *CacheCluster) SetConfigurations(v []*CacheClusterConfigurations) *CacheCluster {
 	s.Configurations = v
+	return s
+}
+
+func (s *CacheCluster) SetCreateTime(v string) *CacheCluster {
+	s.CreateTime = &v
 	return s
 }
 
@@ -187,6 +265,11 @@ func (s *CacheCluster) SetRegionId(v string) *CacheCluster {
 	return s
 }
 
+func (s *CacheCluster) SetResourceGroupId(v string) *CacheCluster {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CacheCluster) SetResourceSpec(v *CacheClusterResourceSpec) *CacheCluster {
 	s.ResourceSpec = v
 	return s
@@ -197,8 +280,23 @@ func (s *CacheCluster) SetState(v string) *CacheCluster {
 	return s
 }
 
+func (s *CacheCluster) SetTables(v []*CacheClusterTables) *CacheCluster {
+	s.Tables = v
+	return s
+}
+
+func (s *CacheCluster) SetTags(v []*CacheClusterTags) *CacheCluster {
+	s.Tags = v
+	return s
+}
+
 func (s *CacheCluster) SetUsedResourceSpec(v *CacheClusterUsedResourceSpec) *CacheCluster {
 	s.UsedResourceSpec = v
+	return s
+}
+
+func (s *CacheCluster) SetVersion(v string) *CacheCluster {
+	s.Version = &v
 	return s
 }
 
@@ -224,6 +322,24 @@ func (s *CacheCluster) Validate() error {
 	if s.ResourceSpec != nil {
 		if err := s.ResourceSpec.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.UsedResourceSpec != nil {
@@ -270,7 +386,10 @@ func (s *CacheClusterCachesets) Validate() error {
 }
 
 type CacheClusterConfigurations struct {
+	// The content of the configuration file.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the configuration file.
+	//
 	// example:
 	//
 	// cacheset.xml
@@ -308,8 +427,11 @@ func (s *CacheClusterConfigurations) Validate() error {
 }
 
 type CacheClusterResourceSpec struct {
+	// The bandwidth of the cache cluster.
 	BandWidth *int64 `json:"bandWidth,omitempty" xml:"bandWidth,omitempty"`
-	Storage   *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
+	Ha        *bool  `json:"ha,omitempty" xml:"ha,omitempty"`
+	// The storage capacity of the cache cluster.
+	Storage *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
 }
 
 func (s CacheClusterResourceSpec) String() string {
@@ -324,12 +446,21 @@ func (s *CacheClusterResourceSpec) GetBandWidth() *int64 {
 	return s.BandWidth
 }
 
+func (s *CacheClusterResourceSpec) GetHa() *bool {
+	return s.Ha
+}
+
 func (s *CacheClusterResourceSpec) GetStorage() *int64 {
 	return s.Storage
 }
 
 func (s *CacheClusterResourceSpec) SetBandWidth(v int64) *CacheClusterResourceSpec {
 	s.BandWidth = &v
+	return s
+}
+
+func (s *CacheClusterResourceSpec) SetHa(v bool) *CacheClusterResourceSpec {
+	s.Ha = &v
 	return s
 }
 
@@ -342,9 +473,111 @@ func (s *CacheClusterResourceSpec) Validate() error {
 	return dara.Validate(s)
 }
 
+type CacheClusterTables struct {
+	CatalogId       *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	CatalogProvider *string `json:"catalogProvider,omitempty" xml:"catalogProvider,omitempty"`
+	Database        *string `json:"database,omitempty" xml:"database,omitempty"`
+	Table           *string `json:"table,omitempty" xml:"table,omitempty"`
+	WorkspaceId     *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s CacheClusterTables) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CacheClusterTables) GoString() string {
+	return s.String()
+}
+
+func (s *CacheClusterTables) GetCatalogId() *string {
+	return s.CatalogId
+}
+
+func (s *CacheClusterTables) GetCatalogProvider() *string {
+	return s.CatalogProvider
+}
+
+func (s *CacheClusterTables) GetDatabase() *string {
+	return s.Database
+}
+
+func (s *CacheClusterTables) GetTable() *string {
+	return s.Table
+}
+
+func (s *CacheClusterTables) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
+func (s *CacheClusterTables) SetCatalogId(v string) *CacheClusterTables {
+	s.CatalogId = &v
+	return s
+}
+
+func (s *CacheClusterTables) SetCatalogProvider(v string) *CacheClusterTables {
+	s.CatalogProvider = &v
+	return s
+}
+
+func (s *CacheClusterTables) SetDatabase(v string) *CacheClusterTables {
+	s.Database = &v
+	return s
+}
+
+func (s *CacheClusterTables) SetTable(v string) *CacheClusterTables {
+	s.Table = &v
+	return s
+}
+
+func (s *CacheClusterTables) SetWorkspaceId(v string) *CacheClusterTables {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *CacheClusterTables) Validate() error {
+	return dara.Validate(s)
+}
+
+type CacheClusterTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CacheClusterTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CacheClusterTags) GoString() string {
+	return s.String()
+}
+
+func (s *CacheClusterTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CacheClusterTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CacheClusterTags) SetKey(v string) *CacheClusterTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CacheClusterTags) SetValue(v string) *CacheClusterTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CacheClusterTags) Validate() error {
+	return dara.Validate(s)
+}
+
 type CacheClusterUsedResourceSpec struct {
+	// The amount of bandwidth consumed by the cache cluster.
 	BandWidth *int64 `json:"bandWidth,omitempty" xml:"bandWidth,omitempty"`
-	Storage   *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The amount of storage capacity consumed by the cache cluster.
+	Storage *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
 }
 
 func (s CacheClusterUsedResourceSpec) String() string {

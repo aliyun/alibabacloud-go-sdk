@@ -20,15 +20,22 @@ type iCreateLivyComputeResponseBody interface {
 }
 
 type CreateLivyComputeResponseBody struct {
+	// The status code of the request. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For more information, see the message parameter.
+	//
 	// example:
 	//
 	// 1000000
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *CreateLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -89,6 +96,8 @@ func (s *CreateLivyComputeResponseBody) Validate() error {
 }
 
 type CreateLivyComputeResponseBodyData struct {
+	// The ID of the Livy Gateway.
+	//
 	// example:
 	//
 	// lc-i8xogcdfa4fk3yn1

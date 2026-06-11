@@ -16,7 +16,10 @@ type iListRayClusterResponseBody interface {
 }
 
 type ListRayClusterResponseBody struct {
+	// The list of Ray clusters.
 	RayClusters []*ListRayClusterResponseBodyRayClusters `json:"rayClusters,omitempty" xml:"rayClusters,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944
@@ -63,83 +66,133 @@ func (s *ListRayClusterResponseBody) Validate() error {
 }
 
 type ListRayClusterResponseBodyRayClusters struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// ray-uiulpgow9xljimm1
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 1723722279800
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The UID of the user who created the cluster.
+	//
 	// example:
 	//
 	// 202077646755123991
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The nickname of the creator.
+	//
 	// example:
 	//
 	// Alice
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// The URL of the Ray cluster dashboard.
+	//
 	// example:
 	//
 	// https://emr-spark-ray-gateway-cn-hangzhou.aliyuncs.com?token=xxxxxxxxx
 	DashboardUrl *string `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The Ray engine version.
+	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The gRPC endpoint for the internal network. The domain name can also be used to submit Ray jobs.
+	//
 	// example:
 	//
 	// ray://emr-spark-ray-gateway-cn-hanghzou-internal.emr.aliyuncs.com:80
-	GrpcEndpoint *string                                        `json:"grpcEndpoint,omitempty" xml:"grpcEndpoint,omitempty"`
-	HeadSpec     *ListRayClusterResponseBodyRayClustersHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
+	GrpcEndpoint *string `json:"grpcEndpoint,omitempty" xml:"grpcEndpoint,omitempty"`
+	// The information about the head node of the Ray cluster.
+	HeadSpec *ListRayClusterResponseBodyRayClustersHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
+	// The ID of the Ray cluster instance.
+	//
 	// example:
 	//
 	// ray-uiulpgow9xljimm1-xxxxxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the configuration has been modified.
+	//
 	// example:
 	//
 	// false
 	Modified *bool `json:"modified,omitempty" xml:"modified,omitempty"`
+	// The time when the cluster was last modified.
+	//
 	// example:
 	//
 	// 1723722279800
 	ModifiedTime *int64 `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	// The UID of the user who last updated the cluster.
+	//
 	// example:
 	//
 	// 202077646755123991
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The nickname of the modifier.
+	//
 	// example:
 	//
 	// Alice
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// The name of the Ray cluster.
+	//
 	// example:
 	//
 	// testRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the network connectivity service.
+	//
 	// example:
 	//
 	// vpc
 	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	// The startup time.
+	//
 	// example:
 	//
 	// 1723722279800
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The cluster state.
+	//
+	// - Starting: The cluster is starting.
+	//
+	// - Running: The cluster is running.
+	//
+	// - Stopping: The cluster is stopping.
+	//
+	// - Stopped: The cluster is stopped.
+	//
+	// - Error: The cluster has failed.
+	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1234567890
-	UserId     *string                                            `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The information about the worker nodes of the Ray cluster.
 	WorkerSpec []*ListRayClusterResponseBodyRayClustersWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -359,10 +412,14 @@ func (s *ListRayClusterResponseBodyRayClusters) Validate() error {
 }
 
 type ListRayClusterResponseBodyRayClustersHeadSpec struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Indicates whether automatic scaling is enabled for worker nodes.
+	//
 	// example:
 	//
 	// false
@@ -371,18 +428,26 @@ type ListRayClusterResponseBodyRayClustersHeadSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The idle timeout period for worker nodes.
+	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
+	// The memory size. Unit: Gi.
+	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 1
@@ -465,6 +530,8 @@ func (s *ListRayClusterResponseBodyRayClustersHeadSpec) Validate() error {
 }
 
 type ListRayClusterResponseBodyRayClustersWorkerSpec struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
@@ -473,30 +540,44 @@ type ListRayClusterResponseBodyRayClustersWorkerSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The name of the worker group.
+	//
 	// example:
 	//
 	// Group1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The maximum number of worker nodes after automatic scaling is enabled.
+	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
+	// The memory size. Unit: Gi.
+	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The minimum number of worker nodes after automatic scaling is enabled.
+	//
 	// example:
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 2
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// The worker type.
+	//
 	// example:
 	//
 	// CPU

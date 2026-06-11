@@ -22,26 +22,27 @@ type iListCatalogsResponseBody interface {
 }
 
 type ListCatalogsResponseBody struct {
+	// The data catalogs.
 	Catalogs []*ListCatalogsResponseBodyCatalogs `json:"catalogs,omitempty" xml:"catalogs,omitempty" type:"Repeated"`
-	// 一次获取的最大记录数。
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 下一页TOKEN。
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 记录总数。
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -120,35 +121,47 @@ type ListCatalogsResponseBodyCatalogs struct {
 	//
 	// alias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// regionId。
+	// The ID of the data catalog.
 	//
 	// example:
 	//
 	// 15097**********
 	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The provider of the data catalog.
+	//
 	// example:
 	//
 	// HMS
 	CatalogProvider *string `json:"catalogProvider,omitempty" xml:"catalogProvider,omitempty"`
+	// Indicates whether this is the default data catalog.
+	//
 	// example:
 	//
 	// default_catalog
-	CatalogType  *string            `json:"catalogType,omitempty" xml:"catalogType,omitempty"`
-	Environments []*string          `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	Extras       map[string]*string `json:"extras,omitempty" xml:"extras,omitempty"`
+	CatalogType *string `json:"catalogType,omitempty" xml:"catalogType,omitempty"`
+	// The environment types.
+	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// Extra information.
+	Extras map[string]*string `json:"extras,omitempty" xml:"extras,omitempty"`
+	// The time when the resource was created.
+	//
 	// example:
 	//
 	// 1760604889
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the resource was last updated.
+	//
 	// example:
 	//
 	// 1760604889
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The ID of the resource owner.
+	//
 	// example:
 	//
 	// 15097**********
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
-	// 工作空间id。
+	// The workspace ID.
 	//
 	// example:
 	//

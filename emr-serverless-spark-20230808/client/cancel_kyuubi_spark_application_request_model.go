@@ -14,6 +14,8 @@ type iCancelKyuubiSparkApplicationRequest interface {
 }
 
 type CancelKyuubiSparkApplicationRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

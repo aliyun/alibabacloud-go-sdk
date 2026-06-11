@@ -26,29 +26,40 @@ type iCreateNetworkServiceRequest interface {
 }
 
 type CreateNetworkServiceRequest struct {
+	// A token to ensure the idempotency of the request.
+	//
 	// example:
 	//
 	// acaf8f54-d40e-4c33-a900-f6c1b345cb47
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The name of the network service.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the security group.
+	//
 	// example:
 	//
 	// securityGroupId
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The type of the network service.
+	//
 	// example:
 	//
 	// type
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// VPC id。
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-bp1g14f566kbk8jex****
-	VpcId      *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// A list of vSwitch IDs.
 	VswitchIds []*string `json:"vswitchIds,omitempty" xml:"vswitchIds,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

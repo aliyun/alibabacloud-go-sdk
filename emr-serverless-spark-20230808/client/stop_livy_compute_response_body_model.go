@@ -18,14 +18,20 @@ type iStopLivyComputeResponseBody interface {
 }
 
 type StopLivyComputeResponseBody struct {
+	// The response code. A value of 1000000 indicates that the request is successful. Other values indicate that the request failed. For more information about an error, see the message parameter.
+	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 484D9DDA-300D-525E-AF7A-0CCCA5C64A7A

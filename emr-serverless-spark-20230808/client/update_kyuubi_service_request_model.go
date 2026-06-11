@@ -32,42 +32,62 @@ type iUpdateKyuubiServiceRequest interface {
 }
 
 type UpdateKyuubiServiceRequest struct {
+	// The specifications of the Kyuubi service.
+	//
 	// example:
 	//
 	// 2c8g
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
+	// The Kyuubi service configuration.
+	//
 	// example:
 	//
 	// []
 	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
+	// The Kyuubi service engine version.
+	//
 	// example:
 	//
 	// 1.9.2-0.0.2
 	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// dev_serverless_spark
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether to enable public network access.
+	//
 	// example:
 	//
 	// true
 	PublicEndpointEnabled *bool `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
+	// The queue in which the Kyuubi service runs.
+	//
 	// example:
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
+	// The version of the Spark engine.
+	//
 	// example:
 	//
 	// esr-4.6.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The number of replicas for high availability (HA).
+	//
 	// example:
 	//
 	// 0
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// Specifies whether to restart the service.
+	//
 	// example:
 	//
 	// false
 	Restart *bool `json:"restart,omitempty" xml:"restart,omitempty"`
+	// The Spark configuration.
+	//
 	// example:
 	//
 	// []

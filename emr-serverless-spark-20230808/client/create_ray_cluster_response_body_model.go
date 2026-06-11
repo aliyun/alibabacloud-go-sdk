@@ -16,10 +16,14 @@ type iCreateRayClusterResponseBody interface {
 }
 
 type CreateRayClusterResponseBody struct {
+	// The ID of the Ray cluster.
+	//
 	// example:
 	//
 	// ray-k7nm8ahl5te4tg91
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944

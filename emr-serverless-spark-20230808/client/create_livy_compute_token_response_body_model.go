@@ -20,15 +20,22 @@ type iCreateLivyComputeTokenResponseBody interface {
 }
 
 type CreateLivyComputeTokenResponseBody struct {
+	// The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. See the message parameter for error details.
+	//
 	// example:
 	//
 	// 1000000
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *CreateLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error details.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -89,7 +96,7 @@ func (s *CreateLivyComputeTokenResponseBody) Validate() error {
 }
 
 type CreateLivyComputeTokenResponseBodyData struct {
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//

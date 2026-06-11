@@ -24,17 +24,25 @@ type iEditWorkspaceQueueRequest interface {
 }
 
 type EditWorkspaceQueueRequest struct {
+  // The environment types.
   Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
   GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+  // The resource specifications.
   ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
+  // The Workspace ID.
+  // 
   // example:
   // 
   // w-975bcfda9625****
   WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+  // The name of the Workspace Queue.
+  // 
   // example:
   // 
   // dev_queue
   WorkspaceQueueName *string `json:"workspaceQueueName,omitempty" xml:"workspaceQueueName,omitempty"`
+  // The region ID.
+  // 
   // example:
   // 
   // cn-hangzhou
@@ -113,6 +121,8 @@ func (s *EditWorkspaceQueueRequest) Validate() error {
 }
 
 type EditWorkspaceQueueRequestResourceSpec struct {
+  // The maximum resource capacity of the Workspace Queue.
+  // 
   // example:
   // 
   // 1000

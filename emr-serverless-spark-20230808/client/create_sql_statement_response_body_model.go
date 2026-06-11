@@ -16,7 +16,7 @@ type iCreateSqlStatementResponseBody interface {
 }
 
 type CreateSqlStatementResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *CreateSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *CreateSqlStatementResponseBody) Validate() error {
 }
 
 type CreateSqlStatementResponseBodyData struct {
-	// The interactive query ID.
+	// The ID of the interactive query.
 	//
 	// example:
 	//

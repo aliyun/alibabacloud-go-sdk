@@ -18,18 +18,20 @@ type iListMembersRequest interface {
 }
 
 type ListMembersRequest struct {
-	// 一次获取的最大记录数。
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The token that marks the start of the next page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

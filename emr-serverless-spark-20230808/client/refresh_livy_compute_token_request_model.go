@@ -20,15 +20,22 @@ type iRefreshLivyComputeTokenRequest interface {
 }
 
 type RefreshLivyComputeTokenRequest struct {
+	// The information about token expiration.
 	AutoExpireConfiguration *RefreshLivyComputeTokenRequestAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
+	// The name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The token must be 16 or more characters in length.
+	//
 	// example:
 	//
 	// fe86812667f04v343
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -89,10 +96,18 @@ func (s *RefreshLivyComputeTokenRequest) Validate() error {
 }
 
 type RefreshLivyComputeTokenRequestAutoExpireConfiguration struct {
+	// Specifies whether the token automatically expires.
+	//
+	// - true: The token automatically expires.
+	//
+	// - false: The token does not automatically expire.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The expiration period in days.
+	//
 	// example:
 	//
 	// 7

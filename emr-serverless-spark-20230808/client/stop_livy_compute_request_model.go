@@ -14,6 +14,8 @@ type iStopLivyComputeRequest interface {
 }
 
 type StopLivyComputeRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

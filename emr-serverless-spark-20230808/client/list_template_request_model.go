@@ -14,6 +14,8 @@ type iListTemplateRequest interface {
 }
 
 type ListTemplateRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

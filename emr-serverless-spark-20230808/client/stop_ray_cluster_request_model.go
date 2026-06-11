@@ -14,6 +14,8 @@ type iStopRayClusterRequest interface {
 }
 
 type StopRayClusterRequest struct {
+	// The ID of the Ray cluster instance.
+	//
 	// example:
 	//
 	// ray-k7nm8ahl5te4tg91-ey7blpbg

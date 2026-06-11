@@ -26,17 +26,17 @@ type iGetTemplateResponseBody interface {
 type GetTemplateResponseBody struct {
 	// The returned data.
 	Data *Template `json:"data,omitempty" xml:"data,omitempty"`
-	// 	- If the value of success was false, an error code was returned.
+	// - If success is false, a business error code is returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If success is true, an empty value is returned.
 	//
 	// example:
 	//
 	// 040003
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - Returns an error message if success is false.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - Returns an empty value if success is true.
 	//
 	// example:
 	//

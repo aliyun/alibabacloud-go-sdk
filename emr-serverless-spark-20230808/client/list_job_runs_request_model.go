@@ -44,35 +44,45 @@ type iListJobRunsRequest interface {
 }
 
 type ListJobRunsRequest struct {
-	ApplicationConfigs *string `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty"`
-	// The ID of the user who created the job.
+	// The Spark configurations.
 	//
 	// example:
 	//
-	// 1509789347011222
+	// [{\\"key\\":\\"spark.app.name\\",\\"value\\":\\"test\\"}]
+	ApplicationConfigs *string `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty"`
+	// The UID of the user who created the job.
+	//
+	// example:
+	//
+	// 150976534701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The range of end time.
-	EndTime    *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
-	IsWorkflow *string                    `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
-	// The job run ID.
+	// The time range when the job run ended.
+	EndTime *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	// Specifies whether the job is a workflow task.
+	//
+	// example:
+	//
+	// false
+	IsWorkflow *string `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
+	// The deployment ID of the streaming job.
 	//
 	// example:
 	//
 	// jd-b6d003f1930f****
 	JobRunDeploymentId *string `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
-	// The job ID.
+	// The job run ID.
 	//
 	// example:
 	//
 	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of entries to return. The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The minimum running duration of the job. Unit: ms.
+	// The minimum runtime of the job run, in milliseconds.
 	//
 	// example:
 	//
@@ -84,7 +94,7 @@ type ListJobRunsRequest struct {
 	//
 	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results.
+	// The token that specifies the position from which to start the next read.
 	//
 	// example:
 	//
@@ -96,22 +106,27 @@ type ListJobRunsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The name of the resource queue on which the Spark jobs run.
+	// The ID of the resource queue on which the Spark job runs.
 	//
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	RuntimeConfigs  *string `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty"`
-	// The range of start time.
+	// The runtime configurations.
+	//
+	// example:
+	//
+	// [{\\"key\\":\\"mainClass\\",\\"value\\":\\"yourClass\\"}]
+	RuntimeConfigs *string `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty"`
+	// The time range when the job run started.
 	StartTime *ListJobRunsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
-	// The job states.
+	// The job run states.
 	//
 	// example:
 	//
 	// ["Running","Submitted"]
 	States []*string `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
-	// The tags of the job.
+	// The list of tags.
 	Tags []*ListJobRunsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -291,13 +306,13 @@ func (s *ListJobRunsRequest) Validate() error {
 }
 
 type ListJobRunsRequestEndTime struct {
-	// The end of the end time range.
+	// The end of the time range.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The beginning of the end time range.
+	// The start of the time range.
 	//
 	// example:
 	//
@@ -336,13 +351,13 @@ func (s *ListJobRunsRequestEndTime) Validate() error {
 }
 
 type ListJobRunsRequestStartTime struct {
-	// The end of the start time range.
+	// The end of the time range.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The beginning of the start time range.
+	// The start of the time range.
 	//
 	// example:
 	//
@@ -381,13 +396,13 @@ func (s *ListJobRunsRequestStartTime) Validate() error {
 }
 
 type ListJobRunsRequestTags struct {
-	// The key of tag N.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag_key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
 	// example:
 	//

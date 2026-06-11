@@ -36,13 +36,13 @@ type iListKyuubiSparkApplicationsRequest interface {
 }
 
 type ListKyuubiSparkApplicationsRequest struct {
-	// The ID of the application that is submitted by using a Kyuubi gateway.
+	// The ID of the Spark application submitted by Kyuubi, used for searching.
 	//
 	// example:
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	// The name of the Spark application that is submitted by using a Kyuubi gateway.
+	// The name of the Spark application submitted by Kyuubi, used for searching.
 	//
 	// example:
 	//
@@ -53,7 +53,7 @@ type ListKyuubiSparkApplicationsRequest struct {
 	//
 	// ["SUCCESS"]
 	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of records to return.
 	//
 	// example:
 	//
@@ -63,7 +63,7 @@ type ListKyuubiSparkApplicationsRequest struct {
 	//
 	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListKyuubiSparkApplicationsRequest struct {
 	//
 	// asc
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
-	// The range of start time.
+	// The time range when the task started.
 	StartTime *ListKyuubiSparkApplicationsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
 	// example:
 	//
@@ -258,13 +258,13 @@ func (s *ListKyuubiSparkApplicationsRequestEndTime) Validate() error {
 }
 
 type ListKyuubiSparkApplicationsRequestStartTime struct {
-	// The end of the start time range.
+	// The end of the time range.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The beginning of the start time range.
+	// The start of the time range.
 	//
 	// example:
 	//

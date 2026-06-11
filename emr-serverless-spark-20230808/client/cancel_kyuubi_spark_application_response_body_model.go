@@ -16,7 +16,10 @@ type iCancelKyuubiSparkApplicationResponseBody interface {
 }
 
 type CancelKyuubiSparkApplicationResponseBody struct {
+	// The returned data.
 	Body *CancelKyuubiSparkApplicationResponseBodyBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -59,11 +62,18 @@ func (s *CancelKyuubiSparkApplicationResponseBody) Validate() error {
 }
 
 type CancelKyuubiSparkApplicationResponseBodyBody struct {
+	// The ID of the Spark application submitted by Kyuubi.
+	//
 	// example:
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	Success       *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CancelKyuubiSparkApplicationResponseBodyBody) String() string {

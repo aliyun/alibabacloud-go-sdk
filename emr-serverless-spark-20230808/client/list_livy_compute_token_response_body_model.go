@@ -20,15 +20,22 @@ type iListLivyComputeTokenResponseBody interface {
 }
 
 type ListLivyComputeTokenResponseBody struct {
+	// The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. See the message parameter for failure details.
+	//
 	// example:
 	//
 	// 1000000
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *ListLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -89,6 +96,7 @@ func (s *ListLivyComputeTokenResponseBody) Validate() error {
 }
 
 type ListLivyComputeTokenResponseBodyData struct {
+	// The list of tokens.
 	Tokens []*ListLivyComputeTokenResponseBodyDataTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
 }
 
@@ -123,31 +131,43 @@ func (s *ListLivyComputeTokenResponseBodyData) Validate() error {
 }
 
 type ListLivyComputeTokenResponseBodyDataTokens struct {
+	// The time when the token was created.
+	//
 	// example:
 	//
 	// 1749456094000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The user who created the token.
+	//
 	// example:
 	//
 	// alice
 	Createdby *string `json:"createdby,omitempty" xml:"createdby,omitempty"`
+	// The time when the token expires.
+	//
 	// example:
 	//
 	// 1749456994000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The time when the token was last used.
+	//
 	// example:
 	//
 	// 1749456098000
 	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// The token name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The token content.
+	//
 	// example:
 	//
 	// 5d37843fb6f1e8
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iStartJobRunResponseBody interface {
 }
 
 type StartJobRunResponseBody struct {
-	// The job ID.
+	// The job run ID.
 	//
 	// example:
 	//
-	// jr-54321
+	// jr-f09a8fda2396****
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The request ID.
 	//

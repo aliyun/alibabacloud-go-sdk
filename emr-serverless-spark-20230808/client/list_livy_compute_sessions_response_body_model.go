@@ -18,11 +18,16 @@ type iListLivyComputeSessionsResponseBody interface {
 }
 
 type ListLivyComputeSessionsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FAA8EEC-3026-5D15-8733-4E2A3DD970A1
-	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Sessions  []*ListLivyComputeSessionsResponseBodySessions `json:"sessions,omitempty" xml:"sessions,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of sessions.
+	Sessions []*ListLivyComputeSessionsResponseBodySessions `json:"sessions,omitempty" xml:"sessions,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -78,42 +83,62 @@ func (s *ListLivyComputeSessionsResponseBody) Validate() error {
 }
 
 type ListLivyComputeSessionsResponseBodySessions struct {
+	// The ID of the Livy Gateway.
+	//
 	// example:
 	//
 	// lc-xxxxxx
 	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
+	// The time when the session was created. This is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1768213240000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The number of compute units (CUs) consumed during the task execution. This is an estimated value. The actual value is subject to the bill.
+	//
 	// example:
 	//
 	// 322.5
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
+	// The time when the session ended. This is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1768213240000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The runtime information.
+	//
 	// example:
 	//
 	// null
 	Info *string `json:"info,omitempty" xml:"info,omitempty"`
+	// The total amount of memory in MB allocated to the task multiplied by the number of seconds the task has been running.
+	//
 	// example:
 	//
 	// 1098888
 	MbSeconds *int64 `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
+	// The session name.
+	//
 	// example:
 	//
 	// test_session
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
+	// The ID of the Livy Gateway session.
+	//
 	// example:
 	//
 	// livy-xxxxxx
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The Spark job configuration.
+	//
 	// example:
 	//
 	// {
@@ -128,14 +153,30 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// }
 	SparkConf *string `json:"sparkConf,omitempty" xml:"sparkConf,omitempty"`
+	// The session state.
+	//
+	// - starting: The session is starting.
+	//
+	// - running: The session is running.
+	//
+	// - terminating: The session is being terminated.
+	//
+	// - terminated: The session is terminated.
+	//
+	// - error: The session failed.
+	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The total number of vCores allocated to the task multiplied by the number of seconds the task has been running.
+	//
 	// example:
 	//
 	// 343
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
+	// The web UI URL of the session.
+	//
 	// example:
 	//
 	// http://emr-spark-ui-cn-hangzhou.data.aliyun.com

@@ -49,7 +49,7 @@ type iTemplate interface {
 
 type Template struct {
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The user ID of the job creator.
+	// Creator UID.
 	//
 	// This parameter is required.
 	//
@@ -57,19 +57,19 @@ type Template struct {
 	//
 	// 150978934701****
 	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The displayed version of the Spark engine.
+	// Spark engine display version.
 	//
 	// example:
 	//
 	// esr-4.1.1
 	DisplaySparkVersion *string `json:"displaySparkVersion,omitempty" xml:"displaySparkVersion,omitempty"`
-	// Indicates whether Fusion engine is enabled for acceleration.
+	// Whether to enable the fusion switch.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The creation time.
+	// Creation time.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +77,7 @@ type Template struct {
 	//
 	// 2025-03-10T02:02:41.000+00:00
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	// The time when the job was last modified.
+	// Last modified time.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type Template struct {
 	// 2025-03-10T02:02:41.000+00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	IsDefault   *bool   `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
-	// The ID of the user who last modified the job.
+	// Last modifier UID.
 	//
 	// This parameter is required.
 	//
@@ -95,9 +95,9 @@ type Template struct {
 	// 150978934701****
 	Modifier *int64  `json:"modifier,omitempty" xml:"modifier,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The SparkConf objects.
+	// Spark Conf
 	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
-	// The number of driver cores of the Spark job.
+	// Spark Driver cores.
 	//
 	// This parameter is required.
 	//
@@ -105,7 +105,7 @@ type Template struct {
 	//
 	// 1
 	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
-	// The size of driver memory of the Spark job.
+	// Spark Driver memory.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +113,7 @@ type Template struct {
 	//
 	// 1073741824
 	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	// The number of executor cores of the Spark job.
+	// Spark Executor cores.
 	//
 	// This parameter is required.
 	//
@@ -121,7 +121,7 @@ type Template struct {
 	//
 	// 1
 	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
-	// The size of executor memory of the Spark job.
+	// Spark Executor memory.
 	//
 	// This parameter is required.
 	//
@@ -129,7 +129,7 @@ type Template struct {
 	//
 	// 1073741824
 	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
-	// The level of the Spark log.
+	// Spark log level.
 	//
 	// This parameter is required.
 	//
@@ -137,7 +137,7 @@ type Template struct {
 	//
 	// INFO
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
-	// The path where the operational logs of the Spark job are stored.
+	// Spark log path.
 	//
 	// This parameter is required.
 	//
@@ -145,7 +145,7 @@ type Template struct {
 	//
 	// oss://your_bucket/path/to/your/log
 	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	// The engine version of Spark.
+	// Spark internal release version.
 	//
 	// This parameter is required.
 	//
@@ -153,7 +153,7 @@ type Template struct {
 	//
 	// esr-4.1.1
 	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	// The template type.
+	// Template type.
 	//
 	// example:
 	//

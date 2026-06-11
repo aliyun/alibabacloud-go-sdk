@@ -22,19 +22,19 @@ type iListJobRunsResponseBody interface {
 }
 
 type ListJobRunsResponseBody struct {
-	// The Spark jobs.
+	// A list of Spark jobs.
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of entries returned for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A pagination token.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListJobRunsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the filter criteria.
 	//
 	// example:
 	//
@@ -129,55 +129,55 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The advanced configurations of Spark.
+	// The advanced Spark configurations. This parameter is not returned by the ListJobRuns operation.
 	ConfigurationOverrides *ListJobRunsResponseBodyJobRunsConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// The ID of the user who created the job.
+	// The UID of the user who created the job.
 	//
 	// example:
 	//
-	// 1509789347011222
+	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The number of CUs consumed during a specified cycle of a task. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CUs.
+	// The number of CUs consumed by the job run. This is an estimated value. The actual value is reflected in your bill.
 	//
 	// example:
 	//
 	// 2.059
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The version of Spark on which the jobs run.
+	// The display version of the Spark engine that is used to run the job.
 	//
 	// example:
 	//
 	// esr-3.0.0 (Spark 3.4.3, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The end time of the job.
+	// The time when the job ended.
 	//
 	// example:
 	//
 	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The timeout period of the job.
+	// The timeout period for the job execution, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Indicates whether the Fusion engine is used for acceleration.
+	// Indicates whether the Fusion engine is enabled for acceleration.
 	//
 	// example:
 	//
 	// true
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The information about Spark Driver.
+	// The information about the Spark driver. This parameter is not returned by the ListJobRuns operation.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// The job ID.
+	// The job run ID.
 	//
 	// example:
 	//
 	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The path where the operational logs are stored.
+	// The path of the run log.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The total amount of memory allocated to the job multiplied by the running duration (seconds).
+	// The total memory in MB allocated to the job run, multiplied by the runtime in seconds.
 	//
 	// example:
 	//
@@ -193,23 +193,23 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The version of Spark on which the jobs run.
+	// The version of the Spark engine that is used to run the job.
 	//
 	// example:
 	//
-	// esr-native-3.4.0
+	// esr-3.0.0 (Spark 3.4.3, Scala 2.12, Native Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The job state.
+	// The state of the job run.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The reason of the job status change.
+	// The reason for the state change.
 	StateChangeReason *ListJobRunsResponseBodyJobRunsStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// The time when the job was submitted.
 	//
@@ -217,9 +217,9 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tags of the job.
+	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
+	// The total number of vCores allocated to the job run, multiplied by the runtime in seconds.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// example:
 	//
-	// w-1234abcd
+	// w-d2d82aa09155****
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -488,7 +488,7 @@ func (s *ListJobRunsResponseBodyJobRuns) Validate() error {
 }
 
 type ListJobRunsResponseBodyJobRunsConfigurationOverrides struct {
-	// The SparkConf objects.
+	// A list of Spark configurations.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -533,7 +533,7 @@ type ListJobRunsResponseBodyJobRunsStateChangeReason struct {
 	//
 	// example:
 	//
-	// success
+	// connection refused
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

@@ -22,31 +22,31 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of records to retrieve at one time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// Next page token.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries returned.
+	// Total number of records.
 	//
 	// example:
 	//
 	// 200
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// The queried workspaces.
+	// Workspace list.
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
@@ -117,129 +117,130 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// Specifies whether to enable auto-renewal. This parameter is required only if the paymentType parameter is set to Pre.
+	// Specifies whether to enable auto-renewal (required for the prepaid billing method).
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+	// Auto-renewal duration (Required for the prepaid billing method).
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Pre.
+	// Auto-renewal period (Required for the prepaid billing method).
 	//
 	// example:
 	//
 	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
-	// The time when the workflow was created.
+	// Workspace creation time.
 	//
 	// example:
 	//
 	// 1684115879955
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The information of the Data Lake Formation (DLF) catalog.
+	// DLF Catalog information.
 	//
 	// example:
 	//
 	// default
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
-	// The version of DLF.
+	// Bind a dlf type.
 	//
 	// example:
 	//
 	// 1.0
 	DlfType *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
-	// The subscription period. This parameter is required only if the paymentType parameter is set to Pre.
+	// The subscription period quantity is required for the prepaid billing method.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The end of the end time range.
+	// Workspace release time.
 	//
 	// example:
 	//
 	// 1687103999999
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The failure reason.
+	// Failure reason.
 	//
 	// example:
 	//
 	// out of stock
-	FailReason *string   `json:"failReason,omitempty" xml:"failReason,omitempty"`
-	GpuSpec    []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	// The unit of the subscription duration.
+	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
+	// The GPU specifications.
+	GpuSpec     []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
+	// Subscription period (Required for the prepaid billing method).
 	//
 	// example:
 	//
 	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
-	// The status of the payment.
+	// Payment status.
 	//
 	// example:
 	//
 	// PAID/UNPAID
 	PaymentStatus *string `json:"paymentStatus,omitempty" xml:"paymentStatus,omitempty"`
-	// The billing method. Valid values:
-	//
-	// - PayAsYouGo
-	//
-	// - Pre
+	// Billing method.
 	//
 	// example:
 	//
-	// PayAsYouGo
+	// PayAsYouGo or Subscription
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The information about the subscription quota.
+	// Information about prepaid resource quotas.
 	PrePaidQuota *ListWorkspacesResponseBodyWorkspacesPrePaidQuota `json:"prePaidQuota,omitempty" xml:"prePaidQuota,omitempty" type:"Struct"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The reason why the workspace is released.
+	// Workspace release reason.
 	//
 	// example:
 	//
 	// SERVICE_RELEASE
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxxxxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The resource specifications.
+	// Resource specification.
 	//
 	// example:
 	//
 	// 100cu
 	ResourceSpec *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
-	// The reason of the job status change.
+	// Information about changes to the workspace status.
 	StateChangeReason *ListWorkspacesResponseBodyWorkspacesStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// The OSS path.
+	// OSS path.
 	//
 	// example:
 	//
 	// spark-result
-	Storage *string                                     `json:"storage,omitempty" xml:"storage,omitempty"`
-	Tags    []*ListWorkspacesResponseBodyWorkspacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace ID.
+	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The tags of the workspace.
+	Tags []*ListWorkspacesResponseBodyWorkspacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Workspace ID.
 	//
 	// example:
 	//
 	// w-******
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The name of the workspace.
+	// Workspace name.
 	//
 	// example:
 	//
-	// spark-1
+	// Spark batch workspace-1
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The workspace status.
+	// Workspace status.
 	//
 	// example:
 	//
@@ -293,6 +294,10 @@ func (s *ListWorkspacesResponseBodyWorkspaces) GetFailReason() *string {
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetGpuSpec() []*string {
 	return s.GpuSpec
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) GetIpWhiteList() []*string {
+	return s.IpWhiteList
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetPaymentDurationUnit() *string {
@@ -401,6 +406,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetGpuSpec(v []*string) *ListWork
 	return s
 }
 
+func (s *ListWorkspacesResponseBodyWorkspaces) SetIpWhiteList(v []*string) *ListWorkspacesResponseBodyWorkspaces {
+	s.IpWhiteList = v
+	return s
+}
+
 func (s *ListWorkspacesResponseBodyWorkspaces) SetPaymentDurationUnit(v string) *ListWorkspacesResponseBodyWorkspaces {
 	s.PaymentDurationUnit = &v
 	return s
@@ -495,60 +505,61 @@ func (s *ListWorkspacesResponseBodyWorkspaces) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspacesPrePaidQuota struct {
-	// The amount of resources that are allocated by a subscription quota.
+	// The amount of resources that are currently allocated.
 	//
 	// example:
 	//
 	// {\\"cpu\\":\\"1\\",\\"memory\\":\\"4Gi\\",\\"cu\\":\\"1\\"}
 	AllocatedResource *string `json:"allocatedResource,omitempty" xml:"allocatedResource,omitempty"`
-	// Indicates whether auto-renewal is enabled for the subscription quota.
+	// Whether auto-renewal is enabled for the resource.
 	//
-	// 	- true
+	// - true: Enables auto-renewal. The resource is automatically renewed after it expires.
 	//
-	// 	- false
+	// - false: Auto-renewal is disabled. The resource is stopped upon expiration.
 	//
 	// example:
 	//
 	// true
 	AutoRenewal *bool `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
-	// The creation time of the subscription quota.
+	// The creation time of the resource quota.
 	//
 	// example:
 	//
 	// 1745683200000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The expiration time of the subscription quota.
+	// The expiration time of the resource quota.
 	//
 	// example:
 	//
 	// 1740537153000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The ID of the instance that is generated when you purchase the subscription quota.
+	// The resource instance ID that is associated with the quota.
 	//
 	// example:
 	//
 	// i-abc12345
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The maximum amount of resources that can be used in a subscription quota.
+	// The maximum amount of resources.
 	//
 	// example:
 	//
 	// {\\"cpu\\":\\"1\\",\\"memory\\":\\"4Gi\\",\\"cu\\":\\"1\\"}
 	MaxResource *string `json:"maxResource,omitempty" xml:"maxResource,omitempty"`
-	OrderId     *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	// The status of the subscription quota. Valid values:
+	// The order ID.
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The payment status of the current resource. The possible values are as follows:
 	//
-	// 	- NORMAL
+	// - NORMAL: Active.
 	//
-	// 	- WAIT_FOR_EXPIRE
+	// - WAIT_FOR_EXPIRE: Will expire.
 	//
-	// 	- EXPIRED
+	// - EXPIRED: The item has expired.
 	//
 	// example:
 	//
 	// NORMAL
 	PaymentStatus *string `json:"paymentStatus,omitempty" xml:"paymentStatus,omitempty"`
-	// The amount of resources that are used.
+	// The amount of resources currently in use.
 	//
 	// example:
 	//
@@ -650,13 +661,13 @@ func (s *ListWorkspacesResponseBodyWorkspacesPrePaidQuota) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspacesStateChangeReason struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// 0
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
@@ -695,7 +706,9 @@ func (s *ListWorkspacesResponseBodyWorkspacesStateChangeReason) Validate() error
 }
 
 type ListWorkspacesResponseBodyWorkspacesTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

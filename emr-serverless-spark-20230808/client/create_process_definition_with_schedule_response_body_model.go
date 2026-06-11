@@ -26,7 +26,7 @@ type iCreateProcessDefinitionWithScheduleResponseBody interface {
 }
 
 type CreateProcessDefinitionWithScheduleResponseBody struct {
-	// The code that is returned by the backend server.
+	// The API return code.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type CreateProcessDefinitionWithScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The description of the returned code.
+	// A detailed message for the return code.
 	//
 	// example:
 	//
 	// No permission for resource action
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ func (s *CreateProcessDefinitionWithScheduleResponseBody) Validate() error {
 }
 
 type CreateProcessDefinitionWithScheduleResponseBodyData struct {
-	// The workflow ID.
+	// The ID of the workflow definition.
 	//
 	// example:
 	//
 	// 160************
 	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
-	// The serial number of the workflow.
+	// The serial number of the workflow definition.
 	//
 	// example:
 	//

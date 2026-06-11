@@ -16,10 +16,14 @@ type iUpdateKyuubiServiceResponseBody interface {
 }
 
 type UpdateKyuubiServiceResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****

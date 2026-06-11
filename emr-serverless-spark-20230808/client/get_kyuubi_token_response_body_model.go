@@ -16,7 +16,10 @@ type iGetKyuubiTokenResponseBody interface {
 }
 
 type GetKyuubiTokenResponseBody struct {
+	// The response data.
 	Data *GetKyuubiTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -59,34 +62,48 @@ func (s *GetKyuubiTokenResponseBody) Validate() error {
 }
 
 type GetKyuubiTokenResponseBodyData struct {
+	// The automatic expiration configuration.
 	AutoExpireConfiguration *GetKyuubiTokenResponseBodyDataAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1749456094000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The creator name.
+	//
 	// example:
 	//
 	// admin
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1753932319390
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The last used time.
+	//
 	// example:
 	//
 	// 1749456098000
-	LastUsedTime *int64    `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	MemberArns   []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// The Alibaba Cloud Resource Names (ARNs) of the authorized users.
+	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// The token name.
+	//
 	// example:
 	//
 	// dev_serverless_spark
 	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
 	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
+	// The masked token.
+	//
 	// example:
 	//
 	// dxj**********wfg
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//
@@ -202,10 +219,14 @@ func (s *GetKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type GetKyuubiTokenResponseBodyDataAutoExpireConfiguration struct {
+	// Indicates whether the token automatically expires.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The expiration period, in days.
+	//
 	// example:
 	//
 	// 365

@@ -16,7 +16,7 @@ type iGetSqlStatementResponseBody interface {
 }
 
 type GetSqlStatementResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data *GetSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,41 +62,29 @@ func (s *GetSqlStatementResponseBody) Validate() error {
 }
 
 type GetSqlStatementResponseBodyData struct {
-	// The list of time that is consumed by SQL queries.
+	// A list of execution times for the SQL query.
 	ExecutionTime []*int64 `json:"executionTime,omitempty" xml:"executionTime,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code for the SQL query.
 	//
 	// example:
 	//
 	// ERROR-102
 	SqlErrorCode *string `json:"sqlErrorCode,omitempty" xml:"sqlErrorCode,omitempty"`
-	// The error message.
+	// The error message for the SQL query.
 	//
 	// example:
 	//
 	// error message
 	SqlErrorMessage *string `json:"sqlErrorMessage,omitempty" xml:"sqlErrorMessage,omitempty"`
-	// The query results.
+	// A list of SQL query results.
 	SqlOutputs []*GetSqlStatementResponseBodyDataSqlOutputs `json:"sqlOutputs,omitempty" xml:"sqlOutputs,omitempty" type:"Repeated"`
-	// The query status.
-	//
-	// Valid values:
-	//
-	// 	- running
-	//
-	// 	- available
-	//
-	// 	- cancelled
-	//
-	// 	- error
-	//
-	// 	- cancelling
+	// The state of the query.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The query ID.
+	// The statement ID.
 	//
 	// example:
 	//
@@ -180,14 +168,14 @@ func (s *GetSqlStatementResponseBodyData) Validate() error {
 }
 
 type GetSqlStatementResponseBodyDataSqlOutputs struct {
-	// The queried data, which is a string in the JSON format.
+	// The query data. The data is a JSON-serialized string.
 	//
 	// example:
 	//
 	// [{\\"values\\":[\\"test_db\\",\\"test_table\\",false]}
 	Rows         *string `json:"rows,omitempty" xml:"rows,omitempty"`
 	RowsFilePath *string `json:"rowsFilePath,omitempty" xml:"rowsFilePath,omitempty"`
-	// The information about the schema, which is a string in the JSON format.
+	// The details of the schema. The details are a JSON-serialized string.
 	//
 	// example:
 	//

@@ -20,18 +20,26 @@ type iListExecutorLogsRequest interface {
 }
 
 type ListExecutorLogsRequest struct {
+	// The type of log. Only logs of this type are returned.
+	//
 	// example:
 	//
 	// log4j
 	LogType *string `json:"logType,omitempty" xml:"logType,omitempty"`
+	// The maximum number of results to return per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. This is the `nextToken` from a previously truncated response.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou

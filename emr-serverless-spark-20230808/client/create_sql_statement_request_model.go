@@ -26,13 +26,13 @@ type iCreateSqlStatementRequest interface {
 }
 
 type CreateSqlStatementRequest struct {
-	// The SQL code. You can specify one or more SQL statements.
+	// The SQL code. This parameter accepts one or more SQL statements for execution.
 	//
 	// example:
 	//
 	// SHOW TABLES
 	CodeContent *string `json:"codeContent,omitempty" xml:"codeContent,omitempty"`
-	// The default Data Lake Formation (DLF) catalog ID.
+	// The ID of the default DLF Catalog.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type CreateSqlStatementRequest struct {
 	//
 	// default
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	// The maximum number of entries to return. Valid values: 1 to 10000.
+	// The limit value. The value must be between 1 and 10000, inclusive.
 	//
 	// example:
 	//
 	// 1000
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The SQL session ID. You can create an SQL session in the workspace created in EMR Serverless Spark.
+	// The ID of the SQL session. The session must be created in the Session Manager module of the EMR Serverless Spark workspace.
 	//
 	// example:
 	//

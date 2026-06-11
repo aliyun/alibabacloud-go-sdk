@@ -28,29 +28,41 @@ type iUpdateRayClusterRequest interface {
 }
 
 type UpdateRayClusterRequest struct {
+	// Description of the cluster.
+	//
 	// example:
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Ray engine version.
+	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The extra parameters. This must be in JSON format.
+	//
 	// example:
 	//
 	// {}
-	ExtraParam *string                          `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	HeadSpec   *UpdateRayClusterRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
+	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
+	// The information about the head node of the Ray cluster.
+	HeadSpec *UpdateRayClusterRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
+	// The name of the Ray cluster. The name must be 1 to 64 characters in length.
+	//
 	// example:
 	//
 	// myRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the network service.
+	//
 	// example:
 	//
 	// vpc
-	NetworkServiceName *string                              `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
-	VolumeIds          []*string                            `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	WorkerSpec         []*UpdateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
+	NetworkServiceName *string   `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	VolumeIds          []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
+	// The information about the worker nodes of the Ray cluster. You can specify up to 50 groups.
+	WorkerSpec []*UpdateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRayClusterRequest) String() string {
@@ -152,10 +164,14 @@ func (s *UpdateRayClusterRequest) Validate() error {
 }
 
 type UpdateRayClusterRequestHeadSpec struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// Specifies whether to enable automatic scaling.
+	//
 	// example:
 	//
 	// false
@@ -164,14 +180,20 @@ type UpdateRayClusterRequestHeadSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The idle timeout in seconds for workers. This parameter is effective only when automatic scaling is enabled.
+	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
+	// The memory size. Unit: Gi.
+	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// root_queue
@@ -245,6 +267,8 @@ func (s *UpdateRayClusterRequestHeadSpec) Validate() error {
 }
 
 type UpdateRayClusterRequestWorkerSpec struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
@@ -253,30 +277,44 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// The name of the worker group.
+	//
 	// example:
 	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The maximum number of workers. The minimum value is 1.
+	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
+	// The memory size. Unit: Gi.
+	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The minimum number of workers. The minimum value is 1. This value must be less than or equal to maxReplica.
+	//
 	// example:
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The number of workers. The minimum value is 1.
+	//
 	// example:
 	//
 	// 2
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// The type of worker.
+	//
 	// example:
 	//
 	// CPU

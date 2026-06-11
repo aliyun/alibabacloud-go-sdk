@@ -15,6 +15,8 @@ type iUpdateWorkspaceRequest interface {
 	GetGpu() *int32
 	SetGpuSpec(v []*string) *UpdateWorkspaceRequest
 	GetGpuSpec() []*string
+	SetIpWhiteList(v []*string) *UpdateWorkspaceRequest
+	GetIpWhiteList() []*string
 	SetResourceGroupId(v string) *UpdateWorkspaceRequest
 	GetResourceGroupId() *string
 	SetSubscription(v *UpdateWorkspaceRequestSubscription) *UpdateWorkspaceRequest
@@ -28,28 +30,44 @@ type iUpdateWorkspaceRequest interface {
 }
 
 type UpdateWorkspaceRequest struct {
+	// The resource cap for the workspace.
+	//
 	// example:
 	//
 	// 5000
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 100
-	Gpu     *int32    `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The GPU specifications.
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	// The IP whitelist.
+	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmwpi66knkxny
-	ResourceGroupId *string                             `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Subscription    *UpdateWorkspaceRequestSubscription `json:"subscription,omitempty" xml:"subscription,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Details for converting a pay-as-you-go workspace to a subscription plan.
+	Subscription *UpdateWorkspaceRequestSubscription `json:"subscription,omitempty" xml:"subscription,omitempty" type:"Struct"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// w-975bcfda9625****
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// default
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -74,6 +92,10 @@ func (s *UpdateWorkspaceRequest) GetGpu() *int32 {
 
 func (s *UpdateWorkspaceRequest) GetGpuSpec() []*string {
 	return s.GpuSpec
+}
+
+func (s *UpdateWorkspaceRequest) GetIpWhiteList() []*string {
+	return s.IpWhiteList
 }
 
 func (s *UpdateWorkspaceRequest) GetResourceGroupId() *string {
@@ -108,6 +130,11 @@ func (s *UpdateWorkspaceRequest) SetGpu(v int32) *UpdateWorkspaceRequest {
 
 func (s *UpdateWorkspaceRequest) SetGpuSpec(v []*string) *UpdateWorkspaceRequest {
 	s.GpuSpec = v
+	return s
+}
+
+func (s *UpdateWorkspaceRequest) SetIpWhiteList(v []*string) *UpdateWorkspaceRequest {
+	s.IpWhiteList = v
 	return s
 }
 
@@ -146,31 +173,44 @@ func (s *UpdateWorkspaceRequest) Validate() error {
 }
 
 type UpdateWorkspaceRequestSubscription struct {
+	// Indicates whether to enable auto-renewal. Required for subscription plans.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// The auto-renewal duration. Required for subscription plans.
+	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *string `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	// The unit for the auto-renewal duration. Required for subscription plans.
+	//
 	// example:
 	//
 	// MONTH
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
+	// A unique, case-sensitive token to ensure request idempotence.
+	//
 	// example:
 	//
 	// my-token-asxkxxxxxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The subscription duration. This parameter is required for subscription plans.
+	//
 	// example:
 	//
 	// 1799
 	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The unit of the subscription period.
+	//
 	// example:
 	//
 	// MONTH
-	PaymentDurationUnit *string   `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
-	Queue               []*string `json:"queue,omitempty" xml:"queue,omitempty" type:"Repeated"`
+	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
+	// The queues to convert to the subscription plan.
+	Queue []*string `json:"queue,omitempty" xml:"queue,omitempty" type:"Repeated"`
 }
 
 func (s UpdateWorkspaceRequestSubscription) String() string {

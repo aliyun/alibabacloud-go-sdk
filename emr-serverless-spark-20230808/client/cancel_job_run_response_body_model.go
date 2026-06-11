@@ -20,7 +20,7 @@ type CancelJobRunResponseBody struct {
 	//
 	// example:
 	//
-	// jr-1a2bc3
+	// jr-f09a8fda2396****
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The request ID.
 	//

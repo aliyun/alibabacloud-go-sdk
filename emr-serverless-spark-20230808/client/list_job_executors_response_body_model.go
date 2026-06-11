@@ -22,21 +22,28 @@ type iListJobExecutorsResponseBody interface {
 }
 
 type ListJobExecutorsResponseBody struct {
+	// The list of executors.
 	Exexutors []*ListJobExecutorsResponseBodyExexutors `json:"exexutors,omitempty" xml:"exexutors,omitempty" type:"Repeated"`
+	// The maximum number of records returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// 2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 200
@@ -110,86 +117,128 @@ func (s *ListJobExecutorsResponseBody) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExexutors struct {
+	// The total number of active tasks that the executor is running.
+	//
 	// example:
 	//
 	// 10
 	ActiveTasks *int64 `json:"activeTasks,omitempty" xml:"activeTasks,omitempty"`
+	// The time when the executor was created.
+	//
 	// example:
 	//
 	// 1760601***
 	AddTime *int64 `json:"addTime,omitempty" xml:"addTime,omitempty"`
+	// The total number of completed tasks that the executor has run.
+	//
 	// example:
 	//
 	// 8
 	CompletedTasks *int64 `json:"completedTasks,omitempty" xml:"completedTasks,omitempty"`
+	// The disk usage of the executor.
+	//
 	// example:
 	//
 	// 20
 	DiskUsed *int64 `json:"diskUsed,omitempty" xml:"diskUsed,omitempty"`
+	// The job executor ID.
+	//
 	// example:
 	//
 	// 1
 	ExecutorId *string `json:"executorId,omitempty" xml:"executorId,omitempty"`
+	// The executor type.
+	//
 	// example:
 	//
 	// driver
 	ExecutorType *string `json:"executorType,omitempty" xml:"executorType,omitempty"`
+	// The total number of failed tasks that the executor has run.
+	//
 	// example:
 	//
 	// 2
 	FailedTasks *int64 `json:"failedTasks,omitempty" xml:"failedTasks,omitempty"`
+	// The address of the executor.
+	//
 	// example:
 	//
 	// 21.10.x.x:1201x
 	HostPort *string `json:"hostPort,omitempty" xml:"hostPort,omitempty"`
+	// The job run ID.
+	//
 	// example:
 	//
 	// jr-1fe145df8ade366a
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
+	// The maximum memory of the executor.
+	//
 	// example:
 	//
 	// 4294967296
 	MaxMemory *int64 `json:"maxMemory,omitempty" xml:"maxMemory,omitempty"`
+	// The memory usage of the executor.
+	//
 	// example:
 	//
 	// 30
 	MemoryUsed *int64 `json:"memoryUsed,omitempty" xml:"memoryUsed,omitempty"`
+	// The number of Resilient Distributed Dataset (RDD) blocks managed by the executor.
+	//
 	// example:
 	//
 	// 10
 	RddBlocks *int64 `json:"rddBlocks,omitempty" xml:"rddBlocks,omitempty"`
+	// The running status of the executor.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The total number of cores for the executor.
+	//
 	// example:
 	//
 	// 4
 	TotalCores *int64 `json:"totalCores,omitempty" xml:"totalCores,omitempty"`
+	// The total runtime of the executor.
+	//
 	// example:
 	//
 	// 123
 	TotalDuration *int64 `json:"totalDuration,omitempty" xml:"totalDuration,omitempty"`
+	// The total garbage collection (GC) time of the executor.
+	//
 	// example:
 	//
 	// 3
 	TotalGCTime *int64 `json:"totalGCTime,omitempty" xml:"totalGCTime,omitempty"`
+	// The number of bytes of input data for the executor.
+	//
 	// example:
 	//
 	// 1024
 	TotalInputBytes *int64 `json:"totalInputBytes,omitempty" xml:"totalInputBytes,omitempty"`
+	// The number of bytes read during the shuffle phase by the executor.
+	//
 	// example:
 	//
 	// 2048
 	TotalShuffleRead *int64 `json:"totalShuffleRead,omitempty" xml:"totalShuffleRead,omitempty"`
+	// The number of bytes written during the shuffle phase by the executor.
+	//
 	// example:
 	//
 	// 2048
 	TotalShuffleWrite *int64 `json:"totalShuffleWrite,omitempty" xml:"totalShuffleWrite,omitempty"`
+	// The total number of tasks that the executor has run.
+	//
 	// example:
 	//
 	// 50
 	TotalTasks *int64 `json:"totalTasks,omitempty" xml:"totalTasks,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// w-78faee4da118f02e

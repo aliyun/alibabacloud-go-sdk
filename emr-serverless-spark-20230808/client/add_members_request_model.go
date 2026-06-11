@@ -19,6 +19,12 @@ type iAddMembersRequest interface {
 
 type AddMembersRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Ram User Example value: acs:ram::113545727984****:user/20468369839086****
+	//
+	// Ram Role Example value: acs:ram::113545727984****:role/aliyunemrsparkjobrundefaultrole
 	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
 	// The workspace ID.
 	//

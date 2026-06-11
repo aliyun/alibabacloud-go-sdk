@@ -14,6 +14,8 @@ type iStartLivyComputeRequest interface {
 }
 
 type StartLivyComputeRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

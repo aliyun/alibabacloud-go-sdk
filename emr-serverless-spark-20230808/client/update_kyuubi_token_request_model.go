@@ -24,17 +24,25 @@ type iUpdateKyuubiTokenRequest interface {
 }
 
 type UpdateKyuubiTokenRequest struct {
+	// The auto-expiration settings.
 	AutoExpireConfiguration *UpdateKyuubiTokenRequestAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
-	MemberArns              []*string                                        `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// The ARNs of authorized users.
+	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// The token name.
+	//
 	// example:
 	//
 	// dev_serverless_spark
 	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
 	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
+	// The token. It must be 32 characters long and contain only lowercase letters and digits.
+	//
 	// example:
 	//
 	// rjy7ejhej9gkzjjuun49jnx2xk8if2cu
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -113,10 +121,14 @@ func (s *UpdateKyuubiTokenRequest) Validate() error {
 }
 
 type UpdateKyuubiTokenRequestAutoExpireConfiguration struct {
+	// Specifies whether to enable automatic expiration for the token.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The expiration period, in days.
+	//
 	// example:
 	//
 	// 365

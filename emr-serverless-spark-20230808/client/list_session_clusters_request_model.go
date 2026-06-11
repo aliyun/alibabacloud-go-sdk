@@ -26,31 +26,23 @@ type iListSessionClustersRequest interface {
 type ListSessionClustersRequest struct {
 	// The session type.
 	//
-	// Valid values:
-	//
-	// 	- NOTEBOOK
-	//
-	// 	- THRIFT
-	//
-	// 	- SQL
-	//
 	// example:
 	//
 	// SQL
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of records to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results.
+	// The token that marks the start of the next page of results.
 	//
 	// example:
 	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//

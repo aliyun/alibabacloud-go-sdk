@@ -26,15 +26,15 @@ type iUpdateProcessDefinitionWithScheduleResponseBody interface {
 }
 
 type UpdateProcessDefinitionWithScheduleResponseBody struct {
-	// The code that is returned by the backend server.
+	// The return code from the backend API.
 	//
 	// example:
 	//
 	// 1400009
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *UpdateProcessDefinitionWithScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Indicates whether the request failed.
+	// The number of failed operations.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateProcessDefinitionWithScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The description of the returned code.
+	// The detailed description that corresponds to the return code.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *UpdateProcessDefinitionWithScheduleResponseBody) Validate() error {
 }
 
 type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
-	// The email address to receive alerts.
+	// The email address for alerts.
 	//
 	// example:
 	//
@@ -159,31 +159,31 @@ type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
 	//
 	// alicloud_ack_one_cluster
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The workflow ID.
+	// The workflow definition ID.
 	//
 	// example:
 	//
 	// 12***********
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The time when the workflow was created.
+	// The time when the workflow definition was created.
 	//
 	// example:
 	//
 	// 2024-09-05T02:03:19Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The CRON expression that is used for scheduling.
+	// The cron expression for scheduling.
 	//
 	// example:
 	//
 	// 0 0 0 	- 	- ?
 	Crontab *string `json:"crontab,omitempty" xml:"crontab,omitempty"`
-	// The node description.
+	// The description of the workflow definition.
 	//
 	// example:
 	//
 	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The end of the end time range.
+	// The end time of the schedule.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
 	//
 	// SERIAL
 	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
-	// The serial number of the workflow.
+	// The workflow definition number.
 	//
 	// example:
 	//
 	// 123223
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the workflow.
+	// The name of the workflow definition.
 	//
 	// example:
 	//
@@ -213,37 +213,37 @@ type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
 	//
 	// w-********
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// The status of the workflow.
+	// The release state of the workflow.
 	//
 	// example:
 	//
 	// ONLINE
 	ReleaseState *string `json:"releaseState,omitempty" xml:"releaseState,omitempty"`
-	// The start time of the scheduling.
+	// The start time of the schedule.
 	//
 	// example:
 	//
 	// 0
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The ID of the time zone.
+	// The time zone ID.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	TimezoneId *string `json:"timezoneId,omitempty" xml:"timezoneId,omitempty"`
-	// The time when the workflow was updated.
+	// The time when the workflow definition was updated.
 	//
 	// example:
 	//
 	// 2024-03-05T06:24:27Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the user that is used to initiate a scheduling.
+	// The ID of the user who scheduled the workflow.
 	//
 	// example:
 	//
 	// 113*********
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The name of the user that is used to initiate a scheduling.
+	// The name of the user who scheduled the workflow.
 	//
 	// example:
 	//

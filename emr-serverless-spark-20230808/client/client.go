@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 激活AI中心
+// Activates the AI center.
 //
 // @param request - ActivateAICenterRequest
 //
@@ -99,7 +99,7 @@ func (client *Client) ActivateAICenterWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// 激活AI中心
+// Activates the AI center.
 //
 // @param request - ActivateAICenterRequest
 //
@@ -118,7 +118,7 @@ func (client *Client) ActivateAICenter(workspaceId *string, request *ActivateAIC
 
 // Summary:
 //
-// Adds a RAM user or RAM role to a workspace as a member.
+// Adds a Resource Access Management (RAM) user or a RAM role to a workspace as a member.
 //
 // @param request - AddMembersRequest
 //
@@ -175,7 +175,7 @@ func (client *Client) AddMembersWithOptions(request *AddMembersRequest, headers 
 
 // Summary:
 //
-// Adds a RAM user or RAM role to a workspace as a member.
+// Adds a Resource Access Management (RAM) user or a RAM role to a workspace as a member.
 //
 // @param request - AddMembersRequest
 //
@@ -260,7 +260,7 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 
 // Summary:
 //
-// # CancelKyuubiSparkApplication
+// Cancels a Kyuubi Spark application.
 //
 // @param request - CancelKyuubiSparkApplicationRequest
 //
@@ -307,7 +307,7 @@ func (client *Client) CancelKyuubiSparkApplicationWithOptions(workspaceId *strin
 
 // Summary:
 //
-// # CancelKyuubiSparkApplication
+// Cancels a Kyuubi Spark application.
 //
 // @param request - CancelKyuubiSparkApplicationRequest
 //
@@ -326,7 +326,67 @@ func (client *Client) CancelKyuubiSparkApplication(workspaceId *string, kyuubiSe
 
 // Summary:
 //
-// 资源转组
+// 停止RayJob
+//
+// @param request - CancelRayJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelRayJobResponse
+func (client *Client) CancelRayJobWithOptions(workspaceId *string, submissionId *string, request *CancelRayJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelRayJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelRayJob"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayJob/" + dara.PercentEncode(dara.StringValue(submissionId)) + "/cancel"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelRayJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止RayJob
+//
+// @param request - CancelRayJobRequest
+//
+// @return CancelRayJobResponse
+func (client *Client) CancelRayJob(workspaceId *string, submissionId *string, request *CancelRayJobRequest) (_result *CancelRayJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelRayJobResponse{}
+	_body, _err := client.CancelRayJobWithOptions(workspaceId, submissionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Moves an instance to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -385,7 +445,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Moves an instance to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -404,7 +464,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// # CreateKyuubiService
+// Creates a Kyuubi gateway.
 //
 // @param request - CreateKyuubiServiceRequest
 //
@@ -483,7 +543,7 @@ func (client *Client) CreateKyuubiServiceWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// # CreateKyuubiService
+// Creates a Kyuubi gateway.
 //
 // @param request - CreateKyuubiServiceRequest
 //
@@ -502,7 +562,7 @@ func (client *Client) CreateKyuubiService(workspaceId *string, request *CreateKy
 
 // Summary:
 //
-// 创建kyuubi的token
+// Creates a Kyuubi Gateway authentication token.
 //
 // @param request - CreateKyuubiTokenRequest
 //
@@ -571,7 +631,7 @@ func (client *Client) CreateKyuubiTokenWithOptions(workspaceId *string, kyuubiSe
 
 // Summary:
 //
-// 创建kyuubi的token
+// Creates a Kyuubi Gateway authentication token.
 //
 // @param request - CreateKyuubiTokenRequest
 //
@@ -590,7 +650,7 @@ func (client *Client) CreateKyuubiToken(workspaceId *string, kyuubiServiceId *st
 
 // Summary:
 //
-// 创建Livy compute
+// Creates a Livy compute.
 //
 // @param request - CreateLivyComputeRequest
 //
@@ -699,7 +759,7 @@ func (client *Client) CreateLivyComputeWithOptions(workspaceBizId *string, reque
 
 // Summary:
 //
-// 创建Livy compute
+// Creates a Livy compute.
 //
 // @param request - CreateLivyComputeRequest
 //
@@ -718,7 +778,7 @@ func (client *Client) CreateLivyCompute(workspaceBizId *string, request *CreateL
 
 // Summary:
 //
-// 创建Livy Compute的token
+// Creates a token for a Livy Gateway.
 //
 // @param request - CreateLivyComputeTokenRequest
 //
@@ -779,7 +839,7 @@ func (client *Client) CreateLivyComputeTokenWithOptions(workspaceBizId *string, 
 
 // Summary:
 //
-// 创建Livy Compute的token
+// Creates a token for a Livy Gateway.
 //
 // @param request - CreateLivyComputeTokenRequest
 //
@@ -798,7 +858,7 @@ func (client *Client) CreateLivyComputeToken(workspaceBizId *string, livyCompute
 
 // Summary:
 //
-// 创建网络服务
+// Creates a network service.
 //
 // @param request - CreateNetworkServiceRequest
 //
@@ -871,7 +931,7 @@ func (client *Client) CreateNetworkServiceWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// 创建网络服务
+// Creates a network service.
 //
 // @param request - CreateNetworkServiceRequest
 //
@@ -890,7 +950,7 @@ func (client *Client) CreateNetworkService(workspaceId *string, request *CreateN
 
 // Summary:
 //
-// Creates a workflow.
+// Creates a workflow definition.
 //
 // @param tmpReq - CreateProcessDefinitionWithScheduleRequest
 //
@@ -1023,7 +1083,7 @@ func (client *Client) CreateProcessDefinitionWithScheduleWithOptions(bizId *stri
 
 // Summary:
 //
-// Creates a workflow.
+// Creates a workflow definition.
 //
 // @param request - CreateProcessDefinitionWithScheduleRequest
 //
@@ -1042,7 +1102,7 @@ func (client *Client) CreateProcessDefinitionWithSchedule(bizId *string, request
 
 // Summary:
 //
-// 创建Ray集群
+// Creates a Ray cluster.
 //
 // @param request - CreateRayClusterRequest
 //
@@ -1117,7 +1177,7 @@ func (client *Client) CreateRayClusterWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// 创建Ray集群
+// Creates a Ray cluster.
 //
 // @param request - CreateRayClusterRequest
 //
@@ -1136,7 +1196,7 @@ func (client *Client) CreateRayCluster(workspaceId *string, request *CreateRayCl
 
 // Summary:
 //
-// Creates a session.
+// Creates a session cluster.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -1233,7 +1293,7 @@ func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// Creates a session.
+// Creates a session cluster.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -1252,7 +1312,7 @@ func (client *Client) CreateSessionCluster(workspaceId *string, request *CreateS
 
 // Summary:
 //
-// Creates an SQL query task.
+// Creates an SQL statement.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -1325,7 +1385,7 @@ func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// Creates an SQL query task.
+// Creates an SQL statement.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -1484,7 +1544,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// # DeleteKyuubiService
+// Deletes a Kyuubi gateway.
 //
 // @param headers - map
 //
@@ -1517,7 +1577,7 @@ func (client *Client) DeleteKyuubiServiceWithOptions(workspaceId *string, kyuubi
 
 // Summary:
 //
-// # DeleteKyuubiService
+// Deletes a Kyuubi gateway.
 //
 // @return DeleteKyuubiServiceResponse
 func (client *Client) DeleteKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *DeleteKyuubiServiceResponse, _err error) {
@@ -1534,7 +1594,7 @@ func (client *Client) DeleteKyuubiService(workspaceId *string, kyuubiServiceId *
 
 // Summary:
 //
-// 删除compute的token
+// Deletes a Kyuubi Gateway authentication token.
 //
 // @param request - DeleteKyuubiTokenRequest
 //
@@ -1581,7 +1641,7 @@ func (client *Client) DeleteKyuubiTokenWithOptions(workspaceId *string, kyuubiSe
 
 // Summary:
 //
-// 删除compute的token
+// Deletes a Kyuubi Gateway authentication token.
 //
 // @param request - DeleteKyuubiTokenRequest
 //
@@ -1600,7 +1660,7 @@ func (client *Client) DeleteKyuubiToken(workspaceId *string, kyuubiServiceId *st
 
 // Summary:
 //
-// 删除livy compute
+// Deletes a Livy gateway.
 //
 // @param request - DeleteLivyComputeRequest
 //
@@ -1647,7 +1707,7 @@ func (client *Client) DeleteLivyComputeWithOptions(workspaceBizId *string, livyC
 
 // Summary:
 //
-// 删除livy compute
+// Deletes a Livy gateway.
 //
 // @param request - DeleteLivyComputeRequest
 //
@@ -1666,7 +1726,7 @@ func (client *Client) DeleteLivyCompute(workspaceBizId *string, livyComputeId *s
 
 // Summary:
 //
-// 删除Livy Compute的token
+// Deletes a token for a Livy Gateway.
 //
 // @param request - DeleteLivyComputeTokenRequest
 //
@@ -1713,7 +1773,7 @@ func (client *Client) DeleteLivyComputeTokenWithOptions(workspaceBizId *string, 
 
 // Summary:
 //
-// 删除Livy Compute的token
+// Deletes a token for a Livy Gateway.
 //
 // @param request - DeleteLivyComputeTokenRequest
 //
@@ -1732,7 +1792,7 @@ func (client *Client) DeleteLivyComputeToken(workspaceBizId *string, livyCompute
 
 // Summary:
 //
-// 删除Ray集群
+// Deletes a Ray cluster.
 //
 // @param headers - map
 //
@@ -1765,7 +1825,7 @@ func (client *Client) DeleteRayClusterWithOptions(workspaceId *string, clusterId
 
 // Summary:
 //
-// 删除Ray集群
+// Deletes a Ray cluster.
 //
 // @return DeleteRayClusterResponse
 func (client *Client) DeleteRayCluster(workspaceId *string, clusterId *string) (_result *DeleteRayClusterResponse, _err error) {
@@ -1782,7 +1842,7 @@ func (client *Client) DeleteRayCluster(workspaceId *string, clusterId *string) (
 
 // Summary:
 //
-// Modifies the queue of a workspace.
+// Updates a Workspace Queue.
 //
 // @param request - EditWorkspaceQueueRequest
 //
@@ -1851,7 +1911,7 @@ func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueR
 
 // Summary:
 //
-// Modifies the queue of a workspace.
+// Updates a Workspace Queue.
 //
 // @param request - EditWorkspaceQueueRequest
 //
@@ -1870,7 +1930,7 @@ func (client *Client) EditWorkspaceQueue(request *EditWorkspaceQueueRequest) (_r
 
 // Summary:
 //
-// 上线工作流及其调度
+// Publishes a workflow and its scheduling configuration.
 //
 // @param request - GenerateTaskCodesRequest
 //
@@ -1925,7 +1985,7 @@ func (client *Client) GenerateTaskCodesWithOptions(bizId *string, request *Gener
 
 // Summary:
 //
-// 上线工作流及其调度
+// Publishes a workflow and its scheduling configuration.
 //
 // @param request - GenerateTaskCodesRequest
 //
@@ -1944,7 +2004,7 @@ func (client *Client) GenerateTaskCodes(bizId *string, request *GenerateTaskCode
 
 // Summary:
 //
-// 获取AI中心状态
+// Gets the state of an AI center.
 //
 // @param request - GetAICenterStateRequest
 //
@@ -1985,7 +2045,7 @@ func (client *Client) GetAICenterStateWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// 获取AI中心状态
+// Gets the state of an AI center.
 //
 // @param request - GetAICenterStateRequest
 //
@@ -2148,7 +2208,7 @@ func (client *Client) GetDoctorApplication(workspaceId *string, runId *string, r
 
 // Summary:
 //
-// Obtain the job details.
+// Get the details of a job.
 //
 // @param request - GetJobRunRequest
 //
@@ -2195,7 +2255,7 @@ func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string
 
 // Summary:
 //
-// Obtain the job details.
+// Get the details of a job.
 //
 // @param request - GetJobRunRequest
 //
@@ -2214,7 +2274,7 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 
 // Summary:
 //
-// # GetKyuubiService
+// Retrieves the details of a Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -2247,7 +2307,7 @@ func (client *Client) GetKyuubiServiceWithOptions(workspaceId *string, kyuubiSer
 
 // Summary:
 //
-// # GetKyuubiService
+// Retrieves the details of a Kyuubi Gateway.
 //
 // @return GetKyuubiServiceResponse
 func (client *Client) GetKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *GetKyuubiServiceResponse, _err error) {
@@ -2264,7 +2324,7 @@ func (client *Client) GetKyuubiService(workspaceId *string, kyuubiServiceId *str
 
 // Summary:
 //
-// 获取compute的token
+// Obtains an authentication token for Kyuubi Gateway.
 //
 // @param request - GetKyuubiTokenRequest
 //
@@ -2311,7 +2371,7 @@ func (client *Client) GetKyuubiTokenWithOptions(workspaceId *string, kyuubiServi
 
 // Summary:
 //
-// 获取compute的token
+// Obtains an authentication token for Kyuubi Gateway.
 //
 // @param request - GetKyuubiTokenRequest
 //
@@ -2330,7 +2390,7 @@ func (client *Client) GetKyuubiToken(workspaceId *string, kyuubiServiceId *strin
 
 // Summary:
 //
-// 获取livy compute
+// Retrieves information about a Livy Gateway.
 //
 // @param request - GetLivyComputeRequest
 //
@@ -2377,7 +2437,7 @@ func (client *Client) GetLivyComputeWithOptions(workspaceBizId *string, livyComp
 
 // Summary:
 //
-// 获取livy compute
+// Retrieves information about a Livy Gateway.
 //
 // @param request - GetLivyComputeRequest
 //
@@ -2396,7 +2456,7 @@ func (client *Client) GetLivyCompute(workspaceBizId *string, livyComputeId *stri
 
 // Summary:
 //
-// 获取livy compute token
+// Retrieves a token for a Livy Gateway.
 //
 // @param request - GetLivyComputeTokenRequest
 //
@@ -2443,7 +2503,7 @@ func (client *Client) GetLivyComputeTokenWithOptions(workspaceBizId *string, liv
 
 // Summary:
 //
-// 获取livy compute token
+// Retrieves a token for a Livy Gateway.
 //
 // @param request - GetLivyComputeTokenRequest
 //
@@ -2462,7 +2522,7 @@ func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId 
 
 // Summary:
 //
-// 获取Ray集群
+// Retrieves the details of a Ray cluster, including its configuration, runtime state, node information, and connection endpoints.
 //
 // @param headers - map
 //
@@ -2495,7 +2555,7 @@ func (client *Client) GetRayClusterWithOptions(workspaceId *string, clusterId *s
 
 // Summary:
 //
-// 获取Ray集群
+// Retrieves the details of a Ray cluster, including its configuration, runtime state, node information, and connection endpoints.
 //
 // @return GetRayClusterResponse
 func (client *Client) GetRayCluster(workspaceId *string, clusterId *string) (_result *GetRayClusterResponse, _err error) {
@@ -2512,7 +2572,67 @@ func (client *Client) GetRayCluster(workspaceId *string, clusterId *string) (_re
 
 // Summary:
 //
-// 获取任务配置
+// 获取Ray集群
+//
+// @param request - GetRayJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRayJobResponse
+func (client *Client) GetRayJobWithOptions(workspaceId *string, submissionId *string, request *GetRayJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRayJob"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayJob/" + dara.PercentEncode(dara.StringValue(submissionId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRayJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Ray集群
+//
+// @param request - GetRayJobRequest
+//
+// @return GetRayJobResponse
+func (client *Client) GetRayJob(workspaceId *string, submissionId *string, request *GetRayJobRequest) (_result *GetRayJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRayJobResponse{}
+	_body, _err := client.GetRayJobWithOptions(workspaceId, submissionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the configuration of a Spark job.
 //
 // @param request - GetRunConfigurationRequest
 //
@@ -2559,7 +2679,7 @@ func (client *Client) GetRunConfigurationWithOptions(workspaceId *string, runId 
 
 // Summary:
 //
-// 获取任务配置
+// Retrieves the configuration of a Spark job.
 //
 // @param request - GetRunConfigurationRequest
 //
@@ -2578,7 +2698,7 @@ func (client *Client) GetRunConfiguration(workspaceId *string, runId *string, re
 
 // Summary:
 //
-// Queries the information about a session.
+// Retrieves session details.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -2625,7 +2745,7 @@ func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionC
 
 // Summary:
 //
-// Queries the information about a session.
+// Retrieves session details.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -2644,7 +2764,7 @@ func (client *Client) GetSessionCluster(workspaceId *string, sessionClusterId *s
 
 // Summary:
 //
-// Queries the status of an SQL query task.
+// Retrieves the details of an SQL query.
 //
 // @param request - GetSqlStatementRequest
 //
@@ -2691,7 +2811,7 @@ func (client *Client) GetSqlStatementWithOptions(workspaceId *string, statementI
 
 // Summary:
 //
-// Queries the status of an SQL query task.
+// Retrieves the details of an SQL query.
 //
 // @param request - GetSqlStatementRequest
 //
@@ -2710,7 +2830,7 @@ func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, 
 
 // Summary:
 //
-// Queries task templates.
+// Retrieves a task template.
 //
 // @param request - GetTemplateRequest
 //
@@ -2765,7 +2885,7 @@ func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *Ge
 
 // Summary:
 //
-// Queries task templates.
+// Retrieves a task template.
 //
 // @param request - GetTemplateRequest
 //
@@ -2860,7 +2980,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 
 // Summary:
 //
-// 查看数据目录列表
+// # View the list of data catalogs
 //
 // @param request - ListCatalogsRequest
 //
@@ -2911,7 +3031,7 @@ func (client *Client) ListCatalogsWithOptions(workspaceId *string, request *List
 
 // Summary:
 //
-// 查看数据目录列表
+// # View the list of data catalogs
 //
 // @param request - ListCatalogsRequest
 //
@@ -2930,7 +3050,7 @@ func (client *Client) ListCatalogs(workspaceId *string, request *ListCatalogsReq
 
 // Summary:
 //
-// 列出作业executor的日志文件列表
+// Lists the log files for a job executor.
 //
 // @param request - ListExecutorLogsRequest
 //
@@ -2989,7 +3109,7 @@ func (client *Client) ListExecutorLogsWithOptions(workspaceId *string, jobRunId 
 
 // Summary:
 //
-// 列出作业executor的日志文件列表
+// Lists the log files for a job executor.
 //
 // @param request - ListExecutorLogsRequest
 //
@@ -3008,7 +3128,7 @@ func (client *Client) ListExecutorLogs(workspaceId *string, jobRunId *string, ex
 
 // Summary:
 //
-// 列出作业的executors
+// Lists the executors of a job.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -3071,7 +3191,7 @@ func (client *Client) ListJobExecutorsWithOptions(workspaceId *string, jobRunId 
 
 // Summary:
 //
-// 列出作业的executors
+// Lists the executors of a job.
 //
 // @param request - ListJobExecutorsRequest
 //
@@ -3090,7 +3210,7 @@ func (client *Client) ListJobExecutors(workspaceId *string, jobRunId *string, re
 
 // Summary:
 //
-// Queries a list of Spark jobs.
+// Call the ListJobRuns operation to retrieve a list of Spark jobs.
 //
 // @param tmpReq - ListJobRunsRequest
 //
@@ -3215,7 +3335,7 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 
 // Summary:
 //
-// Queries a list of Spark jobs.
+// Call the ListJobRuns operation to retrieve a list of Spark jobs.
 //
 // @param request - ListJobRunsRequest
 //
@@ -3234,7 +3354,7 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 
 // Summary:
 //
-// # Gets the list of KyuubiServers
+// Lists Kyuubi Gateways.
 //
 // @param headers - map
 //
@@ -3267,7 +3387,7 @@ func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, headers
 
 // Summary:
 //
-// # Gets the list of KyuubiServers
+// Lists Kyuubi Gateways.
 //
 // @return ListKyuubiServicesResponse
 func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuubiServicesResponse, _err error) {
@@ -3284,7 +3404,7 @@ func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuu
 
 // Summary:
 //
-// Queries the applications that are submitted by using a Kyuubi gateway.
+// Lists Kyuubi Spark applications.
 //
 // @param tmpReq - ListKyuubiSparkApplicationsRequest
 //
@@ -3389,7 +3509,7 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 
 // Summary:
 //
-// Queries the applications that are submitted by using a Kyuubi gateway.
+// Lists Kyuubi Spark applications.
 //
 // @param request - ListKyuubiSparkApplicationsRequest
 //
@@ -3408,7 +3528,7 @@ func (client *Client) ListKyuubiSparkApplications(workspaceId *string, kyuubiSer
 
 // Summary:
 //
-// 列出compute的token
+// Lists KyuubiServer authentication tokens.
 //
 // @param request - ListKyuubiTokenRequest
 //
@@ -3455,7 +3575,7 @@ func (client *Client) ListKyuubiTokenWithOptions(workspaceId *string, kyuubiServ
 
 // Summary:
 //
-// 列出compute的token
+// Lists KyuubiServer authentication tokens.
 //
 // @param request - ListKyuubiTokenRequest
 //
@@ -3474,7 +3594,7 @@ func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *stri
 
 // Summary:
 //
-// List the Livy Gateway.
+// Lists Livy Gateways.
 //
 // @param request - ListLivyComputeRequest
 //
@@ -3525,7 +3645,7 @@ func (client *Client) ListLivyComputeWithOptions(workspaceBizId *string, request
 
 // Summary:
 //
-// List the Livy Gateway.
+// Lists Livy Gateways.
 //
 // @param request - ListLivyComputeRequest
 //
@@ -3544,7 +3664,7 @@ func (client *Client) ListLivyCompute(workspaceBizId *string, request *ListLivyC
 
 // Summary:
 //
-// 获取livy gateway历史session
+// Lists the historical sessions for a Livy Gateway.
 //
 // @param request - ListLivyComputeSessionsRequest
 //
@@ -3599,7 +3719,7 @@ func (client *Client) ListLivyComputeSessionsWithOptions(workspaceId *string, li
 
 // Summary:
 //
-// 获取livy gateway历史session
+// Lists the historical sessions for a Livy Gateway.
 //
 // @param request - ListLivyComputeSessionsRequest
 //
@@ -3618,7 +3738,7 @@ func (client *Client) ListLivyComputeSessions(workspaceId *string, livyComputeId
 
 // Summary:
 //
-// 列出livy compute token
+// Lists Livy Gateway tokens.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -3665,7 +3785,7 @@ func (client *Client) ListLivyComputeTokenWithOptions(workspaceBizId *string, li
 
 // Summary:
 //
-// 列出livy compute token
+// Lists Livy Gateway tokens.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -3762,7 +3882,7 @@ func (client *Client) ListLogContents(workspaceId *string, request *ListLogConte
 
 // Summary:
 //
-// 查询用户列表
+// Retrieves the list of members in the workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -3817,7 +3937,7 @@ func (client *Client) ListMembersWithOptions(workspaceId *string, request *ListM
 
 // Summary:
 //
-// 查询用户列表
+// Retrieves the list of members in the workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -3836,7 +3956,7 @@ func (client *Client) ListMembers(workspaceId *string, request *ListMembersReque
 
 // Summary:
 //
-// 查看网络服务列表
+// Lists network connections.
 //
 // @param request - ListNetworkServicesRequest
 //
@@ -3883,7 +4003,7 @@ func (client *Client) ListNetworkServicesWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// 查看网络服务列表
+// Lists network connections.
 //
 // @param request - ListNetworkServicesRequest
 //
@@ -3902,7 +4022,7 @@ func (client *Client) ListNetworkServices(workspaceId *string, request *ListNetw
 
 // Summary:
 //
-// 列出Ray集群
+// Lists Ray clusters.
 //
 // @param request - ListRayClusterRequest
 //
@@ -3953,7 +4073,7 @@ func (client *Client) ListRayClusterWithOptions(workspaceId *string, request *Li
 
 // Summary:
 //
-// 列出Ray集群
+// Lists Ray clusters.
 //
 // @param request - ListRayClusterRequest
 //
@@ -3972,7 +4092,99 @@ func (client *Client) ListRayCluster(workspaceId *string, request *ListRayCluste
 
 // Summary:
 //
-// Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
+// 列出RayJob
+//
+// @param tmpReq - ListRayJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRayJobResponse
+func (client *Client) ListRayJobWithOptions(workspaceId *string, tmpReq *ListRayJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRayJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListRayJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitTime) {
+		request.SubmitTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitTime, dara.String("submitTime"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SubmissionId) {
+		query["submissionId"] = request.SubmissionId
+	}
+
+	if !dara.IsNil(request.SubmitTimeShrink) {
+		query["submitTime"] = request.SubmitTimeShrink
+	}
+
+	if !dara.IsNil(request.TaskBizId) {
+		query["taskBizId"] = request.TaskBizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRayJob"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayJob"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRayJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出RayJob
+//
+// @param request - ListRayJobRequest
+//
+// @return ListRayJobResponse
+func (client *Client) ListRayJob(workspaceId *string, request *ListRayJobRequest) (_result *ListRayJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRayJobResponse{}
+	_body, _err := client.ListRayJobWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of release versions.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -4039,7 +4251,7 @@ func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersion
 
 // Summary:
 //
-// Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
+// Retrieves a list of release versions.
 //
 // @param request - ListReleaseVersionsRequest
 //
@@ -4058,7 +4270,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Summary:
 //
-// Queries the list of sessions.
+// Retrieves a list of session clusters.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -4125,7 +4337,7 @@ func (client *Client) ListSessionClustersWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// Queries the list of sessions.
+// Retrieves a list of session clusters.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -4144,7 +4356,7 @@ func (client *Client) ListSessionClusters(workspaceId *string, request *ListSess
 
 // Summary:
 //
-// 获取sql statement内容
+// Retrieves the execution results of an SQL statement.
 //
 // @param request - ListSqlStatementContentsRequest
 //
@@ -4199,7 +4411,7 @@ func (client *Client) ListSqlStatementContentsWithOptions(workspaceId *string, r
 
 // Summary:
 //
-// 获取sql statement内容
+// Retrieves the execution results of an SQL statement.
 //
 // @param request - ListSqlStatementContentsRequest
 //
@@ -4218,7 +4430,7 @@ func (client *Client) ListSqlStatementContents(workspaceId *string, request *Lis
 
 // Summary:
 //
-// 获取任务模板列表
+// Lists job templates.
 //
 // @param request - ListTemplateRequest
 //
@@ -4265,7 +4477,7 @@ func (client *Client) ListTemplateWithOptions(workspaceBizId *string, request *L
 
 // Summary:
 //
-// 获取任务模板列表
+// Lists job templates.
 //
 // @param request - ListTemplateRequest
 //
@@ -4284,7 +4496,7 @@ func (client *Client) ListTemplate(workspaceBizId *string, request *ListTemplate
 
 // Summary:
 //
-// Queries the list of queues in a Spark workspace.
+// Lists the queues in a workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -4335,7 +4547,7 @@ func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// Queries the list of queues in a Spark workspace.
+// Lists the queues in a workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -4354,7 +4566,7 @@ func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWork
 
 // Summary:
 //
-// Queries a list of workspaces.
+// Call `ListWorkspaces` to get a list of workspaces.
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -4431,7 +4643,7 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 
 // Summary:
 //
-// Queries a list of workspaces.
+// Call `ListWorkspaces` to get a list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -4450,7 +4662,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// 更新Livy Compute的token
+// Refreshes the token for a Livy Gateway.
 //
 // @param request - RefreshLivyComputeTokenRequest
 //
@@ -4511,7 +4723,7 @@ func (client *Client) RefreshLivyComputeTokenWithOptions(workspaceBizId *string,
 
 // Summary:
 //
-// 更新Livy Compute的token
+// Refreshes the token for a Livy Gateway.
 //
 // @param request - RefreshLivyComputeTokenRequest
 //
@@ -4530,7 +4742,7 @@ func (client *Client) RefreshLivyComputeToken(workspaceBizId *string, livyComput
 
 // Summary:
 //
-// Starts a Spark job.
+// Starts a Spark Job.
 //
 // @param request - StartJobRunRequest
 //
@@ -4627,7 +4839,7 @@ func (client *Client) StartJobRunWithOptions(workspaceId *string, request *Start
 
 // Summary:
 //
-// Starts a Spark job.
+// Starts a Spark Job.
 //
 // @param request - StartJobRunRequest
 //
@@ -4646,7 +4858,7 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 
 // Summary:
 //
-// # StartKyuubiService
+// Starts the Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -4679,7 +4891,7 @@ func (client *Client) StartKyuubiServiceWithOptions(workspaceId *string, kyuubiS
 
 // Summary:
 //
-// # StartKyuubiService
+// Starts the Kyuubi Gateway.
 //
 // @return StartKyuubiServiceResponse
 func (client *Client) StartKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *StartKyuubiServiceResponse, _err error) {
@@ -4696,7 +4908,7 @@ func (client *Client) StartKyuubiService(workspaceId *string, kyuubiServiceId *s
 
 // Summary:
 //
-// 启动livy compute
+// Starts a Livy gateway.
 //
 // @param request - StartLivyComputeRequest
 //
@@ -4743,7 +4955,7 @@ func (client *Client) StartLivyComputeWithOptions(workspaceBizId *string, livyCo
 
 // Summary:
 //
-// 启动livy compute
+// Starts a Livy gateway.
 //
 // @param request - StartLivyComputeRequest
 //
@@ -4762,7 +4974,7 @@ func (client *Client) StartLivyCompute(workspaceBizId *string, livyComputeId *st
 
 // Summary:
 //
-// Manually runs a workflow.
+// Starts a workflow manually.
 //
 // @param request - StartProcessInstanceRequest
 //
@@ -4849,7 +5061,7 @@ func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *St
 
 // Summary:
 //
-// Manually runs a workflow.
+// Starts a workflow manually.
 //
 // @param request - StartProcessInstanceRequest
 //
@@ -4868,7 +5080,7 @@ func (client *Client) StartProcessInstance(bizId *string, request *StartProcessI
 
 // Summary:
 //
-// 启动Ray集群
+// Starts a Ray cluster.
 //
 // @param request - StartRayClusterRequest
 //
@@ -4915,7 +5127,7 @@ func (client *Client) StartRayClusterWithOptions(workspaceId *string, clusterId 
 
 // Summary:
 //
-// 启动Ray集群
+// Starts a Ray cluster.
 //
 // @param request - StartRayClusterRequest
 //
@@ -4934,7 +5146,7 @@ func (client *Client) StartRayCluster(workspaceId *string, clusterId *string, re
 
 // Summary:
 //
-// Starts a session.
+// Starts a session cluster.
 //
 // @param request - StartSessionClusterRequest
 //
@@ -4991,7 +5203,7 @@ func (client *Client) StartSessionClusterWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// Starts a session.
+// Starts a session cluster.
 //
 // @param request - StartSessionClusterRequest
 //
@@ -5010,7 +5222,7 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 
 // Summary:
 //
-// # StopKyuubiService
+// Stops a Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -5043,7 +5255,7 @@ func (client *Client) StopKyuubiServiceWithOptions(workspaceId *string, kyuubiSe
 
 // Summary:
 //
-// # StopKyuubiService
+// Stops a Kyuubi Gateway.
 //
 // @return StopKyuubiServiceResponse
 func (client *Client) StopKyuubiService(workspaceId *string, kyuubiServiceId *string) (_result *StopKyuubiServiceResponse, _err error) {
@@ -5060,7 +5272,7 @@ func (client *Client) StopKyuubiService(workspaceId *string, kyuubiServiceId *st
 
 // Summary:
 //
-// 停止livy compute
+// Stops a Livy Gateway.
 //
 // @param request - StopLivyComputeRequest
 //
@@ -5107,7 +5319,7 @@ func (client *Client) StopLivyComputeWithOptions(workspaceBizId *string, livyCom
 
 // Summary:
 //
-// 停止livy compute
+// Stops a Livy Gateway.
 //
 // @param request - StopLivyComputeRequest
 //
@@ -5126,7 +5338,7 @@ func (client *Client) StopLivyCompute(workspaceBizId *string, livyComputeId *str
 
 // Summary:
 //
-// 停止Ray集群
+// Stops a Ray cluster.
 //
 // @param request - StopRayClusterRequest
 //
@@ -5173,7 +5385,7 @@ func (client *Client) StopRayClusterWithOptions(workspaceId *string, clusterId *
 
 // Summary:
 //
-// 停止Ray集群
+// Stops a Ray cluster.
 //
 // @param request - StopRayClusterRequest
 //
@@ -5268,6 +5480,148 @@ func (client *Client) StopSessionCluster(workspaceId *string, request *StopSessi
 
 // Summary:
 //
+// 提交Ray Job
+//
+// @param request - SubmitRayJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitRayJobResponse
+func (client *Client) SubmitRayJobWithOptions(workspaceId *string, request *SubmitRayJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitRayJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ActiveDeadlineSeconds) {
+		body["activeDeadlineSeconds"] = request.ActiveDeadlineSeconds
+	}
+
+	if !dara.IsNil(request.DisplayReleaseVersion) {
+		body["displayReleaseVersion"] = request.DisplayReleaseVersion
+	}
+
+	if !dara.IsNil(request.Entrypoint) {
+		body["entrypoint"] = request.Entrypoint
+	}
+
+	if !dara.IsNil(request.EntrypointMemory) {
+		body["entrypointMemory"] = request.EntrypointMemory
+	}
+
+	if !dara.IsNil(request.EntrypointNumCpus) {
+		body["entrypointNumCpus"] = request.EntrypointNumCpus
+	}
+
+	if !dara.IsNil(request.EntrypointNumGpus) {
+		body["entrypointNumGpus"] = request.EntrypointNumGpus
+	}
+
+	if !dara.IsNil(request.EntrypointResources) {
+		body["entrypointResources"] = request.EntrypointResources
+	}
+
+	if !dara.IsNil(request.ExtraParam) {
+		body["extraParam"] = request.ExtraParam
+	}
+
+	if !dara.IsNil(request.HeadSpec) {
+		body["headSpec"] = request.HeadSpec
+	}
+
+	if !dara.IsNil(request.MetadataJson) {
+		body["metadataJson"] = request.MetadataJson
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NetworkServiceName) {
+		body["networkServiceName"] = request.NetworkServiceName
+	}
+
+	if !dara.IsNil(request.RuntimeEnvJson) {
+		body["runtimeEnvJson"] = request.RuntimeEnvJson
+	}
+
+	if !dara.IsNil(request.ShutdownAfterJobFinishes) {
+		body["shutdownAfterJobFinishes"] = request.ShutdownAfterJobFinishes
+	}
+
+	if !dara.IsNil(request.SubmissionMode) {
+		body["submissionMode"] = request.SubmissionMode
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TtlSecondsAfterFinished) {
+		body["ttlSecondsAfterFinished"] = request.TtlSecondsAfterFinished
+	}
+
+	if !dara.IsNil(request.VolumeIds) {
+		body["volumeIds"] = request.VolumeIds
+	}
+
+	if !dara.IsNil(request.WorkerSpec) {
+		body["workerSpec"] = request.WorkerSpec
+	}
+
+	if !dara.IsNil(request.WorkingDir) {
+		body["workingDir"] = request.WorkingDir
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitRayJob"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/rayJob"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitRayJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交Ray Job
+//
+// @param request - SubmitRayJobRequest
+//
+// @return SubmitRayJobResponse
+func (client *Client) SubmitRayJob(workspaceId *string, request *SubmitRayJobRequest) (_result *SubmitRayJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitRayJobResponse{}
+	_body, _err := client.SubmitRayJobWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Terminates an SQL query task.
 //
 // @param request - TerminateSqlStatementRequest
@@ -5334,7 +5688,7 @@ func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *st
 
 // Summary:
 //
-// # UpdateKyuubiService
+// Updates a Kyuubi Gateway.
 //
 // @param request - UpdateKyuubiServiceRequest
 //
@@ -5417,7 +5771,7 @@ func (client *Client) UpdateKyuubiServiceWithOptions(workspaceId *string, kyuubi
 
 // Summary:
 //
-// # UpdateKyuubiService
+// Updates a Kyuubi Gateway.
 //
 // @param request - UpdateKyuubiServiceRequest
 //
@@ -5436,7 +5790,7 @@ func (client *Client) UpdateKyuubiService(workspaceId *string, kyuubiServiceId *
 
 // Summary:
 //
-// 更新kyuubi的token
+// Updates a Kyuubi Gateway authentication token.
 //
 // @param request - UpdateKyuubiTokenRequest
 //
@@ -5505,7 +5859,7 @@ func (client *Client) UpdateKyuubiTokenWithOptions(workspaceId *string, kyuubiSe
 
 // Summary:
 //
-// 更新kyuubi的token
+// Updates a Kyuubi Gateway authentication token.
 //
 // @param request - UpdateKyuubiTokenRequest
 //
@@ -5524,7 +5878,7 @@ func (client *Client) UpdateKyuubiToken(workspaceId *string, kyuubiServiceId *st
 
 // Summary:
 //
-// 更新livy compute
+// Updates a Livy Gateway.
 //
 // @param request - UpdateLivyComputeRequest
 //
@@ -5633,7 +5987,7 @@ func (client *Client) UpdateLivyComputeWithOptions(workspaceBizId *string, livyC
 
 // Summary:
 //
-// 更新livy compute
+// Updates a Livy Gateway.
 //
 // @param request - UpdateLivyComputeRequest
 //
@@ -5652,7 +6006,7 @@ func (client *Client) UpdateLivyCompute(workspaceBizId *string, livyComputeId *s
 
 // Summary:
 //
-// Updates the workflow and time-based scheduling configurations.
+// Updates a workflow definition and its timed scheduling.
 //
 // @param tmpReq - UpdateProcessDefinitionWithScheduleRequest
 //
@@ -5789,7 +6143,7 @@ func (client *Client) UpdateProcessDefinitionWithScheduleWithOptions(bizId *stri
 
 // Summary:
 //
-// Updates the workflow and time-based scheduling configurations.
+// Updates a workflow definition and its timed scheduling.
 //
 // @param request - UpdateProcessDefinitionWithScheduleRequest
 //
@@ -5808,7 +6162,7 @@ func (client *Client) UpdateProcessDefinitionWithSchedule(bizId *string, code *s
 
 // Summary:
 //
-// 更新Ray集群
+// Updates a Ray cluster.
 //
 // @param request - UpdateRayClusterRequest
 //
@@ -5883,7 +6237,7 @@ func (client *Client) UpdateRayClusterWithOptions(workspaceId *string, clusterId
 
 // Summary:
 //
-// 更新Ray集群
+// Updates a Ray cluster.
 //
 // @param request - UpdateRayClusterRequest
 //
@@ -5902,7 +6256,7 @@ func (client *Client) UpdateRayCluster(workspaceId *string, clusterId *string, r
 
 // Summary:
 //
-// 更新workspace属性
+// # Update workspace properties
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -5934,6 +6288,10 @@ func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest
 
 	if !dara.IsNil(request.GpuSpec) {
 		body["gpuSpec"] = request.GpuSpec
+	}
+
+	if !dara.IsNil(request.IpWhiteList) {
+		body["ipWhiteList"] = request.IpWhiteList
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -5979,7 +6337,7 @@ func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest
 
 // Summary:
 //
-// 更新workspace属性
+// # Update workspace properties
 //
 // @param request - UpdateWorkspaceRequest
 //

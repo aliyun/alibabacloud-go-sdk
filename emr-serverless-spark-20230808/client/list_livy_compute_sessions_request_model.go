@@ -18,14 +18,20 @@ type iListLivyComputeSessionsRequest interface {
 }
 
 type ListLivyComputeSessionsRequest struct {
+	// The page number. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

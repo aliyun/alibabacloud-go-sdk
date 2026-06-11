@@ -18,12 +18,6 @@ type iListWorkspaceQueuesRequest interface {
 type ListWorkspaceQueuesRequest struct {
 	// The environment type.
 	//
-	// Valid values:
-	//
-	// 	- dev
-	//
-	// 	- production
-	//
 	// example:
 	//
 	// production

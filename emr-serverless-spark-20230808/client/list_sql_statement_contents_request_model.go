@@ -18,14 +18,20 @@ type iListSqlStatementContentsRequest interface {
 }
 
 type ListSqlStatementContentsRequest struct {
+	// The full path of the file.
+	//
 	// example:
 	//
 	// oss://oss-****.cn-hangzhou.oss-dls.aliyuncs.com/w-86a9a4da*****a1/spark/logs/jr-b737b****6164d/driver/st-afde7******bb3f
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// The maximum number of records to return for a single request.
+	//
 	// example:
 	//
 	// 2000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token that specifies the position from which to start reading the results.
+	//
 	// example:
 	//
 	// 1

@@ -14,6 +14,8 @@ type iStartRayClusterResponseBody interface {
 }
 
 type StartRayClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8CE06D75-E6A2-505D-9B4B-31DEE3D98A04

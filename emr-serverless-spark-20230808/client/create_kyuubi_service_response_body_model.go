@@ -16,7 +16,10 @@ type iCreateKyuubiServiceResponseBody interface {
 }
 
 type CreateKyuubiServiceResponseBody struct {
+	// The returned data.
 	Data *CreateKyuubiServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -59,7 +62,7 @@ func (s *CreateKyuubiServiceResponseBody) Validate() error {
 }
 
 type CreateKyuubiServiceResponseBodyData struct {
-	// Kyuubi Service ID。
+	// The Kyuubi service ID.
 	//
 	// example:
 	//

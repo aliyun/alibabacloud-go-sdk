@@ -14,6 +14,8 @@ type iDeleteLivyComputeRequest interface {
 }
 
 type DeleteLivyComputeRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

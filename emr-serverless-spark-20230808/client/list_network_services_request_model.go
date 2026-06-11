@@ -14,6 +14,8 @@ type iListNetworkServicesRequest interface {
 }
 
 type ListNetworkServicesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

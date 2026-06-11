@@ -38,45 +38,45 @@ type iStartJobRunRequest interface {
 }
 
 type StartJobRunRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The idempotence token.
 	//
 	// example:
 	//
-	// 8e6aae2810c8f67229ca70bb31cd6028
+	// 8e6aae2810c8f67229ca70bb31cd****
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The code type of the job. Valid values:
+	// The job type. Valid values:
 	//
-	// 	- SQL
+	// - SQL
 	//
-	// 	- JAR
+	// - JAR
 	//
-	// 	- PYTHON
+	// - PYTHON
 	//
 	// example:
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The advanced configurations of Spark.
+	// The advanced Spark configurations.
 	ConfigurationOverrides *StartJobRunRequestConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// The version of the Spark engine.
+	// The version that is displayed in the console.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The timeout period of the job.
+	// The timeout period for the job.
 	//
 	// example:
 	//
 	// 100
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Specifies whether to enable Fusion engine for acceleration.
+	// Specifies whether to enable the Fusion engine for acceleration.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The information about Spark Driver.
+	// The information about the Spark driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job ID.
 	//
@@ -84,25 +84,25 @@ type StartJobRunRequest struct {
 	//
 	// jr-12345
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
 	// spark_job_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version number of Spark.
+	// The version of the Spark engine.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The name of the resource queue on which the Spark job runs.
+	// The resource queue on which the Spark job runs.
 	//
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The tags of the job.
+	// The list of job tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -261,7 +261,7 @@ func (s *StartJobRunRequest) Validate() error {
 }
 
 type StartJobRunRequestConfigurationOverrides struct {
-	// The SparkConf objects.
+	// The list of Spark configurations.
 	Configurations []*StartJobRunRequestConfigurationOverridesConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -296,19 +296,19 @@ func (s *StartJobRunRequestConfigurationOverrides) Validate() error {
 }
 
 type StartJobRunRequestConfigurationOverridesConfigurations struct {
-	// The configuration file of SparkConf.
+	// The configuration file to which the Spark configuration belongs.
 	//
 	// example:
 	//
-	// spark-default.conf
+	// spark-defaults.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	// The key of SparkConf.
+	// The key of the Spark configuration.
 	//
 	// example:
 	//
 	// spark.app.name
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
-	// The value of SparkConf.
+	// The value of the Spark configuration.
 	//
 	// example:
 	//

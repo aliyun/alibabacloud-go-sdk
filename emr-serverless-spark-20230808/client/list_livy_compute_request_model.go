@@ -16,10 +16,14 @@ type iListLivyComputeRequest interface {
 }
 
 type ListLivyComputeRequest struct {
+	// The environment ID.
+	//
 	// example:
 	//
 	// ev-cq31c7tlhtgm9nrrlj4g
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

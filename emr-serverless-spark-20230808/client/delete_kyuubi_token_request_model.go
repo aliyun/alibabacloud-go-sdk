@@ -14,6 +14,8 @@ type iDeleteKyuubiTokenRequest interface {
 }
 
 type DeleteKyuubiTokenRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

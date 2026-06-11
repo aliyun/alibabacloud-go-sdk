@@ -26,30 +26,32 @@ type iListWorkspacesShrinkRequest interface {
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// The maximum number of entries returned.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The name of the workspace. Fuzzy match is supported.
+	// The name of the workspace. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// test_workspace
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-aek2thxggoqhmhq
@@ -59,7 +61,8 @@ type ListWorkspacesShrinkRequest struct {
 	// example:
 	//
 	// running
-	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// Filters the results by one or more tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

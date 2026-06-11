@@ -22,26 +22,27 @@ type iListMembersResponseBody interface {
 }
 
 type ListMembersResponseBody struct {
-	// 一次获取的最大记录数。
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
-	MaxResults *int32                            `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Members    []*ListMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
-	// 下一页TOKEN。
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The list of members.
+	Members []*ListMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 记录总数。
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -116,38 +117,42 @@ func (s *ListMembersResponseBody) Validate() error {
 }
 
 type ListMembersResponseBodyMembers struct {
-	// 针对此用户允许的操作列表。
+	// The list of operations allowed for this user.
 	Actions []*ListMembersResponseBodyMembersActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The time when the member was created.
+	//
 	// example:
 	//
 	// 1753412502000
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 用户展示名称。
+	// The display name of the user.
 	//
 	// example:
 	//
 	// jia***test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 用户 arn。
+	// The Alibaba Cloud Resource Name (ARN) of the user.
 	//
 	// example:
 	//
 	// acs:emr::w-1234****abcd:member/202265*****276
 	MemberArn *string `json:"memberArn,omitempty" xml:"memberArn,omitempty"`
-	// 用户角色列表。
+	// The list of roles in the workspace.
 	Roles []*ListMembersResponseBodyMembersRoles `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
-	// 用户名称。
+	// The username.
 	//
 	// example:
 	//
 	// jia***test@195*****7311.onaliyun.com
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	// 用户类型。
+	// The type of the user.
 	//
 	// example:
 	//
 	// MEMBER
 	UserType *string `json:"userType,omitempty" xml:"userType,omitempty"`
+	// Indicates whether the member is visible.
+	//
 	// example:
 	//
 	// true
@@ -257,31 +262,31 @@ func (s *ListMembersResponseBodyMembers) Validate() error {
 }
 
 type ListMembersResponseBodyMembersActions struct {
-	// 行为 arn。
+	// The ARN of the action.
 	//
 	// example:
 	//
 	// acs:emr::w-1234****abcd:action/add_MEMBER
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// 权限名称。
+	// The name of the permission.
 	//
 	// example:
 	//
 	// add
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// action 依赖列表。
+	// The list of action dependencies.
 	//
 	// example:
 	//
 	// ["view"]
 	Dependencies []*string `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	// action 描述。
+	// The description of the action.
 	//
 	// example:
 	//
 	// add members
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 权限展示名称。
+	// The display name of the permission.
 	//
 	// example:
 	//
@@ -347,27 +352,27 @@ func (s *ListMembersResponseBodyMembersActions) Validate() error {
 }
 
 type ListMembersResponseBodyMembersRoles struct {
-	// 权限列表。
+	// The list of permissions.
 	Actions []*ListMembersResponseBodyMembersRolesActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 创建时间。
+	// The time when the role was created.
 	//
 	// example:
 	//
 	// 1753412502000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述。
+	// The description.
 	//
 	// example:
 	//
 	// DataScience
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 角色 arn。
+	// The ARN of the role.
 	//
 	// example:
 	//
 	// acs:emr::w-1234****abcd:role/DataScience
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// 角色名称。
+	// The name of the role.
 	//
 	// example:
 	//
@@ -442,31 +447,31 @@ func (s *ListMembersResponseBodyMembersRoles) Validate() error {
 }
 
 type ListMembersResponseBodyMembersRolesActions struct {
-	// 行为 arn。
+	// The ARN of the action.
 	//
 	// example:
 	//
 	// acs:emr::w-1234****abcd:action/add_MEMBER
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// 权限名称。
+	// The name of the permission.
 	//
 	// example:
 	//
 	// add
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// action 依赖列表。
+	// The list of action dependencies.
 	//
 	// example:
 	//
 	// ["view"]
 	Dependencies []*string `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	// action 描述。
+	// The description of the action.
 	//
 	// example:
 	//
 	// add members
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 权限展示名称。
+	// The display name of the permission.
 	//
 	// example:
 	//

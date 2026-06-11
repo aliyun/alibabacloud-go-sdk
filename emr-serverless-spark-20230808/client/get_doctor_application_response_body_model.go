@@ -46,6 +46,10 @@ func (s *GetDoctorApplicationResponseBody) Validate() error {
 
 type GetDoctorApplicationResponseBodyData struct {
 	// The diagnostics list.
+	//
+	// example:
+	//
+	// Normal.
 	Suggestions []*string `json:"suggestions,omitempty" xml:"suggestions,omitempty" type:"Repeated"`
 }
 

@@ -16,10 +16,14 @@ type iListRayClusterRequest interface {
 }
 
 type ListRayClusterRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20

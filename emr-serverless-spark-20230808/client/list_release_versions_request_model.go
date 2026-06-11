@@ -32,29 +32,17 @@ type ListReleaseVersionsRequest struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The type of the version.
 	//
-	// Valid values:
-	//
-	// 	- stable
-	//
-	// 	- Beta
-	//
 	// example:
 	//
 	// stable
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
-	// The version of EMR Serverless Spark.
+	// The EMR Serverless Spark version.
 	//
 	// example:
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
 	// The status of the version.
-	//
-	// Valid values:
-	//
-	// 	- ONLINE
-	//
-	// 	- OFFLINE
 	//
 	// example:
 	//

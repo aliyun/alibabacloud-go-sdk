@@ -20,24 +20,32 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the region where the resource is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The ID of the destination resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-aek2thxggoqhmhq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The ID of the resource to move.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// w-asfx12xxxxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type. Set this to `Workspace`.
+	//
 	// example:
 	//
 	// Workspace

@@ -16,7 +16,10 @@ type iListKyuubiTokenResponseBody interface {
 }
 
 type ListKyuubiTokenResponseBody struct {
+	// The data returned.
 	Data *ListKyuubiTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -59,6 +62,7 @@ func (s *ListKyuubiTokenResponseBody) Validate() error {
 }
 
 type ListKyuubiTokenResponseBodyData struct {
+	// A list of tokens.
 	Tokens []*ListKyuubiTokenResponseBodyDataTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
 }
 
@@ -93,38 +97,52 @@ func (s *ListKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type ListKyuubiTokenResponseBodyDataTokens struct {
+	// The names of authorized RAM users.
 	AccountNames []*string `json:"accountNames,omitempty" xml:"accountNames,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
-	// 2025-02-11T02:23:02Z
+	// 1755496031000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The creator\\"s name.
+	//
 	// example:
 	//
-	// test_user
+	// admin
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
-	// 1740366769165
+	// 1787033891000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The last used time.
+	//
 	// example:
 	//
-	// 1740366232121
-	LastUsedTime *int64    `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	MemberArns   []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// 1760366232121
+	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// The ARNs of authorized users.
+	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// The token name.
+	//
 	// example:
 	//
-	// dev_serveless_spark
+	// dev_serverless_spark
 	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
 	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
+	// The masked token.
+	//
 	// example:
 	//
-	// f14c1347-dcfd-4082-b101-77aa96b5de36
+	// dxj**********wfg
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//
-	// f14c1347-dcfd-4082-b101-77aa96b5de36
+	// tk-zpi0*****hdv4y
 	TokenId *string `json:"tokenId,omitempty" xml:"tokenId,omitempty"`
 }
 

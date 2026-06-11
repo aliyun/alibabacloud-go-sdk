@@ -14,6 +14,8 @@ type iGetLivyComputeTokenRequest interface {
 }
 
 type GetLivyComputeTokenRequest struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou

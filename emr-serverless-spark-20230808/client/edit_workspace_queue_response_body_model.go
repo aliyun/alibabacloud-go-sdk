@@ -14,7 +14,7 @@ type iEditWorkspaceQueueResponseBody interface {
 }
 
 type EditWorkspaceQueueResponseBody struct {
-  // 请求ID。
+  // The request ID.
   // 
   // example:
   // 

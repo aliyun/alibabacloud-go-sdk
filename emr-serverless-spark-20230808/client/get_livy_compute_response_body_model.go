@@ -20,15 +20,22 @@ type iGetLivyComputeResponseBody interface {
 }
 
 type GetLivyComputeResponseBody struct {
+	// The response code. A value of 1000000 indicates a successful request. Other values indicate a failed request. Check the message parameter for the error details.
+	//
 	// example:
 	//
 	// 1000000
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *GetLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -89,51 +96,84 @@ func (s *GetLivyComputeResponseBody) Validate() error {
 }
 
 type GetLivyComputeResponseBodyData struct {
+	// The authentication method.
+	//
 	// example:
 	//
 	// Token
-	AuthType              *string                                              `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// The auto-stop configuration.
 	AutoStopConfiguration *GetLivyComputeResponseBodyDataAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The ID of the Livy Gateway.
+	//
 	// example:
 	//
 	// lc-xxxxxxxxxxxxx
 	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
+	// The number of CPU cores for the Livy server.
+	//
 	// example:
 	//
 	// 1
 	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The version number of the Spark engine.
+	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The status of the public endpoint switch.
+	//
 	// example:
 	//
 	// true
 	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou-internal.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	EndpointInner *string `json:"endpointInner,omitempty" xml:"endpointInner,omitempty"`
+	// The ID of the runtime environment.
+	//
 	// example:
 	//
 	// ev-cq31c7tlhtgm9nrrlj4g
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Indicates whether the fusion switch is enabled.
+	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1749456094000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The Livy Gateway configuration in JSON format. The following files are supported:
+	//
+	// - sparkDefaultsConf
+	//
+	// - sparkBlackListConf
+	//
+	// - livyConf
+	//
+	// - livyClientConf
+	//
 	// example:
 	//
 	// {
@@ -148,38 +188,56 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// }
 	LivyServerConf *string `json:"livyServerConf,omitempty" xml:"livyServerConf,omitempty"`
+	// The Livy version.
+	//
 	// example:
 	//
 	// 0.8.0
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
+	// The memory size of the Livy server.
+	//
 	// example:
 	//
 	// 4Gi
 	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the network connection.
+	//
 	// example:
 	//
 	// test
 	NetworkName *string `json:"networkName,omitempty" xml:"networkName,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 10000001
 	RamUserId *string `json:"ramUserId,omitempty" xml:"ramUserId,omitempty"`
+	// The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1749456094000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The running status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -402,10 +460,18 @@ func (s *GetLivyComputeResponseBodyData) Validate() error {
 }
 
 type GetLivyComputeResponseBodyDataAutoStopConfiguration struct {
+	// Indicates whether to automatically start the gateway after it is created.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+	//
 	// example:
 	//
 	// 300

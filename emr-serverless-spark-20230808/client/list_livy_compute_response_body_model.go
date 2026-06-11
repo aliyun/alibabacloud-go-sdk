@@ -20,15 +20,22 @@ type iListLivyComputeResponseBody interface {
 }
 
 type ListLivyComputeResponseBody struct {
+	// The response code. A value of 1000000 indicates that the request is successful. For other values, see the message parameter for error details.
+	//
 	// example:
 	//
 	// 1000000
-	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *ListLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -89,6 +96,7 @@ func (s *ListLivyComputeResponseBody) Validate() error {
 }
 
 type ListLivyComputeResponseBodyData struct {
+	// A list of Livy Gateways.
 	LivyComputes []*ListLivyComputeResponseBodyDataLivyComputes `json:"livyComputes,omitempty" xml:"livyComputes,omitempty" type:"Repeated"`
 }
 
@@ -123,38 +131,56 @@ func (s *ListLivyComputeResponseBodyData) Validate() error {
 }
 
 type ListLivyComputeResponseBodyDataLivyComputes struct {
+	// The ID of the Livy Gateway.
+	//
 	// example:
 	//
 	// lc-xxxxxxxxxxxx
 	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou-internal.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	EndpointInner *string `json:"endpointInner,omitempty" xml:"endpointInner,omitempty"`
+	// The time when the resource was created.
+	//
 	// example:
 	//
 	// 1749456094000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The time when the resource was started.
+	//
 	// example:
 	//
 	// 1749456094000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The running status.
+	//
 	// example:
 	//
 	// RUNNING

@@ -27,12 +27,6 @@ type GetTemplateRequest struct {
 	TemplateBizId *string `json:"templateBizId,omitempty" xml:"templateBizId,omitempty"`
 	// The template type.
 	//
-	// Valid values:
-	//
-	// 	- TASK
-	//
-	// 	- SESSION
-	//
 	// example:
 	//
 	// TASK

@@ -16,7 +16,10 @@ type iGetKyuubiServiceResponseBody interface {
 }
 
 type GetKyuubiServiceResponseBody struct {
+	// The returned data.
 	Data *GetKyuubiServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8CE06D75-E6A2-505D-9B4B-31DEE3D98A04
@@ -59,68 +62,98 @@ func (s *GetKyuubiServiceResponseBody) Validate() error {
 }
 
 type GetKyuubiServiceResponseBodyData struct {
+	// The specifications of the Kyuubi service.
+	//
 	// example:
 	//
 	// 2c8g
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
+	// The timestamp when the service was created.
+	//
 	// example:
 	//
 	// 1749456094000
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The UID of the creator.
+	//
 	// example:
 	//
 	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The internal same-region endpoint.
+	//
 	// example:
 	//
 	// kyuubi-cn-beijing-internal.spark.emr.aliyuncs.com
 	InnerEndpoint *string `json:"innerEndpoint,omitempty" xml:"innerEndpoint,omitempty"`
+	// The configuration of the Kyuubi service.
+	//
 	// example:
 	//
 	// []
 	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
+	// The Kyuubi service engine version.
+	//
 	// example:
 	//
 	// 1.9.2-0.0.2
 	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
-	// Kyuubi Service ID。
+	// The ID of the Kyuubi service.
 	//
 	// example:
 	//
 	// kb-4e209b04588***95f04ad3538ae4
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
+	// The name of the Kyuubi service.
+	//
 	// example:
 	//
 	// dev_serverless_spark
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The public domain name.
+	//
 	// example:
 	//
 	// emr-spark-kyuubi-gateway-cn-beijing.aliyuncs.com
 	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
+	// Indicates whether public network access is enabled.
+	//
 	// example:
 	//
 	// true
 	PublicEndpointEnabled *bool `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
+	// The Spark engine version.
+	//
 	// example:
 	//
 	// esr-4.6.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The number of high-availability (HA) replicas.
+	//
 	// example:
 	//
 	// 0
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// The Spark configuration.
+	//
 	// example:
 	//
 	// []
 	SparkConfigs *string `json:"sparkConfigs,omitempty" xml:"sparkConfigs,omitempty"`
+	// The timestamp when the service was started.
+	//
 	// example:
 	//
 	// 1749456094000
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The state of the Kyuubi service.
+	//
 	// example:
 	//
 	// RUNNING

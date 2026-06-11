@@ -22,15 +22,15 @@ type iListKyuubiSparkApplicationsResponseBody interface {
 }
 
 type ListKyuubiSparkApplicationsResponseBody struct {
-	// The details of the applications.
+	// A list of application details.
 	Applications []*ListKyuubiSparkApplicationsResponseBodyApplications `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of records returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListKyuubiSparkApplicationsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListKyuubiSparkApplicationsResponseBody) Validate() error {
 }
 
 type ListKyuubiSparkApplicationsResponseBodyApplications struct {
-	// The ID of the application that is submitted by using a Kyuubi gateway.
+	// The ID of the Spark application submitted by Kyuubi.
 	//
 	// example:
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	// The name of the Spark application that is submitted by using a Kyuubi gateway.
+	// The name of the Spark application submitted by Kyuubi.
 	//
 	// example:
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	// The number of CUs consumed during a specified cycle of a task. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CUs.
+	// The number of CUs consumed during the task lifecycle. This is an estimated value. The final amount is subject to your bill.
 	//
 	// example:
 	//
@@ -141,6 +141,8 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// 2025-02-12 20:02:02
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The exit code.
+	//
 	// example:
 	//
 	// Exit Code: 137, Exit Reason: OOMKilled
@@ -149,11 +151,13 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// kb-2b93ec*******c9440c
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
+	// The status of the last task execution in the session.
+	//
 	// example:
 	//
 	// SUCCESS
 	LatestSqlStatementStatus *string `json:"latestSqlStatementStatus,omitempty" xml:"latestSqlStatementStatus,omitempty"`
-	// The total amount of memory allocated to the job multiplied by the running duration (seconds).
+	// The total memory allocated to the task in MB, multiplied by the number of seconds the task ran.
 	//
 	// example:
 	//
@@ -163,7 +167,7 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The name of the resource queue on which the Spark jobs run.
+	// The name of the resource queue where the Spark task runs.
 	//
 	// example:
 	//
@@ -178,24 +182,24 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The status of the Spark application.
 	//
-	// 	- STARTING
+	// - STARTING: The application is starting.
 	//
-	// 	- RUNNING
+	// - RUNNING: The application is running.
 	//
-	// 	- TERMINATED
+	// - TERMINATED: The application is terminated.
 	//
 	// example:
 	//
 	// STARTING
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	Tags  []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
+	// The total vCores allocated to the task, multiplied by the number of seconds the task ran.
 	//
 	// example:
 	//
 	// 780
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
-	// The URL of the web UI for the Spark application.
+	// The URL of the Spark application UI.
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
 }
 

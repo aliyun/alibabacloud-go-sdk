@@ -38,13 +38,13 @@ type StartProcessInstanceRequest struct {
 	Comments *string `json:"comments,omitempty" xml:"comments,omitempty"`
 	Email    *string `json:"email,omitempty" xml:"email,omitempty"`
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	// Specifies whether to run the workflow in the production environment.
+	// Specifies whether the workflow runs in a production environment.
 	//
 	// example:
 	//
 	// false
 	IsProd *bool `json:"isProd,omitempty" xml:"isProd,omitempty"`
-	// The workflow ID.
+	// The workflow definition ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type StartProcessInstanceRequest struct {
 	//
 	// 12***********
 	ProcessDefinitionCode *int64 `json:"processDefinitionCode,omitempty" xml:"processDefinitionCode,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type StartProcessInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The queue on which the workflow runs.
+	// The runtime queue.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type StartProcessInstanceRequest struct {
 	//
 	// dh*********
 	VersionHashCode *string `json:"versionHashCode,omitempty" xml:"versionHashCode,omitempty"`
-	// The version number of the workflow.
+	// The version number of the workflow definition.
 	//
 	// example:
 	//

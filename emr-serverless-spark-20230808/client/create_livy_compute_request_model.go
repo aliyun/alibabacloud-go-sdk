@@ -44,32 +44,56 @@ type iCreateLivyComputeRequest interface {
 }
 
 type CreateLivyComputeRequest struct {
+	// The authentication method.
+	//
 	// example:
 	//
 	// Token
-	AuthType               *string                                         `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// The automatic startup configuration.
 	AutoStartConfiguration *CreateLivyComputeRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	AutoStopConfiguration  *CreateLivyComputeRequestAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The automatic stop configuration.
+	AutoStopConfiguration *CreateLivyComputeRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The number of CPU cores for the Livy server.
+	//
 	// example:
 	//
 	// 1
 	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// The version number of the Spark engine.
+	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Specifies whether to enable the public endpoint.
+	//
 	// example:
 	//
 	// true
 	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// The ID of the runtime environment.
+	//
 	// example:
 	//
 	// ev-ctfq0fem1hkhgv4hapng
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Specifies whether to enable acceleration with the Fusion engine.
+	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The configuration of the Livy Gateway. This parameter is in JSON format and supports the following files:
+	//
+	// - sparkDefaultsConf
+	//
+	// - sparkBlackListConf
+	//
+	// - livyConf
+	//
+	// - livyClientConf
+	//
 	// example:
 	//
 	// {
@@ -84,30 +108,44 @@ type CreateLivyComputeRequest struct {
 	//
 	// }
 	LivyServerConf *string `json:"livyServerConf,omitempty" xml:"livyServerConf,omitempty"`
+	// The Livy version.
+	//
 	// example:
 	//
 	// 0.8.0
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
+	// The memory size of the Livy server.
+	//
 	// example:
 	//
 	// 4Gi
 	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// The name of the Livy Gateway.
+	//
 	// example:
 	//
 	// testGateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the network connection.
+	//
 	// example:
 	//
 	// test
 	NetworkName *string `json:"networkName,omitempty" xml:"networkName,omitempty"`
+	// The name of the submission queue.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -281,6 +319,12 @@ func (s *CreateLivyComputeRequest) Validate() error {
 }
 
 type CreateLivyComputeRequestAutoStartConfiguration struct {
+	// Specifies whether to automatically start the Livy Gateway after it is created.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
@@ -309,10 +353,18 @@ func (s *CreateLivyComputeRequestAutoStartConfiguration) Validate() error {
 }
 
 type CreateLivyComputeRequestAutoStopConfiguration struct {
+	// Specifies whether to automatically stop the Livy Gateway.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+	//
 	// example:
 	//
 	// 300

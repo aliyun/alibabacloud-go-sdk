@@ -67,6 +67,44 @@ type iTask interface {
 	GetParams() map[string]*string
 	SetPyFiles(v []*string) *Task
 	GetPyFiles() []*string
+	SetRayActiveDeadlineSeconds(v int64) *Task
+	GetRayActiveDeadlineSeconds() *int64
+	SetRayBackoffLimit(v int32) *Task
+	GetRayBackoffLimit() *int32
+	SetRayEntrypoint(v string) *Task
+	GetRayEntrypoint() *string
+	SetRayEntrypointMemory(v string) *Task
+	GetRayEntrypointMemory() *string
+	SetRayEntrypointNumCpus(v string) *Task
+	GetRayEntrypointNumCpus() *string
+	SetRayEntrypointNumGpus(v string) *Task
+	GetRayEntrypointNumGpus() *string
+	SetRayEntrypointResources(v string) *Task
+	GetRayEntrypointResources() *string
+	SetRayExtraParam(v string) *Task
+	GetRayExtraParam() *string
+	SetRayHeadSpec(v *TaskRayHeadSpec) *Task
+	GetRayHeadSpec() *TaskRayHeadSpec
+	SetRayMetadataJson(v string) *Task
+	GetRayMetadataJson() *string
+	SetRayNetworkServiceName(v string) *Task
+	GetRayNetworkServiceName() *string
+	SetRayRuntimeEnvJson(v string) *Task
+	GetRayRuntimeEnvJson() *string
+	SetRayShutdownAfterJobFinishes(v bool) *Task
+	GetRayShutdownAfterJobFinishes() *bool
+	SetRaySubmissionMode(v string) *Task
+	GetRaySubmissionMode() *string
+	SetRayTtlSecondsAfterFinished(v int64) *Task
+	GetRayTtlSecondsAfterFinished() *int64
+	SetRayVersion(v string) *Task
+	GetRayVersion() *string
+	SetRayVolumeIds(v []*string) *Task
+	GetRayVolumeIds() []*string
+	SetRayWorkerSpec(v []*TaskRayWorkerSpec) *Task
+	GetRayWorkerSpec() []*TaskRayWorkerSpec
+	SetRayWorkingDir(v string) *Task
+	GetRayWorkingDir() *string
 	SetSessionClusterId(v string) *Task
 	GetSessionClusterId() *string
 	SetSparkArgs(v string) *Task
@@ -100,66 +138,142 @@ type iTask interface {
 }
 
 type Task struct {
-	Archives    []*string `json:"archives,omitempty" xml:"archives,omitempty" type:"Repeated"`
-	ArtifactUrl *string   `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
+	// The --archives parameter.
+	Archives []*string `json:"archives,omitempty" xml:"archives,omitempty" type:"Repeated"`
+	// The temporary URL to access the resource file.
+	ArtifactUrl *string `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
+	// The business ID.
+	//
 	// This parameter is required.
-	BizId         *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// The business ID of the folder.
 	CategoryBizId *string `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
-	Content       *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the Spark job.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The UID of the creator.
+	//
 	// This parameter is required.
-	Creator                *int64          `json:"creator,omitempty" xml:"creator,omitempty"`
-	Credential             *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	DefaultCatalogId       *string         `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
-	DefaultDatabase        *string         `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	DefaultResourceQueueId *string         `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
-	DefaultSqlComputeId    *string         `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
-	DeploymentId           *string         `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	EnvironmentId          *string         `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	ExtraArtifactIds       []*string       `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
-	ExtraSparkSubmitParams *string         `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
-	Files                  []*string       `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	Fusion                 *bool           `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The information for directly uploading files to Object Storage Service (OSS).
+	Credential *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
+	// The default catalog ID.
+	DefaultCatalogId *string `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
+	// The default database.
+	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
+	// The default queue ID for the task.
+	DefaultResourceQueueId *string `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
+	// The default SQL session ID.
+	DefaultSqlComputeId *string `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
+	// The deployment ID of the streaming task.
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The environment ID.
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The IDs of extra Spark resources.
+	ExtraArtifactIds []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
+	// The custom parameters for the spark-submit command.
+	ExtraSparkSubmitParams *string `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
+	// The --files parameter.
+	Files []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// Indicates whether to enable fusion.
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The time when the task was created.
+	//
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// The time when the task was last modified.
+	//
 	// This parameter is required.
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	HasChanged  *bool   `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
+	// Indicates whether the task has been changed since the last commit.
+	HasChanged *bool `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
+	// Indicates whether the task has been committed.
+	//
 	// This parameter is required.
-	HasCommited            *bool     `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
-	IsStreaming            *bool     `json:"isStreaming,omitempty" xml:"isStreaming,omitempty"`
-	Jars                   []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
-	KernelId               *string   `json:"kernelId,omitempty" xml:"kernelId,omitempty"`
-	LastRunResourceQueueId *string   `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
+	HasCommited *bool `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
+	// Indicates whether the task is a streaming task.
+	IsStreaming *bool `json:"isStreaming,omitempty" xml:"isStreaming,omitempty"`
+	// The --jars parameter.
+	Jars     []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
+	KernelId *string   `json:"kernelId,omitempty" xml:"kernelId,omitempty"`
+	// The ID of the resource queue that was used for the last run.
+	LastRunResourceQueueId *string `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
+	// The UID of the user who last updated the task.
+	//
 	// This parameter is required.
 	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The task name.
+	//
 	// This parameter is required.
-	Name             *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Params           map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	PyFiles          []*string          `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
-	SessionClusterId *string            `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	Name   *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
+	// The PySpark dependency pyfiles.
+	PyFiles                     []*string            `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
+	RayActiveDeadlineSeconds    *int64               `json:"rayActiveDeadlineSeconds,omitempty" xml:"rayActiveDeadlineSeconds,omitempty"`
+	RayBackoffLimit             *int32               `json:"rayBackoffLimit,omitempty" xml:"rayBackoffLimit,omitempty"`
+	RayEntrypoint               *string              `json:"rayEntrypoint,omitempty" xml:"rayEntrypoint,omitempty"`
+	RayEntrypointMemory         *string              `json:"rayEntrypointMemory,omitempty" xml:"rayEntrypointMemory,omitempty"`
+	RayEntrypointNumCpus        *string              `json:"rayEntrypointNumCpus,omitempty" xml:"rayEntrypointNumCpus,omitempty"`
+	RayEntrypointNumGpus        *string              `json:"rayEntrypointNumGpus,omitempty" xml:"rayEntrypointNumGpus,omitempty"`
+	RayEntrypointResources      *string              `json:"rayEntrypointResources,omitempty" xml:"rayEntrypointResources,omitempty"`
+	RayExtraParam               *string              `json:"rayExtraParam,omitempty" xml:"rayExtraParam,omitempty"`
+	RayHeadSpec                 *TaskRayHeadSpec     `json:"rayHeadSpec,omitempty" xml:"rayHeadSpec,omitempty" type:"Struct"`
+	RayMetadataJson             *string              `json:"rayMetadataJson,omitempty" xml:"rayMetadataJson,omitempty"`
+	RayNetworkServiceName       *string              `json:"rayNetworkServiceName,omitempty" xml:"rayNetworkServiceName,omitempty"`
+	RayRuntimeEnvJson           *string              `json:"rayRuntimeEnvJson,omitempty" xml:"rayRuntimeEnvJson,omitempty"`
+	RayShutdownAfterJobFinishes *bool                `json:"rayShutdownAfterJobFinishes,omitempty" xml:"rayShutdownAfterJobFinishes,omitempty"`
+	RaySubmissionMode           *string              `json:"raySubmissionMode,omitempty" xml:"raySubmissionMode,omitempty"`
+	RayTtlSecondsAfterFinished  *int64               `json:"rayTtlSecondsAfterFinished,omitempty" xml:"rayTtlSecondsAfterFinished,omitempty"`
+	RayVersion                  *string              `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
+	RayVolumeIds                []*string            `json:"rayVolumeIds,omitempty" xml:"rayVolumeIds,omitempty" type:"Repeated"`
+	RayWorkerSpec               []*TaskRayWorkerSpec `json:"rayWorkerSpec,omitempty" xml:"rayWorkerSpec,omitempty" type:"Repeated"`
+	RayWorkingDir               *string              `json:"rayWorkingDir,omitempty" xml:"rayWorkingDir,omitempty"`
+	SessionClusterId            *string              `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// The Spark parameters.
+	//
 	// example:
 	//
 	// 100
-	SparkArgs *string      `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
+	SparkArgs *string `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
+	// The list of Spark configurations.
 	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
+	// The number of cores for the Spark driver.
+	//
 	// This parameter is required.
 	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
+	// The memory of the Spark driver.
+	//
 	// This parameter is required.
-	SparkDriverMemory *int64  `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	SparkEntrypoint   *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
+	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
+	// The entrypoint of the Spark main class.
+	SparkEntrypoint *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
+	// The number of cores for the Spark executor.
+	//
 	// This parameter is required.
 	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
+	// The memory of the Spark executor.
+	//
 	// This parameter is required.
 	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
+	// The log level for Spark.
+	//
 	// This parameter is required.
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
+	// The Spark log path.
+	//
 	// This parameter is required.
-	SparkLogPath      *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	// The spark-submit statement.
 	SparkSubmitClause *string `json:"sparkSubmitClause,omitempty" xml:"sparkSubmitClause,omitempty"`
+	// The Spark version.
+	//
 	// This parameter is required.
-	SparkVersion *string            `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	Tags         map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	Timeout      *int32             `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
+	// The task tags.
+	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The task timeout duration.
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The task type.
+	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -286,6 +400,82 @@ func (s *Task) GetParams() map[string]*string {
 
 func (s *Task) GetPyFiles() []*string {
 	return s.PyFiles
+}
+
+func (s *Task) GetRayActiveDeadlineSeconds() *int64 {
+	return s.RayActiveDeadlineSeconds
+}
+
+func (s *Task) GetRayBackoffLimit() *int32 {
+	return s.RayBackoffLimit
+}
+
+func (s *Task) GetRayEntrypoint() *string {
+	return s.RayEntrypoint
+}
+
+func (s *Task) GetRayEntrypointMemory() *string {
+	return s.RayEntrypointMemory
+}
+
+func (s *Task) GetRayEntrypointNumCpus() *string {
+	return s.RayEntrypointNumCpus
+}
+
+func (s *Task) GetRayEntrypointNumGpus() *string {
+	return s.RayEntrypointNumGpus
+}
+
+func (s *Task) GetRayEntrypointResources() *string {
+	return s.RayEntrypointResources
+}
+
+func (s *Task) GetRayExtraParam() *string {
+	return s.RayExtraParam
+}
+
+func (s *Task) GetRayHeadSpec() *TaskRayHeadSpec {
+	return s.RayHeadSpec
+}
+
+func (s *Task) GetRayMetadataJson() *string {
+	return s.RayMetadataJson
+}
+
+func (s *Task) GetRayNetworkServiceName() *string {
+	return s.RayNetworkServiceName
+}
+
+func (s *Task) GetRayRuntimeEnvJson() *string {
+	return s.RayRuntimeEnvJson
+}
+
+func (s *Task) GetRayShutdownAfterJobFinishes() *bool {
+	return s.RayShutdownAfterJobFinishes
+}
+
+func (s *Task) GetRaySubmissionMode() *string {
+	return s.RaySubmissionMode
+}
+
+func (s *Task) GetRayTtlSecondsAfterFinished() *int64 {
+	return s.RayTtlSecondsAfterFinished
+}
+
+func (s *Task) GetRayVersion() *string {
+	return s.RayVersion
+}
+
+func (s *Task) GetRayVolumeIds() []*string {
+	return s.RayVolumeIds
+}
+
+func (s *Task) GetRayWorkerSpec() []*TaskRayWorkerSpec {
+	return s.RayWorkerSpec
+}
+
+func (s *Task) GetRayWorkingDir() *string {
+	return s.RayWorkingDir
 }
 
 func (s *Task) GetSessionClusterId() *string {
@@ -493,6 +683,101 @@ func (s *Task) SetPyFiles(v []*string) *Task {
 	return s
 }
 
+func (s *Task) SetRayActiveDeadlineSeconds(v int64) *Task {
+	s.RayActiveDeadlineSeconds = &v
+	return s
+}
+
+func (s *Task) SetRayBackoffLimit(v int32) *Task {
+	s.RayBackoffLimit = &v
+	return s
+}
+
+func (s *Task) SetRayEntrypoint(v string) *Task {
+	s.RayEntrypoint = &v
+	return s
+}
+
+func (s *Task) SetRayEntrypointMemory(v string) *Task {
+	s.RayEntrypointMemory = &v
+	return s
+}
+
+func (s *Task) SetRayEntrypointNumCpus(v string) *Task {
+	s.RayEntrypointNumCpus = &v
+	return s
+}
+
+func (s *Task) SetRayEntrypointNumGpus(v string) *Task {
+	s.RayEntrypointNumGpus = &v
+	return s
+}
+
+func (s *Task) SetRayEntrypointResources(v string) *Task {
+	s.RayEntrypointResources = &v
+	return s
+}
+
+func (s *Task) SetRayExtraParam(v string) *Task {
+	s.RayExtraParam = &v
+	return s
+}
+
+func (s *Task) SetRayHeadSpec(v *TaskRayHeadSpec) *Task {
+	s.RayHeadSpec = v
+	return s
+}
+
+func (s *Task) SetRayMetadataJson(v string) *Task {
+	s.RayMetadataJson = &v
+	return s
+}
+
+func (s *Task) SetRayNetworkServiceName(v string) *Task {
+	s.RayNetworkServiceName = &v
+	return s
+}
+
+func (s *Task) SetRayRuntimeEnvJson(v string) *Task {
+	s.RayRuntimeEnvJson = &v
+	return s
+}
+
+func (s *Task) SetRayShutdownAfterJobFinishes(v bool) *Task {
+	s.RayShutdownAfterJobFinishes = &v
+	return s
+}
+
+func (s *Task) SetRaySubmissionMode(v string) *Task {
+	s.RaySubmissionMode = &v
+	return s
+}
+
+func (s *Task) SetRayTtlSecondsAfterFinished(v int64) *Task {
+	s.RayTtlSecondsAfterFinished = &v
+	return s
+}
+
+func (s *Task) SetRayVersion(v string) *Task {
+	s.RayVersion = &v
+	return s
+}
+
+func (s *Task) SetRayVolumeIds(v []*string) *Task {
+	s.RayVolumeIds = v
+	return s
+}
+
+func (s *Task) SetRayWorkerSpec(v []*TaskRayWorkerSpec) *Task {
+	s.RayWorkerSpec = v
+	return s
+}
+
+func (s *Task) SetRayWorkingDir(v string) *Task {
+	s.RayWorkingDir = &v
+	return s
+}
+
 func (s *Task) SetSessionClusterId(v string) *Task {
 	s.SessionClusterId = &v
 	return s
@@ -574,6 +859,20 @@ func (s *Task) Validate() error {
 			return err
 		}
 	}
+	if s.RayHeadSpec != nil {
+		if err := s.RayHeadSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RayWorkerSpec != nil {
+		for _, item := range s.RayWorkerSpec {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.SparkConf != nil {
 		for _, item := range s.SparkConf {
 			if item != nil {
@@ -587,14 +886,22 @@ func (s *Task) Validate() error {
 }
 
 type TaskCredential struct {
-	AccessId      *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
-	AccessUrl     *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
-	Expire        *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
-	Host          *string `json:"host,omitempty" xml:"host,omitempty"`
-	Path          *string `json:"path,omitempty" xml:"path,omitempty"`
-	Policy        *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// The AccessKey ID.
+	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	// The access URL.
+	AccessUrl *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
+	// The expiration time.
+	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
+	// The domain name.
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The path.
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The policy.
+	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// The security token.
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
-	Signature     *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The signature.
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 }
 
 func (s TaskCredential) String() string {
@@ -678,5 +985,185 @@ func (s *TaskCredential) SetSignature(v string) *TaskCredential {
 }
 
 func (s *TaskCredential) Validate() error {
+	return dara.Validate(s)
+}
+
+type TaskRayHeadSpec struct {
+	Cpu                *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	EnableAutoScaling  *bool   `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
+	GpuSpec            *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	IdleTimeoutSeconds *int64  `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
+	Memory             *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	QueueName          *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	Replica            *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
+}
+
+func (s TaskRayHeadSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TaskRayHeadSpec) GoString() string {
+	return s.String()
+}
+
+func (s *TaskRayHeadSpec) GetCpu() *string {
+	return s.Cpu
+}
+
+func (s *TaskRayHeadSpec) GetEnableAutoScaling() *bool {
+	return s.EnableAutoScaling
+}
+
+func (s *TaskRayHeadSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
+func (s *TaskRayHeadSpec) GetIdleTimeoutSeconds() *int64 {
+	return s.IdleTimeoutSeconds
+}
+
+func (s *TaskRayHeadSpec) GetMemory() *string {
+	return s.Memory
+}
+
+func (s *TaskRayHeadSpec) GetQueueName() *string {
+	return s.QueueName
+}
+
+func (s *TaskRayHeadSpec) GetReplica() *int32 {
+	return s.Replica
+}
+
+func (s *TaskRayHeadSpec) SetCpu(v string) *TaskRayHeadSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetEnableAutoScaling(v bool) *TaskRayHeadSpec {
+	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetGpuSpec(v string) *TaskRayHeadSpec {
+	s.GpuSpec = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetIdleTimeoutSeconds(v int64) *TaskRayHeadSpec {
+	s.IdleTimeoutSeconds = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetMemory(v string) *TaskRayHeadSpec {
+	s.Memory = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetQueueName(v string) *TaskRayHeadSpec {
+	s.QueueName = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetReplica(v int32) *TaskRayHeadSpec {
+	s.Replica = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) Validate() error {
+	return dara.Validate(s)
+}
+
+type TaskRayWorkerSpec struct {
+	Cpu        *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	GpuSpec    *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	GroupName  *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	MaxReplica *int32  `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
+	Memory     *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	MinReplica *int32  `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
+	QueueName  *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	Replica    *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
+}
+
+func (s TaskRayWorkerSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TaskRayWorkerSpec) GoString() string {
+	return s.String()
+}
+
+func (s *TaskRayWorkerSpec) GetCpu() *string {
+	return s.Cpu
+}
+
+func (s *TaskRayWorkerSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
+func (s *TaskRayWorkerSpec) GetGroupName() *string {
+	return s.GroupName
+}
+
+func (s *TaskRayWorkerSpec) GetMaxReplica() *int32 {
+	return s.MaxReplica
+}
+
+func (s *TaskRayWorkerSpec) GetMemory() *string {
+	return s.Memory
+}
+
+func (s *TaskRayWorkerSpec) GetMinReplica() *int32 {
+	return s.MinReplica
+}
+
+func (s *TaskRayWorkerSpec) GetQueueName() *string {
+	return s.QueueName
+}
+
+func (s *TaskRayWorkerSpec) GetReplica() *int32 {
+	return s.Replica
+}
+
+func (s *TaskRayWorkerSpec) SetCpu(v string) *TaskRayWorkerSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetGpuSpec(v string) *TaskRayWorkerSpec {
+	s.GpuSpec = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetGroupName(v string) *TaskRayWorkerSpec {
+	s.GroupName = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetMaxReplica(v int32) *TaskRayWorkerSpec {
+	s.MaxReplica = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetMemory(v string) *TaskRayWorkerSpec {
+	s.Memory = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetMinReplica(v int32) *TaskRayWorkerSpec {
+	s.MinReplica = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetQueueName(v string) *TaskRayWorkerSpec {
+	s.QueueName = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetReplica(v int32) *TaskRayWorkerSpec {
+	s.Replica = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) Validate() error {
 	return dara.Validate(s)
 }

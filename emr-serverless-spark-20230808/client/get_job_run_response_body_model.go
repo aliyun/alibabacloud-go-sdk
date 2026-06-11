@@ -64,29 +64,29 @@ func (s *GetJobRunResponseBody) Validate() error {
 type GetJobRunResponseBodyJobRun struct {
 	// The code type of the job. Valid values:
 	//
-	// 	- SQL
+	// - SQL
 	//
-	// 	- JAR
+	// - JAR
 	//
-	// 	- PYTHON
+	// - PYTHON
 	//
 	// example:
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The configurations of the Spark jobs.
+	// The Spark configurations of the job.
 	ConfigurationOverrides *GetJobRunResponseBodyJobRunConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// The version of the Spark engine.
+	// The version that is displayed in the console.
 	//
 	// example:
 	//
 	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The end time of the job.
+	// The time when the job ended.
 	//
 	// example:
 	//
-	// 1684119314000
+	// 1684122914000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The environment ID.
 	//
@@ -94,53 +94,57 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// env-cpv569tlhtgndjl8****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The timeout period of the job.
+	// The timeout period for the job execution.
 	//
 	// example:
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Indicates whether the Fusion engine is used for acceleration.
+	// Indicates whether to enable the Fusion engine to accelerate the job execution.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The information about Spark Driver.
+	// The Spark driver information.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// The job ID.
+	// The job run ID.
 	//
 	// example:
 	//
-	// jr-231231
+	// jr-93d98d2f7061****
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The path where the operational logs are stored.
+	// The path of the run log.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The job name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The access URL for the notebook of the job run.
+	//
 	// example:
 	//
 	// http://workflow-ide-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/spark-notebook-output/w-xxxxxxxxx/xxxxxxx
 	NotebookAccessUrl *string `json:"notebookAccessUrl,omitempty" xml:"notebookAccessUrl,omitempty"`
+	// The priority of the job run.
+	//
 	// example:
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The version of the Spark engine on which the job runs.
+	// The Spark engine version.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The ID of the user who created the job.
+	// The UID of the user who creates the job.
 	//
 	// example:
 	//
-	// 1509789347011222
+	// 150978934701****
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
 	// The name of the queue on which the job runs.
 	//
@@ -148,13 +152,13 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The job state.
+	// The state of the job.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The reason of the job status change.
+	// The reason for the state change.
 	StateChangeReason *GetJobRunResponseBodyJobRunStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// The time when the job was submitted.
 	//
@@ -162,7 +166,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tags of the job.
+	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The web UI of the job.
 	//
@@ -174,7 +178,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// example:
 	//
-	// w-1234abcd
+	// w-d2d82aa09155****
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 

@@ -16,13 +16,13 @@ type iCreateNetworkServiceResponseBody interface {
 }
 
 type CreateNetworkServiceResponseBody struct {
-	// Workspace Id。
+	// The operation ID.
 	//
 	// example:
 	//
 	// w-******
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

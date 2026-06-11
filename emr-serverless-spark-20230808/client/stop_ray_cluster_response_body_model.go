@@ -14,6 +14,8 @@ type iStopRayClusterResponseBody interface {
 }
 
 type StopRayClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944

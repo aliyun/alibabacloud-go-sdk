@@ -14,6 +14,8 @@ type iUpdateKyuubiTokenResponseBody interface {
 }
 
 type UpdateKyuubiTokenResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****

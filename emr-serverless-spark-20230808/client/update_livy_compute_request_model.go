@@ -44,29 +44,58 @@ type iUpdateLivyComputeRequest interface {
 }
 
 type UpdateLivyComputeRequest struct {
+	// The authentication method.
+	//
 	// example:
 	//
 	// Token
-	AuthType               *string                                         `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// The auto-start configuration.
 	AutoStartConfiguration *UpdateLivyComputeRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	AutoStopConfiguration  *UpdateLivyComputeRequestAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The auto-stop configuration.
+	AutoStopConfiguration *UpdateLivyComputeRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The number of vCPUs for the Livy server.
+	//
+	// - 1
+	//
+	// - 2
+	//
+	// - 4
+	//
 	// example:
 	//
 	// 1
 	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// The version number of the Spark engine.
+	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	EnablePublic          *bool   `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// The status of the switch for the Internet endpoint.
+	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// ev-cq146allhtgkulp5smk0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Specifies whether to enable the Fusion engine for acceleration.
+	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The configurations of the Livy Gateway. This parameter is in JSON format and supports the following files:
+	//
+	// - sparkDefaultsConf
+	//
+	// - sparkBlackListConf
+	//
+	// - livyConf
+	//
+	// - livyClientConf
+	//
 	// example:
 	//
 	// {
@@ -81,30 +110,44 @@ type UpdateLivyComputeRequest struct {
 	//
 	// }
 	LivyServerConf *string `json:"livyServerConf,omitempty" xml:"livyServerConf,omitempty"`
+	// The Livy version.
+	//
 	// example:
 	//
 	// 0.8.0
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
+	// The memory size of the Livy server.
+	//
 	// example:
 	//
 	// 4Gi
 	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the network connection.
+	//
 	// example:
 	//
 	// test
 	NetworkName *string `json:"networkName,omitempty" xml:"networkName,omitempty"`
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -278,6 +321,12 @@ func (s *UpdateLivyComputeRequest) Validate() error {
 }
 
 type UpdateLivyComputeRequestAutoStartConfiguration struct {
+	// Specifies whether to automatically start the Livy Gateway after it is created.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
@@ -306,10 +355,18 @@ func (s *UpdateLivyComputeRequestAutoStartConfiguration) Validate() error {
 }
 
 type UpdateLivyComputeRequestAutoStopConfiguration struct {
+	// Specifies whether to enable auto-stop for the Livy Gateway.
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+	//
 	// example:
 	//
 	// 300
