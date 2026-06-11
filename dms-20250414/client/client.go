@@ -3645,11 +3645,11 @@ func (client *Client) GetNotebookTaskStatus(request *GetNotebookTaskStatusReques
 
 // Summary:
 //
-// Retrieves the content of a code file from a workspace. The response header includes the file\\"s modification time (`mtime`).
+// Reads the content of a code file in the workspace and returns the file content along with mtime (in the header).
 //
 // Description:
 //
-// Retrieves the content of a specified code file from a workspace.
+// Obtains the resource configuration limit information and the instance purchase status of the workspace.
 //
 // @param request - GetWorkspaceCodeRequest
 //
@@ -3701,11 +3701,11 @@ func (client *Client) GetWorkspaceCodeWithOptions(request *GetWorkspaceCodeReque
 
 // Summary:
 //
-// Retrieves the content of a code file from a workspace. The response header includes the file\\"s modification time (`mtime`).
+// Reads the content of a code file in the workspace and returns the file content along with mtime (in the header).
 //
 // Description:
 //
-// Retrieves the content of a specified code file from a workspace.
+// Obtains the resource configuration limit information and the instance purchase status of the workspace.
 //
 // @param request - GetWorkspaceCodeRequest
 //
@@ -6307,11 +6307,11 @@ func (client *Client) RetrieveKnowledgeBase(request *RetrieveKnowledgeBaseReques
 
 // Summary:
 //
-// Saves code in a workspace and creates the file if it does not exist.
+// Saves workspace code. If the file does not exist, a new file is automatically created.
 //
 // Description:
 //
-// Saves code in a workspace and optionally publishes it to a repository.
+// 发布工作空间的代码
 //
 // @param request - SaveWorkspaceCodeRequest
 //
@@ -6381,11 +6381,11 @@ func (client *Client) SaveWorkspaceCodeWithOptions(request *SaveWorkspaceCodeReq
 
 // Summary:
 //
-// Saves code in a workspace and creates the file if it does not exist.
+// Saves workspace code. If the file does not exist, a new file is automatically created.
 //
 // Description:
 //
-// Saves code in a workspace and optionally publishes it to a repository.
+// 发布工作空间的代码
 //
 // @param request - SaveWorkspaceCodeRequest
 //

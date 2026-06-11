@@ -1,3 +1,6 @@
+2026-06-11 Version: v1.15.2
+- Generated golang 2025-04-14 for Dms.
+
 2026-06-11 Version: v1.15.1
 - Generated golang 2025-04-14 for Dms.
 

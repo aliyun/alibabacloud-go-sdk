@@ -42,7 +42,7 @@ type GetWorkspaceCodeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned when the request fails.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetWorkspaceCodeResponseBody struct {
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates if the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
