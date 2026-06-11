@@ -1256,7 +1256,7 @@ func (client *Client) CreateClusterInspectConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// A node pool is a logical collection of nodes that share the same properties, enabling unified management and O&M operations such as node upgrades and Auto Scaling. You can further leverage the automated O&M capabilities of node pools to reduce operational costs—for example, by automatically patching OS CVE vulnerabilities, automatically recovering failed nodes, and automatically upgrading kubelet and containerd versions. You can invoke CreateClusterNodePool to create a node pool for a cluster.
+// A node pool is a logical group of nodes that share the same properties. Node pools allow you to manage nodes and perform operations and maintenance (O&M) tasks, such as upgrades and auto scaling, on them as a group. You can use the automated O&M features of a node pool to automatically fix operating system (OS) Common Vulnerabilities and Exposures (CVE) vulnerabilities, recover failed nodes, and upgrade kubelet and containerd versions. This helps reduce your O&M costs. Call the CreateClusterNodePool operation to create a node pool for a cluster.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -2718,7 +2718,7 @@ func (client *Client) DescribeClusterLogsWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// You can call the DescribeClusterNodePoolDetail operation with a node pool ID to query the configuration of a specific node pool in a cluster.
+// You can call the DescribeClusterNodePoolDetail operation to query the details of a node pool in a cluster.
 //
 // @param headers - map
 //
@@ -2751,7 +2751,7 @@ func (client *Client) DescribeClusterNodePoolDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Lists all node pools in a cluster.
+// Queries the node pools in a cluster.
 //
 // @param request - DescribeClusterNodePoolsRequest
 //
@@ -5735,7 +5735,7 @@ func (client *Client) ModifyClusterAddonWithContext(ctx context.Context, cluster
 
 // Summary:
 //
-// You can call the ModifyClusterNodePool API to update the configuration of a node pool by specifying its node pool ID.
+// Call the ModifyClusterNodePool operation to update the configurations of a node pool.
 //
 // @param request - ModifyClusterNodePoolRequest
 //
@@ -6563,6 +6563,57 @@ func (client *Client) RunClusterInspectWithContext(ctx context.Context, clusterI
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunClusterInspectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行节点上的运维操作
+//
+// @param request - RunNodeOperationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunNodeOperationResponse
+func (client *Client) RunNodeOperationWithContext(ctx context.Context, clusterId *string, nodepoolId *string, nodeName *string, request *RunNodeOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunNodeOperationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OperationAction) {
+		body["operationAction"] = request.OperationAction
+	}
+
+	if !dara.IsNil(request.OperationArgs) {
+		body["operationArgs"] = request.OperationArgs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunNodeOperation"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/nodes/" + dara.PercentEncode(dara.StringValue(nodeName)) + "/operation"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunNodeOperationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -30,7 +30,7 @@ type CreateClusterNodePoolResponseBody struct {
 	//
 	// 0527ac9a-c899-4341-a21a-****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

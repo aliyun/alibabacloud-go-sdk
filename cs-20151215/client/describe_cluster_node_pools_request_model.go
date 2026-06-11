@@ -14,7 +14,7 @@ type iDescribeClusterNodePoolsRequest interface {
 }
 
 type DescribeClusterNodePoolsRequest struct {
-	// Node pool name.
+	// The name of the node pool.
 	//
 	// example:
 	//
