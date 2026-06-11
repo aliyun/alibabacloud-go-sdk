@@ -30,32 +30,66 @@ type iListFileUploadRequest interface {
 }
 
 type ListFileUploadRequest struct {
+	// For front-end use only.
+	//
+	// example:
+	//
+	// 仅前端使用
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DmsUnit            *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
-	DownloadLinkExpire *int32  `json:"DownloadLinkExpire,omitempty" xml:"DownloadLinkExpire,omitempty"`
+	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The validity period of the download link, in seconds. This parameter applies only to files in user-owned Object Storage Service (OSS) buckets. The default is 3600.
+	//
+	// - Minimum value: 3600 (1 hour)
+	//
+	// - Maximum value: 129600 (36 hours)
+	//
+	// Notes:
+	//
+	// - Download links for files in the built-in OSS are valid for 1 hour.
+	//
+	// -
+	//
+	// example:
+	//
+	// 3600
+	DownloadLinkExpire *int32 `json:"DownloadLinkExpire,omitempty" xml:"DownloadLinkExpire,omitempty"`
+	// The file category.
+	//
 	// example:
 	//
 	// TextReport
 	FileCategory *string `json:"FileCategory,omitempty" xml:"FileCategory,omitempty"`
+	// The file source.
+	//
 	// example:
 	//
 	// Agent
 	FileFrom *string `json:"FileFrom,omitempty" xml:"FileFrom,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// f-8*******01m
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// h8r********4fch
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The sort column.
+	//
 	// example:
 	//
 	// gmtCreated
 	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
+	// The sort direction.
+	//
 	// example:
 	//
 	// asc

@@ -36,46 +36,74 @@ type iSendChatMessageShrinkRequest interface {
 }
 
 type SendChatMessageShrinkRequest struct {
+	// The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// agent_12345
+	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit           *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	DataSourceShrink  *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The data source information. Optional.
+	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// A list of data sources. Optional.
 	DataSourcesShrink *string `json:"DataSources,omitempty" xml:"DataSources,omitempty"`
+	// The content of the message to send to the agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// what can you do?
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
+	//
 	// example:
 	//
 	// primary
-	MessageType     *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The parent session ID.
+	//
+	// example:
+	//
+	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	Question        *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
+	//
+	// example:
+	//
+	// 请提供计算GMV的口径。
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// The quoted content. This parameter is typically used when interacting with the agent.
+	//
 	// example:
 	//
 	// {"version":"v0"}
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
+	// This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
+	//
 	// example:
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
+	// Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
+	//
 	// if can be null:
 	// true
 	SessionConfigShrink *string `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty"`
+	// The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sess_12345
+	// sess_***
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 

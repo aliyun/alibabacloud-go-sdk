@@ -36,49 +36,78 @@ type iUploadDocumentRequest interface {
 }
 
 type UploadDocumentRequest struct {
+	// The number of overlapping characters between adjacent chunks. This value cannot exceed `ChunkSize`. The default is 50.
+	//
 	// example:
 	//
 	// 50
 	ChunkOverlap *int64 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// The size of each document chunk. The default is 250, and the maximum is 2,048.
+	//
 	// example:
 	//
 	// 250
 	ChunkSize *int64 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// The description of the document.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the document loader. The default is `ADBPGLoader`.
+	//
 	// example:
 	//
 	// ADBPGLoader
 	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	// The name of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.md
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kb-***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The OSS location of the input file. Construct this path by appending the file name to the `UploadDir` value returned by the `DescribeKnowledgeBaseUploadSignature` operation.
+	//
 	// This parameter is required.
-	Location   *string   `json:"Location,omitempty" xml:"Location,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// An array of strings used to split text.
+	//
+	// > - This critical parameter affects data chunking results and is related to the splitter specified by `TextSplitterName`.
+	//
+	// >
+	//
+	// > - In most cases, you can omit this parameter. The service automatically assigns default separators based on `TextSplitterName`.
 	Separators []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	// The splitter model to use. The default is `qwen3-8b`.
+	//
 	// example:
 	//
 	// qwen3-8b
 	SplitterModel *string `json:"SplitterModel,omitempty" xml:"SplitterModel,omitempty"`
+	// The name of the text splitter.
+	//
 	// example:
 	//
 	// ChineseRecursiveTextSplitter
 	TextSplitterName *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	// Specifies whether to enable visual-linguistic (VL) enhanced content recognition for complex documents. The default is false.
+	//
 	// example:
 	//
 	// false
 	VlEnhance *bool `json:"VlEnhance,omitempty" xml:"VlEnhance,omitempty"`
+	// Specifies whether to enable title enhancement.
+	//
 	// example:
 	//
 	// false

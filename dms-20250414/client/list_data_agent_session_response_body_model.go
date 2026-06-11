@@ -30,37 +30,56 @@ type iListDataAgentSessionResponseBody interface {
 }
 
 type ListDataAgentSessionResponseBody struct {
+	// Response data
 	Data []*ListDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error code. Returned when the request fails.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message returned when the call fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Current page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request succeeded. Possible values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 3
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 1
@@ -170,40 +189,64 @@ func (s *ListDataAgentSessionResponseBody) Validate() error {
 }
 
 type ListDataAgentSessionResponseBodyData struct {
+	// Current Agent ID
+	//
 	// example:
 	//
 	// cu0cs*******mf
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Current Agent status
+	//
 	// example:
 	//
 	// RUNNING
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// Session creation time
+	//
 	// example:
 	//
 	// 1731645908000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Whether the session is saved by the current user in the workspace
+	//
 	// example:
 	//
 	// true
 	FavoriteInWorkspace *bool `json:"FavoriteInWorkspace,omitempty" xml:"FavoriteInWorkspace,omitempty"`
+	// File ID
+	//
 	// example:
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// Whether the session is saved by the current user
+	//
 	// example:
 	//
 	// true
-	Saved         *bool                                              `json:"Saved,omitempty" xml:"Saved,omitempty"`
+	Saved *bool `json:"Saved,omitempty" xml:"Saved,omitempty"`
+	// Session configuration
 	SessionConfig *ListDataAgentSessionResponseBodyDataSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
+	// Data Agent session ID
+	//
 	// example:
 	//
 	// h8r********4fch
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Session status
+	//
 	// example:
 	//
 	// RUNNING
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 分析一下这份文件，给出报告。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Session owner ID
+	//
 	// example:
 	//
 	// 2096******
@@ -327,26 +370,54 @@ func (s *ListDataAgentSessionResponseBodyData) Validate() error {
 }
 
 type ListDataAgentSessionResponseBodyDataSessionConfig struct {
+	// Custom Agent ID
+	//
 	// example:
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// Custom Agent usage stage:
+	//
+	// - **debug*	- Debug stage
+	//
+	// - **prod*	- Production stage
+	//
 	// example:
 	//
 	// prod
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
+	// Whether web search is enabled
+	//
 	// example:
 	//
 	// true
 	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	// Language
+	//
+	// - **CHINESE*	- Chinese
+	//
+	// - **ENGLISH*	- English
+	//
 	// example:
 	//
 	// CHINESE
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Mode:
+	//
+	// - **ASK_DATA*	- Quick Inquiry Mode
+	//
+	// - **ANALYSIS*	- Analysis mode
+	//
+	// - **INSIGHT*	- Insight mode
+	//
 	// example:
 	//
 	// ANALYSIS
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// User OSS bucket name
+	//
+	// - Files and reports generated during analysis can be uploaded to the user-specified OSS bucket.
+	//
 	// example:
 	//
 	// user-oss-bucket

@@ -18,16 +18,22 @@ type iGetWorkspaceCodeRequest interface {
 }
 
 type GetWorkspaceCodeRequest struct {
+	// If the file is in JSON format, set this parameter to `true` to convert the returned content to YAML format.
+	//
 	// example:
 	//
 	// false
 	Iac *string `json:"Iac,omitempty" xml:"Iac,omitempty"`
+	// The path to the code file. For example: `/Workspace/code/test.py`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /Workspace/code/default/test.ipynb
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

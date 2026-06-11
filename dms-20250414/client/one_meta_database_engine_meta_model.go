@@ -20,10 +20,14 @@ type iOneMetaDatabaseEngineMeta interface {
 }
 
 type OneMetaDatabaseEngineMeta struct {
-	CatalogName     *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	StorageCapacity *int64  `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
+	// The catalog name.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The character encoding for the database.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The schema name.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The database storage capacity, in GB.
+	StorageCapacity *int64 `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
 }
 
 func (s OneMetaDatabaseEngineMeta) String() string {

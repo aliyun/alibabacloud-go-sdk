@@ -22,19 +22,32 @@ type iDescribeDocumentResponseBody interface {
 }
 
 type DescribeDocumentResponseBody struct {
+	// The details of the document.
 	Data *DescribeDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned when the request fails.
+	//
 	// example:
 	//
 	// KnowledgeBaseNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the request fails.
+	//
 	// example:
 	//
 	// Resource not found kb-***
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The unique request ID. Provide this ID for troubleshooting if an error occurs.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -104,54 +117,90 @@ func (s *DescribeDocumentResponseBody) Validate() error {
 }
 
 type DescribeDocumentResponseBodyData struct {
+	// The description of the document.
+	//
 	// example:
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of chunks.
+	//
 	// example:
 	//
 	// 123
 	DocsCount *int64 `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// The name of the document loader.
+	//
 	// example:
 	//
 	// ADBPGLoader
 	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	// The file extension of the document.
+	//
 	// example:
 	//
 	// md
 	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// The size of the document in bytes.
+	//
 	// example:
 	//
 	// 20307
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The creation time of the document, in UTC.
+	//
 	// example:
 	//
 	// 2026-04-22 22:59:35
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time of the document, in UTC.
+	//
 	// example:
 	//
 	// 2026-04-24 21:22:53
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// example:
 	//
 	// kb-***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The keywords of the document.
+	//
 	// example:
 	//
 	// ["test","abc"]
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The name of the document.
+	//
 	// example:
 	//
 	// test.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The document state. Possible values are:
+	//
+	// - **0**: Parsing complete.
+	//
+	// - **-1**: Not parsed.
+	//
+	// - **-2**: Parsing in progress.
+	//
+	// - **-3**: Parsing failed.
+	//
+	// - **-4**: Parsing canceled.
+	//
 	// example:
 	//
 	// 0
 	State *int64 `json:"State,omitempty" xml:"State,omitempty"`
+	// The summary of the document.
+	//
 	// example:
 	//
 	// This is a test document.
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The name of the text splitter.
+	//
 	// example:
 	//
 	// ChineseRecursiveTextSplitter

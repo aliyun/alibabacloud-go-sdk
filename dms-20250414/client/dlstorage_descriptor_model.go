@@ -36,36 +36,54 @@ type iDLStorageDescriptor interface {
 }
 
 type DLStorageDescriptor struct {
-	BucketCols []*string   `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
-	Columns    []*DLColumn `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// A list of bucket column names that determine the hash distribution of the data.
+	BucketCols []*string `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
+	// The description of the data columns in the table.
+	Columns []*DLColumn `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The name of the input format class used to read data.
+	//
 	// example:
 	//
 	// org.apache.hadoop.mapred.SequenceFileInputFormat
 	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// Specifies whether the data is compressed.
+	//
 	// example:
 	//
 	// false
 	IsCompressed *bool `json:"IsCompressed,omitempty" xml:"IsCompressed,omitempty"`
+	// The specific location of the data storage.
+	//
 	// example:
 	//
 	// oss://xxx
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The number of buckets.
+	//
 	// example:
 	//
 	// -1
-	NumBuckets      *int32      `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
+	NumBuckets *int32 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
+	// The description of the original columns.
 	OriginalColumns []*DLColumn `json:"OriginalColumns,omitempty" xml:"OriginalColumns,omitempty" type:"Repeated"`
+	// The name of the output format class used to write data.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// Other parameter mappings for data storage.
+	//
 	// example:
 	//
 	// key/value
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	SerdeInfo  *DLSerdeInfo           `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
-	SkewedInfo *DLSkewedInfo          `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
-	SortCols   []*DLOrder             `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
+	// The serialization and deserialization information.
+	SerdeInfo *DLSerdeInfo `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
+	// The data structure that stores information about skewed columns.
+	SkewedInfo *DLSkewedInfo `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
+	// The description of the sorted columns.
+	SortCols []*DLOrder `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
 }
 
 func (s DLStorageDescriptor) String() string {

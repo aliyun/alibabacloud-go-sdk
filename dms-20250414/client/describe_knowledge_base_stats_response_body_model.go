@@ -22,19 +22,28 @@ type iDescribeKnowledgeBaseStatsResponseBody interface {
 }
 
 type DescribeKnowledgeBaseStatsResponseBody struct {
+	// The object that contains the knowledge base statistics.
 	Data *DescribeKnowledgeBaseStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// Permission denied.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Knowledge base limit exceeded. Current: xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The unique ID of the request. Use this ID to troubleshoot errors.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of `true` indicates success, and a value of `false` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -104,22 +113,32 @@ func (s *DescribeKnowledgeBaseStatsResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeBaseStatsResponseBodyData struct {
+	// The number of documents in the knowledge base.
+	//
 	// example:
 	//
 	// 100
 	DocumentCount *int32 `json:"DocumentCount,omitempty" xml:"DocumentCount,omitempty"`
+	// The number of hits for the knowledge base.
+	//
 	// example:
 	//
 	// 18
 	KbHits *int64 `json:"KbHits,omitempty" xml:"KbHits,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// example:
 	//
 	// kb-***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The total number of knowledge chunks in the knowledge base.
+	//
 	// example:
 	//
 	// 10
 	TotalChunkCount *int32 `json:"TotalChunkCount,omitempty" xml:"TotalChunkCount,omitempty"`
+	// The total size of all files in the knowledge base, in bytes.
+	//
 	// example:
 	//
 	// 4194588751

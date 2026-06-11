@@ -20,18 +20,30 @@ type iDeleteDataLakeFunctionResponseBody interface {
 }
 
 type DeleteDataLakeFunctionResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// B4B07137-F6AE-4756-8474-7F92BB6C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

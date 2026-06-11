@@ -24,23 +24,38 @@ type iWorkspaceActionStatusResponseBody interface {
 }
 
 type WorkspaceActionStatusResponseBody struct {
+	// The returned data.
 	Data *WorkspaceActionStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message that is returned if the request fails.
+	//
 	// example:
 	//
 	// This record is being collected, please wait for a moment.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,18 +134,26 @@ func (s *WorkspaceActionStatusResponseBody) Validate() error {
 }
 
 type WorkspaceActionStatusResponseBodyData struct {
+	// The error message if the task fails.
+	//
 	// example:
 	//
 	// action failed
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The time when the task ended.
+	//
 	// example:
 	//
 	// 2026-01-13T14:30:20.582182728+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the task started.
+	//
 	// example:
 	//
 	// 2026-01-13T14:30:20.582182728+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the asynchronous task. Valid values: SUCCESS, ERROR, TIMEOUT, and CANCEL.
+	//
 	// This parameter is required.
 	//
 	// example:

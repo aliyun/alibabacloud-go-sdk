@@ -26,27 +26,44 @@ type iGetNotebookTaskStatusResponseBody interface {
 }
 
 type GetNotebookTaskStatusResponseBody struct {
+	// The status code. A value of Success indicates that the request was successful.
+	//
 	// example:
 	//
 	// Success
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The scheduling result.
 	Data *GetNotebookTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -134,10 +151,30 @@ func (s *GetNotebookTaskStatusResponseBody) Validate() error {
 }
 
 type GetNotebookTaskStatusResponseBodyData struct {
+	// The URL to preview the scheduling result.
+	//
+	// example:
+	//
+	// https://dms.aliyun.com/web-ide?***
 	NotebookSchedulePreviewUrl *string `json:"NotebookSchedulePreviewUrl,omitempty" xml:"NotebookSchedulePreviewUrl,omitempty"`
-	Progress                   *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Result                     *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Status                     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The progress of the scheduling task.
+	//
+	// example:
+	//
+	// 5/6
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The output of the scheduling task.
+	//
+	// example:
+	//
+	// test
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The status of the scheduling result.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetNotebookTaskStatusResponseBodyData) String() string {

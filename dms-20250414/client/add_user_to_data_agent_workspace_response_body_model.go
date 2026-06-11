@@ -22,19 +22,28 @@ type iAddUserToDataAgentWorkspaceResponseBody interface {
 }
 
 type AddUserToDataAgentWorkspaceResponseBody struct {
+	// The returned struct.
 	Data *AddUserToDataAgentWorkspaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-***-695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,26 +113,38 @@ func (s *AddUserToDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type AddUserToDataAgentWorkspaceResponseBodyData struct {
+	// The time when the user joined the workspace. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765960516
 	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The Alibaba Cloud UID of the user.
+	//
 	// example:
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The name of the user\\"s role in the workspace.
+	//
 	// example:
 	//
 	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The number of tasks that the user is running in the workspace.
+	//
 	// example:
 	//
 	// 2
 	RunningTaskNumber *int64 `json:"RunningTaskNumber,omitempty" xml:"RunningTaskNumber,omitempty"`
+	// The total number of tasks that the user initiated in the workspace.
+	//
 	// example:
 	//
 	// 5
 	TotalTaskNumber *int64 `json:"TotalTaskNumber,omitempty" xml:"TotalTaskNumber,omitempty"`
+	// The RAM username.
+	//
 	// example:
 	//
 	// agentTest

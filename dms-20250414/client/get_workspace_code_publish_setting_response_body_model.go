@@ -24,23 +24,34 @@ type iGetWorkspaceCodePublishSettingResponseBody interface {
 }
 
 type GetWorkspaceCodePublishSettingResponseBody struct {
+	// The status code that indicates the result of the request. A value of `200` indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetWorkspaceCodePublishSettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// This record is being collected, please wait for a moment.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
@@ -119,12 +130,16 @@ func (s *GetWorkspaceCodePublishSettingResponseBody) Validate() error {
 }
 
 type GetWorkspaceCodePublishSettingResponseBodyData struct {
+	// The files and directories to exclude from the deployment.
 	Exclude []*string `json:"Exclude,omitempty" xml:"Exclude,omitempty" type:"Repeated"`
+	// Indicates whether the deployment branch is locked. If `true`, configurations submitted via the `workspaceCodePublish` API are ignored. If `false`, configurations submitted via the `workspaceCodePublish` API update the settings.
+	//
 	// example:
 	//
 	// false
-	LockRepoBranch *bool                                                  `json:"LockRepoBranch,omitempty" xml:"LockRepoBranch,omitempty"`
-	Repos          []*GetWorkspaceCodePublishSettingResponseBodyDataRepos `json:"Repos,omitempty" xml:"Repos,omitempty" type:"Repeated"`
+	LockRepoBranch *bool `json:"LockRepoBranch,omitempty" xml:"LockRepoBranch,omitempty"`
+	// The Git repositories in the workspace.
+	Repos []*GetWorkspaceCodePublishSettingResponseBodyDataRepos `json:"Repos,omitempty" xml:"Repos,omitempty" type:"Repeated"`
 }
 
 func (s GetWorkspaceCodePublishSettingResponseBodyData) String() string {
@@ -176,14 +191,20 @@ func (s *GetWorkspaceCodePublishSettingResponseBodyData) Validate() error {
 }
 
 type GetWorkspaceCodePublishSettingResponseBodyDataRepos struct {
+	// The name of the branch.
+	//
 	// example:
 	//
 	// main
 	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The path to the notebook file.
+	//
 	// example:
 	//
 	// /luna-public/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The name of the repository.
+	//
 	// example:
 	//
 	// analyticscomputing/dide

@@ -30,42 +30,60 @@ type iListDataAgentWorkspaceRequest interface {
 }
 
 type ListDataAgentWorkspaceRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// This parameter is reserved for future use.
+	//
 	// example:
 	//
 	// no use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is reserved for future use.
+	//
 	// example:
 	//
 	// no use
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field to sort by.
+	//
 	// example:
 	//
 	// CreateTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The workspace type.
+	//
 	// This parameter is required.
 	//
 	// example:

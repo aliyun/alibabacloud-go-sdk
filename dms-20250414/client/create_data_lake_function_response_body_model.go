@@ -22,19 +22,32 @@ type iCreateDataLakeFunctionResponseBody interface {
 }
 
 type CreateDataLakeFunctionResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Function     *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the function.
+	Function *DLFunction `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// EE214ECD-4330-503A-82F0-FFB03975****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

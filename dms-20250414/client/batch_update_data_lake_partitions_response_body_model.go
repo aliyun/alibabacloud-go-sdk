@@ -22,19 +22,32 @@ type iBatchUpdateDataLakePartitionsResponseBody interface {
 }
 
 type BatchUpdateDataLakePartitionsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage    *string           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The list of errors.
 	PartitionErrors []*PartitionError `json:"PartitionErrors,omitempty" xml:"PartitionErrors,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C5B8E84B-42B6-4374-AD5A-6264E175****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

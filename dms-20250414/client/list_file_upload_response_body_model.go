@@ -22,21 +22,32 @@ type iListFileUploadResponseBody interface {
 }
 
 type ListFileUploadResponseBody struct {
+	// The list of file objects.
 	Data []*ListFileUploadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -110,52 +121,77 @@ func (s *ListFileUploadResponseBody) Validate() error {
 }
 
 type ListFileUploadResponseBodyData struct {
+	// The ID of the Alibaba Cloud master account.
+	//
 	// example:
 	//
 	// 16738266********
 	AliyunParentUid *string `json:"AliyunParentUid,omitempty" xml:"AliyunParentUid,omitempty"`
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 20372822********
-	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The public download link.
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// The file category.
+	//
 	// example:
 	//
 	// TextReport
 	FileCategory *string `json:"FileCategory,omitempty" xml:"FileCategory,omitempty"`
+	// The file source.
+	//
 	// example:
 	//
 	// Agent
 	FileFrom *string `json:"FileFrom,omitempty" xml:"FileFrom,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// f-8*******01m
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// samele_report.md
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size, in bytes.
+	//
 	// example:
 	//
 	// 7453
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file extension.
+	//
 	// example:
 	//
 	// md
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The time when the file was created.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
-	GmtCreated           *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The internal download link.
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// h8r********4fch
-	SessionId      *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The upload path.
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`
 }
 

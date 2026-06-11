@@ -36,17 +36,29 @@ type iAgenticTableEngineMeta interface {
 }
 
 type AgenticTableEngineMeta struct {
-	Checksum        *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataBytes       *int64  `json:"DataBytes,omitempty" xml:"DataBytes,omitempty"`
-	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	Engine          *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	FullChecksum    *string `json:"FullChecksum,omitempty" xml:"FullChecksum,omitempty"`
-	IndexBytes      *int64  `json:"IndexBytes,omitempty" xml:"IndexBytes,omitempty"`
-	LastDdlTime     *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	NumRows         *int64  `json:"NumRows,omitempty" xml:"NumRows,omitempty"`
-	RefInfo         *string `json:"RefInfo,omitempty" xml:"RefInfo,omitempty"`
-	StorageCapacity *int64  `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
+	// A checksum to verify the table\\"s data integrity.
+	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	// The time the table was created, in UTC format (`YYYY-MM-DDThh:mm:ssZ`).
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The total size of the table\\"s data, in bytes.
+	DataBytes *int64 `json:"DataBytes,omitempty" xml:"DataBytes,omitempty"`
+	// The character encoding of the table.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The table\\"s storage engine, such as `InnoDB`.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// A checksum of the table\\"s data and indexes.
+	FullChecksum *string `json:"FullChecksum,omitempty" xml:"FullChecksum,omitempty"`
+	// The total size of the table\\"s indexes, in bytes.
+	IndexBytes *int64 `json:"IndexBytes,omitempty" xml:"IndexBytes,omitempty"`
+	// The timestamp of the last DDL (Data Definition Language) operation, in UTC format (`YYYY-MM-DDThh:mm:ssZ`).
+	LastDdlTime *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
+	// The number of rows in the table.
+	NumRows *int64 `json:"NumRows,omitempty" xml:"NumRows,omitempty"`
+	// The table\\"s reference information.
+	RefInfo *string `json:"RefInfo,omitempty" xml:"RefInfo,omitempty"`
+	// The table\\"s total storage capacity, in bytes.
+	StorageCapacity *int64 `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
+	// The name of the table schema.
 	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
 }
 

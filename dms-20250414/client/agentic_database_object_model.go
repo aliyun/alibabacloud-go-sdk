@@ -24,12 +24,18 @@ type iAgenticDatabaseObject interface {
 }
 
 type AgenticDatabaseObject struct {
+	// The fully qualified name of the database. This name uniquely identifies the database within the system.
 	DatabaseQualifiedName *string `json:"DatabaseQualifiedName,omitempty" xml:"DatabaseQualifiedName,omitempty"`
-	DatabaseUuid          *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	DdlSql                *string `json:"DdlSql,omitempty" xml:"DdlSql,omitempty"`
-	ObjectName            *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	ObjectQualifiedName   *string `json:"ObjectQualifiedName,omitempty" xml:"ObjectQualifiedName,omitempty"`
-	ObjectType            *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The unique identifier (UUID) of the database that contains the object.
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The Data Definition Language (DDL) SQL statement that defines the object\\"s structure.
+	DdlSql *string `json:"DdlSql,omitempty" xml:"DdlSql,omitempty"`
+	// The name of the database object, such as a table, view, or index.
+	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	// The fully qualified name that uniquely identifies the object, typically formatted as <database>.<schema>.<object>.
+	ObjectQualifiedName *string `json:"ObjectQualifiedName,omitempty" xml:"ObjectQualifiedName,omitempty"`
+	// The type of the database object. For example, `TABLE`, `VIEW`, or `INDEX`.
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 }
 
 func (s AgenticDatabaseObject) String() string {

@@ -28,31 +28,50 @@ type iListKnowledgeBasesResponseBody interface {
 }
 
 type ListKnowledgeBasesResponseBody struct {
+	// A list of knowledge base objects.
 	Data []*OneMetaKnowledgeBase `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter Tag is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results.
+	//
+	// - If this parameter is empty, all results have been returned.
+	//
+	// - If a value is returned, use it in the next request to retrieve the next page of results.
+	//
 	// example:
 	//
 	// NesLoKLEdIZrKhDT7I2gS****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of knowledge bases matching the query. This feature is not currently supported and the returned value is always `0`.
+	//
 	// example:
 	//
 	// 0

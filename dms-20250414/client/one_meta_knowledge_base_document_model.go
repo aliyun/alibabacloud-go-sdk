@@ -38,54 +38,90 @@ type iOneMetaKnowledgeBaseDocument interface {
 }
 
 type OneMetaKnowledgeBaseDocument struct {
+	// The document description.
+	//
 	// example:
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of chunks.
+	//
 	// example:
 	//
 	// 123
 	DocsCount *int32 `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// The name of the document loader.
+	//
 	// example:
 	//
 	// ADBPGLoader
 	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	// The file extension.
+	//
 	// example:
 	//
 	// md
 	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// The file size, in bytes.
+	//
 	// example:
 	//
 	// 20307
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// When the document was created.
+	//
 	// example:
 	//
 	// 2026-04-22 22:59:35
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// When the document was last modified.
+	//
 	// example:
 	//
 	// 2026-04-24 21:22:53
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The knowledge base ID.
+	//
 	// example:
 	//
 	// kb-***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// Keywords extracted from the document.
+	//
 	// example:
 	//
 	// ["test","abc"]
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The document name.
+	//
 	// example:
 	//
 	// test.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The document status. Valid values are:
+	//
+	// - **0**: Complete.
+	//
+	// - **-1**: Unprocessed.
+	//
+	// - **-2**: Parsing.
+	//
+	// - **-3**: Failed.
+	//
+	// - **-4**: Canceled.
+	//
 	// example:
 	//
 	// 0
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The summary of the document.
+	//
 	// example:
 	//
 	// This is a test document.
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The name of the text splitter.
+	//
 	// example:
 	//
 	// ChineseRecursiveTextSplitter

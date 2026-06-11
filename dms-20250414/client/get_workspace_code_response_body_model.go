@@ -24,26 +24,38 @@ type iGetWorkspaceCodeResponseBody interface {
 }
 
 type GetWorkspaceCodeResponseBody struct {
+	// The file content.
+	//
 	// example:
 	//
 	// log info
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// This record is being collected, please wait for a moment.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded.
+	//
 	// example:
 	//
 	// true

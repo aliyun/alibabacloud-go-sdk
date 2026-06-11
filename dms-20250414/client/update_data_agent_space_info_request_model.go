@@ -22,19 +22,32 @@ type iUpdateDataAgentSpaceInfoRequest interface {
 }
 
 type UpdateDataAgentSpaceInfoRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit               *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// Specifies whether to enable session sharing for the workspace. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The new description for the workspace.
+	//
 	// example:
 	//
 	// space for test new
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 20923*****7291
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The new name for the workspace.
+	//
 	// example:
 	//
 	// yunqitest_v2

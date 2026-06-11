@@ -32,42 +32,62 @@ type iOneMetaKnowledgeBase interface {
 }
 
 type OneMetaKnowledgeBase struct {
+	// The creator of the knowledge base.
+	//
 	// example:
 	//
 	// 20464374909***
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the knowledge base.
+	//
 	// example:
 	//
 	// order knowledgebase
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The domain of the knowledge base.
+	//
 	// example:
 	//
 	// vehicle
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Additional information about the knowledge base.
+	//
 	// example:
 	//
 	// {"keywords":"sales,vehicle brand"}
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The time when the knowledge base was created.
+	//
 	// example:
 	//
 	// 2026-05-14 11:30:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the knowledge base was last modified.
+	//
 	// example:
 	//
 	// 2026-05-14 11:30:39
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The UUID of the knowledge base.
+	//
 	// example:
 	//
 	// kb-***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The name of the knowledge base.
+	//
 	// example:
 	//
 	// order_kb
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The state of the knowledge base. Valid values include 0 (No data) and 1 (Available).
+	//
 	// example:
 	//
 	// 1
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The tag of the knowledge base.
+	//
 	// example:
 	//
 	// 4phsj52f81ymlm***

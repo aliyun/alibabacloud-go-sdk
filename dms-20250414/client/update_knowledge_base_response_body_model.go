@@ -22,19 +22,32 @@ type iUpdateKnowledgeBaseResponseBody interface {
 }
 
 type UpdateKnowledgeBaseResponseBody struct {
+	// The returned data.
 	Data *OneMetaKnowledgeBase `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned on failure.
+	//
 	// example:
 	//
 	// KnowledgeBaseNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned on failure.
+	//
 	// example:
 	//
 	// Resource not found kb-***
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

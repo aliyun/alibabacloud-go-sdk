@@ -16,10 +16,20 @@ type iDLResourceUri interface {
 }
 
 type DLResourceUri struct {
+	// The resource type. Valid values:
+	//
+	// - ARCHIVE
+	//
+	// - JAR
+	//
+	// - FILE
+	//
 	// example:
 	//
 	// JAR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The URL used to access the resource.
+	//
 	// example:
 	//
 	// hdfs://name****.example.com:8020/user/hive/udfs/my_***.jar

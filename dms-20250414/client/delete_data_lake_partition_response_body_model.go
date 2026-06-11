@@ -20,18 +20,30 @@ type iDeleteDataLakePartitionResponseBody interface {
 }
 
 type DeleteDataLakePartitionResponseBody struct {
+	// The error code returned when the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the deletion succeeded.
+	//
+	// - **true**: The deletion succeeded.
+	//
+	// - **false**: The deletion failed.
+	//
 	// example:
 	//
 	// true

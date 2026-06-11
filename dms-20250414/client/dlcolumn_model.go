@@ -18,14 +18,20 @@ type iDLColumn interface {
 }
 
 type DLColumn struct {
+	// The comment of the column.
+	//
 	// example:
 	//
 	// from deserializer
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the column.
+	//
 	// example:
 	//
 	// col
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the column. Valid values include array, bigint, binary, boolean, char, date, decimal, double, float, int, interval, map, set, smallint, string, struct, timestamp, tinyint, union, and varchar.
+	//
 	// example:
 	//
 	// string

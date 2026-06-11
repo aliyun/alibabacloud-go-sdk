@@ -26,13 +26,20 @@ type iDmsKnowledgeSearchOrderInfoDO interface {
 }
 
 type DmsKnowledgeSearchOrderInfoDO struct {
+	// The UID of the Alibaba Cloud account.
 	AliyunAccountUid *string `json:"AliyunAccountUid,omitempty" xml:"AliyunAccountUid,omitempty"`
-	ApiKey           *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	WebSearchApiUrl  *string `json:"WebSearchApiUrl,omitempty" xml:"WebSearchApiUrl,omitempty"`
+	// The API key used for authentication.
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The time when the entry was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the entry was last modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique ID of the entry.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The endpoint URL for the web search API.
+	WebSearchApiUrl *string `json:"WebSearchApiUrl,omitempty" xml:"WebSearchApiUrl,omitempty"`
 }
 
 func (s DmsKnowledgeSearchOrderInfoDO) String() string {

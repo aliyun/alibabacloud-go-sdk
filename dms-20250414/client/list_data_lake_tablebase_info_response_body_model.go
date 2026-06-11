@@ -24,23 +24,38 @@ type iListDataLakeTablebaseInfoResponseBody interface {
 }
 
 type ListDataLakeTablebaseInfoResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter Rows is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B43AD641-49C2-5299-9E06-1B37EC1B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. The return values are:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success           *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of data lake tables.
 	TablebaseInfoList []*DLTablebaseInfo `json:"TablebaseInfoList,omitempty" xml:"TablebaseInfoList,omitempty" type:"Repeated"`
+	// The number of tables that meet the conditions.
+	//
 	// example:
 	//
 	// 100

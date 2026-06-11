@@ -22,11 +22,16 @@ type iDeleteCustomAgentResponseBody interface {
 }
 
 type DeleteCustomAgentResponseBody struct {
+	// Return struct
 	Data *DeleteCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Returns an error message if the call fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
@@ -37,6 +42,12 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return value description.
+	//
+	// - **true**: Deletion successful.
+	//
+	// - **false**: Deletion failed.
+	//
 	// example:
 	//
 	// true
@@ -106,14 +117,20 @@ func (s *DeleteCustomAgentResponseBody) Validate() error {
 }
 
 type DeleteCustomAgentResponseBodyData struct {
+	// Custom Agent ID
+	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// Deletion operation message
+	//
 	// example:
 	//
 	// Custom agent successfully deleted
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Is deletion successful?
+	//
 	// example:
 	//
 	// true

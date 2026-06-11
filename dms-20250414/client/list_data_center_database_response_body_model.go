@@ -22,21 +22,32 @@ type iListDataCenterDatabaseResponseBody interface {
 }
 
 type ListDataCenterDatabaseResponseBody struct {
+	// The list of databases.
 	Data []*ListDataCenterDatabaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -110,50 +121,103 @@ func (s *ListDataCenterDatabaseResponseBody) Validate() error {
 }
 
 type ListDataCenterDatabaseResponseBodyData struct {
+	// The description of the database.
+	//
+	// example:
+	//
+	// This is a sample database.
 	DatabaseDesc *string `json:"DatabaseDesc,omitempty" xml:"DatabaseDesc,omitempty"`
+	// The name of the database.
+	//
+	// - If `ImportType` is `FILE`, this is the file name.
+	//
 	// example:
 	//
 	// diamonds.csv
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The ID of the database.
+	//
 	// example:
 	//
 	// 6kv159u9vtpvl**********b8
 	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// - If `ImportType` is `FILE`:
+	//
+	//   - The file format, such as `csv`, `xlsx`, or `xls`.
+	//
 	// example:
 	//
 	// csv
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The time the database description was last updated.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	DescUpdateTime *string `json:"DescUpdateTime,omitempty" xml:"DescUpdateTime,omitempty"`
+	// The ID of the database in DMS.
+	//
+	// - This parameter is not returned if `ImportType` is `FILE`.
+	//
 	// example:
 	//
 	// 73088962
 	DmsDbId *int64 `json:"DmsDbId,omitempty" xml:"DmsDbId,omitempty"`
+	// The ID of the DMS instance that manages the database.
+	//
+	// - This parameter is not returned if `ImportType` is `FILE`.
+	//
 	// example:
 	//
 	// 2740966
 	DmsInstanceId *int64  `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
 	DownloadLink  *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// The time the entry was created.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The import type. Valid values:
+	//
+	// - FILE
+	//
+	// - RDS
+	//
+	// - ADB
+	//
+	// - PolarDB
+	//
+	// - Hologres
+	//
+	// - DMS
+	//
 	// example:
 	//
 	// FILE
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
+	// The name of the instance.
+	//
+	// - If `ImportType` is `FILE`, this parameter specifies the file ID in the data center.
+	//
 	// example:
 	//
 	// f-ean8u5881qk4*********xh5y
 	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
+	// Indicates whether the dataset is built-in. Valid values:
+	//
+	// - Y: The dataset is built-in.
+	//
+	// - N: The dataset is not built-in.
+	//
 	// example:
 	//
 	// N
 	IsInternal *string `json:"IsInternal,omitempty" xml:"IsInternal,omitempty"`
 	OssBucket  *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The size of the file, in bytes.
+	//
 	// example:
 	//
 	// 999

@@ -22,24 +22,36 @@ type iDeleteDocumentChunksResponseBody interface {
 }
 
 type DeleteDocumentChunksResponseBody struct {
-	// 实际删除的行数
+	// The number of deleted chunks.
 	//
 	// example:
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the call fails.
+	//
 	// example:
 	//
 	// KnowledgeBaseNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the call fails.
+	//
 	// example:
 	//
 	// Resource not found kb-***
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The unique request ID for the call. If an error occurs, provide this request ID to support.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

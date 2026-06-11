@@ -16,10 +16,14 @@ type iGetDataAgentSubAccountInfoRequest interface {
 }
 
 type GetDataAgentSubAccountInfoRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The UID of the RAM user.
+	//
 	// example:
 	//
 	// 20282*****7591

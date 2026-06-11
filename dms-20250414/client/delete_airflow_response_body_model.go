@@ -26,27 +26,44 @@ type iDeleteAirflowResponseBody interface {
 }
 
 type DeleteAirflowResponseBody struct {
+	// The details of the access denied error.
+	//
 	// example:
 	//
 	// NOT_FOUND
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-****
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Root      *DeleteAirflowResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the deleted instance.
+	Root *DeleteAirflowResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. The following values are returned:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -134,6 +151,7 @@ func (s *DeleteAirflowResponseBody) Validate() error {
 }
 
 type DeleteAirflowResponseBodyRoot struct {
+	// The details of the return value.
 	Responses []*DeleteAirflowResponseBodyRootResponses `json:"Responses,omitempty" xml:"Responses,omitempty" type:"Repeated"`
 }
 
@@ -168,10 +186,20 @@ func (s *DeleteAirflowResponseBodyRoot) Validate() error {
 }
 
 type DeleteAirflowResponseBodyRootResponses struct {
+	// Indicates whether the request was successful. The following values are returned:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The UUID of the asset instance.
+	//
+	// > This result is not returned if no process exists under the asset.
+	//
 	// example:
 	//
 	// af-test****

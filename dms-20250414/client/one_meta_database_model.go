@@ -42,21 +42,35 @@ type iOneMetaDatabase interface {
 }
 
 type OneMetaDatabase struct {
-	CatalogName      *string                    `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	CatalogType      *string                    `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	CatalogUuid      *string                    `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DataSourceType   *string                    `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseBizAttrs map[string]interface{}     `json:"DatabaseBizAttrs,omitempty" xml:"DatabaseBizAttrs,omitempty"`
-	DatabaseUuid     *string                    `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description      *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineMeta       *OneMetaDatabaseEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	Name             *string                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties       map[string]interface{}     `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	QualifiedName    *string                    `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	RegionId         *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SearchName       *string                    `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	State            *int32                     `json:"State,omitempty" xml:"State,omitempty"`
-	StorageLocation  *string                    `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The catalog name.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The catalog type.
+	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	// The catalog UUID.
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The data source type.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The business attributes of the database.
+	DatabaseBizAttrs map[string]interface{} `json:"DatabaseBizAttrs,omitempty" xml:"DatabaseBizAttrs,omitempty"`
+	// The database UUID.
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The database description.
+	Description *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	EngineMeta  *OneMetaDatabaseEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
+	// The database name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended properties of the database.
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The qualified name of the database.
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name used to search the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The database state.
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The database storage location.
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
 func (s OneMetaDatabase) String() string {

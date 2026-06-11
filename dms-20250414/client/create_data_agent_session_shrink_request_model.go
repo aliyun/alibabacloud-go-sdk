@@ -22,16 +22,28 @@ type iCreateDataAgentSessionShrinkRequest interface {
 }
 
 type CreateDataAgentSessionShrinkRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// f-8*******01m
-	File                *string `json:"File,omitempty" xml:"File,omitempty"`
+	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// The session configuration.
 	SessionConfigShrink *string `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty"`
-	Title               *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The session title. Supports Chinese and English. Maximum length: 128 characters.
+	//
+	// example:
+	//
+	// 帮我分析一下这份数据，给出报告。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

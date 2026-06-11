@@ -26,27 +26,40 @@ type iGetWorkspaceQuotaResponseBody interface {
 }
 
 type GetWorkspaceQuotaResponseBody struct {
+	// Details of the access denial.
+	//
 	// example:
 	//
 	// NOT_FOUND
-	AccessDeniedDetail *string                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *GetWorkspaceQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *GetWorkspaceQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -134,30 +147,44 @@ func (s *GetWorkspaceQuotaResponseBody) Validate() error {
 }
 
 type GetWorkspaceQuotaResponseBodyData struct {
+	// The CU quota.
+	//
 	// example:
 	//
 	// 200
 	CuQuota *int64 `json:"CuQuota,omitempty" xml:"CuQuota,omitempty"`
+	// The amount of CU quota used.
+	//
 	// example:
 	//
 	// 20
 	CuQuotaUsage *int64 `json:"CuQuotaUsage,omitempty" xml:"CuQuotaUsage,omitempty"`
+	// The ID of the billing instance.
+	//
 	// example:
 	//
 	// i-bp16pha0zu99yybi59qr
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The available free notebook quota (in CU-H).
+	//
 	// example:
 	//
 	// 0
 	NotebookFreeQuotaAvailable *int64 `json:"NotebookFreeQuotaAvailable,omitempty" xml:"NotebookFreeQuotaAvailable,omitempty"`
+	// The total free notebook quota (in CU-H).
+	//
 	// example:
 	//
 	// 0
 	NotebookFreeQuotaTotal *int64 `json:"NotebookFreeQuotaTotal,omitempty" xml:"NotebookFreeQuotaTotal,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// RELEASED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291

@@ -20,18 +20,26 @@ type iAddUserToDataAgentWorkspaceRequest interface {
 }
 
 type AddUserToDataAgentWorkspaceRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The Alibaba Cloud UID of the user.
+	//
 	// example:
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The name of the user\\"s role in the workspace.
+	//
 	// example:
 	//
 	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291

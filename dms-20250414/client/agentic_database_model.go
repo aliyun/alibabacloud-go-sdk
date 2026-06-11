@@ -42,21 +42,36 @@ type iAgenticDatabase interface {
 }
 
 type AgenticDatabase struct {
-	CatalogName      *string                    `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	CatalogType      *string                    `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	CatalogUuid      *string                    `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DataSourceType   *string                    `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseBizAttrs map[string]interface{}     `json:"DatabaseBizAttrs,omitempty" xml:"DatabaseBizAttrs,omitempty"`
-	DatabaseUuid     *string                    `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description      *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineMeta       *AgenticDatabaseEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	Name             *string                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties       map[string]interface{}     `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	QualifiedName    *string                    `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	RegionId         *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SearchName       *string                    `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	State            *int32                     `json:"State,omitempty" xml:"State,omitempty"`
-	StorageLocation  *string                    `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The name of the catalog.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The type of the catalog.
+	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	// The unique identifier of the catalog.
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The data source type, such as `MySQL` or `PostgreSQL`.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The database\\"s business attributes.
+	DatabaseBizAttrs map[string]interface{} `json:"DatabaseBizAttrs,omitempty" xml:"DatabaseBizAttrs,omitempty"`
+	// The unique identifier of the database.
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The database description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The metadata for the database engine.
+	EngineMeta *AgenticDatabaseEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
+	// The name of the database.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The database\\"s extended properties.
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The fully qualified name of the database.
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// The region ID of the database.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name used to search the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The database state.
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The database storage location.
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
 func (s AgenticDatabase) String() string {

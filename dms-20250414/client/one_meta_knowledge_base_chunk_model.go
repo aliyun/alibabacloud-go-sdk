@@ -22,22 +22,32 @@ type iOneMetaKnowledgeBaseChunk interface {
 }
 
 type OneMetaKnowledgeBaseChunk struct {
+	// The time when the chunk was last modified.
+	//
 	// example:
 	//
 	// 2026-04-20 15:51:27
 	ChunkMtime *string `json:"ChunkMtime,omitempty" xml:"ChunkMtime,omitempty"`
+	// The title of the chunk.
+	//
 	// example:
 	//
 	// titile1
 	ChunkTitle *string `json:"ChunkTitle,omitempty" xml:"ChunkTitle,omitempty"`
+	// The content of the chunk.
+	//
 	// example:
 	//
 	// abc
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the document.
+	//
 	// example:
 	//
 	// test.md
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// The unique identifier for the chunk.
+	//
 	// example:
 	//
 	// 2e12aeb5-52cd-4834-bcd8-****

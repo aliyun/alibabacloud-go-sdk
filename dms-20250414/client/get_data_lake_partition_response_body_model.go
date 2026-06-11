@@ -22,19 +22,32 @@ type iGetDataLakePartitionResponseBody interface {
 }
 
 type GetDataLakePartitionResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the call fails.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Partition    *DLPartition `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The information about the data lakehouse table partition.
+	Partition *DLPartition `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// FE8EE2F1-4880-46BC-A704-5CF63EAF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

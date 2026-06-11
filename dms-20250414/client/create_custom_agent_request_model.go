@@ -41,21 +41,229 @@ type iCreateCustomAgentRequest interface {
 
 type CreateCustomAgentRequest struct {
 	CallbackConfig *CreateCustomAgentRequestCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
+	// The ID of the DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit             *string                                        `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	DataJson            *string                                        `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
-	Description         *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionConfig     *CreateCustomAgentRequestExecutionConfig       `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
-	Instruction         *string                                        `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	Knowledge           *string                                        `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The data range, specified as a **JSON string**.
+	//
+	// - General parameters
+	//
+	//   - `tableFlag`: Set to `true` to specify a data range.
+	//
+	//   - `scope`: The value must be `personal`.
+	//
+	//   - `personal`: Contains the parameters for a file or database.
+	//
+	// **File type**: Use the following parameters.
+	//
+	// - `DataSourceType`: The value must be `remote_data_center`.
+	//
+	// - `FileId`: The ID of the file.
+	//
+	// - `Database`: The name of the database returned by the `ListDataCenterTable` operation. This is typically the file name.
+	//
+	// - `Tables`: The names of the tables returned by the `ListDataCenterTable` operation.
+	//
+	// - `TableIds`: The table IDs returned by the `ListDataCenterTable` operation.
+	//
+	// - `RegionId`: The current region.
+	//
+	// ```
+	//
+	// {
+	//
+	//   "tableFlag": true,
+	//
+	//   "scope": "personal",
+	//
+	//   "personal": {
+	//
+	//     "DataSourceType": "remote_data_center",
+	//
+	//     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
+	//
+	//     "Database": "diamonds.csv",
+	//
+	//     "Tables": [
+	//
+	//       "diamonds"
+	//
+	//     ],
+	//
+	//     "TableIds": [
+	//
+	//       "35hfn94pxl********50pi"
+	//
+	//     ],
+	//
+	//     "RegionId": "cn-hangzhou"
+	//
+	//   }
+	//
+	// }
+	//
+	// ```
+	//
+	// **Database type**: Use the following parameters.
+	//
+	// - `DataSourceType`: The value must be `database`.
+	//
+	// - `DmsInstanceId`: The ID of the DMS instance returned by the data center API.
+	//
+	// - `DmsDatabaseId`: The ID of the DMS database returned by the data center API.
+	//
+	// - `FileId`: The instance name. This parameter is deprecated.
+	//
+	// - `DbName`: The name of the database returned by the data center API.
+	//
+	// - `Database`: The name of the database returned by the data center API.
+	//
+	// - `Tables`: The names of the tables returned by the data center API.
+	//
+	// - `TableIds`: The table IDs returned by the data center API.
+	//
+	// - `Engine`: The database engine. Valid values: `mysql` and `postgresql`.
+	//
+	// - `RegionId`: The current region.
+	//
+	// ```
+	//
+	// {
+	//
+	//   "tableFlag": true,
+	//
+	//   "scope": "personal",
+	//
+	//   "personal": {
+	//
+	//     "DataSourceType": "database",
+	//
+	//     "DmsInstanceId": "284***8",
+	//
+	//     "DmsDatabaseId": "769***45",
+	//
+	//     "FileId": "pgm-bp15095e*******6t",
+	//
+	//     "DbName": "pg_catalog",
+	//
+	//     "Database": "pg_catalog",
+	//
+	//     "Tables": [
+	//
+	//       "pg_aggregate"
+	//
+	//     ],
+	//
+	//     "TableIds": [
+	//
+	//       "5263****31"
+	//
+	//     ],
+	//
+	//     "Engine": "postgresql",
+	//
+	//     "RegionId": "cn-hangzhou"
+	//
+	//   }
+	//
+	// }
+	//
+	// ```
+	//
+	// example:
+	//
+	// {
+	//
+	//   "tableFlag" : true,
+	//
+	//   "scope" : "personal",
+	//
+	//   "personal" : {
+	//
+	//     "DataSourceType" : "remote_data_center",
+	//
+	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
+	//
+	//     "Database" : "测试表格******.xlsx",
+	//
+	//     "Tables" : [ "Sheet1" ],
+	//
+	//     "TableIds" : [ "******" ],
+	//
+	//     "RegionId" : "cn-hangzhou"
+	//
+	//   }
+	//
+	// }
+	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
+	// The description of the custom agent.
+	//
+	// example:
+	//
+	// Agent测试描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution configuration.
+	ExecutionConfig *CreateCustomAgentRequestExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
+	// The instruction for the custom agent.
+	//
+	// - Maximum length: 10,000 characters.
+	//
+	// example:
+	//
+	// 核心指标定义：
+	//
+	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
+	//
+	// 2、订单量为每日有效下单笔数；
+	//
+	// 3、UV（独立访客）指访问网站或APP的去重用户数；
+	//
+	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
+	// The knowledge for the custom agent.
+	//
+	// - Maximum length: 10,000 characters.
+	//
+	// example:
+	//
+	// 核心指标定义：
+	//
+	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
+	//
+	// 2、订单量为每日有效下单笔数；
+	//
+	// 3、UV（独立访客）指访问网站或APP的去重用户数；
+	//
+	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	// A list of external knowledge bases.
 	KnowledgeConfigList []*CreateCustomAgentRequestKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
-	Name                *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	RelatedSessionId    *string                                        `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
-	ScheduleTaskConfig  *CreateCustomAgentRequestScheduleTaskConfig    `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	TextReportConfig    *string                                        `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
-	WebReportConfig     *string                                        `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
+	// The name of the custom agent.
+	//
+	// example:
+	//
+	// Agent测试名称
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
+	// The configuration for the scheduled task.
+	ScheduleTaskConfig *CreateCustomAgentRequestScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
+	// The formatting requirements for the text report.
+	//
+	// example:
+	//
+	// 文字报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
+	// The formatting requirements for the web report.
+	//
+	// example:
+	//
+	// 网页报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 56kv1pvl9uvt9**********bb
@@ -290,18 +498,26 @@ func (s *CreateCustomAgentRequestCallbackConfig) Validate() error {
 }
 
 type CreateCustomAgentRequestExecutionConfig struct {
+	// Specifies whether to skip asking the user for input during execution.
+	//
 	// example:
 	//
 	// true
 	SkipAskHuman *bool `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
+	// Specifies whether to skip the plan confirmation step.
+	//
 	// example:
 	//
 	// true
 	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	// Specifies whether to skip all SQL confirmation steps.
+	//
 	// example:
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
+	// Specifies whether to skip the web report confirmation step.
+	//
 	// example:
 	//
 	// true
@@ -357,11 +573,17 @@ func (s *CreateCustomAgentRequestExecutionConfig) Validate() error {
 }
 
 type CreateCustomAgentRequestKnowledgeConfigList struct {
+	// The access type.
+	//
+	// - `mcp`: Access via an MCP server.
+	//
 	// example:
 	//
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The ID of the MCP server.
+	//
 	// example:
 	//
 	// nhdpt9adf6ac**********ca
@@ -408,11 +630,20 @@ func (s *CreateCustomAgentRequestKnowledgeConfigList) Validate() error {
 }
 
 type CreateCustomAgentRequestScheduleTaskConfig struct {
+	// The cron expression for the scheduled task.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The query for the scheduled task.
+	//
+	// example:
+	//
+	// 分析一下这份数据，给出简报
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The ID of a previous session to use for reference.
+	//
 	// example:
 	//
 	// 4m24*****mg7j2v

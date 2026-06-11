@@ -26,27 +26,44 @@ type iListDataLakePartitionByFilterResponseBody interface {
 }
 
 type ListDataLakePartitionByFilterResponseBody struct {
+	// The error code that is returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// NesLoKLEdIZrKhDT7I2gS****
-	NextToken     *string        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of partitions.
 	PartitionList []*DLPartition `json:"PartitionList,omitempty" xml:"PartitionList,omitempty" type:"Repeated"`
+	// The ID of the request, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 427688B8-ADFB-4C4E-9D45-EF5C1FD6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

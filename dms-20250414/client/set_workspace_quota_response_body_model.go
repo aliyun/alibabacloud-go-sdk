@@ -26,27 +26,40 @@ type iSetWorkspaceQuotaResponseBody interface {
 }
 
 type SetWorkspaceQuotaResponseBody struct {
+	// Details of the access denial.
+	//
 	// example:
 	//
 	// NOT_FOUND
-	AccessDeniedDetail *string                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *SetWorkspaceQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *SetWorkspaceQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// A human-readable message about the request\\"s outcome.
+	//
 	// example:
 	//
 	// This record is being collected, please wait for a moment.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -134,30 +147,44 @@ func (s *SetWorkspaceQuotaResponseBody) Validate() error {
 }
 
 type SetWorkspaceQuotaResponseBodyData struct {
+	// The compute unit (CU) quota.
+	//
 	// example:
 	//
 	// 200
 	CuQuota *int64 `json:"CuQuota,omitempty" xml:"CuQuota,omitempty"`
+	// The amount of compute unit (CU) quota used.
+	//
 	// example:
 	//
 	// 20
 	CuQuotaUsage *int64 `json:"CuQuotaUsage,omitempty" xml:"CuQuotaUsage,omitempty"`
+	// The ID of the billing instance.
+	//
 	// example:
 	//
 	// i-2zehld3y1tphzctyyq7o
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 263013787210103
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The status of the order.
+	//
 	// example:
 	//
 	// Catched
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the instance.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 20923*****7291

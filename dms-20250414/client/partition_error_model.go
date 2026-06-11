@@ -16,11 +16,14 @@ type iPartitionError interface {
 }
 
 type PartitionError struct {
+	// The details of the error.
+	//
 	// example:
 	//
 	// auth failed
-	ErrorDetail *string   `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
-	Values      []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
+	// The partition values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s PartitionError) String() string {

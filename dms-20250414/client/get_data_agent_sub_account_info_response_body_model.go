@@ -22,19 +22,28 @@ type iGetDataAgentSubAccountInfoResponseBody interface {
 }
 
 type GetDataAgentSubAccountInfoResponseBody struct {
+	// The returned data structure.
 	Data *GetDataAgentSubAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the call fails.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-***-695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,22 +113,32 @@ func (s *GetDataAgentSubAccountInfoResponseBody) Validate() error {
 }
 
 type GetDataAgentSubAccountInfoResponseBodyData struct {
+	// The time when the user was created in RAM. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765960516
 	CreateDate *int64 `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ID of the Alibaba Cloud account to which the user belongs.
+	//
 	// example:
 	//
 	// 167*****166
 	MainAccountId *string `json:"MainAccountId,omitempty" xml:"MainAccountId,omitempty"`
+	// The time when the user information was last updated. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765962516
 	UpdateDate *int64 `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The UID of the queried RAM user.
+	//
 	// example:
 	//
 	// 20282*****7591
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the queried RAM user.
+	//
 	// example:
 	//
 	// yunqitest

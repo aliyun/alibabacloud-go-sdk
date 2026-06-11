@@ -22,21 +22,32 @@ type iCreateDataAgentSessionResponseBody interface {
 }
 
 type CreateDataAgentSessionResponseBody struct {
+	// The response structure.
 	Data *CreateDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CB***********3F1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,32 +117,56 @@ func (s *CreateDataAgentSessionResponseBody) Validate() error {
 }
 
 type CreateDataAgentSessionResponseBodyData struct {
-	// Agent Id
+	// The agent ID.
 	//
 	// example:
 	//
 	// cu0cs*******mf
-	AgentId     *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent status.
+	//
+	// example:
+	//
+	// RUNNING
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// The time when the session was created, in Unix milliseconds.
+	//
 	// example:
 	//
 	// 1765262307992
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the associated file.
+	//
 	// example:
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// Indicates whether the current user has favorited the session.
+	//
 	// example:
 	//
 	// false
-	Saved         *bool                                                `json:"Saved,omitempty" xml:"Saved,omitempty"`
+	Saved *bool `json:"Saved,omitempty" xml:"Saved,omitempty"`
+	// The session configuration.
 	SessionConfig *CreateDataAgentSessionResponseBodyDataSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
+	// The agent session ID.
+	//
 	// example:
 	//
 	// 976*********p
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The session status.
+	//
+	// example:
+	//
+	// RUNNING
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The session title.
+	//
+	// example:
+	//
+	// 帮我分析一下这份数据，给出报告。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateDataAgentSessionResponseBodyData) String() string {
@@ -233,14 +268,24 @@ func (s *CreateDataAgentSessionResponseBodyData) Validate() error {
 }
 
 type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
+	// The custom agent ID.
+	//
 	// example:
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// The stage of the custom agent. Valid values:
+	//
+	// - **debug**: Debug stage
+	//
+	// - **prod**: Production stage
+	//
 	// example:
 	//
 	// debug
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
+	// Indicates whether web search is enabled.
+	//
 	// example:
 	//
 	// true
@@ -248,18 +293,40 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	EncryptKey   *string   `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	EncryptType  *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	KbUuidList   []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
+	// The language. Valid values:
+	//
+	// - **CHINESE**: Chinese
+	//
+	// - **ENGLISH**: English
+	//
 	// example:
 	//
 	// CHINESE
-	Language     *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// A list of MCP server IDs.
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
+	// The mode. Valid values:
+	//
+	// - **ASK_DATA**: Quick Inquiry Mode
+	//
+	// - **ANALYSIS**: Analysis Mode
+	//
+	// - **INSIGHT**: Insight Mode
+	//
 	// example:
 	//
 	// ANALYSIS
 	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	UserOssBucket   *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
+	// The name of the user\\"s OSS bucket.
+	//
+	// - Analysis files and report artifacts can be uploaded to this OSS bucket.
+	//
+	// example:
+	//
+	// user-oss-bucket
+	UserOssBucket *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
 }
 
 func (s CreateDataAgentSessionResponseBodyDataSessionConfig) String() string {

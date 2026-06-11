@@ -14,6 +14,8 @@ type iGetWorkspaceCodePublishSettingRequest interface {
 }
 
 type GetWorkspaceCodePublishSettingRequest struct {
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

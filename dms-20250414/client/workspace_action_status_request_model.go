@@ -16,12 +16,16 @@ type iWorkspaceActionStatusRequest interface {
 }
 
 type WorkspaceActionStatusRequest struct {
+	// The unique key that identifies the asynchronous task. You can obtain this key from the response of an operation, such as a deployment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ws-xxx-xxxx
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

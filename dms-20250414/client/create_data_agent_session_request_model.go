@@ -22,16 +22,28 @@ type iCreateDataAgentSessionRequest interface {
 }
 
 type CreateDataAgentSessionRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// f-8*******01m
-	File          *string                                     `json:"File,omitempty" xml:"File,omitempty"`
+	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// The session configuration.
 	SessionConfig *CreateDataAgentSessionRequestSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
-	Title         *string                                     `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The session title. Supports Chinese and English. Maximum length: 128 characters.
+	//
+	// example:
+	//
+	// 帮我分析一下这份数据，给出报告。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****
@@ -101,14 +113,24 @@ func (s *CreateDataAgentSessionRequest) Validate() error {
 }
 
 type CreateDataAgentSessionRequestSessionConfig struct {
+	// The custom agent ID.
+	//
 	// example:
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// The custom agent stage. Valid values:
+	//
+	// - **debug**: Test stage.
+	//
+	// - **prod**: Production stage.
+	//
 	// example:
 	//
 	// debug
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
+	// Specifies whether to enable web search.
+	//
 	// example:
 	//
 	// false
@@ -116,18 +138,40 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	EncryptKey   *string   `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	EncryptType  *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	KbUuidList   []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
+	// The language. Valid values:
+	//
+	// - **CHINESE**: Chinese
+	//
+	// - **ENGLISH**: English
+	//
 	// example:
 	//
 	// CHINESE
-	Language     *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// A list of MCP server IDs.
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
+	// The mode. Valid values:
+	//
+	// - **ASK_DATA**: Quick inquiry mode.
+	//
+	// - **ANALYSIS**: Analysis mode.
+	//
+	// - **INSIGHT**: Insight mode.
+	//
 	// example:
 	//
 	// ANALYSIS
 	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	UserOssBucket   *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
+	// The OSS bucket name.
+	//
+	// - This bucket stores intermediate files and report artifacts from the analysis.
+	//
+	// example:
+	//
+	// user-oss-bucket
+	UserOssBucket *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
 }
 
 func (s CreateDataAgentSessionRequestSessionConfig) String() string {

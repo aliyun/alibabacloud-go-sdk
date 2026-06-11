@@ -18,16 +18,22 @@ type iUpdateKnowledgeBaseRequest interface {
 }
 
 type UpdateKnowledgeBaseRequest struct {
+	// The new knowledge base description.
+	//
 	// example:
 	//
 	// updated kb desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The knowledge base ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kb-HZ-zgr1***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The new knowledge base name.
+	//
 	// example:
 	//
 	// updated kb name

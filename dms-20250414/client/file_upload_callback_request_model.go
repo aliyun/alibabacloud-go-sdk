@@ -24,18 +24,26 @@ type iFileUploadCallbackRequest interface {
 }
 
 type FileUploadCallbackRequest struct {
+	// For frontend use only.
+	//
 	// example:
 	//
 	// TrailCenter
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 8110
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43,6 +51,12 @@ type FileUploadCallbackRequest struct {
 	// conversion_metrics.csv
 	Filename  *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The full path for the file upload.
+	//
+	// - Format: This path is formed by appending the file name to the UploadDir value returned by the DescribeFileUploadSignature operation.
+	//
+	// - Example: ${UploadDir}/${Filename}
+	//
 	// This parameter is required.
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`
 }

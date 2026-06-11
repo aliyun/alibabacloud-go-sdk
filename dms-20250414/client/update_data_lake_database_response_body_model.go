@@ -22,19 +22,32 @@ type iUpdateDataLakeDatabaseResponseBody interface {
 }
 
 type UpdateDataLakeDatabaseResponseBody struct {
+	// The details of the database.
 	Database *DLDatabase `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The error code that is returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

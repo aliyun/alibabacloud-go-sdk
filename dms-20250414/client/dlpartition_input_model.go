@@ -22,17 +22,24 @@ type iDLPartitionInput interface {
 }
 
 type DLPartitionInput struct {
+	// The time when the partition was created. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1735109884
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the partition was last accessed. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1735109884
-	LastAccessTime    *int32               `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	Parameters        map[string]*string   `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	LastAccessTime *int32 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The key-value pair parameters for the partition.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The data storage information of the data lakehouse table.
 	StorageDescriptor *DLStorageDescriptor `json:"StorageDescriptor,omitempty" xml:"StorageDescriptor,omitempty"`
-	Values            []*string            `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The partition values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DLPartitionInput) String() string {

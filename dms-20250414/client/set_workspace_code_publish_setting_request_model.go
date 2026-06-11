@@ -16,12 +16,16 @@ type iSetWorkspaceCodePublishSettingRequest interface {
 }
 
 type SetWorkspaceCodePublishSettingRequest struct {
+	// The deployment configuration, provided as a JSON string. The repos array specifies the Git repositories in the workspace, primarily for setting the branch for publishing. The exclude parameter specifies which directories to skip.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"repos":[{"repo":"git@xxxx.git", "branch":"master"}], "exclude":["/.dms", "/username"]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The numeric ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,24 +24,34 @@ type iWorkspaceCodePublishResponseBody interface {
 }
 
 type WorkspaceCodePublishResponseBody struct {
-	// job
+	// An object that contains the key for the asynchronous code deployment.
 	Data *WorkspaceCodePublishResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request fails. This parameter is empty on success.
+	//
 	// example:
 	//
 	// Failed to deploy，repo branch empty
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -120,6 +130,8 @@ func (s *WorkspaceCodePublishResponseBody) Validate() error {
 }
 
 type WorkspaceCodePublishResponseBodyData struct {
+	// The key for the asynchronous code deployment. Use this key to query its status.
+	//
 	// example:
 	//
 	// ws-xxxx-xxxxxx

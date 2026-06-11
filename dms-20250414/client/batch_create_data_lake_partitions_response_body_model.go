@@ -22,19 +22,32 @@ type iBatchCreateDataLakePartitionsResponseBody interface {
 }
 
 type BatchCreateDataLakePartitionsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Partitions   []*DLPartition `json:"Partitions,omitempty" xml:"Partitions,omitempty" type:"Repeated"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The list of created partitions. This parameter is returned when the **NeedResult*	- parameter is set to **true**.
+	Partitions []*DLPartition `json:"Partitions,omitempty" xml:"Partitions,omitempty" type:"Repeated"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

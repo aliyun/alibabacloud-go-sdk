@@ -26,30 +26,48 @@ type iGetNotebookAndSubmitTaskResponseBody interface {
 }
 
 type GetNotebookAndSubmitTaskResponseBody struct {
+	// The status code. `Success` indicates that the request was successful.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Request Invalid
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 5zrs5szpiezlb9m3qxi6zp32h
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Indicates whether the request succedded. Valid values:
+	//
+	// - **true**: The request succedded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// IcICC2nbMpYp9KygS43n010100

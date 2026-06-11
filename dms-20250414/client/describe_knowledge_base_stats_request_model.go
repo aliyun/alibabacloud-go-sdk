@@ -14,6 +14,8 @@ type iDescribeKnowledgeBaseStatsRequest interface {
 }
 
 type DescribeKnowledgeBaseStatsRequest struct {
+	// The ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:

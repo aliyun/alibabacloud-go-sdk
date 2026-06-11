@@ -22,21 +22,32 @@ type iDeleteDataAgentKnowledgeBaseResponseBody interface {
 }
 
 type DeleteDataAgentKnowledgeBaseResponseBody struct {
+	// The data returned by the operation.
 	Data *DeleteDataAgentKnowledgeBaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,6 +117,8 @@ func (s *DeleteDataAgentKnowledgeBaseResponseBody) Validate() error {
 }
 
 type DeleteDataAgentKnowledgeBaseResponseBodyData struct {
+	// The ID of the deleted knowledge base.
+	//
 	// example:
 	//
 	// kb-HZ-rtl5lwx********q32d3ux

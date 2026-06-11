@@ -28,31 +28,50 @@ type iListDocumentsResponseBody interface {
 }
 
 type ListDocumentsResponseBody struct {
+	// A list of documents.
 	Data []*OneMetaKnowledgeBaseDocument `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code, returned only when the request fails.
+	//
 	// example:
 	//
 	// KnowledgeBaseNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message, returned only when the request fails.
+	//
 	// example:
 	//
 	// Resource not found kb-***
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// zCXSmY0CJbybp6FZV7vo0Wjw64X-*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique request ID. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of documents that meet the specified criteria. This parameter is not currently supported and always returns 0.
+	//
 	// example:
 	//
 	// 0

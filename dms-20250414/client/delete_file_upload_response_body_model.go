@@ -22,11 +22,16 @@ type iDeleteFileUploadResponseBody interface {
 }
 
 type DeleteFileUploadResponseBody struct {
+	// Return struct
 	Data *DeleteFileUploadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message returned when the invocation fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
@@ -37,6 +42,12 @@ type DeleteFileUploadResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,6 +117,8 @@ func (s *DeleteFileUploadResponseBody) Validate() error {
 }
 
 type DeleteFileUploadResponseBodyData struct {
+	// File ID
+	//
 	// example:
 	//
 	// f-8*******01m

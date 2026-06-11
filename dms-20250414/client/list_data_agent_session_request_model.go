@@ -32,39 +32,62 @@ type iListDataAgentSessionRequest interface {
 }
 
 type ListDataAgentSessionRequest struct {
+	// Session creation end time
+	//
 	// example:
 	//
 	// 1770912000000
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
+	// Session creation start time
+	//
 	// example:
 	//
 	// 1770825600000
 	CreateStartTime *int64 `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
+	// Custom Agent ID
+	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// Current DMS unit
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// Whether to return only saved sessions
+	//
 	// example:
 	//
 	// true
 	IsSaved *bool `json:"IsSaved,omitempty" xml:"IsSaved,omitempty"`
+	// Page number for pagination
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Session type. Required when you specify a collaboration workspace.
+	//
 	// example:
 	//
 	// myFavorite
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Data Agent title (supports fuzzy search)
+	//
+	// example:
+	//
+	// 帮我分析一下这份数据
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Collaboration workspace ID
+	//
 	// example:
 	//
 	// 20923*****7291

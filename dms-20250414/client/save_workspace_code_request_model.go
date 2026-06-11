@@ -26,34 +26,50 @@ type iSaveWorkspaceCodeRequest interface {
 }
 
 type SaveWorkspaceCodeRequest struct {
+	// The content of the file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Description: \\"Example template, describe instances in some status\\"nFormatVersion: OOS-2019-06-01nTasks:n  - Name: SleepTaskn    Action: ACS::Sleepn    Properties:n      Duration: PT1Mn
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Specifies whether to overwrite the file if it already exists. The default value is `true`.
+	//
 	// example:
 	//
 	// True
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether the file is an IaC template.
+	//
 	// example:
 	//
 	// false
 	Iac *bool `json:"Iac,omitempty" xml:"Iac,omitempty"`
+	// The modification time of the file.
+	//
+	// The time must be in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	//
 	// example:
 	//
 	// 2026-01-01T10:11:12Z
 	Mtime *string `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
+	// The publishing configuration, specified as a JSON string. The `repos` array specifies the target repository and branch. The `exclude` array specifies the directories to ignore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"repos":[{"repo":"git@xxxx.git", "branch":"master"}], "exclude":["/.dms", "/username"]}
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Information about the repository.
+	//
 	// example:
 	//
 	// computing/ecs
 	Repo *string `json:"Repo,omitempty" xml:"Repo,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,30 +26,56 @@ type iListKnowledgeBasesRequest interface {
 }
 
 type ListKnowledgeBasesRequest struct {
+	// The filter conditions for the knowledge bases, specified as a JSON string. The only supported key is `state`. Valid values are `0` and `1`.
+	//
 	// example:
 	//
 	// {"state":1}
 	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The maximum number of entries to return on each page. Use this parameter with the `NextToken` parameter to implement pagination.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A keyword to search for in the names of knowledge bases.
+	//
 	// example:
 	//
 	// order
 	NamePattern *string `json:"NamePattern,omitempty" xml:"NamePattern,omitempty"`
+	// The token used to retrieve the next page of results. Valid values:
+	//
+	// - Omit this parameter for the first request.
+	//
+	// - If the previous response returned a **NextToken*	- value, use it to retrieve the next page of results.
+	//
 	// example:
 	//
 	// zCXSmY0CJbybp6FZV7vo0Wjw64X-*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort field. Valid values:
+	//
+	// - `id`: Sorts by knowledge base ID. This is the default.
+	//
+	// - `name`: Sorts by knowledge base name.
+	//
 	// example:
 	//
 	// name
 	SortFieldName *string `json:"SortFieldName,omitempty" xml:"SortFieldName,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - **ASC**: Ascending order. This is the default.
+	//
+	// - **DESC**: Descending order.
+	//
 	// example:
 	//
 	// Desc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The tag of the knowledge base. In DataAgent, this is the space ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,27 +26,44 @@ type iListDataLakeFunctionResponseBody interface {
 }
 
 type ListDataLakeFunctionResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// A list of functions.
 	FunctionList []*DLFunction `json:"FunctionList,omitempty" xml:"FunctionList,omitempty" type:"Repeated"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If this parameter is not returned, it indicates that all results have been returned.
+	//
 	// example:
 	//
 	// f056501ada12****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 7FAD400F-7A5C-4193-8F9A-39D86C4F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

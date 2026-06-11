@@ -40,29 +40,41 @@ type iUpdateAirflowRequest interface {
 }
 
 type UpdateAirflowRequest struct {
+	// The unique ID of the Airflow instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af-test****
 	AirflowId *string `json:"AirflowId,omitempty" xml:"AirflowId,omitempty"`
+	// The name of the Airflow instance.
+	//
 	// example:
 	//
 	// testairflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
+	// The specifications of the Airflow instance.
+	//
 	// example:
 	//
 	// SMALL
 	AppSpec *string `json:"AppSpec,omitempty" xml:"AppSpec,omitempty"`
+	// A client token to ensure request idempotence.
+	//
 	// example:
 	//
 	// token-****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The directory path where Airflow scans for DAGs.
+	//
 	// example:
 	//
 	// default/dags
 	DagsDir           *string          `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
 	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
+	// The description of the Airflow instance.
+	//
 	// example:
 	//
 	// test airflow
@@ -72,22 +84,32 @@ type UpdateAirflowRequest struct {
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
+	// The directory path where Airflow scans for plugins.
+	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
+	// The path to the requirements file for package dependencies.
+	//
 	// example:
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
+	// The path to the startup script for the Airflow instance.
+	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
+	// The number of worker nodes.
+	//
 	// example:
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
+	// The Data Management Service (DMS) workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

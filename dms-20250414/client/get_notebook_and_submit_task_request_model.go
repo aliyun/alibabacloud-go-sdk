@@ -22,28 +22,38 @@ type iGetNotebookAndSubmitTaskRequest interface {
 }
 
 type GetNotebookAndSubmitTaskRequest struct {
+	// The input parameters for the Notebook file. Pass the parameters in a dictionary format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {\\"dt\\": \\"2022-10-14\\"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The path of the Notebook file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /Workspace/code/default/test.ipynb
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The number of retries if scheduling fails.
+	//
 	// example:
 	//
 	// true
 	Retry *int64 `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8vkixxxxx***
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 8630242382****

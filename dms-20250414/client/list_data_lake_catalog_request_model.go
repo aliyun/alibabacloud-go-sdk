@@ -18,6 +18,8 @@ type iListDataLakeCatalogRequest interface {
 }
 
 type ListDataLakeCatalogRequest struct {
+	// The keyword used to search for data catalog names.
+	//
 	// if can be null:
 	// false
 	//
@@ -25,10 +27,14 @@ type ListDataLakeCatalogRequest struct {
 	//
 	// hive
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The tenant ID. Call the GetUserActiveTenant or ListUserTenants operation to get the value of this parameter.
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

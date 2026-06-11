@@ -26,39 +26,39 @@ type iCreateAirflowLoginTokenResponseBody interface {
 }
 
 type CreateAirflowLoginTokenResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of the site monitoring task.
+	// The returned data.
 	Data *CreateAirflowLoginTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the call failed. Variable description:
+	// The error code.
 	//
-	// 	- If the request was successful, this parameter is not returned.
+	// - If the request is successful, this parameter is not returned.
 	//
-	// 	- This parameter is returned only if the request failed.
+	// - If the request fails, this parameter is returned.
 	//
-	// For more information, see the "Error codes" section in this topic.
+	// For more information, see the error codes in this topic.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The description of the error code.
+	// The error code description.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type CreateAirflowLoginTokenResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- True
+	// - True: The request was successful.
 	//
-	// 	- False
+	// - False: The request failed.
 	//
 	// example:
 	//
@@ -157,17 +157,17 @@ func (s *CreateAirflowLoginTokenResponseBody) Validate() error {
 }
 
 type CreateAirflowLoginTokenResponseBodyData struct {
-	// The endpoint that is used to access the Airflow instance.
+	// The endpoint of the Airflow instance.
 	//
 	// example:
 	//
-	// https://data-dms.aliyuncs.com/airflow/x/xxxx/af-ehrmszbxxxxxxx
+	// https://data-dms.aliyuncs.com/airflow/x/xxxx/af-ehrmszb****
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The generated token.
 	//
 	// example:
 	//
-	// f432d77de03b6b95fc24f91414e29c
+	// f432d77de03b6b95fc24f9****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 

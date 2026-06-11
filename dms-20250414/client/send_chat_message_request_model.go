@@ -36,46 +36,74 @@ type iSendChatMessageRequest interface {
 }
 
 type SendChatMessageRequest struct {
+	// The agent ID. This parameter is required. You can obtain this ID from the response of the `CreateAgentSession` operation. An agent has a lifecycle, so its ID may change with each request.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// agent_12345
+	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The DMS unit where your DMS instance is located. This information is used to connect to your DMS instance for database analysis. You can find this value in the DMS console. For users on the Alibaba Cloud China site, you can enter `cn-hangzhou`.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit     *string                              `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	DataSource  *SendChatMessageRequestDataSource    `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The data source information. Optional.
+	DataSource *SendChatMessageRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// A list of data sources. Optional.
 	DataSources []*SendChatMessageRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The content of the message to send to the agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// what can you do?
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message type. The default value is `primary`. Set this parameter to `additional` when responding to a human-in-the-loop question from the agent. Set it to `cancel` to cancel the current session.
+	//
 	// example:
 	//
 	// primary
-	MessageType     *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The parent session ID.
+	//
+	// example:
+	//
+	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	Question        *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// This parameter is required if the `MessageType` is `additional`. It contains the specific question asked by the agent during the human-in-the-loop process.
+	//
+	// example:
+	//
+	// 请提供计算GMV的口径。
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// The quoted content. This parameter is typically used when interacting with the agent.
+	//
 	// example:
 	//
 	// {"version":"v0"}
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
+	// This parameter specifies the agent message to which this message is a response, enabling message deduplication. Set this to the highest checkpoint sequence number you have received. For the first message, use 0.
+	//
 	// example:
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
+	// Session-specific configurations. These apply only if provided in the first `SendMessage` request of the session.
+	//
 	// if can be null:
 	// true
 	SessionConfig *SendChatMessageRequestSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
+	// The session ID. This parameter is required. You can obtain the session ID by calling the `CreateAgentSession` operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sess_12345
+	// sess_***
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
@@ -219,47 +247,68 @@ func (s *SendChatMessageRequest) Validate() error {
 }
 
 type SendChatMessageRequestDataSource struct {
+	// This parameter is deprecated. Do not use it.
+	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
+	//
 	// example:
 	//
 	// remote_data_center
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// This parameter is deprecated. Do not use it.
+	//
 	// example:
 	//
 	// test_db
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
-	// fsy_trial
+	// ******
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the database in DMS.
+	//
 	// example:
 	//
-	// 11231
+	// 23******
 	DmsDatabaseId *string `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
+	// The ID of the instance in DMS.
+	//
 	// example:
 	//
-	// 2310246
+	// 12******
 	DmsInstanceId *string `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	// The database engine type.
+	//
 	// example:
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
-	// 353676
+	// 35****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// This parameter is deprecated. Do not use it.
+	//
 	// example:
 	//
 	// localhost
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tables   []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A list of table names to analyze.
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
 func (s SendChatMessageRequestDataSource) String() string {
@@ -374,17 +423,68 @@ func (s *SendChatMessageRequestDataSource) Validate() error {
 }
 
 type SendChatMessageRequestDataSources struct {
-	DataSourceId   *string   `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DataSourceType *string   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	Database       *string   `json:"Database,omitempty" xml:"Database,omitempty"`
-	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DmsDatabaseId  *string   `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
-	DmsInstanceId  *string   `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
-	Engine         *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	FileId         *string   `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Location       *string   `json:"Location,omitempty" xml:"Location,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tables         []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// This parameter is deprecated. Do not use it.
+	//
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source type. Valid values are `remote_data_center` for file analysis and `database` for database analysis.
+	//
+	// example:
+	//
+	// remote_data_center
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// This parameter is deprecated. Do not use it.
+	//
+	// example:
+	//
+	// test_db
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// mydatabase
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the database in DMS.
+	//
+	// example:
+	//
+	// 123****
+	DmsDatabaseId *string `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
+	// The ID of the instance in DMS.
+	//
+	// example:
+	//
+	// 248*****
+	DmsInstanceId *string `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	// The database engine type.
+	//
+	// example:
+	//
+	// mysql
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The file ID.
+	//
+	// example:
+	//
+	// f-4w*******
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// This parameter is deprecated. Do not use it.
+	//
+	// example:
+	//
+	// localhost
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A list of table names to analyze.
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
 func (s SendChatMessageRequestDataSources) String() string {
@@ -499,19 +599,30 @@ func (s *SendChatMessageRequestDataSources) Validate() error {
 }
 
 type SendChatMessageRequestSessionConfig struct {
+	// This parameter is deprecated. Use the `CustomAgentId` request parameter from the `CreateAgentSession` operation instead.
+	//
 	// example:
 	//
 	// null
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// This parameter is deprecated. Use the `CustomAgentStage` request parameter from the `CreateAgentSession` operation instead.
+	//
 	// example:
 	//
 	// null
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
+	// The language of the session. Only Chinese and English are supported. The default value is Chinese. The value must be in uppercase.
+	//
 	// example:
 	//
 	// ENGLISH
-	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// A text watermark of up to 64 characters that will be added to generated PDF reports.
+	//
+	// example:
+	//
+	// 示例水印
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
 }
 

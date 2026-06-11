@@ -44,57 +44,86 @@ type iDLTableInput interface {
 }
 
 type DLTableInput struct {
+	// The time when the table was created.
+	//
 	// example:
 	//
 	// 1731586286
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the table.
+	//
 	// example:
 	//
 	// 8****
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the table.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the table was last accessed.
+	//
 	// example:
 	//
 	// 1608707407
 	LastAccessTime *int32 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The storage path of the table.
+	//
 	// example:
 	//
 	// oss://xxx
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The user who last modified the table.
+	//
 	// example:
 	//
 	// 1410769
 	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// 100g_customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// zhangsan
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The type of the owner. Valid values: USER, ROLE, and GROUP.
+	//
 	// example:
 	//
 	// USER
-	OwnerType     *string            `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	Parameters    map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	PartitionKeys []*DLColumn        `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The key-value pair parameters.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The list of attribute columns for the table.
+	PartitionKeys []*DLColumn `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// The retention period of the table.
+	//
 	// example:
 	//
 	// 300
-	Retention         *int32               `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The storage description. This includes the storage features and format details of the table.
 	StorageDescriptor *DLStorageDescriptor `json:"StorageDescriptor,omitempty" xml:"StorageDescriptor,omitempty"`
+	// The type of the metadata table. Examples: MANAGED_TABLE, EXTERNAL_TABLE, VIRTUAL_VIEW, INDEX_TABLE, and MATERIALIZED_VIEW.
+	//
 	// example:
 	//
 	// EXTERNAL_TABLE
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// If the table is a view, this parameter indicates the expanded text of the view.
+	//
 	// example:
 	//
 	// ""
 	ViewExpandedText *string `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	// If the table is a view, this parameter indicates the original text of the view.
+	//
 	// example:
 	//
 	// ""

@@ -36,18 +36,30 @@ type iOpenClawInstanceQuotaVO interface {
 }
 
 type OpenClawInstanceQuotaVO struct {
-	AliyunAccountUid      *string `json:"AliyunAccountUid,omitempty" xml:"AliyunAccountUid,omitempty"`
+	// The Alibaba Cloud account UID.
+	AliyunAccountUid *string `json:"AliyunAccountUid,omitempty" xml:"AliyunAccountUid,omitempty"`
+	// The total quota for deep research calls.
 	DeepResearchCallQuota *string `json:"DeepResearchCallQuota,omitempty" xml:"DeepResearchCallQuota,omitempty"`
-	DeepResearchCallUsed  *string `json:"DeepResearchCallUsed,omitempty" xml:"DeepResearchCallUsed,omitempty"`
-	InstanceGmtCreate     *string `json:"InstanceGmtCreate,omitempty" xml:"InstanceGmtCreate,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LastMeteringTime      *string `json:"LastMeteringTime,omitempty" xml:"LastMeteringTime,omitempty"`
-	ModelCallQuota        *string `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
-	ModelCallUsed         *string `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
-	RefreshDay            *string `json:"RefreshDay,omitempty" xml:"RefreshDay,omitempty"`
-	SkillPlanCallQuota    *string `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
-	SkillPlanCallUsed     *string `json:"SkillPlanCallUsed,omitempty" xml:"SkillPlanCallUsed,omitempty"`
+	// The number of deep research calls used.
+	DeepResearchCallUsed *string `json:"DeepResearchCallUsed,omitempty" xml:"DeepResearchCallUsed,omitempty"`
+	// The instance creation time.
+	InstanceGmtCreate *string `json:"InstanceGmtCreate,omitempty" xml:"InstanceGmtCreate,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The timestamp of the last metering event.
+	LastMeteringTime *string `json:"LastMeteringTime,omitempty" xml:"LastMeteringTime,omitempty"`
+	// The total quota for model calls.
+	ModelCallQuota *string `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
+	// The number of model calls used.
+	ModelCallUsed *string `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
+	// The day of the month on which the quota refreshes.
+	RefreshDay *string `json:"RefreshDay,omitempty" xml:"RefreshDay,omitempty"`
+	// The total quota for skill plan calls.
+	SkillPlanCallQuota *string `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
+	// The number of skill plan calls used.
+	SkillPlanCallUsed *string `json:"SkillPlanCallUsed,omitempty" xml:"SkillPlanCallUsed,omitempty"`
 }
 
 func (s OpenClawInstanceQuotaVO) String() string {

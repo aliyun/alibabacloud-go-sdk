@@ -16,7 +16,14 @@ type iDescribeFileUploadSignatureRequest interface {
 }
 
 type DescribeFileUploadSignatureRequest struct {
+	// Used by the frontend only
+	//
+	// example:
+	//
+	// 仅前端使用
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
+	// Current DMS unit
+	//
 	// example:
 	//
 	// cn-hangzhou

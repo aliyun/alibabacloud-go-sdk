@@ -52,77 +52,107 @@ type iCreateAirflowShrinkRequest interface {
 }
 
 type CreateAirflowShrinkRequest struct {
+	// The name of the Airflow instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testairflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
+	// The Airflow version. Supported versions: 2.10 and 3.1.
+	//
 	// example:
 	//
 	// 3.1
 	AirflowVersion *string `json:"AirflowVersion,omitempty" xml:"AirflowVersion,omitempty"`
+	// The compute specifications for the Airflow instance. Valid values: **SMALL**, **MEDIUM**, **LARGE**, **XLARGE**, or **X2LARGE**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SMALL
 	AppSpec *string `json:"AppSpec,omitempty" xml:"AppSpec,omitempty"`
+	// A client token to ensure request idempotence.
+	//
 	// example:
 	//
 	// token-****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The path to the DAG directory for Airflow to scan.
+	//
 	// example:
 	//
 	// default/dags
-	DagsDir                 *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
+	// A list of data mount configurations.
 	DataMountInfoListShrink *string `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty"`
+	// The description of the Airflow instance.
+	//
 	// example:
 	//
 	// order scheduler
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable worker elasticity.
+	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	// The graceful shutdown timeout for workers, in seconds.
+	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss-test
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The OSS path for log storage.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	// The path to the plugin directory for the Airflow instance to scan.
+	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
+	// The path to the Python requirements file.
+	//
 	// example:
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
+	// The security group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sg-bp108t8ldzeyk1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The path to the startup script in the Airflow container.
+	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-8vbaf073jawozfp****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -130,18 +160,24 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// vpc-uf63r6coyiw9o5****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The number of elastic worker nodes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
+	// The ID of the DMS workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The ID of the zone where the instance will be created.
+	//
 	// example:
 	//
 	// cn-hangzhou-h

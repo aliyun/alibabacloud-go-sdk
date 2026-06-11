@@ -24,23 +24,34 @@ type iListWorkspaceCodeResponseBody interface {
 }
 
 type ListWorkspaceCodeResponseBody struct {
+	// The data returned in the response.
 	Data *ListWorkspaceCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// This record is being collected, please wait for a moment.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,7 @@ func (s *ListWorkspaceCodeResponseBody) Validate() error {
 }
 
 type ListWorkspaceCodeResponseBodyData struct {
+	// An array of objects representing the files and directories.
 	List []*ListWorkspaceCodeResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -153,22 +165,36 @@ func (s *ListWorkspaceCodeResponseBodyData) Validate() error {
 }
 
 type ListWorkspaceCodeResponseBodyDataList struct {
+	// Indicates whether the object is a directory.
+	//
 	// example:
 	//
 	// true
 	IsDir *bool `json:"IsDir,omitempty" xml:"IsDir,omitempty"`
+	// The modification time of the file.
+	//
+	// The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	//
+	// This parameter is returned only for files.
+	//
 	// example:
 	//
 	// 2026-01-01T10:11:12Z
 	Mtime *string `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
+	// The name of the file or directory.
+	//
 	// example:
 	//
 	// default
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 59
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The target of the symlink.
+	//
 	// example:
 	//
 	// ../abc.py

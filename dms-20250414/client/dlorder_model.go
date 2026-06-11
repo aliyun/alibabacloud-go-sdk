@@ -16,10 +16,14 @@ type iDLOrder interface {
 }
 
 type DLOrder struct {
+	// The name of the column.
+	//
 	// example:
 	//
 	// col1
 	Col *string `json:"Col,omitempty" xml:"Col,omitempty"`
+	// The position of the column in the sort order.
+	//
 	// example:
 	//
 	// 1

@@ -26,34 +26,48 @@ type iListDataLakeTablebaseInfoRequest interface {
 }
 
 type ListDataLakeTablebaseInfoRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The name of the database where the table is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The page number of the list for a paged query.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of rows on each page for a paged query.
+	//
 	// example:
 	//
 	// 10
 	Rows *int32 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// The keyword used to search for table names.
+	//
 	// example:
 	//
 	// test
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The tenant ID. Call the GetUserActiveTenant operation to get the value of this parameter.
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

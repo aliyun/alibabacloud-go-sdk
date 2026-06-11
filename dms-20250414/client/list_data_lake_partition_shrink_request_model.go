@@ -28,37 +28,58 @@ type iListDataLakePartitionShrinkRequest interface {
 }
 
 type ListDataLakePartitionShrinkRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The number of entries per page. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. Set this parameter to the value of NextToken that is returned in the last response.
+	//
+	// - If **NextToken*	- is empty, no subsequent query is needed.
+	//
+	// - If **NextToken*	- has a value, that value is the token to start the next query.
+	//
 	// example:
 	//
 	// f056501ada12****
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of partition names.
 	PartNamesShrink *string `json:"PartNames,omitempty" xml:"PartNames,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the tenant.
+	//
+	// > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 12****

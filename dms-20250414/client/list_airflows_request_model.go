@@ -22,6 +22,8 @@ type iListAirflowsRequest interface {
 }
 
 type ListAirflowsRequest struct {
+	// The number of entries per page.
+	//
 	// if can be null:
 	// true
 	//
@@ -29,18 +31,26 @@ type ListAirflowsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// f056501ada12****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. The value starts from 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of records to skip. This is used for paging.
+	//
 	// example:
 	//
 	// 5
 	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The ID of the DMS workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

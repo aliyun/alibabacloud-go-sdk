@@ -18,18 +18,24 @@ type iOperateCustomAgentRequest interface {
 }
 
 type OperateCustomAgentRequest struct {
+	// Custom Agent ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// Operation type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RELEASE
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// Workspace ID
+	//
 	// example:
 	//
 	// 56kv1pvl9uvt9**********bb

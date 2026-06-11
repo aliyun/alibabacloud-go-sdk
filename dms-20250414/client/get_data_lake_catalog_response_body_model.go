@@ -22,19 +22,32 @@ type iGetDataLakeCatalogResponseBody interface {
 }
 
 type GetDataLakeCatalogResponseBody struct {
+	// The details of the data catalog.
 	Catalog *DLCatalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message returned when the request fails.
+	//
 	// example:
 	//
 	// code: 404, can not find catalog, name : hiv request id: 6090E571-E5B1-1E6D-BF44-F9E10E8B****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// FE8EE2F1-4880-46BC-A704-5CF63EAF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

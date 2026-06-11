@@ -24,12 +24,18 @@ type iAgentServiceOrderSummaryVO interface {
 }
 
 type AgentServiceOrderSummaryVO struct {
-	AgentService       *string `json:"AgentService,omitempty" xml:"AgentService,omitempty"`
-	DeepResearchQuota  *int64  `json:"DeepResearchQuota,omitempty" xml:"DeepResearchQuota,omitempty"`
-	ModelCallQuota     *int64  `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
-	OrderCount         *int32  `json:"OrderCount,omitempty" xml:"OrderCount,omitempty"`
-	ServiceNumTotal    *int32  `json:"ServiceNumTotal,omitempty" xml:"ServiceNumTotal,omitempty"`
-	SkillPlanCallQuota *int64  `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
+	// The name of the agent service.
+	AgentService *string `json:"AgentService,omitempty" xml:"AgentService,omitempty"`
+	// The deep research quota for the service.
+	DeepResearchQuota *int64 `json:"DeepResearchQuota,omitempty" xml:"DeepResearchQuota,omitempty"`
+	// The model call quota for the service.
+	ModelCallQuota *int64 `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
+	// The order count for the agent service.
+	OrderCount *int32 `json:"OrderCount,omitempty" xml:"OrderCount,omitempty"`
+	// The total number of services.
+	ServiceNumTotal *int32 `json:"ServiceNumTotal,omitempty" xml:"ServiceNumTotal,omitempty"`
+	// The skill plan call quota for the service.
+	SkillPlanCallQuota *int64 `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
 }
 
 func (s AgentServiceOrderSummaryVO) String() string {

@@ -18,14 +18,20 @@ type iDeleteFileUploadRequest interface {
 }
 
 type DeleteFileUploadRequest struct {
+	// Used by frontend only
+	//
 	// example:
 	//
 	// TrailCenter
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
+	// Current DMS unit
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// File ID
+	//
 	// This parameter is required.
 	//
 	// example:

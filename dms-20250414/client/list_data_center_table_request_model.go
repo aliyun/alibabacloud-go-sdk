@@ -30,35 +30,62 @@ type iListDataCenterTableRequest interface {
 }
 
 type ListDataCenterTableRequest struct {
+	// For frontend use only.
+	//
+	// example:
+	//
+	// 仅前端使用
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
+	// The name of the database.
+	//
+	// - If `ImportType` is `FILE`, this parameter represents the file name.
+	//
 	// example:
 	//
 	// diamonds.csv
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The import type.
+	//
+	// - FILE
+	//
 	// example:
 	//
 	// FILE
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
+	// The name of the instance.
+	//
+	// - If `ImportType` is `FILE`, this parameter represents the file ID of the data center.
+	//
 	// example:
 	//
 	// f-ean8u5881qk4*********xh5y
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records to return per page. Default: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword for a fuzzy search of database tables.
+	//
 	// example:
 	//
 	// testdb
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// diamonds

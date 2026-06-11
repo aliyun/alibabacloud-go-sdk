@@ -22,20 +22,32 @@ type iUploadDocumentResponseBody interface {
 }
 
 type UploadDocumentResponseBody struct {
+	// The returned data object.
 	Data *OneMetaKnowledgeBaseDocument `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// KnowledgeBaseNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Resource not found kb-***
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The unique ID of the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UploadDocumentResponseBody) String() string {

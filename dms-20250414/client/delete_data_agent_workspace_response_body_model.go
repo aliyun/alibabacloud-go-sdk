@@ -20,18 +20,26 @@ type iDeleteDataAgentWorkspaceResponseBody interface {
 }
 
 type DeleteDataAgentWorkspaceResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

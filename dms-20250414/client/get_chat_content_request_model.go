@@ -20,18 +20,26 @@ type iGetChatContentRequest interface {
 }
 
 type GetChatContentRequest struct {
+	// The agent ID. This parameter is required.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The service returns output starting from this checkpoint.
+	//
 	// example:
 	//
 	// 0
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	// The DMS unit. For users on the Alibaba Cloud China site, the default value is cn-hangzhou.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The session ID. This parameter is required.
+	//
 	// example:
 	//
 	// sess_12345

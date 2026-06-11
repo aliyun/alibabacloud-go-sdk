@@ -22,20 +22,27 @@ type iSendChatMessageResponseBody interface {
 }
 
 type SendChatMessageResponseBody struct {
+	// The response data.
 	Data *SendChatMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. A value of `Success` indicates that the request was successful.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message. This field is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// FE65CE1F-155B-1A38-9A3A-0208982C773B
+	// FE65CE1F-****-****-****-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -106,23 +113,23 @@ func (s *SendChatMessageResponseBody) Validate() error {
 }
 
 type SendChatMessageResponseBodyData struct {
-	// AgentId
+	// The agent ID.
 	//
 	// example:
 	//
-	// 3jqqdiuxunfe2f7feren21eeq
+	// 3jqqdiuxun******
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Message
+	// Describes the result of the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// SessionId
+	// The session ID.
 	//
 	// example:
 	//
-	// 6zbqbhoamv7gk20p8pgygt4hh
+	// 6zbqbho********
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 

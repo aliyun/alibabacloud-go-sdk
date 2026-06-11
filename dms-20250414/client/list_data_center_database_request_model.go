@@ -22,16 +22,34 @@ type iListDataCenterDatabaseRequest interface {
 }
 
 type ListDataCenterDatabaseRequest struct {
+	// This parameter is for internal use.
+	//
+	// example:
+	//
+	// Frontend only
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
+	// The DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The import type.
+	//
+	// - FILE
+	//
 	// example:
 	//
 	// FILE
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is for internal use.
+	//
+	// example:
+	//
+	// Frontend only
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The keyword for a fuzzy search for databases.
+	//
 	// example:
 	//
 	// testdb

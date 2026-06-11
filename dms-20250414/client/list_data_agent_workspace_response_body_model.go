@@ -26,27 +26,40 @@ type iListDataAgentWorkspaceResponseBody interface {
 }
 
 type ListDataAgentWorkspaceResponseBody struct {
+	// The returned data.
 	Data *ListDataAgentWorkspaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// nu use
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// no use
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -134,19 +147,28 @@ func (s *ListDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyData struct {
+	// The details of the workspaces.
 	Content []*ListDataAgentWorkspaceResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 12
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of workspaces on each page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of workspaces.
+	//
 	// example:
 	//
 	// 122
 	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 12
@@ -220,39 +242,57 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
+	// The creation time of the workspace, provided as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator\\"s user ID (UID).
+	//
 	// example:
 	//
 	// 20282*****7591
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// space for test
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The last modification time of the workspace, provided as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765961516
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the user\\"s role in the workspace.
+	//
 	// example:
 	//
 	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The number of members in the workspace.
+	//
 	// example:
 	//
 	// 11
 	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 20923*****7291
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The status of the workspace.
+	//
 	// example:
 	//
 	// active

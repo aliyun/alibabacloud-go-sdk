@@ -20,18 +20,26 @@ type iUpdateDataAgentWorkspaceMemberRoleRequest interface {
 }
 
 type UpdateDataAgentWorkspaceMemberRoleRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The UID of the member whose role you want to change.
+	//
 	// example:
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The role to assign to the member.
+	//
 	// example:
 	//
 	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

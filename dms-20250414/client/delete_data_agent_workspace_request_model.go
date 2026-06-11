@@ -16,10 +16,14 @@ type iDeleteDataAgentWorkspaceRequest interface {
 }
 
 type DeleteDataAgentWorkspaceRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291

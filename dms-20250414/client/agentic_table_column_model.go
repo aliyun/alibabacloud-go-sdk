@@ -22,11 +22,16 @@ type iAgenticTableColumn interface {
 }
 
 type AgenticTableColumn struct {
-	ColumnName  *string                       `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnType  *string                       `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	Description *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineMeta  *AgenticTableColumnEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	Position    *int32                        `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The data type of the column.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// The description of the column.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Engine-specific metadata for the column.
+	EngineMeta *AgenticTableColumnEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
+	// The 1-based ordinal position of the column within the table.
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s AgenticTableColumn) String() string {

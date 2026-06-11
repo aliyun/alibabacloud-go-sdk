@@ -18,6 +18,8 @@ type iUpsertDocumentChunksRequest interface {
 }
 
 type UpsertDocumentChunksRequest struct {
+	// A list of document chunks to upsert.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +44,16 @@ type UpsertDocumentChunksRequest struct {
 	//
 	// ]
 	Chunks *string `json:"Chunks,omitempty" xml:"Chunks,omitempty"`
+	// The name of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.md
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// The unique identifier for the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:

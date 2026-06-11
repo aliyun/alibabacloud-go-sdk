@@ -26,30 +26,48 @@ type iRedeployAirflowResponseBody interface {
 }
 
 type RedeployAirflowResponseBody struct {
+	// Details about the access denial.
+	//
 	// example:
 	//
 	// NOT_FOUND
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The redeployment result.
+	//
 	// example:
 	//
 	// {\\"Responses\\": {\\"responses\\": [{\\"Uuid\\": \\"af-63ly5o1yuf076ifrpbxpka396\\", \\"Success\\": True}]}}
 	Root *bool `json:"Root,omitempty" xml:"Root,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

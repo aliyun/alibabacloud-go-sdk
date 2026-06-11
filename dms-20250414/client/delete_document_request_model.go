@@ -16,12 +16,16 @@ type iDeleteDocumentRequest interface {
 }
 
 type DeleteDocumentRequest struct {
+	// The document name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.md
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// The knowledge base ID.
+	//
 	// This parameter is required.
 	//
 	// example:

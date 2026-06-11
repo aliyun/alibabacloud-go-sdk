@@ -22,21 +22,32 @@ type iModifyCustomAgentResponseBody interface {
 }
 
 type ModifyCustomAgentResponseBody struct {
+	// The response data.
 	Data *ModifyCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,82 +117,194 @@ func (s *ModifyCustomAgentResponseBody) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyData struct {
+	// The main Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 16738266********
 	AliyunParentUid *string `json:"AliyunParentUid,omitempty" xml:"AliyunParentUid,omitempty"`
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 20372822********
-	AliyunUid      *string                                          `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The callback configuration.
 	CallbackConfig *ModifyCustomAgentResponseBodyDataCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
+	// Name of the user who created the agent.
+	//
 	// example:
 	//
 	// HaoY*****
 	CreatorUserName *string `json:"CreatorUserName,omitempty" xml:"CreatorUserName,omitempty"`
+	// The custom agent ID.
+	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit     *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	DataJson    *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
+	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The data scope in JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "tableFlag" : true,
+	//
+	//   "scope" : "personal",
+	//
+	//   "personal" : {
+	//
+	//     "DataSourceType" : "remote_data_center",
+	//
+	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
+	//
+	//     "Database" : "测试表格******.xlsx",
+	//
+	//     "Tables" : [ "Sheet1" ],
+	//
+	//     "TableIds" : [ "******" ],
+	//
+	//     "RegionId" : "cn-hangzhou"
+	//
+	//   }
+	//
+	// }
+	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
+	// The custom agent description.
+	//
+	// example:
+	//
+	// Agent测试描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	DmsUnit         *string                                           `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
+	// The execution configuration.
 	ExecutionConfig *ModifyCustomAgentResponseBodyDataExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The instruction for the agent.
+	//
+	// example:
+	//
+	// 分析框架：
+	//
+	// 1、需按日、周、月维度监控核心指标（GMV、订单量、UV、转化率），分析趋势变化及同比/环比波动；
+	//
+	// 2、划分新老客、渠道、地域进行拆解，识别增长来源与短板；
+	//
+	// 3、结合用户行为路径（浏览→加购→支付）开展漏斗分析，定位流失环节；
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
+	// Indicates whether a scheduled task is configured.
+	//
 	// example:
 	//
 	// false
-	IsScheduleTask      *bool                                                   `json:"IsScheduleTask,omitempty" xml:"IsScheduleTask,omitempty"`
-	Knowledge           *string                                                 `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	IsScheduleTask *bool `json:"IsScheduleTask,omitempty" xml:"IsScheduleTask,omitempty"`
+	// The text-based knowledge for the agent.
+	//
+	// example:
+	//
+	// 核心指标定义：
+	//
+	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
+	//
+	// 2、订单量为每日有效下单笔数；
+	//
+	// 3、UV（独立访客）指访问网站或APP的去重用户数；
+	//
+	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
+	// Configurations for external knowledge bases.
 	KnowledgeConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
+	// ID of the last modifier.
+	//
 	// example:
 	//
 	// 20372822********
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// Name of the user who last modified the agent.
+	//
 	// example:
 	//
 	// HaoY*****
 	ModifierUserName *string `json:"ModifierUserName,omitempty" xml:"ModifierUserName,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom agent name.
+	//
+	// example:
+	//
+	// Agent测试名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The next runtime for the scheduled task.
+	//
+	// - This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1767715200
 	NextRuntime *int64 `json:"NextRuntime,omitempty" xml:"NextRuntime,omitempty"`
+	// The offline time.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	OfflineTime *string `json:"OfflineTime,omitempty" xml:"OfflineTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of a reference session.
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
+	// The release time.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
-	ReleaseTime        *string                                              `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The scheduled task configuration.
 	ScheduleTaskConfig *ModifyCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
+	// The agent status.
+	//
 	// example:
 	//
 	// RELEASED
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Formatting requirements for the text report.
+	//
+	// example:
+	//
+	// 文字报告要求所有数字不使用阿拉伯数字，全部转为中文数字
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
-	WebReportConfig  *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
+	// Formatting requirements for the web report.
+	//
+	// example:
+	//
+	// 网页报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 56kv1pvl9uvt9**********bb
@@ -486,11 +609,16 @@ func (s *ModifyCustomAgentResponseBodyData) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataCallbackConfig struct {
-	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	// The callback arguments.
+	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
+	// The callback prompt.
 	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
-	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
-	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The callback timestamp.
+	CallbackTime *int32 `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	// The ID of the tool to be called.
+	ToolId *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	// The callback type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyCustomAgentResponseBodyDataCallbackConfig) String() string {
@@ -551,18 +679,26 @@ func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
+	// Specifies whether to skip asking for human input during execution.
+	//
 	// example:
 	//
 	// true
 	SkipAskHuman *bool `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
+	// Specifies whether to skip plan confirmation.
+	//
 	// example:
 	//
 	// true
 	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
+	// Specifies whether to skip all SQL confirmations.
+	//
 	// example:
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
+	// Specifies whether to skip web report confirmation.
+	//
 	// example:
 	//
 	// true
@@ -618,11 +754,18 @@ func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
+	// The access type.
+	//
+	// - mcp: Connects via MCP.
+	//
 	// example:
 	//
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The knowledge base UUID.
+	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The MCP server ID.
+	//
 	// example:
 	//
 	// nhdpt9adf6ac**********ca
@@ -669,11 +812,20 @@ func (s *ModifyCustomAgentResponseBodyDataKnowledgeConfigList) Validate() error 
 }
 
 type ModifyCustomAgentResponseBodyDataScheduleTaskConfig struct {
+	// The cron expression for the task.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The query for the task.
+	//
+	// example:
+	//
+	// 分析一下这份数据，给出简报
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The ID of a reference session.
+	//
 	// example:
 	//
 	// 4m24*****mg7j2v

@@ -48,68 +48,106 @@ type iDLTablebaseInfo interface {
 }
 
 type DLTablebaseInfo struct {
+	// The data catalog to which the table belongs.
+	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The time when the table was created.
+	//
 	// example:
 	//
 	// 1608707407
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the table.
+	//
 	// example:
 	//
 	// 141****
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The ID of the database to which the table belongs.
+	//
 	// example:
 	//
 	// 19
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the database to which the table belongs.
+	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The description of the table.
+	//
 	// example:
 	//
 	// "table"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the table was last accessed.
+	//
 	// example:
 	//
 	// 1731586286
 	LastAccessTime *int32 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The storage path of the table.
+	//
 	// example:
 	//
 	// oss://xxx
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The time when the table was modified.
+	//
 	// example:
 	//
 	// 1731585286
 	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// 100g_customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// test
-	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The type of the owner. Valid values: USER, ROLE, or GROUP.
+	//
+	// example:
+	//
+	// USER
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The additional parameters of the table.
+	//
 	// example:
 	//
 	// "EXTERNAL": "TRUE"
-	Parameters    map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	PartitionKeys []*DLColumn            `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The list of column attributes.
+	PartitionKeys []*DLColumn `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// The retention period of the table, in days.
+	//
 	// example:
 	//
 	// 30000
 	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The type of the table. Examples include MANAGED_TABLE, EXTERNAL_TABLE, VIRTUAL_VIEW, INDEX_TABLE, and MATERIALIZED_VIEW.
+	//
 	// example:
 	//
 	// EXTERNAL_TABLE
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The expanded text of the view if the table is a view.
+	//
 	// example:
 	//
 	// ""
 	ViewExpandedText *string `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	// The original text of the view if the table is a view.
+	//
 	// example:
 	//
 	// ""

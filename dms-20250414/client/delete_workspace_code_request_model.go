@@ -20,20 +20,28 @@ type iDeleteWorkspaceCodeRequest interface {
 }
 
 type DeleteWorkspaceCodeRequest struct {
+	// The full path of the code file or directory. The path must be prefixed with `/Workspace/code/`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /Workspace/code/default/test.ipynb
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The repository information.
+	//
 	// example:
 	//
 	// database/adb
 	Repo *string `json:"Repo,omitempty" xml:"Repo,omitempty"`
+	// Specifies whether the item to delete is a symbolic link.
+	//
 	// example:
 	//
 	// false
 	Symlink *bool `json:"Symlink,omitempty" xml:"Symlink,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,21 +22,32 @@ type iListDataCenterTableResponseBody interface {
 }
 
 type ListDataCenterTableResponseBody struct {
+	// The data returned in the response.
 	Data *ListDataCenterTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The code that indicates the result of the request. If the request fails, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,19 +117,28 @@ func (s *ListDataCenterTableResponseBody) Validate() error {
 }
 
 type ListDataCenterTableResponseBodyData struct {
+	// A list of the data tables.
 	Content []*ListDataCenterTableResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
 	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -192,39 +212,72 @@ func (s *ListDataCenterTableResponseBodyData) Validate() error {
 }
 
 type ListDataCenterTableResponseBodyDataContent struct {
+	// The database name.
+	//
+	// - If `ImportType` is `FILE`, this parameter returns the file name.
+	//
 	// example:
 	//
 	// diamonds.csv
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The time when the data table description was last updated.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	DescUpdateTime *string `json:"DescUpdateTime,omitempty" xml:"DescUpdateTime,omitempty"`
+	// The ID of the DMS database.
+	//
+	// - This parameter is not returned if `ImportType` is `FILE`.
+	//
 	// example:
 	//
 	// 69950353
 	DmsDbId *int64 `json:"DmsDbId,omitempty" xml:"DmsDbId,omitempty"`
+	// The ID of the DMS instance that hosts the database.
+	//
+	// - This parameter is not returned if `ImportType` is `FILE`.
+	//
 	// example:
 	//
 	// 2310246
 	DmsInstanceId *int64 `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	// The time when the data table was created.
+	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The import type. Valid value:
+	//
+	// - **FILE**: The data is imported from a file.
+	//
 	// example:
 	//
 	// FILE
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
+	// The instance name.
+	//
+	// - If `ImportType` is `FILE`, this parameter returns the file ID.
+	//
 	// example:
 	//
 	// f-ean8u5881qk4*********xh5y
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	TableDesc    *string `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
+	// The description of the data table.
+	//
+	// example:
+	//
+	// 这是一份钻石数据。
+	TableDesc *string `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
+	// The ID of the data table.
+	//
 	// example:
 	//
 	// xa8wib4ga3a2*********fjbx
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// diamonds

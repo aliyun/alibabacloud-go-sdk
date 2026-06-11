@@ -38,19 +38,32 @@ type iAgentServiceOrderVO interface {
 }
 
 type AgentServiceOrderVO struct {
-	AgentService       *string `json:"AgentService,omitempty" xml:"AgentService,omitempty"`
-	DeepResearchQuota  *int32  `json:"DeepResearchQuota,omitempty" xml:"DeepResearchQuota,omitempty"`
-	DeepResearchUsed   *int32  `json:"DeepResearchUsed,omitempty" xml:"DeepResearchUsed,omitempty"`
-	ExpireTime         *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ModelCallQuota     *int32  `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
-	ModelCallUsed      *int32  `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
-	OrderInstanceId    *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	ServiceNum         *int32  `json:"ServiceNum,omitempty" xml:"ServiceNum,omitempty"`
-	SkillPlanCallQuota *int32  `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
-	SkillPlanCallUsed  *int32  `json:"SkillPlanCallUsed,omitempty" xml:"SkillPlanCallUsed,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The agent service.
+	AgentService *string `json:"AgentService,omitempty" xml:"AgentService,omitempty"`
+	// The deep research quota.
+	DeepResearchQuota *int32 `json:"DeepResearchQuota,omitempty" xml:"DeepResearchQuota,omitempty"`
+	// The quantity of deep research used.
+	DeepResearchUsed *int32 `json:"DeepResearchUsed,omitempty" xml:"DeepResearchUsed,omitempty"`
+	// The service expiration time, specified in UTC.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The order creation time, specified in UTC.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The order modification time, specified in UTC.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The model call quota.
+	ModelCallQuota *int32 `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
+	// The number of model calls used.
+	ModelCallUsed *int32 `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
+	// The order instance ID.
+	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// The number of services.
+	ServiceNum *int32 `json:"ServiceNum,omitempty" xml:"ServiceNum,omitempty"`
+	// The skill plan call quota.
+	SkillPlanCallQuota *int32 `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
+	// The number of skill plan calls used.
+	SkillPlanCallUsed *int32 `json:"SkillPlanCallUsed,omitempty" xml:"SkillPlanCallUsed,omitempty"`
+	// The order status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AgentServiceOrderVO) String() string {

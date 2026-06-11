@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 为空间添加用户
+// Adds a user to a specified workspace.
 //
 // @param request - AddUserToDataAgentWorkspaceRequest
 //
@@ -66,7 +66,7 @@ func (client *Client) AddUserToDataAgentWorkspaceWithContext(ctx context.Context
 
 // Summary:
 //
-// 批量新建湖仓表分区
+// Creates partitions for a data lake table in a batch.
 //
 // @param tmpReq - BatchCreateDataLakePartitionsRequest
 //
@@ -146,7 +146,7 @@ func (client *Client) BatchCreateDataLakePartitionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 批量删除湖仓表分区
+// Batch deletes partitions from a data lake table.
 //
 // @param request - BatchDeleteDataLakePartitionsRequest
 //
@@ -214,7 +214,7 @@ func (client *Client) BatchDeleteDataLakePartitionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 批量更新湖仓表分区
+// Update partitions in a data lake table in batch.
 //
 // @param tmpReq - BatchUpdateDataLakePartitionsRequest
 //
@@ -286,7 +286,11 @@ func (client *Client) BatchUpdateDataLakePartitionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 更新Airflow实例的自定义配置
+// Update an Airflow instance\\"s custom configuration
+//
+// Description:
+//
+// Configure the airflow\\.cfg file for DMS Airflow.
 //
 // @param tmpReq - ConfigAirflowRequest
 //
@@ -344,7 +348,11 @@ func (client *Client) ConfigAirflowWithContext(ctx context.Context, tmpReq *Conf
 
 // Summary:
 //
-// 创建Airflow
+// Creates an Airflow instance in a workspace.
+//
+// Description:
+//
+// Creates an Airflow instance in a workspace.
 //
 // @param tmpReq - CreateAirflowRequest
 //
@@ -470,7 +478,7 @@ func (client *Client) CreateAirflowWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Queries the Airflow logon credential. You can use this credential to log on to the DMS-managed Airflow instance.
+// Obtains logon credentials for an Airflow instance hosted by Data Management Service (DMS). Use the returned token and host endpoint to construct a logon URL for the Airflow web UI.
 //
 // @param request - CreateAirflowLoginTokenRequest
 //
@@ -514,7 +522,7 @@ func (client *Client) CreateAirflowLoginTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # CreateCustomAgent
+// Create a custom agent in your personal space or a workspace.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -628,7 +636,7 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # CreateDataAgentKnowledgeBase
+// Creates a DataAgent knowledge base. The knowledge base creator has read and write permissions. Other workspace members have permission to use it.
 //
 // @param request - CreateDataAgentKnowledgeBaseRequest
 //
@@ -688,7 +696,7 @@ func (client *Client) CreateDataAgentKnowledgeBaseWithContext(ctx context.Contex
 
 // Summary:
 //
-// # CreateDataAgentSession
+// # Create a DataAgent session
 //
 // @param tmpReq - CreateDataAgentSessionRequest
 //
@@ -754,7 +762,7 @@ func (client *Client) CreateDataAgentSessionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建DataAgent工作空间
+// Creates a DataAgent workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -810,7 +818,7 @@ func (client *Client) CreateDataAgentWorkspaceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 新建湖仓数据库
+// Creates a data lake database.
 //
 // @param tmpReq - CreateDataLakeDatabaseRequest
 //
@@ -884,7 +892,7 @@ func (client *Client) CreateDataLakeDatabaseWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 新建湖仓自定义函数
+// Creates a user-defined function (UDF) for a data lake.
 //
 // @param tmpReq - CreateDataLakeFunctionRequest
 //
@@ -952,7 +960,7 @@ func (client *Client) CreateDataLakeFunctionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 新建湖仓表分区
+// Creates a partition for a data lake table.
 //
 // @param tmpReq - CreateDataLakePartitionRequest
 //
@@ -1032,7 +1040,7 @@ func (client *Client) CreateDataLakePartitionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 新建湖仓表
+// Creates a data lake table in Data Management (DMS).
 //
 // @param tmpReq - CreateDataLakeTableRequest
 //
@@ -1100,7 +1108,7 @@ func (client *Client) CreateDataLakeTableWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 删除Airflow
+// Deletes an Airflow instance.
 //
 // @param request - DeleteAirflowRequest
 //
@@ -1152,7 +1160,7 @@ func (client *Client) DeleteAirflowWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// # DeleteCustomAgent
+// Delete a custom agent in your personal workspace or a shared workspace. Note: Only custom agents that are newly created or offline can be deleted.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -1200,7 +1208,7 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # DeleteDataAgentKnowledgeBase
+// Deletes a DataAgent knowledge base.
 //
 // @param request - DeleteDataAgentKnowledgeBaseRequest
 //
@@ -1252,7 +1260,7 @@ func (client *Client) DeleteDataAgentKnowledgeBaseWithContext(ctx context.Contex
 
 // Summary:
 //
-// 删除DataAgent工作空间
+// Deletes a DataAgent workspace.
 //
 // @param request - DeleteDataAgentWorkspaceRequest
 //
@@ -1300,7 +1308,7 @@ func (client *Client) DeleteDataAgentWorkspaceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除湖仓数据库
+// Deletes a data lake database.
 //
 // @param request - DeleteDataLakeDatabaseRequest
 //
@@ -1356,7 +1364,7 @@ func (client *Client) DeleteDataLakeDatabaseWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除湖仓自定义函数
+// Deletes a user-defined function in a data lake.
 //
 // @param request - DeleteDataLakeFunctionRequest
 //
@@ -1416,7 +1424,7 @@ func (client *Client) DeleteDataLakeFunctionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除湖仓表分区
+// Deletes a partition from a data lake table.
 //
 // @param tmpReq - DeleteDataLakePartitionRequest
 //
@@ -1490,7 +1498,7 @@ func (client *Client) DeleteDataLakePartitionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 删除湖仓表
+// Deletes a data lake table.
 //
 // @param request - DeleteDataLakeTableRequest
 //
@@ -1550,7 +1558,7 @@ func (client *Client) DeleteDataLakeTableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除文档
+// Deletes a document from a specified knowledge base.
 //
 // @param request - DeleteDocumentRequest
 //
@@ -1598,7 +1606,7 @@ func (client *Client) DeleteDocumentWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除onemeta3.0的知识库chunks
+// Deletes chunks from a document in a knowledge base.
 //
 // @param tmpReq - DeleteDocumentChunksRequest
 //
@@ -1708,7 +1716,11 @@ func (client *Client) DeleteFileUploadWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除工作空间代码以及目录
+// Deletes a code file or directory from a workspace.
+//
+// Description:
+//
+// This operation permanently removes a specified code file or directory.
 //
 // @param request - DeleteWorkspaceCodeRequest
 //
@@ -1764,7 +1776,7 @@ func (client *Client) DeleteWorkspaceCodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # DescribeCustomAgent
+// `DescribeCustomAgent` retrieves the details of a custom agent by its agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -1812,7 +1824,7 @@ func (client *Client) DescribeCustomAgentWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # DescribeDataAgentSession
+// Gets the details of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
 //
@@ -1864,7 +1876,7 @@ func (client *Client) DescribeDataAgentSessionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取文档详情
+// Retrieves the details of a specific document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -1960,7 +1972,7 @@ func (client *Client) DescribeFileUploadSignatureWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取onemeta3.0的知识库统计信息
+// Retrieves the statistics of a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseStatsRequest
 //
@@ -2004,7 +2016,7 @@ func (client *Client) DescribeKnowledgeBaseStatsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取知识库中的上传签名
+// Generates a signature to upload a document to a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseUploadSignatureRequest
 //
@@ -2112,7 +2124,7 @@ func (client *Client) FileUploadCallbackWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询 Airflow
+// Queries the configuration and status of an Airflow instance.
 //
 // @param request - GetAirflowRequest
 //
@@ -2160,7 +2172,15 @@ func (client *Client) GetAirflowWithContext(ctx context.Context, request *GetAir
 
 // Summary:
 //
-// # GetChatContent
+// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+//
+// Description:
+//
+// ## Request
+//
+// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+//
+// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
 //
 // @param request - GetChatContentRequest
 //
@@ -2175,7 +2195,15 @@ func (client *Client) GetChatContentWithSSECtx(ctx context.Context, request *Get
 
 // Summary:
 //
-// # GetChatContent
+// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+//
+// Description:
+//
+// ## Request
+//
+// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+//
+// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
 //
 // @param request - GetChatContentRequest
 //
@@ -2231,7 +2259,7 @@ func (client *Client) GetChatContentWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取主账号下的子账号信息
+// Retrieves information about a RAM user that belongs to an Alibaba Cloud account.
 //
 // @param request - GetDataAgentSubAccountInfoRequest
 //
@@ -2279,7 +2307,7 @@ func (client *Client) GetDataAgentSubAccountInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取空间信息
+// Retrieves workspace details.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -2327,7 +2355,7 @@ func (client *Client) GetDataAgentWorkspaceInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取uc的数据库目录
+// Retrieves the data catalog of a data lake.
 //
 // @param request - GetDataLakeCatalogRequest
 //
@@ -2379,7 +2407,7 @@ func (client *Client) GetDataLakeCatalogWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取UC的数据库
+// Retrieves information about a database in a data lake.
 //
 // @param request - GetDataLakeDatabaseRequest
 //
@@ -2435,7 +2463,7 @@ func (client *Client) GetDataLakeDatabaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取湖仓自定义函数详细信息
+// Retrieves the details of a user-defined function in a data lake.
 //
 // @param request - GetDataLakeFunctionRequest
 //
@@ -2495,7 +2523,7 @@ func (client *Client) GetDataLakeFunctionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取湖仓表分区详情
+// Retrieves the details of a data lakehouse table partition.
 //
 // @param tmpReq - GetDataLakePartitionRequest
 //
@@ -2565,7 +2593,7 @@ func (client *Client) GetDataLakePartitionWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 获取表信息
+// Retrieves information about a table in a data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -2625,7 +2653,7 @@ func (client *Client) GetDataLakeTableWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 调度运行Notebook文件
+// Submits a task to schedule and run a Notebook file.
 //
 // @param request - GetNotebookAndSubmitTaskRequest
 //
@@ -2687,7 +2715,7 @@ func (client *Client) GetNotebookAndSubmitTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查看Notebook任务运行结果
+// Retrieves the execution status of a Notebook task.
 //
 // @param request - GetNotebookTaskStatusRequest
 //
@@ -2739,7 +2767,11 @@ func (client *Client) GetNotebookTaskStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 读取工作空间的代码文件内容
+// Retrieves the content of a code file from a workspace. The response header includes the file\\"s modification time (`mtime`).
+//
+// Description:
+//
+// Retrieves the content of a specified code file from a workspace.
 //
 // @param request - GetWorkspaceCodeRequest
 //
@@ -2791,7 +2823,11 @@ func (client *Client) GetWorkspaceCodeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取工作空间发布配置
+// Retrieves the deployment configuration of a workspace.
+//
+// Description:
+//
+// This operation retrieves the deployment configuration of a workspace. The configuration includes details such as repository and branch information, and directories to exclude.
 //
 // @param request - GetWorkspaceCodePublishSettingRequest
 //
@@ -2835,7 +2871,11 @@ func (client *Client) GetWorkspaceCodePublishSettingWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取工作空间配额
+// Returns the quota for a workspace.
+//
+// Description:
+//
+// Retrieves the resource quotas and instance status for a workspace.
 //
 // @param request - GetWorkspaceQuotaRequest
 //
@@ -2879,7 +2919,11 @@ func (client *Client) GetWorkspaceQuotaWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取可用的Airflow版本列表
+// Lists the available Airflow versions.
+//
+// Description:
+//
+// Lists the available Airflow versions.
 //
 // @param request - ListAirflowVersionsRequest
 //
@@ -2923,7 +2967,7 @@ func (client *Client) ListAirflowVersionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出资源Airflow
+// Retrieves a list of Airflow instances in a workspace.
 //
 // @param request - ListAirflowsRequest
 //
@@ -2983,7 +3027,7 @@ func (client *Client) ListAirflowsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # ListCustomAgent
+// ListCustomAgent returns a list of all custom agents from the personal space and workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -3047,7 +3091,7 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// # ListDataAgentSession
+// Retrieve a list of Data Agent session descriptions.
 //
 // @param request - ListDataAgentSessionRequest
 //
@@ -3127,7 +3171,7 @@ func (client *Client) ListDataAgentSessionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取主账号下的空间（分页）
+// Retrieves paginated collaboration workspaces for an Alibaba Cloud account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -3203,7 +3247,7 @@ func (client *Client) ListDataAgentWorkspaceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取空间所有成员
+// Lists all members in a workspace.
 //
 // @param request - ListDataAgentWorkspaceMemberRequest
 //
@@ -3283,7 +3327,7 @@ func (client *Client) ListDataAgentWorkspaceMemberWithContext(ctx context.Contex
 
 // Summary:
 //
-// # ListDataCenterDatabase
+// Lists user-uploaded files in a data center, excluding databases.
 //
 // @param request - ListDataCenterDatabaseRequest
 //
@@ -3343,7 +3387,7 @@ func (client *Client) ListDataCenterDatabaseWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # ListDataCenterTable
+// Retrieves a list of user-uploaded tables from the data center, for file types only.
 //
 // @param request - ListDataCenterTableRequest
 //
@@ -3419,7 +3463,7 @@ func (client *Client) ListDataCenterTableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取uc的数据库目录列表
+// Retrieves a list of data lake catalogs.
 //
 // @param request - ListDataLakeCatalogRequest
 //
@@ -3471,7 +3515,7 @@ func (client *Client) ListDataLakeCatalogWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取数据库列表
+// Retrieves a list of databases in a data lake.
 //
 // @param request - ListDataLakeDatabaseRequest
 //
@@ -3535,7 +3579,7 @@ func (client *Client) ListDataLakeDatabaseWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取数据湖函数列表
+// Retrieves a list of data lake functions.
 //
 // @param request - ListDataLakeFunctionRequest
 //
@@ -3603,7 +3647,7 @@ func (client *Client) ListDataLakeFunctionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取数据湖函数名列表
+// Retrieves a list of data lake function names.
 //
 // @param request - ListDataLakeFunctionNameRequest
 //
@@ -3671,7 +3715,7 @@ func (client *Client) ListDataLakeFunctionNameWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取数据湖表分区列表
+// Retrieves the list of partitions of a data lake table.
 //
 // @param tmpReq - ListDataLakePartitionRequest
 //
@@ -3751,7 +3795,7 @@ func (client *Client) ListDataLakePartitionWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 根据筛选条件获取数据湖表分区列表
+// Retrieves a list of partitions for a data lake table based on filter conditions.
 //
 // @param request - ListDataLakePartitionByFilterRequest
 //
@@ -3825,7 +3869,7 @@ func (client *Client) ListDataLakePartitionByFilterWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取数据湖表分区名列表
+// Retrieves a list of partition names for a data lake table.
 //
 // @param request - ListDataLakePartitionNameRequest
 //
@@ -3893,7 +3937,7 @@ func (client *Client) ListDataLakePartitionNameWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取数据湖表列表
+// Retrieves a list of data lake tables.
 //
 // @param request - ListDataLakeTableRequest
 //
@@ -3965,7 +4009,7 @@ func (client *Client) ListDataLakeTableWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取数据湖表名列表
+// Retrieves a list of data lake table names.
 //
 // @param request - ListDataLakeTableNameRequest
 //
@@ -4037,7 +4081,7 @@ func (client *Client) ListDataLakeTableNameWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取表信息
+// Retrieves the basic information about tables in a data lake.
 //
 // @param request - ListDataLakeTablebaseInfoRequest
 //
@@ -4105,7 +4149,7 @@ func (client *Client) ListDataLakeTablebaseInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 分页查询onemeta3.0的知识库chunks
+// Queries a list of chunks.
 //
 // @param request - ListDocumentChunksRequest
 //
@@ -4173,7 +4217,7 @@ func (client *Client) ListDocumentChunksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取文档列表
+// Lists the documents in a knowledge base.
 //
 // @param request - ListDocumentsRequest
 //
@@ -4317,7 +4361,7 @@ func (client *Client) ListFileUploadWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 分页查询onemeta3.0的知识库
+// Returns a paginated list of knowledge bases.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -4385,7 +4429,11 @@ func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 列出工作空间目录下的code文件
+// Lists code files and directories at a specified path in a workspace.
+//
+// Description:
+//
+// This operation lists the code files and directories at a specified path in a workspace.
 //
 // @param request - ListWorkspaceCodeRequest
 //
@@ -4433,7 +4481,7 @@ func (client *Client) ListWorkspaceCodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # ModifyCustomAgent
+// # Modify a custom agent in a personal space or workspace
 //
 // @param tmpReq - ModifyCustomAgentRequest
 //
@@ -4551,7 +4599,7 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # OperateCustomAgent
+// Operate custom agents in personal spaces and workspaces.
 //
 // @param request - OperateCustomAgentRequest
 //
@@ -4603,7 +4651,11 @@ func (client *Client) OperateCustomAgentWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 重新部署Airflow实例
+// # Redeploy an Airflow instance
+//
+// Description:
+//
+// Redeploys an Airflow instance.
 //
 // @param request - RedeployAirflowRequest
 //
@@ -4651,7 +4703,7 @@ func (client *Client) RedeployAirflowWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 从空间中移除用户
+// Removes a user from a workspace.
 //
 // @param request - RemoveUserToDataAgentWorkspaceRequest
 //
@@ -4703,7 +4755,7 @@ func (client *Client) RemoveUserToDataAgentWorkspaceWithContext(ctx context.Cont
 
 // Summary:
 //
-// 检索知识库
+// # Query a knowledge base
 //
 // @param request - RetrieveKnowledgeBaseRequest
 //
@@ -4795,7 +4847,11 @@ func (client *Client) RetrieveKnowledgeBaseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 保存工作空间代码，如果文件不存在则自动新建
+// Saves code in a workspace and creates the file if it does not exist.
+//
+// Description:
+//
+// Saves code in a workspace and optionally publishes it to a repository.
 //
 // @param request - SaveWorkspaceCodeRequest
 //
@@ -4810,33 +4866,33 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.Content) {
-		query["Content"] = request.Content
-	}
-
-	if !dara.IsNil(request.Force) {
-		query["Force"] = request.Force
-	}
-
-	if !dara.IsNil(request.Iac) {
-		query["Iac"] = request.Iac
-	}
-
-	if !dara.IsNil(request.Mtime) {
-		query["Mtime"] = request.Mtime
-	}
-
-	if !dara.IsNil(request.Repo) {
-		query["Repo"] = request.Repo
-	}
-
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Force) {
+		body["Force"] = request.Force
+	}
+
+	if !dara.IsNil(request.Iac) {
+		body["Iac"] = request.Iac
+	}
+
+	if !dara.IsNil(request.Mtime) {
+		body["Mtime"] = request.Mtime
+	}
+
 	if !dara.IsNil(request.Path) {
 		body["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.Repo) {
+		body["Repo"] = request.Repo
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4865,7 +4921,23 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # SendChatMessage
+// Sends a user message to a specified session or ends the session.
+//
+// Description:
+//
+// ## Request
+//
+// - The `agent_id` and `session_id` fields are required.
+//
+// - The `message_type` field defaults to `primary`. Set it to `additional` to append information or to `cancel` to end the session.
+//
+// - The `reply_to` field specifies which agent message the current message is a response to. It defaults to `0`.
+//
+// - When `message_type` is `additional`, the `question` field is required.
+//
+// - Use the `quoted_message` field to reference a previous user message.
+//
+// - The optional fields `data_source`, `dms_user`, `db_metadata`, and `session_config` provide more detailed context.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -4967,7 +5039,11 @@ func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *Se
 
 // Summary:
 //
-// 设置工作空间代码发布配置
+// Sets the code deployment configuration for a workspace. This is an asynchronous operation that returns a key. Use this key to query the operation\\"s status by calling the WorkspaceActionStatus operation.
+//
+// Description:
+//
+// Sets the default code deployment configuration for a workspace. This configuration includes the Git repository branch and the directories to exclude from deployment.
 //
 // @param request - SetWorkspaceCodePublishSettingRequest
 //
@@ -5017,7 +5093,11 @@ func (client *Client) SetWorkspaceCodePublishSettingWithContext(ctx context.Cont
 
 // Summary:
 //
-// 设置工作空间配额
+// Sets the quota for a workspace.
+//
+// Description:
+//
+// Sets the quota for a specific workspace.
 //
 // @param request - SetWorkspaceQuotaRequest
 //
@@ -5077,7 +5157,7 @@ func (client *Client) SetWorkspaceQuotaWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新UpdateAirflow
+// Updates the properties of an Airflow instance.
 //
 // @param tmpReq - UpdateAirflowRequest
 //
@@ -5179,7 +5259,7 @@ func (client *Client) UpdateAirflowWithContext(ctx context.Context, tmpReq *Upda
 
 // Summary:
 //
-// 更新空间的信息
+// Updates workspace information.
 //
 // @param request - UpdateDataAgentSpaceInfoRequest
 //
@@ -5239,7 +5319,7 @@ func (client *Client) UpdateDataAgentSpaceInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 调整空间成员的角色
+// Changes the role of a workspace member.
 //
 // @param request - UpdateDataAgentWorkspaceMemberRoleRequest
 //
@@ -5295,7 +5375,7 @@ func (client *Client) UpdateDataAgentWorkspaceMemberRoleWithContext(ctx context.
 
 // Summary:
 //
-// 更新湖仓数据库
+// Updates the information of a data lakehouse database.
 //
 // @param tmpReq - UpdateDataLakeDatabaseRequest
 //
@@ -5369,7 +5449,7 @@ func (client *Client) UpdateDataLakeDatabaseWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 更新湖仓自定义函数
+// Update a user-defined function in a data lake.
 //
 // @param tmpReq - UpdateDataLakeFunctionRequest
 //
@@ -5441,7 +5521,7 @@ func (client *Client) UpdateDataLakeFunctionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 更新湖仓表分区
+// Updates the partition information of a data lake table.
 //
 // @param tmpReq - UpdateDataLakePartitionRequest
 //
@@ -5513,7 +5593,7 @@ func (client *Client) UpdateDataLakePartitionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 更新湖仓表信息
+// Updates the information of a data lake table.
 //
 // @param tmpReq - UpdateDataLakeTableRequest
 //
@@ -5585,7 +5665,7 @@ func (client *Client) UpdateDataLakeTableWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 更新文档
+// Updates the description of a document.
 //
 // @param request - UpdateDocumentRequest
 //
@@ -5637,7 +5717,7 @@ func (client *Client) UpdateDocumentWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新onemeta3.0的知识库
+// Updates a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -5689,7 +5769,7 @@ func (client *Client) UpdateKnowledgeBaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 上传文档
+// Uploads a document to a knowledge base.
 //
 // @param tmpReq - UploadDocumentRequest
 //
@@ -5783,7 +5863,7 @@ func (client *Client) UploadDocumentWithContext(ctx context.Context, tmpReq *Upl
 
 // Summary:
 //
-// 更新或插入onemeta3.0的知识库chunks
+// Upserts document chunks into a knowledge base.
 //
 // @param request - UpsertDocumentChunksRequest
 //
@@ -5835,7 +5915,11 @@ func (client *Client) UpsertDocumentChunksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 工作空间异步操作日志查询接口
+// Queries the log of an asynchronous task in a workspace.
+//
+// Description:
+//
+// Pass the `key` to view the execution log of the corresponding asynchronous task. Use this API for troubleshooting.
 //
 // @param request - WorkspaceActionLogRequest
 //
@@ -5883,7 +5967,11 @@ func (client *Client) WorkspaceActionLogWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 工作空间异步操作状态查询接口
+// Queries the status of an asynchronous task in a workspace. Operations such as a deployment return a key. Call this operation with the key to retrieve the task\\"s status.
+//
+// Description:
+//
+// Provide the key returned by an asynchronous action, such as a deployment, to retrieve the task\\"s status.
 //
 // @param request - WorkspaceActionStatusRequest
 //
@@ -5931,7 +6019,11 @@ func (client *Client) WorkspaceActionStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 工作空间代码发布。这是个异步接口，请求返回一个key，请根据key查询 WorkspaceActionStatus接口获取状态
+// This asynchronous API returns a key. Use this key to query the WorkspaceActionStatus API for the code deployment status.
+//
+// Description:
+//
+// Deploys the code in a workspace.
 //
 // @param request - WorkspaceCodePublishRequest
 //

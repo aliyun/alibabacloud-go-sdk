@@ -24,23 +24,38 @@ type iListCustomAgentRequest interface {
 }
 
 type ListCustomAgentRequest struct {
+	// The page number. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. The default value is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to query all published custom agents. The default value is false.
+	//
 	// example:
 	//
 	// true
-	QueryAllReleased *bool   `json:"QueryAllReleased,omitempty" xml:"QueryAllReleased,omitempty"`
-	SearchKey        *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	QueryAllReleased *bool `json:"QueryAllReleased,omitempty" xml:"QueryAllReleased,omitempty"`
+	// A keyword for a fuzzy search on the names and descriptions of custom agents.
+	//
+	// example:
+	//
+	// 测试Agent
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The status of the custom agent.
+	//
 	// example:
 	//
 	// RELEASED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 56kv1pvl9uvt9**********bb

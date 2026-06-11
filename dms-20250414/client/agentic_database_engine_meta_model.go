@@ -20,10 +20,14 @@ type iAgenticDatabaseEngineMeta interface {
 }
 
 type AgenticDatabaseEngineMeta struct {
-	CatalogName     *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	StorageCapacity *int64  `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
+	// The name of the database catalog.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The character encoding for the database.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The name of the database schema.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The storage capacity of the database, in GB.
+	StorageCapacity *int64 `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
 }
 
 func (s AgenticDatabaseEngineMeta) String() string {

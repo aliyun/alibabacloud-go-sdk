@@ -18,14 +18,20 @@ type iRemoveUserToDataAgentWorkspaceRequest interface {
 }
 
 type RemoveUserToDataAgentWorkspaceRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The UID of the member account to remove.
+	//
 	// example:
 	//
 	// 21482*****7584
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291

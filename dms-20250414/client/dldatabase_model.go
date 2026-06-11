@@ -24,26 +24,38 @@ type iDLDatabase interface {
 }
 
 type DLDatabase struct {
+	// The name of the data catalog.
+	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The ID of the database.
+	//
 	// example:
 	//
 	// 19
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The description of the database.
+	//
 	// example:
 	//
 	// Default database for catalog hive
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The storage path of the database.
+	//
 	// example:
 	//
 	// oss://xxx
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// default
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters of the database.
+	//
 	// example:
 	//
 	// key/value

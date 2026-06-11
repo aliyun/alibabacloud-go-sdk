@@ -16,12 +16,16 @@ type iRedeployAirflowRequest interface {
 }
 
 type RedeployAirflowRequest struct {
+	// The unique ID of the Airflow instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af-b3a7f110a6vmvn7****
 	AirflowId *string `json:"AirflowId,omitempty" xml:"AirflowId,omitempty"`
+	// The ID of the DMS workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

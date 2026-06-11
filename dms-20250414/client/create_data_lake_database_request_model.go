@@ -26,33 +26,48 @@ type iCreateDataLakeDatabaseRequest interface {
 }
 
 type CreateDataLakeDatabaseRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The description of the database.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The storage path of the database. The path supports the oss, s3, and s3a protocols.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://path/to/database
-	Location   *string            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The key-value pairs of the database properties.
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The tenant ID.
+	//
+	// > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

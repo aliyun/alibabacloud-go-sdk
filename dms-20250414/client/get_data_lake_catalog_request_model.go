@@ -18,6 +18,8 @@ type iGetDataLakeCatalogRequest interface {
 }
 
 type GetDataLakeCatalogRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -27,10 +29,14 @@ type GetDataLakeCatalogRequest struct {
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The tenant ID. You can call the GetUserActiveTenant or ListUserTenants operation to obtain this value.
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 12****

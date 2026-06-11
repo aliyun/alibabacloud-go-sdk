@@ -22,23 +22,36 @@ type iGetDataLakeTableResponseBody interface {
 }
 
 type GetDataLakeTableResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Unknown server error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success *string  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Table   *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the table.
+	Table *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s GetDataLakeTableResponseBody) String() string {

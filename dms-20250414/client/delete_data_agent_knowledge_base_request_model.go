@@ -18,16 +18,22 @@ type iDeleteDataAgentKnowledgeBaseRequest interface {
 }
 
 type DeleteDataAgentKnowledgeBaseRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kb-HZ-rtl5lwx********q32d3ux
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

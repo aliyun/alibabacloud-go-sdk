@@ -16,12 +16,16 @@ type iWorkspaceActionLogRequest interface {
 }
 
 type WorkspaceActionLogRequest struct {
+	// The key for the session playback history.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qps
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

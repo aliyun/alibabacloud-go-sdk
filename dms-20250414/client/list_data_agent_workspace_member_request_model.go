@@ -32,42 +32,62 @@ type iListDataAgentWorkspaceMemberRequest interface {
 }
 
 type ListDataAgentWorkspaceMemberRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token.
+	//
 	// example:
 	//
 	// NesLoK****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The sort field.
+	//
 	// example:
 	//
 	// gmt_create
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The prefix of the member ID to query.
+	//
 	// example:
 	//
 	// 20273
 	SearchMemberId *string `json:"SearchMemberId,omitempty" xml:"SearchMemberId,omitempty"`
+	// The prefix of the member name to query.
+	//
 	// example:
 	//
 	// yunqi
 	SearchRoleName *string `json:"SearchRoleName,omitempty" xml:"SearchRoleName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291

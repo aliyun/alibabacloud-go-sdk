@@ -22,19 +22,28 @@ type iUpdateDataAgentSpaceInfoResponseBody interface {
 }
 
 type UpdateDataAgentSpaceInfoResponseBody struct {
+	// The returned data.
 	Data *UpdateDataAgentSpaceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67E910F2-***-695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,39 +113,62 @@ func (s *UpdateDataAgentSpaceInfoResponseBody) Validate() error {
 }
 
 type UpdateDataAgentSpaceInfoResponseBodyData struct {
+	// The time when the workspace was created, specified as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID (UID) of the workspace creator.
+	//
 	// example:
 	//
 	// 20282*****7591
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// space for test new
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether session sharing is enabled in the workspace.
+	//
+	// example:
+	//
+	// true
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The time when the workspace was last modified, specified as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765962516
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The user role in the workspace.
+	//
 	// example:
 	//
 	// active
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The total number of members in the workspace.
+	//
 	// example:
 	//
 	// 20
 	TotalMember *string `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 20923*****7291
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The updated name of the workspace.
+	//
 	// example:
 	//
 	// yunqitest_v2
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The updated status of the workspace.
+	//
 	// example:
 	//
 	// space for test new

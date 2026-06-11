@@ -16,12 +16,16 @@ type iListWorkspaceCodeRequest interface {
 }
 
 type ListWorkspaceCodeRequest struct {
+	// The path of the file or directory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /Workspace/code/default/test.ipynb
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

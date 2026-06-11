@@ -18,18 +18,24 @@ type iUpdateDocumentRequest interface {
 }
 
 type UpdateDocumentRequest struct {
+	// The document name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.md
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kb-***
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The new document description.
+	//
 	// This parameter is required.
 	//
 	// example:

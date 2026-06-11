@@ -32,16 +32,26 @@ type iAgenticTableColumnEngineMeta interface {
 }
 
 type AgenticTableColumnEngineMeta struct {
-	AutoIncrement        *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	DataLength           *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
-	DataPrecision        *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	DataScale            *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Encoding             *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	Extra                *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	GenerationColumn     *bool   `json:"GenerationColumn,omitempty" xml:"GenerationColumn,omitempty"`
+	// Indicates whether the column uses auto-increment.
+	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	// The data length of the column. This parameter typically applies to string and binary data types.
+	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	// The data precision of the column, which is the total number of digits in a numeric type.
+	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	// The data scale of the column, which is the number of digits to the right of the decimal point in a numeric type.
+	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	// The default value of the column.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The character encoding of the column.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// Engine-specific attributes or flags for the column.
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// Indicates whether the column is a generated column.
+	GenerationColumn *bool `json:"GenerationColumn,omitempty" xml:"GenerationColumn,omitempty"`
+	// The expression used to generate the column\\"s value. Applies only if `GenerationColumn` is `true`.
 	GenerationExpression *string `json:"GenerationExpression,omitempty" xml:"GenerationExpression,omitempty"`
-	Nullable             *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// Indicates whether the column is nullable.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 }
 
 func (s AgenticTableColumnEngineMeta) String() string {

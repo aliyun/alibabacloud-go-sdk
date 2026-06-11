@@ -22,24 +22,34 @@ type iCreateDataAgentKnowledgeBaseRequest interface {
 }
 
 type CreateDataAgentKnowledgeBaseRequest struct {
+	// The current DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The description of the knowledge base.
+	//
 	// example:
 	//
 	// KnowledgeBaseTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the source industry knowledge base.
+	//
 	// example:
 	//
 	// kb-HZ-ra99********ss0xp1bku
 	FromKbUuid *string `json:"FromKbUuid,omitempty" xml:"FromKbUuid,omitempty"`
+	// The name of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// KnowledgeBaseTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

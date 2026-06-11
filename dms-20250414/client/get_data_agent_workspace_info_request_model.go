@@ -16,10 +16,14 @@ type iGetDataAgentWorkspaceInfoRequest interface {
 }
 
 type GetDataAgentWorkspaceInfoRequest struct {
+	// The DMS unit.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291

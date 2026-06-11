@@ -22,6 +22,8 @@ type iGetDataLakeTableRequest interface {
 }
 
 type GetDataLakeTableRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -31,6 +33,8 @@ type GetDataLakeTableRequest struct {
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The name of the database to which the table belongs.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -40,6 +44,8 @@ type GetDataLakeTableRequest struct {
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -49,10 +55,14 @@ type GetDataLakeTableRequest struct {
 	//
 	// 100g_customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID. Call the GetUserActiveTenant or ListUserTenants operation to get this ID.
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 12****

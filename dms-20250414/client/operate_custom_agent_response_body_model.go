@@ -22,11 +22,16 @@ type iOperateCustomAgentResponseBody interface {
 }
 
 type OperateCustomAgentResponseBody struct {
+	// Return struct
 	Data *OperateCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message returned when the call fails.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
@@ -37,6 +42,12 @@ type OperateCustomAgentResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is the request successful? Return values are as follows:
+	//
+	// - True: The request is successful.
+	//
+	// - False: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,14 +117,20 @@ func (s *OperateCustomAgentResponseBody) Validate() error {
 }
 
 type OperateCustomAgentResponseBodyData struct {
+	// Custom Agent ID
+	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// Operation message
+	//
 	// example:
 	//
 	// Custom agent successfully released
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Is the operation successful?
+	//
 	// example:
 	//
 	// true

@@ -22,23 +22,36 @@ type iUpdateDataLakeTableResponseBody interface {
 }
 
 type UpdateDataLakeTableResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// C5B8E84B-42B6-4374-AD5A-6264E175****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
-	Success *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Table   *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the table.
+	Table *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s UpdateDataLakeTableResponseBody) String() string {

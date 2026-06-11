@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 为空间添加用户
+// Adds a user to a specified workspace.
 //
 // @param request - AddUserToDataAgentWorkspaceRequest
 //
@@ -114,7 +114,7 @@ func (client *Client) AddUserToDataAgentWorkspaceWithOptions(request *AddUserToD
 
 // Summary:
 //
-// 为空间添加用户
+// Adds a user to a specified workspace.
 //
 // @param request - AddUserToDataAgentWorkspaceRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) AddUserToDataAgentWorkspace(request *AddUserToDataAgentWor
 
 // Summary:
 //
-// 批量新建湖仓表分区
+// Creates partitions for a data lake table in a batch.
 //
 // @param tmpReq - BatchCreateDataLakePartitionsRequest
 //
@@ -212,7 +212,7 @@ func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCrea
 
 // Summary:
 //
-// 批量新建湖仓表分区
+// Creates partitions for a data lake table in a batch.
 //
 // @param request - BatchCreateDataLakePartitionsRequest
 //
@@ -230,7 +230,7 @@ func (client *Client) BatchCreateDataLakePartitions(request *BatchCreateDataLake
 
 // Summary:
 //
-// 批量删除湖仓表分区
+// Batch deletes partitions from a data lake table.
 //
 // @param request - BatchDeleteDataLakePartitionsRequest
 //
@@ -298,7 +298,7 @@ func (client *Client) BatchDeleteDataLakePartitionsWithOptions(request *BatchDel
 
 // Summary:
 //
-// 批量删除湖仓表分区
+// Batch deletes partitions from a data lake table.
 //
 // @param request - BatchDeleteDataLakePartitionsRequest
 //
@@ -316,7 +316,7 @@ func (client *Client) BatchDeleteDataLakePartitions(request *BatchDeleteDataLake
 
 // Summary:
 //
-// 批量更新湖仓表分区
+// Update partitions in a data lake table in batch.
 //
 // @param tmpReq - BatchUpdateDataLakePartitionsRequest
 //
@@ -388,7 +388,7 @@ func (client *Client) BatchUpdateDataLakePartitionsWithOptions(tmpReq *BatchUpda
 
 // Summary:
 //
-// 批量更新湖仓表分区
+// Update partitions in a data lake table in batch.
 //
 // @param request - BatchUpdateDataLakePartitionsRequest
 //
@@ -406,7 +406,11 @@ func (client *Client) BatchUpdateDataLakePartitions(request *BatchUpdateDataLake
 
 // Summary:
 //
-// 更新Airflow实例的自定义配置
+// Update an Airflow instance\\"s custom configuration
+//
+// Description:
+//
+// Configure the airflow\\.cfg file for DMS Airflow.
 //
 // @param tmpReq - ConfigAirflowRequest
 //
@@ -464,7 +468,11 @@ func (client *Client) ConfigAirflowWithOptions(tmpReq *ConfigAirflowRequest, run
 
 // Summary:
 //
-// 更新Airflow实例的自定义配置
+// Update an Airflow instance\\"s custom configuration
+//
+// Description:
+//
+// Configure the airflow\\.cfg file for DMS Airflow.
 //
 // @param request - ConfigAirflowRequest
 //
@@ -482,7 +490,11 @@ func (client *Client) ConfigAirflow(request *ConfigAirflowRequest) (_result *Con
 
 // Summary:
 //
-// 创建Airflow
+// Creates an Airflow instance in a workspace.
+//
+// Description:
+//
+// Creates an Airflow instance in a workspace.
 //
 // @param tmpReq - CreateAirflowRequest
 //
@@ -608,7 +620,11 @@ func (client *Client) CreateAirflowWithOptions(tmpReq *CreateAirflowRequest, run
 
 // Summary:
 //
-// 创建Airflow
+// Creates an Airflow instance in a workspace.
+//
+// Description:
+//
+// Creates an Airflow instance in a workspace.
 //
 // @param request - CreateAirflowRequest
 //
@@ -626,7 +642,7 @@ func (client *Client) CreateAirflow(request *CreateAirflowRequest) (_result *Cre
 
 // Summary:
 //
-// Queries the Airflow logon credential. You can use this credential to log on to the DMS-managed Airflow instance.
+// Obtains logon credentials for an Airflow instance hosted by Data Management Service (DMS). Use the returned token and host endpoint to construct a logon URL for the Airflow web UI.
 //
 // @param request - CreateAirflowLoginTokenRequest
 //
@@ -670,7 +686,7 @@ func (client *Client) CreateAirflowLoginTokenWithOptions(request *CreateAirflowL
 
 // Summary:
 //
-// Queries the Airflow logon credential. You can use this credential to log on to the DMS-managed Airflow instance.
+// Obtains logon credentials for an Airflow instance hosted by Data Management Service (DMS). Use the returned token and host endpoint to construct a logon URL for the Airflow web UI.
 //
 // @param request - CreateAirflowLoginTokenRequest
 //
@@ -688,7 +704,7 @@ func (client *Client) CreateAirflowLoginToken(request *CreateAirflowLoginTokenRe
 
 // Summary:
 //
-// # CreateCustomAgent
+// Create a custom agent in your personal space or a workspace.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -802,7 +818,7 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 // Summary:
 //
-// # CreateCustomAgent
+// Create a custom agent in your personal space or a workspace.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -820,7 +836,7 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 
 // Summary:
 //
-// # CreateDataAgentKnowledgeBase
+// Creates a DataAgent knowledge base. The knowledge base creator has read and write permissions. Other workspace members have permission to use it.
 //
 // @param request - CreateDataAgentKnowledgeBaseRequest
 //
@@ -880,7 +896,7 @@ func (client *Client) CreateDataAgentKnowledgeBaseWithOptions(request *CreateDat
 
 // Summary:
 //
-// # CreateDataAgentKnowledgeBase
+// Creates a DataAgent knowledge base. The knowledge base creator has read and write permissions. Other workspace members have permission to use it.
 //
 // @param request - CreateDataAgentKnowledgeBaseRequest
 //
@@ -898,7 +914,7 @@ func (client *Client) CreateDataAgentKnowledgeBase(request *CreateDataAgentKnowl
 
 // Summary:
 //
-// # CreateDataAgentSession
+// # Create a DataAgent session
 //
 // @param tmpReq - CreateDataAgentSessionRequest
 //
@@ -964,7 +980,7 @@ func (client *Client) CreateDataAgentSessionWithOptions(tmpReq *CreateDataAgentS
 
 // Summary:
 //
-// # CreateDataAgentSession
+// # Create a DataAgent session
 //
 // @param request - CreateDataAgentSessionRequest
 //
@@ -982,7 +998,7 @@ func (client *Client) CreateDataAgentSession(request *CreateDataAgentSessionRequ
 
 // Summary:
 //
-// 创建DataAgent工作空间
+// Creates a DataAgent workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -1038,7 +1054,7 @@ func (client *Client) CreateDataAgentWorkspaceWithOptions(request *CreateDataAge
 
 // Summary:
 //
-// 创建DataAgent工作空间
+// Creates a DataAgent workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -1056,7 +1072,7 @@ func (client *Client) CreateDataAgentWorkspace(request *CreateDataAgentWorkspace
 
 // Summary:
 //
-// 新建湖仓数据库
+// Creates a data lake database.
 //
 // @param tmpReq - CreateDataLakeDatabaseRequest
 //
@@ -1130,7 +1146,7 @@ func (client *Client) CreateDataLakeDatabaseWithOptions(tmpReq *CreateDataLakeDa
 
 // Summary:
 //
-// 新建湖仓数据库
+// Creates a data lake database.
 //
 // @param request - CreateDataLakeDatabaseRequest
 //
@@ -1148,7 +1164,7 @@ func (client *Client) CreateDataLakeDatabase(request *CreateDataLakeDatabaseRequ
 
 // Summary:
 //
-// 新建湖仓自定义函数
+// Creates a user-defined function (UDF) for a data lake.
 //
 // @param tmpReq - CreateDataLakeFunctionRequest
 //
@@ -1216,7 +1232,7 @@ func (client *Client) CreateDataLakeFunctionWithOptions(tmpReq *CreateDataLakeFu
 
 // Summary:
 //
-// 新建湖仓自定义函数
+// Creates a user-defined function (UDF) for a data lake.
 //
 // @param request - CreateDataLakeFunctionRequest
 //
@@ -1234,7 +1250,7 @@ func (client *Client) CreateDataLakeFunction(request *CreateDataLakeFunctionRequ
 
 // Summary:
 //
-// 新建湖仓表分区
+// Creates a partition for a data lake table.
 //
 // @param tmpReq - CreateDataLakePartitionRequest
 //
@@ -1314,7 +1330,7 @@ func (client *Client) CreateDataLakePartitionWithOptions(tmpReq *CreateDataLakeP
 
 // Summary:
 //
-// 新建湖仓表分区
+// Creates a partition for a data lake table.
 //
 // @param request - CreateDataLakePartitionRequest
 //
@@ -1332,7 +1348,7 @@ func (client *Client) CreateDataLakePartition(request *CreateDataLakePartitionRe
 
 // Summary:
 //
-// 新建湖仓表
+// Creates a data lake table in Data Management (DMS).
 //
 // @param tmpReq - CreateDataLakeTableRequest
 //
@@ -1400,7 +1416,7 @@ func (client *Client) CreateDataLakeTableWithOptions(tmpReq *CreateDataLakeTable
 
 // Summary:
 //
-// 新建湖仓表
+// Creates a data lake table in Data Management (DMS).
 //
 // @param request - CreateDataLakeTableRequest
 //
@@ -1418,7 +1434,7 @@ func (client *Client) CreateDataLakeTable(request *CreateDataLakeTableRequest) (
 
 // Summary:
 //
-// 删除Airflow
+// Deletes an Airflow instance.
 //
 // @param request - DeleteAirflowRequest
 //
@@ -1470,7 +1486,7 @@ func (client *Client) DeleteAirflowWithOptions(request *DeleteAirflowRequest, ru
 
 // Summary:
 //
-// 删除Airflow
+// Deletes an Airflow instance.
 //
 // @param request - DeleteAirflowRequest
 //
@@ -1488,7 +1504,7 @@ func (client *Client) DeleteAirflow(request *DeleteAirflowRequest) (_result *Del
 
 // Summary:
 //
-// # DeleteCustomAgent
+// Delete a custom agent in your personal workspace or a shared workspace. Note: Only custom agents that are newly created or offline can be deleted.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -1536,7 +1552,7 @@ func (client *Client) DeleteCustomAgentWithOptions(request *DeleteCustomAgentReq
 
 // Summary:
 //
-// # DeleteCustomAgent
+// Delete a custom agent in your personal workspace or a shared workspace. Note: Only custom agents that are newly created or offline can be deleted.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -1554,7 +1570,7 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 
 // Summary:
 //
-// # DeleteDataAgentKnowledgeBase
+// Deletes a DataAgent knowledge base.
 //
 // @param request - DeleteDataAgentKnowledgeBaseRequest
 //
@@ -1606,7 +1622,7 @@ func (client *Client) DeleteDataAgentKnowledgeBaseWithOptions(request *DeleteDat
 
 // Summary:
 //
-// # DeleteDataAgentKnowledgeBase
+// Deletes a DataAgent knowledge base.
 //
 // @param request - DeleteDataAgentKnowledgeBaseRequest
 //
@@ -1624,7 +1640,7 @@ func (client *Client) DeleteDataAgentKnowledgeBase(request *DeleteDataAgentKnowl
 
 // Summary:
 //
-// 删除DataAgent工作空间
+// Deletes a DataAgent workspace.
 //
 // @param request - DeleteDataAgentWorkspaceRequest
 //
@@ -1672,7 +1688,7 @@ func (client *Client) DeleteDataAgentWorkspaceWithOptions(request *DeleteDataAge
 
 // Summary:
 //
-// 删除DataAgent工作空间
+// Deletes a DataAgent workspace.
 //
 // @param request - DeleteDataAgentWorkspaceRequest
 //
@@ -1690,7 +1706,7 @@ func (client *Client) DeleteDataAgentWorkspace(request *DeleteDataAgentWorkspace
 
 // Summary:
 //
-// 删除湖仓数据库
+// Deletes a data lake database.
 //
 // @param request - DeleteDataLakeDatabaseRequest
 //
@@ -1746,7 +1762,7 @@ func (client *Client) DeleteDataLakeDatabaseWithOptions(request *DeleteDataLakeD
 
 // Summary:
 //
-// 删除湖仓数据库
+// Deletes a data lake database.
 //
 // @param request - DeleteDataLakeDatabaseRequest
 //
@@ -1764,7 +1780,7 @@ func (client *Client) DeleteDataLakeDatabase(request *DeleteDataLakeDatabaseRequ
 
 // Summary:
 //
-// 删除湖仓自定义函数
+// Deletes a user-defined function in a data lake.
 //
 // @param request - DeleteDataLakeFunctionRequest
 //
@@ -1824,7 +1840,7 @@ func (client *Client) DeleteDataLakeFunctionWithOptions(request *DeleteDataLakeF
 
 // Summary:
 //
-// 删除湖仓自定义函数
+// Deletes a user-defined function in a data lake.
 //
 // @param request - DeleteDataLakeFunctionRequest
 //
@@ -1842,7 +1858,7 @@ func (client *Client) DeleteDataLakeFunction(request *DeleteDataLakeFunctionRequ
 
 // Summary:
 //
-// 删除湖仓表分区
+// Deletes a partition from a data lake table.
 //
 // @param tmpReq - DeleteDataLakePartitionRequest
 //
@@ -1916,7 +1932,7 @@ func (client *Client) DeleteDataLakePartitionWithOptions(tmpReq *DeleteDataLakeP
 
 // Summary:
 //
-// 删除湖仓表分区
+// Deletes a partition from a data lake table.
 //
 // @param request - DeleteDataLakePartitionRequest
 //
@@ -1934,7 +1950,7 @@ func (client *Client) DeleteDataLakePartition(request *DeleteDataLakePartitionRe
 
 // Summary:
 //
-// 删除湖仓表
+// Deletes a data lake table.
 //
 // @param request - DeleteDataLakeTableRequest
 //
@@ -1994,7 +2010,7 @@ func (client *Client) DeleteDataLakeTableWithOptions(request *DeleteDataLakeTabl
 
 // Summary:
 //
-// 删除湖仓表
+// Deletes a data lake table.
 //
 // @param request - DeleteDataLakeTableRequest
 //
@@ -2012,7 +2028,7 @@ func (client *Client) DeleteDataLakeTable(request *DeleteDataLakeTableRequest) (
 
 // Summary:
 //
-// 删除文档
+// Deletes a document from a specified knowledge base.
 //
 // @param request - DeleteDocumentRequest
 //
@@ -2060,7 +2076,7 @@ func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, 
 
 // Summary:
 //
-// 删除文档
+// Deletes a document from a specified knowledge base.
 //
 // @param request - DeleteDocumentRequest
 //
@@ -2078,7 +2094,7 @@ func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *D
 
 // Summary:
 //
-// 删除onemeta3.0的知识库chunks
+// Deletes chunks from a document in a knowledge base.
 //
 // @param tmpReq - DeleteDocumentChunksRequest
 //
@@ -2136,7 +2152,7 @@ func (client *Client) DeleteDocumentChunksWithOptions(tmpReq *DeleteDocumentChun
 
 // Summary:
 //
-// 删除onemeta3.0的知识库chunks
+// Deletes chunks from a document in a knowledge base.
 //
 // @param request - DeleteDocumentChunksRequest
 //
@@ -2224,7 +2240,11 @@ func (client *Client) DeleteFileUpload(request *DeleteFileUploadRequest) (_resul
 
 // Summary:
 //
-// 删除工作空间代码以及目录
+// Deletes a code file or directory from a workspace.
+//
+// Description:
+//
+// This operation permanently removes a specified code file or directory.
 //
 // @param request - DeleteWorkspaceCodeRequest
 //
@@ -2280,7 +2300,11 @@ func (client *Client) DeleteWorkspaceCodeWithOptions(request *DeleteWorkspaceCod
 
 // Summary:
 //
-// 删除工作空间代码以及目录
+// Deletes a code file or directory from a workspace.
+//
+// Description:
+//
+// This operation permanently removes a specified code file or directory.
 //
 // @param request - DeleteWorkspaceCodeRequest
 //
@@ -2298,7 +2322,7 @@ func (client *Client) DeleteWorkspaceCode(request *DeleteWorkspaceCodeRequest) (
 
 // Summary:
 //
-// # DescribeCustomAgent
+// `DescribeCustomAgent` retrieves the details of a custom agent by its agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2346,7 +2370,7 @@ func (client *Client) DescribeCustomAgentWithOptions(request *DescribeCustomAgen
 
 // Summary:
 //
-// # DescribeCustomAgent
+// `DescribeCustomAgent` retrieves the details of a custom agent by its agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -2364,7 +2388,7 @@ func (client *Client) DescribeCustomAgent(request *DescribeCustomAgentRequest) (
 
 // Summary:
 //
-// # DescribeDataAgentSession
+// Gets the details of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
 //
@@ -2416,7 +2440,7 @@ func (client *Client) DescribeDataAgentSessionWithOptions(request *DescribeDataA
 
 // Summary:
 //
-// # DescribeDataAgentSession
+// Gets the details of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
 //
@@ -2434,7 +2458,7 @@ func (client *Client) DescribeDataAgentSession(request *DescribeDataAgentSession
 
 // Summary:
 //
-// 获取文档详情
+// Retrieves the details of a specific document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -2482,7 +2506,7 @@ func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentReque
 
 // Summary:
 //
-// 获取文档详情
+// Retrieves the details of a specific document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -2566,7 +2590,7 @@ func (client *Client) DescribeFileUploadSignature(request *DescribeFileUploadSig
 
 // Summary:
 //
-// 获取onemeta3.0的知识库统计信息
+// Retrieves the statistics of a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseStatsRequest
 //
@@ -2610,7 +2634,7 @@ func (client *Client) DescribeKnowledgeBaseStatsWithOptions(request *DescribeKno
 
 // Summary:
 //
-// 获取onemeta3.0的知识库统计信息
+// Retrieves the statistics of a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseStatsRequest
 //
@@ -2628,7 +2652,7 @@ func (client *Client) DescribeKnowledgeBaseStats(request *DescribeKnowledgeBaseS
 
 // Summary:
 //
-// 获取知识库中的上传签名
+// Generates a signature to upload a document to a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseUploadSignatureRequest
 //
@@ -2672,7 +2696,7 @@ func (client *Client) DescribeKnowledgeBaseUploadSignatureWithOptions(request *D
 
 // Summary:
 //
-// 获取知识库中的上传签名
+// Generates a signature to upload a document to a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseUploadSignatureRequest
 //
@@ -2772,7 +2796,7 @@ func (client *Client) FileUploadCallback(request *FileUploadCallbackRequest) (_r
 
 // Summary:
 //
-// 查询 Airflow
+// Queries the configuration and status of an Airflow instance.
 //
 // @param request - GetAirflowRequest
 //
@@ -2820,7 +2844,7 @@ func (client *Client) GetAirflowWithOptions(request *GetAirflowRequest, runtime 
 
 // Summary:
 //
-// 查询 Airflow
+// Queries the configuration and status of an Airflow instance.
 //
 // @param request - GetAirflowRequest
 //
@@ -2838,7 +2862,15 @@ func (client *Client) GetAirflow(request *GetAirflowRequest) (_result *GetAirflo
 
 // Summary:
 //
-// # GetChatContent
+// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+//
+// Description:
+//
+// ## Request
+//
+// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+//
+// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
 //
 // @param request - GetChatContentRequest
 //
@@ -2853,7 +2885,15 @@ func (client *Client) GetChatContentWithSSE(request *GetChatContentRequest, runt
 
 // Summary:
 //
-// # GetChatContent
+// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+//
+// Description:
+//
+// ## Request
+//
+// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+//
+// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
 //
 // @param request - GetChatContentRequest
 //
@@ -2909,7 +2949,15 @@ func (client *Client) GetChatContentWithOptions(request *GetChatContentRequest, 
 
 // Summary:
 //
-// # GetChatContent
+// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+//
+// Description:
+//
+// ## Request
+//
+// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+//
+// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
 //
 // @param request - GetChatContentRequest
 //
@@ -2927,7 +2975,7 @@ func (client *Client) GetChatContent(request *GetChatContentRequest) (_result *G
 
 // Summary:
 //
-// 获取主账号下的子账号信息
+// Retrieves information about a RAM user that belongs to an Alibaba Cloud account.
 //
 // @param request - GetDataAgentSubAccountInfoRequest
 //
@@ -2975,7 +3023,7 @@ func (client *Client) GetDataAgentSubAccountInfoWithOptions(request *GetDataAgen
 
 // Summary:
 //
-// 获取主账号下的子账号信息
+// Retrieves information about a RAM user that belongs to an Alibaba Cloud account.
 //
 // @param request - GetDataAgentSubAccountInfoRequest
 //
@@ -2993,7 +3041,7 @@ func (client *Client) GetDataAgentSubAccountInfo(request *GetDataAgentSubAccount
 
 // Summary:
 //
-// 获取空间信息
+// Retrieves workspace details.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -3041,7 +3089,7 @@ func (client *Client) GetDataAgentWorkspaceInfoWithOptions(request *GetDataAgent
 
 // Summary:
 //
-// 获取空间信息
+// Retrieves workspace details.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -3059,7 +3107,7 @@ func (client *Client) GetDataAgentWorkspaceInfo(request *GetDataAgentWorkspaceIn
 
 // Summary:
 //
-// 获取uc的数据库目录
+// Retrieves the data catalog of a data lake.
 //
 // @param request - GetDataLakeCatalogRequest
 //
@@ -3111,7 +3159,7 @@ func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogR
 
 // Summary:
 //
-// 获取uc的数据库目录
+// Retrieves the data catalog of a data lake.
 //
 // @param request - GetDataLakeCatalogRequest
 //
@@ -3129,7 +3177,7 @@ func (client *Client) GetDataLakeCatalog(request *GetDataLakeCatalogRequest) (_r
 
 // Summary:
 //
-// 获取UC的数据库
+// Retrieves information about a database in a data lake.
 //
 // @param request - GetDataLakeDatabaseRequest
 //
@@ -3185,7 +3233,7 @@ func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabas
 
 // Summary:
 //
-// 获取UC的数据库
+// Retrieves information about a database in a data lake.
 //
 // @param request - GetDataLakeDatabaseRequest
 //
@@ -3203,7 +3251,7 @@ func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (
 
 // Summary:
 //
-// 获取湖仓自定义函数详细信息
+// Retrieves the details of a user-defined function in a data lake.
 //
 // @param request - GetDataLakeFunctionRequest
 //
@@ -3263,7 +3311,7 @@ func (client *Client) GetDataLakeFunctionWithOptions(request *GetDataLakeFunctio
 
 // Summary:
 //
-// 获取湖仓自定义函数详细信息
+// Retrieves the details of a user-defined function in a data lake.
 //
 // @param request - GetDataLakeFunctionRequest
 //
@@ -3281,7 +3329,7 @@ func (client *Client) GetDataLakeFunction(request *GetDataLakeFunctionRequest) (
 
 // Summary:
 //
-// 获取湖仓表分区详情
+// Retrieves the details of a data lakehouse table partition.
 //
 // @param tmpReq - GetDataLakePartitionRequest
 //
@@ -3351,7 +3399,7 @@ func (client *Client) GetDataLakePartitionWithOptions(tmpReq *GetDataLakePartiti
 
 // Summary:
 //
-// 获取湖仓表分区详情
+// Retrieves the details of a data lakehouse table partition.
 //
 // @param request - GetDataLakePartitionRequest
 //
@@ -3369,7 +3417,7 @@ func (client *Client) GetDataLakePartition(request *GetDataLakePartitionRequest)
 
 // Summary:
 //
-// 获取表信息
+// Retrieves information about a table in a data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -3429,7 +3477,7 @@ func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableReque
 
 // Summary:
 //
-// 获取表信息
+// Retrieves information about a table in a data lake.
 //
 // @param request - GetDataLakeTableRequest
 //
@@ -3447,7 +3495,7 @@ func (client *Client) GetDataLakeTable(request *GetDataLakeTableRequest) (_resul
 
 // Summary:
 //
-// 调度运行Notebook文件
+// Submits a task to schedule and run a Notebook file.
 //
 // @param request - GetNotebookAndSubmitTaskRequest
 //
@@ -3509,7 +3557,7 @@ func (client *Client) GetNotebookAndSubmitTaskWithOptions(request *GetNotebookAn
 
 // Summary:
 //
-// 调度运行Notebook文件
+// Submits a task to schedule and run a Notebook file.
 //
 // @param request - GetNotebookAndSubmitTaskRequest
 //
@@ -3527,7 +3575,7 @@ func (client *Client) GetNotebookAndSubmitTask(request *GetNotebookAndSubmitTask
 
 // Summary:
 //
-// 查看Notebook任务运行结果
+// Retrieves the execution status of a Notebook task.
 //
 // @param request - GetNotebookTaskStatusRequest
 //
@@ -3579,7 +3627,7 @@ func (client *Client) GetNotebookTaskStatusWithOptions(request *GetNotebookTaskS
 
 // Summary:
 //
-// 查看Notebook任务运行结果
+// Retrieves the execution status of a Notebook task.
 //
 // @param request - GetNotebookTaskStatusRequest
 //
@@ -3597,7 +3645,11 @@ func (client *Client) GetNotebookTaskStatus(request *GetNotebookTaskStatusReques
 
 // Summary:
 //
-// 读取工作空间的代码文件内容
+// Retrieves the content of a code file from a workspace. The response header includes the file\\"s modification time (`mtime`).
+//
+// Description:
+//
+// Retrieves the content of a specified code file from a workspace.
 //
 // @param request - GetWorkspaceCodeRequest
 //
@@ -3649,7 +3701,11 @@ func (client *Client) GetWorkspaceCodeWithOptions(request *GetWorkspaceCodeReque
 
 // Summary:
 //
-// 读取工作空间的代码文件内容
+// Retrieves the content of a code file from a workspace. The response header includes the file\\"s modification time (`mtime`).
+//
+// Description:
+//
+// Retrieves the content of a specified code file from a workspace.
 //
 // @param request - GetWorkspaceCodeRequest
 //
@@ -3667,7 +3723,11 @@ func (client *Client) GetWorkspaceCode(request *GetWorkspaceCodeRequest) (_resul
 
 // Summary:
 //
-// 获取工作空间发布配置
+// Retrieves the deployment configuration of a workspace.
+//
+// Description:
+//
+// This operation retrieves the deployment configuration of a workspace. The configuration includes details such as repository and branch information, and directories to exclude.
 //
 // @param request - GetWorkspaceCodePublishSettingRequest
 //
@@ -3711,7 +3771,11 @@ func (client *Client) GetWorkspaceCodePublishSettingWithOptions(request *GetWork
 
 // Summary:
 //
-// 获取工作空间发布配置
+// Retrieves the deployment configuration of a workspace.
+//
+// Description:
+//
+// This operation retrieves the deployment configuration of a workspace. The configuration includes details such as repository and branch information, and directories to exclude.
 //
 // @param request - GetWorkspaceCodePublishSettingRequest
 //
@@ -3729,7 +3793,11 @@ func (client *Client) GetWorkspaceCodePublishSetting(request *GetWorkspaceCodePu
 
 // Summary:
 //
-// 获取工作空间配额
+// Returns the quota for a workspace.
+//
+// Description:
+//
+// Retrieves the resource quotas and instance status for a workspace.
 //
 // @param request - GetWorkspaceQuotaRequest
 //
@@ -3773,7 +3841,11 @@ func (client *Client) GetWorkspaceQuotaWithOptions(request *GetWorkspaceQuotaReq
 
 // Summary:
 //
-// 获取工作空间配额
+// Returns the quota for a workspace.
+//
+// Description:
+//
+// Retrieves the resource quotas and instance status for a workspace.
 //
 // @param request - GetWorkspaceQuotaRequest
 //
@@ -3791,7 +3863,11 @@ func (client *Client) GetWorkspaceQuota(request *GetWorkspaceQuotaRequest) (_res
 
 // Summary:
 //
-// 获取可用的Airflow版本列表
+// Lists the available Airflow versions.
+//
+// Description:
+//
+// Lists the available Airflow versions.
 //
 // @param request - ListAirflowVersionsRequest
 //
@@ -3835,7 +3911,11 @@ func (client *Client) ListAirflowVersionsWithOptions(request *ListAirflowVersion
 
 // Summary:
 //
-// 获取可用的Airflow版本列表
+// Lists the available Airflow versions.
+//
+// Description:
+//
+// Lists the available Airflow versions.
 //
 // @param request - ListAirflowVersionsRequest
 //
@@ -3853,7 +3933,7 @@ func (client *Client) ListAirflowVersions(request *ListAirflowVersionsRequest) (
 
 // Summary:
 //
-// 列出资源Airflow
+// Retrieves a list of Airflow instances in a workspace.
 //
 // @param request - ListAirflowsRequest
 //
@@ -3913,7 +3993,7 @@ func (client *Client) ListAirflowsWithOptions(request *ListAirflowsRequest, runt
 
 // Summary:
 //
-// 列出资源Airflow
+// Retrieves a list of Airflow instances in a workspace.
 //
 // @param request - ListAirflowsRequest
 //
@@ -3931,7 +4011,7 @@ func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListA
 
 // Summary:
 //
-// # ListCustomAgent
+// ListCustomAgent returns a list of all custom agents from the personal space and workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -3995,7 +4075,7 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 
 // Summary:
 //
-// # ListCustomAgent
+// ListCustomAgent returns a list of all custom agents from the personal space and workspaces.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -4013,7 +4093,7 @@ func (client *Client) ListCustomAgent(request *ListCustomAgentRequest) (_result 
 
 // Summary:
 //
-// # ListDataAgentSession
+// Retrieve a list of Data Agent session descriptions.
 //
 // @param request - ListDataAgentSessionRequest
 //
@@ -4093,7 +4173,7 @@ func (client *Client) ListDataAgentSessionWithOptions(request *ListDataAgentSess
 
 // Summary:
 //
-// # ListDataAgentSession
+// Retrieve a list of Data Agent session descriptions.
 //
 // @param request - ListDataAgentSessionRequest
 //
@@ -4111,7 +4191,7 @@ func (client *Client) ListDataAgentSession(request *ListDataAgentSessionRequest)
 
 // Summary:
 //
-// 获取主账号下的空间（分页）
+// Retrieves paginated collaboration workspaces for an Alibaba Cloud account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -4187,7 +4267,7 @@ func (client *Client) ListDataAgentWorkspaceWithOptions(request *ListDataAgentWo
 
 // Summary:
 //
-// 获取主账号下的空间（分页）
+// Retrieves paginated collaboration workspaces for an Alibaba Cloud account.
 //
 // @param request - ListDataAgentWorkspaceRequest
 //
@@ -4205,7 +4285,7 @@ func (client *Client) ListDataAgentWorkspace(request *ListDataAgentWorkspaceRequ
 
 // Summary:
 //
-// 获取空间所有成员
+// Lists all members in a workspace.
 //
 // @param request - ListDataAgentWorkspaceMemberRequest
 //
@@ -4285,7 +4365,7 @@ func (client *Client) ListDataAgentWorkspaceMemberWithOptions(request *ListDataA
 
 // Summary:
 //
-// 获取空间所有成员
+// Lists all members in a workspace.
 //
 // @param request - ListDataAgentWorkspaceMemberRequest
 //
@@ -4303,7 +4383,7 @@ func (client *Client) ListDataAgentWorkspaceMember(request *ListDataAgentWorkspa
 
 // Summary:
 //
-// # ListDataCenterDatabase
+// Lists user-uploaded files in a data center, excluding databases.
 //
 // @param request - ListDataCenterDatabaseRequest
 //
@@ -4363,7 +4443,7 @@ func (client *Client) ListDataCenterDatabaseWithOptions(request *ListDataCenterD
 
 // Summary:
 //
-// # ListDataCenterDatabase
+// Lists user-uploaded files in a data center, excluding databases.
 //
 // @param request - ListDataCenterDatabaseRequest
 //
@@ -4381,7 +4461,7 @@ func (client *Client) ListDataCenterDatabase(request *ListDataCenterDatabaseRequ
 
 // Summary:
 //
-// # ListDataCenterTable
+// Retrieves a list of user-uploaded tables from the data center, for file types only.
 //
 // @param request - ListDataCenterTableRequest
 //
@@ -4457,7 +4537,7 @@ func (client *Client) ListDataCenterTableWithOptions(request *ListDataCenterTabl
 
 // Summary:
 //
-// # ListDataCenterTable
+// Retrieves a list of user-uploaded tables from the data center, for file types only.
 //
 // @param request - ListDataCenterTableRequest
 //
@@ -4475,7 +4555,7 @@ func (client *Client) ListDataCenterTable(request *ListDataCenterTableRequest) (
 
 // Summary:
 //
-// 获取uc的数据库目录列表
+// Retrieves a list of data lake catalogs.
 //
 // @param request - ListDataLakeCatalogRequest
 //
@@ -4527,7 +4607,7 @@ func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalo
 
 // Summary:
 //
-// 获取uc的数据库目录列表
+// Retrieves a list of data lake catalogs.
 //
 // @param request - ListDataLakeCatalogRequest
 //
@@ -4545,7 +4625,7 @@ func (client *Client) ListDataLakeCatalog(request *ListDataLakeCatalogRequest) (
 
 // Summary:
 //
-// 获取数据库列表
+// Retrieves a list of databases in a data lake.
 //
 // @param request - ListDataLakeDatabaseRequest
 //
@@ -4609,7 +4689,7 @@ func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatab
 
 // Summary:
 //
-// 获取数据库列表
+// Retrieves a list of databases in a data lake.
 //
 // @param request - ListDataLakeDatabaseRequest
 //
@@ -4627,7 +4707,7 @@ func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest)
 
 // Summary:
 //
-// 获取数据湖函数列表
+// Retrieves a list of data lake functions.
 //
 // @param request - ListDataLakeFunctionRequest
 //
@@ -4695,7 +4775,7 @@ func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunct
 
 // Summary:
 //
-// 获取数据湖函数列表
+// Retrieves a list of data lake functions.
 //
 // @param request - ListDataLakeFunctionRequest
 //
@@ -4713,7 +4793,7 @@ func (client *Client) ListDataLakeFunction(request *ListDataLakeFunctionRequest)
 
 // Summary:
 //
-// 获取数据湖函数名列表
+// Retrieves a list of data lake function names.
 //
 // @param request - ListDataLakeFunctionNameRequest
 //
@@ -4781,7 +4861,7 @@ func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeF
 
 // Summary:
 //
-// 获取数据湖函数名列表
+// Retrieves a list of data lake function names.
 //
 // @param request - ListDataLakeFunctionNameRequest
 //
@@ -4799,7 +4879,7 @@ func (client *Client) ListDataLakeFunctionName(request *ListDataLakeFunctionName
 
 // Summary:
 //
-// 获取数据湖表分区列表
+// Retrieves the list of partitions of a data lake table.
 //
 // @param tmpReq - ListDataLakePartitionRequest
 //
@@ -4879,7 +4959,7 @@ func (client *Client) ListDataLakePartitionWithOptions(tmpReq *ListDataLakeParti
 
 // Summary:
 //
-// 获取数据湖表分区列表
+// Retrieves the list of partitions of a data lake table.
 //
 // @param request - ListDataLakePartitionRequest
 //
@@ -4897,7 +4977,7 @@ func (client *Client) ListDataLakePartition(request *ListDataLakePartitionReques
 
 // Summary:
 //
-// 根据筛选条件获取数据湖表分区列表
+// Retrieves a list of partitions for a data lake table based on filter conditions.
 //
 // @param request - ListDataLakePartitionByFilterRequest
 //
@@ -4971,7 +5051,7 @@ func (client *Client) ListDataLakePartitionByFilterWithOptions(request *ListData
 
 // Summary:
 //
-// 根据筛选条件获取数据湖表分区列表
+// Retrieves a list of partitions for a data lake table based on filter conditions.
 //
 // @param request - ListDataLakePartitionByFilterRequest
 //
@@ -4989,7 +5069,7 @@ func (client *Client) ListDataLakePartitionByFilter(request *ListDataLakePartiti
 
 // Summary:
 //
-// 获取数据湖表分区名列表
+// Retrieves a list of partition names for a data lake table.
 //
 // @param request - ListDataLakePartitionNameRequest
 //
@@ -5057,7 +5137,7 @@ func (client *Client) ListDataLakePartitionNameWithOptions(request *ListDataLake
 
 // Summary:
 //
-// 获取数据湖表分区名列表
+// Retrieves a list of partition names for a data lake table.
 //
 // @param request - ListDataLakePartitionNameRequest
 //
@@ -5075,7 +5155,7 @@ func (client *Client) ListDataLakePartitionName(request *ListDataLakePartitionNa
 
 // Summary:
 //
-// 获取数据湖表列表
+// Retrieves a list of data lake tables.
 //
 // @param request - ListDataLakeTableRequest
 //
@@ -5147,7 +5227,7 @@ func (client *Client) ListDataLakeTableWithOptions(request *ListDataLakeTableReq
 
 // Summary:
 //
-// 获取数据湖表列表
+// Retrieves a list of data lake tables.
 //
 // @param request - ListDataLakeTableRequest
 //
@@ -5165,7 +5245,7 @@ func (client *Client) ListDataLakeTable(request *ListDataLakeTableRequest) (_res
 
 // Summary:
 //
-// 获取数据湖表名列表
+// Retrieves a list of data lake table names.
 //
 // @param request - ListDataLakeTableNameRequest
 //
@@ -5237,7 +5317,7 @@ func (client *Client) ListDataLakeTableNameWithOptions(request *ListDataLakeTabl
 
 // Summary:
 //
-// 获取数据湖表名列表
+// Retrieves a list of data lake table names.
 //
 // @param request - ListDataLakeTableNameRequest
 //
@@ -5255,7 +5335,7 @@ func (client *Client) ListDataLakeTableName(request *ListDataLakeTableNameReques
 
 // Summary:
 //
-// 获取表信息
+// Retrieves the basic information about tables in a data lake.
 //
 // @param request - ListDataLakeTablebaseInfoRequest
 //
@@ -5323,7 +5403,7 @@ func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLake
 
 // Summary:
 //
-// 获取表信息
+// Retrieves the basic information about tables in a data lake.
 //
 // @param request - ListDataLakeTablebaseInfoRequest
 //
@@ -5341,7 +5421,7 @@ func (client *Client) ListDataLakeTablebaseInfo(request *ListDataLakeTablebaseIn
 
 // Summary:
 //
-// 分页查询onemeta3.0的知识库chunks
+// Queries a list of chunks.
 //
 // @param request - ListDocumentChunksRequest
 //
@@ -5409,7 +5489,7 @@ func (client *Client) ListDocumentChunksWithOptions(request *ListDocumentChunksR
 
 // Summary:
 //
-// 分页查询onemeta3.0的知识库chunks
+// Queries a list of chunks.
 //
 // @param request - ListDocumentChunksRequest
 //
@@ -5427,7 +5507,7 @@ func (client *Client) ListDocumentChunks(request *ListDocumentChunksRequest) (_r
 
 // Summary:
 //
-// 获取文档列表
+// Lists the documents in a knowledge base.
 //
 // @param request - ListDocumentsRequest
 //
@@ -5495,7 +5575,7 @@ func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, ru
 
 // Summary:
 //
-// 获取文档列表
+// Lists the documents in a knowledge base.
 //
 // @param request - ListDocumentsRequest
 //
@@ -5607,7 +5687,7 @@ func (client *Client) ListFileUpload(request *ListFileUploadRequest) (_result *L
 
 // Summary:
 //
-// 分页查询onemeta3.0的知识库
+// Returns a paginated list of knowledge bases.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -5675,7 +5755,7 @@ func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesR
 
 // Summary:
 //
-// 分页查询onemeta3.0的知识库
+// Returns a paginated list of knowledge bases.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -5693,7 +5773,11 @@ func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_r
 
 // Summary:
 //
-// 列出工作空间目录下的code文件
+// Lists code files and directories at a specified path in a workspace.
+//
+// Description:
+//
+// This operation lists the code files and directories at a specified path in a workspace.
 //
 // @param request - ListWorkspaceCodeRequest
 //
@@ -5741,7 +5825,11 @@ func (client *Client) ListWorkspaceCodeWithOptions(request *ListWorkspaceCodeReq
 
 // Summary:
 //
-// 列出工作空间目录下的code文件
+// Lists code files and directories at a specified path in a workspace.
+//
+// Description:
+//
+// This operation lists the code files and directories at a specified path in a workspace.
 //
 // @param request - ListWorkspaceCodeRequest
 //
@@ -5759,7 +5847,7 @@ func (client *Client) ListWorkspaceCode(request *ListWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// # ModifyCustomAgent
+// # Modify a custom agent in a personal space or workspace
 //
 // @param tmpReq - ModifyCustomAgentRequest
 //
@@ -5877,7 +5965,7 @@ func (client *Client) ModifyCustomAgentWithOptions(tmpReq *ModifyCustomAgentRequ
 
 // Summary:
 //
-// # ModifyCustomAgent
+// # Modify a custom agent in a personal space or workspace
 //
 // @param request - ModifyCustomAgentRequest
 //
@@ -5895,7 +5983,7 @@ func (client *Client) ModifyCustomAgent(request *ModifyCustomAgentRequest) (_res
 
 // Summary:
 //
-// # OperateCustomAgent
+// Operate custom agents in personal spaces and workspaces.
 //
 // @param request - OperateCustomAgentRequest
 //
@@ -5947,7 +6035,7 @@ func (client *Client) OperateCustomAgentWithOptions(request *OperateCustomAgentR
 
 // Summary:
 //
-// # OperateCustomAgent
+// Operate custom agents in personal spaces and workspaces.
 //
 // @param request - OperateCustomAgentRequest
 //
@@ -5965,7 +6053,11 @@ func (client *Client) OperateCustomAgent(request *OperateCustomAgentRequest) (_r
 
 // Summary:
 //
-// 重新部署Airflow实例
+// # Redeploy an Airflow instance
+//
+// Description:
+//
+// Redeploys an Airflow instance.
 //
 // @param request - RedeployAirflowRequest
 //
@@ -6013,7 +6105,11 @@ func (client *Client) RedeployAirflowWithOptions(request *RedeployAirflowRequest
 
 // Summary:
 //
-// 重新部署Airflow实例
+// # Redeploy an Airflow instance
+//
+// Description:
+//
+// Redeploys an Airflow instance.
 //
 // @param request - RedeployAirflowRequest
 //
@@ -6031,7 +6127,7 @@ func (client *Client) RedeployAirflow(request *RedeployAirflowRequest) (_result 
 
 // Summary:
 //
-// 从空间中移除用户
+// Removes a user from a workspace.
 //
 // @param request - RemoveUserToDataAgentWorkspaceRequest
 //
@@ -6083,7 +6179,7 @@ func (client *Client) RemoveUserToDataAgentWorkspaceWithOptions(request *RemoveU
 
 // Summary:
 //
-// 从空间中移除用户
+// Removes a user from a workspace.
 //
 // @param request - RemoveUserToDataAgentWorkspaceRequest
 //
@@ -6101,7 +6197,7 @@ func (client *Client) RemoveUserToDataAgentWorkspace(request *RemoveUserToDataAg
 
 // Summary:
 //
-// 检索知识库
+// # Query a knowledge base
 //
 // @param request - RetrieveKnowledgeBaseRequest
 //
@@ -6193,7 +6289,7 @@ func (client *Client) RetrieveKnowledgeBaseWithOptions(request *RetrieveKnowledg
 
 // Summary:
 //
-// 检索知识库
+// # Query a knowledge base
 //
 // @param request - RetrieveKnowledgeBaseRequest
 //
@@ -6211,7 +6307,11 @@ func (client *Client) RetrieveKnowledgeBase(request *RetrieveKnowledgeBaseReques
 
 // Summary:
 //
-// 保存工作空间代码，如果文件不存在则自动新建
+// Saves code in a workspace and creates the file if it does not exist.
+//
+// Description:
+//
+// Saves code in a workspace and optionally publishes it to a repository.
 //
 // @param request - SaveWorkspaceCodeRequest
 //
@@ -6226,33 +6326,33 @@ func (client *Client) SaveWorkspaceCodeWithOptions(request *SaveWorkspaceCodeReq
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.Content) {
-		query["Content"] = request.Content
-	}
-
-	if !dara.IsNil(request.Force) {
-		query["Force"] = request.Force
-	}
-
-	if !dara.IsNil(request.Iac) {
-		query["Iac"] = request.Iac
-	}
-
-	if !dara.IsNil(request.Mtime) {
-		query["Mtime"] = request.Mtime
-	}
-
-	if !dara.IsNil(request.Repo) {
-		query["Repo"] = request.Repo
-	}
-
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Force) {
+		body["Force"] = request.Force
+	}
+
+	if !dara.IsNil(request.Iac) {
+		body["Iac"] = request.Iac
+	}
+
+	if !dara.IsNil(request.Mtime) {
+		body["Mtime"] = request.Mtime
+	}
+
 	if !dara.IsNil(request.Path) {
 		body["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.Repo) {
+		body["Repo"] = request.Repo
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6281,7 +6381,11 @@ func (client *Client) SaveWorkspaceCodeWithOptions(request *SaveWorkspaceCodeReq
 
 // Summary:
 //
-// 保存工作空间代码，如果文件不存在则自动新建
+// Saves code in a workspace and creates the file if it does not exist.
+//
+// Description:
+//
+// Saves code in a workspace and optionally publishes it to a repository.
 //
 // @param request - SaveWorkspaceCodeRequest
 //
@@ -6299,7 +6403,23 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// # SendChatMessage
+// Sends a user message to a specified session or ends the session.
+//
+// Description:
+//
+// ## Request
+//
+// - The `agent_id` and `session_id` fields are required.
+//
+// - The `message_type` field defaults to `primary`. Set it to `additional` to append information or to `cancel` to end the session.
+//
+// - The `reply_to` field specifies which agent message the current message is a response to. It defaults to `0`.
+//
+// - When `message_type` is `additional`, the `question` field is required.
+//
+// - Use the `quoted_message` field to reference a previous user message.
+//
+// - The optional fields `data_source`, `dms_user`, `db_metadata`, and `session_config` provide more detailed context.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -6401,7 +6521,23 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 // Summary:
 //
-// # SendChatMessage
+// Sends a user message to a specified session or ends the session.
+//
+// Description:
+//
+// ## Request
+//
+// - The `agent_id` and `session_id` fields are required.
+//
+// - The `message_type` field defaults to `primary`. Set it to `additional` to append information or to `cancel` to end the session.
+//
+// - The `reply_to` field specifies which agent message the current message is a response to. It defaults to `0`.
+//
+// - When `message_type` is `additional`, the `question` field is required.
+//
+// - Use the `quoted_message` field to reference a previous user message.
+//
+// - The optional fields `data_source`, `dms_user`, `db_metadata`, and `session_config` provide more detailed context.
 //
 // @param request - SendChatMessageRequest
 //
@@ -6419,7 +6555,11 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 
 // Summary:
 //
-// 设置工作空间代码发布配置
+// Sets the code deployment configuration for a workspace. This is an asynchronous operation that returns a key. Use this key to query the operation\\"s status by calling the WorkspaceActionStatus operation.
+//
+// Description:
+//
+// Sets the default code deployment configuration for a workspace. This configuration includes the Git repository branch and the directories to exclude from deployment.
 //
 // @param request - SetWorkspaceCodePublishSettingRequest
 //
@@ -6469,7 +6609,11 @@ func (client *Client) SetWorkspaceCodePublishSettingWithOptions(request *SetWork
 
 // Summary:
 //
-// 设置工作空间代码发布配置
+// Sets the code deployment configuration for a workspace. This is an asynchronous operation that returns a key. Use this key to query the operation\\"s status by calling the WorkspaceActionStatus operation.
+//
+// Description:
+//
+// Sets the default code deployment configuration for a workspace. This configuration includes the Git repository branch and the directories to exclude from deployment.
 //
 // @param request - SetWorkspaceCodePublishSettingRequest
 //
@@ -6487,7 +6631,11 @@ func (client *Client) SetWorkspaceCodePublishSetting(request *SetWorkspaceCodePu
 
 // Summary:
 //
-// 设置工作空间配额
+// Sets the quota for a workspace.
+//
+// Description:
+//
+// Sets the quota for a specific workspace.
 //
 // @param request - SetWorkspaceQuotaRequest
 //
@@ -6547,7 +6695,11 @@ func (client *Client) SetWorkspaceQuotaWithOptions(request *SetWorkspaceQuotaReq
 
 // Summary:
 //
-// 设置工作空间配额
+// Sets the quota for a workspace.
+//
+// Description:
+//
+// Sets the quota for a specific workspace.
 //
 // @param request - SetWorkspaceQuotaRequest
 //
@@ -6565,7 +6717,7 @@ func (client *Client) SetWorkspaceQuota(request *SetWorkspaceQuotaRequest) (_res
 
 // Summary:
 //
-// 更新UpdateAirflow
+// Updates the properties of an Airflow instance.
 //
 // @param tmpReq - UpdateAirflowRequest
 //
@@ -6667,7 +6819,7 @@ func (client *Client) UpdateAirflowWithOptions(tmpReq *UpdateAirflowRequest, run
 
 // Summary:
 //
-// 更新UpdateAirflow
+// Updates the properties of an Airflow instance.
 //
 // @param request - UpdateAirflowRequest
 //
@@ -6685,7 +6837,7 @@ func (client *Client) UpdateAirflow(request *UpdateAirflowRequest) (_result *Upd
 
 // Summary:
 //
-// 更新空间的信息
+// Updates workspace information.
 //
 // @param request - UpdateDataAgentSpaceInfoRequest
 //
@@ -6745,7 +6897,7 @@ func (client *Client) UpdateDataAgentSpaceInfoWithOptions(request *UpdateDataAge
 
 // Summary:
 //
-// 更新空间的信息
+// Updates workspace information.
 //
 // @param request - UpdateDataAgentSpaceInfoRequest
 //
@@ -6763,7 +6915,7 @@ func (client *Client) UpdateDataAgentSpaceInfo(request *UpdateDataAgentSpaceInfo
 
 // Summary:
 //
-// 调整空间成员的角色
+// Changes the role of a workspace member.
 //
 // @param request - UpdateDataAgentWorkspaceMemberRoleRequest
 //
@@ -6819,7 +6971,7 @@ func (client *Client) UpdateDataAgentWorkspaceMemberRoleWithOptions(request *Upd
 
 // Summary:
 //
-// 调整空间成员的角色
+// Changes the role of a workspace member.
 //
 // @param request - UpdateDataAgentWorkspaceMemberRoleRequest
 //
@@ -6837,7 +6989,7 @@ func (client *Client) UpdateDataAgentWorkspaceMemberRole(request *UpdateDataAgen
 
 // Summary:
 //
-// 更新湖仓数据库
+// Updates the information of a data lakehouse database.
 //
 // @param tmpReq - UpdateDataLakeDatabaseRequest
 //
@@ -6911,7 +7063,7 @@ func (client *Client) UpdateDataLakeDatabaseWithOptions(tmpReq *UpdateDataLakeDa
 
 // Summary:
 //
-// 更新湖仓数据库
+// Updates the information of a data lakehouse database.
 //
 // @param request - UpdateDataLakeDatabaseRequest
 //
@@ -6929,7 +7081,7 @@ func (client *Client) UpdateDataLakeDatabase(request *UpdateDataLakeDatabaseRequ
 
 // Summary:
 //
-// 更新湖仓自定义函数
+// Update a user-defined function in a data lake.
 //
 // @param tmpReq - UpdateDataLakeFunctionRequest
 //
@@ -7001,7 +7153,7 @@ func (client *Client) UpdateDataLakeFunctionWithOptions(tmpReq *UpdateDataLakeFu
 
 // Summary:
 //
-// 更新湖仓自定义函数
+// Update a user-defined function in a data lake.
 //
 // @param request - UpdateDataLakeFunctionRequest
 //
@@ -7019,7 +7171,7 @@ func (client *Client) UpdateDataLakeFunction(request *UpdateDataLakeFunctionRequ
 
 // Summary:
 //
-// 更新湖仓表分区
+// Updates the partition information of a data lake table.
 //
 // @param tmpReq - UpdateDataLakePartitionRequest
 //
@@ -7091,7 +7243,7 @@ func (client *Client) UpdateDataLakePartitionWithOptions(tmpReq *UpdateDataLakeP
 
 // Summary:
 //
-// 更新湖仓表分区
+// Updates the partition information of a data lake table.
 //
 // @param request - UpdateDataLakePartitionRequest
 //
@@ -7109,7 +7261,7 @@ func (client *Client) UpdateDataLakePartition(request *UpdateDataLakePartitionRe
 
 // Summary:
 //
-// 更新湖仓表信息
+// Updates the information of a data lake table.
 //
 // @param tmpReq - UpdateDataLakeTableRequest
 //
@@ -7181,7 +7333,7 @@ func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTable
 
 // Summary:
 //
-// 更新湖仓表信息
+// Updates the information of a data lake table.
 //
 // @param request - UpdateDataLakeTableRequest
 //
@@ -7199,7 +7351,7 @@ func (client *Client) UpdateDataLakeTable(request *UpdateDataLakeTableRequest) (
 
 // Summary:
 //
-// 更新文档
+// Updates the description of a document.
 //
 // @param request - UpdateDocumentRequest
 //
@@ -7251,7 +7403,7 @@ func (client *Client) UpdateDocumentWithOptions(request *UpdateDocumentRequest, 
 
 // Summary:
 //
-// 更新文档
+// Updates the description of a document.
 //
 // @param request - UpdateDocumentRequest
 //
@@ -7269,7 +7421,7 @@ func (client *Client) UpdateDocument(request *UpdateDocumentRequest) (_result *U
 
 // Summary:
 //
-// 更新onemeta3.0的知识库
+// Updates a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -7321,7 +7473,7 @@ func (client *Client) UpdateKnowledgeBaseWithOptions(request *UpdateKnowledgeBas
 
 // Summary:
 //
-// 更新onemeta3.0的知识库
+// Updates a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -7339,7 +7491,7 @@ func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (
 
 // Summary:
 //
-// 上传文档
+// Uploads a document to a knowledge base.
 //
 // @param tmpReq - UploadDocumentRequest
 //
@@ -7433,7 +7585,7 @@ func (client *Client) UploadDocumentWithOptions(tmpReq *UploadDocumentRequest, r
 
 // Summary:
 //
-// 上传文档
+// Uploads a document to a knowledge base.
 //
 // @param request - UploadDocumentRequest
 //
@@ -7451,7 +7603,7 @@ func (client *Client) UploadDocument(request *UploadDocumentRequest) (_result *U
 
 // Summary:
 //
-// 更新或插入onemeta3.0的知识库chunks
+// Upserts document chunks into a knowledge base.
 //
 // @param request - UpsertDocumentChunksRequest
 //
@@ -7503,7 +7655,7 @@ func (client *Client) UpsertDocumentChunksWithOptions(request *UpsertDocumentChu
 
 // Summary:
 //
-// 更新或插入onemeta3.0的知识库chunks
+// Upserts document chunks into a knowledge base.
 //
 // @param request - UpsertDocumentChunksRequest
 //
@@ -7521,7 +7673,11 @@ func (client *Client) UpsertDocumentChunks(request *UpsertDocumentChunksRequest)
 
 // Summary:
 //
-// 工作空间异步操作日志查询接口
+// Queries the log of an asynchronous task in a workspace.
+//
+// Description:
+//
+// Pass the `key` to view the execution log of the corresponding asynchronous task. Use this API for troubleshooting.
 //
 // @param request - WorkspaceActionLogRequest
 //
@@ -7569,7 +7725,11 @@ func (client *Client) WorkspaceActionLogWithOptions(request *WorkspaceActionLogR
 
 // Summary:
 //
-// 工作空间异步操作日志查询接口
+// Queries the log of an asynchronous task in a workspace.
+//
+// Description:
+//
+// Pass the `key` to view the execution log of the corresponding asynchronous task. Use this API for troubleshooting.
 //
 // @param request - WorkspaceActionLogRequest
 //
@@ -7587,7 +7747,11 @@ func (client *Client) WorkspaceActionLog(request *WorkspaceActionLogRequest) (_r
 
 // Summary:
 //
-// 工作空间异步操作状态查询接口
+// Queries the status of an asynchronous task in a workspace. Operations such as a deployment return a key. Call this operation with the key to retrieve the task\\"s status.
+//
+// Description:
+//
+// Provide the key returned by an asynchronous action, such as a deployment, to retrieve the task\\"s status.
 //
 // @param request - WorkspaceActionStatusRequest
 //
@@ -7635,7 +7799,11 @@ func (client *Client) WorkspaceActionStatusWithOptions(request *WorkspaceActionS
 
 // Summary:
 //
-// 工作空间异步操作状态查询接口
+// Queries the status of an asynchronous task in a workspace. Operations such as a deployment return a key. Call this operation with the key to retrieve the task\\"s status.
+//
+// Description:
+//
+// Provide the key returned by an asynchronous action, such as a deployment, to retrieve the task\\"s status.
 //
 // @param request - WorkspaceActionStatusRequest
 //
@@ -7653,7 +7821,11 @@ func (client *Client) WorkspaceActionStatus(request *WorkspaceActionStatusReques
 
 // Summary:
 //
-// 工作空间代码发布。这是个异步接口，请求返回一个key，请根据key查询 WorkspaceActionStatus接口获取状态
+// This asynchronous API returns a key. Use this key to query the WorkspaceActionStatus API for the code deployment status.
+//
+// Description:
+//
+// Deploys the code in a workspace.
 //
 // @param request - WorkspaceCodePublishRequest
 //
@@ -7703,7 +7875,11 @@ func (client *Client) WorkspaceCodePublishWithOptions(request *WorkspaceCodePubl
 
 // Summary:
 //
-// 工作空间代码发布。这是个异步接口，请求返回一个key，请根据key查询 WorkspaceActionStatus接口获取状态
+// This asynchronous API returns a key. Use this key to query the WorkspaceActionStatus API for the code deployment status.
+//
+// Description:
+//
+// Deploys the code in a workspace.
 //
 // @param request - WorkspaceCodePublishRequest
 //

@@ -18,14 +18,20 @@ type iGetNotebookTaskStatusRequest interface {
 }
 
 type GetNotebookTaskStatusRequest struct {
+	// The Notebook session ID.
+	//
 	// example:
 	//
 	// 8141456676986429894916354
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The scheduling task ID.
+	//
 	// example:
 	//
 	// c2b4cb5a-7420-49a8-aa7c-528becd6e1bf
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 8630242382****

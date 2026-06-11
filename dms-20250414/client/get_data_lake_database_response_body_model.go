@@ -22,19 +22,32 @@ type iGetDataLakeDatabaseResponseBody interface {
 }
 
 type GetDataLakeDatabaseResponseBody struct {
+	// The information about the database.
 	Database *DLDatabase `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// code: 404, can not find catalog, name : hive1 request id: FF737753-9641-1F51-AFDA-7DF54111****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E5EE2B9E-2F95-57FA-B284-CB441CEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

@@ -18,14 +18,20 @@ type iDeleteDocumentChunksRequest interface {
 }
 
 type DeleteDocumentChunksRequest struct {
+	// A list of chunk IDs.
+	//
 	// This parameter is required.
 	ChunkIds []*string `json:"ChunkIds,omitempty" xml:"ChunkIds,omitempty" type:"Repeated"`
+	// The name of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.md
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:

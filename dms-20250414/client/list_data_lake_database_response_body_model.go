@@ -26,27 +26,44 @@ type iListDataLakeDatabaseResponseBody interface {
 }
 
 type ListDataLakeDatabaseResponseBody struct {
+	// The list of databases.
 	DatabaseList []*DLDatabase `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The maximum number of entries returned per page. This parameter is used with \\`NextToken\\` for paging.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If this parameter is empty, no more results are available.
+	//
 	// example:
 	//
 	// NesLoKLEdIZrKhDT7I2g****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

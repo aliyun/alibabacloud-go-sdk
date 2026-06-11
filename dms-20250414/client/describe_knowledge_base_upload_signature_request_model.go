@@ -14,6 +14,8 @@ type iDescribeKnowledgeBaseUploadSignatureRequest interface {
 }
 
 type DescribeKnowledgeBaseUploadSignatureRequest struct {
+	// The knowledge base ID.
+	//
 	// This parameter is required.
 	//
 	// example:

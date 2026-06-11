@@ -34,17 +34,28 @@ type iAgenticCatalog interface {
 }
 
 type AgenticCatalog struct {
+	// A collection of key-value pairs that represents business attributes for the catalog, such as the data owner or department.
 	CatalogBizAttrs map[string]interface{} `json:"CatalogBizAttrs,omitempty" xml:"CatalogBizAttrs,omitempty"`
-	CatalogType     *string                `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	CatalogUuid     *string                `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DataSourceType  *string                `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataSourceUuid  *string                `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties      map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State           *int32                 `json:"State,omitempty" xml:"State,omitempty"`
-	StorageLocation *string                `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The type of the catalog. For example, `INTERNAL_METADATA` or `THIRD_PARTY`.
+	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	// The unique identifier (UUID) of the catalog. This parameter is system-generated and output-only.
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The type of the data source associated with the catalog. For example, `MySQL`, `PostgreSQL`, or `OSS`.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The unique identifier (UUID) of the associated data source.
+	DataSourceUuid *string `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
+	// The description of the catalog. It can be up to 2,048 characters long.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the catalog. The name can be up to 256 characters long.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A collection of key-value pairs that represents additional technical properties for the catalog.
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The ID of the region where the catalog is located. For example, `cn-hangzhou`.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The current state of the catalog. Valid values are: `0` (Creating), `1` (Active), `2` (Deleting), and `3` (Error).
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The storage location for the catalog\\"s metadata, such as a database name or a file path.
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
 func (s AgenticCatalog) String() string {

@@ -14,6 +14,8 @@ type iListAirflowVersionsRequest interface {
 }
 
 type ListAirflowVersionsRequest struct {
+	// The ID of the DMS workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

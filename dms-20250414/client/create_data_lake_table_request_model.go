@@ -22,24 +22,36 @@ type iCreateDataLakeTableRequest interface {
 }
 
 type CreateDataLakeTableRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The information about the table.
+	//
 	// This parameter is required.
 	TableInput *DLTableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
+	// The ID of the tenant.
+	//
+	// > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 12****

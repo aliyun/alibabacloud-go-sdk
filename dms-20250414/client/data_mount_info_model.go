@@ -20,18 +20,28 @@ type iDataMountInfo interface {
 }
 
 type DataMountInfo struct {
+	// The name of the mount directory. The actual mount path is prefixed with /Workspace/data/.
+	//
 	// example:
 	//
 	// image
 	MountFolderName *string `json:"MountFolderName,omitempty" xml:"MountFolderName,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// test-bucket
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The prefix. If this parameter is not specified, the root directory is used.
+	//
 	// example:
 	//
 	// /prod
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// Whether to mount the data volume as read-only.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false

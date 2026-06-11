@@ -16,8 +16,10 @@ type iTrialOrderEligibilityVO interface {
 }
 
 type TrialOrderEligibilityVO struct {
+	// Contains details about the eligibility status, such as the reason for ineligibility.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Valid   *bool   `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// Indicates whether the user is eligible for the trial.
+	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
 }
 
 func (s TrialOrderEligibilityVO) String() string {

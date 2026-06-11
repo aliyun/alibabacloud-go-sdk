@@ -22,19 +22,28 @@ type iCreateDataAgentWorkspaceResponseBody interface {
 }
 
 type CreateDataAgentWorkspaceResponseBody struct {
+	// The returned data structure.
 	Data *CreateDataAgentWorkspaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,39 +113,58 @@ func (s *CreateDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type CreateDataAgentWorkspaceResponseBodyData struct {
+	// The time the workspace was created, as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID of the workspace creator.
+	//
 	// example:
 	//
 	// 20282*****7591
-	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Indicates whether session sharing is enabled for the workspace.
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The time the workspace was last modified, as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765961516
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the user\\"s role in the workspace.
+	//
 	// example:
 	//
 	// owner
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The number of members in the workspace.
+	//
 	// example:
 	//
 	// 11
 	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20923*****7291
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The status of the workspace.
+	//
 	// example:
 	//
 	// active

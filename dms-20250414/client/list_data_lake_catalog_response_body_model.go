@@ -22,19 +22,32 @@ type iListDataLakeCatalogResponseBody interface {
 }
 
 type ListDataLakeCatalogResponseBody struct {
+	// A list of data catalogs.
 	CataLogList []*DLCatalog `json:"CataLogList,omitempty" xml:"CataLogList,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// E76DD2E7-EBAC-5724-B163-19AAC233****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - ******false**: The request failed.
+	//
 	// example:
 	//
 	// true

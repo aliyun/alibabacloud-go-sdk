@@ -28,29 +28,42 @@ type iDLPartition interface {
 }
 
 type DLPartition struct {
+	// The name of the data catalog.
+	//
 	// example:
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The time when the partition was created. The time is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1735109884
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The time when the partition was last accessed.
+	//
 	// example:
 	//
 	// 1608707407
-	LastAccessTime *int32               `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	Parameters     map[string]*string   `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Sd             *DLStorageDescriptor `json:"Sd,omitempty" xml:"Sd,omitempty"`
+	LastAccessTime *int32 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The key-value pairs for the partition.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The data storage description.
+	Sd *DLStorageDescriptor `json:"Sd,omitempty" xml:"Sd,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// table_name
-	TableName *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The partition values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DLPartition) String() string {

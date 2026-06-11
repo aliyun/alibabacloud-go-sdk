@@ -26,13 +26,20 @@ type iAgenticTableIndex interface {
 }
 
 type AgenticTableIndex struct {
-	ColumnNames     []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	IndexName       *string   `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	IndexType       *string   `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	Primary         *bool     `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// An array of column names included in the index.
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// An optional, user-defined description for the index.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique name of the index within the table.
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The type of the index, such as PRIMARY, UNIQUE, or NORMAL.
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// Specifies if the index is the primary key. A table can have only one primary key.
+	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// An array of physical column names from the database. Use this parameter when the names in ColumnNames are aliases or logical names.
 	RealColumnNames []*string `json:"RealColumnNames,omitempty" xml:"RealColumnNames,omitempty" type:"Repeated"`
-	Unique          *bool     `json:"Unique,omitempty" xml:"Unique,omitempty"`
+	// Specifies if the index enforces a unique constraint, requiring all its values to be unique across rows.
+	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
 }
 
 func (s AgenticTableIndex) String() string {

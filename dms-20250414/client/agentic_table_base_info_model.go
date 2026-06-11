@@ -28,14 +28,22 @@ type iAgenticTableBaseInfo interface {
 }
 
 type AgenticTableBaseInfo struct {
-	CatalogType   *string                 `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	DatabaseUuid  *string                 `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description   *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineMeta    *AgenticTableEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	Name          *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	QualifiedName *string                 `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	TableType     *string                 `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	TableUuid     *string                 `json:"TableUuid,omitempty" xml:"TableUuid,omitempty"`
+	// The catalog type.
+	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	// The database\\"s unique identifier.
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The table description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The engine metadata.
+	EngineMeta *AgenticTableEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
+	// The table name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The table\\"s qualified name.
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// The table type.
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The table\\"s unique identifier.
+	TableUuid *string `json:"TableUuid,omitempty" xml:"TableUuid,omitempty"`
 }
 
 func (s AgenticTableBaseInfo) String() string {

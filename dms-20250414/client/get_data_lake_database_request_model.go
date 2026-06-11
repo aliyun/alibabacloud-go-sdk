@@ -20,6 +20,8 @@ type iGetDataLakeDatabaseRequest interface {
 }
 
 type GetDataLakeDatabaseRequest struct {
+	// The name of the data catalog.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -29,6 +31,8 @@ type GetDataLakeDatabaseRequest struct {
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -38,10 +42,16 @@ type GetDataLakeDatabaseRequest struct {
 	//
 	// default
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
+	// > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
+	//
 	// example:
 	//
 	// 3****
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12****

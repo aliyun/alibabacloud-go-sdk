@@ -18,14 +18,20 @@ type iConfigAirflowRequest interface {
 }
 
 type ConfigAirflowRequest struct {
+	// The unique ID of the Airflow instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af-b3a7f110a6vmvn7xxxxxx
 	AirflowId *string `json:"AirflowId,omitempty" xml:"AirflowId,omitempty"`
+	// The list of custom Airflow configurations.
+	//
 	// This parameter is required.
 	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
+	// The DMS workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

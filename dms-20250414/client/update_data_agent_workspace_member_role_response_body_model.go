@@ -22,19 +22,28 @@ type iUpdateDataAgentWorkspaceMemberRoleResponseBody interface {
 }
 
 type UpdateDataAgentWorkspaceMemberRoleResponseBody struct {
+	// The returned data.
 	Data *UpdateDataAgentWorkspaceMemberRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,26 +113,38 @@ func (s *UpdateDataAgentWorkspaceMemberRoleResponseBody) Validate() error {
 }
 
 type UpdateDataAgentWorkspaceMemberRoleResponseBodyData struct {
+	// The time when the user joined the workspace. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765961516
 	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The UID of the member whose role was changed.
+	//
 	// example:
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The new role of the user.
+	//
 	// example:
 	//
 	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The number of running tasks for the user in the workspace.
+	//
 	// example:
 	//
 	// 10
 	RunningTaskNumber *int64 `json:"RunningTaskNumber,omitempty" xml:"RunningTaskNumber,omitempty"`
+	// The total number of tasks for the user in the workspace.
+	//
 	// example:
 	//
 	// 20
 	TotalTaskNumber *int64 `json:"TotalTaskNumber,omitempty" xml:"TotalTaskNumber,omitempty"`
+	// The RAM username.
+	//
 	// example:
 	//
 	// yunqitest

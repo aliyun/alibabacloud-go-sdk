@@ -22,19 +22,28 @@ type iListDataAgentWorkspaceMemberResponseBody interface {
 }
 
 type ListDataAgentWorkspaceMemberResponseBody struct {
+	// The returned data.
 	Data *ListDataAgentWorkspaceMemberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,27 +113,40 @@ func (s *ListDataAgentWorkspaceMemberResponseBody) Validate() error {
 }
 
 type ListDataAgentWorkspaceMemberResponseBodyData struct {
+	// The data content.
 	Content []*ListDataAgentWorkspaceMemberResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// no use
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// no use
 	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// no use
@@ -216,26 +238,38 @@ func (s *ListDataAgentWorkspaceMemberResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceMemberResponseBodyDataContent struct {
+	// The time when the user joined the workspace. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1765961516
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The Alibaba Cloud UID of the user.
+	//
 	// example:
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The name of the user\\"s role in the workspace.
+	//
 	// example:
 	//
 	// member
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The number of tasks that are running for the user in the workspace.
+	//
 	// example:
 	//
 	// 15
 	RunningTaskNumber *int64 `json:"RunningTaskNumber,omitempty" xml:"RunningTaskNumber,omitempty"`
+	// The total number of tasks initiated by the user in the workspace.
+	//
 	// example:
 	//
 	// 30
 	TotalTaskNumber *int64 `json:"TotalTaskNumber,omitempty" xml:"TotalTaskNumber,omitempty"`
+	// The RAM username of the user.
+	//
 	// example:
 	//
 	// yunqitest

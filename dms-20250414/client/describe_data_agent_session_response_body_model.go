@@ -22,21 +22,32 @@ type iDescribeDataAgentSessionResponseBody interface {
 }
 
 type DescribeDataAgentSessionResponseBody struct {
+	// The response data.
 	Data *DescribeDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the request fails.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 18****-*****-*******7A3122F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,36 +117,70 @@ func (s *DescribeDataAgentSessionResponseBody) Validate() error {
 }
 
 type DescribeDataAgentSessionResponseBodyData struct {
+	// The ID of the agent.
+	//
 	// example:
 	//
 	// cu0cs*******mf
-	AgentId              *string                                                         `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentStatus          *string                                                         `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The status of the agent.
+	//
+	// example:
+	//
+	// RUNNING
+	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// The session replay history.
 	ChatHistoryLocations []*DescribeDataAgentSessionResponseBodyDataChatHistoryLocations `json:"ChatHistoryLocations,omitempty" xml:"ChatHistoryLocations,omitempty" type:"Repeated"`
+	// The timestamp indicating when the session was created.
+	//
 	// example:
 	//
 	// 1731645908000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the current user has favorited the session in the workspace.
+	//
 	// example:
 	//
 	// true
 	FavoriteInWorkspace *string `json:"FavoriteInWorkspace,omitempty" xml:"FavoriteInWorkspace,omitempty"`
+	// The ID of the file.
+	//
 	// example:
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
+	// Indicates whether the current user has favorited the session.
+	//
 	// example:
 	//
 	// true
-	Saved         *bool                                                  `json:"Saved,omitempty" xml:"Saved,omitempty"`
+	Saved *bool `json:"Saved,omitempty" xml:"Saved,omitempty"`
+	// The configuration of the session.
 	SessionConfig *DescribeDataAgentSessionResponseBodyDataSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
+	// The ID of the agent session.
+	//
 	// example:
 	//
 	// 976*********p
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status of the session.
+	//
+	// example:
+	//
+	// RUNNING
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The title of the session.
+	//
+	// example:
+	//
+	// 分析一下这份文件，给出报告。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The ID of the session owner.
+	//
+	// example:
+	//
+	// 2096******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeDataAgentSessionResponseBodyData) String() string {
@@ -273,7 +318,17 @@ func (s *DescribeDataAgentSessionResponseBodyData) Validate() error {
 }
 
 type DescribeDataAgentSessionResponseBodyDataChatHistoryLocations struct {
+	// The key of the session replay history item.
+	//
+	// example:
+	//
+	// testKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The OSS download URL for the session replay history item.
+	//
+	// example:
+	//
+	// ****
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -308,14 +363,24 @@ func (s *DescribeDataAgentSessionResponseBodyDataChatHistoryLocations) Validate(
 }
 
 type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
+	// The ID of the custom agent.
+	//
 	// example:
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
+	// The stage of the custom agent. Valid values:
+	//
+	// - **debug**: The test stage.
+	//
+	// - **prod**: The production stage.
+	//
 	// example:
 	//
 	// debug
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
+	// Indicates whether web search is enabled.
+	//
 	// example:
 	//
 	// True
@@ -323,18 +388,40 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	EncryptKey   *string   `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	EncryptType  *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	KbUuidList   []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
+	// The language. Valid values:
+	//
+	// - **CHINESE**: Chinese
+	//
+	// - **ENGLISH**: English
+	//
 	// example:
 	//
 	// CHINESE
-	Language     *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// A list of MCP server IDs.
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
+	// The mode. Valid values:
+	//
+	// - **ASK_DATA**: quick inquiry mode
+	//
+	// - **ANALYSIS**: analysis mode
+	//
+	// - **INSIGHT**: insight mode
+	//
 	// example:
 	//
 	// ANALYSIS
 	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	UserOssBucket   *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
+	// The name of the user\\"s OSS bucket.
+	//
+	// - The service can upload analysis files and reports to this bucket.
+	//
+	// example:
+	//
+	// user-oss-bucket
+	UserOssBucket *string `json:"UserOssBucket,omitempty" xml:"UserOssBucket,omitempty"`
 }
 
 func (s DescribeDataAgentSessionResponseBodyDataSessionConfig) String() string {

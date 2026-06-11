@@ -26,18 +26,26 @@ type iDLSerdeInfo interface {
 }
 
 type DLSerdeInfo struct {
+	// The description of the serialization.
+	//
 	// example:
 	//
 	// "serialize"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the class used for deserialization.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.serde2.OpenCSVSerde
 	DeserializerClass *string `json:"DeserializerClass,omitempty" xml:"DeserializerClass,omitempty"`
+	// The name of the serialization.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The key-value pairs of parameters related to serialization.
+	//
 	// example:
 	//
 	// {
@@ -46,14 +54,20 @@ type DLSerdeInfo struct {
 	//
 	// }
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The type of serialization.
+	//
 	// example:
 	//
 	// 0
 	SerdeType *int32 `json:"SerdeType,omitempty" xml:"SerdeType,omitempty"`
+	// The class name of the serialization library.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
 	SerializationLib *string `json:"SerializationLib,omitempty" xml:"SerializationLib,omitempty"`
+	// The name of the class used for serialization.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
