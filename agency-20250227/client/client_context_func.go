@@ -2,117 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":              dara.String("agency.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("agency.aliyuncs.com"),
-		"ap-south-1":                  dara.String("agency.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("agency.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("agency.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("agency.aliyuncs.com"),
-		"cn-beijing":                  dara.String("agency.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("agency.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("agency.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("agency.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("agency.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("agency.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("agency.aliyuncs.com"),
-		"cn-fujian":                   dara.String("agency.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("agency.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("agency.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("agency.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("agency.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("agency.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("agency.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("agency.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("agency.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("agency.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("agency.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("agency.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("agency.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("agency.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("agency.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("agency.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("agency.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("agency.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("agency.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("agency.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("agency.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("agency.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("agency.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("agency.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("agency.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("agency.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("agency.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("agency.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("agency.aliyuncs.com"),
-		"eu-central-1":                dara.String("agency.aliyuncs.com"),
-		"eu-west-1":                   dara.String("agency.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("agency.aliyuncs.com"),
-		"me-east-1":                   dara.String("agency.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("agency.aliyuncs.com"),
-		"us-east-1":                   dara.String("agency.aliyuncs.com"),
-		"us-west-1":                   dara.String("agency.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("agency"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -123,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBillDetailFileListResponse
-func (client *Client) GetBillDetailFileListWithOptions(request *GetBillDetailFileListRequest, runtime *dara.RuntimeOptions) (_result *GetBillDetailFileListResponse, _err error) {
+func (client *Client) GetBillDetailFileListWithContext(ctx context.Context, request *GetBillDetailFileListRequest, runtime *dara.RuntimeOptions) (_result *GetBillDetailFileListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -174,29 +67,11 @@ func (client *Client) GetBillDetailFileListWithOptions(request *GetBillDetailFil
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetBillDetailFileListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query bill export files.
-//
-// @param request - GetBillDetailFileListRequest
-//
-// @return GetBillDetailFileListResponse
-func (client *Client) GetBillDetailFileList(request *GetBillDetailFileListRequest) (_result *GetBillDetailFileListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetBillDetailFileListResponse{}
-	_body, _err := client.GetBillDetailFileListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -209,7 +84,7 @@ func (client *Client) GetBillDetailFileList(request *GetBillDetailFileListReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCommissionDetailFileListResponse
-func (client *Client) GetCommissionDetailFileListWithOptions(request *GetCommissionDetailFileListRequest, runtime *dara.RuntimeOptions) (_result *GetCommissionDetailFileListResponse, _err error) {
+func (client *Client) GetCommissionDetailFileListWithContext(ctx context.Context, request *GetCommissionDetailFileListRequest, runtime *dara.RuntimeOptions) (_result *GetCommissionDetailFileListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -260,29 +135,11 @@ func (client *Client) GetCommissionDetailFileListWithOptions(request *GetCommiss
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCommissionDetailFileListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query partner commission details.
-//
-// @param request - GetCommissionDetailFileListRequest
-//
-// @return GetCommissionDetailFileListResponse
-func (client *Client) GetCommissionDetailFileList(request *GetCommissionDetailFileListRequest) (_result *GetCommissionDetailFileListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCommissionDetailFileListResponse{}
-	_body, _err := client.GetCommissionDetailFileListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -295,7 +152,7 @@ func (client *Client) GetCommissionDetailFileList(request *GetCommissionDetailFi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCustomerOrderListResponse
-func (client *Client) GetCustomerOrderListWithOptions(tmpReq *GetCustomerOrderListRequest, runtime *dara.RuntimeOptions) (_result *GetCustomerOrderListResponse, _err error) {
+func (client *Client) GetCustomerOrderListWithContext(ctx context.Context, tmpReq *GetCustomerOrderListRequest, runtime *dara.RuntimeOptions) (_result *GetCustomerOrderListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -396,29 +253,11 @@ func (client *Client) GetCustomerOrderListWithOptions(tmpReq *GetCustomerOrderLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCustomerOrderListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query partner customer acquisition orders.
-//
-// @param request - GetCustomerOrderListRequest
-//
-// @return GetCustomerOrderListResponse
-func (client *Client) GetCustomerOrderList(request *GetCustomerOrderListRequest) (_result *GetCustomerOrderListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCustomerOrderListResponse{}
-	_body, _err := client.GetCustomerOrderListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -431,7 +270,7 @@ func (client *Client) GetCustomerOrderList(request *GetCustomerOrderListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRenewalRateListResponse
-func (client *Client) GetRenewalRateListWithOptions(request *GetRenewalRateListRequest, runtime *dara.RuntimeOptions) (_result *GetRenewalRateListResponse, _err error) {
+func (client *Client) GetRenewalRateListWithContext(ctx context.Context, request *GetRenewalRateListRequest, runtime *dara.RuntimeOptions) (_result *GetRenewalRateListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -458,29 +297,11 @@ func (client *Client) GetRenewalRateListWithOptions(request *GetRenewalRateListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRenewalRateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query partner renewal rate.
-//
-// @param request - GetRenewalRateListRequest
-//
-// @return GetRenewalRateListResponse
-func (client *Client) GetRenewalRateList(request *GetRenewalRateListRequest) (_result *GetRenewalRateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRenewalRateListResponse{}
-	_body, _err := client.GetRenewalRateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -493,7 +314,7 @@ func (client *Client) GetRenewalRateList(request *GetRenewalRateListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubPartnerListResponse
-func (client *Client) GetSubPartnerListWithOptions(request *GetSubPartnerListRequest, runtime *dara.RuntimeOptions) (_result *GetSubPartnerListResponse, _err error) {
+func (client *Client) GetSubPartnerListWithContext(ctx context.Context, request *GetSubPartnerListRequest, runtime *dara.RuntimeOptions) (_result *GetSubPartnerListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -532,29 +353,11 @@ func (client *Client) GetSubPartnerListWithOptions(request *GetSubPartnerListReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubPartnerListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the list of second-tier distributors.
-//
-// @param request - GetSubPartnerListRequest
-//
-// @return GetSubPartnerListResponse
-func (client *Client) GetSubPartnerList(request *GetSubPartnerListRequest) (_result *GetSubPartnerListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSubPartnerListResponse{}
-	_body, _err := client.GetSubPartnerListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -567,7 +370,7 @@ func (client *Client) GetSubPartnerList(request *GetSubPartnerListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubPartnerOrderListResponse
-func (client *Client) GetSubPartnerOrderListWithOptions(tmpReq *GetSubPartnerOrderListRequest, runtime *dara.RuntimeOptions) (_result *GetSubPartnerOrderListResponse, _err error) {
+func (client *Client) GetSubPartnerOrderListWithContext(ctx context.Context, tmpReq *GetSubPartnerOrderListRequest, runtime *dara.RuntimeOptions) (_result *GetSubPartnerOrderListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -664,28 +467,10 @@ func (client *Client) GetSubPartnerOrderListWithOptions(tmpReq *GetSubPartnerOrd
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubPartnerOrderListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query channel expansion orders.
-//
-// @param request - GetSubPartnerOrderListRequest
-//
-// @return GetSubPartnerOrderListResponse
-func (client *Client) GetSubPartnerOrderList(request *GetSubPartnerOrderListRequest) (_result *GetSubPartnerOrderListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSubPartnerOrderListResponse{}
-	_body, _err := client.GetSubPartnerOrderListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
