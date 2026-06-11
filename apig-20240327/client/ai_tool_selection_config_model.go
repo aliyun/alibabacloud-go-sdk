@@ -20,12 +20,17 @@ type iAiToolSelectionConfig interface {
 }
 
 type AiToolSelectionConfig struct {
+	// Conditions for activating the tool selection feature.
 	EnableConditions *AiToolSelectionConfigEnableConditions `json:"enableConditions,omitempty" xml:"enableConditions,omitempty" type:"Struct"`
+	// The status of the AI tool selection plugin.
+	//
 	// if can be null:
 	// true
-	PluginStatus   *AiPluginStatus                      `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
+	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
+	// Configuration for query rewriting, which optimizes user queries before tool selection.
 	QueryRewriting *AiToolSelectionConfigQueryRewriting `json:"queryRewriting,omitempty" xml:"queryRewriting,omitempty" type:"Struct"`
-	ToolReranking  *AiToolSelectionConfigToolReranking  `json:"toolReranking,omitempty" xml:"toolReranking,omitempty" type:"Struct"`
+	// Configuration for tool reranking, which controls how tools are scored and filtered.
+	ToolReranking *AiToolSelectionConfigToolReranking `json:"toolReranking,omitempty" xml:"toolReranking,omitempty" type:"Struct"`
 }
 
 func (s AiToolSelectionConfig) String() string {
@@ -97,6 +102,7 @@ func (s *AiToolSelectionConfig) Validate() error {
 }
 
 type AiToolSelectionConfigEnableConditions struct {
+	// The minimum number of tools required to activate tool selection.
 	ToolCountThreshold *int32 `json:"toolCountThreshold,omitempty" xml:"toolCountThreshold,omitempty"`
 }
 
@@ -122,12 +128,19 @@ func (s *AiToolSelectionConfigEnableConditions) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewriting struct {
-	ContextSelection  *AiToolSelectionConfigQueryRewritingContextSelection  `json:"contextSelection,omitempty" xml:"contextSelection,omitempty" type:"Struct"`
-	Enabled           *bool                                                 `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	FallbackStrategy  *string                                               `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	MaxOutputTokens   *int32                                                `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
-	ModelService      *AiToolSelectionConfigQueryRewritingModelService      `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
-	PromptConfig      *AiToolSelectionConfigQueryRewritingPromptConfig      `json:"promptConfig,omitempty" xml:"promptConfig,omitempty" type:"Struct"`
+	// Method for selecting the conversation context for query rewriting.
+	ContextSelection *AiToolSelectionConfigQueryRewritingContextSelection `json:"contextSelection,omitempty" xml:"contextSelection,omitempty" type:"Struct"`
+	// Whether to enable query rewriting.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The fallback strategy used if query rewriting fails or returns no results.
+	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
+	// The maximum number of tokens to generate for the rewritten query.
+	MaxOutputTokens *int32 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// Model service configuration for query rewriting.
+	ModelService *AiToolSelectionConfigQueryRewritingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
+	// Prompt configuration for query rewriting.
+	PromptConfig *AiToolSelectionConfigQueryRewritingPromptConfig `json:"promptConfig,omitempty" xml:"promptConfig,omitempty" type:"Struct"`
+	// Conditions for activating query rewriting.
 	TriggerConditions *AiToolSelectionConfigQueryRewritingTriggerConditions `json:"triggerConditions,omitempty" xml:"triggerConditions,omitempty" type:"Struct"`
 }
 
@@ -227,8 +240,10 @@ func (s *AiToolSelectionConfigQueryRewriting) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingContextSelection struct {
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value *int32  `json:"value,omitempty" xml:"value,omitempty"`
+	// The strategy for selecting the conversation context.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value associated with the context selection strategy, such as the number of messages to include.
+	Value *int32 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s AiToolSelectionConfigQueryRewritingContextSelection) String() string {
@@ -262,9 +277,12 @@ func (s *AiToolSelectionConfigQueryRewritingContextSelection) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingModelService struct {
-	ModelName          *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ServiceId          *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TimeoutMillisecond *int32  `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// The name of the model used for query rewriting.
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The ID of the model service used for query rewriting.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The request timeout in milliseconds for the query rewriting model service.
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
 func (s AiToolSelectionConfigQueryRewritingModelService) String() string {
@@ -307,8 +325,10 @@ func (s *AiToolSelectionConfigQueryRewritingModelService) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingPromptConfig struct {
+	// The custom prompt template for query rewriting. This parameter is required if `type` is set to `custom`.
 	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of prompt, such as default or custom.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AiToolSelectionConfigQueryRewritingPromptConfig) String() string {
@@ -342,6 +362,7 @@ func (s *AiToolSelectionConfigQueryRewritingPromptConfig) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingTriggerConditions struct {
+	// The minimum number of messages in the conversation history required to activate query rewriting.
 	MessageCountThreshold *int32 `json:"messageCountThreshold,omitempty" xml:"messageCountThreshold,omitempty"`
 }
 
@@ -367,12 +388,18 @@ func (s *AiToolSelectionConfigQueryRewritingTriggerConditions) Validate() error 
 }
 
 type AiToolSelectionConfigToolReranking struct {
-	FallbackStrategy *string                                         `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	FilteringMethod  *string                                         `json:"filteringMethod,omitempty" xml:"filteringMethod,omitempty"`
-	ModelService     *AiToolSelectionConfigToolRerankingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
-	ScoreThreshold   *float32                                        `json:"scoreThreshold,omitempty" xml:"scoreThreshold,omitempty"`
-	TopKPercent      *int32                                          `json:"topKPercent,omitempty" xml:"topKPercent,omitempty"`
-	TopNCount        *int32                                          `json:"topNCount,omitempty" xml:"topNCount,omitempty"`
+	// The fallback strategy used if tool reranking fails or returns no results.
+	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
+	// The method for filtering tools after reranking.
+	FilteringMethod *string `json:"filteringMethod,omitempty" xml:"filteringMethod,omitempty"`
+	// Model service configuration for tool reranking.
+	ModelService *AiToolSelectionConfigToolRerankingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
+	// The minimum score a tool must have to be selected. Tools with scores below this threshold are filtered out.
+	ScoreThreshold *float32 `json:"scoreThreshold,omitempty" xml:"scoreThreshold,omitempty"`
+	// The percentage of top-ranked tools to select. This parameter only applies when `filteringMethod` is set to a percentage-based method.
+	TopKPercent *int32 `json:"topKPercent,omitempty" xml:"topKPercent,omitempty"`
+	// The number of top-ranked tools to select. This parameter only applies when `filteringMethod` is set to a count-based method.
+	TopNCount *int32 `json:"topNCount,omitempty" xml:"topNCount,omitempty"`
 }
 
 func (s AiToolSelectionConfigToolReranking) String() string {
@@ -447,9 +474,12 @@ func (s *AiToolSelectionConfigToolReranking) Validate() error {
 }
 
 type AiToolSelectionConfigToolRerankingModelService struct {
-	ModelName          *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ServiceId          *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TimeoutMillisecond *int32  `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// The name of the model used for reranking.
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The ID of the model service used for reranking.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The request timeout in milliseconds for the reranking model service.
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
 func (s AiToolSelectionConfigToolRerankingModelService) String() string {

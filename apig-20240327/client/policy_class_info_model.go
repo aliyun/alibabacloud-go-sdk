@@ -42,7 +42,7 @@ type PolicyClassInfo struct {
 	//
 	// example:
 	//
-	// Rate Limit
+	// 并发控制
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The list of resource types that can be mounted.
 	AttachableResourceTypes []*string `json:"attachableResourceTypes,omitempty" xml:"attachableResourceTypes,omitempty" type:"Repeated"`
@@ -68,7 +68,7 @@ type PolicyClassInfo struct {
 	//
 	// example:
 	//
-	// Limits the number of requests per unit of time
+	// 通过控制并发线程数以保证系统的稳定性。适用于应用内部或下游依赖出现不稳定的场景，例如慢SQL、下游应用响应时间变长等。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The direction of traffic on which the policy takes effect.
 	//

@@ -24,7 +24,7 @@ type CreateMcpServerResponseBody struct {
 	//
 	// example:
 	//
-	// 200
+	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// object
 	Data *CreateMcpServerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`

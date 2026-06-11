@@ -20,15 +20,15 @@ type iListHttpApiRoutesResponseBody interface {
 }
 
 type ListHttpApiRoutesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *ListHttpApiRoutesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListHttpApiRoutesResponseBody) Validate() error {
 }
 
 type ListHttpApiRoutesResponseBodyData struct {
-	// The routes.
+	// An array of route objects.
 	Items []*HttpRoute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of available entries.
 	//
 	// example:
 	//

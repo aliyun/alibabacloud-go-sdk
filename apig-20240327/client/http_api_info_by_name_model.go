@@ -22,6 +22,8 @@ type iHttpApiInfoByName interface {
 }
 
 type HttpApiInfoByName struct {
+	// 网关Id
+	//
 	// example:
 	//
 	// gw-xx

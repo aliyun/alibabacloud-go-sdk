@@ -26,13 +26,20 @@ type iHiMarketModelFeature interface {
 }
 
 type HiMarketModelFeature struct {
-	EnableMultiModal *bool    `json:"enableMultiModal,omitempty" xml:"enableMultiModal,omitempty"`
-	EnableThinking   *bool    `json:"enableThinking,omitempty" xml:"enableThinking,omitempty"`
-	MaxTokens        *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	Model            *string  `json:"model,omitempty" xml:"model,omitempty"`
-	Streaming        *bool    `json:"streaming,omitempty" xml:"streaming,omitempty"`
-	Temperature      *float32 `json:"temperature,omitempty" xml:"temperature,omitempty"`
-	WebSearch        *bool    `json:"webSearch,omitempty" xml:"webSearch,omitempty"`
+	// Indicates whether to enable multi-modal capabilities. If set to `true`, the model can process requests that include multiple data types, such as text and images.
+	EnableMultiModal *bool `json:"enableMultiModal,omitempty" xml:"enableMultiModal,omitempty"`
+	// Indicates whether to include the model\\"s reasoning process in the response. If set to `true`, the output may contain intermediate steps that show how the model arrived at a conclusion.
+	EnableThinking *bool `json:"enableThinking,omitempty" xml:"enableThinking,omitempty"`
+	// The maximum number of tokens to generate in the response. A token is a unit of text processed by the model.
+	MaxTokens *int32 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The identifier of the model to use for inference.
+	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// Indicates whether to deliver the response as a continuous stream. If set to `true`, results are sent incrementally.
+	Streaming *bool `json:"streaming,omitempty" xml:"streaming,omitempty"`
+	// Controls the randomness of the output. Valid values range from 0 to 1. Higher values, such as 0.8, make the output more random. Lower values, such as 0.2, make the output more deterministic.
+	Temperature *float32 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+	// Indicates whether the model can search the web to provide more up-to-date responses.
+	WebSearch *bool `json:"webSearch,omitempty" xml:"webSearch,omitempty"`
 }
 
 func (s HiMarketModelFeature) String() string {

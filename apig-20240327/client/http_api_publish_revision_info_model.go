@@ -779,7 +779,7 @@ type HttpApiPublishRevisionInfoEnvironmentInfo struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment ID.
 	//
@@ -861,7 +861,7 @@ type HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo struct {
 	//
 	// example:
 	//
-	// Instance 1
+	// 实例1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

@@ -32,7 +32,7 @@ type ListEnvironmentsRequest struct {
 	//
 	// example:
 	//
-	// production
+	// 测试
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
 	// Gateway ID, exact search.
 	//
@@ -74,7 +74,7 @@ type ListEnvironmentsRequest struct {
 	//
 	// example:
 	//
-	// rg-aek2sy66mftleiq
+	// rg-aek2nqpppkzplmq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 

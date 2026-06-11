@@ -18,14 +18,20 @@ type iUpdateServiceResponseBody interface {
 }
 
 type UpdateServiceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B725275B-50C6-5A49-A9FD-F0332FCB3351

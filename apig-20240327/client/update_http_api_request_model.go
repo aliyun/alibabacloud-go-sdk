@@ -58,7 +58,7 @@ type UpdateHttpApiRequest struct {
 	//
 	// example:
 	//
-	// The source ID.
+	// 更新API描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Whether authentication is enabled
 	//

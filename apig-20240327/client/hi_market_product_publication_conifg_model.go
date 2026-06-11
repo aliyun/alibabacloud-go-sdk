@@ -14,6 +14,7 @@ type iHiMarketProductPublicationConifg interface {
 }
 
 type HiMarketProductPublicationConifg struct {
+	// The unique identifier for the publication.
 	PublicationId *string `json:"publicationId,omitempty" xml:"publicationId,omitempty"`
 }
 

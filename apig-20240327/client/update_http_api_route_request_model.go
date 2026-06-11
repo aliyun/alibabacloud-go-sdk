@@ -26,15 +26,15 @@ type iUpdateHttpApiRouteRequest interface {
 }
 
 type UpdateHttpApiRouteRequest struct {
-	// The backend service configurations for the route.
+	// The configuration of the backend service for the route.
 	BackendConfig *UpdateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The route description.
+	// The description of the route.
 	//
 	// example:
 	//
-	// test route
+	// 商品中心服务路由
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of domain IDs.
+	// A list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -42,7 +42,7 @@ type UpdateHttpApiRouteRequest struct {
 	//
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The route match rule.
+	// The route matching rule.
 	Match          *HttpRouteMatch                          `json:"match,omitempty" xml:"match,omitempty"`
 	McpRouteConfig *UpdateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
 	PolicyConfigs  []*HttpApiPolicyConfigs                  `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
@@ -148,21 +148,13 @@ func (s *UpdateHttpApiRouteRequest) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfig struct {
-	// The backend service scenario. Valid values:
-	//
-	// 	- SingleService
-	//
-	// 	- MultiServiceByRatio
-	//
-	// 	- Redirect
-	//
-	// 	- Mock
+	// The backend service scenario.
 	//
 	// example:
 	//
 	// SingleService
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The list of backend services.
+	// A list of backend services.
 	Services []*UpdateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -206,7 +198,7 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
-	// The service port (omit for dynamic ports).
+	// The service port. This parameter is not required for dynamic ports.
 	//
 	// example:
 	//
@@ -214,9 +206,9 @@ type UpdateHttpApiRouteRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
 	// example:
 	//
@@ -234,7 +226,7 @@ type UpdateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The traffic weight percentage.
+	// The percentage of traffic.
 	//
 	// example:
 	//

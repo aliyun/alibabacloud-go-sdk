@@ -30,15 +30,24 @@ type iHiMarketAuthCodeConfig interface {
 }
 
 type HiMarketAuthCodeConfig struct {
+	// The URL of the identity provider\\"s authorization endpoint. Your application redirects users to this URL to sign in and grant consent.
 	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty" xml:"authorizationEndpoint,omitempty"`
-	ClientId              *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	ClientSecret          *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
-	Issuer                *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	JwkSetUri             *string `json:"jwkSetUri,omitempty" xml:"jwkSetUri,omitempty"`
-	RedirectUri           *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
-	Scopes                *string `json:"scopes,omitempty" xml:"scopes,omitempty"`
-	TokenEndpoint         *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
-	UserInfoEndpoint      *string `json:"userInfoEndpoint,omitempty" xml:"userInfoEndpoint,omitempty"`
+	// The unique identifier for your application. The identity provider assigns this ID when you register your application.
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The secret key for your application. This secret authenticates your application with the identity provider.
+	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
+	// The URL of the identity provider that issues the tokens. This URL uniquely identifies the provider.
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The URL of the identity provider\\"s JSON Web Key Set (JWKS) document. This document contains the public signing keys for token validation.
+	JwkSetUri *string `json:"jwkSetUri,omitempty" xml:"jwkSetUri,omitempty"`
+	// The URL where the identity provider redirects the user after authorizing your application. This URL must be registered in your application settings with the identity provider.
+	RedirectUri *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
+	// A space-separated list of requested permissions. For example: `openid profile`.
+	Scopes *string `json:"scopes,omitempty" xml:"scopes,omitempty"`
+	// The URL of the identity provider\\"s token endpoint. Your application uses this endpoint to exchange an authorization code for an access token.
+	TokenEndpoint *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
+	// The URL of the identity provider\\"s user info endpoint. Your application can use this endpoint to retrieve the authenticated user\\"s profile information.
+	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty" xml:"userInfoEndpoint,omitempty"`
 }
 
 func (s HiMarketAuthCodeConfig) String() string {

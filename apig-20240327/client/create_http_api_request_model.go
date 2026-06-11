@@ -61,7 +61,12 @@ type CreateHttpApiRequest struct {
 	// example:
 	//
 	// /v1
-	BasePath        *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	// ID of the gateway to which the API belongs.
+	//
+	// example:
+	//
+	// gw-abc123xyz789
 	BelongGatewayId *string `json:"belongGatewayId,omitempty" xml:"belongGatewayId,omitempty"`
 	// $.parameters[0].schema.example
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
@@ -69,9 +74,15 @@ type CreateHttpApiRequest struct {
 	//
 	// example:
 	//
-	// $.parameters[0].schema.properties.aiProtocols.items.example
+	// 测试专用API。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
+	//
+	// Whether to preview without execution.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// Create an API of HTTP type
 	//
@@ -115,7 +126,12 @@ type CreateHttpApiRequest struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Strategy        *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+	// The conflict merge strategy for import.
+	//
+	// example:
+	//
+	// ExistFirst
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
 	// $.parameters[0].schema.properties.deployConfigs.description
 	//
 	// example:

@@ -30,17 +30,27 @@ type iAiNetworkSearchConfig interface {
 }
 
 type AiNetworkSearchConfig struct {
-	DefaultEnable *bool   `json:"defaultEnable,omitempty" xml:"defaultEnable,omitempty"`
-	DefaultLang   *string `json:"defaultLang,omitempty" xml:"defaultLang,omitempty"`
-	NeedReference *bool   `json:"needReference,omitempty" xml:"needReference,omitempty"`
+	// Whether the network search feature is enabled by default.
+	DefaultEnable *bool `json:"defaultEnable,omitempty" xml:"defaultEnable,omitempty"`
+	// The default language for the search query.
+	DefaultLang *string `json:"defaultLang,omitempty" xml:"defaultLang,omitempty"`
+	// Whether to include references in the search results.
+	NeedReference *bool `json:"needReference,omitempty" xml:"needReference,omitempty"`
+	// The status of the AI plugin.
+	//
 	// if can be null:
 	// true
-	PluginStatus       *AiPluginStatus                     `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
-	ReferenceFormat    *string                             `json:"referenceFormat,omitempty" xml:"referenceFormat,omitempty"`
-	ReferenceLocation  *string                             `json:"referenceLocation,omitempty" xml:"referenceLocation,omitempty"`
-	SearchEngineConfig *AiNetworkConfigSearchEngine        `json:"searchEngineConfig,omitempty" xml:"searchEngineConfig,omitempty"`
-	SearchFrom         []*AiNetworkConfigSearchEngine      `json:"searchFrom,omitempty" xml:"searchFrom,omitempty" type:"Repeated"`
-	SearchRewrite      *AiNetworkSearchConfigSearchRewrite `json:"searchRewrite,omitempty" xml:"searchRewrite,omitempty" type:"Struct"`
+	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
+	// The format of the references.
+	ReferenceFormat *string `json:"referenceFormat,omitempty" xml:"referenceFormat,omitempty"`
+	// The location of the references in the response.
+	ReferenceLocation *string `json:"referenceLocation,omitempty" xml:"referenceLocation,omitempty"`
+	// The search engine configuration.
+	SearchEngineConfig *AiNetworkConfigSearchEngine `json:"searchEngineConfig,omitempty" xml:"searchEngineConfig,omitempty"`
+	// A list of search engine configurations for the network search.
+	SearchFrom []*AiNetworkConfigSearchEngine `json:"searchFrom,omitempty" xml:"searchFrom,omitempty" type:"Repeated"`
+	// Configuration for search query rewriting.
+	SearchRewrite *AiNetworkSearchConfigSearchRewrite `json:"searchRewrite,omitempty" xml:"searchRewrite,omitempty" type:"Struct"`
 }
 
 func (s AiNetworkSearchConfig) String() string {
@@ -161,11 +171,16 @@ func (s *AiNetworkSearchConfig) Validate() error {
 }
 
 type AiNetworkSearchConfigSearchRewrite struct {
-	Enable             *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	MaxCount           *int32  `json:"maxCount,omitempty" xml:"maxCount,omitempty"`
-	ModelName          *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ServiceId          *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TimeoutMillisecond *int32  `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Whether to enable the search query rewrite feature.
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The maximum number of rewritten queries to generate.
+	MaxCount *int32 `json:"maxCount,omitempty" xml:"maxCount,omitempty"`
+	// The name of the model to use for query rewriting.
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The ID of the query rewriting service.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Timeout for the query rewriting operation, in milliseconds.
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
 func (s AiNetworkSearchConfigSearchRewrite) String() string {

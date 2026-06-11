@@ -32,16 +32,26 @@ type iAiNetworkConfigSearchEngine interface {
 }
 
 type AiNetworkConfigSearchEngine struct {
-	ApiKey             *string            `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	ContentMode        *string            `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
-	Count              *int32             `json:"count,omitempty" xml:"count,omitempty"`
-	Endpoint           *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Industry           *string            `json:"industry,omitempty" xml:"industry,omitempty"`
-	OptionArgs         map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
-	Start              *int32             `json:"start,omitempty" xml:"start,omitempty"`
-	TimeRange          *string            `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
-	TimeoutMillisecond *int32             `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
-	Type               *string            `json:"type,omitempty" xml:"type,omitempty"`
+	// Required. The API key to authenticate requests to the search engine service.
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The search content mode, which determines how the service interprets the query and returns results.
+	ContentMode *string `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
+	// The number of search results to return. If this parameter is omitted, the service uses a default value.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The endpoint URL for the search engine service.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The industry context for tailoring search results to a specific domain.
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// Optional. A key-value map for service-specific parameters not covered by the standard configuration.
+	OptionArgs map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
+	// The starting offset for the search results, used for pagination. For example, a value of 10 skips the first 10 results. The default is 0.
+	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
+	// The time range for filtering results by their creation or modification date.
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+	// The request timeout in milliseconds. If a request exceeds this time, the service terminates it.
+	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
+	// Specifies the search engine service to use.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AiNetworkConfigSearchEngine) String() string {

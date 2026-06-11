@@ -20,10 +20,14 @@ type iHiMarketHttpRoute interface {
 }
 
 type HiMarketHttpRoute struct {
-	Builtin     *bool                   `json:"builtin,omitempty" xml:"builtin,omitempty"`
-	Description *string                 `json:"description,omitempty" xml:"description,omitempty"`
-	Domains     []*HiMarketDomain       `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
-	Match       *HiMarketHttpRouteMatch `json:"match,omitempty" xml:"match,omitempty" type:"Struct"`
+	// Indicates whether this is a system-defined route. Users cannot modify or delete built-in routes. Defaults to `false`.
+	Builtin *bool `json:"builtin,omitempty" xml:"builtin,omitempty"`
+	// An optional description for the HTTP route. This field is for informational purposes only.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// A list of hostnames to which this route applies. The request\\"s `Host` header must match one of the hostnames in this list.
+	Domains []*HiMarketDomain `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
+	// Defines the matching criteria for an incoming HTTP request. The request must meet all specified conditions for this route to apply.
+	Match *HiMarketHttpRouteMatch `json:"match,omitempty" xml:"match,omitempty" type:"Struct"`
 }
 
 func (s HiMarketHttpRoute) String() string {
@@ -89,11 +93,16 @@ func (s *HiMarketHttpRoute) Validate() error {
 }
 
 type HiMarketHttpRouteMatch struct {
-	Headers      []*HiMarketHttpRouteMatchHeaders      `json:"headers,omitempty" xml:"headers,omitempty" type:"Repeated"`
-	Methods      []*string                             `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	// A list of HTTP header match conditions. The request must match all of these conditions.
+	Headers []*HiMarketHttpRouteMatchHeaders `json:"headers,omitempty" xml:"headers,omitempty" type:"Repeated"`
+	// A list of HTTP methods to match, such as `GET` or `POST`. If this field is not specified, the route matches requests with any HTTP method.
+	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	// A list of conditions for matching against a data model. Use this to validate the request body or other structured data.
 	ModelMatches []*HiMarketHttpRouteMatchModelMatches `json:"modelMatches,omitempty" xml:"modelMatches,omitempty" type:"Repeated"`
-	Path         *HiMarketHttpRouteMatchPath           `json:"path,omitempty" xml:"path,omitempty" type:"Struct"`
-	QueryParams  []*HiMarketHttpRouteMatchQueryParams  `json:"queryParams,omitempty" xml:"queryParams,omitempty" type:"Repeated"`
+	// Specifies the conditions for matching the request path.
+	Path *HiMarketHttpRouteMatchPath `json:"path,omitempty" xml:"path,omitempty" type:"Struct"`
+	// A list of URL query parameter match conditions. The request must match all of these conditions.
+	QueryParams []*HiMarketHttpRouteMatchQueryParams `json:"queryParams,omitempty" xml:"queryParams,omitempty" type:"Repeated"`
 }
 
 func (s HiMarketHttpRouteMatch) String() string {
@@ -186,10 +195,14 @@ func (s *HiMarketHttpRouteMatch) Validate() error {
 }
 
 type HiMarketHttpRouteMatchHeaders struct {
-	CaseSensitive *bool   `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Specifies whether the header match is case-sensitive. Defaults to `true`.
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// The name of the HTTP header to match, such as `Content-Type`.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of header match. Valid values are `Exact` and `RegularExpression`. Defaults to `Exact`.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value to match against the header. The match `type` determines how this value is interpreted.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s HiMarketHttpRouteMatchHeaders) String() string {
@@ -241,10 +254,14 @@ func (s *HiMarketHttpRouteMatchHeaders) Validate() error {
 }
 
 type HiMarketHttpRouteMatchModelMatches struct {
-	CaseSensitive *bool   `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Specifies whether the model field match is case-sensitive. Defaults to `true`.
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// The name of the model field to match.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of match, such as `Exact`, `Pattern`, or `Range`.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value or pattern to match against the model field.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s HiMarketHttpRouteMatchModelMatches) String() string {
@@ -296,9 +313,12 @@ func (s *HiMarketHttpRouteMatchModelMatches) Validate() error {
 }
 
 type HiMarketHttpRouteMatchPath struct {
-	CaseSensitive *bool   `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Specifies whether the path match is case-sensitive. Defaults to `true`.
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// The type of path match. Valid values are `Exact` and `Prefix`. Defaults to `Exact` if not specified.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The path value to match. The specified `type` determines how this value is interpreted.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s HiMarketHttpRouteMatchPath) String() string {
@@ -341,10 +361,14 @@ func (s *HiMarketHttpRouteMatchPath) Validate() error {
 }
 
 type HiMarketHttpRouteMatchQueryParams struct {
-	CaseSensitive *bool   `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Specifies whether the query parameter match is case-sensitive. Defaults to `true`.
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// The name of the query parameter to match.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of query parameter match. Valid values are `Exact` and `RegularExpression`. Defaults to `Exact`.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value to match against the query parameter. The match `type` determines how this value is interpreted.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s HiMarketHttpRouteMatchQueryParams) String() string {

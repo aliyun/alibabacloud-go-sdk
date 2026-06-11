@@ -26,31 +26,35 @@ type iCreateConsumerRequest interface {
 }
 
 type CreateConsumerRequest struct {
-	// The list of AK/SK identity configurations.
+	// A list of AK/SK identity configurations.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
-	// The configuration for the API key authentication method.
+	// The identity configuration for API key authentication.
 	ApikeyIdentityConfig *ApiKeyIdentityConfig `json:"apikeyIdentityConfig,omitempty" xml:"apikeyIdentityConfig,omitempty"`
-	// The description of the consumer.
+	// The consumer description.
 	//
 	// example:
 	//
 	// consumer for test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates if enabled.
+	// Specifies whether to enable the consumer.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The type of the gateway.
+	// The gateway type. Valid values:
+	//
+	// - API: For a cloud-native API gateway.
+	//
+	// - AI: For an AI gateway.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The configuration of the JWT identity.
+	// The JWT identity configuration.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
-	// The name of the consumer.
+	// The consumer name.
 	//
 	// example:
 	//

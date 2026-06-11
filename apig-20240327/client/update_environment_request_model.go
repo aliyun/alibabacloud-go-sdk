@@ -22,13 +22,13 @@ type UpdateEnvironmentRequest struct {
 	//
 	// example:
 	//
-	// The request ID, which is used to trace the API call link.
+	// 测试环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The status code returned.
 	//
 	// example:
 	//
-	// The response message returned.
+	// 这是xx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

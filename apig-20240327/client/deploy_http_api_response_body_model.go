@@ -20,20 +20,21 @@ type iDeployHttpApiResponseBody interface {
 }
 
 type DeployHttpApiResponseBody struct {
-	// Response status code.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *DeployHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -95,6 +96,7 @@ func (s *DeployHttpApiResponseBody) Validate() error {
 }
 
 type DeployHttpApiResponseBodyData struct {
+	// The ID of the HTTP API.
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
 }
 

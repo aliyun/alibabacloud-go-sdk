@@ -20,10 +20,14 @@ type iHiMarketMcpConfig interface {
 }
 
 type HiMarketMcpConfig struct {
+	// Configuration for the MCP server.
 	McpServerConfig *HiMarketMcpConfigMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
-	McpServerName   *string                           `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	Meta            *HiMarketMcpConfigMeta            `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	Tools           *string                           `json:"tools,omitempty" xml:"tools,omitempty"`
+	// A unique name for the MCP server.
+	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
+	// Metadata for the configuration.
+	Meta *HiMarketMcpConfigMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	// The tools associated with this configuration, typically provided as a JSON-formatted string.
+	Tools *string `json:"tools,omitempty" xml:"tools,omitempty"`
 }
 
 func (s HiMarketMcpConfig) String() string {
@@ -85,8 +89,10 @@ func (s *HiMarketMcpConfig) Validate() error {
 }
 
 type HiMarketMcpConfigMcpServerConfig struct {
+	// The domains managed by the server.
 	Domains []*HiMarketDomain `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
-	Path    *string           `json:"path,omitempty" xml:"path,omitempty"`
+	// The base path for the service endpoint.
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
 func (s HiMarketMcpConfigMcpServerConfig) String() string {
@@ -129,6 +135,7 @@ func (s *HiMarketMcpConfigMcpServerConfig) Validate() error {
 }
 
 type HiMarketMcpConfigMeta struct {
+	// The communication protocol. Can be `http` or `https`.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 

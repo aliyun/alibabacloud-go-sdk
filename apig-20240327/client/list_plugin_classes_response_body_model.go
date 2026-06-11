@@ -177,8 +177,16 @@ func (s *ListPluginClassesResponseBodyData) Validate() error {
 
 type ListPluginClassesResponseBodyDataItems struct {
 	// The alias of the plugin.
+	//
+	// example:
+	//
+	// OAuth2 认证
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The description of the plugin.
+	//
+	// example:
+	//
+	// 基于 OAuth2 实现身份认证和鉴权。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the plugin is installed.
 	//

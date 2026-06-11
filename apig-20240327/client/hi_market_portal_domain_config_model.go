@@ -18,9 +18,12 @@ type iHiMarketPortalDomainConfig interface {
 }
 
 type HiMarketPortalDomainConfig struct {
-	Domain   *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The domain name.
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The domain protocol.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The domain type.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HiMarketPortalDomainConfig) String() string {

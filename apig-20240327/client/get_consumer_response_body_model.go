@@ -122,7 +122,7 @@ type GetConsumerResponseBodyData struct {
 	//
 	// example:
 	//
-	// This is the description.
+	// 测试专用消费者
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates if enabled.
 	//

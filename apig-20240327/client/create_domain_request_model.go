@@ -122,7 +122,7 @@ type CreateDomainRequest struct {
 	//
 	// example:
 	//
-	// rg-aekzoiafjtr7zyq
+	// rg-aekzhiv7derfweq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`

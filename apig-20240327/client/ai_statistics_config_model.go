@@ -18,9 +18,12 @@ type iAiStatisticsConfig interface {
 }
 
 type AiStatisticsConfig struct {
-	LogRequestContent  *bool                                 `json:"logRequestContent,omitempty" xml:"logRequestContent,omitempty"`
-	LogResponseContent *bool                                 `json:"logResponseContent,omitempty" xml:"logResponseContent,omitempty"`
-	PathFieldConfigs   []*AiStatisticsConfigPathFieldConfigs `json:"pathFieldConfigs,omitempty" xml:"pathFieldConfigs,omitempty" type:"Repeated"`
+	// Specifies whether to record the body of incoming requests.
+	LogRequestContent *bool `json:"logRequestContent,omitempty" xml:"logRequestContent,omitempty"`
+	// Specifies whether to record the body of outgoing responses.
+	LogResponseContent *bool `json:"logResponseContent,omitempty" xml:"logResponseContent,omitempty"`
+	// An array of configurations for extracting data from specific paths.
+	PathFieldConfigs []*AiStatisticsConfigPathFieldConfigs `json:"pathFieldConfigs,omitempty" xml:"pathFieldConfigs,omitempty" type:"Repeated"`
 }
 
 func (s AiStatisticsConfig) String() string {
@@ -72,8 +75,10 @@ func (s *AiStatisticsConfig) Validate() error {
 }
 
 type AiStatisticsConfigPathFieldConfigs struct {
+	// A key-value map for extracting fields. Keys are custom names, and values are paths to the data within the request or response body.
 	FieldPaths map[string]*AiStatisticsPathField `json:"fieldPaths,omitempty" xml:"fieldPaths,omitempty"`
-	Path       *string                           `json:"path,omitempty" xml:"path,omitempty"`
+	// The API endpoint path to which this configuration applies, such as /user/id.
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
 func (s AiStatisticsConfigPathFieldConfigs) String() string {

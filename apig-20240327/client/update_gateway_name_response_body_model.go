@@ -18,14 +18,20 @@ type iUpdateGatewayNameResponseBody interface {
 }
 
 type UpdateGatewayNameResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 585657D2-1C20-5B8A-AF17-D727C6490BE4

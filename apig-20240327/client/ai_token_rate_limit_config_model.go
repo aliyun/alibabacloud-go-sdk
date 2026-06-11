@@ -22,15 +22,22 @@ type iAiTokenRateLimitConfig interface {
 }
 
 type AiTokenRateLimitConfig struct {
-	EnableGlobalRules *bool                         `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
-	GlobalRules       []*AiTokenRateLimitConfigRule `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
+	// Controls whether global rules are enabled. If set to `true`, the rules in `globalRules` are applied. Defaults to `false`.
+	EnableGlobalRules *bool `json:"enableGlobalRules,omitempty" xml:"enableGlobalRules,omitempty"`
+	// A list of global rate limit rules. These rules are applied when no specific rule in `rules` is matched.
+	GlobalRules []*AiTokenRateLimitConfigRule `json:"globalRules,omitempty" xml:"globalRules,omitempty" type:"Repeated"`
+	// Specifies the status of the plugin, such as `enabled` or `disabled`.
+	//
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
+	// Specifies the Redis configuration for distributed rate limiting.
+	//
 	// if can be null:
 	// true
-	RedisConfig *AiPolicyRedisConfig          `json:"redisConfig,omitempty" xml:"redisConfig,omitempty"`
-	Rules       []*AiTokenRateLimitConfigRule `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	RedisConfig *AiPolicyRedisConfig `json:"redisConfig,omitempty" xml:"redisConfig,omitempty"`
+	// A list of specific rate limit rules.
+	Rules []*AiTokenRateLimitConfigRule `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
 func (s AiTokenRateLimitConfig) String() string {

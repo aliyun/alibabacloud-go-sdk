@@ -62,7 +62,7 @@ type AgentServiceConfig struct {
 	//
 	// example:
 	//
-	// aliyun
+	// qwen
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
@@ -170,7 +170,7 @@ type AgentServiceConfigCustomConfig struct {
 	//
 	// example:
 	//
-	// sk-xxx
+	// app-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// API key generation mode.
 	//
@@ -295,7 +295,7 @@ type AgentServiceConfigDifyConfig struct {
 	//
 	// example:
 	//
-	// sk-xxx
+	// app-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// The interaction type.
 	//

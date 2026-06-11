@@ -35,6 +35,10 @@ type iListPluginClassesRequest interface {
 
 type ListPluginClassesRequest struct {
 	// The alias keyword for a fuzzy search.
+	//
+	// example:
+	//
+	// OAuth2 认证
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
 	// The traffic direction. Valid values:
 	//

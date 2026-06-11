@@ -53,7 +53,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// example:
 	//
-	// cs-cu08olem1hkokaut34i0
+	// cs-******
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
 	// The expiration mode. Valid values: LongTerm and ShortTerm.
 	//
@@ -144,7 +144,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 	//
 	// example:
 	//
-	// env-cti17hem1hktoruj98ug
+	// env-******
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Parent resource ID
 	//

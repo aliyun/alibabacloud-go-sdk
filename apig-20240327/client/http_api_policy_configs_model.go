@@ -71,7 +71,7 @@ type HttpApiPolicyConfigs struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// SemanticRouterConfig
 	//
@@ -82,7 +82,7 @@ type HttpApiPolicyConfigs struct {
 	//
 	// example:
 	//
-	// AiCache
+	// K8S
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

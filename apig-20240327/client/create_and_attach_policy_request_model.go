@@ -114,7 +114,7 @@ type CreateAndAttachPolicyRequest struct {
 	//
 	// example:
 	//
-	// This is the policy description.
+	// 这是策略描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment ID.
 	//

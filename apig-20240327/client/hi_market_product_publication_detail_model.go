@@ -24,11 +24,17 @@ type iHiMarketProductPublicationDetail interface {
 }
 
 type HiMarketProductPublicationDetail struct {
-	PortalId      *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	PortalName    *string `json:"portalName,omitempty" xml:"portalName,omitempty"`
-	ProductId     *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	ProductName   *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductType   *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	// The unique ID of the portal.
+	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
+	// The name of the portal.
+	PortalName *string `json:"portalName,omitempty" xml:"portalName,omitempty"`
+	// The unique ID of the product.
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// The name of the product.
+	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	// The type of the product.
+	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	// The unique ID of the product publication.
 	PublicationId *string `json:"publicationId,omitempty" xml:"publicationId,omitempty"`
 }
 

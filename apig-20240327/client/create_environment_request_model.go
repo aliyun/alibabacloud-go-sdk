@@ -28,13 +28,13 @@ type CreateEnvironmentRequest struct {
 	//
 	// example:
 	//
-	// The environment name.
+	// 测试环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment alias.
 	//
 	// example:
 	//
-	// Test environment
+	// 这是xxx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment description, such as its purpose and owner.
 	//

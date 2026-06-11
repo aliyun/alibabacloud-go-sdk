@@ -24,12 +24,18 @@ type iAiPolicyRedisConfig interface {
 }
 
 type AiPolicyRedisConfig struct {
-	DatabaseNumber *int32  `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
-	Host           *string `json:"host,omitempty" xml:"host,omitempty"`
-	Password       *string `json:"password,omitempty" xml:"password,omitempty"`
-	Port           *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Timeout        *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The zero-based index of the Redis database to use. The default value is 0.
+	DatabaseNumber *int32 `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
+	// The hostname of the Redis instance.
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The password for Redis authentication.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The port number of the Redis instance.
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The connection timeout in milliseconds.
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The username for Redis authentication.
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s AiPolicyRedisConfig) String() string {

@@ -106,13 +106,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// example:
 	//
-	// 876****-cn-hangzhou
+	// 8237***-cn-hangzhou
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
 	// The certificate ID.
 	//
 	// example:
 	//
-	// 645****-cn-hangzhou
+	// 2382***-cn-hangzhou
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
 	// The certificate name.
 	//
@@ -240,7 +240,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// example:
 	//
-	// rg-aekzvlxzgo5b4si
+	// rg-aekztduhoagat4y
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// All domain names that are bound to the certificate.
 	//
@@ -517,7 +517,7 @@ type GetDomainResponseBodyDataStatisticsInfo struct {
 	//
 	// example:
 	//
-	// 1
+	// 30
 	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 

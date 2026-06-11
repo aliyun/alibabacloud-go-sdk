@@ -20,15 +20,22 @@ type iCreateSourceResponseBody interface {
 }
 
 type CreateSourceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *CreateSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 393E2630-DBE7-5221-AB35-9E740675491A
@@ -89,6 +96,8 @@ func (s *CreateSourceResponseBody) Validate() error {
 }
 
 type CreateSourceResponseBodyData struct {
+	// Source ID
+	//
 	// example:
 	//
 	// src-crdddallhtgt***

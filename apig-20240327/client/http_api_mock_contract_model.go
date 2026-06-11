@@ -34,7 +34,7 @@ type HttpApiMockContract struct {
 	//
 	// example:
 	//
-	// Mock content.
+	// Mock测试
 	ResponseContent *string `json:"responseContent,omitempty" xml:"responseContent,omitempty"`
 }
 

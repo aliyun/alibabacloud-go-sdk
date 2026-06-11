@@ -20,10 +20,14 @@ type iHiMarketDomain interface {
 }
 
 type HiMarketDomain struct {
-	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The custom domain name. This must be a valid DNS hostname.
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The network type of the endpoint. For example, `VPC` for an internal network or `INTERNET` for a public network.
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Port        *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol    *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The port number for the endpoint. For example, `80` for HTTP or `443` for HTTPS.
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The communication protocol. Valid values include `HTTP` and `HTTPS`.
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s HiMarketDomain) String() string {

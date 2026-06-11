@@ -184,6 +184,10 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	// "true"
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
 	// The parameter description.
+	//
+	// example:
+	//
+	// 作用于请求与响应环节，启用gzip会对请求响应进行压缩，会减少网关流量，增加网关cpu消耗
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the parameter.
 	//
@@ -451,6 +455,10 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions struct {
 	// KEEP_UNCHANGED
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The display value.
+	//
+	// example:
+	//
+	// 保持不变
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
 }
 

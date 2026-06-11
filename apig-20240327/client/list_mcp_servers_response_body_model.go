@@ -212,7 +212,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// My MCP Server
+	// 这是xxx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -242,7 +242,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// mcp spec content
+	// HTTP转MCP Config base64值
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 	// The MCP server ID.
 	//
@@ -286,7 +286,7 @@ type ListMcpServersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// RealMCP
+	// 可选值：RealMCP、AssemblyMCP
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -591,7 +591,7 @@ type ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo struct {
 	//
 	// example:
 	//
-	// nacos-mcp-001
+	// 同步的MCP Server ID
 	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
 	// The Nacos namespace.
 	//

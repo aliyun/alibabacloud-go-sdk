@@ -44,63 +44,63 @@ type iHttpApiDeployConfig interface {
 }
 
 type HttpApiDeployConfig struct {
-	// Specifies whether to enable automatic deployment.
+	// Whether to enable automatic deployment.
 	//
 	// example:
 	//
 	// true
 	AutoDeploy *bool `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
-	// The publishing scenario.
+	// Deployment scenario.
 	//
 	// example:
 	//
 	// SingleService
 	BackendScene      *string   `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
 	BuiltinRouteNames []*string `json:"builtinRouteNames,omitempty" xml:"builtinRouteNames,omitempty" type:"Repeated"`
-	// The IDs of the custom domain names.
+	// List of custom domain IDs.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	// The information about the custom domain names.
+	// List of custom domain details.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
 	EnvDomainIds      []*string                               `json:"envDomainIds,omitempty" xml:"envDomainIds,omitempty" type:"Repeated"`
 	EnvDomainInfos    []*HttpApiDeployConfigEnvDomainInfos    `json:"envDomainInfos,omitempty" xml:"envDomainInfos,omitempty" type:"Repeated"`
-	// The environment ID.
+	// Environment ID.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The instance ID.
+	// Gateway instance ID.
 	//
 	// example:
 	//
 	// gw-xx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance information.
+	// Gateway information.
 	//
 	// if can be null:
 	// true
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// 网关类型
+	// Gateway type.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The Mock settings.
+	// Mock configuration.
 	//
 	// if can be null:
 	// true
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
-	// The policy configurations.
+	// List of policy configurations.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
-	// routeBackend
+	// Backend service information.
 	//
 	// if can be null:
 	// true
 	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
-	// The service configurations.
+	// List of service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The information about the sub-domain names.
+	// List of second-level domain details.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -321,19 +321,19 @@ func (s *HttpApiDeployConfig) Validate() error {
 }
 
 type HttpApiDeployConfigCustomDomainInfos struct {
-	// The domain name ID.
+	// Domain ID.
 	//
 	// example:
 	//
-	// d-cshee6dlhtgkf4muio3g
+	// d-cshee6dlhtgk******
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// The domain name.
+	// Domain name.
 	//
 	// example:
 	//
 	// hello-server.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol.
+	// Protocol.
 	//
 	// example:
 	//
@@ -426,74 +426,74 @@ func (s *HttpApiDeployConfigEnvDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
-	// Legacy gateway service ID for backward compatibility
+	// Gateway service ID.
 	//
 	// example:
 	//
 	// gw-svc-abc123
 	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	// Intent classification code
+	// Intent code.
 	//
 	// example:
 	//
 	// INQUIRY
 	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
-	// Match conditions
+	// Matching conditions.
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// The model name.
+	// Model name.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model name matching rule.
+	// Model name matching rule.
 	//
 	// example:
 	//
 	// qwen-*
 	ModelNamePattern *string `json:"modelNamePattern,omitempty" xml:"modelNamePattern,omitempty"`
-	// Multi-service routing strategy type
+	// Multi-service routing strategy type.
 	//
 	// example:
 	//
 	// ByWeight
 	MultiServiceRouteStrategy *string `json:"multiServiceRouteStrategy,omitempty" xml:"multiServiceRouteStrategy,omitempty"`
-	// Service display name
+	// Service display name.
 	//
 	// example:
 	//
 	// Qwen-Max-Service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Observability metrics-based routing config
+	// Observability-based routing configuration.
 	//
 	// if can be null:
 	// true
 	ObservabilityRouteConfig *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig `json:"observabilityRouteConfig,omitempty" xml:"observabilityRouteConfig,omitempty" type:"Struct"`
-	// Service port number
+	// Service port number.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// Service protocol
+	// Service protocol (HTTP/HTTPS).
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The service ID.
+	// Service ID.
 	//
 	// example:
 	//
 	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// Service version tag for tag-based routing scenarios
+	// Service version tag.
 	//
 	// example:
 	//
-	// v2
+	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The service weight.
+	// Service weight.
 	//
 	// example:
 	//
@@ -641,19 +641,19 @@ func (s *HttpApiDeployConfigServiceConfigs) Validate() error {
 }
 
 type HttpApiDeployConfigServiceConfigsObservabilityRouteConfig struct {
-	// Routing mode
+	// Routing mode.
 	//
 	// example:
 	//
 	// LeastBusy
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// Queue size
+	// Queue size.
 	//
 	// example:
 	//
 	// 100
 	QueueSize *int32 `json:"queueSize,omitempty" xml:"queueSize,omitempty"`
-	// Max traffic ratio per single service
+	// Maximum traffic ratio for a single service.
 	//
 	// example:
 	//
@@ -701,25 +701,25 @@ func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) Validate() e
 }
 
 type HttpApiDeployConfigSubDomains struct {
-	// The domain name ID.
+	// Domain ID.
 	//
 	// example:
 	//
-	// d-csmn42um1hksudfk9eng
+	// d-csmn42um******
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// The domain name.
+	// Domain name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network type.
+	// Network type.
 	//
 	// example:
 	//
 	// Intranet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The protocol.
+	// Protocol.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type HttpApiParameter struct {
 	//
 	// example:
 	//
-	// The example description.
+	// 用户ID
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The sample value of the parameter.
 	//

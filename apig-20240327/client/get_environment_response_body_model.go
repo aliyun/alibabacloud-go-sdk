@@ -100,7 +100,7 @@ type GetEnvironmentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The environment description.
+	// 测试环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The update timestamp.
 	//
@@ -118,7 +118,7 @@ type GetEnvironmentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The instance information.
+	// 这是xxx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment name.
 	//

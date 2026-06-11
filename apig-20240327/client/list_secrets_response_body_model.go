@@ -24,7 +24,7 @@ type ListSecretsResponseBody struct {
 	//
 	// example:
 	//
-	// 200
+	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// Data
 	Data *ListSecretsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -38,7 +38,7 @@ type ListSecretsResponseBody struct {
 	//
 	// example:
 	//
-	// 2F270C0B-7D6A-5DA7-93E2-******
+	// 3A3D1392-0F71-5A10-9AE8-89C434696966
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -114,7 +114,7 @@ type ListSecretsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 104
+	// 10
 	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
@@ -180,7 +180,7 @@ type ListSecretsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 1234567890
+	// 1725617840096
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// Gateway type associated with the secret
 	//
@@ -194,19 +194,19 @@ type ListSecretsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// test-secret
+	// my_secret
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Number of resources referencing this secret
 	//
 	// example:
 	//
-	// 5
+	// 3
 	ReferenceCount *int32 `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
 	// Source of the ID
 	//
 	// example:
 	//
-	// xxxxxx
+	// sec-d5e6shmm1hkoxxxxxxxx
 	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
 	// Source of the secret
 	//
@@ -224,7 +224,7 @@ type ListSecretsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 1234567890
+	// 1721116090326
 	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 

@@ -26,13 +26,20 @@ type iHiMarketOidcConfig interface {
 }
 
 type HiMarketOidcConfig struct {
-	AuthCodeConfig  *HiMarketOidcConfigAuthCodeConfig  `json:"authCodeConfig,omitempty" xml:"authCodeConfig,omitempty" type:"Struct"`
-	Enabled         *bool                              `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	GrantType       *string                            `json:"grantType,omitempty" xml:"grantType,omitempty"`
+	// Configuration settings for the authorization code grant type.
+	AuthCodeConfig *HiMarketOidcConfigAuthCodeConfig `json:"authCodeConfig,omitempty" xml:"authCodeConfig,omitempty" type:"Struct"`
+	// Enables or disables this identity provider. If set to `false`, users cannot sign in with this provider.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The OAuth 2.0 grant type. For OIDC, this must be `authorization_code`.
+	GrantType *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
+	// Specifies how to map claims from an ID token to user attributes in your system.
 	IdentityMapping *HiMarketOidcConfigIdentityMapping `json:"identityMapping,omitempty" xml:"identityMapping,omitempty" type:"Struct"`
-	LogoUrl         *string                            `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
-	Name            *string                            `json:"name,omitempty" xml:"name,omitempty"`
-	Provider        *string                            `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The URL for the provider\\"s logo. This logo appears on the sign-in page.
+	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
+	// The provider\\"s display name. This name appears on the sign-in page.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier for the identity provider.
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
 func (s HiMarketOidcConfig) String() string {
@@ -121,15 +128,24 @@ func (s *HiMarketOidcConfig) Validate() error {
 }
 
 type HiMarketOidcConfigAuthCodeConfig struct {
+	// The URL of the identity provider\\"s authorization endpoint.
 	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty" xml:"authorizationEndpoint,omitempty"`
-	ClientId              *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	ClientSecret          *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
-	Issuer                *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	JwkSetUri             *string `json:"jwkSetUri,omitempty" xml:"jwkSetUri,omitempty"`
-	RedirectUri           *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
-	Scopes                *string `json:"scopes,omitempty" xml:"scopes,omitempty"`
-	TokenEndpoint         *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
-	UserInfoEndpoint      *string `json:"userInfoEndpoint,omitempty" xml:"userInfoEndpoint,omitempty"`
+	// The client ID obtained from the identity provider after registering your application.
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The client secret obtained from the identity provider after registering your application.
+	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
+	// The identity provider\\"s unique issuer URL, used to validate ID tokens.
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The provider\\"s JWK Set URI. This URI provides the public keys needed to verify ID token signatures.
+	JwkSetUri *string `json:"jwkSetUri,omitempty" xml:"jwkSetUri,omitempty"`
+	// The application\\"s redirect URI. The provider sends the authorization code to this URI after successful authentication. You must register this URI with the identity provider.
+	RedirectUri *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
+	// A space-separated list of scopes to request from the provider. The `openid` scope is required for OIDC authentication. For example: `openid profile email`.
+	Scopes *string `json:"scopes,omitempty" xml:"scopes,omitempty"`
+	// The URL of the identity provider\\"s token endpoint.
+	TokenEndpoint *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
+	// The URL of the identity provider\\"s user info endpoint.
+	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty" xml:"userInfoEndpoint,omitempty"`
 }
 
 func (s HiMarketOidcConfigAuthCodeConfig) String() string {
@@ -226,10 +242,14 @@ func (s *HiMarketOidcConfigAuthCodeConfig) Validate() error {
 }
 
 type HiMarketOidcConfigIdentityMapping struct {
-	CustomFields  map[string]*string `json:"customFields,omitempty" xml:"customFields,omitempty"`
-	EmailField    *string            `json:"emailField,omitempty" xml:"emailField,omitempty"`
-	UserIdField   *string            `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
-	UserNameField *string            `json:"userNameField,omitempty" xml:"userNameField,omitempty"`
+	// Maps additional claims from the ID token to custom user attributes. For each mapping, the key is the target attribute in your system, and the value is the name of the claim from the ID token.
+	CustomFields map[string]*string `json:"customFields,omitempty" xml:"customFields,omitempty"`
+	// The ID token claim that maps to the user\\"s email address. The `email` claim is a common choice.
+	EmailField *string `json:"emailField,omitempty" xml:"emailField,omitempty"`
+	// The ID token claim that maps to the user\\"s unique ID. The `sub` claim is a common choice.
+	UserIdField *string `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
+	// The ID token claim that maps to the user\\"s display name. Common choices include `name` and `preferred_username`.
+	UserNameField *string `json:"userNameField,omitempty" xml:"userNameField,omitempty"`
 }
 
 func (s HiMarketOidcConfigIdentityMapping) String() string {

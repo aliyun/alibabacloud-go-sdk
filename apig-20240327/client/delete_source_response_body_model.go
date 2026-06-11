@@ -18,14 +18,20 @@ type iDeleteSourceResponseBody interface {
 }
 
 type DeleteSourceResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C67DED2B-F19B-5BEC-88C1-D6EB854CD0D4

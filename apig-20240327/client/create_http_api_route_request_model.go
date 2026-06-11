@@ -38,7 +38,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// example:
 	//
-	// User logon route
+	// 用户登录路由。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`

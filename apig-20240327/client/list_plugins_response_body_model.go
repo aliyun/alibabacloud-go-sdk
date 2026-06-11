@@ -348,7 +348,7 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// example:
 	//
-	// key-based rate limit
+	// 基于 Key 限流
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The execution priority.
 	//
@@ -390,7 +390,7 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// example:
 	//
-	// version description
+	// 版本描述
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

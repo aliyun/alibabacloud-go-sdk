@@ -26,43 +26,45 @@ type iAttachment interface {
 }
 
 type Attachment struct {
+	// The attachment point ID.
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The resource IDs.
-	AttachResourceIds       []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// A list of attached resource IDs.
+	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// A list of parent resource IDs.
 	AttachResourceParentIds []*string `json:"attachResourceParentIds,omitempty" xml:"attachResourceParentIds,omitempty" type:"Repeated"`
-	// The supported mount point type. Valid values:
+	// The supported attachment point types for the policy.
 	//
-	// 	- HttpApi: an HTTP API
+	// - `HttpApi`: An HTTP API.
 	//
-	// 	- Operation: an operation in an HTTP API
+	// - `Operation`: An operation of an HTTP API.
 	//
-	// 	- GatewayRoute: a gateway route
+	// - `GatewayRoute`: A gateway route.
 	//
-	// 	- GatewayService: a gateway service
+	// - `GatewayService`: A gateway service.
 	//
-	// 	- GatewayServicePort: a gateway service port
+	// - `GatewayServicePort`: A gateway service port.
 	//
-	// 	- Domain: a gateway domain name
+	// - `Domain`: A gateway domain.
 	//
-	// 	- Gateway: a gateway instance
+	// - `Gateway`: A gateway.
 	//
 	// example:
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The environment to which the mounted resource belongs. If an asterisk (\\*) is returned as the environment ID, the mounted resource is not related to the environment.
+	// The ID of the environment for the attached resource. An asterisk (`*`) indicates that the policy attachment is not environment-specific.
 	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The instance to which the mounted resource belongs.
+	// The ID of the gateway for the attached resource.
 	//
 	// example:
 	//
 	// gw-cpr4f9dlhtgq5ksfgmb0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The mount ID.
+	// The policy attachment ID.
 	//
 	// example:
 	//

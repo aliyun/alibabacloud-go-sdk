@@ -20,15 +20,15 @@ type iCreateConsumerResponseBody interface {
 }
 
 type CreateConsumerResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *CreateConsumerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//

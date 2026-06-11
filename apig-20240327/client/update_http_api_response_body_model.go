@@ -22,7 +22,7 @@ type UpdateHttpApiResponseBody struct {
 	//
 	// example:
 	//
-	// 200
+	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// Response message.
 	//

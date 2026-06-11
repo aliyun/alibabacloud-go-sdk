@@ -40,7 +40,7 @@ type GetDashboardRequest struct {
 	//
 	// example:
 	//
-	// api-c9uuekzmia8q2****
+	// api-ctl7no6m1h****
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
 	// The filter configurations.
 	Filter *GetDashboardRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`

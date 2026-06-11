@@ -26,16 +26,25 @@ type iAiCacheConfig interface {
 }
 
 type AiCacheConfig struct {
-	CacheKeyStrategy *string                       `json:"cacheKeyStrategy,omitempty" xml:"cacheKeyStrategy,omitempty"`
-	CacheMode        *string                       `json:"cacheMode,omitempty" xml:"cacheMode,omitempty"`
-	CacheTTL         *int32                        `json:"cacheTTL,omitempty" xml:"cacheTTL,omitempty"`
-	EmbeddingConfig  *AiCacheConfigEmbeddingConfig `json:"embeddingConfig,omitempty" xml:"embeddingConfig,omitempty" type:"Struct"`
+	// The cache key strategy, which determines how the system generates a unique key for each cacheable request. Valid values: `DEFAULT` and `CUSTOM`.
+	CacheKeyStrategy *string `json:"cacheKeyStrategy,omitempty" xml:"cacheKeyStrategy,omitempty"`
+	// The cache mode, which defines the caching behavior. Valid values are `NORMAL` for standard key-value caching and `SEMANTIC` for vector-based similarity caching.
+	CacheMode *string `json:"cacheMode,omitempty" xml:"cacheMode,omitempty"`
+	// The cache Time-to-Live (TTL) in seconds. This specifies the duration that a cached response remains valid. After the TTL expires, the cache removes the response.
+	CacheTTL *int32 `json:"cacheTTL,omitempty" xml:"cacheTTL,omitempty"`
+	// The embedding configuration. Specifies the service that converts text queries into vector embeddings for semantic search.
+	EmbeddingConfig *AiCacheConfigEmbeddingConfig `json:"embeddingConfig,omitempty" xml:"embeddingConfig,omitempty" type:"Struct"`
+	// The plugin status. Set to `enable` to activate the plugin or `disable` to deactivate it.
+	//
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
+	// The Redis configuration, required if you use a Redis instance as the cache backend.
+	//
 	// if can be null:
 	// true
-	RedisConfig  *AiPolicyRedisConfig       `json:"redisConfig,omitempty" xml:"redisConfig,omitempty"`
+	RedisConfig *AiPolicyRedisConfig `json:"redisConfig,omitempty" xml:"redisConfig,omitempty"`
+	// The vector configuration for semantic caching. This enables the cache to retrieve results based on semantic similarity instead of exact matches.
 	VectorConfig *AiCacheConfigVectorConfig `json:"vectorConfig,omitempty" xml:"vectorConfig,omitempty" type:"Struct"`
 }
 
@@ -135,10 +144,14 @@ func (s *AiCacheConfig) Validate() error {
 }
 
 type AiCacheConfigEmbeddingConfig struct {
+	// The model name to use for generating embeddings, such as `text-embedding-v1`.
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The service ID of the deployed embedding model.
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	Timeout   *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The request timeout in milliseconds. A request to the embedding service fails if it exceeds this duration. Default: `10000`.
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The type of embedding service. For example, specify `Tongyi` for Alibaba Cloud\\"s Tongyi Qwen model series.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AiCacheConfigEmbeddingConfig) String() string {
@@ -190,12 +203,18 @@ func (s *AiCacheConfigEmbeddingConfig) Validate() error {
 }
 
 type AiCacheConfigVectorConfig struct {
-	ApiKey       *string  `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	CollectionId *string  `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
-	ServiceHost  *string  `json:"serviceHost,omitempty" xml:"serviceHost,omitempty"`
-	Threshold    *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	Timeout      *int32   `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Type         *string  `json:"type,omitempty" xml:"type,omitempty"`
+	// The API key to authenticate with the vector database service.
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The unique ID of the collection or index within the vector database for search and storage.
+	CollectionId *string `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
+	// The endpoint URL of the vector database service.
+	ServiceHost *string `json:"serviceHost,omitempty" xml:"serviceHost,omitempty"`
+	// The similarity threshold for a vector search to qualify as a cache hit. The value must be between 0.0 and 1.0. A higher value means a stricter similarity requirement.
+	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The request timeout in milliseconds. A request to the vector service fails if it exceeds this duration. Default: `10000`.
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The type of vector database service. For example, specify `DashVector` for Alibaba Cloud\\"s vector search service.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s AiCacheConfigVectorConfig) String() string {

@@ -509,11 +509,7 @@ type GetGatewayResponseBodyDataEnvironments struct {
 	//
 	// example:
 	//
-	// The protocol. Valid values:
-	//
-	// 	- TCP
-	//
-	// 	- UDP
+	// 默认环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The load balancer type. Valid values:
 	//
@@ -938,7 +934,7 @@ type GetGatewayResponseBodyDataVSwitch struct {
 	//
 	// example:
 	//
-	// The resource tag.
+	// 杭州VPC虚拟交换机
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The tag value.
 	//
@@ -983,7 +979,7 @@ type GetGatewayResponseBodyDataVpc struct {
 	//
 	// example:
 	//
-	// $.errorCode
+	// 杭州VPC
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Query Gateway Details
 	//
@@ -1028,7 +1024,7 @@ type GetGatewayResponseBodyDataZones struct {
 	//
 	// example:
 	//
-	// Hangzhou Zone I
+	// 杭州可用区E
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The VSwitch information in the zone
 	VSwitch *GetGatewayResponseBodyDataZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
@@ -1089,7 +1085,7 @@ type GetGatewayResponseBodyDataZonesVSwitch struct {
 	//
 	// example:
 	//
-	// vswitch-name
+	// 杭州VPC虚拟交换机
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The VSwitch ID
 	//

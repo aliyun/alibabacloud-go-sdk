@@ -50,7 +50,7 @@ type UpdateMcpServerRequest struct {
 	//
 	// example:
 	//
-	// Updated MCP server description
+	// 商品中心服务路由
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`

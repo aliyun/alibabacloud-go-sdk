@@ -14,6 +14,7 @@ type iHiMarketProductFeature interface {
 }
 
 type HiMarketProductFeature struct {
+	// Specifies the product\\"s model feature. For more information, see HiMarketModelFeature.
 	ModelFeature *HiMarketModelFeature `json:"modelFeature,omitempty" xml:"modelFeature,omitempty"`
 }
 

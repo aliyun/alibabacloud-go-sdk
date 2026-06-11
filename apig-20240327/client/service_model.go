@@ -56,19 +56,19 @@ type iService interface {
 }
 
 type Service struct {
-	// The address details, which can be IP addresses or domain names.
+	// A list of service addresses, such as IP addresses or domain names.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The agent service configuration
+	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	// The AI service configurations.
+	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	// The creation time (unix timestamp).
+	// The creation timestamp.
 	//
 	// example:
 	//
 	// 1725617840096
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The express type
+	// The execution type for the cloud workflow.
 	//
 	// example:
 	//
@@ -80,27 +80,21 @@ type Service struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The service group name.
+	// The name of the service group.
 	//
 	// example:
 	//
 	// publich
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The health check configurations.
+	// The health check configuration.
 	HealthCheck *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	// The health check status.
-	//
-	// Valid values:
-	//
-	// 	- Unhealthy
-	//
-	// 	- Healthy
+	// The health status. Valid values: `Healthy` or `Unhealthy`.
 	//
 	// example:
 	//
 	// Healthy
 	HealthStatus *string `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
-	// The label details for service version configuration
+	// A list of labels for the service.
 	LabelDetails []*LabelDetail `json:"labelDetails,omitempty" xml:"labelDetails,omitempty" type:"Repeated"`
 	// The service name.
 	//
@@ -108,23 +102,23 @@ type Service struct {
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace of the service.
+	// The namespace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The outlier endpoints list
+	// A list of outlier endpoints.
 	OutlierEndpoints []*string `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
-	// The list of objects containing port details.
+	// A list of port configurations.
 	Ports []*ServicePorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The service protocol type.
+	// The service protocol.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The function qualifier name.
+	// The function qualifier.
 	//
 	// example:
 	//
@@ -136,27 +130,28 @@ type Service struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The service unique ID.
+	// The unique service ID.
 	//
 	// example:
 	//
 	// svc-cr6pk4tlhtgm***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The source type.
+	// The source type of the service.
 	//
 	// example:
 	//
 	// MSE_NACOS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The list of unhealthy endpoints.
+	// A list of unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	// The last modified time (unix timestamp).
+	// The update timestamp.
 	//
 	// example:
 	//
 	// 1725868548440
-	UpdateTimestamp *int64             `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-	Versions        []*ServiceVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// A list of service versions.
+	Versions []*ServiceVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s Service) String() string {
@@ -424,7 +419,7 @@ type ServicePorts struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Valid values: TCP and UDP.
+	// The protocol. Valid values: `TCP` or `UDP`.
 	//
 	// example:
 	//
@@ -472,8 +467,10 @@ func (s *ServicePorts) Validate() error {
 }
 
 type ServiceVersions struct {
+	// The labels of the version.
 	Labels []*ServiceVersionsLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	Name   *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	// The version name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ServiceVersions) String() string {
@@ -516,7 +513,9 @@ func (s *ServiceVersions) Validate() error {
 }
 
 type ServiceVersionsLabels struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key of the label.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the label.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

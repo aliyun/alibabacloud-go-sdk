@@ -9,6 +9,113 @@ import (
 
 // Summary:
 //
+// 新增网关配额限流规则
+//
+// Description:
+//
+// 该接口用于对AI网关增加基于消费者的配额规则。注意，只针对于版本大于2.1.19的AI网关生效。
+//
+// >
+//
+// >  推荐调用逻辑：
+//
+// > - 一、先 dryRun 预检检验是否存在规则冲突
+//
+// > - - 传dryRun=true
+//
+// > - - 返回含conflictHash的冲突预览
+//
+// > - 二、确认后正式提交
+//
+// > - - 无冲突：dryRun=false,overwrite=false
+//
+// > - - 有冲突且确认覆盖：dryRun=false,overwrite=true, conflictHash=<上一步返回的值＞
+//
+// @param request - AddGatewayQuotaRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddGatewayQuotaRuleResponse
+func (client *Client) AddGatewayQuotaRuleWithContext(ctx context.Context, gatewayId *string, request *AddGatewayQuotaRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddGatewayQuotaRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConflictHash) {
+		body["conflictHash"] = request.ConflictHash
+	}
+
+	if !dara.IsNil(request.ConsumerGroupIds) {
+		body["consumerGroupIds"] = request.ConsumerGroupIds
+	}
+
+	if !dara.IsNil(request.ConsumerIds) {
+		body["consumerIds"] = request.ConsumerIds
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Overwrite) {
+		body["overwrite"] = request.Overwrite
+	}
+
+	if !dara.IsNil(request.PeriodType) {
+		body["periodType"] = request.PeriodType
+	}
+
+	if !dara.IsNil(request.QuotaDimension) {
+		body["quotaDimension"] = request.QuotaDimension
+	}
+
+	if !dara.IsNil(request.QuotaLimit) {
+		body["quotaLimit"] = request.QuotaLimit
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		body["ruleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		body["timezone"] = request.Timezone
+	}
+
+	if !dara.IsNil(request.WindowAlignment) {
+		body["windowAlignment"] = request.WindowAlignment
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddGatewayQuotaRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddGatewayQuotaRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a security group that authorizes an instance to access services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
@@ -590,7 +697,7 @@ func (client *Client) CreateEnvironmentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a cloud-native gateway.
+// The zone information.
 //
 // @param request - CreateGatewayRequest
 //
@@ -677,7 +784,7 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an HTTP API.
+// $.parameters[0].schema.properties.ingressConfig.example
 //
 // @param request - CreateHttpApiRequest
 //
@@ -1401,7 +1508,7 @@ func (client *Client) CreateServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// Creates a service source.
+// Create a source.
 //
 // @param request - CreateSourceRequest
 //
@@ -1621,6 +1728,51 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关配额限流规则
+//
+// Description:
+//
+// 该接口用于对 AI 网关删除某条基于消费者的配额规则。注意，只针对于版本大于 2.1.19 的 AI 网关生效。
+//
+// @param request - DeleteGatewayQuotaRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayQuotaRuleResponse
+func (client *Client) DeleteGatewayQuotaRuleWithContext(ctx context.Context, gatewayId *string, ruleId *string, request *DeleteGatewayQuotaRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayQuotaRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGatewayQuotaRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGatewayQuotaRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1911,6 +2063,10 @@ func (client *Client) DeletePolicyAttachmentWithContext(ctx context.Context, pol
 //
 // Deletes a key value.
 //
+// Description:
+//
+// 接口支持创建多个服务。
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2008,7 +2164,7 @@ func (client *Client) DeleteServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// Deletes a service source.
+// Delete a service source.
 //
 // @param headers - map
 //
@@ -2041,7 +2197,7 @@ func (client *Client) DeleteSourceWithContext(ctx context.Context, sourceId *str
 
 // Summary:
 //
-// # Deploy HttpApi
+// Deploy an HTTP API, including REST and HTTP API routes.
 //
 // @param request - DeployHttpApiRequest
 //
@@ -2129,7 +2285,7 @@ func (client *Client) DeployMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// Exports an HTTP API.
+// Exports the specified HTTP API.
 //
 // @param request - ExportHttpApiRequest
 //
@@ -2468,6 +2624,120 @@ func (client *Client) GetGatewayWithContext(ctx context.Context, gatewayId *stri
 
 // Summary:
 //
+// 查询网关配额限流规则详情
+//
+// Description:
+//
+// 该接口用于查询 AI 网关上某条消费者配额规则。
+//
+// @param request - GetGatewayQuotaRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayQuotaRuleResponse
+func (client *Client) GetGatewayQuotaRuleWithContext(ctx context.Context, gatewayId *string, ruleId *string, request *GetGatewayQuotaRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayQuotaRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerPageNumber) {
+		query["consumerPageNumber"] = request.ConsumerPageNumber
+	}
+
+	if !dara.IsNil(request.ConsumerPageSize) {
+		query["consumerPageSize"] = request.ConsumerPageSize
+	}
+
+	if !dara.IsNil(request.WithConsumers) {
+		query["withConsumers"] = request.WithConsumers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayQuotaRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayQuotaRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关配额限流规则主体用量详情
+//
+// Description:
+//
+// 该接口用于获取配额规则下的某个消费者用量详情。注意，只针对于版本大于 2.1.19 的 AI 网关生效。
+//
+// @param request - GetGatewayQuotaRuleSubjectUsageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayQuotaRuleSubjectUsageResponse
+func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Context, gatewayId *string, ruleId *string, subjectId *string, request *GetGatewayQuotaRuleSubjectUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayQuotaRuleSubjectUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayQuotaRuleSubjectUsage"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId)) + "/subjects/" + dara.PercentEncode(dara.StringValue(subjectId)) + "/usage"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayQuotaRuleSubjectUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Read HttpApi
 //
 // @param headers - map
@@ -2567,11 +2837,11 @@ func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId 
 
 // Summary:
 //
-// Queries the detailed information of an MCP server.
+// Get the MCP server.
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// This API supports creating multiple services.
 //
 // @param headers - map
 //
@@ -2789,6 +3059,10 @@ func (client *Client) GetSecretWithContext(ctx context.Context, secretId *string
 //
 // Gets the key value.
 //
+// Description:
+//
+// 接口支持创建多个服务。
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2933,7 +3207,7 @@ func (client *Client) GetTraceConfigWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// Imports HTTP APIs. You can call this operation to import OpenAPI 2.0 and OpenAPI 3.0.x definition files to create REST APIs.
+// Import an OpenAPI 2.0 or 3.0.x definition file to create a REST API.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -3339,6 +3613,10 @@ func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *
 //
 // 获取网关外的服务信息
 //
+// Description:
+//
+// 接口支持创建多个服务。
+//
 // @param request - ListExternalServicesRequest
 //
 // @param headers - map
@@ -3423,6 +3701,73 @@ func (client *Client) ListGatewayFeaturesWithContext(ctx context.Context, gatewa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGatewayFeaturesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关周期配额规则列表
+//
+// Description:
+//
+// 该接口用于查询网关上绑定的消费者配额规则列表
+//
+// @param request - ListGatewayQuotaRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayQuotaRulesResponse
+func (client *Client) ListGatewayQuotaRulesWithContext(ctx context.Context, gatewayId *string, request *ListGatewayQuotaRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayQuotaRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayQuotaRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayQuotaRulesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3609,7 +3954,7 @@ func (client *Client) ListHttpApiOperationsWithContext(ctx context.Context, http
 
 // Summary:
 //
-// Queries the routes of an HTTP API.
+// Gets the route list for an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -4344,7 +4689,11 @@ func (client *Client) ListSecretReferencesWithContext(ctx context.Context, secre
 
 // Summary:
 //
-// 查询密钥列表
+// List keys.
+//
+// Description:
+//
+// The API supports creating multiple services.
 //
 // @param request - ListSecretsRequest
 //
@@ -4676,6 +5025,93 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置网关配额限流规则
+//
+// Description:
+//
+// 该接口用于重置网关上某条配额限流规则。注意，只针对于版本大于 2.1.19 的 AI 网关生效；重置将清零规则上消费者历史用量。
+//
+// >
+//
+// >  推荐调用逻辑：
+//
+// > - 一、先 dryRun 预检检验是否存在规则冲突
+//
+// > - - 传dryRun=true
+//
+// > - - 返回含conflictHash的冲突预览
+//
+// > - 二、确认后正式提交
+//
+// > - - 无冲突：dryRun=false,overwrite=false
+//
+// > - - 有冲突且确认覆盖：dryRun=false,overwrite=true, conflictHash=<上一步返回的值＞
+//
+// @param request - ResetGatewayQuotaRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetGatewayQuotaRuleResponse
+func (client *Client) ResetGatewayQuotaRuleWithContext(ctx context.Context, gatewayId *string, ruleId *string, request *ResetGatewayQuotaRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResetGatewayQuotaRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConflictHash) {
+		body["conflictHash"] = request.ConflictHash
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Overwrite) {
+		body["overwrite"] = request.Overwrite
+	}
+
+	if !dara.IsNil(request.PeriodType) {
+		body["periodType"] = request.PeriodType
+	}
+
+	if !dara.IsNil(request.QuotaLimit) {
+		body["quotaLimit"] = request.QuotaLimit
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		body["timezone"] = request.Timezone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetGatewayQuotaRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId)) + "/reset"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetGatewayQuotaRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5185,7 +5621,7 @@ func (client *Client) UpdateDomainWithContext(ctx context.Context, domainId *str
 //
 // Summary:
 //
-// Modifies an environment.
+// # UpdateEnvironment
 //
 // @param request - UpdateEnvironmentRequest
 //
@@ -5283,7 +5719,7 @@ func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatew
 
 // Summary:
 //
-// Changes the name of a Cloud-native API Gateway instance.
+// The response message returned.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -5320,6 +5756,154 @@ func (client *Client) UpdateGatewayNameWithContext(ctx context.Context, gatewayI
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGatewayNameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关配额限流规则
+//
+// Description:
+//
+// 该接口用于编辑网关上某条配额规则。注意，只针对于版本大于2.1.19的AI网关生效；编辑将保留规则上消费者历史用量。
+//
+// >  推荐调用逻辑：
+//
+// > - 一、先 dryRun 预检检验是否存在规则冲突
+//
+// > - - 传dryRun=true
+//
+// > - - 返回含conflictHash的冲突预览
+//
+// > - 二、确认后正式提交
+//
+// > - - 无冲突：dryRun=false,overwrite=false
+//
+// > - - 有冲突且确认覆盖：dryRun=false,overwrite=true, conflictHash=<上一步返回的值＞
+//
+// @param request - UpdateGatewayQuotaRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayQuotaRuleResponse
+func (client *Client) UpdateGatewayQuotaRuleWithContext(ctx context.Context, gatewayId *string, ruleId *string, request *UpdateGatewayQuotaRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayQuotaRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddIds) {
+		body["addIds"] = request.AddIds
+	}
+
+	if !dara.IsNil(request.ConflictHash) {
+		body["conflictHash"] = request.ConflictHash
+	}
+
+	if !dara.IsNil(request.ConsumerGroupIds) {
+		body["consumerGroupIds"] = request.ConsumerGroupIds
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Overwrite) {
+		body["overwrite"] = request.Overwrite
+	}
+
+	if !dara.IsNil(request.QuotaLimit) {
+		body["quotaLimit"] = request.QuotaLimit
+	}
+
+	if !dara.IsNil(request.RemoveIds) {
+		body["removeIds"] = request.RemoveIds
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		body["ruleName"] = request.RuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayQuotaRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayQuotaRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启/停用网关配额限流规则
+//
+// Description:
+//
+// 该接口用于启用或者停用网关上某个配额规则。注意，只针对于版本大于2.1.19的AI网关生效。
+//
+// @param request - UpdateGatewayQuotaRuleStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayQuotaRuleStatusResponse
+func (client *Client) UpdateGatewayQuotaRuleStatusWithContext(ctx context.Context, gatewayId *string, ruleId *string, request *UpdateGatewayQuotaRuleStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayQuotaRuleStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClearHistory) {
+		body["clearHistory"] = request.ClearHistory
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayQuotaRuleStatus"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId)) + "/status"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayQuotaRuleStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5472,7 +6056,7 @@ func (client *Client) UpdateHttpApiOperationWithContext(ctx context.Context, htt
 
 // Summary:
 //
-// Updates the route of an HTTP API.
+// Updates a route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -5799,7 +6383,7 @@ func (client *Client) UpdateSecretWithContext(ctx context.Context, secretId *str
 
 // Summary:
 //
-// Updates a service. You can call this operation to update the health check, DNS domain name, and fixed address configurations of a service.
+// Update a service. You can update the health check configuration of the service, and the configuration information of DNS domain names and static addresses.
 //
 // @param request - UpdateServiceRequest
 //

@@ -100,7 +100,7 @@ type GatewayInfoVpcInfo struct {
 	//
 	// example:
 	//
-	// test-vpc
+	// 商品中心预发环境专有网络
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The VPC ID.
 	//

@@ -40,6 +40,12 @@ type CreateGatewayRequest struct {
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// Gateway instance edition:
+	//
+	// - Standard instance: Professional
+	//
+	// - Serverless: Serverless (currently supports only AI gateway)
+	//
 	// example:
 	//
 	// Professional
@@ -49,8 +55,9 @@ type CreateGatewayRequest struct {
 	// example:
 	//
 	// API
-	GatewayType *string                        `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	LogConfig   *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// Gateway log configuration.
+	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -59,6 +66,8 @@ type CreateGatewayRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The gateway edition.
 	NetworkAccessConfig *CreateGatewayRequestNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
@@ -68,8 +77,9 @@ type CreateGatewayRequest struct {
 	// example:
 	//
 	// apigw.dev.x2
-	Spec *string                    `json:"spec,omitempty" xml:"spec,omitempty"`
-	Tag  []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// The list of labels.
+	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 	// The tag value.
 	//
 	// example:
@@ -216,6 +226,7 @@ func (s *CreateGatewayRequest) Validate() error {
 }
 
 type CreateGatewayRequestLogConfig struct {
+	// SLS log configuration.
 	Sls *CreateGatewayRequestLogConfigSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -246,6 +257,8 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
+	// Whether to enable.
+	//
 	// example:
 	//
 	// false
@@ -304,10 +317,14 @@ func (s *CreateGatewayRequestNetworkAccessConfig) Validate() error {
 }
 
 type CreateGatewayRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the label.
+	//
 	// example:
 	//
 	// value
@@ -351,11 +368,14 @@ type CreateGatewayRequestZoneConfig struct {
 	//
 	// Manual
 	SelectOption *string `json:"selectOption,omitempty" xml:"selectOption,omitempty"`
+	// Virtual switch ID.
+	//
 	// example:
 	//
 	// vsw-xxx
-	VSwitchId *string                                `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	Zones     []*CreateGatewayRequestZoneConfigZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// List of supported zones.
+	Zones []*CreateGatewayRequestZoneConfigZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
 func (s CreateGatewayRequestZoneConfig) String() string {
@@ -407,10 +427,14 @@ func (s *CreateGatewayRequestZoneConfig) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfigZones struct {
+	// The ID of the virtual switch.
+	//
 	// example:
 	//
 	// vsw-xx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the zone.
+	//
 	// example:
 	//
 	// cn-wulanchabu-a

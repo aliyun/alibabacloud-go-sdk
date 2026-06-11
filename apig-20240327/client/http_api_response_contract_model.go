@@ -78,7 +78,7 @@ type HttpApiResponseContractItems struct {
 	//
 	// example:
 	//
-	// This is a description.
+	// 正常接口响应
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The sample value.
 	//
@@ -106,7 +106,7 @@ type HttpApiResponseContractItems struct {
 	//
 	//             "type": "string",
 	//
-	//             "description": "This is a description."
+	//             "description": "操作结果，\\"ok\\" 表示成功"
 	//
 	//         }
 	//

@@ -22,11 +22,26 @@ type iListExternalServicesRequest interface {
 }
 
 type ListExternalServicesRequest struct {
-	ImportableOnly *bool   `json:"importableOnly,omitempty" xml:"importableOnly,omitempty"`
-	Limit          *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NameLike       *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// example:
+	//
+	// true
+	ImportableOnly *bool `json:"importableOnly,omitempty" xml:"importableOnly,omitempty"`
+	// example:
+	//
+	// 100
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// imah
+	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// example:
+	//
+	// 667435
 	PaiWorkspaceId *string `json:"paiWorkspaceId,omitempty" xml:"paiWorkspaceId,omitempty"`
-	SourceType     *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// example:
+	//
+	// FC3
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
 func (s ListExternalServicesRequest) String() string {

@@ -46,35 +46,19 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// test-svc
 	BackendServiceName *string `json:"backendServiceName,omitempty" xml:"backendServiceName,omitempty"`
-	// The string that is used to filter routes based on consumer authentication rules. Only authorized APIs are returned.
+	// Filters the results, returning only routes authorized by the specified consumer authorization rule.
 	//
 	// example:
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// The deployment state of the route.
-	//
-	// Enumerated values:
-	//
-	// 	- Deploying: The route is being deployed.
-	//
-	// 	- DeployedWithChanges: The route is deployed and modified.
-	//
-	// 	- Undeploying: The route is being undeployed.
-	//
-	// 	- NotDeployed: The route is not deployed.
-	//
-	// 	- Deployed: The route is deployed.
-	//
-	// 	- UndeployFailed: The route failed to be undeployed.
-	//
-	// 	- DeployFailed: The route failed to be deployed.
+	// The deployment status of the route.
 	//
 	// example:
 	//
 	// NotDeployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	// Specifies to filter routes by domain ID.
+	// Filters routes by the specified domain ID.
 	//
 	// example:
 	//
@@ -86,61 +70,61 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Whether to filter for deployment scenario
+	// Set to `true` if the query is for a deployment scenario.
 	//
 	// example:
 	//
 	// true
 	ForDeploy *bool `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
-	// The ID of the Cloud-native API Gateway instance.
+	// The cloud-native API gateway ID.
 	//
 	// example:
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The route name.
+	// The route name. This parameter requires an exact match.
 	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The route name keyword for a fuzzy search.
+	// Filters the results by route name using a fuzzy search.
 	//
 	// example:
 	//
 	// item
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number, starting from 1. Defaults to 1 if unspecified.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The page size. Valid values are 1 to 100. Defaults to 10 if unspecified.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The route path keyword for a fuzzy search.
+	// Filters the results by route path using a fuzzy search.
 	//
 	// example:
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// The consumer authorization information in the response.
+	// Set to `true` to include the consumer authorization policy in the response.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	// The authentication rules of the specified consumer in each route returned.
+	// The consumer ID. If specified, the response includes the consumer\\"s associated authorization rules for each route.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// The mounting information of the specified plug-in in each route returned.
+	// The plugin ID. If specified, the response includes the attachment information for this plugin for each route.
 	//
 	// example:
 	//

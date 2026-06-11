@@ -24,7 +24,7 @@ type ListHttpApisResponseBody struct {
 	//
 	// example:
 	//
-	// 200
+	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// Response data.
 	Data *ListHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`

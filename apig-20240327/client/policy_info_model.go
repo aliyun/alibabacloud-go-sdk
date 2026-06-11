@@ -35,6 +35,10 @@ type PolicyInfo struct {
 	// The mount information.
 	Attachments []*Attachment `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
 	// The policy class alias.
+	//
+	// example:
+	//
+	// 流量控制
 	ClassAlias *string `json:"classAlias,omitempty" xml:"classAlias,omitempty"`
 	// The class name supported by the policy. Different policies support different mount points. This parameter is used in combination with AttachResourceType.
 	//
@@ -77,6 +81,10 @@ type PolicyInfo struct {
 	// 	- OIDCAuth: implements global OIDC authentication. Supported: Gateway.
 	//
 	// 	- ExternalZAuth: implements custom authentication. Supported: Gateway.
+	//
+	// example:
+	//
+	// RateLimit
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
 	// The policy configurations.
 	//
@@ -135,6 +143,10 @@ type PolicyInfo struct {
 	// p-cq7l5s5lhtgi6qasrdc0
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
 	// The policy type.
+	//
+	// example:
+	//
+	// 策略类型
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

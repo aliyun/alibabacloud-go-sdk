@@ -18,13 +18,13 @@ type iUpdateHttpApiRouteResponseBody interface {
 }
 
 type UpdateHttpApiRouteResponseBody struct {
-	// The status code.
+	// The status code of the response.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

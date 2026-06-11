@@ -40,7 +40,7 @@ type CreatePolicyRequest struct {
 	//
 	// example:
 	//
-	// timeout policy
+	// 超时策略
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Policy name
 	//

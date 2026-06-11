@@ -169,6 +169,10 @@ func (s *CreateSourceRequestK8sSourceConfig) Validate() error {
 
 type CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules struct {
 	// The rule description.
+	//
+	// example:
+	//
+	// 预发网关访问安全组
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of port ranges.
 	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`

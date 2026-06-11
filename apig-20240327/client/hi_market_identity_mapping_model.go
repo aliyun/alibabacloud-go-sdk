@@ -18,8 +18,11 @@ type iHiMarketIdentityMapping interface {
 }
 
 type HiMarketIdentityMapping struct {
-	EmailField    *string `json:"emailField,omitempty" xml:"emailField,omitempty"`
-	UserIdField   *string `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
+	// The identity provider attribute that maps to the user\\"s email address.
+	EmailField *string `json:"emailField,omitempty" xml:"emailField,omitempty"`
+	// The identity provider attribute that maps to the user\\"s unique ID.
+	UserIdField *string `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
+	// The identity provider attribute that maps to the username.
 	UserNameField *string `json:"userNameField,omitempty" xml:"userNameField,omitempty"`
 }
 

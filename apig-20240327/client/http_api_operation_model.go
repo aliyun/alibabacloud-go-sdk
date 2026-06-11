@@ -40,7 +40,7 @@ type HttpApiOperation struct {
 	//
 	// example:
 	//
-	// This is a operation description.
+	// 获取用户信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable authentication.
 	//

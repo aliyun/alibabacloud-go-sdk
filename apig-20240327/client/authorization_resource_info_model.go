@@ -18,14 +18,20 @@ type iAuthorizationResourceInfo interface {
 }
 
 type AuthorizationResourceInfo struct {
+	// Environment ID.
+	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Parent resource ID.
+	//
 	// example:
 	//
 	// api-cujbijem1hkr4voden8g
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
+	// Resource ID.
+	//
 	// example:
 	//
 	// hr-d0mnu16m1hkgujnkgrcg

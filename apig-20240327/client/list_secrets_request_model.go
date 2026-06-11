@@ -24,13 +24,13 @@ type ListSecretsRequest struct {
 	//
 	// example:
 	//
-	// API
+	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// Secret name for fuzzy matching, supports filtering secrets by name
 	//
 	// example:
 	//
-	// test-secret
+	// my_secret
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
 	// Page number
 	//

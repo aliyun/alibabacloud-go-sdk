@@ -273,7 +273,7 @@ type RiskCheckResultsRiskDetails struct {
 	//
 	// example:
 	//
-	// The version is outdated
+	// {"desc":"单节点实例存在架构风险，单点故障会导致服务不可用。建议扩容到2节点及以上。"}
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Whether to mute notifications
 	//
@@ -297,7 +297,7 @@ type RiskCheckResultsRiskDetails struct {
 	//
 	// example:
 	//
-	// Version Risk
+	// 单节点架构风险
 	RiskName *string `json:"riskName,omitempty" xml:"riskName,omitempty"`
 	// The risk type
 	//
@@ -309,13 +309,13 @@ type RiskCheckResultsRiskDetails struct {
 	//
 	// example:
 	//
-	// Current version is 2 releases behind
+	// {"desc":"集群节点数为1，不具备高可用能力"}
 	Situation *string `json:"situation,omitempty" xml:"situation,omitempty"`
 	// The fix suggestion
 	//
 	// example:
 	//
-	// Upgrade to the latest version
+	// {"desc":"扩容到2节点及以上","links":[{"descEn":"click to upgrade specification","type":"upgrade","desc":"点击扩容"}]}
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
 }
 

@@ -32,16 +32,26 @@ type iAiStatisticsPathField interface {
 }
 
 type AiStatisticsPathField struct {
-	Category      *string `json:"category,omitempty" xml:"category,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	FieldKey      *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	Io            *string `json:"io,omitempty" xml:"io,omitempty"`
-	JsonPath      *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	RecordEnabled *bool   `json:"recordEnabled,omitempty" xml:"recordEnabled,omitempty"`
-	Rule          *string `json:"rule,omitempty" xml:"rule,omitempty"`
-	Sensitive     *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	Source        *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The category to which the field belongs, used for grouping and organizing fields.
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// A detailed description that provides additional context about the field\\"s purpose and usage.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The unique key used to identify the field in statistical results.
+	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+	// Specifies whether the field is an input or an output. Valid values are typically `IN` or `OUT`.
+	Io *string `json:"io,omitempty" xml:"io,omitempty"`
+	// The JSONPath expression to extract the field value from the source data.
+	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
+	// The display name of the field, used for labeling in user interfaces or reports.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether logging is enabled for this field. If set to `true`, the system records the field\\"s value in logs.
+	RecordEnabled *bool `json:"recordEnabled,omitempty" xml:"recordEnabled,omitempty"`
+	// A rule or condition applied to the extracted field. The rule\\"s format and effect are implementation-specific.
+	Rule *string `json:"rule,omitempty" xml:"rule,omitempty"`
+	// Indicates whether the field contains sensitive information. If set to `true`, the system may apply masking or other security measures.
+	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	// The data source from which the field is extracted. For example, `Request` or `Response`.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s AiStatisticsPathField) String() string {

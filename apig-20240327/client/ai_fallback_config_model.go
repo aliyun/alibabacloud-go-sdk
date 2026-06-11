@@ -16,8 +16,10 @@ type iAiFallbackConfig interface {
 }
 
 type AiFallbackConfig struct {
-	OnlyRedirectUpstreamCode *bool                             `json:"onlyRedirectUpstreamCode,omitempty" xml:"onlyRedirectUpstreamCode,omitempty"`
-	ServiceConfigs           []*AiFallbackConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	// Determines whether fallback is triggered solely by the upstream service\\"s status code. If `true`, fallback occurs only if the upstream service returns an error code. If `false`, other conditions, such as timeouts, can also trigger the fallback.
+	OnlyRedirectUpstreamCode *bool `json:"onlyRedirectUpstreamCode,omitempty" xml:"onlyRedirectUpstreamCode,omitempty"`
+	// A list of fallback service configurations.
+	ServiceConfigs []*AiFallbackConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
 func (s AiFallbackConfig) String() string {
@@ -60,10 +62,14 @@ func (s *AiFallbackConfig) Validate() error {
 }
 
 type AiFallbackConfigServiceConfigs struct {
-	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
-	PassThroughModelName *bool   `json:"passThroughModelName,omitempty" xml:"passThroughModelName,omitempty"`
-	ServiceId            *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	TargetModelName      *string `json:"targetModelName,omitempty" xml:"targetModelName,omitempty"`
+	// The name of the fallback service.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Determines whether to pass the original model name to the fallback service. If `true`, the model name from the original request is used. If `false`, the value of `targetModelName` is used instead.
+	PassThroughModelName *bool `json:"passThroughModelName,omitempty" xml:"passThroughModelName,omitempty"`
+	// The unique ID of the fallback service.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The name of the model to use for the fallback request.
+	TargetModelName *string `json:"targetModelName,omitempty" xml:"targetModelName,omitempty"`
 }
 
 func (s AiFallbackConfigServiceConfigs) String() string {

@@ -16,8 +16,10 @@ type iHiMarketProductRefConfig interface {
 }
 
 type HiMarketProductRefConfig struct {
+	// Reference settings for the API gateway.
 	ApigRefConfig *HiMarketProductRefConfigApigRefConfig `json:"apigRefConfig,omitempty" xml:"apigRefConfig,omitempty" type:"Struct"`
-	GatewayId     *string                                `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Unique identifier for the gateway.
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 }
 
 func (s HiMarketProductRefConfig) String() string {
@@ -56,13 +58,20 @@ func (s *HiMarketProductRefConfig) Validate() error {
 }
 
 type HiMarketProductRefConfigApigRefConfig struct {
-	AgentApiId    *string `json:"agentApiId,omitempty" xml:"agentApiId,omitempty"`
-	AgentApiName  *string `json:"agentApiName,omitempty" xml:"agentApiName,omitempty"`
-	McpRouteId    *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
-	McpServerId   *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// Unique identifier for the agent API.
+	AgentApiId *string `json:"agentApiId,omitempty" xml:"agentApiId,omitempty"`
+	// The name of the agent API.
+	AgentApiName *string `json:"agentApiName,omitempty" xml:"agentApiName,omitempty"`
+	// Unique identifier for the MCP route.
+	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
+	// Unique identifier for the MCP server.
+	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The name of the MCP server.
 	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	ModelApiId    *string `json:"modelApiId,omitempty" xml:"modelApiId,omitempty"`
-	ModelApiName  *string `json:"modelApiName,omitempty" xml:"modelApiName,omitempty"`
+	// Unique identifier for the model API.
+	ModelApiId *string `json:"modelApiId,omitempty" xml:"modelApiId,omitempty"`
+	// The name of the model API.
+	ModelApiName *string `json:"modelApiName,omitempty" xml:"modelApiName,omitempty"`
 }
 
 func (s HiMarketProductRefConfigApigRefConfig) String() string {

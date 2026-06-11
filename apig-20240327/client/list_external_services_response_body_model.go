@@ -20,10 +20,20 @@ type iListExternalServicesResponseBody interface {
 }
 
 type ListExternalServicesResponseBody struct {
-	Code    *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *ListExternalServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// Ok
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListExternalServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Failed to upload data. Please try again
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// D9B03B59-B2D6-51B0-A7E9-AF8466E320CA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -115,7 +125,13 @@ func (s *ListExternalServicesResponseBodyData) Validate() error {
 }
 
 type ListExternalServicesResponseBodyDataItems struct {
-	Namespace         *string                                              `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// PUBLIC
 	NamespaceShowName *string                                              `json:"namespaceShowName,omitempty" xml:"namespaceShowName,omitempty"`
 	Services          []*ListExternalServicesResponseBodyDataItemsServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
@@ -169,7 +185,13 @@ func (s *ListExternalServicesResponseBodyDataItems) Validate() error {
 }
 
 type ListExternalServicesResponseBodyDataItemsServices struct {
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// enable-slash-merge
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// public
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 }
 

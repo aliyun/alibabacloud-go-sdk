@@ -18,9 +18,30 @@ type iHiMarketPortalSettingConfig interface {
 }
 
 type HiMarketPortalSettingConfig struct {
-	AutoApproveDevelopers    *bool `json:"autoApproveDevelopers,omitempty" xml:"autoApproveDevelopers,omitempty"`
+	// Specifies whether to automatically approve new developer registrations. If set to `false`, you must manually approve each new developer.\\
+	//
+	// \\
+	//
+	// **Default**: `false`.\\
+	//
+	// \\
+	AutoApproveDevelopers *bool `json:"autoApproveDevelopers,omitempty" xml:"autoApproveDevelopers,omitempty"`
+	// Specifies whether to automatically approve new API subscriptions. If set to `false`, you must manually approve each new subscription.\\
+	//
+	// \\
+	//
+	// **Default**: `false`.\\
+	//
+	// \\
 	AutoApproveSubscriptions *bool `json:"autoApproveSubscriptions,omitempty" xml:"autoApproveSubscriptions,omitempty"`
-	BuiltinAuthEnabled       *bool `json:"builtinAuthEnabled,omitempty" xml:"builtinAuthEnabled,omitempty"`
+	// Specifies whether to enable built-in authentication. If set to `true`, users must sign in to access the portal.\\
+	//
+	// \\
+	//
+	// **Default**: `false`.\\
+	//
+	// \\
+	BuiltinAuthEnabled *bool `json:"builtinAuthEnabled,omitempty" xml:"builtinAuthEnabled,omitempty"`
 }
 
 func (s HiMarketPortalSettingConfig) String() string {

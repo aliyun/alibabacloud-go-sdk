@@ -68,9 +68,13 @@ type HttpApiApiInfo struct {
 	//
 	// example:
 	//
-	// for test only
+	// 测试专用API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable authentication.
+	//
+	// example:
+	//
+	// true
 	EnabelAuth *bool `json:"enabelAuth,omitempty" xml:"enabelAuth,omitempty"`
 	// The API environment information.
 	Environments []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`

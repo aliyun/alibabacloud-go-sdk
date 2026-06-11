@@ -20,10 +20,14 @@ type iHiMarketProductCategory interface {
 }
 
 type HiMarketProductCategory struct {
-	CategoryId  *string       `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	Description *string       `json:"description,omitempty" xml:"description,omitempty"`
-	Icon        *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
-	Name        *string       `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique category ID.
+	CategoryId *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	// The category description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The category icon.
+	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The category name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s HiMarketProductCategory) String() string {

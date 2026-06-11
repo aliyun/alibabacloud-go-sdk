@@ -100,7 +100,7 @@ type UpdateDomainResponseBodyData struct {
 	//
 	// example:
 	//
-	// apr-xxx
+	// apr-xxxxx
 	DeployRevisionId *string `json:"deployRevisionId,omitempty" xml:"deployRevisionId,omitempty"`
 }
 
