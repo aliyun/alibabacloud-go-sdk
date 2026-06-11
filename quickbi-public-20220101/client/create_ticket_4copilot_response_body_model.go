@@ -18,23 +18,23 @@ type iCreateTicket4CopilotResponseBody interface {
 }
 
 type CreateTicket4CopilotResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
-	// D787************05DF8D885
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ID of the Smart Q module to be embedded.
+	// The generated ticket.
 	//
 	// example:
 	//
 	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request succeeded
+	// - true: The request was successful.
 	//
-	// - false: The request failed
+	// - false: The request failed.
 	//
 	// example:
 	//

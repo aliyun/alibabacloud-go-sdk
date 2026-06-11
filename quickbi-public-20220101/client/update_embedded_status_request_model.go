@@ -18,9 +18,9 @@ type iUpdateEmbeddedStatusRequest interface {
 type UpdateEmbeddedStatusRequest struct {
 	// Whether to enable the embedding feature for the work. Valid values:
 	//
-	// 	- true: enables embedding.
+	// - true: enables embedding.
 	//
-	// 	- false: disables embedding.
+	// - false: disables embedding.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpdateEmbeddedStatusRequest struct {
 	ThirdPartAuthFlag *bool `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
 	// The ID of the work.
 	//
-	// 	- Batch modification is supported. Separate multiple values with commas (,).
+	// - Batch modification is supported. Separate multiple values with commas (,).
 	//
 	// This parameter is required.
 	//

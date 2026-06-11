@@ -26,9 +26,9 @@ type QueryEmbeddedStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Whether the work is enabled for embedding. Valid values:
 	//
-	// 	- true: embedded
+	// - true: embedded
 	//
-	// 	- false: not embedded
+	// - false: not embedded
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type QueryEmbeddedStatusResponseBody struct {
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

@@ -91,7 +91,7 @@ type QueryCopilotEmbedConfigResponseBodyResult struct {
 	//
 	// example:
 	//
-	// little Q
+	// 小Q
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// Embedding ID.
 	//
@@ -109,7 +109,7 @@ type QueryCopilotEmbedConfigResponseBodyResult struct {
 	//
 	// example:
 	//
-	// zhangsan
+	// 诸葛
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
 	// Data range (analysis themes and question resources).
 	DataRange *QueryCopilotEmbedConfigResponseBodyResultDataRange `json:"DataRange,omitempty" xml:"DataRange,omitempty" type:"Struct"`
@@ -123,7 +123,7 @@ type QueryCopilotEmbedConfigResponseBodyResult struct {
 	//
 	// example:
 	//
-	// little Q
+	// 小Q
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// Name of the embedded module.
 	//

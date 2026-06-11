@@ -18,14 +18,28 @@ type iCreateCubeBySqlResponseBody interface {
 }
 
 type CreateCubeBySqlResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 05739b************02522b9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the API call. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

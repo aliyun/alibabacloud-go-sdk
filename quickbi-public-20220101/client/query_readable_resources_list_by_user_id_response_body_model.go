@@ -97,7 +97,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Description
+	// 备注
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The directory structure in which the work is located.
 	Directory *QueryReadableResourcesListByUserIdResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
@@ -105,7 +105,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Li Si
+	// 李四
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// The timestamp of the modification time in milliseconds.
 	//
@@ -123,7 +123,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Tom
+	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
@@ -171,7 +171,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Company Region Table
+	// 公司地区表
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
@@ -203,7 +203,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Test Workspace
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -370,7 +370,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// Test directory
+	// 测试目录
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The hierarchical structure of the directory ID, which is separated with \\"/\\".
 	//
@@ -382,7 +382,7 @@ type QueryReadableResourcesListByUserIdResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// Test directory
+	// 测试目录
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

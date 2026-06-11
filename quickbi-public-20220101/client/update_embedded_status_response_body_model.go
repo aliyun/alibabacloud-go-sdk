@@ -22,7 +22,7 @@ type UpdateEmbeddedStatusResponseBody struct {
 	//
 	// example:
 	//
-	// D78*********DF8D885
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of works that are opened or closed.
 	//
@@ -32,9 +32,9 @@ type UpdateEmbeddedStatusResponseBody struct {
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

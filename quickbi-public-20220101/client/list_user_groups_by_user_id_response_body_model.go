@@ -123,7 +123,7 @@ type ListUserGroupsByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Description
+	// 备注
 	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
 	// The ID of the user group.
 	//
@@ -135,7 +135,7 @@ type ListUserGroupsByUserIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Test user group
+	// 测试用户组
 	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 

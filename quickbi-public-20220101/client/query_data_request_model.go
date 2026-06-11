@@ -20,7 +20,7 @@ type iQueryDataRequest interface {
 }
 
 type QueryDataRequest struct {
-	// The API ID in the data service. For more information, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+	// The API ID in [DataService Studio](https://help.aliyun.com/document_detail/144980.html).
 	//
 	// This parameter is required.
 	//
@@ -28,51 +28,47 @@ type QueryDataRequest struct {
 	//
 	// f4cc43bc3***
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The query conditions for the data service, passed in as Key and Value pairs. A map-type string. Here, Key is the name of the request parameter, and Value is the value of the request parameter. Key and Value must appear in pairs.
+	// Filter conditions as a JSON map string. Each key is a request parameter name, and each value is the parameter value.
 	//
 	// **Note:**
 	//
-	// - When the operator of the request parameter is set to **enumeration filtering**, the value can contain multiple values, and the format of the value should be a JSON-formatted List. For example: `area=["East China","North China","South China"]`
+	// - If the operator of a request parameter is set to **Enumeration Filter**, the value can contain multiple values. In this case, the value must be in the format of a JSON list. For example: `area=["East China","North China","South China"]`
 	//
-	// - For dates, different formats are provided based on the type:
+	// - For dates, use the following formats based on the date type:
 	//
-	//     - Year: 2019
+	//   - Year: 2019
 	//
-	//     - Quarter: 2019Q1
+	//   - Quarter: 2019Q1
 	//
-	//     - Month: 201901 (with leading zero)
+	//   - Month: 201901 (with a leading zero)
 	//
+	//   - Week: 2019-52
 	//
+	//   - Day: 20190101
 	//
-	//     - Week: 2019-52
+	//   - Hour: 14:00:00 (minutes and seconds are 00)
 	//
-	//     - Day: 20190101
+	//   - Minute: 14:12:00 (seconds are 00)
 	//
-	//     - Hour: 14:00:00 (minutes and seconds are 00)
-	//
-	//
-	//
-	//     - Minute: 14:12:00 (seconds are 00)
-	//
-	//     - Second: 14:34:34
+	//   - Second: 14:34:34
 	//
 	// example:
 	//
-	// test
+	// { "area": ["test", "test"],  "shopping_date": "2019Q1",  }
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	// A list of return parameter names, in a List-type string.
+	// A JSON array of field names to return.
 	//
 	// example:
 	//
 	// ["area", "city", "price", "date"]
 	ReturnFields *string `json:"ReturnFields,omitempty" xml:"ReturnFields,omitempty"`
-	// The userId in Quick BI. For how to obtain the userId, see: [Query User Information by Account Interface](https://next.api.aliyun.com/document/quickbi-public/2022-01-01/QueryUserInfoByAccount)
+	// The Quick BI user ID. Obtain this value from [QueryUserInfoByAccount](https://next.api.aliyun.com/document/quickbi-public/2022-01-01/QueryUserInfoByAccount).
 	//
-	// > This parameter is used to specify the identity of the person using the data service, which can be used in conjunction with the row and column permission configurations of the dataset.
+	// > Specifies the user identity for DataService Studio, used with row-level and column-level permission configurations.
 	//
+	// 	Notice:
 	//
-	//
-	// 	Notice: If the parameter is not passed, an empty string is passed, or null is passed, the default userId will be the owner of the current Quick BI organization.</notice>
+	// If omitted, empty, or null, defaults to the Quick BI organization owner\\"s user ID.
 	//
 	// example:
 	//

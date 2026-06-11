@@ -30,7 +30,7 @@ type ListCubeDataLevelPermissionConfigResponseBody struct {
 	//
 	// example:
 	//
-	// The JSON string of the row-column permission list. For more information, see the description.
+	// 行列权限列表的JSON串，详情见描述。
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//

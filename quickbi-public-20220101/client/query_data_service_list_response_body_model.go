@@ -190,7 +190,7 @@ type QueryDataServiceListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// zhangsan
+	// 张仔龙
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	// Cube identifier ID.
 	//
@@ -202,13 +202,13 @@ type QueryDataServiceListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test data source
+	// 测试数据集
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
 	// Description
 	//
 	// example:
 	//
-	// test
+	// 测试用
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// Creation time.
 	//
@@ -232,13 +232,13 @@ type QueryDataServiceListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// zhangsan
+	// 张仔龙
 	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
 	// Data service name.
 	//
 	// example:
 	//
-	// test report
+	// 测试报表
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Owner ID
 	//
@@ -250,7 +250,7 @@ type QueryDataServiceListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// lisi
+	// 李四
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Unique ID of the data service.
 	//
@@ -268,7 +268,7 @@ type QueryDataServiceListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test workspace
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -444,7 +444,7 @@ type QueryDataServiceListResponseBodyResultDataContent struct {
 	//
 	// example:
 	//
-	// test data source
+	// 测试数据集
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
 	// Detail or Summary
 	//
@@ -610,7 +610,7 @@ type QueryDataServiceListResponseBodyResultDataContentReturnFields struct {
 	//
 	// example:
 	//
-	// Theme Configuration already exists
+	// 主题配置已存在。
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// Corresponding cube field information.
 	Field *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField `json:"Field,omitempty" xml:"Field,omitempty" type:"Struct"`
@@ -695,7 +695,7 @@ type QueryDataServiceListResponseBodyResultDataContentReturnFieldsField struct {
 	//
 	// example:
 	//
-	// date(year)
+	// 日期(year)
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The corresponding physical field name.
 	//

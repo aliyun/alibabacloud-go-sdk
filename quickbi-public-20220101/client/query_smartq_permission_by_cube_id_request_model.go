@@ -16,7 +16,7 @@ type iQuerySmartqPermissionByCubeIdRequest interface {
 }
 
 type QuerySmartqPermissionByCubeIdRequest struct {
-	// Dataset ID.
+	// The ID of the dataset.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type QuerySmartqPermissionByCubeIdRequest struct {
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// User ID.
+	// The ID of the user.
 	//
 	// This parameter is required.
 	//

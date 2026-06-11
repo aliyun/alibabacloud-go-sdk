@@ -221,7 +221,7 @@ type ListApiDatasourceResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test data source
+	// 测试数据源
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The status of the API data source synchronization task.
 	//

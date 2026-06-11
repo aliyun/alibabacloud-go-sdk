@@ -14,7 +14,7 @@ type iQueryDatasetDetailInfoRequest interface {
 }
 
 type QueryDatasetDetailInfoRequest struct {
-	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	// The dataset ID.
 	//
 	// This parameter is required.
 	//

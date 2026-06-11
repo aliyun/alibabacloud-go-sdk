@@ -18,15 +18,9 @@ type iQueryUserByMobileAccountResponseBody interface {
 }
 
 type QueryUserByMobileAccountResponseBody struct {
-	// example:
-	//
-	// 46e53***********270
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryUserByMobileAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserByMobileAccountResponseBody) String() string {
@@ -74,13 +68,7 @@ func (s *QueryUserByMobileAccountResponseBody) Validate() error {
 }
 
 type QueryUserByMobileAccountResponseBodyResult struct {
-	// example:
-	//
-	// test
-	BoundUserId *string `json:"BoundUserId,omitempty" xml:"BoundUserId,omitempty"`
-	// example:
-	//
-	// test
+	BoundUserId      *string `json:"BoundUserId,omitempty" xml:"BoundUserId,omitempty"`
 	ThirdAccountName *string `json:"ThirdAccountName,omitempty" xml:"ThirdAccountName,omitempty"`
 }
 

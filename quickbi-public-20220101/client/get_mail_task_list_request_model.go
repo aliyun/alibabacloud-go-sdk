@@ -20,18 +20,32 @@ type iGetMailTaskListRequest interface {
 }
 
 type GetMailTaskListRequest struct {
+	// The page number.
+	//
+	// - Starts from: 1
+	//
+	// - Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// - Default value: 25
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the tracking task is paused.
+	//
 	// example:
 	//
 	// true
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// The nickname of the user who owns the tracking task. If this parameter is not specified, all tasks are returned.
+	//
 	// example:
 	//
 	// test

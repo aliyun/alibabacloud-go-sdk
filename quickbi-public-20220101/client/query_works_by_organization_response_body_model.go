@@ -192,7 +192,7 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// Attention
+	// 备注
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Directory to which the work belongs.
 	Directory *QueryWorksByOrganizationResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
@@ -212,19 +212,19 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test
+	// 张三
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// The UserID of the work\\"s owner in Quick BI.
 	//
 	// example:
 	//
-	// test
+	// 作品所属工作空间名称。
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Alibaba Cloud account name of the work\\"s owner.
 	//
 	// example:
 	//
-	// test
+	// 李四
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Whether it is public
 	//
@@ -272,7 +272,7 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test
+	// 测试报表
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Value range:
 	//
@@ -298,13 +298,13 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test
+	// 作品修改者的阿里云账户名。
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the workspace to which the work belongs.
 	//
 	// example:
 	//
-	// test
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -489,7 +489,7 @@ type QueryWorksByOrganizationResponseBodyResultDataDirectory struct {
 	//
 	// example:
 	//
-	// test
+	// 测试目录
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Hierarchical structure of the directory ID, separated by『/』.
 	//
@@ -501,7 +501,7 @@ type QueryWorksByOrganizationResponseBodyResultDataDirectory struct {
 	//
 	// example:
 	//
-	// Attention
+	// 测试目录
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

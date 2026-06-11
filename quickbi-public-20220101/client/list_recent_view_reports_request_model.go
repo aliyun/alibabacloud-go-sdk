@@ -28,7 +28,7 @@ type ListRecentViewReportsRequest struct {
 	//
 	// example:
 	//
-	// Financial Statements
+	// 财务报表
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The number of days to query data in the last few days. Default value: 10.
 	//

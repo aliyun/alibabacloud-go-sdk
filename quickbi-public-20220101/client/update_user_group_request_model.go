@@ -26,7 +26,7 @@ type UpdateUserGroupRequest struct {
 	//
 	// example:
 	//
-	// Description
+	// 描述信息
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
 	// The ID of the user group.
 	//

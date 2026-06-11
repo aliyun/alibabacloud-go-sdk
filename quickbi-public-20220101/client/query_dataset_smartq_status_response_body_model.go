@@ -18,27 +18,27 @@ type iQueryDatasetSmartqStatusResponseBody interface {
 }
 
 type QueryDatasetSmartqStatusResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result of the API execution. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request succeeded.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type AddUserTagMetaRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 部门内的职位
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	// Tag name. Format check:
 	//
@@ -32,7 +32,7 @@ type AddUserTagMetaRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 职位
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

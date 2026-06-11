@@ -22,7 +22,7 @@ type DeleteUserGroupMembersResponseBody struct {
 	//
 	// example:
 	//
-	// ABBAD906-****-5D18-B23D-****53AB0AA2
+	// ABBAD906-3925-5D18-B23D-714053AB0AA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the result of the interface execution. Possible values:
 	//

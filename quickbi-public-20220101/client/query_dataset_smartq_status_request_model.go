@@ -14,7 +14,7 @@ type iQueryDatasetSmartqStatusRequest interface {
 }
 
 type QueryDatasetSmartqStatusRequest struct {
-	// Dataset ID.
+	// The dataset ID.
 	//
 	// This parameter is required.
 	//

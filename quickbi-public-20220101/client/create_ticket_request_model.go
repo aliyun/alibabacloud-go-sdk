@@ -36,7 +36,7 @@ type CreateTicketRequest struct {
 	//
 	// - If the user is an Alibaba Cloud primary account **wangwu**, the format is **[Primary Account]**, for example, **wangwu**.
 	//
-	// - If the user is a RAM account **zhangsan**@aliyun.cn**, the format is **[Primary Account: Sub-Account]**, for example, **wangwu:zhangsan**.
+	// - If the user is a RAM account **zhangsan**@aliyun.cn\\*\\*, the format is **[Primary Account: Sub-Account]**, for example, **wangwu:zhangsan**.
 	//
 	// > Only one of UserId and AccountName needs to be filled in. If neither is filled in, it will default to binding the report\\"s Owner, and the report will be accessed with that user\\"s identity. If you need to configure row-level permissions, please refer to [Row-Level Permissions](https://help.aliyun.com/document_detail/322783.html).
 	//
@@ -68,7 +68,7 @@ type CreateTicketRequest struct {
 	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// Component ID. This is the ID of a component within the above-mentioned dashboard; other types of works do not support this.
 	//
-	// Refer to [QueryWorksBloodRelationship](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryWorksBloodRelationship?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&lang=JAVA&tab=DOC&sdkStyle=old) for the API to get the component ID.
+	// Refer to [QueryWorksBloodRelationship](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryWorksBloodRelationship?spm=a2c4g.11186623.0.0.15615d7aWVvWAl\\&params=%7B%7D\\&lang=JAVA\\&tab=DOC\\&sdkStyle=old) for the API to get the component ID.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateTicketRequest struct {
 	//
 	// - A string in JsonArray format.
 	//
-	// > If you need to use global parameter capabilities, please contact the [Quick BI Operations Manager](https://h5-alimebot.dingtalk.com/intl/index.htm?spm=a2c4g.11186623.0.0.3da14f6chrDv9e&sourceType=ding_talk&from=DEFFB9G5KBByQkwq23wneFIOmaJ).
+	// > If you need to use global parameter capabilities, please contact the [Quick BI Operations Manager](https://h5-alimebot.dingtalk.com/intl/index.htm?spm=a2c4g.11186623.0.0.3da14f6chrDv9e\\&sourceType=ding_talk\\&from=DEFFB9G5KBByQkwq23wneFIOmaJ).
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type CreateTicketRequest struct {
 	TicketNum *int32 `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
 	// Quick BI\\"s UserId, which is not your Alibaba Cloud account ID.
 	//
-	// You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&tab=DOC&sdkStyle=old) interface to obtain the UserId. An example of a UserId is fe67f61a35a94b7da1a34ba174a7****.
+	// You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=a2c4g.11186623.0.0.15615d7aWVvWAl\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old) interface to obtain the UserId. An example of a UserId is fe67f61a35a94b7da1a34ba174a7\\*\\*\\*\\*.
 	//
 	// > Only one of UserId and AccountName needs to be filled in. If neither is filled in, it will default to binding the report\\"s Owner, and the report will be accessed with that user\\"s identity. If you need to configure row-level permissions, please refer to [Row-Level Permissions](https://help.aliyun.com/document_detail/322783.html).
 	//
@@ -124,7 +124,7 @@ type CreateTicketRequest struct {
 	//
 	// example:
 	//
-	// test
+	// ticket embed
 	WatermarkParam *string `json:"WatermarkParam,omitempty" xml:"WatermarkParam,omitempty"`
 	// The ID of the report to be embedded. Currently supports dashboards, spreadsheets, data screens, self-service data retrieval, ad-hoc analysis, and data entry.
 	//

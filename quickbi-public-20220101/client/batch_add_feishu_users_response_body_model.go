@@ -201,7 +201,7 @@ type BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos struct {
 	//
 	// example:
 	//
-	// TEST
+	// 账号已存在
 	CodeDesc *string `json:"CodeDesc,omitempty" xml:"CodeDesc,omitempty"`
 	// Incorrect input value.
 	//

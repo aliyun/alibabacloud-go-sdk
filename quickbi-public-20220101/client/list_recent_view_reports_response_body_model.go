@@ -87,7 +87,7 @@ type ListRecentViewReportsResponseBodyResult struct {
 	//
 	// example:
 	//
-	// test
+	// 当前API返回的分页参数如TotalNum等即将下线，如有使用请及时修改
 	Attention *string `json:"Attention,omitempty" xml:"Attention,omitempty"`
 	// The list of queried works.
 	Data []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
@@ -237,13 +237,13 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// Test report
+	// 测试报表
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The Alibaba Cloud account name of the work owner.
 	//
 	// example:
 	//
-	// test
+	// 李四
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The UserID of the work owner.
 	//
@@ -299,7 +299,7 @@ type ListRecentViewReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// Test Workspace
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

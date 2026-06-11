@@ -18,14 +18,24 @@ type iCreateWorkspaceResponseBody interface {
 }
 
 type CreateWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 685072****************4e79e718f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 12423twfasva********
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

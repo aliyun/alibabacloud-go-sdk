@@ -58,11 +58,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Add selected groups of people incrementally for a single row and column permission rule.
+// Adds specified users and user groups to a row-level permission rule.
 //
 // Description:
 //
-// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
+// > This API operation supports only the new row-level permission model in Quick BI. If you are using the previous row-level permission model, you must migrate to the new model before you call this operation. To migrate, go to Organization Management > Security Settings > Upgrade Row-level Permissions, and then click **One-click Upgrade**.
 //
 // @param request - AddDataLevelPermissionRuleUsersRequest
 //
@@ -106,11 +106,11 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDat
 
 // Summary:
 //
-// Add selected groups of people incrementally for a single row and column permission rule.
+// Adds specified users and user groups to a row-level permission rule.
 //
 // Description:
 //
-// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
+// > This API operation supports only the new row-level permission model in Quick BI. If you are using the previous row-level permission model, you must migrate to the new model before you call this operation. To migrate, go to Organization Management > Security Settings > Upgrade Row-level Permissions, and then click **One-click Upgrade**.
 //
 // @param request - AddDataLevelPermissionRuleUsersRequest
 //
@@ -128,11 +128,11 @@ func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermi
 
 // Summary:
 //
-// Modifies the whitelist of the row and column permissions for a specified dataset.
+// Modifies the whitelist for row-level and column-level permissions of a specified dataset.
 //
 // Description:
 //
-// ROW_LEVEL
+// > This API operation supports only the new permission model for row-level and column-level permissions in Quick BI. If you are using the old permission model, you must migrate to the new one before you call this operation. To perform a one-click migration, you can go to Organization Management > Security Configuration > Upgrade to New Row-level and Column-level Permissions and click **One-click Upgrade**.
 //
 // @param request - AddDataLevelPermissionWhiteListRequest
 //
@@ -192,11 +192,11 @@ func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDat
 
 // Summary:
 //
-// Modifies the whitelist of the row and column permissions for a specified dataset.
+// Modifies the whitelist for row-level and column-level permissions of a specified dataset.
 //
 // Description:
 //
-// ROW_LEVEL
+// > This API operation supports only the new permission model for row-level and column-level permissions in Quick BI. If you are using the old permission model, you must migrate to the new one before you call this operation. To perform a one-click migration, you can go to Organization Management > Security Configuration > Upgrade to New Row-level and Column-level Permissions and click **One-click Upgrade**.
 //
 // @param request - AddDataLevelPermissionWhiteListRequest
 //
@@ -214,7 +214,7 @@ func (client *Client) AddDataLevelPermissionWhiteList(request *AddDataLevelPermi
 
 // Summary:
 //
-// 创建数据源
+// Adds a data source.
 //
 // @param request - AddDataSourceRequest
 //
@@ -258,7 +258,7 @@ func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, ru
 
 // Summary:
 //
-// 创建数据源
+// Adds a data source.
 //
 // @param request - AddDataSourceRequest
 //
@@ -354,7 +354,7 @@ func (client *Client) AddShareReport(request *AddShareReportRequest) (_result *A
 
 // Summary:
 //
-// Add an organization member.
+// Add organization members.
 //
 // @param request - AddUserRequest
 //
@@ -428,7 +428,7 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *dara.
 
 // Summary:
 //
-// Add an organization member.
+// Add organization members.
 //
 // @param request - AddUserRequest
 //
@@ -644,7 +644,7 @@ func (client *Client) AddUserTagMeta(request *AddUserTagMetaRequest) (_result *A
 
 // Summary:
 //
-// Add a member to the specified workspace.
+// Adds a member to a specified workspace.
 //
 // @param request - AddUserToWorkspaceRequest
 //
@@ -696,7 +696,7 @@ func (client *Client) AddUserToWorkspaceWithOptions(request *AddUserToWorkspaceR
 
 // Summary:
 //
-// Add a member to the specified workspace.
+// Adds a member to a specified workspace.
 //
 // @param request - AddUserToWorkspaceRequest
 //
@@ -714,7 +714,7 @@ func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_r
 
 // Summary:
 //
-// 新增作品的协同授权记录
+// Adds an authorization for a work.
 //
 // @param request - AddWorksAuthorizationRequest
 //
@@ -778,7 +778,7 @@ func (client *Client) AddWorksAuthorizationWithOptions(request *AddWorksAuthoriz
 
 // Summary:
 //
-// 新增作品的协同授权记录
+// Adds an authorization for a work.
 //
 // @param request - AddWorksAuthorizationRequest
 //
@@ -1369,7 +1369,7 @@ func (client *Client) ChangeVisibilityModel(request *ChangeVisibilityModelReques
 
 // Summary:
 //
-// 检查给定的cubeId是否存在
+// Checks whether a dataset with the specified CubeId exists.
 //
 // @param request - CheckDatasetExistedRequest
 //
@@ -1413,7 +1413,7 @@ func (client *Client) CheckDatasetExistedWithOptions(request *CheckDatasetExiste
 
 // Summary:
 //
-// 检查给定的cubeId是否存在
+// Checks whether a dataset with the specified CubeId exists.
 //
 // @param request - CheckDatasetExistedRequest
 //
@@ -1431,7 +1431,7 @@ func (client *Client) CheckDatasetExisted(request *CheckDatasetExistedRequest) (
 
 // Summary:
 //
-// 判断用户是否属于组织
+// Checks if a user is a member of an organization.
 //
 // @param request - CheckOrganizationMemberRequest
 //
@@ -1475,7 +1475,7 @@ func (client *Client) CheckOrganizationMemberWithOptions(request *CheckOrganizat
 
 // Summary:
 //
-// 判断用户是否属于组织
+// Checks if a user is a member of an organization.
 //
 // @param request - CheckOrganizationMemberRequest
 //
@@ -1559,7 +1559,69 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 
 // Summary:
 //
-// 根据自定义sql创建数据集
+// 删除单条配置的标签值缓存
+//
+// @param request - ClearDynamicTagCacheRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearDynamicTagCacheResponse
+func (client *Client) ClearDynamicTagCacheWithOptions(request *ClearDynamicTagCacheRequest, runtime *dara.RuntimeOptions) (_result *ClearDynamicTagCacheResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClearDynamicTagCache"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClearDynamicTagCacheResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除单条配置的标签值缓存
+//
+// @param request - ClearDynamicTagCacheRequest
+//
+// @return ClearDynamicTagCacheResponse
+func (client *Client) ClearDynamicTagCache(request *ClearDynamicTagCacheRequest) (_result *ClearDynamicTagCacheResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ClearDynamicTagCacheResponse{}
+	_body, _err := client.ClearDynamicTagCacheWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a dataset from a custom SQL statement.
 //
 // @param request - CreateCubeBySqlRequest
 //
@@ -1619,7 +1681,7 @@ func (client *Client) CreateCubeBySqlWithOptions(request *CreateCubeBySqlRequest
 
 // Summary:
 //
-// 根据自定义sql创建数据集
+// Creates a dataset from a custom SQL statement.
 //
 // @param request - CreateCubeBySqlRequest
 //
@@ -1637,7 +1699,7 @@ func (client *Client) CreateCubeBySql(request *CreateCubeBySqlRequest) (_result 
 
 // Summary:
 //
-// 根据物理表名称创建数据集
+// Creates a dataset from a physical table.
 //
 // @param request - CreateDatasetRequest
 //
@@ -1701,7 +1763,7 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 
 // Summary:
 //
-// 根据物理表名称创建数据集
+// Creates a dataset from a physical table.
 //
 // @param request - CreateDatasetRequest
 //
@@ -1821,7 +1883,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// Generate an embedding ticket for Smart Q.
+// Generates a ticket to embed Copilot.
 //
 // @param request - CreateTicket4CopilotRequest
 //
@@ -1885,7 +1947,7 @@ func (client *Client) CreateTicket4CopilotWithOptions(request *CreateTicket4Copi
 
 // Summary:
 //
-// Generate an embedding ticket for Smart Q.
+// Generates a ticket to embed Copilot.
 //
 // @param request - CreateTicket4CopilotRequest
 //
@@ -1977,7 +2039,7 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -2049,7 +2111,7 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -2343,11 +2405,11 @@ func (client *Client) DelayTicketExpireTime(request *DelayTicketExpireTimeReques
 
 // Summary:
 //
-// Deletes a selected group of people for a single row and column permission rule.
+// Deletes specified users from a row-level permission rule.
 //
 // Description:
 //
-// {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+// > This API supports only the new row-level permission model of Quick BI. If you use the old row-level permissions, you must migrate to the new model before you call this API. To migrate, go to Organization Management > Security Settings > Upgrade to New Row-level Permissions and click **One-click Upgrade**.
 //
 // @param request - DeleteDataLevelPermissionRuleUsersRequest
 //
@@ -2391,11 +2453,11 @@ func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *Del
 
 // Summary:
 //
-// Deletes a selected group of people for a single row and column permission rule.
+// Deletes specified users from a row-level permission rule.
 //
 // Description:
 //
-// {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+// > This API supports only the new row-level permission model of Quick BI. If you use the old row-level permissions, you must migrate to the new model before you call this API. To migrate, go to Organization Management > Security Settings > Upgrade to New Row-level Permissions and click **One-click Upgrade**.
 //
 // @param request - DeleteDataLevelPermissionRuleUsersRequest
 //
@@ -2413,11 +2475,11 @@ func (client *Client) DeleteDataLevelPermissionRuleUsers(request *DeleteDataLeve
 
 // Summary:
 //
-// Deletes a single row or column permission rule.
+// Deletes a row-level permission rule.
 //
 // Description:
 //
-// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+// > This operation supports only the new Quick BI row-level permission model. If you are using the old model, you must upgrade before you call this operation. To upgrade, go to Organization Management > Security Configurations > Upgrade Row-level Permissions and click **Upgrade Now**.
 //
 // @param request - DeleteDataLevelRuleConfigRequest
 //
@@ -2465,11 +2527,11 @@ func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLe
 
 // Summary:
 //
-// Deletes a single row or column permission rule.
+// Deletes a row-level permission rule.
 //
 // Description:
 //
-// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+// > This operation supports only the new Quick BI row-level permission model. If you are using the old model, you must upgrade before you call this operation. To upgrade, go to Organization Management > Security Configurations > Upgrade Row-level Permissions and click **Upgrade Now**.
 //
 // @param request - DeleteDataLevelRuleConfigRequest
 //
@@ -2999,7 +3061,7 @@ func (client *Client) GetDataSourceConnectionInfo(request *GetDataSourceConnecti
 
 // Summary:
 //
-// 获取订阅任务列表信息
+// Retrieves a list of tracking tasks. Note: If the caller\\"s AccessKey (AK) does not have permission to view tracking tasks of other users, this operation returns only the tasks that the caller is authorized to access.
 //
 // @param request - GetMailTaskListRequest
 //
@@ -3055,7 +3117,7 @@ func (client *Client) GetMailTaskListWithOptions(request *GetMailTaskListRequest
 
 // Summary:
 //
-// 获取订阅任务列表信息
+// Retrieves a list of tracking tasks. Note: If the caller\\"s AccessKey (AK) does not have permission to view tracking tasks of other users, this operation returns only the tasks that the caller is authorized to access.
 //
 // @param request - GetMailTaskListRequest
 //
@@ -3279,7 +3341,7 @@ func (client *Client) GetWorksEmbedList(request *GetWorksEmbedListRequest) (_res
 
 // Summary:
 //
-// 获取空间下加速引擎管控页任务信息。
+// Retrieves information about acceleration tasks in a workspace.
 //
 // @param request - ListAccelerationOfWorkspaceRequest
 //
@@ -3339,7 +3401,7 @@ func (client *Client) ListAccelerationOfWorkspaceWithOptions(request *ListAccele
 
 // Summary:
 //
-// 获取空间下加速引擎管控页任务信息。
+// Retrieves information about acceleration tasks in a workspace.
 //
 // @param request - ListAccelerationOfWorkspaceRequest
 //
@@ -3777,6 +3839,61 @@ func (client *Client) ListDataSource(request *ListDataSourceRequest) (_result *L
 
 // Summary:
 //
+// 获取当前组织的动态标签列表
+//
+// @param request - ListDynamicTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDynamicTagResponse
+func (client *Client) ListDynamicTagWithOptions(request *ListDynamicTagRequest, runtime *dara.RuntimeOptions) (_result *ListDynamicTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDynamicTag"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDynamicTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前组织的动态标签列表
+//
+// @param request - ListDynamicTagRequest
+//
+// @return ListDynamicTagResponse
+func (client *Client) ListDynamicTag(request *ListDynamicTagRequest) (_result *ListDynamicTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDynamicTagResponse{}
+	_body, _err := client.ListDynamicTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Overview
 //
 // @param request - ListFavoriteReportsRequest
@@ -3970,7 +4087,7 @@ func (client *Client) ListOrganizationRoles() (_result *ListOrganizationRolesRes
 
 // Summary:
 //
-// Obtains the list of authorization details for a BI portal menu.
+// Retrieves a list of authorization details for the menus in a BI portal.
 //
 // @param request - ListPortalMenuAuthorizationRequest
 //
@@ -4014,7 +4131,7 @@ func (client *Client) ListPortalMenuAuthorizationWithOptions(request *ListPortal
 
 // Summary:
 //
-// Obtains the list of authorization details for a BI portal menu.
+// Retrieves a list of authorization details for the menus in a BI portal.
 //
 // @param request - ListPortalMenuAuthorizationRequest
 //
@@ -4316,7 +4433,7 @@ func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequ
 
 // Summary:
 //
-// 获取数据门户菜单的白名单列表
+// Retrieves the whitelist for a BI portal menu.
 //
 // @param request - ListWhitePortalMenuRequest
 //
@@ -4360,7 +4477,7 @@ func (client *Client) ListWhitePortalMenuWithOptions(request *ListWhitePortalMen
 
 // Summary:
 //
-// 获取数据门户菜单的白名单列表
+// Retrieves the whitelist for a BI portal menu.
 //
 // @param request - ListWhitePortalMenuRequest
 //
@@ -4518,7 +4635,7 @@ func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_r
 
 // Summary:
 //
-// 查询用户所有空间角色列表
+// Queries all workspace roles of a user.
 //
 // @param request - ListWorkspaceUserRolesByUserIdRequest
 //
@@ -4562,7 +4679,7 @@ func (client *Client) ListWorkspaceUserRolesByUserIdWithOptions(request *ListWor
 
 // Summary:
 //
-// 查询用户所有空间角色列表
+// Queries all workspace roles of a user.
 //
 // @param request - ListWorkspaceUserRolesByUserIdRequest
 //
@@ -4794,7 +4911,7 @@ func (client *Client) ModifyCopilotEmbedConfig(request *ModifyCopilotEmbedConfig
 
 // Summary:
 //
-// 批量编辑仪表板的小Q问数状态
+// Modifies the Q-Assistant status for multiple dashboards.
 //
 // @param request - ModifyDashboardNl2sqlStatusRequest
 //
@@ -4842,7 +4959,7 @@ func (client *Client) ModifyDashboardNl2sqlStatusWithOptions(request *ModifyDash
 
 // Summary:
 //
-// 批量编辑仪表板的小Q问数状态
+// Modifies the Q-Assistant status for multiple dashboards.
 //
 // @param request - ModifyDashboardNl2sqlStatusRequest
 //
@@ -4860,7 +4977,7 @@ func (client *Client) ModifyDashboardNl2sqlStatus(request *ModifyDashboardNl2sql
 
 // Summary:
 //
-// 获取指定数据集的加速任务运行日志
+// Queries the run logs of acceleration tasks for a specified dataset.
 //
 // @param request - QueryAccelerationLogByCubeIdRequest
 //
@@ -4920,7 +5037,7 @@ func (client *Client) QueryAccelerationLogByCubeIdWithOptions(request *QueryAcce
 
 // Summary:
 //
-// 获取指定数据集的加速任务运行日志
+// Queries the run logs of acceleration tasks for a specified dataset.
 //
 // @param request - QueryAccelerationLogByCubeIdRequest
 //
@@ -5012,7 +5129,7 @@ func (client *Client) QueryApprovalInfo(request *QueryApprovalInfoRequest) (_res
 
 // Summary:
 //
-// Query audit log information.
+// Queries audit log information.
 //
 // @param request - QueryAuditLogRequest
 //
@@ -5088,7 +5205,7 @@ func (client *Client) QueryAuditLogWithOptions(request *QueryAuditLogRequest, ru
 
 // Summary:
 //
-// Query audit log information.
+// Queries audit log information.
 //
 // @param request - QueryAuditLogRequest
 //
@@ -5464,21 +5581,21 @@ func (client *Client) QueryDashboardNl2sql(request *QueryDashboardNl2sqlRequest)
 
 // Summary:
 //
-// Invoke the open data service API.
+// Calls a DataService Studio API to query data.
 //
 // Description:
 //
 // ### Prerequisites
 //
-// You need to create a data service API through Quick BI\\"s data service. For more details, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+// Create an API in [DataService Studio](https://help.aliyun.com/document_detail/144980.html) before calling this operation.
 //
-// ### Usage Restrictions
+// ### Limits
 //
-//   - The data service feature is only available to professional edition customers.
+// - Requires Quick BI Professional Edition.
 //
-//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+// - API call timeout: 60s. QPS limit per API: 10.
 //
-//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
+// - Row-level permissions on the referenced dataset also apply to API calls.
 //
 // @param request - QueryDataRequest
 //
@@ -5534,21 +5651,21 @@ func (client *Client) QueryDataWithOptions(request *QueryDataRequest, runtime *d
 
 // Summary:
 //
-// Invoke the open data service API.
+// Calls a DataService Studio API to query data.
 //
 // Description:
 //
 // ### Prerequisites
 //
-// You need to create a data service API through Quick BI\\"s data service. For more details, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+// Create an API in [DataService Studio](https://help.aliyun.com/document_detail/144980.html) before calling this operation.
 //
-// ### Usage Restrictions
+// ### Limits
 //
-//   - The data service feature is only available to professional edition customers.
+// - Requires Quick BI Professional Edition.
 //
-//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+// - API call timeout: 60s. QPS limit per API: 10.
 //
-//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
+// - Row-level permissions on the referenced dataset also apply to API calls.
 //
 // @param request - QueryDataRequest
 //
@@ -5809,11 +5926,11 @@ func (client *Client) QueryDataServiceList(request *QueryDataServiceListRequest)
 
 // Summary:
 //
-// Queries the details of a specified dataset, including the data source, directory, and dataset model.
+// Retrieves the details of a specified dataset, including its data source, directory, and dataset model.
 //
 // Description:
 //
-// The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+// The response includes the data source, directory, and a dataset model containing dimensions, measures, physical fields, custom SQL text, and relationships.
 //
 // @param request - QueryDatasetDetailInfoRequest
 //
@@ -5857,11 +5974,11 @@ func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDet
 
 // Summary:
 //
-// Queries the details of a specified dataset, including the data source, directory, and dataset model.
+// Retrieves the details of a specified dataset, including its data source, directory, and dataset model.
 //
 // Description:
 //
-// The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+// The response includes the data source, directory, and a dataset model containing dimensions, measures, physical fields, custom SQL text, and relationships.
 //
 // @param request - QueryDatasetDetailInfoRequest
 //
@@ -5949,7 +6066,7 @@ func (client *Client) QueryDatasetInfo(request *QueryDatasetInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
+// Queries the datasets in a specified workspace. The results are sorted in descending order by creation time.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -6013,7 +6130,7 @@ func (client *Client) QueryDatasetListWithOptions(request *QueryDatasetListReque
 
 // Summary:
 //
-// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
+// Queries the datasets in a specified workspace. The results are sorted in descending order by creation time.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -6031,7 +6148,7 @@ func (client *Client) QueryDatasetList(request *QueryDatasetListRequest) (_resul
 
 // Summary:
 //
-// # Check if the Dataset has Enabled Smart Query
+// Checks whether Intelligent Q&A is enabled for a dataset.
 //
 // @param request - QueryDatasetSmartqStatusRequest
 //
@@ -6075,7 +6192,7 @@ func (client *Client) QueryDatasetSmartqStatusWithOptions(request *QueryDatasetS
 
 // Summary:
 //
-// # Check if the Dataset has Enabled Smart Query
+// Checks whether Intelligent Q&A is enabled for a dataset.
 //
 // @param request - QueryDatasetSmartqStatusRequest
 //
@@ -6456,7 +6573,7 @@ func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRole
 
 // Summary:
 //
-// Retrieve the list of workspaces under the current organization.
+// Lists the workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -6512,7 +6629,7 @@ func (client *Client) QueryOrganizationWorkspaceListWithOptions(request *QueryOr
 
 // Summary:
 //
-// Retrieve the list of workspaces under the current organization.
+// Lists the workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -6877,7 +6994,7 @@ func (client *Client) QuerySharesToUserList(request *QuerySharesToUserListReques
 
 // Summary:
 //
-// # Check if a user has permission for a specific smart question dataset
+// Queries the permissions of a user on a Smart Q&A dataset.
 //
 // @param request - QuerySmartqPermissionByCubeIdRequest
 //
@@ -6925,7 +7042,7 @@ func (client *Client) QuerySmartqPermissionByCubeIdWithOptions(request *QuerySma
 
 // Summary:
 //
-// # Check if a user has permission for a specific smart question dataset
+// Queries the permissions of a user on a Smart Q&A dataset.
 //
 // @param request - QuerySmartqPermissionByCubeIdRequest
 //
@@ -7199,7 +7316,7 @@ func (client *Client) QueryUserGroupMember(request *QueryUserGroupMemberRequest)
 
 // Summary:
 //
-// Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+// Queries user information by Alibaba Cloud ID or Alibaba Cloud account name.
 //
 // @param request - QueryUserInfoByAccountRequest
 //
@@ -7247,7 +7364,7 @@ func (client *Client) QueryUserInfoByAccountWithOptions(request *QueryUserInfoBy
 
 // Summary:
 //
-// Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+// Queries user information by Alibaba Cloud ID or Alibaba Cloud account name.
 //
 // @param request - QueryUserInfoByAccountRequest
 //
@@ -7265,7 +7382,7 @@ func (client *Client) QueryUserInfoByAccount(request *QueryUserInfoByAccountRequ
 
 // Summary:
 //
-// Queries user information based on the user ID.
+// Queries user information by user ID.
 //
 // @param request - QueryUserInfoByUserIdRequest
 //
@@ -7309,7 +7426,7 @@ func (client *Client) QueryUserInfoByUserIdWithOptions(request *QueryUserInfoByU
 
 // Summary:
 //
-// Queries user information based on the user ID.
+// Queries user information by user ID.
 //
 // @param request - QueryUserInfoByUserIdRequest
 //
@@ -7327,7 +7444,7 @@ func (client *Client) QueryUserInfoByUserId(request *QueryUserInfoByUserIdReques
 
 // Summary:
 //
-// Queries the members of an organization.
+// Lists organization members.
 //
 // @param request - QueryUserListRequest
 //
@@ -7367,7 +7484,7 @@ func (client *Client) QueryUserListWithOptions(request *QueryUserListRequest, ru
 
 // Summary:
 //
-// Queries the members of an organization.
+// Lists organization members.
 //
 // @param request - QueryUserListRequest
 //
@@ -8394,11 +8511,11 @@ func (client *Client) SmartqAuthTransfer(request *SmartqAuthTransferRequest) (_r
 
 // Summary:
 //
-// Batch Management of Smart Q\\\\\\\\\\\\&A Authorizations
+// Manages authorizations for Intelligent Q&A in batches.
 //
 // Description:
 //
-// Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
+// Manages authorizations for Intelligent Q\\&A in batches. Granting an existing authorization is treated as a new grant operation. By default, an attempt to delete an authorization that does not exist is skipped and no audit log is recorded.
 //
 // @param request - SmartqAuthorizeRequest
 //
@@ -8462,11 +8579,11 @@ func (client *Client) SmartqAuthorizeWithOptions(request *SmartqAuthorizeRequest
 
 // Summary:
 //
-// Batch Management of Smart Q\\\\\\\\\\\\&A Authorizations
+// Manages authorizations for Intelligent Q&A in batches.
 //
 // Description:
 //
-// Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
+// Manages authorizations for Intelligent Q\\&A in batches. Granting an existing authorization is treated as a new grant operation. By default, an attempt to delete an authorization that does not exist is skipped and no audit log is recorded.
 //
 // @param request - SmartqAuthorizeRequest
 //
@@ -8484,11 +8601,11 @@ func (client *Client) SmartqAuthorize(request *SmartqAuthorizeRequest) (_result 
 
 // Summary:
 //
-// # Query Capability Open
+// Runs an intelligent Q&A query.
 //
 // Description:
 //
-// Special Note: When a user is authorized to call this API, it is assumed that the user has the permission to query the corresponding data by passing in the userId as that user.
+// Note: Authorized users can query data as another user by passing the userId of the target user.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -8544,11 +8661,11 @@ func (client *Client) SmartqQueryAbilityWithOptions(request *SmartqQueryAbilityR
 
 // Summary:
 //
-// # Query Capability Open
+// Runs an intelligent Q&A query.
 //
 // Description:
 //
-// Special Note: When a user is authorized to call this API, it is assumed that the user has the permission to query the corresponding data by passing in the userId as that user.
+// Note: Authorized users can query data as another user by passing the userId of the target user.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -8566,7 +8683,7 @@ func (client *Client) SmartqQueryAbility(request *SmartqQueryAbilityRequest) (_r
 
 // Summary:
 //
-// 更新自定义sql数据集
+// Updates a dataset that is based on a custom SQL statement.
 //
 // @param request - UpdateCubeBySqlRequest
 //
@@ -8626,7 +8743,7 @@ func (client *Client) UpdateCubeBySqlWithOptions(request *UpdateCubeBySqlRequest
 
 // Summary:
 //
-// 更新自定义sql数据集
+// Updates a dataset that is based on a custom SQL statement.
 //
 // @param request - UpdateCubeBySqlRequest
 //
@@ -8644,15 +8761,11 @@ func (client *Client) UpdateCubeBySql(request *UpdateCubeBySqlRequest) (_result 
 
 // Summary:
 //
-// Updates the status of the row and column permission switch for a dataset.
+// Updates the row-level and column-level permission status for a dataset.
 //
 // Description:
 //
-// The execution result of the interface. Valid values:
-//
-//   - true: The request was successful.
-//
-//   - false: The request failed.
+// > This API operation supports only the new row-level and column-level permission model in Quick BI. If you are using the old permission model, you must migrate to the new model before calling this operation. To migrate, navigate to Organization Management > Security Configuration > Upgrade to New Row-level and Column-level Permissions, and then click **One-click Upgrade**.
 //
 // @param request - UpdateDataLevelPermissionStatusRequest
 //
@@ -8704,15 +8817,11 @@ func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *Update
 
 // Summary:
 //
-// Updates the status of the row and column permission switch for a dataset.
+// Updates the row-level and column-level permission status for a dataset.
 //
 // Description:
 //
-// The execution result of the interface. Valid values:
-//
-//   - true: The request was successful.
-//
-//   - false: The request failed.
+// > This API operation supports only the new row-level and column-level permission model in Quick BI. If you are using the old permission model, you must migrate to the new model before calling this operation. To migrate, navigate to Organization Management > Security Configuration > Upgrade to New Row-level and Column-level Permissions, and then click **One-click Upgrade**.
 //
 // @param request - UpdateDataLevelPermissionStatusRequest
 //
@@ -8730,7 +8839,7 @@ func (client *Client) UpdateDataLevelPermissionStatus(request *UpdateDataLevelPe
 
 // Summary:
 //
-// # Modify Data Source Configuration
+// Modifies a data source configuration.
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -8774,7 +8883,7 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 
 // Summary:
 //
-// # Modify Data Source Configuration
+// Modifies a data source configuration.
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -8924,7 +9033,7 @@ func (client *Client) UpdateTicketNum(request *UpdateTicketNumRequest) (_result 
 
 // Summary:
 //
-// Updates the information of a specified member in an organization.
+// Update the information of a specific member in an organization.
 //
 // @param request - UpdateUserRequest
 //
@@ -8996,7 +9105,7 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 // Summary:
 //
-// Updates the information of a specified member in an organization.
+// Update the information of a specific member in an organization.
 //
 // @param request - UpdateUserRequest
 //

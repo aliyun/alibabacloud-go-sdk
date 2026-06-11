@@ -22,7 +22,7 @@ type iAddDataLevelPermissionWhiteListRequest interface {
 }
 
 type AddDataLevelPermissionWhiteListRequest struct {
-	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	// The ID of the dataset.
 	//
 	// This parameter is required.
 	//
@@ -30,35 +30,41 @@ type AddDataLevelPermissionWhiteListRequest struct {
 	//
 	// 7c7223ae-***-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Operation Type: You can set this parameter to one of the following values.
+	// The operation to perform. Valid values:
 	//
-	// 	- ADD: Add a whitelist
+	// - ADD: adds users or user groups to the whitelist.
 	//
-	// 	- DELETE: deletes a whitelist.
+	// - DELETE: removes users or user groups from the whitelist.
 	//
 	// example:
 	//
 	// ADD
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The type of row-level permissions.
+	// The type of permission. Valid values:
 	//
-	// 	- ROW_LEVEL: row-level permissions,
+	// - ROW_LEVEL: row-level permission
 	//
-	// 	- COLUMN_LEVEL: column-level permissions
+	// - COLUMN_LEVEL: column-level permission
 	//
 	// example:
 	//
 	// ROW_LEVEL
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The IDs of the users or user groups to add to the whitelist.
+	//
+	// - If you set TargetType to 1 (user), specify the user IDs.
+	//
+	// - When `TargetType=2` (user group), the value is the user group ID.
+	//
 	// example:
 	//
 	// 43342***435,1553a****41231
 	TargetIds *string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty"`
-	// Modify the type of the whitelist:
+	// The type of object to add to the whitelist. Valid values:
 	//
-	// 	- 1: user
+	// - 1: user
 	//
-	// 	- 2: user group
+	// - 2: user group
 	//
 	// example:
 	//

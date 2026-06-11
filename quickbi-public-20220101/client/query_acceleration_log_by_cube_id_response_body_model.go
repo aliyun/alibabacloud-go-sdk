@@ -18,11 +18,24 @@ type iQueryAccelerationLogByCubeIdResponseBody interface {
 }
 
 type QueryAccelerationLogByCubeIdResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D8749D********80FF3B4
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryAccelerationLogByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the API request.
+	//
+	// - true: The execution succeeded.
+	//
+	// - false: The execution failed.
+	Result *QueryAccelerationLogByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -74,27 +87,40 @@ func (s *QueryAccelerationLogByCubeIdResponseBody) Validate() error {
 }
 
 type QueryAccelerationLogByCubeIdResponseBodyResult struct {
+	// An array of acceleration task logs.
 	Data []*QueryAccelerationLogByCubeIdResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next page. A value of NULL or 0 indicates that no next page exists.
+	//
 	// example:
 	//
 	// null
 	Next *int32 `json:"Next,omitempty" xml:"Next,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The previous page. A value of NULL or 0 indicates that no previous page exists.
+	//
 	// example:
 	//
 	// null
 	Pre *int32 `json:"Pre,omitempty" xml:"Pre,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -186,26 +212,50 @@ func (s *QueryAccelerationLogByCubeIdResponseBodyResult) Validate() error {
 }
 
 type QueryAccelerationLogByCubeIdResponseBodyResultData struct {
+	// The task duration in seconds.
+	//
 	// example:
 	//
 	// 123
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The task history ID.
+	//
 	// example:
 	//
 	// REST_A***************6a8
 	JobHistoryId *string `json:"JobHistoryId,omitempty" xml:"JobHistoryId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// REST_A***************6a8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status of the task.
+	//
+	// - 0: Pending
+	//
+	// - 1: Running
+	//
+	// - 2: Succeeded
+	//
+	// - 3: Failed
+	//
+	// - 4: Canceled
+	//
+	// - 5: Warning
+	//
 	// example:
 	//
 	// 0
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// REST_A***************6a8
 	JonStartDate *string `json:"JonStartDate,omitempty" xml:"JonStartDate,omitempty"`
+	// The log content.
+	//
 	// example:
 	//
 	// asdav************

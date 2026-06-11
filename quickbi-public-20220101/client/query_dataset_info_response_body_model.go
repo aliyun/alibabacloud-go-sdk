@@ -171,7 +171,7 @@ type QueryDatasetInfoResponseBodyResult struct {
 	//
 	// example:
 	//
-	// The name of the dataset owner.
+	// 大娃
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The name of the training dataset.
 	//
@@ -193,7 +193,7 @@ type QueryDatasetInfoResponseBodyResult struct {
 	//
 	// example:
 	//
-	// The name of the workspace in which the dataset resides.
+	// 测试空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -760,7 +760,7 @@ type QueryDatasetInfoResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// The name of the directory.
+	// 测试目录
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The information about the directory to which the dataset belongs.
 	//
@@ -772,7 +772,7 @@ type QueryDatasetInfoResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// The path name of the directory ID, for example, one-level directory /two-level directory.
+	// 测试目录
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

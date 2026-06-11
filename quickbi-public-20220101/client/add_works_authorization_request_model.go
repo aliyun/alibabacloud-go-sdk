@@ -24,34 +24,82 @@ type iAddWorksAuthorizationRequest interface {
 }
 
 type AddWorksAuthorizationRequest struct {
+	// The permissions to grant. Valid values:
+	//
+	// `1`: View
+	//
+	// `3`: View and Export
+	//
+	// `11`: Edit, View, and Export
+	//
+	// **Note**: If AuthPoints is set to 11, the authorization is permanent and the ExpireDay parameter is ignored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AuthPoints *int32 `json:"AuthPoints,omitempty" xml:"AuthPoints,omitempty"`
+	// The type of the principal. Valid values:
+	//
+	// - `0`: User. Set AuthorizedId to the user ID.
+	//
+	// - `1`: User group. Set AuthorizedId to the user group ID.
+	//
+	// - `2`: All members of an organization. Set AuthorizedId to the organization ID.
+	//
+	// - `3`: All members of a workspace. Set AuthorizedId to the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	AuthorizeScope *int32 `json:"AuthorizeScope,omitempty" xml:"AuthorizeScope,omitempty"`
+	// The ID of the principal to be authorized. The AuthorizeScope parameter specifies the type of principal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ASDAS-WDAS****ASDA
 	AuthorizedId *string `json:"AuthorizedId,omitempty" xml:"AuthorizedId,omitempty"`
+	// The expiration date for the permissions.
+	//
+	// Format: `YYYY-MM-DD`.
+	//
+	// **Note**: This parameter is required if AuthPoints is not 11. The authorization must be valid for at least one day after the authorization date.
+	//
 	// example:
 	//
 	// 2099-12-31
 	ExpireDay *string `json:"ExpireDay,omitempty" xml:"ExpireDay,omitempty"`
+	// The ID of the work.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// al*************7ufv
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// - `dashboard`: A dashboard.
+	//
+	// - `report`: A report.
+	//
+	// - `dashboardOfflineQuery`: An ad-hoc query.
+	//
+	// - `cube`: A dataset.
+	//
+	// - `datasource`: A data source.
+	//
+	// - `screen`: A data screen.
+	//
+	// - `ANALYSIS`: An ad-hoc analysis.
+	//
+	// - `dataForm`: A data form.
+	//
 	// This parameter is required.
 	//
 	// example:

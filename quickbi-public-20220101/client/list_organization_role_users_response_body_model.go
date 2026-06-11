@@ -22,7 +22,7 @@ type ListOrganizationRoleUsersResponseBody struct {
 	//
 	// example:
 	//
-	// BCE45E6D-****-4F94-86BB-****2B1615FF
+	// BCE45E6D-9304-4F94-86BB-5A772B1615FF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the list of users under the organization role.
 	Result *ListOrganizationRoleUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
@@ -182,7 +182,7 @@ type ListOrganizationRoleUsersResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// Test User
+	// 测试用户
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// UserID of the organization member in Quick BI.
 	//

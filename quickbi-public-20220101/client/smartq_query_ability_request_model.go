@@ -20,31 +20,35 @@ type iSmartqQueryAbilityRequest interface {
 }
 
 type SmartqQueryAbilityRequest struct {
-	// Dataset ID.
+	// The ID of the dataset. To obtain the ID, navigate to \\*\\*Workbench\\*\\	- > \\*\\*Dataset\\*\\	- in the Quick BI console. Open the dataset and find the \\`cubeId\\` in the URL.
+	//
+	// In multi-table scenarios, this parameter must be empty.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// A list of dataset IDs. The model selects one or more tables from the list to generate an answer based on the question. This parameter is required for multi-table scenarios and is not used for single-table scenarios.
+	//
 	// example:
 	//
-	// 123124
+	// 7c7****-3c744528014b,a876asd***yhashd2
 	MultipleCubeIds *string `json:"MultipleCubeIds,omitempty" xml:"MultipleCubeIds,omitempty"`
-	// User ID.
+	// The ID of the user.
 	//
-	// 	Notice: If this field is not filled, the data will be queried by default as the organization owner.
+	// 	Notice: If you do not specify this parameter, data is queried as the organization owner by default.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Question text.
+	// The question in text format.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// This year\\"s sales data
+	// test
 	UserQuestion *string `json:"UserQuestion,omitempty" xml:"UserQuestion,omitempty"`
 }
 

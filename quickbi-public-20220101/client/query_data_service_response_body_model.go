@@ -89,7 +89,7 @@ type QueryDataServiceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// SELECT COMPANY_T_1_.`area` AS D_AREA_2_, COMPANY_T_1_.`city` AS D_CITY_3_, SUM(COMPANY_T_1_.`profit_amt`) AS D_PROFIT_4_ FROM `quickbi_test`.`company_sales_record_copy` AS COMPANY_T_1_   LIMIT 0, 10
+	// SELECT COMPANY_T_1_.`area` AS D_AREA_2_, COMPANY_T_1_.`city` AS D_CITY_3_, SUM(COMPANY_T_1_.`profit_amt`) AS D_PROFIT_4_ FROM `quickbi_test`.`company_sales_record_copy` AS COMPANY_T_1_ WHERE COMPANY_T_1_.`area` LIKE \\"%华东%\\" GROUP BY COMPANY_T_1_.`area`, COMPANY_T_1_.`city` HAVING SUM(COMPANY_T_1_.`order_amt`) > 1 LIMIT 0, 10
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The queried results returned.
 	Values []map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -154,7 +154,7 @@ type QueryDataServiceResponseBodyResultHeaders struct {
 	//
 	// example:
 	//
-	// The alias of the field. The key of the map data row in the result parameter values.
+	// 具体的物理字段名
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
 	// The data type of the field. Common types include number, string, date, datetime, time, and geographic.
 	//

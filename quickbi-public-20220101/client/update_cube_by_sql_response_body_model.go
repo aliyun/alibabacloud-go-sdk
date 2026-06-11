@@ -18,14 +18,28 @@ type iUpdateCubeBySqlResponseBody interface {
 }
 
 type UpdateCubeBySqlResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 617277******************ABA47E31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

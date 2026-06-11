@@ -18,19 +18,19 @@ type iListPortalMenuAuthorizationResponseBody interface {
 }
 
 type ListPortalMenuAuthorizationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of authorization details of the portal menu.
+	// A list of authorization details for the BI portal menus.
 	Result []*ListPortalMenuAuthorizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -87,19 +87,19 @@ func (s *ListPortalMenuAuthorizationResponseBody) Validate() error {
 }
 
 type ListPortalMenuAuthorizationResponseBodyResult struct {
-	// The menu ID of the BI portal leaf node.
+	// The ID of the leaf-node menu in the BI portal.
 	//
 	// example:
 	//
 	// 54kqgoa****
 	MenuId *string `json:"MenuId,omitempty" xml:"MenuId,omitempty"`
-	// The details of the object to which the menu is authorized.
+	// The details of the authorization objects for the menu.
 	Receivers []*ListPortalMenuAuthorizationResponseBodyResultReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
-	// Whether only authorization is visible. Valid values:
+	// Indicates whether the menu is visible only to authorized users. Valid values:
 	//
-	// 	- true: Only the authorization is visible.
+	// - true: The menu is visible only to authorized users.
 	//
-	// 	- false: Both are visible.
+	// - false: The menu is visible to all users.
 	//
 	// example:
 	//
@@ -156,10 +156,30 @@ func (s *ListPortalMenuAuthorizationResponseBodyResult) Validate() error {
 }
 
 type ListPortalMenuAuthorizationResponseBodyResultReceivers struct {
+	// The authorization type for the menu. Valid values:
+	//
+	// - 1: View
+	//
+	// - 11: Edit
+	//
+	// - 3: Export and view
+	//
+	// - 10: Manage data entry
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 1
 	AuthPointsValue *int32 `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
 	// The ID of the authorization object.
+	//
+	// > - If the authorization object is an organization, this ID is the organization ID.
+	//
+	// >
+	//
+	// > - If the authorization object is a workspace, this ID is the workspace ID.
 	//
 	// example:
 	//
@@ -167,9 +187,13 @@ type ListPortalMenuAuthorizationResponseBodyResultReceivers struct {
 	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	// The type of the authorization object. Valid values:
 	//
-	// 	- 0: user
+	// - 0: User
 	//
-	// 	- 1: user group
+	// - 1: User group
+	//
+	// - 2: Organization
+	//
+	// - 3: Workspace
 	//
 	// example:
 	//

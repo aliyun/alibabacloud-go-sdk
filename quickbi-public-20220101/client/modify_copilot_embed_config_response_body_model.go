@@ -22,7 +22,7 @@ type ModifyCopilotEmbedConfigResponseBody struct {
 	//
 	// example:
 	//
-	// 4BAA469******A9289FEE
+	// 4BAA4694-CC27-555F-B15A-688AA9289FEE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the result of the API execution. Possible values:
 	//

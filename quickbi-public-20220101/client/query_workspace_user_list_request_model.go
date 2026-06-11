@@ -24,7 +24,7 @@ type QueryWorkspaceUserListRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 分析
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Current page number of the workspace member list:
 	//

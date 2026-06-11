@@ -18,11 +18,20 @@ type iModifyDashboardNl2sqlStatusResponseBody interface {
 }
 
 type ModifyDashboardNl2sqlStatusResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 46e537a5****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of dashboard IDs for which the operation failed.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

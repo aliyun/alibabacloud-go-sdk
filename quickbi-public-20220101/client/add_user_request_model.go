@@ -28,11 +28,7 @@ type iAddUserRequest interface {
 }
 
 type AddUserRequest struct {
-	// Aliyun account ID.
-	//
-	// 	Warning: For versions of Quick BI released after December 31, 2024, AccountId will be a required parameter. Please modify your API before this date.
-	//
-	// <props="china">Published only on the China site
+	// The ID of the Alibaba Cloud account.	Warning: The `AccountId` parameter will be required in Quick BI versions released after December 31, 2024. We recommend that you update your API calls to include this parameter before then.
 	//
 	// example:
 	//
@@ -40,11 +36,11 @@ type AddUserRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Deprecated
 	//
-	// Aliyun account name.
+	// The name of the Alibaba Cloud account.
 	//
-	// - Note: If it is a sub-account, the format should be \\"primary account: sub-account\\". For example: master_test@aliyun.com:subaccount
+	// - For a sub-account, use the format `master account:sub-account`. Example: `master_test@aliyun.com:subaccount`.
 	//
-	// - Format check: Maximum length of 50 characters.
+	// - The maximum length is 50 characters.
 	//
 	// example:
 	//
@@ -52,13 +48,15 @@ type AddUserRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Deprecated
 	//
-	// Whether to assign the organization administrator role. Value range:
+	// Specifies whether to assign the organization administrator role. Valid values:
 	//
-	// - true: Yes
+	// - true
 	//
-	// - false: No
+	// - false
 	//
-	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIds is provided.</notice>
+	// 	Notice:
+	//
+	// This parameter is deprecated. It is ignored if `RoleIds` is specified.
 	//
 	// if can be null:
 	// false
@@ -69,50 +67,65 @@ type AddUserRequest struct {
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
 	// Deprecated
 	//
-	// Whether to assign the organization permission administrator role. Value range:
+	// Specifies whether to assign the permission administrator role. Valid values:
 	//
-	// - true: Yes
+	// - true
 	//
-	// - false: No
+	// - false
 	//
-	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIds is provided.</notice>
+	// 	Notice:
+	//
+	// This parameter is deprecated. It is ignored if `RoleIds` is specified.
 	//
 	// example:
 	//
 	// true
-	AuthAdminUser  *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// The Copilot modules to enable for the user. To enable multiple modules, specify their codes separated by a comma (,).
+	//
+	// - `qreport`: Q Report
+	//
+	// - `qExploreNum`: Q Explore
+	//
+	// - `smartQAskNum`: Q\\&A with Data
+	//
+	// - `smartQDevNum`: Q-assisted Building
+	//
+	// example:
+	//
+	// qreport,qExploreNum
 	CopilotModules *string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty"`
-	// Aliyun account nickname.
+	// The user\\"s nickname.
 	//
-	// - Format check: Maximum length of 50 characters.
+	// - The maximum length is 50 characters.
 	//
-	// - Special format validation: Chinese and English characters, numbers, _ \\ / | () ] [
+	// - The nickname can contain Chinese characters, letters, digits, and the following special characters: `_ \\ / | () []`.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ddd
+	// 张三
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// Preset or custom organization role IDs bound to the user, separated by commas, with a maximum of 3. Value range:
+	// The IDs of the predefined or custom organization roles to assign. You can specify up to three role IDs, separated by commas (,). Valid values for predefined roles:
 	//
-	// - Organization Administrator (preset role): 111111111
+	// - `111111111`: organization administrator
 	//
-	// - Permission Administrator (preset role): 111111112
+	// - `111111112`: permission administrator
 	//
-	// - Regular User (preset role): 111111113
+	// - `111111113`: regular user
 	//
 	// example:
 	//
 	// 111111111,456
 	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
-	// The user type of the organization member. Value range:
+	// The type of the organization member. Valid values:
 	//
-	// - 1: Developer
+	// - 1: developer
 	//
-	// - 2: Visitor
+	// - 2: viewer
 	//
-	// - 3: Analyst
+	// - 3: analyst
 	//
 	// This parameter is required.
 	//

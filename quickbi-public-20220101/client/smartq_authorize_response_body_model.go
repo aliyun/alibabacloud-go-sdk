@@ -18,19 +18,19 @@ type iSmartqAuthorizeResponseBody interface {
 }
 
 type SmartqAuthorizeResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 617277C****************ABA47E31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Array of failed user information.
+	// An array of user information for failed operations.
 	Result []*SmartqAuthorizeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. The value range is as follows:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request was successful.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -87,25 +87,25 @@ func (s *SmartqAuthorizeResponseBody) Validate() error {
 }
 
 type SmartqAuthorizeResponseBodyResult struct {
-	// Reason for failure.
+	// The reason for the failure.
 	//
 	// example:
 	//
 	// INVALID_FILE_FORMAT
 	DetailMessage *string `json:"DetailMessage,omitempty" xml:"DetailMessage,omitempty"`
-	// Q&A resource ID.
+	// The Q\\&A resource ID.
 	//
 	// example:
 	//
 	// 617277C****************ABA47E31
 	LlmCube *string `json:"LlmCube,omitempty" xml:"LlmCube,omitempty"`
-	// Analysis theme ID.
+	// The analysis subject ID.
 	//
 	// example:
 	//
 	// 617277C****************ABA47E31
 	LlmCubeTheme *string `json:"LlmCubeTheme,omitempty" xml:"LlmCubeTheme,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

@@ -18,14 +18,28 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F68B***********A3DF743
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true

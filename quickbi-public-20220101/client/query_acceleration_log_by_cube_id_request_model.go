@@ -22,26 +22,38 @@ type iQueryAccelerationLogByCubeIdRequest interface {
 }
 
 type QueryAccelerationLogByCubeIdRequest struct {
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The end time. The format is yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-05-15 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The page number. The default value is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// - Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. The format is yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:

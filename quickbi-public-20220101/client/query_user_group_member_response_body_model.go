@@ -107,7 +107,7 @@ type QueryUserGroupMemberResponseBodyResult struct {
 	//
 	// example:
 	//
-	// test
+	// 小刘的测试用户组
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// ID of the parent user group.
 	//
@@ -119,7 +119,7 @@ type QueryUserGroupMemberResponseBodyResult struct {
 	//
 	// example:
 	//
-	// test
+	// 财务组
 	ParentUserGroupName *string `json:"ParentUserGroupName,omitempty" xml:"ParentUserGroupName,omitempty"`
 }
 

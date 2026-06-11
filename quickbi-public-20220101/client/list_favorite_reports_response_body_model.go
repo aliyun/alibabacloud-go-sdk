@@ -218,13 +218,13 @@ type ListFavoriteReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test
+	// 测试报表
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Alibaba Cloud account name of the work owner.
 	//
 	// example:
 	//
-	// test
+	// luyaotest的昵称非管理员
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// UserID of the work owner.
 	//
@@ -274,7 +274,7 @@ type ListFavoriteReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

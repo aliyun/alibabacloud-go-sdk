@@ -18,11 +18,20 @@ type iGetMailTaskListResponseBody interface {
 }
 
 type GetMailTaskListResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0c52************8e1952a3
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetMailTaskListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The paging information for the tracking tasks.
+	Result *GetMailTaskListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -74,27 +83,40 @@ func (s *GetMailTaskListResponseBody) Validate() error {
 }
 
 type GetMailTaskListResponseBodyResult struct {
+	// An array of tracking task models.
 	Data []*GetMailTaskListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next page number. A value of null or 0 indicates that there is no next page.
+	//
 	// example:
 	//
 	// null
 	Next *int32 `json:"Next,omitempty" xml:"Next,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page that was set for the request.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The previous page number. A value of null or 0 indicates that there is no previous page.
+	//
 	// example:
 	//
 	// null
 	Pre *int32 `json:"Pre,omitempty" xml:"Pre,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -186,22 +208,36 @@ func (s *GetMailTaskListResponseBodyResult) Validate() error {
 }
 
 type GetMailTaskListResponseBodyResultData struct {
+	// The nickname of the owner.
+	//
 	// example:
 	//
 	// test
 	BizOwnerName *string `json:"BizOwnerName,omitempty" xml:"BizOwnerName,omitempty"`
+	// The user ID of the owner.
+	//
 	// example:
 	//
 	// asag****2423
 	BizOwnerUserId *string `json:"BizOwnerUserId,omitempty" xml:"BizOwnerUserId,omitempty"`
+	// The mail ID of the tracking task.
+	//
 	// example:
 	//
 	// 2342526
 	MailId *string `json:"MailId,omitempty" xml:"MailId,omitempty"`
+	// Indicates whether the task is paused.
+	//
+	// - true: The task is paused.
+	//
+	// - false: The task is not paused.
+	//
 	// example:
 	//
 	// true
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// The name of the tracking task.
+	//
 	// example:
 	//
 	// test

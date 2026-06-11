@@ -16,12 +16,18 @@ type iModifyDashboardNl2sqlStatusRequest interface {
 }
 
 type ModifyDashboardNl2sqlStatusRequest struct {
+	// An array of dashboard IDs. Separate multiple IDs with commas.
+	//
+	// 	Notice: The number of IDs cannot exceed 50.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// asda,sadaf
 	DashboardIds *string `json:"DashboardIds,omitempty" xml:"DashboardIds,omitempty"`
+	// The status identifier. 0 indicates disabled and 1 indicates enabled.
+	//
 	// This parameter is required.
 	//
 	// example:

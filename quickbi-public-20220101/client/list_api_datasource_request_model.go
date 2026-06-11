@@ -24,7 +24,7 @@ type ListApiDatasourceRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 测试
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// Current page number for API data source list:
 	//

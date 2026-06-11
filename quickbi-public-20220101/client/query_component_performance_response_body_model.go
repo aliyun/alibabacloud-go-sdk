@@ -109,7 +109,7 @@ type QueryComponentPerformanceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// test
+	// 线图
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
 	// The average query duration associated with the SQL pattern.
 	//
@@ -229,7 +229,7 @@ type QueryComponentPerformanceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// test
+	// 测试空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

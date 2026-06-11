@@ -229,7 +229,7 @@ type QueryReportPerformanceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// test
+	// 自定义模板
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

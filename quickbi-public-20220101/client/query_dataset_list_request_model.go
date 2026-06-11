@@ -24,39 +24,51 @@ type iQueryDatasetListRequest interface {
 }
 
 type QueryDatasetListRequest struct {
-	// The ID of the request.
+	// The ID of the folder.
+	//
+	// - If you specify this parameter, all datasets in the folder are returned.
 	//
 	// example:
 	//
 	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Information about the directory where the dataset is located
+	// The keyword used to search for datasets by name.
 	//
 	// example:
 	//
-	// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The ID of the workspace.
+	// The page number of the dataset list.
+	//
+	// - Start value: 1
+	//
+	// - Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Specifies the directory ID.
+	// The number of entries to return on each page.
 	//
-	// 	- If this field is not empty, all datasets in the directory are obtained.
+	// - Default value: 10
+	//
+	// - Maximum value: 1000
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of pages returned.
+	// Specifies whether to recursively include datasets in subdirectories. Valid values:
+	//
+	// - true: Returns all datasets in the folder specified by DirectoryId and its subdirectories.
+	//
+	// - false: Returns only the datasets in the folder specified by DirectoryId.
 	//
 	// example:
 	//
 	// true
 	WithChildren *bool `json:"WithChildren,omitempty" xml:"WithChildren,omitempty"`
-	// The name of the data source.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

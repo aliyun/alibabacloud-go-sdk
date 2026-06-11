@@ -18,19 +18,19 @@ type iQueryOrganizationWorkspaceListResponseBody interface {
 }
 
 type QueryOrganizationWorkspaceListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns the paginated result of the workspace list, with detailed information about the workspaces stored in the Data parameter.
+	// The paginated query results. The Data parameter contains the details of each workspace.
 	Result *QueryOrganizationWorkspaceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Whether the request succeeded. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request succeeded.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,27 +83,27 @@ func (s *QueryOrganizationWorkspaceListResponseBody) Validate() error {
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResult struct {
-	// List of workspaces.
+	// An array of workspace objects.
 	Data []*QueryOrganizationWorkspaceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of rows per page as set in the request.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of rows.
+	// The total number of workspaces.
 	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -178,101 +178,103 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResult) Validate() error {
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultData struct {
-	// Whether the work can be made public. Value range:
+	// Whether works in the workspace can be published. Valid values:
 	//
-	// - true: Public
+	// - true: Publishing is allowed.
 	//
-	// - false: Not public
+	// - false: Publishing is not allowed.
 	//
 	// example:
 	//
 	// true
 	AllowPublishOperation *bool `json:"AllowPublishOperation,omitempty" xml:"AllowPublishOperation,omitempty"`
-	// Indicates whether the work can be authorized for sharing. Possible values:
+	// Whether works in the workspace can be shared. Valid values:
 	//
-	// - true: Authorized
+	// - true: Sharing is allowed.
 	//
-	// - false: Not authorized
+	// - false: Sharing is not allowed.
 	//
 	// example:
 	//
 	// true
 	AllowShareOperation *bool `json:"AllowShareOperation,omitempty" xml:"AllowShareOperation,omitempty"`
-	// Creation time of the workspace.
+	// The time when the workspace was created.
 	//
 	// example:
 	//
 	// 2020-11-10 17:51:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Quick BI user ID of the creator.
+	// The creator\\"s Quick BI user ID.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// Aliyun account name of the creator.
+	// The creator\\"s Alibaba Cloud account name.
 	//
 	// example:
 	//
 	// pop****@aliyun.com
 	CreateUserAccountName *string `json:"CreateUserAccountName,omitempty" xml:"CreateUserAccountName,omitempty"`
-	// Last modified time of the workspace.
+	// The time when the workspace was last modified.
 	//
 	// example:
 	//
 	// 2020-11-10 17:51:07
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// ID of the Quick BI user who modified the workspace.
+	// The modifier\\"s Quick BI user ID.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// Aliyun account name of the modifier.
+	// The modifier\\"s Alibaba Cloud account name.
 	//
 	// example:
 	//
 	// pop****@aliyun.com
 	ModifyUserAccountName *string `json:"ModifyUserAccountName,omitempty" xml:"ModifyUserAccountName,omitempty"`
-	// ID of the organization to which the workspace belongs.
+	// The ID of the workspace\\"s organization.
 	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// Quick BI user ID of the workspace owner.
+	// The workspace owner\\"s Quick BI user ID.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// Aliyun account name of the workspace owner.
+	// The workspace owner\\"s Alibaba Cloud account name.
 	//
 	// example:
 	//
 	// pop****@aliyun.com
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	// The workspace owner\\"s Quick BI account name.
+	//
 	// example:
 	//
 	// test
 	RealOwnerAccountName *string `json:"RealOwnerAccountName,omitempty" xml:"RealOwnerAccountName,omitempty"`
-	// Workspace description.
+	// The workspace description.
 	//
 	// example:
 	//
-	// test
+	// 该空间是测试空间
 	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 7350a155-0e94-4c6c-8620-57bbec38****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// Name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//
-	// test
+	// 测试空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

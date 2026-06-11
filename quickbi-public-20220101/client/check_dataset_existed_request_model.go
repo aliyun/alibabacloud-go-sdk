@@ -14,6 +14,8 @@ type iCheckDatasetExistedRequest interface {
 }
 
 type CheckDatasetExistedRequest struct {
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:

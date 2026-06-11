@@ -18,11 +18,20 @@ type iListWhitePortalMenuResponseBody interface {
 }
 
 type ListWhitePortalMenuResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC4E1**********0DF67E2C3
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListWhitePortalMenuResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The whitelist.
+	Result []*ListWhitePortalMenuResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -78,14 +87,30 @@ func (s *ListWhitePortalMenuResponseBody) Validate() error {
 }
 
 type ListWhitePortalMenuResponseBodyResult struct {
+	// The authorization type for the menu. Valid values:
+	//
+	// - 1: View
+	//
+	// - 3: Export and view
+	//
 	// example:
 	//
 	// 1
 	AuthPointsValue *int32 `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
+	// The ID of the authorization object. If the authorization is at the workspace or organization level, this parameter returns the workspace ID or organization ID.
+	//
 	// example:
 	//
 	// 8a4***********1e769
 	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+	// The type of the authorization object. Valid values:
+	//
+	// - 0: User
+	//
+	// - 1: User group
+	//
+	// - 3: Workspace or organization level
+	//
 	// example:
 	//
 	// 0

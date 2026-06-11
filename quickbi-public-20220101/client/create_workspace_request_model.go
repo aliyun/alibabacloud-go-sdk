@@ -28,32 +28,55 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
+	// Specifies whether reports in the workspace can be made public. Default value: true.
+	//
 	// example:
 	//
 	// true
 	AllowPublish *bool `json:"AllowPublish,omitempty" xml:"AllowPublish,omitempty"`
+	// Specifies whether reports in the workspace can be shared. Default value: true.
+	//
 	// example:
 	//
 	// true
 	AllowShare *bool `json:"AllowShare,omitempty" xml:"AllowShare,omitempty"`
+	// Specifies whether the workspace is in collaboration mode. Default value: true.
+	//
 	// example:
 	//
 	// true
 	AllowViewAll *bool `json:"AllowViewAll,omitempty" xml:"AllowViewAll,omitempty"`
+	// Specifies whether to grant read permissions on the works in the workspace to all workspace members by default. Default value: false.
+	//
 	// example:
 	//
 	// false
 	DefaultShareToAll *bool `json:"DefaultShareToAll,omitempty" xml:"DefaultShareToAll,omitempty"`
+	// Specifies whether only administrators can create data sources in the workspace. Default value: false.
+	//
 	// example:
 	//
 	// false
 	OnlyAdminCreateDatasource *bool `json:"OnlyAdminCreateDatasource,omitempty" xml:"OnlyAdminCreateDatasource,omitempty"`
+	// Specifies whether to use table remarks when you create a dataset in the workspace. Default value: true.
+	//
 	// example:
 	//
 	// true
-	UseComment           *bool   `json:"UseComment,omitempty" xml:"UseComment,omitempty"`
+	UseComment *bool `json:"UseComment,omitempty" xml:"UseComment,omitempty"`
+	// The description of the workspace.
+	//
+	// example:
+	//
+	// test
 	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	// The name of the workspace.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

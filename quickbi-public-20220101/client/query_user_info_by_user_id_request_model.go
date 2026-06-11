@@ -14,7 +14,7 @@ type iQueryUserInfoByUserIdRequest interface {
 }
 
 type QueryUserInfoByUserIdRequest struct {
-	// The ID of the user. The UserID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	// The user ID. This is the user ID in Quick BI, not an Alibaba Cloud UID.
 	//
 	// This parameter is required.
 	//

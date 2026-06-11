@@ -26,7 +26,7 @@ type GetWorksEmbedListRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 测试数据集
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Page number (defaults to 1 if empty)
 	//

@@ -20,7 +20,7 @@ type GetUserGroupInfoRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 测试用户组
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 

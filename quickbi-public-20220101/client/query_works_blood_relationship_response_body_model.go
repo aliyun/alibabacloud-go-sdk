@@ -97,7 +97,7 @@ type QueryWorksBloodRelationshipResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Line
+	// 线图
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
 	// The type of the image component.
 	//
@@ -109,7 +109,7 @@ type QueryWorksBloodRelationshipResponseBodyResult struct {
 	//
 	// example:
 	//
-	// ddd
+	// 交叉表
 	ComponentTypeCnName *string `json:"ComponentTypeCnName,omitempty" xml:"ComponentTypeCnName,omitempty"`
 	// The name of the component type.
 	//
@@ -222,7 +222,7 @@ type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
 	//
 	// example:
 	//
-	// Column (Measure)
+	// 列（度量）
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
 	// The display name of the field.
 	//
@@ -260,7 +260,7 @@ type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
 	//
 	// example:
 	//
-	// BI_DATEADD([date], 100, \\"day\\")
+	// BI_DATEADD([时间], 100, \\"day\\")
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// Indices whether the metric. Valid values:
 	//

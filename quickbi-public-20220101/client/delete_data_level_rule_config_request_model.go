@@ -16,12 +16,16 @@ type iDeleteDataLevelRuleConfigRequest interface {
 }
 
 type DeleteDataLevelRuleConfigRequest struct {
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The ID of the row-level permission rule.
+	//
 	// This parameter is required.
 	//
 	// example:

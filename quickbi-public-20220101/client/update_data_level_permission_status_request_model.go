@@ -18,7 +18,7 @@ type iUpdateDataLevelPermissionStatusRequest interface {
 }
 
 type UpdateDataLevelPermissionStatusRequest struct {
-	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	// The ID of the dataset.
 	//
 	// This parameter is required.
 	//
@@ -26,12 +26,24 @@ type UpdateDataLevelPermissionStatusRequest struct {
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The status of the permission switch. Valid values:
+	//
+	// - 1: On
+	//
+	// - 0: Off
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	IsOpen *int32 `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	// The type of data-level permission. Valid values:
+	//
+	// - ROW_LEVEL: Row-level permission
+	//
+	// - COLUMN_LEVEL: Column-level permission
+	//
 	// This parameter is required.
 	//
 	// example:

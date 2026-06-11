@@ -17,16 +17,8 @@ type iQueryUserByMobileAccountRequest interface {
 
 type QueryUserByMobileAccountRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ding
 	MobileType *string `json:"MobileType,omitempty" xml:"MobileType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// sasda
 	MobileUserId *string `json:"MobileUserId,omitempty" xml:"MobileUserId,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iListWhitePortalMenuRequest interface {
 }
 
 type ListWhitePortalMenuRequest struct {
+	// The ID of the BI portal.
+	//
 	// This parameter is required.
 	//
 	// example:

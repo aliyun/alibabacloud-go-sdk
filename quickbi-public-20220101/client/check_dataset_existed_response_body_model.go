@@ -18,14 +18,28 @@ type iCheckDatasetExistedResponseBody interface {
 }
 
 type CheckDatasetExistedResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C67ABB*********682B0B214
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

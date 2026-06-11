@@ -18,14 +18,28 @@ type iCheckOrganizationMemberResponseBody interface {
 }
 
 type CheckOrganizationMemberResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D787E1A**********DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded. Valid values:
+	//
+	// - true: The call succeeded.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

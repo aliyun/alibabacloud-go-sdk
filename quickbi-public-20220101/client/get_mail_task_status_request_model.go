@@ -22,7 +22,7 @@ type GetMailTaskStatusRequest struct {
 	//
 	// example:
 	//
-	// d5a5****8b634d****5584f8dc159c62
+	// d5a59a898b634d75be5584f8dc159c62
 	MailId *string `json:"MailId,omitempty" xml:"MailId,omitempty"`
 	// Task ID
 	//
@@ -32,7 +32,7 @@ type GetMailTaskStatusRequest struct {
 	//
 	// example:
 	//
-	// 7218****0392****212
+	// 7218865303929605212
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

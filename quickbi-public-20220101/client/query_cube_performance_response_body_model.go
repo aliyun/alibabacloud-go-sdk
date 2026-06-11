@@ -211,7 +211,7 @@ type QueryCubePerformanceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// taascontainerprod
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

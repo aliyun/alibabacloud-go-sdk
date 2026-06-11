@@ -26,7 +26,7 @@ type BatchAddFeishuUsersRequest struct {
 	//
 	// example:
 	//
-	// {"ad****fd": "TEST", "82****5a": "TEST"}"
+	// {"ad****fd": "张三", "82****5a": "李四"}"
 	FeishuUsers *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
 	// Whether the user is an admin user:
 	//

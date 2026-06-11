@@ -97,7 +97,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResult struct {
 	//
 	// example:
 	//
-	// asdas
+	// 备注
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The directory structure where the work is located.
 	Directory *QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
@@ -105,7 +105,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResult struct {
 	//
 	// example:
 	//
-	// asdas
+	// 李四
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// Timestamp of the last modification in milliseconds.
 	//
@@ -123,7 +123,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResult struct {
 	//
 	// example:
 	//
-	// asdas
+	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Security policy for collaborative work. Values: - 0: Private - 12: Authorize specific members - 1 or 11: Authorize all space members
 	//
@@ -161,7 +161,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResult struct {
 	//
 	// example:
 	//
-	// asdas
+	// 测试报表
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// Work type. Possible values:
 	//
@@ -199,7 +199,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResult struct {
 	//
 	// example:
 	//
-	// asdas
+	// 测试工作空间
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -366,7 +366,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// asdas
+	// 测试目录
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The hierarchical structure of directory IDs, separated by『/』.
 	//
@@ -378,7 +378,7 @@ type QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// asdas/safas
+	// 一级目录/二级目录
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

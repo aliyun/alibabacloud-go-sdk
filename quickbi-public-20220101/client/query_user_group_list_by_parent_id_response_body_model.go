@@ -123,7 +123,7 @@ type QueryUserGroupListByParentIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// User Group for Testing
+	// 用来测试的用户组
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
 	// The ID of the sub-user group.
 	//
@@ -135,7 +135,7 @@ type QueryUserGroupListByParentIdResponseBodyResult struct {
 	//
 	// example:
 	//
-	// popapi test group
+	// popapi测试分组
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 

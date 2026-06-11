@@ -18,27 +18,27 @@ type iUpdateUserResponseBody interface {
 }
 
 type UpdateUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface is returned. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The request fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

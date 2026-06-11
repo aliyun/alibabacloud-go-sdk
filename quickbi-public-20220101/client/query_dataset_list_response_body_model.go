@@ -18,19 +18,19 @@ type iQueryDatasetListResponseBody interface {
 }
 
 type QueryDatasetListResponseBody struct {
-	// The keyword used to search for the dataset name.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Test dataset
+	// The paged results of the dataset list. The details of the datasets are returned in the Data parameter.
 	Result *QueryDatasetListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Whether to recursively wrap the dataset in the subdirectory. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: returns datasets in all recursive subdirectories in the directoryId directory.
+	// - true: The request was successful.
 	//
-	// 	- false: Only datasets in the directory specified by directoryId are returned, excluding subdirectories.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,39 +83,27 @@ func (s *QueryDatasetListResponseBody) Validate() error {
 }
 
 type QueryDatasetListResponseBodyResult struct {
-	// Returns the pagination results of the dataset list. The detailed information of the dataset list is stored in the response parameter Data.
+	// The details of the dataset list.
 	Data []*QueryDatasetListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The number of rows per page in a paged query.
-	//
-	// 	- Default value: 10.
-	//
-	// 	- Maximum value: 1,000.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
+	// The number of entries per page specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// Current page number for dataset list:
-	//
-	// 	- Pages start from page 1.
-	//
-	// 	- Default value: 1.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -190,74 +178,83 @@ func (s *QueryDatasetListResponseBodyResult) Validate() error {
 }
 
 type QueryDatasetListResponseBodyResultData struct {
-	// The details of the dataset list.
+	// The time when the dataset was created.
 	//
 	// example:
 	//
 	// 2020-11-02 10:36:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Test Space
+	// The information about the data source to which the dataset belongs.
 	DataSource *QueryDatasetListResponseBodyResultDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The name of the workspace.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// 5820f58c-c734-4d8a-baf1-7979af4f****
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// Tom
+	// The dataset name.
 	//
 	// example:
 	//
 	// company_sales_record_copy12
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The number of rows per page set when the interface is requested.
+	// The description of the dataset.
 	//
 	// example:
 	//
-	// The total number of rows in the table.
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the data source to which the dataset belongs.
+	// The information about the folder in which the dataset is located.
 	Directory *QueryDatasetListResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// The nickname of the dataset owner.
+	// The time when the dataset was last modified.
 	//
 	// example:
 	//
 	// 2020-11-02 10:36:05
-	ModifyTime              *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OpenOfflineAcceleration *bool   `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
-	// The creation time.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Indicates whether extraction-based acceleration is enabled. Valid values:
+	//
+	// - true: Enabled
+	//
+	// - false: Disabled
+	//
+	// example:
+	//
+	// true
+	OpenOfflineAcceleration *bool `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
+	// The user ID of the dataset owner in Quick BI.
 	//
 	// example:
 	//
 	// 136516262323****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Whether to enable row-level permissions. Valid values:
-	//
-	// 	- true: The VIP Netty channel is enabled.
-	//
-	// 	- false: The incremental log backup feature is disabled.
+	// The nickname of the dataset owner.
 	//
 	// example:
 	//
-	// The ID of the workspace.
+	// test
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The total number of pages returned.
+	// Indicates whether row-level permissions are enabled. Valid values:
+	//
+	// - true: Enabled
+	//
+	// - false: Disabled
 	//
 	// example:
 	//
 	// true
 	RowLevel *bool `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
-	// The page number of the returned page.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad06adf
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The description of the dataset.
+	// The workspace name.
 	//
 	// example:
 	//
-	// Test dataset
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -401,19 +398,19 @@ func (s *QueryDatasetListResponseBodyResultData) Validate() error {
 }
 
 type QueryDatasetListResponseBodyResultDataDataSource struct {
-	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 261b252d-c3c3-498a-a0a7-5d1ec6cd****
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
-	// The time when the scaling group was modified.
+	// The data source name.
 	//
 	// example:
 	//
-	// The name of the training dataset.
+	// test
 	DsName *string `json:"DsName,omitempty" xml:"DsName,omitempty"`
-	// The user ID of the dataset owner in the Quick BI.
+	// The data source type.
 	//
 	// example:
 	//
@@ -461,29 +458,29 @@ func (s *QueryDatasetListResponseBodyResultDataDataSource) Validate() error {
 }
 
 type QueryDatasetListResponseBodyResultDataDirectory struct {
-	// The ID of the directory path.
+	// The folder ID.
 	//
 	// example:
 	//
 	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the data source.
+	// The folder name.
 	//
 	// example:
 	//
-	// Information about the directory where the dataset is located
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the data source.
+	// The ID of the folder path.
 	//
 	// example:
 	//
 	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// The name of the data source.
+	// The name of the folder path.
 	//
 	// example:
 	//
-	// Test a data source
+	// test
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

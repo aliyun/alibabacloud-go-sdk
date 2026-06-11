@@ -38,7 +38,7 @@ type UpdateUserTagValueRequest struct {
 	//
 	// example:
 	//
-	// Product Director
+	// 产品总监
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	// The user ID for which the tag value is to be modified. This user ID refers to the Quick BI UserID, not the Alibaba Cloud UID.
 	//

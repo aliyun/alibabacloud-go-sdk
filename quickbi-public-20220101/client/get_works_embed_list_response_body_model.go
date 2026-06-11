@@ -190,7 +190,7 @@ type GetWorksEmbedListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// test
+	// 测试哦
 	WorksName *string `json:"WorksName,omitempty" xml:"WorksName,omitempty"`
 	// Report type
 	//

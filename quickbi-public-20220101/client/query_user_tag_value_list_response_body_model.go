@@ -97,13 +97,13 @@ type QueryUserTagValueListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Position
+	// 职位
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	// The value of the tag.
 	//
 	// example:
 	//
-	// Supervisor
+	// 主管
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

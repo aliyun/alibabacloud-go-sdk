@@ -18,19 +18,19 @@ type iAddUserResponseBody interface {
 }
 
 type AddUserResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns detailed information about the newly added Aliyun user.
+	// The details of the newly added Alibaba Cloud user.
 	Result *AddUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true
 	//
-	// - false: The request failed.
+	// - false
 	//
 	// example:
 	//
@@ -83,58 +83,63 @@ func (s *AddUserResponseBody) Validate() error {
 }
 
 type AddUserResponseBodyResult struct {
-	// Aliyun account.
+	// The Alibaba Cloud account.
 	//
 	// example:
 	//
 	// xxxxxx@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Whether the organization administrator role is assigned. Value range:
+	// Indicates whether the organization administrator role is assigned. Valid values:
 	//
-	// - true: Yes
+	// - true
 	//
-	// - false: No
+	// - false
 	//
-	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
+	// 	Notice:
+	//
+	// This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
 	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	// Whether the permission administrator role is assigned. Value range:
+	// Indicates whether the permission administrator role is assigned. Valid values:
 	//
-	// - true: Yes
+	// - true
 	//
-	// - false: No
+	// - false
 	//
-	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
+	// 	Notice:
+	//
+	// This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
 	//
 	// example:
 	//
 	// true
-	AuthAdminUser  *bool     `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// The Copilot modules for which the user has a quota.
 	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
-	// Aliyun account nickname.
+	// The nickname of the Alibaba Cloud account.
 	//
 	// example:
 	//
-	// ddd
+	// 张三
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// List of organization role IDs bound to the user.
+	// A list of organization role IDs assigned to the user.
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
-	// UserID in Quick BI.
+	// The user ID in Quick BI.
 	//
 	// example:
 	//
 	// b5d8fd9348cc4327****afb604
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// User type of the organization member. Value range:
+	// The user type. Valid values:
 	//
-	// - 1: Developer
+	// - 1: developer
 	//
-	// - 2: Visitor
+	// - 2: viewer
 	//
-	// - 3: Analyst
+	// - 3: analyst
 	//
 	// example:
 	//

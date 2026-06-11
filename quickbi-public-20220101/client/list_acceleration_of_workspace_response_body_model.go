@@ -18,11 +18,20 @@ type iListAccelerationOfWorkspaceResponseBody interface {
 }
 
 type ListAccelerationOfWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D787E****************05DF8D885
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListAccelerationOfWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The acceleration task model.
+	Result *ListAccelerationOfWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -74,27 +83,40 @@ func (s *ListAccelerationOfWorkspaceResponseBody) Validate() error {
 }
 
 type ListAccelerationOfWorkspaceResponseBodyResult struct {
+	// An array of acceleration task information.
 	Data []*ListAccelerationOfWorkspaceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next page. A value of NULL or 0 indicates that there is no next page.
+	//
 	// example:
 	//
 	// null
 	Next *int32 `json:"Next,omitempty" xml:"Next,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page that you set when you call the operation.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The previous page. A value of NULL or 0 indicates that there is no previous page.
+	//
 	// example:
 	//
 	// 0
 	Pre *int32 `json:"Pre,omitempty" xml:"Pre,omitempty"`
+	// The total number of rows.
+	//
 	// example:
 	//
 	// 18
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -186,35 +208,68 @@ func (s *ListAccelerationOfWorkspaceResponseBodyResult) Validate() error {
 }
 
 type ListAccelerationOfWorkspaceResponseBodyResultData struct {
+	// The name of the creator.
+	//
 	// example:
 	//
 	// system
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d14e*********fef8de29fd
-	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The dataset name.
+	//
+	// example:
+	//
+	// test
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	// The time when acceleration was enabled.
+	//
 	// example:
 	//
 	// 20250911 00:00:00
 	EnableQuickindexTime *string `json:"EnableQuickindexTime,omitempty" xml:"EnableQuickindexTime,omitempty"`
+	// The task history ID.
+	//
 	// example:
 	//
 	// QWDAASG*******8SAD
 	JobHistoryId *string `json:"JobHistoryId,omitempty" xml:"JobHistoryId,omitempty"`
+	// The acceleration task ID.
+	//
 	// example:
 	//
 	// b30b74**********b3b
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - 0: Pending
+	//
+	// - 1: Running
+	//
+	// - 2: Succeeded
+	//
+	// - 3: Failed
+	//
+	// - 4: Canceled
+	//
+	// - 5: Warning
+	//
 	// example:
 	//
 	// 0
 	JobStatus *int32 `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The time when the task was last modified.
+	//
 	// example:
 	//
 	// 20250911 00:00:00
 	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The size.
+	//
 	// example:
 	//
 	// 47045632

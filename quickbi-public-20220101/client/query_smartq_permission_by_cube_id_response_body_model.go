@@ -18,15 +18,15 @@ type iQuerySmartqPermissionByCubeIdResponseBody interface {
 }
 
 type QuerySmartqPermissionByCubeIdResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 617277******************ABA47E31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Basic information of the dataset.
+	// The basic information about the dataset.
 	Result *QuerySmartqPermissionByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - true: The request was successful.
 	//
@@ -83,19 +83,19 @@ func (s *QuerySmartqPermissionByCubeIdResponseBody) Validate() error {
 }
 
 type QuerySmartqPermissionByCubeIdResponseBodyResult struct {
-	// Dataset ID.
+	// The ID of the dataset.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// test
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	// Whether the current user has permission for the smart question. Note: \\"HasPerssion\\" seems to be a typo, it should probably be \\"HasPermission\\".
+	// Indicates whether the current user has permissions for Smart Q\\&A.
 	HasPerssion *bool `json:"HasPerssion,omitempty" xml:"HasPerssion,omitempty"`
 }
 

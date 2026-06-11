@@ -22,7 +22,7 @@ type GetMailTaskStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 38C0FEC8-****-415C-A9F1-****422BDB65
+	// 38C0FEC8-1510-415C-A9F1-9AE9422BDB65
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Return result.
 	Result []*GetMailTaskStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -97,7 +97,7 @@ type GetMailTaskStatusResponseBodyResult struct {
 	//
 	// example:
 	//
-	// c38f73f4c5*****c808c41b3f4d23b7852
+	// c38f73f4c5xxxxxc808c41b3f4d23b7852
 	MailId *string `json:"mailId,omitempty" xml:"mailId,omitempty"`
 	// Mail status. Possible values:
 	//

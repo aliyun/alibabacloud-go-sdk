@@ -18,12 +18,22 @@ type iListWorkspaceUserRolesByUserIdResponseBody interface {
 }
 
 type ListWorkspaceUserRolesByUserIdResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC4E***************F67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of all workspace role information.
+	//
 	// This parameter is required.
 	Result []*ListWorkspaceUserRolesByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -79,11 +89,19 @@ func (s *ListWorkspaceUserRolesByUserIdResponseBody) Validate() error {
 }
 
 type ListWorkspaceUserRolesByUserIdResponseBodyResult struct {
+	// The workspace role information.
 	RoleModel *ListWorkspaceUserRolesByUserIdResponseBodyResultRoleModel `json:"RoleModel,omitempty" xml:"RoleModel,omitempty" type:"Struct"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 9337d121-a78f-4c1b-a8bc-f81de117****
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -132,14 +150,28 @@ func (s *ListWorkspaceUserRolesByUserIdResponseBodyResult) Validate() error {
 }
 
 type ListWorkspaceUserRolesByUserIdResponseBodyResultRoleModel struct {
+	// The code that corresponds to the preset workspace role. This parameter is not returned for custom roles.
+	//
 	// example:
 	//
 	// 34637***35
 	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// The workspace role ID. This includes, but is not limited to, the following preset workspace roles:
+	//
+	// - 25: Workspace Admin (preset role)
+	//
+	// - 26: Workspace Developer (preset role)
+	//
+	// - 27: Workspace Analyst (preset role)
+	//
+	// - 30: Workspace Viewer (preset role)
+	//
 	// example:
 	//
 	// 111111111
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the workspace role.
+	//
 	// example:
 	//
 	// arms-admin

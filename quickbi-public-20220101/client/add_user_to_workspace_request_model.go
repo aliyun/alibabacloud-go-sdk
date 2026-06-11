@@ -18,15 +18,17 @@ type iAddUserToWorkspaceRequest interface {
 }
 
 type AddUserToWorkspaceRequest struct {
-	// The preset space role ID. Value range:
+	// The ID of the role in the workspace. Predefined roles:
 	//
-	// - 25: Space Administrator
+	// - 25: workspace administrator
 	//
-	// - 26: Space Developer
+	// - 26: workspace developer
 	//
-	// - 27: Space Analyst
+	// - 27: workspace analyst
 	//
-	// - 30: Space Viewer
+	// - 30: workspace viewer
+	//
+	// > Custom role IDs are supported in version 6.0.3 and later.
 	//
 	// This parameter is required.
 	//

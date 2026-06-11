@@ -18,19 +18,19 @@ type iQueryAuditLogResponseBody interface {
 }
 
 type QueryAuditLogResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Array of logs.
+	// An array of log objects.
 	Result []*QueryAuditLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request succeeded
+	// - true: The request was successful.
 	//
-	// - false: The request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -87,49 +87,49 @@ func (s *QueryAuditLogResponseBody) Validate() error {
 }
 
 type QueryAuditLogResponseBodyResult struct {
-	// Log time.
+	// The time when the log was generated.
 	//
 	// example:
 	//
 	// 2024-04-16 13:17:39
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Operator account.
+	// The account name of the operator.
 	//
 	// example:
 	//
 	// wukaibis
 	OperatorAccountName *string `json:"OperatorAccountName,omitempty" xml:"OperatorAccountName,omitempty"`
-	// Operator\\"s nickname.
+	// The nickname of the operator.
 	//
 	// example:
 	//
 	// buc_344078
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// Operation type.
+	// The operation type.
 	//
 	// example:
 	//
 	// CREATE
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// Target ID.
+	// The ID of the operation target.
 	//
 	// example:
 	//
 	// 1113***************8500
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// Target name.
+	// The name of the operation target.
 	//
 	// example:
 	//
 	// test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// Target type.
+	// The type of the operation target.
 	//
 	// example:
 	//
 	// USER
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//

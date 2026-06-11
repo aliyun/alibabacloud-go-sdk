@@ -24,21 +24,21 @@ type AddUserToWorkspaceResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns the result of the interface execution. Value range:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Execution successful
+	// - true: The operation succeeded.
 	//
-	// - false: Execution failed
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Value range:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request successful
+	// - true: The request succeeded.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//

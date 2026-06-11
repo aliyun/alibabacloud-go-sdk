@@ -24,7 +24,7 @@ type ListOrganizationRoleUsersRequest struct {
 	//
 	// example:
 	//
-	// zhangsan
+	// 小刘
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Page number.
 	//

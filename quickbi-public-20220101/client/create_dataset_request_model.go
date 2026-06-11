@@ -24,30 +24,46 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
+	// The ID of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7AAB95D-*****-****-*4FC0C976
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// st_trd_user_purchase_day_inc
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the destination folder.
+	//
 	// example:
 	//
 	// asah-fsdfsf*****92342
 	TargetDirectoryId *string `json:"TargetDirectoryId,omitempty" xml:"TargetDirectoryId,omitempty"`
+	// The name of the dataset.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	UserDefineCubeName *string `json:"UserDefineCubeName,omitempty" xml:"UserDefineCubeName,omitempty"`
+	// The user ID of a Quick BI user who has permissions to create datasets. This is not your Alibaba Cloud account ID. To obtain the user ID, call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old\\&RegionId=cn-hangzhou) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 726bee5a-****-43e1-9a8e-b550f0120f35
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

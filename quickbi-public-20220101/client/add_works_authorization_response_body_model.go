@@ -18,14 +18,20 @@ type iAddWorksAuthorizationResponseBody interface {
 }
 
 type AddWorksAuthorizationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 78C1AA***************C462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The authorization ID.
+	//
 	// example:
 	//
 	// asdasf8****sda
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

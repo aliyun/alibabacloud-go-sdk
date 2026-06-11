@@ -18,23 +18,23 @@ type iQueryDataResponseBody interface {
 }
 
 type QueryDataResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// a4d1a221d-41za1-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns the result of the interface execution. Possible values:
+	// The result of the API call. Valid values:
 	//
-	// - true: Execution succeeded
+	// - true: The call was successful.
 	//
-	// - false: Execution failed
+	// - false: The call failed.
 	Result *QueryDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Whether the request succeeded. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request was successful.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -87,17 +87,17 @@ func (s *QueryDataResponseBody) Validate() error {
 }
 
 type QueryDataResponseBodyResult struct {
-	// Column headers.
+	// The column headers.
 	Headers []*QueryDataResponseBodyResultHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	// The SQL query that was executed.
+	// The SQL statement for the query.
 	//
-	// > The filter conditions in the returned SQL statement include not only the parameters passed through this interface but also the row and column permission configurations.
+	// > The returned SQL includes both the filter conditions from this call and any row-level or column-level permission rules.
 	//
 	// example:
 	//
-	// test
+	// SELECT COMPANY_T_1_.`area` AS D_AREA_2_, COMPANY_T_1_.`city` AS D_CITY_3_, SUM(COMPANY_T_1_.`profit_amt`) AS D_PROFIT_4_ FROM `quickbi_test`.`company_sales_record_copy` AS COMPANY_T_1_ WHERE COMPANY_T_1_.`area` LIKE \\"%test%\\" GROUP BY COMPANY_T_1_.`area`, COMPANY_T_1_.`city` HAVING SUM(COMPANY_T_1_.`order_amt`) > 1 LIMIT 0, 10
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The results of the query.
+	// The query results.
 	Values []map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -150,70 +150,84 @@ func (s *QueryDataResponseBodyResult) Validate() error {
 }
 
 type QueryDataResponseBodyResultHeaders struct {
-	// Aggregation operator. Only present for measure fields, such as SUM, AVG, and MAX.
+	// The aggregate operator. Returned only for measure fields.
 	//
-	// - SUM: Sum
+	// - SUM: The sum.
 	//
-	// - MAX: Maximum value
+	// - MAX: The maximum value.
 	//
-	// - MIN: Minimum value
+	// - MIN: The minimum value.
 	//
-	// - AVG: Average
+	// - AVG: The average value.
 	//
-	// - COUNT: Count
+	// - COUNT: The count.
 	//
-	// - COUNTD: Distinct count
+	// - COUNTD: The count of unique values.
 	//
-	// - STDDEV_POP: Population standard deviation
+	// - STDDEV_POP: The population standard deviation.
 	//
-	// - STDDEV_SAMP: Sample standard deviation
+	// - STDDEV_SAMP: The sample standard deviation.
 	//
-	// - VAR_POP: Population variance
+	// - VAR_POP: The population variance.
 	//
-	// - VAR_SAMP: Sample variance
+	// - VAR_SAMP: The sample variance.
 	//
 	// example:
 	//
 	// SUM
 	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
-	// Field name, corresponding to the physical table field name.
+	// The physical table field name.
 	//
 	// example:
 	//
-	// Specific physical field name
+	// test
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The keyword of the sensitive field type.
+	// The field data type. Common types:
+	//
+	// - number
+	//
+	// - string
+	//
+	// - date
+	//
+	// - time
+	//
+	// - datetime
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The granularity of the dimension field.
+	// The dimension granularity. Returned only for date or geographic dimensions. Valid values:
 	//
-	// This field is returned only when the requested field is a date or geographic dimension, with the following possible values:
+	// - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
 	//
-	// - Date Granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
-	//
-	// - Geographic Granularity: COUNTRY (international level), PROVINCE (provincial level), CITY (city level), XIAN (district/county level), REGION (region)
+	// - Geographic granularity: COUNTRY (country), PROVINCE (province), CITY (city), XIAN (county/district), REGION (region)
 	//
 	// example:
 	//
 	// REGION
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// Field alias, which serves as the key in the map data rows of the `values` parameter.
+	// The field alias. Used as the key in each Values map entry.
 	//
 	// example:
 	//
 	// area
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The original field name in the dataset.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// area
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
-	// Field type, used to distinguish between dimension and measure fields.
+	// Whether the field is a dimension or measure.
 	//
-	// - Dimension: dimension
+	// - Dimension
 	//
-	// - Measure: measure
+	// - Measure
 	//
 	// example:
 	//

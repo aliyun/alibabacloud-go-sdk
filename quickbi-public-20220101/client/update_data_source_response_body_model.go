@@ -18,27 +18,27 @@ type iUpdateDataSourceResponseBody interface {
 }
 
 type UpdateDataSourceResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D787E1A***********5DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result of the API call. Possible values:
+	// The result of the operation. Valid values:
 	//
-	// - true: Request successful
+	// - `true`: The operation was successful.
 	//
-	// - false: Request failed
+	// - `false`: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request successful
+	// - `true`: The request was successful.
 	//
-	// - false: Request failed
+	// - `false`: The request failed.
 	//
 	// example:
 	//

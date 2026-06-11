@@ -20,7 +20,7 @@ type QueryUserGroupMemberRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 小刘
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// User group ID.
 	//

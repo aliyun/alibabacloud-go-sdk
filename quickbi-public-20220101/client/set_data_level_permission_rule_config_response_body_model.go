@@ -60,7 +60,7 @@ type SetDataLevelPermissionRuleConfigResponseBody struct {
 	//
 	//     "ruleLevelType": "COLUMN_LEVEL",
 	//
-	//     "ruleName": "test",
+	//     "ruleName": "name",
 	//
 	//     "ruleTargetScope": "ALL"
 	//
