@@ -26,30 +26,44 @@ type iModifyBeebotIntentUserSayResponseBody interface {
 }
 
 type ModifyBeebotIntentUserSayResponseBody struct {
+	// The internal request ID.
+	//
 	// example:
 	//
 	// A1F21BF2-CB21-1968-8039-C74699E7DDEB
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned by the API.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// Success
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The user utterance ID.
+	//
 	// example:
 	//
 	// 17448458

@@ -22,28 +22,38 @@ type iListIntentsRequest interface {
 }
 
 type ListIntentsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A keyword to filter intents.
+	//
 	// example:
 	//
-	// ""
+	// 还款
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The script ID.
+	//
 	// This parameter is required.
 	//
 	// example:

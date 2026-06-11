@@ -22,25 +22,40 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
+	// Remove all tags. This parameter takes effect only when TagKey.N is empty. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// Default value: false
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// Region
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of resource IDs. Default value: list of instance IDs. Valid values for n: 1 to 50
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type. Default value: INSTANCE
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// instance
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tag keys. Valid values for n: 1 to 20
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {

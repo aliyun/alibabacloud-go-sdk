@@ -18,13 +18,26 @@ type iListScriptVariablesRequest interface {
 }
 
 type ListScriptVariablesRequest struct {
+	// The instance ID, also known as the business ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2e55ad0f-7a07-420e-a9b0-62d66ba7278a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Sandbox    *bool   `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
+	// Specifies whether to retrieve variables from the sandbox.
+	//
+	// example:
+	//
+	// true：测试环境
+	//
+	// false：发布后的正式环境
+	//
+	// 默认为false
+	Sandbox *bool `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
+	// The script ID.
+	//
 	// This parameter is required.
 	//
 	// example:

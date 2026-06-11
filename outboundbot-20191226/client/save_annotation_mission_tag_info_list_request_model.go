@@ -20,15 +20,26 @@ type iSaveAnnotationMissionTagInfoListRequest interface {
 }
 
 type SaveAnnotationMissionTagInfoListRequest struct {
+	// The list of tags.
+	//
+	// > This parameter has the same function as AnnotationMissionTagInfoListJsonString. Specify either this parameter or AnnotationMissionTagInfoListJsonString.
 	AnnotationMissionTagInfoList []*SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList `json:"AnnotationMissionTagInfoList,omitempty" xml:"AnnotationMissionTagInfoList,omitempty" type:"Repeated"`
+	// The JSON-formatted data of the tags.
+	//
+	// > The parameters in the JSON string are the same as those in AnnotationMissionTagInfoList. Specify either this parameter or AnnotationMissionTagInfoList.
+	//
 	// example:
 	//
-	// []
+	// [{"delete":false,				"InstanceId":"00b37342-e759-4fe5-b296-aef775933af0",					"AnnotationMissionTagInfoName":"测试数据1",					"AnnotationMissionTagInfoDescription":"测试"}]
 	AnnotationMissionTagInfoListJsonString *string `json:"AnnotationMissionTagInfoListJsonString,omitempty" xml:"AnnotationMissionTagInfoListJsonString,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether to restore the default tag values.
+	//
 	// example:
 	//
 	// false
@@ -93,18 +104,40 @@ func (s *SaveAnnotationMissionTagInfoListRequest) Validate() error {
 }
 
 type SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList struct {
+	// The tag description.
+	//
+	// example:
+	//
+	// 标签描述
 	AnnotationMissionTagInfoDescription *string `json:"AnnotationMissionTagInfoDescription,omitempty" xml:"AnnotationMissionTagInfoDescription,omitempty"`
-	// tag id
-	AnnotationMissionTagInfoId   *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
+	// The tag ID.
+	//
+	// example:
+	//
+	// bdbff6a5-1f68-4b41-8d37-6ff805ce165a
+	AnnotationMissionTagInfoId *string `json:"AnnotationMissionTagInfoId,omitempty" xml:"AnnotationMissionTagInfoId,omitempty"`
+	// The tag name.
+	//
+	// example:
+	//
+	// 标签
 	AnnotationMissionTagInfoName *string `json:"AnnotationMissionTagInfoName,omitempty" xml:"AnnotationMissionTagInfoName,omitempty"`
+	// Indicates whether to delete the tag.
+	//
+	// > Set this parameter to true to delete the tag. Set it to false to add the tag.
+	//
 	// example:
 	//
 	// true
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// bdbff6a5-1f68-4b41-8d37-6ff805ce165a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// bdbff6a5-1f68-4b41-8d37-6ff805ce165a

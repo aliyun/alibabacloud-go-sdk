@@ -28,32 +28,70 @@ type iListScriptRecordingRequest interface {
 }
 
 type ListScriptRecordingRequest struct {
+	// Instance ID of the recording
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c209abb3-6804-4a75-b2c7-dd55c8c61b6a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Recording ID list (JSON format), same as UuidsJson
+	//
+	// example:
+	//
+	// ["d9fad189-760b-47b9-837f-aeabb4fc9109\\"]
 	RefIdsJson *string `json:"RefIdsJson,omitempty" xml:"RefIdsJson,omitempty"`
+	// Scenario ID of the recording
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d004cfd2-6a81-491c-83c6-cbe186620c95
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	Search   *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// Search criteria: Search by recording name or content.
+	//
+	// example:
+	//
+	// 您好
+	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// Recording status
+	//
+	// - Validating: 1
+	//
+	// - Validation failed: 2
+	//
+	// - Processing: 3
+	//
+	// - Processing failed: 4
+	//
+	// - Reviewing: 5
+	//
+	// - Review failed: 6
+	//
+	// - Publish failed: 7
+	//
+	// - Published: 8
+	//
+	// - Pending publish: 9
+	//
 	// example:
 	//
 	// [
@@ -62,6 +100,10 @@ type ListScriptRecordingRequest struct {
 	//
 	// ]
 	StatesJson *string `json:"StatesJson,omitempty" xml:"StatesJson,omitempty"`
+	// Recording ID list
+	//
+	// > This is a list of unique recording IDs. If left blank, all recordings display.
+	//
 	// example:
 	//
 	// ["d17d5bfa-4972-4389-9718-f9602edabe48"]

@@ -24,26 +24,40 @@ type iCreateJobDataParsingTaskResponseBody interface {
 }
 
 type CreateJobDataParsingTaskResponseBody struct {
+	// API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// ID of the uploaded job data parsing task.
+	//
+	// > Use this value as the JobDataParsingTaskId parameter in DescribeJobDataParsingTaskProgress.
+	//
 	// example:
 	//
 	// d004cfd2-6a81-491c-83c6-cbe186620c95
 	JobDataParsingTaskId *string `json:"JobDataParsingTaskId,omitempty" xml:"JobDataParsingTaskId,omitempty"`
+	// API message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true

@@ -24,23 +24,34 @@ type iCreateBatchJobsResponseBody interface {
 }
 
 type CreateBatchJobsResponseBody struct {
+	// Information about the job group.
 	BatchJob *CreateBatchJobsResponseBodyBatchJob `json:"BatchJob,omitempty" xml:"BatchJob,omitempty" type:"Struct"`
+	// API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,26 +130,46 @@ func (s *CreateBatchJobsResponseBody) Validate() error {
 }
 
 type CreateBatchJobsResponseBodyBatchJob struct {
+	// ID of the job group.
+	//
 	// example:
 	//
 	// 5a7e8b09-baf9-4cab-b540-c971f47a7146
-	BatchJobId     *string   `json:"BatchJobId,omitempty" xml:"BatchJobId,omitempty"`
+	BatchJobId *string `json:"BatchJobId,omitempty" xml:"BatchJobId,omitempty"`
+	// List of caller numbers.
 	CallingNumbers []*string `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
+	// Time when the job group was created.
+	//
 	// example:
 	//
 	// 1579068424000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Key of the uploaded Excel file.
+	//
 	// example:
 	//
 	// 52e80b02-0126-4556-a1e6-ef5b3747ed53/a9a3ddc7-d7d7-48cd-82b5-b31bb5510e71_2a66f8ad-dfbb-4980-9b84-439171295a11.xlsx
-	JobFilePath         *string `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
+	JobFilePath *string `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
+	// Description of the job group.
+	//
+	// example:
+	//
+	// 第一个批量作业
 	JobGroupDescription *string `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
-	JobGroupName        *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
+	// Name of the job group.
+	//
+	// example:
+	//
+	// 批量作业01
+	JobGroupName *string `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
+	// ID of the scenario for the job group.
+	//
 	// example:
 	//
 	// 6cea9bed-63e6-439e-ae4c-b3333efff53d
-	ScenarioId *string                                      `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Strategy   *CreateBatchJobsResponseBodyBatchJobStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
+	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Job execution policy.
+	Strategy *CreateBatchJobsResponseBodyBatchJobStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
 func (s CreateBatchJobsResponseBodyBatchJob) String() string {
@@ -231,53 +262,87 @@ func (s *CreateBatchJobsResponseBodyBatchJob) Validate() error {
 }
 
 type CreateBatchJobsResponseBodyBatchJobStrategy struct {
+	// Custom information for the policy.
+	//
 	// example:
 	//
 	// {}
 	Customized *string `json:"Customized,omitempty" xml:"Customized,omitempty"`
+	// End time of the scheduling policy.
+	//
 	// example:
 	//
 	// 2209702074000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Action to take for outbound calls that were not completed in the previous cycle.
+	//
 	// example:
 	//
 	// CONTINUE
 	FollowUpStrategy *string `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
+	// Indicates whether the policy is a template.
+	//
 	// example:
 	//
 	// false
 	IsTemplate *bool `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
+	// Maximum number of retries per day after a failed call.
+	//
 	// example:
 	//
 	// 3
 	MaxAttemptsPerDay *int32 `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
+	// Minimum interval between retries.
+	//
 	// example:
 	//
 	// 10
 	MinAttemptInterval *int32 `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
+	// How often the job repeats. Valid values: Once, Day, Week, and Month.
+	//
 	// example:
 	//
 	// Once
-	RepeatBy   *string   `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
+	RepeatBy *string `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
+	// List of days on which the job repeats.
 	RepeatDays []*string `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// Recording policy for caller numbers.
+	//
 	// example:
 	//
 	// LocalFirst
 	RoutingStrategy *string `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
+	// Start time when the job group begins execution.
+	//
 	// example:
 	//
 	// 1578550074000
-	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Description of the policy.
+	//
+	// example:
+	//
+	// 作业执行策略
 	StrategyDescription *string `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
+	// ID of the policy.
+	//
 	// example:
 	//
 	// f718798d-96be-40e4-bef6-317b54855708
-	StrategyId   *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// Name of the policy.
+	//
+	// example:
+	//
+	// 策略
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// Type of the policy.
+	//
 	// example:
 	//
 	// Repeatable
-	Type        *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Time periods during which the job runs each day.
 	WorkingTime []*CreateBatchJobsResponseBodyBatchJobStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
 }
 
@@ -438,10 +503,14 @@ func (s *CreateBatchJobsResponseBodyBatchJobStrategy) Validate() error {
 }
 
 type CreateBatchJobsResponseBodyBatchJobStrategyWorkingTime struct {
+	// Start time.
+	//
 	// example:
 	//
 	// 09:00:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 12:00:00

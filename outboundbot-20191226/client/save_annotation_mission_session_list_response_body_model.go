@@ -24,20 +24,34 @@ type iSaveAnnotationMissionSessionListResponseBody interface {
 }
 
 type SaveAnnotationMissionSessionListResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *SaveAnnotationMissionSessionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. If the request is successful, success is returned. If the request fails, an error code is returned.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-zz4310rp1lb,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 76E93048-F90F-57B7-BD46-6097611A706D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -116,9 +130,18 @@ func (s *SaveAnnotationMissionSessionListResponseBody) Validate() error {
 }
 
 type SaveAnnotationMissionSessionListResponseBodyData struct {
-	Message                                 *string                                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	MessageList                             []*string                                                                                `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	// The message returned for the operation.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-zz4310rp1lb,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of messages.
+	MessageList []*string `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	// The request result.
 	SaveAnnotationMissionSessionListRequest *SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest `json:"SaveAnnotationMissionSessionListRequest,omitempty" xml:"SaveAnnotationMissionSessionListRequest,omitempty" type:"Struct"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
@@ -179,6 +202,11 @@ func (s *SaveAnnotationMissionSessionListResponseBodyData) Validate() error {
 }
 
 type SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest struct {
+	// The content of the script for the approval requests
+	//
+	// example:
+	//
+	// []
 	AnnotationMissionSessionListJsonString *string `json:"AnnotationMissionSessionListJsonString,omitempty" xml:"AnnotationMissionSessionListJsonString,omitempty"`
 }
 

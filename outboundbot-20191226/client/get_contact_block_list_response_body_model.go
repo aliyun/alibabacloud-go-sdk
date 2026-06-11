@@ -24,26 +24,38 @@ type iGetContactBlockListResponseBody interface {
 }
 
 type GetContactBlockListResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of blocked contacts.
+	//
 	// example:
 	//
 	// {}
 	ContactBlocklistList *GetContactBlockListResponseBodyContactBlocklistList `json:"ContactBlocklistList,omitempty" xml:"ContactBlocklistList,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,18 +134,26 @@ func (s *GetContactBlockListResponseBody) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistList struct {
+	// The data array.
+	//
 	// example:
 	//
 	// []
 	List []*GetContactBlockListResponseBodyContactBlocklistListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -198,34 +218,50 @@ func (s *GetContactBlockListResponseBodyContactBlocklistList) Validate() error {
 }
 
 type GetContactBlockListResponseBodyContactBlocklistListList struct {
+	// The unique key of the entry in the do-not-call list.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	ContactBlockListId *string `json:"ContactBlockListId,omitempty" xml:"ContactBlockListId,omitempty"`
+	// The time when the entry was created.
+	//
 	// example:
 	//
 	// 1640077685465
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The user who created the entry.
+	//
 	// example:
 	//
 	// xxx
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// xxx
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The mobile phone number.
+	//
 	// example:
 	//
 	// 1388888888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// xxxx

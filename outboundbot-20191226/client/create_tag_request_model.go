@@ -20,21 +20,37 @@ type iCreateTagRequest interface {
 }
 
 type CreateTagRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the script.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 797203ac-3874-422f-838f-d4cd63c72681
+	// 0fe7f71c-8771-42ef-9bb1-19aa16ae7120
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The tag group name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 目标学历
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
+	// The tag name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 研究生
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

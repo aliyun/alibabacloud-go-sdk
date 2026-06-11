@@ -24,31 +24,46 @@ type iListBeebotIntentUserSayRequest interface {
 }
 
 type ListBeebotIntentUserSayRequest struct {
+	// The keyword in the user utterance.
+	//
+	// example:
+	//
+	// 知道
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10717802
 	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to display on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The scenario ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,20 +20,28 @@ type iModifyBeebotIntentUserSayShrinkRequest interface {
 }
 
 type ModifyBeebotIntentUserSayShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e5035654-1745-484a-8c5b-165f7c7bcd79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scenario ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The definition of the user utterance.
+	//
 	// This parameter is required.
 	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
+	// The user utterance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

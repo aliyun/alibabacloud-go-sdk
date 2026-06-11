@@ -20,20 +20,32 @@ type iCreateDialogueFlowRequest interface {
 }
 
 type CreateDialogueFlowRequest struct {
+	// The type of the dialogue flow. Use `MainFlow` for a main flow or `SubFlow` for a subflow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MainFlow
 	DialogueFlowType *string `json:"DialogueFlowType,omitempty" xml:"DialogueFlowType,omitempty"`
+	// The dialogue flow name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 主流程
 	DialogueName *string `json:"DialogueName,omitempty" xml:"DialogueName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The script ID.
+	//
 	// This parameter is required.
 	//
 	// example:

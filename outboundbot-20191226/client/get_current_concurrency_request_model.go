@@ -14,6 +14,8 @@ type iGetCurrentConcurrencyRequest interface {
 }
 
 type GetCurrentConcurrencyRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

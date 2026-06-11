@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建外呼任务
+// Creates outbound call jobs in batches.
 //
 // @param request - AssignJobsRequest
 //
@@ -130,7 +130,7 @@ func (client *Client) AssignJobsWithOptions(request *AssignJobsRequest, runtime 
 
 // Summary:
 //
-// 创建外呼任务
+// Creates outbound call jobs in batches.
 //
 // @param request - AssignJobsRequest
 //
@@ -148,7 +148,7 @@ func (client *Client) AssignJobs(request *AssignJobsRequest) (_result *AssignJob
 
 // Summary:
 //
-// 异步创建外呼任务
+// Asynchronously creates outbound jobs.
 //
 // @param tmpReq - AssignJobsAsyncRequest
 //
@@ -218,7 +218,7 @@ func (client *Client) AssignJobsAsyncWithOptions(tmpReq *AssignJobsAsyncRequest,
 
 // Summary:
 //
-// 异步创建外呼任务
+// Asynchronously creates outbound jobs.
 //
 // @param request - AssignJobsAsyncRequest
 //
@@ -234,6 +234,10 @@ func (client *Client) AssignJobsAsync(request *AssignJobsAsyncRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels jobs that are pending or in progress. This operation cannot cancel jobs that are already in a call.
+//
 // @param request - CancelJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -294,6 +298,10 @@ func (client *Client) CancelJobsWithOptions(request *CancelJobsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels jobs that are pending or in progress. This operation cannot cancel jobs that are already in a call.
+//
 // @param request - CancelJobsRequest
 //
 // @return CancelJobsResponse
@@ -308,6 +316,10 @@ func (client *Client) CancelJobs(request *CancelJobsRequest) (_result *CancelJob
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group of a resource.
+//
 // @param request - ChangeResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -352,6 +364,10 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group of a resource.
+//
 // @param request - ChangeResourceGroupRequest
 //
 // @return ChangeResourceGroupResponse
@@ -366,6 +382,10 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// You can create an intelligent configuration.
+//
 // @param request - CreateAgentProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -458,6 +478,10 @@ func (client *Client) CreateAgentProfileWithOptions(request *CreateAgentProfileR
 	return _result, _err
 }
 
+// Summary:
+//
+// You can create an intelligent configuration.
+//
 // @param request - CreateAgentProfileRequest
 //
 // @return CreateAgentProfileResponse
@@ -474,7 +498,7 @@ func (client *Client) CreateAgentProfile(request *CreateAgentProfileRequest) (_r
 
 // Summary:
 //
-// 创建标注任务
+// Creates an annotation task.
 //
 // @param tmpReq - CreateAnnotationMissionRequest
 //
@@ -592,7 +616,7 @@ func (client *Client) CreateAnnotationMissionWithOptions(tmpReq *CreateAnnotatio
 
 // Summary:
 //
-// 创建标注任务
+// Creates an annotation task.
 //
 // @param request - CreateAnnotationMissionRequest
 //
@@ -610,7 +634,7 @@ func (client *Client) CreateAnnotationMission(request *CreateAnnotationMissionRe
 
 // Summary:
 //
-// 创建任务
+// Deprecated. Do not use this operation to batch-create outbound calling jobs.
 //
 // @param request - CreateBatchJobsRequest
 //
@@ -686,7 +710,7 @@ func (client *Client) CreateBatchJobsWithOptions(request *CreateBatchJobsRequest
 
 // Summary:
 //
-// 创建任务
+// Deprecated. Do not use this operation to batch-create outbound calling jobs.
 //
 // @param request - CreateBatchJobsRequest
 //
@@ -704,7 +728,7 @@ func (client *Client) CreateBatchJobs(request *CreateBatchJobsRequest) (_result 
 
 // Summary:
 //
-// # CreateBatchRepeatJob
+// Copy an existing task group to reinitiate an outbound task.
 //
 // @param request - CreateBatchRepeatJobRequest
 //
@@ -800,7 +824,7 @@ func (client *Client) CreateBatchRepeatJobWithOptions(request *CreateBatchRepeat
 
 // Summary:
 //
-// # CreateBatchRepeatJob
+// Copy an existing task group to reinitiate an outbound task.
 //
 // @param request - CreateBatchRepeatJobRequest
 //
@@ -818,7 +842,7 @@ func (client *Client) CreateBatchRepeatJob(request *CreateBatchRepeatJobRequest)
 
 // Summary:
 //
-// # CreateBeebotIntent
+// Creates an intent for a small-model scenario.
 //
 // @param tmpReq - CreateBeebotIntentRequest
 //
@@ -876,7 +900,7 @@ func (client *Client) CreateBeebotIntentWithOptions(tmpReq *CreateBeebotIntentRe
 
 // Summary:
 //
-// # CreateBeebotIntent
+// Creates an intent for a small-model scenario.
 //
 // @param request - CreateBeebotIntentRequest
 //
@@ -894,7 +918,7 @@ func (client *Client) CreateBeebotIntent(request *CreateBeebotIntentRequest) (_r
 
 // Summary:
 //
-// # CreateBeebotIntentLgf
+// Creates a user utterance template for an intent in a small model scenario.
 //
 // @param tmpReq - CreateBeebotIntentLgfRequest
 //
@@ -952,7 +976,7 @@ func (client *Client) CreateBeebotIntentLgfWithOptions(tmpReq *CreateBeebotInten
 
 // Summary:
 //
-// # CreateBeebotIntentLgf
+// Creates a user utterance template for an intent in a small model scenario.
 //
 // @param request - CreateBeebotIntentLgfRequest
 //
@@ -970,7 +994,7 @@ func (client *Client) CreateBeebotIntentLgf(request *CreateBeebotIntentLgfReques
 
 // Summary:
 //
-// # CreateBeebotIntentUserSay
+// Creates a user utterance for an intent in a small model scenario.
 //
 // @param tmpReq - CreateBeebotIntentUserSayRequest
 //
@@ -1028,7 +1052,7 @@ func (client *Client) CreateBeebotIntentUserSayWithOptions(tmpReq *CreateBeebotI
 
 // Summary:
 //
-// # CreateBeebotIntentUserSay
+// Creates a user utterance for an intent in a small model scenario.
 //
 // @param request - CreateBeebotIntentUserSayRequest
 //
@@ -1044,6 +1068,10 @@ func (client *Client) CreateBeebotIntentUserSay(request *CreateBeebotIntentUserS
 	return _result, _err
 }
 
+// Summary:
+//
+// This legacy canvas API creates a dialogue flow.
+//
 // @param request - CreateDialogueFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1096,6 +1124,10 @@ func (client *Client) CreateDialogueFlowWithOptions(request *CreateDialogueFlowR
 	return _result, _err
 }
 
+// Summary:
+//
+// This legacy canvas API creates a dialogue flow.
+//
 // @param request - CreateDialogueFlowRequest
 //
 // @return CreateDialogueFlowResponse
@@ -1110,6 +1142,10 @@ func (client *Client) CreateDialogueFlow(request *CreateDialogueFlowRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a URL for a Download Hub task.
+//
 // @param request - CreateDownloadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1146,6 +1182,10 @@ func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a URL for a Download Hub task.
+//
 // @param request - CreateDownloadUrlRequest
 //
 // @return CreateDownloadUrlResponse
@@ -1160,6 +1200,10 @@ func (client *Client) CreateDownloadUrl(request *CreateDownloadUrlRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global question in a legacy canvas.
+//
 // @param request - CreateGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1220,6 +1264,10 @@ func (client *Client) CreateGlobalQuestionWithOptions(request *CreateGlobalQuest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global question in a legacy canvas.
+//
 // @param request - CreateGlobalQuestionRequest
 //
 // @return CreateGlobalQuestionResponse
@@ -1234,6 +1282,10 @@ func (client *Client) CreateGlobalQuestion(request *CreateGlobalQuestionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an outbound call instance.
+//
 // @param request - CreateInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1294,6 +1346,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an outbound call instance.
+//
 // @param request - CreateInstanceRequest
 //
 // @return CreateInstanceResponse
@@ -1310,7 +1366,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建实例绑定号码
+// Binds a number to a business instance.
 //
 // @param request - CreateInstanceBindNumberRequest
 //
@@ -1358,7 +1414,7 @@ func (client *Client) CreateInstanceBindNumberWithOptions(request *CreateInstanc
 
 // Summary:
 //
-// 创建实例绑定号码
+// Binds a number to a business instance.
 //
 // @param request - CreateInstanceBindNumberRequest
 //
@@ -1374,6 +1430,10 @@ func (client *Client) CreateInstanceBindNumber(request *CreateInstanceBindNumber
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an intent in a legacy canvas script.
+//
 // @param request - CreateIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1434,6 +1494,10 @@ func (client *Client) CreateIntentWithOptions(request *CreateIntentRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an intent in a legacy canvas script.
+//
 // @param request - CreateIntentRequest
 //
 // @return CreateIntentResponse
@@ -1448,6 +1512,10 @@ func (client *Client) CreateIntent(request *CreateIntentRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a job data parsing task.
+//
 // @param request - CreateJobDataParsingTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1492,6 +1560,10 @@ func (client *Client) CreateJobDataParsingTaskWithOptions(request *CreateJobData
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a job data parsing task.
+//
 // @param request - CreateJobDataParsingTaskRequest
 //
 // @return CreateJobDataParsingTaskResponse
@@ -1508,7 +1580,7 @@ func (client *Client) CreateJobDataParsingTask(request *CreateJobDataParsingTask
 
 // Summary:
 //
-// 创建任务组
+// Create a job group.
 //
 // @param request - CreateJobGroupRequest
 //
@@ -1600,7 +1672,7 @@ func (client *Client) CreateJobGroupWithOptions(request *CreateJobGroupRequest, 
 
 // Summary:
 //
-// 创建任务组
+// Create a job group.
 //
 // @param request - CreateJobGroupRequest
 //
@@ -1618,7 +1690,7 @@ func (client *Client) CreateJobGroup(request *CreateJobGroupRequest) (_result *C
 
 // Summary:
 //
-// 创建任务组到处任务
+// Creates an export task for an outbound job group.
 //
 // @param request - CreateJobGroupExportTaskRequest
 //
@@ -1670,7 +1742,7 @@ func (client *Client) CreateJobGroupExportTaskWithOptions(request *CreateJobGrou
 
 // Summary:
 //
-// 创建任务组到处任务
+// Creates an export task for an outbound job group.
 //
 // @param request - CreateJobGroupExportTaskRequest
 //
@@ -1688,7 +1760,7 @@ func (client *Client) CreateJobGroupExportTask(request *CreateJobGroupExportTask
 
 // Summary:
 //
-// 新建场景
+// Create a scenario.
 //
 // @param request - CreateScriptRequest
 //
@@ -1808,7 +1880,7 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 
 // Summary:
 //
-// 新建场景
+// Create a scenario.
 //
 // @param request - CreateScriptRequest
 //
@@ -1824,6 +1896,14 @@ func (client *Client) CreateScript(request *CreateScriptRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a recording for the broadcast script.
+//
+// Description:
+//
+// **
+//
 // @param request - CreateScriptWaveformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1880,6 +1960,14 @@ func (client *Client) CreateScriptWaveformWithOptions(request *CreateScriptWavef
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a recording for the broadcast script.
+//
+// Description:
+//
+// **
+//
 // @param request - CreateScriptWaveformRequest
 //
 // @return CreateScriptWaveformResponse
@@ -1894,6 +1982,10 @@ func (client *Client) CreateScriptWaveform(request *CreateScriptWaveformRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a tag for use in the legacy canvas.
+//
 // @param request - CreateTagRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1946,6 +2038,10 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a tag for use in the legacy canvas.
+//
 // @param request - CreateTagRequest
 //
 // @return CreateTagResponse
@@ -1962,7 +2058,7 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 
 // Summary:
 //
-// 外呼历史导出
+// Create an asynchronous task to export outbound call history.
 //
 // @param request - CreateTaskExportTaskRequest
 //
@@ -2002,7 +2098,7 @@ func (client *Client) CreateTaskExportTaskWithOptions(request *CreateTaskExportT
 
 // Summary:
 //
-// 外呼历史导出
+// Create an asynchronous task to export outbound call history.
 //
 // @param request - CreateTaskExportTaskRequest
 //
@@ -2020,7 +2116,7 @@ func (client *Client) CreateTaskExportTask(request *CreateTaskExportTaskRequest)
 
 // Summary:
 //
-// 创建密钥
+// Creates a key.
 //
 // @param request - CreateTenantKeyRequest
 //
@@ -2057,7 +2153,7 @@ func (client *Client) CreateTenantKeyWithOptions(request *CreateTenantKeyRequest
 
 // Summary:
 //
-// 创建密钥
+// Creates a key.
 //
 // @param request - CreateTenantKeyRequest
 //
@@ -2073,6 +2169,10 @@ func (client *Client) CreateTenantKey(request *CreateTenantKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes Large Language Model (LLM) agents.
+//
 // @param tmpReq - DeleteAgentProfilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2123,6 +2223,10 @@ func (client *Client) DeleteAgentProfilesWithOptions(tmpReq *DeleteAgentProfiles
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes Large Language Model (LLM) agents.
+//
 // @param request - DeleteAgentProfilesRequest
 //
 // @return DeleteAgentProfilesResponse
@@ -2139,7 +2243,7 @@ func (client *Client) DeleteAgentProfiles(request *DeleteAgentProfilesRequest) (
 
 // Summary:
 //
-// 清空归属地号码库
+// Deletes all entries from the number district database. This operation is deprecated.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2168,7 +2272,7 @@ func (client *Client) DeleteAllNumberDistrictInfoWithOptions(runtime *dara.Runti
 
 // Summary:
 //
-// 清空归属地号码库
+// Deletes all entries from the number district database. This operation is deprecated.
 //
 // @return DeleteAllNumberDistrictInfoResponse
 func (client *Client) DeleteAllNumberDistrictInfo() (_result *DeleteAllNumberDistrictInfoResponse, _err error) {
@@ -2184,7 +2288,7 @@ func (client *Client) DeleteAllNumberDistrictInfo() (_result *DeleteAllNumberDis
 
 // Summary:
 //
-// # DeleteBeebotIntent
+// Delete an intent in a small-model scenario.
 //
 // @param request - DeleteBeebotIntentRequest
 //
@@ -2236,7 +2340,7 @@ func (client *Client) DeleteBeebotIntentWithOptions(request *DeleteBeebotIntentR
 
 // Summary:
 //
-// # DeleteBeebotIntent
+// Delete an intent in a small-model scenario.
 //
 // @param request - DeleteBeebotIntentRequest
 //
@@ -2254,7 +2358,7 @@ func (client *Client) DeleteBeebotIntent(request *DeleteBeebotIntentRequest) (_r
 
 // Summary:
 //
-// # DeleteBeebotIntentLgf
+// Deletes utterance templates for intents in small model scenarios.
 //
 // @param request - DeleteBeebotIntentLgfRequest
 //
@@ -2310,7 +2414,7 @@ func (client *Client) DeleteBeebotIntentLgfWithOptions(request *DeleteBeebotInte
 
 // Summary:
 //
-// # DeleteBeebotIntentLgf
+// Deletes utterance templates for intents in small model scenarios.
 //
 // @param request - DeleteBeebotIntentLgfRequest
 //
@@ -2328,7 +2432,7 @@ func (client *Client) DeleteBeebotIntentLgf(request *DeleteBeebotIntentLgfReques
 
 // Summary:
 //
-// # DeleteBeebotIntentUserSay
+// Delete user queries for intents in the small-model scenario.
 //
 // @param request - DeleteBeebotIntentUserSayRequest
 //
@@ -2384,7 +2488,7 @@ func (client *Client) DeleteBeebotIntentUserSayWithOptions(request *DeleteBeebot
 
 // Summary:
 //
-// # DeleteBeebotIntentUserSay
+// Delete user queries for intents in the small-model scenario.
 //
 // @param request - DeleteBeebotIntentUserSayRequest
 //
@@ -2400,6 +2504,10 @@ func (client *Client) DeleteBeebotIntentUserSay(request *DeleteBeebotIntentUserS
 	return _result, _err
 }
 
+// Summary:
+//
+// You can delete a do-not-call list.
+//
 // @param request - DeleteContactBlockListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2448,6 +2556,10 @@ func (client *Client) DeleteContactBlockListWithOptions(request *DeleteContactBl
 	return _result, _err
 }
 
+// Summary:
+//
+// You can delete a do-not-call list.
+//
 // @param request - DeleteContactBlockListRequest
 //
 // @return DeleteContactBlockListResponse
@@ -2462,6 +2574,10 @@ func (client *Client) DeleteContactBlockList(request *DeleteContactBlockListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the global outbound calling policy whitelist.
+//
 // @param request - DeleteContactWhiteListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2510,6 +2626,10 @@ func (client *Client) DeleteContactWhiteListWithOptions(request *DeleteContactWh
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the global outbound calling policy whitelist.
+//
 // @param request - DeleteContactWhiteListRequest
 //
 // @return DeleteContactWhiteListResponse
@@ -2524,6 +2644,10 @@ func (client *Client) DeleteContactWhiteList(request *DeleteContactWhiteListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a dialogue flow. This is a legacy canvas API.
+//
 // @param request - DeleteDialogueFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2572,6 +2696,10 @@ func (client *Client) DeleteDialogueFlowWithOptions(request *DeleteDialogueFlowR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a dialogue flow. This is a legacy canvas API.
+//
 // @param request - DeleteDialogueFlowRequest
 //
 // @return DeleteDialogueFlowResponse
@@ -2586,6 +2714,10 @@ func (client *Client) DeleteDialogueFlow(request *DeleteDialogueFlowRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global question from a legacy canvas script.
+//
 // @param request - DeleteGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2634,6 +2766,10 @@ func (client *Client) DeleteGlobalQuestionWithOptions(request *DeleteGlobalQuest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global question from a legacy canvas script.
+//
 // @param request - DeleteGlobalQuestionRequest
 //
 // @return DeleteGlobalQuestionResponse
@@ -2648,6 +2784,10 @@ func (client *Client) DeleteGlobalQuestion(request *DeleteGlobalQuestionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Intelligent Outbound Calling instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2688,6 +2828,10 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Intelligent Outbound Calling instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @return DeleteInstanceResponse
@@ -2702,6 +2846,10 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an intent. This is a legacy API.
+//
 // @param request - DeleteIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2750,6 +2898,10 @@ func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an intent. This is a legacy API.
+//
 // @param request - DeleteIntentRequest
 //
 // @return DeleteIntentResponse
@@ -2764,6 +2916,10 @@ func (client *Client) DeleteIntent(request *DeleteIntentRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a job group.
+//
 // @param request - DeleteJobGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2808,6 +2964,10 @@ func (client *Client) DeleteJobGroupWithOptions(request *DeleteJobGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a job group.
+//
 // @param request - DeleteJobGroupRequest
 //
 // @return DeleteJobGroupResponse
@@ -2822,6 +2982,10 @@ func (client *Client) DeleteJobGroup(request *DeleteJobGroupRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an outbound call number. This API is deprecated.
+//
 // @param request - DeleteOutboundCallNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2866,6 +3030,10 @@ func (client *Client) DeleteOutboundCallNumberWithOptions(request *DeleteOutboun
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an outbound call number. This API is deprecated.
+//
 // @param request - DeleteOutboundCallNumberRequest
 //
 // @return DeleteOutboundCallNumberResponse
@@ -2880,6 +3048,10 @@ func (client *Client) DeleteOutboundCallNumber(request *DeleteOutboundCallNumber
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified script.
+//
 // @param request - DeleteScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2924,6 +3096,10 @@ func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified script.
+//
 // @param request - DeleteScriptRequest
 //
 // @return DeleteScriptResponse
@@ -2938,6 +3114,10 @@ func (client *Client) DeleteScript(request *DeleteScriptRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes uploaded recordings for a small-model scenario.
+//
 // @param request - DeleteScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2986,6 +3166,10 @@ func (client *Client) DeleteScriptRecordingWithOptions(request *DeleteScriptReco
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes uploaded recordings for a small-model scenario.
+//
 // @param request - DeleteScriptRecordingRequest
 //
 // @return DeleteScriptRecordingResponse
@@ -3000,6 +3184,10 @@ func (client *Client) DeleteScriptRecording(request *DeleteScriptRecordingReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a script recording.
+//
 // @param request - DeleteScriptWaveformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3048,6 +3236,10 @@ func (client *Client) DeleteScriptWaveformWithOptions(request *DeleteScriptWavef
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a script recording.
+//
 // @param request - DeleteScriptWaveformRequest
 //
 // @return DeleteScriptWaveformResponse
@@ -3064,11 +3256,11 @@ func (client *Client) DeleteScriptWaveform(request *DeleteScriptWaveformRequest)
 
 // Summary:
 //
-// # DescribeBeebotIntent
+// Retrieves the intent in the small model scenario.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - DescribeBeebotIntentRequest
 //
@@ -3120,11 +3312,11 @@ func (client *Client) DescribeBeebotIntentWithOptions(request *DescribeBeebotInt
 
 // Summary:
 //
-// # DescribeBeebotIntent
+// Retrieves the intent in the small model scenario.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - DescribeBeebotIntentRequest
 //
@@ -3140,6 +3332,10 @@ func (client *Client) DescribeBeebotIntent(request *DescribeBeebotIntentRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves performance statistics for task labels.
+//
 // @param request - DescribeDialogueNodeStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3188,6 +3384,10 @@ func (client *Client) DescribeDialogueNodeStatisticsWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves performance statistics for task labels.
+//
 // @param request - DescribeDialogueNodeStatisticsRequest
 //
 // @return DescribeDialogueNodeStatisticsResponse
@@ -3204,7 +3404,7 @@ func (client *Client) DescribeDialogueNodeStatistics(request *DescribeDialogueNo
 
 // Summary:
 //
-// # DescribeDsReports
+// Describes DS reports.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -3252,7 +3452,7 @@ func (client *Client) DescribeDsReportsWithOptions(request *DescribeDsReportsReq
 
 // Summary:
 //
-// # DescribeDsReports
+// Describes DS reports.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -3268,6 +3468,14 @@ func (client *Client) DescribeDsReports(request *DescribeDsReportsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a global question in a legacy canvas script.
+//
+// Description:
+//
+// **
+//
 // @param request - DescribeGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3316,6 +3524,14 @@ func (client *Client) DescribeGlobalQuestionWithOptions(request *DescribeGlobalQ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a global question in a legacy canvas script.
+//
+// Description:
+//
+// **
+//
 // @param request - DescribeGlobalQuestionRequest
 //
 // @return DescribeGlobalQuestionResponse
@@ -3332,7 +3548,7 @@ func (client *Client) DescribeGlobalQuestion(request *DescribeGlobalQuestionRequ
 
 // Summary:
 //
-// 任务组数据统计
+// Returns the execution status of tasks in a task group.
 //
 // @param request - DescribeGroupExecutingInfoRequest
 //
@@ -3380,7 +3596,7 @@ func (client *Client) DescribeGroupExecutingInfoWithOptions(request *DescribeGro
 
 // Summary:
 //
-// 任务组数据统计
+// Returns the execution status of tasks in a task group.
 //
 // @param request - DescribeGroupExecutingInfoRequest
 //
@@ -3398,7 +3614,7 @@ func (client *Client) DescribeGroupExecutingInfo(request *DescribeGroupExecuting
 
 // Summary:
 //
-// # DescribeInstance
+// Queries the details of an Outbound Calling instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3442,7 +3658,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// # DescribeInstance
+// Queries the details of an Outbound Calling instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -3458,6 +3674,10 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an intent. This is a legacy Canvas API.
+//
 // @param request - DescribeIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3506,6 +3726,10 @@ func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an intent. This is a legacy Canvas API.
+//
 // @param request - DescribeIntentRequest
 //
 // @return DescribeIntentResponse
@@ -3522,7 +3746,7 @@ func (client *Client) DescribeIntent(request *DescribeIntentRequest) (_result *D
 
 // Summary:
 //
-// # DescribeIntentStatistics
+// Queries the performance statistics of intents for a task group.
 //
 // @param request - DescribeIntentStatisticsRequest
 //
@@ -3574,7 +3798,7 @@ func (client *Client) DescribeIntentStatisticsWithOptions(request *DescribeInten
 
 // Summary:
 //
-// # DescribeIntentStatistics
+// Queries the performance statistics of intents for a task group.
 //
 // @param request - DescribeIntentStatisticsRequest
 //
@@ -3592,7 +3816,7 @@ func (client *Client) DescribeIntentStatistics(request *DescribeIntentStatistics
 
 // Summary:
 //
-// 获取job信息
+// Retrieves the conversation data for a specific job.
 //
 // @param request - DescribeJobRequest
 //
@@ -3644,7 +3868,7 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, runtim
 
 // Summary:
 //
-// 获取job信息
+// Retrieves the conversation data for a specific job.
 //
 // @param request - DescribeJobRequest
 //
@@ -3660,6 +3884,10 @@ func (client *Client) DescribeJob(request *DescribeJobRequest) (_result *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the parsing progress of an uploaded job file.
+//
 // @param request - DescribeJobDataParsingTaskProgressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3704,6 +3932,10 @@ func (client *Client) DescribeJobDataParsingTaskProgressWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the parsing progress of an uploaded job file.
+//
 // @param request - DescribeJobDataParsingTaskProgressRequest
 //
 // @return DescribeJobDataParsingTaskProgressResponse
@@ -3720,7 +3952,7 @@ func (client *Client) DescribeJobDataParsingTaskProgress(request *DescribeJobDat
 
 // Summary:
 //
-// # DescribeJobGroup
+// Retrieves data for intelligent outbound call job groups.
 //
 // @param request - DescribeJobGroupRequest
 //
@@ -3772,7 +4004,7 @@ func (client *Client) DescribeJobGroupWithOptions(request *DescribeJobGroupReque
 
 // Summary:
 //
-// # DescribeJobGroup
+// Retrieves data for intelligent outbound call job groups.
 //
 // @param request - DescribeJobGroupRequest
 //
@@ -3788,6 +4020,10 @@ func (client *Client) DescribeJobGroup(request *DescribeJobGroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the progress of a task group export task. This operation is deprecated. Use ListDownloadTasks instead.
+//
 // @param request - DescribeJobGroupExportTaskProgressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3832,6 +4068,10 @@ func (client *Client) DescribeJobGroupExportTaskProgressWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the progress of a task group export task. This operation is deprecated. Use ListDownloadTasks instead.
+//
 // @param request - DescribeJobGroupExportTaskProgressRequest
 //
 // @return DescribeJobGroupExportTaskProgressResponse
@@ -3848,7 +4088,7 @@ func (client *Client) DescribeJobGroupExportTaskProgress(request *DescribeJobGro
 
 // Summary:
 //
-// 获取场景信息
+// Returns information about a script.
 //
 // @param request - DescribeScriptRequest
 //
@@ -3896,7 +4136,7 @@ func (client *Client) DescribeScriptWithOptions(request *DescribeScriptRequest, 
 
 // Summary:
 //
-// 获取场景信息
+// Returns information about a script.
 //
 // @param request - DescribeScriptRequest
 //
@@ -3912,6 +4152,10 @@ func (client *Client) DescribeScript(request *DescribeScriptRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the voice configuration of a script created in the legacy canvas.
+//
 // @param request - DescribeScriptVoiceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3960,6 +4204,10 @@ func (client *Client) DescribeScriptVoiceConfigWithOptions(request *DescribeScri
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the voice configuration of a script created in the legacy canvas.
+//
 // @param request - DescribeScriptVoiceConfigRequest
 //
 // @return DescribeScriptVoiceConfigResponse
@@ -3974,6 +4222,10 @@ func (client *Client) DescribeScriptVoiceConfig(request *DescribeScriptVoiceConf
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the text-to-speech (TTS) configuration information.
+//
 // @param request - DescribeTTSConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4018,6 +4270,10 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the text-to-speech (TTS) configuration information.
+//
 // @param request - DescribeTTSConfigRequest
 //
 // @return DescribeTTSConfigResponse
@@ -4032,6 +4288,10 @@ func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Preview text-to-speech (TTS) audio.
+//
 // @param request - DescribeTTSDemoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4120,6 +4380,10 @@ func (client *Client) DescribeTTSDemoWithOptions(request *DescribeTTSDemoRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Preview text-to-speech (TTS) audio.
+//
 // @param request - DescribeTTSDemoRequest
 //
 // @return DescribeTTSDemoResponse
@@ -4134,6 +4398,10 @@ func (client *Client) DescribeTTSDemo(request *DescribeTTSDemoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries statistics about tag hits. This is a legacy canvas API.
+//
 // @param request - DescribeTagHitsSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4178,6 +4446,10 @@ func (client *Client) DescribeTagHitsSummaryWithOptions(request *DescribeTagHits
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries statistics about tag hits. This is a legacy canvas API.
+//
 // @param request - DescribeTagHitsSummaryRequest
 //
 // @return DescribeTagHitsSummaryResponse
@@ -4194,7 +4466,7 @@ func (client *Client) DescribeTagHitsSummary(request *DescribeTagHitsSummaryRequ
 
 // Summary:
 //
-// 号码绑定实例列表
+// Lists the instances to which a phone number is bound in a tenant.
 //
 // @param request - DescribeTenantBindNumberRequest
 //
@@ -4238,7 +4510,7 @@ func (client *Client) DescribeTenantBindNumberWithOptions(request *DescribeTenan
 
 // Summary:
 //
-// 号码绑定实例列表
+// Lists the instances to which a phone number is bound in a tenant.
 //
 // @param request - DescribeTenantBindNumberRequest
 //
@@ -4254,6 +4526,10 @@ func (client *Client) DescribeTenantBindNumber(request *DescribeTenantBindNumber
 	return _result, _err
 }
 
+// Summary:
+//
+// This robot dialogue interface handles CC callback outbound calls. (Deprecated)
+//
 // @param request - DialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4334,6 +4610,10 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// This robot dialogue interface handles CC callback outbound calls. (Deprecated)
+//
 // @param request - DialogueRequest
 //
 // @return DialogueResponse
@@ -4350,7 +4630,7 @@ func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueRespo
 
 // Summary:
 //
-// # DownloadRecording
+// Downloads a call recording.
 //
 // @param request - DownloadRecordingRequest
 //
@@ -4371,6 +4651,10 @@ func (client *Client) DownloadRecordingWithOptions(request *DownloadRecordingReq
 
 	if !dara.IsNil(request.NeedVoiceSliceRecording) {
 		query["NeedVoiceSliceRecording"] = request.NeedVoiceSliceRecording
+	}
+
+	if !dara.IsNil(request.SwapChannels) {
+		query["SwapChannels"] = request.SwapChannels
 	}
 
 	if !dara.IsNil(request.TaskId) {
@@ -4402,7 +4686,7 @@ func (client *Client) DownloadRecordingWithOptions(request *DownloadRecordingReq
 
 // Summary:
 //
-// # DownloadRecording
+// Downloads a call recording.
 //
 // @param request - DownloadRecordingRequest
 //
@@ -4418,6 +4702,10 @@ func (client *Client) DownloadRecording(request *DownloadRecordingRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Download script recordings by retrieving their URLs. This operation is intended for small model scenarios.
+//
 // @param request - DownloadScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4466,6 +4754,10 @@ func (client *Client) DownloadScriptRecordingWithOptions(request *DownloadScript
 	return _result, _err
 }
 
+// Summary:
+//
+// Download script recordings by retrieving their URLs. This operation is intended for small model scenarios.
+//
 // @param request - DownloadScriptRecordingRequest
 //
 // @return DownloadScriptRecordingResponse
@@ -4480,6 +4772,10 @@ func (client *Client) DownloadScriptRecording(request *DownloadScriptRecordingRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Duplicates an existing script. This operation applies only to the legacy canvas.
+//
 // @param request - DuplicateScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4528,6 +4824,10 @@ func (client *Client) DuplicateScriptWithOptions(request *DuplicateScriptRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Duplicates an existing script. This operation applies only to the legacy canvas.
+//
 // @param request - DuplicateScriptRequest
 //
 // @return DuplicateScriptResponse
@@ -4542,6 +4842,10 @@ func (client *Client) DuplicateScript(request *DuplicateScriptRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports a scenario.
+//
 // @param request - ExportScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4586,6 +4890,10 @@ func (client *Client) ExportScriptWithOptions(request *ExportScriptRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports a scenario.
+//
 // @param request - ExportScriptRequest
 //
 // @return ExportScriptResponse
@@ -4600,6 +4908,10 @@ func (client *Client) ExportScript(request *ExportScriptRequest) (_result *Expor
 	return _result, _err
 }
 
+// Summary:
+//
+// Upload a hotword list file.
+//
 // @param request - GenerateUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4644,6 +4956,10 @@ func (client *Client) GenerateUploadUrlWithOptions(request *GenerateUploadUrlReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Upload a hotword list file.
+//
 // @param request - GenerateUploadUrlRequest
 //
 // @return GenerateUploadUrlResponse
@@ -4658,6 +4974,10 @@ func (client *Client) GenerateUploadUrl(request *GenerateUploadUrlRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the delay before audio playback begins after a call is answered.
+//
 // @param request - GetAfterAnswerDelayPlaybackRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4702,6 +5022,10 @@ func (client *Client) GetAfterAnswerDelayPlaybackWithOptions(request *GetAfterAn
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the delay before audio playback begins after a call is answered.
+//
 // @param request - GetAfterAnswerDelayPlaybackRequest
 //
 // @return GetAfterAnswerDelayPlaybackResponse
@@ -4716,6 +5040,10 @@ func (client *Client) GetAfterAnswerDelayPlayback(request *GetAfterAnswerDelayPl
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the configuration of an agent.
+//
 // @param request - GetAgentProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4764,6 +5092,10 @@ func (client *Client) GetAgentProfileWithOptions(request *GetAgentProfileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the configuration of an agent.
+//
 // @param request - GetAgentProfileRequest
 //
 // @return GetAgentProfileResponse
@@ -4778,6 +5110,10 @@ func (client *Client) GetAgentProfile(request *GetAgentProfileRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves an agent profile template.
+//
 // @param request - GetAgentProfileTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4822,6 +5158,10 @@ func (client *Client) GetAgentProfileTemplateWithOptions(request *GetAgentProfil
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves an agent profile template.
+//
 // @param request - GetAgentProfileTemplateRequest
 //
 // @return GetAgentProfileTemplateResponse
@@ -4836,6 +5176,10 @@ func (client *Client) GetAgentProfileTemplate(request *GetAgentProfileTemplateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// null
+//
 // @param request - GetAnnotationMissionSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4876,6 +5220,10 @@ func (client *Client) GetAnnotationMissionSummaryWithOptions(request *GetAnnotat
 	return _result, _err
 }
 
+// Summary:
+//
+// null
+//
 // @param request - GetAnnotationMissionSummaryRequest
 //
 // @return GetAnnotationMissionSummaryResponse
@@ -4952,6 +5300,10 @@ func (client *Client) GetAnnotationMissionTagInfoList(request *GetAnnotationMiss
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information such as the Automatic Speech Recognition (ASR) model list and hotword list. This operation is deprecated.
+//
 // @param request - GetAsrServerInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4996,6 +5348,10 @@ func (client *Client) GetAsrServerInfoWithOptions(request *GetAsrServerInfoReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information such as the Automatic Speech Recognition (ASR) model list and hotword list. This operation is deprecated.
+//
 // @param request - GetAsrServerInfoRequest
 //
 // @return GetAsrServerInfoResponse
@@ -5012,7 +5368,7 @@ func (client *Client) GetAsrServerInfo(request *GetAsrServerInfoRequest) (_resul
 
 // Summary:
 //
-// 获取异步外呼任务上传结果
+// Retrieves the result of an asynchronous outbound call task upload.
 //
 // @param request - GetAssignJobsAsyncResultRequest
 //
@@ -5056,7 +5412,7 @@ func (client *Client) GetAssignJobsAsyncResultWithOptions(request *GetAssignJobs
 
 // Summary:
 //
-// 获取异步外呼任务上传结果
+// Retrieves the result of an asynchronous outbound call task upload.
 //
 // @param request - GetAssignJobsAsyncResultRequest
 //
@@ -5074,7 +5430,7 @@ func (client *Client) GetAssignJobsAsyncResult(request *GetAssignJobsAsyncResult
 
 // Summary:
 //
-// 获取系统策略配置
+// Retrieve the global outbound time periods for the outbound calling system.
 //
 // @param request - GetBaseStrategyPeriodRequest
 //
@@ -5122,7 +5478,7 @@ func (client *Client) GetBaseStrategyPeriodWithOptions(request *GetBaseStrategyP
 
 // Summary:
 //
-// 获取系统策略配置
+// Retrieve the global outbound time periods for the outbound calling system.
 //
 // @param request - GetBaseStrategyPeriodRequest
 //
@@ -5138,6 +5494,10 @@ func (client *Client) GetBaseStrategyPeriod(request *GetBaseStrategyPeriodReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the remaining concurrency for the caller\\"s account.
+//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConcurrentConversationQuotaResponse
@@ -5163,6 +5523,10 @@ func (client *Client) GetConcurrentConversationQuotaWithOptions(runtime *dara.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the remaining concurrency for the caller\\"s account.
+//
 // @return GetConcurrentConversationQuotaResponse
 func (client *Client) GetConcurrentConversationQuota() (_result *GetConcurrentConversationQuotaResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -5177,7 +5541,7 @@ func (client *Client) GetConcurrentConversationQuota() (_result *GetConcurrentCo
 
 // Summary:
 //
-// # GetContactBlockList
+// Retrieves the list of contacts blocked for outbound calls.
 //
 // @param request - GetContactBlockListRequest
 //
@@ -5233,7 +5597,7 @@ func (client *Client) GetContactBlockListWithOptions(request *GetContactBlockLis
 
 // Summary:
 //
-// # GetContactBlockList
+// Retrieves the list of contacts blocked for outbound calls.
 //
 // @param request - GetContactBlockListRequest
 //
@@ -5251,7 +5615,7 @@ func (client *Client) GetContactBlockList(request *GetContactBlockListRequest) (
 
 // Summary:
 //
-// # GetContactWhiteList
+// Retrieves the global outbound call policy whitelist.
 //
 // @param request - GetContactWhiteListRequest
 //
@@ -5307,7 +5671,7 @@ func (client *Client) GetContactWhiteListWithOptions(request *GetContactWhiteLis
 
 // Summary:
 //
-// # GetContactWhiteList
+// Retrieves the global outbound call policy whitelist.
 //
 // @param request - GetContactWhiteListRequest
 //
@@ -5323,6 +5687,10 @@ func (client *Client) GetContactWhiteList(request *GetContactWhiteListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the current concurrency of an instance.
+//
 // @param request - GetCurrentConcurrencyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5363,6 +5731,10 @@ func (client *Client) GetCurrentConcurrencyWithOptions(request *GetCurrentConcur
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the current concurrency of an instance.
+//
 // @param request - GetCurrentConcurrencyRequest
 //
 // @return GetCurrentConcurrencyResponse
@@ -5379,7 +5751,7 @@ func (client *Client) GetCurrentConcurrency(request *GetCurrentConcurrencyReques
 
 // Summary:
 //
-// # GetEmptyNumberNoMoreCallsInfo
+// A query-based feature toggle that disables outbound calls to nonexistent numbers in the global dimension.
 //
 // @param request - GetEmptyNumberNoMoreCallsInfoRequest
 //
@@ -5427,7 +5799,7 @@ func (client *Client) GetEmptyNumberNoMoreCallsInfoWithOptions(request *GetEmpty
 
 // Summary:
 //
-// # GetEmptyNumberNoMoreCallsInfo
+// A query-based feature toggle that disables outbound calls to nonexistent numbers in the global dimension.
 //
 // @param request - GetEmptyNumberNoMoreCallsInfoRequest
 //
@@ -5445,7 +5817,7 @@ func (client *Client) GetEmptyNumberNoMoreCallsInfo(request *GetEmptyNumberNoMor
 
 // Summary:
 //
-// 获取上传信息
+// Retrieves the parameters for uploading job data.
 //
 // @param request - GetJobDataUploadParamsRequest
 //
@@ -5505,7 +5877,7 @@ func (client *Client) GetJobDataUploadParamsWithOptions(request *GetJobDataUploa
 
 // Summary:
 //
-// 获取上传信息
+// Retrieves the parameters for uploading job data.
 //
 // @param request - GetJobDataUploadParamsRequest
 //
@@ -5523,7 +5895,7 @@ func (client *Client) GetJobDataUploadParams(request *GetJobDataUploadParamsRequ
 
 // Summary:
 //
-// # GetMaxAttemptsPerDay
+// Retrieves the maximum number of daily call attempts allowed for a specified called number.
 //
 // @param request - GetMaxAttemptsPerDayRequest
 //
@@ -5571,7 +5943,7 @@ func (client *Client) GetMaxAttemptsPerDayWithOptions(request *GetMaxAttemptsPer
 
 // Summary:
 //
-// # GetMaxAttemptsPerDay
+// Retrieves the maximum number of daily call attempts allowed for a specified called number.
 //
 // @param request - GetMaxAttemptsPerDayRequest
 //
@@ -5589,7 +5961,7 @@ func (client *Client) GetMaxAttemptsPerDay(request *GetMaxAttemptsPerDayRequest)
 
 // Summary:
 //
-// 获取号码库模板下载链接
+// Retrieves the download URL for the number library template. This API is deprecated.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -5618,7 +5990,7 @@ func (client *Client) GetNumberDistrictInfoTemplateDownloadUrlWithOptions(runtim
 
 // Summary:
 //
-// 获取号码库模板下载链接
+// Retrieves the download URL for the number library template. This API is deprecated.
 //
 // @return GetNumberDistrictInfoTemplateDownloadUrlResponse
 func (client *Client) GetNumberDistrictInfoTemplateDownloadUrl() (_result *GetNumberDistrictInfoTemplateDownloadUrlResponse, _err error) {
@@ -5634,7 +6006,7 @@ func (client *Client) GetNumberDistrictInfoTemplateDownloadUrl() (_result *GetNu
 
 // Summary:
 //
-// 获取非对称加密算法公钥
+// Retrieves the public key for an asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -5671,7 +6043,7 @@ func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runt
 
 // Summary:
 //
-// 获取非对称加密算法公钥
+// Retrieves the public key for an asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -5689,7 +6061,7 @@ func (client *Client) GetPublicKey(request *GetPublicKeyRequest) (_result *GetPu
 
 // Summary:
 //
-// # GetRealtimeConcurrencyReport
+// Queries the current concurrency list.
 //
 // @param request - GetRealtimeConcurrencyReportRequest
 //
@@ -5729,7 +6101,7 @@ func (client *Client) GetRealtimeConcurrencyReportWithOptions(request *GetRealti
 
 // Summary:
 //
-// # GetRealtimeConcurrencyReport
+// Queries the current concurrency list.
 //
 // @param request - GetRealtimeConcurrencyReportRequest
 //
@@ -5747,7 +6119,7 @@ func (client *Client) GetRealtimeConcurrencyReport(request *GetRealtimeConcurren
 
 // Summary:
 //
-// # GetSummaryInfo
+// Summary information for outbound call instances.
 //
 // @param request - GetSummaryInfoRequest
 //
@@ -5791,7 +6163,7 @@ func (client *Client) GetSummaryInfoWithOptions(request *GetSummaryInfoRequest, 
 
 // Summary:
 //
-// # GetSummaryInfo
+// Summary information for outbound call instances.
 //
 // @param request - GetSummaryInfoRequest
 //
@@ -5809,7 +6181,7 @@ func (client *Client) GetSummaryInfo(request *GetSummaryInfoRequest) (_result *G
 
 // Summary:
 //
-// 根据TaskId获取Task信息
+// Retrieve a task by its UUID.
 //
 // @param request - GetTaskByUuidRequest
 //
@@ -5849,7 +6221,7 @@ func (client *Client) GetTaskByUuidWithOptions(request *GetTaskByUuidRequest, ru
 
 // Summary:
 //
-// 根据TaskId获取Task信息
+// Retrieve a task by its UUID.
 //
 // @param request - GetTaskByUuidRequest
 //
@@ -5867,7 +6239,7 @@ func (client *Client) GetTaskByUuid(request *GetTaskByUuidRequest) (_result *Get
 
 // Summary:
 //
-// # GetVersion
+// Retrieve the application version information.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -5896,7 +6268,7 @@ func (client *Client) GetVersionWithOptions(runtime *dara.RuntimeOptions) (_resu
 
 // Summary:
 //
-// # GetVersion
+// Retrieve the application version information.
 //
 // @return GetVersionResponse
 func (client *Client) GetVersion() (_result *GetVersionResponse, _err error) {
@@ -5910,6 +6282,10 @@ func (client *Client) GetVersion() (_result *GetVersionResponse, _err error) {
 	return _result, _err
 }
 
+// Summary:
+//
+// Import a scenario.
+//
 // @param request - ImportScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5958,6 +6334,10 @@ func (client *Client) ImportScriptWithOptions(request *ImportScriptRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Import a scenario.
+//
 // @param request - ImportScriptRequest
 //
 // @return ImportScriptResponse
@@ -6042,6 +6422,10 @@ func (client *Client) InflightTaskTimeout(request *InflightTaskTimeoutRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the publication history of an agent configuration in a Large Language Model (LLM) scenario.
+//
 // @param request - ListAgentProfilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6090,6 +6474,10 @@ func (client *Client) ListAgentProfilesWithOptions(request *ListAgentProfilesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the publication history of an agent configuration in a Large Language Model (LLM) scenario.
+//
 // @param request - ListAgentProfilesRequest
 //
 // @return ListAgentProfilesResponse
@@ -6106,7 +6494,7 @@ func (client *Client) ListAgentProfiles(request *ListAgentProfilesRequest) (_res
 
 // Summary:
 //
-// 租户绑定号码列表
+// Lists the phone numbers bound to the tenant.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6135,7 +6523,7 @@ func (client *Client) ListAllTenantBindNumberBindingWithOptions(runtime *dara.Ru
 
 // Summary:
 //
-// 租户绑定号码列表
+// Lists the phone numbers bound to the tenant.
 //
 // @return ListAllTenantBindNumberBindingResponse
 func (client *Client) ListAllTenantBindNumberBinding() (_result *ListAllTenantBindNumberBindingResponse, _err error) {
@@ -6151,7 +6539,7 @@ func (client *Client) ListAllTenantBindNumberBinding() (_result *ListAllTenantBi
 
 // Summary:
 //
-// 标注中心
+// Lists annotation missions.
 //
 // @param request - ListAnnotationMissionRequest
 //
@@ -6227,7 +6615,7 @@ func (client *Client) ListAnnotationMissionWithOptions(request *ListAnnotationMi
 
 // Summary:
 //
-// 标注中心
+// Lists annotation missions.
 //
 // @param request - ListAnnotationMissionRequest
 //
@@ -6325,6 +6713,10 @@ func (client *Client) ListAnnotationMissionSession(request *ListAnnotationMissio
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists API plugins.
+//
 // @param request - ListApiPluginsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6377,6 +6769,10 @@ func (client *Client) ListApiPluginsWithOptions(request *ListApiPluginsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists API plugins.
+//
 // @param request - ListApiPluginsRequest
 //
 // @return ListApiPluginsResponse
@@ -6393,7 +6789,7 @@ func (client *Client) ListApiPlugins(request *ListApiPluginsRequest) (_result *L
 
 // Summary:
 //
-// # ListBeebotIntent
+// Lists intents for small-model scenarios.
 //
 // @param request - ListBeebotIntentRequest
 //
@@ -6453,7 +6849,7 @@ func (client *Client) ListBeebotIntentWithOptions(request *ListBeebotIntentReque
 
 // Summary:
 //
-// # ListBeebotIntent
+// Lists intents for small-model scenarios.
 //
 // @param request - ListBeebotIntentRequest
 //
@@ -6471,7 +6867,7 @@ func (client *Client) ListBeebotIntent(request *ListBeebotIntentRequest) (_resul
 
 // Summary:
 //
-// # ListBeebotIntentLgf
+// Lists the utterance templates for a specified intent in a scenario.
 //
 // @param request - ListBeebotIntentLgfRequest
 //
@@ -6535,7 +6931,7 @@ func (client *Client) ListBeebotIntentLgfWithOptions(request *ListBeebotIntentLg
 
 // Summary:
 //
-// # ListBeebotIntentLgf
+// Lists the utterance templates for a specified intent in a scenario.
 //
 // @param request - ListBeebotIntentLgfRequest
 //
@@ -6553,7 +6949,7 @@ func (client *Client) ListBeebotIntentLgf(request *ListBeebotIntentLgfRequest) (
 
 // Summary:
 //
-// # ListBeebotIntentUserSay
+// Lists user utterances for intents in small model scenarios.
 //
 // @param request - ListBeebotIntentUserSayRequest
 //
@@ -6617,7 +7013,7 @@ func (client *Client) ListBeebotIntentUserSayWithOptions(request *ListBeebotInte
 
 // Summary:
 //
-// # ListBeebotIntentUserSay
+// Lists user utterances for intents in small model scenarios.
 //
 // @param request - ListBeebotIntentUserSayRequest
 //
@@ -6633,6 +7029,10 @@ func (client *Client) ListBeebotIntentUserSay(request *ListBeebotIntentUserSayRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the instances of the Yunxiao Mi chatbot service in Alibaba Cloud.
+//
 // @param request - ListChatbotInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6681,6 +7081,10 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the instances of the Yunxiao Mi chatbot service in Alibaba Cloud.
+//
 // @param request - ListChatbotInstancesRequest
 //
 // @return ListChatbotInstancesResponse
@@ -6695,6 +7099,10 @@ func (client *Client) ListChatbotInstances(request *ListChatbotInstancesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the dialogue flows of a script in the legacy canvas.
+//
 // @param request - ListDialogueFlowsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6739,6 +7147,10 @@ func (client *Client) ListDialogueFlowsWithOptions(request *ListDialogueFlowsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the dialogue flows of a script in the legacy canvas.
+//
 // @param request - ListDialogueFlowsRequest
 //
 // @return ListDialogueFlowsResponse
@@ -6753,6 +7165,10 @@ func (client *Client) ListDialogueFlows(request *ListDialogueFlowsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of download tasks in Download Hub.
+//
 // @param request - ListDownloadTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6789,6 +7205,10 @@ func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of download tasks in Download Hub.
+//
 // @param request - ListDownloadTasksRequest
 //
 // @return ListDownloadTasksResponse
@@ -6803,6 +7223,10 @@ func (client *Client) ListDownloadTasks(request *ListDownloadTasksRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call the ListFlashSmsTemplates operation to query flash SMS templates.
+//
 // @param request - ListFlashSmsTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6839,6 +7263,10 @@ func (client *Client) ListFlashSmsTemplatesWithOptions(request *ListFlashSmsTemp
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call the ListFlashSmsTemplates operation to query flash SMS templates.
+//
 // @param request - ListFlashSmsTemplatesRequest
 //
 // @return ListFlashSmsTemplatesResponse
@@ -6853,6 +7281,10 @@ func (client *Client) ListFlashSmsTemplates(request *ListFlashSmsTemplatesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of key questions. This is a legacy canvas interface.
+//
 // @param request - ListGlobalQuestionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6905,6 +7337,10 @@ func (client *Client) ListGlobalQuestionsWithOptions(request *ListGlobalQuestion
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of key questions. This is a legacy canvas interface.
+//
 // @param request - ListGlobalQuestionsRequest
 //
 // @return ListGlobalQuestionsResponse
@@ -6919,6 +7355,10 @@ func (client *Client) ListGlobalQuestions(request *ListGlobalQuestionsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists Outbound Calling Bot service instances.
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6975,6 +7415,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists Outbound Calling Bot service instances.
+//
 // @param request - ListInstancesRequest
 //
 // @return ListInstancesResponse
@@ -6991,7 +7435,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 意图列表
+// Query intent for the Annotation Center list.
 //
 // @param request - ListIntentionsRequest
 //
@@ -7067,7 +7511,7 @@ func (client *Client) ListIntentionsWithOptions(request *ListIntentionsRequest, 
 
 // Summary:
 //
-// 意图列表
+// Query intent for the Annotation Center list.
 //
 // @param request - ListIntentionsRequest
 //
@@ -7083,6 +7527,10 @@ func (client *Client) ListIntentions(request *ListIntentionsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves intents from the legacy canvas interface.
+//
 // @param request - ListIntentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7139,6 +7587,10 @@ func (client *Client) ListIntentsWithOptions(request *ListIntentsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves intents from the legacy canvas interface.
+//
 // @param request - ListIntentsRequest
 //
 // @return ListIntentsResponse
@@ -7153,6 +7605,10 @@ func (client *Client) ListIntents(request *ListIntentsRequest) (_result *ListInt
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of outbound call task groups.
+//
 // @param request - ListJobGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7225,6 +7681,10 @@ func (client *Client) ListJobGroupsWithOptions(request *ListJobGroupsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of outbound call task groups.
+//
 // @param request - ListJobGroupsRequest
 //
 // @return ListJobGroupsResponse
@@ -7239,6 +7699,10 @@ func (client *Client) ListJobGroups(request *ListJobGroupsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of outbound call tasks asynchronously. Call this operation to retrieve the results of a `ListJobGroup` call that included the `Async` parameter.
+//
 // @param request - ListJobGroupsAsyncRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7275,6 +7739,10 @@ func (client *Client) ListJobGroupsAsyncWithOptions(request *ListJobGroupsAsyncR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of outbound call tasks asynchronously. Call this operation to retrieve the results of a `ListJobGroup` call that included the `Async` parameter.
+//
 // @param request - ListJobGroupsAsyncRequest
 //
 // @return ListJobGroupsAsyncResponse
@@ -7291,7 +7759,7 @@ func (client *Client) ListJobGroupsAsync(request *ListJobGroupsAsyncRequest) (_r
 
 // Summary:
 //
-// # ListJobs
+// Query multiple jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -7339,7 +7807,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// # ListJobs
+// Query multiple jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -7355,6 +7823,10 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists jobs by job group.
+//
 // @param request - ListJobsByGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7415,6 +7887,10 @@ func (client *Client) ListJobsByGroupWithOptions(request *ListJobsByGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists jobs by job group.
+//
 // @param request - ListJobsByGroupRequest
 //
 // @return ListJobsByGroupResponse
@@ -7429,6 +7905,10 @@ func (client *Client) ListJobsByGroup(request *ListJobsByGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// List outbound call numbers.
+//
 // @param request - ListOutboundCallNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7477,6 +7957,10 @@ func (client *Client) ListOutboundCallNumbersWithOptions(request *ListOutboundCa
 	return _result, _err
 }
 
+// Summary:
+//
+// List outbound call numbers.
+//
 // @param request - ListOutboundCallNumbersRequest
 //
 // @return ListOutboundCallNumbersResponse
@@ -7491,6 +7975,10 @@ func (client *Client) ListOutboundCallNumbers(request *ListOutboundCallNumbersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists tags for business resources.
+//
 // @param request - ListResourceTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7539,6 +8027,10 @@ func (client *Client) ListResourceTagsWithOptions(request *ListResourceTagsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists tags for business resources.
+//
 // @param request - ListResourceTagsRequest
 //
 // @return ListResourceTagsResponse
@@ -7553,6 +8045,10 @@ func (client *Client) ListResourceTags(request *ListResourceTagsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the publication history of the small model for outbound calls.
+//
 // @param request - ListScriptPublishHistoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7605,6 +8101,10 @@ func (client *Client) ListScriptPublishHistoriesWithOptions(request *ListScriptP
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the publication history of the small model for outbound calls.
+//
 // @param request - ListScriptPublishHistoriesRequest
 //
 // @return ListScriptPublishHistoriesResponse
@@ -7619,6 +8119,10 @@ func (client *Client) ListScriptPublishHistories(request *ListScriptPublishHisto
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of recording files. Use this operation in small model scenarios.
+//
 // @param request - ListScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7687,6 +8191,10 @@ func (client *Client) ListScriptRecordingWithOptions(request *ListScriptRecordin
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of recording files. Use this operation in small model scenarios.
+//
 // @param request - ListScriptRecordingRequest
 //
 // @return ListScriptRecordingResponse
@@ -7703,7 +8211,7 @@ func (client *Client) ListScriptRecording(request *ListScriptRecordingRequest) (
 
 // Summary:
 //
-// 获取场景中当前使用的变量
+// Queries the variables used in a script.
 //
 // @param request - ListScriptVariablesRequest
 //
@@ -7755,7 +8263,7 @@ func (client *Client) ListScriptVariablesWithOptions(request *ListScriptVariable
 
 // Summary:
 //
-// 获取场景中当前使用的变量
+// Queries the variables used in a script.
 //
 // @param request - ListScriptVariablesRequest
 //
@@ -7771,6 +8279,14 @@ func (client *Client) ListScriptVariables(request *ListScriptVariablesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the audio in a legacy canvas scene.
+//
+// Description:
+//
+// **
+//
 // @param request - ListScriptVoiceConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7823,6 +8339,14 @@ func (client *Client) ListScriptVoiceConfigsWithOptions(request *ListScriptVoice
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the audio in a legacy canvas scene.
+//
+// Description:
+//
+// **
+//
 // @param request - ListScriptVoiceConfigsRequest
 //
 // @return ListScriptVoiceConfigsResponse
@@ -7839,7 +8363,7 @@ func (client *Client) ListScriptVoiceConfigs(request *ListScriptVoiceConfigsRequ
 
 // Summary:
 //
-// -
+// View the script list.
 //
 // @param request - ListScriptsRequest
 //
@@ -7899,7 +8423,7 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 
 // Summary:
 //
-// -
+// View the script list.
 //
 // @param request - ListScriptsRequest
 //
@@ -7915,6 +8439,10 @@ func (client *Client) ListScripts(request *ListScriptsRequest) (_result *ListScr
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the tag relationships for resources.
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7971,6 +8499,10 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the tag relationships for resources.
+//
 // @param request - ListTagResourcesRequest
 //
 // @return ListTagResourcesResponse
@@ -7985,6 +8517,10 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of a script. This is a legacy canvas API.
+//
 // @param request - ListTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8029,6 +8565,10 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of a script. This is a legacy canvas API.
+//
 // @param request - ListTagsRequest
 //
 // @return ListTagsResponse
@@ -8043,6 +8583,10 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the agent configuration.
+//
 // @param tmpReq - ModifyAgentProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8137,6 +8681,10 @@ func (client *Client) ModifyAgentProfileWithOptions(tmpReq *ModifyAgentProfileRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the agent configuration.
+//
 // @param request - ModifyAgentProfileRequest
 //
 // @return ModifyAgentProfileResponse
@@ -8151,6 +8699,10 @@ func (client *Client) ModifyAgentProfile(request *ModifyAgentProfileRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status and name of an annotation task.
+//
 // @param request - ModifyAnnotationMissionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8203,6 +8755,10 @@ func (client *Client) ModifyAnnotationMissionWithOptions(request *ModifyAnnotati
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status and name of an annotation task.
+//
 // @param request - ModifyAnnotationMissionRequest
 //
 // @return ModifyAnnotationMissionResponse
@@ -8217,6 +8773,10 @@ func (client *Client) ModifyAnnotationMission(request *ModifyAnnotationMissionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies batch jobs. This operation is deprecated.
+//
 // @param request - ModifyBatchJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8293,6 +8853,10 @@ func (client *Client) ModifyBatchJobsWithOptions(request *ModifyBatchJobsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies batch jobs. This operation is deprecated.
+//
 // @param request - ModifyBatchJobsRequest
 //
 // @return ModifyBatchJobsResponse
@@ -8309,7 +8873,7 @@ func (client *Client) ModifyBatchJobs(request *ModifyBatchJobsRequest) (_result 
 
 // Summary:
 //
-// # ModifyBeebotIntent
+// Modify the intent for a small-model scenario.
 //
 // @param tmpReq - ModifyBeebotIntentRequest
 //
@@ -8371,7 +8935,7 @@ func (client *Client) ModifyBeebotIntentWithOptions(tmpReq *ModifyBeebotIntentRe
 
 // Summary:
 //
-// # ModifyBeebotIntent
+// Modify the intent for a small-model scenario.
 //
 // @param request - ModifyBeebotIntentRequest
 //
@@ -8389,7 +8953,7 @@ func (client *Client) ModifyBeebotIntent(request *ModifyBeebotIntentRequest) (_r
 
 // Summary:
 //
-// # ModifyBeebotIntentLgf
+// Modifies the intent utterance template for a small model scenario.
 //
 // @param tmpReq - ModifyBeebotIntentLgfRequest
 //
@@ -8451,7 +9015,7 @@ func (client *Client) ModifyBeebotIntentLgfWithOptions(tmpReq *ModifyBeebotInten
 
 // Summary:
 //
-// # ModifyBeebotIntentLgf
+// Modifies the intent utterance template for a small model scenario.
 //
 // @param request - ModifyBeebotIntentLgfRequest
 //
@@ -8469,7 +9033,7 @@ func (client *Client) ModifyBeebotIntentLgf(request *ModifyBeebotIntentLgfReques
 
 // Summary:
 //
-// # ModifyBeebotIntentUserSay
+// Modifies a user utterance for an intent in a Beebot scenario.
 //
 // @param tmpReq - ModifyBeebotIntentUserSayRequest
 //
@@ -8531,7 +9095,7 @@ func (client *Client) ModifyBeebotIntentUserSayWithOptions(tmpReq *ModifyBeebotI
 
 // Summary:
 //
-// # ModifyBeebotIntentUserSay
+// Modifies a user utterance for an intent in a Beebot scenario.
 //
 // @param request - ModifyBeebotIntentUserSayRequest
 //
@@ -8547,6 +9111,10 @@ func (client *Client) ModifyBeebotIntentUserSay(request *ModifyBeebotIntentUserS
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a dialogue flow. This is a legacy API for the canvas.
+//
 // @param request - ModifyDialogueFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8603,6 +9171,10 @@ func (client *Client) ModifyDialogueFlowWithOptions(request *ModifyDialogueFlowR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a dialogue flow. This is a legacy API for the canvas.
+//
 // @param request - ModifyDialogueFlowRequest
 //
 // @return ModifyDialogueFlowResponse
@@ -8617,6 +9189,10 @@ func (client *Client) ModifyDialogueFlow(request *ModifyDialogueFlowRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the global no-call feature for nonexistent numbers.
+//
 // @param request - ModifyEmptyNumberNoMoreCallsInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8665,6 +9241,10 @@ func (client *Client) ModifyEmptyNumberNoMoreCallsInfoWithOptions(request *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the global no-call feature for nonexistent numbers.
+//
 // @param request - ModifyEmptyNumberNoMoreCallsInfoRequest
 //
 // @return ModifyEmptyNumberNoMoreCallsInfoResponse
@@ -8679,6 +9259,10 @@ func (client *Client) ModifyEmptyNumberNoMoreCallsInfo(request *ModifyEmptyNumbe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global question in the legacy canvas.
+//
 // @param request - ModifyGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8743,6 +9327,10 @@ func (client *Client) ModifyGlobalQuestionWithOptions(request *ModifyGlobalQuest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global question in the legacy canvas.
+//
 // @param request - ModifyGlobalQuestionRequest
 //
 // @return ModifyGlobalQuestionResponse
@@ -8757,6 +9345,10 @@ func (client *Client) ModifyGlobalQuestion(request *ModifyGlobalQuestionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an Outbound Bot instance.
+//
 // @param request - ModifyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8813,6 +9405,10 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an Outbound Bot instance.
+//
 // @param request - ModifyInstanceRequest
 //
 // @return ModifyInstanceResponse
@@ -8827,6 +9423,10 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an intent in the legacy canvas. This is a legacy API.
+//
 // @param request - ModifyIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8891,6 +9491,10 @@ func (client *Client) ModifyIntentWithOptions(request *ModifyIntentRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an intent in the legacy canvas. This is a legacy API.
+//
 // @param request - ModifyIntentRequest
 //
 // @return ModifyIntentResponse
@@ -8907,7 +9511,7 @@ func (client *Client) ModifyIntent(request *ModifyIntentRequest) (_result *Modif
 
 // Summary:
 //
-// 修改任务组
+// Modify an intelligent outbound call task group.
 //
 // @param request - ModifyJobGroupRequest
 //
@@ -9007,7 +9611,7 @@ func (client *Client) ModifyJobGroupWithOptions(request *ModifyJobGroupRequest, 
 
 // Summary:
 //
-// 修改任务组
+// Modify an intelligent outbound call task group.
 //
 // @param request - ModifyJobGroupRequest
 //
@@ -9025,7 +9629,7 @@ func (client *Client) ModifyJobGroup(request *ModifyJobGroupRequest) (_result *M
 
 // Summary:
 //
-// # ModifyOutboundCallNumber
+// Modifies an outbound call number. This API is deprecated.
 //
 // @param request - ModifyOutboundCallNumberRequest
 //
@@ -9085,7 +9689,7 @@ func (client *Client) ModifyOutboundCallNumberWithOptions(request *ModifyOutboun
 
 // Summary:
 //
-// # ModifyOutboundCallNumber
+// Modifies an outbound call number. This API is deprecated.
 //
 // @param request - ModifyOutboundCallNumberRequest
 //
@@ -9103,7 +9707,7 @@ func (client *Client) ModifyOutboundCallNumber(request *ModifyOutboundCallNumber
 
 // Summary:
 //
-// 修改场景
+// Modify script information.
 //
 // @param request - ModifyScriptRequest
 //
@@ -9239,7 +9843,7 @@ func (client *Client) ModifyScriptWithOptions(request *ModifyScriptRequest, runt
 
 // Summary:
 //
-// 修改场景
+// Modify script information.
 //
 // @param request - ModifyScriptRequest
 //
@@ -9255,6 +9859,14 @@ func (client *Client) ModifyScript(request *ModifyScriptRequest) (_result *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the voice configuration of a script in a legacy canvas.
+//
+// Description:
+//
+// **
+//
 // @param request - ModifyScriptVoiceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9311,6 +9923,14 @@ func (client *Client) ModifyScriptVoiceConfigWithOptions(request *ModifyScriptVo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the voice configuration of a script in a legacy canvas.
+//
+// Description:
+//
+// **
+//
 // @param request - ModifyScriptVoiceConfigRequest
 //
 // @return ModifyScriptVoiceConfigResponse
@@ -9325,6 +9945,10 @@ func (client *Client) ModifyScriptVoiceConfig(request *ModifyScriptVoiceConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the text-to-speech (TTS) configuration for an existing canvas scenario.
+//
 // @param request - ModifyTTSConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9393,6 +10017,10 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the text-to-speech (TTS) configuration for an existing canvas scenario.
+//
 // @param request - ModifyTTSConfigRequest
 //
 // @return ModifyTTSConfigResponse
@@ -9407,6 +10035,10 @@ func (client *Client) ModifyTTSConfig(request *ModifyTTSConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies tag groups for the legacy canvas interface.
+//
 // @param request - ModifyTagGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9459,6 +10091,10 @@ func (client *Client) ModifyTagGroupsWithOptions(request *ModifyTagGroupsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies tag groups for the legacy canvas interface.
+//
 // @param request - ModifyTagGroupsRequest
 //
 // @return ModifyTagGroupsResponse
@@ -9473,6 +10109,10 @@ func (client *Client) ModifyTagGroups(request *ModifyTagGroupsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// # Publishing a scenario
+//
 // @param request - PublishScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9521,6 +10161,10 @@ func (client *Client) PublishScriptWithOptions(request *PublishScriptRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// # Publishing a scenario
+//
 // @param request - PublishScriptRequest
 //
 // @return PublishScriptResponse
@@ -9535,6 +10179,10 @@ func (client *Client) PublishScript(request *PublishScriptRequest) (_result *Pub
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes the debug version of a script.
+//
 // @param request - PublishScriptForDebugRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9579,6 +10227,10 @@ func (client *Client) PublishScriptForDebugWithOptions(request *PublishScriptFor
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes the debug version of a script.
+//
 // @param request - PublishScriptForDebugRequest
 //
 // @return PublishScriptForDebugResponse
@@ -9595,7 +10247,7 @@ func (client *Client) PublishScriptForDebug(request *PublishScriptForDebugReques
 
 // Summary:
 //
-// # QueryJobs
+// You can query the list of jobs.
 //
 // @param request - QueryJobsRequest
 //
@@ -9675,7 +10327,7 @@ func (client *Client) QueryJobsWithOptions(request *QueryJobsRequest, runtime *d
 
 // Summary:
 //
-// # QueryJobs
+// You can query the list of jobs.
 //
 // @param request - QueryJobsRequest
 //
@@ -9693,7 +10345,7 @@ func (client *Client) QueryJobs(request *QueryJobsRequest) (_result *QueryJobsRe
 
 // Summary:
 //
-// 获取外呼任务结果信息
+// Find tasks by result.
 //
 // @param request - QueryJobsWithResultRequest
 //
@@ -9789,7 +10441,7 @@ func (client *Client) QueryJobsWithResultWithOptions(request *QueryJobsWithResul
 
 // Summary:
 //
-// 获取外呼任务结果信息
+// Find tasks by result.
 //
 // @param request - QueryJobsWithResultRequest
 //
@@ -9805,6 +10457,10 @@ func (client *Client) QueryJobsWithResult(request *QueryJobsWithResultRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// This legacy canvas interface retrieves the list of recorded speech transcripts.
+//
 // @param request - QueryScriptWaveformsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9853,6 +10509,10 @@ func (client *Client) QueryScriptWaveformsWithOptions(request *QueryScriptWavefo
 	return _result, _err
 }
 
+// Summary:
+//
+// This legacy canvas interface retrieves the list of recorded speech transcripts.
+//
 // @param request - QueryScriptWaveformsRequest
 //
 // @return QueryScriptWaveformsResponse
@@ -9867,6 +10527,10 @@ func (client *Client) QueryScriptWaveforms(request *QueryScriptWaveformsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries scenario information by status.
+//
 // @param request - QueryScriptsByStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9919,6 +10583,10 @@ func (client *Client) QueryScriptsByStatusWithOptions(request *QueryScriptsBySta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries scenario information by status.
+//
 // @param request - QueryScriptsByStatusRequest
 //
 // @return QueryScriptsByStatusResponse
@@ -9933,6 +10601,10 @@ func (client *Client) QueryScriptsByStatus(request *QueryScriptsByStatusRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// CC sends the call failure reason to the outbound calling system. This operation is deprecated.
+//
 // @param request - RecordFailureRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10001,6 +10673,10 @@ func (client *Client) RecordFailureWithOptions(request *RecordFailureRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// CC sends the call failure reason to the outbound calling system. This operation is deprecated.
+//
 // @param request - RecordFailureRequest
 //
 // @return RecordFailureResponse
@@ -10015,6 +10691,10 @@ func (client *Client) RecordFailure(request *RecordFailureRequest) (_result *Rec
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes paused jobs.
+//
 // @param request - ResumeJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10075,6 +10755,10 @@ func (client *Client) ResumeJobsWithOptions(request *ResumeJobsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes paused jobs.
+//
 // @param request - ResumeJobsRequest
 //
 // @return ResumeJobsResponse
@@ -10089,6 +10773,10 @@ func (client *Client) ResumeJobs(request *ResumeJobsRequest) (_result *ResumeJob
 	return _result, _err
 }
 
+// Summary:
+//
+// Roll back a published small model scenario.
+//
 // @param request - RollbackScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10137,6 +10825,10 @@ func (client *Client) RollbackScriptWithOptions(request *RollbackScriptRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Roll back a published small model scenario.
+//
 // @param request - RollbackScriptRequest
 //
 // @return RollbackScriptResponse
@@ -10153,7 +10845,7 @@ func (client *Client) RollbackScript(request *RollbackScriptRequest) (_result *R
 
 // Summary:
 //
-// 保存接听后延迟播报时间
+// Sets the delay before playback starts after the call is answered.
 //
 // @param request - SaveAfterAnswerDelayPlaybackRequest
 //
@@ -10205,7 +10897,7 @@ func (client *Client) SaveAfterAnswerDelayPlaybackWithOptions(request *SaveAfter
 
 // Summary:
 //
-// 保存接听后延迟播报时间
+// Sets the delay before playback starts after the call is answered.
 //
 // @param request - SaveAfterAnswerDelayPlaybackRequest
 //
@@ -10221,6 +10913,10 @@ func (client *Client) SaveAfterAnswerDelayPlayback(request *SaveAfterAnswerDelay
 	return _result, _err
 }
 
+// Summary:
+//
+// You can save a list of annotation chat instances.
+//
 // @param request - SaveAnnotationMissionSessionListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10285,6 +10981,10 @@ func (client *Client) SaveAnnotationMissionSessionListWithOptions(request *SaveA
 	return _result, _err
 }
 
+// Summary:
+//
+// You can save a list of annotation chat instances.
+//
 // @param request - SaveAnnotationMissionSessionListRequest
 //
 // @return SaveAnnotationMissionSessionListResponse
@@ -10299,6 +10999,10 @@ func (client *Client) SaveAnnotationMissionSessionList(request *SaveAnnotationMi
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves instance tags in a batch.
+//
 // @param request - SaveAnnotationMissionTagInfoListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10351,6 +11055,10 @@ func (client *Client) SaveAnnotationMissionTagInfoListWithOptions(request *SaveA
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves instance tags in a batch.
+//
 // @param request - SaveAnnotationMissionTagInfoListRequest
 //
 // @return SaveAnnotationMissionTagInfoListResponse
@@ -10367,7 +11075,7 @@ func (client *Client) SaveAnnotationMissionTagInfoList(request *SaveAnnotationMi
 
 // Summary:
 //
-// 编辑基础策略有效时间窗口
+// Modifies the global outbound call time window in system administration.
 //
 // @param request - SaveBaseStrategyPeriodRequest
 //
@@ -10431,7 +11139,7 @@ func (client *Client) SaveBaseStrategyPeriodWithOptions(request *SaveBaseStrateg
 
 // Summary:
 //
-// 编辑基础策略有效时间窗口
+// Modifies the global outbound call time window in system administration.
 //
 // @param request - SaveBaseStrategyPeriodRequest
 //
@@ -10449,7 +11157,7 @@ func (client *Client) SaveBaseStrategyPeriod(request *SaveBaseStrategyPeriodRequ
 
 // Summary:
 //
-// 保存外呼黑名单列表
+// Adds contacts to the instance\\"s blocklist.
 //
 // @param request - SaveContactBlockListRequest
 //
@@ -10501,7 +11209,7 @@ func (client *Client) SaveContactBlockListWithOptions(request *SaveContactBlockL
 
 // Summary:
 //
-// 保存外呼黑名单列表
+// Adds contacts to the instance\\"s blocklist.
 //
 // @param request - SaveContactBlockListRequest
 //
@@ -10519,7 +11227,7 @@ func (client *Client) SaveContactBlockList(request *SaveContactBlockListRequest)
 
 // Summary:
 //
-// 保存外呼白名单
+// Saves an outbound call whitelist.
 //
 // @param request - SaveContactWhiteListRequest
 //
@@ -10571,7 +11279,7 @@ func (client *Client) SaveContactWhiteListWithOptions(request *SaveContactWhiteL
 
 // Summary:
 //
-// 保存外呼白名单
+// Saves an outbound call whitelist.
 //
 // @param request - SaveContactWhiteListRequest
 //
@@ -10587,6 +11295,10 @@ func (client *Client) SaveContactWhiteList(request *SaveContactWhiteListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves the validity period of a basic policy. This operation is deprecated.
+//
 // @param request - SaveEffectiveDaysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10635,6 +11347,10 @@ func (client *Client) SaveEffectiveDaysWithOptions(request *SaveEffectiveDaysReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves the validity period of a basic policy. This operation is deprecated.
+//
 // @param request - SaveEffectiveDaysRequest
 //
 // @return SaveEffectiveDaysResponse
@@ -10651,7 +11367,7 @@ func (client *Client) SaveEffectiveDays(request *SaveEffectiveDaysRequest) (_res
 
 // Summary:
 //
-// 保存每日最大外呼量
+// Sets the maximum number of daily outbound call attempts to a specific number.
 //
 // @param request - SaveMaxAttemptsPerDayRequest
 //
@@ -10703,7 +11419,7 @@ func (client *Client) SaveMaxAttemptsPerDayWithOptions(request *SaveMaxAttemptsP
 
 // Summary:
 //
-// 保存每日最大外呼量
+// Sets the maximum number of daily outbound call attempts to a specific number.
 //
 // @param request - SaveMaxAttemptsPerDayRequest
 //
@@ -10721,7 +11437,7 @@ func (client *Client) SaveMaxAttemptsPerDay(request *SaveMaxAttemptsPerDayReques
 
 // Summary:
 //
-// 外呼历史查询
+// Search for tasks.
 //
 // @param request - SearchTaskRequest
 //
@@ -10761,7 +11477,7 @@ func (client *Client) SearchTaskWithOptions(request *SearchTaskRequest, runtime 
 
 // Summary:
 //
-// 外呼历史查询
+// Search for tasks.
 //
 // @param request - SearchTaskRequest
 //
@@ -10779,7 +11495,7 @@ func (client *Client) SearchTask(request *SearchTaskRequest) (_result *SearchTas
 
 // Summary:
 //
-// 开启一个任务
+// This API initiates a call directly, bypassing the outbound call scheduling system. It is available only to users on the whitelist.
 //
 // @param request - StartJobRequest
 //
@@ -10843,7 +11559,7 @@ func (client *Client) StartJobWithOptions(request *StartJobRequest, runtime *dar
 
 // Summary:
 //
-// 开启一个任务
+// This API initiates a call directly, bypassing the outbound call scheduling system. It is available only to users on the whitelist.
 //
 // @param request - StartJobRequest
 //
@@ -10859,6 +11575,10 @@ func (client *Client) StartJob(request *StartJobRequest) (_result *StartJobRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a draft job group. This operation is deprecated.
+//
 // @param request - SubmitBatchJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10903,6 +11623,10 @@ func (client *Client) SubmitBatchJobsWithOptions(request *SubmitBatchJobsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a draft job group. This operation is deprecated.
+//
 // @param request - SubmitBatchJobsRequest
 //
 // @return SubmitBatchJobsResponse
@@ -10917,6 +11641,10 @@ func (client *Client) SubmitBatchJobs(request *SubmitBatchJobsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a recording of an outbound call. This operation is deprecated.
+//
 // @param request - SubmitRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10969,6 +11697,10 @@ func (client *Client) SubmitRecordingWithOptions(request *SubmitRecordingRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a recording of an outbound call. This operation is deprecated.
+//
 // @param request - SubmitRecordingRequest
 //
 // @return SubmitRecordingResponse
@@ -10983,6 +11715,10 @@ func (client *Client) SubmitRecording(request *SubmitRecordingRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Submit the scenario for release review.
+//
 // @param request - SubmitScriptReviewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11035,6 +11771,10 @@ func (client *Client) SubmitScriptReviewWithOptions(request *SubmitScriptReviewR
 	return _result, _err
 }
 
+// Summary:
+//
+// Submit the scenario for release review.
+//
 // @param request - SubmitScriptReviewRequest
 //
 // @return SubmitScriptReviewResponse
@@ -11051,7 +11791,7 @@ func (client *Client) SubmitScriptReview(request *SubmitScriptReviewRequest) (_r
 
 // Summary:
 //
-// 止呼
+// Suspends outbound calls for a list of phone numbers.
 //
 // @param request - SuspendCallRequest
 //
@@ -11103,7 +11843,7 @@ func (client *Client) SuspendCallWithOptions(request *SuspendCallRequest, runtim
 
 // Summary:
 //
-// 止呼
+// Suspends outbound calls for a list of phone numbers.
 //
 // @param request - SuspendCallRequest
 //
@@ -11121,7 +11861,7 @@ func (client *Client) SuspendCall(request *SuspendCallRequest) (_result *Suspend
 
 // Summary:
 //
-// # SuspendCallWithFile
+// Suspends outbound calls using data from a file.
 //
 // @param request - SuspendCallWithFileRequest
 //
@@ -11173,7 +11913,7 @@ func (client *Client) SuspendCallWithFileWithOptions(request *SuspendCallWithFil
 
 // Summary:
 //
-// # SuspendCallWithFile
+// Suspends outbound calls using data from a file.
 //
 // @param request - SuspendCallWithFileRequest
 //
@@ -11189,6 +11929,10 @@ func (client *Client) SuspendCallWithFile(request *SuspendCallWithFileRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// You can pause the job.
+//
 // @param request - SuspendJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11249,6 +11993,10 @@ func (client *Client) SuspendJobsWithOptions(request *SuspendJobsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// You can pause the job.
+//
 // @param request - SuspendJobsRequest
 //
 // @return SuspendJobsResponse
@@ -11263,9 +12011,13 @@ func (client *Client) SuspendJobs(request *SuspendJobsRequest) (_result *Suspend
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instance resources.
+//
 // Description:
 //
-// *
+// \\*\\*
 //
 // @param request - TagResourcesRequest
 //
@@ -11319,9 +12071,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instance resources.
+//
 // Description:
 //
-// *
+// \\*\\*
 //
 // @param request - TagResourcesRequest
 //
@@ -11339,7 +12095,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// # TaskPreparing
+// Prepares a task for execution.
 //
 // @param request - TaskPreparingRequest
 //
@@ -11391,7 +12147,7 @@ func (client *Client) TaskPreparingWithOptions(request *TaskPreparingRequest, ru
 
 // Summary:
 //
-// # TaskPreparing
+// Prepares a task for execution.
 //
 // @param request - TaskPreparingRequest
 //
@@ -11407,6 +12163,10 @@ func (client *Client) TaskPreparing(request *TaskPreparingRequest) (_result *Tas
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a call during an active session.
+//
 // @param request - TerminateCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11451,6 +12211,10 @@ func (client *Client) TerminateCallWithOptions(request *TerminateCallRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a call during an active session.
+//
 // @param request - TerminateCallRequest
 //
 // @return TerminateCallResponse
@@ -11465,6 +12229,10 @@ func (client *Client) TerminateCall(request *TerminateCallRequest) (_result *Ter
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove tags from resources.
+//
 // @param request - UntagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11521,6 +12289,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove tags from resources.
+//
 // @param request - UntagResourcesRequest
 //
 // @return UntagResourcesResponse
@@ -11535,6 +12307,10 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Upload recording files.
+//
 // @param request - UploadScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11591,6 +12367,10 @@ func (client *Client) UploadScriptRecordingWithOptions(request *UploadScriptReco
 	return _result, _err
 }
 
+// Summary:
+//
+// Upload recording files.
+//
 // @param request - UploadScriptRecordingRequest
 //
 // @return UploadScriptRecordingResponse
@@ -11607,11 +12387,11 @@ func (client *Client) UploadScriptRecording(request *UploadScriptRecordingReques
 
 // Summary:
 //
-// # WithdrawScriptReview
+// Revoke script review.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - WithdrawScriptReviewRequest
 //
@@ -11659,11 +12439,11 @@ func (client *Client) WithdrawScriptReviewWithOptions(request *WithdrawScriptRev
 
 // Summary:
 //
-// # WithdrawScriptReview
+// Revoke script review.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - WithdrawScriptReviewRequest
 //

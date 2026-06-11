@@ -24,23 +24,34 @@ type iGetAnnotationMissionSummaryResponseBody interface {
 }
 
 type GetAnnotationMissionSummaryResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *GetAnnotationMissionSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The additional information. If the request is successful, success is returned. If the request fails, an error code is returned.
+	//
 	// example:
 	//
 	// You are not authorized to perform this action. CDR:View privileges are required.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. A value of true indicates a successful call. A value of false indicates a failed call.
+	//
 	// example:
 	//
 	// true
@@ -119,20 +130,29 @@ func (s *GetAnnotationMissionSummaryResponseBody) Validate() error {
 }
 
 type GetAnnotationMissionSummaryResponseBodyData struct {
+	// The ID of the annotation task.
+	//
 	// example:
 	//
 	// b3f2c931-5180-43ca-b4aa-2baee2d73c8b
-	AnnotationMissionId *string                                                       `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	AsrSummaryInfo      *GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo    `json:"AsrSummaryInfo,omitempty" xml:"AsrSummaryInfo,omitempty" type:"Struct"`
-	IntentSummaryInfo   *GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo `json:"IntentSummaryInfo,omitempty" xml:"IntentSummaryInfo,omitempty" type:"Struct"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// The statistics of speech annotation.
+	AsrSummaryInfo *GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo `json:"AsrSummaryInfo,omitempty" xml:"AsrSummaryInfo,omitempty" type:"Struct"`
+	// The statistics of semantic tagging.
+	IntentSummaryInfo *GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo `json:"IntentSummaryInfo,omitempty" xml:"IntentSummaryInfo,omitempty" type:"Struct"`
+	// The additional information. If the request is successful, success is returned. If the request fails, an error code is returned.
+	//
 	// example:
 	//
 	// You are not authorized to perform this action. CDR:View privileges are required.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the call was successful. A value of true indicates a successful call. A value of false indicates a failed call.
+	//
 	// example:
 	//
 	// true
-	Success        *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The custom tags and their quantities.
 	TagSummaryInfo *GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo `json:"TagSummaryInfo,omitempty" xml:"TagSummaryInfo,omitempty" type:"Struct"`
 }
 
@@ -218,38 +238,56 @@ func (s *GetAnnotationMissionSummaryResponseBodyData) Validate() error {
 }
 
 type GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo struct {
+	// The number of times language model data was added.
+	//
 	// example:
 	//
 	// 1
 	AddCustomizationDataCount *int32 `json:"AddCustomizationDataCount,omitempty" xml:"AddCustomizationDataCount,omitempty"`
+	// The number of times hotwords were added.
+	//
 	// example:
 	//
 	// 1
 	AddVocabularyDataCount *int32 `json:"AddVocabularyDataCount,omitempty" xml:"AddVocabularyDataCount,omitempty"`
+	// Data is invalid.
+	//
 	// example:
 	//
 	// 1
 	AnnotationInvalid *int32 `json:"AnnotationInvalid,omitempty" xml:"AnnotationInvalid,omitempty"`
+	// The character accuracy rate. Unit: 0.01%.
+	//
 	// example:
 	//
 	// 1
 	CharacterCorrectRate *int32 `json:"CharacterCorrectRate,omitempty" xml:"CharacterCorrectRate,omitempty"`
+	// The character error rate. Unit: 0.01%.
+	//
 	// example:
 	//
 	// 1
 	CharacterErrorRate *int32 `json:"CharacterErrorRate,omitempty" xml:"CharacterErrorRate,omitempty"`
+	// The total number of chats.
+	//
 	// example:
 	//
 	// 1
 	ChatTotalCount *int32 `json:"ChatTotalCount,omitempty" xml:"ChatTotalCount,omitempty"`
+	// Not annotated.
+	//
 	// example:
 	//
 	// 1
 	NoAnnotation *int32 `json:"NoAnnotation,omitempty" xml:"NoAnnotation,omitempty"`
+	// The sentence error rate. Unit: 0.01%.
+	//
 	// example:
 	//
 	// 1
 	SentenceErrorRate *int32 `json:"SentenceErrorRate,omitempty" xml:"SentenceErrorRate,omitempty"`
+	// The word error rate. Unit: 0.01%. This parameter is typically used for English.
+	//
 	// example:
 	//
 	// 1
@@ -350,34 +388,50 @@ func (s *GetAnnotationMissionSummaryResponseBodyDataAsrSummaryInfo) Validate() e
 }
 
 type GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo struct {
+	// The number of correct chats.
+	//
 	// example:
 	//
 	// 1
 	AnnotationCorrectCount *int32 `json:"AnnotationCorrectCount,omitempty" xml:"AnnotationCorrectCount,omitempty"`
+	// Invalid data
+	//
 	// example:
 	//
 	// 1
 	AnnotationInvalid *int32 `json:"AnnotationInvalid,omitempty" xml:"AnnotationInvalid,omitempty"`
+	// The total number of chats.
+	//
 	// example:
 	//
 	// 1
 	ChatTotalCount *int32 `json:"ChatTotalCount,omitempty" xml:"ChatTotalCount,omitempty"`
+	// The number of conversations.
+	//
 	// example:
 	//
 	// 1
 	IntentUserSayCount *int32 `json:"IntentUserSayCount,omitempty" xml:"IntentUserSayCount,omitempty"`
+	// The number of uncovered intents.
+	//
 	// example:
 	//
 	// 1
 	IntentionNotCoveredCount *int32 `json:"IntentionNotCoveredCount,omitempty" xml:"IntentionNotCoveredCount,omitempty"`
+	// The number of detection errors.
+	//
 	// example:
 	//
 	// 1
 	MatchErrorCount *int32 `json:"MatchErrorCount,omitempty" xml:"MatchErrorCount,omitempty"`
+	// Not annotated.
+	//
 	// example:
 	//
 	// 1
 	NoAnnotation *int32 `json:"NoAnnotation,omitempty" xml:"NoAnnotation,omitempty"`
+	// The number of translations that were not recognized.
+	//
 	// example:
 	//
 	// 1
@@ -469,6 +523,7 @@ func (s *GetAnnotationMissionSummaryResponseBodyDataIntentSummaryInfo) Validate(
 }
 
 type GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo struct {
+	// The list of tags.
 	TagSummaryInfoDetailList []*GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList `json:"TagSummaryInfoDetailList,omitempty" xml:"TagSummaryInfoDetailList,omitempty" type:"Repeated"`
 }
 
@@ -503,11 +558,18 @@ func (s *GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfo) Validate() e
 }
 
 type GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList struct {
+	// The number of tags.
+	//
 	// example:
 	//
 	// 3
-	Count *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The name of the tag.
+	//
+	// example:
+	//
+	// 知晓率1_复制
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetAnnotationMissionSummaryResponseBodyDataTagSummaryInfoTagSummaryInfoDetailList) String() string {

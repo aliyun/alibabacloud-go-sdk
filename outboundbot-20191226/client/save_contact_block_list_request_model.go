@@ -18,14 +18,28 @@ type iSaveContactBlockListRequest interface {
 }
 
 type SaveContactBlockListRequest struct {
+	// The list of contacts. [Deprecated]
+	//
 	// example:
 	//
 	// []
 	ContactBlockListList []*string `json:"ContactBlockListList,omitempty" xml:"ContactBlockListList,omitempty" type:"Repeated"`
+	// A JSON string that contains the blocklist. This parameter is required.
+	//
+	// - phoneNumber: The mobile phone number.
+	//
+	// - remark: The remarks.
+	//
+	// - name: The name.
+	//
+	// - creator: The creator.
+	//
 	// example:
 	//
-	// {}
+	// [{"phoneNumber":"132322","remark":"123321","name":"ccc1","creator":"ccc222"}]
 	ContactBlockListsJson *string `json:"ContactBlockListsJson,omitempty" xml:"ContactBlockListsJson,omitempty"`
+	// The instance ID. This parameter is required.
+	//
 	// example:
 	//
 	// c3c92de8-e4bd-4db4-a962-50f8acce40bc

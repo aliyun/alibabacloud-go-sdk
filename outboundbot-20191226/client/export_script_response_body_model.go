@@ -24,23 +24,34 @@ type iExportScriptResponseBody interface {
 }
 
 type ExportScriptResponseBody struct {
+  // The status code of the request.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The signed URL that you can use to download the script. This parameter is returned only for legacy canvases.
   DownloadParams *ExportScriptResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The message returned for the request.
+  // 
   // example:
   // 
   // Success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -119,6 +130,10 @@ func (s *ExportScriptResponseBody) Validate() error {
 }
 
 type ExportScriptResponseBodyDownloadParams struct {
+  // The download URL. This parameter is returned only for legacy canvases.
+  // 
+  // > **For modern canvases**: After the scenario is exported, call the **ListDownloadTasks*	- operation to obtain the \\`TaskId\\` (for example, \\`5d352db754fe430xxxxxxx\\`) and \\`FileId\\` (for example, \\`5d000f3f6eae4228b2731427xxxxxx\\`). Then, call the **CreateDownloadUrl*	- operation to obtain the download URL.
+  // 
   // example:
   // 
   // http://tiangong-staging.oss-cn-shanghai.aliyuncs.com/record/281eb174-3865-41c1-9274-7b6813edadab.wav?Expires=1578624046&OSSAccessKeyId=LTAI****cqw&Signature=dL2dxWS6VcdZrvG9xOMOBMSP3Fg%3D

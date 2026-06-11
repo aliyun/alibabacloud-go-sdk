@@ -18,18 +18,24 @@ type iDeleteDialogueFlowRequest interface {
 }
 
 type DeleteDialogueFlowRequest struct {
+	// The ID of the dialogue flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 40a1457a-d2f3-43cf-ac81-c9e14cf07d88
+	// caab25d1-1f30-4996-8135-0036f5661b43
 	DialogueFlowId *string `json:"DialogueFlowId,omitempty" xml:"DialogueFlowId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the script.
+	//
 	// This parameter is required.
 	//
 	// example:

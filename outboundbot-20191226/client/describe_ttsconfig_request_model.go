@@ -16,12 +16,16 @@ type iDescribeTTSConfigRequest interface {
 }
 
 type DescribeTTSConfigRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0ec0c897-b92c-40e4-9ad7-e6e4f5ce13bb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Script ID
+	//
 	// This parameter is required.
 	//
 	// example:

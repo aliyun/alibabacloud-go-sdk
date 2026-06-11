@@ -26,30 +26,44 @@ type iCreateBeebotIntentLgfResponseBody interface {
 }
 
 type CreateBeebotIntentLgfResponseBody struct {
+	// The internal request ID.
+	//
 	// example:
 	//
 	// 497CFAFF-48CC-161A-AD2C-252DED569037
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// The status code of the API call.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the user utterance template.
+	//
 	// example:
 	//
 	// 5666117
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// The message returned for the API call.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

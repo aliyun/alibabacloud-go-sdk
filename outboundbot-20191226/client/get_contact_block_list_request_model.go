@@ -20,20 +20,28 @@ type iGetContactBlockListRequest interface {
 }
 
 type GetContactBlockListRequest struct {
+	// Specifies whether to return the total number of entries.
+	//
 	// example:
 	//
-	// 100
+	// true
 	CountTotalRow *bool `json:"CountTotalRow,omitempty" xml:"CountTotalRow,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 846e20ae-e113-4231-a792-cb354187c9f6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries (required)
+	//
 	// example:
 	//
 	// 10

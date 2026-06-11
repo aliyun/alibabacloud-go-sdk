@@ -16,12 +16,16 @@ type iExportScriptRequest interface {
 }
 
 type ExportScriptRequest struct {
+  // The instance ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 12f3dd08-0c55-44ce-9b64-e69d35ed3a76
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The scenario ID.
+  // 
   // This parameter is required.
   // 
   // example:

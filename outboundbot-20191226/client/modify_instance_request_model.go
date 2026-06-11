@@ -22,18 +22,36 @@ type iModifyInstanceRequest interface {
 }
 
 type ModifyInstanceRequest struct {
+	// A list of calling numbers.
+	//
+	// > This parameter is optional.
+	//
 	// example:
 	//
 	// ["95187"]
-	CallingNumber       []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 这是新的实例
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The ID of the Outbound Bot instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// 新实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The maximum number of concurrent conversations.
+	//
 	// This parameter is required.
 	//
 	// example:

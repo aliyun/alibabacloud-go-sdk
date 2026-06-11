@@ -13,18 +13,35 @@ type iDownloadRecordingRequest interface {
 	GetInstanceId() *string
 	SetNeedVoiceSliceRecording(v bool) *DownloadRecordingRequest
 	GetNeedVoiceSliceRecording() *bool
+	SetSwapChannels(v bool) *DownloadRecordingRequest
+	GetSwapChannels() *bool
 	SetTaskId(v string) *DownloadRecordingRequest
 	GetTaskId() *string
 }
 
 type DownloadRecordingRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NeedVoiceSliceRecording *bool   `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to retrieve voice slice recordings.
+	//
+	// example:
+	//
+	// false
+	NeedVoiceSliceRecording *bool `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
+	// Specifies whether to swap the left and right audio channels. The default value is `false`.
+	//
+	// example:
+	//
+	// false
+	SwapChannels *bool `json:"SwapChannels,omitempty" xml:"SwapChannels,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49,6 +66,10 @@ func (s *DownloadRecordingRequest) GetNeedVoiceSliceRecording() *bool {
 	return s.NeedVoiceSliceRecording
 }
 
+func (s *DownloadRecordingRequest) GetSwapChannels() *bool {
+	return s.SwapChannels
+}
+
 func (s *DownloadRecordingRequest) GetTaskId() *string {
 	return s.TaskId
 }
@@ -60,6 +81,11 @@ func (s *DownloadRecordingRequest) SetInstanceId(v string) *DownloadRecordingReq
 
 func (s *DownloadRecordingRequest) SetNeedVoiceSliceRecording(v bool) *DownloadRecordingRequest {
 	s.NeedVoiceSliceRecording = &v
+	return s
+}
+
+func (s *DownloadRecordingRequest) SetSwapChannels(v bool) *DownloadRecordingRequest {
+	s.SwapChannels = &v
 	return s
 }
 

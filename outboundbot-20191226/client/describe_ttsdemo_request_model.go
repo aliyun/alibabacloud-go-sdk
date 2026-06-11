@@ -38,36 +38,118 @@ type iDescribeTTSDemoRequest interface {
 }
 
 type DescribeTTSDemoRequest struct {
-	AccessKey          *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The AccessKey (AK) for this namespace.
+	//
+	// > Enter the AK when the engine is xunfei.
+	//
+	// example:
+	//
+	// 5d0f37**********ef56db601****
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// Alibaba Cloud custom voice ID
+	//
+	// example:
+	//
+	// voice-e1be3a6
 	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
-	AppKey             *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Speech service type
+	//
+	// - When using **ali*	- as a custom service, enter the appKey of your Intelligent Speech Interaction project.
+	//
+	// - When using **xunfei*	- as a custom service, enter its appKey.
+	//
+	// example:
+	//
+	// xusi*******RnP7
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Storage engine. Choose from ali, volc, or xunfei.
+	//
+	// - Enter **ali*	- when using the default service or Alibaba Cloud as a custom service.
+	//
+	// - Enter **volc*	- when using the doubao service.
+	//
+	// - Enter **xunfei*	- when using iFLYTEK as a service provider. This option is only available for small-model scenarios.
+	//
+	// example:
+	//
+	// ali
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a8eccb3c-2b26-4b6d-a54f-696b953e33a6
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Service type
+	//
+	// Managed: The default Intelligent Speech Interaction service for Intelligent Outbound Calling (public service).
+	//
+	// Authorized: An Intelligent Speech Interaction service you purchased on Alibaba Cloud public cloud (your private service). You can grant authorization by going to Scenario Management > Edit > Call Service > Custom Service.
+	//
+	// > Set this parameter to Authorized when using Alibaba Cloud\\"s Intelligent Speech Interaction as your custom service provider.
+	//
+	// example:
+	//
+	// Authorized
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	// Pitch. An integer between -500 and 500. Default is 0.
+	//
+	// A value greater than 0 raises pitch.
+	//
+	// A value less than 0 lowers pitch.
+	//
 	// example:
 	//
 	// 0
 	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 5ab2d935-306c-478a-88bf-d08e4e25c1b7
-	ScriptId  *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The AccessKey secret (SK) for this namespace.
+	//
+	// > Enter the SK when the engine is xunfei.
+	//
+	// example:
+	//
+	// OTdhNDE3Z********zQ****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// Speech rate. An integer between -500 and 500. Default is 0.
+	//
+	// A value greater than 0 increases speech speed.
+	//
+	// A value less than 0 decreases speech speed.
+	//
 	// example:
 	//
 	// 0
 	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Text to convert to speech
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Voice ID. Examples include aixia, siyue, and xiaoyun. For the full list of available voices, see the voice list below.
+	//
+	// > Cloned voices use dynamic Voice IDs that are generated during voice cloning. Therefore, specific Voice IDs for cloned voices are not listed here. To get a cloned voice’s Voice ID, call ListVoiceClone from the voice cloning page.
+	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// Volume. An integer between 0 and 100. Default is 50.
+	//
+	// A value greater than 50 increases volume.
+	//
+	// A value less than 50 decreases volume.
+	//
 	// example:
 	//
 	// 50

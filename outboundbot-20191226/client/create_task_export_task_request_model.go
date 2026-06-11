@@ -66,103 +66,161 @@ type iCreateTaskExportTaskRequest interface {
 }
 
 type CreateTaskExportTaskRequest struct {
+	// Start time of the call time range (inclusive)
+	//
 	// example:
 	//
 	// 1646496000000
 	ActualTimeGte *int64 `json:"ActualTimeGte,omitempty" xml:"ActualTimeGte,omitempty"`
+	// End time of the call time range (inclusive)
+	//
 	// example:
 	//
 	// 1646582400000
 	ActualTimeLte *int64 `json:"ActualTimeLte,omitempty" xml:"ActualTimeLte,omitempty"`
+	// Minimum call duration
+	//
 	// example:
 	//
 	// 10
 	CallDurationGte *int64 `json:"CallDurationGte,omitempty" xml:"CallDurationGte,omitempty"`
+	// Maximum call duration
+	//
 	// example:
 	//
 	// 20
 	CallDurationLte *int64 `json:"CallDurationLte,omitempty" xml:"CallDurationLte,omitempty"`
+	// Called number
+	//
 	// example:
 	//
 	// 11111111111
 	CalledNumber  *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Whether the call was answered
+	//
 	// example:
 	//
 	// true
 	HasAnswered *bool `json:"HasAnswered,omitempty" xml:"HasAnswered,omitempty"`
+	// Whether the call ended because the contact rejected it
+	//
 	// example:
 	//
 	// true
 	HasHangUpByRejection *bool `json:"HasHangUpByRejection,omitempty" xml:"HasHangUpByRejection,omitempty"`
+	// Whether the conversation ended normally
+	//
 	// example:
 	//
 	// true
 	HasReachedEndOfFlow *bool `json:"HasReachedEndOfFlow,omitempty" xml:"HasReachedEndOfFlow,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1dcb09c5-d5db-4397-bf65-db854463beea
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task group ID
+	//
 	// example:
 	//
 	// cb731aee-0a5b-4c2b-924c-d9e82eb1d8d7
-	JobGroupId        *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Task name
+	//
+	// example:
+	//
+	// 测试_20220217_160147
 	JobGroupNameQuery *string `json:"JobGroupNameQuery,omitempty" xml:"JobGroupNameQuery,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 82097dd5-54df-475f-beba-eec8f4b7a3e1
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Job status
+	//
 	// example:
 	//
 	// Succeeded
 	JobStatusStringList *string `json:"JobStatusStringList,omitempty" xml:"JobStatusStringList,omitempty"`
+	// Other ID
+	//
 	// example:
 	//
 	// 64ebe700-91b4-49cb-b457-0b7c0b598a86
 	OtherId *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
+	// Page number, starting from 0
+	//
 	// example:
 	//
 	// 0
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time for the ring duration search.
+	//
 	// example:
 	//
 	// 10
 	RecordingDurationGte *int64 `json:"RecordingDurationGte,omitempty" xml:"RecordingDurationGte,omitempty"`
+	// End time of the ring duration search.
+	//
 	// example:
 	//
 	// 20
-	RecordingDurationLte *int64  `json:"RecordingDurationLte,omitempty" xml:"RecordingDurationLte,omitempty"`
-	ScriptNameQuery      *string `json:"ScriptNameQuery,omitempty" xml:"ScriptNameQuery,omitempty"`
+	RecordingDurationLte *int64 `json:"RecordingDurationLte,omitempty" xml:"RecordingDurationLte,omitempty"`
+	// Scenario name
+	//
+	// example:
+	//
+	// 测试
+	ScriptNameQuery *string `json:"ScriptNameQuery,omitempty" xml:"ScriptNameQuery,omitempty"`
+	// Sort field
+	//
 	// example:
 	//
 	// actualTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order. Valid values: asc (ascending), desc (descending)
+	//
 	// example:
 	//
 	// desc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Start time of the task creation time range
+	//
 	// example:
 	//
 	// 1646496000000
 	TaskCreateTimeGte *int64 `json:"TaskCreateTimeGte,omitempty" xml:"TaskCreateTimeGte,omitempty"`
+	// End time of the task creation time range
+	//
 	// example:
 	//
 	// 1646582400000
 	TaskCreateTimeLte *int64 `json:"TaskCreateTimeLte,omitempty" xml:"TaskCreateTimeLte,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 64ebe700-91b4-49cb-b457-0b7c0b598a86
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Call status
+	//
 	// example:
 	//
 	// Succeeded,Failed
 	TaskStatusStringList *string `json:"TaskStatusStringList,omitempty" xml:"TaskStatusStringList,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 82097dd5-54df-475f-beba-eec8f4b7a3e1

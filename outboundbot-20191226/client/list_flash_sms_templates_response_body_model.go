@@ -24,20 +24,34 @@ type iListFlashSmsTemplatesResponseBody interface {
 }
 
 type ListFlashSmsTemplatesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListFlashSmsTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EC08CC41-6870-5594-939A-F758F057898F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded. A value of true indicates a successful call. A value of false indicates a failed call.
+	//
 	// example:
 	//
 	// true
@@ -120,11 +134,23 @@ func (s *ListFlashSmsTemplatesResponseBody) Validate() error {
 }
 
 type ListFlashSmsTemplatesResponseBodyData struct {
+	// The content of the template.
+	//
+	// example:
+	//
+	// 您好，xxx来电。
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// The ID of the flash SMS template.
+	//
 	// example:
 	//
 	// 17*******************01
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// 模板1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

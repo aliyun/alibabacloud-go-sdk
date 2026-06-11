@@ -24,20 +24,34 @@ type iSaveAnnotationMissionTagInfoListResponseBody interface {
 }
 
 type SaveAnnotationMissionTagInfoListResponseBody struct {
+	// The status code of the API call.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *SaveAnnotationMissionTagInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned for the API call.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时，outTaskId：trademark_regnew_public_cn-uax33hol2uu,flowId：null，nodeUUID：541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B356EDC-F69A-53B0-B4AF-2AC42200684E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that the call failed.
+	//
 	// example:
 	//
 	// true
@@ -116,8 +130,20 @@ func (s *SaveAnnotationMissionTagInfoListResponseBody) Validate() error {
 }
 
 type SaveAnnotationMissionTagInfoListResponseBodyData struct {
-	ExecCount *int32  `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of successful operations.
+	//
+	// example:
+	//
+	// 1
+	ExecCount *int32 `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
+	// The message returned for the API call.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时，outTaskId：trademark_regnew_public_cn-uax33hol2uu，flowId：null，nodeUUID：541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true

@@ -52,60 +52,225 @@ type iCreateScriptRequest interface {
 }
 
 type CreateScriptRequest struct {
-	AgentId  *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	AgentLlm *bool   `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
+	// Robot workspace ID
+	//
 	// example:
 	//
-	// {\\"appKey\\":\\"kknxKIhTTUcpCzYX\\",\\"maxEndSilence\\":\\"400\\",\\"silenceTimeout\\":\\"5\\"}
+	// 1198938
+	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Robot workspace access Key
+	//
+	// example:
+	//
+	// 9137ab9c27044921860030adf8590ec4_p_outbound_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Is the robot workspace a Large Language Model (LLM) workspace?
+	//
+	// example:
+	//
+	// false
+	AgentLlm *bool `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
+	// ASR configuration. Parameter definitions:
+	//
+	// - **appKey**: Alibaba Cloud account appKey.
+	//
+	// - **maxEndSilence**: Voice endpoint detection duration.
+	//
+	// - **silenceTimeout**: Silence timeout. Unit: seconds. The user times out after N seconds of silence.
+	//
+	// - **engine**: Invoke service; [ali, xunfei]
+	//
+	// - **nlsServiceType**: Invoke service type [Managed, Authorized]
+	//
+	// - **engineXunfei**: If the caller is xunfei, enter the corresponding configuration.
+	//
+	// > If you select ali as the engine and Authorized as the nlsServiceType, a custom service is used, and the service provider is ali. If you select ali as the engine and Managed as the nlsServiceType, the default service is used. If you select xunfei as the engine and Authorized as the nlsServiceType, xunfei is the service provider. You must enter the xunfei configuration: {"uuid":"ed2xxxxxxxxx","globalMaxEndSilence":700,"globalMaxEndSilenceEnable":true}
+	//
+	// - **globalMaxEndSilence**: Silence detection. Unit: milliseconds.
+	//
+	// - **globalMaxEndSilenceEnable**: Silence detection switch. Enabled by default.
+	//
+	// - **speechNoiseThreshold**: Noise filtering threshold
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"appKey": "oQDVNlE6fZ5mg46X",
+	//
+	// 	"engine": "ali",
+	//
+	// 	"engineXunfei": "",
+	//
+	// 	"globalMaxEndSilence": 700,
+	//
+	// 	"globalMaxEndSilenceEnable": true,
+	//
+	// 	"maxEndSilence": "500",
+	//
+	// 	"nlsServiceType": "Managed",
+	//
+	// 	"silenceTimeout": "5000",
+	//
+	// 	"speechNoiseThreshold": "0"
+	//
+	// }
 	AsrConfig *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	// If the NluServiceType of the instance is Authorized or Provided, specify the ID of the chatbot instance to which the script needs to be attached using this field.
+	//
 	// example:
 	//
 	// chatbot-cn-IfaUfqaUnb
 	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
+	// Emotion detection configuration switch (applicable to small models)
+	//
 	// example:
 	//
 	// true
 	EmotionEnable *bool `json:"EmotionEnable,omitempty" xml:"EmotionEnable,omitempty"`
+	// Industry
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 教育
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c46001bc-3ead-4bfd-9a69-4b5b66a4a3f4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Intelligent sentence segmentation configuration switch (applicable to small models)
+	//
 	// example:
 	//
 	// true
 	LongWaitEnable *bool `json:"LongWaitEnable,omitempty" xml:"LongWaitEnable,omitempty"`
+	// Connective phrase configuration switch (applicable to small models)
+	//
 	// example:
 	//
 	// true
 	MiniPlaybackEnable *bool `json:"MiniPlaybackEnable,omitempty" xml:"MiniPlaybackEnable,omitempty"`
+	// Graceful interruption configuration switch (applicable to small models)
+	//
 	// example:
 	//
 	// true
-	NewBargeInEnable *bool   `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
-	NluAccessType    *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
-	NluEngine        *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	NewBargeInEnable *bool `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
+	// NLU access method (applicable only to Large Language Model (LLM) scenarios). Enumeration: Managed - Access using an Alibaba public account. This field is empty for non-LLM scenarios.
+	//
+	// example:
+	//
+	// Managed
+	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// NLU engine (applicable only to Large Language Model (LLM) scenarios). This field is empty for non-LLM scenarios.
+	//
+	// - Prompts - Large Language Model (LLM) scenario,
+	//
+	// - SSE_FUNCTION - Function Compute pattern.
+	//
+	// - BeeBot - Workflow pattern.
+	//
+	// example:
+	//
+	// Prompts
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// Scenario
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 回访
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// For notification instances, pass in the script list. Deprecated.
+	//
 	// example:
 	//
 	// []
-	ScriptContent     []*string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty" type:"Repeated"`
-	ScriptDescription *string   `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	ScriptContent []*string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty" type:"Repeated"`
+	// Script description
+	//
+	// example:
+	//
+	// 课程回复话术
+	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	// Script name
+	//
 	// This parameter is required.
-	ScriptName                 *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	//
+	// example:
+	//
+	// 课程满意度回访
+	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// > If nluEngine is SSE_FUNCTION, you must pass in the corresponding configuration.
+	//
+	// Function Compute service pattern configuration
+	//
+	// - fcRegion: Function service region
+	//
+	// - fcFunction: Function service name
+	//
+	// - fcHttpTriggerUrl Function service trigger
+	//
+	// example:
+	//
+	// {"fcRegion":"cn-shanghai","fcFunction":"waihu_test","fcHttpTriggerUrl":"https://waihu-test.xxxxxxxxxxx.cn-shanghai-vpc.fcapp.run"}
 	ScriptNluProfileJsonString *string `json:"ScriptNluProfileJsonString,omitempty" xml:"ScriptNluProfileJsonString,omitempty"`
+	// For notification instances, pass in the script voice list. Deprecated.
+	//
 	// example:
 	//
 	// []
 	ScriptWaveform []*string `json:"ScriptWaveform,omitempty" xml:"ScriptWaveform,omitempty" type:"Repeated"`
+	// TTS configuration. Parameter definitions:
+	//
+	// - **voice**: Speaker.
+	//
+	// - **volume**: Volume. Value range: 0 to 100. Default value: 50.
+	//
+	// - **speechRate**: Speech rate. Value range: -500 to 500. Default value: 0.
+	//
+	// - **pitchRate**: Pitch rate. Value range: -500 to 500. Default value: 0.
+	//
+	// - **globalInterruptible**: Voice interruption configuration.
+	//
+	//   -**engine**: Invoke service; [ali, volc, xunfei]. Large Language Model (LLM) scenarios do not support xunfei.
+	//
+	// - **nlsServiceType**: Service type. [Managed, Authorized]
+	//
+	// - **engineXunfei**: Configuration when the service provider is xunfei.
+	//
+	// > 1\\. If you select ali as the engine and Authorized as the nlsServiceType, a custom service is used. 2. If the service provider is ali, and you select ali as the engine and Managed as the nlsServiceType, the default service is used. 3. If you select xunfei as the engine (applicable to small model scenarios) and Authorized as the nlsServiceType, xunfei is the service provider. You must enter the engineXunfei configuration: {"pitchRate":50,"speechRate":50,"voice":"aisjiuxu","volume":50}. 4. If you select volc as the engine and Authorized as the nlsServiceType, it applies to doubao.
+	//
 	// example:
 	//
-	// {\\"voice\\":\\"aixia\\",\\"volume\\":\\"50\\",\\"speechRate\\":\\"-150\\",\\"pitchRate\\":\\"0\\"}
+	// {
+	//
+	// 	"appKey": "oQDVNlE6fZ5mg46X",
+	//
+	// 	"engine": "ali",
+	//
+	// 	"engineXunfei": "",
+	//
+	// 	"globalInterruptible": true,
+	//
+	// 	"nlsServiceType": "Managed",
+	//
+	// 	"pitchRate": "0",
+	//
+	// 	"speechRate": "0",
+	//
+	// 	"voice": "zhiyuan",
+	//
+	// 	"volume": "50"
+	//
+	// }
 	TtsConfig *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
 }
 

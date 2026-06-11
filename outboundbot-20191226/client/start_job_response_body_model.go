@@ -26,27 +26,39 @@ type iStartJobResponseBody interface {
 }
 
 type StartJobResponseBody struct {
+	// List of call IDs
 	CallIds []*StartJobResponseBodyCallIds `json:"CallIds,omitempty" xml:"CallIds,omitempty" type:"Repeated"`
+	// API status code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8a621aa1-d2e7-43f3-b54d-8830af73c468
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded. true means success. false means failure.
+	//
 	// example:
 	//
 	// true
-	Success *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Mapping between third-party contact IDs and outbound call task IDs
 	TaskIds []*StartJobResponseBodyTaskIds `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
@@ -144,10 +156,14 @@ func (s *StartJobResponseBody) Validate() error {
 }
 
 type StartJobResponseBodyCallIds struct {
+	// Third-party contact ID
+	//
 	// example:
 	//
 	// c93cdd1c-f9b5-4758-be43-7a237a7eaa1d
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Call ID for the task
+	//
 	// example:
 	//
 	// 62229628-45d8-41bd-a80f-6e4c0a39f79b
@@ -185,10 +201,14 @@ func (s *StartJobResponseBodyCallIds) Validate() error {
 }
 
 type StartJobResponseBodyTaskIds struct {
+	// Third-party contact ID
+	//
 	// example:
 	//
 	// c93cdd1c-f9b5-4758-be43-7a237a7eaa1d
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Outbound call task ID
+	//
 	// example:
 	//
 	// 62229628-45d8-41bd-a80f-6e4c0a39f79b

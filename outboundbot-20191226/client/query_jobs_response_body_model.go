@@ -24,23 +24,34 @@ type iQueryJobsResponseBody interface {
 }
 
 type QueryJobsResponseBody struct {
+	// HTTP status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Jobs           *QueryJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Job data.
+	Jobs *QueryJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *QueryJobsResponseBody) Validate() error {
 }
 
 type QueryJobsResponseBodyJobs struct {
+	// Job array.
 	List []*QueryJobsResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -192,44 +210,114 @@ func (s *QueryJobsResponseBodyJobs) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsList struct {
-	CallingNumbers []*string                                `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*QueryJobsResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*QueryJobsResponseBodyJobsListExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
+	// Caller number list.
+	CallingNumbers []*string `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
+	// Contact information. This parameter is deprecated.
+	//
+	// > Use the DescribeJob operation instead.
+	Contacts []*QueryJobsResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
+	// Business data. Shows tag collection status for Large Language Model (LLM) scenarios.
+	//
+	// > Keys TenantId and ServiceId are system parameters.
+	Extras []*QueryJobsResponseBodyJobsListExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
+	// Failure reason.
+	//
+	// - Unknown
+	//
+	// - NoAnswer
+	//
+	// - InvalidStrategy
+	//
+	// - TimeUp
+	//
+	// - NoStrategy
+	//
+	// - CallFailed
+	//
+	// - PerDayCallCountLimit
+	//
+	// - ContactBlockList
+	//
+	// - EmptyNumber
+	//
+	// - JobPerDayCallCountLimit
+	//
+	// - VerificationCancelled
+	//
+	// - ContactSuspended
+	//
+	// - InArrears
+	//
+	// - OutOfService
+	//
 	// example:
 	//
 	// NoAnswer
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// fce6c599-8ede-40e3-9f78-0928eda7b4e8
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// fce6c599-8ede-40e3-9f78-0928eda7b4e8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Associated business ID.
+	//
 	// example:
 	//
 	// d5971d98-7312-4f0e-a918-a17d67133e28
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// Scenario ID. This parameter is deprecated.
+	//
 	// example:
 	//
 	// ade80092-03d9-4f4d-ad4f-ab8a247d3150
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Job status.
+	//
+	// - Scheduling (0)
+	//
+	// - Executing (1)
+	//
+	// - Succeeded (2)
+	//
+	// - Paused (3)
+	//
+	// - Failed (4)
+	//
+	// - Cancelled (5)
+	//
+	// - Drafted (6)
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Strategy ID.
+	//
 	// example:
 	//
 	// c8a2b7f2-ad1a-4865-b872-d0080d9802d9
-	StrategyId *string                                 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary    []*QueryJobsResponseBodyJobsListSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	TagHits    []*QueryJobsResponseBodyJobsListTagHits `json:"TagHits,omitempty" xml:"TagHits,omitempty" type:"Repeated"`
-	Tasks      []*QueryJobsResponseBodyJobsListTasks   `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// Conversation summary. This field is deprecated.
+	Summary []*QueryJobsResponseBodyJobsListSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
+	// Tags hit in small model scenarios.
+	TagHits []*QueryJobsResponseBodyJobsListTagHits `json:"TagHits,omitempty" xml:"TagHits,omitempty" type:"Repeated"`
+	// Call list. This parameter is deprecated.
+	//
+	// > Use the searchTask operation instead.
+	Tasks []*QueryJobsResponseBodyJobsListTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s QueryJobsResponseBodyJobsList) String() string {
@@ -416,28 +504,58 @@ func (s *QueryJobsResponseBodyJobsList) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListContacts struct {
+	// Contact ID.
+	//
 	// example:
 	//
 	// db3db762-e421-44c9-9a01-cb423470757c
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Contact name.
+	//
 	// example:
 	//
-	// 72dcd26b-f12d-4c27-b3af-18f6aed5b160
+	// 张三
+	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// Honorific.
+	//
+	// example:
+	//
+	// 张先生
+	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	// Job ID.
+	//
+	// example:
+	//
+	// fce6c599-8ede-40e3-9f78-0928eda7b4e8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Phone number.
+	//
 	// example:
 	//
 	// 135****8888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Associated business ID.
+	//
 	// example:
 	//
 	// 2fa6bac3-06da-4315-82ab-72d6fd3a6f34
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// Role.
+	//
 	// example:
 	//
 	// *
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Status.
+	//
+	// - Available
+	//
+	// - WrongNumber
+	//
+	// - DoesNotExist
+	//
+	// - Suspended
+	//
 	// example:
 	//
 	// Available
@@ -529,10 +647,14 @@ func (s *QueryJobsResponseBodyJobsListContacts) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListExtras struct {
+	// Business data key.
+	//
 	// example:
 	//
 	// djrq
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Business data value.
+	//
 	// example:
 	//
 	// 2019-08-21 09:49:59.0
@@ -570,34 +692,50 @@ func (s *QueryJobsResponseBodyJobsListExtras) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListSummary struct {
+	// Category.
+	//
 	// example:
 	//
 	// {}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Content.
+	//
 	// example:
 	//
 	// 5
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Call record ID.
+	//
 	// example:
 	//
 	// 098b9b09-9223-4a8b-a422-99726f0457f3
 	ConversationDetailId *string `json:"ConversationDetailId,omitempty" xml:"ConversationDetailId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// ba1ba502-d044-48c0-b710-0f1f840a7c53
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
-	// 994b8baf-7ef8-480c-b141-b7b6db77c4df
+	// b72425bd-7871-4050-838e-033d80d754b7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Summary ID.
+	//
 	// example:
 	//
 	// dc67d544-df06-4625-ae48-13e3c9f72d8a
 	SummaryId *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
+	// Summary name.
+	//
 	// example:
 	//
 	// score
 	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// 9fdf7a81-6781-4ab8-92fb-1d4231ef365e
@@ -689,8 +827,18 @@ func (s *QueryJobsResponseBodyJobsListSummary) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListTagHits struct {
+	// Tag group name.
+	//
+	// example:
+	//
+	// 意向收集
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Tag name.
+	//
+	// example:
+	//
+	// 有意向
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryJobsResponseBodyJobsListTagHits) String() string {
@@ -724,51 +872,142 @@ func (s *QueryJobsResponseBodyJobsListTagHits) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListTasks struct {
+	// Actual call time.
+	//
 	// example:
 	//
 	// 1579068424883
 	ActualTime *int64 `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
+	// Summary. This field is deprecated.
+	//
 	// example:
 	//
 	// 1
 	Brief *string `json:"Brief,omitempty" xml:"Brief,omitempty"`
+	// SIP call ID.
+	//
 	// example:
 	//
 	// 1528189846043
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Callee number.
+	//
 	// example:
 	//
 	// 135****8888
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Caller number.
+	//
 	// example:
 	//
 	// 0571****3106
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Chatbot ID.
+	//
 	// example:
 	//
 	// 1234
-	ChatbotId *string                                    `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	Contact   *QueryJobsResponseBodyJobsListTasksContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
+	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
+	// Contact information.
+	Contact *QueryJobsResponseBodyJobsListTasksContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
+	// Call duration in seconds.
+	//
 	// example:
 	//
 	// 120
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// b72425bd-7871-4050-838e-033d80d754b7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Scheduled call time.
+	//
 	// example:
 	//
 	// 1579068424883
 	PlanedTime *int64 `json:"PlanedTime,omitempty" xml:"PlanedTime,omitempty"`
+	// Scenario ID.
+	//
 	// example:
 	//
 	// ade80092-03d9-4f4d-ad4f-ab8a247d3150
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// The status of the task. Valid values are described below. Note that the Succeeded status is subdivided by reason. The generic Succeeded: 1 (Connected) status is no longer returned, and a specific success reason is provided instead.
+	//
+	// - Executing: 0 (Calling).
+	//
+	// - Succeeded: 1 (Connected).
+	//
+	// - NoAnswer: 2 (Not connected – No answer).
+	//
+	// - NotExist: 3 (Not connected – Nonexistent number).
+	//
+	// - Busy: 4 (Not connected – Line busy).
+	//
+	// - Cancelled: 5 (Not dialed – Task stopped).
+	//
+	// - Failed: 6 (Failed).
+	//
+	// - NotConnected: 7 (Not connected – Unreachable).
+	//
+	// - PoweredOff: 8 (Not connected – Powered off).
+	//
+	// - OutOfService: 9 (Not connected – Service suspended).
+	//
+	// - InArrears: 10 (Not connected – Account has an overdue payment).
+	//
+	// - EmptyNumber: 11 (Not dialed – Invalid number).
+	//
+	// - PerDayCallCountLimit: 12 (Not dialed – Daily call limit exceeded).
+	//
+	// - ContactBlockList: 13 (Not dialed – Number on blocklist).
+	//
+	// - CallerNotRegistered: 14 (Not dialed – Caller ID not registered).
+	//
+	// - Terminated: 15 (Not dialed – Terminated).
+	//
+	// - VerificationCancelled: 16 (Not dialed – Canceled due to pre-call validation failure).
+	//
+	// - OutOfServiceNoCall: 17 (Not dialed – Service suspended).
+	//
+	// - InArrearsNoCall: 18 (Not dialed – Account has an overdue payment).
+	//
+	// - CallingNumberNotExist: 19 (Not dialed – Caller ID does not exist).
+	//
+	// - SucceededFinish: 20 (Connected – Completed normally).
+	//
+	// - SucceededChatbotHangUpAfterNoAnswer: 21 (Connected – Bot hung up due to unrecognized input).
+	//
+	// - SucceededChatbotHangUpAfterSilence: 22 (Connected – Bot hung up due to a silence timeout).
+	//
+	// - SucceededClientHangUpAfterNoAnswer: 23 (Connected – User hung up due to unrecognized input).
+	//
+	// - SucceededClientHangUp: 24 (Connected – User hung up).
+	//
+	// - SucceededTransferByIntent: 25 (Connected – Transferred to an agent based on an intent match).
+	//
+	// - SucceededTransferAfterNoAnswer: 26 (Connected – Transferred to an agent due to unrecognized input).
+	//
+	// - SucceededInoInterAction: 27 (Connected – No user interaction).
+	//
+	// - SucceededError: 28 (Connected – Call interrupted by a system error).
+	//
+	// - SucceededSpecialInterceptVoiceAssistant: 29 (Connected – Intercepted by a voice assistant).
+	//
+	// - SucceededSpecialInterceptExtensionNumberTransfer: 30 (Connected – Intercepted due to an extension transfer).
+	//
+	// - SucceededSpecialInterceptCustomSpecialIntercept: 31 (Connected – Intercepted by a custom rule).
+	//
+	// - HighRiskSipCode: 32 (Not dialed – High-risk number).
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// ff44709e-39a6-43ba-959b-20fcabe3e496
@@ -910,28 +1149,50 @@ func (s *QueryJobsResponseBodyJobsListTasks) Validate() error {
 }
 
 type QueryJobsResponseBodyJobsListTasksContact struct {
+	// Contact ID.
+	//
 	// example:
 	//
 	// db3db762-e421-44c9-9a01-cb423470757c
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Contact name.
+	//
+	// example:
+	//
+	// 张三
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	// Honorific.
+	//
+	// example:
+	//
+	// 张先生
+	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// b72425bd-7871-4050-838e-033d80d754b7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Contact phone number.
+	//
 	// example:
 	//
 	// 135****8888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Business association ID.
+	//
 	// example:
 	//
 	// 2fa6bac3-06da-4315-82ab-72d6fd3a6f34
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// Role.
+	//
 	// example:
 	//
 	// *
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Status.
+	//
 	// example:
 	//
 	// Available

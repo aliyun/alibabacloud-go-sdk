@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建外呼任务
+// Creates outbound call jobs in batches.
 //
 // @param request - AssignJobsRequest
 //
@@ -81,7 +81,7 @@ func (client *Client) AssignJobsWithContext(ctx context.Context, request *Assign
 
 // Summary:
 //
-// 异步创建外呼任务
+// Asynchronously creates outbound jobs.
 //
 // @param tmpReq - AssignJobsAsyncRequest
 //
@@ -149,6 +149,10 @@ func (client *Client) AssignJobsAsyncWithContext(ctx context.Context, tmpReq *As
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels jobs that are pending or in progress. This operation cannot cancel jobs that are already in a call.
+//
 // @param request - CancelJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -209,6 +213,10 @@ func (client *Client) CancelJobsWithContext(ctx context.Context, request *Cancel
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group of a resource.
+//
 // @param request - ChangeResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -253,6 +261,10 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// You can create an intelligent configuration.
+//
 // @param request - CreateAgentProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -347,7 +359,7 @@ func (client *Client) CreateAgentProfileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建标注任务
+// Creates an annotation task.
 //
 // @param tmpReq - CreateAnnotationMissionRequest
 //
@@ -465,7 +477,7 @@ func (client *Client) CreateAnnotationMissionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建任务
+// Deprecated. Do not use this operation to batch-create outbound calling jobs.
 //
 // @param request - CreateBatchJobsRequest
 //
@@ -541,7 +553,7 @@ func (client *Client) CreateBatchJobsWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// # CreateBatchRepeatJob
+// Copy an existing task group to reinitiate an outbound task.
 //
 // @param request - CreateBatchRepeatJobRequest
 //
@@ -637,7 +649,7 @@ func (client *Client) CreateBatchRepeatJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # CreateBeebotIntent
+// Creates an intent for a small-model scenario.
 //
 // @param tmpReq - CreateBeebotIntentRequest
 //
@@ -695,7 +707,7 @@ func (client *Client) CreateBeebotIntentWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # CreateBeebotIntentLgf
+// Creates a user utterance template for an intent in a small model scenario.
 //
 // @param tmpReq - CreateBeebotIntentLgfRequest
 //
@@ -753,7 +765,7 @@ func (client *Client) CreateBeebotIntentLgfWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # CreateBeebotIntentUserSay
+// Creates a user utterance for an intent in a small model scenario.
 //
 // @param tmpReq - CreateBeebotIntentUserSayRequest
 //
@@ -809,6 +821,10 @@ func (client *Client) CreateBeebotIntentUserSayWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// This legacy canvas API creates a dialogue flow.
+//
 // @param request - CreateDialogueFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -861,6 +877,10 @@ func (client *Client) CreateDialogueFlowWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a URL for a Download Hub task.
+//
 // @param request - CreateDownloadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -897,6 +917,10 @@ func (client *Client) CreateDownloadUrlWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global question in a legacy canvas.
+//
 // @param request - CreateGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -957,6 +981,10 @@ func (client *Client) CreateGlobalQuestionWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an outbound call instance.
+//
 // @param request - CreateInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1019,7 +1047,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建实例绑定号码
+// Binds a number to a business instance.
 //
 // @param request - CreateInstanceBindNumberRequest
 //
@@ -1065,6 +1093,10 @@ func (client *Client) CreateInstanceBindNumberWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an intent in a legacy canvas script.
+//
 // @param request - CreateIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1125,6 +1157,10 @@ func (client *Client) CreateIntentWithContext(ctx context.Context, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a job data parsing task.
+//
 // @param request - CreateJobDataParsingTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1171,7 +1207,7 @@ func (client *Client) CreateJobDataParsingTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建任务组
+// Create a job group.
 //
 // @param request - CreateJobGroupRequest
 //
@@ -1263,7 +1299,7 @@ func (client *Client) CreateJobGroupWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建任务组到处任务
+// Creates an export task for an outbound job group.
 //
 // @param request - CreateJobGroupExportTaskRequest
 //
@@ -1315,7 +1351,7 @@ func (client *Client) CreateJobGroupExportTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 新建场景
+// Create a scenario.
 //
 // @param request - CreateScriptRequest
 //
@@ -1433,6 +1469,14 @@ func (client *Client) CreateScriptWithContext(ctx context.Context, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a recording for the broadcast script.
+//
+// Description:
+//
+// **
+//
 // @param request - CreateScriptWaveformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1489,6 +1533,10 @@ func (client *Client) CreateScriptWaveformWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a tag for use in the legacy canvas.
+//
 // @param request - CreateTagRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1543,7 +1591,7 @@ func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateT
 
 // Summary:
 //
-// 外呼历史导出
+// Create an asynchronous task to export outbound call history.
 //
 // @param request - CreateTaskExportTaskRequest
 //
@@ -1583,7 +1631,7 @@ func (client *Client) CreateTaskExportTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建密钥
+// Creates a key.
 //
 // @param request - CreateTenantKeyRequest
 //
@@ -1618,6 +1666,10 @@ func (client *Client) CreateTenantKeyWithContext(ctx context.Context, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes Large Language Model (LLM) agents.
+//
 // @param tmpReq - DeleteAgentProfilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1670,7 +1722,7 @@ func (client *Client) DeleteAgentProfilesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # DeleteBeebotIntent
+// Delete an intent in a small-model scenario.
 //
 // @param request - DeleteBeebotIntentRequest
 //
@@ -1722,7 +1774,7 @@ func (client *Client) DeleteBeebotIntentWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # DeleteBeebotIntentLgf
+// Deletes utterance templates for intents in small model scenarios.
 //
 // @param request - DeleteBeebotIntentLgfRequest
 //
@@ -1778,7 +1830,7 @@ func (client *Client) DeleteBeebotIntentLgfWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # DeleteBeebotIntentUserSay
+// Delete user queries for intents in the small-model scenario.
 //
 // @param request - DeleteBeebotIntentUserSayRequest
 //
@@ -1832,6 +1884,10 @@ func (client *Client) DeleteBeebotIntentUserSayWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can delete a do-not-call list.
+//
 // @param request - DeleteContactBlockListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1880,6 +1936,10 @@ func (client *Client) DeleteContactBlockListWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the global outbound calling policy whitelist.
+//
 // @param request - DeleteContactWhiteListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1928,6 +1988,10 @@ func (client *Client) DeleteContactWhiteListWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a dialogue flow. This is a legacy canvas API.
+//
 // @param request - DeleteDialogueFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1976,6 +2040,10 @@ func (client *Client) DeleteDialogueFlowWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global question from a legacy canvas script.
+//
 // @param request - DeleteGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2024,6 +2092,10 @@ func (client *Client) DeleteGlobalQuestionWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Intelligent Outbound Calling instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2064,6 +2136,10 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an intent. This is a legacy API.
+//
 // @param request - DeleteIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2112,6 +2188,10 @@ func (client *Client) DeleteIntentWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a job group.
+//
 // @param request - DeleteJobGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2156,6 +2236,10 @@ func (client *Client) DeleteJobGroupWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an outbound call number. This API is deprecated.
+//
 // @param request - DeleteOutboundCallNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2200,6 +2284,10 @@ func (client *Client) DeleteOutboundCallNumberWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified script.
+//
 // @param request - DeleteScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2244,6 +2332,10 @@ func (client *Client) DeleteScriptWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes uploaded recordings for a small-model scenario.
+//
 // @param request - DeleteScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2292,6 +2384,10 @@ func (client *Client) DeleteScriptRecordingWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a script recording.
+//
 // @param request - DeleteScriptWaveformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2342,11 +2438,11 @@ func (client *Client) DeleteScriptWaveformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # DescribeBeebotIntent
+// Retrieves the intent in the small model scenario.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - DescribeBeebotIntentRequest
 //
@@ -2396,6 +2492,10 @@ func (client *Client) DescribeBeebotIntentWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves performance statistics for task labels.
+//
 // @param request - DescribeDialogueNodeStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2446,7 +2546,7 @@ func (client *Client) DescribeDialogueNodeStatisticsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # DescribeDsReports
+// Describes DS reports.
 //
 // @param request - DescribeDsReportsRequest
 //
@@ -2492,6 +2592,14 @@ func (client *Client) DescribeDsReportsWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a global question in a legacy canvas script.
+//
+// Description:
+//
+// **
+//
 // @param request - DescribeGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2542,7 +2650,7 @@ func (client *Client) DescribeGlobalQuestionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 任务组数据统计
+// Returns the execution status of tasks in a task group.
 //
 // @param request - DescribeGroupExecutingInfoRequest
 //
@@ -2590,7 +2698,7 @@ func (client *Client) DescribeGroupExecutingInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// # DescribeInstance
+// Queries the details of an Outbound Calling instance.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -2632,6 +2740,10 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an intent. This is a legacy Canvas API.
+//
 // @param request - DescribeIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2682,7 +2794,7 @@ func (client *Client) DescribeIntentWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// # DescribeIntentStatistics
+// Queries the performance statistics of intents for a task group.
 //
 // @param request - DescribeIntentStatisticsRequest
 //
@@ -2734,7 +2846,7 @@ func (client *Client) DescribeIntentStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取job信息
+// Retrieves the conversation data for a specific job.
 //
 // @param request - DescribeJobRequest
 //
@@ -2784,6 +2896,10 @@ func (client *Client) DescribeJobWithContext(ctx context.Context, request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the parsing progress of an uploaded job file.
+//
 // @param request - DescribeJobDataParsingTaskProgressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2830,7 +2946,7 @@ func (client *Client) DescribeJobDataParsingTaskProgressWithContext(ctx context.
 
 // Summary:
 //
-// # DescribeJobGroup
+// Retrieves data for intelligent outbound call job groups.
 //
 // @param request - DescribeJobGroupRequest
 //
@@ -2880,6 +2996,10 @@ func (client *Client) DescribeJobGroupWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the progress of a task group export task. This operation is deprecated. Use ListDownloadTasks instead.
+//
 // @param request - DescribeJobGroupExportTaskProgressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2926,7 +3046,7 @@ func (client *Client) DescribeJobGroupExportTaskProgressWithContext(ctx context.
 
 // Summary:
 //
-// 获取场景信息
+// Returns information about a script.
 //
 // @param request - DescribeScriptRequest
 //
@@ -2972,6 +3092,10 @@ func (client *Client) DescribeScriptWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the voice configuration of a script created in the legacy canvas.
+//
 // @param request - DescribeScriptVoiceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3020,6 +3144,10 @@ func (client *Client) DescribeScriptVoiceConfigWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the text-to-speech (TTS) configuration information.
+//
 // @param request - DescribeTTSConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3064,6 +3192,10 @@ func (client *Client) DescribeTTSConfigWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Preview text-to-speech (TTS) audio.
+//
 // @param request - DescribeTTSDemoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3152,6 +3284,10 @@ func (client *Client) DescribeTTSDemoWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries statistics about tag hits. This is a legacy canvas API.
+//
 // @param request - DescribeTagHitsSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3198,7 +3334,7 @@ func (client *Client) DescribeTagHitsSummaryWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 号码绑定实例列表
+// Lists the instances to which a phone number is bound in a tenant.
 //
 // @param request - DescribeTenantBindNumberRequest
 //
@@ -3240,6 +3376,10 @@ func (client *Client) DescribeTenantBindNumberWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// This robot dialogue interface handles CC callback outbound calls. (Deprecated)
+//
 // @param request - DialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3322,7 +3462,7 @@ func (client *Client) DialogueWithContext(ctx context.Context, request *Dialogue
 
 // Summary:
 //
-// # DownloadRecording
+// Downloads a call recording.
 //
 // @param request - DownloadRecordingRequest
 //
@@ -3343,6 +3483,10 @@ func (client *Client) DownloadRecordingWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.NeedVoiceSliceRecording) {
 		query["NeedVoiceSliceRecording"] = request.NeedVoiceSliceRecording
+	}
+
+	if !dara.IsNil(request.SwapChannels) {
+		query["SwapChannels"] = request.SwapChannels
 	}
 
 	if !dara.IsNil(request.TaskId) {
@@ -3372,6 +3516,10 @@ func (client *Client) DownloadRecordingWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Download script recordings by retrieving their URLs. This operation is intended for small model scenarios.
+//
 // @param request - DownloadScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3420,6 +3568,10 @@ func (client *Client) DownloadScriptRecordingWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Duplicates an existing script. This operation applies only to the legacy canvas.
+//
 // @param request - DuplicateScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3468,6 +3620,10 @@ func (client *Client) DuplicateScriptWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports a scenario.
+//
 // @param request - ExportScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3512,6 +3668,10 @@ func (client *Client) ExportScriptWithContext(ctx context.Context, request *Expo
 	return _result, _err
 }
 
+// Summary:
+//
+// Upload a hotword list file.
+//
 // @param request - GenerateUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3556,6 +3716,10 @@ func (client *Client) GenerateUploadUrlWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the delay before audio playback begins after a call is answered.
+//
 // @param request - GetAfterAnswerDelayPlaybackRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3600,6 +3764,10 @@ func (client *Client) GetAfterAnswerDelayPlaybackWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the configuration of an agent.
+//
 // @param request - GetAgentProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3648,6 +3816,10 @@ func (client *Client) GetAgentProfileWithContext(ctx context.Context, request *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves an agent profile template.
+//
 // @param request - GetAgentProfileTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3692,6 +3864,10 @@ func (client *Client) GetAgentProfileTemplateWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// null
+//
 // @param request - GetAnnotationMissionSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3780,6 +3956,10 @@ func (client *Client) GetAnnotationMissionTagInfoListWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information such as the Automatic Speech Recognition (ASR) model list and hotword list. This operation is deprecated.
+//
 // @param request - GetAsrServerInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3826,7 +4006,7 @@ func (client *Client) GetAsrServerInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取异步外呼任务上传结果
+// Retrieves the result of an asynchronous outbound call task upload.
 //
 // @param request - GetAssignJobsAsyncResultRequest
 //
@@ -3870,7 +4050,7 @@ func (client *Client) GetAssignJobsAsyncResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取系统策略配置
+// Retrieve the global outbound time periods for the outbound calling system.
 //
 // @param request - GetBaseStrategyPeriodRequest
 //
@@ -3918,7 +4098,7 @@ func (client *Client) GetBaseStrategyPeriodWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # GetContactBlockList
+// Retrieves the list of contacts blocked for outbound calls.
 //
 // @param request - GetContactBlockListRequest
 //
@@ -3974,7 +4154,7 @@ func (client *Client) GetContactBlockListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # GetContactWhiteList
+// Retrieves the global outbound call policy whitelist.
 //
 // @param request - GetContactWhiteListRequest
 //
@@ -4028,6 +4208,10 @@ func (client *Client) GetContactWhiteListWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the current concurrency of an instance.
+//
 // @param request - GetCurrentConcurrencyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4070,7 +4254,7 @@ func (client *Client) GetCurrentConcurrencyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # GetEmptyNumberNoMoreCallsInfo
+// A query-based feature toggle that disables outbound calls to nonexistent numbers in the global dimension.
 //
 // @param request - GetEmptyNumberNoMoreCallsInfoRequest
 //
@@ -4118,7 +4302,7 @@ func (client *Client) GetEmptyNumberNoMoreCallsInfoWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取上传信息
+// Retrieves the parameters for uploading job data.
 //
 // @param request - GetJobDataUploadParamsRequest
 //
@@ -4178,7 +4362,7 @@ func (client *Client) GetJobDataUploadParamsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # GetMaxAttemptsPerDay
+// Retrieves the maximum number of daily call attempts allowed for a specified called number.
 //
 // @param request - GetMaxAttemptsPerDayRequest
 //
@@ -4226,7 +4410,7 @@ func (client *Client) GetMaxAttemptsPerDayWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取非对称加密算法公钥
+// Retrieves the public key for an asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -4263,7 +4447,7 @@ func (client *Client) GetPublicKeyWithContext(ctx context.Context, request *GetP
 
 // Summary:
 //
-// # GetRealtimeConcurrencyReport
+// Queries the current concurrency list.
 //
 // @param request - GetRealtimeConcurrencyReportRequest
 //
@@ -4303,7 +4487,7 @@ func (client *Client) GetRealtimeConcurrencyReportWithContext(ctx context.Contex
 
 // Summary:
 //
-// # GetSummaryInfo
+// Summary information for outbound call instances.
 //
 // @param request - GetSummaryInfoRequest
 //
@@ -4347,7 +4531,7 @@ func (client *Client) GetSummaryInfoWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 根据TaskId获取Task信息
+// Retrieve a task by its UUID.
 //
 // @param request - GetTaskByUuidRequest
 //
@@ -4385,6 +4569,10 @@ func (client *Client) GetTaskByUuidWithContext(ctx context.Context, request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Import a scenario.
+//
 // @param request - ImportScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4485,6 +4673,10 @@ func (client *Client) InflightTaskTimeoutWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the publication history of an agent configuration in a Large Language Model (LLM) scenario.
+//
 // @param request - ListAgentProfilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4535,7 +4727,7 @@ func (client *Client) ListAgentProfilesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 标注中心
+// Lists annotation missions.
 //
 // @param request - ListAnnotationMissionRequest
 //
@@ -4673,6 +4865,10 @@ func (client *Client) ListAnnotationMissionSessionWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists API plugins.
+//
 // @param request - ListApiPluginsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4727,7 +4923,7 @@ func (client *Client) ListApiPluginsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// # ListBeebotIntent
+// Lists intents for small-model scenarios.
 //
 // @param request - ListBeebotIntentRequest
 //
@@ -4787,7 +4983,7 @@ func (client *Client) ListBeebotIntentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # ListBeebotIntentLgf
+// Lists the utterance templates for a specified intent in a scenario.
 //
 // @param request - ListBeebotIntentLgfRequest
 //
@@ -4851,7 +5047,7 @@ func (client *Client) ListBeebotIntentLgfWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # ListBeebotIntentUserSay
+// Lists user utterances for intents in small model scenarios.
 //
 // @param request - ListBeebotIntentUserSayRequest
 //
@@ -4913,6 +5109,10 @@ func (client *Client) ListBeebotIntentUserSayWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the instances of the Yunxiao Mi chatbot service in Alibaba Cloud.
+//
 // @param request - ListChatbotInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4961,6 +5161,10 @@ func (client *Client) ListChatbotInstancesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the dialogue flows of a script in the legacy canvas.
+//
 // @param request - ListDialogueFlowsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5005,6 +5209,10 @@ func (client *Client) ListDialogueFlowsWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of download tasks in Download Hub.
+//
 // @param request - ListDownloadTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5041,6 +5249,10 @@ func (client *Client) ListDownloadTasksWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call the ListFlashSmsTemplates operation to query flash SMS templates.
+//
 // @param request - ListFlashSmsTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5077,6 +5289,10 @@ func (client *Client) ListFlashSmsTemplatesWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of key questions. This is a legacy canvas interface.
+//
 // @param request - ListGlobalQuestionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5129,6 +5345,10 @@ func (client *Client) ListGlobalQuestionsWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists Outbound Calling Bot service instances.
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5187,7 +5407,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 意图列表
+// Query intent for the Annotation Center list.
 //
 // @param request - ListIntentionsRequest
 //
@@ -5261,6 +5481,10 @@ func (client *Client) ListIntentionsWithContext(ctx context.Context, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves intents from the legacy canvas interface.
+//
 // @param request - ListIntentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5317,6 +5541,10 @@ func (client *Client) ListIntentsWithContext(ctx context.Context, request *ListI
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of outbound call task groups.
+//
 // @param request - ListJobGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5389,6 +5617,10 @@ func (client *Client) ListJobGroupsWithContext(ctx context.Context, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of outbound call tasks asynchronously. Call this operation to retrieve the results of a `ListJobGroup` call that included the `Async` parameter.
+//
 // @param request - ListJobGroupsAsyncRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5427,7 +5659,7 @@ func (client *Client) ListJobGroupsAsyncWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # ListJobs
+// Query multiple jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -5473,6 +5705,10 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists jobs by job group.
+//
 // @param request - ListJobsByGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5533,6 +5769,10 @@ func (client *Client) ListJobsByGroupWithContext(ctx context.Context, request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// List outbound call numbers.
+//
 // @param request - ListOutboundCallNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5581,6 +5821,10 @@ func (client *Client) ListOutboundCallNumbersWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists tags for business resources.
+//
 // @param request - ListResourceTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5629,6 +5873,10 @@ func (client *Client) ListResourceTagsWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the publication history of the small model for outbound calls.
+//
 // @param request - ListScriptPublishHistoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5681,6 +5929,10 @@ func (client *Client) ListScriptPublishHistoriesWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of recording files. Use this operation in small model scenarios.
+//
 // @param request - ListScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5751,7 +6003,7 @@ func (client *Client) ListScriptRecordingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取场景中当前使用的变量
+// Queries the variables used in a script.
 //
 // @param request - ListScriptVariablesRequest
 //
@@ -5801,6 +6053,14 @@ func (client *Client) ListScriptVariablesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the audio in a legacy canvas scene.
+//
+// Description:
+//
+// **
+//
 // @param request - ListScriptVoiceConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5855,7 +6115,7 @@ func (client *Client) ListScriptVoiceConfigsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// -
+// View the script list.
 //
 // @param request - ListScriptsRequest
 //
@@ -5913,6 +6173,10 @@ func (client *Client) ListScriptsWithContext(ctx context.Context, request *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the tag relationships for resources.
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5969,6 +6233,10 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of a script. This is a legacy canvas API.
+//
 // @param request - ListTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6013,6 +6281,10 @@ func (client *Client) ListTagsWithContext(ctx context.Context, request *ListTags
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the agent configuration.
+//
 // @param tmpReq - ModifyAgentProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6107,6 +6379,10 @@ func (client *Client) ModifyAgentProfileWithContext(ctx context.Context, tmpReq 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status and name of an annotation task.
+//
 // @param request - ModifyAnnotationMissionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6159,6 +6435,10 @@ func (client *Client) ModifyAnnotationMissionWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies batch jobs. This operation is deprecated.
+//
 // @param request - ModifyBatchJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6237,7 +6517,7 @@ func (client *Client) ModifyBatchJobsWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// # ModifyBeebotIntent
+// Modify the intent for a small-model scenario.
 //
 // @param tmpReq - ModifyBeebotIntentRequest
 //
@@ -6299,7 +6579,7 @@ func (client *Client) ModifyBeebotIntentWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # ModifyBeebotIntentLgf
+// Modifies the intent utterance template for a small model scenario.
 //
 // @param tmpReq - ModifyBeebotIntentLgfRequest
 //
@@ -6361,7 +6641,7 @@ func (client *Client) ModifyBeebotIntentLgfWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # ModifyBeebotIntentUserSay
+// Modifies a user utterance for an intent in a Beebot scenario.
 //
 // @param tmpReq - ModifyBeebotIntentUserSayRequest
 //
@@ -6421,6 +6701,10 @@ func (client *Client) ModifyBeebotIntentUserSayWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a dialogue flow. This is a legacy API for the canvas.
+//
 // @param request - ModifyDialogueFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6477,6 +6761,10 @@ func (client *Client) ModifyDialogueFlowWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the global no-call feature for nonexistent numbers.
+//
 // @param request - ModifyEmptyNumberNoMoreCallsInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6525,6 +6813,10 @@ func (client *Client) ModifyEmptyNumberNoMoreCallsInfoWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global question in the legacy canvas.
+//
 // @param request - ModifyGlobalQuestionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6589,6 +6881,10 @@ func (client *Client) ModifyGlobalQuestionWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an Outbound Bot instance.
+//
 // @param request - ModifyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6645,6 +6941,10 @@ func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an intent in the legacy canvas. This is a legacy API.
+//
 // @param request - ModifyIntentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6711,7 +7011,7 @@ func (client *Client) ModifyIntentWithContext(ctx context.Context, request *Modi
 
 // Summary:
 //
-// 修改任务组
+// Modify an intelligent outbound call task group.
 //
 // @param request - ModifyJobGroupRequest
 //
@@ -6811,7 +7111,7 @@ func (client *Client) ModifyJobGroupWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// # ModifyOutboundCallNumber
+// Modifies an outbound call number. This API is deprecated.
 //
 // @param request - ModifyOutboundCallNumberRequest
 //
@@ -6871,7 +7171,7 @@ func (client *Client) ModifyOutboundCallNumberWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改场景
+// Modify script information.
 //
 // @param request - ModifyScriptRequest
 //
@@ -7005,6 +7305,14 @@ func (client *Client) ModifyScriptWithContext(ctx context.Context, request *Modi
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the voice configuration of a script in a legacy canvas.
+//
+// Description:
+//
+// **
+//
 // @param request - ModifyScriptVoiceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7061,6 +7369,10 @@ func (client *Client) ModifyScriptVoiceConfigWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the text-to-speech (TTS) configuration for an existing canvas scenario.
+//
 // @param request - ModifyTTSConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7129,6 +7441,10 @@ func (client *Client) ModifyTTSConfigWithContext(ctx context.Context, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies tag groups for the legacy canvas interface.
+//
 // @param request - ModifyTagGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7181,6 +7497,10 @@ func (client *Client) ModifyTagGroupsWithContext(ctx context.Context, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// # Publishing a scenario
+//
 // @param request - PublishScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7229,6 +7549,10 @@ func (client *Client) PublishScriptWithContext(ctx context.Context, request *Pub
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes the debug version of a script.
+//
 // @param request - PublishScriptForDebugRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7275,7 +7599,7 @@ func (client *Client) PublishScriptForDebugWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # QueryJobs
+// You can query the list of jobs.
 //
 // @param request - QueryJobsRequest
 //
@@ -7355,7 +7679,7 @@ func (client *Client) QueryJobsWithContext(ctx context.Context, request *QueryJo
 
 // Summary:
 //
-// 获取外呼任务结果信息
+// Find tasks by result.
 //
 // @param request - QueryJobsWithResultRequest
 //
@@ -7449,6 +7773,10 @@ func (client *Client) QueryJobsWithResultWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// This legacy canvas interface retrieves the list of recorded speech transcripts.
+//
 // @param request - QueryScriptWaveformsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7497,6 +7825,10 @@ func (client *Client) QueryScriptWaveformsWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries scenario information by status.
+//
 // @param request - QueryScriptsByStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7549,6 +7881,10 @@ func (client *Client) QueryScriptsByStatusWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// CC sends the call failure reason to the outbound calling system. This operation is deprecated.
+//
 // @param request - RecordFailureRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7617,6 +7953,10 @@ func (client *Client) RecordFailureWithContext(ctx context.Context, request *Rec
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes paused jobs.
+//
 // @param request - ResumeJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7677,6 +8017,10 @@ func (client *Client) ResumeJobsWithContext(ctx context.Context, request *Resume
 	return _result, _err
 }
 
+// Summary:
+//
+// Roll back a published small model scenario.
+//
 // @param request - RollbackScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7727,7 +8071,7 @@ func (client *Client) RollbackScriptWithContext(ctx context.Context, request *Ro
 
 // Summary:
 //
-// 保存接听后延迟播报时间
+// Sets the delay before playback starts after the call is answered.
 //
 // @param request - SaveAfterAnswerDelayPlaybackRequest
 //
@@ -7777,6 +8121,10 @@ func (client *Client) SaveAfterAnswerDelayPlaybackWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// You can save a list of annotation chat instances.
+//
 // @param request - SaveAnnotationMissionSessionListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7841,6 +8189,10 @@ func (client *Client) SaveAnnotationMissionSessionListWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves instance tags in a batch.
+//
 // @param request - SaveAnnotationMissionTagInfoListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7895,7 +8247,7 @@ func (client *Client) SaveAnnotationMissionTagInfoListWithContext(ctx context.Co
 
 // Summary:
 //
-// 编辑基础策略有效时间窗口
+// Modifies the global outbound call time window in system administration.
 //
 // @param request - SaveBaseStrategyPeriodRequest
 //
@@ -7959,7 +8311,7 @@ func (client *Client) SaveBaseStrategyPeriodWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 保存外呼黑名单列表
+// Adds contacts to the instance\\"s blocklist.
 //
 // @param request - SaveContactBlockListRequest
 //
@@ -8011,7 +8363,7 @@ func (client *Client) SaveContactBlockListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 保存外呼白名单
+// Saves an outbound call whitelist.
 //
 // @param request - SaveContactWhiteListRequest
 //
@@ -8061,6 +8413,10 @@ func (client *Client) SaveContactWhiteListWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves the validity period of a basic policy. This operation is deprecated.
+//
 // @param request - SaveEffectiveDaysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8111,7 +8467,7 @@ func (client *Client) SaveEffectiveDaysWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 保存每日最大外呼量
+// Sets the maximum number of daily outbound call attempts to a specific number.
 //
 // @param request - SaveMaxAttemptsPerDayRequest
 //
@@ -8163,7 +8519,7 @@ func (client *Client) SaveMaxAttemptsPerDayWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 外呼历史查询
+// Search for tasks.
 //
 // @param request - SearchTaskRequest
 //
@@ -8203,7 +8559,7 @@ func (client *Client) SearchTaskWithContext(ctx context.Context, request *Search
 
 // Summary:
 //
-// 开启一个任务
+// This API initiates a call directly, bypassing the outbound call scheduling system. It is available only to users on the whitelist.
 //
 // @param request - StartJobRequest
 //
@@ -8265,6 +8621,10 @@ func (client *Client) StartJobWithContext(ctx context.Context, request *StartJob
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a draft job group. This operation is deprecated.
+//
 // @param request - SubmitBatchJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8309,6 +8669,10 @@ func (client *Client) SubmitBatchJobsWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a recording of an outbound call. This operation is deprecated.
+//
 // @param request - SubmitRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8361,6 +8725,10 @@ func (client *Client) SubmitRecordingWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Submit the scenario for release review.
+//
 // @param request - SubmitScriptReviewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8415,7 +8783,7 @@ func (client *Client) SubmitScriptReviewWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 止呼
+// Suspends outbound calls for a list of phone numbers.
 //
 // @param request - SuspendCallRequest
 //
@@ -8467,7 +8835,7 @@ func (client *Client) SuspendCallWithContext(ctx context.Context, request *Suspe
 
 // Summary:
 //
-// # SuspendCallWithFile
+// Suspends outbound calls using data from a file.
 //
 // @param request - SuspendCallWithFileRequest
 //
@@ -8517,6 +8885,10 @@ func (client *Client) SuspendCallWithFileWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// You can pause the job.
+//
 // @param request - SuspendJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8577,9 +8949,13 @@ func (client *Client) SuspendJobsWithContext(ctx context.Context, request *Suspe
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instance resources.
+//
 // Description:
 //
-// *
+// \\*\\*
 //
 // @param request - TagResourcesRequest
 //
@@ -8635,7 +9011,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// # TaskPreparing
+// Prepares a task for execution.
 //
 // @param request - TaskPreparingRequest
 //
@@ -8685,6 +9061,10 @@ func (client *Client) TaskPreparingWithContext(ctx context.Context, request *Tas
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a call during an active session.
+//
 // @param request - TerminateCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8729,6 +9109,10 @@ func (client *Client) TerminateCallWithContext(ctx context.Context, request *Ter
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove tags from resources.
+//
 // @param request - UntagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8785,6 +9169,10 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 	return _result, _err
 }
 
+// Summary:
+//
+// Upload recording files.
+//
 // @param request - UploadScriptRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8843,11 +9231,11 @@ func (client *Client) UploadScriptRecordingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # WithdrawScriptReview
+// Revoke script review.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - WithdrawScriptReviewRequest
 //

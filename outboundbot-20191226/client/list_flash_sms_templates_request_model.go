@@ -18,18 +18,30 @@ type iListFlashSmsTemplatesRequest interface {
 }
 
 type ListFlashSmsTemplatesRequest struct {
+	// The ID of the flash SMS configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fe542524-9585-4cc7-be54-c8782ed7f60e
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the flash SMS provider.
+	//
+	// - Uincall: Beijing Uincall Communication Co., Ltd.
+	//
+	// - ShangHaiTianNan: Shanghai Tiannan
+	//
+	// - HeDao: Galacos
+	//
 	// This parameter is required.
 	//
 	// example:

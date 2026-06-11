@@ -16,12 +16,16 @@ type iDeleteJobGroupRequest interface {
 }
 
 type DeleteJobGroupRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the job group.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,20 @@ type iCreateDownloadUrlRequest interface {
 }
 
 type CreateDownloadUrlRequest struct {
+	// The ID of the download task.
+	//
+	// > This parameter is obtained from the TaskId response parameter of the ListDownloadTasks operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 137da36b41304bcd999a0a7895dc6881
 	DownloadTaskId *string `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
+	// The ID of the file.
+	//
+	// > This parameter is obtained from the FileId response parameter of the ListDownloadTasks operation.
+	//
 	// This parameter is required.
 	//
 	// example:

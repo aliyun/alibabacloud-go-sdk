@@ -34,56 +34,83 @@ type iDialogueRequest interface {
 }
 
 type DialogueRequest struct {
+	// Action to perform for outbound calls. Hangup ends the call.
+	//
 	// example:
 	//
 	// broadcast
-	ActionKey    *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
+	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
+	// Parameters required to perform the action. (Deprecated)
+	//
+	// example:
+	//
+	// ""
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// Call ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1528189846043
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Call type, typically Outbound
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Outbound
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Called number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 135****4353
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1***6
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// 6cea9bed-63e6-439e-ae4c-b3333efff53d
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// 场景id
+	// Scenario ID
 	//
 	// example:
 	//
 	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// ff44709e-39a6-43ba-959b-20fcabe3e496
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// User utterance
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 是的
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 

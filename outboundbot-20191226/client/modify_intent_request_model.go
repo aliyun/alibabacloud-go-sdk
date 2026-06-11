@@ -26,32 +26,57 @@ type iModifyIntentRequest interface {
 }
 
 type ModifyIntentRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8fa1953f-4a84-46d8-b80c-8ce9cf684fb3
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent description.
+	//
+	// example:
+	//
+	// 询问车险意图
 	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
+	// The intent ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3b9a2b33-50d4-4576-8c68-22498f4bf731
 	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The intent name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 车险如何办理
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// The keywords. The value must be a JSON array of strings.
+	//
 	// example:
 	//
 	// []
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The script ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9b70486f-b1c2-429c-8a24-62798015ab1b
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The user utterances. The value must be a JSON array of strings.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ["车险如何办理"]
 	Utterances *string `json:"Utterances,omitempty" xml:"Utterances,omitempty"`
 }
 

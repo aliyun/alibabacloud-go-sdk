@@ -18,16 +18,24 @@ type iSaveAfterAnswerDelayPlaybackRequest interface {
 }
 
 type SaveAfterAnswerDelayPlaybackRequest struct {
+	// Delay before playback starts, in seconds. Default is 0 if not specified.
+	//
 	// example:
 	//
-	// 1000
+	// 1
 	AfterAnswerDelayPlayback *int32 `json:"AfterAnswerDelayPlayback,omitempty" xml:"AfterAnswerDelayPlayback,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 980116ec-2d3d-4747-8059-dc25e7af8501
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level (required)
+	//
+	// - 2: Instance
+	//
 	// example:
 	//
 	// 2

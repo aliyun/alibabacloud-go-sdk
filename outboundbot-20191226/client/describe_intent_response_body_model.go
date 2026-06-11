@@ -24,23 +24,34 @@ type iDescribeIntentResponseBody interface {
 }
 
 type DescribeIntentResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Intent         *DescribeIntentResponseBodyIntent `json:"Intent,omitempty" xml:"Intent,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the intent.
+	Intent *DescribeIntentResponseBodyIntent `json:"Intent,omitempty" xml:"Intent,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	// 327FEE69-F173-5B2F-9F3B-DCC6182D7BA0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,25 +130,53 @@ func (s *DescribeIntentResponseBody) Validate() error {
 }
 
 type DescribeIntentResponseBodyIntent struct {
+	// The time when the intent was created.
+	//
 	// example:
 	//
 	// 1578469042851
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the intent.
+	//
 	// example:
 	//
-	// a8494b35-eefb-4c8a-887b-b60d2f0fa57a
-	IntentId   *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// 同意还款意图
+	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
+	// The ID of the intent.
+	//
+	// example:
+	//
+	// 10722701
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The name of the intent.
+	//
+	// example:
+	//
+	// 统一还款
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	Keywords   *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The keywords for the intent. You can use these keywords to filter intents during list operations.
+	//
+	// example:
+	//
+	// ["还款"]
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The ID of the script.
+	//
 	// example:
 	//
 	// 6ef95fd5-558f-4ee8-af34-b2ede087a87c
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The time when the intent was last updated.
+	//
 	// example:
 	//
 	// 1578469042851
-	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// A list of utterances that trigger the intent.
+	//
+	// example:
+	//
+	// ["ok","好的","好吧","好嘞","可以","行啊","行吧","那行","知道了","我看一下","能的","等会吧","等一下","马上还","等一会","过两天","我会想办法处理"]
 	Utterances *string `json:"Utterances,omitempty" xml:"Utterances,omitempty"`
 }
 

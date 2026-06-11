@@ -18,18 +18,24 @@ type iListResourceTagsRequest interface {
 }
 
 type ListResourceTagsRequest struct {
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Resource type
+	//
 	// This parameter is required.
 	//
 	// example:

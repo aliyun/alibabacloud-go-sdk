@@ -26,28 +26,40 @@ type iModifyTagGroupsResponseBody interface {
 }
 
 type ModifyTagGroupsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 5a865b03-d2b9-4ef9-be98-f21fa0d93744
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of tag groups.
 	TagGroups []*ModifyTagGroupsResponseBodyTagGroups `json:"TagGroups,omitempty" xml:"TagGroups,omitempty" type:"Repeated"`
-	Tags      []*ModifyTagGroupsResponseBodyTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The list of tags.
+	Tags []*ModifyTagGroupsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ModifyTagGroupsResponseBody) String() string {
@@ -144,15 +156,26 @@ func (s *ModifyTagGroupsResponseBody) Validate() error {
 }
 
 type ModifyTagGroupsResponseBodyTagGroups struct {
+	// The script ID.
+	//
 	// example:
 	//
 	// 365b955d-6f4d-4ab5-a6e1-9a301307f4b1
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The name of the tag group.
+	//
+	// example:
+	//
+	// 标签组
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
+	// The ID of the tag group.
+	//
 	// example:
 	//
 	// 54629be9-0746-464a-ab59-4830242cf644
 	TagGroupId *string `json:"TagGroupId,omitempty" xml:"TagGroupId,omitempty"`
+	// The position of the tag group.
+	//
 	// example:
 	//
 	// 1
@@ -208,20 +231,36 @@ func (s *ModifyTagGroupsResponseBodyTagGroups) Validate() error {
 }
 
 type ModifyTagGroupsResponseBodyTags struct {
+	// The script ID.
+	//
 	// example:
 	//
-	// 365b955d-6f4d-4ab5-a6e1-9a301307f4b1
+	// 8a4c6d3d-5ed6-44ca-b779-16c20f8862be
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The name of the tag group.
+	//
+	// example:
+	//
+	// 当前学历
 	TagGroup *string `json:"TagGroup,omitempty" xml:"TagGroup,omitempty"`
+	// The unique ID of the tag.
+	//
 	// example:
 	//
 	// 19b23e92-4ee3-4129-8c2e-e1968670d887
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The index of the tag.
+	//
 	// example:
 	//
 	// 1
-	TagIndex *int32  `json:"TagIndex,omitempty" xml:"TagIndex,omitempty"`
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagIndex *int32 `json:"TagIndex,omitempty" xml:"TagIndex,omitempty"`
+	// The name of the tag.
+	//
+	// example:
+	//
+	// 本科
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s ModifyTagGroupsResponseBodyTags) String() string {

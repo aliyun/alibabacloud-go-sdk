@@ -24,23 +24,34 @@ type iDescribeInstanceResponseBody interface {
 }
 
 type DescribeInstanceResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instance       *DescribeInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the instance.
+	Instance *DescribeInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,32 +130,56 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyInstance struct {
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 1578469042851
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 435986
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
 	// xxx
-	CreatorName         *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 这个是第一个实例
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// 第一个实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The maximum number of concurrent conversations for the instance.
+	//
 	// example:
 	//
 	// 4
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
+	// The name of the instance owner.
+	//
 	// example:
 	//
 	// xxxx
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf

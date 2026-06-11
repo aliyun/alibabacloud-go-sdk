@@ -24,23 +24,34 @@ type iListAgentProfilesResponseBody interface {
 }
 
 type ListAgentProfilesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListAgentProfilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned for the request.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,60 +134,107 @@ func (s *ListAgentProfilesResponseBody) Validate() error {
 }
 
 type ListAgentProfilesResponseBodyData struct {
+	// The ID of the agent configuration.
+	//
 	// example:
 	//
 	// 37ca3ca1ac4b4e57adf3da5b5d939d04
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
+	// The ID of the agent template.
+	//
 	// example:
 	//
 	// default-survey
 	AgentProfileTemplateId *string `json:"AgentProfileTemplateId,omitempty" xml:"AgentProfileTemplateId,omitempty"`
-	// agent type
+	// The agent type.
 	//
 	// example:
 	//
 	// “”
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 1721701525327
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 这是一个充满智慧的智能体。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// e49ad122-15a1-443a-a102-84a78a93be79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instruction configuration in JSON format.
+	//
 	// example:
 	//
 	// [{"type":"TransferToAgent","instructions":[{"code":"Transfer0","skillGroupId":"123","skillGroupName":"123"}],"timeoutEnable":false},{"type":"CollectNumber","instructions":[]}]
 	InstructionJson *string `json:"InstructionJson,omitempty" xml:"InstructionJson,omitempty"`
-	LabelsJson      *string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty"`
+	// The label definitions in JSON format.
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"是否送达\\",\\"description\\":\\"购买的家电是否已经送达\\",\\"valueList\\":\\"[\\\\\\"是\\\\\\",\\\\\\"否\\\\\\"]\\"},{\\"name\\":\\"预约上门时间\\",\\"description\\":\\"收集客户期望的上门安装时间\\",\\"valueList\\":\\"[]\\"}]
+	LabelsJson *string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// model_002
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model configuration.
+	//
 	// example:
 	//
 	// {}
 	ModelConfig *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	// The prompt for the professional pattern.
+	//
 	// example:
 	//
 	// “”
-	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The agent configuration.
+	//
+	// example:
+	//
+	// {"name":"小x","gender":"男","age":18,"role":"游戏推广员","communicationStyle":["亲切"],"goals":"你好","background":"不是很好","openingPrompt":"你好，我是xxx"}
 	PromptJson *string `json:"PromptJson,omitempty" xml:"PromptJson,omitempty"`
-	Scenario   *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The scenario.
+	//
+	// example:
+	//
+	// 测试场景
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 43972417-0657-452a-81c2-c59d8245a9b2
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// Indicates whether this is a system template.
+	//
 	// example:
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// The time when the configuration was last modified.
+	//
 	// example:
 	//
 	// 1721701525327
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The variable configuration in JSON format.
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"name\\",\\"description\\":\\"客户姓名\\"},{\\"name\\":\\"gender\\",\\"description\\":\\"客户性别\\"}]
 	VariablesJson *string `json:"VariablesJson,omitempty" xml:"VariablesJson,omitempty"`
 }
 

@@ -18,14 +18,22 @@ type iGetAnnotationMissionTagInfoListRequest interface {
 }
 
 type GetAnnotationMissionTagInfoListRequest struct {
+	// Instance ID
+	//
+	// > If you do not specify this parameter, the system returns the default tags for the tenant.
+	//
 	// example:
 	//
 	// 4eee9bf8-1319-468f-ac82-83c50ae389f8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10

@@ -24,23 +24,34 @@ type iListScriptsResponseBody interface {
 }
 
 type ListScriptsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scripts   *ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The paginated list of scripts.
+	Scripts *ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListScriptsResponseBody) Validate() error {
 }
 
 type ListScriptsResponseBodyScripts struct {
+	// The list of scripts.
 	List []*ListScriptsResponseBodyScriptsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of scripts.
+	//
 	// example:
 	//
 	// 15
@@ -192,62 +210,140 @@ func (s *ListScriptsResponseBodyScripts) Validate() error {
 }
 
 type ListScriptsResponseBodyScriptsList struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	AgentLlm   *bool   `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The agent access key.
+	//
+	// example:
+	//
+	// 14791f5f226b4878b3d9b676a0291234
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Indicates whether the agent is an LLM agent.
+	//
+	// example:
+	//
+	// false
+	AgentLlm *bool `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1578965079000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The debug status.
+	//
 	// example:
 	//
 	// DRAFTED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
+	// Indicates whether emotion detection is enabled. This parameter is always false for LLM-based scripts.
+	//
 	// example:
 	//
 	// false
-	EmotionEnable *bool   `json:"EmotionEnable,omitempty" xml:"EmotionEnable,omitempty"`
-	Industry      *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	EmotionEnable *bool `json:"EmotionEnable,omitempty" xml:"EmotionEnable,omitempty"`
+	// The industry.
+	//
+	// example:
+	//
+	// 金融
+	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Indicates whether the debug version of the script is a draft.
+	//
 	// example:
 	//
 	// true
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
+	// Indicates whether the script is a draft.
+	//
 	// example:
 	//
 	// true
 	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	// Indicates whether the script is for a preset scene.
+	//
 	// example:
 	//
 	// false
 	IsPreset *bool `json:"IsPreset,omitempty" xml:"IsPreset,omitempty"`
+	// Indicates whether long wait is enabled. This parameter is always false for LLM-based scripts.
+	//
 	// example:
 	//
 	// false
 	LongWaitEnable *bool `json:"LongWaitEnable,omitempty" xml:"LongWaitEnable,omitempty"`
+	// Indicates whether mini playback is enabled.
+	//
 	// example:
 	//
 	// false
 	MiniPlaybackEnable *bool `json:"MiniPlaybackEnable,omitempty" xml:"MiniPlaybackEnable,omitempty"`
+	// Indicates whether graceful barge-in is enabled. This parameter is always false for LLM-based scripts.
+	//
 	// example:
 	//
 	// false
-	NewBargeInEnable  *bool                                         `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
-	NluAccessType     *string                                       `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
-	NluEngine         *string                                       `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	NluProfile        *ListScriptsResponseBodyScriptsListNluProfile `json:"NluProfile,omitempty" xml:"NluProfile,omitempty" type:"Struct"`
-	RejectReason      *string                                       `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
-	Scene             *string                                       `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	ScriptDescription *string                                       `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	NewBargeInEnable *bool `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
+	// The NLU access type, which is set to Managed for LLM scenarios and is empty for small model scenarios.
+	//
+	// example:
+	//
+	// 空或者Managed
+	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// The NLU engine, which is set to Prompts for LLM scenarios and is empty for small model scenarios.
+	//
+	// example:
+	//
+	// 空或者Prompts
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// The Function Compute configuration for function calling mode.
+	NluProfile *ListScriptsResponseBodyScriptsListNluProfile `json:"NluProfile,omitempty" xml:"NluProfile,omitempty" type:"Struct"`
+	// The rejection reason.
+	//
+	// example:
+	//
+	// 话术用语不合规
+	RejectReason *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
+	// The scene.
+	//
+	// example:
+	//
+	// 电销
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The script description.
+	//
+	// example:
+	//
+	// 电话销售话术
+	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// 8d6a6e41-8093-49af-a9d1-0281878758ac
-	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The script name.
+	//
+	// example:
+	//
+	// 电话销售话术
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// The script status.
+	//
 	// example:
 	//
 	// DRAFTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1578965079000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	AgentId    *int64 `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The agent ID.
+	//
+	// example:
+	//
+	// 1160195
+	AgentId *int64 `json:"agentId,omitempty" xml:"agentId,omitempty"`
 }
 
 func (s ListScriptsResponseBodyScriptsList) String() string {
@@ -475,9 +571,24 @@ func (s *ListScriptsResponseBodyScriptsList) Validate() error {
 }
 
 type ListScriptsResponseBodyScriptsListNluProfile struct {
-	FcFunction       *string `json:"FcFunction,omitempty" xml:"FcFunction,omitempty"`
+	// The function name.
+	//
+	// example:
+	//
+	// sanfang_test
+	FcFunction *string `json:"FcFunction,omitempty" xml:"FcFunction,omitempty"`
+	// The URL of the function trigger.
+	//
+	// example:
+	//
+	// http://sanfang_test-xxxxxx.cn-shanghai-vpc.fcapp.run
 	FcHttpTriggerUrl *string `json:"FcHttpTriggerUrl,omitempty" xml:"FcHttpTriggerUrl,omitempty"`
-	FcRegion         *string `json:"FcRegion,omitempty" xml:"FcRegion,omitempty"`
+	// The function region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	FcRegion *string `json:"FcRegion,omitempty" xml:"FcRegion,omitempty"`
 }
 
 func (s ListScriptsResponseBodyScriptsListNluProfile) String() string {

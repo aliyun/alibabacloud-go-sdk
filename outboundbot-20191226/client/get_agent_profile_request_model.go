@@ -18,16 +18,24 @@ type iGetAgentProfileRequest interface {
 }
 
 type GetAgentProfileRequest struct {
+	// The ID of the agent configuration.
+	//
+	// > The agent configuration ID for a created scenario is available in the ChatbotId parameter returned by the DescribeScript operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 37ca3ca1ac4b4e57adf3da5b5d939d04
+	// d31794e2a51f47d2901b4094d88311d7
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
+	// The IP address of the application. This is a system field and is optional.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	AppIp *string `json:"AppIp,omitempty" xml:"AppIp,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

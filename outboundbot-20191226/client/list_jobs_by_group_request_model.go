@@ -24,32 +24,44 @@ type iListJobsByGroupRequest interface {
 }
 
 type ListJobsByGroupRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job failure reason
+	//
 	// example:
 	//
 	// NoAnswer
 	JobFailureReason *string `json:"JobFailureReason,omitempty" xml:"JobFailureReason,omitempty"`
+	// Job group ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// de48407d-309e-451a-81ec-6fb11f8fdbf3
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job status
+	//
 	// example:
 	//
 	// Succeeded
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page
+	//
 	// This parameter is required.
 	//
 	// example:

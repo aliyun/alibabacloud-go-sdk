@@ -24,23 +24,34 @@ type iListJobsByGroupResponseBody interface {
 }
 
 type ListJobsByGroupResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Jobs           *ListJobsByGroupResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Job array
+	Jobs *ListJobsByGroupResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
+	// API message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded
+	//
 	// example:
 	//
 	// true
@@ -119,18 +130,25 @@ func (s *ListJobsByGroupResponseBody) Validate() error {
 }
 
 type ListJobsByGroupResponseBodyJobs struct {
+	// Job list
 	List []*ListJobsByGroupResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count
+	//
 	// example:
 	//
-	// 1
+	// 18
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -192,42 +210,112 @@ func (s *ListJobsByGroupResponseBodyJobs) Validate() error {
 }
 
 type ListJobsByGroupResponseBodyJobsList struct {
-	CallingNumbers []*string                                      `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*ListJobsByGroupResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*ListJobsByGroupResponseBodyJobsListExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
+	// Caller number list
+	CallingNumbers []*string `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
+	// Contact list
+	Contacts []*ListJobsByGroupResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
+	// Business data
+	//
+	// > TenantId and ServiceId are system-generated. All other parameters are custom.
+	Extras []*ListJobsByGroupResponseBodyJobsListExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
+	// The failure reason.
+	//
+	// - Unknown: An unknown error occurred.
+	//
+	// - NoAnswer: The call was not answered.
+	//
+	// - InvalidStrategy: The policy is invalid or incorrectly configured.
+	//
+	// - TimeUp: The task timed out during scheduling.
+	//
+	// - NoStrategy: The policy is empty or was not found.
+	//
+	// - CallFailed: The call failed.
+	//
+	// - PerDayCallCountLimit: The daily call limit for the phone number was reached.
+	//
+	// - ContactBlockList: The phone number is on the blocklist.
+	//
+	// - EmptyNumber: The phone number is nonexistent.
+	//
+	// - JobPerDayCallCountLimit: The daily call limit for the phone number within the job was reached.
+	//
+	// - VerificationCancelled: The call was canceled because it failed pre-call validation.
+	//
+	// - ContactSuspended: Calling to the contact is suspended.
+	//
+	// - InArrears: The account has an overdue payment.
+	//
+	// - OutOfService: The phone number is out of service.
+	//
+	// - NoneRepeatableJobMaxAttemptCountLimit: The non-repeatable job reached the maximum number of attempts.
+	//
 	// example:
 	//
 	// NoAnswer
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// fce6c599-8ede-40e3-9f78-0928eda7b4e8
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// b72425bd-7871-4050-838e-033d80d754b7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Priority
+	//
 	// example:
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Third-party system ID
+	//
 	// example:
 	//
 	// d5971d98-7312-4f0e-a918-a17d67133e28
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// Scenario ID (legacy parameter)
+	//
 	// example:
 	//
 	// ade80092-03d9-4f4d-ad4f-ab8a247d3150
 	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	// Job status
+	//
+	// - Scheduling (0)
+	//
+	// - Executing (1)
+	//
+	// - Succeeded (2)
+	//
+	// - Paused (3)
+	//
+	// - Failed (4)
+	//
+	// - Cancelled (5)
+	//
+	// - Drafted (6)
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Strategy ID
+	//
 	// example:
 	//
 	// c8a2b7f2-ad1a-4865-b872-d0080d9802d9
-	StrategyId *string                                       `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary    []*ListJobsByGroupResponseBodyJobsListSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// Conversation summary (deprecated)
+	//
+	// > Use the DescribeJob API to retrieve this data.
+	Summary []*ListJobsByGroupResponseBodyJobsListSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
+	// System priority
+	//
 	// example:
 	//
 	// 1
@@ -391,28 +479,50 @@ func (s *ListJobsByGroupResponseBodyJobsList) Validate() error {
 }
 
 type ListJobsByGroupResponseBodyJobsListContacts struct {
+	// Contact ID (system-generated)
+	//
 	// example:
 	//
 	// db3db762-e421-44c9-9a01-cb423470757c
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Contact name
+	//
+	// example:
+	//
+	// 张三
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	// Honorific (same as contact name)
+	//
+	// example:
+	//
+	// 张先生
+	Honorific *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
+	// Job ID (deprecated)
+	//
 	// example:
 	//
 	// 72dcd26b-f12d-4c27-b3af-18f6aed5b160
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Phone number
+	//
 	// example:
 	//
-	// 135****8888
+	// 134********
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Contact third-party system ID (uploaded by customer)
+	//
 	// example:
 	//
 	// 2fa6bac3-06da-4315-82ab-72d6fd3a6f34
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// *
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// Available
@@ -504,13 +614,17 @@ func (s *ListJobsByGroupResponseBodyJobsListContacts) Validate() error {
 }
 
 type ListJobsByGroupResponseBodyJobsListExtras struct {
+	// Business parameter name
+	//
 	// example:
 	//
-	// djrq
+	// 性别
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Business parameter value
+	//
 	// example:
 	//
-	// 2019-08-21 09:49:59.0
+	// 男
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -545,34 +659,50 @@ func (s *ListJobsByGroupResponseBodyJobsListExtras) Validate() error {
 }
 
 type ListJobsByGroupResponseBodyJobsListSummary struct {
+	// Conversation summary category
+	//
 	// example:
 	//
 	// {}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Conversation summary content
+	//
 	// example:
 	//
 	// 5
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Call record ID
+	//
 	// example:
 	//
 	// 62a860f5-a8b3-4b75-9512-c7e04bb7c8bc
 	ConversationDetailId *string `json:"ConversationDetailId,omitempty" xml:"ConversationDetailId,omitempty"`
+	// Job group ID
+	//
 	// example:
 	//
 	// 88e56cfb-33f8-477a-907c-0fe83292d924
 	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// f102a853-5f5a-47fb-8869-b31ea74a9620
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Summary ID
+	//
 	// example:
 	//
 	// 680f1905-81ae-4aab-99dd-2964dfb767fa
 	SummaryId *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
+	// Summary name
+	//
 	// example:
 	//
 	// score
 	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
+	// Call ID
+	//
 	// example:
 	//
 	// b0f35dd1-0337-402e-9c4f-3a6c2426950a

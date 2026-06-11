@@ -24,26 +24,38 @@ type iCreateGlobalQuestionResponseBody interface {
 }
 
 type CreateGlobalQuestionResponseBody struct {
+	// The status code of the request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the global question.
+	//
 	// example:
 	//
 	// a546b616-724b-437f-bdb3-629a30c98567
 	GlobalQuestionId *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	// 56666881-887A-530A-B679-C3B6B6B142C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true

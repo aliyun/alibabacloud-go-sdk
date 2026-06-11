@@ -26,30 +26,43 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
+	// The status code of the API
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message of the API
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token to start the next query
+	//
 	// example:
 	//
 	// b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful
+	//
 	// example:
 	//
 	// true
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Resources
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -138,18 +151,26 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// Resource ID
+	//
 	// example:
 	//
 	// b949ae1f-01dc-4191-ae5a-70fbe6772fd8
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource type
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Tag key
+	//
 	// example:
 	//
 	// key1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// Tag value
+	//
 	// example:
 	//
 	// value1

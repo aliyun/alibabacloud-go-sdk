@@ -24,23 +24,34 @@ type iListIntentsResponseBody interface {
 }
 
 type ListIntentsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Intents        *ListIntentsResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The paginated list of intents.
+	Intents *ListIntentsResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListIntentsResponseBody) Validate() error {
 }
 
 type ListIntentsResponseBodyIntents struct {
+	// The list of intents.
 	List []*ListIntentsResponseBodyIntentsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of intents.
+	//
 	// example:
 	//
 	// 20
@@ -192,25 +210,53 @@ func (s *ListIntentsResponseBodyIntents) Validate() error {
 }
 
 type ListIntentsResponseBodyIntentsList struct {
+	// The time when the intent was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1578469042851
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the intent.
+	//
+	// example:
+	//
+	// 同意还款意图
 	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
+	// The intent ID.
+	//
 	// example:
 	//
 	// a8494b35-eefb-4c8a-887b-b60d2f0fa57a
-	IntentId   *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The intent name.
+	//
+	// example:
+	//
+	// 统一还款
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	Keywords   *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The keywords of the intent.
+	//
+	// example:
+	//
+	// ["还款"]
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// 6ef95fd5-558f-4ee8-af34-b2ede087a87c
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The time when the intent was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1578469042851
-	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user utterances that trigger the intent.
+	//
+	// example:
+	//
+	// ["ok","好的","好吧","好嘞","可以","行啊","行吧","那行","知道了","我看一下","能的","等会吧","等一下","马上还","等一会","过两天","我会想办法处理"]
 	Utterances *string `json:"Utterances,omitempty" xml:"Utterances,omitempty"`
 }
 

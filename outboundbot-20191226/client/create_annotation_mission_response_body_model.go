@@ -24,20 +24,34 @@ type iCreateAnnotationMissionResponseBody interface {
 }
 
 type CreateAnnotationMissionResponseBody struct {
+	// The status code of the API.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateAnnotationMissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Additional information. If the request is successful, \\`success\\` is returned. If the request fails, a specific error code is returned.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-uax33hol2uu,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. \\`true\\`: The call was successful. \\`false\\`: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -116,7 +130,14 @@ func (s *CreateAnnotationMissionResponseBody) Validate() error {
 }
 
 type CreateAnnotationMissionResponseBodyData struct {
+	// Additional information. If the request is successful, \\`success\\` is returned. If the request fails, a specific error code is returned.
+	//
+	// example:
+	//
+	// 执行失败：查找元素或操作超时,outTaskId:trademark_regnew_public_cn-uax33hol2uu,flowId:null,nodeUUID:541b6c71-8cce-4ab0-af84-713ca9741821
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// True

@@ -24,23 +24,34 @@ type iListIntentionsResponseBody interface {
 }
 
 type ListIntentionsResponseBody struct {
+	// API Status Code
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned Data
 	Data *ListIntentionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP Status Code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// API Message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is Success
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListIntentionsResponseBody) Validate() error {
 }
 
 type ListIntentionsResponseBodyData struct {
+	// Bot ID
+	//
 	// example:
 	//
 	// chatbot-cn-n7QmzrUnNe
-	BotId      *string                                     `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Intent List
 	IntentList []*ListIntentionsResponseBodyDataIntentList `json:"IntentList,omitempty" xml:"IntentList,omitempty" type:"Repeated"`
+	// API Message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
@@ -192,38 +210,73 @@ func (s *ListIntentionsResponseBodyData) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentList struct {
+	// Intent Alias
 	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// Bot ID (Deprecated)
+	//
 	// example:
 	//
 	// chatbot-cn-n7QmzrUnNe
 	BotId *int64 `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// Bot Name
+	//
 	// example:
 	//
 	// 111
 	BotName *string `json:"BotName,omitempty" xml:"BotName,omitempty"`
+	// Conversation Flow ID
+	//
 	// example:
 	//
 	// 50099
 	DialogId *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// Intent ID
+	//
 	// example:
 	//
 	// 10717802
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Language
+	//
+	// - English (en-us)
+	//
+	// - Chinese (zh-cn)
+	//
 	// example:
 	//
 	// zh-cn
-	Language  *string                                              `json:"Language,omitempty" xml:"Language,omitempty"`
-	Name      *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Intent Name
+	//
+	// example:
+	//
+	// 知道了
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// LGF Intent Expression
 	RuleCheck []*ListIntentionsResponseBodyDataIntentListRuleCheck `json:"RuleCheck,omitempty" xml:"RuleCheck,omitempty" type:"Repeated"`
-	Slot      []*ListIntentionsResponseBodyDataIntentListSlot      `json:"Slot,omitempty" xml:"Slot,omitempty" type:"Repeated"`
+	// Intent Slot Information
+	Slot []*ListIntentionsResponseBodyDataIntentListSlot `json:"Slot,omitempty" xml:"Slot,omitempty" type:"Repeated"`
+	// Table ID
+	//
 	// example:
 	//
 	// 43258
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// Intent Type:
+	//
+	// - 0: Normal intent;
+	//
+	// - 1: UNKNOWN;
+	//
+	// - 2: TableQA intent;
+	//
+	// - 3: Generated from standard intent
+	//
 	// example:
 	//
 	// 0
-	Type    *int32                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User Say List
 	UserSay []*ListIntentionsResponseBodyDataIntentListUserSay `json:"UserSay,omitempty" xml:"UserSay,omitempty" type:"Repeated"`
 }
 
@@ -375,12 +428,21 @@ func (s *ListIntentionsResponseBodyDataIntentList) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListRuleCheck struct {
+	// Error Message
 	Error []*string `json:"Error,omitempty" xml:"Error,omitempty" type:"Repeated"`
+	// Is Strict Match
+	//
 	// example:
 	//
 	// true
-	Strict  *bool     `json:"Strict,omitempty" xml:"Strict,omitempty"`
-	Text    *string   `json:"Text,omitempty" xml:"Text,omitempty"`
+	Strict *bool `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	// Expression Value
+	//
+	// example:
+	//
+	// 知道
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Warning Message
 	Warning []*string `json:"Warning,omitempty" xml:"Warning,omitempty" type:"Repeated"`
 }
 
@@ -433,39 +495,82 @@ func (s *ListIntentionsResponseBodyDataIntentListRuleCheck) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListSlot struct {
+	// The follow-up question function.
+	//
+	// 	Notice: This parameter is invalid.
 	FeedbackFunctions []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions `json:"FeedbackFunctions,omitempty" xml:"FeedbackFunctions,omitempty" type:"Repeated"`
+	// Feedback Type
+	//
+	// 	Notice: Invalid content
+	//
 	// example:
 	//
 	// test
 	FeedbackType *string `json:"FeedbackType,omitempty" xml:"FeedbackType,omitempty"`
+	// Slot Unique Identifier
+	//
 	// example:
 	//
 	// 9ec31b50-32b8-11eb-9478-19d2d885afdb
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Is Array:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
 	// example:
 	//
 	// false
 	IsArray *bool `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
+	// Is Encrypted
+	//
+	// 	Notice: Invalid content
+	//
 	// example:
 	//
 	// false
 	IsEncrypt *bool `json:"IsEncrypt,omitempty" xml:"IsEncrypt,omitempty"`
+	// Is Interactive
+	//
+	// 	Notice: Invalid content
+	//
 	// example:
 	//
 	// false
 	IsInteractive *bool `json:"IsInteractive,omitempty" xml:"IsInteractive,omitempty"`
+	// Is Required Slot:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
 	// example:
 	//
 	// true
 	IsNecessary *bool `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
+	// Slot Lifecycle
+	//
 	// example:
 	//
 	// 0
-	LifeSpan *int32                                              `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
-	Name     *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Question []*string                                           `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
-	Tags     []*ListIntentionsResponseBodyDataIntentListSlotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Value    *string                                             `json:"Value,omitempty" xml:"Value,omitempty"`
+	LifeSpan *int32 `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
+	// Slot Name
+	//
+	// example:
+	//
+	// 知道
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Slot Follow-up Question
+	Question []*string `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
+	// Slot Tagging Labels
+	Tags []*ListIntentionsResponseBodyDataIntentListSlotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Slot Tagging Result
+	//
+	// example:
+	//
+	// @知道
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListIntentionsResponseBodyDataIntentListSlot) String() string {
@@ -607,33 +712,58 @@ func (s *ListIntentionsResponseBodyDataIntentListSlot) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions struct {
+	// Alibaba Cloud Function Name
+	//
 	// example:
 	//
 	// test
 	AliyunFunction *string `json:"AliyunFunction,omitempty" xml:"AliyunFunction,omitempty"`
+	// Alibaba Cloud Service
+	//
 	// example:
 	//
 	// test
 	AliyunService *string `json:"AliyunService,omitempty" xml:"AliyunService,omitempty"`
+	// API Status Code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Follow-up Question Description
+	//
 	// example:
 	//
 	// GA setup for HPC cn4-HPC-EndUserServer-GlobalAccelerator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Endpoint
+	//
 	// example:
 	//
 	// cn-hangzhou.log.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// Follow-up Question Function
+	//
 	// example:
 	//
 	// count
-	Function *string                                                                `json:"Function,omitempty" xml:"Function,omitempty"`
-	Name     *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Params   map[string]interface{}                                                 `json:"Params,omitempty" xml:"Params,omitempty"`
-	Switch   []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch `json:"Switch,omitempty" xml:"Switch,omitempty" type:"Repeated"`
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// Function Name
+	//
+	// example:
+	//
+	// 方欣云呼系统每日拨测_2024年11月
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Parameters
+	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Feature Switch. Values:
+	//
+	// - **on**: Enabled
+	//
+	// - **off**: Disabled
+	Switch []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch `json:"Switch,omitempty" xml:"Switch,omitempty" type:"Repeated"`
+	// Follow-up Question Type
+	//
 	// example:
 	//
 	// cluster
@@ -752,19 +882,32 @@ func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) Validate
 }
 
 type ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch struct {
+	// Condition ID
+	//
 	// example:
 	//
 	// b9932604-08ae-4525-bbe5-c8cce3066070
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Follow-up Question Label
+	//
 	// example:
 	//
 	// SQL_SUB_QUERY
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Condition Name
+	//
+	// example:
+	//
+	// 测试0609_20241021_101018_复制_复制_复制
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Type
+	//
 	// example:
 	//
 	// PASSKEY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Condition Value
+	//
 	// example:
 	//
 	// BASE_VALIDATE_FILTER_SWITCH
@@ -829,11 +972,18 @@ func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) Va
 }
 
 type ListIntentionsResponseBodyDataIntentListSlotTags struct {
+	// User Say Unique Identifier for the Label
+	//
 	// example:
 	//
 	// 17448458
 	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the tag is the result of tagging an intent expression.
+	//
+	// example:
+	//
+	// 你知道xxxx？
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListIntentionsResponseBodyDataIntentListSlotTags) String() string {
@@ -867,18 +1017,27 @@ func (s *ListIntentionsResponseBodyDataIntentListSlotTags) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListUserSay struct {
+	// Source ID
+	//
+	// 	Notice: Invalid content
+	//
 	// example:
 	//
 	// 1234567
 	FromId *string `json:"FromId,omitempty" xml:"FromId,omitempty"`
+	// The ID of the user utterance.
+	//
 	// example:
 	//
 	// 17448458
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Is Strict Match
+	//
 	// example:
 	//
 	// true
-	Strict      *bool                                                         `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	Strict *bool `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	// User Say List
 	UserSayData []*ListIntentionsResponseBodyDataIntentListUserSayUserSayData `json:"UserSayData,omitempty" xml:"UserSayData,omitempty" type:"Repeated"`
 }
 
@@ -940,11 +1099,18 @@ func (s *ListIntentionsResponseBodyDataIntentListUserSay) Validate() error {
 }
 
 type ListIntentionsResponseBodyDataIntentListUserSayUserSayData struct {
+	// Slot Unique Identifier
+	//
 	// example:
 	//
 	// 9ec31b50-32b8-11eb-9478-19d2d885afdb
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Text   *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Expression
+	//
+	// example:
+	//
+	// 知道
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s ListIntentionsResponseBodyDataIntentListUserSayUserSayData) String() string {

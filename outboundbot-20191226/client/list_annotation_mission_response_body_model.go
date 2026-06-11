@@ -24,23 +24,34 @@ type iListAnnotationMissionResponseBody interface {
 }
 
 type ListAnnotationMissionResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
 	Data *ListAnnotationMissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Additional information. Returns success for normal requests. Returns a specific error code for abnormal requests.
+	//
 	// example:
 	//
 	// CDR \\"job-c7b8a817-b8e8-40f3-b7ad-f28dcea218ff\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded. true: succeeded. false: failed.
+	//
 	// example:
 	//
 	// true
@@ -119,27 +130,40 @@ func (s *ListAnnotationMissionResponseBody) Validate() error {
 }
 
 type ListAnnotationMissionResponseBodyData struct {
+	// Annotation mission list
 	AnnotationMissionList []*ListAnnotationMissionResponseBodyDataAnnotationMissionList `json:"AnnotationMissionList,omitempty" xml:"AnnotationMissionList,omitempty" type:"Repeated"`
+	// Additional information. Returns success for normal requests. Returns a specific error code for abnormal requests.
+	//
 	// example:
 	//
 	// CDR \\"job-c7b8a817-b8e8-40f3-b7ad-f28dcea218ff\\" doesn\\"t exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the call succeeded. true: succeeded. false: failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 30
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 4
@@ -231,62 +255,132 @@ func (s *ListAnnotationMissionResponseBodyData) Validate() error {
 }
 
 type ListAnnotationMissionResponseBodyDataAnnotationMissionList struct {
+	// Annotation data source type. 1: Outbound call. 2: Navigation.
+	//
 	// example:
 	//
 	// 1
-	AnnotationMissionDataSourceType      *int32   `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
+	AnnotationMissionDataSourceType *int32 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
+	// Annotation debug data source list
+	//
+	// > The response includes an extra 0. Valid responses are [0,1], [0,2], or [0,1,2].
 	AnnotationMissionDebugDataSourceList []*int32 `json:"AnnotationMissionDebugDataSourceList,omitempty" xml:"AnnotationMissionDebugDataSourceList,omitempty" type:"Repeated"`
+	// Mission ID
+	//
 	// example:
 	//
 	// ddce607f-f537-4ebd-9914-cf45671defb9
-	AnnotationMissionId   *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Mission name
+	//
+	// example:
+	//
+	// 体验场景--移车-标注任务-20230220-141347
 	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
+	// Annotation status
+	//
+	// - 1: In progress
+	//
+	// - 2: Completed
+	//
+	// - 3: Closed
+	//
 	// example:
 	//
 	// 1
 	AnnotationStatus *int32 `json:"AnnotationStatus,omitempty" xml:"AnnotationStatus,omitempty"`
+	// End time of the conversation time query condition for the annotation mission
+	//
 	// example:
 	//
 	// 1684511999000
 	ConversationTimeEndFilter *int64 `json:"ConversationTimeEndFilter,omitempty" xml:"ConversationTimeEndFilter,omitempty"`
+	// Start time of the conversation time query condition for the annotation mission
+	//
 	// example:
 	//
 	// 1683216000000
 	ConversationTimeStartFilter *int64 `json:"ConversationTimeStartFilter,omitempty" xml:"ConversationTimeStartFilter,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1676170339515
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether to exclude call records already annotated in other missions
+	//
 	// example:
 	//
 	// false
 	ExcludeOtherMissionSession *bool `json:"ExcludeOtherMissionSession,omitempty" xml:"ExcludeOtherMissionSession,omitempty"`
+	// Completion time of the annotation mission
+	//
 	// example:
 	//
 	// 1683443903785
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 32be9d94-1346-4c4a-a4d0-ccd379f87013
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Maximum sampling count limit
+	//
 	// example:
 	//
 	// 1
-	SamplingCount       *int32  `json:"SamplingCount,omitempty" xml:"SamplingCount,omitempty"`
+	SamplingCount *int32 `json:"SamplingCount,omitempty" xml:"SamplingCount,omitempty"`
+	// Sampling description
+	//
+	// example:
+	//
+	// 标注
 	SamplingDescription *string `json:"SamplingDescription,omitempty" xml:"SamplingDescription,omitempty"`
+	// Sampling rate
+	//
 	// example:
 	//
 	// 1
 	SamplingRate *int32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// Sampling type
+	//
 	// example:
 	//
 	// 1
-	SamplingType               *int32   `json:"SamplingType,omitempty" xml:"SamplingType,omitempty"`
+	SamplingType *int32 `json:"SamplingType,omitempty" xml:"SamplingType,omitempty"`
+	// List of session end reason types used when creating the mission
+	//
+	// - 1: Normal completion
+	//
+	// - 2: Bot hangup after rejection
+	//
+	// - 3: Hangup due to silence timeout
+	//
+	// - 4: User hangup after rejection
+	//
+	// - 5: User hangup without reason
+	//
+	// - 6: Transfer to agent after intent match
+	//
+	// - 7: Transfer to agent after rejection
+	//
+	// - 8: No interaction from user side
+	//
+	// - 9: System exception interruption
+	//
+	// - 10: Transfer to IVR after intent match
+	//
+	// - 11: Transfer to IVR after rejection
 	SessionEndReasonFilterList []*int32 `json:"SessionEndReasonFilterList,omitempty" xml:"SessionEndReasonFilterList,omitempty" type:"Repeated"`
+	// Number of completed sessions in the annotation mission
+	//
 	// example:
 	//
 	// 1
 	SessionFinishCount *int32 `json:"SessionFinishCount,omitempty" xml:"SessionFinishCount,omitempty"`
+	// Total number of sessions in the annotation mission
+	//
 	// example:
 	//
 	// 1

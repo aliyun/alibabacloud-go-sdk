@@ -24,23 +24,34 @@ type iListScriptPublishHistoriesResponseBody interface {
 }
 
 type ListScriptPublishHistoriesResponseBody struct {
+	// The API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId              *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The script publishing histories.
 	ScriptPublishHistories *ListScriptPublishHistoriesResponseBodyScriptPublishHistories `json:"ScriptPublishHistories,omitempty" xml:"ScriptPublishHistories,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListScriptPublishHistoriesResponseBody) Validate() error {
 }
 
 type ListScriptPublishHistoriesResponseBodyScriptPublishHistories struct {
+	// The data list.
 	List []*ListScriptPublishHistoriesResponseBodyScriptPublishHistoriesList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 100
@@ -192,19 +210,32 @@ func (s *ListScriptPublishHistoriesResponseBodyScriptPublishHistories) Validate(
 }
 
 type ListScriptPublishHistoriesResponseBodyScriptPublishHistoriesList struct {
+	// The description of this published version.
+	//
+	// example:
+	//
+	// 第一次发布
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The publish time.
+	//
 	// example:
 	//
 	// 1578965079000
 	PublishTime *int64 `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// 29420f65-8f1f-4009-b2f8-f4f7b5d59090
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The script version.
+	//
 	// example:
 	//
 	// 1578965079000

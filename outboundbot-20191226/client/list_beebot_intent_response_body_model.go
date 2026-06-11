@@ -32,39 +32,58 @@ type iListBeebotIntentResponseBody interface {
 }
 
 type ListBeebotIntentResponseBody struct {
+	// The internal request ID.
+	//
 	// example:
 	//
 	// 497CFAFF-48CC-161A-AD2C-252DED569037
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Intents        []*ListBeebotIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The list of intents.
+	Intents []*ListBeebotIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
+	// The message returned by the operation.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -183,32 +202,58 @@ func (s *ListBeebotIntentResponseBody) Validate() error {
 }
 
 type ListBeebotIntentResponseBodyIntents struct {
+	// The intent alias.
+	//
+	// example:
+	//
+	// 嗯明白了
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The time when the intent was created.
+	//
 	// example:
 	//
 	// 2025-04-21 16:03:15.+0800
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the intent.
+	//
 	// example:
 	//
 	// 1252504
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The name of the account that created the intent.
+	//
 	// example:
 	//
 	// xxx@voice-navigator-testonaliyun.com
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The intent ID.
+	//
 	// example:
 	//
 	// 10717802
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The intent name.
+	//
+	// > This is the intent code. It uniquely identifies the intent.
+	//
+	// example:
+	//
+	// 知道了
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// The time when the intent was last modified.
+	//
 	// example:
 	//
 	// 2025-04-21 16:03:15.+0800
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Modify User ID
+	//
 	// example:
 	//
 	// 1252504
 	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// Modify the account name.
+	//
 	// example:
 	//
 	// xxx@voice-navigator-testonaliyun.com

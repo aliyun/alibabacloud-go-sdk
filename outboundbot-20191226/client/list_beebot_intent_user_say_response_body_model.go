@@ -32,43 +32,62 @@ type iListBeebotIntentUserSayResponseBody interface {
 }
 
 type ListBeebotIntentUserSayResponseBody struct {
+	// The internal request ID.
+	//
 	// example:
 	//
 	// D7BBFCDF-59B0-1ADA-BCA3-4B77F642DDFB
 	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// The status code of the API.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned for the API call.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0956D5DA-0978-5DC9-94B0-C68527DA7475
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserSays   []*ListBeebotIntentUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of user utterances.
+	UserSays []*ListBeebotIntentUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
 }
 
 func (s ListBeebotIntentUserSayResponseBody) String() string {
@@ -183,19 +202,32 @@ func (s *ListBeebotIntentUserSayResponseBody) Validate() error {
 }
 
 type ListBeebotIntentUserSayResponseBodyUserSays struct {
+	// The content of the utterance.
+	//
+	// example:
+	//
+	// 你知道xxxx么？
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the utterance was created.
+	//
 	// example:
 	//
 	// 2025-04-21 14:16:05.+0800
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The intent ID.
+	//
 	// example:
 	//
 	// 10717802
 	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// The time when the utterance was last modified.
+	//
 	// example:
 	//
 	// 2025-04-21 14:16:05.+0800
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The utterance ID.
+	//
 	// example:
 	//
 	// 17448458

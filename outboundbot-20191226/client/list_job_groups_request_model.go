@@ -30,35 +30,78 @@ type iListJobGroupsRequest interface {
 }
 
 type ListJobGroupsRequest struct {
+	// Specifies whether to retrieve the query results asynchronously.
+	//
 	// example:
 	//
 	// true
 	AsyncQuery *bool `json:"AsyncQuery,omitempty" xml:"AsyncQuery,omitempty"`
+	// The end of the time range for the query, based on the creation time of the job group. Specify the time as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1579965079000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 174952ab-9825-4cc9-a5e2-de82d7fa4cdd
-	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupStatusFilter      *string `json:"JobGroupStatusFilter,omitempty" xml:"JobGroupStatusFilter,omitempty"`
-	OnlyMinConcurrencyEnabled *bool   `json:"OnlyMinConcurrencyEnabled,omitempty" xml:"OnlyMinConcurrencyEnabled,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Filters results by job status. To specify multiple statuses, separate them with commas. The statuses are combined with a logical OR. Valid values:
+	//
+	// - **Draft**: The job group is a draft.
+	//
+	// - **Scheduling**: The job group is being scheduled.
+	//
+	// - **Executing**: The job group is executing.
+	//
+	// - **Completed**: The job group has completed.
+	//
+	// - **Paused**: The job group is paused.
+	//
+	// - **Failed**: The job group has failed.
+	//
+	// - **Cancelled**: The job group is canceled.
+	//
+	// - **Initializing**: The job group is initializing.
+	//
+	// example:
+	//
+	// Draft
+	JobGroupStatusFilter *string `json:"JobGroupStatusFilter,omitempty" xml:"JobGroupStatusFilter,omitempty"`
+	// Specifies whether to return only job groups with minimum concurrency enabled.
+	//
+	// example:
+	//
+	// false
+	OnlyMinConcurrencyEnabled *bool `json:"OnlyMinConcurrencyEnabled,omitempty" xml:"OnlyMinConcurrencyEnabled,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search text.
+	//
+	// example:
+	//
+	// 面试
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	// The start of the time range for the query, based on the creation time of the job group. Specify the time as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1578965079000

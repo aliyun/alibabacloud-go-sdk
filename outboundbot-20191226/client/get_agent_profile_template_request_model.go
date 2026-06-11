@@ -16,12 +16,16 @@ type iGetAgentProfileTemplateRequest interface {
 }
 
 type GetAgentProfileTemplateRequest struct {
+	// ID of the agent profile template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default-survey
 	AgentProfileTemplateId *string `json:"AgentProfileTemplateId,omitempty" xml:"AgentProfileTemplateId,omitempty"`
+	// IP address of the application. This is a system field and is optional.
+	//
 	// example:
 	//
 	// 127.0.0.1

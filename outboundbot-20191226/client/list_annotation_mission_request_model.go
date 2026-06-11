@@ -30,32 +30,60 @@ type iListAnnotationMissionRequest interface {
 }
 
 type ListAnnotationMissionRequest struct {
+	// Annotation mission ID
+	//
 	// example:
 	//
 	// 0943abcb-bd7d-4ace-8cf7-97d39d4dd0b9
-	AnnotationMissionId        *string  `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
-	AnnotationMissionName      *string  `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
+	AnnotationMissionId *string `json:"AnnotationMissionId,omitempty" xml:"AnnotationMissionId,omitempty"`
+	// Annotation mission name
+	//
+	// example:
+	//
+	// 全景服务场景-标注任务-20230316-103253
+	AnnotationMissionName *string `json:"AnnotationMissionName,omitempty" xml:"AnnotationMissionName,omitempty"`
+	// Annotation status filter. Deprecated.
 	AnnotationStatusListFilter []*int32 `json:"AnnotationStatusListFilter,omitempty" xml:"AnnotationStatusListFilter,omitempty" type:"Repeated"`
+	// Annotation status filter
+	//
+	// > Format: [1]. You can specify multiple values. Valid values:
+	//
+	// - 1: In progress
+	//
+	// - 2: Completed
+	//
+	// - 3: Closed
+	//
 	// example:
 	//
 	// [1]
 	AnnotationStatusListStringFilter *string `json:"AnnotationStatusListStringFilter,omitempty" xml:"AnnotationStatusListStringFilter,omitempty"`
+	// End time of the annotation mission creation filter
+	//
 	// example:
 	//
 	// 1673280000000
 	CreateTimeEndFilter *int64 `json:"CreateTimeEndFilter,omitempty" xml:"CreateTimeEndFilter,omitempty"`
+	// Start time of the annotation mission creation filter
+	//
 	// example:
 	//
 	// 1661961600000
 	CreateTimeStartFilter *int64 `json:"CreateTimeStartFilter,omitempty" xml:"CreateTimeStartFilter,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// 191ef468-75a2-4004-9441-a5c31bf5cd9d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 10

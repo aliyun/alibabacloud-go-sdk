@@ -24,23 +24,34 @@ type iDescribeGlobalQuestionResponseBody interface {
 }
 
 type DescribeGlobalQuestionResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the global question.
 	GlobalQuestion *DescribeGlobalQuestionResponseBodyGlobalQuestion `json:"GlobalQuestion,omitempty" xml:"GlobalQuestion,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,17 +130,38 @@ func (s *DescribeGlobalQuestionResponseBody) Validate() error {
 }
 
 type DescribeGlobalQuestionResponseBodyGlobalQuestion struct {
+	// The answers to the global question.
+	//
+	// example:
+	//
+	// ["你好,我是你的专属客服顾问."]
 	Answers *string `json:"Answers,omitempty" xml:"Answers,omitempty"`
+	// The ID of the global question.
+	//
 	// example:
 	//
 	// f160ec2e-94f2-4c03-87be-ece5b52d5dd9
-	GlobalQuestionId   *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	GlobalQuestionId *string `json:"GlobalQuestionId,omitempty" xml:"GlobalQuestionId,omitempty"`
+	// The name of the global question.
+	//
+	// example:
+	//
+	// 你是谁-全局问题
 	GlobalQuestionName *string `json:"GlobalQuestionName,omitempty" xml:"GlobalQuestionName,omitempty"`
+	// The type of the global question.
+	//
 	// example:
 	//
 	// COMMON
 	GlobalQuestionType *string `json:"GlobalQuestionType,omitempty" xml:"GlobalQuestionType,omitempty"`
-	Questions          *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// The questions mapped to this global question.
+	//
+	// example:
+	//
+	// ["你是谁","你叫什么"]
+	Questions *string `json:"Questions,omitempty" xml:"Questions,omitempty"`
+	// The ID of the script.
+	//
 	// example:
 	//
 	// 290e06a5-6de2-4cc8-8a9c-72b7c152256c

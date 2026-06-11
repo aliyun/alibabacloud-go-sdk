@@ -22,14 +22,36 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the Outbound Calling Bot instance.
+	//
+	// example:
+	//
+	// xxx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
+	// > For more information, see ListResourceGroups.
+	//
 	// example:
 	//
 	// rg-acfm3iugit3uw7a
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags of the service instance.
+	//
+	// > You can call the ListResourceTags operation to obtain the tags.
+	Tag []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -99,10 +121,14 @@ func (s *ListInstancesRequest) Validate() error {
 }
 
 type ListInstancesRequestTag struct {
+	// The key of the instance tag.
+	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the instance tag.
+	//
 	// example:
 	//
 	// xxx

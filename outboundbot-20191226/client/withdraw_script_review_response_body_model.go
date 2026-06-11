@@ -24,23 +24,34 @@ type iWithdrawScriptReviewResponseBody interface {
 }
 
 type WithdrawScriptReviewResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Script    *WithdrawScriptReviewResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The script information.
+	Script *WithdrawScriptReviewResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +130,62 @@ func (s *WithdrawScriptReviewResponseBody) Validate() error {
 }
 
 type WithdrawScriptReviewResponseBodyScript struct {
+	// The debug status.
+	//
 	// example:
 	//
 	// PUBLISHED
 	DebugStatus *string `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
-	Industry    *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// The industry.
+	//
+	// example:
+	//
+	// 金融
+	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	// Indicates whether the debug version is a draft.
+	//
 	// example:
 	//
 	// false
 	IsDebugDrafted *bool `json:"IsDebugDrafted,omitempty" xml:"IsDebugDrafted,omitempty"`
+	// Indicates whether the application version is a draft.
+	//
 	// example:
 	//
 	// false
-	IsDrafted         *bool   `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
-	Scene             *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	IsDrafted *bool `json:"IsDrafted,omitempty" xml:"IsDrafted,omitempty"`
+	// The scenario.
+	//
+	// example:
+	//
+	// 电销
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The script description.
+	//
+	// example:
+	//
+	// 销售话术
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// e4e2a770-b97b-465a-80d8-06dca008c503
-	ScriptId   *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The script name.
+	//
+	// example:
+	//
+	// 销售话术
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// The status of the application version.
+	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the script was updated.
+	//
 	// example:
 	//
 	// 1578881227000

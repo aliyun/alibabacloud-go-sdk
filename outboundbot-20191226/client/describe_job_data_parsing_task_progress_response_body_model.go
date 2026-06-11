@@ -24,26 +24,38 @@ type iDescribeJobDataParsingTaskProgressResponseBody interface {
 }
 
 type DescribeJobDataParsingTaskProgressResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Parsing progress.
+	//
 	// example:
 	//
 	// {}
 	Progress *DescribeJobDataParsingTaskProgressResponseBodyProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -122,23 +134,48 @@ func (s *DescribeJobDataParsingTaskProgressResponseBody) Validate() error {
 }
 
 type DescribeJobDataParsingTaskProgressResponseBodyProgress struct {
+	// Error code for a failed parsing task.
+	//
 	// example:
 	//
 	// Permission.JobStatus
 	FailErrorCode *string `json:"FailErrorCode,omitempty" xml:"FailErrorCode,omitempty"`
+	// Reason for failure.
+	//
 	// example:
 	//
 	// CreateCorpus
-	FailReason  *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// Download URL for the file that lists parsing failures. This field is deprecated.
+	//
+	// example:
+	//
+	// xxxx
 	FeedbackUrl *string `json:"FeedbackUrl,omitempty" xml:"FeedbackUrl,omitempty"`
+	// Number of jobs processed so far.
+	//
 	// example:
 	//
 	// 2
 	HandledJobCount *int32 `json:"HandledJobCount,omitempty" xml:"HandledJobCount,omitempty"`
+	// Status of the job.
+	//
+	// - Pending: The job is waiting to start.
+	//
+	// - InProgress: The job is running.
+	//
+	// - Finished: The job completed successfully.
+	//
+	// - PartialFinished: The job completed partially.
+	//
+	// - Failed: The job failed.
+	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Total number of jobs in the task.
+	//
 	// example:
 	//
 	// 3

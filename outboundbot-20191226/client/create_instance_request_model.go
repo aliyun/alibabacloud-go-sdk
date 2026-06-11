@@ -24,20 +24,52 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
-	CallingNumber       []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The list of calling numbers.
+	//
+	// > This parameter is optional.
+	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 这个是第一的实例
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 第一个实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The maximum number of concurrent conversations for the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	MaxConcurrentConversation *int32 `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
+	// The service type.
+	//
+	// > If you do not specify this parameter, the default value is Managed.
+	//
+	// - DialogStudio: Conversation Engine 3.0.
+	//
+	// - Authorized: A chatbot for the public cloud. This value is used when a public cloud customer purchases a private Intelligent Speech Interaction service and grants authorization. To grant authorization, go to Scenario Management, click Edit, and then select Custom Service in the Invoke Service section.
+	//
+	// - Provided: A chatbot for on-premises deployment.
+	//
+	// - Managed: The legacy outbound call canvas. This is the default public Intelligent Speech Interaction service for the outbound call product.
+	//
 	// example:
 	//
-	// Provided
+	// DialogStudio
 	NluServiceType *string `json:"NluServiceType,omitempty" xml:"NluServiceType,omitempty"`
+	// The ID of the resource group.
+	//
+	// > You can call the ListResourceGroups operation to obtain this ID. For more information, see the Resource Management documentation at https\\://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
+	//
 	// example:
 	//
 	// rg-acfmwd4qr3z773y

@@ -16,12 +16,16 @@ type iDescribeDsReportsRequest interface {
 }
 
 type DescribeDsReportsRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task group ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iDescribeScriptVoiceConfigResponseBody interface {
 }
 
 type DescribeScriptVoiceConfigResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the script voice configuration.
 	ScriptVoiceConfig *DescribeScriptVoiceConfigResponseBodyScriptVoiceConfig `json:"ScriptVoiceConfig,omitempty" xml:"ScriptVoiceConfig,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,27 +130,51 @@ func (s *DescribeScriptVoiceConfigResponseBody) Validate() error {
 }
 
 type DescribeScriptVoiceConfigResponseBodyScriptVoiceConfig struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 291cfc6a-8703-4bdd-a99d-9cba32d5288a
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The script content.
+	//
+	// example:
+	//
+	// 你的花呗欠款逾期了需要处理，你现在能处理一下吗？
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// The ID of the script.
+	//
 	// example:
 	//
 	// 947e0875-b5d4-4b33-b18c-7b2cf85bcb4f
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The ID of the script voice configuration.
+	//
 	// example:
 	//
 	// 2a07b634-e15d-445f-bbcb-fc4ea2df7b87
-	ScriptVoiceConfigId    *string `json:"ScriptVoiceConfigId,omitempty" xml:"ScriptVoiceConfigId,omitempty"`
+	ScriptVoiceConfigId *string `json:"ScriptVoiceConfigId,omitempty" xml:"ScriptVoiceConfigId,omitempty"`
+	// The script waveform relation data. Returned only when `Type` is `WAVEFORM`.
+	//
+	// example:
+	//
+	// [{"ScriptContent":"请问你是","ScriptWaveformId":"07db2f0a-acb2-4e68-b9f4-66397414f50c"},{"ScriptContent":"吗？","ScriptWaveformId":"c2a69440-03e3-406e-b0a9-a9791fccb31b"}]
 	ScriptWaveformRelation *string `json:"ScriptWaveformRelation,omitempty" xml:"ScriptWaveformRelation,omitempty"`
+	// The source of the script.
+	//
 	// example:
 	//
 	// DIALOGUE_FLOW
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The type of the voice configuration. Valid values:
+	//
+	// - `WAVEFORM`: A recording.
+	//
+	// - `TTS`: Text-to-speech.
+	//
 	// example:
 	//
-	// WAVEFORM
+	// TTS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

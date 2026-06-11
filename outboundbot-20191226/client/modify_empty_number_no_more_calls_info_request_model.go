@@ -18,16 +18,28 @@ type iModifyEmptyNumberNoMoreCallsInfoRequest interface {
 }
 
 type ModifyEmptyNumberNoMoreCallsInfoRequest struct {
+	// Enable or disable the nonexistent number no-call feature.
+	//
 	// example:
 	//
 	// true
 	EmptyNumberNoMoreCalls *bool `json:"EmptyNumberNoMoreCalls,omitempty" xml:"EmptyNumberNoMoreCalls,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// Policy level. Use 2 for business instances.
+	//
+	// - 0: system
+	//
+	// - 1: tenant
+	//
+	// - 2: instance
+	//
 	// example:
 	//
 	// 2
