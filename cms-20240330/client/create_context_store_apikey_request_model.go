@@ -14,6 +14,8 @@ type iCreateContextStoreAPIKeyRequest interface {
 }
 
 type CreateContextStoreAPIKeyRequest struct {
+	// The display name of the API key. Use this name to identify its purpose.
+	//
 	// This parameter is required.
 	//
 	// example:

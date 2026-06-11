@@ -18,19 +18,19 @@ type iIncidentResourceDetail interface {
 }
 
 type IncidentResourceDetail struct {
-	// Additional resource identifier.
+	// An additional resource identifier.
 	//
 	// example:
 	//
 	// app-prod-web-01
 	ExtraId *string `json:"extraId,omitempty" xml:"extraId,omitempty"`
-	// Resource ID object.
+	// The resource ID object.
 	//
 	// example:
 	//
 	// { "type": "ecs", "id": "i-bp1234567890abcdef" }
 	ResourceId map[string]interface{} `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// Resource type, indicating which cloud product the resource belongs to.
+	// The resource type. This indicates the cloud product to which the resource belongs.
 	//
 	// example:
 	//

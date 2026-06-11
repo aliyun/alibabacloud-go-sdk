@@ -16,13 +16,13 @@ type iIncidentPlanFieldPath interface {
 }
 
 type IncidentPlanFieldPath struct {
-	// Field alias.
+	// The field alias.
 	//
 	// example:
 	//
-	// Service name.
+	// 服务名称
 	FieldAlias *string `json:"fieldAlias,omitempty" xml:"fieldAlias,omitempty"`
-	// List of field paths.
+	// A list of field paths.
 	FieldPath []*string `json:"fieldPath,omitempty" xml:"fieldPath,omitempty" type:"Repeated"`
 }
 

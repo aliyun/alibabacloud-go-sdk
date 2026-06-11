@@ -20,21 +20,21 @@ type iListIntegrationPolicyCustomScrapeJobRulesResponseBody interface {
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBody struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// et15prod-et15storage
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// Custom scraping job rules
+	// The custom scrape job rules.
 	CustomScrapeJobRules []*ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules `json:"customScrapeJobRules,omitempty" xml:"customScrapeJobRules,omitempty" type:"Repeated"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// policy-15abcc24c06f4797832b5954198e1ed1
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// ID of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBody) Validate() error
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules struct {
-	// Addon name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// cloud-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// Addon Release name
+	// The name of the add-on release.
 	//
 	// example:
 	//
 	// release-12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// Addon version
+	// The add-on version.
 	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// Configuration yaml
+	// The configuration YAML file.
 	//
 	// example:
 	//
@@ -126,43 +126,43 @@ type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules s
 	//
 	// - jobxxxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
-	// Enable status
+	// The enabled status.
 	//
 	// example:
 	//
 	// mini
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// Encrypt yaml
+	// Indicates whether the YAML file is encrypted.
 	//
 	// example:
 	//
 	// true
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
-	// Matched pod count
+	// The number of matched pods.
 	//
 	// example:
 	//
 	// 1
 	MatchedPodCount *int64 `json:"matchedPodCount,omitempty" xml:"matchedPodCount,omitempty"`
-	// Detailed information.
+	// The details.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// dlab1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Namespace
+	// The namespace.
 	//
 	// example:
 	//
 	// prod-data
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Custom configurations
+	// The custom configurations.
 	ScrapeConfigs []*ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs `json:"scrapeConfigs,omitempty" xml:"scrapeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -287,43 +287,43 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRul
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs struct {
-	// Scraping job name
+	// The scrape job name.
 	//
 	// example:
 	//
 	// mysql-exporter
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
-	// Detailed information.
+	// The details.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Metrics path
+	// The scrape path.
 	//
 	// example:
 	//
 	// /metrics
 	MetricsPath *string `json:"metricsPath,omitempty" xml:"metricsPath,omitempty"`
-	// Call method.
+	// The invocation method.
 	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"scheme,omitempty" xml:"scheme,omitempty"`
-	// Scrape interval
+	// The scrape interval.
 	//
 	// example:
 	//
 	// 30s
 	ScrapeInterval *string `json:"scrapeInterval,omitempty" xml:"scrapeInterval,omitempty"`
-	// Scrape timeout
+	// The scrape timeout period.
 	//
 	// example:
 	//
 	// 60s
 	ScrapeTimeout *string `json:"scrapeTimeout,omitempty" xml:"scrapeTimeout,omitempty"`
-	// Service discovery configuration
+	// The service discovery configurations.
 	ServiceDiscoveryConfigs []*string `json:"serviceDiscoveryConfigs,omitempty" xml:"serviceDiscoveryConfigs,omitempty" type:"Repeated"`
 }
 

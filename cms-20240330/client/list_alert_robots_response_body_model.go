@@ -22,21 +22,28 @@ type iListAlertRobotsResponseBody interface {
 }
 
 type ListAlertRobotsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Robots    []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the robot.
+	Robots []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 3
@@ -111,22 +118,32 @@ func (s *ListAlertRobotsResponseBody) Validate() error {
 
 type ListAlertRobotsResponseBodyRobots struct {
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the robot.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique robot ID.
+	//
 	// example:
 	//
 	// test
 	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
+	// The robot type.
+	//
 	// example:
 	//
 	// DING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The webhook URL.
+	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=*******

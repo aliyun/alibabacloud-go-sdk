@@ -30,32 +30,48 @@ type iTransformAction interface {
 }
 
 type TransformAction struct {
+	// The filter configuration.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// The label name.
+	//
 	// example:
 	//
 	// labelkey1
-	LabelKey *string            `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
-	Mapping  map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	LabelKey *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	// The mapping configuration.
+	Mapping map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	// The regular expression.
+	//
 	// example:
 	//
 	// (.*):(.*)
 	RegExp *string `json:"regExp,omitempty" xml:"regExp,omitempty"`
+	// The reference path.
+	//
 	// example:
 	//
 	// data.subject
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The target location.
+	//
 	// example:
 	//
 	// SUBJECT
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// The transform type.
+	//
 	// example:
 	//
 	// SET_FIELD
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value to set.
+	//
 	// example:
 	//
 	// value1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The variable name.
+	//
 	// example:
 	//
 	// var1

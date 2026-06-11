@@ -16,11 +16,11 @@ type iDirectNotifyChannel interface {
 }
 
 type DirectNotifyChannel struct {
-	// 通知对象标识列表
+	// An array of recipient identifiers. The format of each identifier depends on the `type`. For example, if `type` is `email`, the identifiers are email addresses.
 	//
 	// This parameter is required.
 	Identifiers []*string `json:"identifiers,omitempty" xml:"identifiers,omitempty" type:"Repeated"`
-	// 通知渠道类型
+	// The notification channel type. For example, `sms` or `email`.
 	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`

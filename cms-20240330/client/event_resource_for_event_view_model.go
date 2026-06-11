@@ -16,7 +16,10 @@ type iEventResourceForEventView interface {
 }
 
 type EventResourceForEventView struct {
+  // The resource entity.
   Entity *EventResourceForEventViewEntity `json:"entity,omitempty" xml:"entity,omitempty" type:"Struct"`
+  // The tags.
+  // 
   // example:
   // 
   // { "env": "prod", "project": "payment-gateway" }
@@ -59,18 +62,26 @@ func (s *EventResourceForEventView) Validate() error {
 }
 
 type EventResourceForEventViewEntity struct {
+  // The product domain to which the resource belongs.
+  // 
   // example:
   // 
   // "ECS"
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // The instance ID.
+  // 
   // example:
   // 
   // "i-bp123456"
   EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+  // The specific type of the resource.
+  // 
   // example:
   // 
   // "Instance"
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+  // Extra properties of the resource.
+  // 
   // example:
   // 
   // { "name": "web-server-01", "ip": "10.0.0.1" }

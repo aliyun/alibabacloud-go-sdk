@@ -26,7 +26,7 @@ type iUpdatePrometheusViewRequest interface {
 }
 
 type UpdatePrometheusViewRequest struct {
-	// Password-free read policy (supports IP segments and VpcId).
+	// The policy for password-free read access. IP address segments and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -50,33 +50,33 @@ type UpdatePrometheusViewRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// Whether to support password-free read.
+	// Specifies whether to enable password-free read access.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Whether to support authToken.
+	// Specifies whether to enable authentication tokens.
 	//
 	// example:
 	//
 	// false
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// List of Prometheus instances.
+	// A list of Prometheus instances.
 	PrometheusInstances []*UpdatePrometheusViewRequestPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// Prometheus view name.
+	// The name of the Prometheus view.
 	//
 	// example:
 	//
 	// test-prom-view-name
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// Running status.
+	// The status of the Prometheus view.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Belonging workspace.
+	// The workspace to which the view belongs.
 	//
 	// example:
 	//
@@ -169,19 +169,19 @@ func (s *UpdatePrometheusViewRequest) Validate() error {
 }
 
 type UpdatePrometheusViewRequestPrometheusInstances struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// c7ba84651c71e442c8d0653085d862164
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// Region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-north-2-gov-1
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

@@ -24,32 +24,38 @@ type iListServicesShrinkRequest interface {
 }
 
 type ListServicesShrinkRequest struct {
-	// The maximum number of records to return in this request.
+	// The maximum number of records to return for this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Token for the next query, an empty value indicates the last page.
+	// The token for the next page of results. If this parameter is empty, it means you have reached the last page.
 	//
 	// example:
 	//
 	// 7-b81a-4bc9-bbfa-a50cc6988667
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekxxzuad5zzzz
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The application service name.
+	//
 	// example:
 	//
 	// app-demo
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// Service type
+	// The service type.
 	//
 	// example:
 	//
-	// apm
+	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// An array of tags.
+	//
 	// if can be null:
 	// true
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`

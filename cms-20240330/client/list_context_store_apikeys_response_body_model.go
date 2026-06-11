@@ -22,19 +22,28 @@ type iListContextStoreAPIKeysResponseBody interface {
 }
 
 type ListContextStoreAPIKeysResponseBody struct {
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// A pagination token. To retrieve the next page of results, include this value in the `nextToken` parameter of your next request. If this parameter is not returned, there are no more results.
+	//
 	// example:
 	//
 	// xCs4wJD41qEejNkappMSJ1OL2Ky2GeKLqmBLJrC61WrgUOj9F-31jHbo5Kgqzifv
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*ListContextStoreAPIKeysResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of API keys.
+	Results []*ListContextStoreAPIKeysResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total count of entries that match the query.
+	//
 	// example:
 	//
 	// 454
@@ -108,24 +117,34 @@ func (s *ListContextStoreAPIKeysResponseBody) Validate() error {
 }
 
 type ListContextStoreAPIKeysResponseBodyResults struct {
+	// The complete API key value.
+	//
 	// example:
 	//
 	// sk-3ac8d45d741e4f31b81aa6ee984ce9fd
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The name of the context store.
+	//
 	// example:
 	//
 	// test-context-Store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The time when the API key was created, represented as a Unix timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1778205145
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The display name of the API key. This name helps you identify the purpose of the key.
+	//
 	// example:
 	//
 	// Production Service Key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// test-workspace

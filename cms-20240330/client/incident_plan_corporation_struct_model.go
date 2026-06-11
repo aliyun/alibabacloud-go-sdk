@@ -16,13 +16,13 @@ type iIncidentPlanCorporationStruct interface {
 }
 
 type IncidentPlanCorporationStruct struct {
-	// Channel name.
+	// The channel name.
 	//
 	// example:
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Robot ID.
+	// The unique ID of the robot.
 	//
 	// example:
 	//

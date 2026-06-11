@@ -22,21 +22,28 @@ type iDescribeMetricMetaListResponseBody interface {
 }
 
 type DescribeMetricMetaListResponseBody struct {
+	// The page number. The default value is `1`.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 2000
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
-	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The configurations of the metrics in the resource.
 	Resources []*DescribeMetricMetaListResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6370
@@ -110,17 +117,62 @@ func (s *DescribeMetricMetaListResponseBody) Validate() error {
 }
 
 type DescribeMetricMetaListResponseBodyResources struct {
-	Description          *string                                                            `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// ECS CPU Utilization
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The descriptions of the dimensions.
 	DimensionDescription []*DescribeMetricMetaListResponseBodyResourcesDimensionDescription `json:"dimensionDescription,omitempty" xml:"dimensionDescription,omitempty" type:"Repeated"`
-	Dimensions           []*string                                                          `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
-	Labels               map[string]*string                                                 `json:"labels,omitempty" xml:"labels,omitempty"`
-	MetaFormat           *string                                                            `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
-	MetricName           *string                                                            `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Namespace            *string                                                            `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Periods              *string                                                            `json:"periods,omitempty" xml:"periods,omitempty"`
-	Statistics           *string                                                            `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	Type                 *string                                                            `json:"type,omitempty" xml:"type,omitempty"`
-	Unit                 *string                                                            `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The dimensions for filtering resources in CloudMonitor.
+	Dimensions []*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
+	// The CloudMonitor labels. This parameter is returned only when `metaFormat` is set to `CMS`.
+	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The metadata format.
+	MetaFormat *string `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
+	// The metric name.
+	//
+	// example:
+	//
+	// CPUUtilization
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The namespace.
+	//
+	// example:
+	//
+	// acs_ecs_dashboard
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The aggregation period.
+	//
+	// example:
+	//
+	// 60
+	Periods *string `json:"periods,omitempty" xml:"periods,omitempty"`
+	// The statistic of the metric. Examples:
+	//
+	// - `Maximum`: the maximum value.
+	//
+	// - `Minimum`: the minimum value.
+	//
+	// - `Average`: the average value.
+	//
+	// example:
+	//
+	// Maximum
+	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
+	// The metric type.
+	//
+	// example:
+	//
+	// Gauge
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The unit.
+	//
+	// example:
+	//
+	// %
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s DescribeMetricMetaListResponseBodyResources) String() string {
@@ -244,6 +296,11 @@ func (s *DescribeMetricMetaListResponseBodyResources) Validate() error {
 }
 
 type DescribeMetricMetaListResponseBodyResourcesDimensionDescription struct {
+	// The name of the dimension.
+	//
+	// example:
+	//
+	// user_id
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

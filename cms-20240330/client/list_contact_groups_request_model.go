@@ -22,15 +22,22 @@ type iListContactGroupsRequest interface {
 }
 
 type ListContactGroupsRequest struct {
+	// The contact group IDs.
 	ContactGroupIds []*string `json:"contactGroupIds,omitempty" xml:"contactGroupIds,omitempty" type:"Repeated"`
+	// The name of the contact group.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. The default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return per page. The default is 100.
+	//
 	// example:
 	//
 	// 20

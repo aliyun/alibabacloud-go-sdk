@@ -14,6 +14,8 @@ type iUpdateMemoryResponseBody interface {
 }
 
 type UpdateMemoryResponseBody struct {
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 3B311FD9-A60B-55E0-A896-A0C73*********

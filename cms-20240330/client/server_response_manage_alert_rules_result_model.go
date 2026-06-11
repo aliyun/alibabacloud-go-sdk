@@ -30,22 +30,23 @@ type iServerResponseManageAlertRulesResult interface {
 }
 
 type ServerResponseManageAlertRulesResult struct {
-	// 响应码
-	Code *string                 `json:"code,omitempty" xml:"code,omitempty"`
+	// The operation status code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result of the operation.
 	Data *ManageAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
-	// 错误消息
+	// A message detailing the outcome of the request, such as a success message or an error description.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 分页 Token
+	// The token used to retrieve the next page of results. If the token is not returned, there are no more results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 页码
+	// The current page number.
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页大小
+	// The number of entries per page.
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求 ID
+	// The unique ID for the request. Provide this ID when contacting support for assistance.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 是否成功
+	// Indicates whether the request succeeded (`true`) or failed (`false`).
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 总数
+	// The total number of entries that match the query.
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 

@@ -16,12 +16,14 @@ type iCreateDeliveryTaskResponseBody interface {
 }
 
 type CreateDeliveryTaskResponseBody struct {
-	// Id of the request
+	// The unique ID for the request.
 	//
 	// example:
 	//
 	// 4CB23A2E-B426-5D4B-9AA2-6C7A508D954B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the delivery task.
+	//
 	// example:
 	//
 	// 98e367d8fb8cc83b

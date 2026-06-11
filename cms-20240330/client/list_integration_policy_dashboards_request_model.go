@@ -18,19 +18,19 @@ type iListIntegrationPolicyDashboardsRequest interface {
 }
 
 type ListIntegrationPolicyDashboardsRequest struct {
-	// Addon Name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// cs-default
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// Query Language
+	// The query language.
 	//
 	// example:
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Component Scenario.
+	// The component scenario.
 	//
 	// example:
 	//

@@ -26,13 +26,20 @@ type iAlertRuleNotificationFilter interface {
 }
 
 type AlertRuleNotificationFilter struct {
-	Contacts       []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// A list of contact IDs for filtering.
+	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// A list of custom webhook IDs for filtering.
 	CustomWebhooks []*string `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	DingWebhooks   []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	FsWebhooks     []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
-	Groups         []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	SlackWebhooks  []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	WxWebhooks     []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
+	// A list of DingTalk webhook IDs for filtering.
+	DingWebhooks []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
+	// A list of Lark webhook IDs for filtering.
+	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
+	// A list of contact group IDs for filtering.
+	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	// A list of Slack webhook IDs for filtering.
+	SlackWebhooks []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
+	// A list of WeChat webhook IDs for filtering.
+	WxWebhooks []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 
 func (s AlertRuleNotificationFilter) String() string {

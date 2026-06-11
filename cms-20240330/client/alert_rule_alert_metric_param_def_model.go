@@ -28,31 +28,49 @@ type iAlertRuleAlertMetricParamDef interface {
 }
 
 type AlertRuleAlertMetricParamDef struct {
+	// The maximum width of the input control. This parameter is valid only for SELECT_PARAM and INPUT_PARAM.
+	//
 	// example:
 	//
 	// 200
 	MaxWidth *int32 `json:"maxWidth,omitempty" xml:"maxWidth,omitempty"`
+	// The minimum width of the input control. This parameter is valid only for SELECT_PARAM and INPUT_PARAM.
+	//
 	// example:
 	//
 	// 100
 	MinWidth *int32 `json:"minWidth,omitempty" xml:"minWidth,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// env
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Chinese placeholder text displayed on the frontend. This parameter is valid only for INPUT_PARAM.
+	//
+	// example:
+	//
+	// 请输入值
 	PlaceholderCn *string `json:"placeholderCn,omitempty" xml:"placeholderCn,omitempty"`
+	// The English placeholder text displayed on the frontend. This parameter is valid only for INPUT_PARAM.
+	//
 	// example:
 	//
 	// Enter value
 	PlaceholderEn *string `json:"placeholderEn,omitempty" xml:"placeholderEn,omitempty"`
+	// ● TEXT_PARAM: A read-only text parameter defined by the backend. No user input control is displayed on the frontend.● INPUT_PARAM: An input box parameter.● SELECT_PARAM: A selection box parameter.
+	//
 	// example:
 	//
 	// TEXT_PARAM
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value.
+	//
 	// example:
 	//
 	// staging
-	Value  *string                               `json:"value,omitempty" xml:"value,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The list of available options in the drop-down list. This parameter is valid only for SELECT_PARAM.
 	Values []*AlertRuleAlertMetricParamDefValues `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -150,11 +168,20 @@ func (s *AlertRuleAlertMetricParamDef) Validate() error {
 }
 
 type AlertRuleAlertMetricParamDefValues struct {
+	// The Chinese display name of the option.
+	//
+	// example:
+	//
+	// 测试环境
 	LabelCn *string `json:"labelCn,omitempty" xml:"labelCn,omitempty"`
+	// The English display name of the option.
+	//
 	// example:
 	//
 	// Staging
 	LabelEn *string `json:"labelEn,omitempty" xml:"labelEn,omitempty"`
+	// The value.
+	//
 	// example:
 	//
 	// staging

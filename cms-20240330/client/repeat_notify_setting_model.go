@@ -16,10 +16,14 @@ type iRepeatNotifySetting interface {
 }
 
 type RepeatNotifySetting struct {
+	// The state that ends the management event.
+	//
 	// example:
 	//
 	// "Resolved"
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
+	// The interval between repeated notifications.
+	//
 	// example:
 	//
 	// 5

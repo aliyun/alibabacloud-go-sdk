@@ -20,18 +20,26 @@ type iListContextStoresRequest interface {
 }
 
 type ListContextStoresRequest struct {
+	// The name of the context store.
+	//
 	// example:
 	//
 	// test-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The context type.
+	//
 	// example:
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// OCAQV0pBqldexv7EidbIZw==

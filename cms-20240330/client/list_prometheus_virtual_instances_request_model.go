@@ -21,14 +21,15 @@ type iListPrometheusVirtualInstancesRequest interface {
 
 type ListPrometheusVirtualInstancesRequest struct {
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional cloud product
+	// The namespace of the cloud product. This parameter is optional.
 	//
 	// example:
 	//
 	// ack-csi-fuse
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	TenantId  *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
 func (s ListPrometheusVirtualInstancesRequest) String() string {

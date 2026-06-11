@@ -30,23 +30,23 @@ type iConditionConfigUnified interface {
 }
 
 type ConditionConfigUnified struct {
-	// 聚合函数（APM_SIMPLE_CONDITION）
+	// The aggregation method for metric data points over the evaluation period. Valid values include `AVG`, `SUM`, and `MAX`.
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	// 多条比较（APM_COMPOSITE_CONDITION）
+	// A list of composite comparison configurations for APM alerts. Each item is an `ApmCompositeCompareConfig` object.
 	CompareList []*ApmCompositeCompareConfig `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
-	// 持续时间（秒），PROMETHEUS_SIMPLE / UMODEL_METRICSET 使用
+	// The number of seconds a condition must be true before triggering an alert.
 	DurationSecs *int32 `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
-	// 比较操作符（UMODEL_METRICSET_CONDITION 或 APM_SIMPLE_CONDITION）
+	// The comparison operator used to evaluate the metric against the threshold.
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 条件间逻辑关系（APM_COMPOSITE_CONDITION）
+	// The logical relationship between multiple conditions. Valid values are `AND` and `OR`.
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
-	// 严重等级（UMODEL / PROMETHEUS_SIMPLE / APM_COMPOSITE）
+	// The alert severity. Valid values are `CRITICAL`, `WARNING`, and `INFO`.
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// 阈值（UMODEL_METRICSET_CONDITION）
+	// The value against which the metric is evaluated to trigger an alert.
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// 多阈值列表（APM_SIMPLE_CONDITION）
+	// A list of threshold configurations for Application Performance Monitoring (APM) alerts. Each item is an `ApmThresholdConfig` object.
 	ThresholdList []*ApmThresholdConfig `json:"thresholdList,omitempty" xml:"thresholdList,omitempty" type:"Repeated"`
-	// 检测条件类型
+	// The type of the alert condition.
 	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`

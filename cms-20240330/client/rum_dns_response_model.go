@@ -18,14 +18,20 @@ type iRumDnsResponse interface {
 }
 
 type RumDnsResponse struct {
+	// The domain name for RUM reporting.
+	//
 	// example:
 	//
 	// rum
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The message returned if initialization fails.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The DNS initialization status of the domain name.
+	//
 	// example:
 	//
 	// true

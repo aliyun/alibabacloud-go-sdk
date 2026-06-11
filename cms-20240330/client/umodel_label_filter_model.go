@@ -18,11 +18,11 @@ type iUmodelLabelFilter interface {
 }
 
 type UmodelLabelFilter struct {
-	// 标签名
+	// The key of the label used for filtering.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 标签过滤操作符，仅支持 = 或 !=
+	// The logical operator used to compare the label\\"s value.
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 标签值
+	// The value of the label to match.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

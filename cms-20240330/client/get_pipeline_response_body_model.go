@@ -34,38 +34,56 @@ type iGetPipelineResponseBody interface {
 }
 
 type GetPipelineResponseBody struct {
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the pipeline.
+	//
 	// example:
 	//
 	// workspace test
-	Description   *string                               `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution policy.
 	ExecutePolicy *GetPipelineResponseBodyExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
-	Pipeline      *GetPipelineResponseBodyPipeline      `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	// The pipeline configuration.
+	Pipeline *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	// The pipeline name.
+	//
 	// example:
 	//
 	// pipeline-name-1
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3430AE20-AFFF-597C-B553-2DF04B2933AA
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Sink      *GetPipelineResponseBodySink   `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	Source    *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The pipeline\\"s data sink.
+	Sink *GetPipelineResponseBodySink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// The pipeline\\"s data source.
+	Source *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-02-06T14:09:11Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// workspace-test
@@ -204,11 +222,15 @@ func (s *GetPipelineResponseBody) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicy struct {
+	// The execution mode.
+	//
 	// example:
 	//
 	// runOnce
-	Mode      *string                                        `json:"mode,omitempty" xml:"mode,omitempty"`
-	RunOnce   *GetPipelineResponseBodyExecutePolicyRunOnce   `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The configuration for a one-time execution.
+	RunOnce *GetPipelineResponseBodyExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	// The configuration for a scheduled execution.
 	Scheduled *GetPipelineResponseBodyExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -262,10 +284,14 @@ func (s *GetPipelineResponseBodyExecutePolicy) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicyRunOnce struct {
+	// The start time of the execution, as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The end time of the execution, as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1772519013
@@ -303,10 +329,14 @@ func (s *GetPipelineResponseBodyExecutePolicyRunOnce) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicyScheduled struct {
+	// The start time of the execution, as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The execution interval in seconds.
+	//
 	// example:
 	//
 	// 86400
@@ -344,6 +374,7 @@ func (s *GetPipelineResponseBodyExecutePolicyScheduled) Validate() error {
 }
 
 type GetPipelineResponseBodyPipeline struct {
+	// The nodes in the pipeline.
 	Nodes []*GetPipelineResponseBodyPipelineNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
 
@@ -378,11 +409,16 @@ func (s *GetPipelineResponseBodyPipeline) Validate() error {
 }
 
 type GetPipelineResponseBodyPipelineNodes struct {
+	// The node ID.
+	//
 	// example:
 	//
 	// node_1
-	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The parameters for the node.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// dedup-fuzzy
@@ -429,7 +465,10 @@ func (s *GetPipelineResponseBodyPipelineNodes) Validate() error {
 }
 
 type GetPipelineResponseBodySink struct {
+	// The dataset configuration.
 	Dataset *GetPipelineResponseBodySinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The sink type.
+	//
 	// example:
 	//
 	// dataset
@@ -472,10 +511,14 @@ func (s *GetPipelineResponseBodySink) Validate() error {
 }
 
 type GetPipelineResponseBodySinkDataset struct {
+	// The dataset name.
+	//
 	// example:
 	//
 	// dataset_1
 	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// workspace-test
@@ -513,7 +556,10 @@ func (s *GetPipelineResponseBodySinkDataset) Validate() error {
 }
 
 type GetPipelineResponseBodySource struct {
+	// The configuration of the Log Service Logstore.
 	Logstore *GetPipelineResponseBodySourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// logstore
@@ -556,10 +602,14 @@ func (s *GetPipelineResponseBodySource) Validate() error {
 }
 
 type GetPipelineResponseBodySourceLogstore struct {
+	// The name of the Log Service Logstore.
+	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// test-project

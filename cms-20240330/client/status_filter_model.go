@@ -14,6 +14,7 @@ type iStatusFilter interface {
 }
 
 type StatusFilter struct {
+	// Filters the results to include only resources with the specified status.
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

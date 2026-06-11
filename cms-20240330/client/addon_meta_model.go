@@ -40,43 +40,74 @@ type iAddonMeta interface {
 }
 
 type AddonMeta struct {
-	Alias      *string                `json:"alias,omitempty" xml:"alias,omitempty"`
-	Categories []*string              `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	// The alias of the component. This is the display name.
+	//
+	// example:
+	//
+	// ECS 监控
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The categorization information of the component.
+	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	// A list of component diagrams.
 	Dashboards []*AddonMetaDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// The out-of-the-box and comprehensive ECS observe dashboards and alarm rules. Based on AliYun CloudMonitor agentless metrics, exporter agent metrics, host audit logs, host events and other data.
-	Description  *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The list of supported environment types.
 	Environments []*AddonMetaEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// The icon of the component.
+	//
 	// example:
 	//
 	// assets/logos/ecs.svg
-	Icon     *string   `json:"icon,omitempty" xml:"icon,omitempty"`
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The list of keywords.
 	Keywords []*string `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
+	// The language. Valid values:
+	//
+	// - zh: Chinese (default)
+	//
+	// - en: English
+	//
 	// example:
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The last time the component was integrated.
+	//
 	// example:
 	//
 	// 2025-10-25 09:12:12
 	LatestReleaseCreateTime *string `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
+	// The name of the component.
+	//
 	// example:
 	//
 	// cloud-acs-ecs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the component can be installed only once under a policy.
+	//
 	// example:
 	//
 	// true/false
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
+	// The scenario.
+	//
 	// example:
 	//
 	// feature
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 0.0.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The sorting weight of the component.
+	//
 	// example:
 	//
 	// 1000
@@ -240,8 +271,20 @@ func (s *AddonMeta) Validate() error {
 }
 
 type AddonMetaDashboards struct {
+	// The description.
+	//
+	// example:
+	//
+	// 描述信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the diagram.
+	//
+	// example:
+	//
+	// ECS 监控概览大盘
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The URL of the diagram.
+	//
 	// example:
 	//
 	// assets/dashboards/ecs.png
@@ -288,19 +331,38 @@ func (s *AddonMetaDashboards) Validate() error {
 }
 
 type AddonMetaEnvironments struct {
+	// The list of attached CommonSchemas.
 	CommonSchemaRefs []*AddonMetaEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
-	Dependencies     *AddonMetaEnvironmentsDependencies       `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
-	Description      *string                                  `json:"description,omitempty" xml:"description,omitempty"`
+	// The dependency description.
+	Dependencies *AddonMetaEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
+	// The description of the environment type.
+	//
+	// example:
+	//
+	// 支持容器集群的工作覆盖监控
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the environment type is enabled.
+	//
 	// example:
 	//
 	// true/false
-	Enable *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	Label  *string `json:"label,omitempty" xml:"label,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The display name of the environment type.
+	//
+	// example:
+	//
+	// 容器环境
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The name of the environment type.
+	//
 	// example:
 	//
 	// CS/ECS/Cloud/Client
-	Name     *string                        `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Information about the control policy group for the component.
 	Policies *AddonMetaEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
+	// The policy type.
+	//
 	// example:
 	//
 	// ECS
@@ -411,10 +473,14 @@ func (s *AddonMetaEnvironments) Validate() error {
 }
 
 type AddonMetaEnvironmentsCommonSchemaRefs struct {
+	// The group name of the CommonSchema.
+	//
 	// example:
 	//
 	// acs-ecs
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The group version of the CommonSchema.
+	//
 	// example:
 	//
 	// 0.1.0
@@ -452,9 +518,12 @@ func (s *AddonMetaEnvironmentsCommonSchemaRefs) Validate() error {
 }
 
 type AddonMetaEnvironmentsDependencies struct {
-	ClusterTypes []*string        `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
-	Features     map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
-	Services     []*string        `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	// The supported cluster types.
+	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
+	// The probe dependency description. This is the component name. In later versions, this field is replaced by the collectors field.
+	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
+	// The list of dependent services.
+	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s AddonMetaEnvironmentsDependencies) String() string {
@@ -497,29 +566,44 @@ func (s *AddonMetaEnvironmentsDependencies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPolicies struct {
+	// Indicates whether the alert rule is enabled by default after installation.
+	//
 	// example:
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
+	// The default mode. This integration mode does not require attaching an entity.
+	//
 	// example:
 	//
 	// true/false
-	BindDefaultPolicy *bool                                    `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
-	BindEntity        *AddonMetaEnvironmentsPoliciesBindEntity `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
+	BindDefaultPolicy *bool `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
+	// Information about the attached target entity.
+	BindEntity *AddonMetaEnvironmentsPoliciesBindEntity `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
+	// Indicates whether the component is installed by default.
+	//
 	// example:
 	//
 	// true/false
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
+	// Indicates whether to enable internal authorization token allocation.
+	//
 	// example:
 	//
 	// true/false
-	EnableServiceAccount *bool                                         `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
-	MetricCheckRule      *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
+	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
+	// The data check rule after the component is integrated.
+	MetricCheckRule *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
+	// Indicates whether to prompt for a workload restart after integration.
+	//
 	// example:
 	//
 	// true/false
-	NeedRestartAfterIntegration *bool                                     `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	Protocols                   []*AddonMetaEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
+	// The list of supported client protocols.
+	Protocols []*AddonMetaEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// The name of the target component for redirection.
+	//
 	// example:
 	//
 	// cloud-acs-ecs
@@ -639,18 +723,26 @@ func (s *AddonMetaEnvironmentsPolicies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesBindEntity struct {
+	// Indicates whether group mode is used.
+	//
 	// example:
 	//
 	// true/false
 	EntityGroupMode *bool `json:"entityGroupMode,omitempty" xml:"entityGroupMode,omitempty"`
+	// The entity type.
+	//
 	// example:
 	//
 	// acs.ecs.instance
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// Indicates whether single-entity mode is used.
+	//
 	// example:
 	//
 	// true/false
 	SingleEntityMode *bool `json:"singleEntityMode,omitempty" xml:"singleEntityMode,omitempty"`
+	// The field in the entity from which to fetch the VPC ID.
+	//
 	// example:
 	//
 	// vpcId
@@ -706,6 +798,7 @@ func (s *AddonMetaEnvironmentsPoliciesBindEntity) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesMetricCheckRule struct {
+	// The Prometheus Query Language (PromQL) for the check rule.
 	PromQL []*string `json:"promQL,omitempty" xml:"promQL,omitempty" type:"Repeated"`
 }
 
@@ -731,12 +824,26 @@ func (s *AddonMetaEnvironmentsPoliciesMetricCheckRule) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesProtocols struct {
+	// The description of the protocol.
+	//
+	// example:
+	//
+	// 使用 Prometheus 协议写入指标数据
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display icon for the protocol.
+	//
 	// example:
 	//
 	// assets/logos/ecs.svg
-	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The display name of the protocol.
+	//
+	// example:
+	//
+	// Prometheus 协议
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The name of the protocol.
+	//
 	// example:
 	//
 	// Prometheus

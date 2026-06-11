@@ -44,117 +44,121 @@ type iAlertRuleCondition interface {
 }
 
 type AlertRuleCondition struct {
-	// Applicable condition type: SLS_CONDITION.
+	// Applicable to the SLS_CONDITION type.
 	//
-	// Number of times the condition must be met before triggering an alert, default is 1.
+	// The number of times the condition must be met to trigger an alert. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	AlertCount *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
-	// Applicable condition type: SLS_CONDITION.
+	// Applicable to the SLS_CONDITION type.
 	//
-	// SLS alert condition list.
+	// A list of SLS alert conditions.
 	CaseList []*AlertRuleConditionCaseList `json:"caseList,omitempty" xml:"caseList,omitempty" type:"Repeated"`
-	// Applicable condition type: APM_CONDITION.
+	// Applicable to the APM_CONDITION type.
 	//
-	// APM alert comparison condition list.
+	// A list of Application Performance Management (APM) alert comparison conditions.
 	CompareList []*AlertRuleConditionCompareList `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
-	// Applicable condition type: CMS_BASIC_CONDITION.
+	// Applicable to the CMS_BASIC_CONDITION type.
 	//
-	// Valid only when escalationType=composite; composite metric alert condition.
+	// This parameter is valid only when escalationType is set to composite. It specifies the alert condition for composite metrics.
 	CompositeEscalation       *AlertRuleConditionCompositeEscalation `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty" type:"Struct"`
 	EnableSeveritySuppression *bool                                  `json:"enableSeveritySuppression,omitempty" xml:"enableSeveritySuppression,omitempty"`
-	// Applicable condition type: CMS_BASIC_CONDITION.
+	// Applicable to the CMS_BASIC_CONDITION type.
 	//
 	// Valid values:
 	//
-	// - simple: Simple metric condition,
+	// - simple: A simple metric condition.
 	//
-	// - composite: Composite metric condition,
+	// - composite: A composite metric condition.
 	//
-	// - express: Expression condition.
+	// - express: An expression-based condition.
 	//
 	// example:
 	//
 	// simple
 	EscalationType *string `json:"escalationType,omitempty" xml:"escalationType,omitempty"`
-	// Applicable condition type: CMS_BASIC_CONDITION.
+	// This parameter is applicable only to the CMS_BASIC_CONDITION condition type.
 	//
-	// Valid only when escalationType=composite; multi-metric composite alert condition.
+	// This parameter takes effect when escalationType is set to composite. It defines the conditions for a composite alert based on multiple metrics.
 	ExpressEscalation *AlertRuleConditionExpressEscalation `json:"expressEscalation,omitempty" xml:"expressEscalation,omitempty" type:"Struct"`
-	// Applicable condition type: APM_CONDITION.
+	// Applicable to the APM_CONDITION type.
 	//
-	// Alert severity level when no data is available; if not specified, no alert will be triggered for missing data.
+	// The alert level for when no data is available. If you do not specify this parameter, no alert is triggered when no data is available.
 	//
 	// example:
 	//
 	// INFO
 	NoDataAlertLevel *string `json:"noDataAlertLevel,omitempty" xml:"noDataAlertLevel,omitempty"`
-	// Applicable condition type: APM_CONDITION.
+	// Applicable to the APM_CONDITION type.
 	//
-	// Fallback value when no data is available.
+	// The value to use when no data is available.
 	//
 	// example:
 	//
 	// 1
 	NoDataAppendValue *string `json:"noDataAppendValue,omitempty" xml:"noDataAppendValue,omitempty"`
-	// Applicable condition type: CMS_BASIC_CONDITION.
+	// Applicable to the CMS_BASIC_CONDITION type.
 	//
-	// Handling method when no monitoring data is available. Valid values:
+	// The method for handling alerts when no monitoring data is available. Valid values:
 	//
 	// - KEEP_LAST_STATE (default): No action is taken.
 	//
-	// - INSUFFICIENT_DATA: Alert with "insufficient data" message.
+	// - INSUFFICIENT_DATA: The alert content indicates that no data is available.
 	//
-	// - OK: Treat as normal.
+	// - OK: The status is normal.
 	//
 	// example:
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"noDataPolicy,omitempty" xml:"noDataPolicy,omitempty"`
-	// Comparison operations to determine whether it is year-over-year (YoY) or month-over-month (MoM):
+	// The comparison operation. It determines whether to perform a year-over-year or period-over-period comparison.
 	//
-	// - Greater than (GT),
+	// - GT: Greater than.
 	//
-	// - Greater than or equal to (GTE),
+	// - GTE: Greater than or equal to.
 	//
-	// - Less than (LT),
+	// - LT: Less than.
 	//
-	// - Less than or equal to (LTE),
+	// - LTE: Less than or equal to.
 	//
-	// - Equal to (EQ),
+	// - EQ: Equal to.
 	//
-	// - Not equal to (NE),
+	// - NE: Not equal to.
 	//
-	// - Year-over-year increase (YOY_UP),
+	// - YOY_UP: Year-over-year increase.
 	//
-	// - Year-over-year decrease (YOY_DOWN).
+	// - YOY_DOWN: Year-over-year decrease.
 	//
 	// example:
 	//
 	// LT
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// Applicable condition type: APM_CONDITION.
+	// Applicable to the APM_CONDITION type.
 	//
-	// Logical relationship between multiple conditions. Valid values: and, or.
+	// The logical relationship between multiple conditions. Valid values:
+	//
+	// - and
+	//
+	// - or
 	//
 	// example:
 	//
 	// and
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
-	// Applicable condition type: CMS_BASIC_CONDITION.
+	// Applicable to the CMS_BASIC_CONDITION type.
 	//
-	// Only valid when escalationType=simple; specifies the alert condition for a single metric.
+	// This parameter is valid only when escalationType is set to simple. It specifies the alert condition for a single metric.
 	SimpleEscalation *AlertRuleConditionSimpleEscalation `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty" type:"Struct"`
 	Triggers         []*AlertRuleConditionTriggers       `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
-	// Rule condition type, valid values:
+	// The type of the rule condition. Valid values:
 	//
-	// SLS_CONDITION (SLS alert condition),
+	// - SLS_CONDITION: An SLS alert condition.
 	//
-	// APM_CONDITION (APM alert condition),
+	// - APM_CONDITION: An APM alert condition.
 	//
-	// CMS_BASIC_CONDITION (Basic Cloud Monitoring alert condition).
+	// - CMS_BASIC_CONDITION: A basic Cloud Monitor alert condition.
 	//
 	// This parameter is required.
 	//
@@ -162,7 +166,7 @@ type AlertRuleCondition struct {
 	//
 	// SLS_CONDITION
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Alert triggering threshold.
+	// The threshold that triggers an alert.
 	//
 	// example:
 	//
@@ -369,35 +373,39 @@ func (s *AlertRuleCondition) Validate() error {
 }
 
 type AlertRuleConditionCaseList struct {
-	// Matching expression, example: logLevel: error.
+	// The matching expression. Example: logLevel: error
 	//
 	// example:
 	//
 	// logLevel: error
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// Count matching expression, examples: range combination: count >= 3 && count <= 10; single range: count >= 3.
+	// The expression for matching a quantity. Examples:
+	//
+	// Combined range: **count*	- >= 3 && **count*	- <= 10
+	//
+	// Single range: **count*	- >= 3
 	//
 	// example:
 	//
 	// count >= 3
 	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
-	// Alert severity level after condition is met.
+	// The alert level when the condition is met.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Matching type: Has data / Has a specific number of data entries / Has matching data / Has a specific number of matching entries.
+	// The match type. It can be data availability, a specific number of data entries, a data match, or a specific number of data entry matches.
 	//
 	// Valid values:
 	//
-	// - HasData: Has data.
+	// - HasData: Data is available.
 	//
-	// - HasDataCount: Has a specific number of data entries.
+	// - HasDataCount: A specific number of data entries are available.
 	//
-	// - HasDataMatch: Has matching data.
+	// - HasDataMatch: Data matches the condition.
 	//
-	// - HasDataMatchCount: Has a specific number of matching entries.
+	// - HasDataMatchCount: A specific number of data entries match the condition.
 	//
 	// example:
 	//
@@ -454,77 +462,77 @@ func (s *AlertRuleConditionCaseList) Validate() error {
 }
 
 type AlertRuleConditionCompareList struct {
-	// Time series post-aggregation functions:
+	// The aggregate function for the time series.
 	//
 	// - count
 	//
-	// -  sum
+	// - sum
 	//
-	// -  avg
+	// - avg
 	//
-	// -  min
+	// - min
 	//
-	// -  max
+	// - max
 	//
-	// -  p90
+	// - p90
 	//
-	// -  p95
+	// - p95
 	//
-	// -  p99
+	// - p99
 	//
 	// example:
 	//
 	// count
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	// Data unit.
+	// The unit of the data.
 	//
 	// example:
 	//
 	// %
 	BaseUnit *string `json:"baseUnit,omitempty" xml:"baseUnit,omitempty"`
-	// Display unit.
+	// The unit for display.
 	//
 	// example:
 	//
 	// %
 	DisplayUnit *string `json:"displayUnit,omitempty" xml:"displayUnit,omitempty"`
-	// Comparison operations to determine whether it is year-over-year (YoY) or month-over-month (MoM):
+	// The comparison operation. It determines whether to perform a year-over-year or period-over-period comparison.
 	//
-	// - Greater than (GT),
+	// - GT: Greater than.
 	//
-	// - Greater than or equal to (GTE),
+	// - GTE: Greater than or equal to.
 	//
-	// - Less than (LT),
+	// - LT: Less than.
 	//
-	// - Less than or equal to (LTE),
+	// - LTE: Less than or equal to.
 	//
-	// - Equal to (EQ),
+	// - EQ: Equal to.
 	//
-	// - Not equal to (NE),
+	// - NE: Not equal to.
 	//
-	// - Year-over-year increase (YOY_UP),
+	// - YOY_UP: Year-over-year increase.
 	//
-	// - Year-over-year decrease (YOY_DOWN).
+	// - YOY_DOWN: Year-over-year decrease.
 	//
 	// example:
 	//
 	// GT
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// Comparison threshold.
+	// The threshold for comparison.
 	//
 	// example:
 	//
 	// 50
 	Value *float64 `json:"value,omitempty" xml:"value,omitempty"`
-	// List of alert severity levels for different values.
+	// A list of alert levels for different values.
 	ValueLevelList []*AlertRuleConditionCompareListValueLevelList `json:"valueLevelList,omitempty" xml:"valueLevelList,omitempty" type:"Repeated"`
-	// Year-over-year time unit (only applicable when oper=YOY_UP/YOY_DOWN): minute, hour, day, week, month.
+	// The time unit for year-over-year comparison. This parameter is valid only when oper is set to YOY_UP or YOY_DOWN. Valid values: minute, hour, day, week, and month.
 	//
 	// example:
 	//
 	// month
 	YoyTimeUnit *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
-	// Year-over-year time value, used in conjunction with yoyTimeUnit.
+	// The time value for year-over-year comparison. Used with yoyTimeUnit.
 	//
 	// example:
 	//
@@ -626,13 +634,13 @@ func (s *AlertRuleConditionCompareList) Validate() error {
 }
 
 type AlertRuleConditionCompareListValueLevelList struct {
-	// Severity level corresponding to the threshold.
+	// The level corresponding to the threshold.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Comparison threshold.
+	// The threshold for comparison.
 	//
 	// example:
 	//
@@ -671,21 +679,21 @@ func (s *AlertRuleConditionCompareListValueLevelList) Validate() error {
 }
 
 type AlertRuleConditionCompositeEscalation struct {
-	// List of multi-metric composite conditions.
+	// A list of composite conditions for multiple metrics.
 	Escalations []*AlertRuleConditionCompositeEscalationEscalations `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// Alert severity level triggered when the condition is met (multi-metric composite alerts support only one level).
+	// The alert level that is triggered when the condition is met. Composite metric alerts support only one level.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Relationship between multiple metric conditions; valid values are "and" or "or".
+	// The relationship between multiple metric conditions. Valid values: and or or.
 	//
 	// example:
 	//
 	// and
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
-	// Number of times the condition must be met to trigger an alert.
+	// The number of times the condition must be met to trigger an alert.
 	//
 	// example:
 	//
@@ -751,65 +759,65 @@ func (s *AlertRuleConditionCompositeEscalation) Validate() error {
 }
 
 type AlertRuleConditionCompositeEscalationEscalations struct {
-	// Threshold comparison operator, valid values:
+	// The comparison operator for the threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to.
+	// - GreaterThanOrEqualToThreshold: Greater than or equal to.
 	//
-	// - GreaterThanThreshold: greater than.
+	// - GreaterThanThreshold: Greater than.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to.
+	// - LessThanOrEqualToThreshold: Less than or equal to.
 	//
-	// - LessThanThreshold: less than.
+	// - LessThanThreshold: Less than.
 	//
-	// - NotEqualToThreshold: not equal to.
+	// - NotEqualToThreshold: Not equal to.
 	//
-	// - EqualToThreshold: equal to.
+	// - EqualToThreshold: Equal to.
 	//
-	// - GreaterThanYesterday: increased compared to the same time yesterday.
+	// - GreaterThanYesterday: Higher than the value at the same time yesterday.
 	//
-	// - LessThanYesterday: decreased compared to the same time yesterday.
+	// - LessThanYesterday: Lower than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: increased compared to the same time last week.
+	// - GreaterThanLastWeek: Higher than the value at the same time last week.
 	//
-	// - LessThanLastWeek: decreased compared to the same time last week.
+	// - LessThanLastWeek: Lower than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: increased compared to the previous period (MoM).
+	// - GreaterThanLastPeriod: Higher than the value in the previous period.
 	//
-	// - LessThanLastPeriod: decreased compared to the previous period (MoM).
+	// - LessThanLastPeriod: Lower than the value in the previous period.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	// Metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// Metric time window.
+	// The time window for the metric.
 	//
 	// example:
 	//
 	// 60
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// Statistical method; the value of this parameter is determined by the Statistics column corresponding to the specified cloud product\\"s MetricName. This represents the statistical method for the monitoring metric. Example values:
+	// The statistical method. The valid values for this parameter are determined by the Statistics column that corresponds to the MetricName of the specified cloud product. Examples of statistical methods for metrics:
 	//
-	// - $Maximum: maximum value.
+	// - $Maximum: The maximum value.
 	//
-	// - $Minimum: minimum value.
+	// - $Minimum: The minimum value.
 	//
-	// - $Average: average value.
+	// - $Average: The average value.
 	//
-	// - $Availability: availability (typically used for site monitoring).
+	// - $Availability: The availability rate. This is typically used for site monitoring.
 	//
-	// Note: "$" is a unified prefix symbol for monitoring metrics.
+	// Note: The dollar sign ($) is a standard prefix for metrics.
 	//
 	// example:
 	//
 	// $Maximum
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	// Alert threshold.
+	// The alert threshold.
 	//
 	// example:
 	//
@@ -875,7 +883,7 @@ func (s *AlertRuleConditionCompositeEscalationEscalations) Validate() error {
 }
 
 type AlertRuleConditionExpressEscalation struct {
-	// Alert severity level triggered when the condition is met (expression-based alerts support only one level):
+	// The alert level that is triggered when the condition is met. Expression-based alerts support only one level.
 	//
 	// - CRITICAL
 	//
@@ -887,13 +895,13 @@ type AlertRuleConditionExpressEscalation struct {
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Alert condition expression.
+	// The alert condition expression.
 	//
 	// example:
 	//
 	// @cpu_total[60].$Average > 60
 	RawExpression *string `json:"rawExpression,omitempty" xml:"rawExpression,omitempty"`
-	// Number of times the condition must be met to trigger an alert.
+	// The number of times the condition must be met to trigger an alert.
 	//
 	// example:
 	//
@@ -941,17 +949,17 @@ func (s *AlertRuleConditionExpressEscalation) Validate() error {
 }
 
 type AlertRuleConditionSimpleEscalation struct {
-	// List of conditions; for an alert rule with multiple severity levels, each level corresponds to one condition object.
+	// A list of conditions. If an alert rule has multiple levels, each level has a corresponding condition object.
 	Escalations []*AlertRuleConditionSimpleEscalationEscalations `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// Applicable condition type: CMS_BASIC_CONDITION.
+	// Applicable to the CMS_BASIC_CONDITION type.
 	//
-	// Metric associated with the alert condition.
+	// The metric associated with the alert condition.
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// Metric time window, in seconds.
+	// The time window for the metric, in seconds.
 	//
 	// example:
 	//
@@ -1008,37 +1016,37 @@ func (s *AlertRuleConditionSimpleEscalation) Validate() error {
 }
 
 type AlertRuleConditionSimpleEscalationEscalations struct {
-	// Threshold comparison operator, valid values:
+	// The comparison operator for the threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to.
+	// - GreaterThanOrEqualToThreshold: Greater than or equal to.
 	//
-	// - GreaterThanThreshold: greater than.
+	// - GreaterThanThreshold: Greater than.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to.
+	// - LessThanOrEqualToThreshold: Less than or equal to.
 	//
-	// - LessThanThreshold: less than.
+	// - LessThanThreshold: Less than.
 	//
-	// - NotEqualToThreshold: not equal to.
+	// - NotEqualToThreshold: Not equal to.
 	//
-	// - EqualToThreshold: equal to.
+	// - EqualToThreshold: Equal to.
 	//
-	// - GreaterThanYesterday: increased compared to the same time yesterday.
+	// - GreaterThanYesterday: Higher than the value at the same time yesterday.
 	//
-	// - LessThanYesterday: decreased compared to the same time yesterday.
+	// - LessThanYesterday: Lower than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: increased compared to the same time last week.
+	// - GreaterThanLastWeek: Higher than the value at the same time last week.
 	//
-	// - LessThanLastWeek: decreased compared to the same time last week.
+	// - LessThanLastWeek: Lower than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: increased compared to the previous period (MoM).
+	// - GreaterThanLastPeriod: Higher than the value in the previous period.
 	//
-	// - LessThanLastPeriod: decreased compared to the previous period (MoM).
+	// - LessThanLastPeriod: Lower than the value in the previous period.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	// Alert severity level triggered when the condition is met (expression-based alerts support only one level):
+	// The alert level that is triggered when the condition is met. Expression-based alerts support only one level.
 	//
 	// - CRITICAL
 	//
@@ -1050,19 +1058,19 @@ type AlertRuleConditionSimpleEscalationEscalations struct {
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Statistical method; the value of this parameter is determined by the Statistics column corresponding to the specified cloud product\\"s MetricName, for example: Maximum, Minimum, and Average.
+	// The statistical method. The valid values for this parameter are determined by the Statistics column that corresponds to the MetricName of the specified cloud product. Examples: Maximum, Minimum, and Average.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	// Alert threshold.
+	// The alert threshold.
 	//
 	// example:
 	//
 	// 100
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// Number of times the condition must be met to trigger an alert.
+	// The number of times the condition must be met to trigger an alert.
 	//
 	// example:
 	//

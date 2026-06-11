@@ -26,27 +26,44 @@ type iGetMemoriesRequest interface {
 }
 
 type GetMemoriesRequest struct {
+	// The application\\"s agent ID.
+	//
 	// example:
 	//
 	// 952730652285943809
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The Application ID.
+	//
 	// example:
 	//
 	// 150130323
-	AppId   *string                `json:"appId,omitempty" xml:"appId,omitempty"`
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The filter criteria.
+	//
+	// example:
+	//
+	// {"__strategy_type__":"Fact"}
 	Filters map[string]interface{} `json:"filters,omitempty" xml:"filters,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 1000
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The Run ID.
+	//
 	// example:
 	//
 	// jr-80ded1d6953c64ea
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The User ID.
+	//
 	// example:
 	//
 	// test_user_001

@@ -26,13 +26,20 @@ type iMergeOncallSchedule interface {
 }
 
 type MergeOncallSchedule struct {
-	Detail      map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	GmtCreate   *string                `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified *string                `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Identifier  *string                `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Name        *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Source      *string                `json:"source,omitempty" xml:"source,omitempty"`
-	Workspace   *string                `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// Details of the on-call schedule.
+	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	// The UTC time when the on-call schedule was created.
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The UTC time when the on-call schedule was last modified.
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The unique identifier of the on-call schedule.
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The name of the on-call schedule.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The creation source of the on-call schedule.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The workspace that the on-call schedule belongs to.
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s MergeOncallSchedule) String() string {

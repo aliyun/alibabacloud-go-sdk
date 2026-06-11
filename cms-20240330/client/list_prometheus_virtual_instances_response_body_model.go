@@ -22,16 +22,19 @@ type iListPrometheusVirtualInstancesResponseBody interface {
 }
 
 type ListPrometheusVirtualInstancesResponseBody struct {
-	// Instance information.
-	Instances  []*ListPrometheusVirtualInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	MaxResults *string                                                `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                                                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// ID of the request
+	// A list of instances.
+	Instances []*ListPrometheusVirtualInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// The maximum number of entries returned on each page.
+	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If all results are returned, this parameter is left empty.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries returned.
 	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -102,41 +105,41 @@ func (s *ListPrometheusVirtualInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusVirtualInstancesResponseBodyInstances struct {
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1750315319946
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// HTTP API URL.
+	// The HTTP API URL.
 	//
 	// example:
 	//
 	// http://xxxxxxxx
 	HttpApiUrl *string `json:"httpApiUrl,omitempty" xml:"httpApiUrl,omitempty"`
-	// Applicable data source type: PROMETHEUS_DS
+	// Returned for the `PROMETHEUS_DS` data source type.
 	//
-	// Prometheus instance ID
+	// The Prometheus instance ID.
 	//
 	// example:
 	//
 	// rw-b8cfbbe94194ac37fe83f3d2d16a
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Applicable query type: CMS_BASIC_QUERY.
+	// Returned for the `CMS_BASIC_QUERY` query type.
 	//
-	// Namespace of the metric
+	// The namespace of the metric.
 	//
 	// example:
 	//
 	// arms-prom
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai-cloudspe
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

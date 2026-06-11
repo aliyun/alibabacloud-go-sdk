@@ -16,7 +16,9 @@ type iNotifyRouteForSubscription interface {
 }
 
 type NotifyRouteForSubscription struct {
-	Channels        []*NotifyRouteForSubscriptionChannels      `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// An array of objects, each defining a notification channel.
+	Channels []*NotifyRouteForSubscriptionChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The active period for the notification rule.
 	EffectTimeRange *NotifyRouteForSubscriptionEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
 }
 
@@ -65,9 +67,12 @@ func (s *NotifyRouteForSubscription) Validate() error {
 }
 
 type NotifyRouteForSubscriptionChannels struct {
-	ChannelType        *string   `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	// The channel type. For example, `Email`, `SMS`, or `Webhook`.
+	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	// A list of enabled sub-channels. Applicable to channels that support finer-grained topics or categories.
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	Receivers          []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
+	// A list of notification receivers. The receiver format depends on the `channelType`.
+	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
 
 func (s NotifyRouteForSubscriptionChannels) String() string {
@@ -110,10 +115,14 @@ func (s *NotifyRouteForSubscriptionChannels) Validate() error {
 }
 
 type NotifyRouteForSubscriptionEffectTimeRange struct {
-	DayInWeek         []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	EndTimeInMinute   *int32   `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	StartTimeInMinute *int32   `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	TimeZone          *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// The active days of the week, specified as an array of integers.
+	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+	// The end of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
+	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+	// The start of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
+	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+	// The time zone for the effect time range, specified in the IANA Time Zone Database format. For example, `UTC` or `Asia/Shanghai`.
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s NotifyRouteForSubscriptionEffectTimeRange) String() string {

@@ -14,6 +14,11 @@ type iDeleteContextStoreResponseBody interface {
 }
 
 type DeleteContextStoreResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

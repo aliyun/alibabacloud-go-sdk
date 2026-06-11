@@ -14,11 +14,13 @@ type iUpdatePrometheusUserSettingRequest interface {
 }
 
 type UpdatePrometheusUserSettingRequest struct {
+	// The value of the user setting.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// abc
+	// ap-southeast-1
 	SettingValue *string `json:"settingValue,omitempty" xml:"settingValue,omitempty"`
 }
 

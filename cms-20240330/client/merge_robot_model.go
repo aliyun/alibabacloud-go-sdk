@@ -30,32 +30,52 @@ type iMergeRobot interface {
 }
 
 type MergeRobot struct {
+	// The time when the bot was created.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
-	CreateTime *string           `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Extend     *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The extension fields.
+	Extend *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
+	// The time when the bot was last modified.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The unique identifier of the bot.
+	//
 	// example:
 	//
 	// robot-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The language preference.
+	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the bot.
+	//
+	// example:
+	//
+	// 运维告警机器人
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source system of the bot.
+	//
 	// example:
 	//
 	// dingtalk
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The type of the bot.
+	//
 	// example:
 	//
 	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The webhook address.
+	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=abc123
@@ -161,26 +181,38 @@ func (s *MergeRobot) Validate() error {
 }
 
 type MergeRobotExtend struct {
+	// The card template.
+	//
 	// example:
 	//
 	// incident-card-template
 	CardTemplate *string `json:"cardTemplate,omitempty" xml:"cardTemplate,omitempty"`
+	// Specifies whether to enable the daily on-duty report.
+	//
 	// example:
 	//
 	// true
 	DailyNoc *bool `json:"dailyNoc,omitempty" xml:"dailyNoc,omitempty"`
+	// The time for the daily on-duty report.
+	//
 	// example:
 	//
 	// 09:00
 	DailyNocTime *string `json:"dailyNocTime,omitempty" xml:"dailyNocTime,omitempty"`
+	// The signature key for DingTalk.
+	//
 	// example:
 	//
 	// abc123
 	DingSignKey *string `json:"dingSignKey,omitempty" xml:"dingSignKey,omitempty"`
+	// Specifies whether to enable outbound requests.
+	//
 	// example:
 	//
 	// false
 	EnableOutgoing *bool `json:"enableOutgoing,omitempty" xml:"enableOutgoing,omitempty"`
+	// The authentication token.
+	//
 	// example:
 	//
 	// token-abc123

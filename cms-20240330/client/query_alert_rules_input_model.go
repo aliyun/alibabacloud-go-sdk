@@ -18,9 +18,12 @@ type iQueryAlertRulesInput interface {
 }
 
 type QueryAlertRulesInput struct {
-	Filter     *QueryAlertRulesFilter `json:"filter,omitempty" xml:"filter,omitempty"`
-	Pagination *Pagination            `json:"pagination,omitempty" xml:"pagination,omitempty"`
-	Workspace  *string                `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The filter criteria. Only alert rules that match these criteria are returned.
+	Filter *QueryAlertRulesFilter `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The pagination settings for the query. If omitted, the system returns the first page of results with the default page size.
+	Pagination *Pagination `json:"pagination,omitempty" xml:"pagination,omitempty"`
+	// The ID of the workspace that contains the alert rules.
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s QueryAlertRulesInput) String() string {

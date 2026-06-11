@@ -14,7 +14,7 @@ type iUpdatePrometheusUserSettingResponseBody interface {
 }
 
 type UpdatePrometheusUserSettingResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

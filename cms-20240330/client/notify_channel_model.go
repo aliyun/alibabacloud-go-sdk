@@ -18,12 +18,16 @@ type iNotifyChannel interface {
 }
 
 type NotifyChannel struct {
+	// The type of the notification channel.
+	//
 	// example:
 	//
 	// "DingTalk"
-	ChannelType        *string   `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	// The list of enabled sub-channels.
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	Receivers          []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
+	// The list of receivers.
+	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
 
 func (s NotifyChannel) String() string {

@@ -16,9 +16,9 @@ type iScheduleConfigUnified interface {
 }
 
 type ScheduleConfigUnified struct {
-	// 调度间隔（秒），type=FIXED 时使用
+	// The interval between scheduled runs, in seconds.
 	IntervalSecs *int32 `json:"intervalSecs,omitempty" xml:"intervalSecs,omitempty"`
-	// 调度类型
+	// The type of the schedule.
 	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`

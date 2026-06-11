@@ -26,28 +26,39 @@ type iCreateMemoryStoreRequest interface {
 }
 
 type CreateMemoryStoreRequest struct {
+	// A list of custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
+	// The description of the MemoryStore.
+	//
 	// example:
 	//
 	// Test memory store for demonstration.
-	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The extraction strategies to use. Valid values include `Episodic`, `Summary`, and `Fact`.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
+	// The name of the MemoryStore. The name must be unique within the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-memory-store
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
+	// The short-term TTL, which is the number of conversation rounds to retain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	ShortTermTtl *int32 `json:"shortTermTtl,omitempty" xml:"shortTermTtl,omitempty"`
+	// The source type of the memory. Valid values are `None` and `Trace`.
+	//
 	// example:
 	//
 	// None/Trace
-	SourceType        *string                                    `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Configuration for the trace source. Required if `sourceType` is `Trace`.
 	TraceSourceConfig *CreateMemoryStoreRequestTraceSourceConfig `json:"traceSourceConfig,omitempty" xml:"traceSourceConfig,omitempty" type:"Struct"`
 }
 
@@ -141,11 +152,16 @@ func (s *CreateMemoryStoreRequest) Validate() error {
 }
 
 type CreateMemoryStoreRequestTraceSourceConfig struct {
+	// Specifies whether to include the output in the trace.
 	IncludeOutput *bool `json:"includeOutput,omitempty" xml:"includeOutput,omitempty"`
+	// The query to filter traces.
+	//
 	// example:
 	//
 	// (serviceName : "langchain-rag" or serviceName : "agentscope-code-correction") and hostname = frontend-proxy-999c48c8d-hvk6c
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The name of the workspace that contains the trace source.
+	//
 	// example:
 	//
 	// test-workspace

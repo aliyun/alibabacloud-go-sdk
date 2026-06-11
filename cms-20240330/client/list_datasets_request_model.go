@@ -18,14 +18,20 @@ type iListDatasetsRequest interface {
 }
 
 type ListDatasetsRequest struct {
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The maximum number of results to return per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for retrieving the next page of results. A `nextToken` is included in the response when the result set is truncated. To continue pagination, provide the `nextToken` from the previous response.
+	//
 	// example:
 	//
 	// d9a48d977f45aa6fcf6981ed13b885b3fab0b124c12dcbbe70edce5d81ba****************

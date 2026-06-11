@@ -32,7 +32,7 @@ type iCreateAddonReleaseRequest interface {
 }
 
 type CreateAddonReleaseRequest struct {
-	// The Addon name of the component that needs to be monitored.
+	// The name of the add-on to integrate.
 	//
 	// This parameter is required.
 	//
@@ -40,45 +40,45 @@ type CreateAddonReleaseRequest struct {
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The language type of the component.
+	// The language of the add-on.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// Whether it is a dry run, default is false.
+	// Specifies whether to perform a dry run. The default value is false.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Field rules
+	// The entity discovery rules.
 	EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// Environment type. If the Policy type is CS and ECS, use accordingly; otherwise, it is unified as Cloud.
+	// The environment type. Set this parameter to CS for container environments or ECS for ECS environments. For all other environment types, set this parameter to Cloud.
 	//
 	// example:
 	//
 	// CS
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
-	// Parent AddonReleaseId.
+	// The ID of the parent AddonRelease.
 	//
 	// example:
 	//
 	// policy-xxxxxxxxxxx
 	ParentAddonReleaseId *string `json:"parentAddonReleaseId,omitempty" xml:"parentAddonReleaseId,omitempty"`
-	// The plugin name after access. If not specified, a default rule name will be generated.
+	// The name of the release after the integration. If you do not specify this parameter, a default name is generated.
 	//
 	// example:
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// Input metadata.
+	// The metadata.
 	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Values *string `json:"values,omitempty" xml:"values,omitempty"`
-	// The version of the Addon component that needs to be monitored.
+	// The version of the add-on to integrate.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateAddonReleaseRequest struct {
 	//
 	// 0.0.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The workspace name for installing the component resources.
+	// The name of the workspace where the add-on is installed.
 	//
 	// example:
 	//

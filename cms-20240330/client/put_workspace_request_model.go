@@ -18,19 +18,19 @@ type iPutWorkspaceRequest interface {
 }
 
 type PutWorkspaceRequest struct {
-	// Description of the workspace
+	// The description of the workspace.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Display name of the workspace
+	// The display name of the workspace.
 	//
 	// example:
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Name of the Log Service project
+	// The name of the Simple Log Service project.
 	//
 	// This parameter is required.
 	//

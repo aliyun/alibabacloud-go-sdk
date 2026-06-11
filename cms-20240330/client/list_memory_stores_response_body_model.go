@@ -22,15 +22,22 @@ type iListMemoryStoresResponseBody interface {
 }
 
 type ListMemoryStoresResponseBody struct {
+	// The maximum number of returned entries.
+	//
 	// example:
 	//
 	// 1
-	MaxResults   *int32                                      `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The list of memory stores.
 	MemoryStores []*ListMemoryStoresResponseBodyMemoryStores `json:"memoryStores,omitempty" xml:"memoryStores,omitempty" type:"Repeated"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 16C0A6D6-C3E7-511D-A60B-A87FD85F5BA7
@@ -105,30 +112,42 @@ func (s *ListMemoryStoresResponseBody) Validate() error {
 }
 
 type ListMemoryStoresResponseBodyMemoryStores struct {
+	// The time when the memory store was created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1764556182850
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the memory store.
+	//
 	// example:
 	//
 	// Created by taishan-module-recovery
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the memory store.
+	//
 	// example:
 	//
 	// qianyi_test_1
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The time when the memory store was last updated.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1764556182850
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Workspace
+	//
 	// example:
 	//
 	// default-cms-1646467597142798-cn-shenzhen

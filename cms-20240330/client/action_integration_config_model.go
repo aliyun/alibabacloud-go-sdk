@@ -16,9 +16,9 @@ type iActionIntegrationConfig interface {
 }
 
 type ActionIntegrationConfig struct {
-	// 行动集成 ID 列表
+	// A list of actions to perform.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 是否启用行动集成
+	// Indicates whether action integration is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 

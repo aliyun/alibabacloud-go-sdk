@@ -20,25 +20,25 @@ type iUpdateIntegrationPolicyRequest interface {
 }
 
 type UpdateIntegrationPolicyRequest struct {
-	// Fee package type, CS_Pro/CS_Basic/empty.
+	// The type of the paid plan. Valid values: CS_Pro, CS_Basic, and empty.
 	//
 	// example:
 	//
 	// CS_Pro
 	FeePackage *string `json:"feePackage,omitempty" xml:"feePackage,omitempty"`
-	// Rule name, minimum 3 characters, maximum 63 characters, must start with a letter.
+	// The name of the rule. The name must be 3 to 63 characters in length and start with a letter.
 	//
 	// example:
 	//
 	// metrics-inner-manage
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// Resource group ID of the instance.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
 	// rg-aekzoiafjtr7zyq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags []*UpdateIntegrationPolicyRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -100,13 +100,13 @@ func (s *UpdateIntegrationPolicyRequest) Validate() error {
 }
 
 type UpdateIntegrationPolicyRequestTags struct {
-	// Tag `key` value.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// algo_bhv_expose_in_airec_exposure
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Tag `value` value.
+	// The value of the tag.
 	//
 	// example:
 	//

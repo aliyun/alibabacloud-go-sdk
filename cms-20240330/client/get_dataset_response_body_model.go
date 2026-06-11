@@ -28,35 +28,50 @@ type iGetDatasetResponseBody interface {
 }
 
 type GetDatasetResponseBody struct {
+	// The time the dataset was created, as a Unix timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1695090077
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The description of the dataset.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the region where the dataset is located.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Schema    map[string]*IndexKey `json:"schema,omitempty" xml:"schema,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The data schema of the dataset.
+	Schema map[string]*IndexKey `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The time the dataset was last updated, as a Unix timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1695090077
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// workspace-test

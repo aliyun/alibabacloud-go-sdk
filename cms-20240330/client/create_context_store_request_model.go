@@ -22,20 +22,28 @@ type iCreateContextStoreRequest interface {
 }
 
 type CreateContextStoreRequest struct {
+	// The configuration.
 	Config *CreateContextStoreRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The name of the context store.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The type of the context store.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// memory
-	ContextType *string                           `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	Dataset     *CreateContextStoreRequestDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The properties of the dataset.
+	Dataset *CreateContextStoreRequestDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The description of the context store.
+	//
 	// example:
 	//
 	// desc
@@ -110,8 +118,10 @@ func (s *CreateContextStoreRequest) Validate() error {
 }
 
 type CreateContextStoreRequestConfig struct {
-	MetadataField map[string]*string                     `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
-	Source        *CreateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The metadata fields.
+	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
+	// The configuration source.
+	Source *CreateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
 func (s CreateContextStoreRequestConfig) String() string {
@@ -150,14 +160,20 @@ func (s *CreateContextStoreRequestConfig) Validate() error {
 }
 
 type CreateContextStoreRequestConfigSource struct {
+	// The name of the Log Service Logstore.
+	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// sls-test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The effective start time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -206,6 +222,8 @@ func (s *CreateContextStoreRequestConfigSource) Validate() error {
 }
 
 type CreateContextStoreRequestDataset struct {
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test_dataset

@@ -20,15 +20,22 @@ type iEffectTimeRange interface {
 }
 
 type EffectTimeRange struct {
+  // The values 0 to 6 indicate Sunday to Saturday.
   DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+  // The end time in minutes.
+  // 
   // example:
   // 
   // 1080
   EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+  // The start time in minutes.
+  // 
   // example:
   // 
   // 360
   StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+  // The time zone.
+  // 
   // example:
   // 
   // "Asia/Shanghai"

@@ -14,6 +14,8 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC

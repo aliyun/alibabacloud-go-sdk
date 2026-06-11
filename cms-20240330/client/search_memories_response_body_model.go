@@ -18,12 +18,16 @@ type iSearchMemoriesResponseBody interface {
 }
 
 type SearchMemoriesResponseBody struct {
+	// A list of relationships.
 	Relations []*SearchMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// A list of search results.
+	Results []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s SearchMemoriesResponseBody) String() string {
@@ -84,14 +88,20 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 }
 
 type SearchMemoriesResponseBodyRelations struct {
+	// The destination.
+	//
 	// example:
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	// The relationship.
+	//
 	// example:
 	//
 	// test
 	Relationship *string `json:"relationship,omitempty" xml:"relationship,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// todo_open_dingoj06pvqfeayy3lkr
@@ -138,50 +148,74 @@ func (s *SearchMemoriesResponseBodyRelations) Validate() error {
 }
 
 type SearchMemoriesResponseBodyResults struct {
+	// The actor ID.
+	//
 	// example:
 	//
 	// test_session_001
 	ActorId *string `json:"actorId,omitempty" xml:"actorId,omitempty"`
+	// The agent ID of the application.
+	//
 	// example:
 	//
 	// 972772996913709056
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1762773128968
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The memory hash value.
+	//
 	// example:
 	//
 	// d791bf27236c5532056a13279baad3517042bb8d5b1bdb02e7871fa632debffe
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
+	// The memory ID.
+	//
 	// example:
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The memory content.
+	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The metadata.
+	//
 	// example:
 	//
-	// {"sessionId":"test_session_001"}
+	// {"__strategy_type__":"Fact"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The sender\\"s role.
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// test_session_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The similarity score.
+	//
 	// example:
 	//
 	// 13.21
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1764902557784
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// test_session_001

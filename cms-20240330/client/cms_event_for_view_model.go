@@ -56,87 +56,130 @@ type iCmsEventForView interface {
 }
 
 type CmsEventForView struct {
+	// Additional annotations for the event. This is an unstructured description field.
+	//
 	// example:
 	//
 	// { "description": "High load detected on server", "operator": "auto" }
 	Annotations map[string]interface{} `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// The raw data of the event. The format depends on the event type and dataschema.
+	//
 	// example:
 	//
 	// { "metricName": "cpu_usage", "value": 95.2, "threshold": 80 }
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// The content type of the data field.
+	//
 	// example:
 	//
 	// "application/json"
 	Datacontenttype *string `json:"datacontenttype,omitempty" xml:"datacontenttype,omitempty"`
+	// The data schema definition, which describes the structure of the data field.
+	//
 	// example:
 	//
 	// "https://schema.alibabacloud.com/cms/alert/v1"
 	Dataschema *string `json:"dataschema,omitempty" xml:"dataschema,omitempty"`
+	// The deduplication ID. It identifies different instances of the same event, such as a repeatedly reported event.
+	//
 	// example:
 	//
 	// "dedup-abc123"
 	DedupId *string `json:"dedupId,omitempty" xml:"dedupId,omitempty"`
+	// The unique identifier for the event. The system generates this globally unique ID.
+	//
 	// example:
 	//
 	// "event-1234567890"
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The unique integration identifier. It is used for identity recognition in cross-system integrations.
+	//
 	// example:
 	//
 	// "integration-xyz"
 	IntegrationUuid *string `json:"integrationUuid,omitempty" xml:"integrationUuid,omitempty"`
+	// The key-value pairs of the event labels.
+	//
 	// example:
 	//
 	// {\\"source\\": \\"system\\"}
 	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The timestamp when the event was received and processed.
+	//
 	// example:
 	//
 	// 1743846610000
-	ReceiveTime *int64                     `json:"receiveTime,omitempty" xml:"receiveTime,omitempty"`
-	Resource    *EventResourceForEventView `json:"resource,omitempty" xml:"resource,omitempty"`
+	ReceiveTime *int64 `json:"receiveTime,omitempty" xml:"receiveTime,omitempty"`
+	// Information about the resource associated with the event, such as the instance ID, IP address, and region.
+	Resource *EventResourceForEventView `json:"resource,omitempty" xml:"resource,omitempty"`
+	// The severity level of the event.
+	//
 	// example:
 	//
 	// "CRITICAL"
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The name of the source system or service, such as ECS, RDS, or VPC.
+	//
 	// example:
 	//
 	// "ECS"
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The type of event source. It distinguishes between sources such as monitoring systems, Simple Log Service, and application observability.
+	//
 	// example:
 	//
 	// "CloudMonitor"
 	Sourcetype *string `json:"sourcetype,omitempty" xml:"sourcetype,omitempty"`
+	// The current status of the event.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The subject or title of the event. It briefly describes the event.
+	//
 	// example:
 	//
 	// "Instance cpu usage exceeds threshold"
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// The event subtype.
+	//
 	// example:
 	//
 	// "HighCPUUsage"
 	Subtype *string `json:"subtype,omitempty" xml:"subtype,omitempty"`
+	// The internal system event ID. It is used for internal tracking and log association.
+	//
 	// example:
 	//
 	// "sys-event-987654321"
 	SysId *string `json:"sysId,omitempty" xml:"sysId,omitempty"`
+	// The time when the event occurred.
+	//
 	// example:
 	//
 	// "2025-04-05T10:30:00Z"
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// The timestamp of the event occurrence.
+	//
 	// example:
 	//
 	// 1743846600000
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// "Alert"
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID or name of the workspace. It is used for multi-tenant or organization fencing.
+	//
 	// example:
 	//
 	// "ws-abc123"
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The workspace tags. They help you manage events by tag.
+	//
 	// example:
 	//
 	// { "department": "finance", "project": "payment-gateway" }

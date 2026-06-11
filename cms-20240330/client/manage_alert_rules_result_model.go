@@ -18,10 +18,11 @@ type iManageAlertRulesResult interface {
 }
 
 type ManageAlertRulesResult struct {
+	// The details of the created or updated alert rule.
 	AlertRule *AlertRuleV2 `json:"alertRule,omitempty" xml:"alertRule,omitempty"`
-	// 成功删除的规则数量
+	// The number of deleted alert rules.
 	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
-	// 成功删除的规则 UUID 列表
+	// A list of UUIDs of deleted alert rules.
 	DeletedUuidList []*string `json:"deletedUuidList,omitempty" xml:"deletedUuidList,omitempty" type:"Repeated"`
 }
 

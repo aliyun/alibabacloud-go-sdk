@@ -24,37 +24,37 @@ type iCreateAggTaskGroupResponseBody interface {
 }
 
 type CreateAggTaskGroupResponseBody struct {
-	// Summary of the aggregation task group configuration.
+	// The summary of the aggregation task group configuration.
 	//
 	// example:
 	//
 	// a54136014dc386a92c83a6ef1e97ff22
 	AggTaskGroupConfigHash *string `json:"aggTaskGroupConfigHash,omitempty" xml:"aggTaskGroupConfigHash,omitempty"`
-	// Aggregation task group ID.
+	// The ID of the aggregation task group.
 	//
 	// example:
 	//
 	// aggTaskGroup-f4b8e50525cf41c894488c0c71ec483f
 	AggTaskGroupId *string `json:"aggTaskGroupId,omitempty" xml:"aggTaskGroupId,omitempty"`
-	// Aggregation task group name.
+	// The name of the aggregation task group.
 	//
 	// example:
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16C0A6D6-C3E7-511D-A60B-A87FD85F5BA7
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Source Prometheus instance ID of the aggregation task group.
+	// The ID of the source Prometheus instance for the aggregation task group.
 	//
 	// example:
 	//
 	// rw-ecc04af14729b1a16e40a0d10068
 	SourcePrometheusId *string `json:"sourcePrometheusId,omitempty" xml:"sourcePrometheusId,omitempty"`
-	// Current status of the aggregation task group.
+	// The current status of the aggregation task group.
 	//
 	// example:
 	//

@@ -20,15 +20,22 @@ type iIncidentEscalationPolicyForModify interface {
 }
 
 type IncidentEscalationPolicyForModify struct {
+	// The description.
+	//
 	// example:
 	//
 	// workspace api monitor create test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the policy is enabled.
+	//
 	// example:
 	//
 	// false
-	Enable              *bool                             `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The list of escalation stages. This list defines multiple progressive escalation steps. Each stage contains trigger conditions and notification targets.
 	EscalationStageList []*IncidentEscalationStageForView `json:"escalationStageList,omitempty" xml:"escalationStageList,omitempty" type:"Repeated"`
+	// The name.
+	//
 	// This parameter is required.
 	//
 	// example:

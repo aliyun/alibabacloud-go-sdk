@@ -14,6 +14,8 @@ type iUpdateDatasetRequest interface {
 }
 
 type UpdateDatasetRequest struct {
+	// The new description for the dataset.
+	//
 	// example:
 	//
 	// test dataset

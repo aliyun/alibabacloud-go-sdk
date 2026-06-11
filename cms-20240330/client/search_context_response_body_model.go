@@ -16,11 +16,14 @@ type iSearchContextResponseBody interface {
 }
 
 type SearchContextResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 123-0F43-23423-AC43-34234
-	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []map[string]interface{} `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Return value
+	Results []map[string]interface{} `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s SearchContextResponseBody) String() string {

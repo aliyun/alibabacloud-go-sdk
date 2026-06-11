@@ -26,24 +26,47 @@ type iDescribeMetricMetaListRequest interface {
 }
 
 type DescribeMetricMetaListRequest struct {
-	Keywords *string                                `json:"keywords,omitempty" xml:"keywords,omitempty"`
-	Labels   []*DescribeMetricMetaListRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
+	// The labels used to filter resources. The following labels are supported:
+	//
+	// - `metricCategory`: The metric category.
+	//
+	// - `alertEnable`: Indicates whether to enable alerts.
+	//
+	// - `alertUnit`: The recommended unit for alerts.
+	//
+	// - `unitFactor`: The unit conversion factor.
+	//
+	// - `minAlertPeriod`: The minimum alert period.
+	//
+	// - `productCategory`: The product category.
+	Labels []*DescribeMetricMetaListRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// The source of the metadata. Valid values: `CMS` for CloudMonitor metrics and `PROM_BASIC` for basic Prometheus metrics.
+	//
 	// example:
 	//
 	// CMS
 	MetaFormat *string `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// CPUUtilization
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The namespace of the product.
+	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The number of the page to return. Default value: `1`.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: `2000`.
+	//
 	// example:
 	//
 	// 2000
@@ -135,10 +158,14 @@ func (s *DescribeMetricMetaListRequest) Validate() error {
 }
 
 type DescribeMetricMetaListRequestLabels struct {
+	// The key of the label.
+	//
 	// example:
 	//
 	// productCategory
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the label.
+	//
 	// example:
 	//
 	// ecs

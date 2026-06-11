@@ -36,47 +36,74 @@ type iMergeWebhook interface {
 }
 
 type MergeWebhook struct {
+	// The content type.
+	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// An extension field used to store additional configurations.
+	//
 	// example:
 	//
 	// {"timeout": 3000}
 	Extend *string `json:"extend,omitempty" xml:"extend,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified map[string]interface{} `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The request header.
+	//
 	// example:
 	//
 	// {"Authorization": "Bearer abc123"}
 	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The unique identifier of the webhook.
+	//
 	// example:
 	//
 	// webhook-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The language preference.
+	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The HTTP request method.
+	//
 	// example:
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the webhook.
+	//
+	// example:
+	//
+	// 运维告警通知
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source system of the webhook.
+	//
 	// example:
 	//
 	// dingtalk
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The type of the webhook. It indicates the destination platform.
+	//
 	// example:
 	//
 	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The webhook URL used to send requests.
+	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=abc123

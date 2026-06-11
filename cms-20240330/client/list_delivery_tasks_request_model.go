@@ -22,23 +22,32 @@ type iListDeliveryTasksRequest interface {
 }
 
 type ListDeliveryTasksRequest struct {
+	// The keywords for a fuzzy search by task name or task ID. The search uses `LIKE` semantics.
+	//
 	// example:
 	//
 	// test-task
 	KeyWords *string `json:"keyWords,omitempty" xml:"keyWords,omitempty"`
+	// The number of entries to return on each page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. For subsequent requests, set this parameter to the `nextToken` value that is returned in the previous response.
+	//
 	// example:
 	//
 	// sjC5rekx93Ew7K7VcmI3wkBZBYQ-GphB2ilQu3zJCGxoZuicwyJznfo2riTjr-lq
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2bhocin5e2na
-	ResourceGroupId *string                        `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tag             []*ListDeliveryTasksRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// A list of tags.
+	Tag []*ListDeliveryTasksRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
 func (s ListDeliveryTasksRequest) String() string {
@@ -108,10 +117,14 @@ func (s *ListDeliveryTasksRequest) Validate() error {
 }
 
 type ListDeliveryTasksRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1

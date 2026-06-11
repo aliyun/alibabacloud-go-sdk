@@ -16,9 +16,9 @@ type iPagination interface {
 }
 
 type Pagination struct {
-	// 页码（从 1 开始）
+	// The current page number.
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页数量
+	// The number of entries returned per page.
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 

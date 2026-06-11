@@ -18,15 +18,15 @@ type iApmCompositeCompareConfig interface {
 }
 
 type ApmCompositeCompareConfig struct {
-	// 聚合函数
+	// The aggregation method for metric data. For example, `AVG`, `SUM`, or `MAX`.
 	//
 	// This parameter is required.
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	// 比较操作符
+	// The operator for comparing the aggregated metric data against the `threshold`. For example, `GREATER_THAN` or `LESS_THAN`.
 	//
 	// This parameter is required.
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 单阈值
+	// The value to compare the aggregated metric data against. An alert is triggered when the metric data meets the condition defined by the `operator`.
 	//
 	// This parameter is required.
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`

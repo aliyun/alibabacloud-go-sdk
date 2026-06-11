@@ -26,29 +26,29 @@ type iMaintainWindowForModify interface {
 }
 
 type MaintainWindowForModify struct {
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Effective time range.
+	// The effective time range.
 	EffectTimeRange *MaintainWindowForModifyEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Crontab expression.
+	// The Crontab expression.
 	//
 	// example:
 	//
 	// 	- 	- 14-18 ? 	- *
 	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
-	// Effective end time.
+	// The time when the policy stops taking effect.
 	//
 	// example:
 	//
 	// 2024-09-05 09:30:40
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Filtering conditions.
+	// The filter conditions.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Name.
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type MaintainWindowForModify struct {
 	//
 	// test strategy
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	// Effective start time.
+	// The time when the policy starts to take effect.
 	//
 	// example:
 	//
@@ -150,21 +150,21 @@ func (s *MaintainWindowForModify) Validate() error {
 }
 
 type MaintainWindowForModifyEffectTimeRange struct {
-	// Effective days (Monday to Sunday).
+	// The days of the week when the policy is effective (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// End time (in minutes).
+	// The end time in minutes.
 	//
 	// example:
 	//
 	// 60
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// Start time (in minutes).
+	// The start time in minutes.
 	//
 	// example:
 	//
 	// 60
 	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// Time zone.
+	// The time zone.
 	//
 	// example:
 	//

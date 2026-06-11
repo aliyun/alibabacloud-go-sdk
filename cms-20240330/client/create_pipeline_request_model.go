@@ -24,18 +24,26 @@ type iCreatePipelineRequest interface {
 }
 
 type CreatePipelineRequest struct {
+	// The pipeline description.
+	//
 	// example:
 	//
 	// test
-	Description   *string                             `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution policy.
 	ExecutePolicy *CreatePipelineRequestExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
-	Pipeline      *CreatePipelineRequestPipeline      `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	// The pipeline configuration.
+	Pipeline *CreatePipelineRequestPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	// The pipeline name.
+	//
 	// example:
 	//
 	// pipeline-name-1
-	PipelineName *string                      `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	Sink         *CreatePipelineRequestSink   `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	Source       *CreatePipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The data sink for the processed output.
+	Sink *CreatePipelineRequestSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// The data source.
+	Source *CreatePipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
 func (s CreatePipelineRequest) String() string {
@@ -125,11 +133,15 @@ func (s *CreatePipelineRequest) Validate() error {
 }
 
 type CreatePipelineRequestExecutePolicy struct {
+	// The execution mode. Set to `runOnce` for a single execution, or `scheduled` for a recurring execution.
+	//
 	// example:
 	//
 	// runOnce
-	Mode      *string                                      `json:"mode,omitempty" xml:"mode,omitempty"`
-	RunOnce   *CreatePipelineRequestExecutePolicyRunOnce   `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The configuration for a one-time execution. This parameter is required when `executePolicy.mode` is set to `runOnce`.
+	RunOnce *CreatePipelineRequestExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	// The configuration for a scheduled execution. This parameter is required when `executePolicy.mode` is set to `scheduled`.
 	Scheduled *CreatePipelineRequestExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -183,10 +195,14 @@ func (s *CreatePipelineRequestExecutePolicy) Validate() error {
 }
 
 type CreatePipelineRequestExecutePolicyRunOnce struct {
+	// The start timestamp.
+	//
 	// example:
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The end timestamp.
+	//
 	// example:
 	//
 	// 1772519013
@@ -224,10 +240,14 @@ func (s *CreatePipelineRequestExecutePolicyRunOnce) Validate() error {
 }
 
 type CreatePipelineRequestExecutePolicyScheduled struct {
+	// The start timestamp.
+	//
 	// example:
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The execution interval in seconds.
+	//
 	// example:
 	//
 	// 86400
@@ -265,6 +285,7 @@ func (s *CreatePipelineRequestExecutePolicyScheduled) Validate() error {
 }
 
 type CreatePipelineRequestPipeline struct {
+	// The pipeline nodes.
 	Nodes []*CreatePipelineRequestPipelineNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
 
@@ -299,11 +320,16 @@ func (s *CreatePipelineRequestPipeline) Validate() error {
 }
 
 type CreatePipelineRequestPipelineNodes struct {
+	// The node ID.
+	//
 	// example:
 	//
 	// node_1
-	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The node parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// dedup-fuzzy
@@ -350,7 +376,10 @@ func (s *CreatePipelineRequestPipelineNodes) Validate() error {
 }
 
 type CreatePipelineRequestSink struct {
+	// The destination dataset configuration. This parameter is required when `sink.type` is set to `dataset`.
 	Dataset *CreatePipelineRequestSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The sink type.
+	//
 	// example:
 	//
 	// dataset
@@ -393,10 +422,14 @@ func (s *CreatePipelineRequestSink) Validate() error {
 }
 
 type CreatePipelineRequestSinkDataset struct {
+	// The dataset name.
+	//
 	// example:
 	//
 	// dataset_1
 	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// workspace-test
@@ -434,7 +467,10 @@ func (s *CreatePipelineRequestSinkDataset) Validate() error {
 }
 
 type CreatePipelineRequestSource struct {
+	// The Log Service Logstore configuration. This parameter is required when `source.type` is set to `logstore`.
 	Logstore *CreatePipelineRequestSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// The data source type.
+	//
 	// example:
 	//
 	// logstore
@@ -477,14 +513,20 @@ func (s *CreatePipelineRequestSource) Validate() error {
 }
 
 type CreatePipelineRequestSourceLogstore struct {
+	// The Logstore name.
+	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The Log Service Project name.
+	//
 	// example:
 	//
 	// test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The query statement to filter logs.
+	//
 	// example:
 	//
 	// status:500 and method:GET

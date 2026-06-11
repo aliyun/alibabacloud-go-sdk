@@ -16,7 +16,9 @@ type iLabelMatcher interface {
 }
 
 type LabelMatcher struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label key to match.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label value to match.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

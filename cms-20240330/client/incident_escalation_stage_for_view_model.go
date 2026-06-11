@@ -26,26 +26,38 @@ type iIncidentEscalationStageForView interface {
 }
 
 type IncidentEscalationStageForView struct {
+	// The number of loop notifications.
+	//
 	// example:
 	//
 	// 3
 	CycleNotifyCount *int32 `json:"cycleNotifyCount,omitempty" xml:"cycleNotifyCount,omitempty"`
+	// The loop notification interval.
+	//
 	// example:
 	//
 	// 5
-	CycleNotifyInterval *int32           `json:"cycleNotifyInterval,omitempty" xml:"cycleNotifyInterval,omitempty"`
-	EffectTimeRange     *EffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty"`
+	CycleNotifyInterval *int32 `json:"cycleNotifyInterval,omitempty" xml:"cycleNotifyInterval,omitempty"`
+	// The effective time range.
+	EffectTimeRange *EffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty"`
+	// The stage index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	Index          *int32           `json:"index,omitempty" xml:"index,omitempty"`
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// The list of notification channels.
 	NotifyChannels []*NotifyChannel `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	// The target event state.
+	//
 	// example:
 	//
 	// "Open"
 	TargetIncidentState *string `json:"targetIncidentState,omitempty" xml:"targetIncidentState,omitempty"`
+	// The trigger delay time.
+	//
 	// example:
 	//
 	// 30

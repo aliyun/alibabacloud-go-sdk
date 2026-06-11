@@ -18,14 +18,20 @@ type iAddContextsRequest interface {
 }
 
 type AddContextsRequest struct {
+	// The context type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// An array of context items.
+	//
 	// This parameter is required.
 	Items []*AddContextsRequestItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The memory type.
+	//
 	// example:
 	//
 	// short
@@ -81,23 +87,34 @@ func (s *AddContextsRequest) Validate() error {
 }
 
 type AddContextsRequestItems struct {
+	// The unique agent ID.
+	//
 	// example:
 	//
 	// 952730733889060865
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// mm_480d961a1b5e4efe84603f4cbc0f
-	AppId      *string   `json:"appId,omitempty" xml:"appId,omitempty"`
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// A list of categories to apply to the context item.
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	// The content of the context item.
+	//
 	// example:
 	//
 	// You are a conversation assistant.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The custom instructions for processing the context.
+	//
 	// example:
 	//
 	// Your custom instructions here
 	CustomInstructions *string `json:"customInstructions,omitempty" xml:"customInstructions,omitempty"`
+	// An object containing experience information for the context.
+	//
 	// example:
 	//
 	// {
@@ -110,33 +127,54 @@ type AddContextsRequestItems struct {
 	//
 	// }
 	Experience map[string]interface{} `json:"experience,omitempty" xml:"experience,omitempty"`
+	// The expiration timestamp for the context item.
+	//
 	// example:
 	//
 	// 1731231212334396
 	ExpirationDate *string `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
+	// Specifies whether the context item is immutable. If set to `true`, the item cannot be changed after it is created. The default value is `false`.
+	//
 	// example:
 	//
 	// true
 	Immutable *bool `json:"immutable,omitempty" xml:"immutable,omitempty"`
+	// Specifies whether to perform inference based on the context. The default value is `false`.
+	//
 	// example:
 	//
 	// true
-	Infer    *bool                    `json:"infer,omitempty" xml:"infer,omitempty"`
-	Labels   map[string]*string       `json:"labels,omitempty" xml:"labels,omitempty"`
+	Infer *bool `json:"infer,omitempty" xml:"infer,omitempty"`
+	// A map of key-value pairs to apply as labels.
+	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// An array of message objects.
 	Messages []map[string]interface{} `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// Key-value pairs to store as metadata.
+	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// jr-80ded1d6953c64ea
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The timestamp of the context item.
+	//
 	// example:
 	//
 	// 1774578167
-	Timestamp        *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The condition that triggers the context.
+	//
+	// example:
+	//
+	// Identify and troubleshoot SLs issues
 	TriggerCondition *string `json:"triggerCondition,omitempty" xml:"triggerCondition,omitempty"`
+	// The unique user ID.
+	//
 	// example:
 	//
 	// test_user_001

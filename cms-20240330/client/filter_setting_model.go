@@ -18,11 +18,16 @@ type iFilterSetting interface {
 }
 
 type FilterSetting struct {
+	// The subscription conditions.
 	Conditions []*FilterSettingConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The expression.
+	//
 	// example:
 	//
 	// 1 and 2 or 3
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The relationship between conditions.
+	//
 	// example:
 	//
 	// AND
@@ -78,14 +83,20 @@ func (s *FilterSetting) Validate() error {
 }
 
 type FilterSettingConditions struct {
+	// The field.
+	//
 	// example:
 	//
 	// severity
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+	// The comparison operator.
+	//
 	// example:
 	//
 	// EQ
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The value.
+	//
 	// example:
 	//
 	// CRITICAL

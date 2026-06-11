@@ -18,8 +18,12 @@ type iExecuteQueryResponseBody interface {
 }
 
 type ExecuteQueryResponseBody struct {
+  // An array of log entries. Each object in the array represents a log entry.
   Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+  // Metadata about the query execution.
   Meta *ExecuteQueryResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+  // The unique request ID.
+  // 
   // example:
   // 
   // 3B311FD9-A60B-55E0-A896-A0C73*********
@@ -71,18 +75,26 @@ func (s *ExecuteQueryResponseBody) Validate() error {
 }
 
 type ExecuteQueryResponseBodyMeta struct {
+  // The number of scanned or processed log entries.
+  // 
   // example:
   // 
   // 1
   AffectedRows *int32 `json:"affectedRows,omitempty" xml:"affectedRows,omitempty"`
+  // The number of log entries returned.
+  // 
   // example:
   // 
   // 1
   Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+  // The query execution time in milliseconds.
+  // 
   // example:
   // 
   // 1231243
   ElapsedMillisecond *int64 `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
+  // The query completion status. A value of `Complete` indicates that the query has finished.
+  // 
   // example:
   // 
   // Complete

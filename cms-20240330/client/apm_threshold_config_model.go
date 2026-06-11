@@ -16,11 +16,11 @@ type iApmThresholdConfig interface {
 }
 
 type ApmThresholdConfig struct {
-	// 告警等级
+	// The severity of the alert.
 	//
 	// This parameter is required.
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// 阈值
+	// The metric value that triggers the alert.
 	//
 	// This parameter is required.
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`

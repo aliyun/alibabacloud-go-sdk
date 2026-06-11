@@ -22,21 +22,28 @@ type iListContactGroupsResponseBody interface {
 }
 
 type ListContactGroupsResponseBody struct {
+	// A list of contact groups.
 	ContactGroups []*ListContactGroupsResponseBodyContactGroups `json:"contactGroups,omitempty" xml:"contactGroups,omitempty" type:"Repeated"`
+	// The returned page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 15
@@ -110,11 +117,20 @@ func (s *ListContactGroupsResponseBody) Validate() error {
 }
 
 type ListContactGroupsResponseBodyContactGroups struct {
+	// The contact group ID.
+	//
 	// example:
 	//
 	// test
-	ContactGroupId *string   `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
-	ContactIds     []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
+	ContactGroupId *string `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
+	// The contact IDs in the group.
+	//
+	// example:
+	//
+	// ["Demo meeting"]
+	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
+	// The name of the contact group.
+	//
 	// example:
 	//
 	// test

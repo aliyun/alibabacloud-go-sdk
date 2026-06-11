@@ -28,49 +28,49 @@ type iAlertRuleAlertMetricFilterDef interface {
 }
 
 type AlertRuleAlertMetricFilterDef struct {
-	// Dimension in APM metrics.
+	// The dimension in APM metrics.
 	//
 	// example:
 	//
 	// status
 	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	// When true, the filter item will not appear in the GROUP BY clause of the PromQL.
+	// If set to \\`true\\`, the filter item does not appear in the \\`group by\\` clause of a PromQL query.
 	//
 	// example:
 	//
 	// true
 	DimDisabled *bool `json:"dimDisabled,omitempty" xml:"dimDisabled,omitempty"`
-	// Display Name (Chinese).
+	// The display name in Chinese.
 	//
 	// example:
 	//
-	// Application Status
+	// 应用状态
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
-	// Display Name (English).
+	// The display name in English.
 	//
 	// example:
 	//
 	// Application Status
 	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	// Whether to hide. If hidden, it will not be displayed in the frontend UI, but its value can still be included when rendering the PromQL. A typical example is the "pid" filter condition in APM scenarios, which is generally not exposed through configurable UI elements but instead presented as a separate application search list in the frontend.
+	// Specifies whether to hide the filter. If hidden, the filter does not appear in the frontend UI. However, its value can be uploaded when rendering a PromQL query. For example, in an Application Performance Management (APM) scenario, the pid filter is typically hidden from the configuration UI. The frontend displays it as a separate application search list.
 	//
 	// example:
 	//
 	// true
 	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	// When true, the filter item will not appear in the label filter of the PromQL.
+	// If set to \\`true\\`, the filter item does not appear in the label filter of a PromQL query.
 	//
 	// example:
 	//
 	// true
 	LabelDisabled *bool `json:"labelDisabled,omitempty" xml:"labelDisabled,omitempty"`
-	// Filter Condition Operator.
+	// The operator for the filter condition.
 	//
 	// example:
 	//
 	// =
 	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
-	// List of supported options.
+	// A list of supported options.
 	SupportedOpts []*AlertRuleAlertMetricFilterDefSupportedOpts `json:"supportedOpts,omitempty" xml:"supportedOpts,omitempty" type:"Repeated"`
 }
 
@@ -168,19 +168,19 @@ func (s *AlertRuleAlertMetricFilterDef) Validate() error {
 }
 
 type AlertRuleAlertMetricFilterDefSupportedOpts struct {
-	// Display Name (Chinese).
+	// The display name in Chinese.
 	//
 	// example:
 	//
-	// Online
+	// 在线
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
-	// Display Name (English).
+	// The display name in English.
 	//
 	// example:
 	//
 	// Online
 	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	// Matching value.
+	// The matching value.
 	//
 	// example:
 	//

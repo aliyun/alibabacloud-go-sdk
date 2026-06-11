@@ -16,13 +16,13 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 264C3E89-BE6E-5F82-A484-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Service object.
+	// The service object.
 	Service *GetServiceResponseBodyService `json:"service,omitempty" xml:"service,omitempty" type:"Struct"`
 }
 
@@ -62,72 +62,75 @@ func (s *GetServiceResponseBody) Validate() error {
 }
 
 type GetServiceResponseBodyService struct {
-	// Extended information.
+	// The extended information.
 	//
 	// example:
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// Creation time
+	// The time when the service was created.
 	//
 	// example:
 	//
 	// 2025-05-13T03:32:55Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Description, only valid when serviceType=RUM.
+	// The description. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Display name, only valid when serviceType=RUM.
+	// The display name. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// demo应用
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Legacy ARMS application ID
+	// The ID of the ARMS application that is compatible with earlier versions.
 	//
 	// example:
 	//
 	// by6rjzro2j@0fe8dfa799e5906
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekxxzuad5zzzz
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Service ID.
+	// The service ID.
 	//
 	// example:
 	//
 	// cwzxvuc6uo@4bc6b15ad81f166174ffb
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// Service name
+	// The service name.
 	//
 	// example:
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// Service status, only valid when serviceType=RUM.
+	// The service status. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// Running
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	// Service type.
+	// The service type.
 	//
 	// example:
 	//
 	// TRACE
-	ServiceType *string                              `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	Tags        []*GetServiceResponseBodyServiceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Workspace name
+	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The array of tags.
+	Tags []*GetServiceResponseBodyServiceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The workspace name.
 	//
 	// example:
 	//
@@ -274,10 +277,14 @@ func (s *GetServiceResponseBodyService) Validate() error {
 }
 
 type GetServiceResponseBodyServiceTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// prod

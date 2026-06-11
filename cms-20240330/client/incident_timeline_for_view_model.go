@@ -32,36 +32,58 @@ type iIncidentTimelineForView interface {
 }
 
 type IncidentTimelineForView struct {
+	// The type of status change.
+	//
 	// example:
 	//
 	// "Open -> In Progress"
 	ChangeType *string `json:"changeType,omitempty" xml:"changeType,omitempty"`
+	// The content of the timeline event.
+	//
 	// example:
 	//
 	// "{"action":"restart","resourceId":"i-bp123456"}"
 	Content interface{} `json:"content,omitempty" xml:"content,omitempty"`
+	// The unique identifier of the incident.
+	//
 	// example:
 	//
 	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
-	IncidentUuid *string                 `json:"incidentUuid,omitempty" xml:"incidentUuid,omitempty"`
-	Operator     *ContactForIncidentView `json:"operator,omitempty" xml:"operator,omitempty"`
+	IncidentUuid *string `json:"incidentUuid,omitempty" xml:"incidentUuid,omitempty"`
+	// Information about the operator.
+	Operator *ContactForIncidentView `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The UNIX timestamp when the timeline event occurred.
+	//
 	// example:
 	//
 	// 1743876000000
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// The unique identifier of the timeline record.
+	//
 	// example:
 	//
 	// "x1y2z3a4-b5c6-d7e8-f9g0-h1i2j3k4l5m6"
 	TimelineUuid *string `json:"timelineUuid,omitempty" xml:"timelineUuid,omitempty"`
-	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The title of the timeline event.
+	//
+	// example:
+	//
+	// "故障已升级至值班主管"
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the timeline event.
+	//
 	// example:
 	//
 	// "Comment"
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// "user-abc123"
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The workspace.
+	//
 	// example:
 	//
 	// "ws-xyz789"

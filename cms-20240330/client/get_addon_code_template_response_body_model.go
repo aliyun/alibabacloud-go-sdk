@@ -16,8 +16,9 @@ type iGetAddonCodeTemplateResponseBody interface {
 }
 
 type GetAddonCodeTemplateResponseBody struct {
+	// The list of code templates.
 	Codes []*GetAddonCodeTemplateResponseBodyCodes `json:"codes,omitempty" xml:"codes,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -65,10 +66,14 @@ func (s *GetAddonCodeTemplateResponseBody) Validate() error {
 }
 
 type GetAddonCodeTemplateResponseBodyCodes struct {
+	// The code template.
+	//
 	// example:
 	//
 	// javascript\\nnpm install @arms/rum-miniapp --save
 	CodeTemplate *string `json:"codeTemplate,omitempty" xml:"codeTemplate,omitempty"`
+	// The name of the code template.
+	//
 	// example:
 	//
 	// cs-default-CS-cs-default-1753236205394-cs-default-CS-kubeApiserver

@@ -16,7 +16,7 @@ type iGetUmodelDataRequest interface {
 }
 
 type GetUmodelDataRequest struct {
-	// Query conditions
+	// The query conditions.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetUmodelDataRequest struct {
 	//
 	// }
 	Content interface{} `json:"content,omitempty" xml:"content,omitempty"`
-	// Method
+	// The method.
 	//
 	// This parameter is required.
 	//

@@ -34,19 +34,28 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// 972772996913709056
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The app ID assigned by the merchant.
+	//
 	// example:
 	//
 	// mm_480d961a1b5e4efe84603f4cbc0f
-	AppId   *string                `json:"appId,omitempty" xml:"appId,omitempty"`
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The filter conditions.
 	Filters map[string]interface{} `json:"filters,omitempty" xml:"filters,omitempty"`
+	// The query text.
+	//
 	// example:
 	//
 	// What I like
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to rerank the search results.
+	//
 	// example:
 	//
 	// true
@@ -55,22 +64,32 @@ type SearchMemoriesRequest struct {
 	//
 	// reranker,llm_rank
 	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// test_session_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The search type.
+	//
 	// example:
 	//
 	// experience
 	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
+	// The similarity threshold.
+	//
 	// example:
 	//
 	// 0.3
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The number of top-K results to return.
+	//
 	// example:
 	//
 	// 1
 	TopK *int32 `json:"topK,omitempty" xml:"topK,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// test_session_001

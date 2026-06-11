@@ -24,22 +24,32 @@ type iAlertEventIntegrationPolicyForModify interface {
 }
 
 type AlertEventIntegrationPolicyForModify struct {
+	// The name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test integration
 	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
-	Description   *string        `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// The subscription settings.
+	//
 	// example:
 	//
 	// {"region":"cn-hangzhou"}
-	IntegrationSetting *string            `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
+	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
+	// The transform settings.
 	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
+	// The type.
+	//
 	// example:
 	//
 	// ALERT_CUSTOM

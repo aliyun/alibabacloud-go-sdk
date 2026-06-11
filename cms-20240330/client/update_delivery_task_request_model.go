@@ -30,29 +30,44 @@ type iUpdateDeliveryTaskRequest interface {
 }
 
 type UpdateDeliveryTaskRequest struct {
+	// The data source ID (Prometheus instance ID).
+	//
 	// example:
 	//
 	// rw-5f2b4sc7es4d66
-	DataSourceId   *string            `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	// Additional labels to attach to all delivered metrics, specified as key-value pairs.
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	LabelFilters   map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
+	// The labels for filtering metrics. This operation replaces the entire existing filter; incremental updates are not supported.
+	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
+	// The metric filtering mode.
+	//
 	// example:
 	//
 	// Deny
 	LabelFiltersType *string `json:"labelFiltersType,omitempty" xml:"labelFiltersType,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzoiafjtr7zyq
-	ResourceGroupId *string                              `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SinkList        []*UpdateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The list of sinks.
+	SinkList []*UpdateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
+	// The status of the delivery task.
+	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task description.
+	//
 	// example:
 	//
 	// updated desc
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+	// The name of the delivery task. The name can include Chinese characters, English letters, underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// new-task-name
@@ -162,7 +177,10 @@ func (s *UpdateDeliveryTaskRequest) Validate() error {
 }
 
 type UpdateDeliveryTaskRequestSinkList struct {
+	// The detailed configuration of the sink. The meaning of the key-value pairs depends on the specified sinkType.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
+	// The sink type.
+	//
 	// if can be null:
 	// true
 	//

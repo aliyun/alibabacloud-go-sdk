@@ -26,21 +26,40 @@ type iMergeContactGroup interface {
 }
 
 type MergeContactGroup struct {
-	Contacts []*string              `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	Extend   map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	// A list of unique identifiers for the members in the group.
+	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// An extension field that stores additional information.
+	//
+	// example:
+	//
+	// { "department": "运维部", "role": "工程师" }
+	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	// The time when the contact group was created.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the contact group was last modified.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The unique identifier of the contact group.
+	//
 	// example:
 	//
 	// group-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the contact group.
+	//
+	// example:
+	//
+	// 运维团队
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source system of the contact group.
+	//
 	// example:
 	//
 	// dingtalk

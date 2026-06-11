@@ -20,18 +20,26 @@ type iDeleteMemoriesRequest interface {
 }
 
 type DeleteMemoriesRequest struct {
+	// The agent ID of the application.
+	//
 	// example:
 	//
 	// 952730733889060865
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// 98ea19fe-128b-4841-b318-0359bec3c65d
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// jr-dd7c645fd6fe50d4
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// test_user_001

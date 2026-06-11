@@ -14,7 +14,7 @@ type iDeleteWorkspaceResponseBody interface {
 }
 
 type DeleteWorkspaceResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

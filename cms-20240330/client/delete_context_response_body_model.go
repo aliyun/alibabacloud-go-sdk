@@ -18,14 +18,20 @@ type iDeleteContextResponseBody interface {
 }
 
 type DeleteContextResponseBody struct {
+	// The unique identifier of the deleted context.
+	//
 	// example:
 	//
 	// 897294a7-67a4-4f60-976c-e136edc5f97e
 	ContextId *string `json:"contextId,omitempty" xml:"contextId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E5B1D3D4-BB28-5996-8AD2-***********
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The deletion status. For example, deleted.
+	//
 	// example:
 	//
 	// deleted

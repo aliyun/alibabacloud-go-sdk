@@ -14,6 +14,7 @@ type iManageAlertRulesRequest interface {
 }
 
 type ManageAlertRulesRequest struct {
+	// A unified request body for managing alert rules with the CREATE, UPDATE, PATCH, and BATCH_DELETE actions. The required fields depend on the specified action.
 	Body *ManageAlertRulesUnifiedActionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

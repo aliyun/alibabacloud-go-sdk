@@ -32,7 +32,7 @@ type iListPrometheusInstancesShrinkRequest interface {
 }
 
 type ListPrometheusInstancesShrinkRequest struct {
-	// Specified list of regionIds to filter (comma-separated).
+	// A list of region IDs to filter by, separated by commas.
 	//
 	// if can be null:
 	// true
@@ -41,7 +41,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// cn-shenzhen
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// Maximum number of records to return.
+	// The maximum number of records to return.
 	//
 	// if can be null:
 	// true
@@ -50,7 +50,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Query token.
+	// The query token.
 	//
 	// if can be null:
 	// true
@@ -59,7 +59,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// List of instance IDs (comma-separated)
+	// A list of instance IDs, separated by commas.
 	//
 	// if can be null:
 	// true
@@ -68,7 +68,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// rw-00001,rw-00002,rw-00003
 	PrometheusInstanceIds *string `json:"prometheusInstanceIds,omitempty" xml:"prometheusInstanceIds,omitempty"`
-	// Instance name (partial match supported)
+	// The instance name. Partial match is supported.
 	//
 	// if can be null:
 	// true
@@ -77,13 +77,13 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// test
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2bhocin5e2na
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Resource type of the instance.
+	// The resource type of the instance.
 	//
 	// if can be null:
 	// true
@@ -92,9 +92,9 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// List of tags.
+	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// Instance version: V1 or V2
+	// The instance version. Valid values: V1 and V2.
 	//
 	// if can be null:
 	// true

@@ -16,9 +16,9 @@ type iUmodelEntityField interface {
 }
 
 type UmodelEntityField struct {
-	// 实体字段名
+	// The name of the entity field.
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// 字段别名或展示值
+	// The field alias or display value.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

@@ -16,9 +16,9 @@ type iLabelsFilter interface {
 }
 
 type LabelsFilter struct {
-	// 匹配所有标签（AND）
+	// An array of `LabelMatcher` requirements. An object is selected only if it satisfies all of the requirements in this list (a logical AND). If provided, the list cannot be empty.
 	AllOf []*LabelMatcher `json:"allOf,omitempty" xml:"allOf,omitempty" type:"Repeated"`
-	// 匹配任意一个标签（OR）
+	// An array of `LabelMatcher` requirements. An object is selected if it satisfies at least one of the requirements in this list (a logical OR). If provided, the list cannot be empty.
 	AnyOf []*LabelMatcher `json:"anyOf,omitempty" xml:"anyOf,omitempty" type:"Repeated"`
 }
 

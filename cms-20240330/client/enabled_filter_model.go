@@ -14,7 +14,7 @@ type iEnabledFilter interface {
 }
 
 type EnabledFilter struct {
-  // 精确匹配
+  // The value to filter by. Set to `true` to return only enabled resources. Set to `false` to return only disabled resources.
   Eq *bool `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

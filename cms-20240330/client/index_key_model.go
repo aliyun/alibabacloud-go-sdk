@@ -20,10 +20,30 @@ type iIndexKey interface {
 }
 
 type IndexKey struct {
-	Chn       *bool                    `json:"chn,omitempty" xml:"chn,omitempty"`
-	Embedding *string                  `json:"embedding,omitempty" xml:"embedding,omitempty"`
-	JsonKeys  map[string]*IndexJsonKey `json:"jsonKeys,omitempty" xml:"jsonKeys,omitempty"`
-	Type      *string                  `json:"type,omitempty" xml:"type,omitempty"`
+	// Indicates whether the value contains Chinese characters.
+	//
+	// - `true`: Contains Chinese characters.
+	//
+	// - `false`: Does not contain Chinese characters.
+	//
+	// example:
+	//
+	// true
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// Specifies the model name.
+	//
+	// example:
+	//
+	// text-embedding-v4
+	Embedding *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
+	// Describes the json keys.
+	JsonKeys map[string]*IndexJsonKey `json:"jsonKeys,omitempty" xml:"jsonKeys,omitempty"`
+	// Specifies the field type.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s IndexKey) String() string {

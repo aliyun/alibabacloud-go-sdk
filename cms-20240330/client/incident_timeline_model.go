@@ -30,55 +30,55 @@ type iIncidentTimeline interface {
 }
 
 type IncidentTimeline struct {
-	// Subtype.
+	// The child type.
 	//
 	// example:
 	//
 	// comment
 	ChildType *string `json:"childType,omitempty" xml:"childType,omitempty"`
-	// Content.
+	// The content.
 	//
 	// example:
 	//
-	// The operations team has been notified to investigate.
+	// 已通知运维团队进行排查
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Incident ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// Timeline node unique ID.
+	// The unique ID of the timeline node.
 	//
 	// example:
 	//
 	// timeline-001
 	IncidentTimelineId *string `json:"incidentTimelineId,omitempty" xml:"incidentTimelineId,omitempty"`
-	// Time.
+	// The timestamp.
 	//
 	// example:
 	//
 	// 1741234567890
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
-	// Parent timeline ID.
+	// The ID of the timeline.
 	//
 	// example:
 	//
 	// timeline-main-001
 	TimelineId *string `json:"timelineId,omitempty" xml:"timelineId,omitempty"`
-	// Title.
+	// The timeline title.
 	//
 	// example:
 	//
-	// The operations team has been contacted.
+	// 已联系运维团队
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Type.
+	// The type.
 	//
 	// example:
 	//
 	// ACTION
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

@@ -34,44 +34,64 @@ type iGetContextStoreResponseBody interface {
 }
 
 type GetContextStoreResponseBody struct {
+	// The configuration of the context store.
 	Config *GetContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The context store name.
+	//
 	// example:
 	//
 	// test-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The type of the context store.
+	//
 	// example:
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The creation time of the context store. This value is a Unix timestamp in seconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1695090077
-	CreateTime *string                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Dataset    *GetContextStoreResponseBodyDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Information about the associated dataset.
+	Dataset *GetContextStoreResponseBodyDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The description of the context store.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The status of the context store.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The last update time of the context store. This value is a Unix timestamp in seconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1695090077
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// workspace-test
@@ -200,9 +220,12 @@ func (s *GetContextStoreResponseBody) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfig struct {
-	InnerSource   *GetContextStoreResponseBodyConfigInnerSource `json:"innerSource,omitempty" xml:"innerSource,omitempty" type:"Struct"`
-	MetadataField map[string]*string                            `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
-	Source        *GetContextStoreResponseBodyConfigSource      `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The internal source.
+	InnerSource *GetContextStoreResponseBodyConfigInnerSource `json:"innerSource,omitempty" xml:"innerSource,omitempty" type:"Struct"`
+	// The metadata fields.
+	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
+	// The configuration source.
+	Source *GetContextStoreResponseBodyConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
 func (s GetContextStoreResponseBodyConfig) String() string {
@@ -255,10 +278,14 @@ func (s *GetContextStoreResponseBodyConfig) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigInnerSource struct {
+	// The name of the Log Service logstore.
+	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// sls-test-project
@@ -296,14 +323,20 @@ func (s *GetContextStoreResponseBodyConfigInnerSource) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigSource struct {
+	// The name of the Log Service logstore.
+	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// sls-test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The time when the configuration takes effect. This value is a Unix timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -352,6 +385,8 @@ func (s *GetContextStoreResponseBodyConfigSource) Validate() error {
 }
 
 type GetContextStoreResponseBodyDataset struct {
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test_dataset

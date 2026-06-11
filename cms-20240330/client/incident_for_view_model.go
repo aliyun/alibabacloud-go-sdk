@@ -56,57 +56,106 @@ type iIncidentForView interface {
 }
 
 type IncidentForView struct {
-	Content     *string                            `json:"content,omitempty" xml:"content,omitempty"`
+	// The details of the incident.
+	//
+	// example:
+	//
+	// "{"description":"ECS实例CPU过高","impact":"支付服务延迟"}"
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The list of escalation policies.
 	Escalations []*IncidentEscalationPolicyForView `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
+	// The group identifier.
+	//
 	// example:
 	//
 	// "group-123456"
-	GroupUuid    *string            `json:"groupUuid,omitempty" xml:"groupUuid,omitempty"`
+	GroupUuid *string `json:"groupUuid,omitempty" xml:"groupUuid,omitempty"`
+	// The key-value pairs for grouping.
 	GroupingKeys map[string]*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty"`
+	// The unique identifier of the incident.
+	//
 	// example:
 	//
 	// "incident-abc123"
-	IncidentId         *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// The name of the notification policy.
+	//
+	// example:
+	//
+	// { "contactId": "contact-123", "name": "张三" }
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	// The UUID of the associated notification policy, which is used to trigger notifications.
+	//
 	// example:
 	//
 	// "notify-strategy-789"
-	NotifyStrategyUuid *string                         `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	Operator           *ContactForIncidentView         `json:"operator,omitempty" xml:"operator,omitempty"`
-	Owners             []*ContactForIncidentView       `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
-	Participants       []*ContactForIncidentView       `json:"participants,omitempty" xml:"participants,omitempty" type:"Repeated"`
-	Plan               *IncidentResponsePlanForView    `json:"plan,omitempty" xml:"plan,omitempty"`
-	RelatedResources   []*EventResourceForIncidentView `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
+	// The information about the operator.
+	Operator *ContactForIncidentView `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The list of owners.
+	Owners []*ContactForIncidentView `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
+	// The list of participants.
+	Participants []*ContactForIncidentView `json:"participants,omitempty" xml:"participants,omitempty" type:"Repeated"`
+	// The response plan.
+	Plan *IncidentResponsePlanForView `json:"plan,omitempty" xml:"plan,omitempty"`
+	// The list of associated resources.
+	RelatedResources []*EventResourceForIncidentView `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	// The root cause category.
+	//
 	// example:
 	//
 	// "Network"
 	RootCauseCategory *string `json:"rootCauseCategory,omitempty" xml:"rootCauseCategory,omitempty"`
+	// The severity level of the incident.
+	//
 	// example:
 	//
 	// "Critical"
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The description of the solution.
+	//
+	// example:
+	//
+	// "重启ECS实例后恢复正常"
 	Solution *string `json:"solution,omitempty" xml:"solution,omitempty"`
+	// The current state of the incident.
+	//
 	// example:
 	//
 	// "Open"
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The name of the subscription policy.
+	//
 	// example:
 	//
 	// "P1-Alert-Notification"
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	// The UUID of the subscription policy.
+	//
 	// example:
 	//
 	// "subscription-abc"
 	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	// The timestamp when the incident was created.
+	//
 	// example:
 	//
 	// 1743876000000
-	Time  *int64  `json:"time,omitempty" xml:"time,omitempty"`
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// The title of the incident.
+	//
+	// example:
+	//
+	// "支付服务不可用"
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The ID of the user who created the incident.
+	//
 	// example:
 	//
 	// "user-abc123"
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// "ws-xyz789"

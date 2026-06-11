@@ -32,49 +32,49 @@ type iIncidentStruct interface {
 }
 
 type IncidentStruct struct {
-	// Content.
+	// The content of the event.
 	//
 	// example:
 	//
-	// Detected that the connection count of RDS instance rds-bp1234567890abcdef has reached 1000, triggering an alert.
+	// 检测到 RDS 实例 rds-bp1234567890abcdef 的连接数达到 1000，已触发告警。
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// List of escalation policies.
+	// The list of escalation policies.
 	Escalations []*IncidentEscalationStruct `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// Incident ID.
+	// The unique ID of the event.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// Associated incident contingency plan.
+	// The associated incident plan.
 	IncidentPlan *IncidentPlanStruct `json:"incidentPlan,omitempty" xml:"incidentPlan,omitempty"`
-	// Associated resource details.
+	// The details of the associated resource.
 	Resource *IncidentResourceDetail `json:"resource,omitempty" xml:"resource,omitempty"`
-	// Incident severity level.
+	// The severity level of the event.
 	//
 	// example:
 	//
 	// P1
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// Status.
+	// The current status.
 	//
 	// example:
 	//
 	// OPEN
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Time.
+	// The timestamp.
 	//
 	// example:
 	//
 	// 1741234567890
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
-	// Title.
+	// The title of the event.
 	//
 	// example:
 	//
-	// Excessively high database connection count.
+	// 数据库连接数过高
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iDatasourceConfigUnified interface {
 }
 
 type DatasourceConfigUnified struct {
-	// Prometheus 实例 ID（type=PROMETHEUS 时使用）
+	// The unique instance ID.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 地域 ID（各类型可选，缺省与规则/网关一致）
+	// The region ID.
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 数据源类型
+	// The type of the data source.
 	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`

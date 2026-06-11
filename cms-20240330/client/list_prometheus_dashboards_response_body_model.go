@@ -18,15 +18,15 @@ type iListPrometheusDashboardsResponseBody interface {
 }
 
 type ListPrometheusDashboardsResponseBody struct {
-	// List of Prometheus instance dashboards.
+	// A list of dashboards for the Prometheus instance.
 	PrometheusDashboards []*ListPrometheusDashboardsResponseBodyPrometheusDashboards `json:"prometheusDashboards,omitempty" xml:"prometheusDashboards,omitempty" type:"Repeated"`
-	// ID of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of instances
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -83,33 +83,33 @@ func (s *ListPrometheusDashboardsResponseBody) Validate() error {
 }
 
 type ListPrometheusDashboardsResponseBodyPrometheusDashboards struct {
-	// Dashboard ID.
+	// The dashboard ID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Dashboard name.
+	// The dashboard name.
 	//
 	// example:
 	//
 	// pod
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Tags.
+	// The tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Dashboard title.
+	// The dashboard title.
 	//
 	// example:
 	//
 	// ceshi
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// Dashboard UID.
+	// The dashboard UID.
 	//
 	// example:
 	//
 	// 1987395500251724
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// Dashboard URL address.
+	// The URL of the dashboard.
 	//
 	// example:
 	//

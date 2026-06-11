@@ -18,11 +18,11 @@ type iUmodelEntityFilter interface {
 }
 
 type UmodelEntityFilter struct {
-	// 过滤字段名
+	// The field name to filter on.
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// 过滤操作符，仅支持 = 或 !=
+	// The comparison operator to use. Supported operators include `=`, `>`, `<`, `!=`, `IN`, and `NOT IN`.
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 过滤值
+	// The value to compare the field against.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

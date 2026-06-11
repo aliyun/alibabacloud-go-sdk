@@ -36,67 +36,67 @@ type iTransformerForView interface {
 }
 
 type TransformerForView struct {
-	// Transformation operation.
+	// The transform operations.
 	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// Create Time.
+	// The time when the converter was created.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Whether enabled.
+	// Indicates whether the converter is enabled.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Filter Setting.
+	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Exit after matching processing.
+	// Indicates whether to exit after a match is processed.
 	//
 	// example:
 	//
 	// false
 	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	// Sort order.
+	// The sort ID.
 	//
 	// example:
 	//
 	// 1
 	SortId *int32 `json:"sortId,omitempty" xml:"sortId,omitempty"`
-	// transformer Id
+	// The transformer ID.
 	//
 	// example:
 	//
 	// 1123123123123
 	TransformerId *string `json:"transformerId,omitempty" xml:"transformerId,omitempty"`
-	// Name.
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test processing flow.
+	// 测试处理流
 	TransformerName *string `json:"transformerName,omitempty" xml:"transformerName,omitempty"`
-	// Update Time.
+	// The time when the converter was last updated.
 	//
 	// example:
 	//
 	// 2025-01-16T02:27:01Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 123123123**
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// workspace
+	// The workspace.
 	//
 	// example:
 	//

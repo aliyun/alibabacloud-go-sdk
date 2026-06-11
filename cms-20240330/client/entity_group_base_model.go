@@ -28,22 +28,42 @@ type iEntityGroupBase interface {
 }
 
 type EntityGroupBase struct {
+  // The entity description.
+  // 
+  // example:
+  // 
+  // ECS 实例
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The entity ID.
+  // 
   // example:
   // 
   // eg-1234567890
   EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
+  // The entity name.
+  // 
+  // example:
+  // 
+  // ECS 全部实体
   EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
+  // A collection of entity query rules.
   EntityQueries []*EntityGroupBaseEntityQueries `json:"entityQueries,omitempty" xml:"entityQueries,omitempty" type:"Repeated"`
+  // The rule for entity discovery.
   EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+  // The region ID.
+  // 
   // example:
   // 
   // cn-heyuan
   RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+  // The user ID.
+  // 
   // example:
   // 
   // 1654218***343050
   UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+  // The workspace.
+  // 
   // example:
   // 
   // default-cms-1654218***343050-cn-hangzhou
@@ -149,10 +169,14 @@ func (s *EntityGroupBase) Validate() error {
 }
 
 type EntityGroupBaseEntityQueries struct {
+  // The entity type.
+  // 
   // example:
   // 
   // acs.ecs.instance
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+  // The Structured Process Language (SPL) search statement.
+  // 
   // example:
   // 
   // .entity with(type=\\"acs.ecs.instance\\") | where region_id in (\\"cn-beijing\\")

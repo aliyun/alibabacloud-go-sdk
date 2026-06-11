@@ -16,13 +16,13 @@ type iCreateUmodelResponseBody interface {
 }
 
 type CreateUmodelResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 123-0F43-23423-AC43-34234
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Workspace name
+	// The name of the workspace.
 	//
 	// example:
 	//

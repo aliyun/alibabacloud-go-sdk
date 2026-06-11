@@ -14,6 +14,7 @@ type iManageAlertRulesShrinkRequest interface {
 }
 
 type ManageAlertRulesShrinkRequest struct {
+	// A unified request body for managing alert rules with the CREATE, UPDATE, PATCH, and BATCH_DELETE actions. The required fields depend on the specified action.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

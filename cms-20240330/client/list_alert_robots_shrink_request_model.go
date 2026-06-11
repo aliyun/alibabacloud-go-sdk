@@ -24,21 +24,29 @@ type iListAlertRobotsShrinkRequest interface {
 }
 
 type ListAlertRobotsShrinkRequest struct {
+	// The name of the robot. Fuzzy search by prefix is supported.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of the page to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The robot IDs.
 	RobotIdsShrink *string `json:"robotIds,omitempty" xml:"robotIds,omitempty"`
-	TypesShrink    *string `json:"types,omitempty" xml:"types,omitempty"`
-	Workspace      *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The robot types.
+	TypesShrink *string `json:"types,omitempty" xml:"types,omitempty"`
+	Workspace   *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListAlertRobotsShrinkRequest) String() string {

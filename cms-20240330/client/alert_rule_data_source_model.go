@@ -26,58 +26,58 @@ type iAlertRuleDataSource interface {
 }
 
 type AlertRuleDataSource struct {
-	// Applicable data source type: APM_DS.
+	// Applies to the APM_DS data source type.
 	//
-	// Application type:
+	// The type of the application. Valid value:
 	//
-	// - apm.
+	// - apm
 	//
 	// example:
 	//
 	// apm
 	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
-	// Applicable data source type: SLS_MULTI_DS.
+	// Applies to the SLS_MULTI_DS data source type.
 	//
-	// List of sub-data sources.
+	// A list of sub-data sources.
 	DsList []*AlertRuleDataSourceDsList `json:"dsList,omitempty" xml:"dsList,omitempty" type:"Repeated"`
-	// Applicable data source type: PROMETHEUS_DS.
+	// Applies to the PROMETHEUS_DS data source type.
 	//
-	// Prometheus instance ID.
+	// The ID of the Prometheus instance.
 	//
 	// example:
 	//
 	// rw-bbe8961b4a59be0
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Applicable data source type: ENTERPRISE_DS.
+	// Applies to the ENTERPRISE_DS data source type.
 	//
-	// Name of the enterprise cloud monitoring metric repository.
+	// The name of the Hybrid Cloud Monitoring metric repository.
 	//
 	// example:
 	//
 	// aliyun-default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Applicable data source types: APM_DS, PROMETHEUS_DS.
+	// Applies to the APM_DS and PROMETHEUS_DS data source types.
 	//
-	// The regionId to which the data source belongs.
+	// The ID of the region where the data source is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// Data source type.
+	// The data source type.
 	//
 	// Valid values:
 	//
-	// - PROMETHEUS_DS: Prometheus data source.
+	// - PROMETHEUS_DS: A Prometheus data source.
 	//
-	// - SLS_MULTI_DS: SLS data source.
+	// - SLS_MULTI_DS: An SLS data source.
 	//
-	// - APM_DS: Application monitoring data source.
+	// - APM_DS: An Application Monitoring data source.
 	//
-	// - CMS_BASIC_DS: Basic cloud monitoring data source.
+	// - CMS_BASIC_DS: A basic Cloud Monitor data source.
 	//
-	// - ENTERPRISE_DS: Enterprise cloud monitoring data source.
+	// - ENTERPRISE_DS: A Hybrid Cloud Monitoring data source.
 	//
 	// This parameter is required.
 	//
@@ -172,7 +172,7 @@ func (s *AlertRuleDataSource) Validate() error {
 }
 
 type AlertRuleDataSourceDsList struct {
-	// SLS project
+	// The SLS project.
 	//
 	// example:
 	//
@@ -184,17 +184,17 @@ type AlertRuleDataSourceDsList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// LogStore/MetricStore name.
+	// The name of the LogStore or MetricStore.
 	//
 	// example:
 	//
 	// mySlsLogStore
 	Store *string `json:"store,omitempty" xml:"store,omitempty"`
-	// Type of SLS data sub-source:
+	// The type of the SLS sub-data source. Valid values:
 	//
-	// - SLS_LOG_DS: LogStore data source.
+	// - SLS_LOG_DS: A LogStore data source.
 	//
-	// - SLS_METRIC_DS: MetricStore data source.
+	// - SLS_METRIC_DS: A MetricStore data source.
 	//
 	// example:
 	//

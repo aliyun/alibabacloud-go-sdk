@@ -19,10 +19,14 @@ type iAlertRuleV2 interface {
 	GetConditionConfig() *ConditionConfigUnified
 	SetContentTemplate(v string) *AlertRuleV2
 	GetContentTemplate() *string
+	SetCoveredSeverityLevels(v string) *AlertRuleV2
+	GetCoveredSeverityLevels() *string
 	SetCreatedAt(v string) *AlertRuleV2
 	GetCreatedAt() *string
 	SetDatasourceConfig(v *DatasourceConfigUnified) *AlertRuleV2
 	GetDatasourceConfig() *DatasourceConfigUnified
+	SetDatasourceType(v string) *AlertRuleV2
+	GetDatasourceType() *string
 	SetDisplayName(v string) *AlertRuleV2
 	GetDisplayName() *string
 	SetEnabled(v bool) *AlertRuleV2
@@ -31,6 +35,12 @@ type iAlertRuleV2 interface {
 	GetLabels() map[string]*string
 	SetNotifyConfig(v *NotifyConfigUnified) *AlertRuleV2
 	GetNotifyConfig() *NotifyConfigUnified
+	SetObserveResourceGlobalScope(v bool) *AlertRuleV2
+	GetObserveResourceGlobalScope() *bool
+	SetObserveResourceList(v string) *AlertRuleV2
+	GetObserveResourceList() *string
+	SetObserveResourceType(v string) *AlertRuleV2
+	GetObserveResourceType() *string
 	SetQueryConfig(v *QueryConfigUnified) *AlertRuleV2
 	GetQueryConfig() *QueryConfigUnified
 	SetScheduleConfig(v *ScheduleConfigUnified) *AlertRuleV2
@@ -46,32 +56,48 @@ type iAlertRuleV2 interface {
 }
 
 type AlertRuleV2 struct {
+	// Configuration for action integrations, such as webhooks, that execute when an alert is triggered.
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
-	// 注解
-	Annotations           map[string]*string      `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	ArmsIntegrationConfig *ArmsIntegrationConfig  `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	ConditionConfig       *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
-	// 内容模板
-	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	// 创建时间（只读），ISO 8601
-	CreatedAt        *string                  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// A set of key-value pairs that serve as annotations, providing additional, non-identifying information, such as a description or a runbook link.
+	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// The configuration for integrating the alert rule with Application Real-Time Monitoring Service (ARMS).
+	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
+	// The configuration for the conditions that trigger an alert.
+	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
+	// The template for the alert notification content.
+	ContentTemplate       *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
+	CoveredSeverityLevels *string `json:"coveredSeverityLevels,omitempty" xml:"coveredSeverityLevels,omitempty"`
+	// The time the alert rule was created.
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The configuration for the data source to be evaluated.
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	// 显示名称
+	// The data source type. Examples: `sls`, `prometheus`.
+	DatasourceType *string `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
+	// The user-defined display name for the alert rule.
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 是否启用
+	// Indicates whether the alert rule is active. Set to `true` to enable the rule, or `false` to disable it.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 标签
-	Labels         map[string]*string     `json:"labels,omitempty" xml:"labels,omitempty"`
-	NotifyConfig   *NotifyConfigUnified   `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	QueryConfig    *QueryConfigUnified    `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	// A set of key-value pairs that serve as labels to filter and group alert rules.
+	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The configuration for sending notifications when an alert is triggered.
+	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
+	// Indicates whether the alert rule monitors all resources of the specified type. If `true`, the rule applies globally within the workspace.
+	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
+	// A list of specific resource IDs to monitor, used only when `observeResourceGlobalScope` is `false`.
+	ObserveResourceList *string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
+	// The type of resource that the alert rule monitors.
+	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	// The configuration for querying and processing data from the data source.
+	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	// The configuration for how often the alert rule is evaluated.
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// 告警状态（只读）
+	// The current status of the alert rule. Examples: `RUNNING`, `STOPPED`.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 更新时间（只读），ISO 8601
+	// The time the alert rule was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// 规则 UUID（系统生成，只读）
+	// The unique identifier for the alert rule.
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// 工作空间
+	// The ID of the workspace that contains the alert rule.
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
@@ -103,12 +129,20 @@ func (s *AlertRuleV2) GetContentTemplate() *string {
 	return s.ContentTemplate
 }
 
+func (s *AlertRuleV2) GetCoveredSeverityLevels() *string {
+	return s.CoveredSeverityLevels
+}
+
 func (s *AlertRuleV2) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
 func (s *AlertRuleV2) GetDatasourceConfig() *DatasourceConfigUnified {
 	return s.DatasourceConfig
+}
+
+func (s *AlertRuleV2) GetDatasourceType() *string {
+	return s.DatasourceType
 }
 
 func (s *AlertRuleV2) GetDisplayName() *string {
@@ -125,6 +159,18 @@ func (s *AlertRuleV2) GetLabels() map[string]*string {
 
 func (s *AlertRuleV2) GetNotifyConfig() *NotifyConfigUnified {
 	return s.NotifyConfig
+}
+
+func (s *AlertRuleV2) GetObserveResourceGlobalScope() *bool {
+	return s.ObserveResourceGlobalScope
+}
+
+func (s *AlertRuleV2) GetObserveResourceList() *string {
+	return s.ObserveResourceList
+}
+
+func (s *AlertRuleV2) GetObserveResourceType() *string {
+	return s.ObserveResourceType
 }
 
 func (s *AlertRuleV2) GetQueryConfig() *QueryConfigUnified {
@@ -176,6 +222,11 @@ func (s *AlertRuleV2) SetContentTemplate(v string) *AlertRuleV2 {
 	return s
 }
 
+func (s *AlertRuleV2) SetCoveredSeverityLevels(v string) *AlertRuleV2 {
+	s.CoveredSeverityLevels = &v
+	return s
+}
+
 func (s *AlertRuleV2) SetCreatedAt(v string) *AlertRuleV2 {
 	s.CreatedAt = &v
 	return s
@@ -183,6 +234,11 @@ func (s *AlertRuleV2) SetCreatedAt(v string) *AlertRuleV2 {
 
 func (s *AlertRuleV2) SetDatasourceConfig(v *DatasourceConfigUnified) *AlertRuleV2 {
 	s.DatasourceConfig = v
+	return s
+}
+
+func (s *AlertRuleV2) SetDatasourceType(v string) *AlertRuleV2 {
+	s.DatasourceType = &v
 	return s
 }
 
@@ -203,6 +259,21 @@ func (s *AlertRuleV2) SetLabels(v map[string]*string) *AlertRuleV2 {
 
 func (s *AlertRuleV2) SetNotifyConfig(v *NotifyConfigUnified) *AlertRuleV2 {
 	s.NotifyConfig = v
+	return s
+}
+
+func (s *AlertRuleV2) SetObserveResourceGlobalScope(v bool) *AlertRuleV2 {
+	s.ObserveResourceGlobalScope = &v
+	return s
+}
+
+func (s *AlertRuleV2) SetObserveResourceList(v string) *AlertRuleV2 {
+	s.ObserveResourceList = &v
+	return s
+}
+
+func (s *AlertRuleV2) SetObserveResourceType(v string) *AlertRuleV2 {
+	s.ObserveResourceType = &v
 	return s
 }
 

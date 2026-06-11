@@ -38,73 +38,73 @@ type iMaintainWindowForView interface {
 }
 
 type MaintainWindowForView struct {
-	// Creation time.
+	// The time when the policy was created.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Effective time range.
+	// The effective time range.
 	EffectTimeRange *MaintainWindowForViewEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Crontab expression.
+	// The crontab expression.
 	//
 	// example:
 	//
 	// 	- 	- 14-18 ? 	- *
 	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
-	// Whether enabled.
+	// Indicates whether the policy is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Effective end time.
+	// The end time of the effective period.
 	//
 	// example:
 	//
 	// 2024-11-26 12:02:01
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Filtering conditions.
+	// The filter conditions.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// UUID
+	// The UUID.
 	//
 	// example:
 	//
 	// 123-12-312-31-23123
 	MaintainWindowId *string `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
-	// Name.
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test policy.
+	// 测试策略
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	// Effective start time.
+	// The start time of the effective period.
 	//
 	// example:
 	//
 	// 2024-11-26 10:02:01
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// Update time.
+	// The last time the resource was updated.
 	//
 	// example:
 	//
 	// 2025-05-07T02:19:05Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 12312312***
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// workspace
+	// The workspace.
 	//
 	// example:
 	//
@@ -252,21 +252,21 @@ func (s *MaintainWindowForView) Validate() error {
 }
 
 type MaintainWindowForViewEffectTimeRange struct {
-	// Effective days (Monday to Sunday).
+	// The days of the week when the policy is effective.
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// End time (in minutes).
+	// The end time in minutes.
 	//
 	// example:
 	//
 	// 360
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// Start time (in minutes).
+	// The start time in minutes.
 	//
 	// example:
 	//
 	// 60
 	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// Time Zone.
+	// The time zone.
 	//
 	// example:
 	//

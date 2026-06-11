@@ -22,21 +22,28 @@ type iListContactsResponseBody interface {
 }
 
 type ListContactsResponseBody struct {
+	// The list of contacts.
 	Contacts []*ListContactsResponseBodyContacts `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 56
@@ -110,36 +117,54 @@ func (s *ListContactsResponseBody) Validate() error {
 }
 
 type ListContactsResponseBodyContacts struct {
+	// The ID of the contact.
+	//
 	// example:
 	//
 	// test
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
+	// The email address of the contact.
+	//
 	// example:
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Indicates whether the email address is verified.
+	//
 	// example:
 	//
 	// true
-	EmailVerify *bool              `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	GroupList   []*string          `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
-	ImUserIds   map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
+	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
+	// A list of contact group IDs to which the contact belongs.
+	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
+	// A map of user IDs for various instant messaging (IM) tools.
+	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
+	// The language preference for notifications. Valid values: zh-CN and en-US.
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The phone number of the contact.
+	//
 	// example:
 	//
 	// 130123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// Indicates whether the phone number is verified.
+	//
 	// example:
 	//
 	// true
 	PhoneVerify *bool `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
+	// The last time the contact was updated.
+	//
 	// example:
 	//
 	// 2024-10-22 02:21:51

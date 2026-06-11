@@ -16,9 +16,9 @@ type iCreatePrometheusVirtualInstanceResponseBody interface {
 }
 
 type CreatePrometheusVirtualInstanceResponseBody struct {
-	// Instance ID
+	// The instance.
 	Instance *CreatePrometheusVirtualInstanceResponseBodyInstance `json:"instance,omitempty" xml:"instance,omitempty" type:"Struct"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,37 +62,37 @@ func (s *CreatePrometheusVirtualInstanceResponseBody) Validate() error {
 }
 
 type CreatePrometheusVirtualInstanceResponseBodyInstance struct {
-	// Creation time
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 1751520976660
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// HTTP API query address
+	// The HTTP API query URL.
 	//
 	// example:
 	//
 	// http://xxxxxxx
 	HttpApiUrl *string `json:"httpApiUrl,omitempty" xml:"httpApiUrl,omitempty"`
-	// Region ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// rw-e815960b4c9ebc5c3d89790c7e82
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Cloud product
+	// The cloud product.
 	//
 	// example:
 	//
 	// ack-csi-fuse
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// User ID
+	// Region ID
 	//
 	// example:
 	//
 	// cn-zhengzhou-jva
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

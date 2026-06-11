@@ -43,66 +43,71 @@ type iSubscriptionForView interface {
 
 type SubscriptionForView struct {
 	AgentConfig *SubscriptionForViewAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty" type:"Struct"`
-	// Create Time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Whether enabled.
+	// Indicates whether the subscription is enabled.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Filtering settings.
+	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Notification policy UUID.
+	// The UUID of the notification policy.
 	//
 	// example:
 	//
 	// 23123123
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// Push settings.
+	// The push settings.
 	PushingSetting *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// UUID
+	// The UUID.
 	//
 	// example:
 	//
 	// 123123123123
 	SubscriptionId *string `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	// Name.
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Subscription test.
+	// 订阅测试
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	// example:
 	//
 	// NORMAL
 	SubscriptionType *string `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
-	SyncFromType     *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	// Update Time.
+	// The source type of the synchronization policy.
+	//
+	// example:
+	//
+	// "ARMS"
+	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// The update time.
 	//
 	// example:
 	//
 	// 2025-05-23T02:29:02Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 123123123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// workspace
+	// Specifies the workspace.
 	//
 	// example:
 	//
@@ -323,17 +328,17 @@ func (s *SubscriptionForViewAgentConfig) Validate() error {
 }
 
 type SubscriptionForViewPushingSetting struct {
-	// Alert push action integration ID list.
+	// A list of action integration IDs for alert pushes.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// Action plan ID.
+	// The action plan ID.
 	//
 	// example:
 	//
 	// 123123123
 	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// Recovery push action integration ID list.
+	// A list of action integration IDs for recovery pushes.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// Template UUID.
+	// The template UUID.
 	//
 	// example:
 	//

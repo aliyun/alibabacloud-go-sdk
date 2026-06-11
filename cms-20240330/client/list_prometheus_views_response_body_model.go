@@ -22,7 +22,7 @@ type iListPrometheusViewsResponseBody interface {
 }
 
 type ListPrometheusViewsResponseBody struct {
-	// Maximum number of records to return.
+	// The maximum number of records returned.
 	//
 	// if can be null:
 	// true
@@ -31,21 +31,21 @@ type ListPrometheusViewsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Token for the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// List of Prometheus view instances.
+	// The list of Prometheus view instances.
 	PrometheusViews []*ListPrometheusViewsResponseBodyPrometheusViews `json:"prometheusViews,omitempty" xml:"prometheusViews,omitempty" type:"Repeated"`
-	// ID of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of instances
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -120,83 +120,79 @@ func (s *ListPrometheusViewsResponseBody) Validate() error {
 }
 
 type ListPrometheusViewsResponseBodyPrometheusViews struct {
-	// Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
+	// The time when the instance was created. The time is in UTC and in the \\`yyyy-MM-ddTHH:mmZ\\` format.
 	//
 	// example:
 	//
 	// 2025-07-12T02:18:36Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Instance type:
-	//
-	// prom-view: new version aggregated view
-	//
-	// global-view: old version aggregated view
+	// The instance type. Valid values are \\`prom-view\\` for a new-version aggregation view and \\`global-view\\` for an old-version aggregation view.
 	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Payment type. Currently, the fixed value is FREE (free).
+	// The billing method. The value is fixed to \\`FREE\\`.
 	//
 	// example:
 	//
 	// FREE
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// Product that the prom instance belongs to (arms or cms).
+	// The product to which the Prometheus instance belongs. Valid values: \\`arms\\` and \\`cms\\`.
 	//
 	// example:
 	//
 	// cms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// Number of Prometheus instances in the view.
+	// The number of Prometheus instances in the view.
 	//
 	// example:
 	//
 	// 2
 	PrometheusInstanceCount *int32 `json:"prometheusInstanceCount,omitempty" xml:"prometheusInstanceCount,omitempty"`
-	// Prometheus view ID.
+	// The Prometheus view ID.
 	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
-	// Prometheus view name.
+	// The name of the Prometheus view.
 	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Fixed value: PrometheusView.
+	// The resource type. The value is fixed to \\`PrometheusView\\`.
 	//
 	// example:
 	//
 	// PrometheusView
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// Backend data storage status.
+	// The status of the backend data storage.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 123xxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Version.
+	// The version.
 	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// Workspace that the prom instance belongs to.
+	// The workspace to which the Prometheus instance belongs.
 	//
 	// example:
 	//

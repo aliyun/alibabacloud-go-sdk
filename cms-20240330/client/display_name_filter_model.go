@@ -16,7 +16,9 @@ type iDisplayNameFilter interface {
 }
 
 type DisplayNameFilter struct {
-	Contains    *string `json:"contains,omitempty" xml:"contains,omitempty"`
+	// Returns only resources whose display name contains the specified string. The match is case-sensitive.
+	Contains *string `json:"contains,omitempty" xml:"contains,omitempty"`
+	// Returns only resources whose display name does not contain the specified string. The match is case-sensitive.
 	NotContains *string `json:"notContains,omitempty" xml:"notContains,omitempty"`
 }
 

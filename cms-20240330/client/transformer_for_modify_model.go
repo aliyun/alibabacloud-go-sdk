@@ -24,29 +24,29 @@ type iTransformerForModify interface {
 }
 
 type TransformerForModify struct {
-	// Transformation operation.
+	// The transform operations.
 	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Filter Setting.
+	// The filter criteria.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Exit after matching processing.
+	// Specifies whether to exit after a match is processed.
 	//
 	// example:
 	//
 	// true
 	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	// Sort order.
+	// The sort number.
 	//
 	// example:
 	//
 	// 1
 	SortId *int32 `json:"sortId,omitempty" xml:"sortId,omitempty"`
-	// Name.
+	// The name.
 	//
 	// This parameter is required.
 	//

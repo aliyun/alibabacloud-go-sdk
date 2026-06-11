@@ -18,19 +18,19 @@ type iListIntegrationPolicyCustomScrapeJobRulesRequest interface {
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesRequest struct {
-	// Addon Release name.
+	// The name of the add-on release.
 	//
 	// example:
 	//
 	// release12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// Whether to encrypt Yaml.
+	// Specifies whether to encrypt the YAML file.
 	//
 	// example:
 	//
 	// true
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
-	// Namespace.
+	// The namespace.
 	//
 	// example:
 	//

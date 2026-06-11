@@ -20,12 +20,18 @@ type iUpdateContextStoreRequest interface {
 }
 
 type UpdateContextStoreRequest struct {
+	// The configuration.
 	Config *UpdateContextStoreRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The context type.
+	//
 	// example:
 	//
 	// memory
-	ContextType *string                           `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	Dataset     *UpdateContextStoreRequestDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The dataset.
+	Dataset *UpdateContextStoreRequestDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
@@ -91,8 +97,10 @@ func (s *UpdateContextStoreRequest) Validate() error {
 }
 
 type UpdateContextStoreRequestConfig struct {
-	MetadataField map[string]*string                     `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
-	Source        *UpdateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The metadata field.
+	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
+	// The data source.
+	Source *UpdateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
 func (s UpdateContextStoreRequestConfig) String() string {
@@ -131,14 +139,20 @@ func (s *UpdateContextStoreRequestConfig) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigSource struct {
+	// The Log Service Logstore name.
+	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The Log Service Project name.
+	//
 	// example:
 	//
 	// sls-test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1776824891000
@@ -185,6 +199,8 @@ func (s *UpdateContextStoreRequestConfigSource) Validate() error {
 }
 
 type UpdateContextStoreRequestDataset struct {
+	// The dataset name.
+	//
 	// example:
 	//
 	// test_dataset

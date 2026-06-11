@@ -22,22 +22,35 @@ type iEventResourceForIncidentView interface {
 }
 
 type EventResourceForIncidentView struct {
+  // The domain of the resource type.
+  // 
   // example:
   // 
   // rum
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // The entity ID.
+  // 
   // example:
   // 
   // default
   EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+  // The entity type.
+  // 
   // example:
   // 
   // "Instance"
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+  // The string that describes the properties of the resource.
+  // 
   // example:
   // 
   // "{"name":"web-server-01","ip":"10.0.0.1"}"
   Probs *string `json:"probs,omitempty" xml:"probs,omitempty"`
+  // The tags.
+  // 
+  // example:
+  // 
+  // [{\\"value\\":\\"测试\\",\\"key\\":\\"环境\\"}]
   Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iUpdateDeliveryTaskResponseBody interface {
 }
 
 type UpdateDeliveryTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

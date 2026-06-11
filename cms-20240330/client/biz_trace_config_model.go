@@ -28,34 +28,50 @@ type iBizTraceConfig interface {
 }
 
 type BizTraceConfig struct {
+	// The advanced configuration.
+	//
 	// example:
 	//
 	// {"sample":{"strategy":"BY_APP"}}
 	AdvancedConfig *string `json:"advancedConfig,omitempty" xml:"advancedConfig,omitempty"`
+	// The business trace identifier.
+	//
 	// example:
 	//
 	// label_env
 	BizTraceCode *string `json:"bizTraceCode,omitempty" xml:"bizTraceCode,omitempty"`
+	// The business trace ID.
+	//
 	// example:
 	//
 	// e339260ed64c95d
 	BizTraceId *string `json:"bizTraceId,omitempty" xml:"bizTraceId,omitempty"`
+	// The business trace name.
+	//
 	// example:
 	//
 	// just test
 	BizTraceName *string `json:"bizTraceName,omitempty" xml:"bizTraceName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-12-12 00:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The list of configuration rules.
+	//
 	// example:
 	//
 	// [{"entrancePid":"xxxxx@b57c44xx6e86","rpcMatcher":{"matchType":"EQUALS","pattern":"/createApp"},"characteristics":{"operation":"AND","rules":[{"target":"CUSTOM_EXTRACT","matcher":{"matchType":"CONTAINS","pattern":[]}}]}}]
 	RuleConfig *string `json:"ruleConfig,omitempty" xml:"ruleConfig,omitempty"`
+	// The workspace.
+	//
 	// example:
 	//
 	// default-cms-xxxxxxx-cn-hangzhou

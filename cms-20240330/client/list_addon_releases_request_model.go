@@ -11,18 +11,24 @@ type iListAddonReleasesRequest interface {
 	GoString() string
 	SetAddonName(v string) *ListAddonReleasesRequest
 	GetAddonName() *string
+	SetMaxResults(v string) *ListAddonReleasesRequest
+	GetMaxResults() *string
+	SetNextToken(v string) *ListAddonReleasesRequest
+	GetNextToken() *string
 	SetParentAddonReleaseId(v string) *ListAddonReleasesRequest
 	GetParentAddonReleaseId() *string
 }
 
 type ListAddonReleasesRequest struct {
-	// Addon component name.
+	// The name of the add-on.
 	//
 	// example:
 	//
 	// cs-gpu
-	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// Parent AddonReleaseId.
+	AddonName  *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The parent AddonRelease ID.
 	//
 	// example:
 	//
@@ -42,12 +48,30 @@ func (s *ListAddonReleasesRequest) GetAddonName() *string {
 	return s.AddonName
 }
 
+func (s *ListAddonReleasesRequest) GetMaxResults() *string {
+	return s.MaxResults
+}
+
+func (s *ListAddonReleasesRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListAddonReleasesRequest) GetParentAddonReleaseId() *string {
 	return s.ParentAddonReleaseId
 }
 
 func (s *ListAddonReleasesRequest) SetAddonName(v string) *ListAddonReleasesRequest {
 	s.AddonName = &v
+	return s
+}
+
+func (s *ListAddonReleasesRequest) SetMaxResults(v string) *ListAddonReleasesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAddonReleasesRequest) SetNextToken(v string) *ListAddonReleasesRequest {
+	s.NextToken = &v
 	return s
 }
 

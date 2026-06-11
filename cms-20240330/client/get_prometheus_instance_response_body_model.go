@@ -16,9 +16,9 @@ type iGetPrometheusInstanceResponseBody interface {
 }
 
 type GetPrometheusInstanceResponseBody struct {
-	// Details of the Prometheus instance.
+	// The details of the Prometheus instance.
 	PrometheusInstance *GetPrometheusInstanceResponseBodyPrometheusInstance `json:"prometheusInstance,omitempty" xml:"prometheusInstance,omitempty" type:"Struct"`
-	// Unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,21 +62,19 @@ func (s *GetPrometheusInstanceResponseBody) Validate() error {
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
-	// Access type:
-	//
-	// readWrite, readOnly, httpReadOnly
+	// The permission type. Valid values: `readWrite`, `readOnly`, and `httpReadOnly`.
 	//
 	// example:
 	//
 	// readOnly
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// Number of days to automatically archive and save after storage expiration. 0 means no archiving, 3650 means permanent saving.
+	// The number of days to automatically archive data after the storage duration expires. A value of `0` means data is not archived. A value of `3650` means data is permanently archived.
 	//
 	// example:
 	//
 	// 90
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// Password-free read policy (supports IP segments and VpcId).
+	// The password-free read policy, which supports IP address ranges and VPC IDs.
 	//
 	// example:
 	//
@@ -100,7 +98,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// Password-free write policy (supports IP segments and VpcId).
+	// The password-free write policy, which supports IP address ranges and VPC IDs.
 	//
 	// example:
 	//
@@ -124,31 +122,31 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// authToken string.
+	// The authentication token.
 	//
 	// example:
 	//
 	// eJwixxxxx
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
-	// Instance creation time, using UTC+0, formatted as yyyy-MM-ddTHH:mmZ.
+	// The time when the instance was created. The value is in UTC and follows the `yyyy-MM-ddTHH:mmZ` format.
 	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Whether to enable password-free reading.
+	// Indicates whether password-free read access is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Whether to enable password-free writing.
+	// Indicates whether password-free write access is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
-	// Whether to enable authentication token.
+	// Indicates whether token-based authentication is enabled.
 	//
 	// example:
 	//
@@ -156,163 +154,179 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
 	// Additional information.
 	ExtraInfo map[string]*string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
-	// URL of the visualization dashboard directory.
+	// The URL of the visualization dashboard folder.
 	//
 	// example:
 	//
 	// https://gnew.console.aliyun.com/dashboards/f/c49a80d2a551d4a20a8c4b996b0be4e52/xxxxxxx
 	FolderUrl *string `json:"folderUrl,omitempty" xml:"folderUrl,omitempty"`
-	// ID of the managed Grafana instance that is bound.
+	// The ID of the associated managed Grafana instance.
 	//
 	// example:
 	//
 	// SHARED
 	GrafanaInstanceId *string `json:"grafanaInstanceId,omitempty" xml:"grafanaInstanceId,omitempty"`
-	// Name of the managed Grafana instance that is bound.
+	// The name of the associated managed Grafana instance.
 	//
 	// example:
 	//
-	// 共享版
+	// Shared edition
 	GrafanaInstanceName *string `json:"grafanaInstanceName,omitempty" xml:"grafanaInstanceName,omitempty"`
-	// HTTP public network address.
+	// The public HTTP API endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
-	HttpApiInterUrl    *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	HttpApiInterUrl *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	// The internal HTTP API endpoint.
+	//
+	// example:
+	//
+	// http://workspace-default-cms-xxxxxxx
 	HttpApiInternalUrl *string `json:"httpApiInternalUrl,omitempty" xml:"httpApiInternalUrl,omitempty"`
-	// HTTP intranet address.
+	// The private HTTP API endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
 	HttpApiIntraUrl *string `json:"httpApiIntraUrl,omitempty" xml:"httpApiIntraUrl,omitempty"`
-	// Prometheus instance type.
+	// The type of the Prometheus instance.
 	//
 	// example:
 	//
 	// remote-write
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Billing method:
-	//
-	// POSTPAY: Pay-as-you-go based on metric reporting volume.
-	//
-	// POSTPAY_GB: Pay-as-you-go based on metric write volume.
+	// The billing method. Valid values:<br>`POSTPAY`: pay-as-you-go based on the number of reported metrics.<br>`POSTPAY_GB`: pay-as-you-go based on the volume of data written.<br><br>
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// Time when the billing method of the instance was updated.
+	// The time when the billing method for the instance was last updated.
 	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	PaymentTypeUpdateTime *string `json:"paymentTypeUpdateTime,omitempty" xml:"paymentTypeUpdateTime,omitempty"`
-	// The product to which the Prometheus instance belongs (arms or cms).
+	// The Alibaba Cloud service that the instance belongs to. Valid values: `arms` and `cms`.
 	//
 	// example:
 	//
 	// cms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rw-524ada714221af267c73122af2e1
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// Instance name.
+	// The instance name.
 	//
 	// example:
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// Public network address of PushGateway.
+	// The public Pushgateway endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
-	PushGatewayInterUrl    *string `json:"pushGatewayInterUrl,omitempty" xml:"pushGatewayInterUrl,omitempty"`
+	PushGatewayInterUrl *string `json:"pushGatewayInterUrl,omitempty" xml:"pushGatewayInterUrl,omitempty"`
+	// The internal Pushgateway endpoint.
+	//
+	// example:
+	//
+	// http://workspace-default-cms-xxxxxxx
 	PushGatewayInternalUrl *string `json:"pushGatewayInternalUrl,omitempty" xml:"pushGatewayInternalUrl,omitempty"`
-	// Intranet address of PushGateway.
+	// The private Pushgateway endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
 	PushGatewayIntraUrl *string `json:"pushGatewayIntraUrl,omitempty" xml:"pushGatewayIntraUrl,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Public network read address.
+	// The public remote read endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
-	RemoteReadInterUrl    *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	RemoteReadInterUrl *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	// The internal remote read endpoint.
+	//
+	// example:
+	//
+	// https://workspace-default-cms-1xxxxxxxxxx
 	RemoteReadInternalUrl *string `json:"remoteReadInternalUrl,omitempty" xml:"remoteReadInternalUrl,omitempty"`
-	// Intranet read address.
+	// The private remote read endpoint.
 	//
 	// example:
 	//
 	// https://workspace-default-cms-1xxxxxxxxxx
 	RemoteReadIntraUrl *string `json:"remoteReadIntraUrl,omitempty" xml:"remoteReadIntraUrl,omitempty"`
-	// Public network write address.
+	// The public remote write endpoint.
 	//
 	// example:
 	//
 	// https://workspace-default-cms-xxxxxxxxxx
-	RemoteWriteInterUrl    *string `json:"remoteWriteInterUrl,omitempty" xml:"remoteWriteInterUrl,omitempty"`
+	RemoteWriteInterUrl *string `json:"remoteWriteInterUrl,omitempty" xml:"remoteWriteInterUrl,omitempty"`
+	// The internal remote write endpoint.
+	//
+	// example:
+	//
+	// https://workspace-default-cms-xxxxxxxxxx
 	RemoteWriteInternalUrl *string `json:"remoteWriteInternalUrl,omitempty" xml:"remoteWriteInternalUrl,omitempty"`
-	// Intranet write address.
+	// The private remote write endpoint.
 	//
 	// example:
 	//
 	// https://workspace-default-cms-xxxxxxxxxx
 	RemoteWriteIntraUrl *string `json:"remoteWriteIntraUrl,omitempty" xml:"remoteWriteIntraUrl,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Fixed value: PrometheusInstance.
+	// The resource type. The value is fixed as `PrometheusInstance`.
 	//
 	// example:
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// Instance status.
+	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Storage duration (in days).
+	// The storage duration, in days.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
-	// Supported authentication types.
+	// The supported types of authentication and authorization.
 	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
-	// List of tags.
+	// The list of tags.
 	Tags []*GetPrometheusInstanceResponseBodyPrometheusInstanceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 170731234567
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Version.
+	// The version.
 	//
 	// example:
 	//
 	// V1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The workspace to which the Prometheus instance belongs.
+	// The workspace of the Prometheus instance.
 	//
 	// example:
 	//
@@ -711,13 +725,13 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) Validate() error {
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstanceTags struct {
-	// Tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// openStorage
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Matched value.
+	// The tag value.
 	//
 	// example:
 	//

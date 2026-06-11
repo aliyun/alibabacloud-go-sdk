@@ -30,17 +30,27 @@ type iEntityDiscoverRule interface {
 }
 
 type EntityDiscoverRule struct {
+  // A collection of annotation matching rules.
   Annotations []*EntityDiscoverRuleAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+  // A collection of entity types.
   EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
+  // The property matching rules.
   FieldRules []*EntityDiscoverRuleFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
+  // A collection of instance IDs.
   InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+  // A collection of IP address matching rules.
   IpMatchRule *EntityDiscoverRuleIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
+  // A collection of label matching rules.
   Labels []*EntityDiscoverRuleLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // A collection of region IDs.
   RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
+  // The resource group ID.
+  // 
   // example:
   // 
   // rg-acfm2m7atreujs1
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+  // The tag-based service discovery rules.
   Tags []*EntityDiscoverRuleTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -179,14 +189,19 @@ func (s *EntityDiscoverRule) Validate() error {
 }
 
 type EntityDiscoverRuleAnnotations struct {
+  // The operation.
+  // 
   // example:
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
+  // The key of the annotation.
+  // 
   // example:
   // 
   // instanceId
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // A collection of annotation values.
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -230,11 +245,16 @@ func (s *EntityDiscoverRuleAnnotations) Validate() error {
 }
 
 type EntityDiscoverRuleFieldRules struct {
+  // The key of the property.
+  // 
   // example:
   // 
   // instanceId
   FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+  // A collection of property values.
   FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
+  // The operation.
+  // 
   // example:
   // 
   // in
@@ -316,14 +336,19 @@ func (s *EntityDiscoverRuleIpMatchRule) Validate() error {
 }
 
 type EntityDiscoverRuleLabels struct {
+  // The operation.
+  // 
   // example:
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
+  // The key of the label.
+  // 
   // example:
   // 
   // project
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // A collection of label values.
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -367,14 +392,19 @@ func (s *EntityDiscoverRuleLabels) Validate() error {
 }
 
 type EntityDiscoverRuleTags struct {
+  // The operation.
+  // 
   // example:
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
+  // The key of the tag.
+  // 
   // example:
   // 
   // project
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // A collection of tag values.
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 

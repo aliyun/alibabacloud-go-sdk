@@ -36,44 +36,74 @@ type iMergeContact interface {
 }
 
 type MergeContact struct {
+	// The email address.
+	//
 	// example:
 	//
 	// zhangsan@company.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Specifies whether the email address is authenticated.
+	//
 	// example:
 	//
 	// true
-	EmailVerify *bool                  `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	Extend      map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
+	// An extension field used to store additional information.
+	//
+	// example:
+	//
+	// { "department": "运维部", "role": "工程师" }
+	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	// The time when the contact was created.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the contact was last modified.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The unique identifier of the contact.
+	//
 	// example:
 	//
 	// user-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The language preference.
+	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the contact.
+	//
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The mobile phone number.
+	//
 	// example:
 	//
 	// 13800138000
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// The country code for the mobile phone number.
+	//
 	// example:
 	//
 	// 86
 	PhoneCode *string `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
+	// Specifies whether the mobile phone number is authenticated.
+	//
 	// example:
 	//
 	// true
 	PhoneVerify *bool `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
+	// The source system of the contact.
+	//
 	// example:
 	//
 	// dingtalk

@@ -52,67 +52,110 @@ type iIncidentEventForView interface {
 }
 
 type IncidentEventForView struct {
+	// The UNIX timestamp of the automatic recovery.
+	//
 	// example:
 	//
 	// 1743876600000
-	AutoRecoverTime *int64           `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
-	Content         *CmsEventForView `json:"content,omitempty" xml:"content,omitempty"`
+	AutoRecoverTime *int64 `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
+	// The details of the event.
+	Content *CmsEventForView `json:"content,omitempty" xml:"content,omitempty"`
+	// The number of times the event was triggered.
+	//
 	// example:
 	//
 	// 3
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The dimension information of the event.
+	//
 	// example:
 	//
 	// { "env": "prod", "module": "payment" }
-	Dimension     map[string]interface{}        `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	Dimension map[string]interface{} `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// The information about the associated resource.
 	EventResource *EventResourceForIncidentView `json:"eventResource,omitempty" xml:"eventResource,omitempty"`
+	// The criteria for grouping.
+	//
 	// example:
 	//
 	// { "resourceId": "i-bp123456", "severity": "Critical" }
 	GroupBy map[string]interface{} `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The unique ID of the event.
+	//
 	// example:
 	//
 	// "x1y2z3a4-b5c6-d7e8-f9g0-h1i2j3k4l5m6"
 	IncidentEventUuid *string `json:"incidentEventUuid,omitempty" xml:"incidentEventUuid,omitempty"`
+	// The unique ID of the incident to which the event belongs.
+	//
 	// example:
 	//
 	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
 	IncidentUuid *string `json:"incidentUuid,omitempty" xml:"incidentUuid,omitempty"`
+	// The key-value pairs of custom tags.
+	//
 	// example:
 	//
 	// { "project": "payment-gateway", "owner": "ops-team" }
 	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The UNIX timestamp of the last occurrence.
+	//
 	// example:
 	//
 	// 1743876000000
 	LastTime *int64 `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
+	// The UNIX timestamp of the recovery.
+	//
 	// example:
 	//
 	// 1743876600000
-	RecoverTime *int64    `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
+	RecoverTime *int64 `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
+	// The list of search index fields.
 	SearchIndex []*string `json:"searchIndex,omitempty" xml:"searchIndex,omitempty" type:"Repeated"`
+	// The severity level of the event.
+	//
 	// example:
 	//
 	// "Critical"
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The statistics on the number of events for each severity level.
+	//
 	// example:
 	//
 	// { "Critical": 2, "High": 1 }
 	SeverityCountMap map[string]interface{} `json:"severityCountMap,omitempty" xml:"severityCountMap,omitempty"`
+	// The current status code of the event.
+	//
 	// example:
 	//
 	// 1
-	State     *int32  `json:"state,omitempty" xml:"state,omitempty"`
+	State *int32 `json:"state,omitempty" xml:"state,omitempty"`
+	// The text index field.
+	//
+	// example:
+	//
+	// "ECS 实例 CPU 使用率过高"
 	TextIndex *string `json:"textIndex,omitempty" xml:"textIndex,omitempty"`
+	// The UNIX timestamp when the event occurred.
+	//
 	// example:
 	//
 	// 1743876000000
-	Time  *int64  `json:"time,omitempty" xml:"time,omitempty"`
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// The title of the event.
+	//
+	// example:
+	//
+	// "ECS 实例 i-bp123456 CPU 使用率超过 90%"
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The ID of the user who created or triggered the event.
+	//
 	// example:
 	//
 	// "user-abc123"
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// "ws-xyz789"

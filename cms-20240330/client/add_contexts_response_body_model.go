@@ -16,11 +16,14 @@ type iAddContextsResponseBody interface {
 }
 
 type AddContextsResponseBody struct {
+	// The unique ID for the request.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*AddContextsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// An array of objects containing the results of the write operation.
+	Results []*AddContextsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s AddContextsResponseBody) String() string {
@@ -63,10 +66,14 @@ func (s *AddContextsResponseBody) Validate() error {
 }
 
 type AddContextsResponseBodyResults struct {
+	// The ID of the written record or event.
+	//
 	// example:
 	//
 	// 897294a7-67a4-4f60-976c-e136edc5f97e
 	ContextId *string `json:"contextId,omitempty" xml:"contextId,omitempty"`
+	// The write status. Can be "accepted", "queued", or "created".
+	//
 	// example:
 	//
 	// accepted

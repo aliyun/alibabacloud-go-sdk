@@ -14,6 +14,8 @@ type iTagResourcesResponseBody interface {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3B311FD9-A60B-55E0-A896-A0C73*********

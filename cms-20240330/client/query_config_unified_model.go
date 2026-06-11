@@ -40,32 +40,33 @@ type iQueryConfigUnified interface {
 }
 
 type QueryConfigUnified struct {
-	// 是否启用数据完整性检查
+	// Specifies whether to check for data completeness. A value of `true` enables the check.
 	EnableDataCompleteCheck *bool `json:"enableDataCompleteCheck,omitempty" xml:"enableDataCompleteCheck,omitempty"`
-	// 实体所属域
+	// Specifies the domain of the entity, such as `acs` for Alibaba Cloud services.
 	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	// 需要附带返回的实体字段
+	// A list of entity fields to include in the response.
 	EntityFields []*UmodelEntityField `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
-	// 实体过滤列表
+	// A list of filters for selecting specific entities.
 	EntityFilters []*UmodelEntityFilter `json:"entityFilters,omitempty" xml:"entityFilters,omitempty" type:"Repeated"`
-	// 实体类型
+	// Specifies the type of the entity, such as `EcsInstance`.
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	Expr       *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// APM 过滤条件列表
+	// Specifies the expression to post-process query results.
+	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// A list of Application Performance Monitoring (APM) filter configurations.
 	FilterList []*ApmFilterConfig `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
-	// 标签过滤条件
+	// A list of filters that match labels.
 	LabelFilters []*UmodelLabelFilter `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
-	// APM 度量配置列表
+	// A list of APM measure configurations.
 	MeasureList []*ApmMeasureConfig `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
-	// 指标名称（type=UMODEL_METRICSET_QUERY）
+	// Specifies the name of the metric to query.
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// 指标集名称（type=UMODEL_METRICSET_QUERY）
+	// Specifies the metric set that contains the metric.
 	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	// Prometheus 查询语句（type=PROMETHEUS_SINGLE_QUERY）
+	// Specifies the query string in Prometheus Query Language (PromQL).
 	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
-	// 服务 ID 列表（type=APM_MULTI_QUERY）
+	// A list of service IDs to query.
 	ServiceIdList []*string `json:"serviceIdList,omitempty" xml:"serviceIdList,omitempty" type:"Repeated"`
-	// 查询类型
+	// The query type.
 	//
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`

@@ -16,7 +16,21 @@ type iIndexJsonKey interface {
 }
 
 type IndexJsonKey struct {
-	Chn  *bool   `json:"chn,omitempty" xml:"chn,omitempty"`
+	// Specifies whether the field contains Chinese characters.
+	//
+	// - `true`: The field contains Chinese characters.
+	//
+	// - `false`: The field does not contain Chinese characters.
+	//
+	// example:
+	//
+	// true
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The field type.
+	//
+	// example:
+	//
+	// text
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

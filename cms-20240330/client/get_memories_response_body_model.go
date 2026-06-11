@@ -18,12 +18,16 @@ type iGetMemoriesResponseBody interface {
 }
 
 type GetMemoriesResponseBody struct {
+	// A list of relations.
 	Relations []*GetMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*GetMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// A list of results.
+	Results []*GetMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s GetMemoriesResponseBody) String() string {
@@ -84,14 +88,20 @@ func (s *GetMemoriesResponseBody) Validate() error {
 }
 
 type GetMemoriesResponseBodyRelations struct {
+	// The destination of the relation.
+	//
 	// example:
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	// The type of the relation.
+	//
 	// example:
 	//
 	// test
 	Relationship *string `json:"relationship,omitempty" xml:"relationship,omitempty"`
+	// The source of the relation.
+	//
 	// example:
 	//
 	// test_namespace/RegistryModule-test2153b9f3-0be6-455e-9efd-05fd31f62885/alicloud
@@ -138,54 +148,80 @@ func (s *GetMemoriesResponseBodyRelations) Validate() error {
 }
 
 type GetMemoriesResponseBodyResults struct {
+	// The actor ID.
+	//
 	// example:
 	//
 	// test_session_001
 	ActorId *string `json:"actorId,omitempty" xml:"actorId,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// 980565235819266048
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// test_user_001
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1747623093939
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The memory hash.
+	//
 	// example:
 	//
 	// 73ad89f2d56c2f8615e5dd0cef7b4c41c074277c91fa0e31fc5b41802c0481f2
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
+	// The memory ID.
+	//
 	// example:
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The memory content.
+	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The metadata.
+	//
 	// example:
 	//
-	// {"sessionId":"test_session_001"}
+	// {"__strategy_type__":"Fact"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The role that sent the message.
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// jr-965a0b00cb42a43b
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The similarity score.
+	//
 	// example:
 	//
 	// 30.12
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1752825865045
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// test_session_001

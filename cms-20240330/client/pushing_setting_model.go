@@ -18,8 +18,12 @@ type iPushingSetting interface {
 }
 
 type PushingSetting struct {
-	AlertActionIds   []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
+	// The list of alert action IDs.
+	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
+	// The list of restore action IDs.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
+	// The UUID of the message template.
+	//
 	// example:
 	//
 	// "template-abc123"

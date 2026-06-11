@@ -38,49 +38,73 @@ type iAlertEventIntegrationPolicyForView interface {
 }
 
 type AlertEventIntegrationPolicyForView struct {
-	// UUID
+	// The universally unique identifier (UUID).
 	//
 	// example:
 	//
 	// 123123123
 	AlertEventIntegrationPolicyId *string `json:"alertEventIntegrationPolicyId,omitempty" xml:"alertEventIntegrationPolicyId,omitempty"`
+	// The name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 集成名
 	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
+	// The time when the policy was created.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the policy is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable        *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The filter configuration.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// The subscription settings.
+	//
 	// example:
 	//
 	// {"region":"cn-hangzhou"}
 	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
+	// The key for the integration\\"s reporting endpoint.
+	//
 	// example:
 	//
 	// 10-16818f1445e10a1d012922b285bfb334
-	Token              *string            `json:"token,omitempty" xml:"token,omitempty"`
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The transformation settings.
 	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
+	// The type.
+	//
 	// example:
 	//
 	// ALERT_CUSTOM
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the policy was last updated.
+	//
 	// example:
 	//
 	// 2024-12-16T02:00:23Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 123123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// workspace
+	// The workspace.
 	//
 	// example:
 	//

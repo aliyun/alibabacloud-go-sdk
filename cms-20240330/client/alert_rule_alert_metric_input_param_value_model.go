@@ -16,12 +16,16 @@ type iAlertRuleAlertMetricInputParamValue interface {
 }
 
 type AlertRuleAlertMetricInputParamValue struct {
+	// The name of the predefined metric parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// paramName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the predefined metric parameter.
+	//
 	// This parameter is required.
 	//
 	// example:

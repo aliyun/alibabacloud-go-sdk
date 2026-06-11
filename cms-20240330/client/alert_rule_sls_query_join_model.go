@@ -16,29 +16,29 @@ type iAlertRuleSlsQueryJoin interface {
 }
 
 type AlertRuleSlsQueryJoin struct {
-	// List of connection conditions.
+	// The list of join conditions.
 	Conditions []*AlertRuleSlsQueryJoinConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// Set operation type.
+	// The type of the collection operation.
 	//
-	// CrossJoin: Cartesian product
+	// - CrossJoin: The Cartesian product.
 	//
-	// FullJoin: Full outer join
+	// - FullJoin: The full join.
 	//
-	// InnerJoin: Inner join
+	// - InnerJoin: The inner join.
 	//
-	// LeftExclude: Left anti join
+	// - LeftExclude: The left exclusion.
 	//
-	// RightExclude: Right anti join
+	// - RightExclude: The right exclusion.
 	//
-	// LeftJoin: Left outer join
+	// - LeftJoin: The left join.
 	//
-	// RightJoin: Right outer join
+	// - RightJoin: The right join.
 	//
-	// NoJoin: No merge
+	// - NoJoin: No merge operation is performed.
 	//
-	// Concat: Concatenation
+	// - Concat: Concatenation.
 	//
-	// See also: https://help.aliyun.com/zh/sls/user-guide/set-query-statistics-statement
+	// For more information, see https\\://www\\.alibabacloud.com/help/en/sls/user-guide/set-operations.
 	//
 	// This parameter is required.
 	//
@@ -88,19 +88,19 @@ func (s *AlertRuleSlsQueryJoin) Validate() error {
 }
 
 type AlertRuleSlsQueryJoinConditions struct {
-	// Left-hand operand of the condition, formatted as $<query_idx>.<result_set_field_name>.
+	// The left operand of the condition. The format is $\\<query_idx>.\\<field_name_in_result_set>.
 	//
 	// example:
 	//
 	// $0.__topic__
 	FirstField *string `json:"firstField,omitempty" xml:"firstField,omitempty"`
-	// Comparison operator; valid values: <, >, ==, !=, <=, >=.
+	// The comparison operator. Valid values are <, >, ==, !=, <=, and >=.
 	//
 	// example:
 	//
 	// ==
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// Right-hand operand of the condition, formatted as $<query_idx>.<result_set_field_name>.
+	// The right operand of the condition. The format is $\\<query_idx>.\\<field_name_in_result_set>.
 	//
 	// example:
 	//

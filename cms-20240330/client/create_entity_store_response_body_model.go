@@ -16,13 +16,13 @@ type iCreateEntityStoreResponseBody interface {
 }
 
 type CreateEntityStoreResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// workspace name
+	// The name of the workspace.
 	//
 	// example:
 	//

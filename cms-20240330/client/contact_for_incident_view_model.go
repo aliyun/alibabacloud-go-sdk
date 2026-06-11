@@ -16,11 +16,18 @@ type iContactForIncidentView interface {
 }
 
 type ContactForIncidentView struct {
+	// The contact ID.
+	//
 	// example:
 	//
 	// "contact-123456"
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The contact name.
+	//
+	// example:
+	//
+	// "张三"
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ContactForIncidentView) String() string {

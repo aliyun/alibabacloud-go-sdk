@@ -16,7 +16,10 @@ type iAlertRuleLabelFilter interface {
 }
 
 type AlertRuleLabelFilter struct {
+	// The label filter.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The relationship operator between multiple labels.
+	//
 	// example:
 	//
 	// AND

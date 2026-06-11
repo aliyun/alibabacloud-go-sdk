@@ -16,13 +16,13 @@ type iUpdateServiceResponseBody interface {
 }
 
 type UpdateServiceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 123-0F43-23423-AC43-34234
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Service ID.
+	// The ID of the service.
 	//
 	// example:
 	//

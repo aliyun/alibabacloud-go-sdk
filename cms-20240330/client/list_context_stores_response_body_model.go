@@ -22,19 +22,28 @@ type iListContextStoresResponseBody interface {
 }
 
 type ListContextStoresResponseBody struct {
+	// The maximum number of results returned per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If this field is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*ListContextStoresResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// A list of context stores.
+	Results []*ListContextStoresResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of context stores.
+	//
 	// example:
 	//
 	// 56
@@ -108,38 +117,54 @@ func (s *ListContextStoresResponseBody) Validate() error {
 }
 
 type ListContextStoresResponseBodyResults struct {
+	// The name of the context store.
+	//
 	// example:
 	//
 	// test-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The context type.
+	//
 	// example:
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The creation time of the context store. The value is a Unix timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 173847364841938
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the context store.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The status of the context store.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The last update time of the context store. The value is a Unix timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 173847364841938
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// workspace-test

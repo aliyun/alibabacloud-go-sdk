@@ -14,6 +14,8 @@ type iCreateContextStoreResponseBody interface {
 }
 
 type CreateContextStoreResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E5B1D3D4-BB28-5996-8AD2-***********

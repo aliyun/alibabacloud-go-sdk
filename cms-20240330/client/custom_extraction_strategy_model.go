@@ -22,11 +22,36 @@ type iCustomExtractionStrategy interface {
 }
 
 type CustomExtractionStrategy struct {
-	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Extraction prompt
+	//
+	// example:
+	//
+	// test
 	ExtractionPrompt *string `json:"extractionPrompt,omitempty" xml:"extractionPrompt,omitempty"`
-	StrategyName     *string `json:"strategyName,omitempty" xml:"strategyName,omitempty"`
-	StrategyType     *string `json:"strategyType,omitempty" xml:"strategyType,omitempty"`
-	UpdatePrompt     *string `json:"updatePrompt,omitempty" xml:"updatePrompt,omitempty"`
+	// Policy Name
+	//
+	// example:
+	//
+	// test1
+	StrategyName *string `json:"strategyName,omitempty" xml:"strategyName,omitempty"`
+	// Policy type. Supports "Episodic", "Summary", and "Fact".
+	//
+	// example:
+	//
+	// Fact
+	StrategyType *string `json:"strategyType,omitempty" xml:"strategyType,omitempty"`
+	// Update prompt
+	//
+	// example:
+	//
+	// test
+	UpdatePrompt *string `json:"updatePrompt,omitempty" xml:"updatePrompt,omitempty"`
 }
 
 func (s CustomExtractionStrategy) String() string {

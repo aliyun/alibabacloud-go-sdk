@@ -38,46 +38,68 @@ type iGetMemoryStoreResponseBody interface {
 }
 
 type GetMemoryStoreResponseBody struct {
+	// The Unix timestamp (in milliseconds) when the memory store was created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1764556182850
-	CreateTime                 *string                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// A list of custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
+	// The description of the memory store.
+	//
 	// example:
 	//
 	// test
-	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The built-in extraction strategies. Valid values are `Episodic`, `Summary`, and `Fact`.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
+	// The name of the memory store.
+	//
 	// example:
 	//
 	// test-memory-store
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
-	RequestId        *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The configuration for short-term memory storage.
 	ShortTermStorage *GetMemoryStoreResponseBodyShortTermStorage `json:"shortTermStorage,omitempty" xml:"shortTermStorage,omitempty" type:"Struct"`
+	// The short-term memory retention time, in seconds.
+	//
 	// example:
 	//
 	// 10
 	ShortTermTtl *int32 `json:"shortTermTtl,omitempty" xml:"shortTermTtl,omitempty"`
+	// The memory source.
+	//
 	// example:
 	//
 	// Trace
-	SourceType        *string                                      `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The configuration for the trace source. This parameter is returned only when `sourceType` is set to `Trace`.
 	TraceSourceConfig *GetMemoryStoreResponseBodyTraceSourceConfig `json:"traceSourceConfig,omitempty" xml:"traceSourceConfig,omitempty" type:"Struct"`
+	// The Unix timestamp (in milliseconds) when the memory store was last updated.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1764556182850
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// default-cms-xxxxxx-cn-beijing
@@ -233,8 +255,18 @@ func (s *GetMemoryStoreResponseBody) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyShortTermStorage struct {
+	// The name of the Simple Log Service Logstore.
+	//
+	// example:
+	//
+	// memory-store
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the Simple Log Service Project.
+	//
+	// example:
+	//
+	// wk_cms_data_warehouse
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s GetMemoryStoreResponseBodyShortTermStorage) String() string {
@@ -268,11 +300,16 @@ func (s *GetMemoryStoreResponseBodyShortTermStorage) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyTraceSourceConfig struct {
+	// Indicates whether to include Large Language Model (LLM) output in the memory extraction.
 	IncludeOutput *bool `json:"includeOutput,omitempty" xml:"includeOutput,omitempty"`
+	// The query to filter traces from Simple Log Service.
+	//
 	// example:
 	//
 	// (serviceName : "langchain-rag" or serviceName : "agentscope-code-correction") and hostname = frontend-proxy-999c48c8d-hvk6c
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The workspace where the trace is located.
+	//
 	// example:
 	//
 	// test-workspace

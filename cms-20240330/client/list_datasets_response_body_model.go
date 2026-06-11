@@ -22,19 +22,28 @@ type iListDatasetsResponseBody interface {
 }
 
 type ListDatasetsResponseBody struct {
+	// A list of dataset objects.
 	Datasets []*ListDatasetsResponseBodyDatasets `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
+	// The maximum number of results returned per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// A token to retrieve the next page of results. This element is returned only when the result set is truncated.
+	//
 	// example:
 	//
 	// d9a48d977f45aa6fcf6981ed13b885b3fab0b124c12dcbbe70edce5d81ba****************
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of datasets that match the query.
+	//
 	// example:
 	//
 	// 96
@@ -108,30 +117,42 @@ func (s *ListDatasetsResponseBody) Validate() error {
 }
 
 type ListDatasetsResponseBodyDatasets struct {
+	// The time the dataset was created, as a UNIX timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1695090077
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The description of the dataset.
+	//
 	// example:
 	//
 	// test dataset
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the region where the dataset resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The time the dataset was last updated, as a UNIX timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1695090077
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the workspace that contains the dataset.
+	//
 	// example:
 	//
 	// workspace-test

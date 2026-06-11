@@ -38,53 +38,82 @@ type iIncidentEscalationPolicyForView interface {
 }
 
 type IncidentEscalationPolicyForView struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// workspace api monitor update test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the policy is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable              *bool                             `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The list of escalation stages.
 	EscalationStageList []*IncidentEscalationStageForView `json:"escalationStageList,omitempty" xml:"escalationStageList,omitempty" type:"Repeated"`
+	// The name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// "Critical-Alert-Escalation"
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The owner type.
+	//
+	// - **USER**: User. This is the default value.
+	//
+	// - **APP**: Application.
+	//
 	// example:
 	//
 	// "USER"
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// "cn-hangzhou"
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// "MANUAL"
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The source type of the synchronization policy.
+	//
 	// example:
 	//
 	// "ARMS"
 	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-04-15T02:02:50Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// "user-abc123"
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The globally unique identifier.
+	//
 	// example:
 	//
 	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The workspace.
+	//
 	// example:
 	//
 	// "ws-xyz789"

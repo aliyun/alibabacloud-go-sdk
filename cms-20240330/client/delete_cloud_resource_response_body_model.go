@@ -14,6 +14,8 @@ type iDeleteCloudResourceResponseBody interface {
 }
 
 type DeleteCloudResourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC

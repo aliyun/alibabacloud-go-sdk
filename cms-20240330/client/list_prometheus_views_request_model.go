@@ -32,13 +32,13 @@ type iListPrometheusViewsRequest interface {
 }
 
 type ListPrometheusViewsRequest struct {
-	// Filter by RegionID.
+	// The region IDs by which to filter the results.
 	//
 	// example:
 	//
 	// cn-zhangjiakou,cn-beijing
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// Maximum number of records to return.
+	// The maximum number of records to return.
 	//
 	// if can be null:
 	// true
@@ -47,7 +47,7 @@ type ListPrometheusViewsRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Query token.
+	// The query token.
 	//
 	// if can be null:
 	// true
@@ -56,39 +56,39 @@ type ListPrometheusViewsRequest struct {
 	//
 	// 44ANBjKZmQeKnaB1fXRq06w7sFYK3MUcCALMD9qQbmEiE
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// List of Prometheus view instance IDs.
+	// The IDs of the Prometheus view instances.
 	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewIds *string `json:"prometheusViewIds,omitempty" xml:"prometheusViewIds,omitempty"`
-	// Prometheus view name.
+	// The name of the Prometheus view.
 	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// PROMETHEUSVIEW
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// List of tags.
+	// The list of tags.
 	Tag []*ListPrometheusViewsRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// Instance version: V1 or V2
+	// The instance version. Valid values: V1 and V2.
 	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// Workspace name
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ func (s *ListPrometheusViewsRequest) Validate() error {
 }
 
 type ListPrometheusViewsRequestTag struct {
-	// Tag key
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Match value.
+	// The tag value.
 	//
 	// example:
 	//

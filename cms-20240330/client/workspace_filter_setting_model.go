@@ -16,8 +16,10 @@ type iWorkspaceFilterSetting interface {
 }
 
 type WorkspaceFilterSetting struct {
-	TagSelector    *FilterSetting `json:"tagSelector,omitempty" xml:"tagSelector,omitempty"`
-	WorkspaceUuids []*string      `json:"workspaceUuids,omitempty" xml:"workspaceUuids,omitempty" type:"Repeated"`
+	// The tag filter.
+	TagSelector *FilterSetting `json:"tagSelector,omitempty" xml:"tagSelector,omitempty"`
+	// A list of workspace UUIDs.
+	WorkspaceUuids []*string `json:"workspaceUuids,omitempty" xml:"workspaceUuids,omitempty" type:"Repeated"`
 }
 
 func (s WorkspaceFilterSetting) String() string {

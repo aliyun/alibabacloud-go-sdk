@@ -30,33 +30,52 @@ type iListContactsRequest interface {
 }
 
 type ListContactsRequest struct {
+	// The contact IDs.
 	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
+	// The email address of the contact.
+	//
 	// example:
 	//
 	// test@aliyun.com
-	Email   *string `json:"email,omitempty" xml:"email,omitempty"`
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The ID of the contact group.
+	//
+	// example:
+	//
+	// group-id-123
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The contact name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The mobile number of the contact.
+	//
 	// example:
 	//
 	// 15012345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// Specifies whether to query only ungrouped contacts.
+	//
 	// example:
 	//
 	// true
-	QueryUngroupedContacts *bool   `json:"queryUngroupedContacts,omitempty" xml:"queryUngroupedContacts,omitempty"`
-	Workspace              *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	QueryUngroupedContacts *bool `json:"queryUngroupedContacts,omitempty" xml:"queryUngroupedContacts,omitempty"`
+	// The workspace ID.
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListContactsRequest) String() string {

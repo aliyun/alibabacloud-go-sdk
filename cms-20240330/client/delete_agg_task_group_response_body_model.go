@@ -14,7 +14,7 @@ type iDeleteAggTaskGroupResponseBody interface {
 }
 
 type DeleteAggTaskGroupResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -26,30 +26,44 @@ type iPrometheusManagedInstance interface {
 }
 
 type PrometheusManagedInstance struct {
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The type of the instance.
+	//
 	// example:
 	//
 	// test
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The ID of the Prometheus instance that is associated with Real User Monitoring (RUM).
+	//
 	// example:
 	//
 	// rum-xxx
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
+	// The name of the Prometheus instance that is associated with RUM.
+	//
 	// example:
 	//
 	// rum-xxx
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
+	// The ID of the Alibaba Cloud region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The status of the instance.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The Cloud Monitor 2.0 workspace.
+	//
 	// example:
 	//
 	// workspace-test

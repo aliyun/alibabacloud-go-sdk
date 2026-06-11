@@ -33,7 +33,7 @@ type SubscriptionForModify struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Filtering settings.
+	// Filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
 	// Notification policy UUID.
 	//
@@ -49,7 +49,7 @@ type SubscriptionForModify struct {
 	//
 	// example:
 	//
-	// Test subscription.
+	// 测试订阅
 	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
@@ -194,7 +194,7 @@ func (s *SubscriptionForModifyAgentConfig) Validate() error {
 }
 
 type SubscriptionForModifyPushingSetting struct {
-	// Alert push action plan ID list.
+	// A list of alert push action plan IDs.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
 	// Action plan ID.
 	//
@@ -202,7 +202,7 @@ type SubscriptionForModifyPushingSetting struct {
 	//
 	// 123123123
 	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// Action integration plan ID list.
+	// A list of action integration plan IDs.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
 	// Template UUID.
 	//

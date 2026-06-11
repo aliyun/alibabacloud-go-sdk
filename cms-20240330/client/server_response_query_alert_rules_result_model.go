@@ -30,15 +30,24 @@ type iServerResponseQueryAlertRulesResult interface {
 }
 
 type ServerResponseQueryAlertRulesResult struct {
-	Code       *string                `json:"code,omitempty" xml:"code,omitempty"`
-	Data       *QueryAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
-	Message    *string                `json:"message,omitempty" xml:"message,omitempty"`
-	NextToken  *string                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	PageNumber *int32                 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success    *bool                  `json:"success,omitempty" xml:"success,omitempty"`
-	Total      *int32                 `json:"total,omitempty" xml:"total,omitempty"`
+	// The status code of the response. A status code of `200` indicates a successful request.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
+	Data *QueryAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
+	// The response message. If the request fails, this field contains details about the error.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The token to retrieve the next page of results. A null value indicates that no more results are available.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The current page number.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The unique request ID, used for troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: `true` and `false`.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of alert rules that match the query.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ServerResponseQueryAlertRulesResult) String() string {

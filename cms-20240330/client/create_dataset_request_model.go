@@ -18,16 +18,22 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The description of the dataset.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The schema of the dataset.
+	//
 	// This parameter is required.
 	Schema map[string]*IndexKey `json:"schema,omitempty" xml:"schema,omitempty"`
 }

@@ -20,16 +20,21 @@ type iListPipelinesResponseBody interface {
 }
 
 type ListPipelinesResponseBody struct {
+	// The number of results returned on the current page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// A pagination token. If this parameter is not empty, use it in a subsequent request to get the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 3f0d6785770d5fb308f0605d718d422a227c38f96117633678f029842acd19039329e8281583b3da7bc598dfc4c1973e
-	NextToken *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// A list of pipelines.
 	Pipelines []*ListPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -95,30 +100,42 @@ func (s *ListPipelinesResponseBody) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelines struct {
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-02-28T07:14:17Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the pipeline.
+	//
 	// example:
 	//
 	// test pipeline
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The pipeline name.
+	//
 	// example:
 	//
 	// pipeline-name-1
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-03-24T06:58:22Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// workspace-test

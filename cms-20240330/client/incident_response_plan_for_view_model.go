@@ -42,50 +42,80 @@ type iIncidentResponsePlanForView interface {
 }
 
 type IncidentResponsePlanForView struct {
+	// The automatic recovery time.
+	//
 	// example:
 	//
 	// 300
 	AutoRecoverSeconds *int64 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
+	// The time when the plan was created.
+	//
 	// example:
 	//
 	// "2025-04-05T10:30:00Z"
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the response plan.
+	//
+	// example:
+	//
+	// "针对支付服务不可用的紧急响应流程"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the response plan is enabled.
+	//
 	// example:
 	//
 	// true
-	Enabled      *bool     `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// A list of the IDs of associated escalation policies.
 	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
+	// The response pattern.
+	//
 	// example:
 	//
 	// "Manual"
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The name of the response plan.
+	//
 	// example:
 	//
 	// "P1-Critical-Response-Plan"
-	Name                *string              `json:"name,omitempty" xml:"name,omitempty"`
-	PushingSetting      *PushingSetting      `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The push notification settings.
+	PushingSetting *PushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty"`
+	// The settings for repeated notifications.
 	RepeatNotifySetting *RepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// "MANUAL"
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The source type of the synchronization policy.
+	//
 	// example:
 	//
 	// "ARMS"
 	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// The type of the response plan.
+	//
 	// example:
 	//
 	// "Standard"
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the plan was last updated.
+	//
 	// example:
 	//
 	// "2025-04-06T09:15:00Z"
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The globally unique identifier.
+	//
 	// example:
 	//
 	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The workspace.
+	//
 	// example:
 	//
 	// "ws-xyz789"

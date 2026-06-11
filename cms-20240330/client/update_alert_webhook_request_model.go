@@ -24,24 +24,46 @@ type iUpdateAlertWebhookRequest interface {
 }
 
 type UpdateAlertWebhookRequest struct {
+	// The content type of the data. Supported values:
+	//
+	// - JSON
+	//
+	// - FORM
+	//
 	// example:
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// headers
+	// The headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The language. Supported values:
+	//
+	// - zh_CN
+	//
+	// - en_US
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The request method. Supported values:
+	//
+	// - GET
+	//
+	// - POST
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The name of the webhook.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The URL of the alert callback.
+	//
 	// example:
 	//
 	// http://aliyun.com/test

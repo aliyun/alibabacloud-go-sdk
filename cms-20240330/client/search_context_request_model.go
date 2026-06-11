@@ -24,25 +24,36 @@ type iSearchContextRequest interface {
 }
 
 type SearchContextRequest struct {
+	// Filter conditions
 	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Whether to format
+	//
 	// example:
 	//
 	// true
 	Formatted *bool `json:"formatted,omitempty" xml:"formatted,omitempty"`
+	// Limit the number of items returned
+	//
 	// example:
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// Query content
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// How is the cost for consuming SLS logs in Flink calculated?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Retrieval option
+	//
 	// example:
 	//
 	// reranker,llm_rank
 	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
+	// Similarity threshold
+	//
 	// example:
 	//
 	// 0.3

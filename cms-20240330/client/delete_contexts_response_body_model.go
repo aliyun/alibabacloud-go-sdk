@@ -16,10 +16,14 @@ type iDeleteContextsResponseBody interface {
 }
 
 type DeleteContextsResponseBody struct {
+	// The number of deleted contexts.
+	//
 	// example:
 	//
 	// 55
 	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
