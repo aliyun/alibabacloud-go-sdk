@@ -11,10 +11,14 @@ import (
 )
 
 type AgentInstanceConfigGrayConfigs struct {
+	// The matching rule.
+	//
 	// example:
 	//
 	// appVersion="1.0.0"
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The content of the canary release configuration.
+	//
 	// example:
 	//
 	// {"enable":true}
@@ -40,11 +44,15 @@ func (s *AgentInstanceConfigGrayConfigs) SetContent(v string) *AgentInstanceConf
 }
 
 type Alert struct {
-	// The configurations of the alert rule.
+	// The configuration of the alert rule.
 	//
 	// This parameter is required.
 	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The time when the alert rule was created.
+	//
+	// example:
+	//
+	// 1695090077
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The description of the alert rule.
 	//
@@ -52,7 +60,7 @@ type Alert struct {
 	//
 	// Alert Desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The alert rule name.
+	// The name of the alert rule.
 	//
 	// This parameter is required.
 	//
@@ -61,6 +69,10 @@ type Alert struct {
 	// alertNameExample
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The time when the alert rule was last modified.
+	//
+	// example:
+	//
+	// 1714274900
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The ID of the alert rule.
 	//
@@ -70,11 +82,11 @@ type Alert struct {
 	//
 	// alert-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The scheduling settings.
+	// The scheduling configuration.
 	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
-	// The alert status.
+	// The status of the alert rule.
 	//
 	// example:
 	//
@@ -131,9 +143,9 @@ func (s *Alert) SetStatus(v string) *Alert {
 }
 
 type AlertConfiguration struct {
-	// The annotations of the alert rule.
+	// The alert annotations.
 	Annotations []*AlertTag `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
-	// Specifies whether to allow the system to automatically add annotations to the alert rule.
+	// Specifies whether to enable automatic annotation.
 	//
 	// This parameter is required.
 	//
@@ -141,29 +153,29 @@ type AlertConfiguration struct {
 	//
 	// false
 	AutoAnnotation *bool `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
-	// The alert trigger conditions.
+	// The alert trigger condition.
 	ConditionConfiguration *ConditionConfiguration `json:"conditionConfiguration,omitempty" xml:"conditionConfiguration,omitempty"`
-	// The ID of the dashboard associated with the alert rule.
+	// The ID of the dashboard to which the alert is attached.
 	//
 	// example:
 	//
-	// dasnboardExample
+	// DasnboardExample
 	Dashboard *string `json:"dashboard,omitempty" xml:"dashboard,omitempty"`
-	// The configurations of group evaluation.
+	// The group evaluation configuration.
 	//
 	// This parameter is required.
 	GroupConfiguration *GroupConfiguration `json:"groupConfiguration,omitempty" xml:"groupConfiguration,omitempty"`
-	// The set operation configurations for the query statements of the alert rule.
+	// The configurations for joining the results of query statements.
 	JoinConfigurations []*JoinConfiguration `json:"joinConfigurations,omitempty" xml:"joinConfigurations,omitempty" type:"Repeated"`
-	// The labels of the alert rule.
+	// The alert labels.
 	Labels []*AlertTag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	// The time when a paused alert rule is resumed.
+	// The time until which the alert is muted.
 	//
 	// example:
 	//
 	// 1698907508
 	MuteUntil *int64 `json:"muteUntil,omitempty" xml:"muteUntil,omitempty"`
-	// Specifies whether to enable the no-data alert feature.
+	// Specifies whether to enable no-data alerts.
 	//
 	// This parameter is required.
 	//
@@ -171,19 +183,19 @@ type AlertConfiguration struct {
 	//
 	// false
 	NoDataFire *bool `json:"noDataFire,omitempty" xml:"noDataFire,omitempty"`
-	// The severity of the no-data alert.
+	// The severity of no-data alerts.
 	//
 	// example:
 	//
 	// 6
 	NoDataSeverity *int32 `json:"noDataSeverity,omitempty" xml:"noDataSeverity,omitempty"`
-	// The notification configurations of Simple Log Service.
+	// The configuration for the SLS alert notification service.
 	PolicyConfiguration *PolicyConfiguration `json:"policyConfiguration,omitempty" xml:"policyConfiguration,omitempty"`
-	// The query statements.
+	// The list of query statements.
 	//
 	// This parameter is required.
 	QueryList []*AlertQuery `json:"queryList,omitempty" xml:"queryList,omitempty" type:"Repeated"`
-	// Specifies whether to send a recovery notification after an alert is cleared.
+	// Specifies whether to send recovery alerts.
 	//
 	// This parameter is required.
 	//
@@ -195,17 +207,17 @@ type AlertConfiguration struct {
 	//
 	// This parameter is required.
 	SeverityConfigurations []*SeverityConfiguration `json:"severityConfigurations,omitempty" xml:"severityConfigurations,omitempty" type:"Repeated"`
-	// The configurations that allow alerts to be sent to the notification system of Simple Log Service.
+	// The configuration for sending alerts to the SLS alert management service.
 	SinkAlerthub *SinkAlerthubConfiguration `json:"sinkAlerthub,omitempty" xml:"sinkAlerthub,omitempty"`
-	// The configurations that allow alerts to be sent to CloudMonitor Event Center.
+	// The configuration for sending alerts to Cloud Monitor.
 	SinkCms *SinkCmsConfiguration `json:"sinkCms,omitempty" xml:"sinkCms,omitempty"`
-	// The configurations that allow alerts to be sent to an Eventstore.
+	// The configuration for sending alerts to the eventstore.
 	SinkEventStore *SinkEventStoreConfiguration `json:"sinkEventStore,omitempty" xml:"sinkEventStore,omitempty"`
-	// The custom tags of the alert rule.
+	// The custom alert tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The alert template configurations.
+	// The alert template configuration.
 	TemplateConfiguration *TemplateConfiguration `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
-	// The maximum number of consecutive times that the trigger condition is met.
+	// The consecutive trigger threshold.
 	//
 	// This parameter is required.
 	//
@@ -348,19 +360,19 @@ func (s *AlertConfiguration) SetVersion(v string) *AlertConfiguration {
 }
 
 type AlertQuery struct {
-	// The name of the chart.
+	// Chart name
 	//
 	// example:
 	//
 	// chartExmaple
 	ChartTitle *string `json:"chartTitle,omitempty" xml:"chartTitle,omitempty"`
-	// The ID of the dashboard.
+	// Dashboard ID
 	//
 	// example:
 	//
 	// dashboardExample
 	DashboardId *string `json:"dashboardId,omitempty" xml:"dashboardId,omitempty"`
-	// The end of the time range to query.
+	// End time
 	//
 	// This parameter is required.
 	//
@@ -368,13 +380,13 @@ type AlertQuery struct {
 	//
 	// now
 	End *string `json:"end,omitempty" xml:"end,omitempty"`
-	// Specifies whether to enable Dedicated SQL.
+	// Whether to enable Dedicated SQL
 	//
 	// example:
 	//
 	// auto
 	PowerSqlMode *string `json:"powerSqlMode,omitempty" xml:"powerSqlMode,omitempty"`
-	// The name of the project.
+	// Project name
 	//
 	// This parameter is required.
 	//
@@ -382,7 +394,7 @@ type AlertQuery struct {
 	//
 	// projectExample
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The query statement.
+	// Query and analysis statement
 	//
 	// This parameter is required.
 	//
@@ -390,7 +402,7 @@ type AlertQuery struct {
 	//
 	// 	- | select *
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The region.
+	// Region
 	//
 	// This parameter is required.
 	//
@@ -398,9 +410,9 @@ type AlertQuery struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// Role ARN
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The beginning of the time range to query.
+	// Start time
 	//
 	// This parameter is required.
 	//
@@ -408,7 +420,7 @@ type AlertQuery struct {
 	//
 	// -5m
 	Start *string `json:"start,omitempty" xml:"start,omitempty"`
-	// The name of the storage.
+	// Store name
 	//
 	// This parameter is required.
 	//
@@ -416,7 +428,7 @@ type AlertQuery struct {
 	//
 	// store Example
 	Store *string `json:"store,omitempty" xml:"store,omitempty"`
-	// The storage type.
+	// Store type
 	//
 	// This parameter is required.
 	//
@@ -424,7 +436,7 @@ type AlertQuery struct {
 	//
 	// log
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	// The type of the time span.
+	// Time span type
 	//
 	// This parameter is required.
 	//
@@ -432,7 +444,7 @@ type AlertQuery struct {
 	//
 	// Relative
 	TimeSpanType *string `json:"timeSpanType,omitempty" xml:"timeSpanType,omitempty"`
-	// The page on which you can record frontend configurations in specified scenarios.
+	// Used by the frontend for specific-scenario alerts
 	Ui *string `json:"ui,omitempty" xml:"ui,omitempty"`
 }
 
@@ -543,22 +555,42 @@ func (s *AlertTag) SetValue(v string) *AlertTag {
 }
 
 type AsyncSqlResponseData struct {
+	// The metadata of the SQL query.
 	AsyncSqlMetaPB *AsyncSqlResponseDataAsyncSqlMetaPB `json:"AsyncSqlMetaPB,omitempty" xml:"AsyncSqlMetaPB,omitempty" type:"Struct"`
+	// If the SQL query fails to execute, this parameter contains the specific error code.
+	//
 	// example:
 	//
 	// InvalidQuery
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// If the SQL query fails to execute, this parameter contains the specific error message.
+	//
 	// example:
 	//
 	// line 37:14: Column \\"xyz\\" cannot be resolved
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
+	// The ID of the asynchronous SQL query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 690C4F2A16FBD65C40000484_14
-	Id   *string     `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The SQL result. Each element in the array is also an array that corresponds to a specific row of the result.
 	Rows [][]*string `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	// The current execution state of the asynchronous SQL query. Valid values are:
+	//
+	// - RUNNING
+	//
+	// - FINISHED
+	//
+	// - FAILED
+	//
+	// - CANCELLED
+	//
+	// RUNNING is a temporary state that indicates the SQL query is still running. You can read the results only when the state is FINISHED. The error_code and error_message parameters are valid only when the state is FAILED.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -606,27 +638,44 @@ func (s *AsyncSqlResponseData) SetState(v string) *AsyncSqlResponseData {
 }
 
 type AsyncSqlResponseDataAsyncSqlMetaPB struct {
+	// The number of CPU cores used.
+	//
 	// example:
 	//
 	// 10
 	CpuCores *int32 `json:"cpu_cores,omitempty" xml:"cpu_cores,omitempty"`
+	// The total CPU time consumed in seconds.
+	//
 	// example:
 	//
 	// 0.2
 	CpuSec *float64 `json:"cpu_sec,omitempty" xml:"cpu_sec,omitempty"`
+	// The SQL query running time in milliseconds.
+	//
 	// example:
 	//
 	// 30000
-	ElapsedMilli *int64    `json:"elapsed_milli,omitempty" xml:"elapsed_milli,omitempty"`
-	Keys         []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	ElapsedMilli *int64 `json:"elapsed_milli,omitempty" xml:"elapsed_milli,omitempty"`
+	// The names of the columns in the SQL result. The keys correspond one-to-one with the fields in the SELECT statement.
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// The number of raw data rows processed.
+	//
 	// example:
 	//
 	// 10000000
 	ProcessedRows *int64 `json:"processed_rows,omitempty" xml:"processed_rows,omitempty"`
+	// Indicates whether the SQL result is accurate. Valid values are:
+	//
+	// - Complete: The result is accurate.
+	//
+	// - Incomplete: The result is not accurate.
+	//
 	// example:
 	//
 	// Complete
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The total number of rows in the result. When you read the results, the offset value must not exceed this value.
+	//
 	// example:
 	//
 	// 12000
@@ -804,85 +853,122 @@ func (s *AzureBlobIngestionConfiguration) SetSource(v *AzureBlobIngestionConfigu
 }
 
 type AzureBlobIngestionConfigurationSource struct {
+	// The access key for the Azure Blob Storage account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dGVzdGtleQ==
 	AccountKey *string `json:"accountKey,omitempty" xml:"accountKey,omitempty"`
+	// The name of the Azure Blob Storage account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test001
-	AccountName        *string                `json:"accountName,omitempty" xml:"accountName,omitempty"`
+	AccountName *string `json:"accountName,omitempty" xml:"accountName,omitempty"`
+	// Advanced configuration options.
 	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
+	// The compression codec for the source data. Valid values are `none`, `snappy`, and `gzip`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// none
 	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	// The name of the container in Azure Blob Storage.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-container
 	ContainerName *string `json:"containerName,omitempty" xml:"containerName,omitempty"`
+	// The character encoding of the source files.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTF-8
 	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// Ingests only files modified before this time, specified as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1714360481
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The service endpoint for Azure Blob Storage.
+	//
 	// example:
 	//
 	// https://your-storage.blob.core.windows.net
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The format of the source data.
+	//
 	// This parameter is required.
 	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// The interval at which to check for new files to ingest.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30m
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// A pattern used to filter files by path.
+	//
 	// example:
 	//
 	// .*
 	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// The file path prefix used to filter files.
+	//
 	// example:
 	//
 	// prefix
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The ID of the processor that receives the data.
+	//
 	// example:
 	//
 	// ingest-processor-1756802123-953901
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// Ingests only files modified after this time, specified as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1714274081
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Specifies whether to enable context query.
+	//
 	// example:
 	//
 	// false
 	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// The source field for the time value.
+	//
 	// example:
 	//
 	// __time__
 	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// The format of the time field.
+	//
 	// example:
 	//
 	// yyyy-MM-dd HH:mm:ss
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// The pattern used to extract the time value.
+	//
 	// example:
 	//
 	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// The time zone of the time field.
+	//
 	// example:
 	//
 	// GMT+08:00
@@ -1026,14 +1112,29 @@ func (s *ConditionConfiguration) SetCountCondition(v string) *ConditionConfigura
 }
 
 type ConsumeProcessor struct {
+	// Processor配置
+	//
 	// This parameter is required.
 	Configuration *ConsumeProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// 创建时间
+	//
 	// example:
 	//
 	// 1717171200
-	CreateTime  *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Processor描述
+	//
+	// example:
+	//
+	// 过滤content字段
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Processor名称
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 字段过滤处理
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Processor ID
 	//
@@ -1043,6 +1144,8 @@ type ConsumeProcessor struct {
 	//
 	// consume-processor-1
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+	// 更新时间
+	//
 	// example:
 	//
 	// 1717171200
@@ -1434,10 +1537,16 @@ func (s *ESIngestion) SetStatus(v string) *ESIngestion {
 }
 
 type ESIngestionConfiguration struct {
-	// logstore
+	// The Logstore.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The source.
+	//
 	// This parameter is required.
 	Source *ESIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
 }
@@ -1461,26 +1570,46 @@ func (s *ESIngestionConfiguration) SetSource(v *ESIngestionConfigurationSource) 
 }
 
 type ESIngestionConfigurationSource struct {
+	// The URL of the service instance.
+	//
 	// This parameter is required.
 	BootstrapServers *string `json:"BootstrapServers,omitempty" xml:"BootstrapServers,omitempty"`
+	// The import mode.
+	//
 	// This parameter is required.
 	ConnectorMode *string `json:"ConnectorMode,omitempty" xml:"ConnectorMode,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of ES indexes.
+	//
 	// This parameter is required.
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The maximum data delay in seconds.
+	//
 	// This parameter is required.
 	MaxDataDelaySec *int64 `json:"MaxDataDelaySec,omitempty" xml:"MaxDataDelaySec,omitempty"`
+	// The interval in seconds for checking new data.
+	//
 	// This parameter is required.
-	MinFragRangeSec *int64  `json:"MinFragRangeSec,omitempty" xml:"MinFragRangeSec,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	MinFragRangeSec *int64 `json:"MinFragRangeSec,omitempty" xml:"MinFragRangeSec,omitempty"`
+	// The password for the ES user.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ES query.
+	//
 	// This parameter is required.
-	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The start time.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time field.
 	TimeFieldName *string `json:"TimeFieldName,omitempty" xml:"TimeFieldName,omitempty"`
-	TimeFormat    *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
-	TimeZone      *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The format of the time field.
+	TimeFormat *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
+	// The time zone of the time field.
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The username for ES.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The ID of the VPC instance.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ESIngestionConfigurationSource) String() string {
@@ -1679,13 +1808,13 @@ func (s *ETL) SetStatus(v string) *ETL {
 type ETLConfiguration struct {
 	// Deprecated
 	//
-	// The AccessKey ID used to grant the permissions to read data from the source logstore. This parameter is required. If you use a role to grant the required permissions, specify an empty string.
+	// The AccessKey ID that is required to read data from the source Logstore. This parameter is required. If you use a RAM role for authorization, set this parameter to an empty string.
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// Deprecated
 	//
-	// The AccessKey secret used to grant the permissions to read data from the source logstore. This parameter is required. If you use a role to grant the required permissions, specify an empty string.
+	// The AccessKey secret that is required to read data from the source Logstore. This parameter is required. If you use a RAM role for authorization, set this parameter to an empty string.
 	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	// The beginning of the time range for transformation. Specify a Unix timestamp that is accurate to the second. This parameter is required. If you want to transform data from the first log in the source logstore, enter 0.
+	// The start time of the data transformation. The value is a UNIX timestamp. Unit: seconds. This parameter is required. To start the data transformation from the earliest log in the source Logstore, set this parameter to 0.
 	//
 	// This parameter is required.
 	//
@@ -1693,13 +1822,13 @@ type ETLConfiguration struct {
 	//
 	// 0
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The type of the data transformation syntax.
+	// The language of the data transformation script.
 	//
 	// example:
 	//
 	// SPL
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the source logstore.
+	// The name of the source Logstore.
 	//
 	// This parameter is required.
 	//
@@ -1707,13 +1836,13 @@ type ETLConfiguration struct {
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The advanced parameter settings.
+	// Advanced parameters.
 	//
 	// example:
 	//
-	// config.vpc.vpc_id.test1:vpc-uf6mskb0b****n9yj
+	// config.vpc.vpc_id.test1：vpc-uf6mskb0b****n9yj
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the role that is used to grant the permissions to read data from the source logstore.
+	// The ARN of the RAM role that is authorized to read data from the source Logstore.
 	//
 	// This parameter is required.
 	//
@@ -1721,19 +1850,19 @@ type ETLConfiguration struct {
 	//
 	// acs:ram::13234:role/logtarget
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The transformation script.
+	// The data transformation script.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// e_set("key","value")
+	// 	- | extend key=\\"value\\"
 	Script *string `json:"script,omitempty" xml:"script,omitempty"`
-	// The storage destinations.
+	// The output destinations of the data transformation.
 	//
 	// This parameter is required.
 	Sinks []*ETLConfigurationSink `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
-	// The end of the time range for transformation. Specify a Unix timestamp that is accurate to the second. This parameter is required. If you want to transform data until the data transformation job is manually stopped, enter 0.
+	// The end time of the data transformation. The value is a UNIX timestamp. Unit: seconds. This parameter is required. To continuously perform the data transformation until you manually stop it, set this parameter to 0.
 	//
 	// This parameter is required.
 	//
@@ -1804,17 +1933,17 @@ func (s *ETLConfiguration) SetToTime(v int64) *ETLConfiguration {
 type ETLConfigurationSink struct {
 	// Deprecated
 	//
-	// The AccessKey ID that is used to grant the permissions to write data to the destination Logstore.
+	// The AccessKey ID used to write to the destination Logstore.
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// Deprecated
 	//
-	// The AccessKey secret that is used to grant the permissions to write data to the destination Logstore.
+	// The AccessKey Secret used to write to the destination Logstore.
 	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	// The result data to write.
+	// The datasets to write to the sink.
 	Datasets []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
-	// The Simple Log Service endpoint for the region where the destination project resides.
+	// The endpoint of the destination Project\\"s region.
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the destination Logstore.
+	// The destination Logstore name.
 	//
 	// This parameter is required.
 	//
@@ -1822,7 +1951,7 @@ type ETLConfigurationSink struct {
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the storage destination.
+	// The sink name.
 	//
 	// This parameter is required.
 	//
@@ -1830,7 +1959,7 @@ type ETLConfigurationSink struct {
 	//
 	// test-etljob
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the destination project.
+	// The destination Project name.
 	//
 	// This parameter is required.
 	//
@@ -1838,7 +1967,7 @@ type ETLConfigurationSink struct {
 	//
 	// test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the role that is used to grant the permissions to write data to the destination Logstore.
+	// The role ARN used to write to the destination Logstore.
 	//
 	// This parameter is required.
 	//
@@ -1997,19 +2126,23 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 }
 
 type GCSIngestion struct {
+	// The GCS ingestion configuration.
+	//
 	// This parameter is required.
 	Configuration *GCSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// Output only. The creation time of the job, as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// job description
+	// A user-friendly description for the job.
 	//
 	// example:
 	//
 	// gcs ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// job displayName
+	// The display name for the job.
 	//
 	// This parameter is required.
 	//
@@ -2017,20 +2150,28 @@ type GCSIngestion struct {
 	//
 	// gcs ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Output only. The last modified time of the job, as a Unix timestamp.
+	//
 	// example:
 	//
 	// 1714360581
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The job name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-gcs-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// Output only. The ingestion status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -2086,7 +2227,7 @@ func (s *GCSIngestion) SetStatus(v string) *GCSIngestion {
 }
 
 type GCSIngestionConfiguration struct {
-	// logstore
+	// The name of the destination logstore.
 	//
 	// This parameter is required.
 	//
@@ -2094,6 +2235,8 @@ type GCSIngestionConfiguration struct {
 	//
 	// myLogstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The data source configuration.
+	//
 	// This parameter is required.
 	Source *GCSIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
 }
@@ -2117,75 +2260,112 @@ func (s *GCSIngestionConfiguration) SetSource(v *GCSIngestionConfigurationSource
 }
 
 type GCSIngestionConfigurationSource struct {
+	// The access key ID for authenticating with the GCS service. This parameter is required.
+	//
 	// This parameter is required.
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	// The secret access key corresponding to the `accessKeyId`. This value is sensitive and must be managed securely.
+	//
 	// This parameter is required.
-	AccessKeySecret    *string                `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	// A nested object for specifying advanced configuration options as key-value pairs.
 	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
+	// The name of the GCS bucket that contains the source data files.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gcsbucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The compression format of the source files. Supported values are `none`, `gzip`, and `zstd`. If not specified, the system infers the format from the file extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// none
 	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	// The character encoding of the source files. The default value is `UTF-8`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTF-8
 	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// The end of the time range for data ingestion, specified as a Unix timestamp (in seconds). Only objects modified before this time are ingested.
+	//
 	// example:
 	//
 	// 1714360481
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The service endpoint for GCS. You can use a custom endpoint for private or accelerated connections.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// A nested object that defines the format of the source data, such as CSV, JSON, or Parquet.
+	//
 	// This parameter is required.
 	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// The interval for checking for new data. Specify the value in a duration format, such as `15m` for 15 minutes. Set to `never` to perform a one-time ingestion.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// never
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// A regular expression that specifies which files to ingest. The pattern is matched against the full object key within the specified prefix.
+	//
 	// example:
 	//
 	// .*
 	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// The object key prefix used to discover files. This limits the scope of ingestion to a specific "folder" within the bucket.
+	//
 	// example:
 	//
 	// prefix
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The unique ID of the processor or pipeline that handles the ingested data.
+	//
 	// example:
 	//
 	// ingest-processor-1756802123-953901
-	ProcessorId          *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
-	RestoreObjectEnabled *bool   `json:"restoreObjectEnabled,omitempty" xml:"restoreObjectEnabled,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// Specifies whether to automatically restore objects from archival storage classes before ingestion. Set to `true` to enable this feature. The default is `false`.
+	RestoreObjectEnabled *bool `json:"restoreObjectEnabled,omitempty" xml:"restoreObjectEnabled,omitempty"`
+	// The start of the time range for data ingestion, specified as a Unix timestamp (in seconds). Only objects modified at or after this time are ingested.
+	//
 	// example:
 	//
 	// 1714274081
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TagPackId *bool  `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// The ID of a predefined tag pack to apply to the ingested data. Tag packs contain rules for data enrichment and categorization.
+	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// The name of the field in your data that contains the timestamp. This timestamp is used as the event time for the ingested records.
+	//
 	// example:
 	//
 	// __time__
 	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// The format of the timestamp in the `timeField`, specified using the Java `SimpleDateFormat` pattern. For example: `yyyy-MM-dd\\"T\\"HH:mm:ss.SSSZ`.
+	//
 	// example:
 	//
 	// yyyy-MM-dd HH:mm:ss
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// A regular expression used to extract a timestamp from unstructured data, such as a log entry or filename, if a structured `timeField` is not available.
+	//
 	// example:
 	//
-	// [0-9]{0,2}\/[0-9a-zA-Z]+\/[0-9:,]+
+	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// The time zone for parsing timestamps that lack explicit time zone information. Specify a valid time zone identifier, such as `UTC` or `America/Los_Angeles`.
+	//
 	// example:
 	//
 	// GMT+08:00
@@ -2301,9 +2481,9 @@ func (s *GCSIngestionConfigurationSource) SetTimeZone(v string) *GCSIngestionCon
 }
 
 type GroupConfiguration struct {
-	// The fields of group evaluation.
+	// The group evaluation fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The type of group evaluation.
+	// The group evaluation type.
 	//
 	// This parameter is required.
 	//
@@ -2391,33 +2571,33 @@ func (s *Histogram) SetTo(v int32) *Histogram {
 }
 
 type IndexJsonKey struct {
-	// Alias.
+	// The alias of the field.
 	//
 	// example:
 	//
 	// myAlias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// Case sensitivity.
+	// Specifies whether queries on this field are case-sensitive.
 	//
 	// example:
 	//
 	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// Whether the field contains Chinese characters.
+	// Specifies whether to enable Chinese tokenization for the field.
 	//
 	// example:
 	//
 	// true
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// Whether to enable statistics.
+	// Specifies whether to enable doc_value for the field. This enables sorting, aggregation, and statistical analysis on the field.
 	//
 	// example:
 	//
 	// true
 	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
-	// Delimiter.
+	// The delimiters used for tokenization.
 	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	// The data type of the field.
+	// Specifies the field type.
 	//
 	// This parameter is required.
 	//
@@ -2466,44 +2646,44 @@ func (s *IndexJsonKey) SetType(v string) *IndexJsonKey {
 }
 
 type IndexKey struct {
-	// Alias.
+	// The alias of the field.
 	//
 	// example:
 	//
 	// myAlias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// Case sensitivity.
+	// Specifies whether the field is case-sensitive.
 	//
 	// example:
 	//
 	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// Whether the field contains Chinese characters.
+	// Specifies whether the field contains Chinese characters.
 	//
 	// example:
 	//
 	// true
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// Whether to enable statistics.
+	// Specifies whether to enable statistics for the field.
 	//
 	// example:
 	//
 	// true
 	DocValue  *bool   `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
 	Embedding *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
-	// Whether to enable auto indexing for all text fields in JSON.
+	// Specifies whether to automatically create an index for all text fields in the JSON object.
 	//
 	// example:
 	//
 	// true
 	IndexAll *bool `json:"index_all,omitempty" xml:"index_all,omitempty"`
-	// json key
+	// The JSON key.
 	JsonKeys map[string]*IndexJsonKey `json:"json_keys,omitempty" xml:"json_keys,omitempty"`
-	// Maximum depth.
+	// The maximum depth.
 	MaxDepth *int64 `json:"max_depth,omitempty" xml:"max_depth,omitempty"`
-	// Delimiter.
+	// The delimiters used for tokenization.
 	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	// The data type of the field.
+	// The type of the field.
 	//
 	// This parameter is required.
 	//
@@ -2583,9 +2763,16 @@ type IngestProcessor struct {
 	// example:
 	//
 	// 1717171200
-	CreateTime  *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 过滤content字段
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 字段过滤处理
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// This parameter is required.
 	//
@@ -2823,86 +3010,123 @@ func (s *KafkaIngestionConfiguration) SetSource(v *KafkaIngestionConfigurationSo
 }
 
 type KafkaIngestionConfigurationSource struct {
+	// A list of bootstrap servers for the Kafka cluster, formatted as `host1:port1,host2:port2`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.1.28:9092
 	BootstrapServers *string `json:"bootstrapServers,omitempty" xml:"bootstrapServers,omitempty"`
+	// The authentication and communication protocol settings in JSON format. For example, you can use this parameter to configure SASL authentication.
+	//
 	// example:
 	//
 	// {     "protocol":"SASL_PLAINTEXT",      "sasl":{         "mechanism":"PLAIN",         "username":"用户名",         "password":"密码"     } }
 	Communication *string `json:"communication,omitempty" xml:"communication,omitempty"`
+	// The ID of the Kafka consumer group.
+	//
 	// example:
 	//
 	// consumer
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
+	// The default time source to use if timestamp extraction from the log data fails. Valid values are `system` (the time of the ingestion server) and `kafka` (the timestamp from the Kafka message).
+	//
 	// example:
 	//
 	// system,kafka
 	DefaultTimeSource *string `json:"defaultTimeSource,omitempty" xml:"defaultTimeSource,omitempty"`
+	// Specifies whether to add Simple Log Service (SLS) context fields, such as `__topic__` and `__partition__`, to each log entry.
+	//
 	// example:
 	//
 	// true
 	EnableSlsContext *bool `json:"enableSlsContext,omitempty" xml:"enableSlsContext,omitempty"`
-	EnableVpcNat     *bool `json:"enableVpcNat,omitempty" xml:"enableVpcNat,omitempty"`
+	// Specifies whether to enable NAT for VPC connections. Set this to `true` if your Kafka cluster is in a VPC and requires NAT for access.
+	EnableVpcNat *bool `json:"enableVpcNat,omitempty" xml:"enableVpcNat,omitempty"`
+	// The character encoding of the message. This parameter applies only when `valueType` is `text`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTF-8
-	Encoding *string                `json:"encoding,omitempty" xml:"encoding,omitempty"`
-	Format   map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// The data format configuration.
+	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// The starting position for data consumption. Valid values: `earliest` and `latest`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// earliest,latest
 	FromPosition *string `json:"fromPosition,omitempty" xml:"fromPosition,omitempty"`
+	// Custom DNS resolutions in JSON format. Use this parameter to map hostnames to IP addresses.
+	//
 	// example:
 	//
 	// {"hostname": "192.168.1.28"}
 	NameResolutions *string `json:"nameResolutions,omitempty" xml:"nameResolutions,omitempty"`
+	// Specifies whether to parse a message as a JSON array. If `true`, each element in the array becomes a separate log entry. This parameter applies only when `valueType` is `json`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	ParseArray *bool `json:"parseArray,omitempty" xml:"parseArray,omitempty"`
+	// The ID of the ingestion processor.
+	//
 	// example:
 	//
 	// ingest-processor-1756802123-953901
-	ProcessorId    *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// The ID of the security group to associate with the ingestion source. This parameter is required when connecting to a Kafka cluster in a VPC. Separate multiple IDs with a comma (`,`).
 	SecurityGroups *string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty"`
+	// The field that contains the log timestamp. This parameter applies only when `valueType` is `json`.
+	//
 	// example:
 	//
 	// __time__
 	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// The format of the timestamp. For example, you can set this to `epoch` for a Unix timestamp.
+	//
 	// example:
 	//
 	// epoch
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// The regular expression for extracting the timestamp from the field specified by `timeField`.
+	//
 	// example:
 	//
-	// \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}
+	// \\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// The time zone of the timestamp, such as `+0800`.
+	//
 	// example:
 	//
 	// +0800
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// The Kafka topics to subscribe to. Separate multiple topics with a comma (`,`).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// topic1,topic2
 	Topics *string `json:"topics,omitempty" xml:"topics,omitempty"`
+	// The format of the message value. Valid values: `text` and `json`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text,json
 	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
-	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the VPC that contains the Kafka cluster.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the VSwitch in the specified VPC. This parameter is required when connecting to a Kafka cluster in a VPC.
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
@@ -3057,19 +3281,19 @@ func (s *LogContent) SetValue(v string) *LogContent {
 }
 
 type LogGroup struct {
-	// The log list.
+	// A list of logs.
 	//
 	// This parameter is required.
 	LogItems []*LogItem `json:"LogItems,omitempty" xml:"LogItems,omitempty" type:"Repeated"`
-	// The log tags.
+	// The list of tags for the log.
 	LogTags []*LogTag `json:"LogTags,omitempty" xml:"LogTags,omitempty" type:"Repeated"`
-	// The log source. For example, the source of a log can be the IP address of the server where the log is generated.
+	// The source of the log. For example, the IP address of the machine that generated the log.
 	//
 	// example:
 	//
 	// 192.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The log topic. This field is user-defined and is used to distinguish between logs.
+	// The topic of the log. This is a user-defined field that distinguishes log data with different features.
 	//
 	// example:
 	//
@@ -3124,11 +3348,11 @@ func (s *LogGroupList) SetLogGroupList(v []*LogGroup) *LogGroupList {
 }
 
 type LogItem struct {
-	// The log fields.
+	// A list of log fields.
 	//
 	// This parameter is required.
 	Contents []*LogContent `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	// The log time. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time of the log, formatted as a Unix timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// This parameter is required.
 	//
@@ -3421,6 +3645,8 @@ type LogtailPipelineConfig struct {
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
 	// The processing plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// 任务配置
+	//
 	// example:
 	//
 	// {"Type": "task_example"}
@@ -3620,6 +3846,10 @@ type MLDataSetParam struct {
 	// d9bd488f6dd42d294495fb780858e83d
 	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
 	// The description of the dataset.
+	//
+	// example:
+	//
+	// 数据集A
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the tag system that corresponds to the dataset.
 	//
@@ -3708,6 +3938,10 @@ type MLLabelParam struct {
 	// 1695090077
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The description of the tag table.
+	//
+	// example:
+	//
+	// 默认表
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The unique identifier of the tag table.
 	//
@@ -3722,6 +3956,10 @@ type MLLabelParam struct {
 	// 1695090077
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
 	// The name of the tag table.
+	//
+	// example:
+	//
+	// 标签表
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The configurations of the tag tables.
 	Settings []*MLLabelParamSettings `json:"settings,omitempty" xml:"settings,omitempty" type:"Repeated"`
@@ -4466,32 +4704,32 @@ func (s *OSSExport) SetStatus(v string) *OSSExport {
 }
 
 type OSSExportConfiguration struct {
-	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore.
+	// The start time for the export, specified as a Unix timestamp. Set to 1 to export from the earliest available data in the Logstore.
 	//
 	// example:
 	//
-	// 123456789
+	// 1718380800
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The name of the Logstore.
+	// The name of the source Logstore.
 	//
 	// example:
 	//
-	// logstore-demo
+	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is used to read data from Simple Log Service.
+	// The ARN of the Resource Access Management (RAM) role that Log Service assumes to read data from the Logstore. You must specify the ARN of your role.
 	//
 	// example:
 	//
-	// acs:ram::123456789:role/aliyunlogdefaultrole
+	// acs:ram::1234567890:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The configurations of the OSS data shipping job.
+	// The configuration of the destination OSS sink.
 	Sink                  *OSSExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 	SourceSecureTransport *bool                       `json:"sourceSecureTransport,omitempty" xml:"sourceSecureTransport,omitempty"`
-	// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped.
+	// The end time for the export, specified as a Unix timestamp. Set to 0 to run the task continuously until it is stopped.
 	//
 	// example:
 	//
-	// 123456789
+	// 1718380800
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -4534,105 +4772,103 @@ func (s *OSSExportConfiguration) SetToTime(v int64) *OSSExportConfiguration {
 }
 
 type OSSExportConfigurationSink struct {
-	// The OSS bucket.
+	// The name of the destination OSS bucket.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test-bucket
+	// my-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+	// The time in seconds to buffer data before exporting. The value must be an integer from 300 to 900.
 	//
 	// example:
 	//
 	// 300
 	BufferInterval *int64 `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
-	// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+	// The amount of data in MB to buffer before exporting. The value must be an integer from 5 to 256.
 	//
 	// example:
 	//
 	// 256
 	BufferSize *int64 `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
-	// The compression type. Valid values: snappy, gizp, zstd, and none.
+	// The compression type for the exported files. Valid values: `snappy`, `gzip`, `zstd`, and `none` (no compression).
 	//
 	// example:
 	//
-	// snappy/gizp/zstd/none
+	// snappy
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// The details of the OSS object. Note: The value of this parameter is in the JSON format and varies based on the value of contentType.
+	// Format-specific settings. The structure of this JSON object depends on the `contentType` value.
 	ContentDetail map[string]interface{} `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
-	// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+	// The format of the files stored in OSS. Valid values: `json`, `parquet`, `csv`, and `orc`.
 	//
 	// example:
 	//
-	// json/parquet/csv/orc
+	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// Deprecated
 	//
-	// The latency of data shipping.
+	// The delivery delay.
 	//
-	// >
-	//
-	// 	- This parameter is deprecated.
+	// > - This parameter is deprecated.
 	//
 	// example:
 	//
 	// 123
 	DelaySec *int64 `json:"delaySec,omitempty" xml:"delaySec,omitempty"`
-	// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+	// The delivery delay, in seconds. This value cannot exceed the data retention period of the source Logstore.
 	//
 	// example:
 	//
 	// 900
 	DelaySeconds *int64 `json:"delaySeconds,omitempty" xml:"delaySeconds,omitempty"`
-	// 	- The endpoint that is used to access OSS. You can specify only an internal OSS endpoint for the region where the Simple Log Service project resides. The value is in the `http://+OSS endpoint` format. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	// - For Object Storage Service (OSS): The OSS internal endpoint. You must use an endpoint in the same region as the Logstore. For more information, see [OSS access domains and data centers](https://help.aliyun.com/document_detail/31837.html). The endpoint must use the HTTPS protocol.
 	//
-	// 	- The endpoint that is used to access OSS-HDFS. You can specify only an internal OSS-HDFS endpoint for the region where the Simple Log Service project resides.
+	// - For OSS-HDFS: The OSS-HDFS internal endpoint. You must use an endpoint in the same region as the Logstore.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://xxxxxxxx
+	// https://oss-cn-hangzhou-internal.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The partition format. For more information, see [Partition formats](https://help.aliyun.com/document_detail/371934.html).
+	// The path format for exported files. For more information, see [Path format](https://help.aliyun.com/document_detail/371934.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// %Y_%m_%d/good/bad
+	// %Y/%m/%d/%H/%M
 	PathFormat *string `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
-	// The partition format type.
+	// The type of the path format.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// only support time
+	// time
 	PathFormatType *string `json:"pathFormatType,omitempty" xml:"pathFormatType,omitempty"`
-	// The prefix of the OSS object.
+	// The prefix for files exported to the OSS bucket.
 	//
 	// example:
 	//
-	// prefixxxx/
+	// prefix-demo/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The ARN of the RAM role that is used to write data to OSS.
+	// The ARN of the RAM role that Log Service assumes to write data to the OSS bucket. You must specify the ARN of your role.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// acs:ram::xxxxxxx
+	// acs:ram::1234567890:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The suffix of the OSS object.
+	// The suffix for the exported files.
 	//
 	// example:
 	//
 	// .json
 	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
-	// The time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
+	// The time zone used for the path format. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
 	//
 	// example:
 	//
@@ -4868,7 +5104,7 @@ func (s *OSSIngestionConfiguration) SetSource(v *OSSIngestionConfigurationSource
 
 type OSSIngestionConfigurationSource struct {
 	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
-	// The OSS bucket.
+	// The name of the OSS bucket.
 	//
 	// This parameter is required.
 	//
@@ -4876,15 +5112,15 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// ossbucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The compression type.
+	// The compression type of the source files.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// none,snappy,gzip
+	// none
 	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
-	// The encoding type.
+	// The encoding of the source files.
 	//
 	// This parameter is required.
 	//
@@ -4892,7 +5128,7 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// UTF-8
 	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
-	// The point in time before which modified OSS objects are imported.
+	// Imports only files modified before this time. The value is a Unix timestamp in seconds.
 	//
 	// example:
 	//
@@ -4906,11 +5142,11 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The format.
+	// Defines the format of the source data.
 	//
 	// This parameter is required.
 	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
-	// The interval at which the system checks for new files.
+	// The check interval for new files.
 	//
 	// This parameter is required.
 	//
@@ -4918,45 +5154,49 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// never
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	// The regular expression that is used to filter OSS objects by directory.
+	// A regular expression to filter files by path.
 	//
 	// example:
 	//
 	// .*
 	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
-	// The directory of the OSS objects.
+	// The path prefix for filtering files.
 	//
 	// example:
 	//
 	// prefix
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The ID of the writer processor.
+	//
 	// example:
 	//
 	// ingest-processor-1756802123-953901
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
-	// Specifies whether to import OSS objects of the Archive class.
+	// Specifies whether to import archived files.
 	//
 	// example:
 	//
 	// true
 	RestoreObjectEnabled *bool `json:"restoreObjectEnabled,omitempty" xml:"restoreObjectEnabled,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The Role ARN to use for accessing the OSS bucket.
 	//
 	// example:
 	//
 	// acs:ram::12345:role/aliyunlogdefaultrole
 	RoleARN *string `json:"roleARN,omitempty" xml:"roleARN,omitempty"`
-	// The point in time after which modified OSS objects are imported.
+	// Imports only files modified after this time. The value is a Unix timestamp in seconds.
 	//
 	// example:
 	//
 	// 1714274081
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Specifies whether to enable context retrieval.
+	//
 	// example:
 	//
 	// true
 	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
-	// The time field to extract.
+	// The field containing the log time.
 	//
 	// example:
 	//
@@ -4968,19 +5208,19 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// yyyy-MM-dd HH:mm:ss
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
-	// The regular expression that is used to extract time.
+	// The regular expression to extract the time value from a log.
 	//
 	// example:
 	//
 	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
-	// The time zone of the time field.
+	// The time zone of the timestamp in the source data.
 	//
 	// example:
 	//
 	// GMT+08:00
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-	// Specifies whether to enable OSS metadata indexing.
+	// Specifies whether to use the OSS metadata index to accelerate file discovery.
 	//
 	// This parameter is required.
 	//
@@ -5165,32 +5405,48 @@ func (s *ProcessorAssociate) SetProcessorId(v string) *ProcessorAssociate {
 }
 
 type ProjectSummary struct {
+	// The time when the project was created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the project.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 描述信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ali-test-project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// The region where the project resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-acf******sq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The time when the project was last updated.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5238,18 +5494,21 @@ func (s *ProjectSummary) SetUpdateTime(v int64) *ProjectSummary {
 }
 
 type S3Ingestion struct {
+	// S3 import configuration
 	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// job description
+	// Job description
 	//
 	// example:
 	//
 	// s3 ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// job displayName
+	// Job display name
 	//
 	// This parameter is required.
 	//
@@ -5257,22 +5516,32 @@ type S3Ingestion struct {
 	//
 	// s3 ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 1714360481
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// Task Name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-s3-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Scan Configuration
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// Import Status
+	//
 	// example:
 	//
 	// RUNNING
@@ -5333,13 +5602,14 @@ func (s *S3Ingestion) SetStatus(v string) *S3Ingestion {
 }
 
 type S3IngestionConfiguration struct {
-	// logstore
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// myLogstore
-	Logstore *string                         `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Source   *S3IngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The source.
+	Source *S3IngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s S3IngestionConfiguration) String() string {
@@ -5362,7 +5632,7 @@ func (s *S3IngestionConfiguration) SetSource(v *S3IngestionConfigurationSource) 
 
 type S3IngestionConfigurationSource struct {
 	AdvancedParameters map[string]interface{} `json:"advancedParameters,omitempty" xml:"advancedParameters,omitempty"`
-	// aws access key
+	// Amazon Web Services (AWS) access key ID
 	//
 	// This parameter is required.
 	//
@@ -5370,7 +5640,7 @@ type S3IngestionConfigurationSource struct {
 	//
 	// AKIxxxxxxxxxxYJE
 	AwsAccessKey *string `json:"awsAccessKey,omitempty" xml:"awsAccessKey,omitempty"`
-	// aws access key secret
+	// Amazon Web Services (AWS) secret access key
 	//
 	// This parameter is required.
 	//
@@ -5378,7 +5648,7 @@ type S3IngestionConfigurationSource struct {
 	//
 	// 123xxxxxxxxxxfjf
 	AwsAccessKeySecret *string `json:"awsAccessKeySecret,omitempty" xml:"awsAccessKeySecret,omitempty"`
-	// s3 region
+	// Amazon S3 region
 	//
 	// This parameter is required.
 	//
@@ -5386,96 +5656,139 @@ type S3IngestionConfigurationSource struct {
 	//
 	// ap-northeast-1
 	AwsRegion *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
-	// sqs queue url
+	// Amazon SQS queue URL
 	//
 	// example:
 	//
 	// https://sqs.ap-northeast-1.amazonaws.com/123456788/chifan
 	AwsSQSQueueUrl *string `json:"awsSQSQueueUrl,omitempty" xml:"awsSQSQueueUrl,omitempty"`
+	// Specifies whether to use SQS.
+	//
 	// example:
 	//
 	// false
 	AwsUseSQS *bool `json:"awsUseSQS,omitempty" xml:"awsUseSQS,omitempty"`
-	// s3 bucket
+	// Amazon S3 bucket name
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// s3bucket
-	Bucket             *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint for the CloudFront distribution.
+	//
+	// example:
+	//
+	// dtfsb7voqy76q.cloudfront.net
 	CloudFrontEndpoint *string `json:"cloudFrontEndpoint,omitempty" xml:"cloudFrontEndpoint,omitempty"`
-	CloudFrontToken    *string `json:"cloudFrontToken,omitempty" xml:"cloudFrontToken,omitempty"`
+	// The authentication token for accessing the CloudFront endpoint.
+	//
+	// example:
+	//
+	// @test-s3-access/ABS
+	CloudFrontToken *string `json:"cloudFrontToken,omitempty" xml:"cloudFrontToken,omitempty"`
+	// Compression codec. Valid values: none, snappy, gzip
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// none
 	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
+	// Character encoding
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTF-8
 	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// Include only files modified before this Unix timestamp
+	//
 	// example:
 	//
 	// 1714360481
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// s3 endpoint
+	// Amazon S3 endpoint
 	//
 	// example:
 	//
 	// s3.us-east-1.amazonaws.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// Format
+	//
 	// This parameter is required.
 	Format map[string]interface{} `json:"format,omitempty" xml:"format,omitempty"`
+	// Polling interval for new files
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30m
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// Regular expression to filter file paths
+	//
 	// example:
 	//
 	// .*
 	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
+	// Prefix to filter file paths
+	//
 	// example:
 	//
 	// prefix
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// Ingest processor ID
+	//
 	// example:
 	//
 	// ingest-processor-1756802123-953901
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// Include only files modified after this Unix timestamp
+	//
 	// example:
 	//
 	// 1714274081
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Enable context browsing
+	//
 	// example:
 	//
 	// false
 	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// Name of the field that contains event timestamps
+	//
 	// example:
 	//
 	// __time__
 	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// Timestamp format in the time field
+	//
 	// example:
 	//
 	// yyyy-MM-dd HH:mm:ss
 	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// Regular expression to extract timestamps from file names or content
+	//
 	// example:
 	//
 	// [0-9]{0,2}\\/[0-9a-zA-Z]+\\/[0-9:,]+
 	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// Time zone for the time field
+	//
 	// example:
 	//
 	// GMT+08:00
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// Use only Amazon SQS to detect new files
+	//
 	// example:
 	//
 	// false
 	UseAwsSQSOnly *bool `json:"useAwsSQSOnly,omitempty" xml:"useAwsSQSOnly,omitempty"`
+	// Specifies whether to access S3 through a CloudFront distribution.
 	UseCloudFront *bool `json:"useCloudFront,omitempty" xml:"useCloudFront,omitempty"`
 }
 
@@ -5621,8 +5934,12 @@ type SavedSearch struct {
 	// The display name of the saved search.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Method
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the Logstore.
+	// The name of the logstore.
 	//
 	// This parameter is required.
 	//
@@ -5638,7 +5955,7 @@ type SavedSearch struct {
 	//
 	// savedsearch-name
 	SavedsearchName *string `json:"savedsearchName,omitempty" xml:"savedsearchName,omitempty"`
-	// The search statement or the analytic statement.
+	// The search statement or analytic statement.
 	//
 	// This parameter is required.
 	//
@@ -5646,11 +5963,11 @@ type SavedSearch struct {
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	SearchQuery *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
-	// The topic of the log. Default value: empty string ("").
+	// The topic of the log. The default value is an empty string ("").
 	//
 	// example:
 	//
-	// topic
+	// topic-test
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -5694,7 +6011,7 @@ type Schedule struct {
 	//
 	// 0/5 	- 	- 	- *
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The number of seconds for which the scheduled job is delayed.
+	// The delay before a scheduled task is executed, in seconds (s).
 	//
 	// example:
 	//
@@ -5704,27 +6021,27 @@ type Schedule struct {
 	//
 	// example:
 	//
-	// 1m/1h
+	// 60s
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	// Specifies whether to run the scheduled job immediately.
+	// Specifies whether to execute the scheduled task immediately.
 	//
 	// example:
 	//
 	// false
 	RunImmediately *bool `json:"runImmediately,omitempty" xml:"runImmediately,omitempty"`
-	// The time zone for the cron expression. This parameter is empty by default, which indicates that the time zone is UTC+8.
+	// The time zone of the cron expression. If this parameter is left empty, the default time zone UTC+8 is used.
 	//
 	// example:
 	//
-	// "+0800"
+	// +0800
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-	// The scheduling type.
+	// schedule type
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Cron
+	// FixedRate
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -6379,9 +6696,13 @@ type StoreViewStore struct {
 	//
 	// ali-test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The query statement that contains filter conditions.
+	// The query filter statement.
+	//
+	// example:
+	//
+	// job: IT | select name, age, gender from log
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The name of the Logstore or Metricstore.
+	// The name of the LogStore or MetricStore.
 	//
 	// This parameter is required.
 	//
@@ -6415,25 +6736,34 @@ func (s *StoreViewStore) SetStoreName(v string) *StoreViewStore {
 }
 
 type SubmitAsyncSqlParams struct {
+	// Extensions.
 	Extensions *SubmitAsyncSqlParamsExtensions `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Struct"`
+	// The start of the query time range. This time is the log time specified when the log was written. The time range defined by the from and to parameters is left-inclusive and right-exclusive. This means the time range includes the start time but excludes the end time. If the from and to values are the same, the time range is invalid and the function returns an error. The value is a UNIX timestamp in seconds since 00:00:00 UTC on January 1, 1970.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1627268100
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// The name of the logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The SQL statement to execute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job: IT | select name, age, gender from log
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The end of the query time range. This time is the log time specified when the log was written. The time range defined by the from and to parameters is left-inclusive and right-exclusive. This means the time range includes the start time but excludes the end time. If the from and to values are the same, the time range is invalid and the function returns an error. The value is a UNIX timestamp in seconds since 00:00:00 UTC on January 1, 1970.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6476,10 +6806,14 @@ func (s *SubmitAsyncSqlParams) SetTo(v int32) *SubmitAsyncSqlParams {
 }
 
 type SubmitAsyncSqlParamsExtensions struct {
+	// The maximum running time for the request in milliseconds. Maximum value: 600,000 (10 minutes). Default value: 600,000.
+	//
 	// example:
 	//
 	// 30000
 	MaxRunTime *int64 `json:"maxRunTime,omitempty" xml:"maxRunTime,omitempty"`
+	// Specifies whether to enable enhanced SQL. The default value is false.
+	//
 	// example:
 	//
 	// true
@@ -6765,16 +7099,28 @@ func (s *Chart) SetType(v string) *Chart {
 }
 
 type Dashboard struct {
+	// The properties of the dashboard.
 	Attribute map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// The charts in the dashboard.
+	//
 	// This parameter is required.
 	Charts []*Chart `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
+	// The internal display name of the dashboard.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the dashboard.
+	//
+	// example:
+	//
+	// this is a dashboard
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the dashboard.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6867,30 +7213,32 @@ func (s *ExternalStore) SetStoreType(v string) *ExternalStore {
 }
 
 type Index struct {
-	// The configurations of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify at least one of the following parameters: line and keys.
+	// The field index configuration. The key is the field name and the value is the index configuration for the field. You must specify either this parameter or the \\`line\\` parameter.
 	Keys map[string]*IndexKey `json:"keys,omitempty" xml:"keys,omitempty"`
-	// The configurations of full-text indexes. You must specify at least one of the following parameters: line and keys.
+	// The full-text index configuration. You must specify either this parameter or the \\`keys\\` parameter.
 	Line *IndexLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	// Specifies whether to enable the LogReduce feature. After you enable the LogReduce feature, either the whitelist or blacklist takes effect. Valid values:
+	// Specifies whether to enable log clustering. If enabled, either the whitelist or the blacklist can be active, but not both.
 	//
-	// 	- true
+	// - true: Enable log clustering.
 	//
-	// 	- false (default)
+	// - false (default): Do not enable log clustering.
 	//
 	// example:
 	//
 	// true
 	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	// The blacklist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
+	// The blacklist of fields for log clustering. This parameter is valid only when log clustering is enabled.
 	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	// The whitelist of fields that are used to cluster logs. This parameter takes effect only when the LogReduce feature is enabled.
+	// The whitelist of fields for log clustering. This parameter is valid only when log clustering is enabled.
 	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	// The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of this parameter. Valid values: 64 to 16384.
+	// The default maximum length of a field value in Simple Log Service is 2,048 bytes (2 KB). To change this limit, set the maximum length for a text field. The value must be between 64 and 16,384 bytes.
 	//
 	// example:
 	//
 	// 2048
 	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	// Specifies whether to enable the scan index.
+	//
 	// example:
 	//
 	// false
@@ -6941,31 +7289,31 @@ func (s *Index) SetScanIndex(v bool) *Index {
 }
 
 type IndexLine struct {
-	// Specifies whether to enable case sensitivity. Valid values:
+	// Specifies whether the index is case-sensitive.
 	//
-	// 	- true
+	// - true: The index is case-sensitive.
 	//
-	// 	- false (default)
+	// - false (default): The index is not case-sensitive.
 	//
 	// example:
 	//
 	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// Specifies whether the field contains Chinese characters. Valid values:
+	// Specifies whether the logs contain Chinese characters.
 	//
-	// 	- true
+	// - true: The logs contain Chinese characters.
 	//
-	// 	- false (default)
+	// - false (default): The logs do not contain Chinese characters.
 	//
 	// example:
 	//
 	// false
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// The excluded fields. You cannot specify both include_keys and exclude_keys.
+	// The list of fields to exclude from the full-text index. This parameter cannot be specified at the same time as \\`include_keys\\`.
 	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	// The included fields. You cannot specify both include_keys and exclude_keys.
+	// The list of fields to include in the full-text index. This parameter cannot be specified at the same time as \\`exclude_keys\\`.
 	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	// The delimiters. You can specify a delimiter to delimit the content of a field value.
+	// The list of delimiters for tokenization. This parameter specifies how the field is tokenized.
 	//
 	// This parameter is required.
 	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
@@ -7091,57 +7439,58 @@ func (s *LoggingLoggingDetails) SetType(v string) *LoggingLoggingDetails {
 }
 
 type Logstore struct {
-	// Specifies whether to record public IP addresses. Default value: false. Valid values:
+	// Specifies whether to include the client\\"s public IP address in the log data. The default is false.
 	//
-	// 	- true
+	// - true: Records the public IP address.
 	//
-	// 	- false
+	// - false: Does not record the public IP address.
 	//
 	// example:
 	//
 	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to enable automatic sharding. Valid values:
+	// Specifies whether to enable auto split.
 	//
-	// 	- true
+	// - true: Enables auto split.
 	//
-	// 	- false
+	// - false: Disables auto split.
 	//
 	// example:
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// The time at which the Logstore was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation time of the Logstore, specified as a UNIX timestamp (the number of seconds since January 1, 1970, 00:00:00 UTC).
 	//
 	// example:
 	//
 	// 1453949705
-	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+	CreateTime   *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	EnableModify *bool  `json:"enableModify,omitempty" xml:"enableModify,omitempty"`
+	// Specifies whether to enable WebTracking. The default value is false.
 	//
-	// 	- true
+	// - true: Enables WebTracking.
 	//
-	// 	- false
+	// - false: Disables WebTracking.
 	//
 	// example:
 	//
 	// false
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	// The configuration of data encryption.
+	// The data encryption configuration.
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: days.
+	// The number of days to retain data in the hot storage tier. The minimum value is 30.
 	//
 	// example:
 	//
 	// 60
 	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// The retention period of data in the Infrequent Access (IA) storage tier of the Logstore.
+	// The number of days to retain data in the infrequent access storage tier.
 	//
 	// example:
 	//
 	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
-	// The time at which the Logstore was last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time the Logstore was last modified, specified as a UNIX timestamp (the number of seconds since January 1, 1970, 00:00:00 UTC).
 	//
 	// example:
 	//
@@ -7155,31 +7504,32 @@ type Logstore struct {
 	//
 	// my-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+	// The maximum number of shards that an auto split can create. Valid values: 1 to 64.
 	//
 	// example:
 	//
 	// 6
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
+	// Log Service provides two types of Logstores: Standard and Query.
 	//
-	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// - **Standard**: Supports the full suite of Log Service data analysis features. This mode is ideal for real-time monitoring, interactive analysis, and building complete observability solutions.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+	// - **Query**: Optimized for high-performance queries with indexing traffic costs that are approximately half those of the Standard mode. This mode does not support SQL analysis and is best for use cases involving large data volumes and long retention periods, where complex log analysis is not a requirement.
 	//
 	// example:
 	//
 	// standard
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The ingest processor ID.
+	// The IngestProcessor ID.
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
-	// The type of the service to which the logs belong.
+	// The product type of the logs.
 	//
 	// example:
 	//
 	// aliyun
-	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	// The number of shards.
+	ProductType     *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The number of shards in the Logstore.
 	//
 	// This parameter is required.
 	//
@@ -7188,17 +7538,17 @@ type Logstore struct {
 	// 2
 	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
-	// The type of the data that you want to query. Valid values:
+	// The type of log data. Valid values:
 	//
-	// 	- Metrics: metric data.
+	// - Metrics: The Logstore is optimized for time-series storage.
 	//
-	// 	- None: non-metric data.
+	// - None: The Logstore uses standard storage for logs.
 	//
 	// example:
 	//
 	// Metrics
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The log retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
+	// The data retention period in days. Valid values: 1 to 3,650. A value of 3,650 indicates permanent storage.
 	//
 	// This parameter is required.
 	//
@@ -7228,6 +7578,11 @@ func (s *Logstore) SetAutoSplit(v bool) *Logstore {
 
 func (s *Logstore) SetCreateTime(v int32) *Logstore {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *Logstore) SetEnableModify(v bool) *Logstore {
+	s.EnableModify = &v
 	return s
 }
 
@@ -7281,6 +7636,11 @@ func (s *Logstore) SetProductType(v string) *Logstore {
 	return s
 }
 
+func (s *Logstore) SetResourceGroupId(v string) *Logstore {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *Logstore) SetShardCount(v int32) *Logstore {
 	s.ShardCount = &v
 	return s
@@ -7302,23 +7662,36 @@ func (s *Logstore) SetTtl(v int32) *Logstore {
 }
 
 type Machine struct {
+	// The host ID of the machine.
+	//
 	// example:
 	//
 	// test
 	HostId *string `json:"host-id,omitempty" xml:"host-id,omitempty"`
+	// The IP address of the machine.
+	//
 	// example:
 	//
 	// 192.168.xx.x
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The time of the last heartbeat. The value is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1447182247
 	LastHeartbeatTime *int64 `json:"lastHeartbeatTime,omitempty" xml:"lastHeartbeatTime,omitempty"`
+	// The unique identifier of the machine.
+	//
 	// example:
 	//
-	// 3B70F4F1-80F7-46C4-A6C1-100***CEE647
+	// 3B70F4F1-80F7-46C4-A6C1-100****EE647
 	MachineUniqueid *string `json:"machine-uniqueid,omitempty" xml:"machine-uniqueid,omitempty"`
-	UserdefinedId   *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
+	// The custom identifier of the machine. This parameter is valid only when the identity type of the machine group is set to custom.
+	//
+	// example:
+	//
+	// 无
+	UserdefinedId *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
 }
 
 func (s Machine) String() string {
@@ -7355,23 +7728,36 @@ func (s *Machine) SetUserdefinedId(v string) *Machine {
 }
 
 type MachineGroup struct {
+	// The properties of the machine group.
 	GroupAttribute *MachineGroupGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	// The name of the machine group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// machineGroup-1
+	// machineGroup-test
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The type of the machine group. This parameter is currently an empty string.
+	//
 	// example:
 	//
 	// “”
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	// The machine identity type.
+	//
+	// - ip: The machine group is identified by IP addresses.
+	//
+	// - userdefined: The machine group is identified by custom identifiers.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ip
 	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	// The list of machines.
+	//
 	// This parameter is required.
 	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
 }
@@ -7410,10 +7796,14 @@ func (s *MachineGroup) SetMachineList(v []*string) *MachineGroup {
 }
 
 type MachineGroupGroupAttribute struct {
+	// The identifier of the external management system that the machine group depends on.
+	//
 	// example:
 	//
 	// testgroup
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
+	// The topic of the machine group.
+	//
 	// example:
 	//
 	// testtopic
@@ -7439,7 +7829,7 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 }
 
 type Project struct {
-	// The time at which the project was created.
+	// The time when the project was created.
 	//
 	// example:
 	//
@@ -7459,19 +7849,19 @@ type Project struct {
 	//
 	// Description of my-project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The time at which the project was last modified.
+	// The time when the project was last modified.
 	//
 	// example:
 	//
 	// 2022-04-18 13:30:19
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the project.
+	// The Alibaba Cloud account that owns the project.
 	//
 	// example:
 	//
 	// ""
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The name of the project. The name is included in the value of the Host header. The name must be unique in a region. You cannot change the name after the project is created.
+	// The name of the project. The name is a part of the endpoint. The project name must be unique in a region of Alibaba Cloud. After a project is created, its name cannot be changed.
 	//
 	// This parameter is required.
 	//
@@ -7479,13 +7869,15 @@ type Project struct {
 	//
 	// ali-test-project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// project quota
+	// The quota of the project.
 	Quota map[string]interface{} `json:"quota,omitempty" xml:"quota,omitempty"`
+	// Indicates whether the recycle bin is enabled.
+	//
 	// example:
 	//
 	// false
 	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
-	// The region to which the project belongs.
+	// The region where the project resides.
 	//
 	// example:
 	//
@@ -7497,11 +7889,11 @@ type Project struct {
 	//
 	// rg-acf******sq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The status of the project. Valid values:
+	// The status of the project.
 	//
-	// 	- Normal
+	// - Normal: The project is in the normal state.
 	//
-	// 	- Disable
+	// - Disable: The project is disabled.
 	//
 	// example:
 	//
@@ -7787,8 +8179,10 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 }
 
 type CallAiToolsRequest struct {
-	Params   map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	RegionId *string            `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Tool parameters.
+	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
+	// The target region.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// This parameter is required.
 	ToolName *string `json:"toolName,omitempty" xml:"toolName,omitempty"`
 }
@@ -7852,7 +8246,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// example:
 	//
-	// rg-aek2i7nhaxifxey
+	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The ID of the resource.
 	//
@@ -7917,7 +8311,7 @@ func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGrou
 }
 
 type ConsumerGroupHeartBeatRequest struct {
-	// The IDs of shards whose data is being consumed.
+	// The list of shard IDs that are being consumed.
 	//
 	// This parameter is required.
 	Body []*int32 `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
@@ -8005,13 +8399,13 @@ type ConsumerGroupUpdateCheckPointRequest struct {
 	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
 	// Specifies whether to enable forceful updates. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
-	// False
+	// true
 	ForceSuccess *bool `json:"forceSuccess,omitempty" xml:"forceSuccess,omitempty"`
 }
 
@@ -8067,19 +8461,25 @@ func (s *ConsumerGroupUpdateCheckPointResponse) SetStatusCode(v int32) *Consumer
 }
 
 type CreateAgentInstanceConfigRequest struct {
+	// The process that the configuration applies to.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The default configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The type of the process-level configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apm_trace
-	ConfigType  *string                           `json:"configType,omitempty" xml:"configType,omitempty"`
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// The canary release environment.
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
 
@@ -8276,7 +8676,7 @@ func (s *CreateAnnotationDataSetResponse) SetStatusCode(v int32) *CreateAnnotati
 }
 
 type CreateAnnotationLabelRequest struct {
-	// The data structure of the request.
+	// The struct of the annotation label table.
 	Body *MLLabelParam `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -8435,15 +8835,15 @@ type CreateConsumerGroupRequest struct {
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
 	// Specifies whether to consume data in sequence. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	//     	- In a shard, data is consumed in ascending order based on the value of the \\*\\*__tag__:__receive_time__\\*\\	- field.
+	//   - In a shard, data is consumed in ascending order based on the value of the \\*\\*__tag__:__receive_time__\\*\\	- field.
 	//
-	//     	- If a shard is split, data in the original shard is consumed first. Then, data in the new shards is consumed at the same time.
+	//   - If a shard is split, data in the original shard is consumed first. Then, data in the new shards is consumed at the same time.
 	//
-	//     	- If shards are merged, data in the original shards is consumed first. Then, data in the new shard is consumed.
+	//   - If shards are merged, data in the original shards is consumed first. Then, data in the new shard is consumed.
 	//
-	// 	- false Data in all shards is consumed at the same time. If a new shard is generated after a shard is split or after shards are merged, data in the new shard is immediately consumed.
+	// - false Data in all shards is consumed at the same time. If a new shard is generated after a shard is split or after shards are merged, data in the new shard is immediately consumed.
 	//
 	// This parameter is required.
 	//
@@ -8598,13 +8998,17 @@ func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 }
 
 type CreateDownloadJobRequest struct {
-	// 下载配置
+	// The download configuration.
 	//
 	// This parameter is required.
 	Configuration *CreateDownloadJobRequestConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// 任务描述
+	// The description of the log download task.
+	//
+	// example:
+	//
+	// Log download task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 任务显示名称
+	// The display name.
 	//
 	// This parameter is required.
 	//
@@ -8612,7 +9016,15 @@ type CreateDownloadJobRequest struct {
 	//
 	// download-123456789
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The name of the job. The name must meet the following requirements:
+	//
+	// The job name must be unique within a project.
+	//
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - It must start and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -8651,13 +9063,15 @@ func (s *CreateDownloadJobRequest) SetName(v string) *CreateDownloadJobRequest {
 }
 
 type CreateDownloadJobRequestConfiguration struct {
+	// Specifies whether to allow the download of incomplete results. Valid values: \\`true\\` and \\`false\\`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	AllowInComplete *bool `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
-	// 起点时间戳（精确到秒）
+	// The start time. This is a UNIX timestamp that is accurate to the second.
 	//
 	// This parameter is required.
 	//
@@ -8665,7 +9079,7 @@ type CreateDownloadJobRequestConfiguration struct {
 	//
 	// 1722406260
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// 源logstore
+	// The source Logstore.
 	//
 	// This parameter is required.
 	//
@@ -8673,13 +9087,13 @@ type CreateDownloadJobRequestConfiguration struct {
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 是否启用powerSql
+	// Specifies whether to enable PowerSQL. Valid values: \\`true\\` and \\`false\\`.
 	//
 	// example:
 	//
 	// true
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// 查询语句
+	// The search statement.
 	//
 	// This parameter is required.
 	//
@@ -8687,11 +9101,11 @@ type CreateDownloadJobRequestConfiguration struct {
 	//
 	// 	- | select *
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 导出配置
+	// The export configuration.
 	//
 	// This parameter is required.
 	Sink *CreateDownloadJobRequestConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// 结束时间戳（精确到秒）
+	// The end time. This is a UNIX timestamp that is accurate to the second.
 	//
 	// This parameter is required.
 	//
@@ -8745,13 +9159,13 @@ func (s *CreateDownloadJobRequestConfiguration) SetToTime(v int64) *CreateDownlo
 }
 
 type CreateDownloadJobRequestConfigurationSink struct {
-	// 对象存储桶
+	// The destination Object Storage Service (OSS) bucket.
 	//
 	// example:
 	//
 	// oss-test-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// 压缩格式
+	// The compression format of the file. Valid values: \\`zstd\\`, \\`lz4\\`, \\`gzip\\`, and \\`none\\`.
 	//
 	// This parameter is required.
 	//
@@ -8759,7 +9173,7 @@ type CreateDownloadJobRequestConfigurationSink struct {
 	//
 	// none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// 下载文件格式
+	// The format of the downloaded file. Valid values: \\`csv\\` and \\`json\\`.
 	//
 	// This parameter is required.
 	//
@@ -8767,16 +9181,20 @@ type CreateDownloadJobRequestConfigurationSink struct {
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The prefix of the path in the destination OSS bucket.
+	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 下载使用roleArn
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role to use for the download.
 	//
 	// example:
 	//
 	// acs:ram::0123456789:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The type of the destination. Set the value to \\`AliyunOSS\\`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8847,17 +9265,17 @@ func (s *CreateDownloadJobResponse) SetStatusCode(v int32) *CreateDownloadJobRes
 }
 
 type CreateETLRequest struct {
-	// The detailed configuration of the job.
+	// The detailed configuration of the data transformation job.
 	//
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The description of the job.
+	// The description of the data transformation job.
 	//
 	// example:
 	//
 	// this is ETL
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the job.
+	// The display name of the data transformation job.
 	//
 	// This parameter is required.
 	//
@@ -8865,7 +9283,15 @@ type CreateETLRequest struct {
 	//
 	// sls-test-etl
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the job (unique within a project).
+	// The job name. The naming convention is as follows:
+	//
+	// The job name must be unique within the project.
+	//
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - The name must start and end with a lowercase letter or a digit.
+	//
+	// - The length must be 2 to 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -8927,24 +9353,33 @@ func (s *CreateETLResponse) SetStatusCode(v int32) *CreateETLResponse {
 }
 
 type CreateElasticsearchIngestionRequest struct {
+	// The configuration for the ES or OpenSearch import job.
+	//
 	// This parameter is required.
 	Configuration *ESIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The description of the job.
+	//
 	// example:
 	//
 	// es ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// es ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The unique identifier of the ES or OpenSearch import job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-elasticsearch- 123456-123
-	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The schedule structure.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
@@ -9005,18 +9440,32 @@ func (s *CreateElasticsearchIngestionResponse) SetStatusCode(v int32) *CreateEla
 }
 
 type CreateGCSIngestionRequest struct {
+	// The ingestion configuration.
+	//
 	// This parameter is required.
 	Configuration *GCSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The task description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The job name. Must be unique within the same project. Naming rules:
+	//
+	// - Can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - Must start and end with a lowercase letter or digit.
+	//
+	// - Must be 2 to 64 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9124,47 +9573,94 @@ func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 }
 
 type CreateLogStoreRequest struct {
-	// Specifies whether to record the **public IP address*	- and the **log receiving time**. Default value: false. Valid values:
+	// Specifies whether to record the source **public IP address*	- and the **server reception time**. Default value: false.
 	//
-	// 	- true: records the public IP address and the log receiving time. If you set this parameter to true, Simple Log Service automatically adds the public IP address of the device from which the log is collected and the time when Simple Log Service receives the log to the Tag field of the collected log.
+	// - true: Log Service automatically appends the public IP address of the source device and the server reception time to the Tag field of logs.
 	//
-	// 	- false: does not record the public IP address or log receiving time.
+	// - false: Log Service does not append the source public IP address or the server reception time.
 	//
 	// example:
 	//
 	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to enable automatic sharding. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable automatic shard splitting. If you set this parameter to true, Log Service automatically splits a shard to increase write throughput when the write traffic to the shard continuously exceeds the service limit. If you enable automatic shard splitting, you must also specify `maxSplitShard`.
 	//
 	// example:
 	//
 	// true
-	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	AutoSplit    *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	EnableModify *bool `json:"enableModify,omitempty" xml:"enableModify,omitempty"`
+	// Specifies whether to enable WebTracking. The default value is false. This feature lets you collect and analyze user behavior data from browsers or mini programs, such as page views, purchase history, and dwell time.
 	//
 	// example:
 	//
 	// false
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	// The data structure of the encryption configuration. The following parameters are included: `enable`, `encrypt_type`, and `user_cmk_info`. For more information, see [EncryptConf](https://help.aliyun.com/document_detail/409461.html).
-	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The data retention period for the hot storage tier. Unit: days. Minimum value: 7. The value of this parameter cannot exceed the value of ttl. If you set this parameter to -1, all data is stored in the hot storage tier.
+	// The encryption configuration. This data structure includes the `enable`, `encrypt_type`, and `user_cmk_info` parameters. For more information, see [EncryptConf](https://help.aliyun.com/document_detail/409461.html).
 	//
-	// After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
+	// Example 1 (Enable default encryption):
+	//
+	// ```
+	//
+	// {
+	//
+	//     "enable": true,
+	//
+	//     "encrypt_conf": "default"
+	//
+	// }
+	//
+	// ```
+	//
+	// Example 2 (Enable BYOK encryption):
+	//
+	// ```
+	//
+	// {
+	//
+	//     "enable": true,
+	//
+	//     "encrypt_conf": "default",
+	//
+	//     "user_cmk_info": {
+	//
+	//         "cmk_key_id": "xxxxx",
+	//
+	//         "arn": "acs:ram::112340000000:role/rolename",
+	//
+	//         "region": "cn-hangzhou"
+	//
+	//     }
+	//
+	// }
+	//
+	// ```
+	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
+	// The retention period of data in the hot storage tier of the Logstore, in days. The value must be an integer from 7 to the value of `ttl`. If you do not specify this parameter, data is stored in the hot storage tier for the entire data retention period specified by `ttl`.
+	//
+	// After the hot storage retention period expires, data is moved to the Infrequent Access (IA) storage tier. To enable IA storage, you must set the hot storage retention period to at least 7 days. For more information, see [Smart Tiered Storage](https://help.aliyun.com/document_detail/308645.html).
+	//
+	// Examples:
+	//
+	// - Scenario 1 (Store data in the hot storage tier for 30 days): `{"ttl": 30}` or `{"ttl": 30, "hot_ttl": 30}`
+	//
+	// - Scenario 2 (Store data in the hot storage tier for 7 days and in the IA storage tier for 23 days): `{"ttl": 30, "hot_ttl": 7}`
 	//
 	// example:
 	//
 	// 60
 	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// The data retention period for the IA storage tier. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
+	// The retention period for Infrequent Access (IA) storage, in days. While this parameter has no minimum value, data must remain in the IA storage tier for at least 30 days before it can be moved to archive storage.
+	//
+	// If the total retention period (`ttl`) is longer than the sum of the hot storage period (`hot_ttl`) and the IA storage period (`infrequentAccessTTL`), the remaining time is the archive storage period.
+	//
+	// Examples:
+	//
+	// - Scenario 1 (Store data in the hot storage tier for 7 days and in the IA storage tier for 23 days): `{"ttl": 30, "hot_ttl": 7}`
+	//
+	// - Scenario 2 (Store data in the hot storage tier for 7 days, in the IA storage tier for 30 days, and in the archive storage tier for 60 days): `{"ttl": 97, "hot_ttl": 7, "infrequentAccessTTL": 30}`
+	//
+	// - Scenario 3 (Store data in the hot storage tier for 60 days and in the archive storage tier for 60 days, with the IA storage period being 0 days): `{"ttl": 120, "hot_ttl": 60, "infrequentAccessTTL": 0}`
 	//
 	// example:
 	//
@@ -9172,13 +9668,13 @@ type CreateLogStoreRequest struct {
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
 	// The name of the Logstore. The name must meet the following requirements:
 	//
-	// 	- The name must be unique in a project.
+	// - The name must be unique within a project.
 	//
-	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- The name must start and end with a lowercase letter or digit.
+	// - The name must start and end with a lowercase letter or a digit.
 	//
-	// 	- The name must be 3 to 63 characters in length.
+	// - The name must be 2 to 63 characters long.
 	//
 	// This parameter is required.
 	//
@@ -9186,49 +9682,59 @@ type CreateLogStoreRequest struct {
 	//
 	// my-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
+	// The maximum number of shards after an automatic split. The value must be an integer from 1 to 256.
 	//
-	// >  If you set autoSplit to true, you must specify this parameter.
+	// > This parameter is required if you set `autoSplit` to true.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
+	// Log Service provides two types of Logstores: standard and query.
 	//
-	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can use this type of Logstore to build a comprehensive observability system.
+	// - **standard**: Supports end-to-end data analytics. This mode is suitable for scenarios such as real-time monitoring, interactive analysis, and building a complete observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance query operations. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the data retention period is long, or log analysis is not required. Data retention periods of weeks or months are considered long.
+	// - **query**: Supports high-performance queries. The index traffic cost is approximately half that of the standard mode, but SQL analysis is not supported. This mode is suitable for scenarios that involve large volumes of data, long retention periods such as weeks or months, and do not require SQL-based analysis.
 	//
 	// example:
 	//
 	// standard
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// IngestProcessor ID
-	ProcessorId     *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// The ID of the IngestProcessor.
+	//
+	// example:
+	//
+	// processor-nginx-parser-001
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// The ID of the resource group to which the Logstore belongs.
+	//
+	// example:
+	//
+	// rg-xxxxxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The number of shards.
 	//
-	// >  You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+	// > You cannot update the shard count with this operation. To do so, call the SplitShard or MergeShards operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
-	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The configuration for hash-based writes. When you write data, logs are stored in a shard that is selected based on the configured hash-based sharding policy. Before you configure this parameter, make sure that the hash ranges of the shards are evenly distributed. Improper configuration may affect write performance. Configure this parameter with caution.
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
-	// The type of the observable data. Valid values:
+	// The type of observable data. Default value: log data. Valid values:
 	//
-	// 	- **None*	- (default): log data
+	// - **None**: log data. This is the default value.
 	//
-	// 	- **Metrics**: metric data
+	// - **Metrics**: Metrics data.
 	//
 	// example:
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The data retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, data is permanently stored.
+	// The data retention period in days. Valid values: 1 to 3,650. If you set this parameter to 3,650, data is stored permanently.
 	//
 	// This parameter is required.
 	//
@@ -9253,6 +9759,11 @@ func (s *CreateLogStoreRequest) SetAppendMeta(v bool) *CreateLogStoreRequest {
 
 func (s *CreateLogStoreRequest) SetAutoSplit(v bool) *CreateLogStoreRequest {
 	s.AutoSplit = &v
+	return s
+}
+
+func (s *CreateLogStoreRequest) SetEnableModify(v bool) *CreateLogStoreRequest {
+	s.EnableModify = &v
 	return s
 }
 
@@ -9388,21 +9899,21 @@ type CreateLoggingRequestLoggingDetails struct {
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// The type of service logs. Valid values:
 	//
-	// 	- consumergroup_log: the consumption delay logs of consumer groups.
+	// - consumergroup_log: the consumption delay logs of consumer groups.
 	//
-	// 	- logtail_alarm: the alert logs of Logtail.
+	// - logtail_alarm: the alert logs of Logtail.
 	//
-	// 	- operation_log: the operation logs.
+	// - operation_log: the operation logs.
 	//
-	// 	- logtail_profile: the collection logs of Logtail.
+	// - logtail_profile: the collection logs of Logtail.
 	//
-	// 	- metering: the metering logs.
+	// - metering: the metering logs.
 	//
-	// 	- logtail_status: the status logs of Logtail.
+	// - logtail_status: the status logs of Logtail.
 	//
-	// 	- scheduledsqlalert: the run logs of Scheduled SQL jobs.
+	// - scheduledsqlalert: the run logs of Scheduled SQL jobs.
 	//
-	// 	- etl_alert: the run logs of data transformation jobs.
+	// - etl_alert: the run logs of data transformation jobs.
 	//
 	// This parameter is required.
 	//
@@ -9454,19 +9965,23 @@ func (s *CreateLoggingResponse) SetStatusCode(v int32) *CreateLoggingResponse {
 }
 
 type CreateLogtailPipelineConfigRequest struct {
-	// The aggregation plug-ins.
-	//
-	// >  This parameter takes effect only when extended plug-ins are used. You can use only one aggregation plug-in.
+	// The list of aggregation plugins. 	Notice: This parameter is valid only when you use extension processing plugins. You can use a maximum of one aggregation plugin.
 	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
 	// The name of the configuration.
 	//
-	// >  The name of the configuration must be unique in the project to which the configuration belongs. After the configuration is created, you cannot change the name of the configuration. The name must meet the following requirements:
+	// > The configuration name must be unique within the project and cannot be modified after the configuration is created. The name must follow these rules:
 	//
-	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// >
 	//
-	// 	- The name must start and end with a lowercase letter or a digit.
+	// > - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- The name must be 2 to 128 characters in length.
+	// >
+	//
+	// > - It must start and end with a lowercase letter or a digit.
+	//
+	// >
+	//
+	// > - It must be 2 to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -9474,43 +9989,48 @@ type CreateLogtailPipelineConfigRequest struct {
 	//
 	// test-config
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// The output plug-ins.
-	//
-	// >  You can configure only one output plug-in.
+	// The list of output plugins. 	Notice: Currently, you can add only one flusher_sls plugin.
 	//
 	// This parameter is required.
 	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
-	// The global settings.
+	// The global configuration.
 	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
-	// The input plug-ins.
-	//
-	// >  You can configure only one input plug-in.
+	// The list of input plugins. 	Notice: Currently, you can configure only one input plugin.
 	//
 	// This parameter is required.
 	Inputs []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
-	// The sample log. You can specify multiple sample logs.
+	// A sample log. Multiple log entries are supported.
 	//
 	// example:
 	//
 	// 2022-06-14 11:13:29.796 | DEBUG    | __main__:<module>:1 - hello world
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	// The processing plug-ins.
+	// The list of processing plugins.
 	//
-	// >  Logtail plug-ins for data processing are classified into native plug-ins and extended plug-ins. For more information, see [Overview of Logtail plug-ins for data processing](https://help.aliyun.com/document_detail/64957.html).
+	// > Processing plugins are classified into native processing plugins and extension processing plugins. For more information, see [Processing plugins](https://help.aliyun.com/document_detail/64957.html).
+	//
+	// 	Notice:
+	//
+	// > - Native plugins can be used only to collect text logs.
 	//
 	// >
 	//
-	// 	- You can use native plug-ins only to collect text logs.
+	// > - You cannot add native plugins and extension plugins at the same time.
 	//
-	// 	- You cannot add native plug-ins and extended plug-ins at a time.
+	// >
 	//
-	// 	- When you add native plug-ins, take note of the following items:
+	// > - When you use native plugins, the following requirements must be met:
 	//
-	//     	- You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
+	// >
 	//
-	//     	- After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
+	// >   - The first processing plugin must be a regular expression-based parsing plugin, a separator-based parsing plugin, a JSON-based parsing plugin, an NGINX-based parsing plugin, an Apache-based parsing plugin, or an IIS-based parsing plugin.
+	//
+	// >
+	//
+	// >   - After the first processing plugin, you can add only one time parsing processing plugin, one filter plugin, and multiple data masking plugins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	Task       map[string]interface{}   `json:"task,omitempty" xml:"task,omitempty"`
+	// The task configuration.
+	Task map[string]interface{} `json:"task,omitempty" xml:"task,omitempty"`
 }
 
 func (s CreateLogtailPipelineConfigRequest) String() string {
@@ -9589,13 +10109,13 @@ type CreateMachineGroupRequest struct {
 	GroupAttribute *CreateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
 	// The name of the machine group. The name must meet the following requirements:
 	//
-	// 	- The name of each machine group in a project must be unique.
+	// - The name of each machine group in a project must be unique.
 	//
-	// 	- It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- It must start and end with a lowercase letter or a digit.
+	// - It must start and end with a lowercase letter or a digit.
 	//
-	// 	- It must be 3 to 128 characters in length.
+	// - It must be 3 to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -9611,9 +10131,9 @@ type CreateMachineGroupRequest struct {
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
 	// The type of the machine group identifier. Valid values:
 	//
-	// 	- ip: The machine group uses IP addresses as identifiers.
+	// - ip: The machine group uses IP addresses as identifiers.
 	//
-	// 	- userdefined: The machine group uses custom identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	//
 	// This parameter is required.
 	//
@@ -9623,9 +10143,9 @@ type CreateMachineGroupRequest struct {
 	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
 	// The identifiers of machine group.
 	//
-	// 	- If you set machineIdentifyType to ip, enter the IP address of the machine.
+	// - If you set machineIdentifyType to ip, enter the IP address of the machine.
 	//
-	// 	- If you set machineIdentifyType to userdefined, enter a custom identifier.
+	// - If you set machineIdentifyType to userdefined, enter a custom identifier.
 	//
 	// This parameter is required.
 	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
@@ -9721,12 +10241,18 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 }
 
 type CreateMaterializedViewRequest struct {
-	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
-	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
-	StartTime       *int32  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Ttl             *int32  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The aggregation interval in minutes. The system creates aggregation tasks based on this interval.
+	AggIntervalMins *int32 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	// The destination Logstore for the aggregated data from the materialized view.
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the materialized view. The name must be unique within the project, 2 to 63 characters long, and contain only lowercase letters, digits, hyphens (-), and underscores (_). It must also start and end with a lowercase letter or a digit.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The query statement that defines the materialized view.
+	OriginalSql *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	// The time when the materialized view starts to aggregate data. Specify the time as a UNIX timestamp in seconds.
+	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time-to-live (TTL) of the data in the materialized view, in days. After this period, the data expires and is automatically deleted.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s CreateMaterializedViewRequest) String() string {
@@ -9796,6 +10322,10 @@ type CreateMaxComputeExportRequest struct {
 	// This parameter is required.
 	Configuration *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the MaxCompute data shipping job.
+	//
+	// example:
+	//
+	// Create a MaxCompute delivery task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MaxCompute data shipping job.
 	//
@@ -9867,34 +10397,55 @@ func (s *CreateMaxComputeExportResponse) SetStatusCode(v int32) *CreateMaxComput
 }
 
 type CreateMetricStoreRequest struct {
+	// Specifies whether to record the public IP address of the client. The default value is false.
+	//
+	// - true: Records the public IP address.
+	//
+	// - false: Does not record the public IP address.
+	//
+	// example:
+	//
+	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to enable automatic sharding.
+	// Specifies whether to enable automatic shard splitting.
 	//
 	// example:
 	//
 	// true
-	AutoSplit           *bool  `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// The period for which data is stored in the hot tier. Unit: days. The value must be at least 7 and cannot be greater than the value of ttl. If you set this parameter to -1, all data is stored in the hot tier for the duration specified by ttl.
+	//
+	// When the hot storage period ends, the data is moved to the IA storage class. For more information, see [Tiered Storage of Hot and Cold Data](https://help.aliyun.com/document_detail/308645.html).
+	//
+	// example:
+	//
+	// 60
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The retention period of data in the IA storage class. Unit: days. The minimum value is 30. After this period, data is moved to Archive Storage.
+	//
+	// example:
+	//
+	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. This parameter is valid only when you set the autoSplit parameter to true.
+	// The maximum number of shards into which a shard can be split. This parameter is valid only if autoSplit is set to true.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of the metric data. Example: prometheus.
+	// The type of the Metricstore. Only prometheus is supported. The default value is prometheus.
 	//
 	// example:
 	//
 	// prometheus
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	// The type of the Metricstore. For example, you can set the parameter to standard to query Standard Metricstores.
+	// The type of the Metricstore. Only standard is supported. The default value is standard.
 	//
 	// example:
 	//
 	// standard
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The name of the Metricstore.
+	// The name of the Metricstore to create.
 	//
 	// This parameter is required.
 	//
@@ -9902,16 +10453,17 @@ type CreateMetricStoreRequest struct {
 	//
 	// my_metric_store
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of shards in the Metricstore.
+	// The number of [shards](https://help.aliyun.com/document_detail/28976.html) for the Metricstore.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
-	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The write hashing configuration.
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
-	// The retention period of the metric data in the Metricstore. Unit: days.
+	// The data retention period of the Metricstore. Unit: days.
 	//
 	// This parameter is required.
 	//
@@ -10008,11 +10560,15 @@ func (s *CreateMetricStoreResponse) SetStatusCode(v int32) *CreateMetricStoreRes
 }
 
 type CreateOSSExportRequest struct {
-	// The configuration details of the job.
+	// The configuration of the job.
 	//
 	// This parameter is required.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the job.
+	//
+	// example:
+	//
+	// Create a Unit OSS delivery task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the job.
 	//
@@ -10020,15 +10576,23 @@ type CreateOSSExportRequest struct {
 	//
 	// example:
 	//
-	// ali-test-oss-job
+	// my-oss-job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The unique identifier of the OSS data shipping job.
+	// The name of the job. The name must meet the following requirements:
+	//
+	// The job name must be unique within the project.
+	//
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - The name must start and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// job-123456789-123456
+	// export-oss-1234567890-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -10084,11 +10648,15 @@ func (s *CreateOSSExportResponse) SetStatusCode(v int32) *CreateOSSExportRespons
 }
 
 type CreateOSSHDFSExportRequest struct {
-	// The configuration details of the job.
+	// The configuration of the job.
 	//
 	// This parameter is required.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the job.
+	//
+	// example:
+	//
+	// Create a Unit OSS-HDFS delivery task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the job.
 	//
@@ -10096,15 +10664,23 @@ type CreateOSSHDFSExportRequest struct {
 	//
 	// example:
 	//
-	// ali-test-oss-hdfs-job
+	// my-oss-hdfs-job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The unique identifier of the OSS data shipping job.
+	// The name of the job. The name must be unique within the project and follow these conventions:
+	//
+	// The job name must be unique within the project.
+	//
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - The name must start and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// job-123456789-123456
+	// export-osshdfs-1234567890-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -10160,17 +10736,33 @@ func (s *CreateOSSHDFSExportResponse) SetStatusCode(v int32) *CreateOSSHDFSExpor
 }
 
 type CreateOSSIngestionRequest struct {
-	// The configuration of the OSS data import job.
+	// The OSS import configuration.
 	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The description of the job.
+	// The job description.
+	//
+	// example:
+	//
+	// Task description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the job.
+	// The display name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS import
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the OSS data import job.
+	// The job name. The naming conventions are as follows:
+	//
+	// The job name must be unique within the project.
+	//
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - The name must start and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -10178,7 +10770,7 @@ type CreateOSSIngestionRequest struct {
 	//
 	// ingest-oss-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
+	// The scheduling configuration. This parameter is optional. To meet specific timing requirements, such as importing data at 8:00 AM every Monday, use a cron expression.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
@@ -10241,9 +10833,9 @@ func (s *CreateOSSIngestionResponse) SetStatusCode(v int32) *CreateOSSIngestionR
 type CreateProjectRequest struct {
 	// The disaster recovery type. Valid values:
 	//
-	// 	- LRS: locally redundant storage
+	// - LRS: locally redundant storage
 	//
-	// 	- ZRS: zone-redundant storage
+	// - ZRS: zone-redundant storage
 	//
 	// example:
 	//
@@ -10259,13 +10851,13 @@ type CreateProjectRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The project name must be unique in a region. You cannot change the name after you create the project. The name must meet the following requirements:
 	//
-	// 	- The name must be globally unique.
+	// - The name must be globally unique.
 	//
-	// 	- The name can contain only lowercase letters, digits, and hyphens (-).
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
 	//
-	// 	- The name must start and end with a lowercase letter or a digit.
+	// - The name must start and end with a lowercase letter or a digit.
 	//
-	// 	- The name must be 3 to 63 characters in length.
+	// - The name must be 3 to 63 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -10277,9 +10869,9 @@ type CreateProjectRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -10350,17 +10942,32 @@ func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
 }
 
 type CreateS3IngestionRequest struct {
+	// The configuration.
 	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The description of the job.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the job. Follow these naming rules:
+	//
+	// Each job in the same project must have a unique name.
+	//
+	// - Use only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - Start and end with a lowercase letter or digit.
+	//
+	// - Be 2 to 64 characters long.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10526,21 +11133,42 @@ func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchRes
 }
 
 type CreateScheduledSQLRequest struct {
+	// The configuration of the job.
+	//
 	// This parameter is required.
 	Configuration *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the job.
+	//
+	// example:
+	//
+	// Create a scheduled SQL task
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ali-test-scheduled-sql
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The job name. The name must be unique within a project.
+	//
+	// The naming convention is as follows:
+	//
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - The name must start and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sql-123456789-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling configuration for the job.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
@@ -10602,7 +11230,7 @@ func (s *CreateScheduledSQLResponse) SetStatusCode(v int32) *CreateScheduledSQLR
 }
 
 type CreateSqlInstanceRequest struct {
-	// The number of compute units (CUs). When you use the Dedicated SQL feature, CUs are used in parallel.
+	// The number of compute units (CUs). CUs are the compute cores that can be used in parallel when Dedicated SQL is running.
 	//
 	// This parameter is required.
 	//
@@ -10610,7 +11238,7 @@ type CreateSqlInstanceRequest struct {
 	//
 	// 2
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
-	// Specifies whether to enable the Dedicated SQL feature for the project. If you set this parameter to true, the Dedicated SQL feature is enabled for the specified project and takes effect for all query statements that you execute in the project, including the query statements for alerts and dashboards.
+	// Specifies whether to enable Dedicated SQL by default for the project. If you set this parameter to \\`true\\`, all query and analysis operations in the project, such as alerting and dashboards, use Dedicated SQL.
 	//
 	// This parameter is required.
 	UseAsDefault *bool `json:"useAsDefault,omitempty" xml:"useAsDefault,omitempty"`
@@ -10660,11 +11288,11 @@ func (s *CreateSqlInstanceResponse) SetStatusCode(v int32) *CreateSqlInstanceRes
 type CreateStoreViewRequest struct {
 	// The name of the dataset.
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - The name can contain only lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name must start with a lowercase letter.
+	// - The name must start with a lowercase letter.
 	//
-	// 	- The name must be 3 to 62 characters in length.
+	// - The name must be 3 to 62 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -10672,7 +11300,7 @@ type CreateStoreViewRequest struct {
 	//
 	// my_storeview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the dataset. Valid values: metricstore and logstore.
+	// The type of the dataset. Set this parameter to metricstore to create a Metricstore dataset. Set this parameter to logstore to create a Logstore dataset.
 	//
 	// This parameter is required.
 	//
@@ -10680,7 +11308,7 @@ type CreateStoreViewRequest struct {
 	//
 	// logstore
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	// The Logstores or Metricstores.
+	// A list of Logstores or Metricstores.
 	//
 	// This parameter is required.
 	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
@@ -10733,19 +11361,19 @@ func (s *CreateStoreViewResponse) SetStatusCode(v int32) *CreateStoreViewRespons
 }
 
 type CreateTicketRequest struct {
-	// 	- The validity period of the access token. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 86400.
+	// - The validity period of the access token. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 86400.
 	//
-	// 	- The validity period of the access token is the smaller value between accessTokenExpirationTime and expirationTime.
+	// - The validity period of the access token is the smaller value between accessTokenExpirationTime and expirationTime.
 	//
-	// 	- If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
+	// - If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
 	//
 	// example:
 	//
 	// 600
 	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
-	// 	- You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the CreateTicket operation. After you obtain the ticket, you can use the ticket regardless of the region.
+	// - You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the CreateTicket operation. After you obtain the ticket, you can use the ticket regardless of the region.
 	//
-	// 	- The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
+	// - The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
 	//
 	// example:
 	//
@@ -10823,6 +11451,7 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 }
 
 type DeleteAgentInstanceConfigRequest struct {
+	// The process to which the configuration applies.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
@@ -10840,6 +11469,7 @@ func (s *DeleteAgentInstanceConfigRequest) SetAttributes(v map[string]*string) *
 }
 
 type DeleteAgentInstanceConfigShrinkRequest struct {
+	// The process to which the configuration applies.
 	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
@@ -10995,10 +11625,14 @@ func (s *DeleteAzureBlobIngestionResponse) SetStatusCode(v int32) *DeleteAzureBl
 }
 
 type DeleteCollectionPolicyRequest struct {
+	// The code of the log type.
+	//
 	// example:
 	//
 	// access_log
 	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	// The code of the product.
+	//
 	// example:
 	//
 	// oss
@@ -11662,15 +12296,7 @@ func (s *DeleteStoreViewResponse) SetStatusCode(v int32) *DeleteStoreViewRespons
 }
 
 type DescribeRegionsRequest struct {
-	// The language of the localName parameter that is returned.
-	//
-	// Valid values:
-	//
-	// 	- ja
-	//
-	// 	- en
-	//
-	// 	- zh
+	// The language of the returned `localName` value.
 	//
 	// example:
 	//
@@ -11692,6 +12318,7 @@ func (s *DescribeRegionsRequest) SetLanguage(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
+	// A list of available regions and their details.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
 }
 
@@ -11709,15 +12336,17 @@ func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBod
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The supported data redundancy types.
 	DataRedundancyType []*string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty" type:"Repeated"`
-	InternalEndpoint   *string   `json:"internalEndpoint,omitempty" xml:"internalEndpoint,omitempty"`
-	// The public endpoint of Simple Log Service.
+	// The accelerated endpoint of the region.
+	InternalEndpoint *string `json:"internalEndpoint,omitempty" xml:"internalEndpoint,omitempty"`
+	// The public endpoint of the region.
 	InternetEndpoint *string `json:"internetEndpoint,omitempty" xml:"internetEndpoint,omitempty"`
-	// The internal endpoint of Simple Log Service.
+	// The intranet endpoint of the region.
 	IntranetEndpoint *string `json:"intranetEndpoint,omitempty" xml:"intranetEndpoint,omitempty"`
-	// The name of the Simple Log Service region.
+	// The display name of the region.
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
-	// SLS region
+	// The ID of the region.
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
@@ -11881,6 +12510,7 @@ func (s *EnableScheduledSQLResponse) SetStatusCode(v int32) *EnableScheduledSQLR
 }
 
 type GetAgentInstanceConfigRequest struct {
+	// The owner of the process-level configuration.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
@@ -11898,6 +12528,7 @@ func (s *GetAgentInstanceConfigRequest) SetAttributes(v map[string]*string) *Get
 }
 
 type GetAgentInstanceConfigShrinkRequest struct {
+	// The owner of the process-level configuration.
 	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
@@ -11915,20 +12546,30 @@ func (s *GetAgentInstanceConfigShrinkRequest) SetAttributesShrink(v string) *Get
 }
 
 type GetAgentInstanceConfigResponseBody struct {
+	// The owner of the configuration for the process.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The default configuration.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The type of the process-level configuration.
+	//
 	// example:
 	//
 	// apm_biz_trace
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 1749543828
-	CreateTime  *int64                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The canary release configurations.
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
+	// The time when the configuration was last modified.
+	//
 	// example:
 	//
 	// 1749543828
@@ -12239,10 +12880,14 @@ func (s *GetAppliedMachineGroupsResponse) SetBody(v *GetAppliedMachineGroupsResp
 }
 
 type GetAsyncSqlRequest struct {
+	// The number of results to return per page. The maximum value is 1000.
+	//
 	// example:
 	//
 	// 100
 	Line *int32 `json:"line,omitempty" xml:"line,omitempty"`
+	// The offset for paginated results.
+	//
 	// example:
 	//
 	// 0
@@ -12328,9 +12973,9 @@ func (s *GetAzureBlobIngestionResponse) SetBody(v *AzureBlobIngestion) *GetAzure
 type GetCheckPointRequest struct {
 	// The shard ID.
 	//
-	// 	- If the specified shard does not exist, an empty list is returned.
+	// - If the specified shard does not exist, an empty list is returned.
 	//
-	// 	- If no shard ID is specified, the checkpoints of all shards are returned.
+	// - If no shard ID is specified, the checkpoints of all shards are returned.
 	//
 	// example:
 	//
@@ -12436,10 +13081,14 @@ func (s *GetCheckPointResponseBody) SetConsumer(v string) *GetCheckPointResponse
 }
 
 type GetCollectionPolicyRequest struct {
+	// The code for the log type.
+	//
 	// example:
 	//
 	// access_log
 	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	// The code of the product.
+	//
 	// example:
 	//
 	// oss
@@ -12465,6 +13114,7 @@ func (s *GetCollectionPolicyRequest) SetProductCode(v string) *GetCollectionPoli
 }
 
 type GetCollectionPolicyResponseBody struct {
+	// The details of the rule.
 	CollectionPolicy *GetCollectionPolicyResponseBodyCollectionPolicy `json:"collectionPolicy,omitempty" xml:"collectionPolicy,omitempty" type:"Struct"`
 }
 
@@ -12482,37 +13132,55 @@ func (s *GetCollectionPolicyResponseBody) SetCollectionPolicy(v *GetCollectionPo
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicy struct {
+	// The configuration for centralized shipping.
 	CentralizeConfig *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
+	// Indicates whether centralized storage is enabled.
+	//
 	// example:
 	//
 	// false
 	CentralizeEnabled *bool `json:"centralizeEnabled,omitempty" xml:"centralizeEnabled,omitempty"`
+	// The code for the log type.
+	//
 	// example:
 	//
 	// access_log
-	DataCode   *string                                                    `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	// The configuration that is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. Otherwise, this parameter is empty.
 	DataConfig *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Indicates whether the rule is a built-in rule. Built-in rules cannot be modified or deleted.
+	//
 	// example:
 	//
 	// false
-	InternalPolicy *bool                                                        `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
-	PolicyConfig   *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	InternalPolicy *bool `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
+	// The configuration of the collection rule.
+	PolicyConfig *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the rule belongs. If the rule is created by a resource directory administrator or a delegated administrator, this parameter specifies the ID of the administrator\\"s Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 148***********50
 	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	// The code of the product.
+	//
 	// example:
 	//
 	// oss
-	ProductCode       *string                                                           `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// The configuration of the resource directory. This parameter is empty if no configuration is specified.
 	ResourceDirectory *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -12580,21 +13248,29 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetResourceDirectory(v
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig struct {
+	// The destination Logstore for centralized shipping.
+	//
 	// example:
 	//
 	// your-sls-logstore-in-beijing
 	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	// The destination project for centralized shipping.
+	//
 	// example:
 	//
 	// your-sls-project-in-beijing
 	DestProject *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	// The destination region for centralized shipping.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestRegion *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
+	// The retention period of the destination Logstore. Unit: days.
+	//
 	// example:
 	//
-	// your-sls-logstore-ttl
+	// 0
 	DestTTL *int32 `json:"destTTL,omitempty" xml:"destTTL,omitempty"`
 }
 
@@ -12627,10 +13303,14 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDes
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyDataConfig struct {
+	// This parameter is valid only for global log types, such as when \\`productCode\\` is \\`sls\\`. If this parameter is left empty, logs are collected to the default project of the account in the specified \\`dataRegion\\`.
+	//
 	// example:
 	//
 	// ""
 	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
+	// This parameter is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. This parameter specifies the region to which global logs are collected during the initial configuration.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -12656,12 +13336,18 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) SetDataRegio
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig struct {
+	// The instance IDs.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	Regions     []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The regions where the instances reside. Wildcard characters are supported.
+	Regions []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The collection pattern for resources.
+	//
 	// example:
 	//
 	// all
 	ResourceMode *string `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	// The resource tags.
+	//
 	// example:
 	//
 	// {"tag1":"value1","tag2":"value2"}
@@ -12697,11 +13383,14 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourc
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory struct {
+	// The mode for selecting accounts in the resource directory. Valid values: \\`all\\` and \\`custom\\`.
+	//
 	// example:
 	//
 	// all,custom
-	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
-	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	AccountGroupType *string `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	// The member accounts. This parameter is returned only when \\`accountGroupType\\` is set to \\`custom\\`.
+	Members []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
 func (s GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) String() string {
@@ -12889,9 +13578,9 @@ type GetContextLogsResponseBody struct {
 	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
 	// Indicates whether the query and analysis results are complete. Valid values:
 	//
-	// 	- Complete: The query is successful, and the complete query and analysis results are returned.
+	// - Complete: The query is successful, and the complete query and analysis results are returned.
 	//
-	// 	- Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
+	// - Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
 	//
 	// example:
 	//
@@ -12968,7 +13657,7 @@ func (s *GetContextLogsResponse) SetBody(v *GetContextLogsResponseBody) *GetCont
 }
 
 type GetCursorRequest struct {
-	// The point in time that you want to use to query a cursor. Set the value to a UNIX timestamp or a string such as `begin` and `end`.
+	// A point in time. This can be a UNIX timestamp or the string `begin` or `end`.
 	//
 	// This parameter is required.
 	//
@@ -12992,7 +13681,7 @@ func (s *GetCursorRequest) SetFrom(v string) *GetCursorRequest {
 }
 
 type GetCursorResponseBody struct {
-	// The value of the cursor.
+	// The cursor value.
 	//
 	// example:
 	//
@@ -13043,7 +13732,9 @@ func (s *GetCursorResponse) SetBody(v *GetCursorResponseBody) *GetCursorResponse
 }
 
 type GetCursorTimeRequest struct {
-	// The cursor.
+	// The cursor for which you want to obtain the timestamp. Call the [GetCursor](https://help.aliyun.com/document_detail/2771314.html) operation to obtain a cursor.
+	//
+	// > If the value of the cursor is less than the begin cursor or greater than the end cursor, InvalidCursor is returned. If the shard contains no data, the current time is returned.
 	//
 	// This parameter is required.
 	//
@@ -13067,7 +13758,7 @@ func (s *GetCursorTimeRequest) SetCursor(v string) *GetCursorTimeRequest {
 }
 
 type GetCursorTimeResponseBody struct {
-	// The server time that is queried based on the cursor. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The server time that corresponds to the cursor. The value is a UNIX timestamp. A UNIX timestamp represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -13147,39 +13838,39 @@ func (s *GetDashboardResponse) SetBody(v *Dashboard) *GetDashboardResponse {
 }
 
 type GetDownloadJobResponseBody struct {
-	// 下载配置
+	// The download configuration.
 	Configuration *GetDownloadJobResponseBodyConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// 代表创建时间的资源属性字段
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 1722411060
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 任务描述
+	// The description of the task.
 	//
 	// example:
 	//
 	// a download job
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 任务显示名称
+	// The display name.
 	//
 	// example:
 	//
 	// download-123456
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 任务执行细节
+	// The execution details.
 	ExecutionDetails *GetDownloadJobResponseBodyExecutionDetails `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Struct"`
-	// 代表资源名称的资源属性字段
+	// The name of the download task.
 	//
 	// example:
 	//
 	// download-123
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the log download task.
+	// The status of the download task.
 	//
 	// example:
 	//
-	// running
+	// STARTING、RUNNING、SUCCEEDED、ERROR
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -13227,37 +13918,39 @@ func (s *GetDownloadJobResponseBody) SetStatus(v string) *GetDownloadJobResponse
 }
 
 type GetDownloadJobResponseBodyConfiguration struct {
+	// Specifies whether to allow downloading incomplete data.
+	//
 	// example:
 	//
 	// true
 	AllowInComplete *bool `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
-	// 起点时间戳（精确到秒）
+	// The start time of the download task. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1722409860
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// 源logstore
+	// The source Logstore.
 	//
 	// example:
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 是否启用powerSql
+	// Specifies whether to enable PowerSQL.
 	//
 	// example:
 	//
 	// false
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// 查询语句
+	// The search statement.
 	//
 	// example:
 	//
 	// 	- | select *
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 导出配置
+	// The export configuration.
 	Sink *GetDownloadJobResponseBodyConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// 结束时间戳（精确到秒）
+	// The end time of the download task. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -13309,34 +14002,38 @@ func (s *GetDownloadJobResponseBodyConfiguration) SetToTime(v int64) *GetDownloa
 }
 
 type GetDownloadJobResponseBodyConfigurationSink struct {
-	// 对象存储桶
+	// The Object Storage Service (OSS) bucket.
 	//
 	// example:
 	//
 	// ali-test-oss-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// 压缩格式
+	// The compression format.
 	//
 	// example:
 	//
 	// none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// 下载文件格式
+	// The file format.
 	//
 	// example:
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The prefix of the file that is saved to the bucket.
+	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 下载使用roleArn
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
 	//
 	// example:
 	//
 	// acs:ram::0123456789:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The value is fixed to AliyunOSS.
+	//
 	// example:
 	//
 	// AliyunOSS
@@ -13382,42 +14079,49 @@ func (s *GetDownloadJobResponseBodyConfigurationSink) SetType(v string) *GetDown
 }
 
 type GetDownloadJobResponseBodyExecutionDetails struct {
+	// The ETag of the file.
+	//
 	// example:
 	//
 	// EXSFGSDASDASDG123ASD
 	CheckSum *string `json:"checkSum,omitempty" xml:"checkSum,omitempty"`
-	// 下载错误信息
+	// The error message if the download fails.
 	//
 	// example:
 	//
 	// timeout
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 下载执行时间
+	// The duration of the download task in seconds.
 	//
 	// example:
 	//
 	// 123
 	ExecuteTime *int64 `json:"executeTime,omitempty" xml:"executeTime,omitempty"`
-	// 下载结果链接
+	// The URL of the download result.
 	//
 	// example:
 	//
 	// https://xxx.csv.zst?xxx
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 下载文件大小
+	// The size of the downloaded file in bytes.
 	//
 	// example:
 	//
 	// 123456
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// 下载日志条数
+	// The number of downloaded log entries.
 	//
 	// example:
 	//
 	// 123
-	LogCount *int64  `json:"logCount,omitempty" xml:"logCount,omitempty"`
-	Notice   *string `json:"notice,omitempty" xml:"notice,omitempty"`
-	// 下载进度
+	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	// Notification text.
+	//
+	// example:
+	//
+	// test
+	Notice *string `json:"notice,omitempty" xml:"notice,omitempty"`
+	// The download progress.
 	//
 	// example:
 	//
@@ -13590,7 +14294,7 @@ func (s *GetGCSIngestionResponse) SetBody(v *GCSIngestion) *GetGCSIngestionRespo
 }
 
 type GetHistogramsRequest struct {
-	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -13598,13 +14302,13 @@ type GetHistogramsRequest struct {
 	//
 	// 1409529600
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Log search overview](https://help.aliyun.com/document_detail/43772.html).
+	// The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Search syntax](https://help.aliyun.com/document_detail/43772.html).
 	//
 	// example:
 	//
 	// with_pack_meta
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The end of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -13612,7 +14316,7 @@ type GetHistogramsRequest struct {
 	//
 	// 1409569200
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// The topic of the logs.
+	// The topic of the log.
 	//
 	// example:
 	//
@@ -13678,33 +14382,33 @@ func (s *GetHistogramsResponse) SetBody(v []*GetHistogramsResponseBody) *GetHist
 }
 
 type GetHistogramsResponseBody struct {
-	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
 	//
-	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	// The time range is a left-closed, right-open interval. This means that the subinterval includes the start time but not the end time. If the values of from and to are the same, the interval is invalid and an error is returned.
 	//
 	// example:
 	//
 	// 1409529600
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The end of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
 	//
-	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	// The time range is a left-closed, right-open interval. This means that the subinterval includes the start time but not the end time. If the values of from and to are the same, the interval is invalid and an error is returned.
 	//
 	// example:
 	//
 	// 1409569200
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// The number of logs that are generated within the subinterval.
+	// The number of logs that are found in the subinterval.
 	//
 	// example:
 	//
 	// 2
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// Indicates whether the query and analysis results in the subinterval is complete. Valid values:
+	// Indicates whether the query result in the subinterval is complete.
 	//
-	// Complete: The query is successful, and the complete query and analysis results are returned.
+	// Complete: The query is complete and the result is complete.
 	//
-	// Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
+	// Incomplete: The query is complete but the result is incomplete. Send the request again to obtain the complete result.
 	//
 	// example:
 	//
@@ -13850,9 +14554,9 @@ func (s *GetIndexResponseBody) SetTtl(v int32) *GetIndexResponseBody {
 type GetIndexResponseBodyLine struct {
 	// Indicates whether case sensitivity is enabled. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -13860,9 +14564,9 @@ type GetIndexResponseBodyLine struct {
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
 	// Indicates whether Chinese characters are included. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -13999,6 +14703,7 @@ func (s *GetLogStoreResponse) SetBody(v *Logstore) *GetLogStoreResponse {
 }
 
 type GetLogStoreConfigResponseBody struct {
+	// An array of header keys used to extract the client IP address when data is written to the Logstore. The keys are case-insensitive, but their order in the array is significant. For this feature to work, enable the `appendMeta` option on the Logstore. Log Service searches the request headers for these keys in the specified order and adds the first valid IP address it finds as a log tag.
 	ClientIpHeaders []*string `json:"clientIpHeaders,omitempty" xml:"clientIpHeaders,omitempty" type:"Repeated"`
 }
 
@@ -14125,19 +14830,19 @@ func (s *GetLoggingResponse) SetBody(v *Logging) *GetLoggingResponse {
 }
 
 type GetLogsRequest struct {
-	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
+	// The start of the query time range, based on the log time specified when the log data was written.
 	//
-	// 	- The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from*	- parameter, but does not include the end time specified by the **to*	- parameter. If you specify the same value for the **from*	- and **to*	- parameters, the interval is invalid, and an error message is returned.
+	// - The **from*	- and **to*	- parameters define a left-closed, right-open interval [from, to). If **from*	- equals **to**, the interval is invalid and the system returns an error.
 	//
-	// 	- The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - Value: a UNIX timestamp representing the number of seconds elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// > To ensure that full data can be queried, specify a query time range that is accurate to the minute. If you also specify a time range in an analytic statement, Simple Log Service uses the time range specified in the analytic statement for query and analysis.
+	// > To avoid missing data, align the query time to the minute level. If a time range is specified in the analytic statement, that time range takes precedence.
 	//
-	// If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) and [to_unixtime function](https://help.aliyun.com/document_detail/63451.html). Examples:
+	// To specify a time in seconds within an analytic statement, use the [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) or the [to_unixtime function](https://help.aliyun.com/document_detail/63451.html) to convert the time format. Examples:
 	//
-	// 	- `	- | SELECT 	- FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
+	// - `	- | SELECT 	- FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
 	//
-	// 	- `	- | SELECT 	- FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
+	// - `	- | SELECT 	- FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
 	//
 	// This parameter is required.
 	//
@@ -14145,67 +14850,67 @@ type GetLogsRequest struct {
 	//
 	// 1627268185
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100. For more information, see [Perform paged queries](https://help.aliyun.com/document_detail/89994.html).
+	// Valid only when the query parameter is a search statement. Maximum number of logs to return. Valid values: 0 to 100. Default value: 100. See [Page through query and analysis results](https://help.aliyun.com/document_detail/89994.html).
 	//
 	// example:
 	//
 	// 100
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0. For more information, see [Perform paged queries](https://help.aliyun.com/document_detail/89994.html).
+	// Valid only when the query parameter is a search statement. The starting row for the query. Default value: 0. See [Page through query and analysis results](https://help.aliyun.com/document_detail/89994.html).
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](https://help.aliyun.com/document_detail/223777.html). Valid values:
+	// Whether to enable the Exclusive SQL feature. See [Enable the Exclusive SQL feature](https://help.aliyun.com/document_detail/223777.html).
 	//
-	// 	- true: enables the Dedicated SQL feature.
+	// - true: Enable Exclusive SQL.
 	//
-	// 	- false (default): enables the Standard SQL feature.
+	// - false (default): Use standard SQL.
 	//
-	// You can use the powerSql or **query*	- parameter to configure Dedicated SQL.
+	// Alternatively, add `set session parallel_sql=true;` to the analytic statement in the **query*	- parameter to enable Exclusive SQL.
 	//
 	// example:
 	//
 	// false
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The search statement or the query statement. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html). If you add `set session parallel_sql=true;` to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to `	- | set session parallel_sql=true; select count(*) as pv`. For more information about common errors that may occur during log query and analysis, see [How do I resolve common errors that occur when I query and analyze logs?](https://help.aliyun.com/document_detail/61628.html)
+	// The search statement or analytic statement. See [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html). To enable the Exclusive SQL feature, add `set session parallel_sql=true;` to the analytic statement. Example: `	- | set session parallel_sql=true; select count(*) as pv`. For common query and analysis issues, see [Common errors that occur when you query and analyze logs](https://help.aliyun.com/document_detail/61628.html).
 	//
-	// > If you specify an analytic statement in the value of the query parameter, the line and offset parameters do not take effect. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see [Paged query](https://help.aliyun.com/document_detail/89994.html).
+	// > When the query parameter contains an analytic statement (SQL statement), the `line` and `offset` parameters are ignored. Set both to 0 and use the LIMIT clause in the SQL statement for pagination. See [Page through query and analysis results](https://help.aliyun.com/document_detail/89994.html).
 	//
 	// example:
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
+	// Whether to return logs in descending order of timestamp, with minute-level precision.
 	//
-	// 	- true: returns logs in reverse chronological order of log timestamps.
+	// - true: Descending order (newest first).
 	//
-	// 	- false (default): returns logs in chronological order of log timestamps.
+	// - false (default): Ascending order (oldest first).
 	//
-	// >
+	// 	Notice:
 	//
-	// 	- The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs.
+	// - When the query parameter is a search statement, the reverse parameter controls the sort order.
 	//
-	// 	- If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+	// - When the query parameter includes an analytic statement, the reverse parameter is ignored. Use the ORDER BY clause in the SQL statement instead. ORDER BY defaults to ascending (asc). Specify desc for descending order.
 	//
 	// example:
 	//
 	// false
 	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	// The end of the time range to query. The value is the log time that is specified when log data is written.
+	// The end of the query time range, based on the log time specified when the log data was written.
 	//
-	// 	- The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from*	- parameter, but does not include the end time specified by the **to*	- parameter. If you specify the same value for the **from*	- and **to*	- parameters, the interval is invalid, and an error message is returned.
+	// - The **from*	- and **to*	- parameters define a left-closed, right-open interval [from, to). If **from*	- equals **to**, the interval is invalid and the system returns an error.
 	//
-	// 	- The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - Value: a UNIX timestamp representing the number of seconds elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// > To ensure that full data can be queried, specify a query time range that is accurate to the minute. If you also specify a time range in an analytic statement, Simple Log Service uses the time range specified in the analytic statement for query and analysis.
+	// > To avoid missing data, align the query time to the minute level. If a time range is specified in the analytic statement, that time range takes precedence.
 	//
-	// If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) and [to_unixtime function](https://help.aliyun.com/document_detail/63451.html). Examples:
+	// To specify a time in seconds within an analytic statement, use the [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) or the [to_unixtime function](https://help.aliyun.com/document_detail/63451.html) to convert the time format. Examples:
 	//
-	// 	- `	- | SELECT 	- FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
+	// - `	- | SELECT 	- FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
 	//
-	// 	- `	- | SELECT 	- FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
+	// - `	- | SELECT 	- FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
 	//
 	// This parameter is required.
 	//
@@ -14213,7 +14918,7 @@ type GetLogsRequest struct {
 	//
 	// 1627269085
 	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
-	// The topic of the logs. The default value is an empty string. For more information, see [Topic](https://help.aliyun.com/document_detail/48881.html).
+	// The log topic. Default value: an empty string. See [Topic](https://help.aliyun.com/document_detail/48881.html).
 	//
 	// example:
 	//
@@ -14300,11 +15005,11 @@ func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
 
 type GetLogsV2Headers struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The compression format.
+	// The compression method.
 	//
-	// 	- For Java, Python, and Go, only the lz4 and gzip algorithms are supported for decompression.
+	// - Java, Python, and Go support lz4 and gzip decompression.
 	//
-	// 	- For PHP, JavaScript, and C#, only the gzip algorithm is supported for decompression.
+	// - PHP, JavaScript, and C# support gzip decompression only.
 	//
 	// example:
 	//
@@ -14331,15 +15036,15 @@ func (s *GetLogsV2Headers) SetAcceptEncoding(v string) *GetLogsV2Headers {
 }
 
 type GetLogsV2Request struct {
-	// Specifies whether to page forward or backward for the scan-based query or phrase search.
+	// For a scan or phrase query, specifies whether to page forward or backward.
 	//
 	// example:
 	//
 	// false
 	Forward *bool `json:"forward,omitempty" xml:"forward,omitempty"`
-	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
+	// The start of the time range to query. The value is the log time that was specified when the log was written.
 	//
-	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time range is a left-closed right-open interval. This means the range includes the start time but not the end time. If the from and to values are the same, the interval is invalid and an error is returned. The value is a UNIX timestamp that represents the number of seconds since 00:00:00 UTC on January 1, 1970.
 	//
 	// This parameter is required.
 	//
@@ -14347,58 +15052,63 @@ type GetLogsV2Request struct {
 	//
 	// 1627268185
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// Specifies whether to highlight the returned result.
+	// Specifies whether to highlight the results.
 	//
 	// example:
 	//
 	// false
-	Highlight  *bool `json:"highlight,omitempty" xml:"highlight,omitempty"`
+	Highlight *bool `json:"highlight,omitempty" xml:"highlight,omitempty"`
+	// Specifies whether to enable nanosecond-level sorting.
+	//
+	// example:
+	//
+	// true
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
-	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
+	// The maximum number of logs to return. This parameter is valid only if the query parameter contains a query statement. The value must be an integer from 0 to 100. The default value is 100.
 	//
 	// example:
 	//
 	// 100
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
+	// The line number from which to start the query. This parameter is valid only if the query parameter contains a query statement. The default value is 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Specifies whether to enable the SQL enhancement feature. By default, the feature is disabled.
+	// Specifies whether to enable enhanced SQL. The default value is false.
 	//
 	// example:
 	//
 	// false
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The search statement or query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
+	// The query statement or analytic statement. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html).
 	//
-	// If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. Example: \\	- | set session parallel_sql=true; select count(\\*) as pv.
+	// To use the Exclusive SQL feature, add set session parallel_sql=true; to the analytic statement in the query parameter. Example: \\	- | set session parallel_sql=true; select count(\\*) as pv.
 	//
-	// Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to specify the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
+	// Note: If the query parameter contains an analytic statement (SQL statement), the line and offset parameters are invalid. Set them to 0. Use the LIMIT clause in the SQL statement for paging. For more information, see Paginate query and analysis results.
 	//
 	// example:
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to minutes. Valid values:
+	// Specifies whether to return logs in descending order of their timestamps. The precision is at the minute level.
 	//
-	// true: Logs are returned in reverse chronological order of log timestamps. false (default): Logs are returned in chronological order of log timestamps. Note: The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs. If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+	// true: Returns logs in descending order of their timestamps. false (default): Returns logs in ascending order of their timestamps. Note: If the query parameter contains a query statement, the reverse parameter is valid and specifies the sorting order. If the query parameter contains a query and analysis statement, the reverse parameter is invalid. The sorting order is specified by the ORDER BY clause in the analytic statement. If ORDER BY is asc (default), logs are sorted in ascending order. If ORDER BY is desc, logs are sorted in descending order.
 	//
 	// example:
 	//
 	// false
 	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	// The parameter that is used to query data.
+	// The query parameter.
 	//
 	// example:
 	//
 	// mode=scan
 	Session *string `json:"session,omitempty" xml:"session,omitempty"`
-	// The end of the time range to query. The value is the log time that is specified when log data is written.
+	// The end of the time range to query. The value is the log time that was specified when the log was written.
 	//
-	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time range is a left-closed right-open interval. This means the range includes the start time but not the end time. If the from and to values are the same, the interval is invalid and an error is returned. The value is a UNIX timestamp that represents the number of seconds since 00:00:00 UTC on January 1, 1970.
 	//
 	// This parameter is required.
 	//
@@ -14406,7 +15116,7 @@ type GetLogsV2Request struct {
 	//
 	// 1627268185
 	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
-	// The topic of the logs. Default value: double quotation marks ("").
+	// The log topic. The default value is double quotation marks ("").
 	//
 	// example:
 	//
@@ -14483,7 +15193,7 @@ func (s *GetLogsV2Request) SetTopic(v string) *GetLogsV2Request {
 }
 
 type GetLogsV2ResponseBody struct {
-	// The returned result.
+	// The query results.
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The metadata of the returned data.
 	Meta *GetLogsV2ResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
@@ -14508,28 +15218,33 @@ func (s *GetLogsV2ResponseBody) SetMeta(v *GetLogsV2ResponseBodyMeta) *GetLogsV2
 }
 
 type GetLogsV2ResponseBodyMeta struct {
-	// The SQL statement after | in the query statement.
+	// The SQL part of the query statement that follows the pipe character (|).
 	//
 	// example:
 	//
 	// select *
-	AggQuery    *string   `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	// The column types.
 	ColumnTypes []*string `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
-	// The number of rows that are returned.
+	// The number of log entries returned in this query.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of CPU cores used.
+	//
 	// example:
 	//
 	// 3
 	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// The core-hours for the Exclusive SQL.
+	//
 	// example:
 	//
 	// 0.002
 	CpuSec *float64 `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
-	// The amount of time that is consumed by the request. Unit: milliseconds.
+	// The time consumed by the query, in milliseconds.
 	//
 	// example:
 	//
@@ -14540,9 +15255,10 @@ type GetLogsV2ResponseBodyMeta struct {
 	// example:
 	//
 	// false
-	HasSQL     *bool           `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
-	Highlights [][]*LogContent `json:"highlights,omitempty" xml:"highlights,omitempty" type:"Repeated"`
-	// Indicates whether the returned result is accurate to seconds.
+	HasSQL *bool `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
+	// The highlighted content.
+	Highlights []map[string]interface{} `json:"highlights,omitempty" xml:"highlights,omitempty" type:"Repeated"`
+	// Indicates whether nanosecond-level sorting is enabled.
 	//
 	// example:
 	//
@@ -14550,37 +15266,44 @@ type GetLogsV2ResponseBodyMeta struct {
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// All keys in the query result.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// The number of entries returned. This parameter is returned if the SQL statement does not contain a LIMIT clause.
+	//
 	// example:
 	//
 	// 100
 	Limited *int32 `json:"limited,omitempty" xml:"limited,omitempty"`
+	// The query mode. Valid values: 0: Normal query, which includes SQL queries. 1: Phrase query. 2: SCAN query. 3: SCAN SQL query.
+	//
 	// example:
 	//
 	// 0
-	Mode            *int32                                    `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The information about the phrase query.
 	PhraseQueryInfo *GetLogsV2ResponseBodyMetaPhraseQueryInfo `json:"phraseQueryInfo,omitempty" xml:"phraseQueryInfo,omitempty" type:"Struct"`
-	// The number of logs that are processed in the request.
+	// The volume of logs processed in the query, in bytes.
 	//
 	// example:
 	//
 	// 10000
 	ProcessedBytes *int64 `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
-	// The number of rows that are processed in the query.
+	// The number of rows processed in the query.
 	//
 	// example:
 	//
 	// 10000
 	ProcessedRows *int64 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
-	// Indicates whether the query result is complete. Valid values:
+	// The progress of the query. Valid values:
 	//
-	// 	- Complete: The query was successful, and the complete result is returned.
+	// - Complete: The query is complete, and the returned result is complete.
 	//
-	// 	- Incomplete: The query was successful, but the query result is incomplete. To obtain the complete result, you must call the operation again.
+	// - Incomplete: The query is complete, but the returned result is incomplete. You must send the request again to obtain the complete result.
 	//
 	// example:
 	//
 	// Complete
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The volume of data scanned in the scan query, in bytes.
+	//
 	// example:
 	//
 	// 1024
@@ -14593,7 +15316,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	TelementryType *string `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
 	// All terms in the query statement.
 	Terms []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
-	// The part before | in the query statement.
+	// The part of the query statement that precedes the pipe character (|).
 	//
 	// example:
 	//
@@ -14644,7 +15367,7 @@ func (s *GetLogsV2ResponseBodyMeta) SetHasSQL(v bool) *GetLogsV2ResponseBodyMeta
 	return s
 }
 
-func (s *GetLogsV2ResponseBodyMeta) SetHighlights(v [][]*LogContent) *GetLogsV2ResponseBodyMeta {
+func (s *GetLogsV2ResponseBodyMeta) SetHighlights(v []map[string]interface{}) *GetLogsV2ResponseBodyMeta {
 	s.Highlights = v
 	return s
 }
@@ -14710,18 +15433,26 @@ func (s *GetLogsV2ResponseBodyMeta) SetWhereQuery(v string) *GetLogsV2ResponseBo
 }
 
 type GetLogsV2ResponseBodyMetaPhraseQueryInfo struct {
+	// The starting offset of the scan result after index filtering.
+	//
 	// example:
 	//
 	// 0
 	BeginOffset *int64 `json:"beginOffset,omitempty" xml:"beginOffset,omitempty"`
+	// The end offset of the scan result after index filtering.
+	//
 	// example:
 	//
 	// 0
 	EndOffset *int64 `json:"endOffset,omitempty" xml:"endOffset,omitempty"`
+	// The end time of the scan result after index filtering.
+	//
 	// example:
 	//
 	// 1
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Indicates whether all logs are scanned.
+	//
 	// example:
 	//
 	// true
@@ -14815,12 +15546,17 @@ func (s *GetLogtailPipelineConfigResponse) SetBody(v *LogtailPipelineConfig) *Ge
 }
 
 type GetMLServiceResultsRequest struct {
+	// - true: The request can use a built-in system service.
+	//
+	// - false: The request cannot use a built-in system service.
+	//
 	// example:
 	//
 	// true
-	AllowBuiltin *bool                   `json:"allowBuiltin,omitempty" xml:"allowBuiltin,omitempty"`
-	Body         *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
-	// The version of the algorithm. The algorithm varies based on the version.
+	AllowBuiltin *bool `json:"allowBuiltin,omitempty" xml:"allowBuiltin,omitempty"`
+	// The request struct.
+	Body *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
+	// The version number of the algorithm. Different versions correspond to different algorithms.
 	//
 	// example:
 	//
@@ -14852,8 +15588,10 @@ func (s *GetMLServiceResultsRequest) SetVersion(v string) *GetMLServiceResultsRe
 }
 
 type GetMLServiceResultsResponseBody struct {
-	Data   []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Status map[string]*string   `json:"status,omitempty" xml:"status,omitempty"`
+	// The returned data.
+	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The status of the task.
+	Status map[string]*string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetMLServiceResultsResponseBody) String() string {
@@ -14934,7 +15672,8 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 
 type GetMaterializedViewHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ContentType   *string            `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+	// The content type of the request. The value must be `application/json`.
+	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
 }
 
 func (s GetMaterializedViewHeaders) String() string {
@@ -14955,14 +15694,40 @@ func (s *GetMaterializedViewHeaders) SetContentType(v string) *GetMaterializedVi
 	return s
 }
 
+type GetMaterializedViewRequest struct {
+	// if can be null:
+	// false
+	ReturnStatus *bool `json:"returnStatus,omitempty" xml:"returnStatus,omitempty"`
+}
+
+func (s GetMaterializedViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaterializedViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaterializedViewRequest) SetReturnStatus(v bool) *GetMaterializedViewRequest {
+	s.ReturnStatus = &v
+	return s
+}
+
 type GetMaterializedViewResponseBody struct {
-	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
-	Enabled         *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
-	StartTime       *int32  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Ttl             *int32  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The time interval for data aggregation, in minutes.
+	AggIntervalMins *int32 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	// Specifies whether the materialized view is active. Valid values are `true` and `false`.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The destination logstore that stores the aggregated data.
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the materialized view.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The SQL query that defines the materialized view.
+	OriginalSql *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	// The time when the materialized view was created. The value is a Unix timestamp.
+	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time to live (ttl) of the data in the destination logstore, in days.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s GetMaterializedViewResponseBody) String() string {
@@ -15067,40 +15832,55 @@ func (s *GetMaxComputeExportResponse) SetBody(v *MaxComputeExport) *GetMaxComput
 }
 
 type GetMetricStoreResponseBody struct {
+	// Indicates whether to record the public IP address and log reception time.
+	//
+	// example:
+	//
+	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Indicates whether the automatic sharding feature is enabled.
+	// Indicates whether automatic sharding is enabled.
 	//
 	// example:
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// The creation time. The value is a UNIX timestamp.
+	// The time when the Metricstore was created. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1698933894
-	CreateTime          *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The retention period of data in the hot storage layer. Unit: days.
+	//
+	// example:
+	//
+	// 60
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The retention period for the Infrequent Access (IA) storage class. Unit: days.
+	//
+	// example:
+	//
+	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
-	// The last update time. The value is a UNIX timestamp.
+	// The time when the Metricstore was last modified. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1712023974
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split.
+	// The maximum number of shards that can be generated by automatic sharding.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The metric type of the Metricstore. Example: prometheus.
+	// The type of metrics in the Metricstore. Example: prometheus.
 	//
 	// example:
 	//
 	// prometheus
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	// The specification type of the Metricstore. Example: standard.
+	// The type of the Metricstore. Example: standard.
 	//
 	// example:
 	//
@@ -15111,16 +15891,18 @@ type GetMetricStoreResponseBody struct {
 	// example:
 	//
 	// my_metric_store
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the write processor associated with the Metricstore
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// The number of shards.
 	//
 	// example:
 	//
 	// 2
-	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// Hash write configuration
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
-	// The retention period. Unit: days.
+	// The retention period of data. Unit: days.
 	//
 	// example:
 	//
@@ -15405,9 +16187,9 @@ func (s *GetProjectResponse) SetBody(v *Project) *GetProjectResponse {
 type GetProjectLogsRequest struct {
 	// Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](https://help.aliyun.com/document_detail/223777.html). Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false (default): enables the Standard SQL feature.
+	// - false (default): enables the Standard SQL feature.
 	//
 	// You can use the powerSql or **query*	- parameter to configure Dedicated SQL.
 	//
@@ -15421,7 +16203,7 @@ type GetProjectLogsRequest struct {
 	//
 	// example:
 	//
-	// SELECT COUNT(*) as pv FROM nginx-moni where __time__ &gt; 1646102500 and __time__ &lt; 1646103400
+	// SELECT COUNT(*) as pv FROM nginx-moni where __time__ > 1646102500 and __time__ < 1646103400
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
@@ -15647,22 +16429,32 @@ func (s *GetSqlInstanceResponse) SetBody(v []*GetSqlInstanceResponseBody) *GetSq
 }
 
 type GetSqlInstanceResponseBody struct {
+	// The value is group1. This is an internal parameter that you can ignore.
+	//
 	// example:
 	//
-	// project_name
+	// group1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The maximum number of CUs that the Dedicated SQL version can use. A CU is a compute core that can be used for parallel processing when the Dedicated SQL version is running.
+	//
 	// example:
 	//
 	// 2
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The time when the configuration for the Dedicated SQL version was created. This is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710230272
 	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the configuration for the Dedicated SQL version was updated. This is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1710230272
 	UpdateTime *int32 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Indicates whether the Dedicated SQL version is enabled by default for the project. If this parameter is set to true, all query and analysis operations in the project, such as alerts and dashboards, use the Dedicated SQL version.
+	//
 	// example:
 	//
 	// true
@@ -15707,21 +16499,21 @@ type GetStoreViewResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- metricstore
+	// - metricstore
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- logstore
+	// - logstore
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -15866,14 +16658,20 @@ func (s *GetStoreViewIndexResponse) SetBody(v *GetStoreViewIndexResponseBody) *G
 }
 
 type ListAgentInstanceConfigsRequest struct {
+	// The type of the process-level configuration.
+	//
 	// example:
 	//
 	// apm_trace
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// The number of entries to skip. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries to return. The default value is 500.
+	//
 	// example:
 	//
 	// 100
@@ -15904,11 +16702,16 @@ func (s *ListAgentInstanceConfigsRequest) SetSize(v int64) *ListAgentInstanceCon
 }
 
 type ListAgentInstanceConfigsResponseBody struct {
+	// The process-level configurations.
 	Configs []*ListAgentInstanceConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// The number of data entries.
+	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The total number of data entries that meet the query conditions.
+	//
 	// example:
 	//
 	// 10
@@ -15939,10 +16742,14 @@ func (s *ListAgentInstanceConfigsResponseBody) SetTotal(v int64) *ListAgentInsta
 }
 
 type ListAgentInstanceConfigsResponseBodyConfigs struct {
+	// Ownership of the process-level configuration
+	//
 	// example:
 	//
 	// {"workspace": "test-workspace","service": "test-service"}
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// Type of the process-level configuration
+	//
 	// example:
 	//
 	// apm_biz_trace
@@ -16026,9 +16833,12 @@ func (s *ListAiToolsResponse) SetBody(v []*ListAiToolsResponseBody) *ListAiTools
 }
 
 type ListAiToolsResponseBody struct {
-	Fields      []*ListAiToolsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	Name        *string                          `json:"name,omitempty" xml:"name,omitempty"`
-	Description *string                          `json:"description,omitempty" xml:"description,omitempty"`
+	// The fields of the tool.
+	Fields []*ListAiToolsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The name of the tool.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The description of the tool.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
 func (s ListAiToolsResponseBody) String() string {
@@ -16055,12 +16865,18 @@ func (s *ListAiToolsResponseBody) SetDescription(v string) *ListAiToolsResponseB
 }
 
 type ListAiToolsResponseBodyFields struct {
-	Name        *string   `json:"name,omitempty" xml:"name,omitempty"`
-	Option      []*string `json:"option,omitempty" xml:"option,omitempty" type:"Repeated"`
-	Required    *bool     `json:"required,omitempty" xml:"required,omitempty"`
-	Type        *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Example     *string   `json:"example,omitempty" xml:"example,omitempty"`
-	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the field.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The valid values for the field.
+	Option []*string `json:"option,omitempty" xml:"option,omitempty" type:"Repeated"`
+	// Indicates whether the field is required.
+	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
+	// The type of the field.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// An example of the field.
+	Example *string `json:"example,omitempty" xml:"example,omitempty"`
+	// The description of the field.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
 func (s ListAiToolsResponseBodyFields) String() string {
@@ -16102,15 +16918,19 @@ func (s *ListAiToolsResponseBodyFields) SetDescription(v string) *ListAiToolsRes
 }
 
 type ListAlertsRequest struct {
+	// The Logstore from which to obtain alert rules. The default value is empty.
+	//
 	// example:
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line from which to start the query. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page. Maximum value: 200. Default value: 10.
+	// The number of rows to return on each page for a paged query. The maximum value is 200. The default value is 10.
 	//
 	// example:
 	//
@@ -16142,15 +16962,15 @@ func (s *ListAlertsRequest) SetSize(v int32) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	// The number of alert rules that are returned.
+	// The number of alerts returned in the current response.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The alert rules.
+	// The list of alert configurations.
 	Results []*Alert `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// The total number of alert rules in the project.
+	// The total number of alerts in the project.
 	//
 	// example:
 	//
@@ -16211,13 +17031,13 @@ func (s *ListAlertsResponse) SetBody(v *ListAlertsResponseBody) *ListAlertsRespo
 }
 
 type ListAnnotationDataRequest struct {
-	// The line from which the query starts.
+	// The starting position of the paged query.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -16244,9 +17064,9 @@ func (s *ListAnnotationDataRequest) SetSize(v int32) *ListAnnotationDataRequest 
 }
 
 type ListAnnotationDataResponseBody struct {
-	// The data returned.
+	// The list of data records.
 	Data []*MLDataParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -16302,13 +17122,13 @@ func (s *ListAnnotationDataResponse) SetBody(v *ListAnnotationDataResponseBody) 
 }
 
 type ListAnnotationDataSetsRequest struct {
-	// The line from which the query starts.
+	// The line from which to start the query.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page for a paged query.
 	//
 	// example:
 	//
@@ -16335,9 +17155,9 @@ func (s *ListAnnotationDataSetsRequest) SetSize(v int32) *ListAnnotationDataSets
 }
 
 type ListAnnotationDataSetsResponseBody struct {
-	// The data returned.
+	// The list of data that is returned.
 	Data []*MLDataSetParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -16393,13 +17213,13 @@ func (s *ListAnnotationDataSetsResponse) SetBody(v *ListAnnotationDataSetsRespon
 }
 
 type ListAnnotationLabelsRequest struct {
-	// The line from which the query starts.
+	// The starting line of the query.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -16426,9 +17246,9 @@ func (s *ListAnnotationLabelsRequest) SetSize(v int32) *ListAnnotationLabelsRequ
 }
 
 type ListAnnotationLabelsResponseBody struct {
-	// The data returned.
+	// The list of annotation label table structs.
 	Data []*MLLabelParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The total number of tags that meet the query conditions.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -16484,9 +17304,12 @@ func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBo
 }
 
 type ListAzureBlobIngestionRequest struct {
+	// The name of the logstore. If specified, the operation returns only tasks from this logstore.
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of tasks to skip before returning results. Default: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of tasks to return per page. Range: 0 to 500. Default: 100.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListAzureBlobIngestionRequest) String() string {
@@ -16513,9 +17336,12 @@ func (s *ListAzureBlobIngestionRequest) SetSize(v int32) *ListAzureBlobIngestion
 }
 
 type ListAzureBlobIngestionResponseBody struct {
-	Count   *int32                `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of tasks returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// A list of Azure Blob ingestion tasks.
 	Results []*AzureBlobIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32                `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of tasks that match the query.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAzureBlobIngestionResponseBody) String() string {
@@ -16571,32 +17397,44 @@ func (s *ListAzureBlobIngestionResponse) SetBody(v *ListAzureBlobIngestionRespon
 }
 
 type ListCollectionPoliciesRequest struct {
+	// The destination project for centralized data shipping. Specify this parameter to query the number of rules that are configured to ship data to this project.
+	//
 	// example:
 	//
 	// your-central-project1
 	CentralProject *string `json:"centralProject,omitempty" xml:"centralProject,omitempty"`
+	// The code of the log type.
+	//
 	// example:
 	//
 	// access_log
 	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	// The instance ID. Specify this parameter to query rules that match a specific instance. If you use this parameter, you must also specify productCode and dataCode.
+	//
 	// example:
 	//
 	// your-test-bucket1
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The row from which the query starts. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The name of the collection rule.
+	//
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The code of the service.
+	// The code of the Alibaba Cloud service.
 	//
 	// example:
 	//
 	// oss
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// The number of collection rules to return on each page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 50
@@ -16647,13 +17485,18 @@ func (s *ListCollectionPoliciesRequest) SetSize(v int32) *ListCollectionPolicies
 }
 
 type ListCollectionPoliciesResponseBody struct {
+	// The number of collection rules returned on the current page.
+	//
 	// example:
 	//
 	// 1
 	CurrentCount *int32 `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
-	// The data of the policies that are matched against the query conditions. The data is returned based on paginated results.
-	Data       []*ListCollectionPoliciesResponseBodyData       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The collection rules that are returned on the current page.
+	Data []*ListCollectionPoliciesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Statistics returned based on the query conditions.
 	Statistics []*ListCollectionPoliciesResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Repeated"`
+	// The total number of collection rules.
+	//
 	// example:
 	//
 	// 1
@@ -16689,38 +17532,55 @@ func (s *ListCollectionPoliciesResponseBody) SetTotalCount(v int32) *ListCollect
 }
 
 type ListCollectionPoliciesResponseBodyData struct {
-	// The configuration for centralized storage.
+	// The configuration for centralized data shipping.
 	CentralizeConfig *ListCollectionPoliciesResponseBodyDataCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
+	// Indicates whether centralized data shipping is enabled.
+	//
 	// example:
 	//
 	// false
 	CentralizeEnabled *bool `json:"centralizeEnabled,omitempty" xml:"centralizeEnabled,omitempty"`
+	// The code of the log type.
+	//
 	// example:
 	//
 	// access_log
-	DataCode   *string                                           `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	// Configurations for global log types, such as sls. This parameter is empty for other log types.
 	DataConfig *ListCollectionPoliciesResponseBodyDataDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
+	// Indicates whether the collection rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Indicates whether the policy is a built-in policy. Built-in policies cannot be modified or deleted.
+	//
 	// example:
 	//
 	// false
-	InternalPolicy *bool                                               `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
-	PolicyConfig   *ListCollectionPoliciesResponseBodyDataPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	InternalPolicy *bool `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
+	// The configuration of the collection rule.
+	PolicyConfig *ListCollectionPoliciesResponseBodyDataPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	// The name of the collection rule.
+	//
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the collection rule. If a resource directory administrator or delegated administrator creates the rule, this is the ID of that administrator\\"s account.
+	//
 	// example:
 	//
 	// 148***********50
 	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	// The code of the Alibaba Cloud service.
+	//
 	// example:
 	//
 	// oss
-	ProductCode       *string                                                  `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// The configuration of the resource directory. This parameter is empty if no configuration is available.
 	ResourceDirectory *ListCollectionPoliciesResponseBodyDataResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -16788,23 +17648,29 @@ func (s *ListCollectionPoliciesResponseBodyData) SetResourceDirectory(v *ListCol
 }
 
 type ListCollectionPoliciesResponseBodyDataCentralizeConfig struct {
+	// The destination Logstore for centralized data shipping.
+	//
 	// example:
 	//
 	// your-sls-logstore-in-beijing
 	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	// The destination project for centralized data shipping.
+	//
 	// example:
 	//
 	// your-sls-project-in-beijing
 	DestProject *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	// The destination region for centralized data shipping.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestRegion *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
-	// The data retention period for centralized storage. Unit: days.
+	// The data retention period of the destination Logstore for centralized data shipping. Unit: days.
 	//
 	// example:
 	//
-	// your-sls-logstore-ttl
+	// 0
 	DestTTL *int32 `json:"destTTL,omitempty" xml:"destTTL,omitempty"`
 }
 
@@ -16837,10 +17703,14 @@ func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestTTL(v in
 }
 
 type ListCollectionPoliciesResponseBodyDataDataConfig struct {
+	// The project for global logs. This parameter is used only for global log types, such as sls. If this parameter is empty, logs are collected to the default project of the account in the region specified by dataRegion.
+	//
 	// example:
 	//
 	// ""
 	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
+	// The region where global logs are first collected. This parameter is used only for global log types, such as sls.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -16866,12 +17736,18 @@ func (s *ListCollectionPoliciesResponseBodyDataDataConfig) SetDataRegion(v strin
 }
 
 type ListCollectionPoliciesResponseBodyDataPolicyConfig struct {
+	// The IDs of the instances.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	Regions     []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The regions to which the instances belong.
+	Regions []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The resource collection mode.
+	//
 	// example:
 	//
 	// all
 	ResourceMode *string `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	// The resource tags.
+	//
 	// example:
 	//
 	// {"tag1":"value1","tag2":"value2"}
@@ -16907,11 +17783,14 @@ func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceTags(v m
 }
 
 type ListCollectionPoliciesResponseBodyDataResourceDirectory struct {
+	// The mode for selecting accounts in the resource directory. Valid values: all and custom.
+	//
 	// example:
 	//
 	// all,custom
-	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
-	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	AccountGroupType *string `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	// The list of member accounts. This parameter is returned only if accountGroupType is set to custom.
+	Members []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
 func (s ListCollectionPoliciesResponseBodyDataResourceDirectory) String() string {
@@ -16933,7 +17812,10 @@ func (s *ListCollectionPoliciesResponseBodyDataResourceDirectory) SetMembers(v [
 }
 
 type ListCollectionPoliciesResponseBodyStatistics struct {
+	// The list of collection rule sources.
 	PolicySourceList []*ListCollectionPoliciesResponseBodyStatisticsPolicySourceList `json:"policySourceList,omitempty" xml:"policySourceList,omitempty" type:"Repeated"`
+	// The code of the Alibaba Cloud service.
+	//
 	// example:
 	//
 	// oss
@@ -16959,10 +17841,14 @@ func (s *ListCollectionPoliciesResponseBodyStatistics) SetProductCode(v string) 
 }
 
 type ListCollectionPoliciesResponseBodyStatisticsPolicySourceList struct {
+	// The name of the collection rule.
+	//
 	// example:
 	//
 	// policy_name1_from148
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the collection rule. If a resource directory administrator or delegated administrator creates the rule, this is the ID of that administrator\\"s account.
+	//
 	// example:
 	//
 	// 148***********50
@@ -17147,25 +18033,25 @@ func (s *ListConfigResponse) SetBody(v *ListConfigResponseBody) *ListConfigRespo
 }
 
 type ListConsumeProcessorsRequest struct {
-	// The display name of the consumption processor.
+	// The display name of the consume processor.
 	//
 	// example:
 	//
 	// filter-get-request
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The offset. Default value: 0.
+	// The offset of the query. The default value is 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *string `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The identifier of the consumption processor.
+	// The identity of the consume processor.
 	//
 	// example:
 	//
 	// consume-processor-1
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
-	// The number of entries. Default value: 200.
+	// The number of entries to return. The default value is 200.
 	//
 	// example:
 	//
@@ -17202,15 +18088,15 @@ func (s *ListConsumeProcessorsRequest) SetSize(v string) *ListConsumeProcessorsR
 }
 
 type ListConsumeProcessorsResponseBody struct {
-	// The number of consumption processors for offset.
+	// The number of consume processors returned in the current response.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The list of consumption processor information.
+	// The list of consume processors.
 	Processors []*ConsumeProcessor `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The total number of consumption processors that meet the query conditions.
+	// The total number of consume processors that meet the query conditions.
 	//
 	// example:
 	//
@@ -17300,20 +18186,31 @@ func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGro
 }
 
 type ListDashboardRequest struct {
+	// The dashboard name.
+	//
+	// example:
+	//
+	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The line from which the query starts. Default value: 0.
+	// The display name.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The line from which the query starts. The default value is 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
+	// The number of entries to return on each page for a paged query. The maximum value is 500. The default value is 500.
 	//
 	// example:
 	//
 	// 10
-	Size *int32                      `json:"size,omitempty" xml:"size,omitempty"`
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The tag information.
 	Tags []*ListDashboardRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -17351,7 +18248,17 @@ func (s *ListDashboardRequest) SetTags(v []*ListDashboardRequestTags) *ListDashb
 }
 
 type ListDashboardRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -17374,20 +18281,31 @@ func (s *ListDashboardRequestTags) SetValue(v string) *ListDashboardRequestTags 
 }
 
 type ListDashboardShrinkRequest struct {
+	// The dashboard name.
+	//
+	// example:
+	//
+	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The line from which the query starts. Default value: 0.
+	// The display name.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The line from which the query starts. The default value is 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
+	// The number of entries to return on each page for a paged query. The maximum value is 500. The default value is 500.
 	//
 	// example:
 	//
 	// 10
-	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The tag information.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -17425,9 +18343,9 @@ func (s *ListDashboardShrinkRequest) SetTagsShrink(v string) *ListDashboardShrin
 }
 
 type ListDashboardResponseBody struct {
-	// The details of the dashboard.
+	// The dashboards.
 	DashboardItems []*ListDashboardResponseBodyDashboardItems `json:"dashboardItems,omitempty" xml:"dashboardItems,omitempty" type:"Repeated"`
-	// The queried dashboards. Each dashboard in the array is specified by dashboardName.
+	// A list of dashboard names. This corresponds to dashboardName.
 	Dashboards []*string `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
 }
 
@@ -17450,13 +18368,18 @@ func (s *ListDashboardResponseBody) SetDashboards(v []*string) *ListDashboardRes
 }
 
 type ListDashboardResponseBodyDashboardItems struct {
-	// The dashboard ID. The ID must be unique in a project. Fuzzy search is supported. For example, if you enter da, all dashboards whose IDs start with da are queried.
+	// The dashboard ID. The ID must be unique within a project. Fuzzy queries are supported. For example, if you enter da, all dashboards whose names start with da are returned.
 	//
 	// example:
 	//
 	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// tablet_ai
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the dashboard.
 	//
 	// example:
@@ -17631,14 +18554,20 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListDownloadJobsRequest struct {
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line from which to start the query. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of log download jobs to return in a single request.
+	//
 	// example:
 	//
 	// 10
@@ -17669,12 +18598,16 @@ func (s *ListDownloadJobsRequest) SetSize(v int64) *ListDownloadJobsRequest {
 }
 
 type ListDownloadJobsResponseBody struct {
+	// The number of log download jobs returned in the current response.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// Array, to return a list of log download tasks.
+	// An array that contains the list of log download jobs.
 	Results []*ListDownloadJobsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -17705,37 +18638,39 @@ func (s *ListDownloadJobsResponseBody) SetTotal(v int32) *ListDownloadJobsRespon
 }
 
 type ListDownloadJobsResponseBodyResults struct {
-	// 下载配置
+	// The download configuration.
 	Configuration *ListDownloadJobsResponseBodyResultsConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// The time when the log download job was created. This is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1722411060
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 任务描述
+	// The description of the log download job.
 	//
 	// example:
 	//
 	// a download job
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 任务显示名称
+	// Display name
 	//
 	// example:
 	//
 	// download-123
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The execution details.
+	// The execution details of the job.
 	ExecutionDetails *ListDownloadJobsResponseBodyResultsExecutionDetails `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Struct"`
-	// 代表资源名称的资源属性字段
+	// The name of the log download job.
 	//
 	// example:
 	//
 	// download-123
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The task status.
+	// The status of the Job.
 	//
 	// example:
 	//
-	// running
+	// STARTING、RUNNING、SUCCEEDED、ERROR
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -17783,37 +18718,39 @@ func (s *ListDownloadJobsResponseBodyResults) SetStatus(v string) *ListDownloadJ
 }
 
 type ListDownloadJobsResponseBodyResultsConfiguration struct {
+	// Specifies whether to allow the download of incomplete results.
+	//
 	// example:
 	//
 	// false
 	AllowInComplete *string `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
-	// 起点时间戳（精确到秒）
+	// The start time of the query. This is a UNIX timestamp that is accurate to the second.
 	//
 	// example:
 	//
 	// 1722409260
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// 源logstore
+	// The source Logstore.
 	//
 	// example:
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// 是否启用powerSql
+	// Specifies whether to enable PowerSQL.
 	//
 	// example:
 	//
 	// true
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// 查询语句
+	// The query statement.
 	//
 	// example:
 	//
 	// 	- | select *
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 导出配置
+	// The sink configuration.
 	Sink *ListDownloadJobsResponseBodyResultsConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// 结束时间戳（精确到秒）
+	// The end time of the query. This is a UNIX timestamp that is accurate to the second.
 	//
 	// example:
 	//
@@ -17865,34 +18802,38 @@ func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetToTime(v int64) *L
 }
 
 type ListDownloadJobsResponseBodyResultsConfigurationSink struct {
-	// 对象存储桶
+	// The destination OSS bucket.
 	//
 	// example:
 	//
 	// ali-test-oss-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// 压缩格式
+	// The compression format.
 	//
 	// example:
 	//
 	// none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// 下载文件格式
+	// The file format of the downloaded file.
 	//
 	// example:
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The prefix of the object that is downloaded to the destination OSS bucket.
+	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// 下载使用roleArn
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
 	//
 	// example:
 	//
 	// acs:ram::123456:role/aliyunlogimportossrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The type of the sink. The value is fixed as AliyunOSS.
+	//
 	// example:
 	//
 	// AliyunOSS
@@ -17938,42 +18879,49 @@ func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetType(v string)
 }
 
 type ListDownloadJobsResponseBodyResultsExecutionDetails struct {
+	// The ETag of the file.
+	//
 	// example:
 	//
 	// ETASFGASDASQWDasd
 	CheckSum *string `json:"checkSum,omitempty" xml:"checkSum,omitempty"`
-	// 下载错误信息
+	// The error message that is returned if the job fails.
 	//
 	// example:
 	//
 	// timeout
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 下载执行时间
+	// The running time of the download.
 	//
 	// example:
 	//
 	// 123
 	ExecuteTime *int64 `json:"executeTime,omitempty" xml:"executeTime,omitempty"`
-	// 下载结果链接
+	// The URL of the downloaded file.
 	//
 	// example:
 	//
 	// https://sls-downloaded-xxxx.csv.gzip?Expiresxxx
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 下载文件大小
+	// The size of the downloaded file in bytes.
 	//
 	// example:
 	//
 	// 123456
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// 下载日志条数
+	// The number of downloaded log entries.
 	//
 	// example:
 	//
 	// 123
-	LogCount *int64  `json:"logCount,omitempty" xml:"logCount,omitempty"`
-	Notice   *string `json:"notice,omitempty" xml:"notice,omitempty"`
-	// 下载进度
+	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	// The notification message.
+	//
+	// example:
+	//
+	// test
+	Notice *string `json:"notice,omitempty" xml:"notice,omitempty"`
+	// The download progress as a percentage.
 	//
 	// example:
 	//
@@ -18059,11 +19007,20 @@ func (s *ListDownloadJobsResponse) SetBody(v *ListDownloadJobsResponseBody) *Lis
 }
 
 type ListETLsRequest struct {
+	// The Logstore name.
+	//
+	// example:
+	//
+	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line from which the query starts. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of data transformation jobs to return.
+	//
 	// example:
 	//
 	// 10
@@ -18094,12 +19051,13 @@ func (s *ListETLsRequest) SetSize(v int32) *ListETLsRequest {
 }
 
 type ListETLsResponseBody struct {
-	// The number of data transformation jobs that are returned.
+	// The number of data transformation jobs returned in the current response.
 	//
 	// example:
 	//
 	// 10
-	Count   *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// A list of data transformation results.
 	Results []*ETL `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 	// The total number of data transformation jobs in the project.
 	//
@@ -18162,14 +19120,20 @@ func (s *ListETLsResponse) SetBody(v *ListETLsResponseBody) *ListETLsResponse {
 }
 
 type ListElasticsearchIngestionsRequest struct {
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line from which to start the query. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries to return. The default value is 10.
+	//
 	// example:
 	//
 	// 10
@@ -18200,11 +19164,16 @@ func (s *ListElasticsearchIngestionsRequest) SetSize(v int32) *ListElasticsearch
 }
 
 type ListElasticsearchIngestionsResponseBody struct {
+	// The number of Elasticsearch/OpenSearch import jobs returned in the current request.
+	//
 	// example:
 	//
 	// 10
-	Count   *int32         `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of Elasticsearch/OpenSearch import jobs.
 	Results []*ESIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of Elasticsearch/OpenSearch import jobs in the project.
+	//
 	// example:
 	//
 	// 80
@@ -18264,14 +19233,20 @@ func (s *ListElasticsearchIngestionsResponse) SetBody(v *ListElasticsearchIngest
 }
 
 type ListGCSIngestionsRequest struct {
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// test
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The position from which to start returning results. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of results to return on each page.
+	//
 	// example:
 	//
 	// 100
@@ -18302,11 +19277,16 @@ func (s *ListGCSIngestionsRequest) SetSize(v int32) *ListGCSIngestionsRequest {
 }
 
 type ListGCSIngestionsResponseBody struct {
+	// The number of jobs returned on the current page.
+	//
 	// example:
 	//
 	// 100
-	Count   *int32          `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The details of the job configurations.
 	Results []*GCSIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 100
@@ -18367,8 +19347,12 @@ func (s *ListGCSIngestionsResponse) SetBody(v *ListGCSIngestionsResponseBody) *L
 
 type ListIngestProcessorsRequest struct {
 	// The display name of the ingest processor.
+	//
+	// example:
+	//
+	// Parse Nginx log
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The offset. Default value: 0.
+	// The offset value. The default value is 0.
 	//
 	// example:
 	//
@@ -18380,7 +19364,7 @@ type ListIngestProcessorsRequest struct {
 	//
 	// parse-nginx-log
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
-	// The number of entries. Default value: 200.
+	// The number of entries to return. The default value is 200.
 	//
 	// example:
 	//
@@ -18417,15 +19401,15 @@ func (s *ListIngestProcessorsRequest) SetSize(v int32) *ListIngestProcessorsRequ
 }
 
 type ListIngestProcessorsResponseBody struct {
-	// The number of entries returned.
+	// The number of entries returned in the current response.
 	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The ingest processors that are returned.
+	// A list of ingest processors that meet the query conditions.
 	Processors []*IngestProcessor `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -18494,9 +19478,9 @@ type ListLogStoresRequest struct {
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	// The type of the Logstore. Valid values: standard and query.
 	//
-	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// - **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+	// - **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
 	//
 	// example:
 	//
@@ -18516,9 +19500,9 @@ type ListLogStoresRequest struct {
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 	// The type of the data that you want to query. Valid values:
 	//
-	// 	- None: logs
+	// - None: logs
 	//
-	// 	- Metrics: metrics
+	// - Metrics: metrics
 	//
 	// example:
 	//
@@ -18633,7 +19617,7 @@ func (s *ListLogStoresResponse) SetBody(v *ListLogStoresResponseBody) *ListLogSt
 }
 
 type ListLogtailPipelineConfigRequest struct {
-	// The name of the Logtail pipeline configuration.
+	// The name of the pipeline configuration.
 	//
 	// example:
 	//
@@ -18646,13 +19630,13 @@ type ListLogtailPipelineConfigRequest struct {
 	//
 	// test-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The line from which the query starts.
+	// The line from which to start the query.
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of Logtail pipeline configurations per page.
+	// The number of pipeline configurations to return on each page.
 	//
 	// example:
 	//
@@ -18694,15 +19678,15 @@ func (s *ListLogtailPipelineConfigRequest) SetSize(v int64) *ListLogtailPipeline
 }
 
 type ListLogtailPipelineConfigResponseBody struct {
-	// The Logtail pipeline configurations that are returned on the current page.
+	// The list of Logtail pipeline configurations returned on the current page.
 	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// The number of Logtail pipeline configurations that are returned on the current page.
+	// The number of Logtail pipeline configurations returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The total number of Logtail pipeline configurations in the current project.
+	// The total number of Logtail pipeline configurations in the project.
 	//
 	// example:
 	//
@@ -18811,7 +19795,7 @@ type ListMachineGroupResponseBody struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// The machine groups that meet the query conditions.
 	//
@@ -18823,7 +19807,7 @@ type ListMachineGroupResponseBody struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
@@ -18982,9 +19966,12 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 }
 
 type ListMaterializedViewRequest struct {
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The name of the materialized view. Use this to query for a specific materialized view.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of entries to skip before returning results. This parameter is used for pagination. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The maximum number of materialized views to return per page. Default value: 100. Maximum value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMaterializedViewRequest) String() string {
@@ -19011,9 +19998,12 @@ func (s *ListMaterializedViewRequest) SetSize(v int32) *ListMaterializedViewRequ
 }
 
 type ListMaterializedViewResponseBody struct {
-	Count             *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of materialized views returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// A list of materialized views.
 	MaterializedViews []*string `json:"materializedViews,omitempty" xml:"materializedViews,omitempty" type:"Repeated"`
-	Total             *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of materialized views that match the query.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMaterializedViewResponseBody) String() string {
@@ -19069,9 +20059,12 @@ func (s *ListMaterializedViewResponse) SetBody(v *ListMaterializedViewResponseBo
 }
 
 type ListMaterializedViewsRequest struct {
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The name of the materialized view. Fuzzy search is supported.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The position from which to start returning results for pagination. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of materialized views to return. The actual number of returned materialized views may be less than the specified value. If you do not specify this parameter, a system default is used.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMaterializedViewsRequest) String() string {
@@ -19098,9 +20091,12 @@ func (s *ListMaterializedViewsRequest) SetSize(v int32) *ListMaterializedViewsRe
 }
 
 type ListMaterializedViewsResponseBody struct {
-	Count             *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of materialized views returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// An array of materialized view names.
 	MaterializedViews []*string `json:"materializedViews,omitempty" xml:"materializedViews,omitempty" type:"Repeated"`
-	Total             *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of materialized views that match the query.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMaterializedViewsResponseBody) String() string {
@@ -19156,19 +20152,23 @@ func (s *ListMaterializedViewsResponse) SetBody(v *ListMaterializedViewsResponse
 }
 
 type ListMaxComputeExportsRequest struct {
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The position from which to start the query. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries to return. Default value: 10.
+	// The number of entries to return. The default value is 10.
 	//
 	// example:
 	//
-	// 100
+	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -19196,11 +20196,16 @@ func (s *ListMaxComputeExportsRequest) SetSize(v int32) *ListMaxComputeExportsRe
 }
 
 type ListMaxComputeExportsResponseBody struct {
+	// The number of MaxCompute delivery tasks that are returned.
+	//
 	// example:
 	//
 	// 2
-	Count   *int32              `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of MaxCompute delivery tasks.
 	Results []*MaxComputeExport `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of MaxCompute delivery tasks in the project.
+	//
 	// example:
 	//
 	// 10
@@ -19282,7 +20287,7 @@ type ListMetricStoresRequest struct {
 	//
 	// example:
 	//
-	// 500
+	// 100
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -19384,16 +20389,19 @@ func (s *ListMetricStoresResponse) SetBody(v *ListMetricStoresResponseBody) *Lis
 }
 
 type ListOSSExportsRequest struct {
+	// The number of entries to return. The default value is 10.
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line number from which to start the query. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries to return. Default value: 10.
+	// The number of jobs to return. The default value is 10.
 	//
 	// example:
 	//
-	// 100
+	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -19421,11 +20429,16 @@ func (s *ListOSSExportsRequest) SetSize(v int32) *ListOSSExportsRequest {
 }
 
 type ListOSSExportsResponseBody struct {
+	// The number of OSS shipping jobs returned.
+	//
 	// example:
 	//
 	// 2
-	Count   *int32       `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of OSS shipping jobs.
 	Results []*OSSExport `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of OSS shipping jobs in the project.
+	//
 	// example:
 	//
 	// 10
@@ -19485,7 +20498,14 @@ func (s *ListOSSExportsResponse) SetBody(v *ListOSSExportsResponseBody) *ListOSS
 }
 
 type ListOSSHDFSExportsRequest struct {
+	// The name of the Logstore.
+	//
+	// example:
+	//
+	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line from which to start the query. Default value: 0.
+	//
 	// example:
 	//
 	// 0
@@ -19494,7 +20514,7 @@ type ListOSSHDFSExportsRequest struct {
 	//
 	// example:
 	//
-	// 100
+	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -19522,11 +20542,16 @@ func (s *ListOSSHDFSExportsRequest) SetSize(v int32) *ListOSSHDFSExportsRequest 
 }
 
 type ListOSSHDFSExportsResponseBody struct {
+	// The number of OSS-HDFS export tasks returned in the current response.
+	//
 	// example:
 	//
 	// 2
-	Count   *int32       `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of OSS-HDFS export tasks.
 	Results []*OSSExport `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of OSS-HDFS export tasks in the project.
+	//
 	// example:
 	//
 	// 10
@@ -19587,10 +20612,14 @@ func (s *ListOSSHDFSExportsResponse) SetBody(v *ListOSSHDFSExportsResponseBody) 
 
 type ListOSSIngestionsRequest struct {
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The number of entries to skip for pagination. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The maximum number of OSS import tasks to return in a single request.
+	//
 	// example:
 	//
 	// 10
@@ -19621,15 +20650,15 @@ func (s *ListOSSIngestionsRequest) SetSize(v int32) *ListOSSIngestionsRequest {
 }
 
 type ListOSSIngestionsResponseBody struct {
-	// The number of OSS data import jobs that are returned.
+	// The number of OSS import tasks returned in this response.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The OSS data import jobs.
+	// A list of OSS import tasks.
 	Results []*OSSIngestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// The total number of OSS data import jobs in the project.
+	// The total number of OSS import tasks in the Project.
 	//
 	// example:
 	//
@@ -19691,14 +20720,19 @@ func (s *ListOSSIngestionsResponse) SetBody(v *ListOSSIngestionsResponseBody) *L
 
 type ListProjectRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	FetchQuota  *bool   `json:"fetchQuota,omitempty" xml:"fetchQuota,omitempty"`
-	// The line from which the query starts. Default value: 0.
+	// Specifies whether to retrieve the quota information for the project.
+	//
+	// example:
+	//
+	// false
+	FetchQuota *bool `json:"fetchQuota,omitempty" xml:"fetchQuota,omitempty"`
+	// The line from which the query starts. The default value is 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The name of the project.
+	// The name of the project. Fuzzy queries are supported.
 	//
 	// example:
 	//
@@ -19710,7 +20744,7 @@ type ListProjectRequest struct {
 	//
 	// rg-aekzf******sxby
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of entries per page. Default value: 100. This operation can return up to 500 projects.
+	// The number of rows to return on each page for a paged query. The default value is 100. A maximum of 500 projects can be returned.
 	//
 	// example:
 	//
@@ -19757,15 +20791,19 @@ func (s *ListProjectRequest) SetSize(v int32) *ListProjectRequest {
 }
 
 type ListProjectResponseBody struct {
-	// The number of returned projects on the current page.
+	// The number of projects returned on the current page.
 	//
 	// example:
 	//
 	// 2
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The projects that meet the query conditions.
+	// The list of projects that meet the query criteria.
+	//
+	// example:
+	//
+	// Not applicable
 	Projects []*Project `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
-	// The total number of projects that meet the query conditions.
+	// The total number of projects that meet the query criteria.
 	//
 	// example:
 	//
@@ -19826,9 +20864,24 @@ func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectRe
 }
 
 type ListS3IngestionsRequest struct {
+	// The name of the Logstore.
+	//
+	// example:
+	//
+	// test
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The starting position of the results to return. The default value is 0.
+	//
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of rows per page for a paged query.
+	//
+	// example:
+	//
+	// 100
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListS3IngestionsRequest) String() string {
@@ -19855,9 +20908,20 @@ func (s *ListS3IngestionsRequest) SetSize(v int32) *ListS3IngestionsRequest {
 }
 
 type ListS3IngestionsResponseBody struct {
-	Count   *int32         `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of tasks returned on the current page.
+	//
+	// example:
+	//
+	// 3
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The details of the task configurations.
 	Results []*S3Ingestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32         `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of entries that match the query.
+	//
+	// example:
+	//
+	// 3
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListS3IngestionsResponseBody) String() string {
@@ -20025,15 +21089,17 @@ type ListScheduledSQLsRequest struct {
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The line from which to start the query. The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries to return. Default value: 10.
+	// The number of entries to return. The default value is 10.
 	//
 	// example:
 	//
-	// 100
+	// 10
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -20061,11 +21127,16 @@ func (s *ListScheduledSQLsRequest) SetSize(v int64) *ListScheduledSQLsRequest {
 }
 
 type ListScheduledSQLsResponseBody struct {
+	// The number of Scheduled SQL jobs returned.
+	//
 	// example:
 	//
 	// 10
-	Count   *int32          `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of Scheduled SQL jobs.
 	Results []*ScheduledSQL `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of Scheduled SQL jobs in the project.
+	//
 	// example:
 	//
 	// 80
@@ -20176,21 +21247,21 @@ type ListStoreViewsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- metricstore
+	// - metricstore
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- logstore
+	// - logstore
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//
@@ -20300,15 +21371,15 @@ type ListTagResourcesRequest struct {
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// 	- project
+	// - project
 	//
-	// 	- logstore
+	// - logstore
 	//
-	// 	- dashboard
+	// - dashboard
 	//
-	// 	- machinegroup
+	// - machinegroup
 	//
-	// 	- logtailconfig
+	// - logtailconfig
 	//
 	// This parameter is required.
 	//
@@ -20346,7 +21417,7 @@ func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *Lis
 }
 
 type ListTagResourcesRequestTags struct {
-	// The key of the tag that you want to use to filter resources. For example, if you set the key to `"test-key"`, only resources to which the key is added are returned.``
+	// The key of the tag that you want to use to filter resources. For example, if you set the key to `"test-key"`, only resources to which the key is added are returned.\\`\\`
 	//
 	// This parameter is required.
 	//
@@ -20388,15 +21459,15 @@ type ListTagResourcesShrinkRequest struct {
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- project
+	// - project
 	//
-	// 	- logstore
+	// - logstore
 	//
-	// 	- dashboard
+	// - dashboard
 	//
-	// 	- machinegroup
+	// - machinegroup
 	//
-	// 	- logtailconfig
+	// - logtailconfig
 	//
 	// This parameter is required.
 	//
@@ -20600,6 +21671,8 @@ func (s *OpenSlsServiceResponse) SetStatusCode(v int32) *OpenSlsServiceResponse 
 
 type PullLogsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The compression format of the data that the server returns. Only the lz4 format is supported.
+	//
 	// example:
 	//
 	// lz4
@@ -20625,23 +21698,29 @@ func (s *PullLogsHeaders) SetAcceptEncoding(v string) *PullLogsHeaders {
 }
 
 type PullLogsRequest struct {
+	// The number of LogGroups to return. The value must be an integer from 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The cursor that specifies the start position from which to read data.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MTQ0NzMyOTQwMTEwMjEzMDkwNA
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// The cursor that specifies the end position at which to stop reading data.
+	//
 	// example:
 	//
 	// MTU1NzA1NzQwMTEwMjEzMDkwCg
 	EndCursor *string `json:"end_cursor,omitempty" xml:"end_cursor,omitempty"`
-	// The SPL statement that is used to filter data. For more information, see [SPL instructions](https://help.aliyun.com/document_detail/2536530.html).
+	// The filter statement in the Structured Process Language (SPL) syntax. For more information, see [SPL instructions](https://help.aliyun.com/document_detail/2536530.html).
 	//
 	// example:
 	//
@@ -20713,7 +21792,7 @@ type PutAnnotationDataRequest struct {
 	//
 	// 2156d560fc7c01420542df92cd6365ds
 	AnnotationdataId *string `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
-	// The data structure of the request.
+	// The data struct.
 	MlDataParam *MLDataParam `json:"mlDataParam,omitempty" xml:"mlDataParam,omitempty"`
 	// The raw log data.
 	RawLog []map[string]*string `json:"rawLog,omitempty" xml:"rawLog,omitempty" type:"Repeated"`
@@ -20766,11 +21845,15 @@ func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataRes
 }
 
 type PutConsumeProcessorRequest struct {
-	// Consumption processor configuration.
+	// The configuration of the consume processor.
 	//
 	// This parameter is required.
 	Configuration *ConsumeProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// Filter only GET requests
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name.
 	//
@@ -20834,10 +21917,18 @@ type PutIngestProcessorRequest struct {
 	// This parameter is required.
 	Configuration *IngestProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the ingest processor.
+	//
+	// example:
+	//
+	// Extract fields from Nginx logs using regex.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the ingest processor.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Nginx log parsing
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
@@ -20888,6 +21979,7 @@ func (s *PutIngestProcessorResponse) SetStatusCode(v int32) *PutIngestProcessorR
 }
 
 type PutLogStoreConfigRequest struct {
+	// Specifies a list of header keys from which to extract the client IP address during log ingestion. Simple Log Service (SLS) searches these headers in the specified order and uses the first valid IP address that it finds. The key names are case-insensitive, but their order is significant. To use this feature, you must also enable the `appendMeta` setting for the Logstore. This setting adds the extracted IP address as a log tag.
 	ClientIpHeaders []*string `json:"clientIpHeaders,omitempty" xml:"clientIpHeaders,omitempty" type:"Repeated"`
 }
 
@@ -20929,7 +22021,7 @@ func (s *PutLogStoreConfigResponse) SetStatusCode(v int32) *PutLogStoreConfigRes
 
 type PutLogsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The compression format. lz4 and gzip are supported.
+	// The compression type of the logs. Valid values: lz4 and gzip.
 	//
 	// This parameter is required.
 	//
@@ -20958,7 +22050,7 @@ func (s *PutLogsHeaders) SetXLogCompresstype(v string) *PutLogsHeaders {
 }
 
 type PutLogsRequest struct {
-	// The compressed Protobuf data.
+	// The compressed log data in protobuf format.
 	Body *LogGroup `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -20999,7 +22091,7 @@ func (s *PutLogsResponse) SetStatusCode(v int32) *PutLogsResponse {
 }
 
 type PutProjectPolicyRequest struct {
-	// The project policy.
+	// The request parameters, which define the authorization policy.
 	//
 	// example:
 	//
@@ -21044,7 +22136,7 @@ func (s *PutProjectPolicyResponse) SetStatusCode(v int32) *PutProjectPolicyRespo
 }
 
 type PutProjectTransferAccelerationRequest struct {
-	// Whether to enable transfer acceleration.
+	// Specifies whether to enable transfer acceleration.
 	//
 	// This parameter is required.
 	//
@@ -21093,7 +22185,7 @@ func (s *PutProjectTransferAccelerationResponse) SetStatusCode(v int32) *PutProj
 type PutWebtrackingRequest struct {
 	// The logs. Each element is a JSON object that indicates a log.
 	//
-	// >  **Note**: The time in a log that is collected by using the web tracking feature is the time at which Simple Log Service receives the log. You do not need to configure the __time__ field for each log. If this field exists, it is overwritten by the time at which Simple Log Service receives the log.
+	// > **Note**: The time in a log that is collected by using the web tracking feature is the time at which Simple Log Service receives the log. You do not need to configure the __time__ field for each log. If this field exists, it is overwritten by the time at which Simple Log Service receives the log.
 	//
 	// This parameter is required.
 	Logs []map[string]*string `json:"__logs__,omitempty" xml:"__logs__,omitempty" type:"Repeated"`
@@ -21167,17 +22259,17 @@ func (s *PutWebtrackingResponse) SetStatusCode(v int32) *PutWebtrackingResponse 
 }
 
 type RefreshTokenRequest struct {
-	// 	- The validity period of the access token. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 86400.
+	// - The expiration time of the access token in seconds. This specifies the period during which the token is valid for accessing page API operations. The default value is 86400 seconds (one day). The value must be an integer from 0 to 86400.
 	//
-	// 	- The validity period of the access token is the smaller value between accessTokenExpirationTime and expirationTime.
+	// - The actual expiration time of the access token is the minimum value of accessTokenExpirationTime and expirationTime.
 	//
-	// 	- If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
+	// - If you call this operation using Security Token Service (STS), the actual expiration time of the access token is the minimum value of accessTokenExpirationTime, expirationTime, and the STS token expiration time.
 	//
 	// example:
 	//
 	// 600
 	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
-	// The ticket that is used for logon-free access.
+	// The logon-free ticket.
 	//
 	// example:
 	//
@@ -21204,6 +22296,8 @@ func (s *RefreshTokenRequest) SetTicket(v string) *RefreshTokenRequest {
 }
 
 type RefreshTokenResponseBody struct {
+	// The access token.
+	//
 	// example:
 	//
 	// eyJ***************.eyJ******************.KUT****************
@@ -21719,10 +22813,14 @@ func (s *StopOSSIngestionResponse) SetStatusCode(v int32) *StopOSSIngestionRespo
 
 type SubmitAsyncSqlHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The data format of the response. The value must be application/x-protobuf.
+	//
 	// example:
 	//
 	// application/x-protobuf
 	Accept *string `json:"Accept,omitempty" xml:"Accept,omitempty"`
+	// The compression format of the response. The value can be lz4.
+	//
 	// example:
 	//
 	// lz4
@@ -21753,6 +22851,7 @@ func (s *SubmitAsyncSqlHeaders) SetAcceptEncoding(v string) *SubmitAsyncSqlHeade
 }
 
 type SubmitAsyncSqlRequest struct {
+	// The format of the response parameters. The value is \\`protobuf\\`.
 	Body *SubmitAsyncSqlParams `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -21805,15 +22904,15 @@ type TagResourcesRequest struct {
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// 	- project
+	// - project
 	//
-	// 	- logstore
+	// - logstore
 	//
-	// 	- dashboard
+	// - dashboard
 	//
-	// 	- machinegroup
+	// - machinegroup
 	//
-	// 	- logtailconfig
+	// - logtailconfig
 	//
 	// This parameter is required.
 	//
@@ -21853,11 +22952,11 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 type TagResourcesRequestTags struct {
 	// The key of the tag. The key must meet the following requirements:
 	//
-	// 	- The key must be `1 to 128` characters in length.
+	// - The key must be `1 to 128` characters in length.
 	//
-	// 	- The key cannot contain `http://` or `https://`.
+	// - The key cannot contain `http://` or `https://`.
 	//
-	// 	- The key cannot start with `acs:` or `aliyun`.
+	// - The key cannot start with `acs:` or `aliyun`.
 	//
 	// This parameter is required.
 	//
@@ -21867,9 +22966,9 @@ type TagResourcesRequestTags struct {
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The value of the tag. The value must meet the following requirements:
 	//
-	// 	- The value must be `1 to 128` characters in length.
+	// - The value must be `1 to 128` characters in length.
 	//
-	// 	- The value cannot contain `http://` or `https://`.
+	// - The value cannot contain `http://` or `https://`.
 	//
 	// This parameter is required.
 	//
@@ -21923,9 +23022,9 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 type UntagResourcesRequest struct {
 	// Specifies whether to unbind all tags. Default value: false. Valid values:
 	//
-	// 	- false: unbinds only the tags that match the value of tags.
+	// - false: unbinds only the tags that match the value of tags.
 	//
-	// 	- true: unbinds all tags that are bound to the resource.
+	// - true: unbinds all tags that are bound to the resource.
 	//
 	// example:
 	//
@@ -21941,15 +23040,15 @@ type UntagResourcesRequest struct {
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// 	- project
+	// - project
 	//
-	// 	- logstore
+	// - logstore
 	//
-	// 	- dashboard
+	// - dashboard
 	//
-	// 	- machinegroup
+	// - machinegroup
 	//
-	// 	- logtailconfig
+	// - logtailconfig
 	//
 	// example:
 	//
@@ -22011,13 +23110,17 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 type UpdateAgentInstanceConfigRequest struct {
+	// The attributes that specify the scope of the process-level configuration.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The default configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
-	Config      *string                           `json:"config,omitempty" xml:"config,omitempty"`
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The configurations for the canary release environment.
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
 
@@ -22045,13 +23148,17 @@ func (s *UpdateAgentInstanceConfigRequest) SetGrayConfigs(v []*AgentInstanceConf
 }
 
 type UpdateAgentInstanceConfigShrinkRequest struct {
+	// The attributes that specify the scope of the process-level configuration.
 	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The default configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
-	Config      *string                           `json:"config,omitempty" xml:"config,omitempty"`
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The configurations for the canary release environment.
 	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
 
@@ -22178,7 +23285,7 @@ func (s *UpdateAlertResponse) SetStatusCode(v int32) *UpdateAlertResponse {
 }
 
 type UpdateAnnotationDataSetRequest struct {
-	// The data structure of the request.
+	// The request body.
 	Body *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -22219,7 +23326,7 @@ func (s *UpdateAnnotationDataSetResponse) SetStatusCode(v int32) *UpdateAnnotati
 }
 
 type UpdateAnnotationLabelRequest struct {
-	// The data structure of the request.
+	// The struct of the label table.
 	Body *MLLabelParam `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -22260,12 +23367,18 @@ func (s *UpdateAnnotationLabelResponse) SetStatusCode(v int32) *UpdateAnnotation
 }
 
 type UpdateAzureBlobIngestionRequest struct {
+	// The updated configuration for the Azure Blob ingestion task.
+	//
 	// This parameter is required.
 	Configuration *AzureBlobIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                          `json:"description,omitempty" xml:"description,omitempty"`
+	// The updated description for the Azure Blob ingestion task.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The updated display name for the Azure Blob ingestion task.
+	//
 	// This parameter is required.
-	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Schedule    *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The updated ingestion schedule.
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
 func (s UpdateAzureBlobIngestionRequest) String() string {
@@ -22363,9 +23476,9 @@ func (s *UpdateConfigResponse) SetStatusCode(v int32) *UpdateConfigResponse {
 type UpdateConsumerGroupRequest struct {
 	// Specifies whether to consume data in sequence. Valid values:
 	//
-	// 	- true: If a shard is split, the data in the original shard is consumed first. Then, the data in the new shards is consumed at the same time. If shards are merged, the data in the original shards is consumed first. Then, the data in the new shard is consumed.
+	// - true: If a shard is split, the data in the original shard is consumed first. Then, the data in the new shards is consumed at the same time. If shards are merged, the data in the original shards is consumed first. Then, the data in the new shard is consumed.
 	//
-	// 	- false: The data in all shards is consumed at the same time. If a new shard is generated after a shard is split or shards are merged, the data in the new shard is immediately consumed.
+	// - false: The data in all shards is consumed at the same time. If a new shard is generated after a shard is split or shards are merged, the data in the new shard is immediately consumed.
 	//
 	// example:
 	//
@@ -22508,12 +23621,18 @@ func (s *UpdateDashboardResponse) SetStatusCode(v int32) *UpdateDashboardRespons
 }
 
 type UpdateETLRequest struct {
+	// The detailed configuration of the data transformation task.
+	//
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The description of the data transformation task.
+	//
 	// example:
 	//
 	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the data transformation task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22569,19 +23688,26 @@ func (s *UpdateETLResponse) SetStatusCode(v int32) *UpdateETLResponse {
 }
 
 type UpdateElasticsearchIngestionRequest struct {
+	// ES or OpenSearch ingestion configuration
+	//
 	// This parameter is required.
 	Configuration *ESIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// Description of the ES or OpenSearch ingestion task
+	//
 	// example:
 	//
 	// es ingestion test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display name of the ES or OpenSearch ingestion task
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// es-ingestion-test
-	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Schedule    *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Scheduling type. Leave this field empty unless you need strict scheduling. For example, to run the ingestion task every Monday at 8:00 a.m., use a cron expression
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
 func (s UpdateElasticsearchIngestionRequest) String() string {
@@ -22636,10 +23762,23 @@ func (s *UpdateElasticsearchIngestionResponse) SetStatusCode(v int32) *UpdateEla
 }
 
 type UpdateGCSIngestionRequest struct {
+	// The configuration of the ingestion task.
+	//
 	// This parameter is required.
 	Configuration *GCSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the ingestion task.
+	//
+	// example:
+	//
+	// Gcs import
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the ingestion task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Gcs import
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
@@ -22737,45 +23876,45 @@ func (s *UpdateIndexResponse) SetStatusCode(v int32) *UpdateIndexResponse {
 }
 
 type UpdateLogStoreRequest struct {
-	// Specifies whether to record public IP addresses. Default value: false. Valid values:
+	// Specifies whether to record public IP addresses. Default value: false.
 	//
-	// 	- true
+	// - true: records public IP addresses.
 	//
-	// 	- false
+	// - false: does not record public IP addresses.
 	//
 	// example:
 	//
 	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to enable automatic sharding. Valid values:
+	// Specifies whether to automatically split a shard.
 	//
-	// 	- true
+	// - true: automatically splits a shard.
 	//
-	// 	- false
+	// - false: does not automatically split a shard.
 	//
 	// example:
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+	// Specifies whether to enable web tracking. Default value: false.
 	//
-	// 	- true
+	// - true: enables web tracking.
 	//
-	// 	- false
+	// - false: does not enable web tracking.
 	//
 	// example:
 	//
 	// false
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	// The data structure of the encryption configuration.
+	// The encryption configuration.
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days. After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
+	// The retention period of data in the hot tier of the Logstore. Minimum value: 7. Unit: days. Valid values: 7 to 3000. After the retention period of the hot tier ends, the data is moved to the Infrequent Access (IA) storage class. For more information, see [Automatic Storage Tiering](https://help.aliyun.com/document_detail/308645.html).
 	//
 	// example:
 	//
 	// 60
 	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
+	// The retention period for data in the IA storage class. Data in this storage class has no minimum retention period. Data must be stored for at least 30 days before it is moved to Archive storage.
 	//
 	// example:
 	//
@@ -22789,19 +23928,19 @@ type UpdateLogStoreRequest struct {
 	//
 	// test-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
+	// The maximum number of shards to which a shard can be split. The value must be an integer from 1 to 256.
 	//
-	// >  If you set autoSplit to true, you must specify maxSplitShard.
+	// > This parameter is required if autoSplit is set to true.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
+	// SLS provides two types of Logstores: Standard and Query.
 	//
-	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// - **standard**: supports one-stop data analytics. This type of Logstore is suitable for scenarios such as real-time monitoring, interactive analysis, and building a complete observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+	// - **query**: supports high-performance queries. The index traffic cost of a Query Logstore is about half that of a Standard Logstore. However, a Query Logstore does not support SQL analysis. This type of Logstore is suitable for scenarios that involve large data volumes, long retention periods of weeks or months, and no log analysis.
 	//
 	// example:
 	//
@@ -22811,26 +23950,27 @@ type UpdateLogStoreRequest struct {
 	//
 	// The number of shards.
 	//
-	// >  You cannot call the UpdateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+	// > You cannot update the number of shards with this operation. To change the number of shards, call the SplitShard or MergeShards operation.
 	//
 	// example:
 	//
 	// 2
-	ShardCount     *int32          `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The hash-based write configuration.
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// Deprecated
 	//
-	// The type of the observable data. Valid values:
+	// The type of observable data. Valid values:
 	//
-	// 	- None (default): log data.
+	// - None: logs. This is the default value.
 	//
-	// 	- Metrics: metric data.
+	// - Metrics: metrics.
 	//
 	// example:
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The retention period of data. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
+	// The data retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, the data is permanently retained.
 	//
 	// This parameter is required.
 	//
@@ -23093,7 +24233,7 @@ func (s *UpdateLogStoreMeteringModeResponse) SetStatusCode(v int32) *UpdateLogSt
 }
 
 type UpdateLogStoreProcessorRequest struct {
-	// The identifier of the ingest processor.
+	// The name of the ingest processor.
 	//
 	// This parameter is required.
 	//
@@ -23183,21 +24323,21 @@ type UpdateLoggingRequestLoggingDetails struct {
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// The type of service logs. Valid values:
 	//
-	// 	- consumergroup_log: the consumption delay logs of consumer groups.
+	// - consumergroup_log: the consumption delay logs of consumer groups.
 	//
-	// 	- logtail_alarm: the alert logs of Logtail.
+	// - logtail_alarm: the alert logs of Logtail.
 	//
-	// 	- operation_log: the operation logs.
+	// - operation_log: the operation logs.
 	//
-	// 	- logtail_profile: the collection logs of Logtail.
+	// - logtail_profile: the collection logs of Logtail.
 	//
-	// 	- metering: the metering logs.
+	// - metering: the metering logs.
 	//
-	// 	- logtail_status: the status logs of Logtail.
+	// - logtail_status: the status logs of Logtail.
 	//
-	// 	- scheduledsqlalert: the operational logs of Scheduled SQL jobs.
+	// - scheduledsqlalert: the operational logs of Scheduled SQL jobs.
 	//
-	// 	- etl_alert: the operational logs of data transformation jobs.
+	// - etl_alert: the operational logs of data transformation jobs.
 	//
 	// This parameter is required.
 	//
@@ -23249,13 +24389,17 @@ func (s *UpdateLoggingResponse) SetStatusCode(v int32) *UpdateLoggingResponse {
 }
 
 type UpdateLogtailPipelineConfigRequest struct {
-	// The aggregation plug-ins.
+	// The list of aggregator plug-ins.
 	//
-	// >  This parameter takes effect only when extended plug-ins are used. You can use only one aggregation plug-in.
+	// 	Notice:
+	//
+	// This parameter is valid only when you use an extension processing plug-in. You can use a maximum of one aggregator plug-in.
 	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
 	// The name of the configuration.
 	//
-	// >  The value of this parameter must be the same as the value of configName in the outer layer.
+	// 	Notice:
+	//
+	// The name must be the same as the value of the configName parameter in the request path.
 	//
 	// This parameter is required.
 	//
@@ -23263,41 +24407,53 @@ type UpdateLogtailPipelineConfigRequest struct {
 	//
 	// test-config
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// The output plug-ins.
+	// The list of output plug-ins.
 	//
-	// >  You can configure only one output plug-in.
+	// 	Notice:
+	//
+	// Currently, you can add only one SLS output plug-in.
 	//
 	// This parameter is required.
 	Flushers []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
-	// The global settings.
+	// The global configuration.
 	Global map[string]interface{} `json:"global,omitempty" xml:"global,omitempty"`
-	// The input plug-ins.
+	// The list of input plug-ins.
 	//
-	// >  You can configure only one input plug-in.
+	// 	Notice:
+	//
+	// Currently, you can configure only one input plug-in.
 	//
 	// This parameter is required.
 	Inputs []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
-	// The sample log. You can specify multiple sample logs.
+	// A sample log. Multiple logs are supported.
 	//
 	// example:
 	//
 	// 2022-06-14 11:13:29.796 | DEBUG    | __main__:<module>:1 - hello world
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	// The processing plug-ins.
+	// The list of processing plug-ins.
 	//
-	// >  Logtail plug-ins for data processing are classified into native plug-ins and extended plug-ins. For more information, see [Overview of Logtail plug-ins for data processing](https://help.aliyun.com/document_detail/64957.html).
+	// > Processing plug-ins are classified into native processing plug-ins and extension processing plug-ins. For more information, see [Processing plug-ins](https://help.aliyun.com/document_detail/64957.html).
+	//
+	// 	Notice:
+	//
+	// > - Native plug-ins can be used only to collect text logs.
 	//
 	// >
 	//
-	// 	- You can use native plug-ins only to collect text logs.
+	// > - You cannot add native plug-ins and extension plug-ins at the same time.
 	//
-	// 	- You cannot add native plug-ins and extended plug-ins at a time.
+	// >
 	//
-	// 	- When you add native plug-ins, take note of the following items:
+	// > - When you use native plug-ins, the following requirements must be met:
 	//
-	//     	- You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
+	// >
 	//
-	//     	- After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
+	// >   - The first processing plug-in must be a regular expression-based parsing plug-in, a separator-based parsing plug-in, a JSON-based parsing plug-in, an NGINX-based parsing plug-in, an Apache-based parsing plug-in, or an IIS-based parsing plug-in.
+	//
+	// >
+	//
+	// >   - After the first processing plug-in, you can add only one time parsing plug-in, one filter plug-in, and multiple data masking plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 	Task       map[string]interface{}   `json:"task,omitempty" xml:"task,omitempty"`
 }
@@ -23392,9 +24548,9 @@ type UpdateMachineGroupRequest struct {
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
 	// The identifier type of the machine group. Valid values:
 	//
-	// 	- ip: The machine group uses IP addresses as identifiers.
+	// - ip: The machine group uses IP addresses as identifiers.
 	//
-	// 	- userdefined: The machine group uses custom identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	//
 	// This parameter is required.
 	//
@@ -23404,9 +24560,9 @@ type UpdateMachineGroupRequest struct {
 	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
 	// The identifiers of the machines in the machine group.
 	//
-	// 	- If you set machineIdentifyType to ip, enter the IP addresses of the machines.
+	// - If you set machineIdentifyType to ip, enter the IP addresses of the machines.
 	//
-	// 	- If you set machineIdentifyType to userdefined, enter a custom identifier.
+	// - If you set machineIdentifyType to userdefined, enter a custom identifier.
 	//
 	// This parameter is required.
 	//
@@ -23560,10 +24716,14 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 }
 
 type UpdateMaterializedViewRequest struct {
-	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
-	Enable          *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
-	Ttl             *int32  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The refresh interval of the materialized view, in minutes.
+	AggIntervalMins *int32 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	// Specifies whether to automatically refresh the materialized view.
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The new SQL query for the materialized view. Updating the query rebuilds the view.
+	OriginalSql *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	// The data retention period (TTL) of the materialized view, in days.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s UpdateMaterializedViewRequest) String() string {
@@ -23623,6 +24783,10 @@ type UpdateMaxComputeExportRequest struct {
 	// This parameter is required.
 	Configuration *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the MaxCompute data shipping job.
+	//
+	// example:
+	//
+	// Update MaxCompute delivery task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MaxCompute data shipping job.
 	//
@@ -23687,10 +24851,12 @@ type UpdateMetricStoreRequest struct {
 	// example:
 	//
 	// true
-	AutoSplit           *bool  `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	HotTtl              *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// The retention period of data in the hot storage layer. Unit: days.
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The retention period for the IA storage class. Unit: days.
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
-	// The maximum number of shards into which existing shards can be automatically split. This parameter is valid only when you set the autoSplit parameter to true.
+	// The maximum number of shards for automatic sharding. This parameter is valid only when autoSplit is set to true.
 	//
 	// example:
 	//
@@ -23703,7 +24869,7 @@ type UpdateMetricStoreRequest struct {
 	// standard
 	Mode           *string         `json:"mode,omitempty" xml:"mode,omitempty"`
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
-	// The retention period of the metric data. Unit: days.
+	// The data retention period. Unit: days.
 	//
 	// example:
 	//
@@ -23783,7 +24949,7 @@ func (s *UpdateMetricStoreResponse) SetStatusCode(v int32) *UpdateMetricStoreRes
 }
 
 type UpdateMetricStoreMeteringModeRequest struct {
-	// The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
+	// The billing mode to which you want to switch. Valid values: ChargeByFunction and ChargeByDataIngest. ChargeByFunction specifies the [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) mode. ChargeByDataIngest specifies the [pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html) mode.
 	//
 	// This parameter is required.
 	//
@@ -23880,12 +25046,16 @@ type UpdateOSSExportRequest struct {
 	// The configuration details of the job.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the job.
+	//
+	// example:
+	//
+	// Update OSS delivery task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the job.
 	//
 	// example:
 	//
-	// ali-test-oss-job
+	// my-oss-job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
@@ -23941,6 +25111,10 @@ type UpdateOSSHDFSExportRequest struct {
 	// This parameter is required.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the job.
+	//
+	// example:
+	//
+	// Update OSS-HDFS delivery task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the job.
 	//
@@ -23948,7 +25122,7 @@ type UpdateOSSHDFSExportRequest struct {
 	//
 	// example:
 	//
-	// ali-test-oss-hdfs-job
+	// my-oss-hdfs-job
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
@@ -23999,17 +25173,25 @@ func (s *UpdateOSSHDFSExportResponse) SetStatusCode(v int32) *UpdateOSSHDFSExpor
 }
 
 type UpdateOSSIngestionRequest struct {
-	// The configuration of the OSS data import job.
+	// The configuration of the OSS import task.
 	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The description of the Object Storage Service (OSS) data import job.
+	// The description of the OSS import task.
+	//
+	// example:
+	//
+	// OSS import
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the OSS data import job.
+	// The display name of the OSS import task.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS import
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
+	// The schedule of the task. This parameter is optional. To run the task at a fixed time, such as 08:00 every Monday, use a cron expression.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
@@ -24073,13 +25255,7 @@ type UpdateProjectRequest struct {
 	//
 	// Description of my-project-test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable the recycle bin feature.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable the recycle bin.
 	//
 	// example:
 	//
@@ -24226,15 +25402,26 @@ func (s *UpdateSavedSearchResponse) SetStatusCode(v int32) *UpdateSavedSearchRes
 }
 
 type UpdateScheduledSQLRequest struct {
+	// The configuration of the task.
+	//
 	// This parameter is required.
 	Configuration *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the task.
+	//
+	// example:
+	//
+	// Update scheduled SQL task
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ali-test-scheduled-sql
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The scheduling configuration of the task.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
@@ -24291,12 +25478,16 @@ func (s *UpdateScheduledSQLResponse) SetStatusCode(v int32) *UpdateScheduledSQLR
 }
 
 type UpdateSqlInstanceRequest struct {
+	// The number of Compute Units (CUs). A CU is a compute core that can be used for parallel processing when Dedicated SQL is running.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// Specifies whether to enable Dedicated SQL for the project by default. If this parameter is set to true, all query and analysis operations in the project, such as alerts and dashboards, use Dedicated SQL.
+	//
 	// This parameter is required.
 	UseAsDefault *bool `json:"useAsDefault,omitempty" xml:"useAsDefault,omitempty"`
 }
@@ -24347,21 +25538,21 @@ type UpdateStoreViewRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- metricstore
+	// - metricstore
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- logstore
+	// - logstore
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// This parameter is required.
 	//
@@ -24449,11 +25640,11 @@ type UpsertCollectionPolicyRequest struct {
 	PolicyConfig *UpsertCollectionPolicyRequestPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
 	// The name must meet the following requirements:
 	//
-	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- The name must start with a letter.
+	// - The name must start with a letter.
 	//
-	// 	- The name must be 3 to 63 characters in length.
+	// - The name must be 3 to 63 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -24745,7 +25936,17 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 //
 // Description:
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
+//
+// - Create an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+//	An AccessKey pair for an Alibaba Cloud account provides full access to all API operations. This poses a security risk. For security reasons, we recommend that you create and use a RAM user for API access or routine O\\&M. The RAM user must have the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Identify the name and region of the project. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
+//
+// - Create a Logtail configuration and obtain its name. For more information, see [CreateConfig](https://help.aliyun.com/document_detail/29042.html).
+//
+// - Create a machine group and obtain its name. For more information, see [CreateMachineGroup](https://help.aliyun.com/document_detail/29032.html).
 //
 // @param headers - map
 //
@@ -24785,7 +25986,17 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 //
 // Description:
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
+//
+// - Create an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+//	An AccessKey pair for an Alibaba Cloud account provides full access to all API operations. This poses a security risk. For security reasons, we recommend that you create and use a RAM user for API access or routine O\\&M. The RAM user must have the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Identify the name and region of the project. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
+//
+// - Create a Logtail configuration and obtain its name. For more information, see [CreateConfig](https://help.aliyun.com/document_detail/29042.html).
+//
+// - Create a machine group and obtain its name. For more information, see [CreateMachineGroup](https://help.aliyun.com/document_detail/29032.html).
 //
 // @return ApplyConfigToMachineGroupResponse
 func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *string, configName *string) (_result *ApplyConfigToMachineGroupResponse, _err error) {
@@ -24802,7 +26013,7 @@ func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *s
 
 // Summary:
 //
-// 调用 ai 工具
+// Calls observable AI tools. The capabilities of these tools are continuously updated. You can call the tool list API to retrieve the currently supported capabilities.
 //
 // @param request - CallAiToolsRequest
 //
@@ -24855,7 +26066,7 @@ func (client *Client) CallAiToolsWithOptions(request *CallAiToolsRequest, header
 
 // Summary:
 //
-// 调用 ai 工具
+// Calls observable AI tools. The capabilities of these tools are continuously updated. You can call the tool list API to retrieve the currently supported capabilities.
 //
 // @param request - CallAiToolsRequest
 //
@@ -24949,33 +26160,33 @@ func (client *Client) ChangeResourceGroup(project *string, request *ChangeResour
 
 // Summary:
 //
-// Sends heartbeats to a server from a consumer.
+// A consumer sends a heartbeat to the server to maintain its active status.
 //
 // Description:
 //
-// ### Usage notes
+// ### API description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host consists of a project name and a Simple Log Service Endpoint. You must specify the project in the Host.
 //
-//   - Connections between consumers and Simple Log Service are established by sending heartbeat messages at regular intervals. If Simple Log Service does not receive heartbeat messages from a consumer on schedule, Simple Log Service deletes the consumer.
+// - A consumer sends heartbeats to the server at fixed intervals to maintain its connection. If the server does not receive a heartbeat from the consumer within a specified period, the consumer is deleted.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair of an Alibaba Cloud account has permissions for all API operations. This poses a high security threat. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - Obtain the project name, region, and Logstore name. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+// - Obtain the consumer group name. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
 //
-// ### Authentication resources
+// ### Authorization information
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table describes the authorization information for this operation. Add this information to the Action element of a RAM policy to grant a RAM user or RAM role the permissions to call this API operation.
 //
-// |Action|Resource|
+// | Action                       | Resource in an authorization policy                                                                                   |
 //
-// |:---|:---|
+// | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:ConsumerGroupHeartBeat`|`acs:log:${regionId}:${accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/{#ConsumerGroupName}`|
+// | `log:ConsumerGroupHeartBeat` | `acs:log:${regionId}:${accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/{#ConsumerGroupName}` |
 //
 // @param request - ConsumerGroupHeartBeatRequest
 //
@@ -25024,33 +26235,33 @@ func (client *Client) ConsumerGroupHeartBeatWithOptions(project *string, logstor
 
 // Summary:
 //
-// Sends heartbeats to a server from a consumer.
+// A consumer sends a heartbeat to the server to maintain its active status.
 //
 // Description:
 //
-// ### Usage notes
+// ### API description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host consists of a project name and a Simple Log Service Endpoint. You must specify the project in the Host.
 //
-//   - Connections between consumers and Simple Log Service are established by sending heartbeat messages at regular intervals. If Simple Log Service does not receive heartbeat messages from a consumer on schedule, Simple Log Service deletes the consumer.
+// - A consumer sends heartbeats to the server at fixed intervals to maintain its connection. If the server does not receive a heartbeat from the consumer within a specified period, the consumer is deleted.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair of an Alibaba Cloud account has permissions for all API operations. This poses a high security threat. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - Obtain the project name, region, and Logstore name. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+// - Obtain the consumer group name. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
 //
-// ### Authentication resources
+// ### Authorization information
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table describes the authorization information for this operation. Add this information to the Action element of a RAM policy to grant a RAM user or RAM role the permissions to call this API operation.
 //
-// |Action|Resource|
+// | Action                       | Resource in an authorization policy                                                                                   |
 //
-// |:---|:---|
+// | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:ConsumerGroupHeartBeat`|`acs:log:${regionId}:${accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/{#ConsumerGroupName}`|
+// | `log:ConsumerGroupHeartBeat` | `acs:log:${regionId}:${accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/{#ConsumerGroupName}` |
 //
 // @param request - ConsumerGroupHeartBeatRequest
 //
@@ -25073,15 +26284,15 @@ func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, 
 //
 // Description:
 //
-//	  If you do not specify a consumer, you must set **forceSuccess*	- to **true**. Otherwise, the checkpoint cannot be updated.
+// - If you do not specify a consumer, you must set **forceSuccess*	- to **true**. Otherwise, the checkpoint cannot be updated.
 //
-//		- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ConsumerGroupUpdateCheckPointRequest
 //
@@ -25147,15 +26358,15 @@ func (client *Client) ConsumerGroupUpdateCheckPointWithOptions(project *string, 
 //
 // Description:
 //
-//	  If you do not specify a consumer, you must set **forceSuccess*	- to **true**. Otherwise, the checkpoint cannot be updated.
+// - If you do not specify a consumer, you must set **forceSuccess*	- to **true**. Otherwise, the checkpoint cannot be updated.
 //
-//		- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ConsumerGroupUpdateCheckPointRequest
 //
@@ -25174,7 +26385,7 @@ func (client *Client) ConsumerGroupUpdateCheckPoint(project *string, logstore *s
 
 // Summary:
 //
-// # CreateAgentInstanceConfig
+// Creates a process-level configuration.
 //
 // @param request - CreateAgentInstanceConfigRequest
 //
@@ -25231,7 +26442,7 @@ func (client *Client) CreateAgentInstanceConfigWithOptions(request *CreateAgentI
 
 // Summary:
 //
-// # CreateAgentInstanceConfig
+// Creates a process-level configuration.
 //
 // @param request - CreateAgentInstanceConfigRequest
 //
@@ -25398,7 +26609,11 @@ func (client *Client) CreateAnnotationDataSet(request *CreateAnnotationDataSetRe
 
 // Summary:
 //
-// Creates a tag table.
+// Creates an annotation label table.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - CreateAnnotationLabelRequest
 //
@@ -25438,7 +26653,11 @@ func (client *Client) CreateAnnotationLabelWithOptions(request *CreateAnnotation
 
 // Summary:
 //
-// Creates a tag table.
+// Creates an annotation label table.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - CreateAnnotationLabelRequest
 //
@@ -25457,7 +26676,7 @@ func (client *Client) CreateAnnotationLabel(request *CreateAnnotationLabelReques
 
 // Summary:
 //
-// 创建Azure blob文件导入任务
+// Creates an Azure BLOB ingestion task.
 //
 // @param request - CreateAzureBlobIngestionRequest
 //
@@ -25521,7 +26740,7 @@ func (client *Client) CreateAzureBlobIngestionWithOptions(project *string, reque
 
 // Summary:
 //
-// 创建Azure blob文件导入任务
+// Creates an Azure BLOB ingestion task.
 //
 // @param request - CreateAzureBlobIngestionRequest
 //
@@ -25546,17 +26765,17 @@ func (client *Client) CreateAzureBlobIngestion(project *string, request *CreateA
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 100 Logtail configurations in a project.
+// - You can create up to 100 Logtail configurations in a project.
 //
-//   - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
+// - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
 //
 // @param request - CreateConfigRequest
 //
@@ -25605,17 +26824,17 @@ func (client *Client) CreateConfigWithOptions(project *string, request *CreateCo
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 100 Logtail configurations in a project.
+// - You can create up to 100 Logtail configurations in a project.
 //
-//   - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
+// - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
 //
 // @param request - CreateConfigRequest
 //
@@ -25640,27 +26859,27 @@ func (client *Client) CreateConfig(project *string, request *CreateConfigRequest
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - You can create up to 30 consumer groups for a Logstore. The name of a consumer group must be unique in a project.
+// - You can create up to 30 consumer groups for a Logstore. The name of a consumer group must be unique in a project.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDK for Java. For more information, see [Consume log data](https://help.aliyun.com/document_detail/120035.html) and [Use consumer groups to consume data](https://help.aliyun.com/document_detail/28998.html).
+// - Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDK for Java. For more information, see [Consume log data](https://help.aliyun.com/document_detail/120035.html) and [Use consumer groups to consume data](https://help.aliyun.com/document_detail/28998.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                    | Resource                                                                                                          |
 //
-// |:---|:---|
+// | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:CreateConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
+// | `log:CreateConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}` |
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -25722,27 +26941,27 @@ func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - You can create up to 30 consumer groups for a Logstore. The name of a consumer group must be unique in a project.
+// - You can create up to 30 consumer groups for a Logstore. The name of a consumer group must be unique in a project.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDK for Java. For more information, see [Consume log data](https://help.aliyun.com/document_detail/120035.html) and [Use consumer groups to consume data](https://help.aliyun.com/document_detail/28998.html).
+// - Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDK for Java. For more information, see [Consume log data](https://help.aliyun.com/document_detail/120035.html) and [Use consumer groups to consume data](https://help.aliyun.com/document_detail/28998.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                    | Resource                                                                                                          |
 //
-// |:---|:---|
+// | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:CreateConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
+// | `log:CreateConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}` |
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -25767,13 +26986,13 @@ func (client *Client) CreateConsumerGroup(project *string, logstore *string, req
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - CreateDashboardRequest
 //
@@ -25822,13 +27041,13 @@ func (client *Client) CreateDashboardWithOptions(project *string, request *Creat
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - CreateDashboardRequest
 //
@@ -25922,7 +27141,7 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 
 // Summary:
 //
-// Creates a log download task in a project.
+// Creates a log download task in a specified project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -25982,7 +27201,7 @@ func (client *Client) CreateDownloadJobWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// Creates a log download task in a project.
+// Creates a log download task in a specified project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -26001,7 +27220,7 @@ func (client *Client) CreateDownloadJob(project *string, request *CreateDownload
 
 // Summary:
 //
-// Creates a data transformation job in a project.
+// Creates a data transformation job in a specified project.
 //
 // @param request - CreateETLRequest
 //
@@ -26061,7 +27280,7 @@ func (client *Client) CreateETLWithOptions(project *string, request *CreateETLRe
 
 // Summary:
 //
-// Creates a data transformation job in a project.
+// Creates a data transformation job in a specified project.
 //
 // @param request - CreateETLRequest
 //
@@ -26080,7 +27299,7 @@ func (client *Client) CreateETL(project *string, request *CreateETLRequest) (_re
 
 // Summary:
 //
-// 创建ES导入任务
+// Creates an ES or OpenSearch import job.
 //
 // @param request - CreateElasticsearchIngestionRequest
 //
@@ -26144,7 +27363,7 @@ func (client *Client) CreateElasticsearchIngestionWithOptions(project *string, r
 
 // Summary:
 //
-// 创建ES导入任务
+// Creates an ES or OpenSearch import job.
 //
 // @param request - CreateElasticsearchIngestionRequest
 //
@@ -26163,7 +27382,7 @@ func (client *Client) CreateElasticsearchIngestion(project *string, request *Cre
 
 // Summary:
 //
-// 创建GCP Cloud Storage文件导入任务
+// Creates a GCS file import task.
 //
 // @param request - CreateGCSIngestionRequest
 //
@@ -26223,7 +27442,7 @@ func (client *Client) CreateGCSIngestionWithOptions(project *string, request *Cr
 
 // Summary:
 //
-// 创建GCP Cloud Storage文件导入任务
+// Creates a GCS file import task.
 //
 // @param request - CreateGCSIngestionRequest
 //
@@ -26318,27 +27537,27 @@ func (client *Client) CreateIndex(project *string, logstore *string, request *Cr
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host header of the request consists of a project name and a Log Service endpoint. You must specify the project in this header.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must create and obtain an AccessKey. For more information, see [AccessKey](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An Alibaba Cloud account\\"s AccessKey pair has full permissions for all API operations, which poses a security risk. For enhanced security, we strongly recommend using a RAM user to call API operations or perform routine O\\&M. You must grant the RAM user permissions to manage Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - Ensure you have the name and region of the project where you want to create the Logstore. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores in each project.
+// - You can create a maximum of 200 Logstores in a project.
 //
-//   - If the retention period of a log reaches the data retention period that you specified for the Logstore, the log is deleted.
+// - Log Service automatically deletes logs after the specified data retention period expires.
 //
-// ### Authentication resources
+// ### Authorization
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table lists the permission required to call this API. To grant this permission to a RAM user or RAM role, add the corresponding Action to a RAM policy statement.
 //
-// |Action|Resource|
+// | Action               | Resource                                                                       |
 //
-// |:---|:---|
+// | :------------------- | :----------------------------------------------------------------------------- |
 //
-// |`log:CreateLogStore`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
+// | `log:CreateLogStore` | `acs:log:{#regionId}:{#accountId}:project/{#project}/logstore/{#logstoreName}` |
 //
 // @param request - CreateLogStoreRequest
 //
@@ -26361,6 +27580,10 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
 		body["autoSplit"] = request.AutoSplit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableModify)) {
+		body["enableModify"] = request.EnableModify
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableTracking)) {
@@ -26448,27 +27671,27 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host header of the request consists of a project name and a Log Service endpoint. You must specify the project in this header.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must create and obtain an AccessKey. For more information, see [AccessKey](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An Alibaba Cloud account\\"s AccessKey pair has full permissions for all API operations, which poses a security risk. For enhanced security, we strongly recommend using a RAM user to call API operations or perform routine O\\&M. You must grant the RAM user permissions to manage Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - Ensure you have the name and region of the project where you want to create the Logstore. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores in each project.
+// - You can create a maximum of 200 Logstores in a project.
 //
-//   - If the retention period of a log reaches the data retention period that you specified for the Logstore, the log is deleted.
+// - Log Service automatically deletes logs after the specified data retention period expires.
 //
-// ### Authentication resources
+// ### Authorization
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table lists the permission required to call this API. To grant this permission to a RAM user or RAM role, add the corresponding Action to a RAM policy statement.
 //
-// |Action|Resource|
+// | Action               | Resource                                                                       |
 //
-// |:---|:---|
+// | :------------------- | :----------------------------------------------------------------------------- |
 //
-// |`log:CreateLogStore`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
+// | `log:CreateLogStore` | `acs:log:{#regionId}:{#accountId}:project/{#project}/logstore/{#logstoreName}` |
 //
 // @param request - CreateLogStoreRequest
 //
@@ -26568,10 +27791,6 @@ func (client *Client) CreateLogging(project *string, request *CreateLoggingReque
 //
 // Creates a Logtail pipeline configuration.
 //
-// Description:
-//
-// The UK (London) region is supported. Supported regions are constantly updated.
-//
 // @param request - CreateLogtailPipelineConfigRequest
 //
 // @param headers - map
@@ -26647,10 +27866,6 @@ func (client *Client) CreateLogtailPipelineConfigWithOptions(project *string, re
 // Summary:
 //
 // Creates a Logtail pipeline configuration.
-//
-// Description:
-//
-// The UK (London) region is supported. Supported regions are constantly updated.
 //
 // @param request - CreateLogtailPipelineConfigRequest
 //
@@ -26764,7 +27979,7 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 
 // Summary:
 //
-// 创建物化视图
+// Creates a materialized view.
 //
 // @param request - CreateMaterializedViewRequest
 //
@@ -26832,7 +28047,7 @@ func (client *Client) CreateMaterializedViewWithOptions(project *string, request
 
 // Summary:
 //
-// 创建物化视图
+// Creates a materialized view.
 //
 // @param request - CreateMaterializedViewRequest
 //
@@ -26855,13 +28070,13 @@ func (client *Client) CreateMaterializedView(project *string, request *CreateMat
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - CreateMaxComputeExportRequest
 //
@@ -26925,13 +28140,13 @@ func (client *Client) CreateMaxComputeExportWithOptions(project *string, request
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - CreateMaxComputeExportRequest
 //
@@ -26950,23 +28165,25 @@ func (client *Client) CreateMaxComputeExport(project *string, request *CreateMax
 
 // Summary:
 //
-// Creates a Metricstore to store metric data.
+// Creates a Metricstore to store metrics.
 //
 // Description:
 //
-// Metricstores are used to store metric data. For more information, see [Metric data](https://help.aliyun.com/document_detail/174965.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html).
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of a project name and a Simple Log Service Endpoint. The project name must be specified in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is required. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has full permissions on all API operations. This poses a high security risk. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform operations and maintenance (O\\&M). If you use a RAM user, you must grant the RAM user the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The name and region of the project are required. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - A project can contain a maximum of 200 Logstores or Metricstores.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metrics are deleted after the specified data retention period ends.
+//
+// - A Logstore and a Metricstore in the same project cannot have the same name.
 //
 // @param request - CreateMetricStoreRequest
 //
@@ -27054,23 +28271,25 @@ func (client *Client) CreateMetricStoreWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// Creates a Metricstore to store metric data.
+// Creates a Metricstore to store metrics.
 //
 // Description:
 //
-// Metricstores are used to store metric data. For more information, see [Metric data](https://help.aliyun.com/document_detail/174965.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html).
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of a project name and a Simple Log Service Endpoint. The project name must be specified in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is required. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has full permissions on all API operations. This poses a high security risk. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform operations and maintenance (O\\&M). If you use a RAM user, you must grant the RAM user the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The name and region of the project are required. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - A project can contain a maximum of 200 Logstores or Metricstores.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metrics are deleted after the specified data retention period ends.
+//
+// - A Logstore and a Metricstore in the same project cannot have the same name.
 //
 // @param request - CreateMetricStoreRequest
 //
@@ -27089,7 +28308,7 @@ func (client *Client) CreateMetricStore(project *string, request *CreateMetricSt
 
 // Summary:
 //
-// Ships logs from a Simple Log Service Logstore to an Object Storage Service (OSS) bucket.
+// Exports logs from a Logstore to an OSS bucket.
 //
 // @param request - CreateOSSExportRequest
 //
@@ -27149,7 +28368,7 @@ func (client *Client) CreateOSSExportWithOptions(project *string, request *Creat
 
 // Summary:
 //
-// Ships logs from a Simple Log Service Logstore to an Object Storage Service (OSS) bucket.
+// Exports logs from a Logstore to an OSS bucket.
 //
 // @param request - CreateOSSExportRequest
 //
@@ -27168,7 +28387,7 @@ func (client *Client) CreateOSSExport(project *string, request *CreateOSSExportR
 
 // Summary:
 //
-// Creates an OSS-HDFS data shipping job in a project.
+// Creates an export job from OSS to HDFS in a specified project.
 //
 // @param request - CreateOSSHDFSExportRequest
 //
@@ -27228,7 +28447,7 @@ func (client *Client) CreateOSSHDFSExportWithOptions(project *string, request *C
 
 // Summary:
 //
-// Creates an OSS-HDFS data shipping job in a project.
+// Creates an export job from OSS to HDFS in a specified project.
 //
 // @param request - CreateOSSHDFSExportRequest
 //
@@ -27247,7 +28466,7 @@ func (client *Client) CreateOSSHDFSExport(project *string, request *CreateOSSHDF
 
 // Summary:
 //
-// Creates an Object Storage Service (OSS) data import job in a project.
+// Creates an OSS import task in a specified project.
 //
 // @param request - CreateOSSIngestionRequest
 //
@@ -27311,7 +28530,7 @@ func (client *Client) CreateOSSIngestionWithOptions(project *string, request *Cr
 
 // Summary:
 //
-// Creates an Object Storage Service (OSS) data import job in a project.
+// Creates an OSS import task in a specified project.
 //
 // @param request - CreateOSSIngestionRequest
 //
@@ -27331,6 +28550,28 @@ func (client *Client) CreateOSSIngestion(project *string, request *CreateOSSInge
 // Summary:
 //
 // Creates a project.
+//
+// Description:
+//
+// ### Usage notes
+//
+// - An AccessKey pair is required. For more information, see[AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations, which is high risk. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see[Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - A project name must be globally unique in an Alibaba Cloud region and cannot be changed after the project is created.
+//
+// - For limits on the number of projects per Alibaba Cloud account, see[Basic resources](https://help.aliyun.com/document_detail/86660.html).
+//
+// ### Authorization information
+//
+// The following table describes the authorization information for this API operation. You can add this information to the Action element of a RAM policy statement to grant RAM users or RAM roles permissions to call this operation.
+//
+// | Action              | Resource in policy                                        |
+//
+// | :------------------ | :-------------------------------------------------------- |
+//
+// | `log:CreateProject` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - CreateProjectRequest
 //
@@ -27393,6 +28634,28 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 //
 // Creates a project.
 //
+// Description:
+//
+// ### Usage notes
+//
+// - An AccessKey pair is required. For more information, see[AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations, which is high risk. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see[Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - A project name must be globally unique in an Alibaba Cloud region and cannot be changed after the project is created.
+//
+// - For limits on the number of projects per Alibaba Cloud account, see[Basic resources](https://help.aliyun.com/document_detail/86660.html).
+//
+// ### Authorization information
+//
+// The following table describes the authorization information for this API operation. You can add this information to the Action element of a RAM policy statement to grant RAM users or RAM roles permissions to call this operation.
+//
+// | Action              | Resource in policy                                        |
+//
+// | :------------------ | :-------------------------------------------------------- |
+//
+// | `log:CreateProject` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
+//
 // @param request - CreateProjectRequest
 //
 // @return CreateProjectResponse
@@ -27410,7 +28673,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// 创建S3文件导入任务
+// Creates an S3 file import job.
 //
 // @param request - CreateS3IngestionRequest
 //
@@ -27474,7 +28737,7 @@ func (client *Client) CreateS3IngestionWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// 创建S3文件导入任务
+// Creates an S3 file import job.
 //
 // @param request - CreateS3IngestionRequest
 //
@@ -27499,25 +28762,25 @@ func (client *Client) CreateS3Ingestion(project *string, request *CreateS3Ingest
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                 |
 //
-// |:---|:---|
+// | :---------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:CreateSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @param request - CreateSavedSearchRequest
 //
@@ -27587,25 +28850,25 @@ func (client *Client) CreateSavedSearchWithOptions(project *string, request *Cre
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                 |
 //
-// |:---|:---|
+// | :---------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:CreateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:CreateSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @param request - CreateSavedSearchRequest
 //
@@ -27624,7 +28887,7 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 
 // Summary:
 //
-// Creates a Scheduled SQL job in a project.
+// Creates a scheduled SQL job in a specified project.
 //
 // @param request - CreateScheduledSQLRequest
 //
@@ -27688,7 +28951,7 @@ func (client *Client) CreateScheduledSQLWithOptions(project *string, request *Cr
 
 // Summary:
 //
-// Creates a Scheduled SQL job in a project.
+// Creates a scheduled SQL job in a specified project.
 //
 // @param request - CreateScheduledSQLRequest
 //
@@ -27707,11 +28970,11 @@ func (client *Client) CreateScheduledSQL(project *string, request *CreateSchedul
 
 // Summary:
 //
-// If you use the Standard SQL feature to analyze a large amount of data, the logs within the specified time range cannot be fully scanned in a single query request. In this case, the returned results may not contain all matched data. You can increase the number of shards to improve data read and write capabilities. However, this method takes effect only for incremental data. You can enable the Dedicated SQL feature to increase computing resources and the amount of data that can be analyzed in a single query request.
+// If you use Standard SQL to analyze a large volume of data, a single query may not be able to scan all logs within a specified time range, which can result in incomplete data. Adding shards improves read and write performance, but this change applies only to new data. To analyze a larger volume of data in a single query, you can enable Dedicated SQL and increase its compute resources.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you fully understand the [billing](https://help.aliyun.com/document_detail/223777.html) of Dedicated SQL.
+// *Ensure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/223777.html) of Dedicated SQL before you use this operation.**
 //
 // @param request - CreateSqlInstanceRequest
 //
@@ -27763,11 +29026,11 @@ func (client *Client) CreateSqlInstanceWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// If you use the Standard SQL feature to analyze a large amount of data, the logs within the specified time range cannot be fully scanned in a single query request. In this case, the returned results may not contain all matched data. You can increase the number of shards to improve data read and write capabilities. However, this method takes effect only for incremental data. You can enable the Dedicated SQL feature to increase computing resources and the amount of data that can be analyzed in a single query request.
+// If you use Standard SQL to analyze a large volume of data, a single query may not be able to scan all logs within a specified time range, which can result in incomplete data. Adding shards improves read and write performance, but this change applies only to new data. To analyze a larger volume of data in a single query, you can enable Dedicated SQL and increase its compute resources.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you fully understand the [billing](https://help.aliyun.com/document_detail/223777.html) of Dedicated SQL.
+// *Ensure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/223777.html) of Dedicated SQL before you use this operation.**
 //
 // @param request - CreateSqlInstanceRequest
 //
@@ -27929,7 +29192,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// # DeleteAgentInstanceConfig
+// Deletes a process configuration.
 //
 // @param tmpReq - DeleteAgentInstanceConfigRequest
 //
@@ -27980,7 +29243,7 @@ func (client *Client) DeleteAgentInstanceConfigWithOptions(configType *string, t
 
 // Summary:
 //
-// # DeleteAgentInstanceConfig
+// Deletes a process configuration.
 //
 // @param request - DeleteAgentInstanceConfigRequest
 //
@@ -28052,7 +29315,11 @@ func (client *Client) DeleteAlert(project *string, alertName *string) (_result *
 
 // Summary:
 //
-// Removes data from a dataset.
+// Deletes data from a dataset.
+//
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -28085,7 +29352,11 @@ func (client *Client) DeleteAnnotationDataWithOptions(datasetId *string, annotat
 
 // Summary:
 //
-// Removes data from a dataset.
+// Deletes data from a dataset.
+//
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @return DeleteAnnotationDataResponse
 func (client *Client) DeleteAnnotationData(datasetId *string, annotationdataId *string) (_result *DeleteAnnotationDataResponse, _err error) {
@@ -28102,11 +29373,11 @@ func (client *Client) DeleteAnnotationData(datasetId *string, annotationdataId *
 
 // Summary:
 //
-// Deletes a dataset.
+// Deletes a dataset. You can delete a dataset only if it contains no data structures.
 //
 // Description:
 //
-// You can delete a dataset only if no data exists in the dataset.
+// The endpoint for this API is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -28139,11 +29410,11 @@ func (client *Client) DeleteAnnotationDataSetWithOptions(datasetId *string, head
 
 // Summary:
 //
-// Deletes a dataset.
+// Deletes a dataset. You can delete a dataset only if it contains no data structures.
 //
 // Description:
 //
-// You can delete a dataset only if no data exists in the dataset.
+// The endpoint for this API is available only in the China (Shanghai) and Singapore regions.
 //
 // @return DeleteAnnotationDataSetResponse
 func (client *Client) DeleteAnnotationDataSet(datasetId *string) (_result *DeleteAnnotationDataSetResponse, _err error) {
@@ -28160,11 +29431,11 @@ func (client *Client) DeleteAnnotationDataSet(datasetId *string) (_result *Delet
 
 // Summary:
 //
-// Deletes a tag table.
+// Deletes a custom annotation label.
 //
 // Description:
 //
-// Only non-built-in tags can be deleted.
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -28197,11 +29468,11 @@ func (client *Client) DeleteAnnotationLabelWithOptions(labelId *string, headers 
 
 // Summary:
 //
-// Deletes a tag table.
+// Deletes a custom annotation label.
 //
 // Description:
 //
-// Only non-built-in tags can be deleted.
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @return DeleteAnnotationLabelResponse
 func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnnotationLabelResponse, _err error) {
@@ -28218,7 +29489,7 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 
 // Summary:
 //
-// 创建Azure blob文件导入任务
+// # Create a file import task from Azure Blob
 //
 // @param headers - map
 //
@@ -28254,7 +29525,7 @@ func (client *Client) DeleteAzureBlobIngestionWithOptions(project *string, azure
 
 // Summary:
 //
-// 创建Azure blob文件导入任务
+// # Create a file import task from Azure Blob
 //
 // @return DeleteAzureBlobIngestionResponse
 func (client *Client) DeleteAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *DeleteAzureBlobIngestionResponse, _err error) {
@@ -28271,11 +29542,11 @@ func (client *Client) DeleteAzureBlobIngestion(project *string, azureBlobIngesti
 
 // Summary:
 //
-// Deletes a log collection policy from a cloud service.
+// Deletes a log collection rule for an Alibaba Cloud product.
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+// This API can be called only from endpoints in the China (Shanghai), Singapore, and China (Heyuan) Automotive Compliance Cloud (cn-heyuan-acdr-1) regions.
 //
 // @param request - DeleteCollectionPolicyRequest
 //
@@ -28324,11 +29595,11 @@ func (client *Client) DeleteCollectionPolicyWithOptions(policyName *string, requ
 
 // Summary:
 //
-// Deletes a log collection policy from a cloud service.
+// Deletes a log collection rule for an Alibaba Cloud product.
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+// This API can be called only from endpoints in the China (Shanghai), Singapore, and China (Heyuan) Automotive Compliance Cloud (cn-heyuan-acdr-1) regions.
 //
 // @param request - DeleteCollectionPolicyRequest
 //
@@ -28353,17 +29624,17 @@ func (client *Client) DeleteCollectionPolicy(policyName *string, request *Delete
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+// - If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
+// - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
 //
 // @param headers - map
 //
@@ -28405,17 +29676,17 @@ func (client *Client) DeleteConfigWithOptions(project *string, configName *strin
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
+// - If a Logtail configuration is applied to a machine group, you cannot collect data from the machine group after you delete the Logtail configuration.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
+// - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
 //
 // @return DeleteConfigResponse
 func (client *Client) DeleteConfig(project *string, configName *string) (_result *DeleteConfigResponse, _err error) {
@@ -28432,7 +29703,7 @@ func (client *Client) DeleteConfig(project *string, configName *string) (_result
 
 // Summary:
 //
-// Deletes the consumption processor.
+// Deletes a consume processor.
 //
 // @param headers - map
 //
@@ -28468,7 +29739,7 @@ func (client *Client) DeleteConsumeProcessorWithOptions(project *string, process
 
 // Summary:
 //
-// Deletes the consumption processor.
+// Deletes a consume processor.
 //
 // @return DeleteConsumeProcessorResponse
 func (client *Client) DeleteConsumeProcessor(project *string, processorName *string) (_result *DeleteConsumeProcessorResponse, _err error) {
@@ -28491,25 +29762,25 @@ func (client *Client) DeleteConsumeProcessor(project *string, processorName *str
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+// - The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                    | Resource                                                                                                          |
 //
-// |:---|:---|
+// | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:DeleteConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
+// | `log:DeleteConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}` |
 //
 // @param headers - map
 //
@@ -28551,25 +29822,25 @@ func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
+// - The name of the consumer group is obtained. For more information, see [ListConsumerGroup](https://help.aliyun.com/document_detail/74964.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                    | Resource                                                                                                          |
 //
-// |:---|:---|
+// | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:DeleteConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
+// | `log:DeleteConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}` |
 //
 // @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroup(project *string, logstore *string, consumerGroup *string) (_result *DeleteConsumerGroupResponse, _err error) {
@@ -28592,13 +29863,13 @@ func (client *Client) DeleteConsumerGroup(project *string, logstore *string, con
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param headers - map
 //
@@ -28640,13 +29911,13 @@ func (client *Client) DeleteDashboardWithOptions(project *string, dashboardName 
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @return DeleteDashboardResponse
 func (client *Client) DeleteDashboard(project *string, dashboardName *string) (_result *DeleteDashboardResponse, _err error) {
@@ -28724,7 +29995,7 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 
 // Summary:
 //
-// Deletes a download task.
+// Deletes a download job.
 //
 // @param headers - map
 //
@@ -28760,7 +30031,7 @@ func (client *Client) DeleteDownloadJobWithOptions(project *string, downloadJobN
 
 // Summary:
 //
-// Deletes a download task.
+// Deletes a download job.
 //
 // @return DeleteDownloadJobResponse
 func (client *Client) DeleteDownloadJob(project *string, downloadJobName *string) (_result *DeleteDownloadJobResponse, _err error) {
@@ -28830,7 +30101,7 @@ func (client *Client) DeleteETL(project *string, etlName *string) (_result *Dele
 
 // Summary:
 //
-// 删除ES导入任务
+// Deletes an ES/OpenSearch ingestion task.
 //
 // @param headers - map
 //
@@ -28866,7 +30137,7 @@ func (client *Client) DeleteElasticsearchIngestionWithOptions(project *string, e
 
 // Summary:
 //
-// 删除ES导入任务
+// Deletes an ES/OpenSearch ingestion task.
 //
 // @return DeleteElasticsearchIngestionResponse
 func (client *Client) DeleteElasticsearchIngestion(project *string, esIngestionName *string) (_result *DeleteElasticsearchIngestionResponse, _err error) {
@@ -29066,7 +30337,11 @@ func (client *Client) DeleteLogStore(project *string, logstore *string) (_result
 
 // Summary:
 //
-// Disables the service log feature for a project.
+// Deletes the service log for a specified project.
+//
+// Description:
+//
+// The host must be specified as a combination of the project name and the Simple Log Service endpoint.
 //
 // @param headers - map
 //
@@ -29102,7 +30377,11 @@ func (client *Client) DeleteLoggingWithOptions(project *string, headers map[stri
 
 // Summary:
 //
-// Disables the service log feature for a project.
+// Deletes the service log for a specified project.
+//
+// Description:
+//
+// The host must be specified as a combination of the project name and the Simple Log Service endpoint.
 //
 // @return DeleteLoggingResponse
 func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResponse, _err error) {
@@ -29245,7 +30524,7 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 
 // Summary:
 //
-// 删除物化视图
+// Deletes a materialized view.
 //
 // @param headers - map
 //
@@ -29281,7 +30560,7 @@ func (client *Client) DeleteMaterializedViewWithOptions(project *string, name *s
 
 // Summary:
 //
-// 删除物化视图
+// Deletes a materialized view.
 //
 // @return DeleteMaterializedViewResponse
 func (client *Client) DeleteMaterializedView(project *string, name *string) (_result *DeleteMaterializedViewResponse, _err error) {
@@ -29302,13 +30581,13 @@ func (client *Client) DeleteMaterializedView(project *string, name *string) (_re
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -29348,13 +30627,13 @@ func (client *Client) DeleteMaxComputeExportWithOptions(project *string, mcExpor
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return DeleteMaxComputeExportResponse
 func (client *Client) DeleteMaxComputeExport(project *string, mcExportName *string) (_result *DeleteMaxComputeExportResponse, _err error) {
@@ -29377,19 +30656,19 @@ func (client *Client) DeleteMaxComputeExport(project *string, mcExportName *stri
 //
 // Metricstores are used to store metric data. For more information, see [Metric data](https://help.aliyun.com/document_detail/174965.html).
 //
-//   - You must specify an existing Metricstore.
+// - You must specify an existing Metricstore.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - You can create up to 200 Logstores or Metricstores in a project.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metric data is automatically deleted when the retention period of the metric data ends.
 //
 // @param headers - map
 //
@@ -29431,19 +30710,19 @@ func (client *Client) DeleteMetricStoreWithOptions(project *string, name *string
 //
 // Metricstores are used to store metric data. For more information, see [Metric data](https://help.aliyun.com/document_detail/174965.html).
 //
-//   - You must specify an existing Metricstore.
+// - You must specify an existing Metricstore.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - You can create up to 200 Logstores or Metricstores in a project.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metric data is automatically deleted when the retention period of the metric data ends.
 //
 // @return DeleteMetricStoreResponse
 func (client *Client) DeleteMetricStore(project *string, name *string) (_result *DeleteMetricStoreResponse, _err error) {
@@ -29460,7 +30739,7 @@ func (client *Client) DeleteMetricStore(project *string, name *string) (_result 
 
 // Summary:
 //
-// Deletes an Object Storage Service (OSS) data shipping job.
+// Deletes a specified OSS data shipping job.
 //
 // @param headers - map
 //
@@ -29496,7 +30775,7 @@ func (client *Client) DeleteOSSExportWithOptions(project *string, ossExportName 
 
 // Summary:
 //
-// Deletes an Object Storage Service (OSS) data shipping job.
+// Deletes a specified OSS data shipping job.
 //
 // @return DeleteOSSExportResponse
 func (client *Client) DeleteOSSExport(project *string, ossExportName *string) (_result *DeleteOSSExportResponse, _err error) {
@@ -29566,7 +30845,7 @@ func (client *Client) DeleteOSSHDFSExport(project *string, ossExportName *string
 
 // Summary:
 //
-// Deletes an Object Storage Service (OSS) data import job.
+// Deletes an OSS import task.
 //
 // @param headers - map
 //
@@ -29602,7 +30881,7 @@ func (client *Client) DeleteOSSIngestionWithOptions(project *string, ossIngestio
 
 // Summary:
 //
-// Deletes an Object Storage Service (OSS) data import job.
+// Deletes an OSS import task.
 //
 // @return DeleteOSSIngestionResponse
 func (client *Client) DeleteOSSIngestion(project *string, ossIngestionName *string) (_result *DeleteOSSIngestionResponse, _err error) {
@@ -29619,29 +30898,29 @@ func (client *Client) DeleteOSSIngestion(project *string, ossIngestionName *stri
 
 // Summary:
 //
-// Deletes a project.
+// Deletes a specified project.
 //
 // Description:
 //
-// ### Usage notes
+// ### Description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host parameter consists of a project name and a Simple Log Service Endpoint. You must specify the project name in the Host parameter.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations, which poses a high security threat. We recommend that you use a RAM user to call API operations or perform O\\&M. The RAM user must have the permissions to operate on Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - After you delete a project, all logs stored in the project and the configurations of the project are deleted and cannot be restored. Proceed with caution.
+// - When you delete a project, all its log data and configurations are released and cannot be recovered. To prevent data loss, confirm the action before you delete the project.
 //
-// ### Authentication resources
+// ### Authorization
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table lists the authorization information for this API operation. To grant a RAM user or RAM role the permissions to call this API operation, add this information to the Action element of a RAM access policy statement.
 //
-// |Action|Resource|
+// | Action              | Resource description in an authorization policy           |
 //
-// |:---|:---|
+// | :------------------ | :-------------------------------------------------------- |
 //
-// |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:DeleteProject` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - DeleteProjectRequest
 //
@@ -29689,29 +30968,29 @@ func (client *Client) DeleteProjectWithOptions(project *string, request *DeleteP
 
 // Summary:
 //
-// Deletes a project.
+// Deletes a specified project.
 //
 // Description:
 //
-// ### Usage notes
+// ### Description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host parameter consists of a project name and a Simple Log Service Endpoint. You must specify the project name in the Host parameter.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations, which poses a high security threat. We recommend that you use a RAM user to call API operations or perform O\\&M. The RAM user must have the permissions to operate on Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - After you delete a project, all logs stored in the project and the configurations of the project are deleted and cannot be restored. Proceed with caution.
+// - When you delete a project, all its log data and configurations are released and cannot be recovered. To prevent data loss, confirm the action before you delete the project.
 //
-// ### Authentication resources
+// ### Authorization
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table lists the authorization information for this API operation. To grant a RAM user or RAM role the permissions to call this API operation, add this information to the Action element of a RAM access policy statement.
 //
-// |Action|Resource|
+// | Action              | Resource description in an authorization policy           |
 //
-// |:---|:---|
+// | :------------------ | :-------------------------------------------------------- |
 //
-// |`log:DeleteProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:DeleteProject` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - DeleteProjectRequest
 //
@@ -29736,13 +31015,13 @@ func (client *Client) DeleteProject(project *string, request *DeleteProjectReque
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -29784,13 +31063,13 @@ func (client *Client) DeleteProjectPolicyWithOptions(project *string, headers ma
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return DeleteProjectPolicyResponse
 func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProjectPolicyResponse, _err error) {
@@ -29807,7 +31086,7 @@ func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProje
 
 // Summary:
 //
-// 删除s3导入任务
+// Deletes an S3 ingestion task.
 //
 // @param headers - map
 //
@@ -29843,7 +31122,7 @@ func (client *Client) DeleteS3IngestionWithOptions(project *string, s3IngestionN
 
 // Summary:
 //
-// 删除s3导入任务
+// Deletes an S3 ingestion task.
 //
 // @return DeleteS3IngestionResponse
 func (client *Client) DeleteS3Ingestion(project *string, s3IngestionName *string) (_result *DeleteS3IngestionResponse, _err error) {
@@ -29866,25 +31145,25 @@ func (client *Client) DeleteS3Ingestion(project *string, s3IngestionName *string
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - After you delete a saved search, it cannot be restored. Proceed with caution.
+// - After you delete a saved search, it cannot be restored. Proceed with caution.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                 |
 //
-// |:---|:---|
+// | :---------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:DeleteSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:DeleteSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @param headers - map
 //
@@ -29926,25 +31205,25 @@ func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchN
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - After you delete a saved search, it cannot be restored. Proceed with caution.
+// - After you delete a saved search, it cannot be restored. Proceed with caution.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                 |
 //
-// |:---|:---|
+// | :---------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:DeleteSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:DeleteSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @return DeleteSavedSearchResponse
 func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string) (_result *DeleteSavedSearchResponse, _err error) {
@@ -30067,7 +31346,7 @@ func (client *Client) DeleteStoreView(project *string, name *string) (_result *D
 
 // Summary:
 //
-// Queries supported regions.
+// Queries the available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -30112,7 +31391,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries supported regions.
+// Queries the available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -30343,7 +31622,7 @@ func (client *Client) EnableScheduledSQL(project *string, scheduledSQLName *stri
 
 // Summary:
 //
-// # GetAgentInstanceConfig
+// Retrieves a process-level configuration.
 //
 // @param tmpReq - GetAgentInstanceConfigRequest
 //
@@ -30394,7 +31673,7 @@ func (client *Client) GetAgentInstanceConfigWithOptions(configType *string, tmpR
 
 // Summary:
 //
-// # GetAgentInstanceConfig
+// Retrieves a process-level configuration.
 //
 // @param request - GetAgentInstanceConfigRequest
 //
@@ -30466,7 +31745,11 @@ func (client *Client) GetAlert(project *string, alertName *string) (_result *Get
 
 // Summary:
 //
-// Queries data in datasets based on the unique identifier of the data.
+// Retrieves a data struct from a dataset by its unique identity.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -30499,7 +31782,11 @@ func (client *Client) GetAnnotationDataWithOptions(datasetId *string, annotation
 
 // Summary:
 //
-// Queries data in datasets based on the unique identifier of the data.
+// Retrieves a data struct from a dataset by its unique identity.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @return GetAnnotationDataResponse
 func (client *Client) GetAnnotationData(datasetId *string, annotationdataId *string) (_result *GetAnnotationDataResponse, _err error) {
@@ -30516,7 +31803,11 @@ func (client *Client) GetAnnotationData(datasetId *string, annotationdataId *str
 
 // Summary:
 //
-// Queries a dataset.
+// Retrieves information about a dataset.
+//
+// Description:
+//
+// The endpoint for this API is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -30549,7 +31840,11 @@ func (client *Client) GetAnnotationDataSetWithOptions(datasetId *string, headers
 
 // Summary:
 //
-// Queries a dataset.
+// Retrieves information about a dataset.
+//
+// Description:
+//
+// The endpoint for this API is available only in the China (Shanghai) and Singapore regions.
 //
 // @return GetAnnotationDataSetResponse
 func (client *Client) GetAnnotationDataSet(datasetId *string) (_result *GetAnnotationDataSetResponse, _err error) {
@@ -30566,7 +31861,11 @@ func (client *Client) GetAnnotationDataSet(datasetId *string) (_result *GetAnnot
 
 // Summary:
 //
-// Queries a tag table by using a label ID.
+// Retrieves a label table by its ID.
+//
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -30599,7 +31898,11 @@ func (client *Client) GetAnnotationLabelWithOptions(labelId *string, headers map
 
 // Summary:
 //
-// Queries a tag table by using a label ID.
+// Retrieves a label table by its ID.
+//
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @return GetAnnotationLabelResponse
 func (client *Client) GetAnnotationLabel(labelId *string) (_result *GetAnnotationLabelResponse, _err error) {
@@ -30738,7 +32041,11 @@ func (client *Client) GetAppliedMachineGroups(project *string, configName *strin
 
 // Summary:
 //
-// 获取异步SQL的状态以及结果
+// Retrieves the status and results of an asynchronous SQL query.
+//
+// Description:
+//
+// After you submit an SQL request using the SubmitAsyncSql operation, you can use this operation to poll the execution status of the request. You can set the polling interval to 1 second or longer. When the query is complete, use the GetAsyncSql operation to retrieve the results in pages.
 //
 // @param request - GetAsyncSqlRequest
 //
@@ -30790,7 +32097,11 @@ func (client *Client) GetAsyncSqlWithOptions(project *string, queryId *string, r
 
 // Summary:
 //
-// 获取异步SQL的状态以及结果
+// Retrieves the status and results of an asynchronous SQL query.
+//
+// Description:
+//
+// After you submit an SQL request using the SubmitAsyncSql operation, you can use this operation to poll the execution status of the request. You can set the polling interval to 1 second or longer. When the query is complete, use the GetAsyncSql operation to retrieve the results in pages.
 //
 // @param request - GetAsyncSqlRequest
 //
@@ -30809,7 +32120,7 @@ func (client *Client) GetAsyncSql(project *string, queryId *string, request *Get
 
 // Summary:
 //
-// 获取Azure blob文件导入任务信息
+// Gets the details of an Azure Blob ingestion.
 //
 // @param headers - map
 //
@@ -30845,7 +32156,7 @@ func (client *Client) GetAzureBlobIngestionWithOptions(project *string, azureBlo
 
 // Summary:
 //
-// 获取Azure blob文件导入任务信息
+// Gets the details of an Azure Blob ingestion.
 //
 // @return GetAzureBlobIngestionResponse
 func (client *Client) GetAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *GetAzureBlobIngestionResponse, _err error) {
@@ -30937,11 +32248,11 @@ func (client *Client) GetCheckPoint(project *string, logstore *string, consumerG
 
 // Summary:
 //
-// Queries the information about a log collection policy.
+// You can call the GetCollectionPolicy operation to retrieve the details of a specific rule.
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+// The endpoint for this operation is available only in the China (Shanghai), Singapore, and China (Heyuan) Automotive Compliance Cloud (cn-heyuan-acdr-1) regions.
 //
 // @param request - GetCollectionPolicyRequest
 //
@@ -30990,11 +32301,11 @@ func (client *Client) GetCollectionPolicyWithOptions(policyName *string, request
 
 // Summary:
 //
-// Queries the information about a log collection policy.
+// You can call the GetCollectionPolicy operation to retrieve the details of a specific rule.
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+// The endpoint for this operation is available only in the China (Shanghai), Singapore, and China (Heyuan) Automotive Compliance Cloud (cn-heyuan-acdr-1) regions.
 //
 // @param request - GetCollectionPolicyRequest
 //
@@ -31013,21 +32324,21 @@ func (client *Client) GetCollectionPolicy(policyName *string, request *GetCollec
 
 // Summary:
 //
-// Queries the details of a Logtail configuration.
+// Gets the details of a Logtail configuration.
 //
 // Description:
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
+// - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
 //
 // @param headers - map
 //
@@ -31063,21 +32374,21 @@ func (client *Client) GetConfigWithOptions(project *string, configName *string, 
 
 // Summary:
 //
-// Queries the details of a Logtail configuration.
+// Gets the details of a Logtail configuration.
 //
 // Description:
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
+// - The name of the required Logtail configuration is obtained. For more information, see [ListConfig](https://help.aliyun.com/document_detail/29043.html).
 //
 // @return GetConfigResponse
 func (client *Client) GetConfig(project *string, configName *string) (_result *GetConfigResponse, _err error) {
@@ -31094,7 +32405,7 @@ func (client *Client) GetConfig(project *string, configName *string) (_result *G
 
 // Summary:
 //
-// # Query the details of a consumer processor
+// Retrieves the details of a consume processor.
 //
 // @param headers - map
 //
@@ -31130,7 +32441,7 @@ func (client *Client) GetConsumeProcessorWithOptions(project *string, processorN
 
 // Summary:
 //
-// # Query the details of a consumer processor
+// Retrieves the details of a consume processor.
 //
 // @return GetConsumeProcessorResponse
 func (client *Client) GetConsumeProcessor(project *string, processorName *string) (_result *GetConsumeProcessorResponse, _err error) {
@@ -31153,29 +32464,29 @@ func (client *Client) GetConsumeProcessor(project *string, processorName *string
 //
 // ### Usage notes
 //
-//   - You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+// - You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-//   - The values of the pack_id and pack_meta fields are obtained before you query logs. The fields are internal fields, and you can obtain the values by using the debugging feature of your browser in the Simple Log Service console.
+// - The values of the pack_id and pack_meta fields are obtained before you query logs. The fields are internal fields, and you can obtain the values by using the debugging feature of your browser in the Simple Log Service console.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                       | Resource                                                                           |
 //
-// |:---|:---|
+// | :--------------------------- | :--------------------------------------------------------------------------------- |
 //
-// |`log:GetLogStoreContextLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
+// | `log:GetLogStoreContextLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - GetContextLogsRequest
 //
@@ -31241,29 +32552,29 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 //
 // ### Usage notes
 //
-//   - You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+// - You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-//   - The values of the pack_id and pack_meta fields are obtained before you query logs. The fields are internal fields, and you can obtain the values by using the debugging feature of your browser in the Simple Log Service console.
+// - The values of the pack_id and pack_meta fields are obtained before you query logs. The fields are internal fields, and you can obtain the values by using the debugging feature of your browser in the Simple Log Service console.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                       | Resource                                                                           |
 //
-// |:---|:---|
+// | :--------------------------- | :--------------------------------------------------------------------------------- |
 //
-// |`log:GetLogStoreContextLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
+// | `log:GetLogStoreContextLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - GetContextLogsRequest
 //
@@ -31282,21 +32593,21 @@ func (client *Client) GetContextLogs(project *string, logstore *string, request 
 
 // Summary:
 //
-// Queries a cursor based on a point in time.
+// Retrieves a cursor based on a specified time.
 //
 // Description:
 //
-// ### Usage notes
+// ### Description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The host consists of a project name and a Simple Log Service endpoint. You must specify the project name in the host.
 //
-//   - The following content describes the relationships among a cursor, project, Logstore, and shard:
+// - The relationship among a cursor, a project, a Logstore, and a shard is as follows:
 //
-//   - A project can have multiple Logstores.
+//   - A project contains multiple Logstores.
 //
-//   - A Logstore can have multiple shards.
+//   - Each Logstore contains multiple shards.
 //
-//   - You can use a cursor to obtain a log in a shard.
+//   - A cursor indicates the position of a specific log.
 //
 // @param request - GetCursorRequest
 //
@@ -31344,21 +32655,21 @@ func (client *Client) GetCursorWithOptions(project *string, logstore *string, sh
 
 // Summary:
 //
-// Queries a cursor based on a point in time.
+// Retrieves a cursor based on a specified time.
 //
 // Description:
 //
-// ### Usage notes
+// ### Description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The host consists of a project name and a Simple Log Service endpoint. You must specify the project name in the host.
 //
-//   - The following content describes the relationships among a cursor, project, Logstore, and shard:
+// - The relationship among a cursor, a project, a Logstore, and a shard is as follows:
 //
-//   - A project can have multiple Logstores.
+//   - A project contains multiple Logstores.
 //
-//   - A Logstore can have multiple shards.
+//   - Each Logstore contains multiple shards.
 //
-//   - You can use a cursor to obtain a log in a shard.
+//   - A cursor indicates the position of a specific log.
 //
 // @param request - GetCursorRequest
 //
@@ -31377,7 +32688,29 @@ func (client *Client) GetCursor(project *string, logstore *string, shardId *stri
 
 // Summary:
 //
-// Queries the server time of a cursor.
+// Retrieves the server time that corresponds to a cursor.
+//
+// Description:
+//
+// ### Description
+//
+// - The host consists of a project name and a Simple Log Service endpoint. You must specify the project in the host.
+//
+// - Create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair that belongs to an Alibaba Cloud account has access permissions on all API operations. Using this AccessKey pair poses a high security threat. For security, we recommend that you create and use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted the permissions to perform operations on Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Obtain the project name, the project\\"s region, and the logstore name. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Authorization
+//
+// The following table describes the authorization information for this operation. Add this information to the Action element of a RAM policy to grant a RAM user or RAM role the permissions to call this API operation.
+//
+// | Action                | Resource description in an authorization policy                                    |
+//
+// | --------------------- | ---------------------------------------------------------------------------------- |
+//
+// | `log:GetCursorOrData` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - GetCursorTimeRequest
 //
@@ -31425,7 +32758,29 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 
 // Summary:
 //
-// Queries the server time of a cursor.
+// Retrieves the server time that corresponds to a cursor.
+//
+// Description:
+//
+// ### Description
+//
+// - The host consists of a project name and a Simple Log Service endpoint. You must specify the project in the host.
+//
+// - Create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair that belongs to an Alibaba Cloud account has access permissions on all API operations. Using this AccessKey pair poses a high security threat. For security, we recommend that you create and use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted the permissions to perform operations on Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Obtain the project name, the project\\"s region, and the logstore name. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Authorization
+//
+// The following table describes the authorization information for this operation. Add this information to the Action element of a RAM policy to grant a RAM user or RAM role the permissions to call this API operation.
+//
+// | Action                | Resource description in an authorization policy                                    |
+//
+// | --------------------- | ---------------------------------------------------------------------------------- |
+//
+// | `log:GetCursorOrData` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - GetCursorTimeRequest
 //
@@ -31450,13 +32805,13 @@ func (client *Client) GetCursorTime(project *string, logstore *string, shardId *
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param headers - map
 //
@@ -31498,13 +32853,13 @@ func (client *Client) GetDashboardWithOptions(project *string, dashboardName *st
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @return GetDashboardResponse
 func (client *Client) GetDashboard(project *string, dashboardName *string) (_result *GetDashboardResponse, _err error) {
@@ -31521,7 +32876,7 @@ func (client *Client) GetDashboard(project *string, dashboardName *string) (_res
 
 // Summary:
 //
-// Queries the information about a download task.
+// Retrieves information about a download task.
 //
 // @param headers - map
 //
@@ -31557,7 +32912,7 @@ func (client *Client) GetDownloadJobWithOptions(project *string, downloadJobName
 
 // Summary:
 //
-// Queries the information about a download task.
+// Retrieves information about a download task.
 //
 // @return GetDownloadJobResponse
 func (client *Client) GetDownloadJob(project *string, downloadJobName *string) (_result *GetDownloadJobResponse, _err error) {
@@ -31574,7 +32929,7 @@ func (client *Client) GetDownloadJob(project *string, downloadJobName *string) (
 
 // Summary:
 //
-// Queries the configurations of a data transformation job.
+// Retrieves the configuration of a specified extract, transform, and load (ETL) job.
 //
 // @param headers - map
 //
@@ -31610,7 +32965,7 @@ func (client *Client) GetETLWithOptions(project *string, etlName *string, header
 
 // Summary:
 //
-// Queries the configurations of a data transformation job.
+// Retrieves the configuration of a specified extract, transform, and load (ETL) job.
 //
 // @return GetETLResponse
 func (client *Client) GetETL(project *string, etlName *string) (_result *GetETLResponse, _err error) {
@@ -31627,7 +32982,7 @@ func (client *Client) GetETL(project *string, etlName *string) (_result *GetETLR
 
 // Summary:
 //
-// 获取ElasticSearch导入任务信息
+// Retrieves information about an ES/OpenSearch import job.
 //
 // @param headers - map
 //
@@ -31663,7 +33018,7 @@ func (client *Client) GetElasticsearchIngestionWithOptions(project *string, esIn
 
 // Summary:
 //
-// 获取ElasticSearch导入任务信息
+// Retrieves information about an ES/OpenSearch import job.
 //
 // @return GetElasticsearchIngestionResponse
 func (client *Client) GetElasticsearchIngestion(project *string, esIngestionName *string) (_result *GetElasticsearchIngestionResponse, _err error) {
@@ -31680,7 +33035,7 @@ func (client *Client) GetElasticsearchIngestion(project *string, esIngestionName
 
 // Summary:
 //
-// 获取GCP Cloud Storage文件导入任务
+// Retrieves a Google Cloud Storage (GCS) file import task.
 //
 // @param headers - map
 //
@@ -31716,7 +33071,7 @@ func (client *Client) GetGCSIngestionWithOptions(project *string, gcsIngestionNa
 
 // Summary:
 //
-// 获取GCP Cloud Storage文件导入任务
+// Retrieves a Google Cloud Storage (GCS) file import task.
 //
 // @return GetGCSIngestionResponse
 func (client *Client) GetGCSIngestion(project *string, gcsIngestionName *string) (_result *GetGCSIngestionResponse, _err error) {
@@ -31733,29 +33088,27 @@ func (client *Client) GetGCSIngestion(project *string, gcsIngestionName *string)
 
 // Summary:
 //
-// Queries the distribution of logs that meet the specified search conditions in a Logstore.
+// You can call the GetHistograms operation to query the distribution of logs that meet the search criteria in a specified Logstore.
 //
 // Description:
 //
-// ### Usage notes
+// ### Interface description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service Endpoint. You must specify the project in the Host.
 //
-//   - The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+// - The subintervals in the response are divided consistently. If the requested time range is the same, the subinterval division in the response is also the same.
 //
-//   - If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+// - If the number of logs in a query varies greatly, the Simple Log Service application programming interface (API) cannot predict how many calls are needed to retrieve the full result. You must check the status of the progress member in each response. This status indicates whether to call the operation again to retrieve the final result. Each repeated call consumes the same number of query CUs.
 //
-//   - After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+// - The delay between when a log is written to a Logstore and when it can be queried using the GetHistograms and GetLogs operations varies by log type. Simple Log Service classifies logs into two types based on their timestamps:
 //
-//   - Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+//   - Real-time data: The log timestamp is within the range of (-180 seconds, +900 seconds] relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:03:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as real-time data. The maximum latency for real-time data to become searchable is 3 seconds. In 99.9% of cases, the data is searchable within 1 second.
 //
-//   - Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval [-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+//   - Historical data: The log timestamp is within the range of [-7 × 86400 seconds, -180 seconds) relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:00:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as historical data. This typically happens during data backfill.
 //
-//     After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+// > Simple Log Service calculates the difference between the log time (the __time__ field) and the time the server received the log (the __tag__:__receive_time__ field). If the difference is in the range of (-180 seconds, 900 seconds], the data is real-time data. If the difference is in the range of [-7 × 86400 seconds, -180 seconds), the data is historical data.
 //
-// > Simple Log Service calculates the difference between the log time that is specified by the __time__ field and the receiving time that is specified by the __tag__:__receive_time__ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval [-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
-//
-//   - Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](https://help.aliyun.com/document_detail/462234.html).
+// - Simple Log Service provides a Java software development kit (SDK) example for using the GetHistograms query. For more information, see [Use GetHistograms to query log distribution](https://help.aliyun.com/document_detail/462234.html).
 //
 // @param request - GetHistogramsRequest
 //
@@ -31815,29 +33168,27 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 
 // Summary:
 //
-// Queries the distribution of logs that meet the specified search conditions in a Logstore.
+// You can call the GetHistograms operation to query the distribution of logs that meet the search criteria in a specified Logstore.
 //
 // Description:
 //
-// ### Usage notes
+// ### Interface description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service Endpoint. You must specify the project in the Host.
 //
-//   - The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+// - The subintervals in the response are divided consistently. If the requested time range is the same, the subinterval division in the response is also the same.
 //
-//   - If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+// - If the number of logs in a query varies greatly, the Simple Log Service application programming interface (API) cannot predict how many calls are needed to retrieve the full result. You must check the status of the progress member in each response. This status indicates whether to call the operation again to retrieve the final result. Each repeated call consumes the same number of query CUs.
 //
-//   - After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+// - The delay between when a log is written to a Logstore and when it can be queried using the GetHistograms and GetLogs operations varies by log type. Simple Log Service classifies logs into two types based on their timestamps:
 //
-//   - Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+//   - Real-time data: The log timestamp is within the range of (-180 seconds, +900 seconds] relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:03:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as real-time data. The maximum latency for real-time data to become searchable is 3 seconds. In 99.9% of cases, the data is searchable within 1 second.
 //
-//   - Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval [-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+//   - Historical data: The log timestamp is within the range of [-7 × 86400 seconds, -180 seconds) relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:00:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as historical data. This typically happens during data backfill.
 //
-//     After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+// > Simple Log Service calculates the difference between the log time (the __time__ field) and the time the server received the log (the __tag__:__receive_time__ field). If the difference is in the range of (-180 seconds, 900 seconds], the data is real-time data. If the difference is in the range of [-7 × 86400 seconds, -180 seconds), the data is historical data.
 //
-// > Simple Log Service calculates the difference between the log time that is specified by the __time__ field and the receiving time that is specified by the __tag__:__receive_time__ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval [-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
-//
-//   - Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](https://help.aliyun.com/document_detail/462234.html).
+// - Simple Log Service provides a Java software development kit (SDK) example for using the GetHistograms query. For more information, see [Use GetHistograms to query log distribution](https://help.aliyun.com/document_detail/462234.html).
 //
 // @param request - GetHistogramsRequest
 //
@@ -31921,7 +33272,7 @@ func (client *Client) GetIndex(project *string, logstore *string) (_result *GetI
 
 // Summary:
 //
-// Queries an ingest processor.
+// Retrieves information about an ingest processor.
 //
 // @param headers - map
 //
@@ -31957,7 +33308,7 @@ func (client *Client) GetIngestProcessorWithOptions(project *string, processorNa
 
 // Summary:
 //
-// Queries an ingest processor.
+// Retrieves information about an ingest processor.
 //
 // @return GetIngestProcessorResponse
 func (client *Client) GetIngestProcessor(project *string, processorName *string) (_result *GetIngestProcessorResponse, _err error) {
@@ -31974,13 +33325,13 @@ func (client *Client) GetIngestProcessor(project *string, processorName *string)
 
 // Summary:
 //
-// Queries the details of a Logstore.
+// Retrieves the details of a Logstore.
 //
 // Description:
 //
-// ### Usage notes
+// ### Description
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// The host consists of the project name and the Log Service endpoint.
 //
 // @param headers - map
 //
@@ -32016,13 +33367,13 @@ func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, 
 
 // Summary:
 //
-// Queries the details of a Logstore.
+// Retrieves the details of a Logstore.
 //
 // Description:
 //
-// ### Usage notes
+// ### Description
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// The host consists of the project name and the Log Service endpoint.
 //
 // @return GetLogStoreResponse
 func (client *Client) GetLogStore(project *string, logstore *string) (_result *GetLogStoreResponse, _err error) {
@@ -32039,7 +33390,27 @@ func (client *Client) GetLogStore(project *string, logstore *string) (_result *G
 
 // Summary:
 //
-// 获取日志库配置
+// Retrieves the configuration of a Logstore.
+//
+// Description:
+//
+// - The `Host` in the request syntax consists of the Project name and the Log Service endpoint.
+//
+// - An AccessKey pair is available. For more information, see [AccessKey](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey of an Alibaba Cloud account has full permissions on all APIs and poses a high security risk. Use a RAM user to make API calls or perform routine operations. Grant the RAM user the required permissions to access Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - The Project name, region, and Logstore name are obtained. For more information, see [Manage Project](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Authorization
+//
+// To grant a RAM user or RAM role the permission to call this operation, add the following Action to a RAM permission policy.
+//
+// | Action                  | Resource                                                                           |
+//
+// | :---------------------- | :--------------------------------------------------------------------------------- |
+//
+// | `log:GetLogStoreConfig` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param headers - map
 //
@@ -32075,7 +33446,27 @@ func (client *Client) GetLogStoreConfigWithOptions(project *string, logstore *st
 
 // Summary:
 //
-// 获取日志库配置
+// Retrieves the configuration of a Logstore.
+//
+// Description:
+//
+// - The `Host` in the request syntax consists of the Project name and the Log Service endpoint.
+//
+// - An AccessKey pair is available. For more information, see [AccessKey](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey of an Alibaba Cloud account has full permissions on all APIs and poses a high security risk. Use a RAM user to make API calls or perform routine operations. Grant the RAM user the required permissions to access Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - The Project name, region, and Logstore name are obtained. For more information, see [Manage Project](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Authorization
+//
+// To grant a RAM user or RAM role the permission to call this operation, add the following Action to a RAM permission policy.
+//
+// | Action                  | Resource                                                                           |
+//
+// | :---------------------- | :--------------------------------------------------------------------------------- |
+//
+// | `log:GetLogStoreConfig` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @return GetLogStoreConfigResponse
 func (client *Client) GetLogStoreConfig(project *string, logstore *string) (_result *GetLogStoreConfigResponse, _err error) {
@@ -32206,47 +33597,47 @@ func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, 
 
 // Summary:
 //
-// Queries the logs of a Logstore in a project.
+// Queries log data from a Logstore in the specified project.
 //
 // Description:
 //
-// ### Usage notes
+// ###
 //
-// **Note*	- Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a scheduled SQL job](https://help.aliyun.com/document_detail/286457.html).
+// > Simple Log Service supports scheduled SQL jobs. For details, see [Create a scheduled SQL job](https://help.aliyun.com/document_detail/286457.html).
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project name in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Create and obtain an AccessKey pair. For details, see [AccessKey pair](https://help.aliyun.com/document_detail/2766629.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// Create and use a RAM user to make API calls or perform routine O\\&M. Using an Alibaba Cloud account AccessKey pair grants access to all APIs and poses a high security risk. Ensure the RAM user has the required permissions for Simple Log Service resources. For details, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - Obtain the project name, region, and Logstore name for the logs to query. See [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Simple Log Service imposes limits on log queries. Design appropriate query and analytic statements and set a reasonable time range. See [Log query limits](https://help.aliyun.com/document_detail/43772.html) and [Log analysis limits](https://help.aliyun.com/document_detail/53608.html).
 //
-//   - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Configure indexes before querying logs. See [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-//   - If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete results. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete results. Each time you call this operation, the same number of charge units (CUs) are consumed.
+// - When the number of matching logs varies significantly, the API cannot predict how many calls are needed to retrieve the complete result. Check the `x-log-progress` header in each response to determine whether to repeat the call. Each repeated call consumes the same number of query capacity units (CUs).
 //
-//   - After a log is written to a Logstore, you can call the GetHistograms or the GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+// - After a log is written to a Logstore, the latency before it becomes queryable through the GetHistograms and GetLogs operations depends on the log type. Simple Log Service classifies logs into two types based on their timestamps:
 //
-//   - Real-time data: The difference between the time record in a log of this type and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds\\]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+//   - Real-time data: The log timestamp falls within (-180 seconds, 900 seconds] relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:03:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as real-time data. This is typical in normal scenarios. Real-time data becomes queryable in about 3 seconds.
 //
-//   - Historical data: The difference between the time record in a log of this type and the current time on Simple Log Service is within the interval [-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with an approximate latency of 3 seconds.
+//   - Historical data: The log timestamp falls within [-7 x 86,400 seconds, -180 seconds) relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:00:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as historical data. This is typical in data backfill scenarios.
 //
-// **Note*	- Simple Log Service calculates the difference between the log time that is specified by the __time__ field and the receiving time that is specified by the __tag__:**receive_time*	- field for each log. The receiving time indicates when Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds\\], Simple Log Service processes the log as real-time data. If the difference is within the interval [-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+// > Simple Log Service calculates the difference between the log time (the __time__ field) and the server receipt time (the __tag__: **receive_time*	- field). If the difference falls within (-180 seconds, 900 seconds], the log is real-time data. If the difference falls within [-7 x 86,400 seconds, -180 seconds), the log is historical data.
 //
-//   - Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/407683.html) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/407684.html).
+// - Simple Log Service provides Java and Python SDK examples for the GetLogs operation. See [GetLogs examples for Java](https://help.aliyun.com/document_detail/407683.html) and [GetLogs examples for Python](https://help.aliyun.com/document_detail/407684.html).
 //
-// ### Authentication resources
+// ### Authorization
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table describes the authorization information required for this operation. Add this information to the Action element of a RAM access policy statement to grant RAM users or RAM roles the permission to call this operation.
 //
-// |Action|Resource|
+// | Action                | Resource                                                                           |
 //
-// |:---|:---|
+// | :-------------------- | :--------------------------------------------------------------------------------- |
 //
-// |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
+// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - GetLogsRequest
 //
@@ -32322,47 +33713,47 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 
 // Summary:
 //
-// Queries the logs of a Logstore in a project.
+// Queries log data from a Logstore in the specified project.
 //
 // Description:
 //
-// ### Usage notes
+// ###
 //
-// **Note*	- Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a scheduled SQL job](https://help.aliyun.com/document_detail/286457.html).
+// > Simple Log Service supports scheduled SQL jobs. For details, see [Create a scheduled SQL job](https://help.aliyun.com/document_detail/286457.html).
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project name in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Create and obtain an AccessKey pair. For details, see [AccessKey pair](https://help.aliyun.com/document_detail/2766629.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// Create and use a RAM user to make API calls or perform routine O\\&M. Using an Alibaba Cloud account AccessKey pair grants access to all APIs and poses a high security risk. Ensure the RAM user has the required permissions for Simple Log Service resources. For details, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - Obtain the project name, region, and Logstore name for the logs to query. See [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Simple Log Service imposes limits on log queries. Design appropriate query and analytic statements and set a reasonable time range. See [Log query limits](https://help.aliyun.com/document_detail/43772.html) and [Log analysis limits](https://help.aliyun.com/document_detail/53608.html).
 //
-//   - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Configure indexes before querying logs. See [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-//   - If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete results. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete results. Each time you call this operation, the same number of charge units (CUs) are consumed.
+// - When the number of matching logs varies significantly, the API cannot predict how many calls are needed to retrieve the complete result. Check the `x-log-progress` header in each response to determine whether to repeat the call. Each repeated call consumes the same number of query capacity units (CUs).
 //
-//   - After a log is written to a Logstore, you can call the GetHistograms or the GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+// - After a log is written to a Logstore, the latency before it becomes queryable through the GetHistograms and GetLogs operations depends on the log type. Simple Log Service classifies logs into two types based on their timestamps:
 //
-//   - Real-time data: The difference between the time record in a log of this type and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds\\]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+//   - Real-time data: The log timestamp falls within (-180 seconds, 900 seconds] relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:03:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as real-time data. This is typical in normal scenarios. Real-time data becomes queryable in about 3 seconds.
 //
-//   - Historical data: The difference between the time record in a log of this type and the current time on Simple Log Service is within the interval [-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with an approximate latency of 3 seconds.
+//   - Historical data: The log timestamp falls within [-7 x 86,400 seconds, -180 seconds) relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:00:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as historical data. This is typical in data backfill scenarios.
 //
-// **Note*	- Simple Log Service calculates the difference between the log time that is specified by the __time__ field and the receiving time that is specified by the __tag__:**receive_time*	- field for each log. The receiving time indicates when Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds\\], Simple Log Service processes the log as real-time data. If the difference is within the interval [-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+// > Simple Log Service calculates the difference between the log time (the __time__ field) and the server receipt time (the __tag__: **receive_time*	- field). If the difference falls within (-180 seconds, 900 seconds], the log is real-time data. If the difference falls within [-7 x 86,400 seconds, -180 seconds), the log is historical data.
 //
-//   - Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/407683.html) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/407684.html).
+// - Simple Log Service provides Java and Python SDK examples for the GetLogs operation. See [GetLogs examples for Java](https://help.aliyun.com/document_detail/407683.html) and [GetLogs examples for Python](https://help.aliyun.com/document_detail/407684.html).
 //
-// ### Authentication resources
+// ### Authorization
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table describes the authorization information required for this operation. Add this information to the Action element of a RAM access policy statement to grant RAM users or RAM roles the permission to call this operation.
 //
-// |Action|Resource|
+// | Action                | Resource                                                                           |
 //
-// |:---|:---|
+// | :-------------------- | :--------------------------------------------------------------------------------- |
 //
-// |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`|
+// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - GetLogsRequest
 //
@@ -32381,25 +33772,25 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 
 // Summary:
 //
-// Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
+// Queries raw logs from a specified Logstore in a project. The response contains raw logs within a specified time range and is compressed for transmission.
 //
 // Description:
 //
-// You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
+// - The Simple Log Service software development kit (SDK) is available for Go, Java, and Python. You can also call all OpenAPI operations directly.
 //
-//   - When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
+// - Specify a compression method when you call this operation. Available compression algorithms depend on your programming language. For more information, see the Accept-Encoding request parameter.
 //
-//   - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+// - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
 //
-// ### Authentication resources
+// ### Permissions
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table lists the permissions required to call this API operation. Add the action to a RAM policy statement to grant a RAM user or RAM role permission to call this operation.
 //
-// |Action|Resource|
+// | Action                | Resource in an authorization policy                       |
 //
-// |:---|:---|
+// | :-------------------- | :-------------------------------------------------------- |
 //
-// |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - GetLogsV2Request
 //
@@ -32500,25 +33891,25 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 
 // Summary:
 //
-// Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
+// Queries raw logs from a specified Logstore in a project. The response contains raw logs within a specified time range and is compressed for transmission.
 //
 // Description:
 //
-// You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
+// - The Simple Log Service software development kit (SDK) is available for Go, Java, and Python. You can also call all OpenAPI operations directly.
 //
-//   - When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
+// - Specify a compression method when you call this operation. Available compression algorithms depend on your programming language. For more information, see the Accept-Encoding request parameter.
 //
-//   - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+// - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
 //
-// ### Authentication resources
+// ### Permissions
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table lists the permissions required to call this API operation. Add the action to a RAM policy statement to grant a RAM user or RAM role permission to call this operation.
 //
-// |Action|Resource|
+// | Action                | Resource in an authorization policy                       |
 //
-// |:---|:---|
+// | :-------------------- | :-------------------------------------------------------- |
 //
-// |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - GetLogsV2Request
 //
@@ -32598,39 +33989,43 @@ func (client *Client) GetLogtailPipelineConfig(project *string, configName *stri
 
 // Summary:
 //
-// Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
+// Alibaba Cloud Simple Log Service (SLS) provides intelligent analysis for data such as logs, metrics, and traces. You can call models to obtain analysis results directly. Its main features include Named Entity Recognition (NER) for log data, anomaly detection for time series data, and root cause analysis for high-latency trace spans.
 //
 // Description:
 //
-// You must obtain the following basic permissions before you call this operation:
+// This API endpoint is available only in the China (Shanghai) and Singapore regions. The following basic permissions are required:
 //
-//	{
+// ```
 //
-//	    "Version": "1",
+// {
 //
-//	    "Statement": [
+//	"Version": "1",
 //
-//	        {
+//	"Statement": [
 //
-//	            "Action": [
+//	    {
 //
-//	                "log:Get*"
+//	        "Action": [
 //
-//	            ],
+//	            "log:Get*"
 //
-//	            "Resource": [
+//	        ],
 //
-//	                "acs:log:*:*:mlservice/sls_builtin_*"
+//	        "Resource": [
 //
-//	            ],
+//	            "acs:log:*:*:mlservice/sls_builtin_*"
 //
-//	            "Effect": "Allow"
+//	        ],
 //
-//	        }
+//	        "Effect": "Allow"
 //
-//	    ]
+//	    }
 //
-//	}
+//	]
+//
+// }
+//
+// ```
 //
 // @param request - GetMLServiceResultsRequest
 //
@@ -32680,39 +34075,43 @@ func (client *Client) GetMLServiceResultsWithOptions(serviceName *string, reques
 
 // Summary:
 //
-// Simple Log Service provides intelligent analysis capabilities that can be used to analyze basic data such as logs, metrics, and traces. You can call the GetMLServiceResults operation to obtain the analysis results of a model. You can call the operation in the following scenarios: Named Entity Recognition (NER) tasks on logs, anomaly detection on time series, and root cause analysis on high-latency traces.
+// Alibaba Cloud Simple Log Service (SLS) provides intelligent analysis for data such as logs, metrics, and traces. You can call models to obtain analysis results directly. Its main features include Named Entity Recognition (NER) for log data, anomaly detection for time series data, and root cause analysis for high-latency trace spans.
 //
 // Description:
 //
-// You must obtain the following basic permissions before you call this operation:
+// This API endpoint is available only in the China (Shanghai) and Singapore regions. The following basic permissions are required:
 //
-//	{
+// ```
 //
-//	    "Version": "1",
+// {
 //
-//	    "Statement": [
+//	"Version": "1",
 //
-//	        {
+//	"Statement": [
 //
-//	            "Action": [
+//	    {
 //
-//	                "log:Get*"
+//	        "Action": [
 //
-//	            ],
+//	            "log:Get*"
 //
-//	            "Resource": [
+//	        ],
 //
-//	                "acs:log:*:*:mlservice/sls_builtin_*"
+//	        "Resource": [
 //
-//	            ],
+//	            "acs:log:*:*:mlservice/sls_builtin_*"
 //
-//	            "Effect": "Allow"
+//	        ],
 //
-//	        }
+//	        "Effect": "Allow"
 //
-//	    ]
+//	    }
 //
-//	}
+//	]
+//
+// }
+//
+// ```
 //
 // @param request - GetMLServiceResultsRequest
 //
@@ -32731,7 +34130,7 @@ func (client *Client) GetMLServiceResults(serviceName *string, request *GetMLSer
 
 // Summary:
 //
-// Queries the details of a machine group.
+// Gets the details of a machine group.
 //
 // Description:
 //
@@ -32771,7 +34170,7 @@ func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *
 
 // Summary:
 //
-// Queries the details of a machine group.
+// Gets the details of a machine group.
 //
 // Description:
 //
@@ -32792,16 +34191,27 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 
 // Summary:
 //
-// 获取物化视图
+// Retrieve a materialized view.
+//
+// @param request - GetMaterializedViewRequest
 //
 // @param headers - GetMaterializedViewHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMaterializedViewResponse
-func (client *Client) GetMaterializedViewWithOptions(project *string, name *string, headers *GetMaterializedViewHeaders, runtime *util.RuntimeOptions) (_result *GetMaterializedViewResponse, _err error) {
+func (client *Client) GetMaterializedViewWithOptions(project *string, name *string, request *GetMaterializedViewRequest, headers *GetMaterializedViewHeaders, runtime *util.RuntimeOptions) (_result *GetMaterializedViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReturnStatus)) {
+		query["returnStatus"] = request.ReturnStatus
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -32814,6 +34224,7 @@ func (client *Client) GetMaterializedViewWithOptions(project *string, name *stri
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMaterializedView"),
@@ -32837,14 +34248,16 @@ func (client *Client) GetMaterializedViewWithOptions(project *string, name *stri
 
 // Summary:
 //
-// 获取物化视图
+// Retrieve a materialized view.
+//
+// @param request - GetMaterializedViewRequest
 //
 // @return GetMaterializedViewResponse
-func (client *Client) GetMaterializedView(project *string, name *string) (_result *GetMaterializedViewResponse, _err error) {
+func (client *Client) GetMaterializedView(project *string, name *string, request *GetMaterializedViewRequest) (_result *GetMaterializedViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetMaterializedViewHeaders{}
 	_result = &GetMaterializedViewResponse{}
-	_body, _err := client.GetMaterializedViewWithOptions(project, name, headers, runtime)
+	_body, _err := client.GetMaterializedViewWithOptions(project, name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32858,13 +34271,13 @@ func (client *Client) GetMaterializedView(project *string, name *string) (_resul
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -32904,13 +34317,13 @@ func (client *Client) GetMaxComputeExportWithOptions(project *string, mcExportNa
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return GetMaxComputeExportResponse
 func (client *Client) GetMaxComputeExport(project *string, mcExportName *string) (_result *GetMaxComputeExportResponse, _err error) {
@@ -32931,21 +34344,21 @@ func (client *Client) GetMaxComputeExport(project *string, mcExportName *string)
 //
 // Description:
 //
-// Metricstores are used to store metric data. For more information about Metricstores, see [Metricstores](https://help.aliyun.com/document_detail/171723.html). For more information about metric data, see [Metric data](https://help.aliyun.com/document_detail/174965.html). You can call this operation to query the settings of a Metricstore. To query the metric data in a Metricstore, see [Query and analysis](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html). This operation queries only the configuration of a Metricstore. To query the metric data, see [Query and analyze data](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
 //
-//   - You must specify an existing Metricstore.
+// - You must specify an existing Metricstore.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has full access permissions to all API operations. This poses a high security threat. For security, we recommend that you use a RAM user for API access or routine O\\&M. Grant the RAM user the required permissions to operate Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - Obtain the name and region of the project that contains the Metricstore. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - You can create a maximum of 200 Logstores or Metricstores in a project.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metrics are deleted after their retention period expires.
 //
 // @param headers - map
 //
@@ -32985,21 +34398,21 @@ func (client *Client) GetMetricStoreWithOptions(project *string, name *string, h
 //
 // Description:
 //
-// Metricstores are used to store metric data. For more information about Metricstores, see [Metricstores](https://help.aliyun.com/document_detail/171723.html). For more information about metric data, see [Metric data](https://help.aliyun.com/document_detail/174965.html). You can call this operation to query the settings of a Metricstore. To query the metric data in a Metricstore, see [Query and analysis](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html). This operation queries only the configuration of a Metricstore. To query the metric data, see [Query and analyze data](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
 //
-//   - You must specify an existing Metricstore.
+// - You must specify an existing Metricstore.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has full access permissions to all API operations. This poses a high security threat. For security, we recommend that you use a RAM user for API access or routine O\\&M. Grant the RAM user the required permissions to operate Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - Obtain the name and region of the project that contains the Metricstore. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - You can create a maximum of 200 Logstores or Metricstores in a project.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metrics are deleted after their retention period expires.
 //
 // @return GetMetricStoreResponse
 func (client *Client) GetMetricStore(project *string, name *string) (_result *GetMetricStoreResponse, _err error) {
@@ -33017,6 +34430,24 @@ func (client *Client) GetMetricStore(project *string, name *string) (_result *Ge
 // Summary:
 //
 // Queries the billing mode of a Metricstore.
+//
+// Description:
+//
+// MetricStore supports two billing modes: [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [pay-by-write-traffic](https://help.aliyun.com/document_detail/2365756.html).
+//
+// - You must specify an existing MetricStore when you call this operation.
+//
+// - In the request syntax, Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// - An AccessKey pair is required. For more information, see[AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations, which is high risk. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see[Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Before you call this operation, make sure that you have obtained the project name and region of the logs. For more information, see[Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// - You can create up to 200 Logstores or MetricStores in a project.
+//
+// - When metric data reaches the retention period that you configured, the data is deleted.
 //
 // @param headers - map
 //
@@ -33054,6 +34485,24 @@ func (client *Client) GetMetricStoreMeteringModeWithOptions(project *string, met
 //
 // Queries the billing mode of a Metricstore.
 //
+// Description:
+//
+// MetricStore supports two billing modes: [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [pay-by-write-traffic](https://help.aliyun.com/document_detail/2365756.html).
+//
+// - You must specify an existing MetricStore when you call this operation.
+//
+// - In the request syntax, Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// - An AccessKey pair is required. For more information, see[AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations, which is high risk. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see[Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Before you call this operation, make sure that you have obtained the project name and region of the logs. For more information, see[Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// - You can create up to 200 Logstores or MetricStores in a project.
+//
+// - When metric data reaches the retention period that you configured, the data is deleted.
+//
 // @return GetMetricStoreMeteringModeResponse
 func (client *Client) GetMetricStoreMeteringMode(project *string, metricStore *string) (_result *GetMetricStoreMeteringModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -33069,7 +34518,7 @@ func (client *Client) GetMetricStoreMeteringMode(project *string, metricStore *s
 
 // Summary:
 //
-// Queries the information about an Object Storage Service (OSS) data shipping job.
+// Retrieves the specified OSS data shipping job.
 //
 // @param headers - map
 //
@@ -33105,7 +34554,7 @@ func (client *Client) GetOSSExportWithOptions(project *string, ossExportName *st
 
 // Summary:
 //
-// Queries the information about an Object Storage Service (OSS) data shipping job.
+// Retrieves the specified OSS data shipping job.
 //
 // @return GetOSSExportResponse
 func (client *Client) GetOSSExport(project *string, ossExportName *string) (_result *GetOSSExportResponse, _err error) {
@@ -33122,7 +34571,7 @@ func (client *Client) GetOSSExport(project *string, ossExportName *string) (_res
 
 // Summary:
 //
-// Queries the information about an OSS-HDFS data shipping job.
+// Retrieves the details of a specified OSS-HDFS delivery job.
 //
 // @param headers - map
 //
@@ -33158,7 +34607,7 @@ func (client *Client) GetOSSHDFSExportWithOptions(project *string, ossExportName
 
 // Summary:
 //
-// Queries the information about an OSS-HDFS data shipping job.
+// Retrieves the details of a specified OSS-HDFS delivery job.
 //
 // @return GetOSSHDFSExportResponse
 func (client *Client) GetOSSHDFSExport(project *string, ossExportName *string) (_result *GetOSSHDFSExportResponse, _err error) {
@@ -33175,7 +34624,7 @@ func (client *Client) GetOSSHDFSExport(project *string, ossExportName *string) (
 
 // Summary:
 //
-// Queries the information about an Object Storage Service (OSS) data import job.
+// Retrieves a specified OSS import job.
 //
 // @param headers - map
 //
@@ -33211,7 +34660,7 @@ func (client *Client) GetOSSIngestionWithOptions(project *string, ossIngestionNa
 
 // Summary:
 //
-// Queries the information about an Object Storage Service (OSS) data import job.
+// Retrieves a specified OSS import job.
 //
 // @return GetOSSIngestionResponse
 func (client *Client) GetOSSIngestion(project *string, ossIngestionName *string) (_result *GetOSSIngestionResponse, _err error) {
@@ -33228,7 +34677,7 @@ func (client *Client) GetOSSIngestion(project *string, ossIngestionName *string)
 
 // Summary:
 //
-// Queries the details of a project.
+// Gets the details of a project.
 //
 // Description:
 //
@@ -33270,7 +34719,7 @@ func (client *Client) GetProjectWithOptions(project *string, headers map[string]
 
 // Summary:
 //
-// Queries the details of a project.
+// Gets the details of a project.
 //
 // Description:
 //
@@ -33299,33 +34748,33 @@ func (client *Client) GetProject(project *string) (_result *GetProjectResponse, 
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
 //
-//   - You must set query to a standard SQL statement.
+// - You must set query to a standard SQL statement.
 //
-//   - You must specify a Logstore in the FROM clause of an SQL statement. A Logstore can be used as an SQL table.
+// - You must specify a Logstore in the FROM clause of an SQL statement. A Logstore can be used as an SQL table.
 //
-//   - You must specify a time range in an SQL statement by using the __date__ or __time__ parameter. The value of the __date__ parameter is a timestamp. The value of the __time__ parameter is an integer, and the unit of the value is seconds.
+// - You must specify a time range in an SQL statement by using the __date__ or __time__ parameter. The value of the __date__ parameter is a timestamp. The value of the __time__ parameter is an integer, and the unit of the value is seconds.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action               | Resource                                                  |
 //
-// |:---|:---|
+// | :------------------- | :-------------------------------------------------------- |
 //
-// |`log:GetProjectLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:GetProjectLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - GetProjectLogsRequest
 //
@@ -33383,33 +34832,33 @@ func (client *Client) GetProjectLogsWithOptions(project *string, request *GetPro
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Indexes are configured before you query logs. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
 //
-//   - You must set query to a standard SQL statement.
+// - You must set query to a standard SQL statement.
 //
-//   - You must specify a Logstore in the FROM clause of an SQL statement. A Logstore can be used as an SQL table.
+// - You must specify a Logstore in the FROM clause of an SQL statement. A Logstore can be used as an SQL table.
 //
-//   - You must specify a time range in an SQL statement by using the __date__ or __time__ parameter. The value of the __date__ parameter is a timestamp. The value of the __time__ parameter is an integer, and the unit of the value is seconds.
+// - You must specify a time range in an SQL statement by using the __date__ or __time__ parameter. The value of the __date__ parameter is a timestamp. The value of the __time__ parameter is an integer, and the unit of the value is seconds.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action               | Resource                                                  |
 //
-// |:---|:---|
+// | :------------------- | :-------------------------------------------------------- |
 //
-// |`log:GetProjectLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:GetProjectLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - GetProjectLogsRequest
 //
@@ -33434,13 +34883,13 @@ func (client *Client) GetProjectLogs(project *string, request *GetProjectLogsReq
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -33482,13 +34931,13 @@ func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[s
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return GetProjectPolicyResponse
 func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPolicyResponse, _err error) {
@@ -33505,7 +34954,7 @@ func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPoli
 
 // Summary:
 //
-// 获取s3导入任务信息
+// Retrieves information about an S3 import task.
 //
 // @param headers - map
 //
@@ -33541,7 +34990,7 @@ func (client *Client) GetS3IngestionWithOptions(project *string, s3IngestionName
 
 // Summary:
 //
-// 获取s3导入任务信息
+// Retrieves information about an S3 import task.
 //
 // @return GetS3IngestionResponse
 func (client *Client) GetS3Ingestion(project *string, s3IngestionName *string) (_result *GetS3IngestionResponse, _err error) {
@@ -33564,25 +35013,25 @@ func (client *Client) GetS3Ingestion(project *string, s3IngestionName *string) (
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - You can call the ListSavedSearch operation to query the name of a saved search.
+// - You can call the ListSavedSearch operation to query the name of a saved search.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action               | Resource                                                                                 |
 //
-// |:---|:---|
+// | :------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:GetSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:GetSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @param headers - map
 //
@@ -33624,25 +35073,25 @@ func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - You can call the ListSavedSearch operation to query the name of a saved search.
+// - You can call the ListSavedSearch operation to query the name of a saved search.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action               | Resource                                                                                 |
 //
-// |:---|:---|
+// | :------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:GetSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:GetSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @return GetSavedSearchResponse
 func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (_result *GetSavedSearchResponse, _err error) {
@@ -33659,7 +35108,7 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
 
 // Summary:
 //
-// Queries the information about a Scheduled SQL job.
+// Retrieves the specified Scheduled SQL job.
 //
 // @param headers - map
 //
@@ -33695,7 +35144,7 @@ func (client *Client) GetScheduledSQLWithOptions(project *string, scheduledSQLNa
 
 // Summary:
 //
-// Queries the information about a Scheduled SQL job.
+// Retrieves the specified Scheduled SQL job.
 //
 // @return GetScheduledSQLResponse
 func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string) (_result *GetScheduledSQLResponse, _err error) {
@@ -33712,7 +35161,13 @@ func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string)
 
 // Summary:
 //
-// Queries the activation status of Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
+// Call the GetSlsService operation to retrieve the activation status of Simple Log Service. The endpoint must be China (Shanghai) or Singapore.
+//
+// Description:
+//
+// This operation requires an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair for an Alibaba Cloud account grants full access to all APIs. This poses a high security threat. Create and use a RAM user for API access or routine operations and maintenance (O\\&M). The RAM user must have permissions to operate Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
 // @param headers - map
 //
@@ -33745,7 +35200,13 @@ func (client *Client) GetSlsServiceWithOptions(headers map[string]*string, runti
 
 // Summary:
 //
-// Queries the activation status of Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
+// Call the GetSlsService operation to retrieve the activation status of Simple Log Service. The endpoint must be China (Shanghai) or Singapore.
+//
+// Description:
+//
+// This operation requires an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair for an Alibaba Cloud account grants full access to all APIs. This poses a high security threat. Create and use a RAM user for API access or routine operations and maintenance (O\\&M). The RAM user must have permissions to operate Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
 // @return GetSlsServiceResponse
 func (client *Client) GetSlsService() (_result *GetSlsServiceResponse, _err error) {
@@ -33762,7 +35223,7 @@ func (client *Client) GetSlsService() (_result *GetSlsServiceResponse, _err erro
 
 // Summary:
 //
-// Queries the configurations of the Dedicated SQL feature.
+// Gets information about the Dedicated SQL instance of a project, such as the number of compute units (CUs) and whether the Dedicated SQL instance is enabled by default. Before you call this operation, you must create a Dedicated SQL instance by calling the CreateSqlInstance or UpdateSqlInstance operation.
 //
 // @param headers - map
 //
@@ -33798,7 +35259,7 @@ func (client *Client) GetSqlInstanceWithOptions(project *string, headers map[str
 
 // Summary:
 //
-// Queries the configurations of the Dedicated SQL feature.
+// Gets information about the Dedicated SQL instance of a project, such as the number of compute units (CUs) and whether the Dedicated SQL instance is enabled by default. Before you call this operation, you must create a Dedicated SQL instance by calling the CreateSqlInstance or UpdateSqlInstance operation.
 //
 // @return GetSqlInstanceResponse
 func (client *Client) GetSqlInstance(project *string) (_result *GetSqlInstanceResponse, _err error) {
@@ -33921,7 +35382,11 @@ func (client *Client) GetStoreViewIndex(project *string, name *string) (_result 
 
 // Summary:
 //
-// # ListAgentInstanceConfigs
+// This operation lists process-level configurations.
+//
+// Description:
+//
+// Retrieves a list of process-level configurations.
 //
 // @param request - ListAgentInstanceConfigsRequest
 //
@@ -33974,7 +35439,11 @@ func (client *Client) ListAgentInstanceConfigsWithOptions(request *ListAgentInst
 
 // Summary:
 //
-// # ListAgentInstanceConfigs
+// This operation lists process-level configurations.
+//
+// Description:
+//
+// Retrieves a list of process-level configurations.
 //
 // @param request - ListAgentInstanceConfigsRequest
 //
@@ -33993,7 +35462,11 @@ func (client *Client) ListAgentInstanceConfigs(request *ListAgentInstanceConfigs
 
 // Summary:
 //
-// 获取 ai 工具列表
+// Lists the AI tools provided by the observability service, including Copilot capabilities for various services.
+//
+// Description:
+//
+// The endpoint for this API is available only in the China (Shanghai) and Singapore regions.
 //
 // @param headers - map
 //
@@ -34026,7 +35499,11 @@ func (client *Client) ListAiToolsWithOptions(headers map[string]*string, runtime
 
 // Summary:
 //
-// 获取 ai 工具列表
+// Lists the AI tools provided by the observability service, including Copilot capabilities for various services.
+//
+// Description:
+//
+// The endpoint for this API is available only in the China (Shanghai) and Singapore regions.
 //
 // @return ListAiToolsResponse
 func (client *Client) ListAiTools() (_result *ListAiToolsResponse, _err error) {
@@ -34043,7 +35520,7 @@ func (client *Client) ListAiTools() (_result *ListAiToolsResponse, _err error) {
 
 // Summary:
 //
-// Queries a list of alert rules in a project.
+// Lists the alert rules in a specified project.
 //
 // @param request - ListAlertsRequest
 //
@@ -34099,7 +35576,7 @@ func (client *Client) ListAlertsWithOptions(project *string, request *ListAlerts
 
 // Summary:
 //
-// Queries a list of alert rules in a project.
+// Lists the alert rules in a specified project.
 //
 // @param request - ListAlertsRequest
 //
@@ -34118,7 +35595,11 @@ func (client *Client) ListAlerts(project *string, request *ListAlertsRequest) (_
 
 // Summary:
 //
-// Queries data in datasets.
+// Lists the data records in a specified dataset.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - ListAnnotationDataRequest
 //
@@ -34167,7 +35648,11 @@ func (client *Client) ListAnnotationDataWithOptions(datasetId *string, request *
 
 // Summary:
 //
-// Queries data in datasets.
+// Lists the data records in a specified dataset.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - ListAnnotationDataRequest
 //
@@ -34186,7 +35671,11 @@ func (client *Client) ListAnnotationData(datasetId *string, request *ListAnnotat
 
 // Summary:
 //
-// Queries a list of datasets.
+// Returns a list of dataset structs.
+//
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - ListAnnotationDataSetsRequest
 //
@@ -34235,7 +35724,11 @@ func (client *Client) ListAnnotationDataSetsWithOptions(request *ListAnnotationD
 
 // Summary:
 //
-// Queries a list of datasets.
+// Returns a list of dataset structs.
+//
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - ListAnnotationDataSetsRequest
 //
@@ -34254,7 +35747,11 @@ func (client *Client) ListAnnotationDataSets(request *ListAnnotationDataSetsRequ
 
 // Summary:
 //
-// Queries a list of tag tables.
+// Lists annotation label tables.
+//
+// Description:
+//
+// This API operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - ListAnnotationLabelsRequest
 //
@@ -34303,7 +35800,11 @@ func (client *Client) ListAnnotationLabelsWithOptions(request *ListAnnotationLab
 
 // Summary:
 //
-// Queries a list of tag tables.
+// Lists annotation label tables.
+//
+// Description:
+//
+// This API operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - ListAnnotationLabelsRequest
 //
@@ -34322,7 +35823,7 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 
 // Summary:
 //
-// 列出Azure blob文件导入任务
+// Lists Azure Blob ingestion tasks.
 //
 // @param request - ListAzureBlobIngestionRequest
 //
@@ -34378,7 +35879,7 @@ func (client *Client) ListAzureBlobIngestionWithOptions(project *string, request
 
 // Summary:
 //
-// 列出Azure blob文件导入任务
+// Lists Azure Blob ingestion tasks.
 //
 // @param request - ListAzureBlobIngestionRequest
 //
@@ -34397,11 +35898,11 @@ func (client *Client) ListAzureBlobIngestion(project *string, request *ListAzure
 
 // Summary:
 //
-// Queries a list of log collection policies for cloud services.
+// Lists the collection rules for logs from Alibaba Cloud services.
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+// This API operation is available only at the endpoints in the following regions: China (Shanghai), Singapore, and Heyuan Automotive Compliance Cloud (cn-heyuan-acdr-1).
 //
 // @param request - ListCollectionPoliciesRequest
 //
@@ -34470,11 +35971,11 @@ func (client *Client) ListCollectionPoliciesWithOptions(request *ListCollectionP
 
 // Summary:
 //
-// Queries a list of log collection policies for cloud services.
+// Lists the collection rules for logs from Alibaba Cloud services.
 //
 // Description:
 //
-// You must use the Simple Log Service endpoint for the China (Shanghai), Singapore, or Heyuan ACDR Auto region to call the operation.
+// This API operation is available only at the endpoints in the following regions: China (Shanghai), Singapore, and Heyuan Automotive Compliance Cloud (cn-heyuan-acdr-1).
 //
 // @param request - ListCollectionPoliciesRequest
 //
@@ -34499,13 +36000,13 @@ func (client *Client) ListCollectionPolicies(request *ListCollectionPoliciesRequ
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListConfigRequest
 //
@@ -34571,13 +36072,13 @@ func (client *Client) ListConfigWithOptions(project *string, request *ListConfig
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListConfigRequest
 //
@@ -34596,7 +36097,7 @@ func (client *Client) ListConfig(project *string, request *ListConfigRequest) (_
 
 // Summary:
 //
-// Queries a list of consumption processors that meet specific conditions.
+// Retrieves a list of consume processors that match the specified parameters.
 //
 // @param request - ListConsumeProcessorsRequest
 //
@@ -34656,7 +36157,7 @@ func (client *Client) ListConsumeProcessorsWithOptions(project *string, request 
 
 // Summary:
 //
-// Queries a list of consumption processors that meet specific conditions.
+// Retrieves a list of consume processors that match the specified parameters.
 //
 // @param request - ListConsumeProcessorsRequest
 //
@@ -34681,23 +36182,23 @@ func (client *Client) ListConsumeProcessors(project *string, request *ListConsum
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                           |
 //
-// |:---|:---|
+// | :---------------------- | :------------------------------------------------------------------------------------------------- |
 //
-// |`log:ListConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/*`|
+// | `log:ListConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/*` |
 //
 // @param headers - map
 //
@@ -34739,23 +36240,23 @@ func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *st
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                           |
 //
-// |:---|:---|
+// | :---------------------- | :------------------------------------------------------------------------------------------------- |
 //
-// |`log:ListConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/*`|
+// | `log:ListConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}/consumergroup/*` |
 //
 // @return ListConsumerGroupResponse
 func (client *Client) ListConsumerGroup(project *string, logstore *string) (_result *ListConsumerGroupResponse, _err error) {
@@ -34772,19 +36273,19 @@ func (client *Client) ListConsumerGroup(project *string, logstore *string) (_res
 
 // Summary:
 //
-// Queries a list of dashboards.
+// Queries dashboards.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. You must specify the project name in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Create an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has the permissions to call all API operations. This is a high-risk practice. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - Identify the name and region of the project that contains the logs you want to query. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param tmpReq - ListDashboardRequest
 //
@@ -34854,19 +36355,19 @@ func (client *Client) ListDashboardWithOptions(project *string, tmpReq *ListDash
 
 // Summary:
 //
-// Queries a list of dashboards.
+// Queries dashboards.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Description
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. You must specify the project name in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Create an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has the permissions to call all API operations. This is a high-risk practice. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - Identify the name and region of the project that contains the logs you want to query. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListDashboardRequest
 //
@@ -34889,9 +36390,9 @@ func (client *Client) ListDashboard(project *string, request *ListDashboardReque
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- Only one custom domain name can be bound to each project.
+// - Only one custom domain name can be bound to each project.
 //
 // @param request - ListDomainsRequest
 //
@@ -34951,9 +36452,9 @@ func (client *Client) ListDomainsWithOptions(project *string, request *ListDomai
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- Only one custom domain name can be bound to each project.
+// - Only one custom domain name can be bound to each project.
 //
 // @param request - ListDomainsRequest
 //
@@ -34972,7 +36473,7 @@ func (client *Client) ListDomains(project *string, request *ListDomainsRequest) 
 
 // Summary:
 //
-// Queries a list of log download tasks in a project.
+// Lists the log download jobs in a specified project.
 //
 // @param request - ListDownloadJobsRequest
 //
@@ -35028,7 +36529,7 @@ func (client *Client) ListDownloadJobsWithOptions(project *string, request *List
 
 // Summary:
 //
-// Queries a list of log download tasks in a project.
+// Lists the log download jobs in a specified project.
 //
 // @param request - ListDownloadJobsRequest
 //
@@ -35047,7 +36548,7 @@ func (client *Client) ListDownloadJobs(project *string, request *ListDownloadJob
 
 // Summary:
 //
-// Queries a list of data transformation jobs in a project.
+// Lists the data transformation jobs in a project.
 //
 // @param request - ListETLsRequest
 //
@@ -35103,7 +36604,7 @@ func (client *Client) ListETLsWithOptions(project *string, request *ListETLsRequ
 
 // Summary:
 //
-// Queries a list of data transformation jobs in a project.
+// Lists the data transformation jobs in a project.
 //
 // @param request - ListETLsRequest
 //
@@ -35122,7 +36623,7 @@ func (client *Client) ListETLs(project *string, request *ListETLsRequest) (_resu
 
 // Summary:
 //
-// 创建ES导入任务
+// Lists the Elasticsearch and OpenSearch ingestion jobs.
 //
 // @param request - ListElasticsearchIngestionsRequest
 //
@@ -35178,7 +36679,7 @@ func (client *Client) ListElasticsearchIngestionsWithOptions(project *string, re
 
 // Summary:
 //
-// 创建ES导入任务
+// Lists the Elasticsearch and OpenSearch ingestion jobs.
 //
 // @param request - ListElasticsearchIngestionsRequest
 //
@@ -35197,7 +36698,7 @@ func (client *Client) ListElasticsearchIngestions(project *string, request *List
 
 // Summary:
 //
-// 列出GCP Cloud Storage文件导入任务
+// Lists Google Cloud Storage (GCS) file import jobs.
 //
 // @param request - ListGCSIngestionsRequest
 //
@@ -35253,7 +36754,7 @@ func (client *Client) ListGCSIngestionsWithOptions(project *string, request *Lis
 
 // Summary:
 //
-// 列出GCP Cloud Storage文件导入任务
+// Lists Google Cloud Storage (GCS) file import jobs.
 //
 // @param request - ListGCSIngestionsRequest
 //
@@ -35272,7 +36773,7 @@ func (client *Client) ListGCSIngestions(project *string, request *ListGCSIngesti
 
 // Summary:
 //
-// Queries a list of ingest processors that meet specific conditions.
+// Lists ingest processors that meet the specified conditions.
 //
 // @param request - ListIngestProcessorsRequest
 //
@@ -35332,7 +36833,7 @@ func (client *Client) ListIngestProcessorsWithOptions(project *string, request *
 
 // Summary:
 //
-// Queries a list of ingest processors that meet specific conditions.
+// Lists ingest processors that meet the specified conditions.
 //
 // @param request - ListIngestProcessorsRequest
 //
@@ -35357,23 +36858,23 @@ func (client *Client) ListIngestProcessors(project *string, request *ListIngestP
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action              | Resource                                                             |
 //
-// |:---|:---|
+// | :------------------ | :------------------------------------------------------------------- |
 //
-// |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
+// | `log:ListLogStores` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*` |
 //
 // @param request - ListLogStoresRequest
 //
@@ -35443,23 +36944,23 @@ func (client *Client) ListLogStoresWithOptions(project *string, request *ListLog
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action              | Resource                                                             |
 //
-// |:---|:---|
+// | :------------------ | :------------------------------------------------------------------- |
 //
-// |`log:ListLogStores`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*`|
+// | `log:ListLogStores` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/*` |
 //
 // @param request - ListLogStoresRequest
 //
@@ -35478,11 +36979,7 @@ func (client *Client) ListLogStores(project *string, request *ListLogStoresReque
 
 // Summary:
 //
-// Queries a list of Logtail pipeline configurations that meet the specified conditions.
-//
-// Description:
-//
-// The UK (London) region is supported. Supported regions are constantly updated.
+// Lists the names of Logtail pipeline configurations that meet specified criteria.
 //
 // @param request - ListLogtailPipelineConfigRequest
 //
@@ -35546,11 +37043,7 @@ func (client *Client) ListLogtailPipelineConfigWithOptions(project *string, requ
 
 // Summary:
 //
-// Queries a list of Logtail pipeline configurations that meet the specified conditions.
-//
-// Description:
-//
-// The UK (London) region is supported. Supported regions are constantly updated.
+// Lists the names of Logtail pipeline configurations that meet specified criteria.
 //
 // @param request - ListLogtailPipelineConfigRequest
 //
@@ -35731,7 +37224,7 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 
 // Summary:
 //
-// 列举物化视图
+// Lists the materialized views in a project.
 //
 // @param request - ListMaterializedViewRequest
 //
@@ -35787,7 +37280,7 @@ func (client *Client) ListMaterializedViewWithOptions(project *string, request *
 
 // Summary:
 //
-// 列举物化视图
+// Lists the materialized views in a project.
 //
 // @param request - ListMaterializedViewRequest
 //
@@ -35806,7 +37299,7 @@ func (client *Client) ListMaterializedView(project *string, request *ListMateria
 
 // Summary:
 //
-// 列举物化视图
+// Lists materialized views.
 //
 // @param request - ListMaterializedViewsRequest
 //
@@ -35862,7 +37355,7 @@ func (client *Client) ListMaterializedViewsWithOptions(project *string, request 
 
 // Summary:
 //
-// 列举物化视图
+// Lists materialized views.
 //
 // @param request - ListMaterializedViewsRequest
 //
@@ -35881,17 +37374,17 @@ func (client *Client) ListMaterializedViews(project *string, request *ListMateri
 
 // Summary:
 //
-// Queries a list of MaxCompute data shipping jobs.
+// Lists MaxCompute delivery tasks.
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has permissions to access all APIs. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user for API access or daily O\\&M. The RAM user must have the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - Identify the name and region of the project that contains the logs to query. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListMaxComputeExportsRequest
 //
@@ -35947,17 +37440,17 @@ func (client *Client) ListMaxComputeExportsWithOptions(project *string, request 
 
 // Summary:
 //
-// Queries a list of MaxCompute data shipping jobs.
+// Lists MaxCompute delivery tasks.
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has permissions to access all APIs. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user for API access or daily O\\&M. The RAM user must have the permissions to manage Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - Identify the name and region of the project that contains the logs to query. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListMaxComputeExportsRequest
 //
@@ -35980,13 +37473,13 @@ func (client *Client) ListMaxComputeExports(project *string, request *ListMaxCom
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListMetricStoresRequest
 //
@@ -36050,13 +37543,13 @@ func (client *Client) ListMetricStoresWithOptions(project *string, request *List
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - ListMetricStoresRequest
 //
@@ -36075,7 +37568,7 @@ func (client *Client) ListMetricStores(project *string, request *ListMetricStore
 
 // Summary:
 //
-// Queries a list of Object Storage Service (OSS) data shipping jobs in a project.
+// Queries the OSS shipping jobs in a specified project.
 //
 // @param request - ListOSSExportsRequest
 //
@@ -36131,7 +37624,7 @@ func (client *Client) ListOSSExportsWithOptions(project *string, request *ListOS
 
 // Summary:
 //
-// Queries a list of Object Storage Service (OSS) data shipping jobs in a project.
+// Queries the OSS shipping jobs in a specified project.
 //
 // @param request - ListOSSExportsRequest
 //
@@ -36150,7 +37643,7 @@ func (client *Client) ListOSSExports(project *string, request *ListOSSExportsReq
 
 // Summary:
 //
-// Queries a list of OSS-HDFS data shipping jobs in a project.
+// Lists the OSS-HDFS export tasks in a specified project.
 //
 // @param request - ListOSSHDFSExportsRequest
 //
@@ -36206,7 +37699,7 @@ func (client *Client) ListOSSHDFSExportsWithOptions(project *string, request *Li
 
 // Summary:
 //
-// Queries a list of OSS-HDFS data shipping jobs in a project.
+// Lists the OSS-HDFS export tasks in a specified project.
 //
 // @param request - ListOSSHDFSExportsRequest
 //
@@ -36225,7 +37718,7 @@ func (client *Client) ListOSSHDFSExports(project *string, request *ListOSSHDFSEx
 
 // Summary:
 //
-// Queries a list of Object Storage Service (OSS) data import jobs in a project.
+// Lists OSS import tasks in a specified Project.
 //
 // @param request - ListOSSIngestionsRequest
 //
@@ -36281,7 +37774,7 @@ func (client *Client) ListOSSIngestionsWithOptions(project *string, request *Lis
 
 // Summary:
 //
-// Queries a list of Object Storage Service (OSS) data import jobs in a project.
+// Lists OSS import tasks in a specified Project.
 //
 // @param request - ListOSSIngestionsRequest
 //
@@ -36300,13 +37793,13 @@ func (client *Client) ListOSSIngestions(project *string, request *ListOSSIngesti
 
 // Summary:
 //
-// Queries the projects that meet specified conditions.
+// Lists projects that meet the specified criteria.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### API description
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// The host consists of a project name and a Simple Log Service endpoint. Specify the project in the host.
 //
 // @param request - ListProjectRequest
 //
@@ -36371,13 +37864,13 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 
 // Summary:
 //
-// Queries the projects that meet specified conditions.
+// Lists projects that meet the specified criteria.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### API description
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// The host consists of a project name and a Simple Log Service endpoint. Specify the project in the host.
 //
 // @param request - ListProjectRequest
 //
@@ -36396,7 +37889,7 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 
 // Summary:
 //
-// 列出s3导入任务
+// Lists S3 import tasks.
 //
 // @param request - ListS3IngestionsRequest
 //
@@ -36452,7 +37945,7 @@ func (client *Client) ListS3IngestionsWithOptions(project *string, request *List
 
 // Summary:
 //
-// 列出s3导入任务
+// Lists S3 import tasks.
 //
 // @param request - ListS3IngestionsRequest
 //
@@ -36554,7 +38047,7 @@ func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchR
 
 // Summary:
 //
-// Queries a list of Scheduled SQL jobs in a project.
+// Lists the Scheduled SQLs in a specified project.
 //
 // @param request - ListScheduledSQLsRequest
 //
@@ -36610,7 +38103,7 @@ func (client *Client) ListScheduledSQLsWithOptions(project *string, request *Lis
 
 // Summary:
 //
-// Queries a list of Scheduled SQL jobs in a project.
+// Lists the Scheduled SQLs in a specified project.
 //
 // @param request - ListScheduledSQLsRequest
 //
@@ -36767,25 +38260,25 @@ func (client *Client) ListStoreViews(project *string, request *ListStoreViewsReq
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
-//   - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+// - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                 | Resource                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 //
-// |:---|:---|
+// | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
+// | `log:ListTagResources` | The resource format varies based on the resource type.-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}` |
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -36854,25 +38347,25 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
-//   - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+// - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                 | Resource                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 //
-// |:---|:---|
+// | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
+// | `log:ListTagResources` | The resource format varies based on the resource type.-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}` |
 //
 // @param request - ListTagResourcesRequest
 //
@@ -36891,7 +38384,21 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Merges readwrite shards that are adjacent to each other.
+// Merges adjacent read/write shards.
+//
+// Description:
+//
+// ### API description
+//
+// - The host consists of the project name and the Simple Log Service endpoint. You must specify the project in the host.
+//
+// - Each shard has a range, which is a left-closed, right-open MD5 interval of `[BeginKey,EndKey)`. The status of a shard can be readwrite or readonly. You can split and merge shards. For more information, see [Shards](https://help.aliyun.com/document_detail/28976.html).
+//
+// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair for an Alibaba Cloud account has access permissions for all APIs. This poses a high security threat. We recommend that you create and use a RAM user for API calls or routine O\\&M. The RAM user must have the required permissions to manage Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - You must have the project name, region, and Logstore name for the logs that you want to query. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param headers - map
 //
@@ -36927,7 +38434,21 @@ func (client *Client) MergeShardWithOptions(project *string, logstore *string, s
 
 // Summary:
 //
-// Merges readwrite shards that are adjacent to each other.
+// Merges adjacent read/write shards.
+//
+// Description:
+//
+// ### API description
+//
+// - The host consists of the project name and the Simple Log Service endpoint. You must specify the project in the host.
+//
+// - Each shard has a range, which is a left-closed, right-open MD5 interval of `[BeginKey,EndKey)`. The status of a shard can be readwrite or readonly. You can split and merge shards. For more information, see [Shards](https://help.aliyun.com/document_detail/28976.html).
+//
+// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair for an Alibaba Cloud account has access permissions for all APIs. This poses a high security threat. We recommend that you create and use a RAM user for API calls or routine O\\&M. The RAM user must have the required permissions to manage Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - You must have the project name, region, and Logstore name for the logs that you want to query. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
 //
 // @return MergeShardResponse
 func (client *Client) MergeShard(project *string, logstore *string, shard *string) (_result *MergeShardResponse, _err error) {
@@ -36945,6 +38466,12 @@ func (client *Client) MergeShard(project *string, logstore *string, shard *strin
 // Summary:
 //
 // Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
+//
+// Description:
+//
+// An AccessKey pair is required. For more information, see[AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations, which is high risk. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see[Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
 // @param headers - map
 //
@@ -36979,6 +38506,12 @@ func (client *Client) OpenSlsServiceWithOptions(headers map[string]*string, runt
 //
 // Activates Simple Log Service. You must use the endpoint for Simple Log Service only in the China (Shanghai) or Singapore region.
 //
+// Description:
+//
+// An AccessKey pair is required. For more information, see[AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations, which is high risk. We recommend that you create and use a RAM user to call API operations or perform routine O\\&M. The RAM user must have permissions to manage Simple Log Service resources. For more information, see[Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
 // @return OpenSlsServiceResponse
 func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -36994,19 +38527,19 @@ func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err er
 
 // Summary:
 //
-// Queries logs based on the specified cursors. You can call this operation to obtain raw logs. To query and analyze logs, you can call the GetLogsV2 operation.
+// Call the PullLogs operation to retrieve log data from a specified cursor position. This operation retrieves raw logs. To query or analyze logs, call the GetLogsV2 operation.
 //
 // Description:
 //
-// *
+//	Warning:
 //
-// **Warning*	- You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+// This operation is not supported by the OpenAPI SDK. Use the [Simple Log Service SDK](https://help.aliyun.com/document_detail/29063.html).
 //
-//   - You must specify a shard when you query the logs.
+// - Specify a shard to retrieve logs.
 //
-//   - You can query only logs in the Protocol Buffers (protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+// - This operation supports reading data in only the [Protocol Buffer](https://help.aliyun.com/document_detail/29055.html) format.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
 // @param request - PullLogsRequest
 //
@@ -37075,19 +38608,19 @@ func (client *Client) PullLogsWithOptions(project *string, logStore *string, sha
 
 // Summary:
 //
-// Queries logs based on the specified cursors. You can call this operation to obtain raw logs. To query and analyze logs, you can call the GetLogsV2 operation.
+// Call the PullLogs operation to retrieve log data from a specified cursor position. This operation retrieves raw logs. To query or analyze logs, call the GetLogsV2 operation.
 //
 // Description:
 //
-// *
+//	Warning:
 //
-// **Warning*	- You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+// This operation is not supported by the OpenAPI SDK. Use the [Simple Log Service SDK](https://help.aliyun.com/document_detail/29063.html).
 //
-//   - You must specify a shard when you query the logs.
+// - Specify a shard to retrieve logs.
 //
-//   - You can query only logs in the Protocol Buffers (protobuf) format. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+// - This operation supports reading data in only the [Protocol Buffer](https://help.aliyun.com/document_detail/29055.html) format.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
 // @param request - PullLogsRequest
 //
@@ -37106,7 +38639,11 @@ func (client *Client) PullLogs(project *string, logStore *string, shardId *strin
 
 // Summary:
 //
-// Adds data to a dataset for storage.
+// Stores annotation data in a dataset.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - PutAnnotationDataRequest
 //
@@ -37161,7 +38698,11 @@ func (client *Client) PutAnnotationDataWithOptions(datasetId *string, request *P
 
 // Summary:
 //
-// Adds data to a dataset for storage.
+// Stores annotation data in a dataset.
+//
+// Description:
+//
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - PutAnnotationDataRequest
 //
@@ -37180,7 +38721,7 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 
 // Summary:
 //
-// Creates or updates a consumption processor.
+// Creates or updates a consume processor.
 //
 // @param request - PutConsumeProcessorRequest
 //
@@ -37236,7 +38777,7 @@ func (client *Client) PutConsumeProcessorWithOptions(project *string, processorN
 
 // Summary:
 //
-// Creates or updates a consumption processor.
+// Creates or updates a consume processor.
 //
 // @param request - PutConsumeProcessorRequest
 //
@@ -37330,7 +38871,27 @@ func (client *Client) PutIngestProcessor(project *string, processorName *string,
 
 // Summary:
 //
-// 修改日志库的配置
+// Updates the configuration of a Logstore.
+//
+// Description:
+//
+// - The `Host` in the request header must contain both the `Project` name and the Simple Log Service (SLS) endpoint.
+//
+// - This operation requires an AccessKey. For more information, see [Access Key](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey for an Alibaba Cloud account grants full access to all APIs and poses a high security risk. We strongly recommend that you create and use a RAM user for API access and daily operations. The RAM user must have the necessary permissions to operate SLS resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Identify the names of the target `Project`, `Region`, and `Logstore`. For more information, see [Manage Project](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Permissions
+//
+// To grant a RAM user or RAM role permission to call this operation, add the Action and Resource in the following table to a permission policy in Resource Access Management (RAM).
+//
+// | Actions                 | Resource                                                                           |
+//
+// | :---------------------- | :--------------------------------------------------------------------------------- |
+//
+// | `log:PutLogStoreConfig` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - PutLogStoreConfigRequest
 //
@@ -37378,7 +38939,27 @@ func (client *Client) PutLogStoreConfigWithOptions(project *string, logstore *st
 
 // Summary:
 //
-// 修改日志库的配置
+// Updates the configuration of a Logstore.
+//
+// Description:
+//
+// - The `Host` in the request header must contain both the `Project` name and the Simple Log Service (SLS) endpoint.
+//
+// - This operation requires an AccessKey. For more information, see [Access Key](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey for an Alibaba Cloud account grants full access to all APIs and poses a high security risk. We strongly recommend that you create and use a RAM user for API access and daily operations. The RAM user must have the necessary permissions to operate SLS resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Identify the names of the target `Project`, `Region`, and `Logstore`. For more information, see [Manage Project](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstore](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Permissions
+//
+// To grant a RAM user or RAM role permission to call this operation, add the Action and Resource in the following table to a permission policy in Resource Access Management (RAM).
+//
+// | Actions                 | Resource                                                                           |
+//
+// | :---------------------- | :--------------------------------------------------------------------------------- |
+//
+// | `log:PutLogStoreConfig` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - PutLogStoreConfigRequest
 //
@@ -37397,27 +38978,129 @@ func (client *Client) PutLogStoreConfig(project *string, logstore *string, reque
 
 // Summary:
 //
-// Writes logs to a Logstore.
+// Writes log data to a specified logstore.
 //
 // Description:
 //
-// *
+// > - The OpenAPI SDK does not support this operation. Use the [Simple Log Service (SLS) SDK](https://help.aliyun.com/document_detail/29063.html) instead.
 //
-// **Warning*	- You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+// - The service checks the format of log data for each PutLogs request. If any log entry is invalid, the entire request fails and no logs are written.
 //
-//   - When you call the PutLogs operation to write logs to Simple Log Service, Simple Log Servicechecks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to Simple Log Service.
+// - This operation supports only log data in [protobuf format](https://help.aliyun.com/document_detail/29055.html). The log data is structured as a LogGroup.
 //
-//   - You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+// - Logs can be written in two modes:
 //
-//   - You can write logs in one of the following modes:
+//   - LoadBalance mode: Data is automatically written to all writable shards in a logstore. This method provides high availability and is suitable for data consumption scenarios that do not require a specific order. Request syntax:
 //
-//   - LoadBalance mode: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+//     ```plaintext
 //
-//   - KeyHash: In this mode, a key field is added in the URL parameter. Log Service writes logs to a shard based on the key field. The hash key is optional. If you do not configure the hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+//     POST /logstores/logstoreName/shards/lb HTTP/1.1
 //
-//   - You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+//     Authorization: LOG yourAccessKeyId:yourSignature
 //
-//   - The references for Log Service SDK for Java and Log Service SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
+//     Content-Type: application/x-protobuf
+//
+//     Content-Length: Content Length
+//
+//     Content-MD5: Content MD5
+//
+//     Date: GMT Date
+//
+//     Host: ProjectName.Endpoint
+//
+//     x-log-apiversion: 0.6.0
+//
+//     x-log-bodyrawsize: BodyRawSize
+//
+//     x-log-compresstype: lz4
+//
+//     x-log-signaturemethod: hmac-sha1
+//
+//     <Compressed log data in protobuf format>
+//
+//     ```
+//
+//   - KeyHash mode: Add a key parameter to the URL to determine which shard receives the data. This parameter is optional. If you do not set this parameter, the system automatically switches to the load balancing mode. For example, pin a producer, such as an instance, to a specific shard based on its name hash. This ensures that data written to and consumed from the shard is strictly ordered. During merge and split operations, a key is associated with only one shard at any given time. Request syntax:
+//
+//     ```plaintext
+//
+//     POST /logstores/logstoreName/shards/route?key=14d2f850ad6ea48e46e4547edbbb27e0
+//
+//     Authorization: LOG yourAccessKeyId:yourSignature
+//
+//     Content-Type: application/x-protobuf
+//
+//     Content-Length: Content Length
+//
+//     Content-MD5: Content MD5
+//
+//     Date: GMT Date
+//
+//     Host: ProjectName.Endpoint
+//
+//     x-log-apiversion: 0.6.0
+//
+//     x-log-bodyrawsize: BodyRawSize
+//
+//     x-log-compresstype: lz4
+//
+//     x-log-signaturemethod: hmac-sha1
+//
+//     <Compressed log data in protobuf format>
+//
+//     ```
+//
+// - The maximum size of raw logs for each PutLogs request is 10 MB. The Value of each log in a log group must not exceed 1 MB. Older SDK versions may have different limits. Upgrade to the latest SDK version.
+//
+// - SLS provides examples of how to use PutLogs with the Java and Python SDKs.
+//
+// ## Protobuf data
+//
+// This section describes the fields for compressed log data in protobuf format. For more information, see [Data model](https://help.aliyun.com/document_detail/29054.html) and [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+//
+// - Log
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+//
+// | Time          | Integer       | Yes          | The time of the log. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-1-1 00:00:00 UTC. |
+//
+// | Contents      | List          | Yes          | A list of log fields. The list must contain at least one element. For the element type, see the Content table below.                    |
+//
+// - Content
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------- |
+//
+// | Key           | String        | Yes          | The custom key name.                          |
+//
+// | Value         | String        | Yes          | The value that corresponds to the custom key. |
+//
+// - LogTag
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------- |
+//
+// | Key           | String        | Yes          | The custom key name.                          |
+//
+// | Value         | String        | Yes          | The value that corresponds to the custom key. |
+//
+// - LogGroup
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------------------------------------------------------- |
+//
+// | Logs          | List          | Yes          | A list of logs. For each element, see the Log table.                                          |
+//
+// | Topic         | String        | No           | The topic of the logs. Use this custom field to distinguish log data with different features. |
+//
+// | Source        | String        | No           | The source of the logs, such as the IP address of the machine that generated the logs.        |
+//
+// | LogTags       | List          | Yes          | A list of log tags. For each element, see the LogTag table.                                   |
 //
 // @param request - PutLogsRequest
 //
@@ -37469,27 +39152,129 @@ func (client *Client) PutLogsWithOptions(project *string, logstore *string, requ
 
 // Summary:
 //
-// Writes logs to a Logstore.
+// Writes log data to a specified logstore.
 //
 // Description:
 //
-// *
+// > - The OpenAPI SDK does not support this operation. Use the [Simple Log Service (SLS) SDK](https://help.aliyun.com/document_detail/29063.html) instead.
 //
-// **Warning*	- You cannot call this operation in OpenAPI Explorer. You can use Simple Log Service SDK to call this operation. For more information, see SLS SDK Reference.
+// - The service checks the format of log data for each PutLogs request. If any log entry is invalid, the entire request fails and no logs are written.
 //
-//   - When you call the PutLogs operation to write logs to Simple Log Service, Simple Log Servicechecks the format of the logs. If a log does not meet the format requirements, the request fails and no logs are written to Simple Log Service.
+// - This operation supports only log data in [protobuf format](https://help.aliyun.com/document_detail/29055.html). The log data is structured as a LogGroup.
 //
-//   - You can write logs only in the Protocol Buffers (Protobuf) format as log groups. For more information, see [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+// - Logs can be written in two modes:
 //
-//   - You can write logs in one of the following modes:
+//   - LoadBalance mode: Data is automatically written to all writable shards in a logstore. This method provides high availability and is suitable for data consumption scenarios that do not require a specific order. Request syntax:
 //
-//   - LoadBalance mode: In this mode, Log Service automatically writes logs to all writable shards in a Logstore. This mode delivers high availability for write operations and is suitable for data consumption scenarios in which you do not need to preserve the order of logs.
+//     ```plaintext
 //
-//   - KeyHash: In this mode, a key field is added in the URL parameter. Log Service writes logs to a shard based on the key field. The hash key is optional. If you do not configure the hash key, logs are written to shards in LoadBalance mode. For example, you can use the KeyHash mode to write data from a producer, such as an instance, to the shard whose hash value range includes the hash value of the producer name. This ensures that the data that is written to the shard is ordered and the data in the shard is consumed based on the order. This way, when a shard is split or when shards are merged, the data that is associated with the same hash key is stored only in one shard at a point in time. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+//     POST /logstores/logstoreName/shards/lb HTTP/1.1
 //
-//   - You can call the PutLogs operation to write up to 10 MB of raw logs at a time. We recommend that you keep the total size of the values for each log in a log group to or below 1 MB. Historical versions of SDKs may have different limits. We recommend that you upgrade your SDK to the latest version.
+//     Authorization: LOG yourAccessKeyId:yourSignature
 //
-//   - The references for Log Service SDK for Java and Log Service SDK for Python provide examples on how to call the PutLogs operation. For more information, see [Get started with Simple Log Service SDK for Java](https://help.aliyun.com/document_detail/279525.html) and [Get started with Simple Log Service SDK for Python](https://help.aliyun.com/document_detail/284638.html).
+//     Content-Type: application/x-protobuf
+//
+//     Content-Length: Content Length
+//
+//     Content-MD5: Content MD5
+//
+//     Date: GMT Date
+//
+//     Host: ProjectName.Endpoint
+//
+//     x-log-apiversion: 0.6.0
+//
+//     x-log-bodyrawsize: BodyRawSize
+//
+//     x-log-compresstype: lz4
+//
+//     x-log-signaturemethod: hmac-sha1
+//
+//     <Compressed log data in protobuf format>
+//
+//     ```
+//
+//   - KeyHash mode: Add a key parameter to the URL to determine which shard receives the data. This parameter is optional. If you do not set this parameter, the system automatically switches to the load balancing mode. For example, pin a producer, such as an instance, to a specific shard based on its name hash. This ensures that data written to and consumed from the shard is strictly ordered. During merge and split operations, a key is associated with only one shard at any given time. Request syntax:
+//
+//     ```plaintext
+//
+//     POST /logstores/logstoreName/shards/route?key=14d2f850ad6ea48e46e4547edbbb27e0
+//
+//     Authorization: LOG yourAccessKeyId:yourSignature
+//
+//     Content-Type: application/x-protobuf
+//
+//     Content-Length: Content Length
+//
+//     Content-MD5: Content MD5
+//
+//     Date: GMT Date
+//
+//     Host: ProjectName.Endpoint
+//
+//     x-log-apiversion: 0.6.0
+//
+//     x-log-bodyrawsize: BodyRawSize
+//
+//     x-log-compresstype: lz4
+//
+//     x-log-signaturemethod: hmac-sha1
+//
+//     <Compressed log data in protobuf format>
+//
+//     ```
+//
+// - The maximum size of raw logs for each PutLogs request is 10 MB. The Value of each log in a log group must not exceed 1 MB. Older SDK versions may have different limits. Upgrade to the latest SDK version.
+//
+// - SLS provides examples of how to use PutLogs with the Java and Python SDKs.
+//
+// ## Protobuf data
+//
+// This section describes the fields for compressed log data in protobuf format. For more information, see [Data model](https://help.aliyun.com/document_detail/29054.html) and [Data encoding](https://help.aliyun.com/document_detail/29055.html).
+//
+// - Log
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+//
+// | Time          | Integer       | Yes          | The time of the log. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-1-1 00:00:00 UTC. |
+//
+// | Contents      | List          | Yes          | A list of log fields. The list must contain at least one element. For the element type, see the Content table below.                    |
+//
+// - Content
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------- |
+//
+// | Key           | String        | Yes          | The custom key name.                          |
+//
+// | Value         | String        | Yes          | The value that corresponds to the custom key. |
+//
+// - LogTag
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------- |
+//
+// | Key           | String        | Yes          | The custom key name.                          |
+//
+// | Value         | String        | Yes          | The value that corresponds to the custom key. |
+//
+// - LogGroup
+//
+// | **Parameter*	- | **Data type*	- | **Required*	- | **Description*	- |
+//
+// | ------------- | ------------- | ------------ | --------------------------------------------------------------------------------------------- |
+//
+// | Logs          | List          | Yes          | A list of logs. For each element, see the Log table.                                          |
+//
+// | Topic         | String        | No           | The topic of the logs. Use this custom field to distinguish log data with different features. |
+//
+// | Source        | String        | No           | The source of the logs, such as the IP address of the machine that generated the logs.        |
+//
+// | LogTags       | List          | Yes          | A list of log tags. For each element, see the LogTag table.                                   |
 //
 // @param request - PutLogsRequest
 //
@@ -37508,21 +39293,27 @@ func (client *Client) PutLogs(project *string, logstore *string, request *PutLog
 
 // Summary:
 //
-// Creates a project policy.
+// Creates a project access policy.
 //
 // Description:
 //
-// ### Usage notes
+// ###
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service (SLS) endpoint. You must specify the project in the Host.
 //
-//   - Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+// - You have created an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-//   - You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](https://help.aliyun.com/document_detail/128139.html).
+// An AccessKey pair for an Alibaba Cloud account provides full access to all API operations. This is a high security risk. We recommend that you create and use a Resource Access Management (RAM) user for API access or daily O\\&M. The RAM user must have permissions to manage SLS resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+// - Obtain the project name, region, and Logstore name. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+// - A project policy is an authorization policy for projects in SLS. You can use a project policy to grant other users access to your specified SLS resources.
+//
+//   - Before you configure a project policy using policy syntax, you must understand the classification of SLS actions, resources, and conditions. For more information, see [Resource Access Management](https://help.aliyun.com/document_detail/128139.html).
+//
+//   - When you configure a project policy, if you grant permissions to an anonymous account (\\*) and do not specify a condition, the policy applies to all users except the project owner. If you grant permissions to an anonymous account (\\*) and specify a condition, the policy applies to all users, including the project owner.
+//
+//   - You can add multiple project policies, but their total size cannot exceed 16 KB.
 //
 // @param request - PutProjectPolicyRequest
 //
@@ -37565,21 +39356,27 @@ func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutP
 
 // Summary:
 //
-// Creates a project policy.
+// Creates a project access policy.
 //
 // Description:
 //
-// ### Usage notes
+// ###
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service (SLS) endpoint. You must specify the project in the Host.
 //
-//   - Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+// - You have created an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-//   - You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](https://help.aliyun.com/document_detail/128139.html).
+// An AccessKey pair for an Alibaba Cloud account provides full access to all API operations. This is a high security risk. We recommend that you create and use a Resource Access Management (RAM) user for API access or daily O\\&M. The RAM user must have permissions to manage SLS resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+// - Obtain the project name, region, and Logstore name. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+// - A project policy is an authorization policy for projects in SLS. You can use a project policy to grant other users access to your specified SLS resources.
+//
+//   - Before you configure a project policy using policy syntax, you must understand the classification of SLS actions, resources, and conditions. For more information, see [Resource Access Management](https://help.aliyun.com/document_detail/128139.html).
+//
+//   - When you configure a project policy, if you grant permissions to an anonymous account (\\*) and do not specify a condition, the policy applies to all users except the project owner. If you grant permissions to an anonymous account (\\*) and specify a condition, the policy applies to all users, including the project owner.
+//
+//   - You can add multiple project policies, but their total size cannot exceed 16 KB.
 //
 // @param request - PutProjectPolicyRequest
 //
@@ -37671,19 +39468,19 @@ func (client *Client) PutProjectTransferAcceleration(project *string, request *P
 //
 // ### [](#)Usage notes
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - You can call this operation to collect logs from web pages or clients.
+// - Use this operation to collect logs from web pages or clients.
 //
-//   - If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
+// - If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
 //
-//   - If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+// - If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
 //
-//   - Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
+// - Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
 //
-//   - You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+// - You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
 //
-//   - If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+// - If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
 //
 // @param request - PutWebtrackingRequest
 //
@@ -37749,19 +39546,19 @@ func (client *Client) PutWebtrackingWithOptions(project *string, logstoreName *s
 //
 // ### [](#)Usage notes
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - You can call this operation to collect logs from web pages or clients.
+// - Use this operation to collect logs from web pages or clients.
 //
-//   - If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
+// - If you use web tracking to collect logs and you do not call this operation, you can send only one log to Simple Log Service in a request. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
 //
-//   - If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
+// - If you want to collect a large amount of log data, you can call this operation to send multiple logs to Simple Log Service in one request.
 //
-//   - Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
+// - Before you can call this operation to send logs to a Logstore, you must enable web tracking for the Logstore. For more information, see [Use web tracking to collect logs](https://help.aliyun.com/document_detail/31752.html).
 //
-//   - You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
+// - You cannot call this operation to send the logs of multiple topics to Simple Log Service at a time.
 //
-//   - If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
+// - If you call this operation, anonymous users from the Internet are granted the write permissions on the Logstore. This may generate dirty data because AccessKey pair-based authentication is not performed.
 //
 // @param request - PutWebtrackingRequest
 //
@@ -37780,7 +39577,7 @@ func (client *Client) PutWebtracking(project *string, logstoreName *string, requ
 
 // Summary:
 //
-// Refreshes an access token by using a ticket to access the Simple Log Service console.
+// Refreshes an access token using a ticket. The access token is used to call console API operations.
 //
 // @param request - RefreshTokenRequest
 //
@@ -37829,7 +39626,7 @@ func (client *Client) RefreshTokenWithOptions(request *RefreshTokenRequest, head
 
 // Summary:
 //
-// Refreshes an access token by using a ticket to access the Simple Log Service console.
+// Refreshes an access token using a ticket. The access token is used to call console API operations.
 //
 // @param request - RefreshTokenRequest
 //
@@ -37849,6 +39646,10 @@ func (client *Client) RefreshToken(request *RefreshTokenRequest) (_result *Refre
 // Summary:
 //
 // Removes a Logtail configuration from a machine group.
+//
+// Description:
+//
+// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
 // @param headers - map
 //
@@ -37886,6 +39687,10 @@ func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, m
 //
 // Removes a Logtail configuration from a machine group.
 //
+// Description:
+//
+// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
 // @return RemoveConfigFromMachineGroupResponse
 func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -37907,9 +39712,9 @@ func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+// - Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
 //
 // @param request - SplitShardRequest
 //
@@ -37967,9 +39772,9 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+// - Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](https://help.aliyun.com/document_detail/28976.html).
 //
 // @param request - SplitShardRequest
 //
@@ -37988,7 +39793,7 @@ func (client *Client) SplitShard(project *string, logstore *string, shard *strin
 
 // Summary:
 //
-// 启动Azure blob文件导入任务
+// Starts an Azure Blob ingestion task.
 //
 // @param headers - map
 //
@@ -38024,7 +39829,7 @@ func (client *Client) StartAzureBlobIngestionWithOptions(project *string, azureB
 
 // Summary:
 //
-// 启动Azure blob文件导入任务
+// Starts an Azure Blob ingestion task.
 //
 // @return StartAzureBlobIngestionResponse
 func (client *Client) StartAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *StartAzureBlobIngestionResponse, _err error) {
@@ -38041,7 +39846,7 @@ func (client *Client) StartAzureBlobIngestion(project *string, azureBlobIngestio
 
 // Summary:
 //
-// Starts a data transformation job.
+// Starts a data transformation task.
 //
 // @param headers - map
 //
@@ -38077,7 +39882,7 @@ func (client *Client) StartETLWithOptions(project *string, etlName *string, head
 
 // Summary:
 //
-// Starts a data transformation job.
+// Starts a data transformation task.
 //
 // @return StartETLResponse
 func (client *Client) StartETL(project *string, etlName *string) (_result *StartETLResponse, _err error) {
@@ -38094,7 +39899,7 @@ func (client *Client) StartETL(project *string, etlName *string) (_result *Start
 
 // Summary:
 //
-// 启动ES导入任务
+// Starts an ES or OpenSearch ingestion task.
 //
 // @param headers - map
 //
@@ -38130,7 +39935,7 @@ func (client *Client) StartElasticsearchIngestionWithOptions(project *string, el
 
 // Summary:
 //
-// 启动ES导入任务
+// Starts an ES or OpenSearch ingestion task.
 //
 // @return StartElasticsearchIngestionResponse
 func (client *Client) StartElasticsearchIngestion(project *string, elasticsearchIngestionName *string) (_result *StartElasticsearchIngestionResponse, _err error) {
@@ -38147,7 +39952,7 @@ func (client *Client) StartElasticsearchIngestion(project *string, elasticsearch
 
 // Summary:
 //
-// 启动GCP Cloud Storage文件导入任务
+// Starts a GCS file import task.
 //
 // @param headers - map
 //
@@ -38183,7 +39988,7 @@ func (client *Client) StartGCSIngestionWithOptions(project *string, gcsIngestion
 
 // Summary:
 //
-// 启动GCP Cloud Storage文件导入任务
+// Starts a GCS file import task.
 //
 // @return StartGCSIngestionResponse
 func (client *Client) StartGCSIngestion(project *string, gcsIngestionName *string) (_result *StartGCSIngestionResponse, _err error) {
@@ -38204,13 +40009,13 @@ func (client *Client) StartGCSIngestion(project *string, gcsIngestionName *strin
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param headers - map
 //
@@ -38250,13 +40055,13 @@ func (client *Client) StartMaxComputeExportWithOptions(project *string, mcExport
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @return StartMaxComputeExportResponse
 func (client *Client) StartMaxComputeExport(project *string, mcExportName *string) (_result *StartMaxComputeExportResponse, _err error) {
@@ -38379,7 +40184,7 @@ func (client *Client) StartOSSHDFSExport(project *string, ossExportName *string)
 
 // Summary:
 //
-// Starts an Object Storage Service (OSS) data import job.
+// Starts a specified OSS import task.
 //
 // @param headers - map
 //
@@ -38415,7 +40220,7 @@ func (client *Client) StartOSSIngestionWithOptions(project *string, ossIngestion
 
 // Summary:
 //
-// Starts an Object Storage Service (OSS) data import job.
+// Starts a specified OSS import task.
 //
 // @return StartOSSIngestionResponse
 func (client *Client) StartOSSIngestion(project *string, ossIngestionName *string) (_result *StartOSSIngestionResponse, _err error) {
@@ -38432,7 +40237,7 @@ func (client *Client) StartOSSIngestion(project *string, ossIngestionName *strin
 
 // Summary:
 //
-// 启动Azure blob文件导入任务
+// Stops an Azure Blob ingestion task.
 //
 // @param headers - map
 //
@@ -38468,7 +40273,7 @@ func (client *Client) StopAzureBlobIngestionWithOptions(project *string, azureBl
 
 // Summary:
 //
-// 启动Azure blob文件导入任务
+// Stops an Azure Blob ingestion task.
 //
 // @return StopAzureBlobIngestionResponse
 func (client *Client) StopAzureBlobIngestion(project *string, azureBlobIngestionName *string) (_result *StopAzureBlobIngestionResponse, _err error) {
@@ -38485,7 +40290,7 @@ func (client *Client) StopAzureBlobIngestion(project *string, azureBlobIngestion
 
 // Summary:
 //
-// Stops a data transformation job.
+// Stops a specified data transformation task.
 //
 // @param headers - map
 //
@@ -38521,7 +40326,7 @@ func (client *Client) StopETLWithOptions(project *string, etlName *string, heade
 
 // Summary:
 //
-// Stops a data transformation job.
+// Stops a specified data transformation task.
 //
 // @return StopETLResponse
 func (client *Client) StopETL(project *string, etlName *string) (_result *StopETLResponse, _err error) {
@@ -38538,7 +40343,7 @@ func (client *Client) StopETL(project *string, etlName *string) (_result *StopET
 
 // Summary:
 //
-// 停止ES导入任务
+// Stops an ES or OpenSearch import job.
 //
 // @param headers - map
 //
@@ -38574,7 +40379,7 @@ func (client *Client) StopElasticsearchIngestionWithOptions(project *string, ela
 
 // Summary:
 //
-// 停止ES导入任务
+// Stops an ES or OpenSearch import job.
 //
 // @return StopElasticsearchIngestionResponse
 func (client *Client) StopElasticsearchIngestion(project *string, elasticsearchIngestionName *string) (_result *StopElasticsearchIngestionResponse, _err error) {
@@ -38591,7 +40396,7 @@ func (client *Client) StopElasticsearchIngestion(project *string, elasticsearchI
 
 // Summary:
 //
-// 停止GCP Cloud Storage文件导入任务
+// Stops a GCP Cloud Storage file import task.
 //
 // @param headers - map
 //
@@ -38627,7 +40432,7 @@ func (client *Client) StopGCSIngestionWithOptions(project *string, gcsIngestionN
 
 // Summary:
 //
-// 停止GCP Cloud Storage文件导入任务
+// Stops a GCP Cloud Storage file import task.
 //
 // @return StopGCSIngestionResponse
 func (client *Client) StopGCSIngestion(project *string, gcsIngestionName *string) (_result *StopGCSIngestionResponse, _err error) {
@@ -38648,13 +40453,13 @@ func (client *Client) StopGCSIngestion(project *string, gcsIngestionName *string
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -38694,13 +40499,13 @@ func (client *Client) StopMaxComputeExportWithOptions(project *string, mcExportN
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return StopMaxComputeExportResponse
 func (client *Client) StopMaxComputeExport(project *string, mcExportName *string) (_result *StopMaxComputeExportResponse, _err error) {
@@ -38823,7 +40628,7 @@ func (client *Client) StopOSSHDFSExport(project *string, ossExportName *string) 
 
 // Summary:
 //
-// Stops an Object Storage Service (OSS) data import job.
+// Stops the specified OSS import task.
 //
 // @param headers - map
 //
@@ -38859,7 +40664,7 @@ func (client *Client) StopOSSIngestionWithOptions(project *string, ossIngestionN
 
 // Summary:
 //
-// Stops an Object Storage Service (OSS) data import job.
+// Stops the specified OSS import task.
 //
 // @return StopOSSIngestionResponse
 func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string) (_result *StopOSSIngestionResponse, _err error) {
@@ -38876,7 +40681,7 @@ func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string
 
 // Summary:
 //
-// 提交异步SQL请求
+// Submits an asynchronous SQL request.
 //
 // @param request - SubmitAsyncSqlRequest
 //
@@ -38932,7 +40737,7 @@ func (client *Client) SubmitAsyncSqlWithOptions(project *string, request *Submit
 
 // Summary:
 //
-// 提交异步SQL请求
+// Submits an asynchronous SQL request.
 //
 // @param request - SubmitAsyncSqlRequest
 //
@@ -38957,25 +40762,25 @@ func (client *Client) SubmitAsyncSql(project *string, request *SubmitAsyncSqlReq
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
-//   - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+// - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action             | Resource                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 //
-// |:---|:---|
+// | :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
+// | `log:TagResources` | The resource format varies based on the resource type.-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}` |
 //
 // @param request - TagResourcesRequest
 //
@@ -39034,25 +40839,25 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
-//   - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+// - For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action             | Resource                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 //
-// |:---|:---|
+// | :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
+// | `log:TagResources` | The resource format varies based on the resource type.-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}` |
 //
 // @param request - TagResourcesRequest
 //
@@ -39077,23 +40882,23 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action               | Resource                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 //
-// |:---|:---|
+// | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
+// | `log:UntagResources` | The resource format varies based on the resource type.-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}` |
 //
 // @param request - UntagResourcesRequest
 //
@@ -39156,23 +40961,23 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action               | Resource                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 //
-// |:---|:---|
+// | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
+// | `log:UntagResources` | The resource format varies based on the resource type.-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}` |
 //
 // @param request - UntagResourcesRequest
 //
@@ -39191,7 +40996,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// # UpdateAgentInstanceConfig
+// Updates process-level configurations.
 //
 // @param tmpReq - UpdateAgentInstanceConfigRequest
 //
@@ -39252,7 +41057,7 @@ func (client *Client) UpdateAgentInstanceConfigWithOptions(configType *string, t
 
 // Summary:
 //
-// # UpdateAgentInstanceConfig
+// Updates process-level configurations.
 //
 // @param request - UpdateAgentInstanceConfigRequest
 //
@@ -39352,6 +41157,10 @@ func (client *Client) UpdateAlert(project *string, alertName *string, request *U
 //
 // Updates a dataset.
 //
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
+//
 // @param request - UpdateAnnotationDataSetRequest
 //
 // @param headers - map
@@ -39392,6 +41201,10 @@ func (client *Client) UpdateAnnotationDataSetWithOptions(datasetId *string, requ
 //
 // Updates a dataset.
 //
+// Description:
+//
+// The endpoint for this operation is available only in the China (Shanghai) and Singapore regions.
+//
 // @param request - UpdateAnnotationDataSetRequest
 //
 // @return UpdateAnnotationDataSetResponse
@@ -39409,11 +41222,11 @@ func (client *Client) UpdateAnnotationDataSet(datasetId *string, request *Update
 
 // Summary:
 //
-// Updates a tag table.
+// Updates a label table. You can update only the names of labels in a label set.
 //
 // Description:
 //
-// You can update only the names of the tags in a tag set.
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - UpdateAnnotationLabelRequest
 //
@@ -39453,11 +41266,11 @@ func (client *Client) UpdateAnnotationLabelWithOptions(request *UpdateAnnotation
 
 // Summary:
 //
-// Updates a tag table.
+// Updates a label table. You can update only the names of labels in a label set.
 //
 // Description:
 //
-// You can update only the names of the tags in a tag set.
+// This operation is available only in the China (Shanghai) and Singapore regions.
 //
 // @param request - UpdateAnnotationLabelRequest
 //
@@ -39476,7 +41289,7 @@ func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelReques
 
 // Summary:
 //
-// 更新Azure blob文件导入任务
+// Updates an Azure Blob ingestion.
 //
 // @param request - UpdateAzureBlobIngestionRequest
 //
@@ -39536,7 +41349,7 @@ func (client *Client) UpdateAzureBlobIngestionWithOptions(project *string, azure
 
 // Summary:
 //
-// 更新Azure blob文件导入任务
+// Updates an Azure Blob ingestion.
 //
 // @param request - UpdateAzureBlobIngestionRequest
 //
@@ -39561,17 +41374,17 @@ func (client *Client) UpdateAzureBlobIngestion(project *string, azureBlobIngesti
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+// - After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
+// - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
 //
 // @param request - UpdateConfigRequest
 //
@@ -39620,17 +41433,17 @@ func (client *Client) UpdateConfigWithOptions(project *string, configName *strin
 //
 // ### [](#)Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
+// - After you update a Logtail configuration that is applied to a machine group, the new configuration immediately takes effect.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a RAM user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
+// - The Logtail configuration is planned out. For more information, see [Logtail configurations](https://help.aliyun.com/document_detail/29058.html).
 //
 // @param request - UpdateConfigRequest
 //
@@ -39655,23 +41468,23 @@ func (client *Client) UpdateConfig(project *string, configName *string, request 
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                    | Resource                                                                                                          |
 //
-// |:---|:---|
+// | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:UpdateConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
+// | `log:UpdateConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}` |
 //
 // @param request - UpdateConsumerGroupRequest
 //
@@ -39729,23 +41542,23 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                    | Resource                                                                                                          |
 //
-// |:---|:---|
+// | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 //
-// |`log:UpdateConsumerGroup`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}`|
+// | `log:UpdateConsumerGroup` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#logstoreName}/consumergroup/{#ConsumerGroup}` |
 //
 // @param request - UpdateConsumerGroupRequest
 //
@@ -39859,7 +41672,7 @@ func (client *Client) UpdateDashboard(project *string, dashboardName *string, re
 
 // Summary:
 //
-// Updates a data transformation job.
+// Updates the configuration of a specified data transformation task and restarts it.
 //
 // @param request - UpdateETLRequest
 //
@@ -39915,7 +41728,7 @@ func (client *Client) UpdateETLWithOptions(project *string, etlName *string, req
 
 // Summary:
 //
-// Updates a data transformation job.
+// Updates the configuration of a specified data transformation task and restarts it.
 //
 // @param request - UpdateETLRequest
 //
@@ -39934,7 +41747,7 @@ func (client *Client) UpdateETL(project *string, etlName *string, request *Updat
 
 // Summary:
 //
-// 更新ES导入任务
+// Updates an ES or OpenSearch ingestion task.
 //
 // @param request - UpdateElasticsearchIngestionRequest
 //
@@ -39994,7 +41807,7 @@ func (client *Client) UpdateElasticsearchIngestionWithOptions(project *string, e
 
 // Summary:
 //
-// 更新ES导入任务
+// Updates an ES or OpenSearch ingestion task.
 //
 // @param request - UpdateElasticsearchIngestionRequest
 //
@@ -40013,7 +41826,7 @@ func (client *Client) UpdateElasticsearchIngestion(project *string, elasticsearc
 
 // Summary:
 //
-// 更新GCP Cloud Storage文件导入任务
+// Updates a GCP Cloud Storage file ingestion task.
 //
 // @param request - UpdateGCSIngestionRequest
 //
@@ -40069,7 +41882,7 @@ func (client *Client) UpdateGCSIngestionWithOptions(project *string, gcsIngestio
 
 // Summary:
 //
-// 更新GCP Cloud Storage文件导入任务
+// Updates a GCP Cloud Storage file ingestion task.
 //
 // @param request - UpdateGCSIngestionRequest
 //
@@ -40162,15 +41975,31 @@ func (client *Client) UpdateIndex(project *string, logstore *string, request *Up
 
 // Summary:
 //
-// Updates the attributes of a Logstore.
+// Updates the properties of a Logstore.
 //
 // Description:
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// - Before you update a Logstore, call the GetLogStore operation to retrieve the configuration of the Logstore. Then, modify the configuration and pass it to the UpdateLogStore operation.
 //
-//   - You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+// - The Host in the request syntax consists of a project name and a Simple Log Service (SLS) endpoint. You must specify the project in the Host.
+//
+// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user to make API calls or perform routine O\\&M. The RAM user must be granted the required permissions to operate SLS resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Obtain the project name, the Logstore name, and the region where the project resides. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Authorization
+//
+// The following table describes the authorization required for this operation. To grant a RAM user or RAM role permission to call this operation, add the required action to the Action element of a RAM policy.
+//
+// | Action               | Resource description in an authorization policy                                    |
+//
+// | :------------------- | :--------------------------------------------------------------------------------- |
+//
+// | `log:UpdateLogStore` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - UpdateLogStoreRequest
 //
@@ -40266,15 +42095,31 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 
 // Summary:
 //
-// Updates the attributes of a Logstore.
+// Updates the properties of a Logstore.
 //
 // Description:
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// - Before you update a Logstore, call the GetLogStore operation to retrieve the configuration of the Logstore. Then, modify the configuration and pass it to the UpdateLogStore operation.
 //
-//   - You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+// - The Host in the request syntax consists of a project name and a Simple Log Service (SLS) endpoint. You must specify the project in the Host.
+//
+// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user to make API calls or perform routine O\\&M. The RAM user must be granted the required permissions to operate SLS resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Obtain the project name, the Logstore name, and the region where the project resides. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
+//
+// ### Authorization
+//
+// The following table describes the authorization required for this operation. To grant a RAM user or RAM role permission to call this operation, add the required action to the Action element of a RAM policy.
+//
+// | Action               | Resource description in an authorization policy                                    |
+//
+// | :------------------- | :--------------------------------------------------------------------------------- |
+//
+// | `log:UpdateLogStore` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
 //
 // @param request - UpdateLogStoreRequest
 //
@@ -40475,7 +42320,7 @@ func (client *Client) UpdateLogStoreMeteringMode(project *string, logstore *stri
 
 // Summary:
 //
-// Modifies the ingest processor that is associated with a Logstore.
+// Updates the ingest processor for a Logstore.
 //
 // @param request - UpdateLogStoreProcessorRequest
 //
@@ -40523,7 +42368,7 @@ func (client *Client) UpdateLogStoreProcessorWithOptions(project *string, logsto
 
 // Summary:
 //
-// Modifies the ingest processor that is associated with a Logstore.
+// Updates the ingest processor for a Logstore.
 //
 // @param request - UpdateLogStoreProcessorRequest
 //
@@ -40623,10 +42468,6 @@ func (client *Client) UpdateLogging(project *string, request *UpdateLoggingReque
 //
 // Updates a Logtail pipeline configuration.
 //
-// Description:
-//
-// The UK (London) region is supported. Supported regions are constantly updated.
-//
 // @param request - UpdateLogtailPipelineConfigRequest
 //
 // @param headers - map
@@ -40702,10 +42543,6 @@ func (client *Client) UpdateLogtailPipelineConfigWithOptions(project *string, co
 // Summary:
 //
 // Updates a Logtail pipeline configuration.
-//
-// Description:
-//
-// The UK (London) region is supported. Supported regions are constantly updated.
 //
 // @param request - UpdateLogtailPipelineConfigRequest
 //
@@ -40891,7 +42728,7 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 
 // Summary:
 //
-// 更新物化视图
+// Updates a materialized view.
 //
 // @param request - UpdateMaterializedViewRequest
 //
@@ -40951,7 +42788,7 @@ func (client *Client) UpdateMaterializedViewWithOptions(project *string, name *s
 
 // Summary:
 //
-// 更新物化视图
+// Updates a materialized view.
 //
 // @param request - UpdateMaterializedViewRequest
 //
@@ -40974,13 +42811,13 @@ func (client *Client) UpdateMaterializedView(project *string, name *string, requ
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param request - UpdateMaxComputeExportRequest
 //
@@ -41040,13 +42877,13 @@ func (client *Client) UpdateMaxComputeExportWithOptions(project *string, mcExpor
 //
 // Description:
 //
-//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
 // The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param request - UpdateMaxComputeExportRequest
 //
@@ -41065,25 +42902,25 @@ func (client *Client) UpdateMaxComputeExport(project *string, mcExportName *stri
 
 // Summary:
 //
-// Updates the settings of an existing Metricstore. Metricstores are used to store metric data.
+// Updates the configuration of an existing Metricstore. A Metricstore is used to store metrics.
 //
 // Description:
 //
-// Metricstores are used to store metric data. For more information, see [Metric data](https://help.aliyun.com/document_detail/174965.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html).
 //
-//   - You must specify an existing Metricstore.
+// - The Metricstore that you want to update must already exist.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify a project in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has full permissions for all API operations, which poses a security risk. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted only the permissions required to access Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - You must know the name and region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - You can create a maximum of 200 Logstores or Metricstores in a project.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metrics are deleted after their retention period expires.
 //
 // @param request - UpdateMetricStoreRequest
 //
@@ -41159,25 +42996,25 @@ func (client *Client) UpdateMetricStoreWithOptions(project *string, name *string
 
 // Summary:
 //
-// Updates the settings of an existing Metricstore. Metricstores are used to store metric data.
+// Updates the configuration of an existing Metricstore. A Metricstore is used to store metrics.
 //
 // Description:
 //
-// Metricstores are used to store metric data. For more information, see [Metric data](https://help.aliyun.com/document_detail/174965.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html).
 //
-//   - You must specify an existing Metricstore.
+// - The Metricstore that you want to update must already exist.
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify a project in the Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has full permissions for all API operations, which poses a security risk. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted only the permissions required to access Simple Log Service resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query metric data is obtained. The information includes the name of the project to which the metric data belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+// - You must know the name and region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-//   - You can create up to 200 Logstores or Metricstores in a project.
+// - You can create a maximum of 200 Logstores or Metricstores in a project.
 //
-//   - Metric data is automatically deleted when the retention period of the metric data ends.
+// - Metrics are deleted after their retention period expires.
 //
 // @param request - UpdateMetricStoreRequest
 //
@@ -41196,7 +43033,21 @@ func (client *Client) UpdateMetricStore(project *string, name *string, request *
 
 // Summary:
 //
-// Updates the billing mode of a Metricstore.
+// Updates the billing mode of a specified Metricstore.
+//
+// Description:
+//
+// A Metricstore supports two billing modes: [Pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [Pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
+//
+// - Specify an existing Metricstore.
+//
+// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
+//
+// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair that belongs to an Alibaba Cloud account has permissions for all API operations, which poses a high security threat. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted the required permissions to manage Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Obtain the name and region of the project. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
 //
@@ -41244,7 +43095,21 @@ func (client *Client) UpdateMetricStoreMeteringModeWithOptions(project *string, 
 
 // Summary:
 //
-// Updates the billing mode of a Metricstore.
+// Updates the billing mode of a specified Metricstore.
+//
+// Description:
+//
+// A Metricstore supports two billing modes: [Pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [Pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
+//
+// - Specify an existing Metricstore.
+//
+// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
+//
+// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// An AccessKey pair that belongs to an Alibaba Cloud account has permissions for all API operations, which poses a high security threat. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted the required permissions to manage Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//
+// - Obtain the name and region of the project. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
 //
@@ -41480,7 +43345,7 @@ func (client *Client) UpdateOSSHDFSExport(project *string, ossExportName *string
 
 // Summary:
 //
-// Updates an Object Storage Service (OSS) data import job.
+// Updates the specified OSS import task.
 //
 // @param request - UpdateOSSIngestionRequest
 //
@@ -41540,7 +43405,7 @@ func (client *Client) UpdateOSSIngestionWithOptions(project *string, ossIngestio
 
 // Summary:
 //
-// Updates an Object Storage Service (OSS) data import job.
+// Updates the specified OSS import task.
 //
 // @param request - UpdateOSSIngestionRequest
 //
@@ -41559,27 +43424,27 @@ func (client *Client) UpdateOSSIngestion(project *string, ossIngestionName *stri
 
 // Summary:
 //
-// Updates a project.
+// Updates project information.
 //
 // Description:
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host parameter consists of a project name and a Simple Log Service endpoint. You must specify a project in the Host parameter.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Make sure that you have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations, which poses a high security risk. For security, we recommend that you create and use a Resource Access Management (RAM) user to make API calls or perform routine O\\&M. The RAM user must have permissions to operate on Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
 //
-// ### Authentication resources
+// ### Authorization resources
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table describes the authorization information for this operation. Add this information to the Action element of a RAM policy statement to grant a RAM user or RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action              | Resource                                                  |
 //
-// |:---|:---|
+// | ------------------- | --------------------------------------------------------- |
 //
-// |`log:UpdateProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:UpdateProject` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - UpdateProjectRequest
 //
@@ -41631,27 +43496,27 @@ func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateP
 
 // Summary:
 //
-// Updates a project.
+// Updates project information.
 //
 // Description:
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - The Host parameter consists of a project name and a Simple Log Service endpoint. You must specify a project in the Host parameter.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - Make sure that you have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations, which poses a high security risk. For security, we recommend that you create and use a Resource Access Management (RAM) user to make API calls or perform routine O\\&M. The RAM user must have permissions to operate on Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
 //
-// ### Authentication resources
+// ### Authorization resources
 //
-// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+// The following table describes the authorization information for this operation. Add this information to the Action element of a RAM policy statement to grant a RAM user or RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action              | Resource                                                  |
 //
-// |:---|:---|
+// | ------------------- | --------------------------------------------------------- |
 //
-// |`log:UpdateProject`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
+// | `log:UpdateProject` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
 //
 // @param request - UpdateProjectRequest
 //
@@ -41676,25 +43541,25 @@ func (client *Client) UpdateProject(project *string, request *UpdateProjectReque
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                 |
 //
-// |:---|:---|
+// | :---------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:UpdateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:UpdateSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @param request - UpdateSavedSearchRequest
 //
@@ -41764,25 +43629,25 @@ func (client *Client) UpdateSavedSearchWithOptions(project *string, savedsearchN
 //
 // ### Usage notes
 //
-//   - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
 //
-//   - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
 //
-//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-//   - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+// - Limits are imposed when you use Simple Log Service to query logs. We recommend that you specify query statements and query time ranges based on the limits. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
 //
 // ### Authentication resources
 //
 // The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
 //
-// |Action|Resource|
+// | Action                  | Resource                                                                                 |
 //
-// |:---|:---|
+// | :---------------------- | :--------------------------------------------------------------------------------------- |
 //
-// |`log:UpdateSavedSearch`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}`|
+// | `log:UpdateSavedSearch` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/savedsearch/{#SavedSearchName}` |
 //
 // @param request - UpdateSavedSearchRequest
 //
@@ -41801,7 +43666,7 @@ func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string
 
 // Summary:
 //
-// Updates a Scheduled SQL job.
+// Updates the specified scheduled SQL task.
 //
 // @param request - UpdateScheduledSQLRequest
 //
@@ -41861,7 +43726,7 @@ func (client *Client) UpdateScheduledSQLWithOptions(project *string, scheduledSQ
 
 // Summary:
 //
-// Updates a Scheduled SQL job.
+// Updates the specified scheduled SQL task.
 //
 // @param request - UpdateScheduledSQLRequest
 //
@@ -41880,7 +43745,11 @@ func (client *Client) UpdateScheduledSQL(project *string, scheduledSQLName *stri
 
 // Summary:
 //
-// Updates the configurations of the Dedicated SQL feature.
+// When you use Standard SQL to analyze large amounts of data, a single query may not scan all logs within a specific time range, which can result in incomplete data. Although adding shards improves read and write performance, this improvement applies only to new data. To analyze more data in a single query, enable Dedicated SQL and add more compute resources.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/223777.html) for Dedicated SQL.**
 //
 // @param request - UpdateSqlInstanceRequest
 //
@@ -41932,7 +43801,11 @@ func (client *Client) UpdateSqlInstanceWithOptions(project *string, request *Upd
 
 // Summary:
 //
-// Updates the configurations of the Dedicated SQL feature.
+// When you use Standard SQL to analyze large amounts of data, a single query may not scan all logs within a specific time range, which can result in incomplete data. Although adding shards improves read and write performance, this improvement applies only to new data. To analyze more data in a single query, enable Dedicated SQL and add more compute resources.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/223777.html) for Dedicated SQL.**
 //
 // @param request - UpdateSqlInstanceRequest
 //
