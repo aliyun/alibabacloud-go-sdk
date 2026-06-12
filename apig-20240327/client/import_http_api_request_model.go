@@ -35,6 +35,8 @@ type iImportHttpApiRequest interface {
 	GetTargetHttpApiId() *string
 	SetVersionConfig(v *HttpApiVersionConfig) *ImportHttpApiRequest
 	GetVersionConfig() *HttpApiVersionConfig
+	SetWithGatewayExtension(v bool) *ImportHttpApiRequest
+	GetWithGatewayExtension() *bool
 }
 
 type ImportHttpApiRequest struct {
@@ -105,7 +107,8 @@ type ImportHttpApiRequest struct {
 	// api-xxxx
 	TargetHttpApiId *string `json:"targetHttpApiId,omitempty" xml:"targetHttpApiId,omitempty"`
 	// The versioning configuration for the API. If an existing API matches the specified name (and version, if enabled), this import updates that API.
-	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
+	VersionConfig        *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
+	WithGatewayExtension *bool                 `json:"withGatewayExtension,omitempty" xml:"withGatewayExtension,omitempty"`
 }
 
 func (s ImportHttpApiRequest) String() string {
@@ -166,6 +169,10 @@ func (s *ImportHttpApiRequest) GetTargetHttpApiId() *string {
 
 func (s *ImportHttpApiRequest) GetVersionConfig() *HttpApiVersionConfig {
 	return s.VersionConfig
+}
+
+func (s *ImportHttpApiRequest) GetWithGatewayExtension() *bool {
+	return s.WithGatewayExtension
 }
 
 func (s *ImportHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *ImportHttpApiRequest {
@@ -230,6 +237,11 @@ func (s *ImportHttpApiRequest) SetTargetHttpApiId(v string) *ImportHttpApiReques
 
 func (s *ImportHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *ImportHttpApiRequest {
 	s.VersionConfig = v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetWithGatewayExtension(v bool) *ImportHttpApiRequest {
+	s.WithGatewayExtension = &v
 	return s
 }
 

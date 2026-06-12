@@ -165,11 +165,13 @@ type ImportHttpApiResponseBodyDataDryRunInfo struct {
 	FailureComponents []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
 	// Operations that failed the dry run.
 	FailureOperations  []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
+	FailureRoutes      []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes     `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
 	McpToolsDefinition *string                                                     `json:"mcpToolsDefinition,omitempty" xml:"mcpToolsDefinition,omitempty"`
 	// Data structures that passed the dry run.
 	SuccessComponents []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
 	// Operations that passed the dry run.
 	SuccessOperations []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
+	SuccessRoutes     []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes     `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
 	// Global warning messages. If this list is not empty, some operations or data structures might not be imported.
 	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
 }
@@ -198,6 +200,10 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetFailureOperations() []*Impo
 	return s.FailureOperations
 }
 
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetFailureRoutes() []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes {
+	return s.FailureRoutes
+}
+
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetMcpToolsDefinition() *string {
 	return s.McpToolsDefinition
 }
@@ -208,6 +214,10 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetSuccessComponents() []*Impo
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetSuccessOperations() []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations {
 	return s.SuccessOperations
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetSuccessRoutes() []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes {
+	return s.SuccessRoutes
 }
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetWarningMessages() []*string {
@@ -234,6 +244,11 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetFailureOperations(v []*Impo
 	return s
 }
 
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetFailureRoutes(v []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.FailureRoutes = v
+	return s
+}
+
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetMcpToolsDefinition(v string) *ImportHttpApiResponseBodyDataDryRunInfo {
 	s.McpToolsDefinition = &v
 	return s
@@ -246,6 +261,11 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetSuccessComponents(v []*Impo
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetSuccessOperations(v []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) *ImportHttpApiResponseBodyDataDryRunInfo {
 	s.SuccessOperations = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetSuccessRoutes(v []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.SuccessRoutes = v
 	return s
 }
 
@@ -278,6 +298,15 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) Validate() error {
 			}
 		}
 	}
+	if s.FailureRoutes != nil {
+		for _, item := range s.FailureRoutes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.SuccessComponents != nil {
 		for _, item := range s.SuccessComponents {
 			if item != nil {
@@ -289,6 +318,15 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) Validate() error {
 	}
 	if s.SuccessOperations != nil {
 		for _, item := range s.SuccessOperations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessRoutes != nil {
+		for _, item := range s.SuccessRoutes {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -401,6 +439,41 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) SetPath(v str
 }
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) Validate() error {
+	return dara.Validate(s)
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes struct {
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) GetName() *string {
+	return s.Name
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) SetErrorMessage(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) SetName(v string) *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -529,5 +602,40 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) SetPath(v str
 }
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) Validate() error {
+	return dara.Validate(s)
+}
+
+type ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes struct {
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) GetAction() *string {
+	return s.Action
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) GetName() *string {
+	return s.Name
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) SetAction(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes {
+	s.Action = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) SetName(v string) *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) Validate() error {
 	return dara.Validate(s)
 }

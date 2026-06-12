@@ -20,15 +20,15 @@ type iCreateConsumerAuthorizationRulesResponseBody interface {
 }
 
 type CreateConsumerAuthorizationRulesResponseBody struct {
-	// The status code.
+	// Response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response parameters.
+	// Response data.
 	Data *CreateConsumerAuthorizationRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type CreateConsumerAuthorizationRulesResponseBodyData struct {
-	// The authentication rule IDs.
+	// List of consumer authorization rule IDs.
 	ConsumerAuthorizationRuleIds []*string `json:"consumerAuthorizationRuleIds,omitempty" xml:"consumerAuthorizationRuleIds,omitempty" type:"Repeated"`
 }
 
