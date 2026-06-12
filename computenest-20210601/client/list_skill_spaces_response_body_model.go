@@ -22,21 +22,28 @@ type iListSkillSpacesResponseBody interface {
 }
 
 type ListSkillSpacesResponseBody struct {
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. If this parameter is not returned, no more results are available.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of SkillSpaces.
 	SkillSpaces []*ListSkillSpacesResponseBodySkillSpaces `json:"SkillSpaces,omitempty" xml:"SkillSpaces,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -110,24 +117,32 @@ func (s *ListSkillSpacesResponseBody) Validate() error {
 }
 
 type ListSkillSpacesResponseBodySkillSpaces struct {
+	// The time when the SkillSpace was created. The time is in UTC.
+	//
 	// example:
 	//
 	// 2025-11-03T22:58:52Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SkillSpace description.
+	//
 	// example:
 	//
 	// 1111
 	SkillSpaceDescription *string `json:"SkillSpaceDescription,omitempty" xml:"SkillSpaceDescription,omitempty"`
-	// SkillSpace ID
+	// The SkillSpace ID.
 	//
 	// example:
 	//
 	// ss-111111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
+	// The SkillSpace name.
+	//
 	// example:
 	//
 	// 1111
 	SkillSpaceName *string `json:"SkillSpaceName,omitempty" xml:"SkillSpaceName,omitempty"`
+	// The time when the SkillSpace was last updated. The time is in UTC.
+	//
 	// example:
 	//
 	// 2025-11-03T22:57:29Z

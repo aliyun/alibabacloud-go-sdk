@@ -20,15 +20,22 @@ type iListPublicSkillsRequest interface {
 }
 
 type ListPublicSkillsRequest struct {
+	// A list of filters.
 	Filter []*ListPublicSkillsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Specifies whether to return the download link for the skill package.
+	//
 	// example:
 	//
 	// false
 	NeedDownloadUrl *bool `json:"NeedDownloadUrl,omitempty" xml:"NeedDownloadUrl,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
@@ -93,10 +100,23 @@ func (s *ListPublicSkillsRequest) Validate() error {
 }
 
 type ListPublicSkillsRequestFilter struct {
+	// The filter criterion. Valid values:
+	//
+	// - `SkillId`: The ID of the skill. An exact match is performed.
+	//
+	// - `SkillName`: The name of the skill.
+	//
+	// - `MatchType`: The match type for the `SkillName` filter. Valid values: `exact` (exact match), `prefix` (prefix match), and `fuzzy` (fuzzy match).
+	//
+	// - `Keyword`: The keyword used for a fuzzy match on the skill name or skill description.
+	//
+	// - `SkillLabels`: The skill labels. A fuzzy match is performed.
+	//
 	// example:
 	//
 	// SkillId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter values. You can specify 1 to 10 values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

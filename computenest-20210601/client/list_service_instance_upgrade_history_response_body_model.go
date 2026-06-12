@@ -22,13 +22,13 @@ type iListServiceInstanceUpgradeHistoryResponseBody interface {
 }
 
 type ListServiceInstanceUpgradeHistoryResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListServiceInstanceUpgradeHistoryResponseBody struct {
 	//
 	// EE3EDF4E-B3B1-19B6-BD01-30D4D00F6E5D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The upgrade history.
+	// The upgrade history records.
 	UpgradeHistory []*ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory `json:"UpgradeHistory,omitempty" xml:"UpgradeHistory,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListServiceInstanceUpgradeHistoryResponseBody) Validate() error {
 }
 
 type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {
-	// The time when the update ended.
+	// The time when the upgrade ended.
 	//
 	// example:
 	//
@@ -129,25 +129,25 @@ type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {
 	//
 	// 1
 	FromVersion *string `json:"FromVersion,omitempty" xml:"FromVersion,omitempty"`
-	// The upgrade result.
+	// The upgrade results.
 	//
 	// example:
 	//
 	// {\\"PreUpgradeExecutionId\\":\\"exec-123\\"}
 	Results *string `json:"Results,omitempty" xml:"Results,omitempty"`
-	// The time when the update started.
+	// The time when the upgrade started.
 	//
 	// example:
 	//
 	// 2022-04-26T08:09:51Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the update. Valid values:
+	// The status of the upgrade. Valid values:
 	//
-	// 	- upgrading: The service instance is being upgraded.
+	// - upgrading
 	//
-	// 	- UpgradeSuccessful: The service instance is upgraded.
+	// - UpgradeSuccessful
 	//
-	// 	- UpgradeFailed: The service instance failed to be upgraded.
+	// - UpgradeFailed
 	//
 	// example:
 	//
@@ -159,13 +159,17 @@ type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {
 	//
 	// 3
 	ToVersion *string `json:"ToVersion,omitempty" xml:"ToVersion,omitempty"`
-	// The update type.
+	// The type of upgrade. Valid values:
+	//
+	// - Upgrade
+	//
+	// - Rollback
 	//
 	// example:
 	//
 	// Upgrade
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the upgrade record.
+	// The ID of the upgrade history.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type GetServiceProvisionsResponseBody struct {
 	//
 	// 8C27145F-C9F4-545D-A355-DCDDAD63D548
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the cloud services.
+	// The service details.
 	ServiceProvisions []*GetServiceProvisionsResponseBodyServiceProvisions `json:"ServiceProvisions,omitempty" xml:"ServiceProvisions,omitempty" type:"Repeated"`
 }
 
@@ -66,27 +66,27 @@ func (s *GetServiceProvisionsResponseBody) Validate() error {
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisions struct {
-	// Indicates whether automatic activation for the service is defined in the template. Valid values:
+	// Indicates whether the service is automatically activated as defined in the template. Valid values:
 	//
-	// 	- true: Automatic activation for the service is defined in the template.
+	// - true: The service is automatically activated.
 	//
-	// 	- false: Manual activation for the service is defined in the template.
+	// - false: The service is manually activated.
 	//
 	// example:
 	//
 	// true
 	AutoEnableService *bool `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
-	// Product details. Some services (such as ACS) involve the activation of multiple products
+	// The commodity details. Some services, such as ACS, require the activation of multiple commodities.
 	CommodityProvisions []*GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions `json:"CommodityProvisions,omitempty" xml:"CommodityProvisions,omitempty" type:"Repeated"`
-	// The URL that points to the activation page of the service.
+	// The URL for activating the Alibaba Cloud service.
 	//
-	// > This parameter is returned if Status is set to Disabled.
+	// > This parameter is returned when Status is set to Disabled.
 	//
 	// example:
 	//
 	// https://common-buy.aliyun.com/?commodityCode=sls
 	EnableURL *string `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
-	// The information about the RAM roles of the service. If this parameter is empty, no RAM role is associated with the service.
+	// The information about the service role. If this parameter is empty, no service role is associated with the service.
 	RoleProvision *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision `json:"RoleProvision,omitempty" xml:"RoleProvision,omitempty" type:"Struct"`
 	// The service name.
 	//
@@ -96,19 +96,21 @@ type GetServiceProvisionsResponseBodyServiceProvisions struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The activation status of the service. Valid values:
 	//
-	// 	- Enabled: The service is activated.
+	// - Enabled: The service is activated.
 	//
-	// 	- Disabled: The service is not activated.
+	// - EnabledByDefault: The service is activated by default.
 	//
-	// 	- Unknown: The activation status of the service is unknown.
+	// - Disabled: The service is not activated.
+	//
+	// - Unknown: The activation status is unknown.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reason why the service is in the Disabled or Unknown state.
+	// The reason why the Alibaba Cloud service is not activated or the activation status is unknown.
 	//
-	// > This parameter is returned if Status is set to Disabled or Unknown.
+	// > This parameter is returned when Status is set to Disabled or Unknown.
 	//
 	// example:
 	//
@@ -206,19 +208,23 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) Validate() error {
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions struct {
-	// Commodity Code
+	// The commodity code.
 	//
 	// example:
 	//
 	// acs_postpaid_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Product activation link.
+	// The URL for activating the commodity.
 	//
 	// example:
 	//
 	// https://common-buy.aliyun.com/?commodityCode=acs_postpaid_public_cn
 	EnableURL *string `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
-	// Cloud service activation status.
+	// The activation status of the Alibaba Cloud service. Valid values:
+	//
+	// - Enabled: The service is activated.
+	//
+	// - Disabled: The service is not activated.
 	//
 	// example:
 	//
@@ -266,15 +272,15 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) V
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision struct {
-	// The authorization URL of the RAM role.
+	// The authorization URL for accessing the cloud resources of the service.
 	//
-	// > This parameter is returned if Created is set to false.
+	// This URL is returned if the role is not created.
 	//
 	// example:
 	//
 	// https://ram.console.aliyun.com/role/authorization?request={"Services":[{"Service":"CS","Roles":[{"RoleName":"AliyunCSManagedVKRole","TemplateId":"AliyunCSManagedVKRole"},{"RoleName":"AliyunCSDefaultRole","TemplateId":"Default"}]}],"ReturnUrl":"https://cs.console.aliyun.com/"}
 	AuthorizationURL *string `json:"AuthorizationURL,omitempty" xml:"AuthorizationURL,omitempty"`
-	// The RAM roles of the service.
+	// The list of service roles.
 	Roles []*GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 }
 
@@ -318,25 +324,27 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) Validat
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles struct {
-	// The information about the API operation that is used to create the RAM role.
+	// The information about the API operation used to create the role.
 	ApiForCreation *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation `json:"ApiForCreation,omitempty" xml:"ApiForCreation,omitempty" type:"Struct"`
-	// Indicates whether the RAM role is created. Valid values:
+	// Indicates whether the role is created. Valid values:
 	//
-	// 	- true
+	// - true: The role is created.
 	//
-	// 	- false
+	// - false: The role is not created.
 	//
 	// example:
 	//
 	// true
 	Created *bool `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The purpose for which the RAM role is used. Default value: Default. A value of Default indicates that the RAM role is the default role of the service.
+	// The purpose of the role.
+	//
+	// Default value: Default. This value indicates that the role is the default role for the service.
 	//
 	// example:
 	//
 	// Default
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The name of the role.
+	// The role name.
 	//
 	// example:
 	//
@@ -398,29 +406,31 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) Va
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation struct {
-	// The name of the API operation.
+	// The API operation name.
 	//
 	// example:
 	//
 	// CreateServiceLinkedRole
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the Alibaba Cloud service to which the API operation belongs.
+	// The ID of the product to which the API operation belongs.
 	//
 	// example:
 	//
 	// rds
 	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
-	// The type of the API operation. Valid values:
+	// The API type.
 	//
-	// 	- Open: public
+	// Valid values:
 	//
-	// 	- Inner: private
+	// - Open: public API.
+	//
+	// - Inner: internal API.
 	//
 	// example:
 	//
 	// Open
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	// The ROS parameters of the cluster.
+	// The API parameters. ${variable} indicates a dynamic parameter.
 	//
 	// example:
 	//

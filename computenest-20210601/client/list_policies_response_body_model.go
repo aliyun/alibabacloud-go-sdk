@@ -20,21 +20,21 @@ type iListPoliciesResponseBody interface {
 }
 
 type ListPoliciesResponseBody struct {
-	// 分页大小。
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Next Token
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// AAAAAZ9FmxgN6wKfeK/GOKRnnjU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Permission policy list
+	// The list of access policies.
 	Policies []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,29 +100,29 @@ func (s *ListPoliciesResponseBody) Validate() error {
 }
 
 type ListPoliciesResponseBodyPolicies struct {
-	// Permission policy description.
+	// The description of the access policy.
 	//
 	// example:
 	//
-	// Only read permission policy
+	// Read-only permission
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Policy content.
+	// The content of the policy.
 	//
 	// example:
 	//
 	// {"Action":["*:Describe*","*:List*","*:Get*","*:BatchGet*","*:Query*","*:BatchQuery*","actiontrail:LookupEvents"],"Resource":["*"],"Effect":"Allow"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// Permission policy name.
+	// The name of the access policy.
 	//
 	// example:
 	//
 	// AliyunComputeNestPolicyForReadOnly
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// Permission policy type.
+	// The type of the access policy.
 	//
-	// - Custom: Custom policy.
+	// - Custom: A custom policy.
 	//
-	// - System: System policy.
+	// - System: A system policy.
 	//
 	// example:
 	//

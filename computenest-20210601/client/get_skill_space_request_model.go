@@ -14,7 +14,13 @@ type iGetSkillSpaceRequest interface {
 }
 
 type GetSkillSpaceRequest struct {
+	// The ID of the SkillSpace.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ss-11111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
 }
 

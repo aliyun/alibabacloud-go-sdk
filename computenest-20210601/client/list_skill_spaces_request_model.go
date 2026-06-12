@@ -18,11 +18,16 @@ type iListSkillSpacesRequest interface {
 }
 
 type ListSkillSpacesRequest struct {
+	// The query filters.
 	Filter []*ListSkillSpacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries to return per page. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. To retrieve the next page, set this parameter to the `NextToken` value from the previous response.
+	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
@@ -78,10 +83,19 @@ func (s *ListSkillSpacesRequest) Validate() error {
 }
 
 type ListSkillSpacesRequestFilter struct {
+	// The filter name. You can specify one or more filter names. Valid values:
+	//
+	// - `SkillSpaceId`: The SkillSpace ID. This filter performs an exact match.
+	//
+	// - `SkillSpaceName`: The SkillSpace name.
+	//
+	// - `MatchType`: The match type for the `SkillSpaceName` filter. Valid values: `exact`, `prefix`, and `fuzzy`.
+	//
 	// example:
 	//
 	// SkillSpaceId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter values. You can specify 1 to 10 values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

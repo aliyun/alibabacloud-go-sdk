@@ -28,36 +28,52 @@ type iCreateSkillRequest interface {
 }
 
 type CreateSkillRequest struct {
+	// A client-generated token that ensures request idempotence. It must be unique for each request. The **ClientToken*	- can contain only ASCII characters and must be no more than 64 characters long.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Required when SourceType is set to UPLOAD. The OSS URL of the Skill package to upload.
+	//
 	// example:
 	//
 	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/30516570
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// The description of the Skill.
+	//
 	// example:
 	//
 	// 11111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	// The Skill labels.
+	//
 	// example:
 	//
 	// ["category:frontend-development"]
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
+	// The name of the Skill.
+	//
 	// example:
 	//
 	// 11111
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The ID of the SkillSpace containing the Skill.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ss-111111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
+	// Required when SourceType is set to COPY. The ID of the public Skill.
+	//
 	// example:
 	//
 	// s-11111
 	SourceSkillId *string `json:"SourceSkillId,omitempty" xml:"SourceSkillId,omitempty"`
+	// The creation method for the Skill.
+	//
 	// This parameter is required.
 	//
 	// example:

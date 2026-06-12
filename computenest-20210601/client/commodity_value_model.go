@@ -14,7 +14,7 @@ type iCommodityValue interface {
 }
 
 type CommodityValue struct {
-	// The result model.
+	// The Result model.
 	Result *CommodityValueResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -45,19 +45,19 @@ func (s *CommodityValue) Validate() error {
 }
 
 type CommodityValueResult struct {
-	// The information about the order.
+	// The order information.
 	Order *CommodityValueResultOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The RFQ type. Valid values:
+	// The inquiry type. Valid values:
 	//
-	// 1.  Buy: price inquiry for new resources.
+	// 1. Buy: an inquiry for a new purchase.
 	//
-	// 2.  ModificationBuy: price inquiry for resource configuration changes.
+	// 2. ModificationBuy: an inquiry for an upgrade or downgrade.
 	//
 	// example:
 	//
 	// Buy
 	InquiryType *string `json:"InquiryType,omitempty" xml:"InquiryType,omitempty"`
-	// The order sub-items.
+	// The sub-orders.
 	SubOrders *CommodityValueResultSubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
 	// The coupons.
 	Coupons []*CommodityValueResultCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Repeated"`
@@ -131,13 +131,13 @@ func (s *CommodityValueResult) Validate() error {
 }
 
 type CommodityValueResultOrder struct {
-	// The code of the native currency.
+	// The currency code.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// Amount after the discount.
+	// The amount after the discount is applied.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type CommodityValueResultOrder struct {
 	//
 	// 1.99
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Amount before the discount.
+	// The original amount.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ func (s *CommodityValueResultOrder) Validate() error {
 }
 
 type CommodityValueResultSubOrders struct {
-	// The order sub-item.
+	// The sub-orders.
 	SubOrder []*CommodityValueResultSubOrdersSubOrder `json:"SubOrder,omitempty" xml:"SubOrder,omitempty" type:"Repeated"`
 }
 
@@ -241,7 +241,7 @@ func (s *CommodityValueResultSubOrders) Validate() error {
 }
 
 type CommodityValueResultSubOrdersSubOrder struct {
-	// The information about the module (instance).
+	// The module or instance information.
 	ModuleInstance []*CommodityValueResultSubOrdersSubOrderModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
 }
 
@@ -286,7 +286,7 @@ type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
 	//
 	// example:
 	//
-	// Rds
+	// 数据库类型
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The module code.
 	//
@@ -294,19 +294,19 @@ type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
 	//
 	// rds_dbtype
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The original price (RMB).
+	// The original price of the product, in CNY.
 	//
 	// example:
 	//
 	// 10.00
 	TotalProductFee *float64 `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
-	// The discount amount (RMB).
+	// The discount, in CNY.
 	//
 	// example:
 	//
 	// 1.99
 	DiscountFee *float64 `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
-	// The amount actually paid (RMB).
+	// The amount payable, in CNY.
 	//
 	// example:
 	//
@@ -316,15 +316,15 @@ type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
 	//
 	// example:
 	//
-	// Yuan/GB/hour
+	// 元/GB/小时
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
-	// Indicates whether the item is billed.
+	// Indicates whether the module is a billing item.
 	//
 	// example:
 	//
 	// true
 	IsPricingModule *bool `json:"IsPricingModule,omitempty" xml:"IsPricingModule,omitempty"`
-	// Indicates whether the order is paid.
+	// Indicates whether payment is required for the module in the order.
 	//
 	// example:
 	//
@@ -338,17 +338,17 @@ type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 	// The module attributes.
 	ModuleAttrs []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
-	// Module English name.
+	// The English name of the module.
 	//
 	// example:
 	//
-	// data unit
+	// 数据单元
 	ModuleNameEn *string `json:"ModuleNameEn,omitempty" xml:"ModuleNameEn,omitempty"`
-	// Price Unit English Name
+	// The English name of the price unit.
 	//
 	// example:
 	//
-	// Yuan/Month
+	// 元/月
 	PriceUnitEn *string `json:"PriceUnitEn,omitempty" xml:"PriceUnitEn,omitempty"`
 }
 
@@ -491,15 +491,15 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) Validate() error {
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs struct {
-	// The type of the attribute. Valid values:
+	// The attribute type. Valid values:
 	//
-	// 1.  1: product
+	// 1. 1: product attribute
 	//
-	// 2.  2\\. specifications
+	// 2. 2: specification attribute
 	//
-	// 3.  3: module
+	// 3. 3: module attribute
 	//
-	// 4.  4: external parameters (backup)
+	// 4. 4: external parameter (reserved)
 	//
 	// example:
 	//
@@ -599,15 +599,15 @@ type CommodityValueResultCoupons struct {
 	//
 	// example:
 	//
-	// CNY 10 coupon (valid until September 8, 2024)
+	// 10元优惠券（有效期至2024年9月8日）
 	CouponDesc *string `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
 	// The name of the coupon.
 	//
 	// example:
 	//
-	// CNY 10 coupon
+	// 10元优惠券
 	CouponName *string `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
-	// The coupon ID.
+	// The coupon number.
 	//
 	// example:
 	//

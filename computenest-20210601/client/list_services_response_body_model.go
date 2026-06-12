@@ -22,13 +22,13 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServicesResponseBody struct {
 	//
 	// 3F976EF8-C10A-57DC-917C-BB7BEB508FFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The services.
+	// The list of services.
 	Services []*ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -117,13 +117,21 @@ func (s *ListServicesResponseBody) Validate() error {
 }
 
 type ListServicesResponseBodyServices struct {
-	// The category of the service.
+	// The category of the data disk. Valid values:
+	//
+	// - cloud_efficiency: ultra disk.
+	//
+	// - cloud_ssd: standard SSD.
+	//
+	// - cloud_essd: ESSD.
+	//
+	// - cloud: basic disk.
 	//
 	// example:
 	//
 	// cloud_ssd
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
-	// The commodity details.
+	// The commodity specifications.
 	Commodity *ListServicesResponseBodyServicesCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
 	// The commodity code of the service in Alibaba Cloud Marketplace.
 	//
@@ -131,23 +139,25 @@ type ListServicesResponseBodyServices struct {
 	//
 	// cmjj00xxxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Service deployment approach. Valid values:
+	// The deployment source of the service. Valid values:
 	//
-	// - NoWhere
+	// - NoWhere: The service has no deployment source.
 	//
-	// - Marketplace
+	// - Marketplace: The service is deployed from Alibaba Cloud Marketplace.
 	//
-	// - ComputeNest
+	// - ComputeNest: The service is deployed from Compute Nest.
 	//
 	// example:
 	//
 	// ComputeNest
 	DeployFrom *string `json:"DeployFrom,omitempty" xml:"DeployFrom,omitempty"`
-	// The deployment type of the service. Valid values:
+	// The deployment type. Valid values:
 	//
-	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	// - ros: The service is deployed using ROS.
 	//
-	// 	- terraform: The service is deployed by using Terraform.
+	// - terraform: The service is deployed using Terraform.
+	//
+	// - spi: The service is deployed by calling SPI.
 	//
 	// example:
 	//
@@ -159,7 +169,7 @@ type ListServicesResponseBodyServices struct {
 	//
 	// 2022-01-21T10:35:44Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// Service recommendation score.
+	// The service score.
 	//
 	// example:
 	//
@@ -172,51 +182,52 @@ type ListServicesResponseBodyServices struct {
 	// service-6b5d632edd394dxxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service information.
-	ServiceInfos         []*ListServicesResponseBodyServicesServiceInfos         `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceInfos []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The multi-language configurations of the service.
 	ServiceLocaleConfigs []*ListServicesResponseBodyServicesServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
-	// The URL of the service page.
+	// The URL of the product page.
 	//
 	// example:
 	//
 	// http://example1.com
 	ServiceProductUrl *string `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
-	// - private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service is deployed in the user\\"s account.
 	//
-	// - managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service is hosted in the service provider\\"s account.
 	//
-	// - operation: The service is a hosted O&M service.
+	// - operation: The service is an Alibaba Cloud Managed Service.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The state of the service. Valid values:
+	// The service status. Valid values:
 	//
-	// 	- Draft: The service is a draft.
+	// - Draft: The service is in the draft state.
 	//
-	// 	- Submitted: The service is submitted for review. You cannot modify services in this state.
+	// - Submitted: The service is submitted for review. You cannot modify the service.
 	//
-	// 	- Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+	// - Approved: The service is approved. You cannot modify the service, but you can publish it.
 	//
-	// 	- Launching: The service is being published.
+	// - Launching: The service is being published.
 	//
-	// 	- Online: The service is published.
+	// - Online: The service is published.
 	//
-	// 	- Offline: The service is unpublished.
+	// - Offline: The service is unpublished.
 	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the service provider.
+	// The service provider name.
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A Ltd.
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The name of service provider.
+	// The English name of the service provider.
 	//
 	// example:
 	//
@@ -228,41 +239,41 @@ type ListServicesResponseBodyServices struct {
 	//
 	// 1436322xxxxx
 	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
-	// The URL of the service provider.
+	// The service provider\\"s URL.
 	//
 	// example:
 	//
 	// http://example.com
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	// The tags.
+	// The service tags.
 	Tags []*ListServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The tenant type of the managed service. Valid values:
+	// The tenant type. Valid values:
 	//
-	// 	- SingleTenant
+	// - SingleTenant: single-tenant.
 	//
-	// 	- MultiTenant
+	// - MultiTenant: multi-tenant.
 	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
-	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	// The trial duration. Unit: days. The maximum trial duration is 30 days.
 	//
 	// example:
 	//
 	// 7
 	TrialDuration *string `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
-	// The trial policy. Valid values:
+	// The trial type. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports trial.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support trial.
 	//
 	// example:
 	//
 	// Trial
 	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
-	// The version of the service.
+	// The service version.
 	//
 	// example:
 	//
@@ -276,9 +287,9 @@ type ListServicesResponseBodyServices struct {
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 	// Indicates whether the service is a virtual Internet service. Valid values:
 	//
-	// 	- false
+	// - false: No.
 	//
-	// 	- true
+	// - true: Yes.
 	//
 	// example:
 	//
@@ -547,19 +558,19 @@ func (s *ListServicesResponseBodyServices) Validate() error {
 }
 
 type ListServicesResponseBodyServicesCommodity struct {
-	// The commodity code.
+	// The commodity specification code.
 	//
 	// example:
 	//
 	// cmjj00****
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Deploy Page.
+	// The deployment page.
 	//
 	// example:
 	//
-	// Order： Order Page
+	// Order: Order page
 	//
-	// Detail： Detail Page
+	// Detail: Details page
 	DeployPage *string `json:"DeployPage,omitempty" xml:"DeployPage,omitempty"`
 }
 
@@ -600,29 +611,29 @@ type ListServicesResponseBodyServicesServiceInfos struct {
 	//
 	// http://img.tidb.oss.url
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The language of the service. Valid values:
+	// The language of the service configuration. Valid values:
 	//
-	// 	- zh-CN: Chinese.
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US: English.
+	// - en-US: English.
 	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
-	// Docker Community Edition
+	// Database B
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the service.
+	// The service overview.
 	//
 	// example:
 	//
-	// Docker Community Edition (CE) is a free version of the Docker project, aimed at developers, enthusiasts, and individuals and organizations who want to use container technology.
+	// B is an open-source distributed relational database independently designed and developed by Company A.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
-	// Service software information.
+	// The software information of the service.
 	Softwares []*ListServicesResponseBodyServicesServiceInfosSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
@@ -693,13 +704,13 @@ func (s *ListServicesResponseBodyServicesServiceInfos) Validate() error {
 }
 
 type ListServicesResponseBodyServicesServiceInfosSoftwares struct {
-	// The name of the software.
+	// The software name.
 	//
 	// example:
 	//
 	// wordpress
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version of the software.
+	// The software version.
 	//
 	// example:
 	//
@@ -738,9 +749,24 @@ func (s *ListServicesResponseBodyServicesServiceInfosSoftwares) Validate() error
 }
 
 type ListServicesResponseBodyServicesServiceLocaleConfigs struct {
-	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// The English value of the business information.
+	//
+	// example:
+	//
+	// Service Name
+	EnValue *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// The raw data value of the business information.
+	//
+	// example:
+	//
+	// Service Name
 	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
-	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+	// The Chinese value of the business information.
+	//
+	// example:
+	//
+	// 服务名称
+	ZhValue *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
 }
 
 func (s ListServicesResponseBodyServicesServiceLocaleConfigs) String() string {
@@ -784,8 +810,6 @@ func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) Validate() error 
 
 type ListServicesResponseBodyServicesTags struct {
 	// The tag key.
-	//
-	// >  This parameter is required.
 	//
 	// example:
 	//

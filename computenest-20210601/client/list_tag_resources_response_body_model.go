@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The collection of details about resources and tags, such as resource IDs, resource types, and tag key-value pairs.
+	// A collection of resources and their tags. This collection includes information such as resource IDs, resource types, and tag key-value pairs.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -91,13 +91,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- service: service
+	// - service: a service.
 	//
-	// 	- serviceinstance: service instance
+	// - serviceinstance: a service instance.
 	//
-	// 	- artifact: deployment package
+	// - artifact: an artifact.
 	//
-	// 	- dataset: dataset
+	// - dataset: a dataset.
 	//
 	// example:
 	//

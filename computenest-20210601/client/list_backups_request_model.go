@@ -26,7 +26,7 @@ type ListBackupsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *ListBackupsRequest) Validate() error {
 }
 
 type ListBackupsRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	// The name of the filter. You can query by one or more filter names. Valid values:
 	//
-	// 	- BackupId: the ID of the backup.
+	// - BackupId: The backup ID.
 	//
-	// 	- ServiceInstanceId: The ID of the service instance.
+	// - ServiceInstanceId: The service instance ID.
 	//
-	// 	- Status: the state of the service.
+	// - Status: The status.
 	//
-	// 	- StartTime
+	// - StartTime: The start time.
 	//
-	// 	- EndTime
+	// - EndTime: The end time.
 	//
 	// example:
 	//
 	// ServiceInstanceId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of filters.
+	// The filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -22,15 +22,13 @@ type iListTagValuesRequest interface {
 type ListTagValuesRequest struct {
 	// The tag key.
 	//
-	// >  This parameter is required.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ECS
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -46,13 +44,13 @@ type ListTagValuesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- service: service
+	// - service: service.
 	//
-	// 	- serviceinstance: service instance
+	// - serviceinstance: service instance.
 	//
-	// 	- artifact: artifact
+	// - artifact: deployment.
 	//
-	// 	- dataset: dataset
+	// - dataset: dataset.
 	//
 	// This parameter is required.
 	//

@@ -28,19 +28,19 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 50 resource IDs.
+	// The resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid values:
 	//
-	// 	- service: service
+	// - service: a service.
 	//
-	// 	- serviceinstance: service instance
+	// - serviceinstance: a service instance.
 	//
-	// 	- artifact: artifact
+	// - artifact: a deployment.
 	//
-	// 	- dataset: dataset
+	// - dataset: a dataset.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type TagResourcesRequest struct {
 	//
 	// service
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key and value.
+	// The resource tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,13 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// Backup description
+	// The backup description.
 	//
 	// example:
 	//
 	// No description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the service instance to be transferred to official version.
+	// The ID of the service instance to back up.
 	//
 	// This parameter is required.
 	//

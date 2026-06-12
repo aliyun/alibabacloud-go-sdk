@@ -34,21 +34,21 @@ type iGetServiceEstimateCostRequest interface {
 }
 
 type GetServiceEstimateCostRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate a unique value for each request. The **ClientToken*	- supports only ASCII characters and cannot be longer than 64 characters.
 	//
 	// example:
 	//
 	// qwertyuiop
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The information about the subscription duration.
+	// The subscription period for the purchase order.
 	Commodity *GetServiceEstimateCostRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// The name of the configuration change operation.
+	// The name of the upgrade or downgrade operation.
 	//
 	// example:
 	//
-	// Parameter change
+	// Parameter configuration change
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The parameters that are specified to deploy the service instance.
+	// The parameters to deploy the service instance.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetServiceEstimateCostRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The name of the package specification.
+	// The specification name.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type GetServiceEstimateCostRequest struct {
 	//
 	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial policy. Valid values:
+	// The usage type. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports a free trial.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support a free trial.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type GetServiceEstimateCostRequestCommodity struct {
 	//
 	// 302070970220
 	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration.
 	//
 	// example:
 	//
@@ -235,17 +235,17 @@ type GetServiceEstimateCostRequestCommodity struct {
 	PayPeriod *int32 `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
 	// The unit of the subscription duration. Valid values:
 	//
-	// 	- Year.
+	// - Year: Year.
 	//
-	// 	- Month.
+	// - Month: Month.
 	//
-	// 	- Day.
+	// - Day: Day.
 	//
 	// example:
 	//
 	// Year
 	PayPeriodUnit *string `json:"PayPeriodUnit,omitempty" xml:"PayPeriodUnit,omitempty"`
-	// The PrivateOffer ID of the Alibaba Cloud Marketplace.
+	// The ID of the private offer in Alibaba Cloud Marketplace.
 	//
 	// example:
 	//

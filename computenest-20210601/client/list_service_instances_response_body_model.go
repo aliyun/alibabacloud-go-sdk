@@ -22,13 +22,13 @@ type iListServiceInstancesResponseBody interface {
 }
 
 type ListServiceInstancesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServiceInstancesResponseBody struct {
 	//
 	// E50287CB-AABF-4877-92C0-289B339A1546
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about service instances.
+	// The information about the service instances.
 	ServiceInstances []*ListServiceInstancesResponseBodyServiceInstances `json:"ServiceInstances,omitempty" xml:"ServiceInstances,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *ListServiceInstancesResponseBody) Validate() error {
 }
 
 type ListServiceInstancesResponseBodyServiceInstances struct {
-	// The business state of the service instance. Valid values:
+	// The business status of the service instance. Possible values:
 	//
-	// 	- Normal
+	// - Normal: The service instance is running as expected.
 	//
-	// 	- Renewing
+	// - Renewing: The service instance is being renewed.
 	//
-	// 	- RenewFailed
+	// - RenewFoiled: The renewal of the service instance failed.
 	//
-	// 	- Expired
+	// - Expired: The service instance has expired.
 	//
 	// example:
 	//
 	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	// The time when the service instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+	// Indicates whether the service instance has the Alibaba Cloud Managed Services feature. Possible values:
 	//
-	// 	- true
+	// - true: The service instance has the Alibaba Cloud Managed Services feature.
 	//
-	// 	- false
+	// - false: The service instance does not have the Alibaba Cloud Managed Services feature.
 	//
 	// example:
 	//
 	// true
 	EnableInstanceOps *bool `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
-	// The time when the service instance expires.
+	// The expiration time of the service instance.
 	//
 	// example:
 	//
@@ -166,19 +166,19 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	//
 	// TestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the managed service instance.
+	// The ID of the service instance that is managed by Alibaba Cloud.
 	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	OperatedServiceInstanceId *string `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
-	// The end of the time range during which hosted O\\&M is implemented.
+	// The end time of the Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// 2022-01-28T06:48:56Z
 	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
-	// The beginning of the time range during which hosted O\\&M is implemented.
+	// The start time of the Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	//
 	// 2306175xxxxxxxx
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The information returned after the service instance is created.
+	// The output information of the service instance.
 	//
 	// example:
 	//
 	// {"managementUrl": "http://xx.xx"}
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// The parameters of the service instance.
+	// The parameter information of the service instance.
 	//
 	// example:
 	//
@@ -204,20 +204,20 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- Permanent: Once you purchase the service, you can use it permanently.
+	// - Permanent: The service is purchased permanently.
 	//
-	// 	- Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+	// - Subscription: The service is a subscription instance from Alibaba Cloud Marketplace.
 	//
-	// 	- PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+	// - PayAsYouGo: The service is a pay-as-you-go instance from Alibaba Cloud Marketplace.
 	//
-	// 	- CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+	// - CustomFixTime: The service has a custom fixed duration.
 	//
 	// example:
 	//
 	// Subscription
 	PayType     *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
-	// The deployment progress of the service instance, in percentage.
+	// The deployment progress of the service instance. Unit: %.
 	//
 	// example:
 	//
@@ -229,13 +229,13 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	//
 	// rg-aekz6scpcxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resources.
+	// The list of resources.
 	//
 	// example:
 	//
 	// [{"StackId": "stack-xxx"}]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The services.
+	// The service.
 	Service *ListServiceInstancesResponseBodyServiceInstancesService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
 	// The service instance ID.
 	//
@@ -243,59 +243,55 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Possible values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service is deployed in the user\\"s account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service is hosted in the service provider\\"s account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: The service is an Alibaba Cloud Managed Service.
 	//
-	// 	- poc: The service is a trial service.
+	// - poc: The service instance is a trial instance.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The source from which the service instance is created.
+	// The source from which the service instance was created.
 	//
 	// example:
 	//
 	// Supplier
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The state of the service instance. Valid values:
+	// The status of the service instance. Possible values:
 	//
-	// 	- Created
+	// - Created: The service instance is created.
 	//
-	// 	- Deploying
+	// - Deploying: The service instance is being deployed.
 	//
-	// 	- DeployedFailed
+	// - DeployedFailed: The service instance failed to be deployed.
 	//
-	// 	- Deployed
+	// - Deployed: The service instance is deployed.
 	//
-	// 	- Upgrading
+	// - Upgrading: The service instance is being upgraded.
 	//
-	// 	- Deleting
+	// - Deleting: The service instance is being deleted.
 	//
-	// 	- Deleted
+	// - Deleted: The service instance is deleted.
 	//
-	// 	- DeletedFailed
+	// - DeletedFailed: The service instance failed to be deleted.
 	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the deployment of the service instance.
+	// The description of the deployment information of the service instance.
 	//
 	// example:
 	//
 	// deploy successfully
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	// Is it supported to convert from trial to formal
-	//
-	// example:
-	//
-	// true
+	// Indicates whether the trial instance can be converted to a regular instance.
 	SupportTrialToPrivate *bool `json:"SupportTrialToPrivate,omitempty" xml:"SupportTrialToPrivate,omitempty"`
 	// The custom tags.
 	Tags []*ListServiceInstancesResponseBodyServiceInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -303,9 +299,9 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	//
 	// example:
 	//
-	// Single ECS
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The time when the service instance was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -632,25 +628,25 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesGrantedPermission) Vali
 }
 
 type ListServiceInstancesResponseBodyServiceInstancesService struct {
-	// The commodity details.
+	// The commodity specifications.
 	Commodity *ListServiceInstancesResponseBodyServiceInstancesServiceCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// The deployment type of the service. Valid values:
+	// The deployment type. Possible values:
 	//
-	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	// - ros: The service is deployed using ROS.
 	//
-	// 	- terraform: The service is deployed by using Terraform.
+	// - terraform: The service is deployed using Terraform.
 	//
-	// 	- ack: The service is deployed by using Alibaba Cloud Container Service for Kubernetes (ACK).
+	// - ack: The service is deployed using ACK.
 	//
-	// 	- spi: The service is deployed by calling the Service Provider Interface (SPI).
+	// - spi: The service is deployed by calling SPI.
 	//
-	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	// - operation: The service is deployed using Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The time when the service was published.
+	// The publishing time.
 	//
 	// example:
 	//
@@ -662,21 +658,21 @@ type ListServiceInstancesResponseBodyServiceInstancesService struct {
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The information about the service.
+	// The service information.
 	ServiceInfos []*ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
-	// The type of the service. Valid values:
+	// The service type. Possible values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service is deployed in the user\\"s account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service is hosted in the service provider\\"s account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: The service is an Alibaba Cloud Managed Service.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The service state.
+	// The service status.
 	//
 	// example:
 	//
@@ -686,9 +682,9 @@ type ListServiceInstancesResponseBodyServiceInstancesService struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A Ltd.
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The URL of the service provider.
+	// The service provider\\"s URL.
 	//
 	// example:
 	//
@@ -704,7 +700,7 @@ type ListServiceInstancesResponseBodyServiceInstancesService struct {
 	//
 	// example:
 	//
-	// 1.1.0
+	// Version A
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -834,19 +830,29 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesService) Validate() err
 }
 
 type ListServiceInstancesResponseBodyServiceInstancesServiceCommodity struct {
-	// The configuration metadata related to SaaS Boost.
+	// The metadata of the Software as a Service (SaaS) Boost configuration.
 	//
 	// example:
 	//
-	// { // Specifies whether to associate the service with the SaaS Boost commodity. Default value: false. "Enabled":true/false // The public endpoint of the SaaS Boost instance. "PublicAccessUrl":"https://example.com" }
+	// {
+	//
+	//      //Enable/disable SaaS Boost binding
+	//
+	//     "Enabled":true/false,default is false
+	//
+	//     //Public access URL
+	//
+	//     "PublicAccessUrl":"https://example.com"
+	//
+	// }
 	SaasBoostMetadata *string `json:"SaasBoostMetadata,omitempty" xml:"SaasBoostMetadata,omitempty"`
-	// The platform type. Valid values:
+	// The type. Possible values:
 	//
-	// 	- marketplace: Alibaba Cloud Marketplace.
+	// - Marketplace: Alibaba Cloud Marketplace.
 	//
-	// 	- Css: Lingxiao.
+	// - Css: Lingxiao.
 	//
-	// 	- SaasBoost: SaaS Boost.
+	// - SaasBoost: SaaS Boost.
 	//
 	// example:
 	//
@@ -897,17 +903,17 @@ type ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos struct 
 	//
 	// zh-CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
-	// wordpress
+	// Database B
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the service.
+	// The service overview.
 	//
 	// example:
 	//
-	// WordPress is a free and open-source website content management system (CMS).
+	// B is an open-source distributed relational database independently designed and developed by Company A.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 

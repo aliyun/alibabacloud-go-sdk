@@ -34,21 +34,21 @@ type iGetServiceEstimateCostShrinkRequest interface {
 }
 
 type GetServiceEstimateCostShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate a unique value for each request. The **ClientToken*	- supports only ASCII characters and cannot be longer than 64 characters.
 	//
 	// example:
 	//
 	// qwertyuiop
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The information about the subscription duration.
+	// The subscription period for the purchase order.
 	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The name of the configuration change operation.
+	// The name of the upgrade or downgrade operation.
 	//
 	// example:
 	//
-	// Parameter change
+	// Parameter configuration change
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The parameters that are specified to deploy the service instance.
+	// The parameters to deploy the service instance.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetServiceEstimateCostShrinkRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The name of the package specification.
+	// The specification name.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type GetServiceEstimateCostShrinkRequest struct {
 	//
 	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial policy. Valid values:
+	// The usage type. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports a free trial.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support a free trial.
 	//
 	// example:
 	//

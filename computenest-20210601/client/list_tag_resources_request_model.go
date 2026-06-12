@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token to retrieve the next page of results. Set this parameter to the \\`NextToken\\` value from the previous API call.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ListTagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid values:
 	//
-	// 	- service: service
+	// - service: a service.
 	//
-	// 	- serviceinstance: service instance
+	// - serviceinstance: a service instance.
 	//
-	// 	- artifact: deployment package
+	// - artifact: an artifact.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ListTagResourcesRequest struct {
 	//
 	// service
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

@@ -14,7 +14,7 @@ type iCreateSkillHubConfigResponseBody interface {
 }
 
 type CreateSkillHubConfigResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

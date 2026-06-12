@@ -20,16 +20,21 @@ type iListSkillFilesRequest interface {
 }
 
 type ListSkillFilesRequest struct {
+	// The filter conditions.
 	Filter []*ListSkillFilesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that was returned from a previous call to this operation. Use this token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAVz7BQqj2xtiNSC3d3RAD38=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Skill ID
+	// The ID of the Skill.
 	//
 	// This parameter is required.
 	//
@@ -97,10 +102,13 @@ func (s *ListSkillFilesRequest) Validate() error {
 }
 
 type ListSkillFilesRequestFilter struct {
+	// No filter names are currently supported.
+	//
 	// example:
 	//
 	// 111111
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter values. You can specify 1 to 10 values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -28,33 +28,48 @@ type iUpdateSkillRequest interface {
 }
 
 type UpdateSkillRequest struct {
+	// A unique, client-generated token to ensure request idempotence. **ClientToken*	- can contain only ASCII characters and must not exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required if `SourceType` is set to `UPLOAD`. It specifies the Object Storage Service (OSS) URL of the compressed skill package to upload.
+	//
 	// example:
 	//
 	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/30516570
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// The skill description.
+	//
 	// example:
 	//
 	// 11111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	// The ID of the skill to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 06e9dca2-0ac9-4d2e-a965-e9db9c057e00
-	SkillId     *string   `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// An array of skill labels.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
+	// The skill name.
+	//
 	// example:
 	//
 	// 111111
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// This parameter is required if `SourceType` is set to `COPY`. It specifies the ID of the public skill.
+	//
 	// example:
 	//
 	// s-111
 	SourceSkillId *string `json:"SourceSkillId,omitempty" xml:"SourceSkillId,omitempty"`
+	// The source type for the skill update.
+	//
 	// This parameter is required.
 	//
 	// example:

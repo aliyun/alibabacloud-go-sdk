@@ -22,21 +22,28 @@ type iListPublicSkillsResponseBody interface {
 }
 
 type ListPublicSkillsResponseBody struct {
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAZ9FmxgN6wKfeK/GOKRnnjU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 3F976EF8-C10A-57DC-917C-BB7BEB508FFB
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skills    []*ListPublicSkillsResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of public skills.
+	Skills []*ListPublicSkillsResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -110,33 +117,46 @@ func (s *ListPublicSkillsResponseBody) Validate() error {
 }
 
 type ListPublicSkillsResponseBodySkills struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-09-11T02:18:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The download link for the skill package.
+	//
 	// example:
 	//
 	// https://testts-1.oss-cn-beijing.aliyuncs.com/app/yyb_9.1.1.zip
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The description of the skill.
+	//
 	// example:
 	//
 	// 11111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
-	// Skill ID
+	// The ID of the skill.
 	//
 	// example:
 	//
 	// af7e49d9-277f-454a-afc5-1513d41cac31
-	SkillId     *string   `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The labels attached to the skill.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
+	// The name of the skill.
+	//
 	// example:
 	//
 	// ziptest
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The ID of the skill space.
+	//
 	// example:
 	//
 	// ss-1111111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-11-03T22:58:52Z

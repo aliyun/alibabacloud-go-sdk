@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Cancels the application for using a service.
+// Cancels a service usage request.
 //
 // @param request - CancelServiceUsageRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) CancelServiceUsageWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the resource group of a cloud resource based on the resource ID.
+// Changes the resource group for a cloud resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -121,7 +121,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Performs a precheck before deploying a service instance.
+// Performs a precheck to verify that a service instance can be deployed.
 //
 // @param request - CheckServiceDeployableRequest
 //
@@ -189,11 +189,11 @@ func (client *Client) CheckServiceDeployableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Continues to deploy a service instance after the service instance failed to be deployed.
+// If a service instance fails to deploy, you can call the ContinueDeployServiceInstance operation to resume the deployment.
 //
 // Description:
 //
-// This operation is available only for service instances that belong to private services deployed by using Resource Orchestration Service (ROS).
+// If a private service instance that uses the ROS deployment type fails to deploy, you can call the ContinueDeployServiceInstance operation to resume the deployment.
 //
 // @param request - ContinueDeployServiceInstanceRequest
 //
@@ -257,13 +257,13 @@ func (client *Client) ContinueDeployServiceInstanceWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Create backup for Compute Nest instance
+// Creates a backup for a Compute Nest service instance.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+// Ensure that the service provider enabled the upgrade/downgrade feature and configured the corresponding parameters when the service was created.
 //
 // @param request - CreateBackupRequest
 //
@@ -311,13 +311,13 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// # Create restore task
+// Creates a restore job.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+// Before you call this operation, ensure that the service provider enabled the upgrade and downgrade feature and configured its parameters when the service was created.
 //
 // @param request - CreateRestoreTaskRequest
 //
@@ -365,7 +365,7 @@ func (client *Client) CreateRestoreTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates and deploys a service instance.
+// Creates and deploys a service instance in Compute Nest by specifying parameters such as a region ID, a service instance name, and a service ID.
 //
 // @param tmpReq - CreateServiceInstanceRequest
 //
@@ -491,7 +491,7 @@ func (client *Client) CreateServiceInstanceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates an application for using a service.
+// Creates a service usage request.
 //
 // @param tmpReq - CreateServiceUsageRequest
 //
@@ -553,7 +553,13 @@ func (client *Client) CreateServiceUsageWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 创建Skill
+// Creates a Skill.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Before you begin, ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
 //
 // @param request - CreateSkillRequest
 //
@@ -627,7 +633,13 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建Skill文件检测任务
+// Creates a Skill file detection task.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
 //
 // @param request - CreateSkillFileDetectRequest
 //
@@ -681,7 +693,13 @@ func (client *Client) CreateSkillFileDetectWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建SkillHub配置
+// Creates a SkillHub config.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider has enabled the modify configuration feature and set the required parameters.
 //
 // @param request - CreateSkillHubConfigRequest
 //
@@ -735,7 +753,13 @@ func (client *Client) CreateSkillHubConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建SkillSpace
+// Creates a skill space.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure the service provider has enabled the modify configuration feature and set the required parameters during service creation.
 //
 // @param request - CreateSkillSpaceRequest
 //
@@ -789,13 +813,13 @@ func (client *Client) CreateSkillSpaceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Delete Compute Nest instance backups.
+// Deletes a Compute Nest instance backup.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+// Ensure that the service provider enabled the upgrade/downgrade feature and configured the upgrade/downgrade parameters when the service was created.
 //
 // @param request - DeleteBackupRequest
 //
@@ -839,7 +863,7 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes service instances based on the region ID and service instance IDs.
+// Deletes the specified service instances in a region.
 //
 // @param request - DeleteServiceInstancesRequest
 //
@@ -891,7 +915,13 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除Skill
+// Deletes a skill.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure the service provider has enabled the modification feature and configured the modification parameters when creating the service.
 //
 // @param request - DeleteSkillRequest
 //
@@ -941,7 +971,13 @@ func (client *Client) DeleteSkillWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除SkillSpace
+// Deletes a SkillSpace.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider enabled the modify configuration feature and set the required parameters during service creation.
 //
 // @param request - DeleteSkillSpaceRequest
 //
@@ -991,7 +1027,7 @@ func (client *Client) DeleteSkillSpaceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deploys the created service instance.
+// Deploys a service instance.
 //
 // @param request - DeployServiceInstanceRequest
 //
@@ -1043,7 +1079,7 @@ func (client *Client) DeployServiceInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// List available regions.
+// Queries the available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1087,23 +1123,33 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the missing policies before creating a service instance.
+// Check for missing access policies before you create a service instance.
 //
-// @param request - GenerateServicePolicyRequest
+// @param tmpReq - GenerateServicePolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateServicePolicyResponse
-func (client *Client) GenerateServicePolicyWithContext(ctx context.Context, request *GenerateServicePolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateServicePolicyResponse, _err error) {
+func (client *Client) GenerateServicePolicyWithContext(ctx context.Context, tmpReq *GenerateServicePolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateServicePolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &GenerateServicePolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationTypes) {
 		query["OperationTypes"] = request.OperationTypes
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		query["Parameters"] = request.ParametersShrink
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -1151,13 +1197,13 @@ func (client *Client) GenerateServicePolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about backup task.
+// Retrieves the details of a backup.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+// Ensure that the service provider enabled the upgrade and downgrade feature and configured its parameters when the service was created.
 //
 // @param request - GetBackupRequest
 //
@@ -1201,7 +1247,13 @@ func (client *Client) GetBackupWithContext(ctx context.Context, request *GetBack
 
 // Summary:
 //
-// 根据指定地域获取可用区列表
+// Returns a list of available zones for a specified region.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider enabled the upgrade/downgrade feature and set the related parameters when the service was created.
 //
 // @param request - GetNetworkAvailableZonesRequest
 //
@@ -1273,7 +1325,7 @@ func (client *Client) GetNetworkAvailableZonesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about a service.
+// Retrieves the details of a specified service.
 //
 // @param request - GetServiceRequest
 //
@@ -1337,7 +1389,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, request *GetSer
 
 // Summary:
 //
-// Queries the estimated price for creating a service instance.
+// Queries the estimated cost of creating a service instance.
 //
 // @param tmpReq - GetServiceEstimateCostRequest
 //
@@ -1431,7 +1483,7 @@ func (client *Client) GetServiceEstimateCostWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries the information about a service instance based on the region ID and the ID of the service instance or the Alibaba Cloud Marketplace instance. Information including the service status, template name, and involved resources are returned.
+// Queries the details of a service instance by its region ID, service instance ID, or Alibaba Cloud Marketplace instance ID. The returned information includes the service status, template name, and a list of resources.
 //
 // @param request - GetServiceInstanceRequest
 //
@@ -1483,7 +1535,7 @@ func (client *Client) GetServiceInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Inquiries the prices of subscription resources for private service instances. Renewal price inquiry is supported. You can make a unified renewal price inquiry for all subscription resources based on a specific service instance ID or make a renewal price inquiry for a specific resource. You can specify a service instance ID or a resource in a request, but cannot specify both of them.
+// Queries the estimated renewal cost of subscription resources in a privately deployed service instance. You can query the cost for all resources associated with a service instance ID, or for a specific set of resources.
 //
 // @param request - GetServiceInstanceSubscriptionEstimateCostRequest
 //
@@ -1551,7 +1603,7 @@ func (client *Client) GetServiceInstanceSubscriptionEstimateCostWithContext(ctx 
 
 // Summary:
 //
-// Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
+// Retrieves the provisions of a service, such as its activation status and service roles.
 //
 // @param tmpReq - GetServiceProvisionsRequest
 //
@@ -1621,7 +1673,7 @@ func (client *Client) GetServiceProvisionsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Queries the constraints on the parameters in a Resource Orchestration Service (ROS) template in a region based on the template name and service ID.
+// Queries the parameter constraints for a Resource Orchestration Service (ROS) template in a specified region using the template name and service ID.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -1705,7 +1757,13 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithContext(ctx cont
 
 // Summary:
 //
-// 查询Skill详情
+// Queries the details of a Skill.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Before calling this operation, ensure that the service provider enabled the modification feature and configured the required parameters during service creation.
 //
 // @param request - GetSkillRequest
 //
@@ -1749,7 +1807,13 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 
 // Summary:
 //
-// 查询Skill文件检测结果
+// Retrieves the result of a Skill file detection task.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// This operation is available only if the service provider enabled the modification feature and configured the relevant parameters during service creation.
 //
 // @param request - GetSkillFileDetectResultRequest
 //
@@ -1797,7 +1861,13 @@ func (client *Client) GetSkillFileDetectResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询SkillHub配置
+// Retrieves the SkillHub configuration.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure the service provider enabled the modification feature and configured its parameters when creating the service.
 //
 // @param request - GetSkillHubConfigRequest
 //
@@ -1834,7 +1904,13 @@ func (client *Client) GetSkillHubConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询SkillSpace详情
+// Retrieves the details of a SkillSpace.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider has enabled the modification feature and configured the modification parameters for the service.
 //
 // @param request - GetSkillSpaceRequest
 //
@@ -1878,7 +1954,7 @@ func (client *Client) GetSkillSpaceWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries the information about a customer.
+// Queries user information.
 //
 // @param request - GetUserInformationRequest
 //
@@ -1922,13 +1998,13 @@ func (client *Client) GetUserInformationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Query and list Compute Nest instance backups
+// Queries a list of backups for Compute Nest service instances.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+// Ensure that the service provider enabled the upgrade and downgrade feature and configured the related parameters when the service was created.
 //
 // @param request - ListBackupsRequest
 //
@@ -1980,7 +2056,7 @@ func (client *Client) ListBackupsWithContext(ctx context.Context, request *ListB
 
 // Summary:
 //
-// Queires the permissions.
+// Retrieves a list of access policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -2032,7 +2108,13 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询公开 Skill 列表
+// Lists public skills.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure the service provider enabled the change specification feature and configured the relevant parameters during service creation.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -2088,13 +2170,13 @@ func (client *Client) ListPublicSkillsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query and list restore tasks
+// Queries a list of restore jobs.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+// Ensure that the service provider enabled the upgrade and downgrade feature and configured its parameters when creating the service.
 //
 // @param request - ListRestoreTasksRequest
 //
@@ -2146,7 +2228,7 @@ func (client *Client) ListRestoreTasksWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries instance bills.
+// Call the ListServiceInstanceBill operation to query bills for service instances.
 //
 // @param request - ListServiceInstanceBillRequest
 //
@@ -2210,7 +2292,7 @@ func (client *Client) ListServiceInstanceBillWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the deployment and upgrade logs of a service instance.
+// Retrieves the deployment and upgrade logs of a service instance.
 //
 // @param request - ListServiceInstanceLogsRequest
 //
@@ -2282,7 +2364,7 @@ func (client *Client) ListServiceInstanceLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the resources contained in a service instance.
+// Queries the resources of a service instance based on parameters such as the service instance ID, Alibaba Cloud Resource Name (ARN), and region ID.
 //
 // @param request - ListServiceInstanceResourcesRequest
 //
@@ -2350,7 +2432,7 @@ func (client *Client) ListServiceInstanceResourcesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the upgrade history of a service instance.
+// You can call ListServiceInstanceUpgradeHistory to query the upgrade history of a service instance.
 //
 // @param request - ListServiceInstanceUpgradeHistoryRequest
 //
@@ -2406,7 +2488,7 @@ func (client *Client) ListServiceInstanceUpgradeHistoryWithContext(ctx context.C
 
 // Summary:
 //
-// {}
+// Queries service instances for your account in a specified region.
 //
 // @param request - ListServiceInstancesRequest
 //
@@ -2470,7 +2552,7 @@ func (client *Client) ListServiceInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the applications for using a service.
+// Queries your service usages.
 //
 // @param request - ListServiceUsagesRequest
 //
@@ -2526,7 +2608,7 @@ func (client *Client) ListServiceUsagesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of services.
+// Queries information about your services.
 //
 // @param request - ListServicesRequest
 //
@@ -2602,7 +2684,13 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取Skill文件列表
+// Lists the files of a specified Skill.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Before you call this operation, ensure that the service provider has enabled the modification feature and configured the modification parameters when creating the service.
 //
 // @param request - ListSkillFilesRequest
 //
@@ -2658,7 +2746,13 @@ func (client *Client) ListSkillFilesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询SkillSpace列表
+// Queries a list of SkillSpaces.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure the service provider enabled the upgrade feature and configured its parameters when creating the service.
 //
 // @param request - ListSkillSpacesRequest
 //
@@ -2710,7 +2804,13 @@ func (client *Client) ListSkillSpacesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询Skill列表
+// Retrieves a list of Skills.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider has enabled modification and configured the modification parameters when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -2766,7 +2866,7 @@ func (client *Client) ListSkillsWithContext(ctx context.Context, request *ListSk
 
 // Summary:
 //
-// Queries the existing tag keys.
+// This operation lists existing tag keys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -2818,7 +2918,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// # Query tag resource list
+// Queries a list of tagged resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2878,7 +2978,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the tag values of a tag key.
+// Lists the tag values for a specified tag key.
 //
 // @param request - ListTagValuesRequest
 //
@@ -2934,7 +3034,7 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 续费服务实例
+// Renews a service instance.
 //
 // @param request - RenewServiceInstanceRequest
 //
@@ -2982,7 +3082,7 @@ func (client *Client) RenewServiceInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Renews the subscription resources that are included in a private service instance. You can renew all subscription resources included in a private service instance based on the ID of the private service instance. You can also renew specific resources included in a private service instance. You can use only one of the preceding renewal methods.
+// Renews the subscription resources for a private deployment service instance. This operation supports two renewal methods: renewing all subscription resources for a service instance or renewing only specific resources. You can use only one method per request.
 //
 // @param request - RenewServiceInstanceResourcesRequest
 //
@@ -3046,7 +3146,13 @@ func (client *Client) RenewServiceInstanceResourcesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Restarts a service instance that is in the Deployed state.
+// Restarts a service instance in the Deployed state.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider enabled the restart O\\&M operation when the service was created.
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -3098,7 +3204,7 @@ func (client *Client) RestartServiceInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Rolls back an upgraded service instance to the previous version.
+// Rolls back an upgraded service instance.
 //
 // @param request - RollbackServiceInstanceRequest
 //
@@ -3150,7 +3256,13 @@ func (client *Client) RollbackServiceInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Starts a service instance that is in the Stopped or StartFailed state.
+// Call the StartServiceInstance operation to start a service instance that is in the Stopped or StartFailed state.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider configured the start and stop O\\&M actions when creating the service.
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -3202,7 +3314,13 @@ func (client *Client) StartServiceInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Stops a service instance that is in the Deployed or StopFailed state.
+// Call the StopServiceInstance operation to shut down a service instance that is in the Deployed or StopFailed state.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that the service provider configured the Operations and Maintenance (O\\&M) operations for startup and shutdown when the service was created.
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -3254,7 +3372,7 @@ func (client *Client) StopServiceInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates and adds tags to a specified resource list.
+// You can call TagResources to create and attach tags to multiple resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -3310,7 +3428,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from resources.
+// Detaches tags from specified resources.
 //
 // @param request - UnTagResourcesRequest
 //
@@ -3426,13 +3544,13 @@ func (client *Client) UpdateServiceInstanceAttributesWithContext(ctx context.Con
 
 // Summary:
 //
-// Changes the configurations of a service instance.
+// You can call the UpdateServiceInstanceSpec operation to upgrade or downgrade a service instance if its parameters or package settings do not meet your requirements.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Prerequisites
 //
-// Configuration change is enabled and the related parameters are configured for the service by the service provider.
+// Ensure that the service provider has enabled the upgrade/downgrade feature and configured the related parameters when the service was created.
 //
 // @param tmpReq - UpdateServiceInstanceSpecRequest
 //
@@ -3510,7 +3628,7 @@ func (client *Client) UpdateServiceInstanceSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates the application for using a service.
+// Updates the information about a service usage request.
 //
 // @param tmpReq - UpdateServiceUsageRequest
 //
@@ -3572,7 +3690,13 @@ func (client *Client) UpdateServiceUsageWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 更新Skill
+// Updates a skill.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure the service provider has enabled the option to modify configurations and configured the relevant parameters during service creation.
 //
 // @param request - UpdateSkillRequest
 //
@@ -3646,7 +3770,7 @@ func (client *Client) UpdateSkillWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// Updates the information about a customer.
+// The UpdateUserInformation operation updates user information.
 //
 // @param request - UpdateUserInformationRequest
 //
@@ -3694,7 +3818,7 @@ func (client *Client) UpdateUserInformationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Upgrades the version of a service instance.
+// Upgrades a service instance to a new version.
 //
 // @param tmpReq - UpgradeServiceInstanceRequest
 //
@@ -3764,7 +3888,7 @@ func (client *Client) UpgradeServiceInstanceWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 校验服务实例名称
+// Validates the name of a service instance.
 //
 // @param request - ValidateServiceInstanceNameRequest
 //

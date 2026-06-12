@@ -20,7 +20,7 @@ type iUpdateServiceInstanceAttributesRequest interface {
 }
 
 type UpdateServiceInstanceAttributesRequest struct {
-	// Specifies whether to authorize the service provider to perform O\\&M operations on the service instance.
+	// Specifies whether to enable managed O\\&M.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type UpdateServiceInstanceAttributesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the service instance.
 	//
-	// You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
+	// Call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the service instance ID.
 	//
 	// This parameter is required.
 	//

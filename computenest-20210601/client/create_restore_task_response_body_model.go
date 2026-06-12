@@ -24,7 +24,7 @@ type CreateRestoreTaskResponseBody struct {
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the restore task.
+	// The ID of the restore job.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type CreateRestoreTaskResponseBody struct {
 	RestoreTaskId *string `json:"RestoreTaskId,omitempty" xml:"RestoreTaskId,omitempty"`
 	// The status of the service instance. Valid values:
 	//
-	// 	- Restoring
+	// - Restoring: The service instance is being restored.
 	//
-	// 	- Restored
+	// - Restored: The service instance is restored.
 	//
-	// 	- RestoreFailed
+	// - RestoreFailed: The service instance failed to be restored.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListTagValuesResponseBody interface {
 }
 
 type ListTagValuesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagValuesResponseBody struct {
 	//
 	// 0631D623-D917-1C2D-ACD6-5B3B19XXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the tag values.
+	// The information about the tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

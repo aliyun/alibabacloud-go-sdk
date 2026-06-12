@@ -24,33 +24,33 @@ type iRenewServiceInstanceResourcesRequest interface {
 }
 
 type RenewServiceInstanceResourcesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure that the request is idempotent. Generate a unique value for this parameter from your client for each request. The token can contain only ASCII characters and must not exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The renewal duration for all prepaid resources in the service instance. The unit is specified by PeriodUnit.
+	// The renewal duration for all subscription resources in the service instance. The unit is specified by \\`PeriodUnit\\`.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit for the renewal duration of all prepaid resources in the service instance, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+	// The time unit of the renewal duration for all subscription resources in the service instance. This parameter specifies the unit for \\`Period\\`. Valid values: \\`Month\\` and \\`Year\\`. Default value: \\`Month\\`.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// List of resource renewals.
+	// The list of resource renewals.
 	ResourcePeriod []*RenewServiceInstanceResourcesRequestResourcePeriod `json:"ResourcePeriod,omitempty" xml:"ResourcePeriod,omitempty" type:"Repeated"`
-	// Service instance ID.
+	// The service instance ID.
 	//
 	// This parameter is required.
 	//
@@ -136,19 +136,19 @@ func (s *RenewServiceInstanceResourcesRequest) Validate() error {
 }
 
 type RenewServiceInstanceResourcesRequestResourcePeriod struct {
-	// The renewal duration for the resource. The unit is specified by PeriodUnit.
+	// The renewal duration for the resource. The unit is specified by \\`PeriodUnit\\`.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit for the renewal duration of the resource, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+	// The time unit of the renewal duration for the resource. This parameter specifies the unit for \\`Period\\`. Valid values: \\`Month\\` and \\`Year\\`. Default value: \\`Month\\`.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// Resource ARN (Aliyun Resource Name).
+	// The Aliyun Resource Name (ARN) of the resource.
 	//
 	// example:
 	//

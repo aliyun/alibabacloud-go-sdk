@@ -20,37 +20,37 @@ type iCreateBackupResponseBody interface {
 }
 
 type CreateBackupResponseBody struct {
-	// Backup ID
+	// The backup ID.
 	//
 	// example:
 	//
 	// backup-cad4a85ff5e340388b93
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// No description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 8DC02957-A0FC-5AB2-8C54-496B636EAF12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Backup status
+	// The status of the backup.
 	//
-	// - Creating: In progress
+	// - Creating: The backup is being created.
 	//
-	// - Created: Success
+	// - Created: The backup is created.
 	//
-	// - CreateFailed: Failed
+	// - CreateFailed: The backup failed to be created.
 	//
-	// - Deleting: In progress
+	// - Deleting: The backup is being deleted.
 	//
-	// - Deleted: Success
+	// - Deleted: The backup is deleted.
 	//
-	// - DeleteFailed: Failed
+	// - DeleteFailed: The backup failed to be deleted.
 	//
 	// example:
 	//

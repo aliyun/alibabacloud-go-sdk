@@ -18,15 +18,15 @@ type iListRestoreTasksRequest interface {
 }
 
 type ListRestoreTasksRequest struct {
-	// The list of the filters.
+	// The filter.
 	Filter []*ListRestoreTasksRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of rows displayed per page in paginated queries. Maximum: 100 rows per page. Default: 20 rows.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// NextToken
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *ListRestoreTasksRequest) Validate() error {
 }
 
 type ListRestoreTasksRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	// The name of the filter. You can query by one or more filter names. Valid values:
 	//
-	// 	- RestoreTaskId: the ID of the restore task.
+	// - RestoreTaskId: The restore job ID.
 	//
-	// 	- ServiceInstanceId: The ID of the service instance.
+	// - ServiceInstanceId: The service instance ID.
 	//
-	// 	- Status
+	// - Status: The status.
 	//
-	// 	- StartTime
+	// - StartTime: The start time.
 	//
-	// 	- EndTime
+	// - EndTime: The end time.
 	//
 	// example:
 	//
 	// ServiceInstanceId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter values of the filter.
+	// A list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

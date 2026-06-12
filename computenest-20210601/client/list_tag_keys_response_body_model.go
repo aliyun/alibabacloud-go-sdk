@@ -18,15 +18,15 @@ type iListTagKeysResponseBody interface {
 }
 
 type ListTagKeysResponseBody struct {
-	// Details of the tag keys.
+	// A list of tag keys.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token to start the next query.
 	//
 	// example:
 	//
 	// AAAAAZ9FmxgN6wKfeK/GOKRnnjU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

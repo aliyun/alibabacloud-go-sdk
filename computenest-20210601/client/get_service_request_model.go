@@ -24,7 +24,7 @@ type iGetServiceRequest interface {
 }
 
 type GetServiceRequest struct {
-	// Region Id.
+	// The region ID.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetServiceRequest struct {
 	//
 	// service-0e6fca6a51a544xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service instance id.
+	// The service instance ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetServiceRequest struct {
 	//
 	// example:
 	//
-	// Wordpress
+	// WordPress Community Edition
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service version.
 	//
@@ -54,7 +54,7 @@ type GetServiceRequest struct {
 	//
 	// 1.0
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// Whether to disclose service details.
+	// Specifies whether to return the detailed information of the service.
 	ShowDetails []*string `json:"ShowDetails,omitempty" xml:"ShowDetails,omitempty" type:"Repeated"`
 }
 

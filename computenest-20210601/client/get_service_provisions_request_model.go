@@ -24,7 +24,7 @@ type iGetServiceProvisionsRequest interface {
 }
 
 type GetServiceProvisionsRequest struct {
-	// The parameters configured for the service instance.
+	// The parameters for deploying the user instance.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetServiceProvisionsRequest struct {
 	//
 	// service-0efc0db451794bxxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The version of the service.
+	// The service version.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type GetServiceProvisionsRequest struct {
 	//
 	// example:
 	//
-	// ECS
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial policy. Valid values:
+	// The usage type. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports trial use.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support trial use.
 	//
 	// example:
 	//

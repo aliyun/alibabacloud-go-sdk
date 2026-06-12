@@ -18,9 +18,9 @@ type iGenerateServicePolicyResponseBody interface {
 }
 
 type GenerateServicePolicyResponseBody struct {
-	// The policies that are missing.
+	// The missing access policies.
 	MissingPolicy []*GenerateServicePolicyResponseBodyMissingPolicy `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty" type:"Repeated"`
-	// The RAM policy.
+	// The required access policy.
 	//
 	// example:
 	//
@@ -83,15 +83,15 @@ func (s *GenerateServicePolicyResponseBody) Validate() error {
 }
 
 type GenerateServicePolicyResponseBodyMissingPolicy struct {
-	// Operations on specific resources.
+	// The access policy information.
 	Action []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
-	// The specific objects authorized. An asterisk (*) denotes all resources.
+	// The object to which the permissions are granted. An asterisk (\\*) indicates all resources.
 	//
 	// example:
 	//
 	// *
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The name of the service.
+	// The name of the service to which the access policy belongs.
 	//
 	// example:
 	//

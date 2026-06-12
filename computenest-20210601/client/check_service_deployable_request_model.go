@@ -26,13 +26,13 @@ type iCheckServiceDeployableRequest interface {
 }
 
 type CheckServiceDeployableRequest struct {
-	// Total amount of postpaid.
+	// The total pay-as-you-go amount.
 	//
 	// example:
 	//
 	// 1.29
 	PostPaidAmount *string `json:"PostPaidAmount,omitempty" xml:"PostPaidAmount,omitempty"`
-	// Total amount of prepayment.
+	// The total upfront payment amount.
 	//
 	// example:
 	//
@@ -58,12 +58,17 @@ type CheckServiceDeployableRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial type of the service instance. Valid values:
+	// The template name.
 	//
-	// 	- **Trial**: Trials are supported.
+	// example:
 	//
-	// 	- **NotTrial**: Trials are not supported.
+	// Template 1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The trial type. Valid values:
+	//
+	// - Trial: The service supports trial use.
+	//
+	// - NotTrial: The service does not support trial use.
 	//
 	// example:
 	//

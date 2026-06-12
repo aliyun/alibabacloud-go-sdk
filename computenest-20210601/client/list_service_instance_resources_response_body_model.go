@@ -20,13 +20,13 @@ type iListServiceInstanceResourcesResponseBody interface {
 }
 
 type ListServiceInstanceResourcesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListServiceInstanceResourcesResponseBody struct {
 	//
 	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	// The list of resources.
 	Resources []*ListServiceInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -114,33 +114,33 @@ type ListServiceInstanceResourcesResponseBodyResources struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- Subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//
 	// Subscription
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the cloud service.
+	// The product type.
 	//
 	// example:
 	//
 	// RDS
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The renewal state. Valid values:
+	// The renewal status. Valid values:
 	//
-	// 	- AutoRenewal
+	// - AutoRenewal: auto-renewal.
 	//
-	// 	- ManualRenewal
+	// - ManualRenewal: manual renewal.
 	//
-	// 	- NotRenewal
+	// - NotRenewal: no renewal.
 	//
 	// example:
 	//
@@ -154,9 +154,9 @@ type ListServiceInstanceResourcesResponseBodyResources struct {
 	RenewalPeriod *int32 `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
 	// The unit of the renewal period. Valid values:
 	//
-	// 	- Month
+	// - Month: month.
 	//
-	// 	- Year
+	// - Year: year.
 	//
 	// example:
 	//
@@ -168,15 +168,15 @@ type ListServiceInstanceResourcesResponseBodyResources struct {
 	//
 	// arn:acs:sag:cn-hangzhou:130920852836****:ccn/ccn-b3qf0q439sq2de****
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
-	// The state of the resource. Valid values:
+	// The status of the resource. Valid values:
 	//
-	// 	- running
+	// - running: The resource is running.
 	//
-	// 	- waiting
+	// - waiting: The resource is pending.
 	//
-	// 	- terminated
+	// - terminated: The resource is terminated.
 	//
-	// >  This parameter is returned only for containers.
+	// > This parameter is returned only for container resources.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iListPoliciesRequest interface {
 }
 
 type ListPoliciesRequest struct {
-	// Page size.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for the next query, an empty nextToken indicates there is no next page.
+	// The token that is used to retrieve the next page of results. If this parameter is empty, no more results exist.
 	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

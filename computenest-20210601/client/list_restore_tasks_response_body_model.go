@@ -22,13 +22,13 @@ type iListRestoreTasksResponseBody interface {
 }
 
 type ListRestoreTasksResponseBody struct {
-	// The maximum number of records returned in this request.
+	// The maximum number of entries returned for the request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Indicates the read position returned by the current call. An empty value means all data has been read.
+	// The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type ListRestoreTasksResponseBody struct {
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 464C8CB6-A548-5206-B83C-D32A8E43EC21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of restore tasks.
+	// The list of restore jobs.
 	RestoreTasks []*ListRestoreTasksResponseBodyRestoreTasks `json:"RestoreTasks,omitempty" xml:"RestoreTasks,omitempty" type:"Repeated"`
-	// Total data count under the current request conditions (optional; not returned by default).
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -125,25 +125,25 @@ type ListRestoreTasksResponseBodyRestoreTasks struct {
 	//
 	// backup-728f128bf92c4e3da970
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The creation time.
+	// The time when the job was created.
 	//
 	// example:
 	//
 	// 2023-09-07T11:37:37Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the service instance.
+	// The time when the restore job ended.
 	//
 	// example:
 	//
 	// 2025-01-27T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The update time.
+	// The time when the job was last updated.
 	//
 	// example:
 	//
 	// 2025-05-07T12:16:16Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the restore task.
+	// The ID of the restore job.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListRestoreTasksResponseBodyRestoreTasks struct {
 	//
 	// si-8c367c27c84e44a79d36
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The time when the update started.
+	// The time when the restore job started.
 	//
 	// example:
 	//
@@ -163,17 +163,17 @@ type ListRestoreTasksResponseBodyRestoreTasks struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the service instance. Valid values:
 	//
-	// 	- Restoring
+	// - Restoring: The service instance is being restored.
 	//
-	// 	- Restored
+	// - Restored: The service instance was restored.
 	//
-	// 	- RestoreFailed
+	// - RestoreFailed: The service instance failed to be restored.
 	//
 	// example:
 	//
 	// Restoring
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the service instance deployment information.
+	// The details of the instance status.
 	//
 	// example:
 	//

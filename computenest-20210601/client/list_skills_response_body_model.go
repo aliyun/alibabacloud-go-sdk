@@ -22,21 +22,28 @@ type iListSkillsResponseBody interface {
 }
 
 type ListSkillsResponseBody struct {
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. This parameter is empty when all results have been returned.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skills    []*ListSkillsResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of Skills.
+	Skills []*ListSkillsResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 100
@@ -110,33 +117,46 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodySkills struct {
+	// The creation time of the Skill.
+	//
 	// example:
 	//
 	// 2026-05-10T02:22:18Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The download URL of the Skill package. This parameter is returned only if `NeedDownloadUrl` is set to `true`.
+	//
 	// example:
 	//
 	// https://testts-1.oss-cn-beijing.aliyuncs.com/app/yyb_9.1.1.zip
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The Skill description.
+	//
 	// example:
 	//
 	// 1111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
-	// Skill ID
+	// The Skill ID.
 	//
 	// example:
 	//
 	// s-111111
-	SkillId     *string   `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The Skill labels.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
+	// The Skill name.
+	//
 	// example:
 	//
 	// reimbursement-print
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The ID of the SkillSpace to which the Skill belongs.
+	//
 	// example:
 	//
 	// ss-11111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
+	// The last update time of the Skill.
+	//
 	// example:
 	//
 	// 2025-11-03T22:58:52Z

@@ -22,13 +22,13 @@ type iListServiceUsagesResponseBody interface {
 }
 
 type ListServiceUsagesResponseBody struct {
-	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// A pagination token. It is returned when the results are not complete. To retrieve the next page of results, include this token in the NextToken parameter of the next request.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListServiceUsagesResponseBody struct {
 	//
 	// 18AD0960-A9FE-1AC8-ADF8-22131Fxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service applications.
+	// The service usage details.
 	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -117,13 +117,13 @@ func (s *ListServiceUsagesResponseBody) Validate() error {
 }
 
 type ListServiceUsagesResponseBodyServiceUsages struct {
-	// The review comment.
+	// The remarks of the approval.
 	//
 	// example:
 	//
-	// Approved
+	// Review approved.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the application was created.
+	// The time when the request was created.
 	//
 	// example:
 	//
@@ -139,41 +139,41 @@ type ListServiceUsagesResponseBodyServiceUsages struct {
 	//
 	// example:
 	//
-	// LobelChat
+	// Deployment link permission request
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The state of the service application. Valid values:
+	// The service status. Valid values:
 	//
-	// 	- Submitted: The application is submitted for review.
+	// - Submitted: The request is submitted and pending approval.
 	//
-	// 	- Approved: The application is approved.
+	// - Approved: The request is approved.
 	//
-	// 	- Rejected: The application is rejected.
+	// - Rejected: The request is rejected.
 	//
-	// 	- Canceled: The application is canceled.
+	// - Canceled: The request is canceled.
 	//
 	// example:
 	//
 	// Submitted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the service provider.
+	// The name of the supplier.
 	//
 	// example:
 	//
-	// TestSupplier
+	// Acceptance test
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The time when the application was updated.
+	// The time when the request was last updated.
 	//
 	// example:
 	//
 	// 2022-05-25T02:02:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID of the user.
 	//
 	// example:
 	//
 	// 127383705958xxxx
 	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
-	// The information about the applicants.
+	// The user information.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 

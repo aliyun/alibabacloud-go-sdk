@@ -16,7 +16,7 @@ type iUpdateUserInformationRequest interface {
 }
 
 type UpdateUserInformationRequest struct {
-	// The modified delivery settings.
+	// The configurations to modify.
 	DeliverySettings *UpdateUserInformationRequestDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -64,11 +64,11 @@ func (s *UpdateUserInformationRequest) Validate() error {
 }
 
 type UpdateUserInformationRequestDeliverySettings struct {
-	// Specifies whether to enable screencast delivery to OSS. Valid values:
+	// Specifies whether to deliver ActionTrail events to OSS. Valid values:
 	//
-	// 	- true
+	// - true: Delivery is enabled.
 	//
-	// 	- false
+	// - false: Delivery is disabled.
 	//
 	// example:
 	//
@@ -80,17 +80,17 @@ type UpdateUserInformationRequestDeliverySettings struct {
 	//
 	// "mybucket"
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+	// Specifies whether to deliver data to Object Storage Service (OSS). Valid values:
 	//
-	// 	- true
+	// - true: Delivery is enabled.
 	//
-	// 	- false
+	// - false: Delivery is disabled.
 	//
 	// example:
 	//
 	// true
 	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
-	// The number of days for which the screencasts are saved.
+	// The number of days to retain screen recordings.
 	//
 	// example:
 	//

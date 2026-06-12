@@ -22,24 +22,32 @@ type iGetSkillHubConfigResponseBody interface {
 }
 
 type GetSkillHubConfigResponseBody struct {
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// mybucket
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The region where the OSS bucket is located.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 2849EE73-AFFA-5AFD-9575-12FA886451DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the configuration was last updated.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z

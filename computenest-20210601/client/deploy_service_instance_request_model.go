@@ -18,15 +18,15 @@ type iDeployServiceInstanceRequest interface {
 }
 
 type DeployServiceInstanceRequest struct {
-	// Ensures idempotency of the request. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
+	// A client token to ensure the idempotence of a request. Generate a unique value from the client for this parameter. The token can contain only ASCII characters and must be no more than 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Region ID. Allowed values:
+	// The region ID. Possible values:
 	//
-	// - cn-hangzhou: East China 1 (Hangzhou).
+	// - cn-hangzhou: China (Hangzhou).
 	//
 	// - ap-southeast-1: Singapore.
 	//
@@ -36,7 +36,7 @@ type DeployServiceInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service instance ID.
+	// The ID of the service instance.
 	//
 	// This parameter is required.
 	//

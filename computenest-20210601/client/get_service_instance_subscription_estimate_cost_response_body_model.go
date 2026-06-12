@@ -16,13 +16,13 @@ type iGetServiceInstanceSubscriptionEstimateCostResponseBody interface {
 }
 
 type GetServiceInstanceSubscriptionEstimateCostResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 464C8CB6-A548-5206-B83C-D32A8E43EC21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of resource price information.
+	// The list of resource price information.
 	ResourcePrices []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices `json:"ResourcePrices,omitempty" xml:"ResourcePrices,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *GetServiceInstanceSubscriptionEstimateCostResponseBody) Validate() erro
 }
 
 type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices struct {
-	// Currency. Valid values:
+	// The currency. Valid values:
 	//
 	// - CNY: Chinese Yuan.
 	//
@@ -80,39 +80,39 @@ type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices struct
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The price details of the pricing module.
 	DetailInfos []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Repeated"`
-	// Discount.
+	// The discount.
 	//
 	// example:
 	//
 	// 100
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Original price.
+	// The original price.
 	//
 	// example:
 	//
 	// 900
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// Renewal duration. The unit is specified by PeriodUnit.
+	// The renewal duration. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit for the renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+	// The unit of the renewal duration. This is the unit for the Period parameter. Valid values: Month and Year. Default value: Month.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// Resource ARN (Aliyun Resource Name).
+	// The ARN of the resource.
 	//
 	// example:
 	//
 	// acs:ecs:cn-hongkong:1488317743351199:instance/i-j6c6f3lbky38o8rpeqw2
 	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
-	// Promotion details.
+	// The discount details.
 	Rules []*GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Discounted price.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -232,25 +232,25 @@ func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices) V
 }
 
 type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos struct {
-	// Discount amount.
+	// The discount.
 	//
 	// example:
 	//
 	// 100
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Original price.
+	// The original price.
 	//
 	// example:
 	//
 	// 900
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// Pricing module identifier.
+	// The identifier of the pricing module.
 	//
 	// example:
 	//
 	// instance
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Discounted price.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -307,19 +307,19 @@ func (s *GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDet
 }
 
 type GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules struct {
-	// Promotion description.
+	// The description of the discount.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Promotion name.
+	// The name of the discount.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Promotion ID.
+	// The discount ID.
 	//
 	// example:
 	//

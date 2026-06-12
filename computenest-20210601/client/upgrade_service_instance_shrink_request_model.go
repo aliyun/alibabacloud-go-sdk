@@ -24,23 +24,23 @@ type iUpgradeServiceInstanceShrinkRequest interface {
 }
 
 type UpgradeServiceInstanceShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that ensures the idempotence of the request. The token must be unique for each request. It can contain only ASCII characters and must be no more than 64 characters long.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform a dry run. A dry run checks for issues such as permissions and the instance status. Valid values:
 	//
-	// 	- **true**: performs a dry run for the request, but does not upgrade service instance.
+	// - true: Sends the request without upgrading the service instance.
 	//
-	// 	- **false**: performs a dry run for the request, and upgrade service instance if the request passes the dry run.
+	// - false: Sends the request and upgrades the service instance after the check is passed.
 	//
 	// example:
 	//
 	// true
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The parameters required for the upgrade. This parameter is required if the destination version of the service has new parameters.
+	// The parameters required for the upgrade. This is used when new parameters are added to the new service version.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type UpgradeServiceInstanceShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4bxxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The destination version.
+	// The service version to upgrade to.
 	//
 	// example:
 	//

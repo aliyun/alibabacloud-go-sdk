@@ -38,25 +38,25 @@ type GetBackupResponseBody struct {
 	//
 	// backup-cad4a85ff5e340388b93
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The creation time of the backup task.
+	// The time when the backup was created.
 	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the backup task.
+	// The backup description.
 	//
 	// example:
 	//
 	// No description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the backup task.
+	// The time when the backup ended.
 	//
 	// example:
 	//
 	// 2022-01-01T12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The update time of the backup task.
+	// The time when the backup was last modified.
 	//
 	// example:
 	//
@@ -68,37 +68,37 @@ type GetBackupResponseBody struct {
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request ID.
+	// The service instance ID.
 	//
 	// example:
 	//
 	// si-b58c874912fc4294****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The start time of the backup task.
+	// The time when the backup started.
 	//
 	// example:
 	//
 	// 2022-01-01T11:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the backup task.
+	// The status.
 	//
-	// 	- Creating
+	// - Creating: The backup is being created.
 	//
-	// 	- Created
+	// - Created: The backup is created.
 	//
-	// 	- CreateFailed
+	// - CreateFailed: The backup failed to be created.
 	//
-	// 	- Deleting
+	// - Deleting: The backup is being deleted.
 	//
-	// 	- Deleted
+	// - Deleted: The backup is deleted.
 	//
-	// 	- DeleteFailed
+	// - DeleteFailed: The backup failed to be deleted.
 	//
 	// example:
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the deployment instance status.
+	// The detailed status of the deployment instance.
 	//
 	// example:
 	//

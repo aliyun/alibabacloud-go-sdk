@@ -18,11 +18,11 @@ type iRenewServiceInstanceResourcesResponseBody interface {
 }
 
 type RenewServiceInstanceResourcesResponseBody struct {
-	// Details of failed renewals.
+	// The details of renewal failures.
 	FailureDetails []*RenewServiceInstanceResourcesResponseBodyFailureDetails `json:"FailureDetails,omitempty" xml:"FailureDetails,omitempty" type:"Repeated"`
-	// Renewal result.
+	// The renewal result.
 	RenewalResult *RenewServiceInstanceResourcesResponseBodyRenewalResult `json:"RenewalResult,omitempty" xml:"RenewalResult,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *RenewServiceInstanceResourcesResponseBody) Validate() error {
 }
 
 type RenewServiceInstanceResourcesResponseBodyFailureDetails struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidPeriod
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
-	// Error message
+	// Renewal failure reason.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Resource ARN (Aliyun Resource Name).
+	// The ARN of the resource.
 	//
 	// example:
 	//
@@ -144,19 +144,19 @@ func (s *RenewServiceInstanceResourcesResponseBodyFailureDetails) Validate() err
 }
 
 type RenewServiceInstanceResourcesResponseBodyRenewalResult struct {
-	// Number of failed renewals.
+	// The number of resources that failed to be renewed.
 	//
 	// example:
 	//
 	// 1
 	Failed *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// Number of successfully renewed resources.
+	// The number of successfully renewed resources.
 	//
 	// example:
 	//
 	// 9
 	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-	// Number of renewed resources.
+	// The number of resources to be renewed.
 	//
 	// example:
 	//

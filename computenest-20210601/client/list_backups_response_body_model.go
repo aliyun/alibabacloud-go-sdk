@@ -22,15 +22,15 @@ type iListBackupsResponseBody interface {
 }
 
 type ListBackupsResponseBody struct {
-	// The details of the backup.
+	// The backups.
 	Backups []*ListBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this request.
+	// The maximum number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Indicates the read position returned by the current call. An empty value means all data has been read.
+	// The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ListBackupsResponseBody struct {
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLYoaeZA6xVdkCrmG9EmGshtmECUGpq9Qm7x5vQkpz9NXH0XzUc9t4Kxaf3UtuPY4a0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// BB58FE53-ED8F-5D12-9746-CD3A5F463D95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total data count under the current request conditions (optional; not returned by default).
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -125,75 +125,75 @@ type ListBackupsResponseBodyBackups struct {
 	//
 	// backup-4e13aa8ca6a34150addd
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup mode. Valid values:
+	// The backup mode. The return value is:
 	//
-	// 	- **Manual**: manual backup
+	// - **Manual**: The backup is created manually.
 	//
 	// example:
 	//
 	// Manual
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The creation time.
+	// The time when the backup was created.
 	//
 	// example:
 	//
 	// 2024-09-03T19:54:38+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the backup task.
+	// The description of the backup.
 	//
 	// example:
 	//
 	// No description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the backup task.
+	// The time when the backup ended.
 	//
 	// example:
 	//
 	// 2024-08-15T02:24:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The update time.
+	// The time when the backup was last updated.
 	//
 	// example:
 	//
 	// 2024-09-03T19:54:38+08:00
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// Retention Days. Resources will be cleared upon expiration. Defaults to no expiration if left blank.
+	// The retention period in days. Backups are deleted after the retention period expires. By default, this parameter is empty, which means that the backups do not expire.
 	//
 	// example:
 	//
 	// 1
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
 	// si-7b6138dfce1e4c41ab71
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The start time of the backup task.
+	// The time when the backup started.
 	//
 	// example:
 	//
 	// 2025-06-30T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the backup task. Valid values:
+	// The status.
 	//
-	// 	- Creating
+	// - Creating: The backup is being created.
 	//
-	// 	- Created
+	// - Created: The backup is created.
 	//
-	// 	- CreateFailed
+	// - CreateFailed: The backup failed to be created.
 	//
-	// 	- Deleting
+	// - Deleting: The backup is being deleted.
 	//
-	// 	- Deleted
+	// - Deleted: The backup is deleted.
 	//
-	// 	- DeleteFailed
+	// - DeleteFailed: The backup failed to be deleted.
 	//
 	// example:
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the service instance deployment information.
+	// The details of the status.
 	//
 	// example:
 	//

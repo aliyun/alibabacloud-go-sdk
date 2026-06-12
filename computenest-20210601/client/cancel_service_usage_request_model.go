@@ -20,21 +20,26 @@ type iCancelServiceUsageRequest interface {
 }
 
 type CancelServiceUsageRequest struct {
-	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that ensures the idempotence of the request. The token must be unique for each request. It can contain only ASCII characters and must be no more than 64 characters long.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to delete the application.
+	// Specifies whether to delete the request.
 	//
-	// >  After you delete the application, you must re-enter the application information the next time you submit an application.
+	// > If you delete the request, you must submit a new one.
 	//
 	// example:
 	//
 	// true
-	NeedDelete *bool   `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.

@@ -18,16 +18,22 @@ type iCreateSkillHubConfigRequest interface {
 }
 
 type CreateSkillHubConfigRequest struct {
+	// A client-generated token to ensure request idempotence. This value must be unique for each request. **ClientToken*	- must contain only ASCII characters and be no longer than 64 characters.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the Object Storage Service (OSS) bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tidb-test-a
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The region ID of the OSS bucket. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	//
 	// This parameter is required.
 	//
 	// example:

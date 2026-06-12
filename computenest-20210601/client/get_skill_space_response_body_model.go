@@ -24,28 +24,38 @@ type iGetSkillSpaceResponseBody interface {
 }
 
 type GetSkillSpaceResponseBody struct {
+	// The time when the SkillSpace was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The description of the SkillSpace.
+	//
 	// example:
 	//
 	// 1111111
 	SkillSpaceDescription *string `json:"SkillSpaceDescription,omitempty" xml:"SkillSpaceDescription,omitempty"`
+	// The ID of the SkillSpace.
+	//
 	// example:
 	//
 	// ss-11111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
+	// The name of the SkillSpace.
+	//
 	// example:
 	//
 	// 1111111
 	SkillSpaceName *string `json:"SkillSpaceName,omitempty" xml:"SkillSpaceName,omitempty"`
+	// The time when the SkillSpace was last updated.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z

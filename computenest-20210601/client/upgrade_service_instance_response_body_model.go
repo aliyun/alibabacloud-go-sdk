@@ -22,7 +22,7 @@ type UpgradeServiceInstanceResponseBody struct {
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters required for the upgrade. This parameter is returned only if DryRun is set to true in the request. You can specify the required parameters based on the returned value when you perform an actual request.
+	// The new parameters required for the service upgrade. This parameter is returned only when DryRun is set to true. Include these parameters in the request when you perform the upgrade.
 	UpgradeRequiredParameters []*string `json:"UpgradeRequiredParameters,omitempty" xml:"UpgradeRequiredParameters,omitempty" type:"Repeated"`
 }
 

@@ -14,7 +14,7 @@ type iStopServiceInstanceResponseBody interface {
 }
 
 type StopServiceInstanceResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -32,39 +32,35 @@ type iListServicesRequest interface {
 type ListServicesRequest struct {
 	// The filter.
 	Filter []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Keyword fuzzy query.
+	// The keyword for a fuzzy query.
 	//
 	// example:
 	//
 	// name
 	FuzzyKeyword *string `json:"FuzzyKeyword,omitempty" xml:"FuzzyKeyword,omitempty"`
-	// Whether it is used. Optional values:
+	// Specifies whether the service is in use. Valid values:
 	//
+	// - false: The service is not in use.
 	//
-	//
-	// - false: not being used.
-	//
-	//
-	//
-	// - true: already in use.
+	// - true: The service is in use.
 	//
 	// example:
 	//
 	// false
 	InUsed *bool `json:"InUsed,omitempty" xml:"InUsed,omitempty"`
-	// The number of entries page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to retrieve the next page of results. Set this to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Service ordering type.
+	// The sorting type for services.
 	//
 	// example:
 	//
@@ -78,13 +74,13 @@ type ListServicesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service access type.
+	// The service access type.
 	//
 	// example:
 	//
 	// All
 	ServiceAccessType *string `json:"ServiceAccessType,omitempty" xml:"ServiceAccessType,omitempty"`
-	// The tags.
+	// The custom tags.
 	Tag []*ListServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -200,21 +196,21 @@ func (s *ListServicesRequest) Validate() error {
 }
 
 type ListServicesRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	// The filter name. You can specify one or more filter names to query services. Valid values:
 	//
-	// 	- ServiceId: the ID of the service.
+	// - ServiceId: The service ID.
 	//
-	// 	- Name: the name of the service.
+	// - Name: The service name.
 	//
-	// 	- Status: the state of the service.
+	// - Status: The service status.
 	//
-	// 	- SupplierName: the name of the service provider.
+	// - SupplierName: The service provider name.
 	//
 	// example:
 	//
 	// Status
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A value of the filter condition.
+	// The filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

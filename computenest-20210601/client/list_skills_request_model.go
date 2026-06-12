@@ -20,16 +20,21 @@ type iListSkillsRequest interface {
 }
 
 type ListSkillsRequest struct {
+	// The filters for querying Skills.
 	Filter []*ListSkillsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries to return per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Specifies whether to return the download URL of the Skill package.
+	//
 	// example:
 	//
 	// false
 	NeedDownloadUrl *bool `json:"NeedDownloadUrl,omitempty" xml:"NeedDownloadUrl,omitempty"`
-	// NextToken
+	// The token for the next page of results. Leave this parameter empty for the first request. For subsequent requests, use the `NextToken` value from the previous response.
 	//
 	// example:
 	//
@@ -95,10 +100,27 @@ func (s *ListSkillsRequest) Validate() error {
 }
 
 type ListSkillsRequestFilter struct {
+	// The filter name. Valid values:
+	//
+	// - `SkillId`: The Skill ID. An exact match is performed.
+	//
+	// - `SkillSpaceId`: The ID of the SkillSpace. An exact match is performed.
+	//
+	// - `SkillName`: The Skill name.
+	//
+	// - `MatchType`: The match type for `SkillName`. Valid values: `exact` (exact match), `prefix` (prefix match), and `fuzzy` (fuzzy match).
+	//
+	// - `SkillType`: The Skill type. Valid values: `official` and `custom`.
+	//
+	// - `Keyword`: The keyword for a fuzzy match on the Skill name or Skill description.
+	//
+	// - `SkillLabels`: The Skill labels. A fuzzy match is performed.
+	//
 	// example:
 	//
 	// SkillId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter values. You can specify a maximum of 10 values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

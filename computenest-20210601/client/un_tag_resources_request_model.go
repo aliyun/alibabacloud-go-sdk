@@ -22,11 +22,11 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resource. Valid values:
+	// Specifies whether to remove all tags from the resources. This parameter is valid only when \\`TagKey\\` is not specified. The default value is false. Valid values:
 	//
-	// 	- true: All tags are removed from the resource.
+	// - true
 	//
-	// 	- false (default): The specified tags are removed from the resource.
+	// - false
 	//
 	// example:
 	//
@@ -40,21 +40,19 @@ type UnTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
-	//
-	// You can remove tags from up to 50 resources at a time.
+	// The resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid values:
 	//
-	// 	- service: service
+	// - service: A service.
 	//
-	// 	- serviceinstance: service instance
+	// - serviceinstance: A service instance.
 	//
-	// 	- artifact: artifact
+	// - artifact: An artifact.
 	//
-	// 	- dataset: dataset
+	// - dataset: A dataset.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +60,7 @@ type UnTagResourcesRequest struct {
 	//
 	// service
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys.
-	//
-	// You can specify a maximum of 20 tag keys.
-	//
-	// > If you set the `All` parameter to `true`, you do not need to specify tag keys.
+	// The tag keys of the resources.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

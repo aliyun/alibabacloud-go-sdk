@@ -16,7 +16,7 @@ type iListServiceCategoriesResponseBody interface {
 }
 
 type ListServiceCategoriesResponseBody struct {
-	// The category list of the service.
+	// A list of service category names.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// The request ID.
 	//

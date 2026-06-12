@@ -18,7 +18,7 @@ type iGetServiceInstanceRequest interface {
 }
 
 type GetServiceInstanceRequest struct {
-	// The MarketInstance ID.
+	// The Alibaba Cloud Marketplace instance ID.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetServiceInstanceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service instance ID.
 	//
-	// >  You must specify either `ServiceInstanceId` or `MarketInstanceId`. Otherwise, the operation fails.
+	// > You must specify either `ServiceInstanceId` or `MarketInstanceId` to query the detailed information about the service instance.
 	//
 	// example:
 	//

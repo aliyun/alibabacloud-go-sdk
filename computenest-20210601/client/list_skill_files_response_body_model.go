@@ -22,21 +22,28 @@ type iListSkillFilesResponseBody interface {
 }
 
 type ListSkillFilesResponseBody struct {
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. This token is returned only when more results are available.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 2849EE73-AFFA-5AFD-9575-12FA886451DA
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Skill files.
 	SkillFiles []*ListSkillFilesResponseBodySkillFiles `json:"SkillFiles,omitempty" xml:"SkillFiles,omitempty" type:"Repeated"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 1
@@ -110,10 +117,14 @@ func (s *ListSkillFilesResponseBody) Validate() error {
 }
 
 type ListSkillFilesResponseBodySkillFiles struct {
+	// The relative path of the file within the Skill.
+	//
 	// example:
 	//
 	// SKILL.md
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The pre-signed URL for accessing the file in OSS.
+	//
 	// example:
 	//
 	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/SKILL.md

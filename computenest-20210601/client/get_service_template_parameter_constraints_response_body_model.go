@@ -18,9 +18,9 @@ type iGetServiceTemplateParameterConstraintsResponseBody interface {
 }
 
 type GetServiceTemplateParameterConstraintsResponseBody struct {
-	// The package family constraints.
+	// The constraints on the specification family.
 	FamilyConstraints []*string `json:"FamilyConstraints,omitempty" xml:"FamilyConstraints,omitempty" type:"Repeated"`
-	// The constraints on the parameters.
+	// The parameter constraints.
 	ParameterConstraints []*GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints `json:"ParameterConstraints,omitempty" xml:"ParameterConstraints,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -81,29 +81,29 @@ func (s *GetServiceTemplateParameterConstraintsResponseBody) Validate() error {
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints struct {
 	// The valid values of the parameter.
 	AllowedValues []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	// The names of the associated parameters.
+	// The associated parameters.
 	AssociationParameterNames []*string `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
 	// The behavior of the parameter. Valid values:
 	//
-	// 	- NoLimit: No limit is imposed on the value of this parameter.
+	// - NoLimit: No limits are imposed on the value of this parameter.
 	//
-	// 	- NotSupport: The value of this parameter cannot be queried.
+	// - NotSupport: The values of this parameter cannot be queried.
 	//
-	// 	- QueryError: This parameter failed to be queried.
+	// - QueryError: The query failed.
 	//
-	// >  If AllowedValues is not returned, Behavior and BehaviorReason are returned, which indicate the behavior of the parameter and the reason for the behavior.
+	// > If AllowedValues is not returned, Behavior and BehaviorReason are returned to describe the behavior of the parameter and the reason.
 	//
 	// example:
 	//
 	// NoLimit
 	Behavior *string `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	// The reason why the behavior of the parameter is returned.
+	// The reason for the parameter behavior.
 	//
 	// example:
 	//
 	// No resource property refer to the parameter
 	BehaviorReason *string `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
-	// The original constraint information.
+	// The original constraints.
 	OriginalConstraints []*GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints `json:"OriginalConstraints,omitempty" xml:"OriginalConstraints,omitempty" type:"Repeated"`
 	// The name of the parameter.
 	//
@@ -111,9 +111,9 @@ type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints stru
 	//
 	// ZoneInfo
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The error details that are returned if the request fails.
+	// The details of the query failure.
 	QueryErrors []*GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors `json:"QueryErrors,omitempty" xml:"QueryErrors,omitempty" type:"Repeated"`
-	// The data type of the parameter.
+	// The type of the parameter.
 	//
 	// example:
 	//
@@ -295,7 +295,7 @@ func (s *GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsO
 }
 
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors struct {
-	// The error message.
+	// The error details.
 	//
 	// example:
 	//

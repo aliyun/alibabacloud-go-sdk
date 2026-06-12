@@ -22,15 +22,15 @@ type iListServiceInstanceBillResponseBody interface {
 }
 
 type ListServiceInstanceBillResponseBody struct {
-	// The billing information of the backup schedule.
+	// A list of billing information for the service instance.
 	Item []*ListServiceInstanceBillResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListServiceInstanceBillResponseBody struct {
 	//
 	// 2849EE73-AFFA-5AFD-9575-12FA886451DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,17 @@ func (s *ListServiceInstanceBillResponseBody) Validate() error {
 }
 
 type ListServiceInstanceBillResponseBodyItem struct {
-	// The billing cycle. Format: YYYY-MM.
+	// The billing cycle of the computing resources for the instance. This parameter is supported only for pay-as-you-go instances. Valid values:
+	//
+	// - **Day**: daily billing.
+	//
+	// - **Month**: monthly billing.
 	//
 	// example:
 	//
 	// 2025-02
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The billing date. This parameter is required only if the **Granularity*	- parameter is set to DAILY. Format: YYYY-MM-DD.
+	// The billing date in YYYY-MM-DD format. This parameter is returned only when **Granularity*	- is set to DAILY.
 	//
 	// example:
 	//
@@ -141,23 +145,25 @@ type ListServiceInstanceBillResponseBodyItem struct {
 	//
 	// disk
 	BillingItemCode *string `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
-	// The currency unit.
+	// The currency. Valid values:
 	//
-	// 	- China site: **CNY**.
+	// - CNY: Chinese Yuan.
 	//
-	// 	- International site: **USD**.
+	// - USD: US Dollar.
+	//
+	// - JPY: Japanese Yen.
 	//
 	// example:
 	//
-	// CNY
+	// RMB
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount deducted with resource plans.
+	// The amount deducted by a resource plan.
 	//
 	// example:
 	//
 	// 0
 	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -169,13 +175,13 @@ type ListServiceInstanceBillResponseBodyItem struct {
 	//
 	// 0
 	InvoiceDiscount *string `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The unit price.
+	// The list price.
 	//
 	// example:
 	//
 	// 0.12
 	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	// The unit of the unit price.
+	// The unit of the list price.
 	//
 	// example:
 	//
@@ -193,25 +199,25 @@ type ListServiceInstanceBillResponseBodyItem struct {
 	//
 	// 0
 	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// sls
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The specific service resource.
+	// The product details.
 	//
 	// example:
 	//
 	// sls
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated.
+	// The name of the product to which the resource belongs.
 	//
 	// example:
 	//
 	// NLB
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The billing cycle in which the bill is split.
+	// The month of the split bill.
 	//
 	// example:
 	//
@@ -219,21 +225,21 @@ type ListServiceInstanceBillResponseBodyItem struct {
 	SplitBillingCycle *string `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- Subscription: the subscription billing method.
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//
 	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// The amount of resource usage.
+	// The number of input tokens.
 	//
 	// example:
 	//
 	// {\\"EmbeddingTokens\\": 314}
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The unit of usage.
+	// The unit of the usage.
 	//
 	// example:
 	//

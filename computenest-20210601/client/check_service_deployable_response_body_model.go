@@ -16,9 +16,9 @@ type iCheckServiceDeployableResponseBody interface {
 }
 
 type CheckServiceDeployableResponseBody struct {
-	// Inspection result.
+	// The check results.
 	CheckResults []*CheckServiceDeployableResponseBodyCheckResults `json:"CheckResults,omitempty" xml:"CheckResults,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,24 +66,24 @@ func (s *CheckServiceDeployableResponseBody) Validate() error {
 }
 
 type CheckServiceDeployableResponseBodyCheckResults struct {
-	// Returns a hint message for the result.
+	// The message returned for the result.
 	//
 	// example:
 	//
 	// ""
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Skippable *bool   `json:"Skippable,omitempty" xml:"Skippable,omitempty"`
-	// Check type, invalid values:
+	// The type of precheck. Valid values:
 	//
-	// - Balance ：Account balance.
+	// - Balance: The account balance.
 	//
-	// - Quota:  Account quota.
+	// - Quota: The resource quota.
 	//
 	// example:
 	//
 	// Balance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Inspection result.
+	// The check result.
 	//
 	// example:
 	//

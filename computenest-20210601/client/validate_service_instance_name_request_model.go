@@ -24,33 +24,45 @@ type iValidateServiceInstanceNameRequest interface {
 }
 
 type ValidateServiceInstanceNameRequest struct {
+	// A client token to ensure the idempotence of the request. Generate a unique token for each request. The **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether the service instance is a trial instance.
+	//
 	// example:
 	//
 	// false
 	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-12xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The name of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testName
 	ServiceInstanceName *string `json:"ServiceInstanceName,omitempty" xml:"ServiceInstanceName,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The name of the template. Specify this parameter if the service supports multiple templates.
+	//
 	// example:
 	//
-	// 模板一
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

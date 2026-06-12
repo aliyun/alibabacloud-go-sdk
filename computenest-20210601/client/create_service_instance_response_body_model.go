@@ -22,7 +22,7 @@ type iCreateServiceInstanceResponseBody interface {
 }
 
 type CreateServiceInstanceResponseBody struct {
-	// The MartketInstance ID.
+	// The ID of the Alibaba Cloud Marketplace instance.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateServiceInstanceResponseBody struct {
 	//
 	// 2306175xxxxxxxx
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -48,21 +48,21 @@ type CreateServiceInstanceResponseBody struct {
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
 	// The status of the service instance. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: The service instance is created.
 	//
-	// 	- **Deploying**
+	// - **Deploying**: The service instance is being deployed.
 	//
-	// 	- **DeployedFailed**
+	// - **DeployedFailed**: The service instance failed to be deployed.
 	//
-	// 	- **Deployed**
+	// - **Deployed**: The service instance is deployed.
 	//
-	// 	- **Upgrading**
+	// - **Upgrading**: The service instance is being upgraded.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: The service instance is being deleted.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The service instance is deleted.
 	//
-	// 	- **DeletedFailed**
+	// - **DeletedFailed**: The service instance failed to be deleted.
 	//
 	// example:
 	//

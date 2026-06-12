@@ -11,6 +11,8 @@ type iGenerateServicePolicyRequest interface {
 	GoString() string
 	SetOperationTypes(v []*string) *GenerateServicePolicyRequest
 	GetOperationTypes() []*string
+	SetParameters(v map[string]interface{}) *GenerateServicePolicyRequest
+	GetParameters() map[string]interface{}
 	SetRegionId(v string) *GenerateServicePolicyRequest
 	GetRegionId() *string
 	SetServiceId(v string) *GenerateServicePolicyRequest
@@ -24,18 +26,9 @@ type iGenerateServicePolicyRequest interface {
 }
 
 type GenerateServicePolicyRequest struct {
-	// The type of operation N for which you want to generate the policy information.
-	//
-	// Valid values:
-	//
-	// 	- CreateServiceInstance: creates a serviceInstance by calling the CreateServiceInstance operation.
-	//
-	// 	- UpdateServiceInstance: updates a serviceInstance by calling the UpdateServiceInstance operation.
-	//
-	// 	- DeleteServiceInstance: deletes a serviceInstance by calling the DeleteServiceInstance operation.
-	//
-	// >  The default value is the combination of all valid values.
-	OperationTypes []*string `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	// The types of operations for which to generate policy information.
+	OperationTypes []*string              `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	Parameters     map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -58,17 +51,17 @@ type GenerateServicePolicyRequest struct {
 	//
 	// draft
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
-	// GPU-单机版
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial policy. Valid values:
+	// The trial type. The default value is NotTrial. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports trial use.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support trial use.
 	//
 	// example:
 	//
@@ -86,6 +79,10 @@ func (s GenerateServicePolicyRequest) GoString() string {
 
 func (s *GenerateServicePolicyRequest) GetOperationTypes() []*string {
 	return s.OperationTypes
+}
+
+func (s *GenerateServicePolicyRequest) GetParameters() map[string]interface{} {
+	return s.Parameters
 }
 
 func (s *GenerateServicePolicyRequest) GetRegionId() *string {
@@ -110,6 +107,11 @@ func (s *GenerateServicePolicyRequest) GetTrialType() *string {
 
 func (s *GenerateServicePolicyRequest) SetOperationTypes(v []*string) *GenerateServicePolicyRequest {
 	s.OperationTypes = v
+	return s
+}
+
+func (s *GenerateServicePolicyRequest) SetParameters(v map[string]interface{}) *GenerateServicePolicyRequest {
+	s.Parameters = v
 	return s
 }
 

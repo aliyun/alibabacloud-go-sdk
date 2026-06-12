@@ -26,13 +26,13 @@ type iGetServiceInstanceSubscriptionEstimateCostRequest interface {
 }
 
 type GetServiceInstanceSubscriptionEstimateCostRequest struct {
-	// Ensures idempotence of the request. Generate a parameter value from your client to ensure its uniqueness across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters.
+	// A client-generated token that ensures the idempotence of the request. The token must be unique for each request. It can contain only ASCII characters and cannot be longer than 64 characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Order type. Possible value: Renewal.
+	// The order type. Valid value: Renewal.
 	//
 	// This parameter is required.
 	//
@@ -40,27 +40,27 @@ type GetServiceInstanceSubscriptionEstimateCostRequest struct {
 	//
 	// Renewal
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The renewal duration for all prepaid resources of the service instance. The unit is specified by PeriodUnit.
+	// The renewal duration for all subscription resources of the service instance. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit for the renewal duration of all prepaid resources of the service instance, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+	// The unit of the renewal duration for all subscription resources of the service instance. This is the unit for the Period parameter. Valid values: Month and Year. Default value: Month.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource renewal configuration.
+	// The renewal configuration for the resources.
 	ResourcePeriod []*GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod `json:"ResourcePeriod,omitempty" xml:"ResourcePeriod,omitempty" type:"Repeated"`
-	// Service instance ID.
+	// The service instance ID.
 	//
 	// This parameter is required.
 	//
@@ -155,19 +155,19 @@ func (s *GetServiceInstanceSubscriptionEstimateCostRequest) Validate() error {
 }
 
 type GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod struct {
-	// Renewal duration. The unit is specified by PeriodUnit.
+	// The renewal duration. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit for the resource renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+	// The unit of the renewal duration for the resource. This is the unit for the Period parameter. Valid values: Month and Year. Default value: Month.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// Resource ARN (Aliyun Resource Name).
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
 	//
 	// example:
 	//

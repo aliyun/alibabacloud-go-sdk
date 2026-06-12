@@ -26,13 +26,13 @@ type iListServiceInstancesRequest interface {
 type ListServiceInstancesRequest struct {
 	// The filter.
 	Filter []*ListServiceInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The query token. Set it to the **NextToken*	- value returned from the previous API call.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListServiceInstancesRequest struct {
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag key and value.
+	// The custom tags.
 	Tag []*ListServiceInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -141,29 +141,43 @@ func (s *ListServiceInstancesRequest) Validate() error {
 }
 
 type ListServiceInstancesRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	// The name of the filter. You can specify one or more filter names to query resources. Valid values:
 	//
-	// - Name：Query by service name.
+	// - Name: The name of the service. To perform a fuzzy search, enter the value in the \\*xxx\\	- format. For example, if the service name is My Service, you can enter \\*My\\	- or \\*Service\\	- for a fuzzy search.
 	//
-	// - ServiceInstanceName：Query by service  instance name.
+	// - ServiceInstanceName: The name of the service instance. A fuzzy query is performed if you enter one service instance name. A term query is performed if you enter multiple service instance names.
 	//
-	// - ServiceInstanceId：Query by service  instance ID.
+	// - ServiceInstanceId: The service instance ID.
 	//
-	// - ServiceId：Query by service ID.
+	// - ServiceId: The service ID.
 	//
-	// - Version：Query by service version.
+	// - Version: The service version.
 	//
-	// - Status：Query by service status.
+	// - Status: The instance status.
 	//
-	// - DeployType: Query by service deployType.
+	// - DeployType: The deployment type.
 	//
-	// - ServiceType：Query by service deployType.
+	// - ServiceType: The service type.
+	//
+	// - OperationStartTimeBefore: The time before the start of the Alibaba Cloud Managed Services.
+	//
+	// - OperationStartTimeAfter: The time after the start of the Alibaba Cloud Managed Services.
+	//
+	// - OperationEndTimeBefore: The time before the end of the Alibaba Cloud Managed Services.
+	//
+	// - OperationEndTimeAfter: The time after the end of the Alibaba Cloud Managed Services.
+	//
+	// - OperatedServiceInstanceId: The ID of the managed service instance under a private service.
+	//
+	// - OperationServiceInstanceId: The ID of the service instance under a pure managed service.
+	//
+	// - EnableInstanceOps: Indicates whether the Alibaba Cloud Managed Services feature is enabled for the service instance.
 	//
 	// example:
 	//
 	// ServiceInstanceId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter values of the filter.
+	// The list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

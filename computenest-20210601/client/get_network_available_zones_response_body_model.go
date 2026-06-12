@@ -16,7 +16,10 @@ type iGetNetworkAvailableZonesResponseBody interface {
 }
 
 type GetNetworkAvailableZonesResponseBody struct {
+	// The data returned.
 	Data *GetNetworkAvailableZonesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A17F9930-E2DC-5E87-B6D6-B0BCD2B00834
@@ -59,8 +62,10 @@ func (s *GetNetworkAvailableZonesResponseBody) Validate() error {
 }
 
 type GetNetworkAvailableZonesResponseBodyData struct {
+	// The list of region IDs.
 	RegionIdList []*string `json:"RegionIdList,omitempty" xml:"RegionIdList,omitempty" type:"Repeated"`
-	ZoneIdList   []*string `json:"ZoneIdList,omitempty" xml:"ZoneIdList,omitempty" type:"Repeated"`
+	// The list of zone IDs.
+	ZoneIdList []*string `json:"ZoneIdList,omitempty" xml:"ZoneIdList,omitempty" type:"Repeated"`
 }
 
 func (s GetNetworkAvailableZonesResponseBodyData) String() string {

@@ -20,9 +20,9 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the new resource group.
+	// The ID of the destination resource group.
 	//
-	// You can view resource group IDs in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) .
+	// You can obtain the resource group ID from the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups).
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the cloud resource that you want to move to a new resource group.
+	// The ID of the cloud resource whose resource group you want to change.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type ChangeResourceGroupRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- service: service
+	// - service: The resource is a service.
 	//
-	// 	- serviceinstance: service instance
+	// - serviceinstance: The resource is a service instance.
 	//
 	// example:
 	//

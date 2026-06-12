@@ -16,12 +16,16 @@ type iGetSkillFileDetectResultRequest interface {
 }
 
 type GetSkillFileDetectResultRequest struct {
+	// The unique identifier for the detection task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2aceb074-fa72-44d2-99d9-45b17cffe0e7
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

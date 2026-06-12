@@ -28,35 +28,46 @@ type iGetSkillResponseBody interface {
 }
 
 type GetSkillResponseBody struct {
+	// The time the Skill was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The description of the Skill.
+	//
 	// example:
 	//
 	// 11111111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
-	// Skill ID
+	// The ID of the Skill.
 	//
 	// example:
 	//
 	// s-04zzrgosj6xd11yah
-	SkillId     *string   `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The labels of the Skill.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
+	// The name of the Skill.
+	//
 	// example:
 	//
 	// skill-hello
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The ID of the SkillSpace to which the Skill belongs.
+	//
 	// example:
 	//
 	// ss-111111111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
+	// The time the Skill was last updated.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z

@@ -14,6 +14,8 @@ type iValidateServiceInstanceNameResponseBody interface {
 }
 
 type ValidateServiceInstanceNameResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D****

@@ -24,28 +24,52 @@ type iGetSkillFileDetectResultResponseBody interface {
 }
 
 type GetSkillFileDetectResultResponseBody struct {
+	// The result code. A value of "200" indicates success. Other values indicate an error.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique identifier for the detection task.
+	//
 	// example:
 	//
 	// 8cfb1102cc5f56fe752f6e9b8c6f7f3d
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 3F976EF8-C10A-57DC-917C-BB7BEB508FFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The file detection result. Valid values:
+	//
+	// 0: safe file
+	//
+	// 1: suspicious file
+	//
+	// 3: The detection is in progress.
+	//
 	// example:
 	//
 	// 0
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The file detection score. The score ranges correspond to the following threat levels:
+	//
+	// 0–60: safe
+	//
+	// 61–70: risk
+	//
+	// 71–80: suspicious
+	//
+	// 81–100: malicious
+	//
 	// example:
 	//
 	// 10

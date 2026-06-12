@@ -20,13 +20,18 @@ type iUpdateServiceUsageShrinkRequest interface {
 }
 
 type UpdateServiceUsageShrinkRequest struct {
-	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
 	// This parameter is required.
@@ -35,7 +40,7 @@ type UpdateServiceUsageShrinkRequest struct {
 	//
 	// service-39f4f251e94843xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The information about the applicant.
+	// The user information.
 	UserInformationShrink *string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 

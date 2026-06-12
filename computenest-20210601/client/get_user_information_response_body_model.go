@@ -62,11 +62,11 @@ func (s *GetUserInformationResponseBody) Validate() error {
 }
 
 type GetUserInformationResponseBodyDeliverySettings struct {
-	// Indicates whether screencast delivery to OSS is enabled. Valid values:
+	// Specifies whether to use the delivery feature. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
 	// example:
 	//
@@ -78,23 +78,23 @@ type GetUserInformationResponseBodyDeliverySettings struct {
 	//
 	// 0101data
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+	// Specifies whether to deliver data to Object Storage Service (OSS). Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
-	// The number of days for which the screencasts are saved.
+	// The number of days to save screen recordings.
 	//
 	// example:
 	//
 	// 7
 	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
-	// The OSS path.
+	// The path in OSS.
 	//
 	// example:
 	//
