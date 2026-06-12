@@ -28,23 +28,19 @@ type iListServiceInstanceResourcesRequest interface {
 type ListServiceInstanceResourcesRequest struct {
 	// The filter.
 	Filters []*ListServiceInstanceResourcesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The maximum number of entries per page.
-	//
-	// Valid values: 1 to 100.
-	//
-	// Default value: 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The query token. Set this to the NextToken value returned from the previous API call to retrieve the next page of results.
 	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID where the service instance resides.
+	// The region ID.
 	//
 	// example:
 	//
@@ -58,13 +54,17 @@ type ListServiceInstanceResourcesRequest struct {
 	//
 	// si-d8a0cc2a1ee04dce****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// Service Instance resource type，include AliyunResource and ContainerResource.
+	// The type of the resource in the service instance. Valid values:
+	//
+	// - AliyunResource: an Alibaba Cloud resource.
+	//
+	// - ContainerResource: a pod.
 	//
 	// example:
 	//
 	// AliyunResource
 	ServiceInstanceResourceType *string `json:"ServiceInstanceResourceType,omitempty" xml:"ServiceInstanceResourceType,omitempty"`
-	// The tags.
+	// The resource tags.
 	Tag []*ListServiceInstanceResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -162,7 +162,7 @@ func (s *ListServiceInstanceResourcesRequest) Validate() error {
 }
 
 type ListServiceInstanceResourcesRequestFilters struct {
-	// Vaild values:
+	// The filter name. You can specify one or more filter names to query resources. Valid values:
 	//
 	// - ExpireTimeStart
 	//
@@ -176,7 +176,7 @@ type ListServiceInstanceResourcesRequestFilters struct {
 	//
 	// ResourceARN
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A value of the filter condition.
+	// The filter value.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -211,13 +211,13 @@ func (s *ListServiceInstanceResourcesRequestFilters) Validate() error {
 }
 
 type ListServiceInstanceResourcesRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
 	// example:
 	//

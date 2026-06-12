@@ -24,15 +24,15 @@ type iLaunchServiceRequest interface {
 }
 
 type LaunchServiceRequest struct {
-	// The categories of the service.
+	// The service categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token used to ensure the idempotence of the request. Generate a unique value from your client for each request. The ClientToken parameter supports only ASCII characters.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Whether to set the recommended service publishing to the service directory.
+	// Specifies whether to recommend the service when publishing it to the Service Catalog.
 	//
 	// example:
 	//

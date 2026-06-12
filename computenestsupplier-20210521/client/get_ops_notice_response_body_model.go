@@ -42,56 +42,110 @@ type iGetOpsNoticeResponseBody interface {
 }
 
 type GetOpsNoticeResponseBody struct {
+	// The non-public properties of the O\\&M item.
+	//
 	// example:
 	//
 	// {\\"cveId\\":\\"CVE-2021-4034\\"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The category. Valid values:
+	//
+	// - Availability
+	//
+	// - Cost
+	//
+	// - Performance
+	//
+	// - Recovery: backup and recovery
+	//
+	// - Security
+	//
 	// example:
 	//
 	// Availability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
 	// message
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the notice.
+	//
 	// example:
 	//
 	// notice-2338d3835bxxxxx
 	NoticeId *string `json:"NoticeId,omitempty" xml:"NoticeId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3AD3CC-E938-5042-A771-7FD9A2FE03F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-c2d118c9193e49xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The number of service instances involved.
+	//
 	// example:
 	//
 	// 2
-	ServiceInstanceCount *string   `json:"ServiceInstanceCount,omitempty" xml:"ServiceInstanceCount,omitempty"`
-	ServiceName          *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceVersions      []*string `json:"ServiceVersions,omitempty" xml:"ServiceVersions,omitempty" type:"Repeated"`
+	ServiceInstanceCount *string `json:"ServiceInstanceCount,omitempty" xml:"ServiceInstanceCount,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// WordPress Community Edition
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The list of published service versions.
+	ServiceVersions []*string `json:"ServiceVersions,omitempty" xml:"ServiceVersions,omitempty" type:"Repeated"`
+	// The severity of the O\\&M item. Valid values:
+	//
+	// - Critical
+	//
+	// - High
+	//
+	// - Medium
+	//
+	// - Low
+	//
 	// example:
 	//
 	// Critical
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The solutions.
+	//
 	// example:
 	//
 	// Solutions
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2024-11-18T02:05:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Indicates whether the operation was successful. A value of **true*	- indicates success.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The type of the notice. Valid values:
+	//
+	// - ServiceInstanceUpgrade: upgrade
+	//
+	// - VulnerabilityFix: vulnerability
+	//
 	// example:
 	//
 	// ServiceInstanceUpgrade
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of users who received the notice.
+	//
 	// example:
 	//
 	// 1

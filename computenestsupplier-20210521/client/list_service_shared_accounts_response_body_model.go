@@ -22,13 +22,13 @@ type iListServiceSharedAccountsResponseBody interface {
 }
 
 type ListServiceSharedAccountsResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServiceSharedAccountsResponseBody struct {
 	//
 	// CA3AE512-6D30-549A-B52D-B9042CA8D515
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Service shared account information.
+	// The information about the shared accounts.
 	ShareAccount []*ListServiceSharedAccountsResponseBodyShareAccount `json:"ShareAccount,omitempty" xml:"ShareAccount,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -117,33 +117,29 @@ func (s *ListServiceSharedAccountsResponseBody) Validate() error {
 }
 
 type ListServiceSharedAccountsResponseBodyShareAccount struct {
-	// The time when the service was created.
+	// The time when the sharing was created.
 	//
 	// example:
 	//
 	// 2021-12-28T02:47:46.000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Service logo.
+	// The logo of the distributor.
 	//
 	// example:
 	//
 	// logo
 	Logo *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
-	// The name of the service instance. The value must meet the following requirements:
-	//
-	// 	- The name cannot exceed 64 characters in length.
-	//
-	// 	- It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+	// The name of the distributor.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The permissions on the service. Valid values:
+	// The permission type. Valid values:
 	//
-	// 	- Deployable: Permissions to deploy the service.
+	// - Deployable: The service is deployable.
 	//
-	// 	- Accessible: Permissions to access the service.
+	// - Accessible: The service is accessible.
 	//
 	// example:
 	//
@@ -155,13 +151,13 @@ type ListServiceSharedAccountsResponseBodyShareAccount struct {
 	//
 	// service-e10349089de34exxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The time when the service was updated.
+	// The time when the sharing was last updated.
 	//
 	// example:
 	//
 	// 2023-02-13T02:16:03.756Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The user aliUid.
+	// The Alibaba Cloud account ID of the user.
 	//
 	// example:
 	//

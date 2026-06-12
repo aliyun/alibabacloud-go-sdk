@@ -11,6 +11,8 @@ type iGenerateServicePolicyRequest interface {
 	GoString() string
 	SetOperationTypes(v []*string) *GenerateServicePolicyRequest
 	GetOperationTypes() []*string
+	SetParameters(v map[string]interface{}) *GenerateServicePolicyRequest
+	GetParameters() map[string]interface{}
 	SetRegionId(v string) *GenerateServicePolicyRequest
 	GetRegionId() *string
 	SetServiceId(v string) *GenerateServicePolicyRequest
@@ -24,8 +26,9 @@ type iGenerateServicePolicyRequest interface {
 }
 
 type GenerateServicePolicyRequest struct {
-	// The type of operation N for which you want to generate the policy information.
-	OperationTypes []*string `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	// The operation types for which to generate policy information.
+	OperationTypes []*string              `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	Parameters     map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -52,13 +55,13 @@ type GenerateServicePolicyRequest struct {
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial policy. Valid values:
+	// The trial type. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports a trial.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support a trial.
 	//
 	// example:
 	//
@@ -76,6 +79,10 @@ func (s GenerateServicePolicyRequest) GoString() string {
 
 func (s *GenerateServicePolicyRequest) GetOperationTypes() []*string {
 	return s.OperationTypes
+}
+
+func (s *GenerateServicePolicyRequest) GetParameters() map[string]interface{} {
+	return s.Parameters
 }
 
 func (s *GenerateServicePolicyRequest) GetRegionId() *string {
@@ -100,6 +107,11 @@ func (s *GenerateServicePolicyRequest) GetTrialType() *string {
 
 func (s *GenerateServicePolicyRequest) SetOperationTypes(v []*string) *GenerateServicePolicyRequest {
 	s.OperationTypes = v
+	return s
+}
+
+func (s *GenerateServicePolicyRequest) SetParameters(v map[string]interface{}) *GenerateServicePolicyRequest {
+	s.Parameters = v
 	return s
 }
 

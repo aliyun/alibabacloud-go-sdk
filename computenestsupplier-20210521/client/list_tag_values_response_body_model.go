@@ -18,7 +18,7 @@ type iListTagValuesResponseBody interface {
 }
 
 type ListTagValuesResponseBody struct {
-	// A pagination token.
+	// The query token. This is the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagValuesResponseBody struct {
 	//
 	// 0631D623-D917-1C2D-ACD6-5B3B19XXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the tag values.
+	// The tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

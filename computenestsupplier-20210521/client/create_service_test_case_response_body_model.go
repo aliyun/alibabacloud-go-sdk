@@ -22,7 +22,7 @@ type CreateServiceTestCaseResponseBody struct {
 	//
 	// E50287CB-AABF-4877-92C0-289B339A1546
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The test case Id
+	// The test case ID.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iUpdateServiceResponseBody interface {
 }
 
 type UpdateServiceResponseBody struct {
-	// The dry run result.
+	// The check result. This parameter is returned only when DryRun is set to true.
 	DryRunResult *UpdateServiceResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
-	// The hosted O\\&M configurations.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *UpdateServiceResponseBody) Validate() error {
 }
 
 type UpdateServiceResponseBodyDryRunResult struct {
-	// The required ram policy for deploying role.
+	// The access policy of the deployment role.
 	RolePolicy *UpdateServiceResponseBodyDryRunResultRolePolicy `json:"RolePolicy,omitempty" xml:"RolePolicy,omitempty" type:"Struct"`
 }
 
@@ -93,9 +93,9 @@ func (s *UpdateServiceResponseBodyDryRunResult) Validate() error {
 }
 
 type UpdateServiceResponseBodyDryRunResultRolePolicy struct {
-	// The missing  ram policy for deploying role.
+	// The access policy that is missing for the deployment role.
 	MissingPolicy []*UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty" type:"Repeated"`
-	// The required ram policy for deploying role.
+	// The access policy that is required for the deployment role.
 	//
 	// example:
 	//
@@ -173,15 +173,15 @@ func (s *UpdateServiceResponseBodyDryRunResultRolePolicy) Validate() error {
 }
 
 type UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy struct {
-	// The Actions.
+	// The operation in the access policy.
 	Action []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
-	// The responses.
+	// The resource in the access policy.
 	//
 	// example:
 	//
 	// *
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The service name.
+	// The service name in the access policy.
 	//
 	// example:
 	//

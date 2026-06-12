@@ -24,15 +24,15 @@ type iListServiceTestTasksRequest interface {
 }
 
 type ListServiceTestTasksRequest struct {
-	// The filters.
+	// One or more filters for the query.
 	Filter []*ListServiceTestTasksRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+	// The number of entries to return on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to retrieve the next page of results. Set this parameter to the value of NextToken returned from the previous API call.
 	//
 	// example:
 	//
@@ -134,17 +134,17 @@ func (s *ListServiceTestTasksRequest) Validate() error {
 }
 
 type ListServiceTestTasksRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	// The property to filter by. Valid values:
 	//
-	// 	- Status: the status of the task.
+	// - Status: The task status.
 	//
-	// 	- TaskId: the task id.
+	// - TaskId: The task ID.
 	//
 	// example:
 	//
 	// Status
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter value N of the filter. Valid values of N: 1 to 10.
+	// A list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

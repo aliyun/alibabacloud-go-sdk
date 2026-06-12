@@ -22,19 +22,28 @@ type iGetServiceTemplateCriterionIssuesResponseBody interface {
 }
 
 type GetServiceTemplateCriterionIssuesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of templates with criterion issues in the service.
+	//
 	// example:
 	//
 	// 1
-	RiskyTemplateCount         *int32                                                                     `json:"RiskyTemplateCount,omitempty" xml:"RiskyTemplateCount,omitempty"`
+	RiskyTemplateCount *int32 `json:"RiskyTemplateCount,omitempty" xml:"RiskyTemplateCount,omitempty"`
+	// The list of criterion issues in the template.
 	TemplateCriterionIssueList []*GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList `json:"TemplateCriterionIssueList,omitempty" xml:"TemplateCriterionIssueList,omitempty" type:"Repeated"`
+	// The total number of criterion issues in the service template.
+	//
 	// example:
 	//
 	// 3
 	TotalCriterionIssueCount *int32 `json:"TotalCriterionIssueCount,omitempty" xml:"TotalCriterionIssueCount,omitempty"`
+	// The number of mandatory criterion issues in the service template.
+	//
 	// example:
 	//
 	// 1
@@ -108,16 +117,28 @@ func (s *GetServiceTemplateCriterionIssuesResponseBody) Validate() error {
 }
 
 type GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList struct {
+	// The list of criterion issues.
 	CriterionIssues []*GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssues `json:"CriterionIssues,omitempty" xml:"CriterionIssues,omitempty" type:"Repeated"`
-	TemplateName    *string                                                                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// Template 1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The URL of the template.
+	//
 	// example:
 	//
 	// http://service-private-info/xxx/ros/template/tpl-xxxx.json
 	TemplateUrl *int32 `json:"TemplateUrl,omitempty" xml:"TemplateUrl,omitempty"`
+	// The total number of criterion issues in the service template.
+	//
 	// example:
 	//
 	// 3
 	TotalCriterionIssueCount *int32 `json:"TotalCriterionIssueCount,omitempty" xml:"TotalCriterionIssueCount,omitempty"`
+	// The number of mandatory criterion issues in the service template.
+	//
 	// example:
 	//
 	// 1
@@ -191,15 +212,26 @@ func (s *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList
 }
 
 type GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssues struct {
+	// The supplementary information about the criterion issue.
 	ExtendInfo *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssuesExtendInfo `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty" type:"Struct"`
+	// The severity level of the issue. Valid values:
+	//
+	// - Mandatory: The issue must be fixed.
+	//
+	// - Recommended: You are advised to fix the issue.
+	//
 	// example:
 	//
 	// Mandatory
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The position where the issue exists.
+	//
 	// example:
 	//
 	// $.Parameters.PayType
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The type of the criterion issue.
+	//
 	// example:
 	//
 	// ParameterNeedAssociationProperty
@@ -260,14 +292,20 @@ func (s *GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueList
 }
 
 type GetServiceTemplateCriterionIssuesResponseBodyTemplateCriterionIssueListCriterionIssuesExtendInfo struct {
+	// The AssociationProperty of the ROS parameter.
+	//
 	// example:
 	//
 	// ChargeType
 	AssociationProperty *string `json:"AssociationProperty,omitempty" xml:"AssociationProperty,omitempty"`
+	// The resource property.
+	//
 	// example:
 	//
 	// null
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The value of the resource property.
+	//
 	// example:
 	//
 	// null

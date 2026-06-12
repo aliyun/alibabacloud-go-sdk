@@ -48,7 +48,7 @@ type iCreateSupplierRegistrationRequest interface {
 }
 
 type CreateSupplierRegistrationRequest struct {
-	// Contact email
+	// The email address of the contact person.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateSupplierRegistrationRequest struct {
 	//
 	// xxxx@xxx.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
-	// Contact number
+	// The phone number of the contact person.
 	//
 	// This parameter is required.
 	//
@@ -64,15 +64,15 @@ type CreateSupplierRegistrationRequest struct {
 	//
 	// 186xxxxxxxxx
 	ContactNumber *string `json:"ContactNumber,omitempty" xml:"ContactNumber,omitempty"`
-	// Contact person
+	// The contact person.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Mike
+	// John Doe
 	ContactPerson *string `json:"ContactPerson,omitempty" xml:"ContactPerson,omitempty"`
-	// Contact person tiltle
+	// The title of the contact person.
 	//
 	// This parameter is required.
 	//
@@ -80,35 +80,49 @@ type CreateSupplierRegistrationRequest struct {
 	//
 	// CTO
 	ContactPersonTitle *string `json:"ContactPersonTitle,omitempty" xml:"ContactPersonTitle,omitempty"`
-	// Whether to enable the resell mode
+	// Specifies whether to enable distribution.
 	//
 	// example:
 	//
 	// true
 	EnableResellerMode *bool `json:"EnableResellerMode,omitempty" xml:"EnableResellerMode,omitempty"`
-	// Annual product revenue
+	// The annual revenue of the product.
 	//
 	// example:
 	//
-	// 1000
+	// 10000000
 	ProductAnnualRevenue *string `json:"ProductAnnualRevenue,omitempty" xml:"ProductAnnualRevenue,omitempty"`
-	// The business of product
+	// The industry of the service provider\\"s product.
 	//
 	// example:
 	//
 	// AI
 	ProductBusiness *string `json:"ProductBusiness,omitempty" xml:"ProductBusiness,omitempty"`
-	// Product delivery type
+	// The delivery methods of the service provider\\"s product. Valid values:
+	//
+	// - SaaS
+	//
+	// - License
+	//
+	// - API
+	//
+	// - DesktopSoftware
+	//
+	// - Others
 	//
 	// This parameter is required.
 	ProductDeliveryTypes []*string `json:"ProductDeliveryTypes,omitempty" xml:"ProductDeliveryTypes,omitempty" type:"Repeated"`
-	// The publish time of product
+	// The launch date of the product.
 	//
 	// example:
 	//
 	// 2020.10.10
 	ProductPublishTime *string `json:"ProductPublishTime,omitempty" xml:"ProductPublishTime,omitempty"`
-	// Product sell type
+	// The sales models of the service provider\\"s product. Valid values:
+	//
+	// - Direct: Direct sales
+	//
+	// - Channel: Channel sales
 	//
 	// This parameter is required.
 	ProductSellTypes []*string `json:"ProductSellTypes,omitempty" xml:"ProductSellTypes,omitempty" type:"Repeated"`
@@ -120,27 +134,27 @@ type CreateSupplierRegistrationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of resell business.
+	// The description of the distribution business.
 	//
 	// example:
 	//
-	// empty
+	// 无
 	ResellBusinessDesc *string `json:"ResellBusinessDesc,omitempty" xml:"ResellBusinessDesc,omitempty"`
-	// The demands of service providers.
+	// The suggestions from the service provider.
 	//
 	// example:
 	//
-	// empty
+	// 无
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The description of service provider.
+	// The description of the service provider.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test supplier
+	// Alibaba Cloud Compute Nest
 	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
-	// The Logo of service provider.
+	// The icon of the service provider.
 	//
 	// example:
 	//
@@ -152,9 +166,9 @@ type CreateSupplierRegistrationRequest struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The english name of the service provider.
+	// The English name of the service provider.
 	//
 	// This parameter is required.
 	//
@@ -162,7 +176,7 @@ type CreateSupplierRegistrationRequest struct {
 	//
 	// Alibaba Cloud
 	SupplierNameEn *string `json:"SupplierNameEn,omitempty" xml:"SupplierNameEn,omitempty"`
-	// The URL of the service provider.
+	// The supplier\\"s address.
 	//
 	// This parameter is required.
 	//

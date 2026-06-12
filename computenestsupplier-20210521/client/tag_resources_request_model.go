@@ -28,17 +28,17 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify at most 50 resource IDs in each call.
+	// The resource ID.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Valid value:
+	// The resource type. Valid values:
 	//
-	// - service
+	// - service: a service.
 	//
-	// - serviceinstance
+	// - serviceinstance: a service instance.
 	//
-	// - artifact
+	// - artifact: an artifact.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type TagResourcesRequest struct {
 	//
 	// service
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The resource tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -108,13 +108,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// Key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
 	// example:
 	//

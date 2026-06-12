@@ -22,7 +22,7 @@ type iGetServiceProvisionsRequest interface {
 }
 
 type GetServiceProvisionsRequest struct {
-	// The parameters that are specified to deploy the service instance.
+	// The parameters.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetServiceProvisionsRequest struct {
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

@@ -22,21 +22,15 @@ type iGetServiceTestTaskResponseBody interface {
 }
 
 type GetServiceTestTaskResponseBody struct {
-	// The execution details.
+	// The execution details of the task. This includes the running details for different use cases.
 	ExecutionDetails []*GetServiceTestTaskResponseBodyExecutionDetails `json:"ExecutionDetails,omitempty" xml:"ExecutionDetails,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the service test task. Valid values:
-	//
-	// 	- Running
-	//
-	// 	- Success
-	//
-	// 	- Failure
+	// The running status of the service test task.
 	//
 	// example:
 	//
@@ -46,9 +40,9 @@ type GetServiceTestTaskResponseBody struct {
 	//
 	// example:
 	//
-	// nametest
+	// Automated test task 1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task execution region.
+	// The region where the task runs.
 	//
 	// example:
 	//
@@ -123,13 +117,13 @@ func (s *GetServiceTestTaskResponseBody) Validate() error {
 }
 
 type GetServiceTestTaskResponseBodyExecutionDetails struct {
-	// The service test case name.
+	// The use case name.
 	//
 	// example:
 	//
 	// case1
 	CaseName *string `json:"CaseName,omitempty" xml:"CaseName,omitempty"`
-	// The execution report
+	// The execution report.
 	//
 	// example:
 	//
@@ -143,13 +137,13 @@ type GetServiceTestTaskResponseBodyExecutionDetails struct {
 	//
 	// *****************************************************************************
 	ExecutionReport *string `json:"ExecutionReport,omitempty" xml:"ExecutionReport,omitempty"`
-	// The sub task status.
+	// The execution status.
 	//
 	// example:
 	//
 	// Runing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sub task id.
+	// The subtask ID.
 	//
 	// example:
 	//

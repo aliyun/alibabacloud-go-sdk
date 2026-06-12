@@ -22,27 +22,27 @@ type iListServiceRegistrationsResponseBody interface {
 }
 
 type ListServiceRegistrationsResponseBody struct {
-	// Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+	// The number of entries returned on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Service registration information.
+	// The service review request information.
 	ServiceRegistrations []*ListServiceRegistrationsResponseBodyServiceRegistrations `json:"ServiceRegistrations,omitempty" xml:"ServiceRegistrations,omitempty" type:"Repeated"`
-	// Total number of records that meet the criteria.
+	// The total number of matching records.
 	//
 	// example:
 	//
@@ -117,49 +117,47 @@ func (s *ListServiceRegistrationsResponseBody) Validate() error {
 }
 
 type ListServiceRegistrationsResponseBodyServiceRegistrations struct {
-	// Comment.
+	// The review comments.
 	//
 	// example:
 	//
 	// some info is missing
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Finish time.
+	// The end time.
 	//
 	// example:
 	//
 	// 2021-05-23T00:00:00Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// Registration ID.
+	// The review request ID.
 	//
 	// example:
 	//
 	// sr-001
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
-	// Service ID.
+	// The service ID.
 	//
 	// example:
 	//
 	// service-f4c0026a254bxxxxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Registration status. Allowed values:
+	// The status of the review request. Possible values:
 	//
-	// - Submitted
+	// - Submitted: The request is submitted.
 	//
-	// - Approved
+	// - Approved: The request is approved.
 	//
-	// - Rejected
+	// - Rejected: The request is rejected.
 	//
-	// - Canceled
+	// - Canceled: The request is canceled.
 	//
-	// - Executed
-	//
-	// - Executed: Executed.
+	// - Executed: The request is executed.
 	//
 	// example:
 	//
 	// Rejected
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Submit time.
+	// The time when the request was submitted.
 	//
 	// example:
 	//

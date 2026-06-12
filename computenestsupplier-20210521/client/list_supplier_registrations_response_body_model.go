@@ -22,13 +22,13 @@ type iListSupplierRegistrationsResponseBody interface {
 }
 
 type ListSupplierRegistrationsResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListSupplierRegistrationsResponseBody struct {
 	//
 	// C6CC568D-xxxx-xxxx-xxxx-08EB8E9F9F20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The supplier registrations
+	// A list of service provider registration requests.
 	SupplierRegistrations []*ListSupplierRegistrationsResponseBodySupplierRegistrations `json:"SupplierRegistrations,omitempty" xml:"SupplierRegistrations,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,77 +117,77 @@ func (s *ListSupplierRegistrationsResponseBody) Validate() error {
 }
 
 type ListSupplierRegistrationsResponseBodySupplierRegistrations struct {
-	// The comment of this registration.
+	// The review comments.
 	//
 	// example:
 	//
-	// empty
+	// 无
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Contact email
+	// The email address of the contact person.
 	//
 	// example:
 	//
 	// test@163.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
-	// Contact number
+	// The phone number of the contact person.
 	//
 	// example:
 	//
 	// 135xxxxxxxx
 	ContactNumber *string `json:"ContactNumber,omitempty" xml:"ContactNumber,omitempty"`
-	// Contact person
+	// The contact person.
 	//
 	// example:
 	//
-	// Mike
+	// John Doe
 	ContactPerson *string `json:"ContactPerson,omitempty" xml:"ContactPerson,omitempty"`
-	// Contact person tiltle.
+	// The title of the contact person.
 	//
 	// example:
 	//
 	// CTO
 	ContactPersonTitle *string `json:"ContactPersonTitle,omitempty" xml:"ContactPersonTitle,omitempty"`
-	// Whether to enable the resell mode.
+	// Indicates whether the reseller mode is supported.
 	//
 	// example:
 	//
 	// false
 	EnableResellerMode *bool `json:"EnableResellerMode,omitempty" xml:"EnableResellerMode,omitempty"`
-	// Annual product revenue
+	// The annual revenue of the service provider\\"s product.
 	//
 	// example:
 	//
-	// empty
+	// 10000000
 	ProductAnnualRevenue *string `json:"ProductAnnualRevenue,omitempty" xml:"ProductAnnualRevenue,omitempty"`
-	// The business of product.
+	// The industry of the service provider\\"s product.
 	//
 	// example:
 	//
 	// AI
 	ProductBusiness *string `json:"ProductBusiness,omitempty" xml:"ProductBusiness,omitempty"`
-	// Product delivery type，Valid values:
+	// The delivery method of the service provider\\"s product. Valid values:
 	//
-	// SaaS
+	// - SaaS
 	//
-	// License
+	// - License
 	//
-	// API
+	// - API
 	//
-	// DesktopSoftware
+	// - Desktop software
 	//
-	// Others
+	// - Other
 	//
 	// example:
 	//
 	// SaaS
 	ProductDeliveryTypes *string `json:"ProductDeliveryTypes,omitempty" xml:"ProductDeliveryTypes,omitempty"`
-	// The publish time of product.
+	// The product launch date.
 	//
 	// example:
 	//
 	// 2024.10.24
 	ProductPublishTime *string `json:"ProductPublishTime,omitempty" xml:"ProductPublishTime,omitempty"`
-	// Product sell type, Valid values:
+	// The sales model of the service provider\\"s product. Valid values:
 	//
 	// - Direct
 	//
@@ -195,45 +195,45 @@ type ListSupplierRegistrationsResponseBodySupplierRegistrations struct {
 	//
 	// example:
 	//
-	// Direct
+	// 直销
 	ProductSellTypes *string `json:"ProductSellTypes,omitempty" xml:"ProductSellTypes,omitempty"`
-	// The registration ID.
+	// The ID of the review request.
 	//
 	// example:
 	//
 	// sr-xxx
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
-	// The description of resell business.
+	// The description of the reseller business.
 	//
 	// example:
 	//
-	// empty
+	// 无
 	ResellBusinessDesc *string `json:"ResellBusinessDesc,omitempty" xml:"ResellBusinessDesc,omitempty"`
-	// The deployment state of the registration. Valid values:
+	// The review status. Valid values:
 	//
-	// - Submitted
+	// - Submitted: The request is submitted.
 	//
-	// - Approved
+	// - Approved: The request is approved.
 	//
-	// - Rejected
+	// - Rejected: The request is rejected.
 	//
 	// example:
 	//
 	// Submitted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The submit time of this registration.
+	// The time when the request was submitted.
 	//
 	// example:
 	//
 	// 2025-01-22 09:47:58
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// The description of service provider.
+	// The description of the service provider.
 	//
 	// example:
 	//
-	// Test supplier
+	// 服务商测试申请
 	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
-	// The Logo of service provider.
+	// The icon of the service provider.
 	//
 	// example:
 	//
@@ -243,21 +243,21 @@ type ListSupplierRegistrationsResponseBodySupplierRegistrations struct {
 	//
 	// example:
 	//
-	// Aliibaba Cloud
+	// ComputeNest community service
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The english name of the service provider.
+	// The English name of the service provider.
 	//
 	// example:
 	//
 	// Alibaba Cloud ComputeNest
 	SupplierNameEn *string `json:"SupplierNameEn,omitempty" xml:"SupplierNameEn,omitempty"`
-	// The Alibaba Cloud account ID of the service provider.
+	// The UID of the service provider.
 	//
 	// example:
 	//
 	// 1256xxx23434
 	SupplierUid *string `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
-	// The URL of the service provider.
+	// The URL of the service provider\\"s official website.
 	//
 	// example:
 	//

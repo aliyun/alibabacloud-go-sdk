@@ -18,7 +18,7 @@ type DeleteArtifactResponseBody struct {
 	//
 	// example:
 	//
-	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
+	// 1B3AD3CC-E938-5042-A771-7FD9A2FE03F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

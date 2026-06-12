@@ -22,7 +22,7 @@ type iCreateServiceResponseBody interface {
 }
 
 type CreateServiceResponseBody struct {
-	// The dry run result.
+	// The check result.
 	DryRunResult *CreateServiceResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -36,7 +36,7 @@ type CreateServiceResponseBody struct {
 	//
 	// service-0e6fca6a51a544xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The status of the service.
+	// The service status.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateServiceResponseBody) Validate() error {
 }
 
 type CreateServiceResponseBodyDryRunResult struct {
-	// The required ram policy for deploying role.
+	// The access policy of the deployment role.
 	RolePolicy *CreateServiceResponseBodyDryRunResultRolePolicy `json:"RolePolicy,omitempty" xml:"RolePolicy,omitempty" type:"Struct"`
 }
 
@@ -144,9 +144,9 @@ func (s *CreateServiceResponseBodyDryRunResult) Validate() error {
 }
 
 type CreateServiceResponseBodyDryRunResultRolePolicy struct {
-	// The missing ram policy for deploying role.
+	// The missing access policies for the deployment role.
 	MissingPolicy []*CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty" type:"Repeated"`
-	// The required ram policy for deploying role.
+	// The access policy required for the deployment role.
 	//
 	// example:
 	//
@@ -224,15 +224,15 @@ func (s *CreateServiceResponseBodyDryRunResultRolePolicy) Validate() error {
 }
 
 type CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy struct {
-	// The Actions.
+	// The operations in the access policy.
 	Action []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
-	// Resource in ram policy.
+	// The resource in the access policy.
 	//
 	// example:
 	//
 	// *
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The service name in ram policy.
+	// The service name in the access policy.
 	//
 	// example:
 	//

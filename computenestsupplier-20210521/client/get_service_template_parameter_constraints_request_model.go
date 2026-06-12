@@ -30,13 +30,13 @@ type iGetServiceTemplateParameterConstraintsRequest interface {
 }
 
 type GetServiceTemplateParameterConstraintsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The value of ClientToken can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the region in which the service instance is deployed.
+	// The ID of the deployment region.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +44,17 @@ type GetServiceTemplateParameterConstraintsRequest struct {
 	//
 	// cn-huhehaote
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
-	// Specifies whether to enable the private connection feature. Valid values:
+	// Indicates whether PrivateLink is enabled. Valid values:
 	//
-	// 	- true
+	// - true: Enabled
 	//
-	// 	- false
+	// - false: Not enabled
 	//
 	// example:
 	//
 	// true
 	EnablePrivateVpcConnection *bool `json:"EnablePrivateVpcConnection,omitempty" xml:"EnablePrivateVpcConnection,omitempty"`
-	// The parameters in the template.
+	// The parameter information.
 	Parameters []*GetServiceTemplateParameterConstraintsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -72,7 +72,7 @@ type GetServiceTemplateParameterConstraintsRequest struct {
 	//
 	// service-1c11f365190c44xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type GetServiceTemplateParameterConstraintsRequest struct {
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

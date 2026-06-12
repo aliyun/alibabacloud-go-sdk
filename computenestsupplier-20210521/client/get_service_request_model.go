@@ -28,7 +28,13 @@ type iGetServiceRequest interface {
 }
 
 type GetServiceRequest struct {
-	// Specifies whether to filter information based on Alibaba Cloud account IDs.
+	// Specifies whether to filter the results by Alibaba Cloud account ID.
+	//
+	// Valid values:
+	//
+	// - true: Filters the results by Alibaba Cloud account ID.
+	//
+	// - false: Does not filter the results by Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -42,39 +48,45 @@ type GetServiceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
+	// Call the [ListServices](https://help.aliyun.com/document_detail/2264368.html) operation to obtain the service ID.
+	//
 	// example:
 	//
-	// service-4ee86df83fd948******
+	// service-f8469d2d14eb40af****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The Service Instance Id.
+	// The service instance ID.
 	//
 	// example:
 	//
-	// si-85b1exxx
+	// si-56eb5823dxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The Service Name.
+	// The service name.
 	//
 	// example:
 	//
-	// Wordpress社区版
+	// WordPress Community Edition
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service version.
+	//
+	// Call the [ListServices](https://help.aliyun.com/document_detail/2264368.html) operation to obtain the service version.
 	//
 	// example:
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The share type of the service. Default value: SharedAccount. Valid values:
+	// The service sharing type.
 	//
-	// 	- SharedAccount: The service is shared by multiple accounts.
+	// Valid values:
 	//
-	// 	- Resell: The service is distributed.
+	// - SharedAccount (default): common sharing.
+	//
+	// - Resell: distribution sharing.
 	//
 	// example:
 	//
 	// SharedAccount
 	SharedAccountType *string `json:"SharedAccountType,omitempty" xml:"SharedAccountType,omitempty"`
-	// The information that you want to query.
+	// The details to be returned.
 	ShowDetail []*string `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty" type:"Repeated"`
 }
 

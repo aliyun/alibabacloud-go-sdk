@@ -22,13 +22,13 @@ type iListSupplierRegistrationsRequest interface {
 type ListSupplierRegistrationsRequest struct {
 	// The filter.
 	Filter []*ListSupplierRegistrationsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Number of items per page in a paginated query. The maximum is 100, and the default is 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -102,21 +102,21 @@ func (s *ListSupplierRegistrationsRequest) Validate() error {
 }
 
 type ListSupplierRegistrationsRequestFilter struct {
-	// Name of the filter field. Allowed values:
+	// The name of the filter. You can query by one or more filter names. Valid values:
 	//
-	// - SupplierUid: The aliUid of supplier.
+	// - SupplierUid: The UID of the service provider.
 	//
-	// - SupplierName: The name of supplier.
+	// - RegistrationId: The review ID.
 	//
-	// - RegistrationId: Registration ID.
+	// - Status: The review status.
 	//
-	// - Status: Registration status. Allowed values: Submitted, Approved, Rejected.
+	// - SupplierName: The name of the service provider.
 	//
 	// example:
 	//
 	// SupplierUid
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Filter value.
+	// The value of the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -24,31 +24,31 @@ type iListServiceSharedAccountsRequest interface {
 }
 
 type ListServiceSharedAccountsRequest struct {
-	// The filters.
+	// The filter.
 	Filter []*ListServiceSharedAccountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token used to start the next query. Set this parameter to the NextToken value returned from the last API call.
 	//
 	// example:
 	//
 	// AAAAAR130adlM4fHHVSWpTca/t4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The permissions on the service. Valid values:
+	// The permission type. Valid values:
 	//
-	// 	- Deployable: Permissions to deploy the service.
+	// - Deployable: The service is deployable.
 	//
-	// 	- Accessible: Permissions to access the service.
+	// - Accessible: The service is accessible.
 	//
 	// example:
 	//
 	// Accessible
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The region ID where the service instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -140,15 +140,13 @@ func (s *ListServiceSharedAccountsRequest) Validate() error {
 }
 
 type ListServiceSharedAccountsRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
-	//
-	// 	- Name: the name of the service.
+	// The name of the filter.
 	//
 	// example:
 	//
 	// UserAliUid
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter value N of the filter. Valid values of N: 1 to 10.
+	// The list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -38,25 +38,25 @@ type iCreateServiceInstanceRequest interface {
 }
 
 type CreateServiceInstanceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The token can be up to 64 characters in length and can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform a dry run. A dry run checks for permissions and instance status. Valid values:
 	//
-	// 	- true: performs a dry run for the request, but does not create a service instance.
+	// - true: The system checks the request but does not create the service instance.
 	//
-	// 	- false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+	// - false: The system sends the request. If the request passes the check, the service instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The time when the service instance was released.
+	// The time when the service instance is released.
 	//
-	// >  This parameter is available only for the service instances that are managed by service providers.
+	// > Only service providers can set this parameter for their own service instances in managed scenarios.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -64,29 +64,39 @@ type CreateServiceInstanceRequest struct {
 	//
 	// 2023-12-12T03:13:05Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the service instance. The value must meet the following requirements:
+	// The name of the service instance. The name must meet the following requirements:
 	//
-	// 	- The name cannot exceed 64 characters in length.
+	// - It can be up to 64 characters in length.
 	//
-	// 	- It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+	// - It must start with a letter or a digit and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// TestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameters that are specified for service instance deployment.
+	// The parameters used to deploy the service instance.
 	//
-	// >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+	// > If the service instance includes information about the deployment region, specify that information in the deployment parameters.
 	//
 	// example:
 	//
-	// {"NodeCount": 3, "SystemDiskSize": 40, "InstancePassword": "******"}
+	// {
+	//
+	//       "RegionId": "cn-hangzhou"
+	//
+	//       "NodeCount": 3,
+	//
+	//       "SystemDiskSize": 40,
+	//
+	//       "InstancePassword": "******"
+	//
+	// }
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The region ID. Valid values:
+	// The ID of the region. Valid values:
 	//
-	// 	- cn-hangzhou: China (Hangzhou)
+	// - cn-hangzhou: China (Hangzhou)
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1: Singapore
 	//
 	// This parameter is required.
 	//
@@ -100,7 +110,7 @@ type CreateServiceInstanceRequest struct {
 	//
 	// rg-aekzuqyxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// This parameter is required.
 	//
@@ -108,27 +118,27 @@ type CreateServiceInstanceRequest struct {
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service version.
+	// The version of the service.
 	//
 	// example:
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The name of the package specification.
+	// The name of the specification package.
 	//
 	// example:
 	//
-	// 套餐一
+	// Package 1
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	// The custom tags.
 	Tag []*CreateServiceInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The template name. You must specify a template name if the service supports multiple templates.
+	// The name of the template. Specify this parameter if the service supports multiple templates.
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -275,13 +285,13 @@ func (s *CreateServiceInstanceRequest) Validate() error {
 }
 
 type CreateServiceInstanceRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

@@ -30,11 +30,11 @@ type iReleaseArtifactResponseBody interface {
 }
 
 type ReleaseArtifactResponseBody struct {
-	// The ID of the artifact.
+	// The artifact ID.
 	//
 	// example:
 	//
-	// artifact-9feded91880e4c78xxxx
+	// artifact-9feded91880e4c78****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 	// The content of the artifact.
 	//
@@ -42,25 +42,25 @@ type ReleaseArtifactResponseBody struct {
 	//
 	// "{\\"Url\\":\\"https://computenest-artifacts-draft-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/130920852836xxxx/cn-hangzhou/service-8072a04e5a134382xxxx/165095355xxxx/changes.txt\\",\\"ConfigurationMetadata\\":\\"{\\\\\\"WorkDir\\\\\\":\\\\\\"/root\\\\\\",\\\\\\"Platform\\\\\\":\\\\\\"Linux\\\\\\",\\\\\\"CommandType\\\\\\":\\\\\\"RunShellScript\\\\\\",\\\\\\"UpgradeScript\\\\\\":\\\\\\"cd /root\\\\\\\\ncp changes.txt cpchanges.txt\\\\\\\\nmv changes.txt mvchangge.txt\\\\\\"}\\"}"
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	// The type of the artifact.
+	// The artifact type.
 	//
 	// example:
 	//
 	// File
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The version of the artifact.
+	// The artifact version.
 	//
 	// example:
 	//
 	// draft
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	// The description of the artifact.
+	// The artifact description.
 	//
 	// example:
 	//
-	// Description
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the artifact was modified.
+	// The time when the artifact was last modified.
 	//
 	// example:
 	//
@@ -70,31 +70,33 @@ type ReleaseArtifactResponseBody struct {
 	//
 	// example:
 	//
-	// 3818BA7D-3F50-1A44-9FF3-04A52A59XXXX
+	// 86CAC31E-3527-562C-869F-347E931C9B25
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the artifact. Valid values:
+	// The status of the artifact.
 	//
-	// 	- Created: The artifact is created.
+	// Valid values:
 	//
-	// 	- Scanning: The artifact is being scanned.
+	// - Created: The artifact is created.
 	//
-	// 	- ScanFailed: The artifact failed to be scanned.
+	// - Scanning: The artifact is being scanned.
 	//
-	// 	- Delivering: The artifact is being distributed.
+	// - ScanFailed: The artifact failed to be scanned.
 	//
-	// 	- Available: The artifact is available.
+	// - Delivering: The artifact is being distributed.
 	//
-	// 	- Deleted: The artifact is deleted.
+	// - Available: The artifact is available.
+	//
+	// - Deleted: The artifact is deleted.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version name of the artifact.
+	// The name of the artifact version.
 	//
 	// example:
 	//
-	// V1.0
+	// OSS association upgrade test
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 

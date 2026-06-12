@@ -18,16 +18,24 @@ type iGetServiceTemplateCriterionIssuesRequest interface {
 }
 
 type GetServiceTemplateCriterionIssuesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-c2d118c9193e49xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
+	// For more information, see [ListServices - Query service information](https://help.aliyun.com/document_detail/2264368.html).
+	//
 	// example:
 	//
 	// 1

@@ -22,7 +22,7 @@ type CreateServiceTestTaskResponseBody struct {
 	//
 	// DF0F666F-FBBC-55C3-A368-C955DE7B4839
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The unique ID of the task.
 	//
 	// example:
 	//

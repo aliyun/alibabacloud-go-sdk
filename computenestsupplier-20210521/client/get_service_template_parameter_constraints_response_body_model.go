@@ -18,9 +18,9 @@ type iGetServiceTemplateParameterConstraintsResponseBody interface {
 }
 
 type GetServiceTemplateParameterConstraintsResponseBody struct {
-	// The constraint families.
+	// The family constraints.
 	FamilyConstraints []*string `json:"FamilyConstraints,omitempty" xml:"FamilyConstraints,omitempty" type:"Repeated"`
-	// The parameters in the template.
+	// The parameter information.
 	ParameterConstraints []*GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints `json:"ParameterConstraints,omitempty" xml:"ParameterConstraints,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -81,23 +81,23 @@ func (s *GetServiceTemplateParameterConstraintsResponseBody) Validate() error {
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints struct {
 	// The valid values of the parameter.
 	AllowedValues []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	// The names of the associated parameters.
+	// The list of associated parameters.
 	AssociationParameterNames []*string `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
 	// The behavior of the parameter. Valid values:
 	//
-	// 	- NoLimit: The value of this parameter is not limited.
+	// - NoLimit: The parameter has no value limit.
 	//
-	// 	- NotSupport: The value of this parameter cannot be queried.
+	// - NotSupport: The parameter does not support value queries.
 	//
-	// 	- QueryError: The query failed.
+	// - QueryError: The query failed.
 	//
-	// >  If AllowedValues is not returned, Behavior and BehaviorReason are returned.
+	// > If the query result does not include AllowedValues, Behavior and BehaviorReason are returned to describe the behavior of the parameter and the reason for the behavior.
 	//
 	// example:
 	//
 	// NoLimit
 	Behavior *string `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	// The reason why the behavior of the parameter is returned.
+	// The reason for the parameter behavior.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iAddServiceSharedAccountsRequest interface {
 }
 
 type AddServiceSharedAccountsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A unique identifier that you provide to ensure the idempotence of the request. The token can contain only ASCII characters and cannot be longer than 64 characters.
 	//
 	// example:
 	//
@@ -44,15 +44,15 @@ type AddServiceSharedAccountsRequest struct {
 	//
 	// service-63b8a060e9d54cxxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The shared account and permissions of the service.
+	// The shared accounts and their permissions.
 	//
 	// This parameter is required.
 	SharedAccounts []*AddServiceSharedAccountsRequestSharedAccounts `json:"SharedAccounts,omitempty" xml:"SharedAccounts,omitempty" type:"Repeated"`
-	// The share type of the service. Default value: SharedAccount. Valid values:
+	// The service sharing type. The default value is SharedAccount. Valid values:
 	//
-	// 	- SharedAccount: The service is shared by multiple accounts.
+	// - SharedAccount: The service is shared with a specified account.
 	//
-	// 	- Reseller: The service is distributed.
+	// - Reseller: The service is shared with a reseller.
 	//
 	// example:
 	//
@@ -127,11 +127,11 @@ func (s *AddServiceSharedAccountsRequest) Validate() error {
 }
 
 type AddServiceSharedAccountsRequestSharedAccounts struct {
-	// The permissions on the service. Valid values:
+	// The permission type. Valid values:
 	//
-	// 	- Deployable: Permissions to deploy the service.
+	// - Deployable: The service can be deployed.
 	//
-	// 	- Accessible: Permissions to access the service.
+	// - Accessible: The service can be accessed.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +139,7 @@ type AddServiceSharedAccountsRequestSharedAccounts struct {
 	//
 	// Accessible
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The Alibaba Cloud account ID of the user.
+	// The UID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//

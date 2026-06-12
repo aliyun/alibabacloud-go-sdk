@@ -36,39 +36,47 @@ type iCreateArtifactShrinkRequest interface {
 }
 
 type CreateArtifactShrinkRequest struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The content used to build the artifact. This parameter is used for managed artifact builds.
 	ArtifactBuildPropertyShrink *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	// The type of the artifact build task. Valid values:
+	// The type of the artifact to be built. Valid values:
 	//
-	// - EcsImage: Build ECS (Elastic Container Service) image.
+	// - EcsImage: builds an ECS image.
 	//
-	// - Dockerfile: Build container image based on Dockerfile.
+	// - Dockerfile: builds a container image based on a Dockerfile.
 	//
-	// - Buildpacks: Build container image based on Buildpacks.
+	// - Buildpacks: builds a container image based on Buildpacks.
 	//
-	// - ContainerImage: Rebuild container image by renaming an existing container image.
+	// - ContainerImage: builds a container image by renaming an existing container image.
 	//
 	// example:
 	//
-	// Dockerfile
+	// Dockerflie
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the deployment package.
+	// The artifact ID.
+	//
+	// This parameter is required to create a new version of an existing artifact.
+	//
+	// You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact ID.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The properties of the deployment object.
+	// The content of the artifact.
 	ArtifactPropertyShrink *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	// The type of the deployment package. Valid values:
+	// The artifact type.
 	//
-	// 	- EcsImage: Elastic Compute Service (ECS) image.
+	// Valid values:
 	//
-	// 	- AcrImage: container image.
+	// - EcsImage: an ECS image artifact.
 	//
-	// 	- File: Object Storage Service (OSS) object.
+	// - AcrImage: a container image artifact.
 	//
-	// 	- Script: script.
+	// - File: an Object Storage Service (OSS) file artifact.
+	//
+	// - Script: a script artifact.
+	//
+	// - HelmChart: a Helm chart artifact.
 	//
 	// This parameter is required.
 	//
@@ -76,37 +84,37 @@ type CreateArtifactShrinkRequest struct {
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotence of the request.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact.
 	//
 	// example:
 	//
-	// Test artifact
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the deployment package.
+	// The artifact name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Name
+	// Redhat8_5 image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
-	// rg-aekzkt5buxxxxxx
+	// rg-acfm2jfvb7b****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The supported regions.
+	// The regions where the image can be distributed.
 	SupportRegionIds []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
 	// The custom tags.
 	Tag []*CreateArtifactShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The version name of the deployment package.
+	// The name of the artifact version.
 	//
 	// This parameter is required.
 	//

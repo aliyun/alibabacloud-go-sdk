@@ -22,13 +22,13 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token to start the next query.
 	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify at most 50 resource IDs in each call.
+	// The resource ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Valid value:
+	// The resource type. Valid values:
 	//
-	// - service
+	// - service: a service.
 	//
-	// - serviceinstance
+	// - serviceinstance: a service instance.
 	//
-	// - artifact
+	// - artifact: a deployment.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ListTagResourcesRequest struct {
 	//
 	// service
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The custom tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

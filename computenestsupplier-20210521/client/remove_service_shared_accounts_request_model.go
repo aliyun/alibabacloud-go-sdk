@@ -22,9 +22,7 @@ type iRemoveServiceSharedAccountsRequest interface {
 }
 
 type RemoveServiceSharedAccountsRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// A client token that is used to ensure the idempotence of the request. You must make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -46,17 +44,17 @@ type RemoveServiceSharedAccountsRequest struct {
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The share type of the service. Default value: SharedAccount. Valid values:
+	// The service sharing type. The default value is SharedAccount. Valid values:
 	//
-	// 	- SharedAccount: The service is shared by multiple accounts.
+	// - SharedAccount: The regular sharing type.
 	//
-	// 	- Reseller: The service is distributed.
+	// - Reseller: The reseller sharing type.
 	//
 	// example:
 	//
 	// SharedAccount
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Whitelist accounts for service sharing.
+	// The whitelisted accounts for service sharing.
 	//
 	// This parameter is required.
 	UserAliUids []*int64 `json:"UserAliUids,omitempty" xml:"UserAliUids,omitempty" type:"Repeated"`

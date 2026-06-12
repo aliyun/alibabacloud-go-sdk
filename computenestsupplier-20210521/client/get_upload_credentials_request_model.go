@@ -16,7 +16,7 @@ type iGetUploadCredentialsRequest interface {
 }
 
 type GetUploadCredentialsRequest struct {
-	// The file name to upload.
+	// The name of the file.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetUploadCredentialsRequest struct {
 	//
 	// template.yaml
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Specifies whether the file is publicly accessible. Valid values: **public*	- or **private**. The default value is **private**.
+	// The visibility of the bucket to which the file is uploaded. Valid values: public and private. A value of **public*	- means the file is uploaded to a public bucket. A value of **private*	- means the file is uploaded to a private bucket that requires authorization for access.
 	//
 	// example:
 	//

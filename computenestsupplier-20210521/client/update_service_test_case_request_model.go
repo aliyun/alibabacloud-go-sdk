@@ -20,13 +20,13 @@ type iUpdateServiceTestCaseRequest interface {
 }
 
 type UpdateServiceTestCaseRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service test case ID
+	// The ID of the service test case.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateServiceTestCaseRequest struct {
 	//
 	// stc-2deec15c20b24aaf9f16
 	TestCaseId *string `json:"TestCaseId,omitempty" xml:"TestCaseId,omitempty"`
-	// Test case name
+	// The name of the test case.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateServiceTestCaseRequest struct {
 	//
 	// case1
 	TestCaseName *string `json:"TestCaseName,omitempty" xml:"TestCaseName,omitempty"`
-	// Test configuration
+	// The test configuration.
 	//
 	// This parameter is required.
 	//

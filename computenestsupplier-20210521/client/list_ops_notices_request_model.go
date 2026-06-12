@@ -20,15 +20,22 @@ type iListOpsNoticesRequest interface {
 }
 
 type ListOpsNoticesRequest struct {
+	// The filters.
 	Filter []*ListOpsNoticesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. Set the value to the NextToken value returned in the last API call.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,10 +102,25 @@ func (s *ListOpsNoticesRequest) Validate() error {
 }
 
 type ListOpsNoticesRequestFilter struct {
+	// The filter name. Valid values:
+	//
+	// - Type: The notice type.
+	//
+	// - ServiceId: The service ID.
+	//
+	// - ServiceName: The service name. Fuzzy search is supported. The format for a fuzzy search is \\*xxx\\*.
+	//
+	// - Category: The notice category.
+	//
+	// - Severity: The severity level.
+	//
+	// - NoticeId: The O\\&M notice ID.
+	//
 	// example:
 	//
 	// ServiceId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

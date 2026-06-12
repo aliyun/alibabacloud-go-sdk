@@ -30,13 +30,13 @@ type UpdateServiceInstanceAttributeShrinkRequest struct {
 	//
 	// 2023-12-25T02:28:40Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The License Data
+	// The license data.
 	LicenseDataShrink *string `json:"LicenseData,omitempty" xml:"LicenseData,omitempty"`
-	// Application reason, currently used for trial application extension.
+	// The reason for the request. This parameter is used to extend a trial.
 	//
 	// example:
 	//
-	// \\"\\"
+	// ""
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//

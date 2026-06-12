@@ -18,7 +18,7 @@ type iGetServiceEstimateCostResponseBody interface {
 }
 
 type GetServiceEstimateCostResponseBody struct {
-	// The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
+	// The subscription details of the Alibaba Cloud Marketplace order.
 	//
 	// example:
 	//

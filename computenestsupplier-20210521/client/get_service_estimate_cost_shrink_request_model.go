@@ -30,15 +30,15 @@ type iGetServiceEstimateCostShrinkRequest interface {
 }
 
 type GetServiceEstimateCostShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that you can use to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The **ClientToken*	- parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// mRdxWuW2ts
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
+	// The subscription details of the Alibaba Cloud Marketplace order.
 	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The parameters that are specified to deploy the service instance.
+	// The parameters that you enter to deploy the service instance.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetServiceEstimateCostShrinkRequest struct {
 	//
 	// service-16fbd358d75e49xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type GetServiceEstimateCostShrinkRequest struct {
 	//
 	// draft
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The package name.
+	// The specification name.
 	//
 	// example:
 	//

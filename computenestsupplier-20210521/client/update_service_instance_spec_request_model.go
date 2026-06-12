@@ -24,27 +24,27 @@ type iUpdateServiceInstanceSpecRequest interface {
 }
 
 type UpdateServiceInstanceSpecRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A unique identifier that you provide to ensure the idempotence of the request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to enable Prometheus on the customer side. Valid values:
+	// Specifies whether to enable Prometheus on the client. Valid values:
 	//
-	// 	- true
+	// - true: Enables Prometheus.
 	//
-	// 	- false
+	// - false: Disables Prometheus.
 	//
 	// example:
 	//
 	// true
 	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
-	// The name of the configuration update operation.
+	// The name of the upgrade or downgrade action.
 	//
 	// example:
 	//
-	// package modify
+	// Plan configuration change
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
 	// The configuration parameters of the service instance.
 	//
@@ -52,13 +52,13 @@ type UpdateServiceInstanceSpecRequest struct {
 	//
 	// {\\"EcsInstanceParameter\\":\\"4vCPU 8GiB\\",\\"ZoneId\\":\\"cn-heyuan-a\\",\\"SystemDiskSize\\":50,\\"DataDiskSize\\":150,\\"InternetMaxBandwidthOut\\":2,\\"RegionId\\":\\"cn-heyuan\\"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The name of the specification package.
+	// The package name.
 	//
 	// example:
 	//
-	// package one
+	// Package 1
 	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
-	// The service instance ID.
+	// The ID of the service instance.
 	//
 	// example:
 	//

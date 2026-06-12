@@ -28,34 +28,50 @@ type iGetNetworkAvailableZonesRequest interface {
 }
 
 type GetNetworkAvailableZonesRequest struct {
+	// Specifies whether the service is a trial service.
+	//
 	// example:
 	//
 	// true
 	IsPoc *bool `json:"IsPoc,omitempty" xml:"IsPoc,omitempty"`
+	// The region of the virtual Internet.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	NetworkRegionId *string `json:"NetworkRegionId,omitempty" xml:"NetworkRegionId,omitempty"`
+	// The connection mode. Valid values: \\`PrivateLink\\` and \\`OverlayLink\\`. \\`OverlayLink\\` is an overlay link that is based on Application-aware Network Service Mesh (ANSM).
+	//
 	// example:
 	//
 	// VirtualInternet
 	PrivateVpcConnectionMode *string `json:"PrivateVpcConnectionMode,omitempty" xml:"PrivateVpcConnectionMode,omitempty"`
+	// The service ID. This parameter is used with the \\`IsPoc\\` parameter when \\`IsPoc\\` is set to \\`true\\`.
+	//
 	// example:
 	//
 	// service-63b8a060e9d54cxxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The direction of the internal-facing access. Valid values: \\`Forward\\` and \\`Reverse\\`.
+	//
 	// example:
 	//
 	// Forward
 	ServiceInstanceEndpointServiceType *string `json:"ServiceInstanceEndpointServiceType,omitempty" xml:"ServiceInstanceEndpointServiceType,omitempty"`
+	// The region where the service is deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The service version. This parameter is used with the \\`IsPoc\\` parameter when \\`IsPoc\\` is set to \\`true\\`.
+	//
 	// example:
 	//
 	// draft
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The zone where the service is deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou-k

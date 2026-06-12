@@ -14,7 +14,7 @@ type iUpdateSharedAccountPermissionResponseBody interface {
 }
 
 type UpdateSharedAccountPermissionResponseBody struct {
-	// RequestId
+	// The request ID.
 	//
 	// example:
 	//

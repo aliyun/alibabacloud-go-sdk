@@ -22,13 +22,13 @@ type iListServiceUsagesResponseBody interface {
 }
 
 type ListServiceUsagesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token to retrieve the next page of results. If this parameter is not empty, more results can be retrieved.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServiceUsagesResponseBody struct {
 	//
 	// 18AD0960-A9FE-1AC8-ADF8-22131Fxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service applications.
+	// The service usage details.
 	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListServiceUsagesResponseBody) Validate() error {
 }
 
 type ListServiceUsagesResponseBodyServiceUsages struct {
-	// The comment on the approval.
+	// The remarks on the approval.
 	//
 	// example:
 	//
-	// Reject
+	// Review approved.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the application was created.
+	// The time when the request was created.
 	//
 	// example:
 	//
@@ -139,41 +139,41 @@ type ListServiceUsagesResponseBodyServiceUsages struct {
 	//
 	// example:
 	//
-	// ServiceTest
+	// Deployment link permission request
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The status of the service application. Valid values:
+	// The service status. Valid values:
 	//
-	// 	- Submitted: The application is submitted or is to be approved.
+	// - Submitted: The request is submitted and is pending approval.
 	//
-	// 	- Approved: The application is approved.
+	// - Approved: The request is approved.
 	//
-	// 	- Rejected: The application is rejected.
+	// - Rejected: The request is rejected.
 	//
-	// 	- Canceled: The application is canceled.
+	// - Canceled: The request is canceled.
 	//
 	// example:
 	//
 	// Submitted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the service provider.
+	// The supplier name.
 	//
 	// example:
 	//
-	// SupplierAAA
+	// Acceptance test
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The time when the application was updated.
+	// The time when the request was last updated.
 	//
 	// example:
 	//
 	// 2022-05-25T02:02:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID of the user.
 	//
 	// example:
 	//
 	// 127383705958xxxx
 	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
-	// The user information.
+	// The information about the user who submitted the request.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 

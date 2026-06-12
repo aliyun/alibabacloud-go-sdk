@@ -34,27 +34,35 @@ type iGetSupplierInformationResponseBody interface {
 }
 
 type GetSupplierInformationResponseBody struct {
-	// Acr container namespace
+	// The namespace for the container image deployment.
 	//
 	// example:
 	//
 	// computenest
 	AcrNamespace *string `json:"AcrNamespace,omitempty" xml:"AcrNamespace,omitempty"`
-	// The delivery settings.
+	// The computing resource configuration.
 	DeliverySettings *GetSupplierInformationResponseBodyDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
-	// Whether to enable reseller
+	// Indicates whether to enable resellers. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableReseller *bool `json:"EnableReseller,omitempty" xml:"EnableReseller,omitempty"`
-	// The Ip of the operation.
+	// The IP address for the operation.
 	//
 	// example:
 	//
 	// 10.xxx.xxx.xxx/101
 	OperationIp *string `json:"OperationIp,omitempty" xml:"OperationIp,omitempty"`
-	// The MFA of the operation.
+	// Indicates whether a multi-factor authentication (MFA) device is used. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//
@@ -66,13 +74,13 @@ type GetSupplierInformationResponseBody struct {
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The description of service provider.
+	// The description of the service provider.
 	//
 	// example:
 	//
-	// Test supplier
+	// Alibaba Cloud Compute Nest
 	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
-	// The Logo of service provider.
+	// The icon of the service provider.
 	//
 	// example:
 	//
@@ -82,7 +90,7 @@ type GetSupplierInformationResponseBody struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	// The URL of the service provider.
 	//
@@ -90,7 +98,7 @@ type GetSupplierInformationResponseBody struct {
 	//
 	// http://www.xxx.xxx.cn
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	// Contact information of the service provider
+	// The contact information of the service provider.
 	SupportContacts []*GetSupplierInformationResponseBodySupportContacts `json:"SupportContacts,omitempty" xml:"SupportContacts,omitempty" type:"Repeated"`
 }
 
@@ -226,17 +234,17 @@ type GetSupplierInformationResponseBodyDeliverySettings struct {
 	//
 	// mybucket
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+	// Indicates whether the feature that delivers the execution results of Cloud Assistant O\\&M tasks to Object Storage Service (OSS) is enabled. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false (default): Disabled.
 	//
 	// example:
 	//
 	// true
 	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
-	// The number of days for which the screencasts are saved.
+	// The expiration period for objects in OSS, in days.
 	//
 	// example:
 	//
@@ -299,13 +307,13 @@ func (s *GetSupplierInformationResponseBodyDeliverySettings) Validate() error {
 }
 
 type GetSupplierInformationResponseBodySupportContacts struct {
-	// The type of contact information.
+	// The type of the contact method.
 	//
 	// example:
 	//
 	// Email
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of contact information.
+	// The contact method.
 	//
 	// example:
 	//

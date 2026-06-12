@@ -52,9 +52,9 @@ type CreateServiceTestCaseRequest struct {
 	//
 	// example:
 	//
-	// Custom_Image_Ecs
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// Service Test case name.
+	// The name of the test case.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateServiceTestCaseRequest struct {
 	//
 	// case1
 	TestCaseName *string `json:"TestCaseName,omitempty" xml:"TestCaseName,omitempty"`
-	// The service test config
+	// The test configuration.
 	//
 	// This parameter is required.
 	//

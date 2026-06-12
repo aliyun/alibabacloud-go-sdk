@@ -26,21 +26,21 @@ type iListServicesRequest interface {
 }
 
 type ListServicesRequest struct {
-	// Specifies whether to return all versions of a service. Default value: false, which specifies that only the default version of a service is returned.
+	// Specifies whether to return all versions of the service. The default value is false. If this parameter is set to false, only the default version of each service is returned.
 	//
 	// example:
 	//
 	// false
 	AllVersions *bool `json:"AllVersions,omitempty" xml:"AllVersions,omitempty"`
-	// The filters.
+	// The filter.
 	Filter []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned by a previous call.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ListServicesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
-	// rg-aekzkt5buxxxxxx
+	// rg-aekzkt5bu****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The custom tags.
 	Tag []*ListServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -158,21 +158,21 @@ func (s *ListServicesRequest) Validate() error {
 }
 
 type ListServicesRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	// The name of the filter. You can query by one or more filter names. Valid values:
 	//
-	// 	- ServiceId: the ID of the service.
+	// - ServiceId: The service ID.
 	//
-	// 	- Name: the name of the service.
+	// - Name: The service name.
 	//
-	// 	- Status: the state of the service.
+	// - Status: The service status.
 	//
-	// 	- SupplierName: the name of the service provider.
+	// - SupplierName: The name of the service provider.
 	//
 	// example:
 	//
 	// Status
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter values of the filter.
+	// The filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -14,7 +14,7 @@ type iCancelServiceRegistrationResponseBody interface {
 }
 
 type CancelServiceRegistrationResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

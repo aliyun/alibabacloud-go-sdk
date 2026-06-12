@@ -32,21 +32,21 @@ type iGetServiceRegistrationResponseBody interface {
 }
 
 type GetServiceRegistrationResponseBody struct {
-	// Comment from reviewer.
+	// The review comments.
 	//
 	// example:
 	//
 	// comment message
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The details of service audit.
+	// The review details.
 	Detail *GetServiceRegistrationResponseBodyDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// Finish time.
+	// The time when the review was completed.
 	//
 	// example:
 	//
 	// 2024-12-07T11:05:50Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// Service registration ID.
+	// The ID of the review request.
 	//
 	// example:
 	//
@@ -72,23 +72,23 @@ type GetServiceRegistrationResponseBody struct {
 	//
 	// beta
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The status of service registration. Valid values:
+	// The status of the review request. Valid values:
 	//
-	// 	- Submitted
+	// - Submitted
 	//
-	// 	- Approved
+	// - Approved
 	//
-	// 	- Rejected
+	// - Rejected
 	//
-	// 	- Canceled
+	// - Canceled
 	//
-	// 	- Executed
+	// - Executed: The service version is published.
 	//
 	// example:
 	//
 	// Submitted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Submit time.
+	// The time when the request was submitted.
 	//
 	// example:
 	//
@@ -209,25 +209,25 @@ func (s *GetServiceRegistrationResponseBody) Validate() error {
 }
 
 type GetServiceRegistrationResponseBodyDetail struct {
-	// Whether risk exists.
+	// Indicates whether the service has risks.
 	//
 	// example:
 	//
 	// true
 	AtRisk *bool `json:"AtRisk,omitempty" xml:"AtRisk,omitempty"`
-	// Whether service is associated with artifact.
+	// Indicates whether the service is associated with an artifact.
 	//
 	// example:
 	//
 	// true
 	HasRelatedArtifact *bool `json:"HasRelatedArtifact,omitempty" xml:"HasRelatedArtifact,omitempty"`
-	// The reports.
+	// The review reports.
 	//
 	// example:
 	//
-	// { "template1":"https://compute-nest-security-audit-bucket.oss-cn-hangzhou.aliyuncs.com/report" }
+	// { "template":"https://compute-nest-security-audit-bucket.oss-cn-hangzhou.aliyuncs.com/report" }
 	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
-	// The url of template diff file.
+	// The URL to view the differences in the template.
 	//
 	// example:
 	//
@@ -284,23 +284,19 @@ func (s *GetServiceRegistrationResponseBodyDetail) Validate() error {
 }
 
 type GetServiceRegistrationResponseBodyServiceInfo struct {
-	// The type of the service. Valid values:
-	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
-	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
-	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// The service type.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The trial policy. Valid values:
+	// The trial type.
 	//
-	// 	- Trial: Trials are supported.
+	// Valid values:
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - Trial: The service supports trial.
+	//
+	// - NotTrial: The service does not support trial.
 	//
 	// example:
 	//

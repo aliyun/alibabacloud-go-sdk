@@ -32,47 +32,88 @@ type iCreateOpsNoticeRequest interface {
 }
 
 type CreateOpsNoticeRequest struct {
+	// The properties of the O\\&M item.
+	//
 	// example:
 	//
 	// {"cveId":"CVE-2021-4034"}
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The category of the notice. Valid values:
+	//
+	// - Availability
+	//
+	// - Cost
+	//
+	// - Performance
+	//
+	// - Recovery
+	//
+	// - Security
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Availability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// A client token to ensure that the request is idempotent. Generate a unique token for each request. The token can contain only ASCII characters. Note: If you do not set this parameter, the system uses the RequestId as the ClientToken. The RequestId may be different for each request.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The content of the notice.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-0e6fca6a51a54420****
-	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service versions to which the notice applies.
 	ServiceVersion []*string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty" type:"Repeated"`
+	// The severity level of the notice. Valid values:
+	//
+	// - Critical
+	//
+	// - High
+	//
+	// - Medium
+	//
+	// - Low
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The solution.
+	//
 	// example:
 	//
 	// You need to upgrade the service instance
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The type of the notice. Valid values:
+	//
+	// - ServiceInstanceUpgrade: Upgrade
+	//
+	// - VulnerabilityFix: Vulnerability
+	//
 	// This parameter is required.
 	//
 	// example:

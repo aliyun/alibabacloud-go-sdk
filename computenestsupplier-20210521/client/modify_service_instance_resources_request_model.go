@@ -18,7 +18,7 @@ type iModifyServiceInstanceResourcesRequest interface {
 }
 
 type ModifyServiceInstanceResourcesRequest struct {
-	// The imported resources.
+	// The resources to import.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type ModifyServiceInstanceResourcesRequest struct {
 	//
 	// si-d8a0cc2a1ee04dce****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The type of operation performed on the service instance resource. Valid values:
+	// The operation to perform on the resources of the service instance. Valid values:
 	//
-	// 	- Import: The resource is imported.
+	// - Import: Imports resources.
 	//
-	// 	- UnImport: The resource import is canceled.
+	// - UnImport: Removes imported resources.
 	//
 	// example:
 	//

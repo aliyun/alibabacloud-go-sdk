@@ -16,9 +16,9 @@ type iListArtifactRisksResponseBody interface {
 }
 
 type ListArtifactRisksResponseBody struct {
-	// List of artifact risks
+	// The list of artifact risks.
 	ArtifactRiskList []*ListArtifactRisksResponseBodyArtifactRiskList `json:"ArtifactRiskList,omitempty" xml:"ArtifactRiskList,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *ListArtifactRisksResponseBody) Validate() error {
 }
 
 type ListArtifactRisksResponseBodyArtifactRiskList struct {
-	// CVE numbers
+	// The CVE ID.
 	//
 	// example:
 	//
 	// CVE-2023-4911
 	CveNos *string `json:"CveNos,omitempty" xml:"CveNos,omitempty"`
-	// Extended information, in JSON format, to be parsed according to the risk category
+	// The extended information in JSON format. Parse this information based on the risk type.
 	//
 	// example:
 	//
@@ -86,43 +86,43 @@ type ListArtifactRisksResponseBodyArtifactRiskList struct {
 	//
 	// }
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// Risk level:
+	// The risk level.
 	//
-	// - high represents high
+	// - high: High
 	//
 	// example:
 	//
 	// high
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Risk name.
+	// The name of the risk.
 	//
 	// example:
 	//
 	// USN-3686-1: file vulnerabilities
 	RiskName *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
-	// Risk type. Values:
+	// The risk type. Valid values:
 	//
-	// - AcrCve  Container image system vulnerability
+	// - AcrCve: system vulnerabilities in a container image
 	//
-	// - AcrSca  Container image application vulnerability
+	// - AcrSca: application vulnerabilities in a container image
 	//
-	// - EcsVulnerability  ECS image vulnerability information
+	// - EcsVulnerability: ECS image vulnerabilities
 	//
-	// - EcsAlarm  ECS image security alarm
+	// - EcsAlarm: ECS image security alerts
 	//
-	// - EcsBaseline  ECS image baseline check
+	// - EcsBaseline: ECS image baseline checks
 	//
 	// example:
 	//
 	// AcrCve
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
-	// Risk Type name
+	// The name of the risk type.
 	//
 	// example:
 	//
-	// Container System Vulner
+	// Container image system vulnerability
 	RiskTypeName *string `json:"RiskTypeName,omitempty" xml:"RiskTypeName,omitempty"`
-	// Solution for the risk item.
+	// The solution to the risk.
 	//
 	// example:
 	//

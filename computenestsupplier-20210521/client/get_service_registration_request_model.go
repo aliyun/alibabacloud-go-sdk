@@ -16,7 +16,7 @@ type iGetServiceRegistrationRequest interface {
 }
 
 type GetServiceRegistrationRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetServiceRegistrationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service registration ID.
+	// The ID of the review request.
 	//
 	// example:
 	//

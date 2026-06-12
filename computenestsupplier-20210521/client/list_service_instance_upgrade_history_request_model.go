@@ -20,19 +20,19 @@ type iListServiceInstanceUpgradeHistoryRequest interface {
 }
 
 type ListServiceInstanceUpgradeHistoryRequest struct {
-	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	// The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query, which should be the value of the NextToken parameter from the previous API call.
+	// The token that is used to retrieve the next page of results. Set this to the NextToken value from a previous response.
 	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListServiceInstanceUpgradeHistoryRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service instance ID.
+	// The service instance ID.
 	//
 	// This parameter is required.
 	//

@@ -22,27 +22,27 @@ type iListArtifactVersionsResponseBody interface {
 }
 
 type ListArtifactVersionsResponseBody struct {
-	// The version information about the deployment package.
+	// The information about the artifact versions.
 	Artifacts []*ListArtifactVersionsResponseBodyArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token that is used to retrieve the next page of results. If the results are not complete, this token is returned. To retrieve the next page of results, include this token in the next request.
 	//
 	// example:
 	//
-	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hR****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 46577928-3162-15A6-9084-69820EB9xxxx
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the query criteria.
 	//
 	// example:
 	//
@@ -117,105 +117,109 @@ func (s *ListArtifactVersionsResponseBody) Validate() error {
 }
 
 type ListArtifactVersionsResponseBodyArtifacts struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The content used to build the artifact. This parameter is used for managed artifact builds.
 	//
 	// example:
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	// The type of the deployment package to be built.
+	// The artifact build type.
 	//
 	// example:
 	//
 	// Dockerfile
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the deployment package.
+	// The artifact ID.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The properties of the deployment package.
+	// The properties of the artifact.
 	//
 	// example:
 	//
-	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
+	// {\\"CommodityCode\\":\\"cmjj0005****\\",\\"CommodityVersion\\":\\"V2022****\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	// The type of the deployment package.
+	// The artifact type.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The version of the deployment package.
+	// The version of the artifact.
 	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	// The time when the certificate was created.
+	// The time when the artifact was created.
 	//
 	// example:
 	//
 	// 2022-10-20T02:19:53Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the deployment package was modified.
+	// The time when the artifact was last modified.
 	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The distribution result of the image.
+	// The result of the image distribution.
 	ImageDelivery map[string]*string `json:"ImageDelivery,omitempty" xml:"ImageDelivery,omitempty"`
-	// The distribution progress of the deployment package.
+	// The distribution progress of the artifact.
 	//
 	// example:
 	//
 	// 100
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The result file of the security scan.
+	// The file that contains the security scan results.
 	//
 	// example:
 	//
-	// https://compute-nest-security-audit-bucket-ap-southeast-1.oss-ap-southeast-1.aliyuncs.com/51416747xxxx/xxxx
+	// 仅当安全扫描结果的返回值为AtRisk时才会展示。
 	ResultFile *string `json:"ResultFile,omitempty" xml:"ResultFile,omitempty"`
-	// The result of the security scan. Valid values:
+	// The security scan result.
 	//
-	// 	- Normal: No risks exist on the deployment package.
+	// Valid values:
 	//
-	// 	- AtRisk: Risks exist on the deployment package.
+	// - Normal: The artifact is normal and has no threats.
 	//
-	// 	- Processing: The deployment package is being scanned.
+	// - AtRisk: The artifact has security threats.
+	//
+	// - Processing: The security scan is in progress.
 	//
 	// example:
 	//
 	// Normal
 	SecurityAuditResult *string `json:"SecurityAuditResult,omitempty" xml:"SecurityAuditResult,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The status of the artifact.
 	//
-	// 	- Created: The deployment package is created.
+	// Valid values:
 	//
-	// 	- Scanning: The deployment package is being scanned.
+	// - Created: The artifact is created.
 	//
-	// 	- ScanFailed: The deployment package failed to be scanned.
+	// - Scanning: The artifact is being scanned.
 	//
-	// 	- Delivering: The deployment package is being distributed.
+	// - ScanFailed: The artifact failed to be scanned.
 	//
-	// 	- Available: The deployment package is available.
+	// - Delivering: The artifact is being distributed.
 	//
-	// 	- Deleted: The deployment package is deleted.
+	// - Available: The artifact is available.
+	//
+	// - Deleted: The artifact is deleted.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact status.
 	//
 	// example:
 	//
 	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	// The ID of the region that supports the deployment package.
+	// The IDs of the regions to which the artifact is distributed.
 	//
 	// example:
 	//
@@ -229,7 +233,7 @@ type ListArtifactVersionsResponseBodyArtifacts struct {
 	//
 	// 				]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
-	// The version name of the deployment package.
+	// The name of the artifact version.
 	//
 	// example:
 	//

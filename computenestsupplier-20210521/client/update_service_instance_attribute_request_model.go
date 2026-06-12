@@ -30,13 +30,13 @@ type UpdateServiceInstanceAttributeRequest struct {
 	//
 	// 2023-12-25T02:28:40Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The License Data
+	// The license data.
 	LicenseData *UpdateServiceInstanceAttributeRequestLicenseData `json:"LicenseData,omitempty" xml:"LicenseData,omitempty" type:"Struct"`
-	// Application reason, currently used for trial application extension.
+	// The reason for the request. This parameter is used to extend a trial.
 	//
 	// example:
 	//
-	// \\"\\"
+	// ""
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//
@@ -119,13 +119,13 @@ func (s *UpdateServiceInstanceAttributeRequest) Validate() error {
 }
 
 type UpdateServiceInstanceAttributeRequestLicenseData struct {
-	// The Custom Data
+	// The custom metadata.
 	//
 	// example:
 	//
 	// {"Test"}
 	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
-	// Mock response info.
+	// The information about the impersonated return value.
 	ResponseInfo *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo `json:"ResponseInfo,omitempty" xml:"ResponseInfo,omitempty" type:"Struct"`
 }
 
@@ -165,19 +165,19 @@ func (s *UpdateServiceInstanceAttributeRequestLicenseData) Validate() error {
 }
 
 type UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo struct {
-	// Mock error code.
+	// To impersonate an error message, specify an error code.
 	//
 	// example:
 	//
 	// EntityNotExist.Service
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Mock error message.
+	// To impersonate an error message, specify the error message.
 	//
 	// example:
 	//
 	// The provided parameter "ServiceId" is invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// if you want mock response, please open this option.
+	// Specifies whether to modify the return value.
 	//
 	// example:
 	//

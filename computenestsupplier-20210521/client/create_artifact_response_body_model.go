@@ -42,85 +42,85 @@ type iCreateArtifactResponseBody interface {
 }
 
 type CreateArtifactResponseBody struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The content used to build the artifact. This parameter is used for managed artifact builds.
 	//
 	// example:
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	// The type of the deployment package to be built.
+	// The type of the built artifact.
 	//
 	// example:
 	//
 	// Dockerfile
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the deployment package.
+	// The artifact ID.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The properties of the deployment object.
+	// The content of the artifact.
 	//
 	// example:
 	//
-	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
+	// {\\"CommodityCode\\":\\"cmjj0005****\\",\\"CommodityVersion\\":\\"V2022****\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	// The type of the deployment package.
+	// The artifact type.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The version of the deployment package.
+	// The artifact version.
 	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact.
 	//
 	// example:
 	//
-	// Test artifact
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the deployment package was modified.
+	// The time when the artifact was modified.
 	//
 	// example:
 	//
 	// 2022-11-11T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The latest version of the deployment package.
+	// The latest version of the artifact.
 	//
 	// example:
 	//
 	// 1
 	MaxVersion *int64 `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The name of the deployment package.
+	// The artifact name.
 	//
 	// example:
 	//
-	// Name
+	// Redhat8_5 image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
+	// E73F09DC-6C13-5CB1-A10F-7A4E125ABD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The status of the artifact.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of the deployment package.
+	// The description of the artifact status.
 	//
 	// example:
 	//
 	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	// The ID of the region that supports the deployment package.
+	// The IDs of the regions to which the artifact is distributed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type CreateArtifactResponseBody struct {
 	//
 	// 		]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
-	// The name of the deployment package.
+	// The name of the artifact version.
 	//
 	// example:
 	//

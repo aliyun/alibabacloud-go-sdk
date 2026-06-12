@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds a shared account of a service.
+// Adds shared accounts for a service.
 //
 // @param request - AddServiceSharedAccountsRequest
 //
@@ -69,7 +69,7 @@ func (client *Client) AddServiceSharedAccountsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Merchant uses service request
+// Approves a service usage request.
 //
 // @param request - ApproveServiceUsageRequest
 //
@@ -133,11 +133,11 @@ func (client *Client) ApproveServiceUsageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Cancel service registration.
+// Cancels a service review request.
 //
 // Description:
 //
-// Only service registration in the Submitted status can be canceled.
+// Service review requests can be canceled only if they are in the Submitted state.
 //
 // @param request - CancelServiceRegistrationRequest
 //
@@ -189,7 +189,7 @@ func (client *Client) CancelServiceRegistrationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Redeploys a service instance after the service instance failed to be deployed.
+// Continues the deployment of a service instance after a deployment failure. You must specify the region ID, service ID, and the configuration parameters for the service instance.
 //
 // @param request - ContinueDeployServiceInstanceRequest
 //
@@ -249,7 +249,7 @@ func (client *Client) ContinueDeployServiceInstanceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates a deployment package.
+// Creates an artifact.
 //
 // @param tmpReq - CreateArtifactRequest
 //
@@ -347,7 +347,7 @@ func (client *Client) CreateArtifactWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 创建运维公告
+// Creates an operations and maintenance (O&M) notice.
 //
 // @param tmpReq - CreateOpsNoticeRequest
 //
@@ -433,7 +433,7 @@ func (client *Client) CreateOpsNoticeWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Creates a service.
+// Creates a service by specifying parameters, such as the region ID, deployment type, service type, and service name.
 //
 // @param tmpReq - CreateServiceRequest
 //
@@ -591,7 +591,7 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Creates and deploys a service instance.
+// You can create and deploy a service instance by specifying parameters such as the region ID, service ID, and service version.
 //
 // @param tmpReq - CreateServiceInstanceRequest
 //
@@ -689,7 +689,7 @@ func (client *Client) CreateServiceInstanceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Create service test case.
+// Creates a service test case.
 //
 // @param request - CreateServiceTestCaseRequest
 //
@@ -753,7 +753,7 @@ func (client *Client) CreateServiceTestCaseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Create service test task
+// Creates a test task for a service.
 //
 // @param request - CreateServiceTestTaskRequest
 //
@@ -809,7 +809,7 @@ func (client *Client) CreateServiceTestTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Create  Service resell application.
+// You can create a service distribution request.
 //
 // @param request - CreateServiceUsageRequest
 //
@@ -861,7 +861,7 @@ func (client *Client) CreateServiceUsageWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Register as a service provider
+// Registers a service provider.
 //
 // @param request - CreateSupplierRegistrationRequest
 //
@@ -973,7 +973,13 @@ func (client *Client) CreateSupplierRegistrationWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除Acr镜像仓库
+// Deletes ACR image repositories.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Before you delete an image repository, ensure that no deployments reference its container images. If you delete a repository that contains referenced images, the associated deployments become unavailable.
 //
 // @param request - DeleteAcrImageRepositoriesRequest
 //
@@ -1029,7 +1035,13 @@ func (client *Client) DeleteAcrImageRepositoriesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除Acr容器镜像版本
+// # Delete a container image version from ACR
+//
+// Description:
+//
+// ###
+//
+// You must delete the deployments that use the container image before you delete the image tag. After the tag is deleted, the corresponding deployments become unusable.
 //
 // @param request - DeleteAcrImageTagsRequest
 //
@@ -1089,7 +1101,7 @@ func (client *Client) DeleteAcrImageTagsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an artifact.
+// You can call DeleteArtifact to delete an artifact or a specific version of an artifact.
 //
 // @param request - DeleteArtifactRequest
 //
@@ -1141,7 +1153,7 @@ func (client *Client) DeleteArtifactWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a service.
+// Deletes a specified service based on its region ID, service ID, and service version.
 //
 // @param request - DeleteServiceRequest
 //
@@ -1197,7 +1209,7 @@ func (client *Client) DeleteServiceWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a service instance.
+// Deletes service instances by specifying a region ID and service instance IDs.
 //
 // @param request - DeleteServiceInstancesRequest
 //
@@ -1249,7 +1261,7 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Delete service test configuration
+// Deletes a service test case.
 //
 // @param request - DeleteServiceTestCaseRequest
 //
@@ -1349,7 +1361,7 @@ func (client *Client) DeployServiceInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 生成默认服务测试配置
+// You can call the GenerateDefaultServiceTestConfig operation to modify the service test configuration.
 //
 // @param request - GenerateDefaultServiceTestConfigRequest
 //
@@ -1401,23 +1413,33 @@ func (client *Client) GenerateDefaultServiceTestConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// # Generate and validate the stack required for service creation
+// Generates the required access policies before you create a service instance.
 //
-// @param request - GenerateServicePolicyRequest
+// @param tmpReq - GenerateServicePolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateServicePolicyResponse
-func (client *Client) GenerateServicePolicyWithContext(ctx context.Context, request *GenerateServicePolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateServicePolicyResponse, _err error) {
+func (client *Client) GenerateServicePolicyWithContext(ctx context.Context, tmpReq *GenerateServicePolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateServicePolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &GenerateServicePolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OperationTypes) {
 		query["OperationTypes"] = request.OperationTypes
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		query["Parameters"] = request.ParametersShrink
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -1465,7 +1487,7 @@ func (client *Client) GenerateServicePolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about a deployment package.
+// Retrieves the details of an artifact.
 //
 // @param request - GetArtifactRequest
 //
@@ -1517,7 +1539,7 @@ func (client *Client) GetArtifactWithContext(ctx context.Context, request *GetAr
 
 // Summary:
 //
-// Queries the credentials that are required to upload a deployment package.
+// Obtains the credentials required to upload an artifact.
 //
 // @param request - GetArtifactRepositoryCredentialsRequest
 //
@@ -1565,7 +1587,7 @@ func (client *Client) GetArtifactRepositoryCredentialsWithContext(ctx context.Co
 
 // Summary:
 //
-// 根据地域参数获取地域可用区列表
+// Retrieves a list of available zones in a region.
 //
 // @param request - GetNetworkAvailableZonesRequest
 //
@@ -1637,7 +1659,11 @@ func (client *Client) GetNetworkAvailableZonesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查看运维公告详情
+// Retrieves the details of an operations and maintenance (O&M) notice.
+//
+// Description:
+//
+// Services must be approved before they can be published.
 //
 // @param request - GetOpsNoticeRequest
 //
@@ -1685,7 +1711,7 @@ func (client *Client) GetOpsNoticeWithContext(ctx context.Context, request *GetO
 
 // Summary:
 //
-// Queries the information about a service.
+// Retrieves the details of a specified service.
 //
 // @param request - GetServiceRequest
 //
@@ -1757,7 +1783,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, request *GetSer
 
 // Summary:
 //
-// Queries the estimated price for creating a service instance.
+// Retrieves the estimated cost of creating a service instance.
 //
 // @param tmpReq - GetServiceEstimateCostRequest
 //
@@ -1843,7 +1869,7 @@ func (client *Client) GetServiceEstimateCostWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries the information about a service instance.
+// Queries the details of a specified service instance using the service instance ID and region ID. The returned information includes the deployment status, template name, and service details.
 //
 // @param request - GetServiceInstanceRequest
 //
@@ -1891,7 +1917,7 @@ func (client *Client) GetServiceInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
+// Queries the activation status of a service and the information about its service roles.
 //
 // @param tmpReq - GetServiceProvisionsRequest
 //
@@ -1957,7 +1983,7 @@ func (client *Client) GetServiceProvisionsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Get service registration detail.
+// Queries the details of a service registration.
 //
 // @param request - GetServiceRegistrationRequest
 //
@@ -2005,7 +2031,7 @@ func (client *Client) GetServiceRegistrationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询服务模板存在的规范问题
+// Queries for criterion issues in a service template.
 //
 // @param request - GetServiceTemplateCriterionIssuesRequest
 //
@@ -2057,7 +2083,7 @@ func (client *Client) GetServiceTemplateCriterionIssuesWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the valid values of parameters in a Resource Orchestration Service (ROS) template.
+// Queries the parameter constraints for a Resource Orchestration Service (ROS) template.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -2133,7 +2159,7 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithContext(ctx cont
 
 // Summary:
 //
-// # Get the execution status of Cases in the service test task
+// After a service test task is created, you can call this API to retrieve the execution details of each use case in the task.
 //
 // @param request - GetServiceTestTaskRequest
 //
@@ -2181,7 +2207,7 @@ func (client *Client) GetServiceTestTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Get service provider information
+// Retrieves service provider information.
 //
 // @param request - GetSupplierInformationRequest
 //
@@ -2225,7 +2251,7 @@ func (client *Client) GetSupplierInformationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Obtain the AccessKey pair of uploaded files.
+// Retrieves credentials to upload a file.
 //
 // @param request - GetUploadCredentialsRequest
 //
@@ -2273,11 +2299,11 @@ func (client *Client) GetUploadCredentialsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Launch service
+// Publishes a service.
 //
 // Description:
 //
-// 需要上线的服务必须为已通过审核的服务。
+// Only approved services can be published.
 //
 // @param request - LaunchServiceRequest
 //
@@ -2341,7 +2367,7 @@ func (client *Client) LaunchServiceWithContext(ctx context.Context, request *Lau
 
 // Summary:
 //
-// Queries a list of images uploaded to Container Registry.
+// You can call the ListAcrImageRepositories operation to query a list of image repositories in ACR.
 //
 // @param request - ListAcrImageRepositoriesRequest
 //
@@ -2397,7 +2423,7 @@ func (client *Client) ListAcrImageRepositoriesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the versions of images that are uploaded to the image repository.
+// Lists the uploaded image versions in an image repository.
 //
 // @param request - ListAcrImageTagsRequest
 //
@@ -2453,7 +2479,13 @@ func (client *Client) ListAcrImageTagsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询部署实例、升级以及应用的日志
+// Queries the build logs of an artifact.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// # None
 //
 // @param request - ListArtifactBuildLogsRequest
 //
@@ -2521,7 +2553,7 @@ func (client *Client) ListArtifactBuildLogsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Get the list of artifact security risks
+// Retrieves a list of security risks for an artifact.
 //
 // @param request - ListArtifactRisksRequest
 //
@@ -2569,7 +2601,7 @@ func (client *Client) ListArtifactRisksWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the version information about a deployment package.
+// Queries artifact versions.
 //
 // @param tmpReq - ListArtifactVersionsRequest
 //
@@ -2631,7 +2663,7 @@ func (client *Client) ListArtifactVersionsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Queries a list of deployment packages.
+// Queries a list of artifacts.
 //
 // @param request - ListArtifactsRequest
 //
@@ -2691,7 +2723,7 @@ func (client *Client) ListArtifactsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询运维公告
+// Queries the operations and maintenance (O&M) notices published by a service provider.
 //
 // @param request - ListOpsNoticesRequest
 //
@@ -2747,7 +2779,7 @@ func (client *Client) ListOpsNoticesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// # Paginated query of distributor information list
+// Queries a list of resellers for display on the frontend.
 //
 // @param request - ListResellersRequest
 //
@@ -2803,7 +2835,13 @@ func (client *Client) ListResellersWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询部署实例、升级以及应用的日志
+// Queries the logs for service instances, upgrades, and applications.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that you add the startup and shutdown Operations and Maintenance (O\\&M) operations when you create a service. For more information, see [Create a service](https://help.aliyun.com/document_detail/440268.html).
 //
 // @param request - ListServiceBuildLogsRequest
 //
@@ -2867,7 +2905,7 @@ func (client *Client) ListServiceBuildLogsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Display service instance bill
+// You can call the ListServiceInstanceBill operation to query the bills of a service instance.
 //
 // @param request - ListServiceInstanceBillRequest
 //
@@ -2939,7 +2977,7 @@ func (client *Client) ListServiceInstanceBillWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query service instance deployment details
+// Queries the deployment details for service instances.
 //
 // @param request - ListServiceInstanceDeployDetailsRequest
 //
@@ -3015,7 +3053,7 @@ func (client *Client) ListServiceInstanceDeployDetailsWithContext(ctx context.Co
 
 // Summary:
 //
-// “Query logs at various levels, including service instance application, instance, and resource.”
+// Call the ListServiceInstanceLogs operation to query deployment, upgrade, and application logs for a service instance.
 //
 // @param request - ListServiceInstanceLogsRequest
 //
@@ -3087,7 +3125,7 @@ func (client *Client) ListServiceInstanceLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query service instance resources
+// Lists the resources in a service instance.
 //
 // @param request - ListServiceInstanceResourcesRequest
 //
@@ -3155,7 +3193,7 @@ func (client *Client) ListServiceInstanceResourcesWithContext(ctx context.Contex
 
 // Summary:
 //
-// # View the upgrade history of a service instance
+// You can call ListServiceInstanceUpgradeHistory to query the upgrade history of a service instance.
 //
 // @param request - ListServiceInstanceUpgradeHistoryRequest
 //
@@ -3279,7 +3317,7 @@ func (client *Client) ListServiceInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Query service registrations.
+// Queries service registration requests.
 //
 // @param request - ListServiceRegistrationsRequest
 //
@@ -3335,7 +3373,7 @@ func (client *Client) ListServiceRegistrationsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 调用ListServiceSharedAccounts查看服务共享账号列表。
+// Queries the accounts that a service is shared with.
 //
 // @param request - ListServiceSharedAccountsRequest
 //
@@ -3399,7 +3437,7 @@ func (client *Client) ListServiceSharedAccountsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Service test case list
+// Queries the service test cases for the current service version.
 //
 // @param request - ListServiceTestCasesRequest
 //
@@ -3463,7 +3501,7 @@ func (client *Client) ListServiceTestCasesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Get service test real-time logs
+// Retrieves the real-time logs of a service test.
 //
 // @param request - ListServiceTestTaskLogsRequest
 //
@@ -3519,7 +3557,7 @@ func (client *Client) ListServiceTestTaskLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get task execution list
+// Queries the test tasks for a service.
 //
 // @param request - ListServiceTestTasksRequest
 //
@@ -3583,7 +3621,7 @@ func (client *Client) ListServiceTestTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the applications for using a service.
+// Queries the usage of your services.
 //
 // @param request - ListServiceUsagesRequest
 //
@@ -3623,7 +3661,7 @@ func (client *Client) ListServiceUsagesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of services.
+// Queries for a list of services based on specified parameters, such as a region ID and service IDs. The returned information includes the service status, service version, and publish time.
 //
 // @param request - ListServicesRequest
 //
@@ -3691,7 +3729,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # Query the list of service provider onboarding reviews
+// Queries service provider registration requests.
 //
 // @param request - ListSupplierRegistrationsRequest
 //
@@ -3747,7 +3785,7 @@ func (client *Client) ListSupplierRegistrationsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query tag key list
+// Queries the existing tag keys.
 //
 // @param request - ListTagKeysRequest
 //
@@ -3799,7 +3837,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// # Query resource tags
+// Queries the tags of one or more resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3859,7 +3897,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query tag value list
+// Queries the tag values for a specific tag key.
 //
 // @param request - ListTagValuesRequest
 //
@@ -3915,7 +3953,7 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Modifies the resource information about a service instance.
+// Modifies the resources of a service instance.
 //
 // @param request - ModifyServiceInstanceResourcesRequest
 //
@@ -3967,7 +4005,7 @@ func (client *Client) ModifyServiceInstanceResourcesWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Pre-release service
+// Prelaunches a service.
 //
 // @param request - PreLaunchServiceRequest
 //
@@ -4019,7 +4057,7 @@ func (client *Client) PreLaunchServiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Pushes metering data of an Alibaba Cloud Marketplace commodity.
+// This API pushes metering data for pay-as-you-go Compute Nest service instances. The metering items must be predefined by the service provider.
 //
 // @param request - PushMeteringDataRequest
 //
@@ -4067,7 +4105,7 @@ func (client *Client) PushMeteringDataWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Registers an artifact.
+// Registers a Service deployment.
 //
 // @param request - RegisterServiceRequest
 //
@@ -4119,7 +4157,7 @@ func (client *Client) RegisterServiceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Reject service usage.
+// You can call RejectServiceUsage to reject a service request.
 //
 // @param request - RejectServiceUsageRequest
 //
@@ -4185,6 +4223,12 @@ func (client *Client) RejectServiceUsageWithContext(ctx context.Context, request
 //
 // Publishes an artifact.
 //
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that you have created and saved an artifact.
+//
 // @param request - ReleaseArtifactRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4231,7 +4275,7 @@ func (client *Client) ReleaseArtifactWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Remove  service shared account.
+// Removes shared accounts.
 //
 // @param request - RemoveServiceSharedAccountsRequest
 //
@@ -4291,7 +4335,13 @@ func (client *Client) RemoveServiceSharedAccountsWithContext(ctx context.Context
 
 // Summary:
 //
-// When the service instance is Deployed, call the RestartServiceInstance interface to restart the service instance.
+// Call the RestartServiceInstance operation to restart a service instance whose status is Deployed.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that you add the restart Operations and Maintenance (O\\&M) operation when you create the service. For more information, see [Create a service](https://help.aliyun.com/document_detail/440268.html).
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -4343,7 +4393,7 @@ func (client *Client) RestartServiceInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Rollback Service Instance
+// Rolls back an upgraded service instance to its previous version.
 //
 // @param request - RollbackServiceInstanceRequest
 //
@@ -4395,7 +4445,13 @@ func (client *Client) RollbackServiceInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
+// Starts a service instance when its status is Stopped or StartFailed.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that you add the startup and shutdown O\\&M operations when you create the service. For more information, see [Create a service](https://help.aliyun.com/document_detail/440268.html).
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -4447,7 +4503,13 @@ func (client *Client) StartServiceInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Stops a service instance that is in the Deployed or StopFailed state.
+// This operation stops a service instance that is in the Deployed or StopFailed state.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// Ensure that you configured the startup and shutdown operations and maintenance (O\\&M) when you created the service. For more information, see [Create a service](https://help.aliyun.com/document_detail/440268.html).
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -4499,7 +4561,7 @@ func (client *Client) StopServiceInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Tag a resource
+// Creates and attaches tags to one or more resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -4555,7 +4617,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// # Unbind resource from tag
+// Removes tags from resources.
 //
 // @param request - UnTagResourcesRequest
 //
@@ -4615,7 +4677,7 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Updates a deployment package.
+// Updates an artifact.
 //
 // @param tmpReq - UpdateArtifactRequest
 //
@@ -4697,7 +4759,11 @@ func (client *Client) UpdateArtifactWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// Update a service.
+// Updates a service.
+//
+// Description:
+//
+// Only approved services can be published.
 //
 // @param tmpReq - UpdateServiceRequest
 //
@@ -4867,7 +4933,7 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, tmpReq *Upda
 
 // Summary:
 //
-// Updates the properties of a service instance.
+// Updates the attributes of a service instance.
 //
 // @param tmpReq - UpdateServiceInstanceAttributeRequest
 //
@@ -4933,7 +4999,7 @@ func (client *Client) UpdateServiceInstanceAttributeWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates the configurations of a service instance.
+// Upgrades or downgrades a service instance.
 //
 // @param tmpReq - UpdateServiceInstanceSpecRequest
 //
@@ -5003,7 +5069,7 @@ func (client *Client) UpdateServiceInstanceSpecWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Modify Service Test Case
+// Updates a service test case.
 //
 // @param request - UpdateServiceTestCaseRequest
 //
@@ -5059,7 +5125,7 @@ func (client *Client) UpdateServiceTestCaseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Update Service Sharing Permissions
+// You can call UpdateSharedAccountPermission to update the permissions of a shared account.
 //
 // @param request - UpdateSharedAccountPermissionRequest
 //
@@ -5123,7 +5189,7 @@ func (client *Client) UpdateSharedAccountPermissionWithContext(ctx context.Conte
 
 // Summary:
 //
-// Update the information of supplier.
+// You can call the UpdateSupplierInformation operation to update supplier information.
 //
 // @param request - UpdateSupplierInformationRequest
 //
@@ -5195,7 +5261,7 @@ func (client *Client) UpdateSupplierInformationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Upgrades a service instance.
+// The UpgradeServiceInstance operation upgrades a service instance based on parameters such as the region ID and service version.
 //
 // @param tmpReq - UpgradeServiceInstanceRequest
 //
@@ -5265,7 +5331,7 @@ func (client *Client) UpgradeServiceInstanceWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Withdraw service version.
+// Unpublishes a service version.
 //
 // @param request - WithdrawServiceRequest
 //

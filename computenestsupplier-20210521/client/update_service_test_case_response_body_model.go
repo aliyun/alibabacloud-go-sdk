@@ -14,7 +14,7 @@ type iUpdateServiceTestCaseResponseBody interface {
 }
 
 type UpdateServiceTestCaseResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

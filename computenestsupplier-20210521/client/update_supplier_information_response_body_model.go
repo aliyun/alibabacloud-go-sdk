@@ -26,19 +26,19 @@ type UpdateSupplierInformationResponseBody struct {
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The description of service provider.
+	// The description of the supplier.
 	//
 	// example:
 	//
-	// Test supplier
+	// Alibaba Cloud Compute Nest
 	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
-	// The name of the service provider.
+	// The name of the supplier.
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The URL of the service provider.
+	// The URL of the supplier.
 	//
 	// example:
 	//

@@ -68,87 +68,81 @@ type iCreateServiceRequest interface {
 }
 
 type CreateServiceRequest struct {
-	// The alert configurations of the service.
+	// The alert configurations for the service.
 	//
-	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	// > This configuration takes effect only after an alert-related access policy is configured in \\`PolicyNames\\`.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "TemplateUrl": "http://template.file.url",
+	//   "TemplateUrl": "http://template.file.url",
 	//
-	//   // 应用分组级别告警元数据
+	//   // Application group level alarm metadata
 	//
-	//   "ApplicationGroups": [
+	//   "ApplicationGroups": [
 	//
-	//     {
+	//     {
 	//
-	//       "Name": "applicationGroup1",
+	//       "Name": "applicationGroup1",
 	//
-	//       "TemplateUrl": "url1"
+	//       "TemplateUrl": "url1"
 	//
-	//     },
+	//     },
 	//
-	//     {
+	//     {
 	//
-	//       "Name": "applicationGroup2",
+	//       "Name": "applicationGroup2",
 	//
-	//       "TemplateUrl": "url2"
+	//       "TemplateUrl": "url2"
 	//
-	//     }
+	//     }
 	//
-	//   ]
+	//   ]
 	//
 	// }
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
-	// The approval type of the service usage application. Valid values:
+	// The approval type for service usage requests. Valid values:
 	//
-	// 	- Manual: The application is manually approved.
+	// - Manual: The request requires manual approval.
 	//
-	// 	- AutoPass: The application is automatically approved.
+	// - AutoPass: The request is automatically approved.
 	//
 	// example:
 	//
 	// Manual
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The parameters for building the service
+	// The parameters for building the service.
 	//
 	// example:
 	//
 	// { "ServiceTemplateId": "st-xxxxx"}
 	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. \\`ClientToken\\` supports only ASCII characters.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Compliance check metadata.
+	// The compliance check metadata.
 	ComplianceMetadata *CreateServiceRequestComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
-	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	// The deployment configuration of the service. The information stored varies by deployment type. Different deployment types have different data formats. The data is stored in a JSON string.
 	//
 	// example:
 	//
-	// {\\"TemplateConfigs\\":[{\\"Name\\":\\"模板1\\",\\"Url\\":\\"oss://computenest-test/template"
-	//
-	//             + ".json?RegionId=cn-beijing\\",\\"PredefinedParameters\\":[{\\"Name\\":\\"低配版\\","
-	//
-	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":40}},{\\"Name\\":\\"高配版\\","
-	//
-	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":200}}]}]}
+	// {"TemplateConfigs":[{"Name":"Template 1","Url":"oss://computenest-test/template.json?RegionId=cn-beijing","PredefinedParameters":[{"Name":"Basic","Parameters":{"InstanceType":"ecs.g5.large","DataDiskSize":40}},{"Name":"Advanced","Parameters":{"InstanceType":"ecs.g5.large","DataDiskSize":200}}]}]}
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
-	// The deployment type of the service. Valid values:
+	// The deployment type. Valid values:
 	//
-	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	// - ros: The service is deployed using ROS.
 	//
-	// 	- terraform: The service is deployed by using Terraform.
+	// - terraform: The service is deployed using Terraform.
 	//
-	// 	- ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	// - ack: The service is deployed using ACK.
 	//
-	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	// - spi: The service is deployed by invoking an SPI.
 	//
-	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	// - operation: The service is an O\\&M service.
 	//
 	// This parameter is required.
 	//
@@ -156,29 +150,25 @@ type CreateServiceRequest struct {
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// Specifies whether to perform only a dry run for the request to check information. Valid values:
-	//
-	// 	- true: performs a dry run for the request, but does not create a service.
-	//
-	// 	- false: performs a dry run for the request, and create a service if the request passes the dry run.
+	// Specifies whether to perform a dry run to check the request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	// The O\\&M duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+	// Specifies whether to enable O\\&M. Default value: false. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
-	// >  This parameter is required if you set **ServiceType*	- to **private**.
+	// > This parameter is required when \\`ServiceType\\` is set to \\`private\\`.
 	//
 	// example:
 	//
@@ -188,21 +178,37 @@ type CreateServiceRequest struct {
 	//
 	// example:
 	//
-	// {\\"RetentionDays\\":3}
+	// {\\"PayType\\":\\"CustomFixTime\\",\\"DefaultLicenseDays\\":7,\\"CustomMetadata\\":[{\\"TemplateName\\":\\" template1\\",\\"SpecificationName\\":\\"bandwith-0\\",\\"CustomData\\":\\"1\\"}]}
 	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	// The logging configurations.
+	// The application log configuration.
 	//
 	// example:
 	//
-	// { "Logstores": [ { "LogstoreName": "access-log", "LogPath": "/home/admin/app/logs", # This parameter is not required for containers. Configure the parameter in the YAML file. "FilePattern": "access.log\\*" # This parameter is not required for containers. Configure the parameter in the YAML file. } ] }
+	// {
+	//
+	//   "Logstores": [
+	//
+	//     {
+	//
+	//     "LogstoreName": "access-log",
+	//
+	//   "LogPath": "/home/admin/app/logs", # Not required for containers. Configure in YAML
+	//
+	//   "FilePattern": "access.log*" # Not required for containers. Configure in YAML
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
-	// The hosted O\\&M configurations.
+	// The O\\&M configuration.
 	//
 	// example:
 	//
 	// {\\"PrometheusConfigMap\\":{\\"New_Vpc_Ack_And_Jumpserver\\":{}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
-	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	// The policy name. The name of a single policy can be up to 128 characters in length. Separate multiple names with commas (,). Only policies related to O\\&M parameters are supported.
 	//
 	// example:
 	//
@@ -216,13 +222,17 @@ type CreateServiceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Whether resell is supported.
+	// Specifies whether the service can be distributed. Valid values:
+	//
+	// - false: The service cannot be distributed.
+	//
+	// - true: The service can be distributed.
 	//
 	// example:
 	//
 	// false
 	Resellable *bool `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -238,41 +248,41 @@ type CreateServiceRequest struct {
 	ServiceInfo []*CreateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
 	// The service type. Valid values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service instance is deployed in the user\\"s account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service instance is managed in the service provider\\"s account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: An O\\&M service instance.
 	//
-	// 	- poc: The service is a trial service.
+	// - poc: A trial service instance.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The permission type of the deployment URL. Valid values:
+	// The sharing type. Valid values:
 	//
-	// 	- Public: All users can go to the URL to create a service instance or a trial service instance.
+	// - Public: The service is public. Full and trial deployments are not restricted.
 	//
-	// 	- Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	// - Restricted: The service is restricted. Full and trial deployments are restricted.
 	//
-	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	// - OnlyFormalRestricted: Only full deployments are restricted.
 	//
-	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	// - OnlyTrailRestricted: Only trial deployments are restricted.
 	//
-	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	// - Hidden: The service is hidden. It is not visible and you cannot request deployment permissions.
 	//
 	// example:
 	//
 	// Public
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The source service ID for resell。
+	// The ID of the source service for distribution.
 	//
 	// example:
 	//
 	// service-70a3b15bb62643xxxxxx
 	SourceServiceId *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
-	// The source service version for resell。
+	// The version of the source service for distribution.
 	//
 	// example:
 	//
@@ -280,23 +290,23 @@ type CreateServiceRequest struct {
 	SourceServiceVersion *string `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
 	// The custom tags.
 	Tag []*CreateServiceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The type of the tenant. Valid values:
+	// The tenant type. Valid values:
 	//
-	// 	- SingleTenant
+	// - SingleTenant: Single-tenant.
 	//
-	// 	- MultiTenant
+	// - MultiTenant: Multitenant.
 	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
-	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	// The trial duration. Unit: days. The maximum trial duration is 30 days.
 	//
 	// example:
 	//
 	// 7
 	TrialDuration *int64 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
-	// The metadata about the upgrade.
+	// The upgrade metadata.
 	//
 	// example:
 	//
@@ -598,7 +608,7 @@ func (s *CreateServiceRequest) Validate() error {
 }
 
 type CreateServiceRequestComplianceMetadata struct {
-	// The compliance package selected.
+	// The selected compliance packages.
 	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -624,7 +634,7 @@ func (s *CreateServiceRequestComplianceMetadata) Validate() error {
 }
 
 type CreateServiceRequestServiceInfo struct {
-	// Protocol document information about the service.
+	// The information about the service agreements.
 	Agreements []*CreateServiceRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
 	// The URL of the service icon.
 	//
@@ -634,9 +644,9 @@ type CreateServiceRequestServiceInfo struct {
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The language of the service. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US: English
+	// - en-US: English.
 	//
 	// This parameter is required.
 	//
@@ -644,7 +654,7 @@ type CreateServiceRequestServiceInfo struct {
 	//
 	// zh-CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The URL of the detailed description of the service.
+	// The detailed description of the service.
 	//
 	// example:
 	//
@@ -658,13 +668,13 @@ type CreateServiceRequestServiceInfo struct {
 	//
 	// TiDB Database
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the service.
+	// A brief description of the service.
 	//
 	// example:
 	//
-	// TiDB是A公司自主设计、研发的开源分布式关系型数据库。
+	// TiDB is an open-source distributed relational database designed and developed by Company A.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
-	// The list of the software in the service.
+	// The information about the software used in the service.
 	Softwares []*CreateServiceRequestServiceInfoSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
@@ -762,13 +772,13 @@ func (s *CreateServiceRequestServiceInfo) Validate() error {
 }
 
 type CreateServiceRequestServiceInfoAgreements struct {
-	// Protocol name.
+	// The name of the agreement.
 	//
 	// example:
 	//
 	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Protocol url.
+	// The URL of the agreement.
 	//
 	// example:
 	//
@@ -807,13 +817,13 @@ func (s *CreateServiceRequestServiceInfoAgreements) Validate() error {
 }
 
 type CreateServiceRequestServiceInfoSoftwares struct {
-	// The name of the software.
+	// The software name.
 	//
 	// example:
 	//
 	// MySQL
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version of the software.
+	// The software version.
 	//
 	// example:
 	//

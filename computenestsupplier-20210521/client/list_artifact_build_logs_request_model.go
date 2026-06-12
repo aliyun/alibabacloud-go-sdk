@@ -26,31 +26,52 @@ type iListArtifactBuildLogsRequest interface {
 }
 
 type ListArtifactBuildLogsRequest struct {
+	// The artifact ID.
+	//
+	// You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// artifact-fbad2ca276194d019714
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The artifact version.
+	//
+	// You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact version.
+	//
 	// example:
 	//
 	// draft
-	ArtifactVersion *string                               `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	Filter          []*ListArtifactBuildLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+	// The filter.
+	Filter []*ListArtifactBuildLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next paged query.
+	//
 	// example:
 	//
 	// AAAAAbL3H6CZmy6oocwGDqzQ+Gc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - **Ascending**: sorts the results in ascending order.
+	//
+	// - **Descending*	- (default): sorts the results in descending order.
+	//
 	// example:
 	//
 	// Ascending
@@ -142,10 +163,25 @@ func (s *ListArtifactBuildLogsRequest) Validate() error {
 }
 
 type ListArtifactBuildLogsRequestFilter struct {
+	// The name of the filter.
+	//
+	// Valid values:
+	//
+	// - StartTime
+	//
+	// - EndTime
+	//
+	// - ApplicationGroupName
+	//
+	// - ResouceName
+	//
+	// - EventName
+	//
 	// example:
 	//
 	// BuildStartTime
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

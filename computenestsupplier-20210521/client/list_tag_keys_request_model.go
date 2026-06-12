@@ -18,7 +18,7 @@ type iListTagKeysRequest interface {
 }
 
 type ListTagKeysRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token to start the next query.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type ListTagKeysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// - service
+	// - service: A service.
 	//
-	// - serviceinstance
+	// - serviceinstance: A service instance.
 	//
-	// - artifact
+	// - artifact: A deployment.
 	//
 	// This parameter is required.
 	//

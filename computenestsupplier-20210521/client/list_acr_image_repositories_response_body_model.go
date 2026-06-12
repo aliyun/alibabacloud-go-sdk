@@ -22,19 +22,19 @@ type iListAcrImageRepositoriesResponseBody interface {
 }
 
 type ListAcrImageRepositoriesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The images.
+	// The list of repositories.
 	Repositories []*ListAcrImageRepositoriesResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListAcrImageRepositoriesResponseBody struct {
 	//
 	// C4A145D8-6F6C-532A-9001-9730CDA27578
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,45 +117,41 @@ func (s *ListAcrImageRepositoriesResponseBody) Validate() error {
 }
 
 type ListAcrImageRepositoriesResponseBodyRepositories struct {
-	// The time when the image was created.
+	// The time when the repository was created.
 	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the image was modified.
+	// The time when the repository was last modified.
 	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The namespace of the repository
+	// The namespace.
 	//
 	// example:
 	//
 	// computenest
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The image repo ID.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crr-3gqhkza0wbxxxxxx
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The image repo name.
+	// The repository name.
 	//
 	// example:
 	//
 	// wordpress
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The type of the repository. Valid values:
-	//
-	// 	- `Private`: a private repository
-	//
-	// 	- `Public`: a public repository
+	// The type of the repository. Valid values: Public and Private.
 	//
 	// example:
 	//
-	// Private
+	// Public
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 }
 

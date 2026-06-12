@@ -16,13 +16,13 @@ type iDeleteServiceTestCaseRequest interface {
 }
 
 type DeleteServiceTestCaseRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service test case id.
+	// The ID of the service test case.
 	//
 	// This parameter is required.
 	//

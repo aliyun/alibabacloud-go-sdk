@@ -20,20 +20,32 @@ type iDeleteAcrImageRepositoriesRequest interface {
 }
 
 type DeleteAcrImageRepositoriesRequest struct {
+	// The type of the artifact. The default value is AcrImage. Valid values:
+	//
+	// - HelmChart: A Helm Chart image.
+	//
+	// - AcrImage: A container image.
+	//
 	// example:
 	//
 	// AcrImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. Generate a value for this parameter from your client. Make sure that the value is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The image repository ID.
+	//
 	// This parameter is required.
 	//
 	// example:

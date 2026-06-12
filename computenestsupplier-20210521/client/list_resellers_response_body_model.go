@@ -22,13 +22,13 @@ type iListResellersResponseBody interface {
 }
 
 type ListResellersResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. The maximum value is 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListResellersResponseBody struct {
 	//
 	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// distributor informations
+	// The list of results.
 	SupplierInformation []*ListResellersResponseBodySupplierInformation `json:"SupplierInformation,omitempty" xml:"SupplierInformation,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,31 +117,31 @@ func (s *ListResellersResponseBody) Validate() error {
 }
 
 type ListResellersResponseBodySupplierInformation struct {
-	// The description of distributor.
+	// The description of the reseller.
 	//
 	// example:
 	//
-	// It is a XXXX  company
+	// It is a XXXX company.
 	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
-	// The Logo of distributor
+	// The icon of the reseller.
 	//
 	// example:
 	//
 	// https://service-info-public.oss-cn-hangzhou.aliyuncs.com/31978070/service-image/d5c3b585-ff6b-4e4e-8885-xxxx.png
 	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
-	// The name of the distributor
+	// The name of the reseller.
 	//
 	// example:
 	//
-	// Distributor A
+	// Distributora
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	// The Alibaba Cloud account ID of the distributor.
+	// The UID of the reseller.
 	//
 	// example:
 	//
 	// 152xxxxxxxxxxx
 	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
-	// The URL of the distributor.
+	// The URL of the reseller\\"s official website.
 	//
 	// example:
 	//

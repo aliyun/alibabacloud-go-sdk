@@ -24,13 +24,13 @@ type iGetUploadCredentialsResponseBody interface {
 }
 
 type GetUploadCredentialsResponseBody struct {
-	// The response code.
+	// The return code of the call.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *GetUploadCredentialsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type GetUploadCredentialsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetUploadCredentialsResponseBody struct {
 	//
 	// FCC3321E-D518-1BC4-861E-588E9D4DAFB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates the request was successful. A value of false indicates the request failed.
+	// Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type GetUploadCredentialsResponseBodyData struct {
 	//
 	// service-info-private
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The time when the AccessKey pair expires.
+	// The time when the permissions expire.
 	//
 	// example:
 	//
 	// 2023-05-18T12:27:59Z
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The name of the key.
+	// The specific key.
 	//
 	// example:
 	//

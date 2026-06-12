@@ -22,7 +22,7 @@ type GenerateDefaultServiceTestConfigResponseBody struct {
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service test config
+	// The service test config.
 	//
 	// example:
 	//

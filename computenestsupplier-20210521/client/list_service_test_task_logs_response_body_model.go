@@ -20,13 +20,13 @@ type iListServiceTestTaskLogsResponseBody interface {
 }
 
 type ListServiceTestTaskLogsResponseBody struct {
-	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListServiceTestTaskLogsResponseBody struct {
 	//
 	// EDEE055B-D5F4-5B92-8F21-999D408F1214
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service test task logs.
+	// The log entries.
 	TaskLogs []*ListServiceTestTaskLogsResponseBodyTaskLogs `json:"TaskLogs,omitempty" xml:"TaskLogs,omitempty" type:"Repeated"`
 }
 
@@ -106,7 +106,7 @@ type ListServiceTestTaskLogsResponseBodyTaskLogs struct {
 	//
 	// log content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The UTC timestamp when the response is returned.
+	// The timestamp.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

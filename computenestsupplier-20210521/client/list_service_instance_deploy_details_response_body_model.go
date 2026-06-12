@@ -22,15 +22,15 @@ type iListServiceInstanceDeployDetailsResponseBody interface {
 }
 
 type ListServiceInstanceDeployDetailsResponseBody struct {
-	// The details of the service instance deployment.
+	// The deployment details of the service instance.
 	DeployDetails []*ListServiceInstanceDeployDetailsResponseBodyDeployDetails `json:"DeployDetails,omitempty" xml:"DeployDetails,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListServiceInstanceDeployDetailsResponseBody struct {
 	//
 	// 0036D82E-0624-5B37-B797-C460F4B02026
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,43 +117,43 @@ func (s *ListServiceInstanceDeployDetailsResponseBody) Validate() error {
 }
 
 type ListServiceInstanceDeployDetailsResponseBodyDeployDetails struct {
-	// The total number of entries that meet the specified conditions.
+	// The number of rows in the aggregate data.
 	//
 	// example:
 	//
 	// 4
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The time when the service instance was created.
+	// The time when the entry was created.
 	//
 	// example:
 	//
 	// 2024-04-10T01:58:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The period over which data is aggregated.
+	// The aggregation period.
 	//
 	// example:
 	//
 	// Month
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The indicates whether the deployment was successful.
+	// Indicates whether the deployment was successful.
 	//
 	// example:
 	//
 	// False
 	DeploySucceeded *string `json:"DeploySucceeded,omitempty" xml:"DeploySucceeded,omitempty"`
-	// The error code.
+	// The error code returned when the deployment failed.
 	//
 	// example:
 	//
 	// StackValidationFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error description.
+	// The error details.
 	//
 	// example:
 	//
 	// {code: StackValidationFailed, message: \\"Failed to continue create ROS stack 89e724e2-84e6-4517-a372-30a545ab4145: Resource [LinuxInstanceRunCommand]: i-wz91nfbh1fxtmfb0try4 are not running. Command invocation only support running instances. ErrorCode: StackValidationFailed\\", requestId: null}
 	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
-	// The type of error that caused the deployment to fail.
+	// The type of the error that occurred when the deployment failed.
 	//
 	// example:
 	//
@@ -171,27 +171,27 @@ type ListServiceInstanceDeployDetailsResponseBodyDeployDetails struct {
 	//
 	// si-273e8cee11d349e1803c
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The name of the service in Chinese.
+	// The Chinese name of the service.
 	//
 	// example:
 	//
-	// 测试服务(Test Service)
+	// 测试服务
 	ServiceNameChn *string `json:"ServiceNameChn,omitempty" xml:"ServiceNameChn,omitempty"`
-	// The name of the service in English.
+	// The English name of the service.
 	//
 	// example:
 	//
 	// Test Service
 	ServiceNameEng *string `json:"ServiceNameEng,omitempty" xml:"ServiceNameEng,omitempty"`
-	// The type of service.
+	// The service type.
 	//
-	// Possible values:
+	// Valid values:
 	//
-	// - private: Deployed under the user\\"s account.
+	// - private: The service is deployed in the user\\"s account.
 	//
-	// - managed: Hosted under the service provider\\"s account.
+	// - managed: The service is hosted in the service provider\\"s account.
 	//
-	// - operation: Managed operation service.
+	// - operation: The service is an Alibaba Cloud Managed Service.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type ListServiceInstanceDeployDetailsResponseBodyDeployDetails struct {
 	//
 	// 42
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The timestamp when the response is returned.
+	// The timestamp.
 	//
 	// example:
 	//
 	// 1723946641994
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The aliuid of user.
+	// The user ID.
 	//
 	// example:
 	//

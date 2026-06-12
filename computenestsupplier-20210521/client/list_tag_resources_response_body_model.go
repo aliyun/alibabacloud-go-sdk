@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token to start the next query.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources and their tags.
+	// A collection of resources and their tags. The collection includes resource IDs, resource types, and tag key-value pairs.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,19 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// Resource ID
+	// The resource ID.
 	//
 	// example:
 	//
 	// service-xxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Valid value:
+	// The resource type. Valid values:
 	//
-	// - service
+	// - service: a service.
 	//
-	// - serviceinstance
+	// - serviceinstance: a service instance.
 	//
-	// - artifact
+	// - artifact: a deployment.
 	//
 	// example:
 	//

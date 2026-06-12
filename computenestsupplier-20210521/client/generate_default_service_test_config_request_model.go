@@ -24,7 +24,7 @@ type GenerateDefaultServiceTestConfigRequest struct {
 	//
 	// example:
 	//
-	// service-41ad58439b4b4bf8ae73
+	// service-fd1aec438c974828bb7b
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service version.
 	//
@@ -32,13 +32,13 @@ type GenerateDefaultServiceTestConfigRequest struct {
 	//
 	// example:
 	//
-	// draft
+	// beta
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
 	// The template name.
 	//
 	// example:
 	//
-	// test-1
+	// ECS standalone
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

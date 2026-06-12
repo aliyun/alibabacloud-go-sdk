@@ -24,25 +24,25 @@ type iUpdateSharedAccountPermissionRequest interface {
 }
 
 type UpdateSharedAccountPermissionRequest struct {
-	// Client token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+	// A client token to ensure the idempotence of the request. Generate a unique value for this parameter on your client. The client token can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Permission type. Possible values:
+	// The permission type. Valid values:
 	//
-	// - Deployable: Can be deployed.
+	// - Deployable: The service can be deployed.
 	//
-	// - Accessible: Can be accessed.
+	// - Accessible: The service can be accessed.
 	//
-	// - AccessibleIncludeBeta: Can access all versions, including Beta versions.
+	// - AccessibleIncludeBeta: All versions of the service, including beta versions, can be accessed.
 	//
-	// - DeployableIncludeBeta: Can deploy all versions, including Beta versions.
+	// - DeployableIncludeBeta: All versions of the service, including beta versions, can be deployed.
 	//
-	// - Authorized: Authorized (for reselling scenarios)
+	// - Authorized: The service is authorized. This value is used for distribution scenarios.
 	//
-	// - Unauthorized: Unauthorized (for reselling scenarios)
+	// - Unauthorized: The service is not authorized. This value is used for distribution scenarios.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateSharedAccountPermissionRequest struct {
 	//
 	// Deployable
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type UpdateSharedAccountPermissionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service ID.
+	// The service ID.
 	//
 	// This parameter is required.
 	//
@@ -66,17 +66,17 @@ type UpdateSharedAccountPermissionRequest struct {
 	//
 	// service-0d6e1d846e4c4axxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Service sharing type, with a default value of SharedAccount. Available options:
+	// The type of service sharing. The default value is SharedAccount. Valid values:
 	//
-	// - SharedAccount: Regular sharing type.
+	// - SharedAccount: Regular sharing.
 	//
-	// - Reseller: Reselling sharing type.
+	// - Reseller: Distribution sharing.
 	//
 	// example:
 	//
 	// SharedAccount
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Whitelist account for service sharing.
+	// The whitelisted account with which the service is shared.
 	//
 	// This parameter is required.
 	//

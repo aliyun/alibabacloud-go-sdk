@@ -22,7 +22,7 @@ type GetServiceTestTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The task ID.
+	// The ID of the service test task.
 	//
 	// example:
 	//

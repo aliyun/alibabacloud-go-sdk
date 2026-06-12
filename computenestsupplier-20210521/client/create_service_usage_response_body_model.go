@@ -14,7 +14,7 @@ type iCreateServiceUsageResponseBody interface {
 }
 
 type CreateServiceUsageResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

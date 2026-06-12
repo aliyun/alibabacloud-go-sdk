@@ -18,11 +18,16 @@ type iListServiceBuildLogsResponseBody interface {
 }
 
 type ListServiceBuildLogsResponseBody struct {
+	// An array of build logs.
 	BuildLogs []*ListServiceBuildLogsResponseBodyBuildLogs `json:"BuildLogs,omitempty" xml:"BuildLogs,omitempty" type:"Repeated"`
+	// The token that is used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAW8kZY+u1sYOaYf5JmgmDQQ=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -78,14 +83,20 @@ func (s *ListServiceBuildLogsResponseBody) Validate() error {
 }
 
 type ListServiceBuildLogsResponseBodyBuildLogs struct {
+	// The name of the build step.
+	//
 	// example:
 	//
 	// BuildArtifact
 	BuildStep *string `json:"BuildStep,omitempty" xml:"BuildStep,omitempty"`
+	// The content of the log.
+	//
 	// example:
 	//
 	// build log
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The timestamp of the log entry.
+	//
 	// example:
 	//
 	// yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"

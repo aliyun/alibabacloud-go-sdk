@@ -24,25 +24,25 @@ type iListServiceTestCasesResponseBody interface {
 type ListServiceTestCasesResponseBody struct {
 	// The data returned.
 	Data []*ListServiceTestCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// CA3AE512-6D30-549A-B52D-B9042CA8D515
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records that meet the filter criteria.
 	//
 	// example:
 	//
@@ -121,21 +121,21 @@ type ListServiceTestCasesResponseBodyData struct {
 	//
 	// example:
 	//
-	// test-1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The service test case id.
+	// The ID of the test case.
 	//
 	// example:
 	//
 	// stc-83fcee1383354e35b151
 	TestCaseId *string `json:"TestCaseId,omitempty" xml:"TestCaseId,omitempty"`
-	// The service test case name.
+	// The name of the test case.
 	//
 	// example:
 	//
 	// case1
 	TestCaseName *string `json:"TestCaseName,omitempty" xml:"TestCaseName,omitempty"`
-	// The service test config.
+	// The user-configured YAML file.
 	//
 	// example:
 	//

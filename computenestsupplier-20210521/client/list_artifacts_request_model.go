@@ -24,25 +24,25 @@ type iListArtifactsRequest interface {
 type ListArtifactsRequest struct {
 	// The filter.
 	Filter []*ListArtifactsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The query token. Set it to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-aek25yfxxxxxxxx
+	// rg-acfmzmhzoaa****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The tag.
 	Tag []*ListArtifactsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -122,19 +122,21 @@ func (s *ListArtifactsRequest) Validate() error {
 }
 
 type ListArtifactsRequestFilter struct {
-	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	// The name of the filter. You can specify one or more filter names to query artifacts.
 	//
-	// 	- *Name*: The name of the deployment package. Fuzzy match is used.
+	// Valid values:
 	//
-	// 	- ArtifactId: The ID of the deployment package.
+	// - Name: Performs a fuzzy query by artifact name.
 	//
-	// 	- ArtifactType: The type of the deployment package.
+	// - ArtifactId: The artifact ID.
+	//
+	// - ArtifactType: The artifact type.
 	//
 	// example:
 	//
 	// ArtifactType
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter values of the filter.
+	// A list of filter values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

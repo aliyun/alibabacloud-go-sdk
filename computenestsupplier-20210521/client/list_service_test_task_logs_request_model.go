@@ -20,23 +20,23 @@ type iListServiceTestTaskLogsRequest interface {
 }
 
 type ListServiceTestTaskLogsRequest struct {
-	// The number of items to return per page when paginating results. The maximum is 100, and the default is 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Sort Order. Possible values:
+	// The sort order. Valid values:
 	//
-	// + Ascending: Ascending order
+	// - **Ascending**: sorts the results in ascending order.
 	//
-	// + Descending (default value): Descending order
+	// - **Descending*	- (default): sorts the results in descending order.
 	//
 	// example:
 	//

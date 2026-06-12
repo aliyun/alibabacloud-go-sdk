@@ -50,67 +50,67 @@ type iGetArtifactResponseBody interface {
 }
 
 type GetArtifactResponseBody struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The content used to build the artifact. This parameter is used for managed artifact builds.
 	//
 	// example:
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	// The type of the deployment package to be built.
+	// The type of the artifact build.
 	//
 	// example:
 	//
 	// Dockerfile
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the deployment package.
+	// The ID of the artifact.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The properties of the deployment package.
+	// The properties of the artifact.
 	//
 	// example:
 	//
-	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
+	// {\\"CommodityCode\\":\\"cmjj0005****\\",\\"CommodityVersion\\":\\"V2022****\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	// The type of the deployment package.
+	// The type of the artifact.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The version of the deployment package.
+	// The version of the artifact.
 	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact.
 	//
 	// example:
 	//
-	// Description
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the deployment package was modified.
+	// The time when the artifact was last modified.
 	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The latest version of the deployment package.
+	// The latest version of the artifact.
 	//
 	// example:
 	//
 	// 2
 	MaxVersion *int64 `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The name of the deployment package.
+	// The name of the artifact.
 	//
 	// example:
 	//
-	// Name
+	// Redhat8_5 image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Permission fields are applicable to container image artifact and Helm Chart artifact They can only change from Automatic to Public. Options:
+	// The permission type. This parameter is valid for artifacts of the ContainerImage and HelmChart types. Valid values:
 	//
 	// - Public
 	//
@@ -120,7 +120,7 @@ type GetArtifactResponseBody struct {
 	//
 	// Public
 	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
-	// The distribution progress of the deployment package.
+	// The distribution progress of the artifact.
 	//
 	// example:
 	//
@@ -130,35 +130,35 @@ type GetArtifactResponseBody struct {
 	//
 	// example:
 	//
-	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
+	// E73F09DC-6C13-5CB1-A10F-7A4E125ABD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
-	// rg-aekzkt5buxxxxxx
+	// rg-acfmzmhzoaa****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The status of the artifact.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact status.
 	//
 	// example:
 	//
 	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	// The ID of the region that supports the deployment package.
+	// The IDs of the regions where the artifact is supported.
 	//
 	// example:
 	//
 	// ["cn-hangzhou","cn-beijing"]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
-	// The tags of the deployment package.
+	// The tags of the artifact.
 	Tags []*GetArtifactResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The version name of the deployment package.
+	// The version name of the artifact.
 	//
 	// example:
 	//
@@ -359,13 +359,13 @@ func (s *GetArtifactResponseBody) Validate() error {
 }
 
 type GetArtifactResponseBodyTags struct {
-	// The tag key of the deployment package.
+	// The tag key of the artifact.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the deployment package.
+	// The tag value of the artifact.
 	//
 	// example:
 	//

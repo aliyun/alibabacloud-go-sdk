@@ -18,19 +18,25 @@ type iGetArtifactRequest interface {
 }
 
 type GetArtifactRequest struct {
-	// The ID of the deployment package.
+	// The ID of the artifact.
+	//
+	// Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact ID.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The name of the deployment package.
+	// The name of the artifact.
+	//
+	// Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact name.
 	//
 	// example:
 	//
 	// gpu-test
 	ArtifactName *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
-	// The version of the deployment package.
+	// The version of the artifact.
+	//
+	// Call [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) to obtain the artifact version.
 	//
 	// example:
 	//

@@ -70,86 +70,88 @@ type iUpdateServiceRequest interface {
 }
 
 type UpdateServiceRequest struct {
-	// The alert configurations of the service.
+	// The alert configurations for the service.
 	//
-	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	// > This configuration takes effect only after you configure an alert-related access policy for **PolicyNames**.
 	//
 	// example:
 	//
 	// {\\"CmsTemplateId\\":1162921,\\"TemplateUrl\\":\\"https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1760465342xxxxxx/template/c072ef50-6c03-4d9c-8f0e-d1c440xxxxxx.json\\"}
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
-	// The approval type of the service usage application. Valid values:
+	// The approval type for service usage requests. Valid values:
 	//
-	// 	- Manual: The application is manually approved.
+	// - Manual: The request is manually approved.
 	//
-	// 	- AutoPass: The application is automatically approved.
+	// - AutoPass: The request is automatically approved.
 	//
 	// example:
 	//
 	// Manual
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The Parameters to build service parameters.
+	// The parameters for building the service.
 	//
 	// example:
 	//
 	// { "ServiceTemplateId": "st-xxxxx"}
 	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure that the request is idempotent. You can use a client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 788E7CP0EN9D51P
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The commodity details.
+	// The commodity information.
 	Commodity *UpdateServiceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// Compliance check metadata.
+	// The compliance check metadata.
 	ComplianceMetadata *UpdateServiceRequestComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
-	// The deployment configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	// The information about the service deployment configuration. The data format varies based on the deployment type. The value is a JSON string.
 	//
 	// example:
 	//
 	// {\\"EstimateTime\\":null,\\"SupplierDeployMetadata\\":{\\"DeployTimeout\\":7200},\\"EnableVnc\\":false}
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
-	// The deployment type of the service. Valid values:
+	// The deployment type. Valid values:
 	//
-	// ros: The service is deployed by using Resource Orchestration Service (ROS).
+	// - ros: The service is deployed using ROS.
 	//
-	// terraform: The service is deployed by using Terraform.
+	// - terraform: The service is deployed using Terraform.
 	//
-	// ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	// - spi: The service is deployed by calling an SPI.
 	//
-	// spi: The service is deployed by calling a service provider interface (SPI).
+	// - operation: The service is an O\\&M service.
 	//
-	// operation: The service is deployed by using a hosted O&M service.
+	// - container: The service is deployed using containers.
+	//
+	// - pkg: The service is a package service.
 	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform a dry run for the request. A dry run checks the permissions and the instance status. Valid values:
 	//
-	// 	- true: performs a dry run for the request, but does not update a service.
+	// - true: sends the request but does not update the service.
 	//
-	// 	- false: performs a dry run for the request, and update a service if the request passes the dry run.
+	// - false: sends the request. If the check is successful, the service is updated.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	// The O\\&M duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 259200
 	Duration  *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	IsDefault *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+	// Specifies whether to enable O\\&M. Default value: false. Valid values:
 	//
-	// 	- true
+	// - true: enables O\\&M.
 	//
-	// 	- false
+	// - false: disables O\\&M.
 	//
-	// >  This parameter is required if you set **ServiceType*	- to **private**.
+	// > This parameter is required when **ServiceType*	- is set to **private**.
 	//
 	// example:
 	//
@@ -159,31 +161,43 @@ type UpdateServiceRequest struct {
 	//
 	// example:
 	//
-	// Metering Item Configuration Information (Cloud Marketplace - Pay-As-You-Go Use)
+	// {\\"PayType\\":\\"CustomFixTime\\",\\"DefaultLicenseDays\\":7,\\"CustomMetadata\\":[{\\"TemplateName\\":\\" template1\\",\\"SpecificationName\\":\\"bandwith-0\\",\\"CustomData\\":\\"1\\"}]}
 	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	// The logging configurations.
+	// The application log configurations.
 	//
 	// example:
 	//
-	// Specifies whether to support distribution. Valid values:
+	// {
 	//
-	// 	- false
+	//   "Logstores": [
 	//
-	// 	- true
+	//     {
+	//
+	//     "LogstoreName": "access-log",
+	//
+	//   "LogPath": "/home/admin/app/logs", # Not required for containers. Configure in YAML
+	//
+	//   "FilePattern": "access.log*" # Not required for containers. Configure in YAML
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
-	// The hosted O\\&M configurations.
+	// The O\\&M configuration.
 	//
 	// example:
 	//
 	// {\\"PrometheusConfigMap\\":{\\"Custom_Image_Ecs\\":{\\"EnablePrometheus\\":false}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
-	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	// The policy name. The name of a single policy can be up to 128 characters in length. If you specify multiple policies, separate them with commas (,). Only O\\&M-related policies are supported.
 	//
 	// example:
 	//
 	// policyName1, policyName2
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -191,7 +205,11 @@ type UpdateServiceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Whether resell is supported.
+	// Specifies whether to enable distribution. Valid values:
+	//
+	// - false: Distribution is not enabled.
+	//
+	// - true: Distribution is enabled.
 	//
 	// example:
 	//
@@ -206,15 +224,18 @@ type UpdateServiceRequest struct {
 	// service-1dda29c3eca648xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service details.
-	ServiceInfo          []*UpdateServiceRequestServiceInfo          `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceInfo []*UpdateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	// The multilingual configurations of the service.
 	ServiceLocaleConfigs []*UpdateServiceRequestServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
 	// The service type. Valid values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service instance is deployed in the user account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service instance is deployed in the service provider account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: The service instance is an O\\&M instance.
+	//
+	// - poc: The service instance is a trial instance.
 	//
 	// example:
 	//
@@ -226,41 +247,41 @@ type UpdateServiceRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	// The permission type of the deployment URL. Valid values:
+	// The sharing type. Valid values:
 	//
-	// 	- Public: All users can go to the URL to create a service instance or a trial service instance.
+	// - Public: The service is public. Formal and trial deployments are not restricted.
 	//
-	// 	- Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	// - Restricted: The service is restricted. Formal and trial deployments are restricted.
 	//
-	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	// - OnlyFormalRestricted: Only formal deployments are restricted.
 	//
-	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	// - OnlyTrailRestricted: Only trial deployments are restricted.
 	//
-	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	// - Hidden: The service is hidden. You cannot view the service or request deployment permissions.
 	//
 	// example:
 	//
 	// Public
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The type of the tenant. Valid values:
+	// The tenant type. Valid values:
 	//
-	// 	- SingleTenant
+	// - SingleTenant: The service is single-tenant.
 	//
-	// 	- MultiTenant
+	// - MultiTenant: The service is multi-tenant.
 	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
-	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	// The trial duration. Unit: days. The maximum trial duration is 30 days.
 	//
 	// example:
 	//
 	// 7
 	TrialDuration *int32 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
-	// The update option.
+	// The update options.
 	UpdateOption *UpdateServiceRequestUpdateOption `json:"UpdateOption,omitempty" xml:"UpdateOption,omitempty" type:"Struct"`
-	// The metadata about the upgrade.
+	// The upgrade metadata.
 	//
 	// example:
 	//
@@ -581,19 +602,19 @@ func (s *UpdateServiceRequest) Validate() error {
 }
 
 type UpdateServiceRequestCommodity struct {
-	// This parameter is not available to the public.
+	// This parameter is not available.
 	ComponentsMappings []*UpdateServiceRequestCommodityComponentsMappings `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
-	// Metering entity extra information.
+	// The configuration information of the metering item. This parameter is used in the pay-as-you-go scenario of Alibaba Cloud Marketplace.
 	MeteringEntityExtraInfos []*UpdateServiceRequestCommodityMeteringEntityExtraInfos `json:"MeteringEntityExtraInfos,omitempty" xml:"MeteringEntityExtraInfos,omitempty" type:"Repeated"`
-	// Binding relationship between templates/specifications and metering dimensions (marketplace - PayAsYouGo)
+	// The mapping between templates or packages and metering dimensions. This parameter is used in the pay-as-you-go scenario of Alibaba Cloud Marketplace.
 	MeteringEntityMappings []*UpdateServiceRequestCommodityMeteringEntityMappings `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
-	// SaaS Boost configuration.
+	// The configuration of Software as a Service (SaaS) Boost.
 	//
 	// example:
 	//
 	// {}
 	SaasBoostConfig *string `json:"SaasBoostConfig,omitempty" xml:"SaasBoostConfig,omitempty"`
-	// Product specifications and template/package mappings (Used in marketplace - subscription scenario)
+	// The mapping between commodity specifications and templates or packages. This parameter is used in the subscription scenario of Alibaba Cloud Marketplace.
 	SpecificationMappings []*UpdateServiceRequestCommoditySpecificationMappings `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
 }
 
@@ -691,13 +712,17 @@ func (s *UpdateServiceRequestCommodity) Validate() error {
 }
 
 type UpdateServiceRequestCommodityComponentsMappings struct {
-	// This parameter is not available to the public.
-	Mappings map[string]*string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
-	// This parameter is not available to the public.
+	// This parameter is not available.
 	//
 	// example:
 	//
-	// This parameter is not available to the public.
+	// This parameter is not publicly available.
+	Mappings map[string]*string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	// This parameter is not available.
+	//
+	// example:
+	//
+	// This parameter is not publicly available.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -732,33 +757,33 @@ func (s *UpdateServiceRequestCommodityComponentsMappings) Validate() error {
 }
 
 type UpdateServiceRequestCommodityMeteringEntityExtraInfos struct {
-	// Metering entity ID.
+	// The metering item ID.
 	//
 	// example:
 	//
 	// cmgj0006xxxx-Memory-1
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// Metric name, required when type is ComputeNestBill or ComputeNestPrometheus.
+	// The metric name. This parameter is required when Type is set to ComputeNestBill or ComputeNestPrometheus.
 	//
 	// example:
 	//
 	// VirtualCpu/ecs.InstanceType
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Promql statement.
+	// The Prometheus statement.
 	//
 	// example:
 	//
 	// avg_over_time(sum(rate(container_cpu_usage_seconds_total{namespace=~"ALIYUN::StackName"}[2m]))[1h:10s])
 	Promql *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
-	// Type. Valid values:
+	// The type. Valid values:
 	//
-	// - Custom
+	// - **Custom**
 	//
-	// - ComputeNestBill
+	// - **ComputeNestBill**
 	//
-	// - ComputeNestPrometheus
+	// - **ComputeNestPrometheus**
 	//
-	// - ComputeNestTime
+	// - **ComputeNestTime**
 	//
 	// example:
 	//
@@ -815,19 +840,19 @@ func (s *UpdateServiceRequestCommodityMeteringEntityExtraInfos) Validate() error
 }
 
 type UpdateServiceRequestCommodityMeteringEntityMappings struct {
-	// Metering entity IDs.
+	// The metering item ID.
 	EntityIds []*string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty" type:"Repeated"`
-	// The specification name.
+	// The package name.
 	//
 	// example:
 	//
-	// This parameter is not publicly accessible.
+	// 低配版
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	// The template name.
 	//
 	// example:
 	//
-	// The service ID.
+	// 模板1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -871,31 +896,23 @@ func (s *UpdateServiceRequestCommodityMeteringEntityMappings) Validate() error {
 }
 
 type UpdateServiceRequestCommoditySpecificationMappings struct {
-	// Specification code.
+	// The specification code.
 	//
 	// example:
 	//
 	// yuncode5767800001
 	SpecificationCode *string `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
-	// The name of the package specification.
+	// The package name.
 	//
 	// example:
 	//
-	// Type, value：
-	//
-	// 	- **Custom**
-	//
-	// 	- **ComputeNestBill**
-	//
-	// 	- **ComputeNestPrometheus**
-	//
-	// 	- **ComputeNestTime**
+	// Basic edition
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	// The template name.
 	//
 	// example:
 	//
-	// Product Specifications and Template/specification mapping Relationships (Cloud Marketplace - Subscription/Permanent Use)
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -939,7 +956,7 @@ func (s *UpdateServiceRequestCommoditySpecificationMappings) Validate() error {
 }
 
 type UpdateServiceRequestComplianceMetadata struct {
-	// The compliance pack.
+	// The selected compliance package.
 	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -965,7 +982,7 @@ func (s *UpdateServiceRequestComplianceMetadata) Validate() error {
 }
 
 type UpdateServiceRequestServiceInfo struct {
-	// Protocol document information about the service.
+	// The information about the service agreements.
 	Agreements []*UpdateServiceRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
 	// The URL of the service icon.
 	//
@@ -975,9 +992,9 @@ type UpdateServiceRequestServiceInfo struct {
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The language of the service. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US: English
+	// - en-US: English.
 	//
 	// example:
 	//
@@ -993,15 +1010,15 @@ type UpdateServiceRequestServiceInfo struct {
 	//
 	// example:
 	//
-	// Metric Name, filled in when Type is ComputeNestBill or ComputeNestPrometheus
+	// Database B
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the service.
 	//
 	// example:
 	//
-	// The URL of the detailed description of the service.
+	// B is an open-source distributed relational database independently designed and developed by Company A.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
-	// The list of the software in the service.
+	// The information about the software used in the service.
 	Softwares []*UpdateServiceRequestServiceInfoSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
@@ -1099,13 +1116,13 @@ func (s *UpdateServiceRequestServiceInfo) Validate() error {
 }
 
 type UpdateServiceRequestServiceInfoAgreements struct {
-	// Protocol name.
+	// The name of the agreement document.
 	//
 	// example:
 	//
 	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Protocol url.
+	// The URL of the agreement.
 	//
 	// example:
 	//
@@ -1144,13 +1161,13 @@ func (s *UpdateServiceRequestServiceInfoAgreements) Validate() error {
 }
 
 type UpdateServiceRequestServiceInfoSoftwares struct {
-	// The name of the software.
+	// The software name.
 	//
 	// example:
 	//
 	// MySQL
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version of the software.
+	// The software version.
 	//
 	// example:
 	//
@@ -1189,9 +1206,24 @@ func (s *UpdateServiceRequestServiceInfoSoftwares) Validate() error {
 }
 
 type UpdateServiceRequestServiceLocaleConfigs struct {
-	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// The English value of the business information.
+	//
+	// example:
+	//
+	// Service Name
+	EnValue *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// The raw data value of the business information.
+	//
+	// example:
+	//
+	// Service Name
 	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
-	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+	// The Chinese value of the business information.
+	//
+	// example:
+	//
+	// 服务名称
+	ZhValue *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
 }
 
 func (s UpdateServiceRequestServiceLocaleConfigs) String() string {
@@ -1234,17 +1266,17 @@ func (s *UpdateServiceRequestServiceLocaleConfigs) Validate() error {
 }
 
 type UpdateServiceRequestUpdateOption struct {
-	// Whether to update artifact.
+	// Specifies whether to update the deployment file.
 	//
 	// example:
 	//
 	// true
 	UpdateArtifact *bool `json:"UpdateArtifact,omitempty" xml:"UpdateArtifact,omitempty"`
-	// Update from. Valid values:
+	// The update option. Valid values:
 	//
-	// - CODE
+	// - CODE: code.
 	//
-	// - PARAMETERS
+	// - PARAMETERS: parameters.
 	//
 	// example:
 	//

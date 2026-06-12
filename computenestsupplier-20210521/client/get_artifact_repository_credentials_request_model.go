@@ -16,11 +16,11 @@ type iGetArtifactRepositoryCredentialsRequest interface {
 }
 
 type GetArtifactRepositoryCredentialsRequest struct {
-	// The type of the deployment package. Valid values:
+	// The type of the artifact. Valid values:
 	//
-	// 	- File: Object Storage Service (OSS) object.
+	// - File: an OSS file.
 	//
-	// 	- AcrImage: container image.
+	// - AcrImage: a container image.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetArtifactRepositoryCredentialsRequest struct {
 	//
 	// File
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The region ID.
+	// The region to which the artifact is uploaded.
 	//
 	// example:
 	//

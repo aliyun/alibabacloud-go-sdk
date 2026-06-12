@@ -32,17 +32,17 @@ type iListServiceInstanceDeployDetailsRequest interface {
 type ListServiceInstanceDeployDetailsRequest struct {
 	// The time zone.
 	//
-	// Reference Format: "+08:00"
+	// Example: +08:00
 	//
-	// Valid Range: "-12:59" to "+13:00"
+	// Valid values: -12:59 to +13:00
 	//
 	// example:
 	//
 	// +08:00
 	CycleTimeZone *string `json:"CycleTimeZone,omitempty" xml:"CycleTimeZone,omitempty"`
-	// Determines the time period over which data is aggregated. If no aggregation dimension is specified, the query defaults to providing detailed, unaggregated results.
+	// The aggregation period. If you do not specify this parameter, the system queries the details.
 	//
-	// Optional Values:
+	// Valid values:
 	//
 	// - Year
 	//
@@ -56,9 +56,9 @@ type ListServiceInstanceDeployDetailsRequest struct {
 	//
 	// Month
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The dimension names. (Equivalent to SQL\\"s GROUP BY Clause)
+	// The name of the dimension. This corresponds to the GROUP BY clause in SQL.
 	//
-	// Optional Values:
+	// Valid values:
 	//
 	// - UserId
 	//
@@ -74,7 +74,9 @@ type ListServiceInstanceDeployDetailsRequest struct {
 	//
 	// - ErrorCode
 	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query.
+	//
+	// Use UTC+0 time in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
@@ -82,19 +84,19 @@ type ListServiceInstanceDeployDetailsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter.
 	Filter []*ListServiceInstanceDeployDetailsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAZbOYA+x9UgM6xrgcMqFUjk=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +104,9 @@ type ListServiceInstanceDeployDetailsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start of the time range to query.
+	//
+	// Use UTC+0 time in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
@@ -213,9 +217,9 @@ func (s *ListServiceInstanceDeployDetailsRequest) Validate() error {
 }
 
 type ListServiceInstanceDeployDetailsRequestFilter struct {
-	// Filter Value Names (Equivalent to SQL\\"s WHERE Clause)
+	// The name of the filter. This corresponds to the WHERE clause in SQL.
 	//
-	// Available Options:
+	// Valid values:
 	//
 	// - UserId
 	//
@@ -225,7 +229,7 @@ type ListServiceInstanceDeployDetailsRequestFilter struct {
 	//
 	// - ServiceInstanceId
 	//
-	// - DeploySucceeded (Accepts True or False and case-insensitive)
+	// - DeploySucceeded (The value can be True or False. The value is case-insensitive.)
 	//
 	// - ErrorType
 	//
@@ -235,7 +239,7 @@ type ListServiceInstanceDeployDetailsRequestFilter struct {
 	//
 	// ServiceId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A value of the filter condition.
+	// A list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -14,6 +14,8 @@ type iDeleteAcrImageRepositoriesResponseBody interface {
 }
 
 type DeleteAcrImageRepositoriesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B55A3FD-B562-5BFE-A91A-DB1790717236

@@ -22,15 +22,15 @@ type iListAcrImageTagsResponseBody interface {
 }
 
 type ListAcrImageTagsResponseBody struct {
-	// The list of images.
+	// A list of images.
 	Images []*ListAcrImageTagsResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next page of results.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAcrImageTagsResponseBody struct {
 	//
 	// FEF343B9-1A15-5789-BE88-7B36190F5BF6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListAcrImageTagsResponseBodyImages struct {
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The image size. Unit: bytes.
+	// The size of the image in bytes.
 	//
 	// example:
 	//
 	// 188394616
 	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The time when the image was modified.
+	// The time when the image was last modified.
 	//
 	// example:
 	//

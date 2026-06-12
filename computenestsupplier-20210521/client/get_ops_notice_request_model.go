@@ -16,12 +16,16 @@ type iGetOpsNoticeRequest interface {
 }
 
 type GetOpsNoticeRequest struct {
+	// The notice ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// notice-2338dxxxxxx
 	NoticeId *string `json:"NoticeId,omitempty" xml:"NoticeId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

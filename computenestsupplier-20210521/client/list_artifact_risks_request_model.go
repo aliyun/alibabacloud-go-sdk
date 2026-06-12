@@ -16,13 +16,13 @@ type iListArtifactRisksRequest interface {
 }
 
 type ListArtifactRisksRequest struct {
-	// Artifact ID.
+	// The artifact ID.
 	//
 	// example:
 	//
 	// artifact-3fd95cdfdf0d4b1fa00c
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// Artifact version.
+	// The artifact version.
 	//
 	// example:
 	//

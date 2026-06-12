@@ -22,13 +22,13 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServicesResponseBody struct {
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The services.
+	// The list of services.
 	Services []*ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -117,47 +117,47 @@ func (s *ListServicesResponseBody) Validate() error {
 }
 
 type ListServicesResponseBodyServices struct {
-	// The approval type for applications for using the service. Valid values:
+	// The approval type for service usage requests. Valid values:
 	//
-	// 	- Manual: The applications are manual reviewed.
+	// - Manual: Manual approval.
 	//
-	// 	- AutoPass: The applications are automatically approved.
+	// - AutoPass: Automatic approval.
 	//
 	// example:
 	//
 	// AutoPass
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The ID of the artifact.
+	// The artifact ID.
 	//
 	// example:
 	//
-	// artifact-21ca53ac16a643xxxxxx
+	// artifact-21ca53ac16a643****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The version of the artifact.
+	// The artifact version.
 	//
 	// example:
 	//
 	// draft
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	// The informathon for build service.
+	// The information about the service build.
 	//
 	// example:
 	//
-	// { "RepoUrl": "https://github.com/user/repo.git", "Brancn": "main"}
+	// { "RepoUrl": "https://github.com/user/example.git", "Brancn": "main"}
 	BuildInfo *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
-	// The category of the service.
+	// The service category.
 	//
 	// example:
 	//
 	// OpenSource
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
-	// The commodity details.
+	// The commodity specifications.
 	Commodity *ListServicesResponseBodyServicesCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
 	// The commodity code of the service in Alibaba Cloud Marketplace.
 	//
 	// example:
 	//
-	// cmjj00xxxx
+	// cmjj00****
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The time when the service was created.
 	//
@@ -165,29 +165,27 @@ type ListServicesResponseBodyServices struct {
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the version is the default version. Valid values:
+	// Indicates whether the service is the default version. Valid values:
 	//
-	// 	- false
+	// - false: The service is not the default version.
 	//
-	// 	- true
+	// - true: The service is the default version.
 	//
 	// example:
 	//
 	// true
 	DefaultVersion *bool `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The deployment type of the service. Valid values:
+	// The deployment type. Valid values:
 	//
-	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	// - ros: The service is deployed using ROS.
 	//
-	// 	- terraform: The service is deployed by using Terraform.
+	// - terraform: The service is deployed using Terraform.
 	//
-	// 	- spi: The service is deployed by calling the Service Provider Interface (SPI).
+	// - spi: The service is deployed by calling an SPI.
 	//
-	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	// - operation: The service is deployed using Alibaba Cloud Managed Services.
 	//
-	// 	- container: The service is deployed by using a container.
-	//
-	// *
+	// - container: The service is deployed using a container.
 	//
 	// example:
 	//
@@ -195,9 +193,9 @@ type ListServicesResponseBodyServices struct {
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	// Indicates whether the service has a beta version. Valid values:
 	//
-	// 	- true
+	// - true: Yes.
 	//
-	// 	- false
+	// - false: No.
 	//
 	// example:
 	//
@@ -205,15 +203,15 @@ type ListServicesResponseBodyServices struct {
 	HasBeta *bool `json:"HasBeta,omitempty" xml:"HasBeta,omitempty"`
 	// Indicates whether the service has a draft version. Valid values:
 	//
-	// 	- true
+	// - true: Yes.
 	//
-	// 	- false
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	HasDraft *bool `json:"HasDraft,omitempty" xml:"HasDraft,omitempty"`
-	// The latest version of the distribution source service.
+	// The latest version of the source service for distribution.
 	//
 	// example:
 	//
@@ -225,45 +223,45 @@ type ListServicesResponseBodyServices struct {
 	//
 	// 2021-05-21T00:00:00Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The purpose of the artifact. Valid values:
+	// The artifact association type. Valid values:
 	//
-	// 	- ServiceDeployment: The artifact is used to create service instances.
+	// - ServiceDeployment: Service deployment.
 	//
-	// 	- ServiceUpgrade: The artifact is used to upgrade service instances.
+	// - ServiceUpgrade: Service upgrade.
 	//
 	// example:
 	//
 	// ServiceDeployment
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The state of distribution authorization of the service. Valid values:
+	// The distribution authorization status of the service. Valid values:
 	//
-	// 	- CanApply: Distributors can apply for distribution permissions.
+	// - CanApply: You can apply for authorization.
 	//
-	// 	- Applied: The application for distribution permissions is submitted.
+	// - Applied: An application has been submitted.
 	//
-	// 	- Approved: The application for distribution permissions is approved.
+	// - Approved: The application is approved.
 	//
 	// example:
 	//
 	// CanApply
 	ResellApplyStatus *string `json:"ResellApplyStatus,omitempty" xml:"ResellApplyStatus,omitempty"`
-	// The ID of the distribution service.
+	// The ID of the distributed service.
 	//
 	// example:
 	//
-	// service-70a3b15bb62643xxxxxx
+	// service-70a3b15bb62643****
 	ResellServiceId *string `json:"ResellServiceId,omitempty" xml:"ResellServiceId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
-	// rg-aekz5b555xxxxxx
+	// rg-aekz5b555****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the service is visible. Valid values:
+	// Indicates whether the service is discoverable. Valid values:
 	//
-	// 	- INVISIBLE
+	// - INVISIBLE: Not discoverable.
 	//
-	// 	- DISCOVERABLE
+	// - DISCOVERABLE: Discoverable.
 	//
 	// example:
 	//
@@ -273,34 +271,35 @@ type ListServicesResponseBodyServices struct {
 	//
 	// example:
 	//
-	// service-70a3b15bb62643xxxxxx
+	// service-70a3b15bb62643****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The information about the service.
-	ServiceInfos         []*ListServicesResponseBodyServicesServiceInfos         `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The service information.
+	ServiceInfos []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The multi-language configurations of the service.
 	ServiceLocaleConfigs []*ListServicesResponseBodyServicesServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service is deployed in the user\\"s account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service is deployed in the service provider\\"s account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: It is an Alibaba Cloud Managed Service.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The permission type of the deployment URL. Valid values:
+	// The sharing type. Valid values:
 	//
-	// 	- Public: All users can go to the URL to create a formal service instance or a trial service instance.
+	// - Public: Public. Official and trial deployments are not restricted.
 	//
-	// 	- Restricted: Only users in the whitelist can go to the URL to create a formal service instance or a trial service instance.
+	// - Restricted: Restricted. Official and trial deployments are restricted.
 	//
-	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a formal service instance.
+	// - OnlyFormalRestricted: Only official deployments are restricted.
 	//
-	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	// - OnlyTrailRestricted: Only trial deployments are restricted.
 	//
-	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	// - Hidden: Hidden. The service is not visible and you cannot request deployment permissions.
 	//
 	// example:
 	//
@@ -312,37 +311,37 @@ type ListServicesResponseBodyServices struct {
 	//
 	// centos_7
 	SourceImage *string `json:"SourceImage,omitempty" xml:"SourceImage,omitempty"`
-	// The ID of the distribution source service.
+	// The ID of the source service for distribution.
 	//
 	// example:
 	//
-	// service-70a3b15bb62643xxxxxx
+	// service-70a3b15bb62643****
 	SourceServiceId *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
-	// The version of the distribution source service.
+	// The version of the source service for distribution.
 	//
 	// example:
 	//
 	// 1
 	SourceServiceVersion *string `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
-	// The name of the distribution source service provider.
+	// The name of the source service provider for distribution.
 	//
 	// example:
 	//
 	// SourceSupplier
 	SourceSupplierName *string `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
-	// The state of the service. Valid values:
+	// The service status. Valid values:
 	//
-	// 	- Draft: The service is a draft.
+	// - Draft: The service is in the Draft state.
 	//
-	// 	- Submitted: The service is submitted for review. You cannot modify services in this state.
+	// - Submitted: The service is submitted for review. Modifications are not allowed.
 	//
-	// 	- Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+	// - Approved: The service is approved. Modifications are not allowed. The service can be published.
 	//
-	// 	- Launching: The service is being published.
+	// - Launching: The service is being published.
 	//
-	// 	- Online: The service is published.
+	// - Online: The service is published.
 	//
-	// 	- Offline: The service is unpublished.
+	// - Offline: The service is unpublished.
 	//
 	// example:
 	//
@@ -352,7 +351,7 @@ type ListServicesResponseBodyServices struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A Ltd.
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	// The URL of the service provider.
 	//
@@ -362,11 +361,11 @@ type ListServicesResponseBodyServices struct {
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
 	// The service tags.
 	Tags []*ListServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The tenant type of the managed service. Valid values:
+	// The tenant type for the managed service. Valid values:
 	//
-	// 	- SingleTenant
+	// - SingleTenant: Single-tenant.
 	//
-	// 	- MultiTenant
+	// - MultiTenant: Multi-tenant.
 	//
 	// example:
 	//
@@ -374,21 +373,21 @@ type ListServicesResponseBodyServices struct {
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
 	// The trial policy. Valid values:
 	//
-	// 	- Trial: Trials are supported.
+	// - Trial: The service supports a trial.
 	//
-	// 	- NotTrial: Trials are not supported.
+	// - NotTrial: The service does not support a trial.
 	//
 	// example:
 	//
 	// Trial
 	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
-	// The time when the service was modified.
+	// The time when the service was last updated.
 	//
 	// example:
 	//
 	// 2021-05-21T00:00:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The version of the service.
+	// The service version.
 	//
 	// example:
 	//
@@ -402,9 +401,9 @@ type ListServicesResponseBodyServices struct {
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 	// Indicates whether the service is a virtual Internet service. Valid values:
 	//
-	// 	- false
+	// - false: No.
 	//
-	// 	- true
+	// - true: Yes.
 	//
 	// example:
 	//
@@ -803,21 +802,31 @@ type ListServicesResponseBodyServicesCommodity struct {
 	//
 	// example:
 	//
-	// cmjj00xxxx
+	// cmjj00****
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The configuration metadata related to Saas Boost.
+	// The metadata of the SaaS Boost configuration.
 	//
 	// example:
 	//
-	// { // Specifies whether to associate the service with the SaaS Boost commodity. Default value: false. "Enabled":true/false // The public endpoint of the SaaS Boost instance. "PublicAccessUrl":"https://example.com" }
+	// {
+	//
+	//      //Enable/disable SaaS Boost binding
+	//
+	//     "Enabled":true/false,default is false
+	//
+	//     //Public access URL
+	//
+	//     "PublicAccessUrl":"https://example.com"
+	//
+	// }
 	SaasBoostMetadata *string `json:"SaasBoostMetadata,omitempty" xml:"SaasBoostMetadata,omitempty"`
-	// The platform type. Valid values:
+	// The type. Valid values:
 	//
-	// 	- marketplace: Alibaba Cloud Marketplace.
+	// - Marketplace: Alibaba Cloud Marketplace.
 	//
-	// 	- Css: Lingxiao.
+	// - Css: Lingxiao.
 	//
-	// 	- SaasBoost: Saas Boost.
+	// - SaasBoost: SaaS Boost.
 	//
 	// example:
 	//
@@ -869,29 +878,29 @@ type ListServicesResponseBodyServicesServiceInfos struct {
 	//
 	// example:
 	//
-	// http://img.tidb.oss.url
+	// http://img.example.oss.url
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The language of the service. Valid values:
+	// The language of the service configuration. Valid values:
 	//
-	// 	- zh-CN: Chinese.
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US: English.
+	// - en-US: English.
 	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
-	// SpringBoot-ECS容器版
+	// Database B
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the service.
+	// A brief description of the service.
 	//
 	// example:
 	//
-	// B是A公司自主设计并研发的开源分布式的关系型数据库
+	// B is an open-source distributed relational database independently designed and developed by Company A.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -944,9 +953,24 @@ func (s *ListServicesResponseBodyServicesServiceInfos) Validate() error {
 }
 
 type ListServicesResponseBodyServicesServiceLocaleConfigs struct {
-	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// The English value of the business information.
+	//
+	// example:
+	//
+	// Service Name
+	EnValue *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// The original value of the business information.
+	//
+	// example:
+	//
+	// Service Name
 	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
-	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+	// The Chinese value of the business information.
+	//
+	// example:
+	//
+	// 服务名称
+	ZhValue *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
 }
 
 func (s ListServicesResponseBodyServicesServiceLocaleConfigs) String() string {

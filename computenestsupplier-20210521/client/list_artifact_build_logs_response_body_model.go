@@ -20,15 +20,22 @@ type iListArtifactBuildLogsResponseBody interface {
 }
 
 type ListArtifactBuildLogsResponseBody struct {
+	// The log array.
 	BuildLogs []*ListArtifactBuildLogsResponseBodyBuildLogs `json:"BuildLogs,omitempty" xml:"BuildLogs,omitempty" type:"Repeated"`
+	// The number of entries returned per page. The maximum value is 100 and the default value is 20.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next paged query.
+	//
 	// example:
 	//
 	// AAAAAVEKMJSB4yFi/EJc7fOJCkw=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 708AB976-F69C-5727-BED9-8C39D878B93A
@@ -93,10 +100,14 @@ func (s *ListArtifactBuildLogsResponseBody) Validate() error {
 }
 
 type ListArtifactBuildLogsResponseBodyBuildLogs struct {
+	// The log content.
+	//
 	// example:
 	//
 	// NDAx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:

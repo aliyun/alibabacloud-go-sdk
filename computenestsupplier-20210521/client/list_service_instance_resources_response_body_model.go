@@ -20,13 +20,13 @@ type iListServiceInstanceResourcesResponseBody interface {
 }
 
 type ListServiceInstanceResourcesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token to start the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListServiceInstanceResourcesResponseBody struct {
 	//
 	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of resources.
+	// The resources.
 	Resources []*ListServiceInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -100,13 +100,13 @@ func (s *ListServiceInstanceResourcesResponseBody) Validate() error {
 }
 
 type ListServiceInstanceResourcesResponseBodyResources struct {
-	// The time when the service instance was created.
+	// The time when the resource was created.
 	//
 	// example:
 	//
 	// 2022-01-01T12:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the resource expires.
+	// The expiration time.
 	//
 	// example:
 	//
@@ -114,33 +114,33 @@ type ListServiceInstanceResourcesResponseBodyResources struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- Subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//
 	// Subscription
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the cloud service.
+	// The product type.
 	//
 	// example:
 	//
 	// RDS
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The renewal state. Valid values:
+	// The renewal status. Valid values:
 	//
-	// 	- AutoRenewal
+	// - AutoRenewal: auto-renewal.
 	//
-	// 	- ManualRenewal
+	// - ManualRenewal: manual renewal.
 	//
-	// 	- NotRenewal
+	// - NotRenewal: no renewal.
 	//
 	// example:
 	//
@@ -154,37 +154,53 @@ type ListServiceInstanceResourcesResponseBodyResources struct {
 	RenewalPeriod *int32 `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
 	// The unit of the renewal period. Valid values:
 	//
-	// 	- Month
+	// - Month: month.
 	//
-	// 	- Year
+	// - Year: year.
 	//
 	// example:
 	//
 	// Month
 	RenewalPeriodUnit *string `json:"RenewalPeriodUnit,omitempty" xml:"RenewalPeriodUnit,omitempty"`
-	// The ARN of the resource.
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
 	//
 	// example:
 	//
 	// arn:acs:sag:cn-hangzhou:130920852836****:ccn/ccn-b3qf0q439sq2de****
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
-	// The status of the service instance. Valid values:
+	// The status of the resource. Valid values:
 	//
-	// 	- Created
+	// - INIT_COMPLETE: The resource is pending creation.
 	//
-	// 	- Deploying
+	// - CREATE_COMPLETE: The resource is created.
 	//
-	// 	- DeployedFailed
+	// - CREATE_FAILED: The resource failed to be created.
 	//
-	// 	- Deployed
+	// - CREATE_IN_PROGRESS: The resource is being created.
 	//
-	// 	- Upgrading
+	// - UPDATE_IN_PROGRESS: The resource is being updated.
 	//
-	// 	- Deleting
+	// - UPDATE_FAILED: The resource failed to be updated.
 	//
-	// 	- Deleted
+	// - UPDATE_COMPLETE: The resource is updated.
 	//
-	// 	- DeletedFailed
+	// - DELETE_IN_PROGRESS: The resource is being deleted.
+	//
+	// - DELETE_FAILED: The resource failed to be deleted.
+	//
+	// - DELETE_COMPLETE: The resource is deleted.
+	//
+	// - CHECK_IN_PROGRESS: The resource is being checked.
+	//
+	// - CHECK_FAILED: The resource failed to be checked.
+	//
+	// - CHECK_COMPLETE: The resource is checked.
+	//
+	// - IMPORT_IN_PROGRESS: The resource is being imported.
+	//
+	// - IMPORT_FAILED: The resource failed to be imported.
+	//
+	// - IMPORT_COMPLETE: The resource is imported.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iCreateOpsNoticeResponseBody interface {
 }
 
 type CreateOpsNoticeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E73F09DC-6C13-5CB1-A10F-7A4E125ABD2C

@@ -14,7 +14,7 @@ type iWithdrawServiceResponseBody interface {
 }
 
 type WithdrawServiceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

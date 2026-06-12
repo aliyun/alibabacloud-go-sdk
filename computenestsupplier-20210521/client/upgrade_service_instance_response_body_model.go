@@ -26,35 +26,35 @@ type UpgradeServiceInstanceResponseBody struct {
 	//
 	// F224E002-AB0E-5FD9-A87E-54AEE56F6CAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
 	// si-5cbae874da0e47xxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The deployment state of the service instance. Valid values:
+	// The deployment status of the service instance. Valid values:
 	//
-	// 	- Created
+	// - Created: The service instance is created.
 	//
-	// 	- Deploying
+	// - Deploying: The service instance is being deployed.
 	//
-	// 	- DeployedFailed
+	// - DeployedFailed: The service instance failed to be deployed.
 	//
-	// 	- Deployed
+	// - Deployed: The service instance is deployed.
 	//
-	// 	- Upgrading
+	// - Upgrading: The service instance is being upgraded.
 	//
-	// 	- Deleting
+	// - Deleting: The service instance is being deleted.
 	//
-	// 	- Deleted
+	// - Deleted: The service instance is deleted.
 	//
-	// 	- DeletedFailed
+	// - DeletedFailed: The service instance failed to be deleted.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The parameters required for the upgrade.
+	// The parameters that are required for the upgrade.
 	UpgradeRequiredParameters []*string `json:"UpgradeRequiredParameters,omitempty" xml:"UpgradeRequiredParameters,omitempty" type:"Repeated"`
 }
 

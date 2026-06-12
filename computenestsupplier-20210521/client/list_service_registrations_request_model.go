@@ -20,21 +20,21 @@ type iListServiceRegistrationsRequest interface {
 }
 
 type ListServiceRegistrationsRequest struct {
-	// Filter.
+	// The filter.
 	Filter []*ListServiceRegistrationsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of items to return per page during a paginated query. The maximum is 100, and the default is 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The query token. Set it to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -102,19 +102,19 @@ func (s *ListServiceRegistrationsRequest) Validate() error {
 }
 
 type ListServiceRegistrationsRequestFilter struct {
-	// Name of the filter field. Allowed values:
+	// The name of the filter field. Valid values:
 	//
-	// - ServiceId: Service ID.
+	// - ServiceId: The service ID.
 	//
-	// - RegistrationId: Registration ID.
+	// - RegistrationId: The review request ID.
 	//
-	// - Status: Registration status. Allowed values: Submitted, Approved, Rejected, Canceled, and Executed.
+	// - Status: The service status. Valid values: Submitted, Approved, Rejected, Canceled, and Executed.
 	//
 	// example:
 	//
 	// Canceled
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// List of filter values.
+	// The list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

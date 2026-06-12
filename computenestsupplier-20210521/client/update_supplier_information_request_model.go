@@ -28,21 +28,25 @@ type iUpdateSupplierInformationRequest interface {
 }
 
 type UpdateSupplierInformationRequest struct {
-	// The delivery settings.
+	// The custom settings.
 	DeliverySettings *UpdateSupplierInformationRequestDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
-	// The Ip of operation.
+	// The IP address segments for managed O\\&M access.
 	//
 	// example:
 	//
 	// 192.xxx.xxx.xxx/16,192.xxx.xxx.xxx
 	OperationIp *string `json:"OperationIp,omitempty" xml:"OperationIp,omitempty"`
-	// The MFA of operation.
+	// Specifies whether to enable multi-factor authentication (MFA). The default value is true. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	OperationMfaPresent *bool `json:"OperationMfaPresent,omitempty" xml:"OperationMfaPresent,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,25 +54,25 @@ type UpdateSupplierInformationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of service provider.
+	// The description of the supplier.
 	//
 	// example:
 	//
-	// Test supplier
+	// Alibaba Cloud Compute Nest
 	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
-	// The Logo of service provider.
+	// The icon of the supplier.
 	//
 	// example:
 	//
 	// http://example.aliyundoc.com/cover/34DB-4F4C-9373-003AA060****.png
 	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
-	// The URL of the service provider.
+	// The URL of the supplier.
 	//
 	// example:
 	//
 	// http://www.xxx.xxx.cn
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	// Contact information of the service provider
+	// The contact information of the supplier.
 	SupportContacts []*UpdateSupplierInformationRequestSupportContacts `json:"SupportContacts,omitempty" xml:"SupportContacts,omitempty" type:"Repeated"`
 }
 
@@ -177,23 +181,23 @@ type UpdateSupplierInformationRequestDeliverySettings struct {
 	//
 	// mybucket
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+	// Specifies whether to deliver the execution results of Cloud Assistant O\\&M tasks to Object Storage Service (OSS). Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false (default): Disabled.
 	//
 	// example:
 	//
 	// false
 	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
-	// The number of days for which the screencasts are saved.
+	// The retention period for screen recordings, in days.
 	//
 	// example:
 	//
 	// 7
 	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
-	// The OSS path.
+	// The path in OSS.
 	//
 	// example:
 	//
@@ -250,13 +254,13 @@ func (s *UpdateSupplierInformationRequestDeliverySettings) Validate() error {
 }
 
 type UpdateSupplierInformationRequestSupportContacts struct {
-	// The type of  contact information
+	// The type of contact method.
 	//
 	// example:
 	//
 	// Email
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of contact information
+	// The contact information.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type LaunchServiceResponseBody struct {
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The mode of the service online. Valid Type
+	// The type of the service publishing action. Valid values:
 	//
-	// - PublishNewVersion: Launch new version
+	// - PublishNewVersion: A new version is published.
 	//
-	// - PublishOfflineVersion:  The offline version is online again.
+	// - PublishOfflineVersion: An unpublished version is republished.
 	//
-	// - UpdateLatestVersion: Update the latest version online
+	// - UpdateLatestVersion: The latest online version is updated.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iListArtifactsResponseBody interface {
 }
 
 type ListArtifactsResponseBody struct {
-	// The information about deployment packages.
+	// The information about the artifacts.
 	Artifacts []*ListArtifactsResponseBodyArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The query token. Set it to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
-	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hR****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 46577928-3162-15A6-9084-69820EB9xxxx
+	// 7B7AE429-B53E-5E73-A5EC-DC91F614F2D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -117,49 +117,51 @@ func (s *ListArtifactsResponseBody) Validate() error {
 }
 
 type ListArtifactsResponseBodyArtifacts struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The content used to build the artifact. This parameter is used for hosted artifact builds.
 	//
 	// example:
 	//
-	// {\\"CodeRepo\\":{\\"Owner\\":\\"wenle\\",\\"Platform\\":\\"github\\",\\"Branch\\":\\"main\\",\\"RepoName\\":\\"aliyun-computenest/java-springboot-demo\\"}}
+	// {\\"CodeRepo\\":{\\"Owner\\":\\"wenle\\",\\"Platform\\":\\"github\\",\\"Branch\\":\\"main\\",\\"RepoName\\":\\"heroku/node-js-getting-started\\"}}
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	// The ID of the deployment package.
+	// The artifact ID.
 	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The type of the deployment package.
+	// The artifact type.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact.
 	//
 	// example:
 	//
-	// Description
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the deployment package was modified.
+	// The time when the artifact was modified.
 	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The latest version of the deployment package.
+	// The latest version.
 	//
 	// example:
 	//
 	// 2
 	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The name of the deployment package.
+	// The artifact name.
 	//
 	// example:
 	//
-	// Name
+	// Redhat8_5 image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Permission fields are applicable to container image artifact and Helm Chart artifact They can only change from Automatic to Public. Options:
+	// The permission field. This parameter is valid for artifacts of the container image, Helm chart, and file types. For other types of artifacts, you can only change the permission from Automatic to Public.
+	//
+	// Valid values:
 	//
 	// - Public
 	//
@@ -169,25 +171,27 @@ type ListArtifactsResponseBodyArtifacts struct {
 	//
 	// Public
 	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-aek25rexxxxxxxx
+	// rg-acfmzmhzoaa****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The status of the artifact.
 	//
-	// 	- Created: The deployment package is created.
+	// Valid values:
 	//
-	// 	- Scanning: The deployment package is being scanned.
+	// - Created: The artifact is created.
 	//
-	// 	- ScanFailed: The deployment package failed to be scanned.
+	// - Scanning: The artifact is being scanned.
 	//
-	// 	- Delivering: The deployment package is being distributed.
+	// - ScanFailed: The artifact failed to be scanned.
 	//
-	// 	- Available: The deployment package is available.
+	// - Delivering: The artifact is being distributed.
 	//
-	// 	- Deleted: The deployment package is deleted.
+	// - Available: The artifact is available.
+	//
+	// - Deleted: The artifact is deleted.
 	//
 	// example:
 	//

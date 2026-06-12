@@ -86,13 +86,13 @@ type iGetServiceInstanceResponseBody interface {
 type GetServiceInstanceResponseBody struct {
 	// The business status of the service instance. Valid values:
 	//
-	// 	- Normal: The service instance is normal.
+	// - Normal: The service instance is normal.
 	//
-	// 	- Renewing: The service instance is being renewed.
+	// - Renewing: The service instance is being renewed.
 	//
-	// 	- RenewFailed: The service instance failed to be renewed.
+	// - RenewFoiled: The service instance failed to be renewed.
 	//
-	// 	- Expired: The service instance expired.
+	// - Expired: The service instance has expired.
 	//
 	// example:
 	//
@@ -104,17 +104,17 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+	// Indicates whether the service instance supports Alibaba Cloud Managed Services. Valid values:
 	//
-	// 	- true
+	// - true: The service instance supports Alibaba Cloud Managed Services.
 	//
-	// 	- false
+	// - false: The service instance does not support Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// true
 	EnableInstanceOps *bool `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
-	// Indicates whether the Prometheus monitoring feature is enabled on the user side.
+	// Indicates whether Prometheus is enabled for the user.
 	//
 	// example:
 	//
@@ -133,11 +133,11 @@ type GetServiceInstanceResponseBody struct {
 	// https://g.xxxxxx.aliyun.com/d/xxxxxxxx-cn-mariadb/mysql-xxxxxxxx-quickstart-and-dashboard?orgId=355401&refresh=10s
 	GrafanaDashBoardUrl *string                                          `json:"GrafanaDashBoardUrl,omitempty" xml:"GrafanaDashBoardUrl,omitempty"`
 	GrantedPermission   *GetServiceInstanceResponseBodyGrantedPermission `json:"GrantedPermission,omitempty" xml:"GrantedPermission,omitempty" type:"Struct"`
-	// Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
+	// Indicates whether Alibaba Cloud Managed Services is enabled for the service instance. Valid values:
 	//
-	// 	- true
+	// - true: Alibaba Cloud Managed Services is enabled for the service instance.
 	//
-	// 	- false
+	// - false: Alibaba Cloud Managed Services is not enabled for the service instance.
 	//
 	// example:
 	//
@@ -153,41 +153,41 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// TestName
+	// Database B
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network configurations.
+	// The network configuration.
 	//
-	// >  This parameter is discontinued.
+	// > This parameter is deprecated.
 	NetworkConfig *GetServiceInstanceResponseBodyNetworkConfig `json:"NetworkConfig,omitempty" xml:"NetworkConfig,omitempty" type:"Struct"`
-	// The ID of the service instance that is used to implement hosted O\\&M.
+	// The ID of the service instance that is managed by Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	OperatedServiceInstanceId *string `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
-	// The end of the time range during which hosted O\\&M is implemented.
+	// The end time of the Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// 2022-01-28T06:48:56Z
 	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
-	// Operate extra info
+	// The additional information about Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// 6cc5ce3590ed7f5529e85fec
 	OperationExtraInfo *string `json:"OperationExtraInfo,omitempty" xml:"OperationExtraInfo,omitempty"`
-	// The beginning of the time range during which hosted O\\&M is implemented.
+	// The start time of the Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// 2021-12-29T06:48:56Z
 	OperationStartTime *string `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
-	// The outputs returned from creating the service instance.
+	// The output fields that are returned after the service instance is created.
 	//
-	// 	- If the service is deployed by using a ROS template, all output fields of the template are returned.
+	// - In ROS mode, all output fields of the template are returned.
 	//
-	// 	- If the service is deployed by calling an SPI operation, the output fields of the service provider and for the Compute Nest additional features are returned.
+	// - In SPI mode, the output fields of the ISV and the output fields of the additional features of Compute Nest are returned.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// }
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// The parameters that are specified to deploy the service instance.
+	// The parameters that are entered for deploying the service instance.
 	//
 	// example:
 	//
@@ -211,15 +211,15 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The billing method of the service. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- Permanent: Once you purchase the service, you can use it permanently.
+	// - Permanent: The service is permanently purchased.
 	//
-	// 	- Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+	// - Subscription: The service is a subscription service from Alibaba Cloud Marketplace.
 	//
-	// 	- PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+	// - PayAsYouGo: The service is a pay-as-you-go service from Alibaba Cloud Marketplace.
 	//
-	// 	- CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+	// - CustomFixTime: The service has a custom fixed duration.
 	//
 	// example:
 	//
@@ -232,13 +232,13 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// Package 1
 	PredefinedParameterName *string `json:"PredefinedParameterName,omitempty" xml:"PredefinedParameterName,omitempty"`
-	// The deployment progress of the service instance. Unit: percentage.
+	// The deployment progress of the service instance. Unit: %.
 	//
 	// example:
 	//
 	// 90
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The logon URL for the accounts in the resource directory corresponding to the service instance.
+	// The logon URL for the member in the resource directory that corresponds to the service instance.
 	//
 	// example:
 	//
@@ -250,13 +250,13 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzkt5buxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of resources.
+	// The resources.
 	//
 	// example:
 	//
@@ -270,23 +270,23 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// ]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The information about the service to which the service instance belongs.
+	// The service details.
 	Service *GetServiceInstanceResponseBodyService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: a service instance that is deployed in the user\\"s account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: a service instance that is deployed in the service provider\\"s account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: an Alibaba Cloud Managed Services instance
 	//
-	// 	- poc: The service is a trial service.
+	// - poc: a trial service instance.
 	//
 	// example:
 	//
@@ -294,45 +294,45 @@ type GetServiceInstanceResponseBody struct {
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The source of the service instance. Valid values:
 	//
-	// 	- User: Compute Nest customer
+	// - User: a Compute Nest user.
 	//
-	// 	- Market: Alibaba Cloud Marketplace
+	// - Market: Alibaba Cloud Marketplace.
 	//
-	// 	- Supplier: Compute Nest service provider
+	// - Supplier: a Compute Nest service provider.
 	//
 	// example:
 	//
 	// User
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The deployment state of the service instance. Valid values:
+	// The deployment status of the service instance. Valid values:
 	//
-	// 	- Created
+	// - Created: The service instance is created.
 	//
-	// 	- Deploying
+	// - Deploying: The service instance is being deployed.
 	//
-	// 	- DeployedFailed
+	// - DeployedFailed: The service instance failed to be deployed.
 	//
-	// 	- Deployed
+	// - Deployed: The service instance is deployed.
 	//
-	// 	- Upgrading
+	// - Upgrading: The service instance is being upgraded.
 	//
-	// 	- Deleting
+	// - Deleting: The service instance is being deleted.
 	//
-	// 	- Deleted
+	// - Deleted: The service instance is deleted.
 	//
-	// 	- DeletedFailed
+	// - DeletedFailed: The service instance failed to be deleted.
 	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the deployment state of the service instance.
+	// The description of the deployment status of the instance.
 	//
 	// example:
 	//
 	// deploy successfully
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	// The Alibaba Cloud account ID of the service provider.
+	// The service provider\\"s Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 模板1
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The time when the service instance was updated.
 	//
@@ -352,7 +352,7 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// 2021-05-20T00:00:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The Alibaba Cloud account ID of the user.
+	// The user\\"s Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -756,25 +756,25 @@ func (s *GetServiceInstanceResponseBodyGrantedPermission) Validate() error {
 }
 
 type GetServiceInstanceResponseBodyNetworkConfig struct {
-	// The ID of the endpoint for the private connection.
+	// The ID of the endpoint for the PrivateLink connection.
 	//
-	// >  This parameter is discontinued.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// ep-m5ei37240541816b****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the endpoint service for the private connection.
+	// The ID of the endpoint service for the PrivateLink connection.
 	//
-	// >  This parameter is discontinued.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// epsrv-5ei07324541816bxxxx
 	EndpointServiceId *string `json:"EndpointServiceId,omitempty" xml:"EndpointServiceId,omitempty"`
-	// The information about private connections.
+	// The information about the PrivateLink connection.
 	PrivateVpcConnections []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections `json:"PrivateVpcConnections,omitempty" xml:"PrivateVpcConnections,omitempty" type:"Repeated"`
-	// The information about the reverse private connection.
+	// The information about the reverse PrivateLink connection.
 	ReversePrivateVpcConnections []*GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections `json:"ReversePrivateVpcConnections,omitempty" xml:"ReversePrivateVpcConnections,omitempty" type:"Repeated"`
 }
 
@@ -845,15 +845,15 @@ func (s *GetServiceInstanceResponseBodyNetworkConfig) Validate() error {
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections struct {
-	// The network configurations, which are mainly used for the private connection.
+	// The network configuration. This is mainly used for PrivateLink connections.
 	ConnectionConfigs []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs `json:"ConnectionConfigs,omitempty" xml:"ConnectionConfigs,omitempty" type:"Repeated"`
-	// The ID of the endpoint for the private connection.
+	// The ID of the endpoint for the PrivateLink connection.
 	//
 	// example:
 	//
 	// ep-m5ei37240541816b****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the endpoint service for the private connection.
+	// The ID of the endpoint service for the PrivateLink connection.
 	//
 	// example:
 	//
@@ -925,7 +925,7 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) Valid
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs struct {
-	// The bandwidth limit for the private connection established based on the private network interconnection mode of Compute Nest.
+	// The bandwidth throttling for the connection that is established using the internal network of Compute Nest. Unit: Mbps.
 	//
 	// example:
 	//
@@ -937,19 +937,19 @@ type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionC
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The IP addresses of the endpoints for private connections.
+	// The IP address of the endpoint for the PrivateLink connection.
 	EndpointIps []*string `json:"EndpointIps,omitempty" xml:"EndpointIps,omitempty" type:"Repeated"`
 	// The status of the Ingress endpoint. Valid values:
 	//
-	// 	- Ready: The Ingress endpoint is connected.
+	// - Ready: The endpoint is connected.
 	//
-	// 	- Pending: The Ingress endpoint is being connected.
+	// - Pending: The endpoint is being connected.
 	//
-	// 	- Failed: The Ingress endpoint fails to be connected.
+	// - Failed: The endpoint failed to be connected.
 	//
-	// 	- Deleted: The Ingress endpoint is deleted.
+	// - Deleted: The endpoint is deleted.
 	//
-	// 	- Deleting: The Ingress endpoint is being deleted.
+	// - Deleting: The endpoint is being deleted.
 	//
 	// example:
 	//
@@ -957,23 +957,23 @@ type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionC
 	IngressEndpointStatus *string `json:"IngressEndpointStatus,omitempty" xml:"IngressEndpointStatus,omitempty"`
 	// The status of the network service. Valid values:
 	//
-	// 	- Ready: The network service is connected.
+	// - Ready: The endpoint is connected.
 	//
-	// 	- Pending: The network service is being connected.
+	// - Pending: The endpoint is being connected.
 	//
-	// 	- Failed: The network service fails to be connected.
+	// - Failed: The endpoint failed to be connected.
 	//
-	// 	- Deleted: The network service is deleted.
+	// - Deleted: The endpoint is deleted.
 	//
-	// 	- Deleting: The network service is being deleted.
+	// - Deleting: The endpoint is being deleted.
 	//
 	// example:
 	//
 	// Ready
 	NetworkServiceStatus *string `json:"NetworkServiceStatus,omitempty" xml:"NetworkServiceStatus,omitempty"`
-	// The names of the security groups.
+	// The name of the security group.
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The names of the vSwitches.
+	// The name of the virtual switch.
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The virtual private cloud (VPC) ID.
 	//
@@ -1068,13 +1068,13 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnect
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections struct {
-	// The ID of the endpoint for the reverse private connection.
+	// The ID of the endpoint for the reverse PrivateLink connection.
 	//
 	// example:
 	//
 	// ep-m5ei42370541816b****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the endpoint service for the reverse private connection.
+	// The ID of the endpoint service for the PrivateLink connection.
 	//
 	// example:
 	//
@@ -1113,19 +1113,19 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections
 }
 
 type GetServiceInstanceResponseBodyService struct {
-	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	// The deployment configuration of the service. The data format varies based on the deployment type. The value is a JSON string.
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
-	// The deployment type of the service. Valid values:
+	// The deployment type. Valid values:
 	//
-	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	// - ros: The service is deployed using ROS.
 	//
-	// 	- terraform: The service is deployed by using Terraform.
+	// - terraform: The service is deployed using Terraform.
 	//
-	// 	- ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	// - ack: The service is deployed using ACK.
 	//
-	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	// - spi: The service is deployed using SPI.
 	//
-	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	// - operation: The service is deployed using Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
@@ -1137,7 +1137,7 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// 2021-05-21T00:00:00Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The URL of the service documentation.
+	// The URL of the documentation for the service.
 	//
 	// example:
 	//
@@ -1149,33 +1149,33 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// service-9c8a3522528b4fe8****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The information about the service.
+	// The service information.
 	ServiceInfos []*GetServiceInstanceResponseBodyServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
-	// The URL of the service page.
+	// The URL of the product page for the service.
 	//
 	// example:
 	//
 	// https://service-info-private.oss-cn-hangzhou.aliyuncs.com
 	ServiceProductUrl *string `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
-	// 	- private: The service is a private service and is deployed within the account of a customer.
+	// - private: The service is deployed in the user\\"s account.
 	//
-	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	// - managed: The service is deployed in the service provider\\"s account.
 	//
-	// 	- operation: The service is a hosted O\\&M service.
+	// - operation: The service is an Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The status of the service. Valid values:
+	// The service status. Valid values:
 	//
-	// Draft: The registration request of the service is pending to be submitted.
+	// Draft: The service is pending registration.
 	//
-	// Submitted: The registration request of the service is submitted.
+	// Submitted: The service is submitted for registration.
 	//
-	// Approved: The registration request of the service is approved.
+	// Approved: The registration is approved.
 	//
 	// Online: The service is published.
 	//
@@ -1193,7 +1193,7 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// Company A
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	// The URL of the service provider.
 	//
@@ -1201,9 +1201,9 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// http://example.com
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	// The upgradable service Info.
+	// The information about the service versions to which the service can be upgraded.
 	UpgradableServiceInfos []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos `json:"UpgradableServiceInfos,omitempty" xml:"UpgradableServiceInfos,omitempty" type:"Repeated"`
-	// The service versions that can be updated.
+	// The service versions to which the service can be upgraded.
 	UpgradableServiceVersions []*string `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
 	// The service version.
 	//
@@ -1211,11 +1211,11 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// 1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The custom version name defined by the service provider.
+	// The custom version name specified by the service provider.
 	//
 	// example:
 	//
-	// 20231127020225
+	// Version A
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -1401,13 +1401,13 @@ type GetServiceInstanceResponseBodyServiceServiceInfos struct {
 	//
 	// example:
 	//
-	// WordPress
+	// B数据库
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the service.
+	// A short description of the service.
 	//
 	// example:
 	//
-	// B是A公司自主设计并研发的开源分布式的关系型数据库
+	// B is an open-source distributed relational database independently designed and developed by Company A.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -1460,17 +1460,17 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) Validate() error {
 }
 
 type GetServiceInstanceResponseBodyServiceUpgradableServiceInfos struct {
-	// The upgradable service version.
+	// The service version to which the service can be upgraded.
 	//
 	// example:
 	//
 	// 4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The version name of an upgradable service version.
+	// The name of the service version to which the service can be upgraded.
 	//
 	// example:
 	//
-	// Init version
+	// New parameter management feature
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 

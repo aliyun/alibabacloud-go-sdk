@@ -36,39 +36,47 @@ type iCreateArtifactRequest interface {
 }
 
 type CreateArtifactRequest struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The content used to build the artifact. This parameter is used for managed artifact builds.
 	ArtifactBuildProperty *CreateArtifactRequestArtifactBuildProperty `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty" type:"Struct"`
-	// The type of the artifact build task. Valid values:
+	// The type of the artifact to be built. Valid values:
 	//
-	// - EcsImage: Build ECS (Elastic Container Service) image.
+	// - EcsImage: builds an ECS image.
 	//
-	// - Dockerfile: Build container image based on Dockerfile.
+	// - Dockerfile: builds a container image based on a Dockerfile.
 	//
-	// - Buildpacks: Build container image based on Buildpacks.
+	// - Buildpacks: builds a container image based on Buildpacks.
 	//
-	// - ContainerImage: Rebuild container image by renaming an existing container image.
+	// - ContainerImage: builds a container image by renaming an existing container image.
 	//
 	// example:
 	//
-	// Dockerfile
+	// Dockerflie
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the deployment package.
+	// The artifact ID.
+	//
+	// This parameter is required to create a new version of an existing artifact.
+	//
+	// You can call the [ListArtifacts](https://help.aliyun.com/document_detail/469993.html) operation to obtain the artifact ID.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The properties of the deployment object.
+	// The content of the artifact.
 	ArtifactProperty *CreateArtifactRequestArtifactProperty `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty" type:"Struct"`
-	// The type of the deployment package. Valid values:
+	// The artifact type.
 	//
-	// 	- EcsImage: Elastic Compute Service (ECS) image.
+	// Valid values:
 	//
-	// 	- AcrImage: container image.
+	// - EcsImage: an ECS image artifact.
 	//
-	// 	- File: Object Storage Service (OSS) object.
+	// - AcrImage: a container image artifact.
 	//
-	// 	- Script: script.
+	// - File: an Object Storage Service (OSS) file artifact.
+	//
+	// - Script: a script artifact.
+	//
+	// - HelmChart: a Helm chart artifact.
 	//
 	// This parameter is required.
 	//
@@ -76,37 +84,37 @@ type CreateArtifactRequest struct {
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotence of the request.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact.
 	//
 	// example:
 	//
-	// Test artifact
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the deployment package.
+	// The artifact name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Name
+	// Redhat8_5 image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
-	// rg-aekzkt5buxxxxxx
+	// rg-acfm2jfvb7b****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The supported regions.
+	// The regions where the image can be distributed.
 	SupportRegionIds []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
 	// The custom tags.
 	Tag []*CreateArtifactRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The version name of the deployment package.
+	// The name of the artifact version.
 	//
 	// This parameter is required.
 	//
@@ -256,17 +264,17 @@ func (s *CreateArtifactRequest) Validate() error {
 }
 
 type CreateArtifactRequestArtifactBuildProperty struct {
-	// The build arguments used during the image build process.
+	// The build arguments.
 	//
-	// >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+	// > This parameter can be set only when ArtifactBuildType is set to Dockerfile.
 	BuildArgs []*CreateArtifactRequestArtifactBuildPropertyBuildArgs `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	// The address of the code repository.
+	// The code repository address.
 	//
-	// >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
+	// > This parameter can be set only when ArtifactBuildType is set to Dockerfile or Buildpacks.
 	CodeRepo *CreateArtifactRequestArtifactBuildPropertyCodeRepo `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
-	// The command content.
+	// The content of the command.
 	//
-	// >  This parameter is available only if the deployment package is a ecs image type.
+	// > This parameter can be set only when the artifact is an ECS image artifact.
 	//
 	// example:
 	//
@@ -274,67 +282,69 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
 	// The command type. Valid values:
 	//
-	// 	- RunBatScript: batch command, applicable to Windows instances.
+	// - RunBatScript: The command is a BAT script that runs on a Windows instance.
 	//
-	// 	- RunPowerShellScript: PowerShell command, applicable to Windows instances.
+	// - RunPowerShellScript: The command is a PowerShell script that runs on a Windows instance.
 	//
-	// 	- RunShellScript: shell command, applicable to Linux instances.
+	// - RunShellScript: The command is a shell script that runs on a Linux instance.
 	//
-	// >  This parameter is available only if the deployment package is a ecs image type.
+	// > This parameter can be set only when the artifact is an ECS image artifact.
 	//
 	// example:
 	//
 	// RunShellScript
 	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The relative path to the Dockerfile within the code repository.
+	// The relative address of the Dockerfile file in the code repository.
 	//
-	// >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+	// Default value: Dockerfile.
+	//
+	// > This parameter can be set only when ArtifactBuildType is set to Dockerfile.
 	//
 	// example:
 	//
 	// ./file/Dockerfile
 	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
-	// Whether GPU is required. CPU instance is used by default.
+	// Specifies whether to use a GPU-accelerated instance. By default, a CPU-powered instance is used.
 	//
 	// example:
 	//
 	// false
 	EnableGpu *bool `json:"EnableGpu,omitempty" xml:"EnableGpu,omitempty"`
-	// The region ID where the source mirror image is located.
+	// The ID of the region where the source image is located.
 	//
-	// >  This parameter is available only if the deployment package is a ecs image type.
+	// > This parameter can be set only when the artifact is an ECS image artifact.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+	// The pull address of the source container image.
 	//
-	// >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
+	// Used for docker pull ${SourceContainerImage}.
+	//
+	// > This parameter can be set only when ArtifactBuildType is set to ContainerImage.
 	//
 	// example:
 	//
 	// pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
 	SourceContainerImage *string `json:"SourceContainerImage,omitempty" xml:"SourceContainerImage,omitempty"`
-	// The source image id. Supported Types:
+	// The source image ID. The following types are supported:
 	//
-	// - Image ID: Pass the Image ID of the Ecs image directly.
+	// - Image ID: The ID of the ECS image.
 	//
-	// - OOS Common Parameter Name: Obtain the corresponding Image ID automatically by using the OOS common parameter name.
+	// - OOS public parameter name: The image ID is automatically obtained based on the name of the Operation Orchestration Service (OOS) public parameter.
 	//
-	// >  This parameter is available only if the deployment package is a ecs image type.
+	// > This parameter can be set only when the artifact is an ECS image artifact.
 	//
 	// example:
 	//
-	// Image ID：m-t4nhenrdc38pe4*****
+	// Image ID: m-t4nhenrdc38pe4*****
 	//
 	// ubuntu_22_04_x64_20G_alibase_20240926.vhd
 	//
-	// OOS Common Parameter Name：aliyun/services/computenest/images/aliyun_3_2104_python_3_11
+	// OOS public parameter name: aliyun/services/computenest/images/aliyun_3_2104_python_3_11
 	SourceImageId *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
 	// The size of the system disk. Unit: GiB.
-	//
-	// >  The system disk must be at least as large as the image.
 	//
 	// example:
 	//
@@ -459,13 +469,13 @@ func (s *CreateArtifactRequestArtifactBuildProperty) Validate() error {
 }
 
 type CreateArtifactRequestArtifactBuildPropertyBuildArgs struct {
-	// The name of a specific build argument.
+	// The name of the build argument.
 	//
 	// example:
 	//
 	// ENV
 	ArgumentName *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
-	// The value of a specific build argument.
+	// The value of the build argument.
 	//
 	// example:
 	//
@@ -504,15 +514,13 @@ func (s *CreateArtifactRequestArtifactBuildPropertyBuildArgs) Validate() error {
 }
 
 type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
-	// The name of the branch in the code repository.
+	// The name of the code repository branch.
 	//
 	// example:
 	//
 	// main
 	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	// The endpoint.
-	//
-	// The URL address used to access the privately deployed GitLab instance.
+	// The endpoint. This parameter is required for a private GitLab deployment.
 	//
 	// example:
 	//
@@ -526,13 +534,13 @@ type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The owner of the code repository.
 	//
-	// >  This parameter is available only if the git repository is private.
+	// > This parameter is required only when the code repository is a private repository.
 	//
 	// example:
 	//
 	// aliyun-computenest
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The platform type. Valid values:
+	// The platform where the code repository is located. Valid values:
 	//
 	// - github
 	//
@@ -552,7 +560,7 @@ type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	//
 	// 103
 	RepoId *int64 `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
@@ -636,17 +644,21 @@ func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) Validate() error {
 }
 
 type CreateArtifactRequestArtifactProperty struct {
-	// The commodity code of the service in Alibaba Cloud Marketplace.
+	// The commodity code of the product in Alibaba Cloud Marketplace.
 	//
-	// >  This parameter is available only if the deployment package is an image.
+	// Obtain the commodity code in the [Alibaba Cloud Marketplace console](https://market.console.aliyun.com/?spm=a2c4g.11186623.0.0.599d6787eMBBxu#/apiTools?_k=d7j8gk).
+	//
+	// > This parameter can be set only when the artifact is an image artifact.
 	//
 	// example:
 	//
-	// cmjj00xxxx
+	// cmjj00****
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The commodity version of the service in Alibaba Cloud Marketplace.
+	// The version of the product in Alibaba Cloud Marketplace.
 	//
-	// >  This parameter is available only if the deployment package is an image.
+	// View the product version on the [Alibaba Cloud Marketplace](https://market.aliyun.com/?spm=5176.24779694.0.0.b2144d22sksKM5) page.
+	//
+	// > This parameter can be set only when the artifact is an image artifact.
 	//
 	// example:
 	//
@@ -654,15 +666,17 @@ type CreateArtifactRequestArtifactProperty struct {
 	CommodityVersion *string `json:"CommodityVersion,omitempty" xml:"CommodityVersion,omitempty"`
 	// The image ID.
 	//
-	// >  This parameter is available only if the deployment package is an image.
+	// After you specify a region ID, call the [DescribeImages](https://help.aliyun.com/document_detail/2679797.html) operation to view the available image IDs in the specified region.
+	//
+	// > This parameter can be set only when the artifact is an image artifact.
 	//
 	// example:
 	//
-	// m-0xij191j9cuev6xxxxxx
+	// m-uf645fnsef9dsxmw****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The region ID.
+	// The region of the image.
 	//
-	// >  This parameter is available only if the deployment package is an image.
+	// > This parameter can be set only when the artifact is an image artifact.
 	//
 	// example:
 	//
@@ -670,45 +684,41 @@ type CreateArtifactRequestArtifactProperty struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the image repository.
 	//
-	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+	// Call the [ListAcrImageRepositories](https://help.aliyun.com/document_detail/2539919.html) operation to obtain the image repository ID.
+	//
+	// > This parameter can be set only when the artifact is a container image artifact or a Helm chart artifact.
 	//
 	// example:
 	//
-	// crr-d8o1nponyc2t1gcg
+	// crr-d8o1nponyc2t****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the image repository.
 	//
-	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+	// > This parameter can be set only when the artifact is a container image artifact or a Helm chart artifact.
 	//
 	// example:
 	//
 	// wordpress
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The default repository type. Valid values:
-	//
-	// 	- `Public`: a public repository.
-	//
-	// 	- `Private`: a private repository.
-	//
-	// You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+	// The type of the repository. Valid values: Public and Private.
 	//
 	// example:
 	//
 	// Public
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The version tag of the image repository.
+	// The version of the image in the image repository.
 	//
-	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+	// Call the [ListAcrImageTags](https://help.aliyun.com/document_detail/2539920.html) operation to obtain the version of the image in the image repository.
+	//
+	// > This parameter can be set only when the artifact is a container image artifact or a Helm chart artifact.
 	//
 	// example:
 	//
 	// v1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The object URL of the deployment package.
+	// The URL of the file artifact.
 	//
-	// example:
-	//
-	// https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1309208528xxxxxx/template/2e1ce8fc-xxxx-481c-9e8e-789ba9db487d.json
+	// Upload a file and obtain its URL in the [Object Storage Service console](https://oss.console.aliyun.com/bucket).
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

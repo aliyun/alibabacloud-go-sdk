@@ -34,13 +34,13 @@ type CreateServiceTestTaskRequest struct {
 	//
 	// nametest
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The Task Execution Region
+	// The region where the task is executed.
 	//
 	// example:
 	//
 	// cn-beijing
 	TaskRegionId *string `json:"TaskRegionId,omitempty" xml:"TaskRegionId,omitempty"`
-	// The service test case ids.
+	// The service test use cases.
 	//
 	// This parameter is required.
 	TestCaseIds []*string `json:"TestCaseIds,omitempty" xml:"TestCaseIds,omitempty" type:"Repeated"`

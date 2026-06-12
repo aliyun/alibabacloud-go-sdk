@@ -20,17 +20,17 @@ type iGetArtifactRepositoryCredentialsResponseBody interface {
 }
 
 type GetArtifactRepositoryCredentialsResponseBody struct {
-	// The information about the resources that can be uploaded.
+	// Information about the resources that can be uploaded.
 	AvailableResources []*GetArtifactRepositoryCredentialsResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
-	// The credentials.
+	// The access credential.
 	Credentials *GetArtifactRepositoryCredentialsResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
-	// The time when the credentials expired.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1526549792000
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type GetArtifactRepositoryCredentialsResponseBodyAvailableResources struct {
 	//
 	// oss-cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The repository name.
+	// The name of the repository.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type GetArtifactRepositoryCredentialsResponseBodyCredentials struct {
 	//
 	// eyJ0aW1lIjoiMTUyNjU0OTc5:0705733****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The Security Token Service (STS) token.
+	// The security token.
 	//
 	// example:
 	//

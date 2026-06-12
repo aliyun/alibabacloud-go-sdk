@@ -24,17 +24,17 @@ type iRejectServiceUsageRequest interface {
 }
 
 type RejectServiceUsageRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that ensures the idempotence of a request. Make sure that the token is unique for each request. The token can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Reject comments.
+	// The approval comments.
 	//
 	// example:
 	//
-	// Thanks for your application, please add your industry information.
+	// Thank you for your application. Please fill in the correct information.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
@@ -45,17 +45,17 @@ type RejectServiceUsageRequest struct {
 	//
 	// service-2117508c874c41xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The share type of the service. Default value: SharedAccount. Valid values:
+	// The service sharing type. The default value is SharedAccount. Valid values:
 	//
-	// 	- SharedAccount: The service is shared by multiple accounts.
+	// - SharedAccount: The common sharing type.
 	//
-	// 	- Reseller: The service is distributed.
+	// - Reseller: The reseller sharing type.
 	//
 	// example:
 	//
 	// SharedAccount
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// User ali uid.
+	// The ID of the user\\"s Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//

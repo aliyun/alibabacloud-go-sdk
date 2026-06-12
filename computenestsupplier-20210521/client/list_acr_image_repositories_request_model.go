@@ -20,23 +20,23 @@ type iListAcrImageRepositoriesRequest interface {
 }
 
 type ListAcrImageRepositoriesRequest struct {
-	// The type of the artifact. Default value: AcrImage. Valid values:
+	// The type of the artifact. The default value is AcrImage. Valid values:
 	//
-	// 	- HelmChart: Helm chart image.
+	// - HelmChart: a Helm chart image.
 	//
-	// 	- AcrImage: container image.
+	// - AcrImage: a container image.
 	//
 	// example:
 	//
 	// AcrImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//

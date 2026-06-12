@@ -22,19 +22,28 @@ type iListOpsNoticesResponseBody interface {
 }
 
 type ListOpsNoticesResponseBody struct {
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next page of results. If this parameter is not returned, all results have been returned.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The O\\&M notices.
 	OpsNotices []*ListOpsNoticesResponseBodyOpsNotices `json:"OpsNotices,omitempty" xml:"OpsNotices,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -108,47 +117,92 @@ func (s *ListOpsNoticesResponseBody) Validate() error {
 }
 
 type ListOpsNoticesResponseBodyOpsNotices struct {
+	// The O\\&M item properties.
+	//
 	// example:
 	//
 	// {"cveId":"CVE-2021-4034"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The category. Valid values:
+	//
+	// - Availability
+	//
+	// - Cost
+	//
+	// - Performance
+	//
+	// - Recovery
+	//
+	// - Security
+	//
 	// example:
 	//
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The O\\&M notice ID.
+	//
 	// example:
 	//
 	// notice-1749693290
 	NoticeId *string `json:"NoticeId,omitempty" xml:"NoticeId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-e10349089de34exxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// test
-	ServiceName     *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service versions.
 	ServiceVersions []*string `json:"ServiceVersions,omitempty" xml:"ServiceVersions,omitempty" type:"Repeated"`
+	// The severity level. Valid values:
+	//
+	// - Critical
+	//
+	// - High
+	//
+	// - Medium
+	//
+	// - Low
+	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The solution.
+	//
 	// example:
 	//
 	// You need to upgrade service instance
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2022-10-12T02:03:37Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The type. Valid values:
+	//
+	// - ServiceInstanceUpgrade: upgrade
+	//
+	// - VulnerabilityFix: vulnerability
+	//
 	// example:
 	//
 	// Vulnerability

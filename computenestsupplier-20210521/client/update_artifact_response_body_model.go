@@ -38,49 +38,49 @@ type iUpdateArtifactResponseBody interface {
 }
 
 type UpdateArtifactResponseBody struct {
-	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	// The properties for building the artifact. This is used for managed artifact builds.
 	//
 	// example:
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	// The type of the deployment package to be built.
+	// The build type of the artifact.
 	//
 	// example:
 	//
-	// Dockerfile
+	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the deployment package.
+	// The artifact ID.
 	//
 	// example:
 	//
-	// artifact-eea08d1e2d3a43aexxxx
+	// artifact-eea08d1e2d3a43ae****
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	// The properties of the deployment package.
+	// The content of the artifact.
 	//
 	// example:
 	//
-	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
+	// {\\"CommodityCode\\":\\"cmjj0005****\\",\\"CommodityVersion\\":\\"V2022****\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	// The type of the deployment package.
+	// The artifact type.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The version of the deployment package.
+	// The artifact version.
 	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	// The description of the deployment package.
+	// The description of the artifact.
 	//
 	// example:
 	//
-	// Description
+	// Redhat8_0 image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the deployment package was modified.
+	// The time when the artifact was modified.
 	//
 	// example:
 	//
@@ -90,33 +90,35 @@ type UpdateArtifactResponseBody struct {
 	//
 	// example:
 	//
-	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
+	// 9F350409-2ACC-5B61-ACD9-3C8995792F8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the deployment package. Valid values:
+	// The status of the artifact.
 	//
-	// 	- Created: The deployment package is created.
+	// Valid values:
 	//
-	// 	- Scanning: The deployment package is being scanned.
+	// - Created: The artifact is created.
 	//
-	// 	- ScanFailed: The deployment package failed to be scanned.
+	// - Scanning: The artifact is being scanned.
 	//
-	// 	- Delivering: The deployment package is being distributed.
+	// - ScanFailed: The artifact failed to be scanned.
 	//
-	// 	- Available: The deployment package is available.
+	// - Delivering: The artifact is being distributed.
 	//
-	// 	- Deleted: The deployment package is deleted.
+	// - Available: The artifact is available.
+	//
+	// - Deleted: The artifact is deleted.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of the deployment package.
+	// The details of the artifact status.
 	//
 	// example:
 	//
 	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	// The ID of the region that supports the deployment package.
+	// The IDs of the regions to which the artifact can be distributed.
 	//
 	// example:
 	//
@@ -130,7 +132,7 @@ type UpdateArtifactResponseBody struct {
 	//
 	// 		]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
-	// The name of the deployment package.
+	// The version name.
 	//
 	// example:
 	//

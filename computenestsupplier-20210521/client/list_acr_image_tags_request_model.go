@@ -20,29 +20,29 @@ type iListAcrImageTagsRequest interface {
 }
 
 type ListAcrImageTagsRequest struct {
-	// The type of the deployment package. Default value: AcrImage. Valid values:
+	// The artifact type. The default value is AcrImage. Possible values:
 	//
-	// 	- HelmChart: Helm chart image.
+	// - HelmChart: A Helm Chart image.
 	//
-	// 	- AcrImage: container image.
+	// - AcrImage: A container image.
 	//
 	// example:
 	//
 	// AcrImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// AAAAAW8kZY+u1sYOaYf5JmgmDQQ=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The image ID.
+	// The ID of the image repository.
 	//
 	// example:
 	//
