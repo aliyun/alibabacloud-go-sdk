@@ -14,6 +14,8 @@ type iGetProjectRequest interface {
 }
 
 type GetProjectRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:

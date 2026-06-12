@@ -18,14 +18,20 @@ type iCreateTopicResponseBody interface {
 }
 
 type CreateTopicResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2026020210000022c53d0b06900170
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// test01

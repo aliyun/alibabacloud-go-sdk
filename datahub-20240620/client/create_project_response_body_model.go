@@ -18,14 +18,20 @@ type iCreateProjectResponseBody interface {
 }
 
 type CreateProjectResponseBody struct {
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2025112610124322c53d0b028e7fa9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

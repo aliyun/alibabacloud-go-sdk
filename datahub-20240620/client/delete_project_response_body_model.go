@@ -16,10 +16,14 @@ type iDeleteProjectResponseBody interface {
 }
 
 type DeleteProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 20260128101840d2a3770b05d299b3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

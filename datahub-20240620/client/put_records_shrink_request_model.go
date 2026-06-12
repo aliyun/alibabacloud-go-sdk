@@ -20,18 +20,26 @@ type iPutRecordsShrinkRequest interface {
 }
 
 type PutRecordsShrinkRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The data to be written.
+	//
 	// This parameter is required.
 	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	// The ID of the shard to which data is written. If this parameter is not specified, data is randomly written to a shard.
+	//
 	// example:
 	//
 	// 7
 	ShardId *string `json:"ShardId,omitempty" xml:"ShardId,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -9,7 +9,11 @@ import (
 
 // Summary:
 //
-// 创建Project资源
+// Creates a project.
+//
+// Description:
+//
+// Creates a project.
 //
 // @param request - CreateProjectRequest
 //
@@ -57,7 +61,75 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建Topic资源
+// 创建Subscription资源
+//
+// Description:
+//
+// 创建订阅信息
+//
+// @param request - CreateSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubscriptionResponse
+func (client *Client) CreateSubscriptionWithContext(ctx context.Context, request *CreateSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *CreateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Application) {
+		query["Application"] = request.Application
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.SubscriptionId) {
+		query["SubscriptionId"] = request.SubscriptionId
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSubscription"),
+		Version:     dara.String("2024-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// A topic is the smallest unit for DataHub subscription and publishing. You can use a topic to represent a type or category of streaming data.
+//
+// Description:
+//
+// Creates a topic resource.
 //
 // @param request - CreateTopicRequest
 //
@@ -133,7 +205,11 @@ func (client *Client) CreateTopicWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 删除Project资源
+// Deletes a project. Before deleting a project, delete all resources under the project, including topics, synchronization tasks, and subscription tasks.
+//
+// Description:
+//
+// Deletes a project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -177,7 +253,67 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除Topic资源
+// 删除Subscription资源
+//
+// Description:
+//
+// 删除订阅任务
+//
+// @param request - DeleteSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubscriptionResponse
+func (client *Client) DeleteSubscriptionWithContext(ctx context.Context, request *DeleteSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.SubscriptionId) {
+		query["SubscriptionId"] = request.SubscriptionId
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSubscription"),
+		Version:     dara.String("2024-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a topic resource. Before deleting a topic resource, delete all subscriptions and sync tasks under the topic.
+//
+// Description:
+//
+// Deletes a topic resource.
 //
 // @param request - DeleteTopicRequest
 //
@@ -225,7 +361,11 @@ func (client *Client) DeleteTopicWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 查询Connector信息
+// Queries the information about a synchronization task.
+//
+// Description:
+//
+// Queries the information about a synchronization task.
 //
 // @param request - GetConnectorRequest
 //
@@ -277,7 +417,11 @@ func (client *Client) GetConnectorWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
-// 查询Group信息
+// Queries the information about a consumer group.
+//
+// Description:
+//
+// Queries the information about a consumer group.
 //
 // @param request - GetGroupRequest
 //
@@ -325,7 +469,11 @@ func (client *Client) GetGroupWithContext(ctx context.Context, request *GetGroup
 
 // Summary:
 //
-// 查询Project资源详细信息
+// Queries project information.
+//
+// Description:
+//
+// Queries project information.
 //
 // @param request - GetProjectRequest
 //
@@ -369,7 +517,11 @@ func (client *Client) GetProjectWithContext(ctx context.Context, request *GetPro
 
 // Summary:
 //
-// 读取Topic数据
+// Reads data from a specified topic. This operation is primarily used for debugging. For high-volume data reading, refer to the SDK documentation.
+//
+// Description:
+//
+// This operation is intended for debugging purposes. Do not use this operation to read large amounts of data.
 //
 // @param request - GetRecordsRequest
 //
@@ -425,7 +577,11 @@ func (client *Client) GetRecordsWithContext(ctx context.Context, request *GetRec
 
 // Summary:
 //
-// 查询Schema信息
+// Queries schema information.
+//
+// Description:
+//
+// Queries schema information.
 //
 // @param request - GetSchemaRequest
 //
@@ -477,7 +633,11 @@ func (client *Client) GetSchemaWithContext(ctx context.Context, request *GetSche
 
 // Summary:
 //
-// 查询Subscription信息
+// Queries subscription information.
+//
+// Description:
+//
+// Queries subscription information.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -529,7 +689,11 @@ func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询Topic信息
+// Queries topic information.
+//
+// Description:
+//
+// Queries topic information.
 //
 // @param request - GetTopicRequest
 //
@@ -577,7 +741,11 @@ func (client *Client) GetTopicWithContext(ctx context.Context, request *GetTopic
 
 // Summary:
 //
-// 查询Connector列表信息
+// Retrieves a list of synchronization tasks.
+//
+// Description:
+//
+// Queries the list of synchronization tasks.
 //
 // @param request - ListConnectorsRequest
 //
@@ -645,7 +813,11 @@ func (client *Client) ListConnectorsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询Group列表信息
+// Retrieves a list of consumer groups.
+//
+// Description:
+//
+// Queries the list of consumer groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -709,7 +881,11 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// 查询Project列表信息
+// Retrieves a list of projects.
+//
+// Description:
+//
+// Queries the list of projects.
 //
 // @param request - ListProjectsRequest
 //
@@ -769,7 +945,11 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询Schema列表信息
+// Lists schemas.
+//
+// Description:
+//
+// Queries schema list information.
 //
 // @param request - ListSchemasRequest
 //
@@ -829,7 +1009,11 @@ func (client *Client) ListSchemasWithContext(ctx context.Context, request *ListS
 
 // Summary:
 //
-// 查询Subscription列表信息
+// Retrieves a list of subscriptions.
+//
+// Description:
+//
+// Queries subscription list information.
 //
 // @param request - ListSubscriptionsRequest
 //
@@ -893,7 +1077,11 @@ func (client *Client) ListSubscriptionsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询Topic列表信息
+// Retrieves a list of topics.
+//
+// Description:
+//
+// Queries the list of topics.
 //
 // @param request - ListTopicsRequest
 //
@@ -957,7 +1145,11 @@ func (client *Client) ListTopicsWithContext(ctx context.Context, request *ListTo
 
 // Summary:
 //
-// 写入数据
+// Writes data to a specified topic. This operation is primarily intended for debugging. For high-volume data writes, refer to the SDK documentation.
+//
+// Description:
+//
+// This operation is primarily intended for debugging. Do not use this operation to write large amounts of data.
 //
 // @param tmpReq - PutRecordsRequest
 //
@@ -1019,7 +1211,11 @@ func (client *Client) PutRecordsWithContext(ctx context.Context, tmpReq *PutReco
 
 // Summary:
 //
-// 更新Project资源属性
+// Updates the description of a project.
+//
+// Description:
+//
+// Updates the description of a project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -1067,7 +1263,11 @@ func (client *Client) UpdateProjectWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// 更新Topic资源属性
+// Updates the description of a topic.
+//
+// Description:
+//
+// Updates the description of a topic.
 //
 // @param request - UpdateTopicRequest
 //

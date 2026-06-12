@@ -24,28 +24,40 @@ type iListSubscriptionsRequest interface {
 }
 
 type ListSubscriptionsRequest struct {
+	// The keyword used to filter results in a paged query.
+	//
 	// example:
 	//
 	// dh
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The maximum number of records to return for a paged query.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. If NextToken is empty, paged query starts from the beginning. Otherwise, paged query starts from the end of the previous query indicated by the token.
+	//
 	// example:
 	//
 	// 9892074a2a89600ae4b0d5a34fb99a3f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The number of records to skip in a paged query.
+	//
 	// example:
 	//
 	// 1
 	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:

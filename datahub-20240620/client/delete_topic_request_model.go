@@ -16,12 +16,16 @@ type iDeleteTopicRequest interface {
 }
 
 type DeleteTopicRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feeding
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the topic to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

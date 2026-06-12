@@ -16,10 +16,14 @@ type iUpdateTopicResponseBody interface {
 }
 
 type UpdateTopicResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 20260319152525d2a3770b00c232d4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

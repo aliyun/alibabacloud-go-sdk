@@ -16,12 +16,16 @@ type iGetTopicRequest interface {
 }
 
 type GetTopicRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:

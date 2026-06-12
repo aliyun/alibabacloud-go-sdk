@@ -30,41 +30,59 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
+	// The project description.
+	//
 	// example:
 	//
-	// test
+	// test_comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the project was created.
+	//
 	// example:
 	//
 	// 1724041098000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the project.
+	//
 	// example:
 	//
 	// 1559031978056215
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total storage capacity of the project.
+	//
 	// example:
 	//
 	// 12252454
 	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The time when the project was last updated.
+	//
 	// example:
 	//
 	// 1724041098000
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The VPC whitelist of the project.
+	//
 	// example:
 	//
-	// [11.22.33.44]
+	// [\\"11.22.33.44\\"]
 	VpcWhitelist *string `json:"VpcWhitelist,omitempty" xml:"VpcWhitelist,omitempty"`
 }
 

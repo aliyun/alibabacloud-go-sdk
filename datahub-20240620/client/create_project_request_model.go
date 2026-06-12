@@ -16,12 +16,16 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
+	// The description of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:

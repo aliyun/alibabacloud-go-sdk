@@ -18,18 +18,24 @@ type iGetSchemaRequest interface {
 }
 
 type GetSchemaRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The schema version number.
+	//
 	// This parameter is required.
 	//
 	// example:

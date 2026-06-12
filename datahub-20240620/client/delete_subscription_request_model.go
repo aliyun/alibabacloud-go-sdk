@@ -5,37 +5,31 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iGetSubscriptionRequest interface {
+type iDeleteSubscriptionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetProjectName(v string) *GetSubscriptionRequest
+	SetProjectName(v string) *DeleteSubscriptionRequest
 	GetProjectName() *string
-	SetSubscriptionId(v string) *GetSubscriptionRequest
+	SetSubscriptionId(v string) *DeleteSubscriptionRequest
 	GetSubscriptionId() *string
-	SetTopicName(v string) *GetSubscriptionRequest
+	SetTopicName(v string) *DeleteSubscriptionRequest
 	GetTopicName() *string
 }
 
-type GetSubscriptionRequest struct {
-	// The project name.
-	//
+type DeleteSubscriptionRequest struct {
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The subscription ID.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1764122860063VIIZ2
+	// 1713853462590KA0YP
 	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
-	// The topic name.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -44,41 +38,41 @@ type GetSubscriptionRequest struct {
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
-func (s GetSubscriptionRequest) String() string {
+func (s DeleteSubscriptionRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GetSubscriptionRequest) GoString() string {
+func (s DeleteSubscriptionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetSubscriptionRequest) GetProjectName() *string {
+func (s *DeleteSubscriptionRequest) GetProjectName() *string {
 	return s.ProjectName
 }
 
-func (s *GetSubscriptionRequest) GetSubscriptionId() *string {
+func (s *DeleteSubscriptionRequest) GetSubscriptionId() *string {
 	return s.SubscriptionId
 }
 
-func (s *GetSubscriptionRequest) GetTopicName() *string {
+func (s *DeleteSubscriptionRequest) GetTopicName() *string {
 	return s.TopicName
 }
 
-func (s *GetSubscriptionRequest) SetProjectName(v string) *GetSubscriptionRequest {
+func (s *DeleteSubscriptionRequest) SetProjectName(v string) *DeleteSubscriptionRequest {
 	s.ProjectName = &v
 	return s
 }
 
-func (s *GetSubscriptionRequest) SetSubscriptionId(v string) *GetSubscriptionRequest {
+func (s *DeleteSubscriptionRequest) SetSubscriptionId(v string) *DeleteSubscriptionRequest {
 	s.SubscriptionId = &v
 	return s
 }
 
-func (s *GetSubscriptionRequest) SetTopicName(v string) *GetSubscriptionRequest {
+func (s *DeleteSubscriptionRequest) SetTopicName(v string) *DeleteSubscriptionRequest {
 	s.TopicName = &v
 	return s
 }
 
-func (s *GetSubscriptionRequest) Validate() error {
+func (s *DeleteSubscriptionRequest) Validate() error {
 	return dara.Validate(s)
 }

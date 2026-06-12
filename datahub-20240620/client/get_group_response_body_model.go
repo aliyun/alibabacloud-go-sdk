@@ -30,35 +30,52 @@ type iGetGroupResponseBody interface {
 }
 
 type GetGroupResponseBody struct {
+	// The description of the consumer group.
+	//
 	// example:
 	//
 	// test_comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the consumer group was created.
+	//
 	// example:
 	//
 	// 1724041098000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the consumer group.
+	//
 	// example:
 	//
 	// 270523390948438349
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The consumer group name.
+	//
 	// example:
 	//
 	// consumer_group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of topics associated with the consumer group.
 	TopicList []*string `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
+	// The time when the consumer group was last updated.
+	//
 	// example:
 	//
 	// 1724041098000

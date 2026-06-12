@@ -24,23 +24,34 @@ type iListGroupsResponseBody interface {
 }
 
 type ListGroupsResponseBody struct {
+	// The list of consumer groups.
 	List []*ListGroupsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum number of records returned in this query.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next query. If NextToken is empty, no more results are available. If NextToken has a value, it indicates the token from which the next query starts.
+	//
 	// example:
 	//
 	// 9892074a2a89600ae4b0d5a34fb99a3f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records in the query result.
+	//
 	// example:
 	//
 	// 50
@@ -123,27 +134,40 @@ func (s *ListGroupsResponseBody) Validate() error {
 }
 
 type ListGroupsResponseBodyList struct {
+	// The description of the consumer group.
+	//
 	// example:
 	//
 	// test_comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1708171905000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the consumer group.
+	//
 	// example:
 	//
 	// 276887103073464052
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The consumer group name.
+	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TopicList   []*string `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The list of topics bound to the consumer group.
+	TopicList []*string `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
+	// The last update time.
+	//
 	// example:
 	//
 	// 1708171905000

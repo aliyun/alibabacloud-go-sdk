@@ -18,11 +18,20 @@ type iGetRecordsResponseBody interface {
 }
 
 type GetRecordsResponseBody struct {
+	// The records that were read.
 	Records []*GetRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -78,8 +87,12 @@ func (s *GetRecordsResponseBody) Validate() error {
 }
 
 type GetRecordsResponseBodyRecords struct {
+	// The additional information of the record. This value is empty if no additional information exists.
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Data       []*string          `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The data content of the record.
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The write time of the record.
+	//
 	// example:
 	//
 	// 1769065251123

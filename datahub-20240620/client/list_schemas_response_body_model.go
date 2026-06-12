@@ -24,23 +24,34 @@ type iListSchemasResponseBody interface {
 }
 
 type ListSchemasResponseBody struct {
+	// The list of schemas.
 	List []*ListSchemasResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum number of records returned in this query.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next query. If NextToken is empty, no more results are available. If NextToken has a value, the value indicates the token for the next query.
+	//
 	// example:
 	//
 	// 9892074a2a89600ae4b0d5a34fb99a3f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 20250401102332e68e3d0b04ab4904
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 50
@@ -123,26 +134,38 @@ func (s *ListSchemasResponseBody) Validate() error {
 }
 
 type ListSchemasResponseBodyList struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1708171905000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the schema.
+	//
 	// example:
 	//
 	// 1048133943212399
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The schema data corresponding to the version ID.
+	//
 	// example:
 	//
 	// [{\\"Type\\":\\"STRING\\",\\"AllowNull\\":true,\\"Name\\":\\"context\\"}]
 	RecordSchema *string `json:"RecordSchema,omitempty" xml:"RecordSchema,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// test_topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The schema version ID.
+	//
 	// example:
 	//
 	// 0

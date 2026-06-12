@@ -16,10 +16,14 @@ type iUpdateProjectResponseBody interface {
 }
 
 type UpdateProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 20250923101459e68e3d0b0869e5e4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

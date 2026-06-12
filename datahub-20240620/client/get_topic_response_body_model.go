@@ -42,62 +42,92 @@ type iGetTopicResponseBody interface {
 }
 
 type GetTopicResponseBody struct {
+	// The topic description.
+	//
 	// example:
 	//
 	// test_comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1724041098000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The topic creator.
+	//
 	// example:
 	//
 	// 1397493986831962
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Indicates whether multiple versions are supported.
+	//
 	// example:
 	//
 	// false
 	EnableSchemaRegistry *bool `json:"EnableSchemaRegistry,omitempty" xml:"EnableSchemaRegistry,omitempty"`
+	// Indicates whether the extended mode is enabled.
+	//
 	// example:
 	//
 	// true
 	ExpandMode *bool `json:"ExpandMode,omitempty" xml:"ExpandMode,omitempty"`
+	// The lifecycle.
+	//
 	// example:
 	//
 	// 3
 	Lifecycle *int32 `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The data schema for the TUPLE type.
+	//
 	// example:
 	//
 	// [{\\"Type\\":\\"STRING\\",\\"AllowNull\\":true,\\"Name\\":\\"str\\"},{\\"Type\\":\\"STRING\\",\\"AllowNull\\":true,\\"Name\\":\\"dt\\"}]
 	RecordSchema *string `json:"RecordSchema,omitempty" xml:"RecordSchema,omitempty"`
+	// The topic type.
+	//
 	// example:
 	//
 	// TUPLE
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of shards.
+	//
 	// example:
 	//
 	// 3
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	// The total storage of the topic.
+	//
 	// example:
 	//
 	// 12252454
 	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// test_topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The last update time.
+	//
 	// example:
 	//
 	// 1724041098000

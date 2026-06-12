@@ -14,6 +14,8 @@ type iDeleteProjectRequest interface {
 }
 
 type DeleteProjectRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:

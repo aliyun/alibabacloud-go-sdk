@@ -58,7 +58,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建Project资源
+// Creates a project.
+//
+// Description:
+//
+// Creates a project.
 //
 // @param request - CreateProjectRequest
 //
@@ -106,7 +110,11 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 
 // Summary:
 //
-// 创建Project资源
+// Creates a project.
+//
+// Description:
+//
+// Creates a project.
 //
 // @param request - CreateProjectRequest
 //
@@ -124,7 +132,97 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// 创建Topic资源
+// 创建Subscription资源
+//
+// Description:
+//
+// 创建订阅信息
+//
+// @param request - CreateSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubscriptionResponse
+func (client *Client) CreateSubscriptionWithOptions(request *CreateSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *CreateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Application) {
+		query["Application"] = request.Application
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.SubscriptionId) {
+		query["SubscriptionId"] = request.SubscriptionId
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSubscription"),
+		Version:     dara.String("2024-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Subscription资源
+//
+// Description:
+//
+// 创建订阅信息
+//
+// @param request - CreateSubscriptionRequest
+//
+// @return CreateSubscriptionResponse
+func (client *Client) CreateSubscription(request *CreateSubscriptionRequest) (_result *CreateSubscriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSubscriptionResponse{}
+	_body, _err := client.CreateSubscriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// A topic is the smallest unit for DataHub subscription and publishing. You can use a topic to represent a type or category of streaming data.
+//
+// Description:
+//
+// Creates a topic resource.
 //
 // @param request - CreateTopicRequest
 //
@@ -200,7 +298,11 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 
 // Summary:
 //
-// 创建Topic资源
+// A topic is the smallest unit for DataHub subscription and publishing. You can use a topic to represent a type or category of streaming data.
+//
+// Description:
+//
+// Creates a topic resource.
 //
 // @param request - CreateTopicRequest
 //
@@ -218,7 +320,11 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 
 // Summary:
 //
-// 删除Project资源
+// Deletes a project. Before deleting a project, delete all resources under the project, including topics, synchronization tasks, and subscription tasks.
+//
+// Description:
+//
+// Deletes a project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -262,7 +368,11 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 
 // Summary:
 //
-// 删除Project资源
+// Deletes a project. Before deleting a project, delete all resources under the project, including topics, synchronization tasks, and subscription tasks.
+//
+// Description:
+//
+// Deletes a project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -280,7 +390,89 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 
 // Summary:
 //
-// 删除Topic资源
+// 删除Subscription资源
+//
+// Description:
+//
+// 删除订阅任务
+//
+// @param request - DeleteSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubscriptionResponse
+func (client *Client) DeleteSubscriptionWithOptions(request *DeleteSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.SubscriptionId) {
+		query["SubscriptionId"] = request.SubscriptionId
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSubscription"),
+		Version:     dara.String("2024-06-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Subscription资源
+//
+// Description:
+//
+// 删除订阅任务
+//
+// @param request - DeleteSubscriptionRequest
+//
+// @return DeleteSubscriptionResponse
+func (client *Client) DeleteSubscription(request *DeleteSubscriptionRequest) (_result *DeleteSubscriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSubscriptionResponse{}
+	_body, _err := client.DeleteSubscriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a topic resource. Before deleting a topic resource, delete all subscriptions and sync tasks under the topic.
+//
+// Description:
+//
+// Deletes a topic resource.
 //
 // @param request - DeleteTopicRequest
 //
@@ -328,7 +520,11 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 
 // Summary:
 //
-// 删除Topic资源
+// Deletes a topic resource. Before deleting a topic resource, delete all subscriptions and sync tasks under the topic.
+//
+// Description:
+//
+// Deletes a topic resource.
 //
 // @param request - DeleteTopicRequest
 //
@@ -346,7 +542,11 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 
 // Summary:
 //
-// 查询Connector信息
+// Queries the information about a synchronization task.
+//
+// Description:
+//
+// Queries the information about a synchronization task.
 //
 // @param request - GetConnectorRequest
 //
@@ -398,7 +598,11 @@ func (client *Client) GetConnectorWithOptions(request *GetConnectorRequest, runt
 
 // Summary:
 //
-// 查询Connector信息
+// Queries the information about a synchronization task.
+//
+// Description:
+//
+// Queries the information about a synchronization task.
 //
 // @param request - GetConnectorRequest
 //
@@ -416,7 +620,11 @@ func (client *Client) GetConnector(request *GetConnectorRequest) (_result *GetCo
 
 // Summary:
 //
-// 查询Group信息
+// Queries the information about a consumer group.
+//
+// Description:
+//
+// Queries the information about a consumer group.
 //
 // @param request - GetGroupRequest
 //
@@ -464,7 +672,11 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *dar
 
 // Summary:
 //
-// 查询Group信息
+// Queries the information about a consumer group.
+//
+// Description:
+//
+// Queries the information about a consumer group.
 //
 // @param request - GetGroupRequest
 //
@@ -482,7 +694,11 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 
 // Summary:
 //
-// 查询Project资源详细信息
+// Queries project information.
+//
+// Description:
+//
+// Queries project information.
 //
 // @param request - GetProjectRequest
 //
@@ -526,7 +742,11 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// 查询Project资源详细信息
+// Queries project information.
+//
+// Description:
+//
+// Queries project information.
 //
 // @param request - GetProjectRequest
 //
@@ -544,7 +764,11 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 
 // Summary:
 //
-// 读取Topic数据
+// Reads data from a specified topic. This operation is primarily used for debugging. For high-volume data reading, refer to the SDK documentation.
+//
+// Description:
+//
+// This operation is intended for debugging purposes. Do not use this operation to read large amounts of data.
 //
 // @param request - GetRecordsRequest
 //
@@ -600,7 +824,11 @@ func (client *Client) GetRecordsWithOptions(request *GetRecordsRequest, runtime 
 
 // Summary:
 //
-// 读取Topic数据
+// Reads data from a specified topic. This operation is primarily used for debugging. For high-volume data reading, refer to the SDK documentation.
+//
+// Description:
+//
+// This operation is intended for debugging purposes. Do not use this operation to read large amounts of data.
 //
 // @param request - GetRecordsRequest
 //
@@ -618,7 +846,11 @@ func (client *Client) GetRecords(request *GetRecordsRequest) (_result *GetRecord
 
 // Summary:
 //
-// 查询Schema信息
+// Queries schema information.
+//
+// Description:
+//
+// Queries schema information.
 //
 // @param request - GetSchemaRequest
 //
@@ -670,7 +902,11 @@ func (client *Client) GetSchemaWithOptions(request *GetSchemaRequest, runtime *d
 
 // Summary:
 //
-// 查询Schema信息
+// Queries schema information.
+//
+// Description:
+//
+// Queries schema information.
 //
 // @param request - GetSchemaRequest
 //
@@ -688,7 +924,11 @@ func (client *Client) GetSchema(request *GetSchemaRequest) (_result *GetSchemaRe
 
 // Summary:
 //
-// 查询Subscription信息
+// Queries subscription information.
+//
+// Description:
+//
+// Queries subscription information.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -740,7 +980,11 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 
 // Summary:
 //
-// 查询Subscription信息
+// Queries subscription information.
+//
+// Description:
+//
+// Queries subscription information.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -758,7 +1002,11 @@ func (client *Client) GetSubscription(request *GetSubscriptionRequest) (_result 
 
 // Summary:
 //
-// 查询Topic信息
+// Queries topic information.
+//
+// Description:
+//
+// Queries topic information.
 //
 // @param request - GetTopicRequest
 //
@@ -806,7 +1054,11 @@ func (client *Client) GetTopicWithOptions(request *GetTopicRequest, runtime *dar
 
 // Summary:
 //
-// 查询Topic信息
+// Queries topic information.
+//
+// Description:
+//
+// Queries topic information.
 //
 // @param request - GetTopicRequest
 //
@@ -824,7 +1076,11 @@ func (client *Client) GetTopic(request *GetTopicRequest) (_result *GetTopicRespo
 
 // Summary:
 //
-// 查询Connector列表信息
+// Retrieves a list of synchronization tasks.
+//
+// Description:
+//
+// Queries the list of synchronization tasks.
 //
 // @param request - ListConnectorsRequest
 //
@@ -892,7 +1148,11 @@ func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, 
 
 // Summary:
 //
-// 查询Connector列表信息
+// Retrieves a list of synchronization tasks.
+//
+// Description:
+//
+// Queries the list of synchronization tasks.
 //
 // @param request - ListConnectorsRequest
 //
@@ -910,7 +1170,11 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 
 // Summary:
 //
-// 查询Group列表信息
+// Retrieves a list of consumer groups.
+//
+// Description:
+//
+// Queries the list of consumer groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -974,7 +1238,11 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 // Summary:
 //
-// 查询Group列表信息
+// Retrieves a list of consumer groups.
+//
+// Description:
+//
+// Queries the list of consumer groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -992,7 +1260,11 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// 查询Project列表信息
+// Retrieves a list of projects.
+//
+// Description:
+//
+// Queries the list of projects.
 //
 // @param request - ListProjectsRequest
 //
@@ -1052,7 +1324,11 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 
 // Summary:
 //
-// 查询Project列表信息
+// Retrieves a list of projects.
+//
+// Description:
+//
+// Queries the list of projects.
 //
 // @param request - ListProjectsRequest
 //
@@ -1070,7 +1346,11 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// 查询Schema列表信息
+// Lists schemas.
+//
+// Description:
+//
+// Queries schema list information.
 //
 // @param request - ListSchemasRequest
 //
@@ -1130,7 +1410,11 @@ func (client *Client) ListSchemasWithOptions(request *ListSchemasRequest, runtim
 
 // Summary:
 //
-// 查询Schema列表信息
+// Lists schemas.
+//
+// Description:
+//
+// Queries schema list information.
 //
 // @param request - ListSchemasRequest
 //
@@ -1148,7 +1432,11 @@ func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSch
 
 // Summary:
 //
-// 查询Subscription列表信息
+// Retrieves a list of subscriptions.
+//
+// Description:
+//
+// Queries subscription list information.
 //
 // @param request - ListSubscriptionsRequest
 //
@@ -1212,7 +1500,11 @@ func (client *Client) ListSubscriptionsWithOptions(request *ListSubscriptionsReq
 
 // Summary:
 //
-// 查询Subscription列表信息
+// Retrieves a list of subscriptions.
+//
+// Description:
+//
+// Queries subscription list information.
 //
 // @param request - ListSubscriptionsRequest
 //
@@ -1230,7 +1522,11 @@ func (client *Client) ListSubscriptions(request *ListSubscriptionsRequest) (_res
 
 // Summary:
 //
-// 查询Topic列表信息
+// Retrieves a list of topics.
+//
+// Description:
+//
+// Queries the list of topics.
 //
 // @param request - ListTopicsRequest
 //
@@ -1294,7 +1590,11 @@ func (client *Client) ListTopicsWithOptions(request *ListTopicsRequest, runtime 
 
 // Summary:
 //
-// 查询Topic列表信息
+// Retrieves a list of topics.
+//
+// Description:
+//
+// Queries the list of topics.
 //
 // @param request - ListTopicsRequest
 //
@@ -1312,7 +1612,11 @@ func (client *Client) ListTopics(request *ListTopicsRequest) (_result *ListTopic
 
 // Summary:
 //
-// 写入数据
+// Writes data to a specified topic. This operation is primarily intended for debugging. For high-volume data writes, refer to the SDK documentation.
+//
+// Description:
+//
+// This operation is primarily intended for debugging. Do not use this operation to write large amounts of data.
 //
 // @param tmpReq - PutRecordsRequest
 //
@@ -1374,7 +1678,11 @@ func (client *Client) PutRecordsWithOptions(tmpReq *PutRecordsRequest, runtime *
 
 // Summary:
 //
-// 写入数据
+// Writes data to a specified topic. This operation is primarily intended for debugging. For high-volume data writes, refer to the SDK documentation.
+//
+// Description:
+//
+// This operation is primarily intended for debugging. Do not use this operation to write large amounts of data.
 //
 // @param request - PutRecordsRequest
 //
@@ -1392,7 +1700,11 @@ func (client *Client) PutRecords(request *PutRecordsRequest) (_result *PutRecord
 
 // Summary:
 //
-// 更新Project资源属性
+// Updates the description of a project.
+//
+// Description:
+//
+// Updates the description of a project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -1440,7 +1752,11 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 
 // Summary:
 //
-// 更新Project资源属性
+// Updates the description of a project.
+//
+// Description:
+//
+// Updates the description of a project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -1458,7 +1774,11 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 
 // Summary:
 //
-// 更新Topic资源属性
+// Updates the description of a topic.
+//
+// Description:
+//
+// Updates the description of a topic.
 //
 // @param request - UpdateTopicRequest
 //
@@ -1510,7 +1830,11 @@ func (client *Client) UpdateTopicWithOptions(request *UpdateTopicRequest, runtim
 
 // Summary:
 //
-// 更新Topic资源属性
+// Updates the description of a topic.
+//
+// Description:
+//
+// Updates the description of a topic.
 //
 // @param request - UpdateTopicRequest
 //

@@ -36,50 +36,82 @@ type iGetSubscriptionResponseBody interface {
 }
 
 type GetSubscriptionResponseBody struct {
+	// The name of the application to which the subscription belongs.
+	//
 	// example:
 	//
 	// test_application_name
 	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
+	// The description of the subscription.
+	//
 	// example:
 	//
 	// test_comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1724041098000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the subscription.
+	//
 	// example:
 	//
 	// 1559031978056215
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the subscription. Valid values:
+	//
+	// - 0: offline.
+	//
+	// - 1: online.
+	//
 	// example:
 	//
 	// 1
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// The subscription ID.
+	//
 	// example:
 	//
 	// 1741072334529RFEF7
 	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// test_topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The type of the subscription. Valid values:
+	//
+	// - USER: created by a user.
+	//
+	// - SYSTEM: created by the system.
+	//
 	// example:
 	//
 	// USER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last update time.
+	//
 	// example:
 	//
 	// 1724041098000

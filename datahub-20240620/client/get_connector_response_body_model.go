@@ -40,58 +40,86 @@ type iGetConnectorResponseBody interface {
 }
 
 type GetConnectorResponseBody struct {
+	// The list of fields for the synchronization task.
+	//
 	// example:
 	//
 	// [\\"field1\\",\\"field2\\"]
 	ColumnFields *string `json:"ColumnFields,omitempty" xml:"ColumnFields,omitempty"`
+	// The configuration information of the synchronization task.
+	//
 	// example:
 	//
 	// {\\"TimestampUnit\\":\\"MICROSECOND\\",\\"PartitionConfig\\":{\\"hh\\":\\"%H\\",\\"mm\\":\\"%M\\",\\"ds\\":\\"%Y%m%d\\"},\\"Project\\":\\"xxx\\",\\"TimeRange\\":15,\\"TimeZone\\":\\"Asia/Shanghai\\",\\"Table\\":\\"xxx\\",\\"OdpsEndpoint\\":\\"xxx\\",\\"AccessId\\":\\"xxx\\",\\"PartitionMode\\":\\"SYSTEM_TIME\\",\\"AuthMode\\":\\"ak\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The synchronization task ID.
+	//
 	// example:
 	//
 	// c5e07a96-5069-4486-87c3-0d281951f772
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1724041098000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the synchronization task.
+	//
 	// example:
 	//
 	// 270523390948438349
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The time when the synchronization task is marked as done. This parameter takes effect only for ODPS synchronization (SINK_ODPS) tasks.
+	//
 	// example:
 	//
 	// 2025-06-06 15:45:00
 	DoneTime *string `json:"DoneTime,omitempty" xml:"DoneTime,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the synchronization task.
+	//
 	// example:
 	//
 	// RUNNING
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The subscription ID.
+	//
 	// example:
 	//
 	// 1764123132492KO88A
 	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// test_topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The type of the synchronization task.
+	//
 	// example:
 	//
 	// SINK_ODPS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last update time.
+	//
 	// example:
 	//
 	// 1724041098000

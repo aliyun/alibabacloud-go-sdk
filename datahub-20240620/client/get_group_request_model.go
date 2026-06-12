@@ -16,12 +16,16 @@ type iGetGroupRequest interface {
 }
 
 type GetGroupRequest struct {
+	// The consumer group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:

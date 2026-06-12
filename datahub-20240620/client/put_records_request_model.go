@@ -20,18 +20,26 @@ type iPutRecordsRequest interface {
 }
 
 type PutRecordsRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The data to be written.
+	//
 	// This parameter is required.
 	Records []*PutRecordsRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The ID of the shard to which data is written. If this parameter is not specified, data is randomly written to a shard.
+	//
 	// example:
 	//
 	// 7
 	ShardId *string `json:"ShardId,omitempty" xml:"ShardId,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -98,10 +106,14 @@ func (s *PutRecordsRequest) Validate() error {
 }
 
 type PutRecordsRequestRecords struct {
+	// The additional information of the record. You can leave this parameter empty if no additional information is available.
+	//
 	// example:
 	//
 	// {"key1":"val1","key2":"val2"}
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The data content of the record.
+	//
 	// This parameter is required.
 	//
 	// example:

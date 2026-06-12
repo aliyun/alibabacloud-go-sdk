@@ -18,18 +18,24 @@ type iGetConnectorRequest interface {
 }
 
 type GetConnectorRequest struct {
+	// The synchronization task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c5e07a96-5069-4486-87c3-0d281951f772
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:

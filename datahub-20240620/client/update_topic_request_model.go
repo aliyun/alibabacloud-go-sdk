@@ -18,16 +18,22 @@ type iUpdateTopicRequest interface {
 }
 
 type UpdateTopicRequest struct {
+	// The comment.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The topic name.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,14 @@ type iUpdateProjectRequest interface {
 }
 
 type UpdateProjectRequest struct {
+	// The description of the project.
+	//
+	// example:
+	//
+	// ec800m-y数据总线，康复中心
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:

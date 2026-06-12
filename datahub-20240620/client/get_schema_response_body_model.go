@@ -28,34 +28,50 @@ type iGetSchemaResponseBody interface {
 }
 
 type GetSchemaResponseBody struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1724041098000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the schema.
+	//
 	// example:
 	//
 	// 1559031978056215
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The schema data corresponding to the specified VersionId.
+	//
 	// example:
 	//
 	// [{\\"Type\\":\\"STRING\\",\\"AllowNull\\":true,\\"Name\\":\\"context\\"}]
 	RecordSchema *string `json:"RecordSchema,omitempty" xml:"RecordSchema,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A20A7093-8FE0-058C-BE0C-3C8057D5F1A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// test_topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The schema version number.
+	//
 	// example:
 	//
 	// 0
