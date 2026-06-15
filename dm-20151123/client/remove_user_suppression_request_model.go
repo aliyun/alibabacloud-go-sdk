@@ -23,6 +23,12 @@ type RemoveUserSuppressionRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the suppressed address. To specify multiple IDs, separate them with commas (,). Call the ListUserSuppression operation to obtain the suppression ID.
+	//
+	// You can enter multiple values, separated by a comma ",".
+	//
+	// You can call ListUserSuppression to obtain the SuppressionId.
+	//
 	// example:
 	//
 	// 59511

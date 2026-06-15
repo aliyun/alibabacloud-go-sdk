@@ -58,7 +58,7 @@ type iSingleSendMailRequest interface {
 }
 
 type SingleSendMailRequest struct {
-	// The sending address configured in the management console.
+	// The sender address configured in the Direct Mail console.
 	//
 	// This parameter is required.
 	//
@@ -66,11 +66,11 @@ type SingleSendMailRequest struct {
 	//
 	// test***@example.net
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Address type. Values:
+	// The address type. Valid values:
 	//
-	// 0: Random account
+	// `0`: A random account.
 	//
-	// 1: Sending address
+	// `1`: A sender address.
 	//
 	// This parameter is required.
 	//
@@ -78,8 +78,18 @@ type SingleSendMailRequest struct {
 	//
 	// 1
 	AddressType *int32 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// Only supported for use with the new version of the SDK; not currently supported by openapi and signature mechanisms.
+	// This feature is available only through the latest SDKs. It is not supported for OpenAPI calls or signature-based authentication. For more information, see [How do I send an email with an attachment by using an SDK?](https://help.aliyun.com/document_detail/2937843.html).
 	Attachments []*SingleSendMailRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// - A comma-separated list of BCC recipients.
+	//
+	// - The system sends a copy of the email to each BCC recipient. The BCC information is hidden from all recipients, including those specified in `ToAddress` and `BccAddress`.
+	//
+	// - To protect privacy, email tracking features (such as open and click tracking) are disabled for emails sent to BCC recipients. However, billing and sending status are still tracked.
+	//
+	// - A maximum of two BCC recipients are allowed per request.
+	//
+	// Note: The `SingleSendMail` API operation does not support a CC field. To send carbon copies, use SMTP.
+	//
 	// if can be null:
 	// true
 	//
@@ -87,65 +97,116 @@ type SingleSendMailRequest struct {
 	//
 	// 1@example.com,2@example.com
 	BccAddress *string `json:"BccAddress,omitempty" xml:"BccAddress,omitempty"`
-	// 1: Enable data tracking function
-	//
-	// 0 (default): Disable data tracking function.
+	// Specifies whether to enable click tracking. Valid values: `"1"` enables click tracking, and `"0"` disables it (default).
 	//
 	// example:
 	//
 	// 0
 	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	DomainAuth *bool   `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
-	// Sender alias, with a maximum length of 15 characters.
+	// Specifies whether to enable domain-level authentication.
 	//
-	// For example, if the sender alias is set to "Xiaohong" and the sending address is test***@example.net, the recipient will see the sending address as "Xiaohong" <test***@example.net>.
+	// - `true`
+	//
+	// - `false`
+	//
+	// This parameter is used only for domain-level authentication. Ignore it for sender address-level authentication.
+	//
+	// 1\\. Create the address `domain-auth-created-by-system@example.com` in the console. The prefix must be fixed, and the suffix must be your domain.
+	//
+	// 2\\.
+	//
+	// **API scenario**
+	//
+	// Set `AccountName` to your domain. Recipients will see the sender as `domain-auth-created-by-system@example.com`.
+	//
+	// **SMTP scenario**
+	//
+	// a. Call the `ModifyPWByDomain` API operation to set a password for the domain.
+	//
+	// b. Authenticate with the domain and the configured password. Pass a custom address, such as `user@example.com`, as the actual sender in the `MAIL FROM` command. Recipients will see `user@example.com` as the sender.
 	//
 	// example:
 	//
-	// Xiaohong
-	FromAlias *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
-	// Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header.
+	// true
+	DomainAuth *bool `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
+	// The sender name. It must be 15 characters or shorter.
 	//
-	// Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
+	// For example, if you set the sender name to "Xiaohong" and the sender address is `test***@example.net`, the recipient sees the sender as "Xiaohong" \\<test\\*\\*\\*@example.net>.
+	//
+	// example:
+	//
+	// Jane
+	FromAlias *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	// Custom email header settings.
+	//
+	// Both standard and non-standard fields must comply with standard header syntax. You can specify up to 10 headers for an API call. Excess headers are ignored. This limit does not apply to SMTP.
+	//
+	// 1\\. Standard fields
+	//
+	// `Message-ID`, `List-Unsubscribe`, `List-Unsubscribe-Post`
+	//
+	// Standard fields overwrite existing values in the email header.
+	//
+	// 2\\. Non-standard fields
+	//
+	// Case-insensitive.
+	//
+	// a. Fields starting with `X-User-`: These are not pushed to EventBridge or Message Service (MNS). This prefix is required only for API calls, not for SMTP.
+	//
+	// b. Fields starting with `X-User-Notify-`: These are pushed to EventBridge and MNS. This is supported for both API and SMTP calls.
+	//
+	// When pushed to EventBridge or MNS, the header object will contain these fields.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "Message-ID": "<msg0001@example.com>",
+	//       "Message-ID": "<d52ce63e-a0d5-4f95-b6a9-e1256a44f5fb@example.net>",
 	//
-	//   "X-User-UID1": "UID-1-000001",
+	//       "X-User-UID1": "UID-1-000001",
 	//
-	//   "X-User-UID2": "UID-2-000001"
+	//       "X-User-UID2": "UID-2-000001",
+	//
+	//       "X-User-Notify-UID1": "UID-3-000001",
+	//
+	//       "X-User-Notify-UID2": "UID-4-000001"
+	//
+	//
 	//
 	// }
 	Headers *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	// Email HTML body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
+	// The HTML body of the email.
+	//
+	// Note: You must specify either `HtmlBody` or `TextBody`.
+	//
+	// - The size of the body is limited to approximately 80 KB when passed as a URL parameter.
+	//
+	// - For recent SDKs (Java 1.4.0+, Python 3 1.4.0+, and PHP 1.4.0+), the request body is limited to approximately 8 MB.
 	//
 	// example:
 	//
 	// body
 	HtmlBody *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
-	// dedicated IP pool ID. Users who have purchased an dedicated IP can use this parameter to specify the outgoing IP for this email.
+	// The ID of the dedicated IP pool. If you have purchased dedicated IPs, you can use this parameter to select which dedicated IP pool to use for sending the email. For more information, see [Dedicated IP](https://help.aliyun.com/document_detail/2932088.html).
 	//
 	// example:
 	//
-	// xxx
+	// e4xxxxxe-4xx0-4xx3-8xxa-74cxxxxx1cef
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Reply-to address
+	// The reply-to address.
 	//
 	// example:
 	//
 	// test2***@example.net
 	ReplyAddress *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	// Reply-to address alias
+	// The name displayed for the reply-to address.
 	//
 	// example:
 	//
-	// Xiaohong
+	// Jane
 	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
-	// Whether to enable the reply-to address configured in the management console (the status must be verified). The value range is the string `true` or `false` (not a boolean value).
+	// Specifies whether to use the default reply-to address configured in the console. This address must be verified. Valid values: true, false.
 	//
 	// This parameter is required.
 	//
@@ -155,7 +216,7 @@ type SingleSendMailRequest struct {
 	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Email subject, with a maximum length of 100 characters.
+	// The subject of the email, with a maximum length of 256 characters.
 	//
 	// This parameter is required.
 	//
@@ -163,20 +224,27 @@ type SingleSendMailRequest struct {
 	//
 	// Subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// A tag created in the email push console, used to categorize batches of sent emails. You can use tags to query the sending status of each batch. Additionally, if the email tracking feature is enabled, you must use an email tag when sending emails.
+	// A tag for categorizing email batches, which you can create in the Direct Mail console. Tags allow you to query the sending status of each batch and are required if you enable email tracking. The tag must be 1 to 128 characters long and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// test
-	TagName  *string                        `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The template information for sending a templated email.
 	Template *SingleSendMailRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
-	// Email text body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
+	// The text body of the email.
+	//
+	// Note: You must specify either `HtmlBody` or `TextBody`.
+	//
+	// - The size of the body is limited to approximately 80 KB when passed as a URL parameter.
+	//
+	// - For recent SDKs (Java 1.4.0+, Python 3 1.4.0+, and PHP 1.4.0+), the request body is limited to approximately 8 MB.
 	//
 	// example:
 	//
 	// body
 	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
-	// Recipient addresses. Multiple email addresses can be separated by commas, with a maximum of 100 addresses (supports mailing lists).
+	// The destination email address(es). To specify multiple addresses, separate them with commas (up to 100).
 	//
 	// This parameter is required.
 	//
@@ -184,35 +252,31 @@ type SingleSendMailRequest struct {
 	//
 	// test1***@example.net
 	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-	// Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+	// The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
 	//
-	// disabled: Do not filter
+	// `disabled`: No filtering.
 	//
-	// default: Use the default strategy, bulk addresses use the sending address level filtering
+	// `default`: Uses the default policy. For batch addresses, filtering is applied at the sender address level.
 	//
-	// mailfrom: Sending address level filtering
+	// `mailfrom`: Filters at the sender address level.
 	//
-	// mailfrom_domain: Sending domain level filtering
+	// `mailfrom_domain`: Filters at the sender domain level.
 	//
-	// edm_id: Account level filtering
+	// `edm_id`: Filters at the account level.
 	//
 	// example:
 	//
 	// mailfrom_domain
 	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
-	// Type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+	// `disabled`: Does not generate an unsubscribe link.
 	//
-	// disabled: Do not generate
-	//
-	// default: Use the default strategy: Generate unsubscribe links for bulk-type sending addresses to specific domains, such as those containing the keywords "gmail", "yahoo",
+	// `default`: Uses the default policy. For batch sender addresses, an unsubscribe link is generated when sending to specific domains containing keywords such as "gmail", "yahoo",
 	//
 	// "google", "aol.com", "hotmail",
 	//
-	// "outlook", "ymail.com", etc.
+	// "outlook", and "ymail.com". For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
 	//
-	// zh-cn: Generate, for future content preparation
-	//
-	// en-us: Generate, for future content preparation
+	// The display language is automatically determined based on the recipient\\"s browser settings.
 	//
 	// example:
 	//
@@ -454,13 +518,13 @@ func (s *SingleSendMailRequest) Validate() error {
 }
 
 type SingleSendMailRequestAttachments struct {
-	// Only supported for use with the new version of the SDK; not currently supported by openapi and signature mechanisms.
+	// The filename of the attachment.
 	//
 	// example:
 	//
 	// test.txt
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	// Only supported for use with the new version of the SDK; not currently supported by openapi and signature mechanisms.
+	// The local file path of the attachment that the SDK will use.
 	//
 	// example:
 	//
@@ -499,7 +563,10 @@ func (s *SingleSendMailRequestAttachments) Validate() error {
 }
 
 type SingleSendMailRequestTemplate struct {
+	// The variables and their values for the template.
 	TemplateData map[string]*string `json:"TemplateData,omitempty" xml:"TemplateData,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// xxx

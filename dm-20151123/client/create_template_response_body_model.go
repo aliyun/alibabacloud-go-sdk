@@ -16,12 +16,14 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	// idoftherequest
+	// The request ID.
 	//
 	// example:
 	//
 	// D1C7F6E1-6A4D-50B5-B864-640E9FCA8D0A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 415366

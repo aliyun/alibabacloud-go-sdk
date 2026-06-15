@@ -24,33 +24,33 @@ type iDedicatedIpPoolListResponseBody interface {
 }
 
 type DedicatedIpPoolListResponseBody struct {
-	// Current page
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Whether there is a next page
+	// Indicates whether more results are available.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// List of IP pools
+	// A list of IP pools.
 	IpPools []*DedicatedIpPoolListResponseBodyIpPools `json:"IpPools,omitempty" xml:"IpPools,omitempty" type:"Repeated"`
-	// Page size
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of data under the current request conditions
+	// The total number of entries that match the query.
 	//
 	// example:
 	//
@@ -134,27 +134,27 @@ func (s *DedicatedIpPoolListResponseBody) Validate() error {
 }
 
 type DedicatedIpPoolListResponseBodyIpPools struct {
-	// Creation time
+	// The time when the IP pool was created.
 	//
 	// example:
 	//
 	// 2025-05-23T07:41:43Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// IP pool ID
+	// The ID of the IP pool.
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Number of source IP addresses
+	// The number of source IP addresses in the IP pool.
 	//
 	// example:
 	//
 	// 1
 	IpCount *int32 `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	// List of IPs
+	// A list of IP addresses.
 	Ips []*DedicatedIpPoolListResponseBodyIpPoolsIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// IP pool name
+	// The name of the IP pool.
 	//
 	// example:
 	//
@@ -229,18 +229,23 @@ func (s *DedicatedIpPoolListResponseBodyIpPools) Validate() error {
 }
 
 type DedicatedIpPoolListResponseBodyIpPoolsIps struct {
-	// Instance purchase ID
+	// The ID of the IP address instance.
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// IP address
+	// The IP address.
 	//
 	// example:
 	//
 	// xxx
-	Ip     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ID of the Availability Zone.
+	//
+	// example:
+	//
+	// xxx
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

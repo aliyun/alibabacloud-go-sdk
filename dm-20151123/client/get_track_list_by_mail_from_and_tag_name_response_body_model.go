@@ -28,31 +28,31 @@ type iGetTrackListByMailFromAndTagNameResponseBody interface {
 }
 
 type GetTrackListByMailFromAndTagNameResponseBody struct {
-	// Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
+	// Used for paging. Do not set this parameter for the first query. For subsequent queries, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated)
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated.)
 	OffsetCreateTime *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
 	// (This field is deprecated)
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated.)
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,7 +63,12 @@ type GetTrackListByMailFromAndTagNameResponseBody struct {
 	// example:
 	//
 	// 4
-	Total      *int32                                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 2
 	TotalPages *string                                                `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 	TrackList  *GetTrackListByMailFromAndTagNameResponseBodyTrackList `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
 }

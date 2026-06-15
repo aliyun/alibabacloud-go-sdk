@@ -14,6 +14,8 @@ type iGetValidateFileStatusRequest interface {
 }
 
 type GetValidateFileStatusRequest struct {
+	// The file ID returned after you submit the file for validation.
+	//
 	// This parameter is required.
 	//
 	// example:

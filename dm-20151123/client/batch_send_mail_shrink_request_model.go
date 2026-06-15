@@ -5,49 +5,49 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iBatchSendMailRequest interface {
+type iBatchSendMailShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAccountName(v string) *BatchSendMailRequest
+	SetAccountName(v string) *BatchSendMailShrinkRequest
 	GetAccountName() *string
-	SetAddressType(v int32) *BatchSendMailRequest
+	SetAddressType(v int32) *BatchSendMailShrinkRequest
 	GetAddressType() *int32
-	SetClickTrace(v string) *BatchSendMailRequest
+	SetClickTrace(v string) *BatchSendMailShrinkRequest
 	GetClickTrace() *string
-	SetDomainAuth(v bool) *BatchSendMailRequest
+	SetDomainAuth(v bool) *BatchSendMailShrinkRequest
 	GetDomainAuth() *bool
-	SetHeaders(v string) *BatchSendMailRequest
+	SetHeaders(v string) *BatchSendMailShrinkRequest
 	GetHeaders() *string
-	SetIpPoolId(v string) *BatchSendMailRequest
+	SetIpPoolId(v string) *BatchSendMailShrinkRequest
 	GetIpPoolId() *string
-	SetOwnerId(v int64) *BatchSendMailRequest
+	SetOwnerId(v int64) *BatchSendMailShrinkRequest
 	GetOwnerId() *int64
-	SetReceivers(v []*BatchSendMailRequestReceivers) *BatchSendMailRequest
-	GetReceivers() []*BatchSendMailRequestReceivers
-	SetReceiversName(v string) *BatchSendMailRequest
+	SetReceiversShrink(v string) *BatchSendMailShrinkRequest
+	GetReceiversShrink() *string
+	SetReceiversName(v string) *BatchSendMailShrinkRequest
 	GetReceiversName() *string
-	SetReplyAddress(v string) *BatchSendMailRequest
+	SetReplyAddress(v string) *BatchSendMailShrinkRequest
 	GetReplyAddress() *string
-	SetReplyAddressAlias(v string) *BatchSendMailRequest
+	SetReplyAddressAlias(v string) *BatchSendMailShrinkRequest
 	GetReplyAddressAlias() *string
-	SetResourceOwnerAccount(v string) *BatchSendMailRequest
+	SetResourceOwnerAccount(v string) *BatchSendMailShrinkRequest
 	GetResourceOwnerAccount() *string
-	SetResourceOwnerId(v int64) *BatchSendMailRequest
+	SetResourceOwnerId(v int64) *BatchSendMailShrinkRequest
 	GetResourceOwnerId() *int64
-	SetTagName(v string) *BatchSendMailRequest
+	SetTagName(v string) *BatchSendMailShrinkRequest
 	GetTagName() *string
-	SetTemplateContent(v *BatchSendMailRequestTemplateContent) *BatchSendMailRequest
-	GetTemplateContent() *BatchSendMailRequestTemplateContent
-	SetTemplateName(v string) *BatchSendMailRequest
+	SetTemplateContentShrink(v string) *BatchSendMailShrinkRequest
+	GetTemplateContentShrink() *string
+	SetTemplateName(v string) *BatchSendMailShrinkRequest
 	GetTemplateName() *string
-	SetUnSubscribeFilterLevel(v string) *BatchSendMailRequest
+	SetUnSubscribeFilterLevel(v string) *BatchSendMailShrinkRequest
 	GetUnSubscribeFilterLevel() *string
-	SetUnSubscribeLinkType(v string) *BatchSendMailRequest
+	SetUnSubscribeLinkType(v string) *BatchSendMailShrinkRequest
 	GetUnSubscribeLinkType() *string
 }
 
-type BatchSendMailRequest struct {
+type BatchSendMailShrinkRequest struct {
 	// The sender address configured in the management console.
 	//
 	// This parameter is required.
@@ -152,7 +152,7 @@ type BatchSendMailRequest struct {
 	// The recipient list. The number of recipients must not exceed 100. Use this parameter or ReceiversName. If both Receivers and ReceiversName are specified, ReceiversName takes precedence.
 	//
 	// Example: [{"To":["Jackie@example.com"],"TemplateData":{"UserName":"Jackie"}},{"To":["Tom@example.com"],"TemplateData":{"UserName":"Tom"}}].
-	Receivers []*BatchSendMailRequestReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	ReceiversShrink *string `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
 	// The name of a pre-created recipient list that has recipients uploaded.
 	//
 	// > **Note**
@@ -186,7 +186,7 @@ type BatchSendMailRequest struct {
 	// test3
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	// The custom email content. Directly specify the content without creating a template in advance. Use this parameter or TemplateName. If both TemplateContent and TemplateName are specified, TemplateName takes precedence.
-	TemplateContent *BatchSendMailRequestTemplateContent `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty" type:"Struct"`
+	TemplateContentShrink *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// The name of a pre-created and approved template.
 	//
 	// example:
@@ -223,310 +223,176 @@ type BatchSendMailRequest struct {
 	UnSubscribeLinkType *string `json:"UnSubscribeLinkType,omitempty" xml:"UnSubscribeLinkType,omitempty"`
 }
 
-func (s BatchSendMailRequest) String() string {
+func (s BatchSendMailShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s BatchSendMailRequest) GoString() string {
+func (s BatchSendMailShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BatchSendMailRequest) GetAccountName() *string {
+func (s *BatchSendMailShrinkRequest) GetAccountName() *string {
 	return s.AccountName
 }
 
-func (s *BatchSendMailRequest) GetAddressType() *int32 {
+func (s *BatchSendMailShrinkRequest) GetAddressType() *int32 {
 	return s.AddressType
 }
 
-func (s *BatchSendMailRequest) GetClickTrace() *string {
+func (s *BatchSendMailShrinkRequest) GetClickTrace() *string {
 	return s.ClickTrace
 }
 
-func (s *BatchSendMailRequest) GetDomainAuth() *bool {
+func (s *BatchSendMailShrinkRequest) GetDomainAuth() *bool {
 	return s.DomainAuth
 }
 
-func (s *BatchSendMailRequest) GetHeaders() *string {
+func (s *BatchSendMailShrinkRequest) GetHeaders() *string {
 	return s.Headers
 }
 
-func (s *BatchSendMailRequest) GetIpPoolId() *string {
+func (s *BatchSendMailShrinkRequest) GetIpPoolId() *string {
 	return s.IpPoolId
 }
 
-func (s *BatchSendMailRequest) GetOwnerId() *int64 {
+func (s *BatchSendMailShrinkRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
-func (s *BatchSendMailRequest) GetReceivers() []*BatchSendMailRequestReceivers {
-	return s.Receivers
+func (s *BatchSendMailShrinkRequest) GetReceiversShrink() *string {
+	return s.ReceiversShrink
 }
 
-func (s *BatchSendMailRequest) GetReceiversName() *string {
+func (s *BatchSendMailShrinkRequest) GetReceiversName() *string {
 	return s.ReceiversName
 }
 
-func (s *BatchSendMailRequest) GetReplyAddress() *string {
+func (s *BatchSendMailShrinkRequest) GetReplyAddress() *string {
 	return s.ReplyAddress
 }
 
-func (s *BatchSendMailRequest) GetReplyAddressAlias() *string {
+func (s *BatchSendMailShrinkRequest) GetReplyAddressAlias() *string {
 	return s.ReplyAddressAlias
 }
 
-func (s *BatchSendMailRequest) GetResourceOwnerAccount() *string {
+func (s *BatchSendMailShrinkRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
 
-func (s *BatchSendMailRequest) GetResourceOwnerId() *int64 {
+func (s *BatchSendMailShrinkRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
-func (s *BatchSendMailRequest) GetTagName() *string {
+func (s *BatchSendMailShrinkRequest) GetTagName() *string {
 	return s.TagName
 }
 
-func (s *BatchSendMailRequest) GetTemplateContent() *BatchSendMailRequestTemplateContent {
-	return s.TemplateContent
+func (s *BatchSendMailShrinkRequest) GetTemplateContentShrink() *string {
+	return s.TemplateContentShrink
 }
 
-func (s *BatchSendMailRequest) GetTemplateName() *string {
+func (s *BatchSendMailShrinkRequest) GetTemplateName() *string {
 	return s.TemplateName
 }
 
-func (s *BatchSendMailRequest) GetUnSubscribeFilterLevel() *string {
+func (s *BatchSendMailShrinkRequest) GetUnSubscribeFilterLevel() *string {
 	return s.UnSubscribeFilterLevel
 }
 
-func (s *BatchSendMailRequest) GetUnSubscribeLinkType() *string {
+func (s *BatchSendMailShrinkRequest) GetUnSubscribeLinkType() *string {
 	return s.UnSubscribeLinkType
 }
 
-func (s *BatchSendMailRequest) SetAccountName(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetAccountName(v string) *BatchSendMailShrinkRequest {
 	s.AccountName = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetAddressType(v int32) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetAddressType(v int32) *BatchSendMailShrinkRequest {
 	s.AddressType = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetClickTrace(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetClickTrace(v string) *BatchSendMailShrinkRequest {
 	s.ClickTrace = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetDomainAuth(v bool) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetDomainAuth(v bool) *BatchSendMailShrinkRequest {
 	s.DomainAuth = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetHeaders(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetHeaders(v string) *BatchSendMailShrinkRequest {
 	s.Headers = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetIpPoolId(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetIpPoolId(v string) *BatchSendMailShrinkRequest {
 	s.IpPoolId = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetOwnerId(v int64) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetOwnerId(v int64) *BatchSendMailShrinkRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetReceivers(v []*BatchSendMailRequestReceivers) *BatchSendMailRequest {
-	s.Receivers = v
+func (s *BatchSendMailShrinkRequest) SetReceiversShrink(v string) *BatchSendMailShrinkRequest {
+	s.ReceiversShrink = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetReceiversName(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetReceiversName(v string) *BatchSendMailShrinkRequest {
 	s.ReceiversName = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetReplyAddress(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetReplyAddress(v string) *BatchSendMailShrinkRequest {
 	s.ReplyAddress = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetReplyAddressAlias(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetReplyAddressAlias(v string) *BatchSendMailShrinkRequest {
 	s.ReplyAddressAlias = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetResourceOwnerAccount(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetResourceOwnerAccount(v string) *BatchSendMailShrinkRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetResourceOwnerId(v int64) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetResourceOwnerId(v int64) *BatchSendMailShrinkRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetTagName(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetTagName(v string) *BatchSendMailShrinkRequest {
 	s.TagName = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetTemplateContent(v *BatchSendMailRequestTemplateContent) *BatchSendMailRequest {
-	s.TemplateContent = v
+func (s *BatchSendMailShrinkRequest) SetTemplateContentShrink(v string) *BatchSendMailShrinkRequest {
+	s.TemplateContentShrink = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetTemplateName(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetTemplateName(v string) *BatchSendMailShrinkRequest {
 	s.TemplateName = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetUnSubscribeFilterLevel(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetUnSubscribeFilterLevel(v string) *BatchSendMailShrinkRequest {
 	s.UnSubscribeFilterLevel = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) SetUnSubscribeLinkType(v string) *BatchSendMailRequest {
+func (s *BatchSendMailShrinkRequest) SetUnSubscribeLinkType(v string) *BatchSendMailShrinkRequest {
 	s.UnSubscribeLinkType = &v
 	return s
 }
 
-func (s *BatchSendMailRequest) Validate() error {
-	if s.Receivers != nil {
-		for _, item := range s.Receivers {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	if s.TemplateContent != nil {
-		if err := s.TemplateContent.Validate(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-type BatchSendMailRequestReceivers struct {
-	// The email template parameters. This is a JSON map data type.
-	TemplateData map[string]*string `json:"TemplateData,omitempty" xml:"TemplateData,omitempty"`
-	// The recipient list. This is an array type.
-	To []*string `json:"To,omitempty" xml:"To,omitempty" type:"Repeated"`
-}
-
-func (s BatchSendMailRequestReceivers) String() string {
-	return dara.Prettify(s)
-}
-
-func (s BatchSendMailRequestReceivers) GoString() string {
-	return s.String()
-}
-
-func (s *BatchSendMailRequestReceivers) GetTemplateData() map[string]*string {
-	return s.TemplateData
-}
-
-func (s *BatchSendMailRequestReceivers) GetTo() []*string {
-	return s.To
-}
-
-func (s *BatchSendMailRequestReceivers) SetTemplateData(v map[string]*string) *BatchSendMailRequestReceivers {
-	s.TemplateData = v
-	return s
-}
-
-func (s *BatchSendMailRequestReceivers) SetTo(v []*string) *BatchSendMailRequestReceivers {
-	s.To = v
-	return s
-}
-
-func (s *BatchSendMailRequestReceivers) Validate() error {
-	return dara.Validate(s)
-}
-
-type BatchSendMailRequestTemplateContent struct {
-	// The display name of the sender.
-	//
-	// example:
-	//
-	// Jackie
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The HTML body of the email.
-	//
-	// > **Note:*	- HtmlBody and TextBody are for different types of email content. You must specify at least one of them.
-	//
-	// The new SDK uses Body for parameter passing with a limit of approximately 8 MB (Java 1.4.0 and later, Python3 1.4.0 and later, PHP 1.4.0 and later).
-	//
-	// example:
-	//
-	// <h1>全场九折，仅限今日</h1>
-	HtmlBody *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
-	// The email subject.
-	//
-	// example:
-	//
-	// 黑色星期五，专属折扣来袭
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The plain text body of the email.
-	//
-	// > **Note:*	- HtmlBody and TextBody are for different types of email content. You must specify at least one of them.
-	//
-	// The new SDK uses Body for parameter passing with a limit of approximately 8 MB (Java 1.4.0 and later, Python3 1.4.0 and later, PHP 1.4.0 and later).
-	//
-	// example:
-	//
-	// 全场九折，仅限今日
-	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
-}
-
-func (s BatchSendMailRequestTemplateContent) String() string {
-	return dara.Prettify(s)
-}
-
-func (s BatchSendMailRequestTemplateContent) GoString() string {
-	return s.String()
-}
-
-func (s *BatchSendMailRequestTemplateContent) GetAlias() *string {
-	return s.Alias
-}
-
-func (s *BatchSendMailRequestTemplateContent) GetHtmlBody() *string {
-	return s.HtmlBody
-}
-
-func (s *BatchSendMailRequestTemplateContent) GetSubject() *string {
-	return s.Subject
-}
-
-func (s *BatchSendMailRequestTemplateContent) GetTextBody() *string {
-	return s.TextBody
-}
-
-func (s *BatchSendMailRequestTemplateContent) SetAlias(v string) *BatchSendMailRequestTemplateContent {
-	s.Alias = &v
-	return s
-}
-
-func (s *BatchSendMailRequestTemplateContent) SetHtmlBody(v string) *BatchSendMailRequestTemplateContent {
-	s.HtmlBody = &v
-	return s
-}
-
-func (s *BatchSendMailRequestTemplateContent) SetSubject(v string) *BatchSendMailRequestTemplateContent {
-	s.Subject = &v
-	return s
-}
-
-func (s *BatchSendMailRequestTemplateContent) SetTextBody(v string) *BatchSendMailRequestTemplateContent {
-	s.TextBody = &v
-	return s
-}
-
-func (s *BatchSendMailRequestTemplateContent) Validate() error {
+func (s *BatchSendMailShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }

@@ -24,23 +24,34 @@ type iConfigSetListResponseBody interface {
 }
 
 type ConfigSetListResponseBody struct {
+	// The list of ConfigSets.
 	ConfigSets []*ConfigSetListResponseBodyConfigSets `json:"ConfigSets,omitempty" xml:"ConfigSets,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Indicates whether more results are available.
+	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 5
@@ -123,17 +134,25 @@ func (s *ConfigSetListResponseBody) Validate() error {
 }
 
 type ConfigSetListResponseBodyConfigSets struct {
+	// The description.
+	//
 	// example:
 	//
 	// xxx
-	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of from addresses associated with the ConfigSet.
 	FromAddresses []*string `json:"FromAddresses,omitempty" xml:"FromAddresses,omitempty" type:"Repeated"`
+	// The ConfigSet ID.
+	//
 	// example:
 	//
 	// xxx
-	Id                     *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IP pool associated with the ConfigSet.
 	IpPool                 *ConfigSetListResponseBodyConfigSetsIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
 	IsPublicChannelBackoff *bool                                      `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
+	// The ConfigSet name.
+	//
 	// example:
 	//
 	// xxx
@@ -212,10 +231,14 @@ func (s *ConfigSetListResponseBodyConfigSets) Validate() error {
 }
 
 type ConfigSetListResponseBodyConfigSetsIpPool struct {
+	// The associated IP pool ID.
+	//
 	// example:
 	//
 	// xxx
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	// The associated IP pool name.
+	//
 	// example:
 	//
 	// xxx

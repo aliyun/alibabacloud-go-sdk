@@ -14,6 +14,8 @@ type iRemoveUserSuppressionResponseBody interface {
 }
 
 type RemoveUserSuppressionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A846D66-5EC7-551B-9687-5BF1963DCFC1

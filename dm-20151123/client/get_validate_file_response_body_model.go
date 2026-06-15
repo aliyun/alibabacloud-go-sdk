@@ -16,10 +16,14 @@ type iGetValidateFileResponseBody interface {
 }
 
 type GetValidateFileResponseBody struct {
+	// The download URL of the result file.
+	//
 	// example:
 	//
 	// https://xxxxxx/yyy
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// yyyy-yyyy-yyyy-yyyy

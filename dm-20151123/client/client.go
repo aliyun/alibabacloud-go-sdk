@@ -287,20 +287,30 @@ func (client *Client) ApproveReplyMailAddress(request *ApproveReplyMailAddressRe
 
 // Summary:
 //
-// # Batch Send Emails
+// Sends emails in batch.
 //
-// @param request - BatchSendMailRequest
+// @param tmpReq - BatchSendMailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchSendMailResponse
-func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, runtime *dara.RuntimeOptions) (_result *BatchSendMailResponse, _err error) {
+func (client *Client) BatchSendMailWithOptions(tmpReq *BatchSendMailRequest, runtime *dara.RuntimeOptions) (_result *BatchSendMailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &BatchSendMailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Receivers) {
+		request.ReceiversShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Receivers, dara.String("Receivers"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TemplateContent) {
+		request.TemplateContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateContent, dara.String("TemplateContent"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
@@ -366,8 +376,18 @@ func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, ru
 		query["UnSubscribeLinkType"] = request.UnSubscribeLinkType
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReceiversShrink) {
+		body["Receivers"] = request.ReceiversShrink
+	}
+
+	if !dara.IsNil(request.TemplateContentShrink) {
+		body["TemplateContent"] = request.TemplateContentShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("BatchSendMail"),
@@ -391,7 +411,7 @@ func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, ru
 
 // Summary:
 //
-// # Batch Send Emails
+// Sends emails in batch.
 //
 // @param request - BatchSendMailRequest
 //
@@ -705,7 +725,7 @@ func (client *Client) CheckReplyToMailAddress(request *CheckReplyToMailAddressRe
 
 // Summary:
 //
-// 配置集取消关联发信地址
+// Disassociates a sender address from a configuration set.
 //
 // @param request - ConfigSetCancelRelationFromAddressRequest
 //
@@ -753,7 +773,7 @@ func (client *Client) ConfigSetCancelRelationFromAddressWithOptions(request *Con
 
 // Summary:
 //
-// 配置集取消关联发信地址
+// Disassociates a sender address from a configuration set.
 //
 // @param request - ConfigSetCancelRelationFromAddressRequest
 //
@@ -771,7 +791,7 @@ func (client *Client) ConfigSetCancelRelationFromAddress(request *ConfigSetCance
 
 // Summary:
 //
-// 配置集创建
+// Creates a configuration set. You can create up to 100 configuration sets.
 //
 // @param request - ConfigSetCreateRequest
 //
@@ -827,7 +847,7 @@ func (client *Client) ConfigSetCreateWithOptions(request *ConfigSetCreateRequest
 
 // Summary:
 //
-// 配置集创建
+// Creates a configuration set. You can create up to 100 configuration sets.
 //
 // @param request - ConfigSetCreateRequest
 //
@@ -845,7 +865,7 @@ func (client *Client) ConfigSetCreate(request *ConfigSetCreateRequest) (_result 
 
 // Summary:
 //
-// 删除配置集
+// Deletes configuration sets.
 //
 // @param request - ConfigSetDeleteRequest
 //
@@ -893,7 +913,7 @@ func (client *Client) ConfigSetDeleteWithOptions(request *ConfigSetDeleteRequest
 
 // Summary:
 //
-// 删除配置集
+// Deletes configuration sets.
 //
 // @param request - ConfigSetDeleteRequest
 //
@@ -911,7 +931,7 @@ func (client *Client) ConfigSetDelete(request *ConfigSetDeleteRequest) (_result 
 
 // Summary:
 //
-// 配置集详情
+// Retrieves the details of a specified configuration set.
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -955,7 +975,7 @@ func (client *Client) ConfigSetDetailWithOptions(request *ConfigSetDetailRequest
 
 // Summary:
 //
-// 配置集详情
+// Retrieves the details of a specified configuration set.
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -973,7 +993,7 @@ func (client *Client) ConfigSetDetail(request *ConfigSetDetailRequest) (_result 
 
 // Summary:
 //
-// 配置集列表
+// Lists ConfigSets.
 //
 // @param request - ConfigSetListRequest
 //
@@ -1029,7 +1049,7 @@ func (client *Client) ConfigSetListWithOptions(request *ConfigSetListRequest, ru
 
 // Summary:
 //
-// 配置集列表
+// Lists ConfigSets.
 //
 // @param request - ConfigSetListRequest
 //
@@ -1047,7 +1067,7 @@ func (client *Client) ConfigSetList(request *ConfigSetListRequest) (_result *Con
 
 // Summary:
 //
-// 配置集关联发信地址
+// Associates a configuration set with a sender address.
 //
 // @param request - ConfigSetRelationFromAddressRequest
 //
@@ -1095,7 +1115,7 @@ func (client *Client) ConfigSetRelationFromAddressWithOptions(request *ConfigSet
 
 // Summary:
 //
-// 配置集关联发信地址
+// Associates a configuration set with a sender address.
 //
 // @param request - ConfigSetRelationFromAddressRequest
 //
@@ -1113,7 +1133,7 @@ func (client *Client) ConfigSetRelationFromAddress(request *ConfigSetRelationFro
 
 // Summary:
 //
-// 配置集更新
+// Updates a configuration set.
 //
 // @param request - ConfigSetUpdateRequest
 //
@@ -1173,7 +1193,7 @@ func (client *Client) ConfigSetUpdateWithOptions(request *ConfigSetUpdateRequest
 
 // Summary:
 //
-// 配置集更新
+// Updates a configuration set.
 //
 // @param request - ConfigSetUpdateRequest
 //
@@ -1433,7 +1453,7 @@ func (client *Client) CreateReceiver(request *CreateReceiverRequest) (_result *C
 
 // Summary:
 //
-// # Create Tag
+// Creates a tag.
 //
 // @param request - CreateTagRequest
 //
@@ -1493,7 +1513,7 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *d
 
 // Summary:
 //
-// # Create Tag
+// Creates a tag.
 //
 // @param request - CreateTagRequest
 //
@@ -1511,7 +1531,19 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 
 // Summary:
 //
-// 创建模板
+// Creates a new mail template in DirectMail.
+//
+// Description:
+//
+// ## Description
+//
+// - Set the **templateType*	- parameter to `0` to create a mail template.
+//
+// - For a mail template, specify `templateSubject` (email subject), `templateNickName` (sender name), and `templateText` (email HTML body).
+//
+// - The template name (`templateName`) must be unique within an account.
+//
+// - Newly created templates have a default status of `pending approval`.
 //
 // @param request - CreateTemplateRequest
 //
@@ -1599,7 +1631,19 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// 创建模板
+// Creates a new mail template in DirectMail.
+//
+// Description:
+//
+// ## Description
+//
+// - Set the **templateType*	- parameter to `0` to create a mail template.
+//
+// - For a mail template, specify `templateSubject` (email subject), `templateNickName` (sender name), and `templateText` (email HTML body).
+//
+// - The template name (`templateName`) must be unique within an account.
+//
+// - Newly created templates have a default status of `pending approval`.
 //
 // @param request - CreateTemplateRequest
 //
@@ -1691,7 +1735,7 @@ func (client *Client) CreateUserSuppression(request *CreateUserSuppressionReques
 
 // Summary:
 //
-// # Set Dedicated IP Auto Renewal
+// Sets auto-renewal for a dedicated IP address.
 //
 // @param request - DedicatedIpAutoRenewalRequest
 //
@@ -1739,7 +1783,7 @@ func (client *Client) DedicatedIpAutoRenewalWithOptions(request *DedicatedIpAuto
 
 // Summary:
 //
-// # Set Dedicated IP Auto Renewal
+// Sets auto-renewal for a dedicated IP address.
 //
 // @param request - DedicatedIpAutoRenewalRequest
 //
@@ -1757,7 +1801,7 @@ func (client *Client) DedicatedIpAutoRenewal(request *DedicatedIpAutoRenewalRequ
 
 // Summary:
 //
-// # Change the warmup method for a dedicated IP
+// Updates the prefetch method for a dedicated IP address.
 //
 // @param request - DedicatedIpChangeWarmupTypeRequest
 //
@@ -1805,7 +1849,7 @@ func (client *Client) DedicatedIpChangeWarmupTypeWithOptions(request *DedicatedI
 
 // Summary:
 //
-// # Change the warmup method for a dedicated IP
+// Updates the prefetch method for a dedicated IP address.
 //
 // @param request - DedicatedIpChangeWarmupTypeRequest
 //
@@ -1823,7 +1867,7 @@ func (client *Client) DedicatedIpChangeWarmupType(request *DedicatedIpChangeWarm
 
 // Summary:
 //
-// # Dedicated IP User IP List
+// Lists purchased IPs.
 //
 // @param request - DedicatedIpListRequest
 //
@@ -1875,7 +1919,7 @@ func (client *Client) DedicatedIpListWithOptions(request *DedicatedIpListRequest
 
 // Summary:
 //
-// # Dedicated IP User IP List
+// Lists purchased IPs.
 //
 // @param request - DedicatedIpListRequest
 //
@@ -1893,7 +1937,7 @@ func (client *Client) DedicatedIpList(request *DedicatedIpListRequest) (_result 
 
 // Summary:
 //
-// # Purchased Independent IPs Not Added to Pool
+// Lists the IP addresses that are not assigned to any IP pool. This operation is used for IP pool configuration.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -1922,7 +1966,7 @@ func (client *Client) DedicatedIpNonePoolListWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// # Purchased Independent IPs Not Added to Pool
+// Lists the IP addresses that are not assigned to any IP pool. This operation is used for IP pool configuration.
 //
 // @return DedicatedIpNonePoolListResponse
 func (client *Client) DedicatedIpNonePoolList() (_result *DedicatedIpNonePoolListResponse, _err error) {
@@ -1938,7 +1982,7 @@ func (client *Client) DedicatedIpNonePoolList() (_result *DedicatedIpNonePoolLis
 
 // Summary:
 //
-// # Creation of Independent IP Pool
+// Creates a dedicated IP pool.
 //
 // @param request - DedicatedIpPoolCreateRequest
 //
@@ -1986,7 +2030,7 @@ func (client *Client) DedicatedIpPoolCreateWithOptions(request *DedicatedIpPoolC
 
 // Summary:
 //
-// # Creation of Independent IP Pool
+// Creates a dedicated IP pool.
 //
 // @param request - DedicatedIpPoolCreateRequest
 //
@@ -2004,7 +2048,7 @@ func (client *Client) DedicatedIpPoolCreate(request *DedicatedIpPoolCreateReques
 
 // Summary:
 //
-// # Dedicated IP Pool Deletion
+// Deletes a dedicated IP pool.
 //
 // @param request - DedicatedIpPoolDeleteRequest
 //
@@ -2048,7 +2092,7 @@ func (client *Client) DedicatedIpPoolDeleteWithOptions(request *DedicatedIpPoolD
 
 // Summary:
 //
-// # Dedicated IP Pool Deletion
+// Deletes a dedicated IP pool.
 //
 // @param request - DedicatedIpPoolDeleteRequest
 //
@@ -2066,7 +2110,7 @@ func (client *Client) DedicatedIpPoolDelete(request *DedicatedIpPoolDeleteReques
 
 // Summary:
 //
-// # Dedicated IP Pool List
+// Lists IP pools.
 //
 // @param request - DedicatedIpPoolListRequest
 //
@@ -2126,7 +2170,7 @@ func (client *Client) DedicatedIpPoolListWithOptions(request *DedicatedIpPoolLis
 
 // Summary:
 //
-// # Dedicated IP Pool List
+// Lists IP pools.
 //
 // @param request - DedicatedIpPoolListRequest
 //
@@ -2144,7 +2188,7 @@ func (client *Client) DedicatedIpPoolList(request *DedicatedIpPoolListRequest) (
 
 // Summary:
 //
-// # Update of dedicated IP Pool
+// Updates an IP pool.
 //
 // @param request - DedicatedIpPoolUpdateRequest
 //
@@ -2196,7 +2240,7 @@ func (client *Client) DedicatedIpPoolUpdateWithOptions(request *DedicatedIpPoolU
 
 // Summary:
 //
-// # Update of dedicated IP Pool
+// Updates an IP pool.
 //
 // @param request - DedicatedIpPoolUpdateRequest
 //
@@ -2740,7 +2784,7 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 
 // Summary:
 //
-// 删除批量校验任务的结果文件
+// Deletes the verification file after the verification process is complete.
 //
 // @param request - DeleteValidateFileRequest
 //
@@ -2784,7 +2828,7 @@ func (client *Client) DeleteValidateFileWithOptions(request *DeleteValidateFileR
 
 // Summary:
 //
-// 删除批量校验任务的结果文件
+// Deletes the verification file after the verification process is complete.
 //
 // @param request - DeleteValidateFileRequest
 //
@@ -2802,7 +2846,7 @@ func (client *Client) DeleteValidateFile(request *DeleteValidateFileRequest) (_r
 
 // Summary:
 //
-// Retrieve account information.
+// Retrieves account information.
 //
 // @param request - DescAccountSummaryRequest
 //
@@ -2854,7 +2898,7 @@ func (client *Client) DescAccountSummaryWithOptions(request *DescAccountSummaryR
 
 // Summary:
 //
-// Retrieve account information.
+// Retrieves account information.
 //
 // @param request - DescAccountSummaryRequest
 //
@@ -2872,7 +2916,7 @@ func (client *Client) DescAccountSummary(request *DescAccountSummaryRequest) (_r
 
 // Summary:
 //
-// # Get Domain Details
+// Configure the domain name.
 //
 // @param request - DescDomainRequest
 //
@@ -2932,7 +2976,7 @@ func (client *Client) DescDomainWithOptions(request *DescDomainRequest, runtime 
 
 // Summary:
 //
-// # Get Domain Details
+// Configure the domain name.
 //
 // @param request - DescDomainRequest
 //
@@ -2950,7 +2994,11 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 
 // Summary:
 //
-// 查看模板信息
+// Retrieves the information about an email template.
+//
+// Description:
+//
+// Retrieves information about a specific email template, including its name, creation time, and content.
 //
 // @param request - DescTemplateRequest
 //
@@ -3010,7 +3058,11 @@ func (client *Client) DescTemplateWithOptions(request *DescTemplateRequest, runt
 
 // Summary:
 //
-// 查看模板信息
+// Retrieves the information about an email template.
+//
+// Description:
+//
+// Retrieves information about a specific email template, including its name, creation time, and content.
 //
 // @param request - DescTemplateRequest
 //
@@ -3464,7 +3516,7 @@ func (client *Client) GetSuppressionListLevel(request *GetSuppressionListLevelRe
 
 // Summary:
 //
-// # Get tracking information
+// Email Tracking retrieves data on sent emails.
 //
 // @param request - GetTrackListRequest
 //
@@ -3576,7 +3628,7 @@ func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runt
 
 // Summary:
 //
-// # Get tracking information
+// Email Tracking retrieves data on sent emails.
 //
 // @param request - GetTrackListRequest
 //
@@ -3594,7 +3646,7 @@ func (client *Client) GetTrackList(request *GetTrackListRequest) (_result *GetTr
 
 // Summary:
 //
-// # Get tracking information based on the sender address and tag name
+// Retrieves email tracking data that meets specified conditions.
 //
 // @param request - GetTrackListByMailFromAndTagNameRequest
 //
@@ -3702,7 +3754,7 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithOptions(request *GetTr
 
 // Summary:
 //
-// # Get tracking information based on the sender address and tag name
+// Retrieves email tracking data that meets specified conditions.
 //
 // @param request - GetTrackListByMailFromAndTagNameRequest
 //
@@ -3765,7 +3817,7 @@ func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
 
 // Summary:
 //
-// 获取批量校验任务的结果文件
+// Retrieves the results file of a batch validation task.
 //
 // @param request - GetValidateFileRequest
 //
@@ -3809,7 +3861,7 @@ func (client *Client) GetValidateFileWithOptions(request *GetValidateFileRequest
 
 // Summary:
 //
-// 获取批量校验任务的结果文件
+// Retrieves the results file of a batch validation task.
 //
 // @param request - GetValidateFileRequest
 //
@@ -3827,7 +3879,7 @@ func (client *Client) GetValidateFile(request *GetValidateFileRequest) (_result 
 
 // Summary:
 //
-// 获取批量校验任务的状态
+// Retrieves the status of a file validation task.
 //
 // @param request - GetValidateFileStatusRequest
 //
@@ -3871,7 +3923,7 @@ func (client *Client) GetValidateFileStatusWithOptions(request *GetValidateFileS
 
 // Summary:
 //
-// 获取批量校验任务的状态
+// Retrieves the status of a file validation task.
 //
 // @param request - GetValidateFileStatusRequest
 //
@@ -3889,7 +3941,7 @@ func (client *Client) GetValidateFileStatus(request *GetValidateFileStatusReques
 
 // Summary:
 //
-// 获取电子邮件校验额度
+// Retrieves the email validation quota.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3918,7 +3970,7 @@ func (client *Client) GetValidationQuotaWithOptions(runtime *dara.RuntimeOptions
 
 // Summary:
 //
-// 获取电子邮件校验额度
+// Retrieves the email validation quota.
 //
 // @return GetValidationQuotaResponse
 func (client *Client) GetValidationQuota() (_result *GetValidationQuotaResponse, _err error) {
@@ -3934,7 +3986,11 @@ func (client *Client) GetValidationQuota() (_result *GetValidationQuotaResponse,
 
 // Summary:
 //
-// 获取发信的黑名单列表
+// Queries the email sending blacklist.
+//
+// Description:
+//
+// Queries data about unsubscribes or spam reports.
 //
 // @param request - ListBlockSendingRequest
 //
@@ -4002,7 +4058,11 @@ func (client *Client) ListBlockSendingWithOptions(request *ListBlockSendingReque
 
 // Summary:
 //
-// 获取发信的黑名单列表
+// Queries the email sending blacklist.
+//
+// Description:
+//
+// Queries data about unsubscribes or spam reports.
 //
 // @param request - ListBlockSendingRequest
 //
@@ -4118,7 +4178,7 @@ func (client *Client) ListUserSuppression(request *ListUserSuppressionRequest) (
 
 // Summary:
 //
-// 获取上传的校验文件的列表
+// Retrieves a list of uploaded validation files.
 //
 // @param request - ListValidateFileRequest
 //
@@ -4178,7 +4238,7 @@ func (client *Client) ListValidateFileWithOptions(request *ListValidateFileReque
 
 // Summary:
 //
-// 获取上传的校验文件的列表
+// Retrieves a list of uploaded validation files.
 //
 // @param request - ListValidateFileRequest
 //
@@ -4667,7 +4727,7 @@ func (client *Client) QueryInvalidAddress(request *QueryInvalidAddressRequest) (
 
 // Summary:
 //
-// Query the list of sending addresses.
+// Queries a list of sender addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -4735,7 +4795,7 @@ func (client *Client) QueryMailAddressByParamWithOptions(request *QueryMailAddre
 
 // Summary:
 //
-// Query the list of sending addresses.
+// Queries a list of sender addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -4753,7 +4813,7 @@ func (client *Client) QueryMailAddressByParam(request *QueryMailAddressByParamRe
 
 // Summary:
 //
-// # Query the details of the recipient list
+// Retrieves recipient lists.
 //
 // @param request - QueryReceiverByParamRequest
 //
@@ -4821,7 +4881,7 @@ func (client *Client) QueryReceiverByParamWithOptions(request *QueryReceiverByPa
 
 // Summary:
 //
-// # Query the details of the recipient list
+// Retrieves recipient lists.
 //
 // @param request - QueryReceiverByParamRequest
 //
@@ -5007,7 +5067,7 @@ func (client *Client) QueryTagByParam(request *QueryTagByParamRequest) (_result 
 
 // Summary:
 //
-// # Query task list
+// Queries tasks based on specified parameters.
 //
 // @param request - QueryTaskByParamRequest
 //
@@ -5075,7 +5135,7 @@ func (client *Client) QueryTaskByParamWithOptions(request *QueryTaskByParamReque
 
 // Summary:
 //
-// # Query task list
+// Queries tasks based on specified parameters.
 //
 // @param request - QueryTaskByParamRequest
 //
@@ -5093,7 +5153,11 @@ func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_resul
 
 // Summary:
 //
-// 查询模板信息
+// Performs a paged query to retrieve a list of templates.
+//
+// Description:
+//
+// Performs a paged query to retrieve a list of templates.
 //
 // @param request - QueryTemplateByParamRequest
 //
@@ -5165,7 +5229,11 @@ func (client *Client) QueryTemplateByParamWithOptions(request *QueryTemplateByPa
 
 // Summary:
 //
-// 查询模板信息
+// Performs a paged query to retrieve a list of templates.
+//
+// Description:
+//
+// Performs a paged query to retrieve a list of templates.
 //
 // @param request - QueryTemplateByParamRequest
 //
@@ -5183,7 +5251,7 @@ func (client *Client) QueryTemplateByParam(request *QueryTemplateByParamRequest)
 
 // Summary:
 //
-// Delete User\\"s Invalid Addresses
+// Deletes system-identified and manually added addresses from the user-level suppression list.
 //
 // @param request - RemoveUserSuppressionRequest
 //
@@ -5239,7 +5307,7 @@ func (client *Client) RemoveUserSuppressionWithOptions(request *RemoveUserSuppre
 
 // Summary:
 //
-// Delete User\\"s Invalid Addresses
+// Deletes system-identified and manually added addresses from the user-level suppression list.
 //
 // @param request - RemoveUserSuppressionRequest
 //
@@ -5257,7 +5325,7 @@ func (client *Client) RemoveUserSuppression(request *RemoveUserSuppressionReques
 
 // Summary:
 //
-// # Create a Single Recipient
+// Create a single recipient.
 //
 // @param request - SaveReceiverDetailRequest
 //
@@ -5321,7 +5389,7 @@ func (client *Client) SaveReceiverDetailWithOptions(request *SaveReceiverDetailR
 
 // Summary:
 //
-// # Create a Single Recipient
+// Create a single recipient.
 //
 // @param request - SaveReceiverDetailRequest
 //
@@ -5339,7 +5407,7 @@ func (client *Client) SaveReceiverDetail(request *SaveReceiverDetailRequest) (_r
 
 // Summary:
 //
-// # Send Template Test Email
+// Sends a test email using a template.
 //
 // @param request - SendTestByTemplateRequest
 //
@@ -5427,7 +5495,7 @@ func (client *Client) SendTestByTemplateWithOptions(request *SendTestByTemplateR
 
 // Summary:
 //
-// # Send Template Test Email
+// Sends a test email using a template.
 //
 // @param request - SendTestByTemplateRequest
 //
@@ -5445,7 +5513,7 @@ func (client *Client) SendTestByTemplate(request *SendTestByTemplateRequest) (_r
 
 // Summary:
 //
-// 提交批量校验任务
+// You can upload the list of addresses to be verified.
 //
 // @param request - SendValidateFileRequest
 //
@@ -5505,7 +5573,7 @@ func (client *Client) SendValidateFileWithOptions(request *SendValidateFileReque
 
 // Summary:
 //
-// 提交批量校验任务
+// You can upload the list of addresses to be verified.
 //
 // @param request - SendValidateFileRequest
 //
@@ -5630,7 +5698,7 @@ func (client *Client) SendValidateFileAdvance(request *SendValidateFileAdvanceRe
 
 // Summary:
 //
-// # Retrieve Sending Data under Specified Conditions
+// Retrieves sending statistics that match specified criteria.
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -5714,7 +5782,7 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithOptions(request *Se
 
 // Summary:
 //
-// # Retrieve Sending Data under Specified Conditions
+// Retrieves sending statistics that match specified criteria.
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -5732,7 +5800,7 @@ func (client *Client) SenderStatisticsByTagNameAndBatchID(request *SenderStatist
 
 // Summary:
 //
-// # Query Delivery Result Details
+// Queries sending details.
 //
 // @param request - SenderStatisticsDetailByParamRequest
 //
@@ -5824,7 +5892,7 @@ func (client *Client) SenderStatisticsDetailByParamWithOptions(request *SenderSt
 
 // Summary:
 //
-// # Query Delivery Result Details
+// Queries sending details.
 //
 // @param request - SenderStatisticsDetailByParamRequest
 //
@@ -5916,7 +5984,7 @@ func (client *Client) SetSuppressionListLevel(request *SetSuppressionListLevelRe
 
 // Summary:
 //
-// # API for Sending Emails
+// Send a single email.
 //
 // @param tmpReq - SingleSendMailRequest
 //
@@ -6056,7 +6124,7 @@ func (client *Client) SingleSendMailWithOptions(tmpReq *SingleSendMailRequest, r
 
 // Summary:
 //
-// # API for Sending Emails
+// Send a single email.
 //
 // @param request - SingleSendMailRequest
 //
@@ -6189,7 +6257,7 @@ func (client *Client) SingleSendMailAdvance(request *SingleSendMailAdvanceReques
 
 // Summary:
 //
-// Lift sending restrictions due to unsubscription, reporting, etc.
+// Removes sending restrictions caused by unsubscribes or complaints.
 //
 // @param request - UnblockSendingRequest
 //
@@ -6241,7 +6309,7 @@ func (client *Client) UnblockSendingWithOptions(request *UnblockSendingRequest, 
 
 // Summary:
 //
-// Lift sending restrictions due to unsubscription, reporting, etc.
+// Removes sending restrictions caused by unsubscribes or complaints.
 //
 // @param request - UnblockSendingRequest
 //
@@ -6401,7 +6469,7 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// 校验电子邮件地址
+// Validates an email address.
 //
 // @param request - ValidateEmailRequest
 //
@@ -6453,7 +6521,7 @@ func (client *Client) ValidateEmailWithOptions(request *ValidateEmailRequest, ru
 
 // Summary:
 //
-// 校验电子邮件地址
+// Validates an email address.
 //
 // @param request - ValidateEmailRequest
 //

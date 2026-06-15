@@ -20,15 +20,21 @@ type iConfigSetCreateRequest interface {
 }
 
 type ConfigSetCreateRequest struct {
+	// A description of the configuration set (up to 50 characters).
+	//
 	// example:
 	//
 	// XXX
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of an IP pool to associate with the configuration set. This parameter is optional.
+	//
 	// example:
 	//
 	// XXX
 	IpPoolId               *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	IsPublicChannelBackoff *bool   `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
+	// The name of the configuration set. The name must be unique and can contain up to 50 characters. This parameter is required.
+	//
 	// example:
 	//
 	// XXX

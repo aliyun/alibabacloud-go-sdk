@@ -16,9 +16,9 @@ type iDedicatedIpNonePoolListResponseBody interface {
 }
 
 type DedicatedIpNonePoolListResponseBody struct {
-	// Information on IPs not added to the IP pool
+	// The IP addresses that are not added to an IP pool.
 	Ips []*DedicatedIpNonePoolListResponseBodyIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,18 +66,23 @@ func (s *DedicatedIpNonePoolListResponseBody) Validate() error {
 }
 
 type DedicatedIpNonePoolListResponseBodyIps struct {
-	// Purchased instance ID
+	// The ID of the purchased instance.
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// IP address
+	// The IP address.
 	//
 	// example:
 	//
 	// xxx
-	Ip     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// xxx
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

@@ -22,19 +22,27 @@ type iConfigSetUpdateRequest interface {
 }
 
 type ConfigSetUpdateRequest struct {
+	// A description for the configuration set, up to 50 characters long.
+	//
 	// example:
 	//
 	// XXX
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Configuration set ID. Required.
+	//
 	// example:
 	//
 	// XXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Associated IP pool ID. Optional.
+	//
 	// example:
 	//
 	// XXX
 	IpPoolId               *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	IsPublicChannelBackoff *bool   `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
+	// Configuration set name. Required. Up to 50 characters. The name must be unique.
+	//
 	// example:
 	//
 	// XXX

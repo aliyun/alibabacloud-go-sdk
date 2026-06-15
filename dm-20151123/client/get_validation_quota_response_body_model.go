@@ -18,14 +18,20 @@ type iGetValidationQuotaResponseBody interface {
 }
 
 type GetValidationQuotaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total available quota.
+	//
 	// example:
 	//
 	// 10
 	TotalQuota *int32 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	// The used quota.
+	//
 	// example:
 	//
 	// 1

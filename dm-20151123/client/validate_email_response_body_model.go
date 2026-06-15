@@ -26,32 +26,46 @@ type iValidateEmailResponseBody interface {
 }
 
 type ValidateEmailResponseBody struct {
+	// The domain part of the email address parsed from the syntax check. The domain part is converted to lowercase.
+	//
 	// example:
 	//
 	// yyy.com
 	DomainPart *string `json:"DomainPart,omitempty" xml:"DomainPart,omitempty"`
+	// Indicates whether the address is from a free email service.
+	//
 	// example:
 	//
 	// true
 	IsFreeMail *bool `json:"IsFreeMail,omitempty" xml:"IsFreeMail,omitempty"`
+	// The local part of the email address parsed from the syntax check. The local part is converted to lowercase and the content after the plus sign (+) is removed.
+	//
 	// example:
 	//
 	// xxx
 	LocalPart *string `json:"LocalPart,omitempty" xml:"LocalPart,omitempty"`
+	// The email service provider of the address.
+	//
 	// example:
 	//
 	// Gmail
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The validation status of the email address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The detailed validation status of the email address. This provides more information about the Status.
+	//
 	// This parameter is required.
 	//
 	// example:

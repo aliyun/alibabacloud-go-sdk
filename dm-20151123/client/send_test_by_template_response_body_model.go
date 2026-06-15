@@ -14,7 +14,7 @@ type iSendTestByTemplateResponseBody interface {
 }
 
 type SendTestByTemplateResponseBody struct {
-	// Request ID
+	// The unique ID for the request.
 	//
 	// example:
 	//

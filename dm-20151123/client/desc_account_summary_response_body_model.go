@@ -50,120 +50,122 @@ type iDescAccountSummaryResponseBody interface {
 }
 
 type DescAccountSummaryResponseBody struct {
-	// Daily quota
+	// The daily quota.
 	//
 	// example:
 	//
 	// 2000
 	DailyQuota *int32 `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
-	// remaining amount of daily free quota
+	// The remaining daily free quota.
 	//
 	// example:
 	//
 	// 100
 	DailyRemainFreeQuota *int32 `json:"DailyRemainFreeQuota,omitempty" xml:"DailyRemainFreeQuota,omitempty"`
-	// Dayu status (deprecated, retained for compatibility reasons.)
+	// The status of Dayu. This parameter is deprecated and retained for compatibility.
 	//
 	// example:
 	//
 	// 0
 	DayuStatus *int32 `json:"DayuStatus,omitempty" xml:"DayuStatus,omitempty"`
-	// Number of domains
+	// The number of domain names.
 	//
 	// example:
 	//
 	// 1
 	Domains *int32 `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// Effective time
+	// The effective period.
 	//
 	// example:
 	//
 	// 0
 	EnableTimes *int32 `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
+	// The type of the outbound IP channel.
+	//
+	// 1. backup: A backup IP channel that is not actively maintained. Customers using this channel are advised to purchase a dedicated IP for better stability.
+	//
+	// 2. normal: A normal IP channel that is continuously maintained by the email delivery team to ensure stable and reliable service.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// normal
 	IpChannelType *string `json:"IpChannelType,omitempty" xml:"IpChannelType,omitempty"`
-	// Number of sending addresses
+	// The number of sender addresses.
 	//
 	// example:
 	//
 	// 0
 	MailAddresses *int32 `json:"MailAddresses,omitempty" xml:"MailAddresses,omitempty"`
-	// Maximum level
+	// The maximum reputation level.
 	//
 	// example:
 	//
 	// 10
 	MaxQuotaLevel *int32 `json:"MaxQuotaLevel,omitempty" xml:"MaxQuotaLevel,omitempty"`
-	// Monthly quota
+	// The monthly quota.
 	//
 	// example:
 	//
 	// 60000
 	MonthQuota *int32 `json:"MonthQuota,omitempty" xml:"MonthQuota,omitempty"`
-	// Credit level
+	// The reputation level.
 	//
 	// example:
 	//
 	// 2
 	QuotaLevel *int32 `json:"QuotaLevel,omitempty" xml:"QuotaLevel,omitempty"`
-	// Number of recipients
+	// The number of recipients.
 	//
 	// example:
 	//
 	// 0
 	Receivers *int32 `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
-	// Remaining amount of total free quota
+	// The remaining free quota.
 	//
 	// example:
 	//
 	// 1910
 	RemainFreeQuota *int32 `json:"RemainFreeQuota,omitempty" xml:"RemainFreeQuota,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 82B295BB-7E69-491F-9896-ECEAFF09E1A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Deprecated, retained for compatibility reasons.
+	// This parameter is deprecated. It is retained for compatibility.
 	//
 	// example:
 	//
 	// 0
 	SmsRecord *int32 `json:"SmsRecord,omitempty" xml:"SmsRecord,omitempty"`
-	// Deprecated, retained for compatibility reasons.
+	// This parameter is deprecated. It is retained for compatibility.
 	//
 	// example:
 	//
 	// 0
 	SmsSign *int32 `json:"SmsSign,omitempty" xml:"SmsSign,omitempty"`
-	// Deprecated, retained for compatibility reasons.
+	// This parameter is deprecated. It is retained for compatibility.
 	//
 	// example:
 	//
 	// 0
 	SmsTemplates *int32 `json:"SmsTemplates,omitempty" xml:"SmsTemplates,omitempty"`
-	// Number of tags
+	// The number of tags.
 	//
 	// example:
 	//
 	// 0
 	Tags *int32 `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Number of templates
+	// The number of templates.
 	//
 	// example:
 	//
 	// 1
 	Templates *int32 `json:"Templates,omitempty" xml:"Templates,omitempty"`
-	// User status:
-	//
-	// 1 Frozen
-	//
-	// 2 In arrears
-	//
-	// 4 Restricted from sending
-	//
-	// 8 Logically deleted
+	// The status of the user. Valid values: 0: Normal. 1: Freeze. 2: Overdue payment. 4: Outbound messages are restricted. 8: The user is logically deleted.
 	//
 	// example:
 	//

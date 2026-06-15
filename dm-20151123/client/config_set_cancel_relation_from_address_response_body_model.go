@@ -16,10 +16,14 @@ type iConfigSetCancelRelationFromAddressResponseBody interface {
 }
 
 type ConfigSetCancelRelationFromAddressResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	//
 	// example:
 	//
 	// true

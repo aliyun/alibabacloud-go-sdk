@@ -26,11 +26,11 @@ type AddIpfilterRequest struct {
 	//
 	// example:
 	//
-	// xxx.xxx.xxx.xxx
+	// Single IP: xxx.xxx.xxx.xxx
 	//
-	// xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx
+	// IP range: xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx
 	//
-	// xxx.xxx.xxx.xxx/xxx
+	// CIDR: xxx.xxx.xxx.xxx/xxx
 	IpAddress            *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

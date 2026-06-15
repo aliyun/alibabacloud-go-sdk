@@ -30,7 +30,7 @@ type CheckReplyToMailAddressRequest struct {
 	//
 	// example:
 	//
-	// en
+	// 无
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Sender Address ID
 	//

@@ -16,10 +16,14 @@ type iConfigSetRelationFromAddressResponseBody interface {
 }
 
 type ConfigSetRelationFromAddressResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the operation.
+	//
 	// example:
 	//
 	// true

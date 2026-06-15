@@ -22,20 +22,25 @@ type iDedicatedIpPoolListRequest interface {
 }
 
 type DedicatedIpPoolListRequest struct {
+	// Specifies whether to return all entries.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// Search keyword for the name
+	// The keyword to search for IP pools by name.
 	//
 	// example:
 	//
 	// xxx
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Page index, starting from 1
+	// The page number to return, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// Number of items per page
+	// The number of entries per page.
 	//
 	// example:
 	//

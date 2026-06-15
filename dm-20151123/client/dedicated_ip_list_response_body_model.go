@@ -24,33 +24,33 @@ type iDedicatedIpListResponseBody interface {
 }
 
 type DedicatedIpListResponseBody struct {
-	// Current page
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Whether there is a next page
+	// Indicates whether another page of results is available.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// IP list
+	// The list of IPs.
 	Ips []*DedicatedIpListResponseBodyIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// Page size
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total amount of purchased IP data
+	// The total number of purchased IPs.
 	//
 	// example:
 	//
@@ -134,63 +134,84 @@ func (s *DedicatedIpListResponseBody) Validate() error {
 }
 
 type DedicatedIpListResponseBodyIps struct {
-	// Expiration time
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2025-06-12T09:19:20Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// IP ID, consistent with the purchased instance ID
+	// The ID of the IP address, which is the same as the ID of the purchased instance.
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Purchased instance ID
+	// The ID of the purchased instance.
 	//
 	// example:
 	//
 	// xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IP address
+	// The IP address.
 	//
 	// example:
 	//
 	// xxx
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Extended information
+	// Extended properties.
 	IpExt *DedicatedIpListResponseBodyIpsIpExt `json:"IpExt,omitempty" xml:"IpExt,omitempty" type:"Struct"`
-	// Name of the IP pool
+	// The name of the IP pool to which the IP belongs.
 	//
 	// example:
 	//
 	// xxx
 	IpPoolName *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
-	// Purchase time
+	// The time when the IP was purchased.
 	//
 	// example:
 	//
 	// 2025-05-12T09:19:20Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// IP status
+	// The status of the IP.
 	//
 	// example:
 	//
 	// sold
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Warm-up status
+	// The warm-up status.
 	//
 	// example:
 	//
 	// finish
 	WarmupStatus *string `json:"WarmupStatus,omitempty" xml:"WarmupStatus,omitempty"`
-	// Warm-up method
+	// The warm-up method.
 	//
 	// example:
 	//
 	// cusSelfManager
 	WarmupType *string `json:"WarmupType,omitempty" xml:"WarmupType,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone where the IP address is located.
+	//
+	// - ap-southeast-1a
+	//
+	// - ap-southeast-1b
+	//
+	// - cn-hangzhou-k
+	//
+	// - cn-shanghai-l
+	//
+	// - eu-central-1a
+	//
+	// - eu-central-1b
+	//
+	// - us-east-1a
+	//
+	// - us-east-1b
+	//
+	// example:
+	//
+	// ap-southeast-1a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DedicatedIpListResponseBodyIps) String() string {
@@ -310,18 +331,23 @@ func (s *DedicatedIpListResponseBodyIps) Validate() error {
 }
 
 type DedicatedIpListResponseBodyIpsIpExt struct {
-	// Whether auto-renewal is enabled
+	// Indicates whether auto-renewal is enabled.
 	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// Whether an email has been sent
+	// Indicates whether an email has been sent.
 	//
 	// example:
 	//
 	// true
-	HasSendMail               *bool   `json:"HasSendMail,omitempty" xml:"HasSendMail,omitempty"`
+	HasSendMail *bool `json:"HasSendMail,omitempty" xml:"HasSendMail,omitempty"`
+	// The last time the warm-up status changed.
+	//
+	// example:
+	//
+	// 2025-08-07T07:23:49.329Z
 	LastWarmUpTypeChangedTime *string `json:"LastWarmUpTypeChangedTime,omitempty" xml:"LastWarmUpTypeChangedTime,omitempty"`
 }
 

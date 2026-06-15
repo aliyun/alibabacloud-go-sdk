@@ -14,6 +14,8 @@ type iDedicatedIpPoolDeleteRequest interface {
 }
 
 type DedicatedIpPoolDeleteRequest struct {
+	// The IP pool ID.
+	//
 	// example:
 	//
 	// xxx

@@ -20,18 +20,26 @@ type iConfigSetListRequest interface {
 }
 
 type ConfigSetListRequest struct {
+	// Specifies whether to retrieve all ConfigSets. Optional.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The keyword for filtering ConfigSets by name.
+	//
 	// example:
 	//
 	// xxx
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number, starting from 1. Required.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page. Required.
+	//
 	// example:
 	//
 	// 10

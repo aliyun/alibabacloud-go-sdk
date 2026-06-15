@@ -22,30 +22,40 @@ type iSendValidateFileRequest interface {
 }
 
 type SendValidateFileRequest struct {
+	// The column that contains the email addresses in the file. The index starts from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AddressColumn *int32 `json:"AddressColumn,omitempty" xml:"AddressColumn,omitempty"`
+	// The name of the file that contains the list of email addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The URL of the file that contains the list of email addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://xxxx.oss-xxx.com/file.txt
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Specifies whether the first row is a table header.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	HasHeaderRow *bool `json:"HasHeaderRow,omitempty" xml:"HasHeaderRow,omitempty"`
+	// Specifies whether to remove duplicate email addresses in the output file.
+	//
 	// This parameter is required.
 	//
 	// example:

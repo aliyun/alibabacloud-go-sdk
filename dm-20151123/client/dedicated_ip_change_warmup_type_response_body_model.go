@@ -14,7 +14,7 @@ type iDedicatedIpChangeWarmupTypeResponseBody interface {
 }
 
 type DedicatedIpChangeWarmupTypeResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

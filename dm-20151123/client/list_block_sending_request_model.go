@@ -26,32 +26,52 @@ type iListBlockSendingRequest interface {
 }
 
 type ListBlockSendingRequest struct {
+	// The start of the time range to query blocked emails.
+	//
 	// example:
 	//
-	// 1731463398242
+	// 1763973206
 	BeginTime *int32 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The recipient email address.
+	//
 	// example:
 	//
 	// xxxx@rcpt.com
 	BlockEmail *string `json:"BlockEmail,omitempty" xml:"BlockEmail,omitempty"`
+	// The type of block.
+	//
+	// - UNSUB: Unsubscribe
+	//
+	// - REPORT: Spam report
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UNSUB
 	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	// The end of the time range to query blocked emails.
+	//
 	// example:
 	//
-	// 1732463398242
+	// 1764146006
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries to return.<br>
+	//
+	// Valid values: 1 to 500.<br>
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to start the query. If you do not specify this parameter, the query starts from the beginning of the results.
+	//
 	// example:
 	//
 	// xxxxxyyyyyy
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sender email address.
+	//
 	// example:
 	//
 	// xxxx@sender.com

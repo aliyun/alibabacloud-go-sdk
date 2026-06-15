@@ -36,22 +36,61 @@ type iCreateTemplateRequest interface {
 }
 
 type CreateTemplateRequest struct {
-	FromType             *int32  `json:"FromType,omitempty" xml:"FromType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Deprecated. This parameter is retained for backward compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
+	FromType *int32 `json:"FromType,omitempty" xml:"FromType,omitempty"`
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Deprecated. This parameter is retained for backward compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SmsContent           *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	SmsType              *int32  `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
+	// Deprecated. This parameter is retained for backward compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
+	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
+	// Deprecated. This parameter is retained for backward compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
+	SmsType *int32 `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
+	// The template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 001 Condom Manufacturer J48
-	TemplateName     *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// template name
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The sender name.
+	//
+	// example:
+	//
+	// Tom
 	TemplateNickName *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
-	TemplateSubject  *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
-	TemplateText     *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
+	// The email subject.
+	//
+	// example:
+	//
+	// subject test
+	TemplateSubject *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
+	// The email HTML body.
+	//
+	// example:
+	//
+	// <p>test</p>
+	TemplateText *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
+	// The template type.
+	//
 	// example:
 	//
 	// 0

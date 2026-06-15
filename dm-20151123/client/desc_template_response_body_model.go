@@ -34,34 +34,79 @@ type iDescTemplateResponseBody interface {
 }
 
 type DescTemplateResponseBody struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
-	// 2019-09-29T13:28Z
+	// 2025-11-14T13:28Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 95xxx5F
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	SmsType    *string `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
+	SmsType *string `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// test1
-	TemplateName     *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
 	TemplateNickName *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
+	// The status of the template. Valid values:
+	//
+	// - 0: The template is a draft.
+	//
+	// - 1: The template is pending approval.
+	//
+	// - 2: The template is approved.
+	//
+	// - 3: The template is rejected.
+	//
 	// example:
 	//
 	// 2
 	TemplateStatus *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// The template subject, which is used to create the email subject.
+	//
 	// example:
 	//
 	// test
 	TemplateSubject *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
+	// The template content.
+	//
 	// example:
 	//
 	// <p>1</p>
 	TemplateText *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 

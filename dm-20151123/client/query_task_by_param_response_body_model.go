@@ -22,25 +22,25 @@ type iQueryTaskByParamResponseBody interface {
 }
 
 type QueryTaskByParamResponseBody struct {
-	// Current page number
+	// The page number.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//

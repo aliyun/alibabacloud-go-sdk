@@ -18,19 +18,19 @@ type iDedicatedIpPoolUpdateRequest interface {
 }
 
 type DedicatedIpPoolUpdateRequest struct {
-	// Purchased IP instance IDs, separated by commas; sourced from the DedicatedIpNonePoolList API\\"s returned IP purchase instance IDs
+	// The IDs of the purchased IP instances. Separate multiple IDs with commas. Obtain these IDs from the response of the DedicatedIpNonePoolList operation.
 	//
 	// example:
 	//
 	// xxx,xxx
 	BuyResourceIds *string `json:"BuyResourceIds,omitempty" xml:"BuyResourceIds,omitempty"`
-	// IP pool ID
+	// The ID of the IP pool.
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Whether to change the associated IP, enter true
+	// Specifies whether to change the associated IP addresses. Set this parameter to true.
 	//
 	// example:
 	//

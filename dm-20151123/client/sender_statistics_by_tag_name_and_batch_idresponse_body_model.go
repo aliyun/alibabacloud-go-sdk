@@ -18,19 +18,20 @@ type iSenderStatisticsByTagNameAndBatchIDResponseBody interface {
 }
 
 type SenderStatisticsByTagNameAndBatchIDResponseBody struct {
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count
+	// The total count of data records.
 	//
 	// example:
 	//
 	// 1
-	TotalCount *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Data       *SenderStatisticsByTagNameAndBatchIDResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Contains the statistical data.
+	Data *SenderStatisticsByTagNameAndBatchIDResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s SenderStatisticsByTagNameAndBatchIDResponseBody) String() string {

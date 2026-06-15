@@ -40,55 +40,86 @@ type iGetValidateFileStatusResponseBody interface {
 }
 
 type GetValidateFileStatusResponseBody struct {
+	// The number of catch-all addresses.
+	//
 	// example:
 	//
 	// 2
 	CatchAllNum *string `json:"CatchAllNum,omitempty" xml:"CatchAllNum,omitempty"`
+	// The task completion time.
+	//
 	// example:
 	//
 	// 2000-01-01T00:00:00Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The number of do-not-mail addresses.
+	//
 	// example:
 	//
 	// 1
 	DoNotMailNum *string `json:"DoNotMailNum,omitempty" xml:"DoNotMailNum,omitempty"`
-	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file ID.
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxx
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The number of invalid addresses.
+	//
 	// example:
 	//
 	// 2
 	InvalidNum *string `json:"InvalidNum,omitempty" xml:"InvalidNum,omitempty"`
+	// The task completion percentage.
+	//
 	// example:
 	//
 	// 100%
 	Percentage *string `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The number of processed addresses.
+	//
 	// example:
 	//
 	// 10
 	ProcessedNum *string `json:"ProcessedNum,omitempty" xml:"ProcessedNum,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// yyyy-yyyy-yyyy-yyyy
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of addresses in the file.
+	//
 	// example:
 	//
 	// 10
 	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The number of unknown addresses.
+	//
 	// example:
 	//
 	// 1
 	UnknownNum *string `json:"UnknownNum,omitempty" xml:"UnknownNum,omitempty"`
+	// The upload time.
+	//
 	// example:
 	//
 	// 2000-01-01T00:00:00Z
 	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	// The number of valid addresses.
+	//
 	// example:
 	//
 	// 4
