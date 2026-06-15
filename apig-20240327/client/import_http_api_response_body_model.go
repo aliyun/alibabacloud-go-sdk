@@ -26,7 +26,7 @@ type ImportHttpApiResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Details of the imported API.
+	// The API information.
 	Data *ImportHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,7 +96,7 @@ func (s *ImportHttpApiResponseBody) Validate() error {
 }
 
 type ImportHttpApiResponseBodyData struct {
-	// The results of the dry run.
+	// The dry run result.
 	DryRunInfo *ImportHttpApiResponseBodyDataDryRunInfo `json:"dryRunInfo,omitempty" xml:"dryRunInfo,omitempty" type:"Struct"`
 	// The unique ID of the HTTP API.
 	//
@@ -157,22 +157,22 @@ func (s *ImportHttpApiResponseBodyData) Validate() error {
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfo struct {
-	// Global error messages. If this list is not empty, the API import fails.
+	// The error messages. If error messages are not empty, the API cannot be imported.
 	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
-	// Details of the existing API. If this field is populated, the import operation updates this API.
+	// The information about the existing API. If this field is not empty, the import updates this API.
 	ExistHttpApiInfo *HttpApiApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty"`
-	// Data structures that failed the dry run.
+	// The list of data structures that failed the dry run.
 	FailureComponents []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
-	// Operations that failed the dry run.
+	// The list of operations that failed the dry run.
 	FailureOperations  []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
 	FailureRoutes      []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes     `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
 	McpToolsDefinition *string                                                     `json:"mcpToolsDefinition,omitempty" xml:"mcpToolsDefinition,omitempty"`
-	// Data structures that passed the dry run.
+	// The list of data structures that passed the dry run.
 	SuccessComponents []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
-	// Operations that passed the dry run.
+	// The list of operations that passed the dry run.
 	SuccessOperations []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
 	SuccessRoutes     []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes     `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
-	// Global warning messages. If this list is not empty, some operations or data structures might not be imported.
+	// The warning messages. If warning messages are not empty, some operations or data structures may not be imported.
 	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
 }
 
@@ -338,7 +338,7 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) Validate() error {
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoFailureComponents struct {
-	// The reason for the dry run failure.
+	// The error message.
 	//
 	// example:
 	//
@@ -383,7 +383,7 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureComponents) Validate() er
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoFailureOperations struct {
-	// The reason for the dry run failure.
+	// The error message.
 	//
 	// example:
 	//
@@ -478,11 +478,11 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) Validate() error 
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents struct {
-	// Indicates whether the data structure will be created or updated.
+	// The action to be performed after the dry run. Valid values:
 	//
-	// - `Create`: Creates a new data structure.
+	// - Create: create.
 	//
-	// - `Update`: Updates an existing data structure.
+	// - Update: update.
 	//
 	// example:
 	//
@@ -527,11 +527,11 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) Validate() er
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations struct {
-	// Indicates whether the operation creates or updates a resource.
+	// The action to be performed after the dry run. Valid values:
 	//
-	// - `Create`: Creates a new resource.
+	// - Create: create.
 	//
-	// - `Update`: Updates an existing resource.
+	// - Update: update.
 	//
 	// example:
 	//
