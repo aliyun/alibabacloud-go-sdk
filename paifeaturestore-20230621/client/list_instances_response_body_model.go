@@ -18,11 +18,16 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// The list of instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2CA11923-2A3D-5E5A-8314-E699D2DD15DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 10
@@ -78,29 +83,58 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
+	// Information about the FeatureDB instance.
 	FeatureDBInfo *ListInstancesResponseBodyInstancesFeatureDBInfo `json:"FeatureDBInfo,omitempty" xml:"FeatureDBInfo,omitempty" type:"Struct"`
 	// Deprecated
+	//
+	// Information about the FeatureDB instance.
 	FeatureDBInstanceInfo *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo `json:"FeatureDBInstanceInfo,omitempty" xml:"FeatureDBInstanceInfo,omitempty" type:"Struct"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// featureStore-cn-7mz2xfu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the instance is located.
+	//
+	// - cn-hangzhou
+	//
+	// - cn-beijing
+	//
+	// - cn-shanghai
+	//
+	// - cn-shenzhen
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the instance.
+	//
+	// - Initializing
+	//
+	// - Running
+	//
+	// - Stopped
+	//
 	// example:
 	//
 	// Initializing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance type. Currently, only Basic is supported.
+	//
 	// example:
 	//
 	// Basic
@@ -202,6 +236,7 @@ func (s *ListInstancesResponseBodyInstances) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesFeatureDBInfo struct {
+	// The status of the FeatureDB instance.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -227,6 +262,7 @@ func (s *ListInstancesResponseBodyInstancesFeatureDBInfo) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesFeatureDBInstanceInfo struct {
+	// The status of the FeatureDB instance.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

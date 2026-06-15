@@ -28,31 +28,50 @@ type iListProjectsShrinkRequest interface {
 }
 
 type ListProjectsShrinkRequest struct {
+	// The project name to filter by.
+	//
 	// example:
 	//
 	// fs1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `Asc`: ascending order.
+	//
+	// - `Desc`: descending order.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The Alibaba Cloud account ID of the project owner.
+	//
 	// example:
 	//
 	// 134324352****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Starts from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// An array of project IDs to filter by.
 	ProjectIdsShrink *string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty"`
+	// The field to sort the results by.
+	//
 	// example:
 	//
 	// GmtModifiedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the workspace. Call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to get this ID.
+	//
 	// example:
 	//
 	// 234

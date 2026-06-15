@@ -16,10 +16,14 @@ type iUpdateProjectRequest interface {
 }
 
 type UpdateProjectRequest struct {
+	// The project description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1

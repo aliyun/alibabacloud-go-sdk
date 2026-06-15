@@ -28,34 +28,50 @@ type iListLLMConfigsRequest interface {
 }
 
 type ListLLMConfigsRequest struct {
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the LLM configuration.
+	//
 	// example:
 	//
 	// llm_config_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A pagination token returned from a previous call. Pass this token to retrieve the next page of results. If you do not specify this parameter, the query starts from the beginning.
+	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort by.
+	//
 	// example:
 	//
 	// GmtModifiedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 234

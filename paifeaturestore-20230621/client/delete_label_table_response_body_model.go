@@ -14,6 +14,8 @@ type iDeleteLabelTableResponseBody interface {
 }
 
 type DeleteLabelTableResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FFD39C0F-DD8D-51B2-864E-2842206DB0E8

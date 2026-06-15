@@ -16,11 +16,14 @@ type iWriteFeatureViewTableResponseBody interface {
 }
 
 type WriteFeatureViewTableResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s WriteFeatureViewTableResponseBody) String() string {

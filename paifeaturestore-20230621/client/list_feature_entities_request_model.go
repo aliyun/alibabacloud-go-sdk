@@ -30,35 +30,56 @@ type iListFeatureEntitiesRequest interface {
 }
 
 type ListFeatureEntitiesRequest struct {
+	// Filters the results by a list of feature entity IDs.
 	FeatureEntityIds []*string `json:"FeatureEntityIds,omitempty" xml:"FeatureEntityIds,omitempty" type:"Repeated"`
+	// Filters the results by feature entity name.
+	//
 	// example:
 	//
 	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `Asc`: Ascending order.
+	//
+	// - `Desc`: Descending order.
+	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The Alibaba Cloud account ID of the creator.
+	//
 	// example:
 	//
 	// 1231432*****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Values start at 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filters the results by parent feature entity ID. Omit this parameter to return all feature entities. Set it to `0` to return all root feature entities. Set it to a non-zero value to return all child feature entities of the specified parent.
+	//
 	// example:
 	//
 	// 1
 	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
+	// The project ID. You can obtain this ID by calling the `ListProjects` operation.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field to sort the results by.
+	//
 	// example:
 	//
 	// GmtModifiedTime

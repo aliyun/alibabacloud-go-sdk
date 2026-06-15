@@ -22,16 +22,23 @@ type iExportModelFeatureTrainingSetTableRequest interface {
 }
 
 type ExportModelFeatureTrainingSetTableRequest struct {
+  // A map of feature view configurations.
   FeatureViewConfig map[string]*FeatureViewConfigValue `json:"FeatureViewConfig,omitempty" xml:"FeatureViewConfig,omitempty"`
+  // The input configuration for the label table.
   LabelInputConfig *ExportModelFeatureTrainingSetTableRequestLabelInputConfig `json:"LabelInputConfig,omitempty" xml:"LabelInputConfig,omitempty" type:"Struct"`
+  // The polling interval for retrieving real-time features.
+  // 
   // example:
   // 
   // 1
   RealTimeIterateInterval *int64 `json:"RealTimeIterateInterval,omitempty" xml:"RealTimeIterateInterval,omitempty"`
+  // The number of days for partition statistics of the real-time feature view.
+  // 
   // example:
   // 
   // 5
   RealTimePartitionCountValue *int64 `json:"RealTimePartitionCountValue,omitempty" xml:"RealTimePartitionCountValue,omitempty"`
+  // The configuration for the training set.
   TrainingSetConfig *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig `json:"TrainingSetConfig,omitempty" xml:"TrainingSetConfig,omitempty" type:"Struct"`
 }
 
@@ -103,10 +110,13 @@ func (s *ExportModelFeatureTrainingSetTableRequest) Validate() error {
 }
 
 type ExportModelFeatureTrainingSetTableRequestLabelInputConfig struct {
+  // The event time.
+  // 
   // example:
   // 
   // 2022-07-02 00:00:00
   EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+  // The list of partitions.
   Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 }
 
@@ -141,6 +151,7 @@ func (s *ExportModelFeatureTrainingSetTableRequestLabelInputConfig) Validate() e
 }
 
 type ExportModelFeatureTrainingSetTableRequestTrainingSetConfig struct {
+  // The list of partitions.
   Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 }
 

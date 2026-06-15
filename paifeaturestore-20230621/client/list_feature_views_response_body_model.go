@@ -18,11 +18,16 @@ type iListFeatureViewsResponseBody interface {
 }
 
 type ListFeatureViewsResponseBody struct {
+	// The feature view list.
 	FeatureViews []*ListFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C03B2680-AC9C-59CD-93C5-8142B92537FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of feature views.
+	//
 	// example:
 	//
 	// 10
@@ -78,59 +83,94 @@ func (s *ListFeatureViewsResponseBody) Validate() error {
 }
 
 type ListFeatureViewsResponseBodyFeatureViews struct {
+	// The feature entity name.
+	//
 	// example:
 	//
 	// featureEntity1
 	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	// The feature view ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The feature view name.
+	//
 	// example:
 	//
 	// featureView1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account that created the feature view.
+	//
 	// example:
 	//
 	// 12321421412****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the data source for the registered table.
+	//
 	// example:
 	//
 	// 4
 	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// The name of the data source for the registered table.
+	//
 	// example:
 	//
 	// datasource1
 	RegisterDatasourceName *string `json:"RegisterDatasourceName,omitempty" xml:"RegisterDatasourceName,omitempty"`
+	// The registered table name.
+	//
 	// example:
 	//
 	// table1
 	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// The TTL (Time to Live) of features in the feature view, in seconds.
+	//
 	// example:
 	//
 	// 90
 	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the feature view. Valid values:
+	//
+	// ● Batch feature
+	//
+	// ● Stream feature
+	//
 	// example:
 	//
 	// Batch
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	WriteToFeatureDB *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether data is written to the online feature store.
+	//
+	// example:
+	//
+	// false
+	WriteToFeatureDB *bool `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s ListFeatureViewsResponseBodyFeatureViews) String() string {

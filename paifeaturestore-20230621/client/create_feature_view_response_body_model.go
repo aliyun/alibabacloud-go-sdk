@@ -16,10 +16,14 @@ type iCreateFeatureViewResponseBody interface {
 }
 
 type CreateFeatureViewResponseBody struct {
+	// The feature view ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8

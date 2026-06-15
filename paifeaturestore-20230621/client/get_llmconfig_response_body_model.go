@@ -42,58 +42,84 @@ type iGetLLMConfigResponseBody interface {
 }
 
 type GetLLMConfigResponseBody struct {
+	// The API key.
+	//
 	// example:
 	//
 	// api-abcdxy
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The base URL for API calls.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The batch size.
+	//
 	// example:
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The embedding dimension. If this parameter is unspecified or set to 0, the system uses the model\\"s default dimension.
+	//
 	// example:
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
-	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// Indicates whether fusion is enabled.
+	EnableFusion *bool `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the configuration was last modified.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the LLM call configuration.
+	//
 	// example:
 	//
 	// llm_config1
 	LLMConfigId *string `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// The maximum number of tokens in a single request.
+	//
 	// example:
 	//
 	// 2048
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// text-embedding-v1
-	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The type of the model.
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The name of the LLM call configuration.
+	//
 	// example:
 	//
 	// llm_config_name1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C03B2680-AC9C-59CD-93C5-8142B92537FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of requests allowed per second.
+	//
 	// example:
 	//
 	// 30
 	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 234

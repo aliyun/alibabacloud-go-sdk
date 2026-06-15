@@ -16,7 +16,10 @@ type iListFeatureViewOnlineFeaturesResponseBody interface {
 }
 
 type ListFeatureViewOnlineFeaturesResponseBody struct {
+	// An array of the retrieved online feature records.
 	OnlineFeatures []*string `json:"OnlineFeatures,omitempty" xml:"OnlineFeatures,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BF349686-C932-55B5-9B31-DAFA395C0E06

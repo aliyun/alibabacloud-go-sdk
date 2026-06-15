@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 检测资源连接状态。
+// Tests connectivity to a data source.
 //
 // @param request - CheckInstanceDatasourceRequest
 //
@@ -113,7 +113,7 @@ func (client *Client) CheckInstanceDatasourceWithOptions(InstanceId *string, req
 
 // Summary:
 //
-// 检测资源连接状态。
+// Tests connectivity to a data source.
 //
 // @param request - CheckInstanceDatasourceRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) CheckInstanceDatasource(InstanceId *string, request *Check
 
 // Summary:
 //
-// 检查FG配置内容是否正确，是否满足所有规则。
+// Verify that the FG configuration is correct and meets all rules.
 //
 // @param headers - map
 //
@@ -165,7 +165,7 @@ func (client *Client) CheckModelFeatureFGFeatureWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// 检查FG配置内容是否正确，是否满足所有规则。
+// Verify that the FG configuration is correct and meets all rules.
 //
 // @return CheckModelFeatureFGFeatureResponse
 func (client *Client) CheckModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string) (_result *CheckModelFeatureFGFeatureResponse, _err error) {
@@ -182,7 +182,7 @@ func (client *Client) CheckModelFeatureFGFeature(InstanceId *string, ModelFeatur
 
 // Summary:
 //
-// Register a datasource under a FeatureStore Instance. A datasource provides offline storage (**MaxCompute**) or online storage (**Hologres**, **TableStore**, or **FeatureDB**) for projects in the Instance.
+// Registers a datasource in a FeatureStore instance. A datasource provides offline or online storage for a project.
 //
 // @param request - CreateDatasourceRequest
 //
@@ -245,7 +245,7 @@ func (client *Client) CreateDatasourceWithOptions(InstanceId *string, request *C
 
 // Summary:
 //
-// Register a datasource under a FeatureStore Instance. A datasource provides offline storage (**MaxCompute**) or online storage (**Hologres**, **TableStore**, or **FeatureDB**) for projects in the Instance.
+// Registers a datasource in a FeatureStore instance. A datasource provides offline or online storage for a project.
 //
 // @param request - CreateDatasourceRequest
 //
@@ -264,7 +264,7 @@ func (client *Client) CreateDatasource(InstanceId *string, request *CreateDataso
 
 // Summary:
 //
-// 创建特征实体
+// Creates a feature entity. A feature entity defines a join key that links multiple feature views to it, enabling feature joining.
 //
 // @param request - CreateFeatureEntityRequest
 //
@@ -323,7 +323,7 @@ func (client *Client) CreateFeatureEntityWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// 创建特征实体
+// Creates a feature entity. A feature entity defines a join key that links multiple feature views to it, enabling feature joining.
 //
 // @param request - CreateFeatureEntityRequest
 //
@@ -342,7 +342,7 @@ func (client *Client) CreateFeatureEntity(InstanceId *string, request *CreateFea
 
 // Summary:
 //
-// 创建特征视图。
+// You can create three types of feature views: offline, real-time, and behavior sequence. Each feature view uses fields to define its structure and links to a feature entity.
 //
 // @param request - CreateFeatureViewRequest
 //
@@ -437,7 +437,7 @@ func (client *Client) CreateFeatureViewWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// 创建特征视图。
+// You can create three types of feature views: offline, real-time, and behavior sequence. Each feature view uses fields to define its structure and links to a feature entity.
 //
 // @param request - CreateFeatureViewRequest
 //
@@ -456,7 +456,7 @@ func (client *Client) CreateFeatureView(InstanceId *string, request *CreateFeatu
 
 // Summary:
 //
-// 创建Feature Store实例。
+// Creates a FeatureStore instance. This operation is idempotent. If an instance is already running or initializing in the same account, this operation returns the existing instance ID.
 //
 // @param request - CreateInstanceRequest
 //
@@ -503,7 +503,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// 创建Feature Store实例。
+// Creates a FeatureStore instance. This operation is idempotent. If an instance is already running or initializing in the same account, this operation returns the existing instance ID.
 //
 // @param request - CreateInstanceRequest
 //
@@ -522,7 +522,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建大模型调用信息配置
+// Creates an LLM configuration that contains the call parameters and API key for an embedding model. During creation, the service validates the ApiKey and Model. For a DashScope model, the EmbeddingDimension must match one of the fixed, valid dimensions supported by the model.
 //
 // @param request - CreateLLMConfigRequest
 //
@@ -609,7 +609,7 @@ func (client *Client) CreateLLMConfigWithOptions(InstanceId *string, request *Cr
 
 // Summary:
 //
-// 创建大模型调用信息配置
+// Creates an LLM configuration that contains the call parameters and API key for an embedding model. During creation, the service validates the ApiKey and Model. For a DashScope model, the EmbeddingDimension must match one of the fixed, valid dimensions supported by the model.
 //
 // @param request - CreateLLMConfigRequest
 //
@@ -628,7 +628,7 @@ func (client *Client) CreateLLMConfig(InstanceId *string, request *CreateLLMConf
 
 // Summary:
 //
-// 创建label表
+// Creates a label table. A label table defines the schema for label data referenced by model features.
 //
 // @param request - CreateLabelTableRequest
 //
@@ -687,7 +687,7 @@ func (client *Client) CreateLabelTableWithOptions(InstanceId *string, request *C
 
 // Summary:
 //
-// 创建label表
+// Creates a label table. A label table defines the schema for label data referenced by model features.
 //
 // @param request - CreateLabelTableRequest
 //
@@ -706,7 +706,7 @@ func (client *Client) CreateLabelTable(InstanceId *string, request *CreateLabelT
 
 // Summary:
 //
-// 创建模型特征。
+// Creates a model feature. A model feature associates a label table with a set of feature view fields. It is used to generate the training dataset table required for model training and to specify the feature set used for model inference.
 //
 // @param request - CreateModelFeatureRequest
 //
@@ -773,7 +773,7 @@ func (client *Client) CreateModelFeatureWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// 创建模型特征。
+// Creates a model feature. A model feature associates a label table with a set of feature view fields. It is used to generate the training dataset table required for model training and to specify the feature set used for model inference.
 //
 // @param request - CreateModelFeatureRequest
 //
@@ -792,7 +792,7 @@ func (client *Client) CreateModelFeature(InstanceId *string, request *CreateMode
 
 // Summary:
 //
-// Create a FeatureStore project under a PAI workspace. A project groups FeatureEntities, FeatureViews, and ModelFeatures sharing one **MaxCompute*	- offline datasource and one online datasource (**Hologres**, **TableStore**, or **FeatureDB**).
+// Creates a FeatureStore project. A project is a container for feature entities, feature views, and model features.
 //
 // @param request - CreateProjectRequest
 //
@@ -859,7 +859,7 @@ func (client *Client) CreateProjectWithOptions(InstanceId *string, request *Crea
 
 // Summary:
 //
-// Create a FeatureStore project under a PAI workspace. A project groups FeatureEntities, FeatureViews, and ModelFeatures sharing one **MaxCompute*	- offline datasource and one online datasource (**Hologres**, **TableStore**, or **FeatureDB**).
+// Creates a FeatureStore project. A project is a container for feature entities, feature views, and model features.
 //
 // @param request - CreateProjectRequest
 //
@@ -878,7 +878,7 @@ func (client *Client) CreateProject(InstanceId *string, request *CreateProjectRe
 
 // Summary:
 //
-// 创建feature store服务账户角色
+// Creates a service-linked role that authorizes the FeatureStore service to access other cloud resources of the user. Returns a conflict error if the role already exists.
 //
 // @param request - CreateServiceIdentityRoleRequest
 //
@@ -925,7 +925,7 @@ func (client *Client) CreateServiceIdentityRoleWithOptions(request *CreateServic
 
 // Summary:
 //
-// 创建feature store服务账户角色
+// Creates a service-linked role that authorizes the FeatureStore service to access other cloud resources of the user. Returns a conflict error if the role already exists.
 //
 // @param request - CreateServiceIdentityRoleRequest
 //
@@ -944,7 +944,7 @@ func (client *Client) CreateServiceIdentityRole(request *CreateServiceIdentityRo
 
 // Summary:
 //
-// Delete a datasource from a FeatureStore Instance.
+// Deletes a datasource from a FeatureStore instance.
 //
 // @param headers - map
 //
@@ -977,7 +977,7 @@ func (client *Client) DeleteDatasourceWithOptions(InstanceId *string, Datasource
 
 // Summary:
 //
-// Delete a datasource from a FeatureStore Instance.
+// Deletes a datasource from a FeatureStore instance.
 //
 // @return DeleteDatasourceResponse
 func (client *Client) DeleteDatasource(InstanceId *string, DatasourceId *string) (_result *DeleteDatasourceResponse, _err error) {
@@ -994,7 +994,7 @@ func (client *Client) DeleteDatasource(InstanceId *string, DatasourceId *string)
 
 // Summary:
 //
-// 删除指定特征实体
+// Deletes a feature entity.
 //
 // @param headers - map
 //
@@ -1027,7 +1027,7 @@ func (client *Client) DeleteFeatureEntityWithOptions(InstanceId *string, Feature
 
 // Summary:
 //
-// 删除指定特征实体
+// Deletes a feature entity.
 //
 // @return DeleteFeatureEntityResponse
 func (client *Client) DeleteFeatureEntity(InstanceId *string, FeatureEntityId *string) (_result *DeleteFeatureEntityResponse, _err error) {
@@ -1044,7 +1044,7 @@ func (client *Client) DeleteFeatureEntity(InstanceId *string, FeatureEntityId *s
 
 // Summary:
 //
-// 删除指定特征视图。
+// Deletes a feature view. A feature view cannot be deleted if it is referenced by a model feature. To delete the feature view, you must first delete the associated model feature.
 //
 // @param headers - map
 //
@@ -1077,7 +1077,7 @@ func (client *Client) DeleteFeatureViewWithOptions(InstanceId *string, FeatureVi
 
 // Summary:
 //
-// 删除指定特征视图。
+// Deletes a feature view. A feature view cannot be deleted if it is referenced by a model feature. To delete the feature view, you must first delete the associated model feature.
 //
 // @return DeleteFeatureViewResponse
 func (client *Client) DeleteFeatureView(InstanceId *string, FeatureViewId *string) (_result *DeleteFeatureViewResponse, _err error) {
@@ -1094,7 +1094,7 @@ func (client *Client) DeleteFeatureView(InstanceId *string, FeatureViewId *strin
 
 // Summary:
 //
-// 删除大模型调用信息配置
+// Deletes an LLM call configuration. You cannot delete a configuration referenced by a feature view. You must first delete the associated feature view.
 //
 // @param headers - map
 //
@@ -1127,7 +1127,7 @@ func (client *Client) DeleteLLMConfigWithOptions(InstanceId *string, LLMConfigId
 
 // Summary:
 //
-// 删除大模型调用信息配置
+// Deletes an LLM call configuration. You cannot delete a configuration referenced by a feature view. You must first delete the associated feature view.
 //
 // @return DeleteLLMConfigResponse
 func (client *Client) DeleteLLMConfig(InstanceId *string, LLMConfigId *string) (_result *DeleteLLMConfigResponse, _err error) {
@@ -1144,7 +1144,7 @@ func (client *Client) DeleteLLMConfig(InstanceId *string, LLMConfigId *string) (
 
 // Summary:
 //
-// 删除label表
+// Deletes a label table. You cannot delete a label table that is referenced by a model feature. Delete the associated model feature first.
 //
 // @param headers - map
 //
@@ -1177,7 +1177,7 @@ func (client *Client) DeleteLabelTableWithOptions(InstanceId *string, LabelTable
 
 // Summary:
 //
-// 删除label表
+// Deletes a label table. You cannot delete a label table that is referenced by a model feature. Delete the associated model feature first.
 //
 // @return DeleteLabelTableResponse
 func (client *Client) DeleteLabelTable(InstanceId *string, LabelTableId *string) (_result *DeleteLabelTableResponse, _err error) {
@@ -1194,7 +1194,7 @@ func (client *Client) DeleteLabelTable(InstanceId *string, LabelTableId *string)
 
 // Summary:
 //
-// 删除指定模型特征。
+// Deletes a model feature and its associated training set table.
 //
 // @param headers - map
 //
@@ -1227,7 +1227,7 @@ func (client *Client) DeleteModelFeatureWithOptions(InstanceId *string, ModelFea
 
 // Summary:
 //
-// 删除指定模型特征。
+// Deletes a model feature and its associated training set table.
 //
 // @return DeleteModelFeatureResponse
 func (client *Client) DeleteModelFeature(InstanceId *string, ModelFeatureId *string) (_result *DeleteModelFeatureResponse, _err error) {
@@ -1244,7 +1244,7 @@ func (client *Client) DeleteModelFeature(InstanceId *string, ModelFeatureId *str
 
 // Summary:
 //
-// 删除指定Feature Store项目。
+// Deletes a FeatureStore project.
 //
 // @param headers - map
 //
@@ -1277,7 +1277,7 @@ func (client *Client) DeleteProjectWithOptions(InstanceId *string, ProjectId *st
 
 // Summary:
 //
-// 删除指定Feature Store项目。
+// Deletes a FeatureStore project.
 //
 // @return DeleteProjectResponse
 func (client *Client) DeleteProject(InstanceId *string, ProjectId *string) (_result *DeleteProjectResponse, _err error) {
@@ -1294,7 +1294,7 @@ func (client *Client) DeleteProject(InstanceId *string, ProjectId *string) (_res
 
 // Summary:
 //
-// 导出训练集表。
+// Export a training set table for model features. Create an export task by configuring the Label table input, the data source partition for each feature view, and the training set output partition.
 //
 // @param request - ExportModelFeatureTrainingSetTableRequest
 //
@@ -1357,7 +1357,7 @@ func (client *Client) ExportModelFeatureTrainingSetTableWithOptions(InstanceId *
 
 // Summary:
 //
-// 导出训练集表。
+// Export a training set table for model features. Create an export task by configuring the Label table input, the data source partition for each feature view, and the training set output partition.
 //
 // @param request - ExportModelFeatureTrainingSetTableRequest
 //
@@ -1376,7 +1376,7 @@ func (client *Client) ExportModelFeatureTrainingSetTable(InstanceId *string, Mod
 
 // Summary:
 //
-// Get the details of a datasource, including its type, connection info, and Config.
+// Gets the detailed information about a data source, including its type, connection information, and configuration.
 //
 // @param headers - map
 //
@@ -1409,7 +1409,7 @@ func (client *Client) GetDatasourceWithOptions(InstanceId *string, DatasourceId 
 
 // Summary:
 //
-// Get the details of a datasource, including its type, connection info, and Config.
+// Gets the detailed information about a data source, including its type, connection information, and configuration.
 //
 // @return GetDatasourceResponse
 func (client *Client) GetDatasource(InstanceId *string, DatasourceId *string) (_result *GetDatasourceResponse, _err error) {
@@ -1426,7 +1426,7 @@ func (client *Client) GetDatasource(InstanceId *string, DatasourceId *string) (_
 
 // Summary:
 //
-// 获取数据源下指定表的详细信息。
+// Gets the field information for a specified table in a data source. This operation supports only MaxCompute data sources.
 //
 // @param headers - map
 //
@@ -1459,7 +1459,7 @@ func (client *Client) GetDatasourceTableWithOptions(InstanceId *string, Datasour
 
 // Summary:
 //
-// 获取数据源下指定表的详细信息。
+// Gets the field information for a specified table in a data source. This operation supports only MaxCompute data sources.
 //
 // @return GetDatasourceTableResponse
 func (client *Client) GetDatasourceTable(InstanceId *string, DatasourceId *string, TableName *string) (_result *GetDatasourceTableResponse, _err error) {
@@ -1476,7 +1476,7 @@ func (client *Client) GetDatasourceTable(InstanceId *string, DatasourceId *strin
 
 // Summary:
 //
-// 获取特征实体详细信息
+// Retrieves the details of a feature entity.
 //
 // @param headers - map
 //
@@ -1509,7 +1509,7 @@ func (client *Client) GetFeatureEntityWithOptions(InstanceId *string, FeatureEnt
 
 // Summary:
 //
-// 获取特征实体详细信息
+// Retrieves the details of a feature entity.
 //
 // @return GetFeatureEntityResponse
 func (client *Client) GetFeatureEntity(InstanceId *string, FeatureEntityId *string) (_result *GetFeatureEntityResponse, _err error) {
@@ -1526,7 +1526,7 @@ func (client *Client) GetFeatureEntity(InstanceId *string, FeatureEntityId *stri
 
 // Summary:
 //
-// 获取特征视图详细信息。
+// Gets the details of a feature view, including its field definitions, data source binding, and synchronization status.
 //
 // @param headers - map
 //
@@ -1559,7 +1559,7 @@ func (client *Client) GetFeatureViewWithOptions(InstanceId *string, FeatureViewI
 
 // Summary:
 //
-// 获取特征视图详细信息。
+// Gets the details of a feature view, including its field definitions, data source binding, and synchronization status.
 //
 // @return GetFeatureViewResponse
 func (client *Client) GetFeatureView(InstanceId *string, FeatureViewId *string) (_result *GetFeatureViewResponse, _err error) {
@@ -1576,7 +1576,7 @@ func (client *Client) GetFeatureView(InstanceId *string, FeatureViewId *string) 
 
 // Summary:
 //
-// 获取实例详细信息
+// Retrieves the details of a FeatureStore instance.
 //
 // @param headers - map
 //
@@ -1609,7 +1609,7 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 
 // Summary:
 //
-// 获取实例详细信息
+// Retrieves the details of a FeatureStore instance.
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
@@ -1626,7 +1626,7 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 
 // Summary:
 //
-// 获取 LLMConfig 信息
+// Retrieves the details of an LLM call configuration.
 //
 // @param headers - map
 //
@@ -1659,7 +1659,7 @@ func (client *Client) GetLLMConfigWithOptions(InstanceId *string, LLMConfigId *s
 
 // Summary:
 //
-// 获取 LLMConfig 信息
+// Retrieves the details of an LLM call configuration.
 //
 // @return GetLLMConfigResponse
 func (client *Client) GetLLMConfig(InstanceId *string, LLMConfigId *string, RegionId *string) (_result *GetLLMConfigResponse, _err error) {
@@ -1676,7 +1676,7 @@ func (client *Client) GetLLMConfig(InstanceId *string, LLMConfigId *string, Regi
 
 // Summary:
 //
-// 获取Label表详细信息。
+// Retrieves the details of a label table, including its field definitions and related models.
 //
 // @param headers - map
 //
@@ -1709,7 +1709,7 @@ func (client *Client) GetLabelTableWithOptions(InstanceId *string, LabelTableId 
 
 // Summary:
 //
-// 获取Label表详细信息。
+// Retrieves the details of a label table, including its field definitions and related models.
 //
 // @return GetLabelTableResponse
 func (client *Client) GetLabelTable(InstanceId *string, LabelTableId *string) (_result *GetLabelTableResponse, _err error) {
@@ -1726,7 +1726,7 @@ func (client *Client) GetLabelTable(InstanceId *string, LabelTableId *string) (_
 
 // Summary:
 //
-// 获取模型特征详情。
+// Retrieves detailed information about a model feature, including the selected feature list, lineage relationships, and training set export script.
 //
 // @param headers - map
 //
@@ -1759,7 +1759,7 @@ func (client *Client) GetModelFeatureWithOptions(InstanceId *string, ModelFeatur
 
 // Summary:
 //
-// 获取模型特征详情。
+// Retrieves detailed information about a model feature, including the selected feature list, lineage relationships, and training set export script.
 //
 // @return GetModelFeatureResponse
 func (client *Client) GetModelFeature(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureResponse, _err error) {
@@ -1776,7 +1776,7 @@ func (client *Client) GetModelFeature(InstanceId *string, ModelFeatureId *string
 
 // Summary:
 //
-// 获取模型特征的FG特征配置信息。
+// Retrieves the Feature Generation (FG) feature configuration of a model feature.
 //
 // @param headers - map
 //
@@ -1809,7 +1809,7 @@ func (client *Client) GetModelFeatureFGFeatureWithOptions(InstanceId *string, Mo
 
 // Summary:
 //
-// 获取模型特征的FG特征配置信息。
+// Retrieves the Feature Generation (FG) feature configuration of a model feature.
 //
 // @return GetModelFeatureFGFeatureResponse
 func (client *Client) GetModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureFGFeatureResponse, _err error) {
@@ -1826,7 +1826,7 @@ func (client *Client) GetModelFeatureFGFeature(InstanceId *string, ModelFeatureI
 
 // Summary:
 //
-// 获取模型特征的fg.json文件配置信息。
+// Retrieves the fg.json file configuration for a model feature.
 //
 // @param headers - map
 //
@@ -1859,7 +1859,7 @@ func (client *Client) GetModelFeatureFGInfoWithOptions(InstanceId *string, Model
 
 // Summary:
 //
-// 获取模型特征的fg.json文件配置信息。
+// Retrieves the fg.json file configuration for a model feature.
 //
 // @return GetModelFeatureFGInfoResponse
 func (client *Client) GetModelFeatureFGInfo(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureFGInfoResponse, _err error) {
@@ -1876,7 +1876,7 @@ func (client *Client) GetModelFeatureFGInfo(InstanceId *string, ModelFeatureId *
 
 // Summary:
 //
-// 获取指定Feature Store项目详细信息。
+// Gets the details of a project, including its data source bindings and resource counts.
 //
 // @param headers - map
 //
@@ -1909,7 +1909,7 @@ func (client *Client) GetProjectWithOptions(InstanceId *string, ProjectId *strin
 
 // Summary:
 //
-// 获取指定Feature Store项目详细信息。
+// Gets the details of a project, including its data source bindings and resource counts.
 //
 // @return GetProjectResponse
 func (client *Client) GetProject(InstanceId *string, ProjectId *string) (_result *GetProjectResponse, _err error) {
@@ -1926,7 +1926,7 @@ func (client *Client) GetProject(InstanceId *string, ProjectId *string) (_result
 
 // Summary:
 //
-// 获取项目下特征实体详细信息
+// Retrieve details of a feature entity in a project by name.
 //
 // @param headers - map
 //
@@ -1959,7 +1959,7 @@ func (client *Client) GetProjectFeatureEntityWithOptions(InstanceId *string, Pro
 
 // Summary:
 //
-// 获取项目下特征实体详细信息
+// Retrieve details of a feature entity in a project by name.
 //
 // @return GetProjectFeatureEntityResponse
 func (client *Client) GetProjectFeatureEntity(InstanceId *string, ProjectId *string, FeatureEntityName *string) (_result *GetProjectFeatureEntityResponse, _err error) {
@@ -1976,7 +1976,7 @@ func (client *Client) GetProjectFeatureEntity(InstanceId *string, ProjectId *str
 
 // Summary:
 //
-// 获取feature store服务账户角色。
+// Queries the details of a service-linked role and verifies whether the role exists and is available.
 //
 // @param headers - map
 //
@@ -2009,7 +2009,7 @@ func (client *Client) GetServiceIdentityRoleWithOptions(RoleName *string, header
 
 // Summary:
 //
-// 获取feature store服务账户角色。
+// Queries the details of a service-linked role and verifies whether the role exists and is available.
 //
 // @return GetServiceIdentityRoleResponse
 func (client *Client) GetServiceIdentityRole(RoleName *string) (_result *GetServiceIdentityRoleResponse, _err error) {
@@ -2026,7 +2026,7 @@ func (client *Client) GetServiceIdentityRole(RoleName *string) (_result *GetServ
 
 // Summary:
 //
-// 获取任务详情
+// Gets the details of an asynchronous task.
 //
 // @param headers - map
 //
@@ -2059,7 +2059,7 @@ func (client *Client) GetTaskWithOptions(InstanceId *string, TaskId *string, hea
 
 // Summary:
 //
-// 获取任务详情
+// Gets the details of an asynchronous task.
 //
 // @return GetTaskResponse
 func (client *Client) GetTask(InstanceId *string, TaskId *string) (_result *GetTaskResponse, _err error) {
@@ -2076,7 +2076,7 @@ func (client *Client) GetTask(InstanceId *string, TaskId *string) (_result *GetT
 
 // Summary:
 //
-// 获取数据源下所有特征视图信息。
+// Retrieve all feature view information from the data source.
 //
 // @param request - ListDatasourceFeatureViewsRequest
 //
@@ -2171,7 +2171,7 @@ func (client *Client) ListDatasourceFeatureViewsWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// 获取数据源下所有特征视图信息。
+// Retrieve all feature view information from the data source.
 //
 // @param request - ListDatasourceFeatureViewsRequest
 //
@@ -2190,7 +2190,7 @@ func (client *Client) ListDatasourceFeatureViews(InstanceId *string, DatasourceI
 
 // Summary:
 //
-// 获取数据源下所有表。
+// Lists the tables in a datasource. This operation supports only MaxCompute datasources.
 //
 // @param request - ListDatasourceTablesRequest
 //
@@ -2241,7 +2241,7 @@ func (client *Client) ListDatasourceTablesWithOptions(InstanceId *string, Dataso
 
 // Summary:
 //
-// 获取数据源下所有表。
+// Lists the tables in a datasource. This operation supports only MaxCompute datasources.
 //
 // @param request - ListDatasourceTablesRequest
 //
@@ -2260,7 +2260,7 @@ func (client *Client) ListDatasourceTables(InstanceId *string, DatasourceId *str
 
 // Summary:
 //
-// List datasources under a FeatureStore Instance, filtered by workspace, type, or name.
+// Lists the data sources in a FeatureStore instance. You can filter the results by workspace, type, and name.
 //
 // @param request - ListDatasourcesRequest
 //
@@ -2331,7 +2331,7 @@ func (client *Client) ListDatasourcesWithOptions(InstanceId *string, request *Li
 
 // Summary:
 //
-// List datasources under a FeatureStore Instance, filtered by workspace, type, or name.
+// Lists the data sources in a FeatureStore instance. You can filter the results by workspace, type, and name.
 //
 // @param request - ListDatasourcesRequest
 //
@@ -2350,7 +2350,7 @@ func (client *Client) ListDatasources(InstanceId *string, request *ListDatasourc
 
 // Summary:
 //
-// 创建特征实体列表
+// Lists the feature entities in a FeatureStore instance. You can filter the results by project, name, owner, and parent feature entity.
 //
 // @param tmpReq - ListFeatureEntitiesRequest
 //
@@ -2435,7 +2435,7 @@ func (client *Client) ListFeatureEntitiesWithOptions(InstanceId *string, tmpReq 
 
 // Summary:
 //
-// 创建特征实体列表
+// Lists the feature entities in a FeatureStore instance. You can filter the results by project, name, owner, and parent feature entity.
 //
 // @param request - ListFeatureEntitiesRequest
 //
@@ -2454,7 +2454,7 @@ func (client *Client) ListFeatureEntities(InstanceId *string, request *ListFeatu
 
 // Summary:
 //
-// 获取特征字段血缘关系。
+// Retrieves the relationships for a specific field in a feature view, returning a list of models that reference the field and the names of the associated online and offline tables.
 //
 // @param headers - map
 //
@@ -2487,7 +2487,7 @@ func (client *Client) ListFeatureViewFieldRelationshipsWithOptions(InstanceId *s
 
 // Summary:
 //
-// 获取特征字段血缘关系。
+// Retrieves the relationships for a specific field in a feature view, returning a list of models that reference the field and the names of the associated online and offline tables.
 //
 // @return ListFeatureViewFieldRelationshipsResponse
 func (client *Client) ListFeatureViewFieldRelationships(InstanceId *string, FeatureViewId *string, FieldName *string) (_result *ListFeatureViewFieldRelationshipsResponse, _err error) {
@@ -2504,7 +2504,7 @@ func (client *Client) ListFeatureViewFieldRelationships(InstanceId *string, Feat
 
 // Summary:
 //
-// 获取特征视图下的在线特征数据。
+// Retrieves online features from a feature view based on one or more join IDs. For each join ID provided, the operation returns the corresponding feature fields as key-value pairs.
 //
 // @param tmpReq - ListFeatureViewOnlineFeaturesRequest
 //
@@ -2561,7 +2561,7 @@ func (client *Client) ListFeatureViewOnlineFeaturesWithOptions(InstanceId *strin
 
 // Summary:
 //
-// 获取特征视图下的在线特征数据。
+// Retrieves online features from a feature view based on one or more join IDs. For each join ID provided, the operation returns the corresponding feature fields as key-value pairs.
 //
 // @param request - ListFeatureViewOnlineFeaturesRequest
 //
@@ -2580,7 +2580,7 @@ func (client *Client) ListFeatureViewOnlineFeatures(InstanceId *string, FeatureV
 
 // Summary:
 //
-// 获取特征视图血缘关系。
+// Lists the relationships for a feature view, including the models that reference it.
 //
 // @param headers - map
 //
@@ -2613,7 +2613,7 @@ func (client *Client) ListFeatureViewRelationshipsWithOptions(InstanceId *string
 
 // Summary:
 //
-// 获取特征视图血缘关系。
+// Lists the relationships for a feature view, including the models that reference it.
 //
 // @return ListFeatureViewRelationshipsResponse
 func (client *Client) ListFeatureViewRelationships(InstanceId *string, FeatureViewId *string) (_result *ListFeatureViewRelationshipsResponse, _err error) {
@@ -2630,7 +2630,7 @@ func (client *Client) ListFeatureViewRelationships(InstanceId *string, FeatureVi
 
 // Summary:
 //
-// 获取特征视图列表。
+// Lists feature views, filterable by project, name, type, tag, and feature name.
 //
 // @param tmpReq - ListFeatureViewsRequest
 //
@@ -2723,7 +2723,7 @@ func (client *Client) ListFeatureViewsWithOptions(InstanceId *string, tmpReq *Li
 
 // Summary:
 //
-// 获取特征视图列表。
+// Lists feature views, filterable by project, name, type, tag, and feature name.
 //
 // @param request - ListFeatureViewsRequest
 //
@@ -2742,7 +2742,7 @@ func (client *Client) ListFeatureViews(InstanceId *string, request *ListFeatureV
 
 // Summary:
 //
-// 获取Feature Store实例列表。
+// Lists FeatureStore instances in the current account. You can filter the instances by status.
 //
 // @param request - ListInstancesRequest
 //
@@ -2805,7 +2805,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 // Summary:
 //
-// 获取Feature Store实例列表。
+// Lists FeatureStore instances in the current account. You can filter the instances by status.
 //
 // @param request - ListInstancesRequest
 //
@@ -2824,7 +2824,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取大模型调用信息配置
+// Lists LLM call configurations.
 //
 // @param request - ListLLMConfigsRequest
 //
@@ -2899,7 +2899,7 @@ func (client *Client) ListLLMConfigsWithOptions(InstanceId *string, request *Lis
 
 // Summary:
 //
-// 获取大模型调用信息配置
+// Lists LLM call configurations.
 //
 // @param request - ListLLMConfigsRequest
 //
@@ -2918,7 +2918,7 @@ func (client *Client) ListLLMConfigs(InstanceId *string, request *ListLLMConfigs
 
 // Summary:
 //
-// 获取Label表列表。
+// Lists label tables, filterable by project, name, owner, and ID.
 //
 // @param tmpReq - ListLabelTablesRequest
 //
@@ -2999,7 +2999,7 @@ func (client *Client) ListLabelTablesWithOptions(InstanceId *string, tmpReq *Lis
 
 // Summary:
 //
-// 获取Label表列表。
+// Lists label tables, filterable by project, name, owner, and ID.
 //
 // @param request - ListLabelTablesRequest
 //
@@ -3018,7 +3018,7 @@ func (client *Client) ListLabelTables(InstanceId *string, request *ListLabelTabl
 
 // Summary:
 //
-// 获取注册FG特征时模型特征下可选的所有特征。
+// Lists the available features for a model feature when you register a feature group (FG).
 //
 // @param request - ListModelFeatureAvailableFeaturesRequest
 //
@@ -3065,7 +3065,7 @@ func (client *Client) ListModelFeatureAvailableFeaturesWithOptions(InstanceId *s
 
 // Summary:
 //
-// 获取注册FG特征时模型特征下可选的所有特征。
+// Lists the available features for a model feature when you register a feature group (FG).
 //
 // @param request - ListModelFeatureAvailableFeaturesRequest
 //
@@ -3084,7 +3084,7 @@ func (client *Client) ListModelFeatureAvailableFeatures(InstanceId *string, Mode
 
 // Summary:
 //
-// 获取模型特征列表。
+// Lists model features, with sorting, pagination, and filtering by project, name, creator, and ID.
 //
 // @param tmpReq - ListModelFeaturesRequest
 //
@@ -3165,7 +3165,7 @@ func (client *Client) ListModelFeaturesWithOptions(InstanceId *string, tmpReq *L
 
 // Summary:
 //
-// 获取模型特征列表。
+// Lists model features, with sorting, pagination, and filtering by project, name, creator, and ID.
 //
 // @param request - ListModelFeaturesRequest
 //
@@ -3184,7 +3184,7 @@ func (client *Client) ListModelFeatures(InstanceId *string, request *ListModelFe
 
 // Summary:
 //
-// 获取项目下的所有特征视图、特征信息。
+// Lists all feature views and their available features in a project. Use this operation to select feature views and features for the CreateModelFeature and UpdateModelFeature operations.
 //
 // @param headers - map
 //
@@ -3217,7 +3217,7 @@ func (client *Client) ListProjectFeatureViewsWithOptions(InstanceId *string, Pro
 
 // Summary:
 //
-// 获取项目下的所有特征视图、特征信息。
+// Lists all feature views and their available features in a project. Use this operation to select feature views and features for the CreateModelFeature and UpdateModelFeature operations.
 //
 // @return ListProjectFeatureViewsResponse
 func (client *Client) ListProjectFeatureViews(InstanceId *string, ProjectId *string) (_result *ListProjectFeatureViewsResponse, _err error) {
@@ -3234,7 +3234,7 @@ func (client *Client) ListProjectFeatureViews(InstanceId *string, ProjectId *str
 
 // Summary:
 //
-// 获取项目下所有特征信息
+// Lists all features in a project. This operation supports filtering by name, alias, and feature view, as well as sorting and pagination. The response includes the data type, parent feature view, and the number of model features that reference each feature.
 //
 // @param request - ListProjectFeaturesRequest
 //
@@ -3305,7 +3305,7 @@ func (client *Client) ListProjectFeaturesWithOptions(InstanceId *string, Project
 
 // Summary:
 //
-// 获取项目下所有特征信息
+// Lists all features in a project. This operation supports filtering by name, alias, and feature view, as well as sorting and pagination. The response includes the data type, parent feature view, and the number of model features that reference each feature.
 //
 // @param request - ListProjectFeaturesRequest
 //
@@ -3324,7 +3324,7 @@ func (client *Client) ListProjectFeatures(InstanceId *string, ProjectId *string,
 
 // Summary:
 //
-// 获取Feature Store项目列表。
+// Lists projects in a Feature Store instance, filterable by name, workspace, and owner.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -3405,7 +3405,7 @@ func (client *Client) ListProjectsWithOptions(InstanceId *string, tmpReq *ListPr
 
 // Summary:
 //
-// 获取Feature Store项目列表。
+// Lists projects in a Feature Store instance, filterable by name, workspace, and owner.
 //
 // @param request - ListProjectsRequest
 //
@@ -3424,7 +3424,7 @@ func (client *Client) ListProjects(InstanceId *string, request *ListProjectsRequ
 
 // Summary:
 //
-// 获取任务日志列表
+// Lists the execution logs of an asynchronous task. This operation supports pagination.
 //
 // @param request - ListTaskLogsRequest
 //
@@ -3475,7 +3475,7 @@ func (client *Client) ListTaskLogsWithOptions(InstanceId *string, TaskId *string
 
 // Summary:
 //
-// 获取任务日志列表
+// Lists the execution logs of an asynchronous task. This operation supports pagination.
 //
 // @param request - ListTaskLogsRequest
 //
@@ -3494,7 +3494,7 @@ func (client *Client) ListTaskLogs(InstanceId *string, TaskId *string, request *
 
 // Summary:
 //
-// 获取任务列表
+// Lists asynchronous tasks for an instance, supporting pagination and filtering by project, object type, and status.
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -3575,7 +3575,7 @@ func (client *Client) ListTasksWithOptions(InstanceId *string, tmpReq *ListTasks
 
 // Summary:
 //
-// 获取任务列表
+// Lists asynchronous tasks for an instance, supporting pagination and filtering by project, object type, and status.
 //
 // @param request - ListTasksRequest
 //
@@ -3594,7 +3594,7 @@ func (client *Client) ListTasks(InstanceId *string, request *ListTasksRequest) (
 
 // Summary:
 //
-// 将特征视图的离线数据发布/同步到线上。
+// Creates a data synchronization task to synchronize data from a feature view\\"s offline table to its online store.
 //
 // @param request - PublishFeatureViewTableRequest
 //
@@ -3657,7 +3657,7 @@ func (client *Client) PublishFeatureViewTableWithOptions(InstanceId *string, Fea
 
 // Summary:
 //
-// 将特征视图的离线数据发布/同步到线上。
+// Creates a data synchronization task to synchronize data from a feature view\\"s offline table to its online store.
 //
 // @param request - PublishFeatureViewTableRequest
 //
@@ -3676,7 +3676,7 @@ func (client *Client) PublishFeatureViewTable(InstanceId *string, FeatureViewId 
 
 // Summary:
 //
-// 停止任务。
+// Stops an asynchronous task. You can only stop tasks in the Initializing or Running state.
 //
 // @param headers - map
 //
@@ -3709,7 +3709,7 @@ func (client *Client) StopTaskWithOptions(InstanceId *string, TaskId *string, he
 
 // Summary:
 //
-// 停止任务。
+// Stops an asynchronous task. You can only stop tasks in the Initializing or Running state.
 //
 // @return StopTaskResponse
 func (client *Client) StopTask(InstanceId *string, TaskId *string) (_result *StopTaskResponse, _err error) {
@@ -3726,7 +3726,7 @@ func (client *Client) StopTask(InstanceId *string, TaskId *string) (_result *Sto
 
 // Summary:
 //
-// Update a datasource\\"s info. The datasource type and workspace cannot be changed.
+// Updates information for a data source. Its type and workspace cannot be changed.
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -3781,7 +3781,7 @@ func (client *Client) UpdateDatasourceWithOptions(InstanceId *string, Datasource
 
 // Summary:
 //
-// Update a datasource\\"s info. The datasource type and workspace cannot be changed.
+// Updates information for a data source. Its type and workspace cannot be changed.
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -3800,7 +3800,7 @@ func (client *Client) UpdateDatasource(InstanceId *string, DatasourceId *string,
 
 // Summary:
 //
-// 更新特征视图。
+// Updates a feature view.
 //
 // @param request - UpdateFeatureViewRequest
 //
@@ -3847,7 +3847,7 @@ func (client *Client) UpdateFeatureViewWithOptions(InstanceId *string, FeatureVi
 
 // Summary:
 //
-// 更新特征视图。
+// Updates a feature view.
 //
 // @param request - UpdateFeatureViewRequest
 //
@@ -3866,7 +3866,7 @@ func (client *Client) UpdateFeatureView(InstanceId *string, FeatureViewId *strin
 
 // Summary:
 //
-// 更新大模型调用信息配置
+// Updates the large language model (LLM) call configuration. If you do not specify the `ApiKey` parameter, the existing key is retained. After the update, the system revalidates the model\\"s availability and its parameters.
 //
 // @param request - UpdateLLMConfigRequest
 //
@@ -3949,7 +3949,7 @@ func (client *Client) UpdateLLMConfigWithOptions(InstanceId *string, LLMConfigId
 
 // Summary:
 //
-// 更新大模型调用信息配置
+// Updates the large language model (LLM) call configuration. If you do not specify the `ApiKey` parameter, the existing key is retained. After the update, the system revalidates the model\\"s availability and its parameters.
 //
 // @param request - UpdateLLMConfigRequest
 //
@@ -3968,7 +3968,7 @@ func (client *Client) UpdateLLMConfig(InstanceId *string, LLMConfigId *string, r
 
 // Summary:
 //
-// 更新label表。
+// Updates the attributes of fields in a label table. You can modify the attributes of existing fields, but you cannot add or delete fields, or change field names and types.
 //
 // @param request - UpdateLabelTableRequest
 //
@@ -4023,7 +4023,7 @@ func (client *Client) UpdateLabelTableWithOptions(InstanceId *string, LabelTable
 
 // Summary:
 //
-// 更新label表。
+// Updates the attributes of fields in a label table. You can modify the attributes of existing fields, but you cannot add or delete fields, or change field names and types.
 //
 // @param request - UpdateLabelTableRequest
 //
@@ -4042,7 +4042,7 @@ func (client *Client) UpdateLabelTable(InstanceId *string, LabelTableId *string,
 
 // Summary:
 //
-// 更新模型特征。
+// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update is a full replacement. The specified Features value overwrites the existing value.
 //
 // @param request - UpdateModelFeatureRequest
 //
@@ -4101,7 +4101,7 @@ func (client *Client) UpdateModelFeatureWithOptions(InstanceId *string, ModelFea
 
 // Summary:
 //
-// 更新模型特征。
+// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update is a full replacement. The specified Features value overwrites the existing value.
 //
 // @param request - UpdateModelFeatureRequest
 //
@@ -4120,7 +4120,7 @@ func (client *Client) UpdateModelFeature(InstanceId *string, ModelFeatureId *str
 
 // Summary:
 //
-// 更新模型特征的FG特征配置信息。
+// Update the FG feature configuration for a model feature.
 //
 // @param request - UpdateModelFeatureFGFeatureRequest
 //
@@ -4179,7 +4179,7 @@ func (client *Client) UpdateModelFeatureFGFeatureWithOptions(InstanceId *string,
 
 // Summary:
 //
-// 更新模型特征的FG特征配置信息。
+// Update the FG feature configuration for a model feature.
 //
 // @param request - UpdateModelFeatureFGFeatureRequest
 //
@@ -4198,7 +4198,7 @@ func (client *Client) UpdateModelFeatureFGFeature(InstanceId *string, ModelFeatu
 
 // Summary:
 //
-// 更新指定Feature Store项目信息。
+// Updates the description of a project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -4249,7 +4249,7 @@ func (client *Client) UpdateProjectWithOptions(InstanceId *string, ProjectId *st
 
 // Summary:
 //
-// 更新指定Feature Store项目信息。
+// Updates the description of a project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -4268,7 +4268,7 @@ func (client *Client) UpdateProject(InstanceId *string, ProjectId *string, reque
 
 // Summary:
 //
-// 获取特征视图血缘关系。
+// Imports data from a URL to the offline table of a feature view. This is an asynchronous operation.
 //
 // @param request - WriteFeatureViewTableRequest
 //
@@ -4323,7 +4323,7 @@ func (client *Client) WriteFeatureViewTableWithOptions(InstanceId *string, Featu
 
 // Summary:
 //
-// 获取特征视图血缘关系。
+// Imports data from a URL to the offline table of a feature view. This is an asynchronous operation.
 //
 // @param request - WriteFeatureViewTableRequest
 //

@@ -16,11 +16,14 @@ type iPublishFeatureViewTableResponseBody interface {
 }
 
 type PublishFeatureViewTableResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 627B5776-4D06-5A49-8A04-508AA39653F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the data synchronization task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PublishFeatureViewTableResponseBody) String() string {

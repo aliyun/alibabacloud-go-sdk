@@ -16,10 +16,14 @@ type iListDatasourceTablesRequest interface {
 }
 
 type ListDatasourceTablesRequest struct {
+	// The schema name.
+	//
 	// example:
 	//
 	// default
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// Filters the results by table name.
+	//
 	// example:
 	//
 	// table1

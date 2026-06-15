@@ -18,11 +18,16 @@ type iListModelFeatureAvailableFeaturesResponseBody interface {
 }
 
 type ListModelFeatureAvailableFeaturesResponseBody struct {
+	// List of available features.
 	AvaliableFeatures []*ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures `json:"AvaliableFeatures,omitempty" xml:"AvaliableFeatures,omitempty" type:"Repeated"`
+	// Total number of features.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ED4DEA2F-F216-57F0-AE28-08D791233280
@@ -78,18 +83,36 @@ func (s *ListModelFeatureAvailableFeaturesResponseBody) Validate() error {
 }
 
 type ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures struct {
+	// Feature name.
+	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Source name.
+	//
 	// example:
 	//
 	// user_fea
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// Feature source.
+	//
+	// - FeatureView
+	//
+	// - LabelTable
+	//
 	// example:
 	//
 	// FeatureView
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Feature value type.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// example:
 	//
 	// STRING

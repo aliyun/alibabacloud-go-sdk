@@ -18,6 +18,8 @@ type iGetServiceIdentityRoleResponseBody interface {
 }
 
 type GetServiceIdentityRoleResponseBody struct {
+	// 关联策略。
+	//
 	// example:
 	//
 	// {
@@ -28,10 +30,14 @@ type GetServiceIdentityRoleResponseBody struct {
 	//
 	// }
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// 请求ID。
+	//
 	// example:
 	//
 	// 6F629E92-F64D-502D-85AA-A9C54894CA3D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务账户角色名称。
+	//
 	// example:
 	//
 	// AliyunServiceRoleForPaiFeatureStore

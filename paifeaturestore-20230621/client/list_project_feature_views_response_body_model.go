@@ -18,11 +18,16 @@ type iListProjectFeatureViewsResponseBody interface {
 }
 
 type ListProjectFeatureViewsResponseBody struct {
+	// The list of feature views.
 	FeatureViews []*ListProjectFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AE2AF33E-0C0D-51A8-B89B-C5F1DF261D92
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of feature views.
+	//
 	// example:
 	//
 	// 10
@@ -78,24 +83,44 @@ func (s *ListProjectFeatureViewsResponseBody) Validate() error {
 }
 
 type ListProjectFeatureViewsResponseBodyFeatureViews struct {
+	// The feature view ID.
+	//
 	// example:
 	//
 	// 3
-	FeatureViewId *string                                                    `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	Features      []*ListProjectFeatureViewsResponseBodyFeatureViewsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// A list of features.
+	Features []*ListProjectFeatureViewsResponseBodyFeatureViewsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The join ID of the feature entity.
+	//
 	// example:
 	//
 	// item_id
 	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// The feature view name.
+	//
 	// example:
 	//
 	// feature_view1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The join ID of the parent feature entity.
+	//
 	// example:
 	//
 	// item_id
 	ParentJoinId *string `json:"ParentJoinId,omitempty" xml:"ParentJoinId,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the feature view.
+	//
+	// - Batch: A feature view that processes data in batches.
+	//
+	// - Stream: A feature view that processes data as a stream.
+	//
+	// - Sequence: A feature view that represents a sequence of features.
+	//
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListProjectFeatureViewsResponseBodyFeatureViews) String() string {
@@ -174,11 +199,36 @@ func (s *ListProjectFeatureViewsResponseBodyFeatureViews) Validate() error {
 }
 
 type ListProjectFeatureViewsResponseBodyFeatureViewsFeatures struct {
+	// A list of field attributes. Valid values:
+	//
+	// - Partition: Indicates that the feature is a partition field.
+	//
+	// - PrimaryKey: Indicates that the feature is a primary key.
+	//
+	// - EventTime: Indicates that the feature represents the event time.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The feature name.
+	//
 	// example:
 	//
 	// f1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The feature type. Valid values include:
+	//
+	// - INT32
+	//
+	// - INT64
+	//
+	// - FLOAT
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
+	// - BOOLEAN
+	//
+	// - TIMESTAMP
+	//
 	// example:
 	//
 	// INT32

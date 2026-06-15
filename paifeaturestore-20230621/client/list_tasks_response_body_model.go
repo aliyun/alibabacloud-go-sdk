@@ -18,11 +18,16 @@ type iListTasksResponseBody interface {
 }
 
 type ListTasksResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C33E160C-BFCA-5719-B958-942850E949F6
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of tasks.
+	Tasks []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of tasks.
+	//
 	// example:
 	//
 	// 10
@@ -78,42 +83,78 @@ func (s *ListTasksResponseBody) Validate() error {
 }
 
 type ListTasksResponseBodyTasks struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the task was executed.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtExecutedTime *string `json:"GmtExecutedTime,omitempty" xml:"GmtExecutedTime,omitempty"`
+	// The time when the task was completed.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtFinishedTime *string `json:"GmtFinishedTime,omitempty" xml:"GmtFinishedTime,omitempty"`
+	// The ID of the object.
+	//
 	// example:
 	//
 	// 5
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the object. Valid values:
+	//
+	// ● ModelFeature: a model feature.
+	//
+	// ● FeatureView: a feature view.
+	//
 	// example:
 	//
 	// ModelFeature
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 4
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project_1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// ● Initializing: The task is being initialized.
+	//
+	// ● Running: The task is in progress.
+	//
+	// ● Success: The task is successful.
+	//
+	// ● Failure: The task failed.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 4
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type. Valid values:
+	//
+	// ● OfflineToOnline: The task synchronizes data from offline to online.
+	//
+	// ● ExportTrainingSet: The task exports a training set.
+	//
 	// example:
 	//
 	// OfflineToOnline

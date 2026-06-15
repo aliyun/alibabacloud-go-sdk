@@ -18,11 +18,16 @@ type iGetDatasourceTableResponseBody interface {
 }
 
 type GetDatasourceTableResponseBody struct {
+	// The list of fields.
 	Fields []*GetDatasourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D7B2F8C4-49C7-5CFA-8075-9D715A114873
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the data table.
+	//
 	// example:
 	//
 	// table1
@@ -78,11 +83,36 @@ func (s *GetDatasourceTableResponseBody) Validate() error {
 }
 
 type GetDatasourceTableResponseBodyFields struct {
+	// The attributes of the field. Valid values:
+	//
+	// ● Partition: indicates that the field is a partition field.
+	//
+	// ● EventTime: indicates that the field is an event time field.
+	//
+	// ● PrimaryKey: indicates that the field is a primary key field.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the field.
+	//
 	// example:
 	//
 	// field1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the field. Valid values:
+	//
+	// ● INT32
+	//
+	// ● INT64
+	//
+	// ● FLOAT
+	//
+	// ● DOUBLE
+	//
+	// ● STRING
+	//
+	// ● BOOLEAN
+	//
+	// ● TIMESTAMP
+	//
 	// example:
 	//
 	// INT32

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 检测资源连接状态。
+// Tests connectivity to a data source.
 //
 // @param request - CheckInstanceDatasourceRequest
 //
@@ -64,7 +64,7 @@ func (client *Client) CheckInstanceDatasourceWithContext(ctx context.Context, In
 
 // Summary:
 //
-// 检查FG配置内容是否正确，是否满足所有规则。
+// Verify that the FG configuration is correct and meets all rules.
 //
 // @param headers - map
 //
@@ -97,7 +97,7 @@ func (client *Client) CheckModelFeatureFGFeatureWithContext(ctx context.Context,
 
 // Summary:
 //
-// Register a datasource under a FeatureStore Instance. A datasource provides offline storage (**MaxCompute**) or online storage (**Hologres**, **TableStore**, or **FeatureDB**) for projects in the Instance.
+// Registers a datasource in a FeatureStore instance. A datasource provides offline or online storage for a project.
 //
 // @param request - CreateDatasourceRequest
 //
@@ -160,7 +160,7 @@ func (client *Client) CreateDatasourceWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 创建特征实体
+// Creates a feature entity. A feature entity defines a join key that links multiple feature views to it, enabling feature joining.
 //
 // @param request - CreateFeatureEntityRequest
 //
@@ -219,7 +219,7 @@ func (client *Client) CreateFeatureEntityWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// 创建特征视图。
+// You can create three types of feature views: offline, real-time, and behavior sequence. Each feature view uses fields to define its structure and links to a feature entity.
 //
 // @param request - CreateFeatureViewRequest
 //
@@ -314,7 +314,7 @@ func (client *Client) CreateFeatureViewWithContext(ctx context.Context, Instance
 
 // Summary:
 //
-// 创建Feature Store实例。
+// Creates a FeatureStore instance. This operation is idempotent. If an instance is already running or initializing in the same account, this operation returns the existing instance ID.
 //
 // @param request - CreateInstanceRequest
 //
@@ -361,7 +361,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建大模型调用信息配置
+// Creates an LLM configuration that contains the call parameters and API key for an embedding model. During creation, the service validates the ApiKey and Model. For a DashScope model, the EmbeddingDimension must match one of the fixed, valid dimensions supported by the model.
 //
 // @param request - CreateLLMConfigRequest
 //
@@ -448,7 +448,7 @@ func (client *Client) CreateLLMConfigWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// 创建label表
+// Creates a label table. A label table defines the schema for label data referenced by model features.
 //
 // @param request - CreateLabelTableRequest
 //
@@ -507,7 +507,7 @@ func (client *Client) CreateLabelTableWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 创建模型特征。
+// Creates a model feature. A model feature associates a label table with a set of feature view fields. It is used to generate the training dataset table required for model training and to specify the feature set used for model inference.
 //
 // @param request - CreateModelFeatureRequest
 //
@@ -574,7 +574,7 @@ func (client *Client) CreateModelFeatureWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// Create a FeatureStore project under a PAI workspace. A project groups FeatureEntities, FeatureViews, and ModelFeatures sharing one **MaxCompute*	- offline datasource and one online datasource (**Hologres**, **TableStore**, or **FeatureDB**).
+// Creates a FeatureStore project. A project is a container for feature entities, feature views, and model features.
 //
 // @param request - CreateProjectRequest
 //
@@ -641,7 +641,7 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// 创建feature store服务账户角色
+// Creates a service-linked role that authorizes the FeatureStore service to access other cloud resources of the user. Returns a conflict error if the role already exists.
 //
 // @param request - CreateServiceIdentityRoleRequest
 //
@@ -688,7 +688,7 @@ func (client *Client) CreateServiceIdentityRoleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Delete a datasource from a FeatureStore Instance.
+// Deletes a datasource from a FeatureStore instance.
 //
 // @param headers - map
 //
@@ -721,7 +721,7 @@ func (client *Client) DeleteDatasourceWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 删除指定特征实体
+// Deletes a feature entity.
 //
 // @param headers - map
 //
@@ -754,7 +754,7 @@ func (client *Client) DeleteFeatureEntityWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// 删除指定特征视图。
+// Deletes a feature view. A feature view cannot be deleted if it is referenced by a model feature. To delete the feature view, you must first delete the associated model feature.
 //
 // @param headers - map
 //
@@ -787,7 +787,7 @@ func (client *Client) DeleteFeatureViewWithContext(ctx context.Context, Instance
 
 // Summary:
 //
-// 删除大模型调用信息配置
+// Deletes an LLM call configuration. You cannot delete a configuration referenced by a feature view. You must first delete the associated feature view.
 //
 // @param headers - map
 //
@@ -820,7 +820,7 @@ func (client *Client) DeleteLLMConfigWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// 删除label表
+// Deletes a label table. You cannot delete a label table that is referenced by a model feature. Delete the associated model feature first.
 //
 // @param headers - map
 //
@@ -853,7 +853,7 @@ func (client *Client) DeleteLabelTableWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 删除指定模型特征。
+// Deletes a model feature and its associated training set table.
 //
 // @param headers - map
 //
@@ -886,7 +886,7 @@ func (client *Client) DeleteModelFeatureWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// 删除指定Feature Store项目。
+// Deletes a FeatureStore project.
 //
 // @param headers - map
 //
@@ -919,7 +919,7 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// 导出训练集表。
+// Export a training set table for model features. Create an export task by configuring the Label table input, the data source partition for each feature view, and the training set output partition.
 //
 // @param request - ExportModelFeatureTrainingSetTableRequest
 //
@@ -982,7 +982,7 @@ func (client *Client) ExportModelFeatureTrainingSetTableWithContext(ctx context.
 
 // Summary:
 //
-// Get the details of a datasource, including its type, connection info, and Config.
+// Gets the detailed information about a data source, including its type, connection information, and configuration.
 //
 // @param headers - map
 //
@@ -1015,7 +1015,7 @@ func (client *Client) GetDatasourceWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// 获取数据源下指定表的详细信息。
+// Gets the field information for a specified table in a data source. This operation supports only MaxCompute data sources.
 //
 // @param headers - map
 //
@@ -1048,7 +1048,7 @@ func (client *Client) GetDatasourceTableWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// 获取特征实体详细信息
+// Retrieves the details of a feature entity.
 //
 // @param headers - map
 //
@@ -1081,7 +1081,7 @@ func (client *Client) GetFeatureEntityWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 获取特征视图详细信息。
+// Gets the details of a feature view, including its field definitions, data source binding, and synchronization status.
 //
 // @param headers - map
 //
@@ -1114,7 +1114,7 @@ func (client *Client) GetFeatureViewWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// 获取实例详细信息
+// Retrieves the details of a FeatureStore instance.
 //
 // @param headers - map
 //
@@ -1147,7 +1147,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *st
 
 // Summary:
 //
-// 获取 LLMConfig 信息
+// Retrieves the details of an LLM call configuration.
 //
 // @param headers - map
 //
@@ -1180,7 +1180,7 @@ func (client *Client) GetLLMConfigWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
-// 获取Label表详细信息。
+// Retrieves the details of a label table, including its field definitions and related models.
 //
 // @param headers - map
 //
@@ -1213,7 +1213,7 @@ func (client *Client) GetLabelTableWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// 获取模型特征详情。
+// Retrieves detailed information about a model feature, including the selected feature list, lineage relationships, and training set export script.
 //
 // @param headers - map
 //
@@ -1246,7 +1246,7 @@ func (client *Client) GetModelFeatureWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// 获取模型特征的FG特征配置信息。
+// Retrieves the Feature Generation (FG) feature configuration of a model feature.
 //
 // @param headers - map
 //
@@ -1279,7 +1279,7 @@ func (client *Client) GetModelFeatureFGFeatureWithContext(ctx context.Context, I
 
 // Summary:
 //
-// 获取模型特征的fg.json文件配置信息。
+// Retrieves the fg.json file configuration for a model feature.
 //
 // @param headers - map
 //
@@ -1312,7 +1312,7 @@ func (client *Client) GetModelFeatureFGInfoWithContext(ctx context.Context, Inst
 
 // Summary:
 //
-// 获取指定Feature Store项目详细信息。
+// Gets the details of a project, including its data source bindings and resource counts.
 //
 // @param headers - map
 //
@@ -1345,7 +1345,7 @@ func (client *Client) GetProjectWithContext(ctx context.Context, InstanceId *str
 
 // Summary:
 //
-// 获取项目下特征实体详细信息
+// Retrieve details of a feature entity in a project by name.
 //
 // @param headers - map
 //
@@ -1378,7 +1378,7 @@ func (client *Client) GetProjectFeatureEntityWithContext(ctx context.Context, In
 
 // Summary:
 //
-// 获取feature store服务账户角色。
+// Queries the details of a service-linked role and verifies whether the role exists and is available.
 //
 // @param headers - map
 //
@@ -1411,7 +1411,7 @@ func (client *Client) GetServiceIdentityRoleWithContext(ctx context.Context, Rol
 
 // Summary:
 //
-// 获取任务详情
+// Gets the details of an asynchronous task.
 //
 // @param headers - map
 //
@@ -1444,7 +1444,7 @@ func (client *Client) GetTaskWithContext(ctx context.Context, InstanceId *string
 
 // Summary:
 //
-// 获取数据源下所有特征视图信息。
+// Retrieve all feature view information from the data source.
 //
 // @param request - ListDatasourceFeatureViewsRequest
 //
@@ -1539,7 +1539,7 @@ func (client *Client) ListDatasourceFeatureViewsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取数据源下所有表。
+// Lists the tables in a datasource. This operation supports only MaxCompute datasources.
 //
 // @param request - ListDatasourceTablesRequest
 //
@@ -1590,7 +1590,7 @@ func (client *Client) ListDatasourceTablesWithContext(ctx context.Context, Insta
 
 // Summary:
 //
-// List datasources under a FeatureStore Instance, filtered by workspace, type, or name.
+// Lists the data sources in a FeatureStore instance. You can filter the results by workspace, type, and name.
 //
 // @param request - ListDatasourcesRequest
 //
@@ -1661,7 +1661,7 @@ func (client *Client) ListDatasourcesWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// 创建特征实体列表
+// Lists the feature entities in a FeatureStore instance. You can filter the results by project, name, owner, and parent feature entity.
 //
 // @param tmpReq - ListFeatureEntitiesRequest
 //
@@ -1746,7 +1746,7 @@ func (client *Client) ListFeatureEntitiesWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// 获取特征字段血缘关系。
+// Retrieves the relationships for a specific field in a feature view, returning a list of models that reference the field and the names of the associated online and offline tables.
 //
 // @param headers - map
 //
@@ -1779,7 +1779,7 @@ func (client *Client) ListFeatureViewFieldRelationshipsWithContext(ctx context.C
 
 // Summary:
 //
-// 获取特征视图下的在线特征数据。
+// Retrieves online features from a feature view based on one or more join IDs. For each join ID provided, the operation returns the corresponding feature fields as key-value pairs.
 //
 // @param tmpReq - ListFeatureViewOnlineFeaturesRequest
 //
@@ -1836,7 +1836,7 @@ func (client *Client) ListFeatureViewOnlineFeaturesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取特征视图血缘关系。
+// Lists the relationships for a feature view, including the models that reference it.
 //
 // @param headers - map
 //
@@ -1869,7 +1869,7 @@ func (client *Client) ListFeatureViewRelationshipsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取特征视图列表。
+// Lists feature views, filterable by project, name, type, tag, and feature name.
 //
 // @param tmpReq - ListFeatureViewsRequest
 //
@@ -1962,7 +1962,7 @@ func (client *Client) ListFeatureViewsWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 获取Feature Store实例列表。
+// Lists FeatureStore instances in the current account. You can filter the instances by status.
 //
 // @param request - ListInstancesRequest
 //
@@ -2025,7 +2025,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取大模型调用信息配置
+// Lists LLM call configurations.
 //
 // @param request - ListLLMConfigsRequest
 //
@@ -2100,7 +2100,7 @@ func (client *Client) ListLLMConfigsWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// 获取Label表列表。
+// Lists label tables, filterable by project, name, owner, and ID.
 //
 // @param tmpReq - ListLabelTablesRequest
 //
@@ -2181,7 +2181,7 @@ func (client *Client) ListLabelTablesWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// 获取注册FG特征时模型特征下可选的所有特征。
+// Lists the available features for a model feature when you register a feature group (FG).
 //
 // @param request - ListModelFeatureAvailableFeaturesRequest
 //
@@ -2228,7 +2228,7 @@ func (client *Client) ListModelFeatureAvailableFeaturesWithContext(ctx context.C
 
 // Summary:
 //
-// 获取模型特征列表。
+// Lists model features, with sorting, pagination, and filtering by project, name, creator, and ID.
 //
 // @param tmpReq - ListModelFeaturesRequest
 //
@@ -2309,7 +2309,7 @@ func (client *Client) ListModelFeaturesWithContext(ctx context.Context, Instance
 
 // Summary:
 //
-// 获取项目下的所有特征视图、特征信息。
+// Lists all feature views and their available features in a project. Use this operation to select feature views and features for the CreateModelFeature and UpdateModelFeature operations.
 //
 // @param headers - map
 //
@@ -2342,7 +2342,7 @@ func (client *Client) ListProjectFeatureViewsWithContext(ctx context.Context, In
 
 // Summary:
 //
-// 获取项目下所有特征信息
+// Lists all features in a project. This operation supports filtering by name, alias, and feature view, as well as sorting and pagination. The response includes the data type, parent feature view, and the number of model features that reference each feature.
 //
 // @param request - ListProjectFeaturesRequest
 //
@@ -2413,7 +2413,7 @@ func (client *Client) ListProjectFeaturesWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// 获取Feature Store项目列表。
+// Lists projects in a Feature Store instance, filterable by name, workspace, and owner.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -2494,7 +2494,7 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
-// 获取任务日志列表
+// Lists the execution logs of an asynchronous task. This operation supports pagination.
 //
 // @param request - ListTaskLogsRequest
 //
@@ -2545,7 +2545,7 @@ func (client *Client) ListTaskLogsWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
-// 获取任务列表
+// Lists asynchronous tasks for an instance, supporting pagination and filtering by project, object type, and status.
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -2626,7 +2626,7 @@ func (client *Client) ListTasksWithContext(ctx context.Context, InstanceId *stri
 
 // Summary:
 //
-// 将特征视图的离线数据发布/同步到线上。
+// Creates a data synchronization task to synchronize data from a feature view\\"s offline table to its online store.
 //
 // @param request - PublishFeatureViewTableRequest
 //
@@ -2689,7 +2689,7 @@ func (client *Client) PublishFeatureViewTableWithContext(ctx context.Context, In
 
 // Summary:
 //
-// 停止任务。
+// Stops an asynchronous task. You can only stop tasks in the Initializing or Running state.
 //
 // @param headers - map
 //
@@ -2722,7 +2722,7 @@ func (client *Client) StopTaskWithContext(ctx context.Context, InstanceId *strin
 
 // Summary:
 //
-// Update a datasource\\"s info. The datasource type and workspace cannot be changed.
+// Updates information for a data source. Its type and workspace cannot be changed.
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -2777,7 +2777,7 @@ func (client *Client) UpdateDatasourceWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 更新特征视图。
+// Updates a feature view.
 //
 // @param request - UpdateFeatureViewRequest
 //
@@ -2824,7 +2824,7 @@ func (client *Client) UpdateFeatureViewWithContext(ctx context.Context, Instance
 
 // Summary:
 //
-// 更新大模型调用信息配置
+// Updates the large language model (LLM) call configuration. If you do not specify the `ApiKey` parameter, the existing key is retained. After the update, the system revalidates the model\\"s availability and its parameters.
 //
 // @param request - UpdateLLMConfigRequest
 //
@@ -2907,7 +2907,7 @@ func (client *Client) UpdateLLMConfigWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// 更新label表。
+// Updates the attributes of fields in a label table. You can modify the attributes of existing fields, but you cannot add or delete fields, or change field names and types.
 //
 // @param request - UpdateLabelTableRequest
 //
@@ -2962,7 +2962,7 @@ func (client *Client) UpdateLabelTableWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// 更新模型特征。
+// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update is a full replacement. The specified Features value overwrites the existing value.
 //
 // @param request - UpdateModelFeatureRequest
 //
@@ -3021,7 +3021,7 @@ func (client *Client) UpdateModelFeatureWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// 更新模型特征的FG特征配置信息。
+// Update the FG feature configuration for a model feature.
 //
 // @param request - UpdateModelFeatureFGFeatureRequest
 //
@@ -3080,7 +3080,7 @@ func (client *Client) UpdateModelFeatureFGFeatureWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新指定Feature Store项目信息。
+// Updates the description of a project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -3131,7 +3131,7 @@ func (client *Client) UpdateProjectWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// 获取特征视图血缘关系。
+// Imports data from a URL to the offline table of a feature view. This is an asynchronous operation.
 //
 // @param request - WriteFeatureViewTableRequest
 //

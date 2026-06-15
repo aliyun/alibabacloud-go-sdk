@@ -28,31 +28,58 @@ type iListTasksRequest interface {
 }
 
 type ListTasksRequest struct {
+	// The ID of the object. You can call the ListModelFeatures or ListFeatureViews operation to obtain the ID.
+	//
 	// example:
 	//
 	// 4
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the object.
+	//
+	// ● `ModelFeature`: a model feature.
+	//
+	// ● `FeatureView`: a feature view.
+	//
 	// example:
 	//
 	// ModelFeature
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the project. You can call the ListProjects operation to obtain the ID.
+	//
 	// example:
 	//
 	// 4
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The task status.
+	//
+	// ● `Initializing`: The task is being initialized.
+	//
+	// ● `Running`: The task is running.
+	//
+	// ● `Success`: The task is successful.
+	//
+	// ● `Failure`: The task fails.
+	//
 	// example:
 	//
 	// Running
-	Status  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task IDs by which to filter tasks.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The task type by which to filter tasks.
+	//
 	// example:
 	//
 	// OfflineToOnline

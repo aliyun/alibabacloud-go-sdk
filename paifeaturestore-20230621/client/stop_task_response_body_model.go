@@ -14,7 +14,7 @@ type iStopTaskResponseBody interface {
 }
 
 type StopTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

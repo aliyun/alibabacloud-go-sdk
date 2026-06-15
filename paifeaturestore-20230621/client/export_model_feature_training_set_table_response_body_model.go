@@ -16,13 +16,17 @@ type iExportModelFeatureTrainingSetTableResponseBody interface {
 }
 
 type ExportModelFeatureTrainingSetTableResponseBody struct {
+  // The request ID.
+  // 
   // example:
   // 
   // 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // The task ID.
+  // 
   // example:
   // 
-  // 1
+  // 51
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iListModelFeatureAvailableFeaturesRequest interface {
 }
 
 type ListModelFeatureAvailableFeaturesRequest struct {
+	// Filter by feature name.
+	//
 	// example:
 	//
 	// f1

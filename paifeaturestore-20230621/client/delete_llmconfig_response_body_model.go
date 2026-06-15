@@ -14,7 +14,11 @@ type iDeleteLLMConfigResponseBody interface {
 }
 
 type DeleteLLMConfigResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// 96EE513F-8626-50B8-B046-D57FD3D037C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iCreateLabelTableResponseBody interface {
 }
 
 type CreateLabelTableResponseBody struct {
+	// The label table ID.
+	//
 	// example:
 	//
 	// 1
 	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0FA90B3B-F30A-5C9D-A9FD-8114F8868062

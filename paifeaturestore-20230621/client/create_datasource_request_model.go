@@ -22,28 +22,46 @@ type iCreateDatasourceRequest interface {
 }
 
 type CreateDatasourceRequest struct {
+	// The configuration of the resource.
+	//
 	// example:
 	//
 	// {"address": ""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the datasource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// datasource1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The datasource type. Valid values are:
+	//
+	// ● Hologres
+	//
+	// ● GraphCompute
+	//
+	// ● Redis
+	//
+	// ● MaxCompute
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hologres
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URI of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// igraph_instance1
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The ID of the workspace. Call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:

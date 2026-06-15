@@ -62,35 +62,52 @@ type iGetFeatureViewResponseBody interface {
 }
 
 type GetFeatureViewResponseBody struct {
+	// The configuration.
+	//
 	// example:
 	//
 	// {"save_original_field":true}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The feature entity ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// The feature entity name.
+	//
 	// example:
 	//
 	// featureEntity1
-	FeatureEntityName *string                             `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
-	Fields            []*GetFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	// The list of fields.
+	Fields []*GetFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The synchronization time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtSyncTime *string `json:"GmtSyncTime,omitempty" xml:"GmtSyncTime,omitempty"`
+	// The join ID of the feature entity.
+	//
 	// example:
 	//
 	// user_id
 	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// The most recent synchronization configuration.
+	//
 	// example:
 	//
 	// {
@@ -115,64 +132,106 @@ type GetFeatureViewResponseBody struct {
 	//
 	// }
 	LastSyncConfig *string `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
+	// The name of the mock data table for the stream feature view.
+	//
 	// example:
 	//
 	// item_table_mock_1
 	MockTableName *string `json:"MockTableName,omitempty" xml:"MockTableName,omitempty"`
+	// The feature view name.
+	//
 	// example:
 	//
 	// featureView1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the owner.
+	//
 	// example:
 	//
 	// 12321421412****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The script for data synchronization.
+	//
 	// example:
 	//
 	// from feature_store_py.fs_client import FeatureStoreClient\\nimport datetime\\nfrom feature_store_py.fs_datasource import MaxComputeDataSource\\nimport sys\\n\\ncur_day = args[\\"dt\\"]\\nprint(\\"cur_day = \\", cur_day)\\n\\naccess_key_id = o.account.access_id\\naccess_key_secret = o.account.secret_access_key\\nfs = FeatureStoreClient(access_key_id=access_key_id, access_key_secret=access_key_secret, region=\\"cn-beijing\\")\\ncur_project_name = \\"p1\\"\\nproject = fs.get_project(cur_project_name)\\n\\nfeature_view_name = \\"user_fea\\"\\nbatch_feature_view = project.get_feature_view(feature_view_name)\\ntask = batch_feature_view.publish_table(partitions={\\"ds\\":cur_day}, mode=\\"Overwrite\\")\\ntask.wait()\\ntask.print_summary()\\n
 	PublishTableScript *string `json:"PublishTableScript,omitempty" xml:"PublishTableScript,omitempty"`
+	// The ID of the data source where the registered table resides.
+	//
 	// example:
 	//
 	// 4
 	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// The name of the data source where the registered table resides.
+	//
 	// example:
 	//
 	// datasource1
 	RegisterDatasourceName *string `json:"RegisterDatasourceName,omitempty" xml:"RegisterDatasourceName,omitempty"`
+	// The name of the registered table.
+	//
 	// example:
 	//
 	// table1
 	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 72F15A8A-5A28-5B18-A0DE-0EABD7D3245A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether to synchronize the online feature table.
+	//
 	// example:
 	//
 	// true
 	SyncOnlineTable *bool `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
+	// The time to live (TTL).
+	//
 	// example:
 	//
-	// 90
-	TTL  *int32    `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// 86400
+	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The list of tags.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the feature view. Valid values:
+	//
+	// ● `Batch`: A batch feature.
+	//
+	// ● `Stream`: A stream feature.
+	//
 	// example:
 	//
 	// Batch
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The write method. Valid values:
+	//
+	// ● `ByReadyMadeTable`: Registers the feature view by using an existing table.
+	//
+	// ● `Custom`: Uses a custom table structure.
+	//
 	// example:
 	//
 	// custom
-	WriteMethod      *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
-	WriteToFeatureDB *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
+	WriteMethod *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	// Indicates whether to write data to the online managed storage.
+	//
+	// example:
+	//
+	// false
+	WriteToFeatureDB *bool `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s GetFeatureViewResponseBody) String() string {
@@ -422,12 +481,30 @@ func (s *GetFeatureViewResponseBody) Validate() error {
 }
 
 type GetFeatureViewResponseBodyFields struct {
+	// The list of field attributes. Valid values:
+	//
+	// ● `Partition`: The partition field.
+	//
+	// ● `PrimaryKey`: The primary key.
+	//
+	// ● `EventTime`: The event time.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The field name.
+	//
 	// example:
 	//
 	// user
-	Name      *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The feature transformation.
 	Transform []*GetFeatureViewResponseBodyFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Repeated"`
+	// The data type of the field. Valid values:
+	//
+	// ● `int`
+	//
+	// ● `string`
+	//
+	// ● `float`
+	//
 	// example:
 	//
 	// int
@@ -492,11 +569,16 @@ func (s *GetFeatureViewResponseBodyFields) Validate() error {
 }
 
 type GetFeatureViewResponseBodyFieldsTransform struct {
+	// The input for the feature transformation.
 	Input []*GetFeatureViewResponseBodyFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// The LLM configuration ID.
+	//
 	// example:
 	//
 	// 1
 	LLMConfigId *int32 `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// The feature transformation type.
+	//
 	// example:
 	//
 	// LLMEmbedding
@@ -552,11 +634,20 @@ func (s *GetFeatureViewResponseBodyFieldsTransform) Validate() error {
 }
 
 type GetFeatureViewResponseBodyFieldsTransformInput struct {
-	Modality *string `json:"Modality,omitempty" xml:"Modality,omitempty"`
+	// The modality type.
+	//
 	// example:
 	//
-	// f1
+	// TEXT
+	Modality *string `json:"Modality,omitempty" xml:"Modality,omitempty"`
+	// The feature name.
+	//
+	// example:
+	//
+	// feature1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The feature type.
+	//
 	// example:
 	//
 	// STRING

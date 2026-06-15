@@ -20,13 +20,18 @@ type iFeatureViewConfigValueSnapshotPartitionsValue interface {
 }
 
 type FeatureViewConfigValueSnapshotPartitionsValue struct {
+	// The partition value.
+	//
 	// example:
 	//
 	// 20260101
-	Value      *string   `json:"Value,omitempty" xml:"Value,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-	StartValue *string   `json:"StartValue,omitempty" xml:"StartValue,omitempty"`
-	EndValue   *string   `json:"EndValue,omitempty" xml:"EndValue,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// An array of partition values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The start value of the partition range.
+	StartValue *string `json:"StartValue,omitempty" xml:"StartValue,omitempty"`
+	// The end value of the partition range.
+	EndValue *string `json:"EndValue,omitempty" xml:"EndValue,omitempty"`
 }
 
 func (s FeatureViewConfigValueSnapshotPartitionsValue) String() string {

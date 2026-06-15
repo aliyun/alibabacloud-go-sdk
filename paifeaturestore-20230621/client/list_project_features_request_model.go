@@ -26,30 +26,44 @@ type iListProjectFeaturesRequest interface {
 }
 
 type ListProjectFeaturesRequest struct {
+	// The feature alias. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// ff1
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Additional filter conditions in a JSON object. Conditions are combined by using the AND operator.
+	//
 	// example:
 	//
 	// {"feature_view_name":"fv1"}
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The feature name. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// f1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies the sort order. Valid values: `Asc` and `Desc`.
+	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Starts from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of features to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field used to sort the returned features.
+	//
 	// example:
 	//
 	// ModelFeatureCount

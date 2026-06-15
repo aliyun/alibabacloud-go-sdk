@@ -28,31 +28,50 @@ type iListLabelTablesRequest interface {
 }
 
 type ListLabelTablesRequest struct {
+	// The IDs of the label tables by which to filter the results.
 	LabelTableIds []*string `json:"LabelTableIds,omitempty" xml:"LabelTableIds,omitempty" type:"Repeated"`
+	// The name of the label table.
+	//
 	// example:
 	//
 	// label_table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `Asc`: ascending order.
+	//
+	// - `Desc`: descending order.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The Alibaba Cloud account ID of the owner.
+	//
 	// example:
 	//
 	// 1231432432****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Page numbers start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID. You can call the `ListProjects` operation to obtain this ID.
+	//
 	// example:
 	//
 	// project1
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field by which to sort the results.
+	//
 	// example:
 	//
 	// GmtModifiedTime

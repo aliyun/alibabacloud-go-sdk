@@ -32,46 +32,64 @@ type iUpdateLLMConfigRequest interface {
 }
 
 type UpdateLLMConfigRequest struct {
+	// The API key used to call the large language model (LLM).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apikey-***
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The base URL for calling the large language model (LLM).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The batch size.
+	//
 	// example:
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The embedding dimension. If you omit this parameter or set it to 0, the model uses its default dimension.
+	//
 	// example:
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
-	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// Whether to enable data fusion.
+	EnableFusion *bool `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// The maximum number of input tokens per row.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2048
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// The model name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text-embedding-v1
-	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model type.
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The name of the large language model (LLM) call configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-config1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of requests per second (RPS).
+	//
 	// This parameter is required.
 	//
 	// example:

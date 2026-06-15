@@ -20,22 +20,30 @@ type iCreateFeatureEntityRequest interface {
 }
 
 type CreateFeatureEntityRequest struct {
+	// The join key that links feature views to the feature entity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_id
 	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// The feature entity name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent feature entity ID.
+	//
 	// example:
 	//
 	// 1
 	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
+	// The project ID. To get this ID, call the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iUpdateFeatureViewRequest interface {
 }
 
 type UpdateFeatureViewRequest struct {
+	// A list of fields.
+	//
 	// This parameter is required.
 	Fields []*UpdateFeatureViewRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 }
@@ -49,15 +51,28 @@ func (s *UpdateFeatureViewRequest) Validate() error {
 }
 
 type UpdateFeatureViewRequestFields struct {
+	// A list of field attributes. Valid values:
+	//
+	// - `Partition`: Indicates that the field is a partition field.
+	//
+	// - `PrimaryKey`: Indicates that the field is a primary key.
+	//
+	// - `EventTime`: Indicates that the field is the event time.
+	//
 	// This parameter is required.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_id
-	Name      *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The feature generation configuration.
 	Transform []*UpdateFeatureViewRequestFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Repeated"`
+	// The data type of the field.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -124,14 +139,20 @@ func (s *UpdateFeatureViewRequestFields) Validate() error {
 }
 
 type UpdateFeatureViewRequestFieldsTransform struct {
+	// The input fields.
+	//
 	// This parameter is required.
 	Input []*UpdateFeatureViewRequestFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// The ID of the LLM configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	LLMConfigId *int32 `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// The type of feature generation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -189,16 +210,22 @@ func (s *UpdateFeatureViewRequestFieldsTransform) Validate() error {
 }
 
 type UpdateFeatureViewRequestFieldsTransformInput struct {
+	// The modality of the input, such as text or image.
+	//
 	// example:
 	//
 	// NONE
 	Modality *string `json:"Modality,omitempty" xml:"Modality,omitempty"`
+	// The name of the input field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the input field.
+	//
 	// This parameter is required.
 	//
 	// example:

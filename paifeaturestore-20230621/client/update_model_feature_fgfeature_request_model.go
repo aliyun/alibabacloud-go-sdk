@@ -20,9 +20,13 @@ type iUpdateModelFeatureFGFeatureRequest interface {
 }
 
 type UpdateModelFeatureFGFeatureRequest struct {
-	LookupFeatures   []*UpdateModelFeatureFGFeatureRequestLookupFeatures   `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
-	RawFeatures      []*UpdateModelFeatureFGFeatureRequestRawFeatures      `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
-	Reserves         []*string                                             `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
+	// Lookup feature information.
+	LookupFeatures []*UpdateModelFeatureFGFeatureRequestLookupFeatures `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
+	// Basic feature information.
+	RawFeatures []*UpdateModelFeatureFGFeatureRequestRawFeatures `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	// Reserved fields.
+	Reserves []*string `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
+	// Sequence feature information.
 	SequenceFeatures []*UpdateModelFeatureFGFeatureRequestSequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
 }
 
@@ -102,42 +106,74 @@ func (s *UpdateModelFeatureFGFeatureRequest) Validate() error {
 }
 
 type UpdateModelFeatureFGFeatureRequestLookupFeatures struct {
+	// Default value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -1024
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Generated feature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// Key feature domain.
+	//
+	// - User
+	//
+	// - Item
+	//
+	// - Context
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Item
 	KeyFeatureDomain *string `json:"KeyFeatureDomain,omitempty" xml:"KeyFeatureDomain,omitempty"`
+	// The name of the key feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	KeyFeatureName *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	// Map feature domain.
+	//
+	// - User
+	//
+	// - Item
+	//
+	// - Context
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// User
 	MapFeatureDomain *string `json:"MapFeatureDomain,omitempty" xml:"MapFeatureDomain,omitempty"`
+	// Map feature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	MapFeatureName *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
+	// Feature value type.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -222,36 +258,64 @@ func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) Validate() error {
 }
 
 type UpdateModelFeatureFGFeatureRequestRawFeatures struct {
+	// Default value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -1024
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Input feature domain.
+	//
+	// - User
+	//
+	// - Item
+	//
+	// - Context
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// User
 	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// Generated feature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// FG basic feature type.
+	//
+	// - IdFeature
+	//
+	// - RawFeature
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IdFeature
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// The original name of the feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	// Feature value type.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -327,31 +391,40 @@ func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) Validate() error {
 }
 
 type UpdateModelFeatureFGFeatureRequestSequenceFeatures struct {
+	// Feature attribute delimiter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// #
 	AttributeDelim *string `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
+	// Sequence feature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// Sequence feature delimiter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ;
 	SequenceDelim *string `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	// Maximum length of the sequence feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50
-	SequenceLength *int64                                                           `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
-	SubFeatures    []*UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
+	SequenceLength *int64 `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
+	// List of subfeatures for the sequence feature.
+	SubFeatures []*UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
 }
 
 func (s UpdateModelFeatureFGFeatureRequestSequenceFeatures) String() string {
@@ -421,36 +494,64 @@ func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) Validate() error {
 }
 
 type UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures struct {
+	// Default value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -1024
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Input feature domain.
+	//
+	// - User
+	//
+	// - Item
+	//
+	// - Context
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// User
 	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// Generated subfeature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// FG sequence subfeature type.
+	//
+	// - IdFeature
+	//
+	// - RawFeature
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RawFeature
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// Original feature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	// Feature value type.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,11 +18,16 @@ type iListModelFeaturesResponseBody interface {
 }
 
 type ListModelFeaturesResponseBody struct {
+	// The list of model features.
 	ModelFeatures []*ListModelFeaturesResponseBodyModelFeatures `json:"ModelFeatures,omitempty" xml:"ModelFeatures,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2CA11923-2A3D-5E5A-8314-E699D2DD15DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of model features.
+	//
 	// example:
 	//
 	// 4
@@ -78,34 +83,50 @@ func (s *ListModelFeaturesResponseBody) Validate() error {
 }
 
 type ListModelFeaturesResponseBodyModelFeatures struct {
+	// The time the model feature was created.
+	//
 	// example:
 	//
 	// 2023-07-04T14:46:22.227+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time the model feature was last updated.
+	//
 	// example:
 	//
 	// 2023-07-04T14:46:22.227+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The label table name.
+	//
 	// example:
 	//
 	// label_table_1
 	LabelTableName *string `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
+	// The model feature ID.
+	//
 	// example:
 	//
 	// 3
 	ModelFeatureId *string `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
+	// The model feature name.
+	//
 	// example:
 	//
 	// model_feature1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the owner.
+	//
 	// example:
 	//
 	// 1231243253****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 5
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1

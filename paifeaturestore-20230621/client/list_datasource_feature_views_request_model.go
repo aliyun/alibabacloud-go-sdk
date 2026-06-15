@@ -38,49 +38,90 @@ type iListDatasourceFeatureViewsRequest interface {
 }
 
 type ListDatasourceFeatureViewsRequest struct {
+	// Return all data (no paging).
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// End time for query read/write volume. Format: yyyy-mm-dd.
+	//
 	// example:
 	//
 	// 2025-03-19
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Fuzzy filter for feature view names.
+	//
 	// example:
 	//
 	// fv
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Sort order.
+	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Project ID. Get this ID using the ListProjects API.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Filter by project name.
+	//
 	// example:
 	//
 	// fs_project
-	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ShowStorageUsage *bool   `json:"ShowStorageUsage,omitempty" xml:"ShowStorageUsage,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Show storage usage. Default is true.
+	//
+	// example:
+	//
+	// true
+	ShowStorageUsage *bool `json:"ShowStorageUsage,omitempty" xml:"ShowStorageUsage,omitempty"`
+	// Sort by.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Start time for query read/write volume. Format: yyyy-mm-dd.
+	//
 	// example:
 	//
 	// 2025-03-14
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Feature view type.
+	//
+	// - Batch - offline feature
+	//
+	// - Stream - real-time feature
+	//
+	// - Sequence - sequence feature
+	//
 	// example:
 	//
 	// Stream
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Verbose *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Show detailed information. If set to false, do not show UsageStatistics for each view; show only the total. Default is true.
+	//
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
 func (s ListDatasourceFeatureViewsRequest) String() string {

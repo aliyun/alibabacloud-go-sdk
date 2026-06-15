@@ -22,25 +22,33 @@ type iListLLMConfigsResponseBody interface {
 }
 
 type ListLLMConfigsResponseBody struct {
+	// A list of LLM configuration objects.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
 	LLMConfigs []*ListLLMConfigsResponseBodyLLMConfigs `json:"LLMConfigs,omitempty" xml:"LLMConfigs,omitempty" type:"Repeated"`
+	// The maximum number of results returned in this request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for retrieving the next page of results. If this parameter is not returned, no more results are available. To retrieve the next page, pass this value in the `NextToken` parameter of a subsequent request.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6mbU5D/SFHCHMApYkMcWlp5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 898DB17C-09E9-5C41-909D-269BA183EB92
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10
@@ -114,56 +122,84 @@ func (s *ListLLMConfigsResponseBody) Validate() error {
 }
 
 type ListLLMConfigsResponseBodyLLMConfigs struct {
+	// The API key.
+	//
 	// example:
 	//
 	// apikey-abcdxy
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The base URL for API calls.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The batch size.
+	//
 	// example:
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The embedding dimension. If this parameter is empty or set to 0, the system uses the model\\"s default dimension.
+	//
 	// example:
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
-	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// Specifies whether to enable the Fusion feature.
+	EnableFusion *bool `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The LLM configuration ID.
+	//
 	// example:
 	//
 	// llm_config1
 	LLMConfigId *string `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// The maximum number of tokens to process for a single input.
+	//
 	// example:
 	//
 	// 2048
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// text-embedding-v1
-	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model type.
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The name of the LLM configuration.
+	//
 	// example:
 	//
 	// llm_config_name1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2vtzqjaohzqi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The maximum number of requests per second (RPS).
+	//
 	// example:
 	//
 	// 30
 	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 234

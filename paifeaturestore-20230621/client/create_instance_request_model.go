@@ -14,6 +14,8 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	// The instance type. The only supported value is `Basic`.
+	//
 	// example:
 	//
 	// Basic

@@ -20,11 +20,15 @@ type iListDatasourceFeatureViewsResponseBody interface {
 }
 
 type ListDatasourceFeatureViewsResponseBody struct {
+	// Feature view list.
 	FeatureViews []*ListDatasourceFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
-	TotalCount           *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Overall usage statistics. Only displayed for feature views using FeatureDB.
 	TotalUsageStatistics *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics `json:"TotalUsageStatistics,omitempty" xml:"TotalUsageStatistics,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -97,34 +101,55 @@ func (s *ListDatasourceFeatureViewsResponseBody) Validate() error {
 }
 
 type ListDatasourceFeatureViewsResponseBodyFeatureViews struct {
+	// Feature view configuration. Only feature views using FeatureDB have values, showing number of shards and number of replicas.
+	//
 	// example:
 	//
 	// {"shard_count":5,"replication_count":1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Feature entity name.
+	//
 	// example:
 	//
 	// user
 	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	// Feature view ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// Feature view name.
+	//
 	// example:
 	//
 	// fv1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Project name.
+	//
 	// example:
 	//
 	// p1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Lifecycle. Unit: seconds.
+	//
 	// example:
 	//
 	// 86400
 	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// Feature view type.
+	//
+	// - Batch - offline feature
+	//
+	// - Stream - real-time feature
+	//
+	// - Sequence - sequence feature
+	//
 	// example:
 	//
 	// Batch
-	Type            *string                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Usage statistics. Only displayed for feature views using FeatureDB.
 	UsageStatistics *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics `json:"UsageStatistics,omitempty" xml:"UsageStatistics,omitempty" type:"Struct"`
 }
 
@@ -218,15 +243,22 @@ func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) Validate() error {
 }
 
 type ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics struct {
+	// Disk usage.
+	//
 	// example:
 	//
 	// 1.23
 	DiskUsage *float64 `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// Memory usage.
+	//
 	// example:
 	//
 	// 0.12
-	MemoryUsage    *float64                                                                           `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	MemoryUsage *float64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	// Read/write count statistics.
 	ReadWriteCount []*ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount `json:"ReadWriteCount,omitempty" xml:"ReadWriteCount,omitempty" type:"Repeated"`
+	// Row count.
+	//
 	// example:
 	//
 	// 10000
@@ -291,14 +323,20 @@ func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) Vali
 }
 
 type ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount struct {
+	// Date.
+	//
 	// example:
 	//
 	// 2025-03-18T00:00:00+08:00
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Read count.
+	//
 	// example:
 	//
 	// 200
 	ReadCount *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	// Write count.
+	//
 	// example:
 	//
 	// 100
@@ -345,14 +383,19 @@ func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWr
 }
 
 type ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics struct {
+	// Total disk usage.
+	//
 	// example:
 	//
 	// 12.3
 	TotalDiskUsage *float64 `json:"TotalDiskUsage,omitempty" xml:"TotalDiskUsage,omitempty"`
+	// Total memory usage.
+	//
 	// example:
 	//
 	// 1.23
-	TotalMemoryUsage    *float64                                                                         `json:"TotalMemoryUsage,omitempty" xml:"TotalMemoryUsage,omitempty"`
+	TotalMemoryUsage *float64 `json:"TotalMemoryUsage,omitempty" xml:"TotalMemoryUsage,omitempty"`
+	// Total read/write count statistics.
 	TotalReadWriteCount []*ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount `json:"TotalReadWriteCount,omitempty" xml:"TotalReadWriteCount,omitempty" type:"Repeated"`
 }
 
@@ -405,14 +448,20 @@ func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) Validate() 
 }
 
 type ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount struct {
+	// Date.
+	//
 	// example:
 	//
 	// 2025-03-18T00:00:00+08:00
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Total read count.
+	//
 	// example:
 	//
 	// 456
 	TotalReadCount *int64 `json:"TotalReadCount,omitempty" xml:"TotalReadCount,omitempty"`
+	// Total write count.
+	//
 	// example:
 	//
 	// 123

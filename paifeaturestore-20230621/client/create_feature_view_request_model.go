@@ -38,59 +38,102 @@ type iCreateFeatureViewRequest interface {
 }
 
 type CreateFeatureViewRequest struct {
+	// The configurations of the feature view.
+	//
 	// example:
 	//
 	// {"save_original_field":true}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the feature entity.
+	//
 	// example:
 	//
 	// 4
-	FeatureEntityId *string                           `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	Fields          []*CreateFeatureViewRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// The fields.
+	Fields []*CreateFeatureViewRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The name of the feature view.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FeatureView1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the data source to which the table to be registered belongs. You can call the ListDatasources operation to obtain the data source ID.
+	//
 	// example:
 	//
 	// 5
 	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// The name of the table to register.
+	//
 	// example:
 	//
 	// table1
 	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// Specifies whether to synchronize the online feature table. Valid values:
+	//
+	// - `true`: Synchronizes the online feature table.
+	//
+	// - `false`: Does not synchronize the online feature table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	SyncOnlineTable *bool `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
+	// The time-to-live (TTL) of the feature view, in days.
+	//
 	// example:
 	//
 	// 90
-	TTL  *int32    `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The tags of the feature view.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the feature view. Valid values:
+	//
+	// - `Batch`: Offline feature.
+	//
+	// - `Stream`: Real-time feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Batch
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The write method. Valid values:
+	//
+	// - `ByReadyMadeTable`: Registers the feature view by using an existing table.
+	//
+	// - `Custom`: Defines a custom table structure.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom
-	WriteMethod      *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
-	WriteToFeatureDB *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
+	WriteMethod *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	// Specifies whether to write data to the online feature store. Valid values:
+	//
+	// - `true`: Writes data to the online feature store.
+	//
+	// - `false`: Does not write data to the online feature store.
+	//
+	// example:
+	//
+	// false
+	WriteToFeatureDB *bool `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s CreateFeatureViewRequest) String() string {
@@ -232,12 +275,38 @@ func (s *CreateFeatureViewRequest) Validate() error {
 }
 
 type CreateFeatureViewRequestFields struct {
+	// The attributes of the field. Valid values:
+	//
+	// - `Partition`: partition field.
+	//
+	// - `PrimaryKey`: primary key.
+	//
+	// - `EventTime`: event time.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the field.
+	//
 	// example:
 	//
 	// age
-	Name      *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The feature generation configurations.
 	Transform []*CreateFeatureViewRequestFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Repeated"`
+	// The data type of the field. Valid values:
+	//
+	// - INT32
+	//
+	// - INT64
+	//
+	// - FLOAT
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
+	// - BOOLEAN
+	//
+	// - TIMESTAMP
+	//
 	// example:
 	//
 	// INT32
@@ -302,11 +371,16 @@ func (s *CreateFeatureViewRequestFields) Validate() error {
 }
 
 type CreateFeatureViewRequestFieldsTransform struct {
+	// The input for feature generation.
 	Input []*CreateFeatureViewRequestFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// The ID of the large language model (LLM) configuration.
+	//
 	// example:
 	//
 	// 1
 	LLMConfigId *int32 `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// The type of the feature generation.
+	//
 	// example:
 	//
 	// LLMEmbedding
@@ -362,11 +436,16 @@ func (s *CreateFeatureViewRequestFieldsTransform) Validate() error {
 }
 
 type CreateFeatureViewRequestFieldsTransformInput struct {
+	// The modality of the input, such as text or image.
 	Modality *string `json:"Modality,omitempty" xml:"Modality,omitempty"`
+	// The name of the input field.
+	//
 	// example:
 	//
 	// f1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the input field.
+	//
 	// example:
 	//
 	// STRING

@@ -26,30 +26,54 @@ type iListDatasourcesRequest interface {
 }
 
 type ListDatasourcesRequest struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// datasource1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - Asc: ascending order.
+	//
+	// - Desc: descending order.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of data sources per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort by.
+	//
 	// example:
 	//
 	// GmtModifiedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// - Hologres
+	//
+	// - Redis
+	//
+	// - MaxCompute
+	//
 	// example:
 	//
 	// MaxCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workspace. Call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to get the workspace ID.
+	//
 	// example:
 	//
 	// 234

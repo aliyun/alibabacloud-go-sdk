@@ -20,11 +20,14 @@ type iUpdateModelFeatureRequest interface {
 }
 
 type UpdateModelFeatureRequest struct {
+	// The list of features.
 	Features []*UpdateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0
 	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
+	// The label table ID. You can call the ListLabelTables operation to query the label table ID.
+	//
 	// example:
 	//
 	// 4
@@ -90,22 +93,48 @@ func (s *UpdateModelFeatureRequest) Validate() error {
 }
 
 type UpdateModelFeatureRequestFeatures struct {
+	// The feature alias.
+	//
 	// example:
 	//
 	// sex
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The feature view ID. You can call the ListFeatureViews operation to query the feature view ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// The feature name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gender
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cand_seq__
+	PrefixName *string `json:"PrefixName,omitempty" xml:"PrefixName,omitempty"`
+	// The feature type. Valid values:
+	//
+	// - INT32
+	//
+	// - INT64
+	//
+	// - FLOAT
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
+	// - BOOLEAN
+	//
+	// - TIMESTAMP.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -134,6 +163,10 @@ func (s *UpdateModelFeatureRequestFeatures) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateModelFeatureRequestFeatures) GetPrefixName() *string {
+	return s.PrefixName
+}
+
 func (s *UpdateModelFeatureRequestFeatures) GetType() *string {
 	return s.Type
 }
@@ -150,6 +183,11 @@ func (s *UpdateModelFeatureRequestFeatures) SetFeatureViewId(v string) *UpdateMo
 
 func (s *UpdateModelFeatureRequestFeatures) SetName(v string) *UpdateModelFeatureRequestFeatures {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateModelFeatureRequestFeatures) SetPrefixName(v string) *UpdateModelFeatureRequestFeatures {
+	s.PrefixName = &v
 	return s
 }
 

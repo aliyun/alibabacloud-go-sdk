@@ -14,6 +14,8 @@ type iUpdateDatasourceResponseBody interface {
 }
 
 type UpdateDatasourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C33E160C-BFCA-5719-B958-942850E949F6

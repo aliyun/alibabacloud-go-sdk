@@ -28,31 +28,54 @@ type iListModelFeaturesShrinkRequest interface {
 }
 
 type ListModelFeaturesShrinkRequest struct {
+	// The IDs of the model features.
 	ModelFeatureIdsShrink *string `json:"ModelFeatureIds,omitempty" xml:"ModelFeatureIds,omitempty"`
+	// The name of the model feature.
+	//
 	// example:
 	//
 	// model_feature1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order.
+	//
+	// - `ASC`: ascending order.
+	//
+	// - `DESC`: descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The Alibaba Cloud account ID of the user who creates the model feature.
+	//
 	// example:
 	//
 	// 12323143****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. The value must be a positive integer. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID. You can call the `ListProjects` API to obtain the project ID.
+	//
 	// example:
 	//
 	// 4
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field by which to sort the results.
+	//
+	// - `GmtCreateTime`: the creation time.
+	//
+	// - `GmtModifiedTime`: the update time.
+	//
 	// example:
 	//
 	// DESC

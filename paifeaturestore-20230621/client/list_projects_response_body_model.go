@@ -18,11 +18,16 @@ type iListProjectsResponseBody interface {
 }
 
 type ListProjectsResponseBody struct {
+	// The list of projects.
 	Projects []*ListProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 44933189-493B-5C43-A5C6-11EEC2A43520
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of projects.
+	//
 	// example:
 	//
 	// 10
@@ -78,70 +83,104 @@ func (s *ListProjectsResponseBody) Validate() error {
 }
 
 type ListProjectsResponseBodyProjects struct {
+	// The project description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of feature entities.
+	//
 	// example:
 	//
 	// 10
 	FeatureEntityCount *int32 `json:"FeatureEntityCount,omitempty" xml:"FeatureEntityCount,omitempty"`
+	// The number of feature views.
+	//
 	// example:
 	//
 	// 10
 	FeatureViewCount *int32 `json:"FeatureViewCount,omitempty" xml:"FeatureViewCount,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The number of models.
+	//
 	// example:
 	//
 	// 5
 	ModelCount *int32 `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The offline data source ID.
+	//
 	// example:
 	//
 	// 4
 	OfflineDatasourceId *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// The offline data source name.
+	//
 	// example:
 	//
 	// datasource1
 	OfflineDatasourceName *string `json:"OfflineDatasourceName,omitempty" xml:"OfflineDatasourceName,omitempty"`
+	// The offline data source type.
+	//
 	// example:
 	//
 	// MaxCompute
 	OfflineDatasourceType *string `json:"OfflineDatasourceType,omitempty" xml:"OfflineDatasourceType,omitempty"`
+	// The offline data lifecycle, in days.
+	//
 	// example:
 	//
 	// 10
 	OfflineLifecycle *int32 `json:"OfflineLifecycle,omitempty" xml:"OfflineLifecycle,omitempty"`
+	// The online data source ID.
+	//
 	// example:
 	//
 	// 5
 	OnlineDatasourceId *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
+	// The online data source name.
+	//
 	// example:
 	//
 	// datasource2
 	OnlineDatasourceName *string `json:"OnlineDatasourceName,omitempty" xml:"OnlineDatasourceName,omitempty"`
+	// The online data source type.
+	//
 	// example:
 	//
 	// Hologres
 	OnlineDatasourceType *string `json:"OnlineDatasourceType,omitempty" xml:"OnlineDatasourceType,omitempty"`
+	// The project owner.
+	//
 	// example:
 	//
 	// 1232132543543****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 35523

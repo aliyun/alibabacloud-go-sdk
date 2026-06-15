@@ -22,13 +22,19 @@ type iGetModelFeatureFGFeatureResponseBody interface {
 }
 
 type GetModelFeatureFGFeatureResponseBody struct {
+	// The information about the lookup features.
 	LookupFeatures []*GetModelFeatureFGFeatureResponseBodyLookupFeatures `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
-	RawFeatures    []*GetModelFeatureFGFeatureResponseBodyRawFeatures    `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	// The information about the raw features.
+	RawFeatures []*GetModelFeatureFGFeatureResponseBodyRawFeatures `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E23EFF09-58AA-5420-934F-8453AE01548D
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Reserves         []*string                                               `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The reserved fields.
+	Reserves []*string `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
+	// The information about the sequence features.
 	SequenceFeatures []*GetModelFeatureFGFeatureResponseBodySequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
 }
 
@@ -117,30 +123,62 @@ func (s *GetModelFeatureFGFeatureResponseBody) Validate() error {
 }
 
 type GetModelFeatureFGFeatureResponseBodyLookupFeatures struct {
+	// The default value.
+	//
 	// example:
 	//
 	// -1024
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The name of the generated feature.
+	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The domain of the key feature.
+	//
+	// - User: The user side.
+	//
+	// - Item: The item side.
+	//
+	// - Context: The context.
+	//
 	// example:
 	//
 	// Item
 	KeyFeatureDomain *string `json:"KeyFeatureDomain,omitempty" xml:"KeyFeatureDomain,omitempty"`
+	// The name of the key feature.
+	//
 	// example:
 	//
 	// 1
 	KeyFeatureName *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	// The domain of the map feature.
+	//
+	// - User: The user side.
+	//
+	// - Item: The item side.
+	//
+	// - Context: The context.
+	//
 	// example:
 	//
 	// User
 	MapFeatureDomain *string `json:"MapFeatureDomain,omitempty" xml:"MapFeatureDomain,omitempty"`
+	// The name of the map feature.
+	//
 	// example:
 	//
 	// item_id
 	MapFeatureName *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
+	// The value type of the feature.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// example:
 	//
 	// STRING
@@ -223,26 +261,54 @@ func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) Validate() error {
 }
 
 type GetModelFeatureFGFeatureResponseBodyRawFeatures struct {
+	// The default value.
+	//
 	// example:
 	//
 	// -1024
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The domain of the original feature.
+	//
+	// - User: The user side.
+	//
+	// - Item: The item side.
+	//
+	// - Context: The context.
+	//
 	// example:
 	//
 	// User
 	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// The name of the generated feature.
+	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The type of the raw FG feature.
+	//
+	// - IdFeature: The primary key.
+	//
+	// - RawFeature: The raw feature.
+	//
 	// example:
 	//
 	// IdFeature
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// The name of the original feature.
+	//
 	// example:
 	//
 	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	// The value type of the feature.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// example:
 	//
 	// STRING
@@ -316,23 +382,32 @@ func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) Validate() error {
 }
 
 type GetModelFeatureFGFeatureResponseBodySequenceFeatures struct {
+	// The separator for feature attributes.
+	//
 	// example:
 	//
 	// #
 	AttributeDelim *string `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
+	// The name of the sequence feature.
+	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The separator for the sequence feature.
+	//
 	// example:
 	//
 	// ;
 	SequenceDelim *string `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	// The maximum length of the sequence feature.
+	//
 	// example:
 	//
 	// 50
-	SequenceLength *int64                                                             `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
-	SubFeatures    []*GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
+	SequenceLength *int64 `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
+	// A list of sub-features for the sequence feature.
+	SubFeatures []*GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
 }
 
 func (s GetModelFeatureFGFeatureResponseBodySequenceFeatures) String() string {
@@ -402,26 +477,54 @@ func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) Validate() error 
 }
 
 type GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures struct {
+	// The default value.
+	//
 	// example:
 	//
 	// -1024
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The domain of the original feature.
+	//
+	// - User: The user side.
+	//
+	// - Item: The item side.
+	//
+	// - Context: The context.
+	//
 	// example:
 	//
 	// User
 	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// The name of the generated feature.
+	//
 	// example:
 	//
 	// item_id
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The type of the FG feature.
+	//
+	// - IdFeature: The primary key.
+	//
+	// - RawFeature: The raw feature.
+	//
 	// example:
 	//
 	// IdFeature
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// The name of the original feature.
+	//
 	// example:
 	//
 	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
+	// The value type of the feature.
+	//
+	// - INTEGER
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
 	// example:
 	//
 	// STRING

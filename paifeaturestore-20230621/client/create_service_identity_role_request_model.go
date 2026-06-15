@@ -14,6 +14,8 @@ type iCreateServiceIdentityRoleRequest interface {
 }
 
 type CreateServiceIdentityRoleRequest struct {
+	// The name of the service account role.
+	//
 	// This parameter is required.
 	//
 	// example:

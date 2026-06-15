@@ -34,29 +34,41 @@ type iCreateLLMConfigRequest interface {
 }
 
 type CreateLLMConfigRequest struct {
+	// The API key for the model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api-xyz
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The base URL of the model service.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The batch size.
+	//
 	// example:
 	//
 	// 8
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The embedding dimension. For a DashScope model, this value must match one of the fixed, valid dimensions supported by the model.
+	//
 	// example:
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
 	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
+	// The maximum number of input tokens.
+	//
 	// example:
 	//
 	// 8192
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// The name of the model.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64,16 +76,22 @@ type CreateLLMConfigRequest struct {
 	// text-embedding-v1
 	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The name of the LLM configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm_config1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of requests per second.
+	//
 	// example:
 	//
 	// 30
 	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -42,56 +42,84 @@ type iGetModelFeatureResponseBody interface {
 }
 
 type GetModelFeatureResponseBody struct {
+	// The script for exporting the training sample table.
+	//
 	// example:
 	//
 	// from feature_store_py.fs_client import FeatureStoreClient\\nfrom feature_store_py.fs_project import FeatureStoreProject\\nfrom feature_store_py.fs_datasource import LabelInput, MaxComputeDataSource, TrainingSetOutput\\nfrom feature_store_py.fs_features import FeatureSelector\\nfrom feature_store_py.fs_config import LabelInputConfig, PartitionConfig, FeatureViewConfig\\nfrom feature_store_py.fs_config import TrainSetOutputConfig, EASDeployConfig\\nimport datetime\\nimport sys\\n\\ncur_day = args[\\"dt\\"]\\nprint(\\"cur_day = \\", cur_day)\\noffset = datetime.timedelta(days=-1)\\npre_day = (datetime.datetime.strptime(cur_day, \\"%Y%m%d\\") + offset).strftime(\\"%Y%m%d\\")\\nprint(\\"pre_day = \\", pre_day)\\n\\n\\naccess_key_id = o.account.access_id\\naccess_key_secret = o.account.secret_access_key\\nfs = FeatureStoreClient(access_key_id=access_key_id, access_key_secret=access_key_secret, region=\\"cn-beijing\\")\\ncur_project_name = \\"p1\\"\\nproject = fs.get_project(cur_project_name)\\n\\nlabel_partitions = PartitionConfig(name = \\"ds\\", value = cur_day)\\nlabel_input_config = LabelInputConfig(partition_config=label_partitions)\\n\\nfeature_view_1_partitions = PartitionConfig(name = \\"ds\\", value = pre_day)\\nfeature_view_1_config = FeatureViewConfig(name = \\"user_fea\\",\\npartition_config=feature_view_1_partitions)\\n\\nfeature_view_2_partitions = PartitionConfig(name = \\"ds\\", value = pre_day)\\nfeature_view_2_config = FeatureViewConfig(name = \\"seq_fea\\",\\npartition_config=feature_view_2_partitions)\\n\\nfeature_view_3_partitions = PartitionConfig(name = \\"ds\\", value = pre_day)\\nfeature_view_3_config = FeatureViewConfig(name = \\"item_fea\\",\\npartition_config=feature_view_3_partitions)\\n\\nfeature_view_config_list = [feature_view_1_config,feature_view_2_config,feature_view_3_config]\\ntrain_set_partitions = PartitionConfig(name = \\"ds\\", value = cur_day)\\ntrain_set_output_config = TrainSetOutputConfig(partition_config=train_set_partitions)\\n\\n\\nmodel_name = \\"rank_v1\\"\\ncur_model = project.get_model(model_name)\\ntask = cur_model.export_train_set(label_input_config, feature_view_config_list, train_set_output_config)\\ntask.wait()\\nprint(\\"task_summary = \\", task.task_summary)\\n
-	ExportTrainingSetTableScript *string                                `json:"ExportTrainingSetTableScript,omitempty" xml:"ExportTrainingSetTableScript,omitempty"`
-	Features                     []*GetModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	ExportTrainingSetTableScript *string `json:"ExportTrainingSetTableScript,omitempty" xml:"ExportTrainingSetTableScript,omitempty"`
+	// The feature list.
+	Features []*GetModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-07-04T14:46:22.227+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2023-07-04T14:46:22.227+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The priority level of the label table. Default value: 0. Set to 1 to prioritize the label table. Set to 2 to prioritize the feature view.
+	//
 	// example:
 	//
 	// 0
 	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
+	// The label table ID.
+	//
 	// example:
 	//
 	// 3
 	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// The label table name.
+	//
 	// example:
 	//
 	// label_table1
 	LabelTableName *string `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
+	// The model feature name.
+	//
 	// example:
 	//
 	// model_feature1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the creator.
+	//
 	// example:
 	//
 	// 1231243253****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 5
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1
-	ProjectName *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Relations   *GetModelFeatureResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The feature relationships.
+	Relations *GetModelFeatureResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the exported training set FG table.
+	//
 	// example:
 	//
 	// table2
 	TrainingSetFGTable *string `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
+	// The name of the exported training set table.
+	//
 	// example:
 	//
 	// table1
@@ -260,22 +288,50 @@ func (s *GetModelFeatureResponseBody) Validate() error {
 }
 
 type GetModelFeatureResponseBodyFeatures struct {
+	// The feature alias.
+	//
 	// example:
 	//
 	// feature2
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The feature view ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// The feature view name.
+	//
 	// example:
 	//
 	// feature_view_1
 	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
+	// The feature name.
+	//
 	// example:
 	//
 	// feature1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cand_seq__
+	PrefixName *string `json:"PrefixName,omitempty" xml:"PrefixName,omitempty"`
+	// The feature type. Valid values:
+	//
+	// - INT32
+	//
+	// - INT64
+	//
+	// - FLOAT
+	//
+	// - DOUBLE
+	//
+	// - STRING
+	//
+	// - BOOLEAN
+	//
+	// - TIMESTAMP.
+	//
 	// example:
 	//
 	// INT32
@@ -306,6 +362,10 @@ func (s *GetModelFeatureResponseBodyFeatures) GetName() *string {
 	return s.Name
 }
 
+func (s *GetModelFeatureResponseBodyFeatures) GetPrefixName() *string {
+	return s.PrefixName
+}
+
 func (s *GetModelFeatureResponseBodyFeatures) GetType() *string {
 	return s.Type
 }
@@ -330,6 +390,11 @@ func (s *GetModelFeatureResponseBodyFeatures) SetName(v string) *GetModelFeature
 	return s
 }
 
+func (s *GetModelFeatureResponseBodyFeatures) SetPrefixName(v string) *GetModelFeatureResponseBodyFeatures {
+	s.PrefixName = &v
+	return s
+}
+
 func (s *GetModelFeatureResponseBodyFeatures) SetType(v string) *GetModelFeatureResponseBodyFeatures {
 	s.Type = &v
 	return s
@@ -340,8 +405,10 @@ func (s *GetModelFeatureResponseBodyFeatures) Validate() error {
 }
 
 type GetModelFeatureResponseBodyRelations struct {
+	// The domain list.
 	Domains []*GetModelFeatureResponseBodyRelationsDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	Links   []*GetModelFeatureResponseBodyRelationsLinks   `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
+	// The feature relationship link list.
+	Links []*GetModelFeatureResponseBodyRelationsLinks `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
 }
 
 func (s GetModelFeatureResponseBodyRelations) String() string {
@@ -393,6 +460,14 @@ func (s *GetModelFeatureResponseBodyRelations) Validate() error {
 }
 
 type GetModelFeatureResponseBodyRelationsDomains struct {
+	// The domain type. Valid values:
+	//
+	// - FeatureEntity: feature entity.
+	//
+	// - FeatureView: feature view.
+	//
+	// - ModelFeature: model feature.
+	//
 	// example:
 	//
 	// FeatureEntity
@@ -403,6 +478,8 @@ type GetModelFeatureResponseBodyRelationsDomains struct {
 	//
 	// 3
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// feature_entity_1
@@ -449,14 +526,20 @@ func (s *GetModelFeatureResponseBodyRelationsDomains) Validate() error {
 }
 
 type GetModelFeatureResponseBodyRelationsLinks struct {
+	// The source ID of the link.
+	//
 	// example:
 	//
 	// model_feature_2
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The dependency field of the link.
+	//
 	// example:
 	//
 	// user_id
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	// The destination ID of the link.
+	//
 	// example:
 	//
 	// feature_entity_3

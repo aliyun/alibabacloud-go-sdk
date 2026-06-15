@@ -16,10 +16,14 @@ type iCreateFeatureEntityResponseBody interface {
 }
 
 type CreateFeatureEntityResponseBody struct {
+	// The feature entity ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8

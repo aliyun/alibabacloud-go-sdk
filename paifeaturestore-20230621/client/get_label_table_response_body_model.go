@@ -34,40 +34,60 @@ type iGetLabelTableResponseBody interface {
 }
 
 type GetLabelTableResponseBody struct {
+	// The data source ID.
+	//
 	// example:
 	//
 	// 1
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// datasource1
-	DatasourceName *string                            `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	Fields         []*GetLabelTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The fields in the label table.
+	Fields []*GetLabelTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The time when the label table was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the label table was last modified.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The label table name.
+	//
 	// example:
 	//
 	// label_table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the creator.
+	//
 	// example:
 	//
 	// 12321312*****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1
-	ProjectName          *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// A list of related model feature names.
 	RelatedModelFeatures []*string `json:"RelatedModelFeatures,omitempty" xml:"RelatedModelFeatures,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
@@ -198,12 +218,17 @@ type GetLabelTableResponseBodyFields struct {
 	// example:
 	//
 	// item
-	AlignedEntityName *string   `json:"AlignedEntityName,omitempty" xml:"AlignedEntityName,omitempty"`
-	Attributes        []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	AlignedEntityName *string `json:"AlignedEntityName,omitempty" xml:"AlignedEntityName,omitempty"`
+	// A list of field attributes.
+	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The field name.
+	//
 	// example:
 	//
 	// field1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The field type.
+	//
 	// example:
 	//
 	// INT32

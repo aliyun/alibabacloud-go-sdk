@@ -18,11 +18,16 @@ type iListDatasourceTablesResponseBody interface {
 }
 
 type ListDatasourceTablesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C03B2680-AC9C-59CD-93C5-8142B92537FA
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of tables.
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10

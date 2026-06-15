@@ -20,6 +20,8 @@ type ListFeatureViewOnlineFeaturesRequest struct {
 	//
 	// {"dlrm_hstu": true}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The join IDs used to retrieve online features.
+	//
 	// This parameter is required.
 	JoinIds []*string `json:"JoinIds,omitempty" xml:"JoinIds,omitempty" type:"Repeated"`
 }

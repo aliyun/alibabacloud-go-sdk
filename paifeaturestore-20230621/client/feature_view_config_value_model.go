@@ -26,14 +26,30 @@ type iFeatureViewConfigValue interface {
 }
 
 type FeatureViewConfigValue struct {
+	// The list of partitions.
 	Partitions map[string]*FeatureViewConfigValuePartitionsValue `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	// The event time.
+	//
 	// example:
 	//
 	// 1721186536
-	EventTime *string                         `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	Equal     *bool                           `json:"Equal,omitempty" xml:"Equal,omitempty"`
-	UseMock   *bool                           `json:"UseMock,omitempty" xml:"UseMock,omitempty"`
-	Snapshot  *FeatureViewConfigValueSnapshot `json:"Snapshot,omitempty" xml:"Snapshot,omitempty" type:"Struct"`
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// Specifies whether the feature\\"s timestamp must match the event time.
+	//
+	// example:
+	//
+	// False
+	Equal *bool `json:"Equal,omitempty" xml:"Equal,omitempty"`
+	// Specifies whether to use a mock data table.
+	//
+	// example:
+	//
+	// True
+	UseMock *bool `json:"UseMock,omitempty" xml:"UseMock,omitempty"`
+	// The snapshot configuration.
+	Snapshot *FeatureViewConfigValueSnapshot `json:"Snapshot,omitempty" xml:"Snapshot,omitempty" type:"Struct"`
+	// The second join key.
+	//
 	// example:
 	//
 	// request_id
@@ -122,7 +138,10 @@ func (s *FeatureViewConfigValue) Validate() error {
 }
 
 type FeatureViewConfigValueSnapshot struct {
+	// The partition configuration for the snapshot.
 	Partitions map[string]*FeatureViewConfigValueSnapshotPartitionsValue `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	// The name of the snapshot table.
+	//
 	// example:
 	//
 	// table_name

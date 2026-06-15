@@ -30,38 +30,62 @@ type iGetDatasourceResponseBody interface {
 }
 
 type GetDatasourceResponseBody struct {
+	// The resource configuration.
+	//
 	// example:
 	//
 	// {"address": ""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 3
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The time the data source was created.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time the data source was last updated.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// datasource1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// AD7D9E95-BD31-53F2-B710-6C01866FCB05
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// - Hologres
+	//
+	// - Redis
+	//
+	// - MaxCompute
+	//
 	// example:
 	//
 	// Hologres
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URI of the resource.
+	//
 	// example:
 	//
 	// igraph_instance1
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 32244

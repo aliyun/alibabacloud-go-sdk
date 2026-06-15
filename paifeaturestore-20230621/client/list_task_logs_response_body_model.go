@@ -18,11 +18,16 @@ type iListTaskLogsResponseBody interface {
 }
 
 type ListTaskLogsResponseBody struct {
+	// An array of log entries.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 72F15A8A-5A28-5B18-A0DE-0EABD7D3245A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of log entries.
+	//
 	// example:
 	//
 	// 100

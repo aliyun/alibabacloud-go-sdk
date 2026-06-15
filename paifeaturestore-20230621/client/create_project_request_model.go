@@ -24,32 +24,44 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
+	// The description of the project. This description is displayed in the PAI console.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the project. The name must be unique within the instance. It must be 2 to 18 characters long, begin with a letter, and contain only letters, digits, and underscores (_). Regex: ^[a-zA-Z][a-zA-Z0-9_]+$.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// project1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the offline data source, which must be of the **MaxCompute*	- type. You can call the ListDatasources operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	OfflineDatasourceId *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// The retention period in days for offline tables created by FeatureStore. This setting does not affect existing tables registered with the RegisterTable operation. A default value of 0 means the tables are never automatically deleted.
+	//
 	// example:
 	//
 	// 90
 	OfflineLifeCycle *int32 `json:"OfflineLifeCycle,omitempty" xml:"OfflineLifeCycle,omitempty"`
+	// The ID of the online data source. The data source type must be **Hologres**, **Tablestore**, or **FeatureDB**. You can call the ListDatasources operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	OnlineDatasourceId *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
+	// The ID of the PAI workspace. You can call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:

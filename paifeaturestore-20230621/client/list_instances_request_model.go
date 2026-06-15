@@ -22,22 +22,46 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// The sort order.
+	//
+	// - ASC: Ascending order.
+	//
+	// - DESC: Descending order.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start at 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort key.
+	//
+	// - GmtCreateTime: The creation time.
+	//
+	// - GmtModifiedTime: The update time.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Filters the results by instance status.
+	//
+	// - Initializing
+	//
+	// - Running
+	//
+	// - Stopped
+	//
 	// example:
 	//
 	// Running

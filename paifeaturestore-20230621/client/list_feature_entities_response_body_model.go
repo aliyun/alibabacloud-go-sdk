@@ -18,11 +18,16 @@ type iListFeatureEntitiesResponseBody interface {
 }
 
 type ListFeatureEntitiesResponseBody struct {
+	// A list of feature entities.
 	FeatureEntities []*ListFeatureEntitiesResponseBodyFeatureEntities `json:"FeatureEntities,omitempty" xml:"FeatureEntities,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 37D19490-AB69-567D-A852-407C94E510E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of feature entities.
+	//
 	// example:
 	//
 	// 10
@@ -78,42 +83,62 @@ func (s *ListFeatureEntitiesResponseBody) Validate() error {
 }
 
 type ListFeatureEntitiesResponseBodyFeatureEntities struct {
+	// The feature entity ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The join ID that links the feature entity to a feature view.
+	//
 	// example:
 	//
 	// user_id
 	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// The feature entity name.
+	//
 	// example:
 	//
 	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner\\"s Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 123456789****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The parent feature entity ID. This value is empty or 0 for a root feature entity.
+	//
 	// example:
 	//
 	// 1
 	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
+	// The parent feature entity name.
+	//
 	// example:
 	//
 	// user
 	ParentFeatureEntityName *string `json:"ParentFeatureEntityName,omitempty" xml:"ParentFeatureEntityName,omitempty"`
+	// The join ID of the parent feature entity.
+	//
 	// example:
 	//
 	// user_id
 	ParentJoinId *string `json:"ParentJoinId,omitempty" xml:"ParentJoinId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project_1

@@ -16,10 +16,18 @@ type iCheckInstanceDatasourceResponseBody interface {
 }
 
 type CheckInstanceDatasourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C03B2680-AC9C-59CD-93C5-8142B92537FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource check status.
+	//
+	// - Success: succeeded
+	//
+	// - Failure: failed
+	//
 	// example:
 	//
 	// Success

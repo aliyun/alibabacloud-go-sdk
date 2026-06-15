@@ -20,18 +20,25 @@ type iFeatureViewConfigValuePartitionsValue interface {
 }
 
 type FeatureViewConfigValuePartitionsValue struct {
+	// Partition value.
+	//
 	// example:
 	//
-	// 20250101
-	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 20230101
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// List of partitions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// Start time partition.
+	//
 	// example:
 	//
-	// 20250101
+	// 20230101
 	StartValue *string `json:"StartValue,omitempty" xml:"StartValue,omitempty"`
+	// End time partition.
+	//
 	// example:
 	//
-	// 20250201
+	// 20230202
 	EndValue *string `json:"EndValue,omitempty" xml:"EndValue,omitempty"`
 }
 

@@ -18,16 +18,28 @@ type iCheckInstanceDatasourceRequest interface {
 }
 
 type CheckInstanceDatasourceRequest struct {
+	// The resource configuration.
+	//
 	// example:
 	//
 	// {"address": ""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The data source type.
+	//
+	// - Hologres
+	//
+	// - Redis
+	//
+	// - MaxCompute
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hologres
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource URI.
+	//
 	// This parameter is required.
 	//
 	// example:

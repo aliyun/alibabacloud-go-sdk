@@ -46,70 +46,108 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
+	// The project description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of feature entities.
+	//
 	// example:
 	//
 	// 10
 	FeatureEntityCount *int32 `json:"FeatureEntityCount,omitempty" xml:"FeatureEntityCount,omitempty"`
+	// The number of feature views.
+	//
 	// example:
 	//
 	// 10
 	FeatureViewCount *int32 `json:"FeatureViewCount,omitempty" xml:"FeatureViewCount,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The number of models.
+	//
 	// example:
 	//
 	// 5
 	ModelCount *int32 `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The offline data source ID.
+	//
 	// example:
 	//
 	// 4
 	OfflineDatasourceId *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// The offline data source name.
+	//
 	// example:
 	//
 	// datasource1
 	OfflineDatasourceName *string `json:"OfflineDatasourceName,omitempty" xml:"OfflineDatasourceName,omitempty"`
+	// The type of the offline data source. For example, `MaxCompute`.
+	//
 	// example:
 	//
 	// MaxCompute
 	OfflineDatasourceType *string `json:"OfflineDatasourceType,omitempty" xml:"OfflineDatasourceType,omitempty"`
+	// The offline data lifecycle, in days.
+	//
 	// example:
 	//
 	// 90
 	OfflineLifecycle *int32 `json:"OfflineLifecycle,omitempty" xml:"OfflineLifecycle,omitempty"`
+	// The online data source ID.
+	//
 	// example:
 	//
 	// 5
 	OnlineDatasourceId *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
+	// The online data source name.
+	//
 	// example:
 	//
 	// datasource2
 	OnlineDatasourceName *string `json:"OnlineDatasourceName,omitempty" xml:"OnlineDatasourceName,omitempty"`
+	// The online data source type.
+	//
+	// - Hologres
+	//
+	// - Redis
+	//
 	// example:
 	//
 	// Hologres
 	OnlineDatasourceType *string `json:"OnlineDatasourceType,omitempty" xml:"OnlineDatasourceType,omitempty"`
+	// The Alibaba Cloud account ID of the project owner.
+	//
 	// example:
 	//
 	// 1232132543543****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C33E160C-BFCA-5719-B958-942850E949F6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 35523

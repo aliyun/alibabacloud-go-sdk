@@ -38,6 +38,8 @@ type iGetTaskResponseBody interface {
 }
 
 type GetTaskResponseBody struct {
+	// The task configuration.
+	//
 	// example:
 	//
 	// {
@@ -58,50 +60,90 @@ type GetTaskResponseBody struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The execution time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtExecutedTime *string `json:"GmtExecutedTime,omitempty" xml:"GmtExecutedTime,omitempty"`
+	// The completion time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtFinishedTime *string `json:"GmtFinishedTime,omitempty" xml:"GmtFinishedTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the target object.
+	//
 	// example:
 	//
 	// 3
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the target object.
+	//
+	// - ModelFeature: model feature
+	//
+	// - FeatureView: feature view
+	//
 	// example:
 	//
 	// ModelFeature
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project_1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 37D19490-AB69-567D-A852-407C94E510E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task runtime configuration.
+	//
 	// example:
 	//
 	// DROP TABLE IF EXISTS public.fsxxx
 	RunningConfig *string `json:"RunningConfig,omitempty" xml:"RunningConfig,omitempty"`
+	// The status of the task.
+	//
+	// - Initializing: The task is initializing.
+	//
+	// - Running: The task is running.
+	//
+	// - Success: The task completed successfully.
+	//
+	// - Failure: The task failed.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type.
+	//
+	// - OfflineToOnline: offline-to-online data synchronization
+	//
+	// - ExportTrainingSet: training sample table export
+	//
 	// example:
 	//
 	// OfflineToOnline

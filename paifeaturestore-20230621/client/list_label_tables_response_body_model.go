@@ -18,11 +18,16 @@ type iListLabelTablesResponseBody interface {
 }
 
 type ListLabelTablesResponseBody struct {
+	// The list of label tables.
 	LabelTables []*ListLabelTablesResponseBodyLabelTables `json:"LabelTables,omitempty" xml:"LabelTables,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of label tables.
+	//
 	// example:
 	//
 	// 21
@@ -78,38 +83,56 @@ func (s *ListLabelTablesResponseBody) Validate() error {
 }
 
 type ListLabelTablesResponseBodyLabelTables struct {
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 3
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// datasource1
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The time when the label table was created. The time is displayed in the ISO 8601 format.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the label table was last modified. The time is displayed in the ISO 8601 format.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the label table.
+	//
 	// example:
 	//
 	// 3
 	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// The name of the label table.
+	//
 	// example:
 	//
 	// label_table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the owner.
+	//
 	// example:
 	//
 	// 123214213214
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// project1

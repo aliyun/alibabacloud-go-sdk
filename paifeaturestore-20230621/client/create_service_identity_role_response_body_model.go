@@ -18,14 +18,20 @@ type iCreateServiceIdentityRoleResponseBody interface {
 }
 
 type CreateServiceIdentityRoleResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// ServiceLinkedRoleAlreadyExistsErrorProblem
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C03B2680-AC9C-59CD-93C5-8142B92537FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the service account role.
+	//
 	// example:
 	//
 	// AliyunServiceRoleForFeatureStore

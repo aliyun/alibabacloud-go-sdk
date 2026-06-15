@@ -22,27 +22,40 @@ type iPublishFeatureViewTableRequest interface {
 }
 
 type PublishFeatureViewTableRequest struct {
+	// Custom configurations for the task, provided as a JSON string.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The event time of the data to be published, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The synchronization mode. The following values are supported:
+	//
+	// - `Overwrite`: Overwrites all data in the specified partitions.
+	//
+	// - `Merge`: Merges the new data with existing data in the specified partitions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Overwrite
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Specifies whether to synchronize data from the offline table to the online store.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	OfflineToOnline *bool                             `json:"OfflineToOnline,omitempty" xml:"OfflineToOnline,omitempty"`
-	Partitions      map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	OfflineToOnline *bool `json:"OfflineToOnline,omitempty" xml:"OfflineToOnline,omitempty"`
+	// The partitions to publish.
+	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 }
 
 func (s PublishFeatureViewTableRequest) String() string {

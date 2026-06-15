@@ -34,43 +34,68 @@ type iListFeatureViewsShrinkRequest interface {
 }
 
 type ListFeatureViewsShrinkRequest struct {
+	// Filters the results by feature name.
+	//
 	// example:
 	//
 	// feature1
-	FeatureName          *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The feature view IDs by which to filter the results.
 	FeatureViewIdsShrink *string `json:"FeatureViewIds,omitempty" xml:"FeatureViewIds,omitempty"`
+	// Filters the results by feature view name.
+	//
 	// example:
 	//
 	// fv1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort order. Valid values: `Desc` (descending) and `Asc` (ascending).
+	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// Filters the results by owner.
+	//
 	// example:
 	//
 	// 1232143243242****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number of the results to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of feature views to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID. You can obtain this ID by calling the `ListProjects` operation.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field by which to sort the results.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Filters the results by tag.
+	//
 	// example:
 	//
 	// tag1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Filters the results by type. Valid values:
+	//
+	// ● `Batch`: batch feature
+	//
+	// ● `Stream`: stream feature
+	//
 	// example:
 	//
 	// Batch

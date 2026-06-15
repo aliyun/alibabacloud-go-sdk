@@ -18,12 +18,15 @@ type iListProjectFeaturesResponseBody interface {
 }
 
 type ListProjectFeaturesResponseBody struct {
+	// The list of returned features.
 	Features []*ListProjectFeaturesResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The total number of features that match the query criteria.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -80,34 +83,50 @@ func (s *ListProjectFeaturesResponseBody) Validate() error {
 }
 
 type ListProjectFeaturesResponseBodyFeatures struct {
+	// A comma-separated list of aliases for the feature.
+	//
 	// example:
 	//
 	// age1,age2
 	AliasNames *string `json:"AliasNames,omitempty" xml:"AliasNames,omitempty"`
+	// The ID of the parent feature view.
+	//
 	// example:
 	//
 	// 1
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// The name of the parent feature view.
+	//
 	// example:
 	//
 	// fv1
 	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
+	// The time the feature was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The number of model features that reference this feature.
+	//
 	// example:
 	//
 	// 10
 	ModelFeatureCount *int32 `json:"ModelFeatureCount,omitempty" xml:"ModelFeatureCount,omitempty"`
+	// The name of the feature.
+	//
 	// example:
 	//
 	// f1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the feature.
+	//
 	// example:
 	//
 	// 123456
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The data type of the feature.
+	//
 	// example:
 	//
 	// STRING

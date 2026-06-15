@@ -16,11 +16,17 @@ type iCreateLLMConfigResponseBody interface {
 }
 
 type CreateLLMConfigResponseBody struct {
+	// The ID of the LLM configuration.
+	//
 	// example:
 	//
 	// llm_config1
 	LLMConfigId *string `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// DD19A0E2-0DC8-5EAA-867D-00C813F553F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

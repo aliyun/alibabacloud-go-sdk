@@ -16,7 +16,10 @@ type iListFeatureViewRelationshipsResponseBody interface {
 }
 
 type ListFeatureViewRelationshipsResponseBody struct {
+	// A list of relationships to models that use this feature view.
 	Relationships []*ListFeatureViewRelationshipsResponseBodyRelationships `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
@@ -63,11 +66,16 @@ func (s *ListFeatureViewRelationshipsResponseBody) Validate() error {
 }
 
 type ListFeatureViewRelationshipsResponseBodyRelationships struct {
+	// The name of the feature view.
+	//
 	// example:
 	//
 	// fv1
-	FeatureViewName *string                                                        `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
-	Models          []*ListFeatureViewRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
+	// A list of models.
+	Models []*ListFeatureViewRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// project1
@@ -123,10 +131,14 @@ func (s *ListFeatureViewRelationshipsResponseBodyRelationships) Validate() error
 }
 
 type ListFeatureViewRelationshipsResponseBodyRelationshipsModels struct {
+	// The ID of the model.
+	//
 	// example:
 	//
 	// 3
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The name of the model.
+	//
 	// example:
 	//
 	// dbmtl

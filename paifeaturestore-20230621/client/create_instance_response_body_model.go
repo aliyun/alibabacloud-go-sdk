@@ -18,14 +18,20 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InstanceAlreadyExistsErrorProblem
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// featureStore-cn-7mz2xfu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C33E160C-BFCA-5719-B958-942850E949F6

@@ -18,16 +18,22 @@ type iUpdateDatasourceRequest interface {
 }
 
 type UpdateDatasourceRequest struct {
+	// The resource configuration.
+	//
 	// example:
 	//
 	// {"address": ""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The data source name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// datasource1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource URI.
+	//
 	// This parameter is required.
 	//
 	// example:

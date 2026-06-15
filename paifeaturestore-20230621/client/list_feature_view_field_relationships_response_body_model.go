@@ -16,7 +16,10 @@ type iListFeatureViewFieldRelationshipsResponseBody interface {
 }
 
 type ListFeatureViewFieldRelationshipsResponseBody struct {
+	// A list of relationships.
 	Relationships []*ListFeatureViewFieldRelationshipsResponseBodyRelationships `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BF349686-C932-55B5-9B31-DAFA395C0E06
@@ -63,15 +66,22 @@ func (s *ListFeatureViewFieldRelationshipsResponseBody) Validate() error {
 }
 
 type ListFeatureViewFieldRelationshipsResponseBodyRelationships struct {
+	// The feature view name.
+	//
 	// example:
 	//
 	// featureView1
-	FeatureName *string                                                             `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	Models      []*ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// A list of models.
+	Models []*ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The name of the offline table.
+	//
 	// example:
 	//
 	// table2
 	OfflineTableName *string `json:"OfflineTableName,omitempty" xml:"OfflineTableName,omitempty"`
+	// The name of the online table.
+	//
 	// example:
 	//
 	// table1
@@ -136,14 +146,20 @@ func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationships) Validate() 
 }
 
 type ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels struct {
+	// The feature alias.
+	//
 	// example:
 	//
 	// f1
 	FeatureAliasName *string `json:"FeatureAliasName,omitempty" xml:"FeatureAliasName,omitempty"`
+	// The ID of the model.
+	//
 	// example:
 	//
 	// 3
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The name of the model.
+	//
 	// example:
 	//
 	// dbmtl

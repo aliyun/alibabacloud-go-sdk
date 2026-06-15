@@ -24,26 +24,38 @@ type iGetProjectFeatureEntityResponseBody interface {
 }
 
 type GetProjectFeatureEntityResponseBody struct {
+	// Feature entity ID.
+	//
 	// example:
 	//
 	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// Join ID used to associate with feature views.
+	//
 	// example:
 	//
 	// user_id
 	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// Feature entity name.
+	//
 	// example:
 	//
 	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Project name.
+	//
 	// example:
 	//
 	// project_1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 37D19490-AB69-567D-A852-407C94E510E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 34245

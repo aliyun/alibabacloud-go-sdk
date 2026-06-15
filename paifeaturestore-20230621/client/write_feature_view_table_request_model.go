@@ -18,13 +18,21 @@ type iWriteFeatureViewTableRequest interface {
 }
 
 type WriteFeatureViewTableRequest struct {
+	// The write mode.
+	//
+	// - Overwrite: Overwrites existing data.
+	//
+	// - Merge: Merges the new data with existing data.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Merge
-	Mode          *string                                    `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Partitions    map[string]map[string]interface{}          `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The partitions to write to.
+	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	// The file data source.
 	UrlDatasource *WriteFeatureViewTableRequestUrlDatasource `json:"UrlDatasource,omitempty" xml:"UrlDatasource,omitempty" type:"Struct"`
 }
 
@@ -73,14 +81,20 @@ func (s *WriteFeatureViewTableRequest) Validate() error {
 }
 
 type WriteFeatureViewTableRequestUrlDatasource struct {
+	// The file delimiter.
+	//
 	// example:
 	//
 	// ,
 	Delimiter *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	// Specifies whether to omit the header from the source file.
+	//
 	// example:
 	//
 	// true
 	OmitHeader *bool `json:"OmitHeader,omitempty" xml:"OmitHeader,omitempty"`
+	// The data source path.
+	//
 	// example:
 	//
 	// xxx.xxx.com/file.csv

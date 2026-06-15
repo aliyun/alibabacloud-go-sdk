@@ -16,10 +16,14 @@ type iListTaskLogsRequest interface {
 }
 
 type ListTaskLogsRequest struct {
+	// The page number. The minimum value is 1. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10

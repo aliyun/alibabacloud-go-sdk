@@ -18,12 +18,18 @@ type iUpdateLabelTableRequest interface {
 }
 
 type UpdateLabelTableRequest struct {
+	// The ID of the data source for the label table.
+	//
 	// example:
 	//
 	// 3
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The fields to modify.
+	//
 	// This parameter is required.
 	Fields []*UpdateLabelTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The name of the label table.
+	//
 	// example:
 	//
 	// rec_test
@@ -83,14 +89,20 @@ type UpdateLabelTableRequestFields struct {
 	//
 	// item
 	AlignedEntityName *string `json:"AlignedEntityName,omitempty" xml:"AlignedEntityName,omitempty"`
+	// The field\\"s attributes.
+	//
 	// This parameter is required.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lat
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the field.
+	//
 	// This parameter is required.
 	//
 	// example:

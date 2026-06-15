@@ -32,42 +32,62 @@ type iGetFeatureEntityResponseBody interface {
 }
 
 type GetFeatureEntityResponseBody struct {
+	// The time when the feature entity was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The join ID used to associate with a feature view.
+	//
 	// example:
 	//
 	// user_id
 	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// The name of the feature entity.
+	//
 	// example:
 	//
 	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the creator.
+	//
 	// example:
 	//
 	// 123456789*****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the parent feature entity. An empty value or 0 indicates a root feature entity.
+	//
 	// example:
 	//
 	// 1
 	ParentFeatureEntityId *string `json:"ParentFeatureEntityId,omitempty" xml:"ParentFeatureEntityId,omitempty"`
+	// The name of the parent feature entity.
+	//
 	// example:
 	//
 	// user
 	ParentFeatureEntityName *string `json:"ParentFeatureEntityName,omitempty" xml:"ParentFeatureEntityName,omitempty"`
+	// The join ID of the parent feature entity.
+	//
 	// example:
 	//
 	// user_id
 	ParentJoinId *string `json:"ParentJoinId,omitempty" xml:"ParentJoinId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// project_1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E23EFF09-58AA-5420-934F-8453AE01548D
