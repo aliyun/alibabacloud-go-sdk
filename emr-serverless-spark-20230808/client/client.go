@@ -2064,6 +2064,72 @@ func (client *Client) GetAICenterState(workspaceId *string, request *GetAICenter
 
 // Summary:
 //
+// 获取CacheCluster详情
+//
+// @param request - GetCacheClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCacheClusterResponse
+func (client *Client) GetCacheClusterWithOptions(cacheClusterId *string, request *GetCacheClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCacheClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCacheCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cache/" + dara.PercentEncode(dara.StringValue(cacheClusterId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCacheClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取CacheCluster详情
+//
+// @param request - GetCacheClusterRequest
+//
+// @return GetCacheClusterResponse
+func (client *Client) GetCacheCluster(cacheClusterId *string, request *GetCacheClusterRequest) (_result *GetCacheClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCacheClusterResponse{}
+	_body, _err := client.GetCacheClusterWithOptions(cacheClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the number of CU-hours consumed by a queue during a specified cycle.
 //
 // @param request - GetCuHoursRequest
@@ -4742,6 +4808,72 @@ func (client *Client) RefreshLivyComputeToken(workspaceBizId *string, livyComput
 
 // Summary:
 //
+// # Start CacheCluster
+//
+// @param request - StartCacheClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartCacheClusterResponse
+func (client *Client) StartCacheClusterWithOptions(cacheClusterId *string, request *StartCacheClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartCacheClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartCacheCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cache/" + dara.PercentEncode(dara.StringValue(cacheClusterId)) + "/start"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartCacheClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Start CacheCluster
+//
+// @param request - StartCacheClusterRequest
+//
+// @return StartCacheClusterResponse
+func (client *Client) StartCacheCluster(cacheClusterId *string, request *StartCacheClusterRequest) (_result *StartCacheClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartCacheClusterResponse{}
+	_body, _err := client.StartCacheClusterWithOptions(cacheClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a Spark Job.
 //
 // @param request - StartJobRunRequest
@@ -5213,6 +5345,72 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 	headers := make(map[string]*string)
 	_result = &StartSessionClusterResponse{}
 	_body, _err := client.StartSessionClusterWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a CacheCluster.
+//
+// @param request - StopCacheClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCacheClusterResponse
+func (client *Client) StopCacheClusterWithOptions(cacheClusterId *string, request *StopCacheClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopCacheClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopCacheCluster"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/cache/" + dara.PercentEncode(dara.StringValue(cacheClusterId)) + "/stop"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopCacheClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a CacheCluster.
+//
+// @param request - StopCacheClusterRequest
+//
+// @return StopCacheClusterResponse
+func (client *Client) StopCacheCluster(cacheClusterId *string, request *StopCacheClusterRequest) (_result *StopCacheClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopCacheClusterResponse{}
+	_body, _err := client.StopCacheClusterWithOptions(cacheClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
