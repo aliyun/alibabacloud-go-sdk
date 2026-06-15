@@ -100,7 +100,7 @@ type CreateAccessPointRequest struct {
 	//
 	// example:
 	//
-	// 0777
+	// 0755
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
 	// The ID of the POSIX user group.
 	//

@@ -129,7 +129,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// example:
 	//
-	// Description
+	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the file system.
 	//

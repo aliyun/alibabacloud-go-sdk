@@ -99,7 +99,7 @@ type DescribeProtocolMountTargetResponseBodyProtocolMountTargets struct {
 	//
 	// example:
 	//
-	// test
+	// 此协议服务导出目录的描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the export directory for the protocol service.
 	//

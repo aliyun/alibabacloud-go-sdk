@@ -16,12 +16,16 @@ type iStartLifecyclePolicyExecutionRequest interface {
 }
 
 type StartLifecyclePolicyExecutionRequest struct {
+	// The file system ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-0015****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The lifecycle policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:

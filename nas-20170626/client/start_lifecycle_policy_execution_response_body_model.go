@@ -16,10 +16,20 @@ type iStartLifecyclePolicyExecutionResponseBody interface {
 }
 
 type StartLifecyclePolicyExecutionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 70EACC9C-D07A-4A34-ADA4-77506C42****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

@@ -22,7 +22,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// MTcyNDU1MTYyNjIxNTMyNzM4NiMzNjExMzQxNw==
+	// 无
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//

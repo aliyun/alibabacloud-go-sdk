@@ -52,7 +52,7 @@ type CreateProtocolServiceRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 此协议服务的描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run.
 	//
@@ -74,7 +74,7 @@ type CreateProtocolServiceRequest struct {
 	//
 	// example:
 	//
-	// cpfs-123****
+	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The specification of the protocol service.
 	//
@@ -119,7 +119,7 @@ type CreateProtocolServiceRequest struct {
 	//
 	// example:
 	//
-	// vsw-123****
+	// vsw-2vc3c2lybvdllxyq4****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) ID of the protocol service. The VPC ID of the protocol service must be the same as the VPC ID of the file system.
 	//
@@ -128,7 +128,7 @@ type CreateProtocolServiceRequest struct {
 	//
 	// example:
 	//
-	// vpc-123****
+	// vpc-2vct297b8157bth9z****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

@@ -88,7 +88,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// example:
 	//
-	// 0,1,…23
+	// 0,1,…,23
 	TimePoints *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
 }
 

@@ -38,7 +38,7 @@ type CreateAccessRuleRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- standard (default): General-purpose NAS file system.
+	// 	- standard: General-purpose Apsara File Storage NAS (NAS) file system
 	//
 	// 	- extreme: Extreme NAS file system.
 	//
@@ -76,7 +76,7 @@ type CreateAccessRuleRequest struct {
 	//
 	// 	- RDWR (default): the read and write permissions.
 	//
-	// 	- RDONLY: the read-only permissions.
+	// 	- RDONLY: the read-only permission.
 	//
 	// example:
 	//

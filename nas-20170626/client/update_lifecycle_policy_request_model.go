@@ -26,28 +26,53 @@ type iUpdateLifecyclePolicyRequest interface {
 }
 
 type UpdateLifecyclePolicyRequest struct {
+	// The description of the lifecycle policy.
+	//
+	// The description must be 3 to 64 characters long and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// > This parameter is supported only for CPFS for AI file systems.
+	//
 	// example:
 	//
 	// Lifecycle policy description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-290w65p03ok64y*****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the lifecycle policy.
+	//
+	// > This parameter is required for CPFS for AI file systems.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lsp-bp1234567890ab****
-	LifecyclePolicyId *string                                      `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	Paths             []*string                                    `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	RetrieveRules     []*UpdateLifecyclePolicyRequestRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
+	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
+	// The absolute paths of the directories to which the lifecycle policy applies.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The retrieval rule for files. You can specify only one retrieval rule.
+	//
+	// > This parameter is supported only for CPFS for AI file systems.
+	RetrieveRules []*UpdateLifecyclePolicyRequestRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
+	// The storage tier.
+	//
+	// - `InfrequentAccess`: The Infrequent Access storage tier. This is the default value.
+	//
+	// - `Archive`: The Archive storage tier.
+	//
 	// example:
 	//
 	// InfrequentAccess
-	StorageType  *string                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The transition rule for files. You can specify only one transition rule.
+	//
+	// > This parameter is supported only for CPFS for AI file systems when `LifecyclePolicyType` is set to `Auto`.
 	TransitRules []*UpdateLifecyclePolicyRequestTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -145,10 +170,22 @@ func (s *UpdateLifecyclePolicyRequest) Validate() error {
 }
 
 type UpdateLifecyclePolicyRequestRetrieveRules struct {
+	// The rule attribute. Valid value:
+	//
+	// - `RetrieveType`: The retrieval method.
+	//
 	// example:
 	//
 	// RetrieveType
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The retrieval method. Valid values:
+	//
+	// - If `Attribute` is set to `RetrieveType`:
+	//
+	//   - `AfterVisit`: Retrieves data on a best-effort basis after a file is accessed. This value is valid only when `LifecyclePolicyType` is `Auto`.
+	//
+	//   - `All`: Retrieves all data. This value is valid only when `LifecyclePolicyType` is `OnDemand`.
+	//
 	// example:
 	//
 	// All
@@ -186,10 +223,22 @@ func (s *UpdateLifecyclePolicyRequestRetrieveRules) Validate() error {
 }
 
 type UpdateLifecyclePolicyRequestTransitRules struct {
+	// The rule attribute.
+	//
+	// Valid value:
+	//
+	// - `Atime`: The last access time of a file.
+	//
 	// example:
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The rule threshold.
+	//
+	// Valid value:
+	//
+	// - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be between 1 and 365.
+	//
 	// example:
 	//
 	// 3

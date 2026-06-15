@@ -184,7 +184,7 @@ type DescribeFilesetsRequestFilters struct {
 	//
 	// example:
 	//
-	// fset-1902718ea0ae****,fset-3212718ea0ae****
+	// fset-1902718ea0ae****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -13,6 +13,8 @@ type iAttachVscToFilesystemsRequest interface {
 	GetClientToken() *string
 	SetResourceIds(v []*AttachVscToFilesystemsRequestResourceIds) *AttachVscToFilesystemsRequest
 	GetResourceIds() []*AttachVscToFilesystemsRequestResourceIds
+	SetRoleChain(v []*AttachVscToFilesystemsRequestRoleChain) *AttachVscToFilesystemsRequest
+	GetRoleChain() []*AttachVscToFilesystemsRequestRoleChain
 }
 
 type AttachVscToFilesystemsRequest struct {
@@ -30,6 +32,7 @@ type AttachVscToFilesystemsRequest struct {
 	//
 	// This parameter is required.
 	ResourceIds []*AttachVscToFilesystemsRequestResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	RoleChain   []*AttachVscToFilesystemsRequestRoleChain   `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
 }
 
 func (s AttachVscToFilesystemsRequest) String() string {
@@ -48,6 +51,10 @@ func (s *AttachVscToFilesystemsRequest) GetResourceIds() []*AttachVscToFilesyste
 	return s.ResourceIds
 }
 
+func (s *AttachVscToFilesystemsRequest) GetRoleChain() []*AttachVscToFilesystemsRequestRoleChain {
+	return s.RoleChain
+}
+
 func (s *AttachVscToFilesystemsRequest) SetClientToken(v string) *AttachVscToFilesystemsRequest {
 	s.ClientToken = &v
 	return s
@@ -58,9 +65,23 @@ func (s *AttachVscToFilesystemsRequest) SetResourceIds(v []*AttachVscToFilesyste
 	return s
 }
 
+func (s *AttachVscToFilesystemsRequest) SetRoleChain(v []*AttachVscToFilesystemsRequestRoleChain) *AttachVscToFilesystemsRequest {
+	s.RoleChain = v
+	return s
+}
+
 func (s *AttachVscToFilesystemsRequest) Validate() error {
 	if s.ResourceIds != nil {
 		for _, item := range s.ResourceIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RoleChain != nil {
+		for _, item := range s.RoleChain {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -113,5 +134,50 @@ func (s *AttachVscToFilesystemsRequestResourceIds) SetVscId(v string) *AttachVsc
 }
 
 func (s *AttachVscToFilesystemsRequestResourceIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type AttachVscToFilesystemsRequestRoleChain struct {
+	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
+	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s AttachVscToFilesystemsRequestRoleChain) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AttachVscToFilesystemsRequestRoleChain) GoString() string {
+	return s.String()
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) GetAssumeRoleFor() *string {
+	return s.AssumeRoleFor
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) GetRoleArn() *string {
+	return s.RoleArn
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) GetRoleType() *string {
+	return s.RoleType
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) SetAssumeRoleFor(v string) *AttachVscToFilesystemsRequestRoleChain {
+	s.AssumeRoleFor = &v
+	return s
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) SetRoleArn(v string) *AttachVscToFilesystemsRequestRoleChain {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) SetRoleType(v string) *AttachVscToFilesystemsRequestRoleChain {
+	s.RoleType = &v
+	return s
+}
+
+func (s *AttachVscToFilesystemsRequestRoleChain) Validate() error {
 	return dara.Validate(s)
 }

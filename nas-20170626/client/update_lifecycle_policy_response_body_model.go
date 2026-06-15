@@ -16,10 +16,20 @@ type iUpdateLifecyclePolicyResponseBody interface {
 }
 
 type UpdateLifecyclePolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
+	// Valid values:
+	//
+	// - true: The request succeeded.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

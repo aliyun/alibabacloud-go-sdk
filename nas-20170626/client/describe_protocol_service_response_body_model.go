@@ -101,7 +101,7 @@ type DescribeProtocolServiceResponseBodyProtocolServices struct {
 	//
 	// example:
 	//
-	// test
+	// 此协议服务的描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the file system.
 	//

@@ -64,7 +64,7 @@ type CreateProtocolMountTargetRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 此导出目录的描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run. The dry run checks parameter validity and prerequisites. The dry run does not create an export directory or incur fees.
 	//
@@ -84,7 +84,7 @@ type CreateProtocolMountTargetRequest struct {
 	//
 	// example:
 	//
-	// cpfs-123****
+	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The ID of the fileset that you want to export.
 	//
@@ -98,7 +98,7 @@ type CreateProtocolMountTargetRequest struct {
 	//
 	// example:
 	//
-	// fset-123****
+	// fset-1902718ea0ae****
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
 	// The path of the CPFS directory that you want to export.
 	//
@@ -128,7 +128,7 @@ type CreateProtocolMountTargetRequest struct {
 	//
 	// example:
 	//
-	// ptc-123****
+	// ptc-197ed6a00f2b****
 	ProtocolServiceId *string `json:"ProtocolServiceId,omitempty" xml:"ProtocolServiceId,omitempty"`
 	// The vSwitch ID of the export directory.
 	//
@@ -139,7 +139,7 @@ type CreateProtocolMountTargetRequest struct {
 	//
 	// example:
 	//
-	// vsw-123****
+	// vsw-2vc3c2lybvdllxyq4****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The list of vSwitch IDs of the export directory.
 	//
@@ -153,7 +153,7 @@ type CreateProtocolMountTargetRequest struct {
 	//
 	// example:
 	//
-	// vpc-123****
+	// vpc-2vct297b8157bth9z****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

@@ -108,7 +108,7 @@ type CreateFileSystemRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 此文件系统的描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Whether to precheck the creation request.
 	//
@@ -178,7 +178,7 @@ type CreateFileSystemRequest struct {
 	//
 	// example:
 	//
-	// 3c0b3885-2adf-483d-8a65-5e280689****
+	// fcbd****-62**-4a**-b605-c58cc1d5****
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// Specify the protocol type.
 	//
@@ -230,7 +230,7 @@ type CreateFileSystemRequest struct {
 	//
 	// example:
 	//
-	// s-xxx
+	// s-extreme-snapsho****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The storage type.
 	//
@@ -260,7 +260,7 @@ type CreateFileSystemRequest struct {
 	//
 	// example:
 	//
-	// vsw-2ze37k6jh8ums2fw2****
+	// vsw-bp131dkqilvw5pnlt****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
@@ -270,7 +270,7 @@ type CreateFileSystemRequest struct {
 	//
 	// example:
 	//
-	// vpc-bp1cbv1ljve4j5hlw****
+	// vpc-bp18cx9a7zoh0h9b4****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone.
 	//

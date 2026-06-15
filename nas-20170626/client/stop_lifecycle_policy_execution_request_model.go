@@ -16,12 +16,16 @@ type iStopLifecyclePolicyExecutionRequest interface {
 }
 
 type StopLifecyclePolicyExecutionRequest struct {
+	// The ID of the file system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the lifecycle policy.
+	//
 	// This parameter is required.
 	//
 	// example:

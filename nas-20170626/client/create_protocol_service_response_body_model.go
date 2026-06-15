@@ -20,7 +20,7 @@ type CreateProtocolServiceResponseBody struct {
 	//
 	// example:
 	//
-	// ptc-123****
+	// ptc-197ed6a00f2b****
 	ProtocolServiceId *string `json:"ProtocolServiceId,omitempty" xml:"ProtocolServiceId,omitempty"`
 	// The request ID.
 	//

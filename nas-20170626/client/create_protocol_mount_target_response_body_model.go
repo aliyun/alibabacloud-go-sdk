@@ -20,7 +20,7 @@ type CreateProtocolMountTargetResponseBody struct {
 	//
 	// example:
 	//
-	// exp-123****
+	// exp-19abf5beab8d****
 	ExportId *string `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
 	// The request ID.
 	//

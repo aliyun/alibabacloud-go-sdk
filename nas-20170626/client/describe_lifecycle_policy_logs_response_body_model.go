@@ -24,23 +24,40 @@ type iDescribeLifecyclePolicyLogsResponseBody interface {
 }
 
 type DescribeLifecyclePolicyLogsResponseBody struct {
+	// The execution logs of the lifecycle policy.
 	LifecyclePolicyLogs []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs `json:"LifecyclePolicyLogs,omitempty" xml:"LifecyclePolicyLogs,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the request succeeded.
+	//
+	// Valid values:
+	//
+	// - `true`: The request succeeded.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of logs.
+	//
 	// example:
 	//
 	// 36
@@ -123,21 +140,49 @@ func (s *DescribeLifecyclePolicyLogsResponseBody) Validate() error {
 }
 
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs struct {
+	// The time when the task was created. The time is displayed in UTC and is in the `yyyy-MM-ddTHH:mm:ssZ` format.
+	//
 	// example:
 	//
 	// 2025-10-20T02:25:07Z
-	CreateTime    *string                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Paths         []*string                                                                  `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The execution paths of the task.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The retrieval rules for file data.
 	RetrieveRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
+	// The status of the task. Valid values:
+	//
+	// - `PENDING`: The task is initializing.
+	//
+	// - `RUNNING`: The task is running.
+	//
+	// - `STOPPED`: The task is stopped.
+	//
+	// - `FINISHED`: The task is complete.
+	//
+	// - `FAILED`: The task failed.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage tier. Valid values:
+	//
+	// - `InfrequentAccess`: Infrequent Access (default).
+	//
+	// - `Archive`: Archive Storage.
+	//
 	// example:
 	//
 	// InfrequentAccess
-	StorageType  *string                                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Summary      *string                                                                   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The task summary.
+	//
+	// example:
+	//
+	// Total tasks: 100000, success tasks: 100000
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The transition rules for file data.
 	TransitRules []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -235,10 +280,22 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs) Validate() 
 }
 
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules struct {
+	// The attribute of the rule. Valid value:
+	//
+	// - `RetrieveType`: The retrieval method.
+	//
 	// example:
 	//
 	// RetrieveType
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The threshold of the rule. Valid values:
+	//
+	// - If `Attribute` is set to `RetrieveType`:
+	//
+	//   - `AfterVisit`: Data is retrieved on a best-effort basis when accessed. This value is available only if `LifecyclePolicyType` is set to `Auto`.
+	//
+	//   - `All`: All data is retrieved. This value is available only if `LifecyclePolicyType` is set to `OnDemand`.
+	//
 	// example:
 	//
 	// All
@@ -276,10 +333,22 @@ func (s *DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules
 }
 
 type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules struct {
+	// The attribute of the rule.
+	//
+	// Valid value:
+	//
+	// - `Atime`: The last access time of a file.
+	//
 	// example:
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The rule threshold.
+	//
+	// Valid values:
+	//
+	// - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be an integer from 1 to 365.
+	//
 	// example:
 	//
 	// 3

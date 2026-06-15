@@ -81,7 +81,7 @@ func (s *GetProtocolMountTargetResponseBody) Validate() error {
 type GetProtocolMountTargetResponseBodyProtocolMountTarget struct {
 	// The name of the permission group.
 	//
-	// Default permission group: DEFAULT\\\_VPC\\\_GROUP\\\_NAME
+	// Default permission group: DEFAULT\_VPC\_GROUP\_NAME
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type GetProtocolMountTargetResponseBodyProtocolMountTarget struct {
 	//
 	// example:
 	//
-	// The description of the export directory.
+	// 此协议服务导出的描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the export directory.
 	//
