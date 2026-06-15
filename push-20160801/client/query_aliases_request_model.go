@@ -16,12 +16,16 @@ type iQueryAliasesRequest interface {
 }
 
 type QueryAliasesRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identifier for the device in Mobile Push. It is 32 characters long and contains only digits and lowercase letters.
+	//
 	// This parameter is required.
 	//
 	// example:

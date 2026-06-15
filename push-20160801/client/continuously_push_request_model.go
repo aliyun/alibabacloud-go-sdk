@@ -20,24 +20,48 @@ type iContinuouslyPushRequest interface {
 }
 
 type ContinuouslyPushRequest struct {
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Message ID.
+	//
+	// Obtain this MessageId by calling the Push API with Target set to TBD. It represents a message already saved in the push system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 500131
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// Push target:
+	//
+	// - **DEVICE**: Push by device
+	//
+	// - **ACCOUNT**: Push by account
+	//
+	// - **ALIAS**: Push by alias
+	//
+	// Continuous push supports only these three target types.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEVICE
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// Specify values based on Target. Separate multiple values with commas. If you exceed the limit, split the push into multiple calls.
+	//
+	// - Target=DEVICE: values such as `deviceid1,deviceid2` (up to 1,000 supported).
+	//
+	// - Target=ACCOUNT: values such as `account1,account2` (up to 1,000 supported).
+	//
+	// - Target=ALIAS: values such as `alias1,alias2` (up to 1,000 supported).
+	//
 	// This parameter is required.
 	//
 	// example:

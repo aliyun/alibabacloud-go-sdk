@@ -20,24 +20,34 @@ type iQueryPushStatByAppRequest interface {
 }
 
 type QueryPushStatByAppRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The end time of the query. Specify the time in ISO 8601 format, YYYY-MM-DDThh:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2016-07-29T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The data granularity of the response. You can only query data for up to 31 days at daily granularity. Valid values:
+	//
+	// - **DAY**: Query data at daily granularity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The start time of the query. Specify the time in ISO 8601 format, YYYY-MM-DDThh:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:

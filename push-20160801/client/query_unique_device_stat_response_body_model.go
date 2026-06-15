@@ -17,6 +17,8 @@ type iQueryUniqueDeviceStatResponseBody interface {
 
 type QueryUniqueDeviceStatResponseBody struct {
 	AppDeviceStats *QueryUniqueDeviceStatResponseBodyAppDeviceStats `json:"AppDeviceStats,omitempty" xml:"AppDeviceStats,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC

@@ -16,12 +16,18 @@ type iQueryPushStatByMsgRequest interface {
 }
 
 type QueryPushStatByMsgRequest struct {
+	// The AppKey.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The ID of the pushed message. This ID is returned after a message is pushed.
+	//
+	// > Push data is available the next day. You cannot query data for the current day.
+	//
 	// This parameter is required.
 	//
 	// example:

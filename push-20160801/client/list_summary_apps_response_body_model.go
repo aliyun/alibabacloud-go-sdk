@@ -16,6 +16,8 @@ type iListSummaryAppsResponseBody interface {
 }
 
 type ListSummaryAppsResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC

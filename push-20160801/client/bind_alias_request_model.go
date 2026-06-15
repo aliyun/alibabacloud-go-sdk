@@ -18,18 +18,26 @@ type iBindAliasRequest interface {
 }
 
 type BindAliasRequest struct {
+	// The alias to attach.
+	//
+	// You can attach up to 10 aliases in one request. Separate multiple aliases with commas. Each alias can be up to 128 bytes long. Chinese characters count as three bytes each. A device can have up to 128 aliases attached. An alias can be attached to up to 128 devices.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_alias
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Your AppKey.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identifier of the device in Mobile Push. It is 32 characters long and contains only numbers and lowercase letters.
+	//
 	// This parameter is required.
 	//
 	// example:

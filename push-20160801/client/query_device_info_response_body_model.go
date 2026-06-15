@@ -16,7 +16,10 @@ type iQueryDeviceInfoResponseBody interface {
 }
 
 type QueryDeviceInfoResponseBody struct {
+	// Device details.
 	DeviceInfo *QueryDeviceInfoResponseBodyDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 6EEF262B-EA7D-41DC-89B9-20F3D1E28194
@@ -59,44 +62,74 @@ func (s *QueryDeviceInfoResponseBody) Validate() error {
 }
 
 type QueryDeviceInfoResponseBodyDeviceInfo struct {
+	// Account attached to the device.
+	//
 	// example:
 	//
 	// test@aliyun.com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// Alias attached to the device.
+	//
 	// example:
 	//
 	// test_alias,test_alias2
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Device brand.
+	//
+	// example:
+	//
+	// HUAWEI
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// a64ae296f3b04a58a05b30c95****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Device token.
+	//
 	// example:
 	//
 	// 5ecc7b4012aaa801b63******5543ccbda6b4930d09629e936e1ac4b762a7df
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// Device type.
+	//
 	// example:
 	//
 	// iOS
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// Last online time.
+	//
 	// example:
 	//
 	// 2018-03-27T02:19:40Z
 	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
-	Model          *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Device model.
+	//
+	// example:
+	//
+	// VOG-AL00
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Is online.
+	//
 	// example:
 	//
 	// false
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Phone number.
+	//
 	// example:
 	//
 	// 133********
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Is push feature enabled.
+	//
 	// example:
 	//
 	// true
 	PushEnabled *bool `json:"PushEnabled,omitempty" xml:"PushEnabled,omitempty"`
+	// Tags attached to the device.
+	//
 	// example:
 	//
 	// test_tag,test_tag2

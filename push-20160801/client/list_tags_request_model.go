@@ -14,6 +14,8 @@ type iListTagsRequest interface {
 }
 
 type ListTagsRequest struct {
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:

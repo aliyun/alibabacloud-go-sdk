@@ -16,10 +16,14 @@ type iCheckDeviceResponseBody interface {
 }
 
 type CheckDeviceResponseBody struct {
+	// Indicates whether the device is active.
+	//
 	// example:
 	//
-	// ture
+	// true
 	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC

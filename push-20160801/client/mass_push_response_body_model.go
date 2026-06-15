@@ -17,6 +17,8 @@ type iMassPushResponseBody interface {
 
 type MassPushResponseBody struct {
 	MessageIds *MassPushResponseBodyMessageIds `json:"MessageIds,omitempty" xml:"MessageIds,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC

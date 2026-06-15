@@ -16,10 +16,14 @@ type iPushMessageToAndroidResponseBody interface {
 }
 
 type PushMessageToAndroidResponseBody struct {
+	// The ID of the message pushed.
+	//
 	// example:
 	//
 	// 501029
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC

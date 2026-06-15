@@ -16,8 +16,14 @@ type iMassPushV2ResponseBody interface {
 }
 
 type MassPushV2ResponseBody struct {
+	// List of message IDs.
 	MessageIds []*string `json:"MessageIds,omitempty" xml:"MessageIds,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 159E4422-6624-****-8943-DFD98D34858C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MassPushV2ResponseBody) String() string {

@@ -14,6 +14,8 @@ type iBindPhoneResponseBody interface {
 }
 
 type BindPhoneResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 0D1126F0-F8FF-513D-BAFA-F140447BDED4

@@ -16,12 +16,16 @@ type iQueryDevicesByAccountRequest interface {
 }
 
 type QueryDevicesByAccountRequest struct {
+	// Account name. You can query only one account at a time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// accountName
+	// test_account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:

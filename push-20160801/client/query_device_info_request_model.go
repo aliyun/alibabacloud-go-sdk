@@ -16,12 +16,16 @@ type iQueryDeviceInfoRequest interface {
 }
 
 type QueryDeviceInfoRequest struct {
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23419851
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identity of the device in the push system. Query only one at a time.
+	//
 	// This parameter is required.
 	//
 	// example:

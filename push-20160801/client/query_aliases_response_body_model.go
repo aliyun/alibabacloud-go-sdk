@@ -17,6 +17,8 @@ type iQueryAliasesResponseBody interface {
 
 type QueryAliasesResponseBody struct {
 	AliasInfos *QueryAliasesResponseBodyAliasInfos `json:"AliasInfos,omitempty" xml:"AliasInfos,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 159E4422-6624-4750-8943-DFD98D34858C

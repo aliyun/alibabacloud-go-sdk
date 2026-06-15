@@ -16,12 +16,16 @@ type iCheckDevicesRequest interface {
 }
 
 type CheckDevicesRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23419851
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identifier for each device in the push service. Each ID is 32 characters long and contains only digits and lowercase letters. Separate multiple IDs with commas. You can check up to 100 devices per request.
+	//
 	// This parameter is required.
 	//
 	// example:

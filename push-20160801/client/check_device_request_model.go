@@ -16,12 +16,16 @@ type iCheckDeviceRequest interface {
 }
 
 type CheckDeviceRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23419851
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identity of the device in Push. It is 32 characters long and contains only digits and lowercase letters.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,13 +16,17 @@ type iCompleteContinuouslyPushResponseBody interface {
 }
 
 type CompleteContinuouslyPushResponseBody struct {
-	// example:
+	// The message ID for the push request.
 	//
-	// 4010290149170430
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 500131
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

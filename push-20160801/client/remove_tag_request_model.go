@@ -16,12 +16,16 @@ type iRemoveTagRequest interface {
 }
 
 type RemoveTagRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The name of the tag to remove. You can remove only one tag at a time. Maximum length: 128 characters.
+	//
 	// This parameter is required.
 	//
 	// example:

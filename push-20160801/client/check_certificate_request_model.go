@@ -14,6 +14,8 @@ type iCheckCertificateRequest interface {
 }
 
 type CheckCertificateRequest struct {
+	// The AppKey of the application.
+	//
 	// This parameter is required.
 	//
 	// example:

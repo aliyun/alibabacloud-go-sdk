@@ -14,6 +14,8 @@ type iCancelPushResponseBody interface {
 }
 
 type CancelPushResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC

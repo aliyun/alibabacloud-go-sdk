@@ -16,12 +16,16 @@ type iUnbindPhoneRequest interface {
 }
 
 type UnbindPhoneRequest struct {
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identity of the device. It is 32 characters long and consists of digits and lowercase letters.
+	//
 	// This parameter is required.
 	//
 	// example:

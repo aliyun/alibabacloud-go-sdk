@@ -17,6 +17,8 @@ type iQueryDevicesByAccountResponseBody interface {
 
 type QueryDevicesByAccountResponseBody struct {
 	DeviceIds *QueryDevicesByAccountResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A8A24108-2AD0-4F6E-81C7-A8A24C2C2AD0

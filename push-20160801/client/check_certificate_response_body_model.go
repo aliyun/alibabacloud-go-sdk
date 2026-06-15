@@ -22,16 +22,32 @@ type iCheckCertificateResponseBody interface {
 }
 
 type CheckCertificateResponseBody struct {
+	// Indicates whether the AppKey belongs to an Android app:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
 	// false
-	Android             *bool                                            `json:"Android,omitempty" xml:"Android,omitempty"`
+	Android *bool `json:"Android,omitempty" xml:"Android,omitempty"`
+	// The information about the certificate for the development or sandbox environment.
 	DevelopmentCertInfo *CheckCertificateResponseBodyDevelopmentCertInfo `json:"DevelopmentCertInfo,omitempty" xml:"DevelopmentCertInfo,omitempty" type:"Struct"`
+	// Indicates whether the AppKey belongs to an iOS app:
+	//
+	// - true
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
-	IOS                *bool                                           `json:"IOS,omitempty" xml:"IOS,omitempty"`
+	IOS *bool `json:"IOS,omitempty" xml:"IOS,omitempty"`
+	// The information about the certificate for the production environment.
 	ProductionCertInfo *CheckCertificateResponseBodyProductionCertInfo `json:"ProductionCertInfo,omitempty" xml:"ProductionCertInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
@@ -106,10 +122,24 @@ func (s *CheckCertificateResponseBody) Validate() error {
 }
 
 type CheckCertificateResponseBodyDevelopmentCertInfo struct {
+	// The expiration time of the certificate.
+	//
 	// example:
 	//
 	// 1470024000000
 	ExipreTime *int64 `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **EXPIRED**: The certificate is expired.
+	//
+	// - **NOT_CONFIGURED**: The certificate is not configured.
+	//
+	// - **NO_PASSWORD**: The password for the certificate is not configured.
+	//
+	// - **OK**: The certificate is normal.
+	//
+	// - **REVOKED**: The certificate is revoked.
+	//
 	// example:
 	//
 	// EXPIRED
@@ -147,10 +177,24 @@ func (s *CheckCertificateResponseBodyDevelopmentCertInfo) Validate() error {
 }
 
 type CheckCertificateResponseBodyProductionCertInfo struct {
+	// The expiration time of the certificate.
+	//
 	// example:
 	//
 	// 1764561600000
 	ExipreTime *int64 `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **EXPIRED**: The certificate is expired.
+	//
+	// - **NOT_CONFIGURED**: The certificate is not configured.
+	//
+	// - **NO_PASSWORD**: The password for the certificate is not configured.
+	//
+	// - **OK**: The certificate is normal.
+	//
+	// - **REVOKED**: The certificate is revoked.
+	//
 	// example:
 	//
 	// OK

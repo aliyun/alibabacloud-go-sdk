@@ -18,16 +18,28 @@ type iPushV2Request interface {
 }
 
 type PushV2Request struct {
+	// AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****530646
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// An idempotency token to prevent duplicate pushes caused by client-side retries. If you call this API with the same IdempotentToken within 15 minutes, only one push is sent. Subsequent calls return the result of the first successful push.
+	//
+	// > - Format the token as a standard 36-character UUID (8-4-4-4-12). Valid characters are hexadecimal digits 0–9 and a–f. Case-insensitive.
+	//
+	// >
+	//
+	// > - This parameter prevents duplicates only from retries. It does not prevent duplicates from concurrent calls.
+	//
 	// example:
 	//
 	// c8016d13-6e76-****-9bda-769383d11787
 	IdempotentToken *string `json:"IdempotentToken,omitempty" xml:"IdempotentToken,omitempty"`
+	// Push task definition.
+	//
 	// This parameter is required.
 	PushTask *PushTask `json:"PushTask,omitempty" xml:"PushTask,omitempty"`
 }

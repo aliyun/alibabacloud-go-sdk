@@ -20,25 +20,37 @@ type iUnbindAliasRequest interface {
 }
 
 type UnbindAliasRequest struct {
+	// The alias to detach.
+	//
+	// An alias supports up to 128 bytes (one Chinese character counts as 3 bytes). This field is required when UnbindAll is false. You can detach up to 10 aliases at once. Separate multiple aliases with commas.
+	//
 	// example:
 	//
 	// test_alias
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The AppKey.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique device identifier for push notifications. It is 32 characters long and consists of digits and lowercase letters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e2ba19de97604f55b16557673****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Whether to detach all aliases. Default is false.
+	//
+	// If true, detaches all aliases currently bound to the device. If false, detaches only the aliases specified in AliasName.
+	//
 	// example:
 	//
-	// true
+	// false
 	UnbindAll *bool `json:"UnbindAll,omitempty" xml:"UnbindAll,omitempty"`
 }
 

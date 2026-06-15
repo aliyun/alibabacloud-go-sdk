@@ -17,6 +17,8 @@ type iQueryPushStatByMsgResponseBody interface {
 
 type QueryPushStatByMsgResponseBody struct {
 	PushStats *QueryPushStatByMsgResponseBodyPushStats `json:"PushStats,omitempty" xml:"PushStats,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF195C34-98FB-491A-98D7-19CBC1FA880B

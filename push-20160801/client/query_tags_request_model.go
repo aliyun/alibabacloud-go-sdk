@@ -18,18 +18,24 @@ type iQueryTagsRequest interface {
 }
 
 type QueryTagsRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The device, account, or alias. Query one ClientKey at a time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e2ba19de97604f55b165576****
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
+	// The type of the ClientKey.
+	//
 	// This parameter is required.
 	//
 	// example:

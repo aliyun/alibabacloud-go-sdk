@@ -16,17 +16,23 @@ type iCompleteContinuouslyPushRequest interface {
 }
 
 type CompleteContinuouslyPushRequest struct {
+	// The AppKey value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The message ID.
+	//
+	// This ID is returned after you call the Push operation and set Target to TBD. It identifies a message saved in the push system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 4010290149170430
+	// 500131
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 

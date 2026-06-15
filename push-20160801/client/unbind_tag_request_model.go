@@ -20,24 +20,34 @@ type iUnbindTagRequest interface {
 }
 
 type UnbindTagRequest struct {
+	// The AppKey of your application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The ID of the device.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e2ba19de97604f55b16557673****
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
+	// The type of the ClientKey. Valid value:
+	//
+	// - **DEVICE**: The key is a device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEVICE
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// Specifies the tag to unbind. To unbind multiple tags, separate them with commas. A maximum of 10 tags, each up to 128 characters long, can be unbound per request. The system supports a total of 10,000 tags.
+	//
 	// This parameter is required.
 	//
 	// example:

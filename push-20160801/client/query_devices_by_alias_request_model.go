@@ -16,12 +16,16 @@ type iQueryDevicesByAliasRequest interface {
 }
 
 type QueryDevicesByAliasRequest struct {
+	// The alias. You can query only one alias at a time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// aliasName
+	// test_alias
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,18 +18,24 @@ type iBindPhoneRequest interface {
 }
 
 type BindPhoneRequest struct {
+	// AppKey information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 27725900
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The unique identity of the device, 32-bit, a combination of numbers and lowercase letters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eb5f741d83d04d34807d229999eefa52
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Phone number.
+	//
 	// This parameter is required.
 	//
 	// example:

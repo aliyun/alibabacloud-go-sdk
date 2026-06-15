@@ -24,23 +24,33 @@ type iQueryPushRecordsResponseBody interface {
 }
 
 type QueryPushRecordsResponseBody struct {
+	// Deprecated. This parameter is no longer used.
+	//
 	// example:
 	//
 	// i91D***********kXIh/dVBEQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 11
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize  *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PushInfos *QueryPushRecordsResponseBodyPushInfos `json:"PushInfos,omitempty" xml:"PushInfos,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B24B396-249D-55E4-8CA1-66C9B50BB734
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 193

@@ -17,6 +17,8 @@ type iQueryDevicesByAliasResponseBody interface {
 
 type QueryDevicesByAliasResponseBody struct {
 	DeviceIds *QueryDevicesByAliasResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 6A9FD644-35A5-40E4-89B0-2021CAEDC1B4

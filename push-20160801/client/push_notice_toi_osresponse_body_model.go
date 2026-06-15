@@ -16,10 +16,14 @@ type iPushNoticeToiOSResponseBody interface {
 }
 
 type PushNoticeToiOSResponseBody struct {
+	// The message ID for this push request.
+	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 501029

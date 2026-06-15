@@ -16,12 +16,16 @@ type iCancelPushRequest interface {
 }
 
 type CancelPushRequest struct {
+	// Your AppKey.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The message ID of the push task to cancel.
+	//
 	// This parameter is required.
 	//
 	// example:

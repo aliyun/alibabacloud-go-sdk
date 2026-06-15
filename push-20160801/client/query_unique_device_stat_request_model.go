@@ -20,24 +20,36 @@ type iQueryUniqueDeviceStatRequest interface {
 }
 
 type QueryUniqueDeviceStatRequest struct {
+	// Your app key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The end time of the query, in ISO 8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2016-07-26T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time granularity for the query. Valid values:
+	//
+	// - DAY
+	//
+	// - MONTH
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The start time of the query, in ISO 8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:

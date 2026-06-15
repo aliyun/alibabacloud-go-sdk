@@ -16,10 +16,14 @@ type iPushV2ResponseBody interface {
 }
 
 type PushV2ResponseBody struct {
+	// ID of the push message.
+	//
 	// example:
 	//
 	// 11747540****88320
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 159E4422-6624-****-8943-DFD98D34858C
