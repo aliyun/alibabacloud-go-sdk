@@ -24,27 +24,12 @@ type iMarkOssV2ResultRequest interface {
 }
 
 type MarkOssV2ResultRequest struct {
-	// example:
-	//
-	// 2023-10-21 16:08:38 +0800
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// example:
-	//
-	// ACL
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// example:
-	//
-	// freeze
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// example:
-	//
-	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	Operation  *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	RequestIds *string `json:"RequestIds,omitempty" xml:"RequestIds,omitempty"`
-	// example:
-	//
-	// 2023-08-21 16:08:38 +0800
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s MarkOssV2ResultRequest) String() string {

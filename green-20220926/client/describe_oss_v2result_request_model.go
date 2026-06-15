@@ -26,31 +26,13 @@ type iDescribeOssV2ResultRequest interface {
 }
 
 type DescribeOssV2ResultRequest struct {
-	// example:
-	//
-	// buckect_test
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// example:
-	//
-	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// example:
-	//
-	// 2024-09-14 16:08:38
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// high
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// example:
-	//
-	// 2024-09-14 16:08:38
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel   *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeOssV2ResultRequest) String() string {

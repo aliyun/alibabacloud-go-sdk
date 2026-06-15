@@ -3474,6 +3474,50 @@ func (client *Client) GetTextScanResultWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// 获取开关配置调优意见
+//
+// @param request - GetTuneProposalByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTuneProposalByIdResponse
+func (client *Client) GetTuneProposalByIdWithContext(ctx context.Context, request *GetTuneProposalByIdRequest, runtime *dara.RuntimeOptions) (_result *GetTuneProposalByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTuneProposalById"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTuneProposalByIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get the corresponding information for file upload
 //
 // @param request - GetUploadInfoRequest

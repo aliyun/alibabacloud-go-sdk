@@ -19,9 +19,6 @@ type iMarkOssV2ResultResponseBody interface {
 
 type MarkOssV2ResultResponseBody struct {
 	FailureRequestIds []*string `json:"FailureRequestIds,omitempty" xml:"FailureRequestIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessRequestIds []*string `json:"SuccessRequestIds,omitempty" xml:"SuccessRequestIds,omitempty" type:"Repeated"`
 }

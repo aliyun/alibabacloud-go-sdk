@@ -124,7 +124,8 @@ type GetPromptTestResultResponseBodyResultLabelDetails struct {
 	// example:
 	//
 	// terrorism
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s GetPromptTestResultResponseBodyResultLabelDetails) String() string {
@@ -143,6 +144,10 @@ func (s *GetPromptTestResultResponseBodyResultLabelDetails) GetLabel() *string {
 	return s.Label
 }
 
+func (s *GetPromptTestResultResponseBodyResultLabelDetails) GetReason() *string {
+	return s.Reason
+}
+
 func (s *GetPromptTestResultResponseBodyResultLabelDetails) SetDescription(v string) *GetPromptTestResultResponseBodyResultLabelDetails {
 	s.Description = &v
 	return s
@@ -150,6 +155,11 @@ func (s *GetPromptTestResultResponseBodyResultLabelDetails) SetDescription(v str
 
 func (s *GetPromptTestResultResponseBodyResultLabelDetails) SetLabel(v string) *GetPromptTestResultResponseBodyResultLabelDetails {
 	s.Label = &v
+	return s
+}
+
+func (s *GetPromptTestResultResponseBodyResultLabelDetails) SetReason(v string) *GetPromptTestResultResponseBodyResultLabelDetails {
+	s.Reason = &v
 	return s
 }
 
